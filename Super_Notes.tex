@@ -1082,9 +1082,17 @@ With spin structures, there are two ways of decomposing $\fube$ into subalgebras
  \be a_\pm \tp a_\pm \in \zc_-,\qquad a_\pm \tp a_\mp \in \zc_+,\ee
 for $a_\pm \in \zc_\pm$ (recall that {\it antiperiodic} boundary conditions act as the identity in $H^1(M,\zt)$). 
 
-We can use some representation theory to exploit this spin structure decomposition. Recall the sum-of-squares law regarding the dimensions of simple modules, which for us states that 
+We can use some representation theory to exploit this spin structure decomposition. Any semisimple algebra $A$ can be written as a direct sum of matrix algebras
+\be A = \cong M_{n_1} \oplus \dots \oplus M_{n_l},\ee
+where $M_{n_i}$ is the algebra of $n_i\times n_i$ matrices. Every matrix algebra $M_{n_i}$ has the canonical basis $\{E_{ij} | i,j\in \zz_{n_i}\}$, where $E_{ij}$ is the matrix with a 1 in the $ij^{th}$ entry and zeros everywhere else. Thus the matrix algebra $M_{n_i}$ has dimension $n_i^2$, and so we have the {\it sum-of-squares law:}
+\be \dim A = \sum_i n_i^2.\ee
+This equation is useful since the simple modules of $A$ (or the idempotents of $A$) correspond exactly to each matrix block $M_{n_i}$ in the decomposition of $A$, since the simple modules are precisely the subspaces left invariant under the action of $A$. Furthermore, since 
+\be Z(A) = \cc \unit_{n_1\times n_1} \oplus \dots \oplus \cc \unit_{n_l\times n_l},\ee
+we have $\dim Z(A) = l$. That is, the dimension of the center of the algebra is equal to the number of its simple modules (primitive idempotents), which in turn is a sum of squares of the dimensions of each simple module (primitive idempotent). Note that the $n_i$s are the dimensions of the simple modules, not the quantum dimensions of the particles the simple modules correspond to. 
+
+For us then, the sum-of-squares law states that 
 \be \dim \fube = \sum_{a\in \zc} (\dim \fld_a(C))^2,\ee
-where $\fld_a(C)$ is the simple module associated with the quasiparticle $a \in \zc$ (recall that quasiparticles are associated with the simple modules of $\fube$)
+where $\fld_a(C)$ is the simple module associated with the quasiparticle $a \in \zc$ (recall that quasiparticles are associated with the simple modules of $\fube$).
 
  Combined with the sum-of-squares law, the spin structure decomposition can allow us to learn a lot about the quasiparticles in a theory without having to actually do an idempotent decomposition on $\fube$. 
  
@@ -1145,7 +1153,11 @@ $q_\sigma $&$(e^{- i \pi/4}+1\bullet)m_\sigma^+$&$(1+i \bullet)m_\unit +(1-i \bu
 $q_\psi $&$-e^{-i \pi/8}(1+ i \bullet) m_\psi$&$(1-e^{i \pi /4} \bullet )m_\sigma^+$&$-e^{- i \pi/8}(1+i \bullet )m_\unit$\\
 \end{tabular}
 
-
+\ethan{re-computed some vortex-nonvortex braids (though I might have to re-re-compute them... the branch cuts are subtle}
+\be \begin{aligned} & R^{q_1m_1}_{q_1} = 1-i\bullet,\quad R^{m_1q_1}_{q_1} = 1+i\bullet,\\
+& R^{q_\psi m_\psi}_{q_1} = 1-i\bullet,\quad R^{m_\psi q_\psi}_{q_1} = -1 - i\bullet,\\
+& R^{q_1m_\psi}_{q_\psi} = 1-i\bullet,\quad R^{m_\psi q_1}_{q_\psi} = -1-i\bullet, \\ 
+& R^{q_\psi m_1}_{q_\psi} = 1-i\bullet,\quad R^{m_1q_\psi}_{q_\psi} = 1+i\bullet.\end{aligned} \ee
 \subsection{Twists}
 
 \subsubsection{obtained from braiding}
@@ -1184,7 +1196,13 @@ Having obtained the $R$ symbols, we can now go ahead and calculate the $S$-matri
 where ${\rm Tr}$ is the trace, not the supertrace. The quantum dimensions are 
 \be d_{m_1} = d_{m_\psi} = 1,\quad d_{m_\sigma^+} = d_{q_1} = d_{q_\psi} = \sqrt{2},\quad d_{q_\sigma} = 2,\ee
 implying that $\mcd = \sqrt{12}$. So the $S$ matrix is 
-\be S = \frac{1}{\sqrt{12}} \begin{pmatrix} 1&\sqrt{2}&1&2\sqrt{2}&4&2\sqrt{2} \\ \sqrt{2}&0&-\sqrt{2}&4&0&4 \\ 1&-\sqrt{2}&1&2\sqrt{2}&4&0 \\ &&&0&2&0 \\ &&&2&0&-2 \\ &&&0 & -2 & 0 \end{pmatrix} \ee
+\be S = \frac{1}{\sqrt{12}} \begin{pmatrix} 
+1&\sqrt{2}&1&2\sqrt{2}&4&2\sqrt{2} \\
+ \sqrt{2}&0&-\sqrt{2}&4&0&4 \\ 
+ 1&-\sqrt{2}&1&-2\sqrt{2}&4&-2\sqrt{2} \\ 
+ &&&0&2&0 \\ 
+ &&&2&0&-2 \\ 
+ &&&0 & -2 & 0 \end{pmatrix} \ee
 \ethan{we should check the braids of $q$s and $m$s again}
 Note that if we restrict to the $m$-type subtheory, we have exactly $S = S_{Ising}$. Also note how similar the $q$-sector $S$-matrix looks to $S_{Ising}$. 
 \ethan{also note that the Ribbon property (writing $S_{ab}$ in terms of the twists) doesn't hold...}
