@@ -1105,17 +1105,21 @@ where $\fld_a(C)$ is the simple module associated with the quasiparticle $a \in 
 \section{Braiding data}
 
 \subsection{$R$-matrices}
-Big table of R-matrices. 
-We define our vector spaces in the following way. We put swirls at the top right if not, then at the top left. We put dots at the top left, if not possible then bottom. Branch cuts always meet in the center of the pants. 
-The tables of values denote the row braiding over the top of the column, $e.g.$
+In this subsection we provide a table of the $R$ symbols in the theory. First, we need to set some conventions on our fusion spaces. We will write a generic even fusion space, which is an even vector in the fusion space $\fld^{a,b}_c$, as 
+\be \includegraphics{pants_braiding_basis.pdf},\ee
+where $a,b,c\in \mcz(C_2)$ and $u,v,w\in \zt$ are variables indicating whether or not a $\beta$ line is present on the given link. We can then calculate the braiding by moving the top punctures around eachother and re-expressing the result in terms of the basis vectors in $\fld^{b,a}_c$. For example, we can calculate the $R$-symbol $R^{m_\psi m_\sigma^+}_{m_\sigma^+} = -1$ as 
+\be \includegraphics{mpsimsig_braiding.pdf}.\ee
+We define odd vectors in $\fld^{a,b}_c$ by placing dots on the top left leg of the pants. If this is impossible (e.g. if the top left leg is an $m_\psi$ idempotent), we put the dot on the top right leg of the pants. When braiding $q$-type particles, we choose branch cuts that always meet in the center of the pants. 
+
+The tables of values below denotes the row braiding entry over the top of the column entry, and so is of the form
 \begin{tabular}{c|c}
      & B\\
      \hline
 A     & $R^{AB}_{A\otimes B}$
 \end{tabular}
-Dots will represent the odd braids. 
+Dots in the table will indicate odd fusion channels. 
 
-When computing this table, it's helpful to know that switching the handedness of a swirl on an anti-periodic pant leg results in a phase of $e^{i\pi/4}$, while switching the handedness of a swirl on a periodic pant leg gives a phase of $e^{-i\pi/4}$. 
+%When computing this table, it's helpful to know that switching the handedness of a swirl on an anti-periodic pant leg results in a phase of $e^{i\pi/4}$, while switching the handedness of a swirl on a periodic pant leg gives a phase of $e^{-i\pi/4}$. 
 
 \dave{re-computed the vortex-vortex braids and found:}
 
@@ -1129,8 +1133,6 @@ $q_\sigma $&$(e^{- i \pi/4}+1\bullet)m_\sigma^+$&$(1+i \bullet)m_\unit +(1-i \bu
      \hline
 $q_\psi $&$-e^{-i \pi/8}(1+ i \bullet) m_\psi$&$(1-e^{i \pi /4} \bullet )m_\sigma^+$&$-e^{- i \pi/8}(1+i \bullet )m_\unit$\\
 \end{tabular}
-
-\ethan{Also, using the formula for the $S$-matrix in terms of the twists gives us a $qq$ $S$-matrix of $e^{-i\pi/4}S_{Ising}$, which is what we ``should'' get if we expect to match up with Brayden's $S$-matrix.}
 
 \ethan{My current table is:}
 
@@ -1202,11 +1204,12 @@ Also, notice that if we want to have spin-statistics hold (we can after all choo
 
 \subsection{Topological $S$-matrix}
 \subsubsection{From braiding}
+
 Having obtained the $R$ symbols, we can now go ahead and calculate the $S$-matrix. To do this, we will use the following quantum dimensions: 
 \be d_{m_1} = d_{m_\psi} = 1,\quad d_{m_\sigma^+} = d_{q_1} = d_{q_\psi} = \sqrt{2},\quad d_{q_\sigma} = 2,\ee
 which gives $\mcd = \sqrt{12}$.
 
-There are several ways to calculate $S$. For all of them, we should keep in mind that although there are some $\pm1$ ambiguities in $T$, such ambiguities should not be present in $S$, since fermions have trivial double-braiding with one another. 
+There are several ways to calculate $S$. For all of them, we should keep in mind that although there are some $\pm1$ ambiguities in $T$, such ambiguities should not be present in $S$, since fermions have trivial double-braiding with one another. That is, mapping $m_a \mapsto fm_a$ where $a\in \{\unit,\psi,\sigma\}$ should not affect the answer we get for the $S$-matrix. In what follows we will calculate the $S$-matrix in several different ways, and then use a handful of different arguments to figure out which calculation gives us the correct result. 
 
 First, we can calculate $S$ by tracing out the $R$-symbols, using 
 \be S_{ab} = \frac{1}{\mcd}\sum_{c}d_c{\rm Tr}[R^{ab}_cR^{ba}_c],\ee
@@ -1218,47 +1221,69 @@ where ${\rm Tr}$ is the trace, not the supertrace. This gives
  1&-\sqrt{2}&1&-2\sqrt{2}&4&-2\sqrt{2} \\ 
  &&&0&0&0 \\ 
  &&&0&0&0 \\ 
- &&&0 & 0 & 0 \end{pmatrix} \ee
-If we try the supertrace instead, weighting odd fusion spaces by a factor of $-1$, we get 
+ &&&0 & 0 & 0 \end{pmatrix}, \ee
+ which is modular. The block of zeros in the bottom right isn't a disaster---indeed, we might expect something like this for physical reasons, as each $q$-type particle is associated with a vortex which means that the fermion parity of pairs of vortices can switch as they braid past one another. Essentially, the fact that $S_{\sigma\sigma}=0$ in the regular Ising theory suggests that perhaps we should always get $0$ when we double-braid two vortices around one another. Also, the fact that this block is zero isn't really a problem for thinking about modular transformations---we will argue later that computing this block is different than computing the modular $S$-matrix on the $(P,P)$ torus, which we definitely expect to be nonzero. 
+ 
+Now we can try the supertrace, weighting odd fusion spaces by a factor of $-1$. This gives 
 \be S_{sTr} = \frac{1}{\mcd} \begin{pmatrix} 
 1&\sqrt{2}&1&0&0&0 \\
  \sqrt{2}&2\zeta^{-2}&-\sqrt{2}&0&0&0 \\ 
  1&-\sqrt{2}&1&0&0&0 \\ 
  &&&2\zeta^2&2\sqrt{2}\zeta^2&-2\zeta^2 \\ 
  &&&2\sqrt{2}\zeta^2&4&-2\sqrt{2}\zeta^2\\ 
- &&&-2\zeta^2 & -2\sqrt{2}\zeta^2 & 2\zeta^2 \end{pmatrix} \ee
-Notice the factors of $\zeta^2$ on (almost) all the entries of the $qq$ sector! Since $\zeta^8 = -1$, this means that the restriction of the $S$ matrix to the $qq$ sector has a chance of satisfying the $S^4=-1$ relation that we know holds for the modular transformations on the torus with $(P,P)$ spin structure (more on this later). My present feeling is that a combination of trace and supertrace, with trace on the $mq$ sector and supertrace on the others, is what is correct. Also, more on this later. 
+ &&&-2\zeta^2 & -2\sqrt{2}\zeta^2 & 2\zeta^2 \end{pmatrix}. \ee
+This is not modular, but it still gives us some hints:
+notice the factors of $\zeta^2$ on (almost) all the entries of the $qq$ sector! Since $\zeta^8 = -1$, this means that the restriction of the $S$ matrix to the $qq$ sector has a chance of satisfying the $S^4=-1$ relation that we know holds for the modular transformations on the torus with $(P,P)$ spin structure (more on this later). 
 
-Instead of (super)tracing the $R$ matrices, we can appeal to a formula relating the $S$ matrix to the topological twists. In bosonic theories, we have 
+Finally, instead of (super)tracing the $R$ matrices, we can appeal to a formula relating the $S$ matrix to the topological twists. In bosonic theories, we have 
 \be S_{ab} = \frac{1}{\mcd} \sum_c d_c N^{ab}_c \frac{\theta_c}{\theta_a\theta_b}.\ee
-This needs to be modified in the superfusion case. By looking at the derivation of this formula (might write up later), we see that it involves passing the fusion space $\fld^{a,b}_c$ under a $c$ tube and then over both an $a$ tube and a $b$ tube. When the braiding process is embedded in $S^3$, the branch cuts become branch sheets, and so passing an odd vector in $\fld^{a,b}_c$ under a $q$-type idempotent gives a phase factor of $-1$ (we could also choose this to be obtained when passing over a $q$-type idempotent). This means that we should modify the previous relation as 
+This needs to be modified in the superfusion case. By looking at the derivation of this formula (might write up later), we see that it involves passing the fusion space $\fld^{a,b}_c$ under a $c$ tube, and then over both an $a$ tube and over a $b$ tube. When the braiding process is embedded in $S^3$, the branch cuts become branch sheets, and so passing an odd vector in $\fld^{a,b}_c$ under a $q$-type idempotent gives a phase factor of $-1$ (we could also choose this to be obtained when passing over a $q$-type idempotent). This means that we should modify the previous relation as 
 \be S_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in \fld^{a,b}_c} d_c (-1)^{|v| |c|}   \frac{\theta_c}{\theta_a\theta_b},\ee
-where $|v| \in \{0,1\}$ is the parity of the vector $v$ and $|c| = 1$ $(|c|=0)$ if $c$ is $q$-type ($m$-type). However, this cannot be completely correct, since it depends on our choice of $m_\psi = \pm1$, even though we argued that the $S$ matrix should not suffer from the $\pm$ ambiguities that $T$ possesses. This means that we should further modify the expression as 
-\be S_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in \fld^{a,b}_c} d_c (-1)^{|v| |c| + \psi_m(v)}   \frac{\theta_c}{\theta_a\theta_b},\ee
-where 
-\be (-1)^{\psi_m(v)} = (-1)^{\delta_{a,m_\psi} + \delta_{b,m_\psi} + \delta_{c,m_\psi}}.\ee
-The remaining question is whether or not there should be an additional $(-1)^{|v|}$ weight in the above expression. Essentially, this means that we have to decide whether to use the trace or the supertrace when calculating the $S$-matrix. A potential hint is that the correct modular $S$-matrix on the $PP$ sector is obtained through the formula
-\be S_{PP}^{modular} = \frac{1}{\mcd} \sum_c\sum_{v \in \fld^{a,b}_c} d_c(-1)^{|v| + \psi_m(v)} [R^{ab}_c]_v[R^{ba}_c]_v = \zeta^2 S_{Ising} = S_{p+ip}\tp S_{Ising}.\ee
-Note that this uses the supertrace and assigns an extra $-1$ to $m_\psi$ particles (presumably since we have defined them to carry an extra fermion). This will be updated later after I've thought about it a bit more. 
+where $|v| \in \{0,1\}$ is the parity of the vector $v$ and $|c| = 1$ $(|c|=0)$ if $c$ is $q$-type ($m$-type). Note that the factor of $(-1)^{|v||c|}$ will only contribute for braids between $m$-type and $q$-type particles. 
 
-\subsection{Ground states on tori}
+However, this cannot be completely correct, since it depends on our choice of twists for the $m$-type particles, even though we argued that the $S$ matrix should not suffer from the $\pm$ ambiguities that $T$ possesses. This means that the expression must be further modified so as to be free from these ambiguities. This is done by writing the correct formula
+\be S_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in \fld^{a,b}_c} d_c (-1)^{|v| |c| + f(v)}   \frac{\theta_c}{\theta_a\theta_b},\ee
+where $f(\fld^{a,b}_c)$ measures the number of {\it physical} fermions attached to any $m$-type particles in $a$, $b$ and $c$. For example, if we were to choose $\theta_{m_\unit} = 1, \theta_{m_\psi} = -1$ (e.g, if we chose $\psi$ to have a single physical fermion attached to it), we would have 
+\be {f(\fld^{a,b}_c)} = \delta_{a,m_\psi} + \delta_{b,m_\psi} + \delta_{c,m_\psi}.\ee
+We then see that the factor of $(-1)^{f(\fld^{a,b}_c)}$ means that we can use the twists to obtain the same answer for $S_{ab}$ regardless of our convention for the signs of the twists. The simplest convention is probably to take $m_\unit$ and $m_\psi$ to be bosonic, and to use $m_\sigma^+$ as our representative for the $m_\sigma$ isomorphism class. However, we might also want to take $m_\psi$ to be fermionic, to jive with the Ising theory better. In any case, $S$ is at least independent of this choice. 
 
-By drawing pictures, it's easy to see that spin structures uniquely determine the fermion parity of any given string-net picture drawn on the torus. We would then expect that each of the four tori would carry four degenerate ground states, since $|H^1(T^2)|=4$. However, for each spin structure one of these states will turn out to be of higher energy, meaning that there are only three degenerate ground states for each choice of spin structure. It will also turn out that the remaining degenerate ground states in each sector will all possess the same fermion parity. 
+The remaining question is whether or not there should be an additional $(-1)^{|v|}$ weight in the above expression. Essentially, this means that we have to decide whether to use the trace or the supertrace when calculating the $S$-matrix. In the next subsubsection, we'll get some hints about which one to chose. 
+%A potential hint is that the correct modular $S$-matrix on the $PP$ sector is obtained through the formula
+%\be S_{(P,P)}^{mod} = \frac{1}{\mcd} \sum_c\sum_{v \in \fld^{a,b}_c} d_c(-1)^{|v| + \psi_m(v)} [R^{ab}_c]_v[R^{ba}_c]_v = \zeta^2 S_{Ising} = S_{p+ip}\tp S_{Ising}.\ee
+%Note that this uses the supertrace and assigns an extra $-1$ to $m_\psi$ particles---as of now, this seems a bit mysterious. 
+
+\subsubsection{Ground states on tori}
+
+By drawing pictures, it's easy to see that spin structures uniquely determine the fermion parity of any given string-net picture drawn on the torus. We would then expect that each of the four tori would carry four degenerate ground states, since $|H_1(T^2)|=4$. However, for each spin structure one of these states will turn out to be of higher energy, meaning that there will only be three degenerate ground states for each choice of spin structure. It will also turn out that the remaining degenerate ground states in each sector will all possess the same fermion parity. 
 
 We now write down the degenerate ground states for each spin structure on the torus. For the AA sector, we have the three states 
-\be (A,A) = \FubeXXX,\ \FubeXss,\ \FubesXs.\ee
+\be GS_{(A,A)} = \FubeXXX,\ \FubeXss,\ \FubesXs.\ee
 For periodic boundary conditions around the longitudinal cycle (the shorter cycle, horizontal in our pictures), we have 
-\be (A,P) = \FubeXXX,\ \FubeXss,\ \FubessX.\ee
+\be GS_{(A,P)} = \FubeXXX,\ \FubeXss,\ \FubessX.\ee
 For periodic boundary conditions around the meridional cycle (the big cycle, vertical in our pictures), we have 
-\be (P,A) = \FubeXXX,\ \FubesXs,\ \FubessX.,\ee
+\be GS_{(P,A)} = \FubeXXX,\ \FubesXs,\ \FubessX,\ee
 and for periodic boundary conditions around both cycles, we get 
-\be (P,P) = \FubesdXs,\ \FubeXsds,\ \FubessdX.\ee 
-In every case, there is one additional non-zero tube with a different fermion parity than the other three which lies at higher energy. 
+\be GS_{(P,P)} = \FubesdXs,\ \FubeXsds,\ \FubessdX.\ee 
+Notice that all of the tubes on the $(P,P)$ torus are odd. This is more evidence for the presence of a background $p+ip$ superconductor, since a $p+ip$ superconductor always has odd fermion parity when placed on a $(P,P)$ torus. 
+
+Also note that on every torus, there is one additional non-zero picture which lies at higher energy, which can be obtained by drawing the configuration of $\Sigma$ lines not present in the given collection of three pictures, adding on a dot, and creating a massive fermionic excitation somewhere in the background. For the $(P,P)$ torus, this high-energy state is the empty picture with a massive fermionic excitation (will elaborate later). 
 
 Having three ground states for each spin structure means that we have 12 ground states across all spin structures. How can we relate this to the fact that $|\mcz(C_2)| = 6$? The idea is that the number of ground states is usually captured by tracing the identity functor on $\mcz(C_2)$, where the identity functor is
 \be {\rm id} = \bigoplus_{a\in\mcz(C_2)} a,\ee
-since the direct sum of a complete collection of primitive idempotents maps everything to itself. When we say ``compute ${\rm Tr}({\rm id})$'', we mean crossing the tubes in id with an $S^1$ so that they form a collection of tori, embedding them in $S^3$, and evaluating the resulting configuration by filling in the complement of the tubes with a TV state-sum with fixed boundary conditions. The embedding into $S^3$ part can only be done if we choose a spin structure on $S^1$ that can be smoothly extended to a spin structure on a disk, which means that we must choose anti-periodic boundary conditions for the $S^1$. Therefore, only half of the ground states on the collection of tori will come from tracing out id. The rest (on tori with periodic boundary conditions around the azimuthal cycle) come from tracing out some sort of twisted id functor, which has a $\pi$ flux inserted through the cycle of the $S^1$. 
+since the direct sum of a complete collection of primitive idempotents maps everything to itself. When we say ``trace out the identity functor'', we mean crossing the tubes in id with an $S^1$ so that they form a collection of tori, embedding them in $S^3$, and evaluating the resulting configuration by filling in the complement of the tubes with a TV state-sum with fixed boundary conditions. The embedding into $S^3$ part can only be done if we choose a spin structure on $S^1$ that can be smoothly extended to a spin structure on a disk, which means that we must choose anti-periodic boundary conditions for the timelike $S^1$. Therefore, only half of the ground states on the collection of tori will come from tracing out id. The rest (on tori with periodic boundary conditions around the azimuthal cycle) come from tracing out some sort of twisted id functor, which has a $\pi$ flux inserted through the cycle of the $S^1$. 
 
+So, we should use anti-periodic boundary conditions on the timelike $S^1$ when calculating the braids of the idempotents. All that's left is to decide whether this means we should use the trace or supertrace. At this moment in time, all signs seem to point to the trace being associated with antiperiodic boundary conditions. This is for two reasons. First, we can observe that the using the supertrace to calculate the $S$ matrix in the $qq$ braiding sector gives us something (almost) proportional to $\zeta^2$ (the fact that $S_{q_\sigma q_\sigma}$ isn't may not be a problem), while using the trace gives us a $qq$ $S$-matrix of $0$. We know that we should have $S^4 = -1$ when acting on the ground states of a $(P,P)$ torus, which suggests that the supertrace is what we want to use to compute $S$ for the $(P,P)$ torus. Thus, the supertrace should be associated with periodic boundary conditions along the timelike $S^1$, leaving the trace to be associated with anti-periodic boundary conditions along the timelike $S^1$. 
+
+Alternatively, we can imagine starting with a double braid between two odd fusion spaces, and then moving one of the fermions around the timelike $S^1$ so that both fermions are placed at the same fusion space. Doing so gives us two factors of $-1$ (since the $S^1$ has antiperiodic boundary conditions), and results in a diagram which gives the trace of two even vectors. This further suggests that the trace should be associated with anti-periodic boundary conditions around the timelike $S^1$. I'll add a picture illustrating this eventually. Recapitulating pictorially, this means that the trace is untwisted, and the supertrace is twisted by a spin structure vortex:
+\be \includegraphics{tr_and_str.pdf} \ee
+
+However, this is not really the end of the story. From Brayden's paper, we know that we should get 
+\be S^{mod}_{(P,P)} = \zeta^2S_{Ising},\ee
+although supertracing our $R$ matrices doesn't quite give us this. However, we can recover the ``correct'' $S$-matrix by weighting every $m_\psi$ by a factor of $-1$, by writing 
+\be S^{mod}_{(P,P)} = \frac{1}{\mcd} \sum_c \sum_{v\in \fld^{a,b}_c} d_c (-1)^{|v| + \delta_{c,m_\psi}} [R^{ab}_c]_v[R^{ba}_c]_v.\ee
+%where 
+%\be n_\psi(v) = \delta_{a,m_\psi} + \delta_{b,m_\psi} + \delta_{c,m_\psi}.\ee
+Incidentally, this $S$-matrix is also what we would get if we set $\theta_{m_\unit} = 1,\theta_{m_\psi} = -1$, and used the normal bosonic formula for $S$ in terms of the twists. At this stage, we haven't figured out anything more intelligent to say with regards to this. 
 
 
 
