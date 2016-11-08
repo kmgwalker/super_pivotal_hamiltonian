@@ -937,8 +937,10 @@ where $s_i = \pm1$ then you recover your table.}
 \end{comment}
 
 By looking at this multiplication table, we see right away that the subalgebra $\fube^A_\Sigma$ is {\it not commutative}. This immediately rules out the possibility for this subalgebra to be identified with $\cl_1\oplus\cl_1$, which is Abelian. As mentioned earlier, this means that this subalgebra should correspond to $\cl_2$: let's check this explicitly. Recall that $\cl_2$ has two even generators $1$ and $\gamma_1\gamma_2$, and two anticommuting odd generators $\gamma_1$ and $\gamma_2$ that square to $1$. We see that if we make the identifications
-\be 1 =\FubeXss,\quad \gamma_1 =  \FubeXsds,\quad \gamma_2 = \FubessdX,\quad \gamma_1\gamma_2 =  \FubessX,\ee
-we have the required anticommutation relations $\{\gamma_1,\gamma_2\} = 0$, as well as the identities $\gamma_1^2 = \gamma_2^2 = 1$. 
+\be 1 =\FubeXss,\quad \gamma_1 =  \FubeXsds,\quad \gamma_2 = \FubessdX,\quad i\gamma_1\gamma_2 =  \FubessX,\ee
+we have the required anticommutation relations $\{\gamma_1,\gamma_2\} = 0$, as well as the identities $\gamma_1^2 = \gamma_2^2 = 1$. Since we have $c^\dagger c = i\gamma_1\gamma_2$ if $c = (\gamma_1 + i\gamma_2)/\sqrt{2}$, we have the intriguing relation 
+\be c^\dagger c = \FubessX.\ee
+That is, we see that the number operator is equal to the tube that implements the twist. This actually makes sense: each fermion on an anti-periodic tube gives a factor of $-1$ when twisted, and so twisting tubes gives a way of computing the (physical) fermion parity of the tube. 
 
 Okay, so this subalgebra is indeed $\fube^A_\Sigma = \cl_2$. We now turn to the task of identifying the quasiparticles (simple modules) of this algebra. Note that in what follows, we will {\it not} impose the re-scaling on the tubes that led to the nice $\cl_2$ multiplication table. Of course we could just as well keep the re-scaling, but it tends to be a catalyst for mistakes later on. 
 
@@ -1242,10 +1244,12 @@ This needs to be modified in the superfusion case. By looking at the derivation 
 where $|v| \in \{0,1\}$ is the parity of the vector $v$ and $|c| = 1$ $(|c|=0)$ if $c$ is $q$-type ($m$-type). Note that the factor of $(-1)^{|v||c|}$ will only contribute for braids between $m$-type and $q$-type particles. 
 
 However, this cannot be completely correct, since it depends on our choice of twists for the $m$-type particles, even though we argued that the $S$ matrix should not suffer from the $\pm$ ambiguities that $T$ possesses. This means that the expression must be further modified so as to be free from these ambiguities. This is done by writing the correct formula
-\be S_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in \fld^{a,b}_c} d_c (-1)^{|v| |c| + f(v)}   \frac{\theta_c}{\theta_a\theta_b},\ee
-where $f(\fld^{a,b}_c)$ measures the number of {\it physical} fermions attached to any $m$-type particles in $a$, $b$ and $c$. For example, if we were to choose $\theta_{m_\unit} = 1, \theta_{m_\psi} = -1$ (e.g, if we chose $\psi$ to have a single physical fermion attached to it), we would have 
-\be {f(\fld^{a,b}_c)} = \delta_{a,m_\psi} + \delta_{b,m_\psi} + \delta_{c,m_\psi}.\ee
-We then see that the factor of $(-1)^{f(\fld^{a,b}_c)}$ means that we can use the twists to obtain the same answer for $S_{ab}$ regardless of our convention for the signs of the twists. The simplest convention is probably to take $m_\unit$ and $m_\psi$ to be bosonic, and to use $m_\sigma^+$ as our representative for the $m_\sigma$ isomorphism class. However, we might also want to take $m_\psi$ to be fermionic, to jive with the Ising theory better. In any case, $S$ is at least independent of this choice. 
+\be S_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in \fld^{a,b}_c} d_c (-1)^{|v| |c| + f(a,b,c)}   \frac{\theta_c}{\theta_a\theta_b},\ee
+where $f(a,b,c)$ measures the number of {\it physical} fermions attached to any $m$-type particles in $a$, $b$ and $c$. For example, if we were to choose $\theta_{m_\unit} = 1, \theta_{m_\psi} = -1$ (e.g, if we chose $\psi$ to have a single physical fermion attached to it), we would have 
+\be {f(a,b,c)} = \delta_{a,m_\psi} + \delta_{b,m_\psi} + \delta_{c,m_\psi}.\ee
+We then see that the factor of $(-1)^{f(a,b,c)}$ means that we can use the twists to obtain the same answer for $S_{ab}$ regardless of our convention for the signs of the twists. The simplest convention is probably to take $m_\unit$ and $m_\psi$ to be bosonic, and to use $m_\sigma^+$ as our representative for the $m_\sigma$ isomorphism class. However, we might also want to take $m_\psi$ to be fermionic, to jive with the Ising theory better. In any case, $S$ should at least independent of this choice. 
+
+There is one nagging contradiction here, though. The $R$-symbols tell us unambiguously that $S_{m_\psi m_\sigma} = -\sqrt{2}/\mcd$, which seems to imply that $\theta_{m_\psi} = -1$ is actually fixed exactly, with no sign ambiguity. Need to think about this more. 
 
 The remaining question is whether or not there should be an additional $(-1)^{|v|}$ weight in the above expression. Essentially, this means that we have to decide whether to use the trace or the supertrace when calculating the $S$-matrix. In the next subsubsection, we'll get some hints about which one to chose. 
 %A potential hint is that the correct modular $S$-matrix on the $PP$ sector is obtained through the formula
