@@ -1154,9 +1154,9 @@ We will write a generic even fusion space, which is an even vector in the fusion
 where $a,b,c\in \mcz(C_2)$ and $u,v,w\in \zt$ are variables indicating whether or not a $\beta$ line is present on the given link. The idempotent labels represent a collection of pictures, one for each tube in their definition. For example, 
 \be \includegraphics{msig_def.pdf} \ee
 
-We can then calculate the braiding by moving the top punctures around eachother and re-expressing the result in terms of the basis vectors in $\fld^{b,a}_c$. When braiding $q$-type particles, we choose branch cuts that always meet in the center of the pants. For example, to calculate $R^{q_\psi q_{1/\psi}}_{m_{\psi/1}}$, we write
+We will calculate the braiding in the fusion space $\fld^{a,b}_c$ by moving the $a$ and $b$ punctures around one other and re-expressing the result in terms of the basis vectors in $\fld^{b,a}_c$. When braiding $q$-type particles, we enforce their periodic boundary conditions graphically by introducing branch cuts ending on each $q$-type puncture, with the rule that dots sliding past a branch cut pick up a phase of $-1$. For concreteness, we will draw our branch cuts to always meet near the center of the three punctures. For example, to calculate $R^{q_\psi q_{1/\psi}}_{m_{\psi/1}}$, we write
 \be \includegraphics{qpsiq1psi_braiding} \ee
-where we have taken advantage of our knowledge of the eigenvalue of $q_\psi$ under the twisted tube (i.e. the spin of $q_\psi$). 
+where the dashed blue lines are the branch cuts, and we have taken advantage of our knowledge of the eigenvalue of $q_\psi$ under the twisted tube (i.e. the spin of $q_\psi$). 
 
 We define odd vectors in $\fld^{a,b}_c$ by placing dots on the top left leg of the pants, on the leg marked $u$ in \eqref{pants_braiding_basis}. If this is impossible (e.g. if the top left leg is an $m_\psi$ idempotent), we put the dot on the top right leg of the pants, marked $v$ in \eqref{pants_braiding_basis}. For example, we can calculate the $R$-symbol $R^{m_\psi m_\sigma^+}_{m_\sigma^+} = -1$ by
 \be \includegraphics{mpsimsig_braiding.pdf}.\ee
@@ -1220,7 +1220,7 @@ We'll start by computing the twists by statistics, namely by tracing out the $R$
 First for the $m$ sector. 
 If we use the normal trace, we obtain 
 \be \theta_{m_\unit} = 1,\ \theta_{m_\psi} = 1,\ \theta_{m^\pm_\sigma} = \pm e^{-i\pi/8}.\ee
-(more on the $-1$ in $\theta_{m_\psi}$ later). If we use the supertrace, we get 
+If we use the supertrace instead, we get 
 \be \theta_{m_\unit} = 1,\ \theta_{m_\psi} = 1,\ \theta_{m^\pm_\sigma} = \pm e^{3i\pi/8}.\ee
 Now for the $q$ sector. If we use the trace, we get 
 \be \theta_{q_\unit} = e^{i\pi/8},\ \theta_{q_\psi} = -e^{i\pi/8},\ \theta_{q_\sigma} = 1,\ee
@@ -1276,14 +1276,14 @@ Finally, instead of tracing the $R$ matrices, we can appeal to a formula relatin
 \be \label{stwist_bosonic} S_{ab} = \frac{1}{\mcd} \sum_c d_c N^{ab}_c \frac{\theta_c}{\theta_a\theta_b}.\ee
 This needs to be modified in the superfusion case. By looking at the derivation of \eqref{stwist_bosonic}, we see that it involves passing vectors in the fusion space $\fld^{a,b}_c$ under a $c$ tube, and then over both an $a$ tube and over a $b$ tube. When the braiding process is embedded in $S^3$, the branch cuts become branch sheets, and so passing an odd vector in $\fld^{a,b}_c$ under a $q$-type idempotent gives a phase factor of $-1$ (we could also choose this to be obtained when passing over a $q$-type idempotent). Additionally, vectors in $\fld^{a,b}_c$ are transported in a loop during the derivation of \eqref{stwist_bosonic}, which contributes a sign of $-1$ if the vector is odd. We need to modify the previous relation to take into account both these effects, and so the correct expression for $S^{Tr}$ in the fermionic setting is 
 \be S^{Tr}_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in \fld^{a,b}_c} d_c (-1)^{|v| (|c|+1)}   \frac{\theta_c}{\theta_a\theta_b},\ee
-where $|v| \in \{0,1\}$ is the parity of the vector $v$ and $|c| = 1$ $(|c|=0)$ if $c$ is $q$-type ($m$-type). Note that the factor of $(-1)^{|v||c|}$ will only contribute for braids between $m$-type and $q$-type particles. Also, note that this formula reproduces $S^{Tr}$, not $S^{sTr}$. If we wanted to get the supertrace $S$-matrix, we'd have to weight each summand by a further $(-1){^|v|}$:
+where $|v| \in \{0,1\}$ is the parity of the vector $v$ and $|c| = 1$ $(|c|=0)$ if $c$ is $q$-type ($m$-type). Note that the factor of $(-1)^{|v||c|}$ will only contribute for braids between $m$-type and $q$-type particles. Also, note that this formula reproduces $S^{Tr}$, not $S^{sTr}$. If we wanted to get the supertrace $S$-matrix, we'd have to weight each summand by a further $(-1)^{|v|}$:
 \be S^{sTr}_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in \fld^{a,b}_c} d_c (-1)^{|v| |c|}   \frac{\theta_c}{\theta_a\theta_b}.\ee
 
 There is a slight technicality here, since our formula for $S$ depends on our choice of twists for the $m$-type particles, even though we argued that the $S$ matrix should not suffer from the $\pm$ ambiguities that $T$ possesses. This means that the expression must be further modified so as to be invariant under fusing physical fermions onto $m$-type particles. This is done by writing 
 \be S^{Tr}_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in \fld^{a,b}_c} d_c (-1)^{|v| (|c| + 1) + f(a,b,c)}   \frac{\theta_c}{\theta_a\theta_b},\ee
 where $f(a,b,c)$ measures the number of {\it physical} fermions attached to any $m$-type particles in $a$, $b$ and $c$. For example, if we were to choose $\theta_{m_\unit} = 1, \theta_{m_\psi} = -1,\theta_{m^+_\sigma} = e^{-i\pi/8}$ (e.g, if we chose $\psi$ to come with a single physical fermion attached to it), we would have 
 \be {f(a,b,c)} = \delta_{a,m_\psi} + \delta_{b,m_\psi} + \delta_{c,m_\psi}.\ee
-The simplest convention is probably to take $m_\unit$ and $m_\psi$ to be bosonic, which we have done until now, and to use $m_\sigma^+$ as our representative for the $m_\sigma$ isomorphism class. However, we might also want to take $m_\psi$ to be fermionic, to jive with the Ising theory better. In any case, $S$ is at least independent of this choice. 
+The simplest convention is probably to take $m_\unit$ and $m_\psi$ to be bosonic and to use $m_\sigma^+$ as our representative for the $m_\sigma$ isomorphism class, which we have been doing throughout and will continue to do. However, we might also want to take $m_\psi$ to be fermionic, to jive with the Ising theory better. In any case, $S$ is at least independent of this choice. 
 
 \subsubsection{Ground states on tori}
 
@@ -1310,11 +1310,86 @@ These arguments make the case for using anti-periodic boundary conditions on the
 Alternatively, we can imagine starting with a double braid between two odd fusion spaces, and then moving one of the fermions around the timelike $S^1$ so that both fermions are placed at the same fusion space. Doing so gives us two factors of $-1$ (since the $S^1$ has antiperiodic boundary conditions), and results in a diagram which gives the trace of two even vectors. This further suggests that the trace should be associated with anti-periodic boundary conditions around the timelike $S^1$. Recapitulating pictorially, this means that the trace is untwisted, and the supertrace is twisted by a spin structure vortex:
 \be \includegraphics{tr_and_str.pdf} \ee
 
-We are now in a position to give a more compelling argument for why the $qq$ braiding sector of$S^{Tr}$ is $0_{3\times 3}$. Since each $q$-type idempotent is associated with a torus with $(P,A)$ spin structure (periodic around the spatial $S^1$, anti-periodic around the timelike $S^1$), a double-braid between two $q$-type particles looks like: 
+We are now in a position to give a more compelling argument for why the $qq$ braiding sector of $S^{Tr}$ is $0_{3\times 3}$. Since each $q$-type idempotent is associated with a torus with $(P,A)$ spin structure (periodic around the spatial $S^1$, anti-periodic around the timelike $S^1$), a double-braid between two $q$-type particles looks like: 
 \be \includegraphics{linked_qtori.pdf}\ee
 When we compute this partition function, we thicken the two tori so that their boundaries become glued with one another, forming a torus dividing the ambient $S^3$ into two solid tori. However, we see that the above choice of spin structures makes this gluing process impossible, since the spin structures on the two linked tori do not agree when one another when the tori are glued. More precisely, we see that the boundary conditions on the meridional cycle of one linked torus must match the longitudinal boundary conditions of the other in order for the gluing procedure to be well-defined, which is not the case in the above figure. This means that the partition function of a linking of two $q$-type idempotents must be zero, which explains the block of zeros in $S^{Tr}$.
 
-%This thought process can also be used to say things about how to compute the modular transformations on the $(P,P)$ torus, where each of the linked tori in the previous figure possess $(P,P)$ spin structures and odd fermion parity. 
+\subsubsection{Modular transformations}
+
+In this section, we'll switch to using $A$ in equations rather than just implicitly working with $A^4=i$. Since $d = -A^2 - A^{-2}$, in order to have $d=\sqrt{2}$ we will pick $A = ie^{i\pi/8}$. Also, to make the notation a bit more compact, we will define 
+\be e := \FubeXXX,\quad h := \FubesXs,\quad v := \FubeXss,\quad t:= \FubessX,\ee
+with the spin structures of the tubes left to be understood in context. As a reminder, we are using the label $(X,Y)$ to denote the spin structure on $T^2$ with boundary condition $X$ along the spatial $S^1$ and boundary condition $Y$ along the timelike $S^1$ (so that e.g. the $q$-type idempotents are associated with $(P,A)$). This is a bit backwards, depending on how you look at it---might change it later. 
+
+\underline{$\mathbf{(P,P)}$:} First, we'll look at the $(P,P)$ torus, whose spin structure is preserved under both $S$ and $T$. The three vectors in the basis of ground states are $v_\bullet,h_\bullet,$ and $t_\bullet$,
+where the $\bullet$s in labels mean that their associated tubes have odd fermion parity (the $h_\bullet$ tube has a $\beta$ string wrapping around its diameter). 
+In the ground state basis $(v_\bullet,h_\bullet,t_\bullet)^T$, we see that 
+\be S^{gs}_{PP} = \begin{pmatrix}0 & 1 & 0 \\ A^4 & 0 & 0 \\ 0 & 0 & A^{-6} \end{pmatrix},\quad T^{gs}_{PP} = \begin{pmatrix} 0 & 0 & A^{-6} \\ 0 & 1 & 0 \\ 1 & 0 & 0 \end{pmatrix}\ee
+One can check that $(ST)^3 = S^4= -\unit_{3\times3}$. Note that $S^{-1} = A^4 S$ (schematically, since the difference between the two is a $\pi$ rotation in framing), so the $S$ matrix is not self-dual as it is for bosonic theories. Also, as a sanity check we see that the eigenvalues of $T$ are $1,\pm A^{-3}$ (if $A^4=i$, then $A^{-3} = e^{i\pi/8}$).
+
+To transform these matrices into the idempotent basis in which $T$ is diagonalized, we take 
+\be S \mapsto V^{-1}SV,\ T\mapsto V^{-1}TV,\ee 
+where in this case $V$ is the matrix mapping the basis $(q_{\unit\bullet},q_{\sigma\bullet},q_{\psi\bullet})^T$ to the ground state basis $(v_\bullet,h_\bullet,t_\bullet)^T$. Note that none of $q_{\unit\bullet},q_{\sigma\bullet},q_{\psi\bullet}$ are idempotents in the strict sense of the word, since they multiply together to give even tubes. To ensure they are normalized correctly, we require that they square to their associated even idempotents:
+\be q_{\unit\bullet}^2 = q_\unit,\quad q_{\psi\bullet}^2 = q_\psi,\quad q_{\sigma\bullet}^2 = q_\sigma.\ee
+In order for this to hold, we see that we need to take
+\be q_\unit = \frac{A^{-2}}{2}(v_\bullet + A^3 t_\bullet),\quad q_\psi = \frac{A^{-2}}{2}(v_\bullet - A^3t_\bullet),\quad q_\sigma = \frac{1}{d}h_\bullet.\ee
+Therefore, the matrix that maps the basis $(q_{\unit\bullet},q_{\sigma\bullet},q_{\psi\bullet})^T$ to the ground state basis $(v_\bullet,h_\bullet,t_\bullet)^T$ is 
+\be V_{PP} = \begin{pmatrix} A^{-2}/2 & 0 & A^{-2}/2 \\ 0 & 1/d & 0 \\ A/2 & 0 & -A/2 \end{pmatrix}.\ee
+This gives 
+\be S_{PP} = \frac{A^2}{2} \begin{pmatrix} -1 & d & 1 \\ d & 0 & d \\ 1 & d & -1 \end{pmatrix},\quad T_{PP} = \begin{pmatrix} A^{-3} & 0 & 0 \\ 0 & 1 & 0 \\ 0& 0& -A^{-3}.\end{pmatrix}.\ee
+
+\underline{$\mathbf{(A,A)}$:} For the $(A,A)$ spin structure, we see that the $S$-matrix in the ground state basis $(e,v,h)^T$ is $S^{gs}_{(A,A)} = 1\oplus \sigma^x$. The matrix transforming from the idempotent basis $(m_\unit,m_\sigma^+,m_\psi)^T$ to the ground state basis is 
+\be V_{AA}= \frac{1}{2}\begin{pmatrix}1&0&1 \\ 0 & 1 & 0\\ 1/d & 0 & -1/d \end{pmatrix},\ee
+and so we obtain
+\be S_{AA} = \frac{1}{2}\begin{pmatrix} 1 & d & 1 \\ d & 0 & -d \\ 1 & -d & 1 \end{pmatrix} = S_{Ising}.\ee
+
+The $T$-matrix does not preserve the spin structure, as it sends $T : (A,A) \mapsto (A,P)$. As a map between the ground state bases $(e,v,h)^T_{AA}$ and $(e,t,h)_{AP}^T$, we have the convenient  
+\be T_{AA\mapsto AP}^{gs} = \unit_{3\times 3}.\ee
+The matrix mapping the idempotent basis $(m_\unit,m_\sigma^+,m_\psi)^T_{AP}$ onto the ground state basis $(e,t,h)_{AP}^T$  is
+\be V_{AP} = \frac{1}{2} \begin{pmatrix} 1 & 0 & 1 \\ 0 & A^{-3} & 0 \\ 1/d & 0 & -1/d \end{pmatrix},\ee
+which tells us that 
+\be T_{AA\mapsto AP} = V_{AP}^{-1} T_{AA\mapsto AP}^{gs} V_{AA} =  \begin{pmatrix}
+1 &0&0 \\ 0&A^3&0\\0&0&1
+\end{pmatrix}.\ee
+
+
+\underline{$\mathbf{(P,A)}$:} Now for the $(P,A)$ spin structure, which is preserved by $T$ (as the $q$-type quasiparticles have well-defined self-statistics). First for the $S$-matrix, which maps the $PA$ spin structure to the $AP$ spin structure. As a map between the ground state basis $(e,v,t)_{PA}^T$ and the ground state basis $(e,t,h)_{AP}^T$, the $S$ matrix is
+\be S^{gs}_{PA\mapsto AP} = \begin{pmatrix}
+1 & 0& 0 \\ 0 & 0 & A^{-6} \\ 0&1& 0
+\end{pmatrix}.\ee
+The matrix that maps the idempotent basis $(q_\unit,q_\sigma,q_\psi)^T$ onto the ground state basis $(e,v,t)_{PA}^T$ is 
+\be V_{PA} = \begin{pmatrix}
+0 & 1 & 0 \\ 1/2 & 0 & 1/2 \\ A^3/2 & 0 & -A^3/2
+\end{pmatrix},\ee
+This means that in the idempotent basis, the $S$ matrix is 
+\be S_{PA \mapsto AP} = V_{AP}^{-1} S^{top}_{PA \mapsto AP} V_{PA} = \begin{pmatrix}
+d/2 & 1 & d/2 \\ 1 & 0 & -1 \\ -d/2 & 1 & -d/2
+\end{pmatrix}.\ee
+
+Now for $T$, which preserves the spin structure. In the ground state basis basis $(e,v,t)^T$, $T$ takes the form 
+\be T^{gs}_{PA} = \begin{pmatrix}
+1 & 0 & 0\\ 0 & 0 & A^{-6} \\ 0&1&0 
+\end{pmatrix}\ee
+which tells us that in the idempotent basis, 
+\be T_{PA}  = \begin{pmatrix}
+A^{-3} & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -A^{-3}
+\end{pmatrix}\ee
+
+\underline{$\mathbf{(A,P)}$:} Finally, we turn to the $(A,P)$ spin structure. 
+Since the $S$-matrix must be symmetric, we can immediately write 
+\be S_{AP \mapsto PA} =  S_{AP \mapsto PA}^T = \begin{pmatrix}
+d/2 & 1 & -d/2 \\ 1 & 0 & 1 \\ d/2 & -1 & -d/2
+\end{pmatrix}.\ee
+As a map between the ground state bases $(e,t,h)^T_{AP}$ and $(e,v,h)^T_{AA}$, $T$ is 
+\be T^{gs}_{AP \mapsto AA} = \begin{pmatrix}
+1 &0&0 \\ 0&A^6 &0\\0&0&1
+\end{pmatrix}.\ee
+Therefore, in the idempotent basis, 
+\be T_{AP\mapsto AA} = V_{AA}^{-1} T^{gs}_{AP\mapsto AA} V_{AP} = \begin{pmatrix}
+1 &0&0 \\ 0&A^3&0\\0&0&1
+\end{pmatrix}.\ee
+
+\ethan{interpretation and some big matrices coming later}
+
 
 \begin{comment}
 
@@ -1355,7 +1430,7 @@ One can check that for $k = 3+4n, 4+4n$, $n=0,1,2,\cdots$ that the $k/2$ particl
 It would be interesting to at least understand $A_4$ for which the $1$ particle is a Fibonacci anyon. 
 }
 \end{comment}
-
+\newpage
 \section{Hamiltonian (in progress)}
 Here we write down a commuting projector Hamiltonian based on the condensed Ising theory. 
 Each excitation in the Hamiltonian will correspond to one idempotent, and the fusion rules will correspond exactly as they do above. 
