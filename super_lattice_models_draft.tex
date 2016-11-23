@@ -2,7 +2,7 @@
 \documentclass[12pt,a4paper]{article}
 \usepackage[margin=1in]{geometry}  % set the margins to 1in on all sides
 %\usepackage{jheppub}
-\usepackage{amsmath,amsfonts,amssymb,latexsym}
+\usepackage{amsmath,amsfonts,amssymb,latexsym,dsfont}
 \usepackage{hhline}
 \usepackage{graphicx}
 \usepackage[arrow,matrix]{xy}
@@ -936,24 +936,74 @@ In this section we review fusion categories.
 Physically one can think of the diagrams as the world lines of ``particles" in a $1+1$ dimensional theory.
 For example this could be considered as the topological theory associated to a gapped boundary of a $2+1$ dimensional topological phase. 
 
+must add:
+
+- identity object
+
+- duality axiom
+
+- normalizations/quantum dimensions
+
+- inner product
+
 - We label the particles by $\{ a, b, c, \cdots \}$. 
 Each particle label represents a super selection sector, i.e., an equivalence class of quantum states that is invariant under local operators \footnote{Formally we should write $X_a$ to denote the equivalence class of states related to $a$ by local operators.}. 
-Mathematically this means that $\text{Hom}(a,a) \cong \mathbb{C} id_a$, where $id_a$ is the identity on $a$.
+
+Mathematically this means that $\text{Hom}(a,a) \cong \mathbb{C} \text{id}_a$, where $id_a$ is the identity on $a$.
 Equivalently we could say that the space of maps from $a$ back to itself is just the complex numbers
 \begin{align}
-\text{End}(a,a) \cong \mathbb{C}
+\text{End}(a,a) \cong \mathbb{C} \text{id}_a
 \end{align}
 This is the definition of a {\em simple object} in a fusion category {\cal C}. 
 One could consider objects that aren't simple, but we require that in this case that object always decomposes into a direct sum of simple objects, for example, $A = \oplus_i x_i$, where each $x_i$ is simple. 
-In this case we have $\text{Hom}(A,A)= \oplus_i \text{Hom}(x_i,x_i)$. 
-We will require the fusion category to be {\em semisimple} meaning that each object can always be decomposed into a finite sum of simple objects.
+In this case we have $\text{Hom}(A,A)= \oplus_i \text{Hom}(x_i,x_i)$ (picture). 
+This is the definition of {\em semisimple}, which says that each object can always be decomposed into a finite sum of simple objects.
 
-- We can represent this space as a set of labeled points on a a circle or line. (picture).
+Diagrammatically we represent this space as a set of labeled points on a circle or line. (picture).
+Physically these particles should be thought of as local excitations which are well separated.
+The ``time evolution" maps this set of states to another on a circle or a line (picture). 
+During time evolution two neighbouring particles may be brought on top of one another.
+Such a process is called fusion and given the semi-simplicity condition, we know that the result can be split into a direct sum of particles.
+We will label the fusion space that takes $a \otimes b$ to $c$ by $V_{ab}^c \cong \text{Hom}(a\otimes b, c)$. 
+The dimension of this vector space is known as the fusion multiplicity $N_{ab}^c = \text{dim} V_{ab}^c$. 
+We can choose a basis for this fusion space by $v_{ab; \mu}^c \in V_{ab}^c$ with $\mu = 1, \cdots, N_{ab}^c$, diagrammatically we write,
+\begin{align}
+v_{ab; \mu}^c = \text{(picture)}.
+\end{align}
+There is the adjoint space $V_{c}^{ab}$ which splits particle $c$ into particles $a$ and $b$.
+The identity operator on the space $a \otimes b$ is given by 
+\begin{align}
+\text{id}_a \otimes \text{id}_b \cong \oplus_c V^{ab}_c \circ V^c_{ab}
+\end{align}
+Indeed, any evolution of particles can be decomposed in this way, 
+%\begin{align}
+%V_{x_1 x_2 \cdots x_r}^{y_1 y_2 \cdots y_w} = \oplus V^{y_1 y_2}_{z_1} \otimes V^{z_1 y_2}_{z_2} \otimes \cdots \otimes V^{z_{w-1} y_w}_{z_w} \circ V^{z_w}_{z_{w+1} x_r} \otimes V^{z_{w+1}}_{ z_{w+2} x_{r-1}} \otimes \cdots \otimes V^{z_{w+r-1}}_{x_1 x_2}
+%\end{align}
+\begin{align}
+V_{x_1 x_2 \cdots}^{y_1 y_2 \cdots}  = \oplus_z V^{y1 y2}_z \circ V^{z y_3 \cdots}_{x_1 x_2 \cdots }
+\end{align}
+applying this rule recursively in the fusion and splitting spaces allows one to decompose the operator into fusion and splitting vectors. 
 
-- Time evolution maps this set of states to another on a circle or a line. During this evolution several processes could ocurr, particles could be created from the vaccuum, they could fuse to the vacuum or they could split. 
-Each process is 
+Of course this decomposition is arbitrary, we weren't forced to fuse $y_1$ and $y_2$ first, we could have equally well fused $y_2$ and $y_3$ first. 
+Since the resulting vector spaces are isomorphic, we know that there has to be an isomorphism between these fusion processes. 
+The isomorphism is known as the F-symbol and defines the linear map, \dave{need to add notation for tracking the spaces.}
+\begin{align}
+F^{abc}_d: \oplus_x V^{ab}_x \tp V^{xc}_{d} \rightarrow \oplus_y V^{ay}_d \tp V^{bc}_y
+\end{align}
+We will often adopt the notation for matrix elements of the F-symbol in a particular basis given by,
+\begin{align}
+v^{ab}_{x; \mu} \tp v^{x c}_{d; \nu} = \sum_{\sigma, y \rho} \left[ F^{abc}_d \right]_{\mu x \nu ; \sigma y \rho} v^{ay}_{d; \rho} \tp v^{bc}_{y; \sigma}
+\end{align}
+and diagrammatically this is written (picture).
 
-- The diagrams we consider will be labeled trivalent graphs. 
+ - The F-symbols are subject to a consistency condition known as the pentagon equation
+....
+
+The pentagon equation must be compatible with the pivotal structure. 
+- Do the $F^2$ frobenius schur thing.
+
+
+
 
 
 
