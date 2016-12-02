@@ -204,6 +204,21 @@
 \newcommand{\VssxY}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.3,angle=180,origin=c]{Vssx.pdf}}}}}
 \newcommand{\VxssY}{\mathord{\vcenter{\hbox{\reflectbox{\includegraphics[scale=0.3,angle=180,origin=c]{Vssx.pdf}}}}}}
 
+\newcommand{\PsiFermion}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{PsiFermion.pdf}}}}}
+\newcommand{\PsiFermionTwist}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{PsiFermionTwist.pdf}}}}}
+
+\newcommand{\TwoFermion}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermion.pdf}}}}}
+\newcommand{\TwoFermionExchange}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermionExchange.pdf}}}}}
+
+
+\newcommand{\Spin}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{Spin.pdf}}}}}
+\newcommand{\PsiIdentity}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{PsiIdentity.pdf}}}}}
+
+\newcommand{\TwoPsiExchange}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoPsiExchange.pdf}}}}}
+\newcommand{\TwoPsiIdentity}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoPsiIdentity.pdf}}}}}
+
+
+
 \begin{document}
 
 
@@ -229,20 +244,22 @@
 
 \tableofcontents
 
-\section{introduction}
+\section{Introduction}
 - new phases of matter/other motivation
 
 - fermion condensation as a method to generate super-pivotal categories
 
-- explain how this differs from previous work. 
+- explain relations to previous work. 
 
 - emphasize tensoring over endo-morphisms
 
--  mention string nets from tubes picture/excitations
+- emphasize the two types of 'fermions'. e.g., trivalent vertices completely determined by surrounding legs versus in-determiend.
+
+-  mention string nets from tubes/excitations
 
 \section{Ising model}
 
-- introduce Ising TQFT \cite{Lins1994}, and its graphical calculus with the $A$ factors
+- Here we explain how to quotient by the fermion in the Ising TQFT. 
 
 - condense fermions
 
@@ -266,10 +283,64 @@
 
 - state sum???
 
-The Ising TQFT, 
 
+\subsection{Ising TQFT}
+- Introduce graphical calculus for Ising TQFT \cite{Lins1994}
 
-The idea is to notice that $1$ and $\psi$ form a fusion sub-algebra of the Ising fusion rules and so we can condense the $\psi$ particle by modding out this sub-algebra, provided that we introduce the spin structures needed to make this procedure legitimate. 
+\subsection{Condensate}
+In this subsection we describe the structure of the fermionic condensate. 
+The condensate will be fermionic in a ver mild sense, roughly speaking we will condense a pair of fermions in the usual way, except one fermion is a physical external fermion, and the other is an emergent fermion such as the $\psi$ particle in the Ising topological order.
+
+The idea is to notice that $1$ and $\psi$ form a fusion sub-algebra of the Ising fusion rules.
+We would like to ``condense" the $\psi$ particle by modding out this sub-algebra.
+Modding out by this sub-algebra is quite subtle, we are not free to just identify $\mathds{1}$ and $\psi$ since the $\psi$ particle is fermionic in both spin and statistics:
+\begin{align}
+\Spin = (-1) \times  \PsiIdentity
+\qquad \qquad \TwoPsiExchange =  (-1) \times\TwoPsiIdentity
+\end{align}
+and such a naive identification would result in a trivial theory \dave{Show picture.}
+To remedy this, we introduce a spin structure which compensates for the fermionic nature of the $\psi$ particle in the condensate. 
+Spin structures will play a large role in the following and so warrant a brief discussion. 
+$$
+$$
+(Insert some discussion on spin structures here?)
+$$
+$$
+Physically, the spin structure can be thought of as a theory of physical fermions, for example a $p+ip$ superconductor.
+The condensation process then accounts for taking the emergent fermionic particle, pairing it with the physical fermion and then condensing the bosonic composite particle\dave{Refer to figure.}.
+
+Some of the symmetry of the theory is reduced when we condense the composite particles. 
+This is because the spin structure ocurrs along on a two dimensional surface embedded in the TQFT. 
+It is useful to introduce some notation for $\psi$ particles that terminate on this defect. 
+In Fig.~\ref{BackWall} we denote a $\psi$ world line that goes straight back into the defect by a small box. 
+\begin{figure}
+  \centering
+    \includegraphics{BackWall.pdf}
+      \caption{Back wall. \dave{need to number things.}.}
+      \label{BackWall}
+\end{figure}
+Locally these terminations of $\psi$ lines look like
+\begin{align}
+\PsiFermion 
+\end{align}
+One can check that the composite of a $\psi$ line terminating on the spin structure is bosonic. Indeed under a twist we have,
+\begin{align}
+\PsiFermion  \rightarrow \PsiFermionTwist = \PsiFermion 
+\end{align}
+Where the equality follows from the fact the the $\psi$ particle picks up a minus sign due to its topological spin being minus one, and the rotated spin structure also picks up a minus sign. 
+The defect termionations are also bosonic under exchange,
+\begin{align}
+\TwoFermion \rightarrow \TwoFermionExchange = \TwoFermion
+\end{align}
+where one minus sign comes from the exchange of the $\psi$ particles, and the other from the exchange of the spin structure fermions \dave{better name?}. 
+Although locally this defect behaves as a boson, it is not a usual boson. 
+The physical fermion that's attached to it still feels the spin structure. 
+Indeed when the box passes over a non-trivial cycle of the manifold it can pick up a factor $\pm1$ depending on the spin structure.  \dave{Need notation from spin structure section.}
+
+\dave{Add blurb about inner product of odd vector with its'elf being purely complex.}
+
+\subsection{Graphical calculus of super Ising }
+%and so we can condense the $\psi$ particle by modding out this sub-algebra, provided that we introduce the spin structures needed to make this procedure legitimate. 
 
 
 In the case of the Ising model, any diagram with a $\psi$ line can be reduced to one where all the $\psi$ lines terminate on the defect. 
