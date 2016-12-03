@@ -218,6 +218,13 @@
 \newcommand{\TwoPsiIdentity}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoPsiIdentity.pdf}}}}}
 
 
+\newcommand{\PsiEnd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{PsiEnd.pdf}}}}}
+\newcommand{\PsiEndExchange}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{PsiEndExchange.pdf}}}}}
+
+\newcommand{\DotSlidea}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DotSlidea.pdf}}}}}
+\newcommand{\DotSlideb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DotSlideb.pdf}}}}}
+\newcommand{\DotSlidec}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DotSlidec.pdf}}}}}
+\newcommand{\DotSlided}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DotSlided.pdf}}}}}
 
 \begin{document}
 
@@ -257,7 +264,7 @@
 
 -  mention string nets from tubes/excitations
 
-\section{Ising model}
+\section{Example: Ising model}
 
 - Here we explain how to quotient by the fermion in the Ising TQFT. 
 
@@ -337,29 +344,53 @@ Although locally this defect behaves as a boson, it is not a usual boson.
 The physical fermion that's attached to it still feels the spin structure. 
 Indeed when the box passes over a non-trivial cycle of the manifold it can pick up a factor $\pm1$ depending on the spin structure.  \dave{Need notation from spin structure section.}
 
-\dave{Add blurb about inner product of odd vector with its'elf being purely complex.}
+\dave{Something about $\text{Pin}^{\pm}$ structures I never understood.}
+One should be able to evaluate any pair of fermions terminating at the defect into a complex number.
+In order to evaluate the picture into a number we require them to be in a standard form, and denote there evaluation by $\lambda$:
+\begin{align}
+\PsiEnd  = \lambda \times \text{(vaccuum)}
+\end{align}
+where $\lambda \in \mathbb{C}$. 
+By defining reflection about the horizontal axis as a conjugate linear operater, we have(\dave{may want to change this to about the vertical axis})
+\begin{align}
+\lambda^{*} = \left( \PsiEnd \right) ^{\dagger}  = \PsiEndExchange = - \lambda 
+\label{phase}
+\end{align}
+and we see that $\lambda = - \lambda^*$ and therefore $\lambda$ is a purely imaginary number. 
+It will depend on whether we choose a $\text{Pin}^{\pm}$ structure. 
+For now we pick $\lambda = i$. 
 
 \subsection{Graphical calculus of super Ising }
 %and so we can condense the $\psi$ particle by modding out this sub-algebra, provided that we introduce the spin structures needed to make this procedure legitimate. 
-
-
-In the case of the Ising model, any diagram with a $\psi$ line can be reduced to one where all the $\psi$ lines terminate on the defect. 
-Thus in the target theory the only objects remaining will be $\sigma$ lines with possible fermions attached. We will write the image of $\sigma$ under the condensation procedure as $\Sigma$, and following Walker's notation, we will draw $\Sigma$ worldlines as 
+Now that we have worked out the graphical rules for the condensate we can check what implications it has on the Ising Fusion category.
+We first observe that any diagram with a $\psi$ line can be reduced to one where all the $\psi$ lines terminate on the spin structure defect. 
+In the target theory the only objects remaining will be $\sigma$ lines with possible fermions attached. 
+We will denote the image of $\sigma$ under the condensation procedure as $\beta$, and we will introduce a blue dot as a compact notation for a $\psi$ line that terminates on both $\beta$, and the spin structure. 
+Diagrammatically any section of the $\beta$ line may look like
 \begin{align}
 \FubeXss \qquad \qquad \FubeXsds,
 \end{align}
-where the dot denotes a $\psi$ ribbon which terminates on the sigma line and on the background spin-structure membrane. 
+Indeed these are also the generators of the endorphisms of $\beta$.
+Since we have one even generator and one odd generator we see that $\text{End}(\beta) \cong \mathbb{C}\ell_1$.
 
-The process of removing two fermions results in a phase:
+As shown in \ref{phase} the process of removing two fermions results in a phase:
 \begin{align}
 \SigmaDotDot\; = A^4\; \FubeXss
 \end{align}
 where we take $A^4 = i$ (although $A^4 = -i$ is also fine). 
-Exchanging fermions also results in a minus sign,
+Similarly, exchanging the ferimons fermions also results in a minus sign,
 \begin{align}
 \SigmaDotDot\;  &= - \; \SigmaDotDotExchange.
 \end{align}
-From the braiding endowed in the parent theory one ends up with some phases due to sliding the fermions past cups and caps in diagrams (should show this in more detail?)
+From the braiding endowed in the parent theory one ends up with some phases due to sliding the fermions past cups and caps in diagrams.
+For example, we can compute,
+\begin{align}
+\DotSlidea =
+\DotSlideb =
+-A^4\DotSlidec =
+-A^4\DotSlided 
+\end{align}
+Hence we have,
 \begin{align}
 \CapDotRight\; &= - A^4 \; \CapDotLeft & \CupDotRight\; &=  A^4 \; \CupDotLeft.
 \end{align}
