@@ -93,6 +93,8 @@
 \newcommand{\CupDotLeft}{\mathord{\vcenter{\hbox{\includegraphics[scale=1,angle=180,origin=c]{CapDotRight.pdf}}}}}
 \newcommand{\CupDotRight}{\mathord{\vcenter{\hbox{\includegraphics[scale=1,angle=180,origin=c]{CapDotLeft.pdf}}}}}
 
+\newcommand{\CupCapPsi}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{cupcappsi.pdf}}}}}
+
 \newcommand{\CupCap}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{CupCap.pdf}}}}}
 \newcommand{\CupCapDots}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{CupCapDots.pdf}}}}}
 
@@ -264,7 +266,7 @@
 
 -  mention string nets from tubes/excitations
 
-\section{Example: Ising model}
+\section{Fermion condensation in the Ising TQFT}
 
 - Here we explain how to quotient by the fermion in the Ising TQFT. 
 
@@ -292,7 +294,12 @@
 
 
 \subsection{Ising TQFT}
-- Introduce graphical calculus for Ising TQFT \cite{Lins1994}
+Here we introduce the Ising TQFT via Kauffamann and Lins\cite{Lins1994}. We choose $A = e^{\frac{2 \pi i}{16}}$, a primitive 16th root of unity. 
+We label the identity particle $1$, Ising anyon $\sigma$ and the fermion $\psi$.
+The quantum dimensions are
+\begin{align}
+d_1 = 1 \quad d_\sigma = -A^2 - A^{-2} \quad d_\psi =1 
+\end{align}
 
 \subsection{Condensate}
 In this subsection we describe the structure of the fermionic condensate. 
@@ -349,6 +356,7 @@ One should be able to evaluate any pair of fermions terminating at the defect in
 In order to evaluate the picture into a number we require them to be in a standard form, and denote there evaluation by $\lambda$:
 \begin{align}
 \PsiEnd  = \lambda \times \text{(vaccuum)}
+\label{EvalPsiPsi}
 \end{align}
 where $\lambda \in \mathbb{C}$. 
 By defining reflection about the horizontal axis as a conjugate linear operater, we have(\dave{may want to change this to about the vertical axis})
@@ -357,21 +365,29 @@ By defining reflection about the horizontal axis as a conjugate linear operater,
 \label{phase}
 \end{align}
 and we see that $\lambda = - \lambda^*$ and therefore $\lambda$ is a purely imaginary number. 
-It will depend on whether we choose a $\text{Pin}^{\pm}$ structure. 
+It will depend on whether we choose a $\text{Pin}^{\pm}$ structure \dave{Need to understand these.}. 
 For now we pick $\lambda = i$. 
 
-\subsection{Graphical calculus of super Ising }
+\subsection{isotopies of $\cal{C}/\psi$}
 %and so we can condense the $\psi$ particle by modding out this sub-algebra, provided that we introduce the spin structures needed to make this procedure legitimate. 
 Now that we have worked out the graphical rules for the condensate we can check what implications it has on the Ising Fusion category.
-We first observe that any diagram with a $\psi$ line can be reduced to one where all the $\psi$ lines terminate on the spin structure defect. 
-In the target theory the only objects remaining will be $\sigma$ lines with possible fermions attached. 
+We will denote this theory by $\cal{C}/\psi$ since we have enforced that the identity object in Ising to be isomorphic to $\psi$.
+Many subtelties crop up when one does this. 
+We have already seen that it necessitates a spin structure. 
+Another subtelty is that multiplication of diagrams as to be modified, indeed we need to account for an equivalence relation arising from the isotopy of the fermionic objects. 
+This is largest difference between a super fusion fusion category and a bosonic one.
+
+We first observe that any diagram with a $\psi$ line can be absorbed into the condensate at the expense of a phase by using (\ref{EvalPsiPsi}).
+Thus in the target theory the only objects remaining will be $\sigma$ lines with possible fermions attached. 
 We will denote the image of $\sigma$ under the condensation procedure as $\beta$, and we will introduce a blue dot as a compact notation for a $\psi$ line that terminates on both $\beta$, and the spin structure. 
 Diagrammatically any section of the $\beta$ line may look like
 \begin{align}
 \FubeXss \qquad \qquad \FubeXsds,
 \end{align}
 Indeed these are also the generators of the endorphisms of $\beta$.
-Since we have one even generator and one odd generator we see that $\text{End}(\beta) \cong \mathbb{C}\ell_1$.
+Since we have one even generator and one odd generator we see that $\text{End}(\beta) \cong \mathbb{C}\ell_1$ \dave{Mention Q type here? Elsewhere? will decide as structure gets put together.}.
+These odd endomorphisms already modify the tensor product of the theory, which we discuss below in Section \ref{IsingTensorProduct}
+
 
 As shown in \ref{phase} the process of removing two fermions results in a phase:
 \begin{align}
@@ -396,13 +412,69 @@ Hence we have,
 \end{align}
 These phases can be derived completely from the {\it braiding data} of the Ising theory, and must be such that going around a circular $\beta$ loop gives a factor of $-1$, which enforces the constraint that $A^8 = -1$. In more general examples, the braiding data in the parent theory will not be such that this is the case, this precludes an ability to have $q$-type objects with $\cl_1$ endomorphism algebras. 
 
-The $F$-moves of the parent theory result in linear relations on the diagrams in the target theory
+\dave{Add some pictures showing why these isotopies are compatible with the spin structure.}
+
+\subsubsection{Tensor product in $\cal{C}/\psi$}
+\label{IsingTensorProduct}
+Of the dot representing the fermion is free to slide up and down the diagram. 
+This has non-trivial implications on the tensor products, indeed defining the tensor product of the squares above by stacking,
 \begin{align}
-\TwoLine\; & = \frac{1}{\sqrt{2}} \left( \CupCap \; + \;(A^4)^* \CupCapDots \right) \\
+\FubeXss \otimes \FubeXsds = \overset{\FubeXss}{\FubeXsds} \sim \overset{\FubeXsds }{\FubeXss}
+\label{Exampletp}
+\end{align}
+We have denoted an equivalent state on the right by sliding the dot past the junction. 
+This indicates that we should modify our tensor product to account for this equivalence relation.
+
+We will incorporate this equivalence relation into the tensor product of the super fusion category.
+We are already used to modding out by a similar equivalence relation with the ordinary tensor product of a vector space of the complex numbers. 
+Indeed, the analog of shuttling the dot past the junction is shuttling a complex number from one vector to the other
+\begin{align}
+(\alpha \ket{x}) \tp_\mathbb{C} \ket{y} \sim \ket{x} \tp_\mathbb{C} (\alpha \ket{y}) \quad \forall \alpha \in \mathbb{C}
+\end{align}
+Similarly in a bosonic fusion category, our vectors are pictures, and the the tensor product glues those pictures together. 
+In doing so we have to allow for arbitrary pictures to be shuttled past the gluing junction. 
+Shutteling a picture past the junction is just an endomorphism of the boundary condition. 
+Hence \dave{will clean up when we decide how to present.},
+\begin{align}
+P_{a} \tp_{\text{B.C.}}P_b= (P_a, P_b) \quad \text{such that} \quad (P_a, \text{End}(B.C.)P_b) \sim (P_a,\text{End}(B.C.) P_b)
+\end{align}
+Hence we modify the tensor product in (\ref{Exampletp}) to a tensor product over the endomorphisms of the boundary, which in this case is the simple object $\beta$,
+\begin{align}
+\FubeXss \otimes_{\text{End}(\beta)} \FubeXsds  \equiv \left(\FubeXss, \FubeXsds \right) / \sim \\
+\text{where} 
+\left (\FubeXss \text{End} (\beta), \FubeXsds \right) \sim    \left(\FubeXss,  \text{End}(\beta) \FubeXsds \right)
+\end{align}
+We are free to choose a single representative of this equivalence class which, for example, 
+\begin{align}
+\FubeXss \otimes_{\text{End}(\beta) }\FubeXsds = \overset{\FubeXss}{\FubeXsds} =  \FubeXsds \otimes_{\text{End}(\beta)}  \FubeXss
+\end{align}
+At this point, it may appear like we've introduced an unnecessary complication. 
+The tensor product we originally looked at in (\ref{Exampletp}) ended up giving the right result. 
+We will re-visit this observation when we discuss the $F$-symbols of the $\cal{C}/\psi$ and later provide an explicit basis for this.
+
+\subsection{F-symbols}
+The F-symbols provide a linear relation diagrams.
+Using the F-symbols from the original Ising theory, one can simply infer the linear relations the diagrams in the condensed theory. 
+To do this we first take a diagram in the Ising theory apply an F-move, then remove all $\psi$ lines through condensation. 
+For example, we have,
+\begin{align}
+\TwoLine =\frac{1}{\sqrt{2}} \left( \CupCap +  \CupCapPsi \right) \quad \text{and} \quad \CupCapPsi \rightarrow A^{-4} \CupCapDots
+\end{align}
+using these relations we can infer all the non-trivial F-moves of the condensed theory:
+\begin{align}
+\TwoLine\; & = \frac{1}{\sqrt{2}} \left( \CupCap \; + \;A^{-4} \CupCapDots \right) \\
 \CupCap \; &= \frac{1}{\sqrt{2}} \left(\TwoLine \; + \; \TwoLineDots \right).
 \end{align}
 %These are all the linear relations on the diagrams that we get.
+By just doing the diagrammatics, we have avoided the subtlety of tensoring over the endomorphisms of $\beta$.
+More formally, the F-symbol is a change of basis on the Hom space $V^{abc}_d$ \dave{explained in intro to Ising TQFT?}
+\begin{align}
+F^{abc}_d: \oplus_x V^{ab}_x \tp_{\text{End}(x)} V^{xc}_d \rightarrow \oplus_y V^{ay}_d \tp_{\text{End}(y)} V^{cd}_y
+\end{align}
+It is useful to choose an explicit basis for the splitting spaces and 
 
+
+\subsection{Center of  $\text{Ising}/\psi$}
 The fubes are given by the string configurations 
 \begin{align}
 \FubeXXX \quad \FubesXs    \quad \FubeXss \quad \FubessX   \quad \FubesdXs \quad  \FubeXsds \quad \FubessdX
