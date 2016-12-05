@@ -1546,6 +1546,52 @@ The $v^{c}_{ab}$ are bases for $\text{Hom}(a \otimes b, c)$.
 Note that the first one (I think) says that $\psi$ is self fermionic under exchange, while the second one says that upon sliding the dot around the $\tau$ circle you pick up a factor of $i$ for a half slide, and a $-1$ for a full slide. Presumably whether we choose $i$ or $-i$ for this is a choice when solving for the Drinfeld center.
 
 
+\section{Notes on tensoring over endomorphisms}
+We wish to describe a computational way to tensor over endomorphisms. 
+Lets us first define what that means. 
+We have two vector spaces $V^{ab}_x$ and $W^{xc}_d$. 
+In our setup, these the vector spaces associated with trivalent vertices, and in the interesting case they will be tensored together by a line that can support odd endomorphisms. 
+In that case the vector spaces are $\mathbb{Z}_2$ graded, and so are the endomorphisms. 
+Choose a basis for $f_i \in \text{End}(x)$. 
+The tensor product of the two vector spaces over $x$ is defined by,
+\begin{align}
+V^{ab}_x \otimes_{\text{End}(x)} W^{xc}_d \equiv (V^{ab}_x,W^{xc}_d ) /\prod_i \langle (V^{ab}_x f_i,W^{xc}_d ) \sim (V^{ab}_x,f_i W^{xc}_d ) \rangle.
+\end{align}
+That is the tensor product is a bilinear map on $V^{ab}_x \times W^{xc}_d$, taken modulo local relations. 
+The local relations are all possible $f_i \in \text{End}(x)$.
+This expression is rather formal and so it is useful to dissect it. 
+The $f_i$ have a right action on $V^{ab}_x$ and a left action on $W^{xc}_d$. 
+It is useful to encode this equivalence relation into a set of matrices $M(f)$ defined by,
+\begin{align}
+M(f). (V^{ab}_x,W^{xc}_d )  \equiv (V^{ab}_x f^{-1}, f W^{xc}_d )
+\end{align}
+So that vectors $X,Y  \in  (V^{ab}_x,W^{xc}_d )$ are identified if $M(f) X = Y$ for some $f \in \text{End}(x)$.
+This action is complex linear as well $M(\alpha f_1 + \beta  f_2) = \alpha M(f_1) + \beta M(f_2)$. 
+In fact these matrices form a finite matrix algebra, and in the interesting case they form a $\mathbb{Z}_2$ graded matrix algebra. 
+Hence the vector space we associate to the tensor product is a module over this algebra and the physical states are the vector spaces left invariant under application of $M(f)$.
+That is, vectors modulo these local relations form irreducible representations of $M(f)$.
+
+Now lets reduce to the interesting cases. 
+In the bosonic case we have $\text{End}(x)  = \mathbb{C}$ and so the usual tensor product holds. 
+And the $M(f)$ is represented by $(v z^{-1},z w)$. 
+Similarly for any M type particle. 
+For a Q type particle we have $End(x) \cong \mathbb{C} \ell_1$ and so we have one even endomorphism and one odd. 
+In this case the vector space becomes $\mathbb{Z}_2$ graded, but the matrices $M(f)$ all remain even. 
+And therefore split into two blocks which preserve the parity of the states. 
+There is always the identity map, then there is the one which accounts for the odd endomorphism which takes the even-even state to the odd-odd state, and similarly the even-odd state to the odd-even state. 
+Let us call these matrices $E$ and $Y$. 
+
+We can now consider fermionic $F$-symbols (the usual super-ones without dot slides) and impose the additional constraint on them that the matrices $E$ and $Y$ have to ``commute" with them. 
+That is the following diagram must commute:
+\begin{align}
+	\vcenter{\xymatrix @!0 @M=1mm @R=30mm @C=42mm{
+		 \oplus_x V^{ab}_x \otimes V^{xc}_d \ar[d]^{M(f_x)}\ar[r]^{F^{abc}_d}& \oplus_y V^{ay}_d \otimes V^{bc}_y \ar[d]^{M(f_y)} \\
+		\oplus_x V^{ab}_x \otimes V^{xc}_d  \ar[r]^{F^{abc}_d}  & \oplus_y V^{ay}_d \otimes V^{bc}_y	
+	}}
+\end{align}
+for all $f_x \in \text{End}(x)$ and $f_y \in \text{End}(y)$.
+We can write these as matrices as well 
+\begin{align} F^{abc}_d M(f_x) = M(f_y) F^{abc}_d. \end{align}
 
 
 \section{Stuff to understand}
