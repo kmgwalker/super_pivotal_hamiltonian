@@ -426,7 +426,7 @@ These phases can be derived completely from the {\it braiding data} of the Ising
 
 \dave{Add some pictures showing why these isotopies are compatible with the spin structure.}
 
-\subsubsection{Tensor product in $\cal{C}/\psi$}
+\subsection{Tensor product in $\cal{C}/\psi$}
 \label{IsingTensorProduct}
 Of the dot representing the fermion is free to slide up and down the diagram. 
 This has non-trivial implications on the tensor products, indeed defining the tensor product of the squares above by stacking,
@@ -434,39 +434,60 @@ This has non-trivial implications on the tensor products, indeed defining the te
 \FubeXss \otimes \FubeXsds = \overset{\FubeXss}{\FubeXsds} \sim \overset{\FubeXsds }{\FubeXss}
 \label{Exampletp}
 \end{align}
-We have denoted an equivalent state on the right by sliding the dot past the junction. 
-This indicates that we should modify our tensor product to account for this equivalence relation.
+To the right, we have denoted an equivalent state using isotopy. 
+If we are interested in pictures modulo local relations, we should define our tensor product so that it accounts for this equivalence relation. 
+For example, naively tensoring over $\mathbb{C}$ can yield the following,
+\begin{align}
+V^{\beta 1}_\beta \tp_\mathbb{C} V^{\beta 1}_\beta = \overset{\FubeXss}{\FubeXss} \oplus \overset{\FubeXss}{\FubeXsds} \oplus \overset{\FubeXsds}{\FubeXss} \oplus \overset{\FubeXsds_2}{\FubeXsds_1}
+\end{align}
+from which we naively conclude that the tensor product of the two vector spaces, each which has one even state and one odd state, results in a four dimensional vector space of two even state and two odd states. 
+However, it's clear that not all the vectors appearing on the right hand side are linearly independant, indeed the middle two are related by isotopy, and so are the outer two. 
+Hence we have to quotient out by isotopy. 
 
 We will incorporate this equivalence relation into the tensor product of the super fusion category.
 We are already used to modding out by a similar equivalence relation with the ordinary tensor product of a vector space of the complex numbers. 
-Indeed, the analog of shuttling the dot past the junction is shuttling a complex number from one vector to the other
+Indeed, the analog of shuttling the dot past the junction is shuttling a complex number from one vector to another in a complex vector space we have 
 \begin{align}
 (\alpha \ket{x}) \tp_\mathbb{C} \ket{y} \sim \ket{x} \tp_\mathbb{C} (\alpha \ket{y}) \quad \forall \alpha \in \mathbb{C}
 \end{align}
 Similarly in a bosonic fusion category, our vectors are pictures, and the the tensor product glues those pictures together. 
-In doing so we have to allow for arbitrary pictures to be shuttled past the gluing junction. 
-Shutteling a picture past the junction is just an endomorphism of the boundary condition. 
-Hence \dave{will clean up when we decide how to present.},
+
+In doing so we have to allow for arbitrary pictures  that matching the boundary conditions to be shuttled past the gluing junction. 
+Shuttling a picture past the junction is just an endomorphism of the boundary condition. \dave{Include such abstract stuff? Also who to reference?}
+Thus for gluing two pictures $P(Y_i)$ on surfaces $Y_i$  along a boundary $S \in \partial Y_i$ we have the natural extension to \dave{picture.}
 \begin{align}
-P_{a} \tp_{\text{B.C.}}P_b= (P_a, P_b) \quad \text{such that} \quad (P_a, \text{End}(B.C.)P_b) \sim (P_a,\text{End}(B.C.) P_b)
+P_{(Y_1, S)} \tp_{\text{End}(S)}P_{(Y_2,S)} \equiv P_{(Y_1,S)} \tp_{\mathbb{C}} P_{(Y_2,S)} /\sim
 \end{align}
-Hence we modify the tensor product in (\ref{Exampletp}) to a tensor product over the endomorphisms of the boundary, which in this case is the simple object $\beta$,
+where the equivalence relation $\sim$ is given by,
 \begin{align}
-\FubeXss \otimes_{\text{End}(\beta)} \FubeXsds  \equiv \left(\FubeXss, \FubeXsds \right) / \sim \\
+ (P_{(Y_1,S)} \text{End}(S)) \tp_{\mathbb{C}} P_{(Y_2,S)}  \sim P_{(Y_1,S)} \tp_{\mathbb{C}} (\text{End}(S) P_{(Y_2,S)}). 
+\end{align}
+This formulation of tensor products looks rather abstract, but at the same time familiar from the context of guage theories. 
+It is useful to think of the tensoring over endomorphisms as ``integrating" over all gauge field configurations, consistent with the boundary conditions.
+
+In this light, we will implement the ``guage" transformations with a series of isomorphims. 
+At the end of the day it is a choice on whether we represent a quantum state by choosing one vector in the equivalence relation, or if we symmetrize over all possible states. 
+Indeed, when writing down the string net Hamiltonian we will implement the symmetrization over all states by simply adding those terms to the Hamiltonian. 
+
+Lets revisit the example in (\ref{Exampletp}). 
+To tensor product over the endomorphisms of the boundary, which in this case is $\text{End}(\beta)$ we have \dave{obviously we have to clean this up.},
+\begin{align}
+\FubeXss \otimes_{\text{End}(\beta)} \FubeXsds  = \overset{\FubeXss}{\FubeXss}  / \sim \\
 \text{where} 
-\left (\FubeXss \text{End} (\beta), \FubeXsds \right) \sim    \left(\FubeXss,  \text{End}(\beta) \FubeXsds \right)
+ \overset{\FubeXss}{\FubeXss}  \sim  \overset{ \FubeXss }{\FubeXss} 
 \end{align}
-We are free to choose a single representative of this equivalence class which, for example, 
+as anticipated.
+We are also free to choose a single representative of this equivalence class which, for example
 \begin{align}
 \FubeXss \otimes_{\text{End}(\beta) }\FubeXsds = \overset{\FubeXss}{\FubeXsds} =  \FubeXsds \otimes_{\text{End}(\beta)}  \FubeXss
 \end{align}
 At this point, it may appear like we've introduced an unnecessary complication. 
 The tensor product we originally looked at in (\ref{Exampletp}) ended up giving the right result. 
-We will re-visit this observation when we discuss the $F$-symbols of the $\cal{C}/\psi$ and later provide an explicit basis for this.
+However, in the general theory it will be useful to explicitly write down a basis for these endomorphisms to make the pentagon equation explicit.
 
 \subsection{F-symbols}
-The F-symbols provide a linear relation diagrams.
-Using the F-symbols from the original Ising theory, one can simply infer the linear relations the diagrams in the condensed theory. 
+The F-symbols provide linear relations on diagrams.
+Using the F-symbols from the original Ising theory, one can simply infer the linear relations on the diagrams in the condensed theory. 
 To do this we first take a diagram in the Ising theory apply an F-move, then remove all $\psi$ lines through condensation. 
 For example, we have,
 \begin{align}
@@ -479,14 +500,41 @@ using these relations we can infer all the non-trivial F-moves of the condensed 
 \end{align}
 %These are all the linear relations on the diagrams that we get.
 By just doing the diagrammatics, we have avoided the subtlety of tensoring over the endomorphisms of $\beta$.
-More formally, the F-symbol is a change of basis on the Hom space $V^{abc}_d$ \dave{explained in intro to Ising TQFT?}
+More formally, the F-symbol is a change of basis in the Hom space $V^{abc}_d$ \dave{explained in intro to Ising TQFT?}
 \begin{align}
 F^{abc}_d: \oplus_x V^{ab}_x \tp_{\text{End}(x)} V^{xc}_d \rightarrow \oplus_y V^{ay}_d \tp_{\text{End}(y)} V^{cd}_y
 \end{align}
-It is useful to choose an explicit basis for the splitting spaces and write down the F-symbols explicitly.
-To that end we define the basis $e^{ab}_{c;\alpha} \in V^{ab}_c$. Where the index $\alpha$ denotes the parity of that splitting space. 
-\dave{Perhaps we should define tensoring over $\text{End}(\beta)$ as projecting onto some subspace?}
+It is useful to choose an explicit basis for the splitting spaces and use $F$-symbols which are purely complex subject to some constraints, i.e., they must commute with the ``gauage transformations". 
+To that end, we pick a basis for the splitting spaces, and explicitly write down the matrices which induce the ``gauage" transformations. 
 
+Hence we will consider all pictures in the ``extended" space $V^{ab}_x \tp_\mathbb{C} V^{xc}_d$, find all solutions to $F$-symbols subject to the constraint that they commute with the endomorphisms. 
+Then we will project back into the ``physical" vector space $V^{ab}_x \tp_\text{End}(x) V^{xc}_d$ by symmetrizing over all the gauge transformations.
+
+In the cases of interest, the generators of $\text{End}(x)$ are isomorphisms, lets choose a basis $f_i$ for these isomorphisms.
+We wish to solve for 
+\begin{align}
+V^{ab}_x \tp V^{xc}_d /\prod_i \langle V^{ab}_x f_i \tp V^{xc}_d \sim V^{ab}_x  \tp f_i V^{xc}_d  \rangle
+\label{physicalspace}
+\end{align}
+Lets do this by introducing a set of matrices $M(f_i)$ defined via,
+\begin{align}
+M(f_i) V^{ab}_x \tp V^{xc}_d = (V^{ab}_x f_i )\tp (f_i^{-1} V^{xc}_d).
+\end{align}
+Notice that the matrices $M(f_i)$ are always even. 
+Hence as a representation they are always of type M.
+They are also complex linear in the $f_i$: $M(\alpha f_i + \beta f_j) = \alpha M(f_i) + \beta M(f_j) $ for all $ \alpha, \beta \in \mathbb{C}$.
+Hence the $M(f_i)$ form a finite dimensional matrix algebra, and the physical space in (\ref{physicalspace}) is just an irreducible representation of this matrix algebra. 
+
+The equivalence relation is now simply given by any two vectors related by some complex linear combination of the $M(f_i)$. 
+Hence for the $F$-symbol, we require the following diagram to be commutative, 
+\begin{align}
+	\vcenter{\xymatrix @!0 @M=1mm @R=30mm @C=42mm{
+		 \oplus_x V^{ab}_x \otimes V^{xc}_d \ar[d]^{M(f_x)}\ar[r]^{F^{abc}_d}& \oplus_y V^{ay}_d \otimes V^{bc}_y \ar[d]^{M(f_y)} \\
+		\oplus_x V^{ab}_x \otimes V^{xc}_d  \ar[r]^{F^{abc}_d}  & \oplus_y V^{ay}_d \otimes V^{bc}_y	
+	}} \quad \text{i.e.,} \quad F^{abc}_d M(f_x) = M(f_y) F^{abc}_d
+\end{align}
+for all $f_x \in \text{End}(x)$ and $f_y \in \text{End}(y)$.
+We will return to this in Section??? and describe in more detail. 
 
 
 \subsection{Center of  $\text{Ising}/\psi$}
