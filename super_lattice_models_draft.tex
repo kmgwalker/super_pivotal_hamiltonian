@@ -243,6 +243,8 @@
 
 \newcommand{\LocalRelationLeft}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{LocalRelationLeft.pdf}}}}}
 \newcommand{\LocalRelationRight}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{LocalRelationRight.pdf}}}}}
+\newcommand{\LocalRelationUp}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{LocalRelationUp.pdf}}}}}
+\newcommand{\LocalRelationDown}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{LocalRelationDown.pdf}}}}}
 
 \newcommand{\PlaquettePrime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{PlaquettePrime.pdf}}}}}
 
@@ -1205,12 +1207,14 @@ The pentagon equation must be compatible with the pivotal structure.
 
 \section{super fusion categories}
 Goal: Define super fusion categories for target audience. Target audience = physicists who have spent some time in Appendix E of Kitaev's 2006 anyon paper. \ethan{I think this should be an appendix, like in Kitaev's paper. It's definitely on the very mathematical end of the spectrum.}
+\dave{Why push this off to the appendix? I thought it was one of the purposes of this paper.}
 
 \subsection{Simple objects}
 We associate objects with idempotents and simple objects with minimal idempotents.
 %In an ordinary fusion category simple objects have the defining feature that there endomorphisms are given by $\mathbb{C}$.
 %This is because any simple algebra over $\mathbb{C}$ is Morita equivalent to $\mathbb{C}$. \ethan{true, 
 In ordinary fusion categories, the endomorphism ring of any simple object is $\cc$. This is due to Schur's lemma: if an object $x$ is simple, then any morphism in $\End(x)$ must be an isomorphism, and hence $\End(x) = \cc$. Objects with $\End(x) = \cc$ are certainly still possible in the more general fermionic setting we consider here, and we will refer to them as {\it M type} objects. 
+\dave{I don't understand why this is a consequence of Schur's lemma. I thought the definition of a simple object was $\text{End}(x) = \mathbb{C}$}
 
 As we saw in the Ising example, the endomorphisms of simple objects in fermionic theories aren't always $\mathbb{C}$, and may instead be a simple super algebra over $\mathbb{C}$. By Schur's lemma every element in $\End(x)$ is invertible if $x$ is simple, and so $\End(x)$ must be a division algebra. The only $\zz_2$-graded division algebra is the first complex Clifford algebra $\cl_1$, 
 %As was the case for the image of $\sigma$ under condensation.
@@ -1258,7 +1262,6 @@ If any of the particles $a,b,c$ involved in the fusion are Q type, then there ar
 This follows from the fact that $Q$ type particles always possess odd isomorphisms, which imply that the even and odd parts of the fusion space in question are isomorphic, and hence have the same dimension. 
 \dave{Can we show $m \tp m \rightarrow q$ is not allowed? This seems plausible.}
 \dave{Contrast an $m \tp m \rightarrow m$ fusion space of super dimension $(p|p)$ with a $q \tp q \rightarrow m$ fusion space of super dimension $(p|p)$.}
-The fact that the fusion vertices involving $Q$ type particles allow fermions to freely enter and exit the fusion space is reminiscent of superconductivity. \ethan{might need to explain this to me...} \dave{Not saying anything fancy. Just that pairs of fermions hopping on and off of the diagrams for free is what happens when you bring an S-wave superconductor nearbye an electronic system. So in a heuristic sense it looks roughly like we've taken a conventional super-fusion category and induced pairing on it through e.g., proximity effect.}
 
 Because of the anti-commuting nature of super vector spaces, taking tensor products in super vector spaces requires defining an ordering of the vectors in the tensor product.
 We will write $V^{ab}_{c,n}$ to designate that the vector space $V^{ab}_c$ appears as the $n$th term in a tensor product (although when we are only talking about one fusion vertex we may omit the subscript).
@@ -1281,17 +1284,20 @@ There is an important subtlety involved when we tensor together fusion spaces in
 \begin{align} \label{resid}
 \Hom(x,x) \cong \bigoplus_y \Hom(x,y) \tp_\cc \Hom(y,x).
 \end{align}
-The above relation is actually {\it incorrect} in fermionic settings, since if $x$ is simple then this reads $\Hom(x,x) = \Hom(x,x) \tp_\cc \Hom(x,x)$, which since $\End(x) = \cl_1$ implies $\cl_1 \cong \cl_1\tp \cl_1 \cong \cl_2$, a contradiction. In order to fix this, we need to mod out by ``internal'' degrees of freedom carried by Q type particles. 
+The above relation is actually {\it incorrect}, since if $x$ is simple then this reads $\Hom(x,x) = \Hom(x,x) \tp_\cc \Hom(x,x)$, which since $\End(x) = \cl_1$ implies $\cl_1 \cong \cl_1\tp \cl_1 \cong \cl_2$, a contradiction. In order to fix this, we need to mod out by ``internal'' degrees of freedom carried by Q type particles. 
 
-Graphically, modding out by these internal degrees of freedom is equivalent to modding out by local relations involving Q type particles. These relations are given by locally creating pairs of fermions and by sliding fermions from one fusion vertex to another: \ethan{do we want another picture for fermion sliding? It's probably not strictly necessary, as long as we mention that dots can slide through vertices}
-\dave{Good point. But I think that's implied by them being able to slide along the lines. We could add some more pictures though.}
+Graphically, modding out by these internal degrees of freedom is equivalent to modding out by local 
+involving Q type particles. 
+These relations are given by locally creating pairs of fermions and by sliding fermions from one fusion vertex to another:
  \begin{align}
- \LocalRelationLeft \sim \LocalRelationRight
+\LocalRelationUp \sim \LocalRelationDown \quad \quad  \LocalRelationLeft \sim \LocalRelationRight.
+\label{FusionSpaceRelation}
  \end{align}
+Since the first equivalence relation can be derived from the second, and vice versa, both relations define the same equivalence class on the fusion space.
 A tensor product taken over a Q type particle must be quotiented by isomorphisms like this. Explicitly, 
 \be \ba
  &V^{ab}_{x,1} \tp_{\mathbb{C}} V^{xc}_{d,2}\quad  \text{is replaced by} \quad V^{ab}_{x,1} \tp_{\text{End}(x)} V^{xc}_{d,2}, \text{ and} \\ 
-  &V^{ab}_{x,1} \tp_{\mathbb{C}} V^{xc}_{d,2}\quad  \text{is replaced by} \quad V^{ab}_{x,1} \tp_{\text{End}(x)} V^{xc}_{d,2},
+  &V^{ax}_{c,1} \tp_{\mathbb{C}} V^{bc}_{x,2}\quad  \text{is replaced by} \quad V^{ax}_{b,1} \tp_{\text{End}(x)} V^{bc}_{x,2},
 \ea 
 \ee
 where $\tp_{\End(x)}$ means that $\End(x)$ is taken to be the tensor unit. Explicitly, 
@@ -1308,6 +1314,11 @@ where $\sim$ is the equivalence relation
 (V^{ab}_{x,1} f_3) \tp_{\mathbb{C}}V^{xc}_{d,2} \sim V^{ab}_{x,1} \tp_{\mathbb{C}} (f_3 V^{xc}_{d,2})
 \end{align}
 for all $f \in \text{End}(x)$. \ethan{I just used multiplicative notation, which seems fine to me since the $f_i$s are just multiplication by numbers.} Likewise, we have $V^{ax}_d \tp_{\End(x)} V^{bc}_x = V^{ax}_d \tp_\cc V^{bc}_x / \sim$, where $\sim$ is the equivalence relation $(V^{ax}_{d,1} f_3) \tp_{\mathbb{C}}V^{bc}_{x,2} \sim V^{ax}_{d,1} \tp_{\mathbb{C}} (f_3 V^{bc}_{x,2})$ for all $f\in \End(x)$. 
+
+Quotienting by the local relations in (\ref{FusionSpaceRelation}) is reminiscent of superconductivity. 
+Indeed the relation says that pairs of fermions can be freely created and removed as well as hopped along Q type edges. 
+A fermionic phase of matter will generate such terms are at second order in perturbation theory by proximity coupling a superconductor.
+Thus, heuristically, we can think of Q type particles as the result of proximity induced superconductivity on a super fusion category with only M type particles.
 
 Using the modified tensor product allows us write down the correct version of \eqref{resid}, which is 
 \begin{align}
