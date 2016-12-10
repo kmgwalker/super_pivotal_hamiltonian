@@ -24,7 +24,7 @@
 \newcommand{\tp}{\otimes}
 \newcommand{\tpc}{\tilde{\otimes}}
 \newcommand{\ra}{\rightarrow}
-\newcommand{\unit}{\mathbf{1}}
+\newcommand{\unit}{\mathds{1}}
 \newcommand{\zz}{\mathbb{Z}}
 \newcommand{\mce}{\mathcal{E}}
 \newcommand{\cc}{\mathbb{C}}
@@ -252,7 +252,7 @@
 \begin{document}
 
 
-\title{Super lattice models dude}
+\title{Super lattice models dudes}
 \author{David Aasen, Ethan Lake, Kevin Walker, and Zhenghan Wang}
 %\affiliation{Department of Physics and Astronomy, University of Utah, Salt Lake City, UT 84112, USA}
 %\emailAdd{lake@physics.utah.edu}
@@ -338,18 +338,19 @@ for $C_2$. The first node in the $C_2$ Dynkin diagram is the (fermionic) vacuum,
 \end{figure}
 
 
-\subsection{Condensate}
-In this subsection we describe the structure of the fermionic condensate. 
-The condensate will be fermionic in a ver mild sense, roughly speaking we will condense a pair of fermions in the usual way, except one fermion is a physical external fermion, and the other is an emergent fermion such as the $\psi$ particle in the Ising topological order.
+\subsection{Condensing $\psi$}
+In this subsection we describe our procedure for performing fermion condensation in the Ising theory. While we are indeed condensing the fermionic $\psi$ particle in Ising, the term ``fermion condensation'' is a bit misleading, as what we will actually do is perform {\it boson} condensation of the bosonic bound state of the emergent fermion $\psi$ and an additional physical fermion. 
 
-The idea is to notice that $1$ and $\psi$ form a fusion sub-algebra of the Ising fusion rules.
+First, we notice that $\unit$ and $\psi$ form a fusion sub-algebra of the Ising fusion rules.
 We would like to ``condense" the $\psi$ particle by modding out this sub-algebra.
-Modding out by this sub-algebra is quite subtle, we are not free to just identify $\mathds{1}$ and $\psi$ since the $\psi$ particle is fermionic in both spin and statistics:
+Modding out by this sub-algebra is not straightforward, as the $\psi$ particle is fermionic in both spin and statistics:
 \begin{align}
 \Spin = (-1) \times  \PsiIdentity
 \qquad \qquad \TwoPsiExchange =  (-1) \times\TwoPsiIdentity
 \end{align}
-and such a naive identification would result in a trivial theory \dave{Show picture.}
+%which means that it cannot be identified with the vacuum. Indeed, performing such an identification would result in a trivial theory \dave{Show picture.}
+
+
 To remedy this, we introduce a spin structure which compensates for the fermionic nature of the $\psi$ particle in the condensate. 
 Spin structures will play a large role in the following and so warrant a brief discussion. 
 $$
@@ -396,14 +397,14 @@ In order to evaluate the picture into a number we require them to be in a standa
 \label{EvalPsiPsi}
 \end{align}
 where $\lambda \in \mathbb{C}$. 
-By defining reflection about the horizontal axis as a conjugate linear operater, we have(\dave{may want to change this to about the vertical axis})
+Reflection about the horizontal axis acts as an anti-linear operator, and so we have(\dave{may want to change this to about the vertical axis})
 \begin{align}
-\lambda^{*} = \left( \PsiEnd \right) ^{\dagger}  = \PsiEndExchange = - \lambda 
+\lambda^{*} = \left( \PsiEnd \right) ^{\dagger}  = \PsiEndExchange = - \lambda,
 \label{phase}
 \end{align}
-and we see that $\lambda = - \lambda^*$ and therefore $\lambda$ is a purely imaginary number. 
+implying that $\lambda = - \lambda^*$ and therefore $\lambda$ is purely imaginary number. 
 It will depend on whether we choose a $\text{Pin}^{\pm}$ structure \dave{Need to understand these.}. 
-For now we pick $\lambda = i$. 
+We will see later on that consistency between $F$-moves and fermion removal requires that we choose $\lambda = A^4$, placing a nontrivial constraint on $A$. 
 
 \subsection{isotopies of $\cal{C}/\psi$}
 %and so we can condense the $\psi$ particle by modding out this sub-algebra, provided that we introduce the spin structures needed to make this procedure legitimate. 
@@ -566,7 +567,17 @@ for all $f_x \in \text{End}(x)$ and $f_y \in \text{End}(y)$.
 We will return to this in Section??? and describe in more detail. 
 \end{comment}
 
-\subsection{Center of  $\text{Ising}/\psi$}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Quasiparticle excitations and the center of $C_2$} \label{qps}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this section, we identify the quasiparticle excitations in the $C_2$ theory. As was first shown in the mathematical literature by Occneanu [ref] and later demonstrated in the physics community by [lan wen, nick, yuting], the quasiparticle excitations in bosonic theories derived from a category $\mcc$ are given by the elements of the Drinfeld center $\mcz(\mcc)$, which can be obtained by finding the simple modules of an algebra known as the {\it tube algebra}. With appropriate modifications accounting for spin structure issues, this same construction holds in the more general fermionic setting considered here. Briefly, the tube algebra 
+
+
+
+
 The fubes are given by the string configurations 
 \begin{align}
 \FubeXXX \quad \FubesXs    \quad \FubeXss \quad \FubessX   \quad \FubesdXs \quad  \FubeXsds \quad \FubessdX
@@ -601,19 +612,13 @@ For example, in the periodic sector we have
 \end{align}
 
 Note that when we annihilate fermions into the vacuum to derive relations like this, we have to be careful about the order in which we do it, which is why we can never create two fermions side-by-side at the same time slice. For example, if we create fermion 1 above fermion 2 in a diagram, we must annihilate them along a $\Sigma$ string where fermion 1 is above fermion 2.
-Also, note that since the spin structures on two fubes being fused must agree on the boundary at which they are being fused, periodic fubes only admit nonzero tensor products with periodic fubes, and similarly for anti-periodic fubes.
+Also, note that since the spin structures on two tubes being fused must agree on the boundary at which they are being fused, periodic tubes only admit nonzero tensor products with periodic tubes, and similarly for anti-periodic tubes.
 
-Relations like the ones above allow us to find the primitive central idempotents of the fube algebra, which carry the same information as the simple modules of the fube algebra, which in turn correspond to the vector spaces left invariant under the action of fube fusion\footnote{also known as {\it fubing}}, which we finally identify as quasiparticles. 
+Relations like the ones above allow us to find the primitive central idempotents of the tube algebra, which carry the same information as the simple modules of the tube algebra, which in turn correspond to the vector spaces left invariant under the action of tube fusion\footnote{also known as {\it fubing}}, which we finally identify as quasiparticles. 
 
-%The primitive central idempotents of an algebra $\mathcal{A}$ are given by a set $\Pi_a \in \mathcal{A}$ that satisfy: $\Pi_a \Pi_b = \delta_{ab} \Pi_a$ and $\Pi_a Q = Q \Pi_a$ for all $Q \in \mathcal{A}$, and each $\Pi_a$ cannot be decomposed as a sum of orthogonal idempotents. \ethan{Should we remove or relocate this paragraph?}
+To figure out the quasiparticle spectrum, we, as stated earlier, need to find the irreducible representations (or simple modules) of the tube algebra. For a review and more detailed discussion of the tube algebra in the fermionic setting we refer readers to \ref{tubeapp}. Since the tube algebra splits into a direct sum of tubes with different spin structures, its simple modules will split in a similar way. First, we turn to an analysis of tubes with anti-periodic boundary counditions. 
 
-%\remove{Just realized we should probably have "odd" identity tubes, probbaly only in the periodic sector. They come from the tube in the parent theory which has a single fermion line. This in the target theory has $\psi$'s at the boundaries. We should then be able to cut it in half and the resulting tubes should still be elements of the tube algebra.}
-
-\subsection{Quasiparticle excitations}
-
-To figure out the quasiparticle spectrum, we, as stated earlier, need to find the irreducible representations (or simple modules) of the tube algebra. Since the tube algebra splits into a direct sum of tubes with different spin structures, its simple modules will split in a similar way. First, we turn to an analysis of tubes with anti-periodic boundary counditions. 
-
-\subsubsection{Anti-periodic sector}
+\subsubsection{Anti-periodic spin structure}
 
 Let us first examine the subalgebra of tubes with no charge: that is, cylinders with empty boundary conditions on both their top and bottom. Writing this subalgebra as $\tube_0^A$, we see that it is generated by two even tubes:
 \be \tube_0^A = \left\langle\; \FubeXXX,\; \FubesXs\;\right\rangle.\ee
@@ -682,13 +687,6 @@ $\cl_1$ has only one simple module, namely $\cc^{1|1}$ with the matrix represent
 The explicit presentation for the $\cl_1$ quasiparticle is a bit more subtle. Since $\fld^P(C)$ is a graded superspace, we are prevented from adding field configurations with different fermion parity, and thus cannot form superpositions of the tubes in $\fube^P_0$. However, we note that in $\cl_1$, $1$ and $\gamma$ are isomorphic through multiplication by $\gamma$, which establishes an (odd) isomorphism between the two basis vectors in $\fube^P_0$. Since only isomorphism classes of field configurations are physical, we can identify the two fubes with one another, which form an orbit under multiplication by $\gamma$. For definiteness we will choose to represent this isomorphism class by the even-parity sector, and so we write the $\cl_1$ quasiparticle as (really? or just say idempotents have to be even?)
 \be q_\sigma = \FubeXXX_P.\ee
 
-
-
-
-
-
-
-
 Now for the periodic spin structure, corresponding to the subalgebra $\fube_\Sigma^P$. The multiplication table for $\fube_\Sigma^P$ is the same as the one for the $\fube_\Sigma^A$, modulo a few minus signs and conjugations. Explicitly, we obtain
 \be
 \renewcommand{\arraystretch}{3}
@@ -713,6 +711,11 @@ With this choice of re-scaling, the re-scaled multiplication table for $\fube_\S
 \be \unit^\pm = \frac{1}{2}\left(\FubeXss \pm e^{-i\pi/8}\FubessX\right),\qquad   \gamma^\pm = \frac{e^{-i\pi/4}}{2}\left(\FubeXsds \pm e^{-i\pi/8}\FubessdX\right)\ee
 and then re-write the multiplication table for $\fube_\Sigma^P$, we see that we indeed get a $\langle \unit^+ ,\gamma^+\rangle \oplus \langle \unit^- \oplus \gamma^-\rangle =\cl_1\oplus\cl_1$ structure with $(\gamma^\pm)^2 = \unit^\pm$. Thus, there are two $\cl_1$-type quasiparticles corresponding to the $\fube_\Sigma^P$ subalgebra. Again, since only isomorphism classes of fubes are physical, we can write the two $\cl_1$-type quasiparticles in terms of even-parity fubes only:
 \be q_\unit = \unit^+,\qquad q_\psi = \unit^-.\ee
+
+To summarize, we have found six types of quasiparticles in the theory: three vortex quasiparticles associated with tubes possessing periodic spin structures, and three non-vortex quasiparticles associated with tubes possessing anti-periodic boundary spin structures. The three non-vortex quasiparticles are 
+\be \ba & m_\unit = \frac{1}{2} \left( \FubeXXX_A  +\frac{1}{\sqrt{2}}\FubesXs_A\right),\ m_\psi = \frac{1}{2} \left( \FubeXXX_A - \frac{1}{\sqrt{2}} \FubesXs_A\right),\\ & m_\sigma^\pm = \frac{1}{2} \left(\FubeXss_A \pm e^{i\pi/8}\ \FubessX_A\right),\ea\ee
+while the three vortex quasiparticles are 
+\be q_\unit = \frac{1}{2}\left(\FubeXss + e^{-i\pi/8}\FubessX\right),\ q_\psi = \frac{1}{2}\left(\FubeXss - e^{-i\pi/8}\FubessX\right),\ q_\sigma = \FubeXXX.\ee
 
 \subsection{Obtaining the quasiparticle fusion rules}
 
@@ -1474,7 +1477,7 @@ can show
 
 
 %%%%%%%%%%%%%%
-\section{Tube algebra}
+\section{Tube algebra} \label{tubeapp}
 %%%%%%%%%%%%%%
 \ethan{this section will def be improved at a later point (I'll also try to trim down on all the formal baggage that we don't really need)}
 In this section, we give an introduction to the tube algebra and show how its construction is modified in the fermionic setting. 
