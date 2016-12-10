@@ -318,9 +318,10 @@
 Here we introduce the Ising TQFT via Kauffamann and Lins\cite{Lins1994}. We choose $A = e^{\frac{2 \pi i}{16}}$, a primitive 16th root of unity. 
 We label the identity particle $1$, Ising anyon $\sigma$ and the fermion $\psi$.
 The quantum dimensions are
-\begin{align}
+\be
 d_1 = 1 \quad d_\sigma = -A^2 - A^{-2} \quad d_\psi =1 
-\end{align}
+\ee
+The four different choices $A = \pm ie^{\pm i\pi/8}$ all give us positive quantum dimensions $d = \sqrt{2}$. 
 
 \newcommand{\braid}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{braid.pdf}}}}}
 \newcommand{\TLIdentity}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TLIdentity.pdf}}}}}
@@ -443,7 +444,7 @@ For example, we can compute,
 -A^4\DotSlided 
 \end{align}
 Hence we have,
-\begin{align}
+\begin{align} \label{dotslides}
 \CapDotRight\; &= - A^4 \; \CapDotLeft & \CupDotRight\; &=  A^4 \; \CupDotLeft.
 \end{align}
 These phases can be derived completely from the {\it braiding data} of the Ising theory, and must be such that going around a circular $\beta$ loop gives a factor of $-1$, which enforces the constraint that $A^8 = -1$. In more general examples, the braiding data in the parent theory will not be such that this is the case, this precludes an ability to have $q$-type objects with $\cl_1$ endomorphism algebras. 
@@ -452,7 +453,8 @@ These phases can be derived completely from the {\it braiding data} of the Ising
 
 \subsection{Tensor product in $\cal{C}/\psi$}
 \label{IsingTensorProduct}
-Of the dot representing the fermion is free to slide up and down the diagram. 
+\ethan{I'm not sure if we should call this the $\tp$. I think we should maybe reserve $\tp$ for horizontal superposition as usual, and just call tube stacking tube algebra multiplication.}
+The dots representing the points where $\psi$ lines end on $\beta$ lines can slide around on $\beta$ lines freely, provided that we keep track of the phase factors \eqref{dotslides} associated with passing them over caps and cups. 
 This has non-trivial implications on the tensor products, indeed defining the tensor product of the squares above by stacking,
 \begin{align}
 \FubeXss \otimes \FubeXsds = \overset{\FubeXss}{\FubeXsds} \sim \overset{\FubeXsds }{\FubeXss}
@@ -517,12 +519,15 @@ For example, we have,
 \begin{align}
 \TwoLine =\frac{1}{\sqrt{2}} \left( \CupCap +  \CupCapPsi \right) \quad \text{and} \quad \CupCapPsi \rightarrow A^{-4} \CupCapDots
 \end{align}
-using these relations we can infer all the non-trivial F-moves of the condensed theory:
+using these relations we can infer both of the non-trivial F-moves of the condensed theory:
 \begin{align}
 \TwoLine\; & = \frac{1}{\sqrt{2}} \left( \CupCap \; + \;A^{-4} \CupCapDots \right) \\
 \CupCap \; &= \frac{1}{\sqrt{2}} \left(\TwoLine \; + \; \TwoLineDots \right).
 \end{align}
 %These are all the linear relations on the diagrams that we get.
+
+\ethan{commented out the discussion on tensoring over endos as it plays no role in the Ising theory and we probably shouldn't repeat what we'll be saying in section 6 regardless. Also, our choice for the F-moves (two in two out) is different from the one in the tensoring over endos discussion (one in four out) which makes talking about it here a bit unwieldy.}
+\begin{comment}
 By just doing the diagrammatics, we have avoided the subtlety of tensoring over the endomorphisms of $\beta$.
 More formally, the F-symbol is a change of basis in the Hom space $V^{abc}_d$ \dave{explained in intro to Ising TQFT?}
 \begin{align}
@@ -559,7 +564,7 @@ Hence for the $F$-symbol, we require the following diagram to be commutative,
 \end{align}
 for all $f_x \in \text{End}(x)$ and $f_y \in \text{End}(y)$.
 We will return to this in Section??? and describe in more detail. 
-
+\end{comment}
 
 \subsection{Center of  $\text{Ising}/\psi$}
 The fubes are given by the string configurations 
@@ -603,59 +608,6 @@ Relations like the ones above allow us to find the primitive central idempotents
 %The primitive central idempotents of an algebra $\mathcal{A}$ are given by a set $\Pi_a \in \mathcal{A}$ that satisfy: $\Pi_a \Pi_b = \delta_{ab} \Pi_a$ and $\Pi_a Q = Q \Pi_a$ for all $Q \in \mathcal{A}$, and each $\Pi_a$ cannot be decomposed as a sum of orthogonal idempotents. \ethan{Should we remove or relocate this paragraph?}
 
 %\remove{Just realized we should probably have "odd" identity tubes, probbaly only in the periodic sector. They come from the tube in the parent theory which has a single fermion line. This in the target theory has $\psi$'s at the boundaries. We should then be able to cut it in half and the resulting tubes should still be elements of the tube algebra.}
-
-\subsubsection{Kitaev wire}
-\dave{This is actually really simple and super cool.}
-\dave{Will need to find better notation for normal ordering and stuff.}
-Here we propose a simple application of the above diagrammatic calculus. 
-We will re-write the Kitaev-Majorana chain using this basis. 
-The idea is to write down the natural anyon spin chain with this calculus and realize that it's exactly the Kitaev-Majorana chain. 
-This elucidates the connection between Majorana zero modes and Ising anyons. 
-
-The local ``on site" Hilbert space is spanned by two basis vectors
-\begin{align}
-    \CupSigma \qquad \text{and} \qquad \CupSigmadot
-\end{align}
-the first has even fermion parity, while the second has odd fermion parity.
-The only terms one can contruct a Hamiltonian out of are
-\begin{align}
-\Id \qquad \text{and} \qquad \TwoLinedotdot
-\end{align}
-the first is the identity line, while the second is nontrivial and should be identified with $i \gamma_1 \gamma_2$, a Majorana bi-linear.
-To see this, we can just check the action of the Hamiltonian on the basis vectors. 
-\begin{align}
-\TwoLinedotdot\; \times \; \CupSigma \; =\;  \CupSigma \quad \text{and} \quad \TwoLinedotdot\; \times \; \CupSigmadot \; =\;   - \; \CupSigmadot
-\end{align}
-\dave{Need to define ordering on vertices properly. I've been doing it by labeling the states first, then the operators have a natural ordering on them and I just begin counting from the last fermion on the state.}
-For an $N$-site chain we have the basis of states,
-\begin{align}
-&\CupSigma \; \CupSigma \; \CupSigma \cdots \CupSigma\\
-&\CupSigmadot \; \CupSigma \; \CupSigma \cdots \CupSigma\\
-&\CupSigma \; \CupSigmadot \; \CupSigma \cdots \CupSigma\\
-&\CupSigma \; \CupSigma \; \CupSigmadot \cdots \CupSigma\\
-&\CupSigma \; \CupSigma \; \CupSigma \cdots \CupSigmadot\\
-&\CupSigmadot \; \CupSigmadot \; \CupSigma \cdots \CupSigma
-\end{align}
-etcetera. Where there are $N$ cups appearing, and the fermion dots are ordered from right to left, and any number of them can appear.
-If a state has an odd number of dots it has odd fermion parity, while an even number of dots has even fermion parity.
-The Hamiltonian has two types of terms. One term mixes the states on site -- or within a single cup, while the other mixes nearest neighbour cups.
-We will denote the onsite Hamiltonian terms by $H_{2j}$ and the the term which couples the nearest neighbour cups by $H_{2j+1}$.
-Then the Hamiltonian takes on the form,
-\begin{align}
-H = - \sum_j\; t_j \; \;  \TwoLinedotdot_{\text{site $j$}}
-\end{align}
-Now in the completely staggered limit it's easy to see what the ground states are,
-\begin{align}
-\StaggaredGSEven \; \cdots \; \StaggaredGSEvenR  
-\qquad \text{and} \qquad 
-\StaggaredGSOdd \; \cdots  \; \StaggaredGSEvenR
-\end{align}
-The first differing from the second by fermion parity.
-Excitations are built by putting dots on the intermediate cups. 
-A nice feature of the diagrammatic notation is that the ``delocalization" of femrion number is made manifest.
-For example the fermion odd state does not have a femrion localized at either end, rather its free to slide from one end to the other.
-When transforming back to the original basis, one sees that the state is actually an even superposition of all possible placements of an even number of fermions, similarly for the odd state.
-\dave{Sensible formula for JW transformation to get back to Ising?}
 
 \subsection{Quasiparticle excitations}
 
@@ -860,18 +812,18 @@ and the odd ones are given by putting a single dot on the upper left leg.
 \PantssvtXsvt \right \rangle
 \end{align}
 
-We summarize the fusion rules in the following table: 
+By using this approach, it is straightforward to write down the table of fusion rules in the theory, which we present in Table \ref{fusiontable}.
 \begin{table}
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{c||c|c|c||c|c|c}
-$ {A\otimes B} $&$m_\unit $&$m_\sigma^+$&$m_\psi$&$q_\unit$&$q_\sigma$&$q_\psi $\\
+$ {a\otimes b} $&$m_\unit $&$m_\sigma^+$&$m_\psi$&$q_\unit$&$q_\sigma$&$q_\psi $\\
      \hline
      \hline
      
 $m_\unit $&$m_\unit$&$ m_\sigma^+$&$m_\psi$&    $\bullet q_\unit$&$\bullet q_\sigma$&$\bullet q_\psi$ \\
 
      \hline
-$m_\sigma^+ $&$m_\sigma^+$&$\cc^{1|0}m_\unit \oplus \cc^{0|1}m_\psi $&$ \cc^{0|1} m_\sigma^+ $&$      \bullet q_\sigma $&$ \bullet q_\unit$&$ \bullet q_\sigma$ \\
+$m_\sigma^+ $&$m_\sigma^+$&$m_\unit \oplus \cc^{0|1}m_\psi $&$ \cc^{0|1} m_\sigma^+ $&$      \bullet q_\sigma $&$ \bullet q_\unit$&$ \bullet q_\sigma$ \\
 
 % $$&$$&$$&$$&$$&$q_\psi$&$$\\
      \hline
@@ -892,7 +844,7 @@ $q_\sigma$&$\bullet q_\sigma$&$\bullet (q_\unit \oplus q_\psi)$&$\bullet q_\sigm
 $q_\psi $&$\bullet q_\psi$&$\bullet q_\sigma$&$\bullet q_\unit$&$\bullet m_\psi$&$\bullet m_\sigma^+$&$\bullet m_\unit$
 \end{tabular}
 }
-\caption{The quasiparticle fusion rules in $\mcz(C_2)$. Bullets in front of indicate that the associated fusion space is isomorphic to $\cc^{1|1}$. The $m_\sigma^+ \tp m_\sigma^+$ entry indicates that the fusion space can either be even if the fusion product is $m_1$, or purely odd (isomorphic to $\cc^{0|1}$) if the fusion product is $m_\psi$. }
+\caption{ \label{fusiontable} The quasiparticle fusion rules in $\mcz(C_2)$. Bullets in front of indicate that the associated fusion space is isomorphic to $\cc^{1|1}$. Entries with $\cc^{0|1}$ indicate that the fusion channel is purely odd. For example, the $m_\sigma^+ \tp m_\sigma^+$ entry indicates that the fusion space is even if the fusion product is $m_1$, and odd if the fusion product is $m_\psi$. }
 \end{table}
 
 
@@ -991,9 +943,9 @@ which gives $\mcd = \sqrt{12}$.
 
 There are several ways to calculate $S$. For all of them, we should keep in mind that although there are some $\pm1$ ambiguities in $T$, such ambiguities should not be present in $S$, since fermions have trivial double-braiding with one another. That is, mapping $m_a \mapsto fm_a$ where $a\in \{\unit,\psi,\sigma\}$ and $f$ is a physical fermion should not affect the answer we get for the $S$-matrix. In what follows we will calculate the $S$-matrix in several different ways, and then use a handful of different arguments to figure out what each calculation means. 
 
-First, we can calculate $S$ by tracing out the $R$-symbols, using 
+First, we can calculate $S$ by tracing out the $R$-symbols, using the formula
 \be S_{ab} = \frac{1}{\mcd}\sum_{c}d_c{\rm Tr}[R^{ab}_cR^{ba}_c],\ee
-where ${\rm Tr}$ is the trace, not the supertrace. This gives 
+which continues to hold in the fermionic setting. 
 \be 
  S^{Tr} = \frac{1}{\mcd} \begin{pmatrix} 
 1&\sqrt{2}&1&2\sqrt{2}&4&2\sqrt{2} \\
@@ -1130,13 +1082,126 @@ Super example with no $q$ type particles in condensed theory.
 
 \section{$\frac{1}{2}$E6}
 
-\dave{could move to appendix or save for another paper}
+\dave{could move to appendix \ethan{too cool for an appendix!} or save for another paper}
 
 - introduce 1/2 E6
 
 - explain how to condense fermion despite no braiding
 
 - list idempotents? (yes) quasi-particle fusion? (yes) braiding? (if you really want) 
+ 
+ \section{Hamiltonian} 
+ \begin{figure}
+ \includegraphics{Lattice.pdf}
+ \caption{One option.}
+ \end{figure}
+  
+ - Briefly mention string net hamiltonian
+
+ \subsection{Super lattice Hamiltonian}
+The Hamiltonian we define here is exactly the string net Hamiltonian but for the super fusion category defined above. 
+Thus the 
+  
+\subsection{Plaquette and vertex term}
+\dave{Only here as a reference for calculation.}
+\begin{align}
+&\Bpa \xrightarrow{A} \Bpb \xrightarrow{B} \Bpc \\
+&\xrightarrow{C}\Bpd  \xrightarrow{D} \Bpe \xrightarrow{E}\Bpf \\
+&\xrightarrow{F} \Bpg \xrightarrow{G} \Bph \xrightarrow{H}   \Bpi
+\end{align}
+ 
+ \dave{Could do a completely different approach, and just work in a more convenient basis:}
+ \begin{align}
+\Bpa \xrightarrow{U} \PlaquettePrime \xrightarrow{U^{-1}} \Bpi
+ \end{align}
+ \ethan{lol awesome} 
+ 
+ \subsection{Edge terms}
+ 
+ \section{Conclusion}
+ - ....
+ \paragraph{Acknowledgements}
+ Boulder school, KITP for hosting
+ 
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\phantomsection
+\addcontentsline{toc}{section}{References}
+
+\bibliography{references}
+\bibliographystyle{apsrev4-1}
+
+\clearpage
+\appendix
+\section{Fusion category review}
+\ethan{I don't think we really need this in the paper. It isn't anything original, and we're not going to do a better job of explaining things than any of the other reviews of this stuff that are out there (e.g. Kitaev) --- we should just refer readers to them (and all of our readers will likely know this stuff anyway). Given that we introduce the F-symbols and pivotal stuff and everything in the superfusion case anyway, it also seems redundant to do them here as well --- we can always obtain the stuff in this section as a special case of the stuff in the superfusion section if we like. }
+
+In this section we give a brief review of fusion categories. 
+%Physically one can think of the diagrams as the world lines of ``particles" in a $1+1$ dimensional theory.
+%For example this could be considered as the topological theory associated to a gapped boundary of a $2+1$ dimensional topological phase. 
+must add:
+
+- identity object
+
+- duality axiom
+
+- normalizations/quantum dimensions
+
+- inner product
+
+A fusion category {\cal C} is a collection of data; a list of simple objects $\{a, b, \cdots, \}$, fusion rules $N_{ab}^c$, and F-symbols. 
+Physically we think of a simple object as the collection of states which is invariant under local operations. 
+More formally we would say that the space of maps from $a$ to it'self is just a complex number times the identity\begin{align}
+\text{End}(a,a) \cong \mathbb{C} \text{id}_a.
+\end{align}
+This is the definition of a {\em simple object} in a fusion category {\cal C}. 
+One could consider objects that aren't simple, but we require that such an object always decomposes into a direct sum of simple objects, for example, $A = \oplus_i x_i$, where each $x_i$ is simple. 
+In this case we have $\text{Hom}(A,A)= \oplus_i \text{Hom}(x_i,x_i)$ (picture). 
+This is the definition of {\em semisimple}, which says that each object can always be decomposed into a finite sum of simple objects.
+
+Diagrammatically we represent this space as a set of labeled points on a circle or line. (picture).
+Physically these particles should be thought of as local excitations which are well separated.
+The ``time evolution" maps this set of states to another on a circle or a line (picture). 
+During time evolution two neighbouring particles may be brought together and can fuse.
+Such a process is called fusion and given the semi-simplicity condition, we know that the result can be split into a direct sum of particles.
+We will label the fusion space that takes $a \otimes b$ to $c$ by $V_{ab}^c \cong \text{Hom}(a\otimes b, c)$. 
+The dimension of this vector space is known as the fusion multiplicity $N_{ab}^c = \text{dim} V_{ab}^c$. 
+We can choose a basis for this fusion space by $v_{ab; \mu}^c \in V_{ab}^c$ with $\mu = 1, \cdots, N_{ab}^c$, diagrammatically we write,
+\begin{align}
+v_{ab; \mu}^c = \text{(picture)}.
+\end{align}
+There is the adjoint space $V_{c}^{ab}$ which splits particle $c$ into particles $a$ and $b$.
+The identity operator on the space $a \otimes b$ is given by 
+\begin{align}
+\text{id}_a \otimes \text{id}_b \cong \oplus_c V^{ab}_c \circ V^c_{ab}
+\end{align}
+Indeed, any evolution of particles can be decomposed in this way, 
+%\begin{align}
+%V_{x_1 x_2 \cdots x_r}^{y_1 y_2 \cdots y_w} = \oplus V^{y_1 y_2}_{z_1} \otimes V^{z_1 y_2}_{z_2} \otimes \cdots \otimes V^{z_{w-1} y_w}_{z_w} \circ V^{z_w}_{z_{w+1} x_r} \otimes V^{z_{w+1}}_{ z_{w+2} x_{r-1}} \otimes \cdots \otimes V^{z_{w+r-1}}_{x_1 x_2}
+%\end{align}
+\begin{align}
+V_{x_1 x_2 \cdots}^{y_1 y_2 \cdots}  = \oplus_z V^{y1 y2}_z \circ V^{z y_3 \cdots}_{x_1 x_2 \cdots }
+\end{align}
+applying this rule recursively in the fusion and splitting spaces allows one to decompose the operator into fusion and splitting vectors. 
+
+Of course this decomposition is arbitrary, we weren't forced to fuse $y_1$ and $y_2$ first, we could have equally well fused $y_2$ and $y_3$ first. 
+Since the resulting vector spaces are isomorphic, we know that there has to be an isomorphism between these fusion processes. 
+The isomorphism is known as the F-symbol and defines the linear map, \dave{need to add notation for tracking the spaces.}
+\begin{align}
+F^{abc}_d: \oplus_x V^{ab}_x \tp V^{xc}_{d} \rightarrow \oplus_y V^{ay}_d \tp V^{bc}_y
+\end{align}
+We will often adopt the notation for matrix elements of the F-symbol in a particular basis given by,
+\begin{align}
+v^{ab}_{x; \mu} \tp v^{x c}_{d; \nu} = \sum_{\sigma, y \rho} \left[ F^{abc}_d \right]_{\mu x \nu ; \sigma y \rho} v^{ay}_{d; \rho} \tp v^{bc}_{y; \sigma}
+\end{align}
+and diagrammatically this is written (picture).
+
+ - The F-symbols are subject to a consistency condition known as the pentagon equation
+....
+
+The pentagon equation must be compatible with the pivotal structure. 
+- Do the $F^2$ frobenius schur thing.
 
 \section{super fusion categories}
 Goal: Define super fusion categories for target audience. Target audience = physicists who have spent some time in Appendix E of Kitaev's 2006 anyon paper. \ethan{I think this should be an appendix, like in Kitaev's paper. It's definitely on the very mathematical end of the spectrum.}
@@ -1408,9 +1473,10 @@ can show
 \dave{May define a kind fo tetrahedral symbol depending on its utility in Hamiltonian.}
 
 
-
+%%%%%%%%%%%%%%
 \section{Tube algebra}
-
+%%%%%%%%%%%%%%
+\ethan{this section will def be improved at a later point (I'll also try to trim down on all the formal baggage that we don't really need)}
 In this section, we give an introduction to the tube algebra and show how its construction is modified in the fermionic setting. 
 
 \subsubsection{Intuitive idea}
@@ -1513,127 +1579,63 @@ The other fusion rules are obtained in a similar fashion. For example, the basis
 \be \fld_{e\tp \psi}(Y) = \left\langle \qqo + \qtqo - \qqto - \qtqto\right\rangle. \ee
 Using \eqref{eq:pantsrelns}, we see that in order to get the signs to work out so that the basis vector is left invariant, we need flux loops to be fused in with an extra minus sign. Therefore, we confirm that $e\tp \psi = m$. 
 
- 
- 
- 
- 
- \section{Hamiltonian} 
- \begin{figure}
- \includegraphics{Lattice.pdf}
- \caption{One option.}
- \end{figure}
-  
- - Briefly mention string net hamiltonian
 
- \subsection{Super lattice Hamiltonian}
-The Hamiltonian we define here is exactly the string net Hamiltonian but for the super fusion category defined above. 
-Thus the 
-  
-\subsection{Plaquette and vertex term}
-\dave{Only here as a reference for calculation.}
+
+%%%%%%%%%%%%%
+\section{Kitaev Wire}
+%%%%%%%%%%%%%
+
+\ethan{not saying that this should be an appendix --- just dunno where to put it for now}
+\subsubsection{Kitaev wire}
+Here we propose a simple application of the above diagrammatic calculus. 
+We will re-write the Kitaev-Majorana chain using this basis. 
+The idea is to write down the natural anyon spin chain with this calculus and realize that it's exactly the Kitaev-Majorana chain. 
+This elucidates the connection between Majorana zero modes and Ising anyons. 
+
+The local ``on site" Hilbert space is spanned by two basis vectors
 \begin{align}
-&\Bpa \xrightarrow{A} \Bpb \xrightarrow{B} \Bpc \\
-&\xrightarrow{C}\Bpd  \xrightarrow{D} \Bpe \xrightarrow{E}\Bpf \\
-&\xrightarrow{F} \Bpg \xrightarrow{G} \Bph \xrightarrow{H}   \Bpi
+    \CupSigma \qquad \text{and} \qquad \CupSigmadot
 \end{align}
- 
- \dave{Could do a completely different approach, and just work in a more convenient basis:}
- \begin{align}
-\Bpa \xrightarrow{U} \PlaquettePrime \xrightarrow{U^{-1}} \Bpi
- \end{align}
- \ethan{lol awesome} 
- 
- \subsection{Edge terms}
- 
- \section{Conclusion}
- - ....
- \paragraph{Acknowledgements}
- Boulder school, KITP for hosting
- 
- 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\phantomsection
-\addcontentsline{toc}{section}{References}
-
-\bibliography{references}
-\bibliographystyle{apsrev4-1}
-
-\clearpage
-\appendix
-\section{Fusion category review}
-In this section we give a brief review of fusion categories. 
-%Physically one can think of the diagrams as the world lines of ``particles" in a $1+1$ dimensional theory.
-%For example this could be considered as the topological theory associated to a gapped boundary of a $2+1$ dimensional topological phase. 
-must add:
-
-- identity object
-
-- duality axiom
-
-- normalizations/quantum dimensions
-
-- inner product
-
-A fusion category {\cal C} is a collection of data; a list of simple objects $\{a, b, \cdots, \}$, fusion rules $N_{ab}^c$, and F-symbols. 
-Physically we think of a simple object as the collection of states which is invariant under local operations. 
-More formally we would say that the space of maps from $a$ to it'self is just a complex number times the identity\begin{align}
-\text{End}(a,a) \cong \mathbb{C} \text{id}_a.
-\end{align}
-This is the definition of a {\em simple object} in a fusion category {\cal C}. 
-One could consider objects that aren't simple, but we require that such an object always decomposes into a direct sum of simple objects, for example, $A = \oplus_i x_i$, where each $x_i$ is simple. 
-In this case we have $\text{Hom}(A,A)= \oplus_i \text{Hom}(x_i,x_i)$ (picture). 
-This is the definition of {\em semisimple}, which says that each object can always be decomposed into a finite sum of simple objects.
-
-Diagrammatically we represent this space as a set of labeled points on a circle or line. (picture).
-Physically these particles should be thought of as local excitations which are well separated.
-The ``time evolution" maps this set of states to another on a circle or a line (picture). 
-During time evolution two neighbouring particles may be brought together and can fuse.
-Such a process is called fusion and given the semi-simplicity condition, we know that the result can be split into a direct sum of particles.
-We will label the fusion space that takes $a \otimes b$ to $c$ by $V_{ab}^c \cong \text{Hom}(a\otimes b, c)$. 
-The dimension of this vector space is known as the fusion multiplicity $N_{ab}^c = \text{dim} V_{ab}^c$. 
-We can choose a basis for this fusion space by $v_{ab; \mu}^c \in V_{ab}^c$ with $\mu = 1, \cdots, N_{ab}^c$, diagrammatically we write,
+the first has even fermion parity, while the second has odd fermion parity.
+The only terms one can contruct a Hamiltonian out of are
 \begin{align}
-v_{ab; \mu}^c = \text{(picture)}.
+\Id \qquad \text{and} \qquad \TwoLinedotdot
 \end{align}
-There is the adjoint space $V_{c}^{ab}$ which splits particle $c$ into particles $a$ and $b$.
-The identity operator on the space $a \otimes b$ is given by 
+the first is the identity line, while the second is nontrivial and should be identified with $i \gamma_1 \gamma_2$, a Majorana bi-linear.
+To see this, we can just check the action of the Hamiltonian on the basis vectors. 
 \begin{align}
-\text{id}_a \otimes \text{id}_b \cong \oplus_c V^{ab}_c \circ V^c_{ab}
+\TwoLinedotdot\; \times \; \CupSigma \; =\;  \CupSigma \quad \text{and} \quad \TwoLinedotdot\; \times \; \CupSigmadot \; =\;   - \; \CupSigmadot
 \end{align}
-Indeed, any evolution of particles can be decomposed in this way, 
-%\begin{align}
-%V_{x_1 x_2 \cdots x_r}^{y_1 y_2 \cdots y_w} = \oplus V^{y_1 y_2}_{z_1} \otimes V^{z_1 y_2}_{z_2} \otimes \cdots \otimes V^{z_{w-1} y_w}_{z_w} \circ V^{z_w}_{z_{w+1} x_r} \otimes V^{z_{w+1}}_{ z_{w+2} x_{r-1}} \otimes \cdots \otimes V^{z_{w+r-1}}_{x_1 x_2}
-%\end{align}
+\dave{Need to define ordering on vertices properly. I've been doing it by labeling the states first, then the operators have a natural ordering on them and I just begin counting from the last fermion on the state.}
+For an $N$-site chain we have the basis of states,
 \begin{align}
-V_{x_1 x_2 \cdots}^{y_1 y_2 \cdots}  = \oplus_z V^{y1 y2}_z \circ V^{z y_3 \cdots}_{x_1 x_2 \cdots }
+&\CupSigma \; \CupSigma \; \CupSigma \cdots \CupSigma\\
+&\CupSigmadot \; \CupSigma \; \CupSigma \cdots \CupSigma\\
+&\CupSigma \; \CupSigmadot \; \CupSigma \cdots \CupSigma\\
+&\CupSigma \; \CupSigma \; \CupSigmadot \cdots \CupSigma\\
+&\CupSigma \; \CupSigma \; \CupSigma \cdots \CupSigmadot\\
+&\CupSigmadot \; \CupSigmadot \; \CupSigma \cdots \CupSigma
 \end{align}
-applying this rule recursively in the fusion and splitting spaces allows one to decompose the operator into fusion and splitting vectors. 
-
-Of course this decomposition is arbitrary, we weren't forced to fuse $y_1$ and $y_2$ first, we could have equally well fused $y_2$ and $y_3$ first. 
-Since the resulting vector spaces are isomorphic, we know that there has to be an isomorphism between these fusion processes. 
-The isomorphism is known as the F-symbol and defines the linear map, \dave{need to add notation for tracking the spaces.}
+etcetera. Where there are $N$ cups appearing, and the fermion dots are ordered from right to left, and any number of them can appear.
+If a state has an odd number of dots it has odd fermion parity, while an even number of dots has even fermion parity.
+The Hamiltonian has two types of terms. One term mixes the states on site -- or within a single cup, while the other mixes nearest neighbour cups.
+We will denote the onsite Hamiltonian terms by $H_{2j}$ and the the term which couples the nearest neighbour cups by $H_{2j+1}$.
+Then the Hamiltonian takes on the form,
 \begin{align}
-F^{abc}_d: \oplus_x V^{ab}_x \tp V^{xc}_{d} \rightarrow \oplus_y V^{ay}_d \tp V^{bc}_y
+H = - \sum_j\; t_j \; \;  \TwoLinedotdot_{\text{site $j$}}
 \end{align}
-We will often adopt the notation for matrix elements of the F-symbol in a particular basis given by,
+Now in the completely staggered limit it's easy to see what the ground states are,
 \begin{align}
-v^{ab}_{x; \mu} \tp v^{x c}_{d; \nu} = \sum_{\sigma, y \rho} \left[ F^{abc}_d \right]_{\mu x \nu ; \sigma y \rho} v^{ay}_{d; \rho} \tp v^{bc}_{y; \sigma}
+\StaggaredGSEven \; \cdots \; \StaggaredGSEvenR  
+\qquad \text{and} \qquad 
+\StaggaredGSOdd \; \cdots  \; \StaggaredGSEvenR
 \end{align}
-and diagrammatically this is written (picture).
+The first differing from the second by fermion parity.
+Excitations are built by putting dots on the intermediate cups. 
+A nice feature of the diagrammatic notation is that the ``delocalization" of femrion number is made manifest.
+For example the fermion odd state does not have a femrion localized at either end, rather its free to slide from one end to the other.
+When transforming back to the original basis, one sees that the state is actually an even superposition of all possible placements of an even number of fermions, similarly for the odd state.
 
- - The F-symbols are subject to a consistency condition known as the pentagon equation
-....
-
-The pentagon equation must be compatible with the pivotal structure. 
-- Do the $F^2$ frobenius schur thing.
-
-
-
-
-
-
-\section{appendix 2}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
