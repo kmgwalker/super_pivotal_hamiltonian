@@ -254,7 +254,7 @@
 \begin{document}
 
 
-\title{Super lattice models dudes}
+\title{Super lattice models dude!}
 \author{David Aasen, Ethan Lake, Kevin Walker, and Zhenghan Wang}
 %\affiliation{Department of Physics and Astronomy, University of Utah, Salt Lake City, UT 84112, USA}
 %\emailAdd{lake@physics.utah.edu}
@@ -345,51 +345,50 @@ In this subsection we describe our procedure for performing fermion condensation
 
 First, we notice that $\unit$ and $\psi$ form a fusion sub-algebra of the Ising fusion rules.
 We would like to ``condense" the $\psi$ particle by modding out this sub-algebra.
-Modding out by this sub-algebra is not straightforward, as the $\psi$ particle is fermionic in both spin and statistics:
-\begin{align}
+Modding out by this sub-algebra is not straightforward though, as the $\psi$ particle is fermionic in both spin and statistics,
+\begin{align} \label{psiafermion}
 \Spin = (-1) \times  \PsiIdentity
-\qquad \qquad \TwoPsiExchange =  (-1) \times\TwoPsiIdentity
+\qquad \qquad \TwoPsiExchange =  (-1) \times\TwoPsiIdentity,
 \end{align}
+and therefore cannot be simply identified with the vacuum. 
 %which means that it cannot be identified with the vacuum. Indeed, performing such an identification would result in a trivial theory \dave{Show picture.}
 
+To remedy this, we will introduce a physical fermion field to the theory, which will provide a spin structure that compensates for the fermionic nature of the $\psi$ particle in the condensate. Spin structures will play a large role in the following and so warrant a brief discussion. 
 
-To remedy this, we introduce a spin structure which compensates for the fermionic nature of the $\psi$ particle in the condensate. 
-Spin structures will play a large role in the following and so warrant a brief discussion. 
-$$
-$$
-(Insert some discussion on spin structures here?)
-$$
-$$
-Physically, the spin structure can be thought of as a theory of physical fermions, for example a $p+ip$ superconductor.
+
+Physically, the spin structure can be thought of as a theory of physical fermions.%, for example a $p+ip$ superconductor.
 The condensation process then accounts for taking the emergent fermionic particle, pairing it with the physical fermion and then condensing the bosonic composite particle\dave{Refer to figure.}.
 
-Some of the symmetry of the theory is reduced when we condense the composite particles. 
-This is because the spin structure ocurrs along on a two dimensional surface embedded in the TQFT. 
+In our graphical calculus, condensing $\psi$ means that $\psi$ worldlines are allowed to have endpoints at locations where they ``disappear'' into the condensate. We will mark the locations where $\psi$ particles are absorbed into the condensate with boxes:
+\begin{align}
+\PsiFermion 
+\end{align}
+By itself this is inconsistent, since 
+\be 
+\PsiFermion = \PsiFermionTwist = (-1) \ \PsiFermion 
+\ee
+where we have made use of \eqref{psiafermion} in the second step. This inconsistency can be fixed if the box where $\psi$ is absorbed into the condensate is {\it fermionic}, which can be achieved by requiring the box to always be paired with a physical fermion. In this case, the composite of a terminal $\psi$ line and the fermionic box is a boson:
+\begin{align}
+\PsiFermion = (-1)\ \PsiFermionTwist = (-1)^2\ \PsiFermion 
+\end{align}
+where the first equality comes from the fact that twisting the physical fermion on the box by $2\pi$ gives a factor of $-1$.  and the rotated spin structure also picks up a minus sign. The boxes where the $\psi$ lines are absorbed into the condensate are also bosonic under exchange: 
+\begin{align}
+\TwoFermion = (-1)\ \TwoFermionExchange = (-1)^2\ \TwoFermion
+\end{align}
+where one minus sign comes from the exchange of the $\psi$ particles, and the other from the exchange of the physical fermions attached to the boxes. 
+
+Although locally this $\psi$ termination point is a boson, it is not strictly a boson in the usual sense, as it still sees the spin structure: the $\psi$ fermions do not see the spin structure, but the physical fermion attached to the termination point does. This means that when the box is carried around a topologically non-trivial cycle it will pick up a factor of $\pm1$, depending on the ambient spin structure. 
+
+A useful picture for this condensation process is to imagine the existence of a codimenion-1 ``back wall'' that plays the role of the condensate. 
+%This is because the spin structure ocurrs along on a two dimensional surface embedded in the TQFT. \ethan{I'm not sure how true this is
 It is useful to introduce some notation for $\psi$ particles that terminate on this defect. 
 In Fig.~\ref{BackWall} we denote a $\psi$ world line that goes straight back into the defect by a small box. 
 \begin{figure}
   \centering
     \includegraphics{BackWall.pdf}
-      \caption{Back wall. \dave{need to number things.}.}
+      \caption{The ``back wall'' picture. Starting from a (2+1)D Ising TQFT (left), we allow $\psi$ worldlines to be absorbed into the back wall of the box, which is required to possess a spin structure in order for this absorption to be consistent. In the condensed theory, we replace the points where the $\psi$ lines meet the back wall with boxes, as in the right panel. This allows us to ``squash'' the box down to a two dimensional plane, and the condensed theory can be viewed as a (1+1)D theory. \dave{need to number things.}.}
       \label{BackWall}
 \end{figure}
-Locally these terminations of $\psi$ lines look like
-\begin{align}
-\PsiFermion 
-\end{align}
-One can check that the composite of a $\psi$ line terminating on the spin structure is bosonic. Indeed under a twist we have,
-\begin{align}
-\PsiFermion  \rightarrow \PsiFermionTwist = \PsiFermion 
-\end{align}
-Where the equality follows from the fact the the $\psi$ particle picks up a minus sign due to its topological spin being minus one, and the rotated spin structure also picks up a minus sign. 
-The defect termionations are also bosonic under exchange,
-\begin{align}
-\TwoFermion \rightarrow \TwoFermionExchange = \TwoFermion
-\end{align}
-where one minus sign comes from the exchange of the $\psi$ particles, and the other from the exchange of the spin structure fermions \dave{better name?}. 
-Although locally this defect behaves as a boson, it is not a usual boson. 
-The physical fermion that's attached to it still feels the spin structure. 
-Indeed when the box passes over a non-trivial cycle of the manifold it can pick up a factor $\pm1$ depending on the spin structure.  \dave{Need notation from spin structure section.}
 
 \dave{Something about $\text{Pin}^{\pm}$ structures I never understood.}
 One should be able to evaluate any pair of fermions terminating at the defect into a complex number.
@@ -577,37 +576,35 @@ We will return to this in Section??? and describe in more detail.
 
 In this section, we identify the quasiparticle excitations in the $C_2$ theory. As was first shown in the mathematical literature by Occneanu [ref] and later demonstrated in the physics community by [lan wen, nick, yuting], the quasiparticle excitations in bosonic theories derived from a category $\mcc$ are given by the elements of the Drinfeld center $\mcz(\mcc)$, which can be obtained by finding the simple modules of an algebra known as the {\it tube algebra}. With appropriate modifications accounting for spin structure issues, this same construction holds in the more general fermionic setting considered here. Briefly, the tube algebra 
 
+For a review and a more detailed discussion of how the tube algebra works in the fermionic setting, we refer readers to Appendix \ref{tubeapp}. 
 
 
 
-The fubes are given by the string configurations 
-\begin{align}
+After applying local relations, the diagrams on any tube can be reduced to linear combinations the following diagrams:\begin{align}
 \FubeXXX \quad \FubesXs    \quad \FubeXss \quad \FubessX   \quad \FubesdXs \quad  \FubeXsds \quad \FubessdX
 \end{align}
-Each fube must come equipped with a spin structure, given by an element $\eta \in H^1(C,\zt) \cong \zt$, where $C$ is the cylinder. $\eta$ simply determines the nature of the boundary conditions for fermions which encricle the fube, and so the boundary conditions for fubes must obey a $\zt$ group structure. We have to be a little careful though, as mentioned earlier: contractible fermionic loops that twist fermion ribbons by $2\pi$ are associated with a $-1$ sign, and so the identity element in $H^1(C,\zt)$ corresponds to {\it anti-periodic} (or non-vorex) boundary conditions, with the nontrivial element corresponding to periodic (or vortex) boundary conditions.
 
-We will denote the spin structure of a given fube with a subscript, either $A$ for anti-periodic/non-vortex sector or $P$ for periodic/vortex sector. 
-Not every fube is consistent with each spin structure.
+The above tubes form a complete basis for the tube algebra in the bosonic case. In the fermionic case however, each tube must come equipped with a spin structure, given by an element $\eta \in H^1(C,\zt) \cong \zt$, where $C$ is the cylinder. $\eta$ simply determines the nature of the boundary conditions for fermions travelling around the non-contractible cycle of the cylinder, and so the boundary conditions for tubes must obey a $\zt$ group structure. We have to be a little careful about making this identification, though: contractible fermionic loops that twist fermion ribbons by $2\pi$ are associated with a $-1$ sign, and so the identity element in $H^1(C,\zt)$ corresponds to {\it anti-periodic} (or non-vorex) boundary conditions, with the nontrivial element corresponding to periodic (or vortex) boundary conditions.
+
+We will denote the spin structure of a given tube with a subscript, using $A$ for anti-periodic/non-vortex spin structure and $P$ for periodic/vortex spin structures. Interestingly, not every tube is consistent with each spin structure.
 For example,
 \begin{align}
-\FubesdXs_A\;  = - \; \FubesdXs_A 
+\FubesdXs_A\;  = - \; \FubesdXs_A \implies \FubesdXs_A = 0,
 \end{align}
-which follows from pulling the fermion around the boundary and so a minus sign is acquired. 
-Meanwhile we have,
+where we have simply pulled the fermion around the non-contractible loop on the tube. A vortex tube with a horizontal $\beta$ line is also zero, since
 \begin{align}
 \FubesXs_P \; = \; (A^4)^*\; \FubesXsa_P \; = (A^4)^* \; \FubesXsb_P =\;  (A^4)^* \FubesXsc_P \; = - \FubesXs_P.
 \end{align}
-All other fubes are nonzero for both spin structures.
-Hence, a complete basis for fubes for the anti-peridioc sector is given by
+All other tubes turn out to be nonzero for both spin structures, and so a complete basis for tubes in the non-vortex sector is given by
 \begin{align}
 \FubeXXX_A \quad \FubesXs_A \quad \FubeXss_A \quad \FubessX_A    \quad  \FubeXsds_A \quad \FubessdX_A
 \end{align}
-while a basis for the periodic sector is given by,
+while a basis for the periodic sector is given by
 \begin{align}
-\FubeXXX_P\quad \FubeXss_P \quad \FubessX_P   \quad \FubesdXs_P \quad  \FubeXsds_P \quad \FubessdX_P
+\FubeXXX_P\quad \FubeXss_P \quad \FubessX_P   \quad \FubesdXs_P \quad  \FubeXsds_P \quad \FubessdX_P.
 \end{align}
 
-The tensor product in the fube algebra is given by stacking fubes and simplifying the resulting composite fube using local relations.  
+The multiplication law in the tube algebra is given by stacking tubes on top of one another and simplifying the resulting tube using local relations.  
 For example, in the periodic sector we have
 \begin{align}
 \FubesdXs_P \; \times \; \FubesdXs_P \; = \; \RDotTwoa_P \; = \; \frac{1}{\sqrt{2}} \left(\RDotTwob_P + \RDotTwoc_P \right) = 2 \; \FubeXXX_P
@@ -618,7 +615,7 @@ Also, note that since the spin structures on two tubes being fused must agree on
 
 Relations like the ones above allow us to find the primitive central idempotents of the tube algebra, which carry the same information as the simple modules of the tube algebra, which in turn correspond to the vector spaces left invariant under the action of tube fusion\footnote{also known as {\it fubing}}, which we finally identify as quasiparticles. 
 
-To figure out the quasiparticle spectrum, we, as stated earlier, need to find the irreducible representations (or simple modules) of the tube algebra. For a review and more detailed discussion of the tube algebra in the fermionic setting we refer readers to \ref{tubeapp}. Since the tube algebra splits into a direct sum of tubes with different spin structures, its simple modules will split in a similar way. First, we turn to an analysis of tubes with anti-periodic boundary counditions. 
+To figure out the quasiparticle spectrum, we, as stated earlier, need to find the irreducible representations (or simple modules) of the tube algebra. Since the tube algebra splits into a direct sum of tubes with different spin structures, its simple modules will split in a similar way. First, we turn to an analysis of tubes with anti-periodic boundary counditions. 
 
 \subsubsection{Anti-periodic spin structure}
 
@@ -767,6 +764,8 @@ Since the $m_\sigma^{+}$ is isomorphic to to $m_\sigma^-$ we can always choose t
 \fld_{m_\sigma^{+} \tp m_\psi}^{m_\sigma^{+}}({}^AY_A^A, \text{odd}) = \left\langle \PantssvXsvd -\frac{1}{\sqrt{2}}\Pantssvtshsvd + \PantssvtXsvd  - \frac{1}{\sqrt{2}} \Pantssvshsvd   \right \rangle 
 \end{align}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment} %not sure if we need this many examples
 The trickiest is $m_\sigma^\pm \tp m_{\sigma}^\pm$. For these we have, 
 \begin{align}
 \text{\dave{some pants}} &=      \Pantssvtsvtsh
@@ -785,7 +784,6 @@ The trickiest is $m_\sigma^\pm \tp m_{\sigma}^\pm$. For these we have,
     \fld_{m_\sigma^{+} \tp m_\sigma^+}^{m_\psi}({}^AY_A^A; \text{even} ) &= \left \langle \PantssvsvX -  \frac{1}{\sqrt{2}}\Pantssvsvsh +\PantssvsvtX -\frac{1}{\sqrt{2}} \Pantssvsvtsh \right \rangle
 \end{align}
 and the odd ones are given by putting a single dot on the upper left leg.
-
 \dave{More pants}
 \begin{align}
 \fld_{q_1 \tp m_\sigma^+}^{q_\sigma}({}^PY_P^A; \text{even} ) = \left \langle 
@@ -816,10 +814,14 @@ and the odd ones are given by putting a single dot on the upper left leg.
 \PantssvXsvt-
 \PantssvtXsvt \right \rangle
 \end{align}
+\end{comment}
+%%%%%%%%%%%%%%%%%%
 
 By using this approach, it is straightforward to write down the table of fusion rules in the theory, which we present in Table \ref{fusiontable}.
+
 \begin{table}
-\resizebox{\linewidth}{!}{%
+\centering
+%\resizebox{\linewidth}{!}{%
 \begin{tabular}{c||c|c|c||c|c|c}
 $ {a\otimes b} $&$m_\unit $&$m_\sigma^+$&$m_\psi$&$q_\unit$&$q_\sigma$&$q_\psi $\\
      \hline
@@ -848,8 +850,8 @@ $q_\sigma$&$\bullet q_\sigma$&$\bullet (q_\unit \oplus q_\psi)$&$\bullet q_\sigm
 \hline
 $q_\psi $&$\bullet q_\psi$&$\bullet q_\sigma$&$\bullet q_\unit$&$\bullet m_\psi$&$\bullet m_\sigma^+$&$\bullet m_\unit$
 \end{tabular}
-}
-\caption{ \label{fusiontable} The quasiparticle fusion rules in $\mcz(C_2)$. Bullets in front of indicate that the associated fusion space is isomorphic to $\cc^{1|1}$. Entries with $\cc^{0|1}$ indicate that the fusion channel is purely odd. For example, the $m_\sigma^+ \tp m_\sigma^+$ entry indicates that the fusion space is even if the fusion product is $m_1$, and odd if the fusion product is $m_\psi$. }
+%}
+\caption{ \label{fusiontable} The quasiparticle fusion rules in $\mcz(C_2)$. Bullets in front of indicate that the associated fusion space is isomorphic to $\cc^{1|1}$. Entries with $\cc^{0|1}$ indicate that the fusion channel is purely odd. For example, the $m_\sigma^+ \tp m_\sigma^+$ entry indicates that the fusion space is $\cc^{1|0}$ if the fusion product is $m_1$, and $\cc^{0|1}$ if the fusion product is $m_\psi$. }
 \end{table}
 
 
@@ -1123,101 +1125,20 @@ Thus the
  
  \subsection{Edge terms}
  
- \section{Conclusion}
- - ....
- \paragraph{Acknowledgements}
- Boulder school, KITP for hosting
  
+ %%%%%%%%%%%%%%%%%%%%%%
+ \section{Super fusion categories}
+ %%%%%%%%%%%%%%%%%%%%%%
  
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\phantomsection
-\addcontentsline{toc}{section}{References}
-
-\bibliography{references}
-\bibliographystyle{apsrev4-1}
-
-\clearpage
-\appendix
-\section{Fusion category review}
-\ethan{I don't think we really need this in the paper. It isn't anything original, and we're not going to do a better job of explaining things than any of the other reviews of this stuff that are out there (e.g. Kitaev) --- we should just refer readers to them (and all of our readers will likely know this stuff anyway). Given that we introduce the F-symbols and pivotal stuff and everything in the superfusion case anyway, it also seems redundant to do them here as well --- we can always obtain the stuff in this section as a special case of the stuff in the superfusion section if we like. }
-
-In this section we give a brief review of fusion categories. 
-%Physically one can think of the diagrams as the world lines of ``particles" in a $1+1$ dimensional theory.
-%For example this could be considered as the topological theory associated to a gapped boundary of a $2+1$ dimensional topological phase. 
-must add:
-
-- identity object
-
-- duality axiom
-
-- normalizations/quantum dimensions
-
-- inner product
-
-A fusion category {\cal C} is a collection of data; a list of simple objects $\{a, b, \cdots, \}$, fusion rules $N_{ab}^c$, and F-symbols. 
-Physically we think of a simple object as the collection of states which is invariant under local operations. 
-More formally we would say that the space of maps from $a$ to it'self is just a complex number times the identity\begin{align}
-\text{End}(a,a) \cong \mathbb{C} \text{id}_a.
-\end{align}
-This is the definition of a {\em simple object} in a fusion category {\cal C}. 
-One could consider objects that aren't simple, but we require that such an object always decomposes into a direct sum of simple objects, for example, $A = \oplus_i x_i$, where each $x_i$ is simple. 
-In this case we have $\text{Hom}(A,A)= \oplus_i \text{Hom}(x_i,x_i)$ (picture). 
-This is the definition of {\em semisimple}, which says that each object can always be decomposed into a finite sum of simple objects.
-
-Diagrammatically we represent this space as a set of labeled points on a circle or line. (picture).
-Physically these particles should be thought of as local excitations which are well separated.
-The ``time evolution" maps this set of states to another on a circle or a line (picture). 
-During time evolution two neighbouring particles may be brought together and can fuse.
-Such a process is called fusion and given the semi-simplicity condition, we know that the result can be split into a direct sum of particles.
-We will label the fusion space that takes $a \otimes b$ to $c$ by $V_{ab}^c \cong \text{Hom}(a\otimes b, c)$. 
-The dimension of this vector space is known as the fusion multiplicity $N_{ab}^c = \text{dim} V_{ab}^c$. 
-We can choose a basis for this fusion space by $v_{ab; \mu}^c \in V_{ab}^c$ with $\mu = 1, \cdots, N_{ab}^c$, diagrammatically we write,
-\begin{align}
-v_{ab; \mu}^c = \text{(picture)}.
-\end{align}
-There is the adjoint space $V_{c}^{ab}$ which splits particle $c$ into particles $a$ and $b$.
-The identity operator on the space $a \otimes b$ is given by 
-\begin{align}
-\text{id}_a \otimes \text{id}_b \cong \oplus_c V^{ab}_c \circ V^c_{ab}
-\end{align}
-Indeed, any evolution of particles can be decomposed in this way, 
-%\begin{align}
-%V_{x_1 x_2 \cdots x_r}^{y_1 y_2 \cdots y_w} = \oplus V^{y_1 y_2}_{z_1} \otimes V^{z_1 y_2}_{z_2} \otimes \cdots \otimes V^{z_{w-1} y_w}_{z_w} \circ V^{z_w}_{z_{w+1} x_r} \otimes V^{z_{w+1}}_{ z_{w+2} x_{r-1}} \otimes \cdots \otimes V^{z_{w+r-1}}_{x_1 x_2}
-%\end{align}
-\begin{align}
-V_{x_1 x_2 \cdots}^{y_1 y_2 \cdots}  = \oplus_z V^{y1 y2}_z \circ V^{z y_3 \cdots}_{x_1 x_2 \cdots }
-\end{align}
-applying this rule recursively in the fusion and splitting spaces allows one to decompose the operator into fusion and splitting vectors. 
-
-Of course this decomposition is arbitrary, we weren't forced to fuse $y_1$ and $y_2$ first, we could have equally well fused $y_2$ and $y_3$ first. 
-Since the resulting vector spaces are isomorphic, we know that there has to be an isomorphism between these fusion processes. 
-The isomorphism is known as the F-symbol and defines the linear map, \dave{need to add notation for tracking the spaces.}
-\begin{align}
-F^{abc}_d: \oplus_x V^{ab}_x \tp V^{xc}_{d} \rightarrow \oplus_y V^{ay}_d \tp V^{bc}_y
-\end{align}
-We will often adopt the notation for matrix elements of the F-symbol in a particular basis given by,
-\begin{align}
-v^{ab}_{x; \mu} \tp v^{x c}_{d; \nu} = \sum_{\sigma, y \rho} \left[ F^{abc}_d \right]_{\mu x \nu ; \sigma y \rho} v^{ay}_{d; \rho} \tp v^{bc}_{y; \sigma}
-\end{align}
-and diagrammatically this is written (picture).
-
- - The F-symbols are subject to a consistency condition known as the pentagon equation
-....
-
-The pentagon equation must be compatible with the pivotal structure. 
-- Do the $F^2$ frobenius schur thing.
-
-\section{super fusion categories}
 Goal: Define super fusion categories for target audience. Target audience = physicists who have spent some time in Appendix E of Kitaev's 2006 anyon paper. \ethan{I think this should be an appendix, like in Kitaev's paper. It's definitely on the very mathematical end of the spectrum.}
-\dave{Why push this off to the appendix? I thought it was one of the purposes of this paper.}
+\dave{Why push this off to the appendix? I thought it was one of the purposes of this paper.} \ethan{Okay fine. I reserve the right to bitch about it later though} 
 
 \subsection{Simple objects}
 We associate objects with idempotents and simple objects with minimal idempotents.
 %In an ordinary fusion category simple objects have the defining feature that there endomorphisms are given by $\mathbb{C}$.
 %This is because any simple algebra over $\mathbb{C}$ is Morita equivalent to $\mathbb{C}$. \ethan{true, 
 In ordinary fusion categories, the endomorphism ring of any simple object is $\cc$. This is due to Schur's lemma: if an object $x$ is simple, then any morphism in $\End(x)$ must be an isomorphism, and hence $\End(x) = \cc$. Objects with $\End(x) = \cc$ are certainly still possible in the more general fermionic setting we consider here, and we will refer to them as {\it M type} objects. 
-\dave{I don't understand why this is a consequence of Schur's lemma. I thought the definition of a simple object was $\text{End}(x) = \mathbb{C}$}
+\dave{I don't understand why this is a consequence of Schur's lemma. I thought the definition of a simple object was $\text{End}(x) = \mathbb{C}$} \ethan{The definition of a simple object is that it can't be written as the direct sum of other objects --- i.e. if we think of objects as vector spaces, then a simple object is one with no proper subspaces. The Shur's lemma tells you that for simple objects, everything in $\End(x)$ must be an isomorphism, and so $\End(x)$ must be a division algebra. $\cc$ is the only ungraded division algebra, so normally being simple is the same as having $\End(x) = \cc$. But in the graded case, $\cl_1$ is also a division algebra.} 
 
 As we saw in the Ising example, the endomorphisms of simple objects in fermionic theories aren't always $\mathbb{C}$, and may instead be a simple super algebra over $\mathbb{C}$. By Schur's lemma every element in $\End(x)$ is invertible if $x$ is simple, and so $\End(x)$ must be a division algebra. The only $\zz_2$-graded division algebra is the first complex Clifford algebra $\cl_1$, 
 %As was the case for the image of $\sigma$ under condensation.
@@ -1390,8 +1311,9 @@ In matrix form, this means that we require
 F^{abc}_d  L_f=   R_g F^{abc}_d.
 \ee
 
-As with the bosonic case, these F-symbols must obey the pentagon equation.
 In the superfusion case, the pentagon relation is equivalent to the commutativity of the following diagram: 
+\ethan{Are the Kozul signs appearing in the normal super pentagon equation begin left implicit here?}
+\dave{Oops! Good spotting. They should be there.} \ethan{how should we deal with them? Define a canonical ordering for the vertices in the $F$-moves and write out all the $(-1)^{|a||b|}$s, or just write some $P(x,y,\dots)$ factor and keep it implicit like KW was suggesting?}
 %\begin{align}
 %\newcommand{\A}{\bigoplus_{p,q}V^{xy}_{p,3}\tp_p V^{pz}_{q,2}  \tp_q V^{qw}_{u,1}}
 %\newcommand{\B}{\bigoplus_{p,t} V^{xy}_{p,2} \tp_p V^{pt}_{u,1} \tp_t V^{zw}_{t,2}}
@@ -1488,6 +1410,97 @@ can show
 \end{align}
 
 \dave{May define a kind fo tetrahedral symbol depending on its utility in Hamiltonian.}
+
+
+
+%%%%%%%%%%%%%%%%%% 
+\section{Conclusion}
+%%%%%%%%%%%%%%%%%%
+
+ - ....
+ 
+ \paragraph{Acknowledgements}
+ Boulder school, KITP for hosting
+ 
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\phantomsection
+\addcontentsline{toc}{section}{References}
+
+\bibliography{references}
+\bibliographystyle{apsrev4-1}
+
+\clearpage
+\appendix
+\section{Fusion category review}
+\ethan{I don't think we really need this in the paper. It isn't anything original, and we're not going to do a better job of explaining things than any of the other reviews of this stuff that are out there (e.g. Kitaev) --- we should just refer readers to them (and all of our readers will likely know this stuff anyway). Given that we introduce the F-symbols and pivotal stuff and everything in the superfusion case anyway, it also seems redundant to do them here as well --- we can always obtain the stuff in this section as a special case of the stuff in the superfusion section if we like. }
+
+In this section we give a brief review of fusion categories. 
+%Physically one can think of the diagrams as the world lines of ``particles" in a $1+1$ dimensional theory.
+%For example this could be considered as the topological theory associated to a gapped boundary of a $2+1$ dimensional topological phase. 
+must add:
+
+- identity object
+
+- duality axiom
+
+- normalizations/quantum dimensions
+
+- inner product
+
+A fusion category {\cal C} is a collection of data; a list of simple objects $\{a, b, \cdots, \}$, fusion rules $N_{ab}^c$, and F-symbols. 
+Physically we think of a simple object as the collection of states which is invariant under local operations. 
+More formally we would say that the space of maps from $a$ to it'self is just a complex number times the identity\begin{align}
+\text{End}(a,a) \cong \mathbb{C} \text{id}_a.
+\end{align}
+This is the definition of a {\em simple object} in a fusion category {\cal C}. 
+One could consider objects that aren't simple, but we require that such an object always decomposes into a direct sum of simple objects, for example, $A = \oplus_i x_i$, where each $x_i$ is simple. 
+In this case we have $\text{Hom}(A,A)= \oplus_i \text{Hom}(x_i,x_i)$ (picture). 
+This is the definition of {\em semisimple}, which says that each object can always be decomposed into a finite sum of simple objects.
+
+Diagrammatically we represent this space as a set of labeled points on a circle or line. (picture).
+Physically these particles should be thought of as local excitations which are well separated.
+The ``time evolution" maps this set of states to another on a circle or a line (picture). 
+During time evolution two neighbouring particles may be brought together and can fuse.
+Such a process is called fusion and given the semi-simplicity condition, we know that the result can be split into a direct sum of particles.
+We will label the fusion space that takes $a \otimes b$ to $c$ by $V_{ab}^c \cong \text{Hom}(a\otimes b, c)$. 
+The dimension of this vector space is known as the fusion multiplicity $N_{ab}^c = \text{dim} V_{ab}^c$. 
+We can choose a basis for this fusion space by $v_{ab; \mu}^c \in V_{ab}^c$ with $\mu = 1, \cdots, N_{ab}^c$, diagrammatically we write,
+\begin{align}
+v_{ab; \mu}^c = \text{(picture)}.
+\end{align}
+There is the adjoint space $V_{c}^{ab}$ which splits particle $c$ into particles $a$ and $b$.
+The identity operator on the space $a \otimes b$ is given by 
+\begin{align}
+\text{id}_a \otimes \text{id}_b \cong \oplus_c V^{ab}_c \circ V^c_{ab}
+\end{align}
+Indeed, any evolution of particles can be decomposed in this way, 
+%\begin{align}
+%V_{x_1 x_2 \cdots x_r}^{y_1 y_2 \cdots y_w} = \oplus V^{y_1 y_2}_{z_1} \otimes V^{z_1 y_2}_{z_2} \otimes \cdots \otimes V^{z_{w-1} y_w}_{z_w} \circ V^{z_w}_{z_{w+1} x_r} \otimes V^{z_{w+1}}_{ z_{w+2} x_{r-1}} \otimes \cdots \otimes V^{z_{w+r-1}}_{x_1 x_2}
+%\end{align}
+\begin{align}
+V_{x_1 x_2 \cdots}^{y_1 y_2 \cdots}  = \oplus_z V^{y1 y2}_z \circ V^{z y_3 \cdots}_{x_1 x_2 \cdots }
+\end{align}
+applying this rule recursively in the fusion and splitting spaces allows one to decompose the operator into fusion and splitting vectors. 
+
+Of course this decomposition is arbitrary, we weren't forced to fuse $y_1$ and $y_2$ first, we could have equally well fused $y_2$ and $y_3$ first. 
+Since the resulting vector spaces are isomorphic, we know that there has to be an isomorphism between these fusion processes. 
+The isomorphism is known as the F-symbol and defines the linear map, \dave{need to add notation for tracking the spaces.}
+\begin{align}
+F^{abc}_d: \oplus_x V^{ab}_x \tp V^{xc}_{d} \rightarrow \oplus_y V^{ay}_d \tp V^{bc}_y
+\end{align}
+We will often adopt the notation for matrix elements of the F-symbol in a particular basis given by,
+\begin{align}
+v^{ab}_{x; \mu} \tp v^{x c}_{d; \nu} = \sum_{\sigma, y \rho} \left[ F^{abc}_d \right]_{\mu x \nu ; \sigma y \rho} v^{ay}_{d; \rho} \tp v^{bc}_{y; \sigma}
+\end{align}
+and diagrammatically this is written (picture).
+
+ - The F-symbols are subject to a consistency condition known as the pentagon equation
+....
+
+The pentagon equation must be compatible with the pivotal structure. 
+- Do the $F^2$ frobenius schur thing.
 
 
 %%%%%%%%%%%%%%
