@@ -35,6 +35,7 @@
 \newcommand{\mcd}{\mathcal{D}}
 \newcommand{\mcg}{\mathcal{G}}
 \newcommand{\mct}{\mathcal{T}}
+\newcommand{\mcs}{\mathcal{S}}
 \newcommand{\ul}{\underline}
 \newcommand{\Mod}{\text{Mod}}
 \newcommand{\Aut}{\text{Aut}}
@@ -64,13 +65,8 @@
 \newcommand{\cl}{\mathbb{C}\ell}
 \newcommand{\vect}{\text{Vec}}
 \newcommand{\svect}{\text{sVec}}
-\newtheorem{thm}{Theorem}
-\newtheorem{cor}{Corollary}
-\newtheorem{lemma}{Lemma}
-\newtheorem{prop}{Proposition}
-\newtheorem{problem}{Problem}
-\newtheorem{defn}{Definition}
-\newtheorem{question}{Question}
+\newcommand{\spin}{\text{Spin}}
+\newcommand{\pin}{\text{Pin}}
 \newcommand{\fube}{\textbf{Tube}}
 \newcommand{\tube}{\textbf{Tube}}
 \newcommand{\fld}{\mathcal{F}} %fld was for field config
@@ -366,46 +362,7 @@ Modding out by this sub-algebra is not straightforward though, as the $\psi$ par
 and therefore cannot be simply identified with the vacuum. 
 %which means that it cannot be identified with the vacuum. Indeed, performing such an identification would result in a trivial theory \dave{Show picture.}
 
-To remedy this, we will introduce a physical fermion field to the theory, which will provide a spin structure that compensates for the fermionic nature of the $\psi$ particle in the condensate. Spin structures will play a large role in the following and so warrant a brief discussion. 
-
-\ethan{the following is copied from our previous notes: will clean up (and correct mistakes) later}
-Tubes, being fermionic objects, need to come with spin structures in order for the fermions that live on them to be well-defined. In this subsection, we'll briefly review what spin structures are, and how we can classify them for the manifolds we'll be working over. 
-
-%The procedure for condensing the fermions follows from introducing a co-dimension $1$ defect membrane $W$ that can absorb and emit fermions in pairs.
-%In the following we will assume the defect is co-planar to the spatial directions.
-
-Since fermions carry spin and braiding statistics and as such are not transparent, they cannot be condensed without some additional help. This is provided by the
-existence of codimension-1 membranes equipped with spin structures, which are devices used to %membrane $W$, which is equipped with a certain structure that
-``transparentize'' the fermions, allowing them to be condensed. 
-%More precisely, we say that the membrane $W$ endows the spacetime manifold $M$ we're working over with a spin structure. 
-Very loosely, a spin structure is a bundle over a manifold $M$ that associates the location of each $2\pi$-twisted fermion worldine with a factor of $-1$, which cancel out the factors of $-1$ picked up upon untwisting $2\pi$-twisted worldlines and allows for the ``transparentization'' process to go through. %Thus, a spin structure is a way of forming a $\zt$ bundle over the configuration space of fermionic worldlines. 
-
-To make this more precise, we frame fermions by thinking of them from the ribbon point of view, and look at the vector bundle of fermion framings over $M$. If the fermions were bosonic, the structure group of this vector bundle would just be $SO(n)$, since rotating the framing by $2\pi$ at a given point would be equivalent to doing nothing. However, since fermions are (of course) fermionic, a $2\pi$ twist in their framing at a given point is not equivalent to doing nothing, and instead gives us a $-1$ sign. This means that relations between $SO(n)$ representations (like $R_\pi^2 = 1$) only hold projectively when applied to fermions. Therefore, we define the group $Spin(n)$ though the short exact sequence
-\be 1 \ra \zt \ra Spin(n) \ra SO(n) \ra 1,\ee
-so that representations of $Spin(n)$ are $\zt$-projective representations of $SO(n)$ representations. 
-
-Giving a manifold $M$ a spin structure is then equivalent to equipping its vector bundle of fermion framings a $Spin(n)$ action. This can be encapsulated by the short exact sequence 
-\be 0 \ra \zt \ra FSp(M) \ra FSO(M) \ra 0,\ee
-where $FSO(M)$ is the oriented frame bundle on $M$ (with $SO(n)$ as the structure group) and $FSp(M)$ is the oriented spin-frame bundle on $M$, which is like $FSO(M)$ but with structure group $Spin(n)$. 
-
-However, not all exact sequences above are physically allowable. We must place a further constraint on the spin bundle, namely that it must be ``untwisted''. If the bundle were twisted, we could go around contractible loops and get a nontrivial holonomies, which would prevent us from constructing a well-defined transparentization procedure. The ``untwistedness'' of the bundle corresponds precisely to the condition that the second Stiefel-Whitney class $\omega_2 \in H^2(M,\zt)$ used to define the twisting of the bundle be trivial ($\omega_2$ is the 2-cocycle associated with $M$'s tangent bundle). For the examples we're interested this can shown to always be the case, since we will always have $H^2(M,\zt) = 0$. This then implies that any 2-cochain $\omega_2$ on $M$ can be written as $\omega_2 = \delta \eta$ for some 1-cochain $\eta \in H^1(M,\zt)$, meaning that different spin structures are parametrized by the group $H^1(M,\zt)$, which is usually easy to calculate, and physically corresponds to a choice of fermionic boundary conditions around the noncontrabile loops in $M$. This agrees with our interpretation of a spin structure in terms of the ``codimension-1 back wall'' picture, since Poincare duality allows us to associate any element in $H^1(M,\zt)$ with a codimension-1 submanifold of $M$.
-
-Finally, we can to calculate the number of different spin structures that generic manifolds possess \ethan{this is definitely unnecessary}. As mentioned in the last paragraph, $H^1(M,\zt)$ classifies the different types of spin structures. 
-We will be primarily interested in the cases where $M$ is an $n$-punctured sphere. Let $S^2_n$ denote the $n$-punctured sphere. By drawing a cell complex, it's easy to see that 
-\be H_0(S^2_n,\zz) \cong \zz,\qquad H_1(S^2_n,\zz) \cong \zz^{n-1},\qquad H^2(S^2_n,\zz) = 0.\ee
-Then we can use the universal coefficient theorem, which gives us an exact sequence 
-\be 0 \ra \Ext(H_{i-1}(S^2_n,\zz),\zt) \ra H^i(S^2_n,\zt) \ra \Hom(H_i(S^2_n,\zz),\zt) \ra 0.\ee
-Since $\Ext(G,H) = 0$ if $G$ is free and $\Hom(G,H) = H$ if $G$ is free, we get 
-\be H^1(S^2_n,\zt) \cong \zt^{n-1}\qquad H^2(S^2_n,\zt) = 0.\ee
-The fact that $H^2(S^2_n,\zt) = 0$ tells us that these manifolds are always spin. 
-In particular, there are two spin structures on a cylinder (vortex or no vortex), and four on a pair of pants. From the structure of $H^1(S^2_n,\zt)$ and the duality between $H^1(S^2_2,\zt)$ and $H_1(S^2_n,\zt)$, we see that spin structures are determined by picking a choice of boundary conditions for fermions along $(n-1)$ of the punctures, with the boundary condition around the $n$th puncture then being uniquely determined. 
-
-Finally, we mention something rather counter-intuitive about spin structures: $H^1(M,\zt)$ can be identified with the spin structures over $M$, but {\it not in a canonical way}. This is because the ``identity'' spin structure may not correspond to the identity element in $H^1(M,\zt)$: spin structures are an $H^1(M,\zt)$ torsor. To illustrate this, suppose we're on a cylinder. Because the spin structure forces contractible fermionic loops to have anti-periodic boundary conditions, the anti-periodic spin structure corresponds to the identity in $H^1(M,\zt) \cong \zt$, and the periodic spin structure corresponds to the nontrivial element in $\zt$. This means that we have the somewhat counter-intuitive spin-structure multiplication law of ``periodic $\times$ periodic $=$ anti-periodic''.
-
-
-Physically, the spin structure can be thought of as a theory of physical fermions.%, for example a $p+ip$ superconductor.
-The condensation process then accounts for taking the emergent fermionic particle, pairing it with the physical fermion and then condensing the bosonic composite particle\dave{Refer to figure.}.
-
+To remedy this, we will introduce a physical fermion field to the theory, which will provide a spin structure that compensates for the fermionic nature of the $\psi$ particle in the condensate. Readers unfamiliar with Spin structures and Pin structures are invited to read Appendix \ref{spins_and_pins}. Now we are ready to make use of spin structures to condense $\psi$. 
 In our graphical calculus, condensing $\psi$ means that $\psi$ worldlines are allowed to have endpoints at locations where they ``disappear'' into the condensate. We will mark the locations where $\psi$ particles are absorbed into the condensate with boxes:
 \begin{align}
 \PsiFermion 
@@ -444,7 +401,7 @@ In order to evaluate the picture into a number we require them to be in a standa
 \label{EvalPsiPsi}
 \end{align}
 where $\lambda \in \mathbb{C}$. 
-Reflection about the horizontal axis acts as an anti-linear operator, and so we have(\dave{may want to change this to about the vertical axis})
+Reflection about the horizontal axis acts as an anti-linear operator\footnote{The fact that spatial reflections act as complex conjugation follows from the fact that Pin$^+(2)$ admits a real spinor representation.}, and so we have(\dave{may want to change this to about the vertical axis})
 \begin{align}
 \lambda^{*} = \left( \PsiEnd \right) ^{\dagger}  = \PsiEndExchange = - \lambda,
 \label{phase}
@@ -453,7 +410,11 @@ implying that $\lambda = - \lambda^*$ and therefore $\lambda$ is purely imaginar
 It will depend on whether we choose a $\text{Pin}^{\pm}$ structure \dave{Need to understand these.}. \ethan{I can fill in pin stuff soon} 
 We will see later on that consistency between $F$-moves and fermion removal requires that we choose $\lambda = A^4$, placing a nontrivial constraint on $A$. 
 
-\subsection{Isotopies of $\cal{C}/\psi$}
+To summarize, we have seen that in order to condense an emergent fermion $\psi$ we must couple our theory to a spin structure, which is provided by a phase of free (physical) fermions $f$. Condensing the emergent fermions is then accomplished by coupling them to the spin structure, or equivalently by condensing $\psi f$ bound states. 
+
+Note that we are using a {\it spin} structure to perform the condensation, and hence are assuming that the physical fermions $f$ that provide the spin structure are {\it uncharged} (i.e. they couple only to gravity). If the physical realization we have in mind for these fermions has $U(1)$ symmetry (as in a topological insulator), we would need to generalize to a spin$_c$ structure instead. However, if we are obtaining the physical fermions from a topological superconductor (we will see later that this is indeed what happens in the $C_2$ theory), then a spin structure is sufficient. 
+ 
+\subsection{Isotopies of $C_2$}
 %and so we can condense the $\psi$ particle by modding out this sub-algebra, provided that we introduce the spin structures needed to make this procedure legitimate. 
 Now that we have worked out the graphical rules for the condensate we can check what implications it has on the Ising Fusion category.
 We will denote this theory by $\cal{C}/\psi$ since we have enforced that the identity object in Ising to be isomorphic to $\psi$.
@@ -630,7 +591,7 @@ After applying local relations, the diagrams on any tube can be reduced to linea
 \FubeXXX \quad \FubesXs    \quad \FubeXss \quad \FubessX   \quad \FubesdXs \quad  \FubeXsds \quad \FubessdX
 \end{align}
 
-The above tubes form a complete basis for the tube algebra in the bosonic case. In the fermionic case however, each tube comes equipped with a spin structure, given by an element $\eta \in H^1(C,\zt) \cong \zt$, where $C$ is the cylinder. \ethan{technically its an $H^1$-torsor, but not sure if we need to say this} $\eta$ simply determines the nature of the boundary conditions for fermions traveling around the non-contractible cycle of the cylinder, and so the boundary conditions for tubes must obey a $\zt$ group structure. We have to be a little careful about making this identification, though: contractible fermionic loops that twist fermion ribbons by $2\pi$ are associated with a $-1$ sign, and so the identity element in $H^1(C,\zt)$ corresponds to {\it anti-periodic} (or non-vorex) boundary conditions, with the nontrivial element corresponding to periodic (or vortex) boundary conditions.
+The above tubes form a complete basis for the tube algebra in the bosonic case. In the fermionic case however, each tube comes equipped with a spin structure, given by an element $\eta \in H^1(C,\zt) \cong \zt$, where $C$ is the cylinder. \footnote{On manifolds $M$ like the cylinder or the torus, there is a canonical identification of spin structures with elements of $H^1(M,\zt)$; in more general cases spin structures on $M$ are merely an $H^1(M,\zt)$-torsor.} $\eta$ simply determines the nature of the boundary conditions for fermions traveling around the non-contractible cycle of the cylinder, and so the boundary conditions for tubes must obey a $\zt$ group structure. We have to be a little careful about making this identification, though: contractible fermionic loops that twist fermion ribbons by $2\pi$ are associated with a $-1$ sign, and so the identity element in $H^1(C,\zt)$ corresponds to {\it anti-periodic} (or non-vorex) boundary conditions, with the nontrivial element corresponding to periodic (or vortex) boundary conditions.
 
 We will denote the spin structure of a given tube with a subscript, using $A$ for anti-periodic/non-vortex spin structure and $P$ for periodic/vortex spin structures. Interestingly, not every tube is consistent with each spin structure.
 For example,
@@ -693,7 +654,7 @@ $\FubessdX    $&$ \FubessdX $&$ -i\ \FubessX $&$ e^{-i\pi/4}\ \FubeXsds $&$ -e^{
 %\caption{ \label{aptube_multtable} The multiplication table for the subalgebra $\tube_\beta^A$. \ethan{need to come back and write $A$s explicitly}}
 \ee
 
-Since the multiplication table for $\tube_\beta^A$ is non-abelian, as an algebra it be $\cl_2$, as the other possibility (namely $\cl_1\oplus\cl_1$) is abelian. 
+Since the multiplication table for $\tube_\beta^A$ is non-abelian, as an algebra it must be $\cl_2$, as the other possibility (namely $\cl_1\oplus\cl_1$) is abelian. 
 In order to show that the previous table is indeed the multiplication table of $\cl_2$, we perform the following re-scaling:
 \be \FubeXsds \mapsto e^{-\pi i/4} \FubeXsds,
 \qquad \FubessX \mapsto e^{5\pi i/8} \FubessX,\qquad \FubessdX \mapsto e^{3\pi i/8} \FubessdX.\ee
@@ -711,16 +672,14 @@ $\FubessdX    $&$ \FubessdX $&$ -\FubessX $&$ -\FubeXsds $&$ \FubeXss$   \\
 \ee
 which is precisely the multiplication table of $\cl_2$. Indeed, recall that $\cl_2$ has two anticommuting odd generators $\gamma_1$ and $\gamma_2$ with $\gamma_1^2 = \gamma_2^2 = 1$, and two even generators, namely $1$ and $\gamma_1\gamma_2$. Therefore, we are led to make the identifications
 \be 1 =\FubeXss,\quad \gamma_1 =  \FubeXsds,\quad \gamma_2 = \FubessdX,\quad i\gamma_1\gamma_2 =  \FubessX.\ee
-We have the required anticommutation relations $\{\gamma_1,\gamma_2\} = 0$ as well as the identities $\gamma_1^2 = \gamma_2^2 = 1$, and so indeed, $\tube^A_\beta \cong \cl_2$. 
-%Since we have $c^\dagger c = i\gamma_1\gamma_2$ if $c = (\gamma_1 + i\gamma_2)/\sqrt{2}$, we have the intriguing relation 
-%\be c^\dagger c = \FubessX.\ee
-%That is, we see that the number operator is equal to the tube that implements the twist. This actually makes sense: each fermion on an anti-periodic tube gives a factor of $-1$ when twisted, and so twisting tubes gives a way of computing the (physical) fermion parity of the tube. 
+We have the required anticommutation relations $\{\gamma_i,\gamma_j\} = 2\delta_{ij}$ and so indeed, $\tube^A_\beta \cong \cl_2$. We also note that the operator $i\gamma_1\gamma_2$ is the chirality operator which splits the ambient spin structure $\mcs$ into right- and left-handed parts: $\mcs = \mcs_+ \oplus \mcs_-$\footnote{This is simply the two-dimensional analogue of the familiar four-dimensional chirality operator $\gamma_5=i\gamma_0\gamma_1\gamma_2\gamma_3$.}. Such a correspondence makes perfect sense from the TQFT standpoint, since the operator $i\gamma_1\gamma_2$ implements the topological twist.  
 
 We now turn to the task of identifying the quasiparticles (simple modules) of this subalgebra. 
-At a high level, we can appeal to the Morita equivalence between $\cl_2$ and $\cc$ which states that $\cl_2$ and $\cc$ must have the same simple modules, implying that the subalgebra $\tube^A_\beta$ must correspond to only one type of quasiparticle.
+At a high level, we can appeal to the Morita equivalence between $\cl_2$ and $\cc$ which states that $\cl_2$ and $\cc$ must have the same simple modules, implying that the subalgebra $\tube^A_\beta$ must correspond to only one type of quasiparticle\footnote{More generally, $\cl_n$ has a unique irreducible representation (up to odd isomorphisms) if $n$ is even (giving one quasipartcle) and a pair of irreducible representations differing in the sign of $\gamma_1\gamma_2\cdots\gamma_n$ if $n$ is odd (giving a pair of quasiparticles).}.
 
-To see this more directly, we note that since $\cl_2 \cong \End(\cc^{1|1})$, its simple modules (quasiparticles) can each be identified with the space $\cc^{1|1}$. It's easy to check that there are two different simple modules corresponding to this space, which we will write as $m^{\pm}_\sigma$. These simple modules correspond to the $\rho^\pm : \cl_2 \ra \Aut(\cc^{1|1})$ given by $\rho^\pm(1) = \sigma^0,\rho^\pm(\gamma_1) = \sigma^x,$ and $\rho^\pm(\gamma_2) = \pm i\sigma^y$, where the $\gamma_i$ maintain their earlier identifications. Since simple modules are associated with quasiparticles, this naively produces a pair of quasiparticles. Since the two representations differ in the sign of the representation matrix of $\gamma_2$, we may write them explicitly as 
-\be m_\sigma^\pm = \frac{1}{2} \left(\FubeXss_A \pm e^{i\pi/8}\ \FubessX_A\right),\ee
+To see this more directly, we note that since $\cl_2 \cong \End(\cc^{1|1})$, its simple modules (quasiparticles) can each be identified with the space $\cc^{1|1}$. It's easy to check that there are two different simple modules corresponding to this space, which we will write as $m^{\pm}_\sigma$. These simple modules correspond to the representations $\rho^\pm : \cl_2 \ra \Aut(\cc^{1|1})$ given by $\rho^\pm(1) = \sigma^0,\rho^\pm(\gamma_1) = \sigma^x,$ and $\rho^\pm(\gamma_2) = \pm i\sigma^y$, where the $\gamma_i$ maintain their earlier identifications. We see that the difference between these two representations is the sign of the representation of the chirality operator $i\gamma_1\gamma_2$, and as such these representations form a left- and right-handed opposite-chirality pair. 
+Since simple modules are associated with quasiparticles, this naively produces a pair of quasiparticles. Since the two representations differ in the sign of the representation matrix of $\gamma_2$, we may write them explicitly as 
+\be m_\sigma^\pm = \frac{1}{2} \left(\FubeXss_A \pm e^{i\pi/8}\ \FubessX_A\right).\ee
 %Note that we're letting each fube in the above expression represent its isomorphism class, which is why we haven't added any fubes in $\fld(C)^1$ with odd fermion parity to the expression for $m_\sigma^\pm$ (as they are isomorphic to the even-parity fubes in the expression for $m^\pm$) . 
 
 This looks to give us two quasiparticles, which seems to be in contradiction to our argument involving Morita equivalence. The resolution to this apparent contradiction is that the two simple modules $m^\pm_\sigma$ are actually {\it oddly isomorphic} to one another, by virtue of the anti-periodic spin structures they possess. Indeed, creating a fermion on the top of the $\gamma_2$ tube (which corresponds to the isomorphism given by left multiplication by $\gamma_1$), dragging it around the $\gamma_2$ tube to the bottom, and then annihilating it (through the isomorphism given by right multiplication by $\gamma_1$) acts on the matrix representations as $\rho^\pm(\gamma_2) \mapsto \rho^\mp(\gamma_2)$, and thus establishes an isomorphism $m^+_\sigma\cong m^-_\sigma$. Since only isomorphism classes of quasiparticles are physical, we can therefore identify the two modules $m_\sigma^\pm$ with a single quasiparticle. When doing calculations it is often helpful to fix a particular representative of the $m_\sigma^\pm$ isomorphism class, which we will choose to be $m_\sigma^+$. 
@@ -1263,7 +1222,7 @@ And we conclude that a dot slide must be purely imaginary. It is convenient to d
 \begin{align}
 &\QCapDotL =\Omega \; \QCapDotR \quad \quad \QCupDotR= \Omega \; \QCupDotL \quad \quad \Omega^* = -\Omega, \quad \lambda^4 >0
 \end{align}
-\dave{It would be good if we could show $\lambda^4>0$, but not sure how.}
+\dave{It would be good if we could show $\lambda^4>0$, but not sure how.} \ethan{$\lambda^4=1$ means that we can remove eight fermions for free, which we expect from the whole $\zz_8$ fermion classification thing.}
 \subsection{Fusion spaces}
 
 The set of input data for a super fusion category will not only constitute a list of simple objects and their types (Q or M), but also their fusion rules. 
@@ -1524,6 +1483,7 @@ can show
 \section{Conclusion}
 %%%%%%%%%%%%%%%%%%
 
+
  - ....
  
  \paragraph{Acknowledgements}
@@ -1610,6 +1570,42 @@ can show
 %The pentagon equation must be compatible with the pivotal structure. 
 %- Do the $F^2$ frobenius schur thing.
 
+
+\section{Spin and Pin structures}
+
+\subsubsection{Spin structures}
+\ethan{the following is copied from our previous notes: will clean up (and correct mistakes) later}
+
+Tubes, being fermionic objects, need to come with spin structures in order for the fermions that live on them to be well-defined. In this subsection, we'll briefly review what spin structures are, and how we can classify them for the manifolds we'll be working over. 
+
+%The procedure for condensing the fermions follows from introducing a co-dimension $1$ defect membrane $W$ that can absorb and emit fermions in pairs.
+%In the following we will assume the defect is co-planar to the spatial directions.
+
+Since fermions carry spin and braiding statistics and as such are not transparent, they cannot be condensed without some additional help. This is provided by the
+existence of codimension-1 membranes equipped with spin structures, which are devices used to %membrane $W$, which is equipped with a certain structure that
+``transparentize'' the fermions, allowing them to be condensed. 
+%More precisely, we say that the membrane $W$ endows the spacetime manifold $M$ we're working over with a spin structure. 
+Very loosely, a spin structure is a bundle over a manifold $M$ that associates the location of each $2\pi$-twisted fermion worldine with a factor of $-1$, which cancel out the factors of $-1$ picked up upon untwisting $2\pi$-twisted worldlines and allows for the ``transparentization'' process to go through. %Thus, a spin structure is a way of forming a $\zt$ bundle over the configuration space of fermionic worldlines. 
+
+To make this more precise, we frame fermions by thinking of them from the ribbon point of view, and look at the vector bundle of fermion framings over $M$. If the fermions were bosonic, the structure group of this vector bundle would just be $SO(n)$, since rotating the framing by $2\pi$ at a given point would be equivalent to doing nothing\footnote{Here we are assuming that $M$ is oriented so that we can choose a structure group of $SO(n)$ rather than $O(n)$.}. However, since fermions are (of course) fermionic, a $2\pi$ twist in their framing at a given point is not equivalent to doing nothing, and instead gives us a $-1$ sign. This means that relations between $SO(n)$ representations (like $R_\pi^2 = 1$) only hold projectively when applied to fermions. Therefore, we define the group $Spin(n)$ though the short exact sequence
+\be 1 \ra \zt \ra Spin(n) \ra SO(n) \ra 1,\ee
+so that representations of $Spin(n)$ are $\zt$-projective representations of $SO(n)$ representations. 
+
+Giving a manifold $M$ a spin structure is then equivalent to equipping its vector bundle of fermion framings a $Spin(n)$ action. This can be encapsulated by the short exact sequence 
+\be 1 \ra \zt \ra FSp(M) \ra FSO(M) \ra 1,\ee
+where $FSO(M)$ is the oriented frame bundle on $M$ (with $SO(n)$ as the structure group) and $FSp(M)$ is the oriented spin-frame bundle on $M$, which is like $FSO(M)$ but with structure group $Spin(n)$. 
+
+However, not all exact sequences above are physically allowable. We must place a further constraint on the spin bundle, namely that it must be ``untwisted''. If the bundle were twisted, we could go around contractible loops and get a nontrivial holonomies, which would prevent us from constructing a well-defined transparentization procedure. The ``untwistedness'' of the bundle corresponds precisely to the condition that the second Stiefel-Whitney class $\omega_2 \in H^2(M,\zt)$ used to define the twisting of the bundle be trivial ($\omega_2$ is the 2-cocycle associated with $M$'s tangent bundle). For the examples we're interested this can shown to always be the case, since we will always have $H^2(M,\zt) = 0$. This then implies that any 2-cochain $\omega_2$ on $M$ can be written as $\omega_2 = \delta \eta$ for some 1-cochain $\eta \in H^1(M,\zt)$, meaning that different spin structures are parametrized by the group $H^1(M,\zt)$, which is usually easy to calculate, and physically corresponds to a choice of fermionic boundary conditions around the noncontrabile loops in $M$. This agrees with our interpretation of a spin structure in terms of the ``codimension-1 back wall'' picture, since Poincare duality allows us to associate any element in $H^1(M,\zt)$ with a codimension-1 submanifold of $M$.
+
+In particular, there are two spin structures on a cylinder (vortex or no vortex), and four on a pair of pants. From the structure of $H^1(S^2_n,\zt)$ and the duality between $H^1(S^2_2,\zt)$ and $H_1(S^2_n,\zt)$, we see that spin structures are determined by picking a choice of boundary conditions for fermions along $(n-1)$ of the punctures, with the boundary condition around the $n$th puncture then being uniquely determined. On the cylinder and on tori we have a canonical identification of spin structures with elements in $H^1(M,\zt)$, but this is not true in general. 
+This is because in general there is no correspondence between an ``identity'' spin structure and the identity element in $H^1(M,\zt)$: spin structures are an $H^1(M,\zt)$ torsor. 
+
+In what follows we will need to deal with the action of orientation-reversing reflections, which means that we will actually need the more general construction of a Pin$^\pm$ structure. Colloquially, a Pin$^\pm$ structure is to a Spin structure what $O(n)$ is to $SO(n)$. That is, we have a short exact sequence 
+\be \label{pinseq} 1\ra \spin(n) \ra \pin^\pm(n) \ra \zt \ra 1,\ee 
+where the last map $p : \pin^\pm(n) \ra \zt$ sends orientation-reversing (orientation-preserving) elements to $-1$ ($+1$). Alternatively, we can describe $\pin^\pm(n)$ through the relation $\pin^\pm(n) / \{1,-1\} \cong O(n)$, where the $-1$ in the quotient is identified with a $2\pi$ rotation. The difference between $\pin^+$ and $\pin^-$ is the way in which reflection acts: reflection squares to $1$ in $\pin^+$ and to $-1$ in $\pin^-$, corresponding to whether \eqref{pinseq} splits ($\pin^+$) or does not ($\pin^-$). In what follows, we will fix a $\pin^+$ structure for concreteness. 
+
+Physically, the spin structure can be thought of as a theory of physical fermions.%, for example a $p+ip$ superconductor.
+The condensation process then accounts for taking the emergent fermionic particle, pairing it with the physical fermion and then condensing the bosonic composite particle\dave{Refer to figure.}.
 
 %%%%%%%%%%%%%%
 \section{Tube algebra} \label{tubeapp}
