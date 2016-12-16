@@ -15,9 +15,43 @@
 \hypersetup{linkcolor={hanpurple}}
 
 
+
+
 \usetikzlibrary{positioning,arrows}
 \usetikzlibrary{decorations.pathmorphing}
 \usetikzlibrary{decorations.markings}
+
+
+
+
+
+\usetikzlibrary{decorations.pathreplacing,calc}
+
+\newcommand{\tikzmark}[2][-3pt]{\tikz[remember picture, overlay, baseline=-0.5ex]\node[#1](#2){};}
+
+\tikzset{brace/.style={decorate, decoration={brace}},
+ brace mirrored/.style={decorate, decoration={brace,mirror}},
+}
+
+\newcounter{brace}
+\setcounter{brace}{0}
+\newcommand{\drawbrace}[3][brace]{%
+ \refstepcounter{brace}
+ \tikz[remember picture, overlay]\draw[#1] (#2.center)--(#3.center)node[pos=0.5, name=brace-\thebrace]{};
+}
+
+\newcounter{arrow}
+\setcounter{arrow}{0}
+\newcommand{\drawcurvedarrow}[3][]{%
+ \refstepcounter{arrow}
+ \tikz[remember picture, overlay]\draw (#2.center)edge[#1]node[coordinate,pos=0.5, name=arrow-\thearrow]{}(#3.center);
+}
+
+% #1 options, #2 position, #3 text 
+\newcommand{\annote}[3][]{%
+ \tikz[remember picture, overlay]\node[#1] at (#2) {#3};
+}
+
 \newcommand{\tp}{\otimes}
 \newcommand{\tpc}{\tilde{\otimes}}
 \newcommand{\ra}{\rightarrow}
@@ -254,6 +288,13 @@
 \newcommand{\LocalRelationDown}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{LocalRelationDown.pdf}}}}}
 
 \newcommand{\PlaquettePrime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{PlaquettePrime.pdf}}}}}
+
+\newcommand{\ycenter}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{ycenter.pdf}}}}}
+\newcommand{\ex}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{ex.pdf}}}}}
+\newcommand{\ey}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{ey.pdf}}}}}
+\newcommand{\eone}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{eone.pdf}}}}}
+
+
 
 %%% if we want to leave a secret message
 %\usepackage[pdftex, bookmarks={false}, pdftitle={Super lattice models}]{hyperref}
@@ -1121,9 +1162,96 @@ Super example with no $q$ type particles in condensed theory.
 - explain how to condense fermion despite no braiding
 
 - list idempotents? (yes) quasi-particle fusion? (yes) braiding? (if you really want) 
+
+The fusion category known as $\frac{1}{2}$ E6 has three particles. We denote them $\mathds{1}$, $x$, and $y$. 
+The non-trivial fusion rules are
+\begin{align}
+y \tp y = \mathds{1} \quad \quad y \tp x = x \tp y = x \quad \quad x\tp x = \mathds{1}\oplus 2x \oplus y
+\end{align}
+We list the associators in App \ref{E6Fsymbols}.
+Notice that $x$ is invariant under fusion with $y$, and $y$ is abelian. 
+Therefore, condensing the $y$ particle, would result in a fusion category with only two objects, $\mathds{1}$ and $\rho$, the image of $x$ under condensation of $y$.
+
+There is one subtle issue with condensing $y$. 
+The fusion category $\frac{1}{2} E6$ is not braided.
+This can be resolved by computing the Drinfeld center ${{Z}}(\frac{1}{2} \text{E6})$, which is a modular tensor category.
+A generic element in the Drinfeld center is given by an object $A$ from the fusion category and a collection of isomorphisms $e_A$ that define the half braid of $A$ with any object from the fusion category $e_A(x): A \tp x \rightarrow x \tp A$ for all $x$ in the fusion category.
+In the center there are two particles with fermionic spin, one of which has $y$ as the object from the fusion category and the half braids defined as,
+\begin{align}
+\ycenter = \ey - i  \ex -   \eone.
+\end{align}
+We have used a box to depict the isomorphism $e_y( \; \;)$. 
+One can check that this braid is fermionic in both spin and statistics. 
+
+\subsection{Condensed $\frac{1}{2}$ E6}
+We can now condense the $y$ particle by using this braiding from the center (Picture).
+Since $x$ is invariant under fusion with $y$ after condensation it becomes a Q type simple object, which we denote $\rho$.
+Furthurmore, since $x$ had fusion multiplicity in the parent theory, $\rho$, the image of $x$ under condensation will have fusion multiplicity in the condensed theory. 
+In summary we have,
+\begin{align}
+x \xrightarrow{\text{condense $y$}} \rho \quad \quad \text{End}(\rho) \cong \mathbb{C} \ell_1 \quad \quad V^{\rho \rho}_\rho \cong \mathbb{C}^{2|2}
+\end{align}
+Physically this theory is quite interesting. 
+Heuristically, one can thing of the $\rho$ lines as carrying a p-wave superconductor. 
+In this scenario the junction of three of these has four different ways to fuse together, two even and two odd. 
+\dave{Mention something like quantum dimensions of abelian Q type particles is $\sqrt{2}$, as it is for Ising, and so this is an example of a non-Abelian Q type.}
+In fact, one may wonder if there exists a super fusion category, with only one Q type simple object, and no fusion multiplicity. 
+It turns out this is impossible as we explain in SECXXX.
+Hence, this is the ``simplest" non-abelian purely Q type theory.
+
+Lets denote the odd endomorphism in $\text{End}(\rho)$ as $\gamma$. And let us denote the basis vectors in $V^{\rho \rho}_\rho$ as $v_1$ and $v_2$. 
+Lets also take $v_1$ and $v_2$ to be of even parity, and canonically identify there odd counterparts by ${v_1}_\gamma$ and ${v_{2}}_\gamma$. 
+These are just found by acting with $\gamma$ on the bottom of the trivalent vertex. 
+We have the following local relations inherited on the trivalent vertices from the parent theory,
+\dave{Will use pictures for this when I have a chance to make them.}
+\begin{align}
+{(V^{\rho \rho}_\rho)_\gamma} = \sigma^z \; ^{\gamma} (V^{\rho \rho}_\rho) \quad \quad {(V^{\rho \rho}_\rho)_\gamma} = \sigma^y \; (V^{\rho \rho}_\rho)^{\gamma} \quad \quad  ^{\gamma} (V^{\rho \rho}_\rho) = -i \sigma^x (V^{\rho \rho}_\rho)^{\gamma}
+\end{align}
+ Notice that $V^{\rho \rho}_\rho$ is a representation of $\mathbb{C} \ell_2$.
  
- \section{3 fermion toric code example}
+ \subsection{Center of condensed $\frac{1}{2}$ E6}
+ \dave{Will just list the idempotents here and there spins}
+In the non-vortex sector we have three simple objects. 
+All of them are M type. 
+ \begin{align}
+\begin{tabular}{ l | c | r }
+  1 & 2 & 3 \\
+  4 & 5 & 6 \\
+  7 & 8 & 9 \\
+\end{tabular}
+ \end{align}
+ 
+ %%%
+ %%%
+ \begin{tabular}{  l | l }
+   spin & $V^{\mathds{1}}_{\mathds{1}}$ \\ \hline
+A &  1 \\ \hline
+   A &  2 \tikzmark[xshift=3.5em]{a} \\ \hline
+A &  1\tikzmark[xshift=3.5em]{b} \\ \hline
+B &  1 \tikzmark[xshift=3.5em]{c}  \\ \hline
+B &  2 \tikzmark[xshift=3.5em]{d} \\ \hline
+ \end{tabular}
+\drawcurvedarrow[bend left=60,-stealth]{a}{b}
+\annote[right]{arrow-1}{Oddly isomorphic}
+\drawcurvedarrow[bend left=60,-stealth]{c}{d}
+\annote[right]{arrow-2}{Oddly isomorphic}
+%%%
+%%%
+
+\begin{center}
+\begin{tabular}{ c | c c | c c c c }
+spin & $V^{\mathds{1}}_{\mathds{1}}$ & $V^{\rho \rho}_\mathds{1} \tp V^{\mathds{1} \rho}_\rho$ & $V^{\rho}_\rho$ & $V^{\rho \mathds{1}}_\rho \tp V^{\rho \rho}_\mathds{1}$ & $v_1\tp v_1$ & $v_1 \tp v_2$ \\ \hline
+$1$ & $\frac{1}{d \sqrt{3}}$ & $\frac{1}{2 \sqrt{3}}$&  &  &  &  \\ \hline
+$1$ & $ \frac{d}{2 \sqrt{3}}$ & $\frac{-1}{2 \sqrt{3}}$  & $\frac{1}{2 \sqrt{3}}$  & $\frac{1}{2 \sqrt{3}}$  & $\frac{e^{i \pi /4}}{2 \sqrt{d}}$ & $\frac{- e^{-i \pi/4} }{2 \sqrt{3d}}$ \\
+$-1$ &   &   & $\frac{1}{2 \sqrt{3}}$  & $\frac{-1}{2 \sqrt{3}}$  &  $\frac{ e^{-i \pi/4} }{2 \sqrt{3d}}$& $\frac{-e^{i \pi /4}}{2 \sqrt{d}}$ \\ \hline
+$e^{i \pi /3}$ &  &  & $\frac{1}{2 + d}$ & $\frac{e^{- i \pi /3}}{2+d}$ & $\frac{- e^{i \pi /12}}{\sqrt{3d}}$ &  \\
+$-e^{i \pi /3}$ &  &  & $\frac{1}{2 + d}$ & $\frac{-e^{- i \pi /3}}{2+d} $&  & $\frac{e^{i \pi /12}}{\sqrt{3d}}$  
+\end{tabular}
+\end{center}
+
+\section{3 fermion toric code example}
 \dave{We could do this example, or throw it in an appendix if we have time. It should be straightforward to compute. }
+
 
 \section{Q-Fibonacci}
 \dave{Assume $\text{End}(\tau) = \mathbb{C} \ell_1$. And that $V^{\tau \tau \tau} \cong \mathbb{C}^{1|1}$.
@@ -1785,6 +1913,57 @@ A nice feature of the diagrammatic notation is that the ``delocalization" of fem
 For example the fermion odd state does not have a femrion localized at either end, rather its free to slide from one end to the other.
 When transforming back to the original basis, one sees that the state is actually an even superposition of all possible placements of an even number of fermions, similarly for the odd state.
 
+\subsection{$\frac{1}{2}$E6 associators}
+\label{E6Fsymbols}
+There are four unitary solutions to the pentagon equation for $\frac{1}{2}$E6. They split into two sets, one pair has all positive quantum dimensions, while the other has negative quantum dimension on the $x$ particle. 
+The solutions in each set are related by complex conjugation. 
+Here we present one of the solutions with positive quantum dimensions on all particles. 
+Several of the F symbols are trivial,
+\begin{align}
+F^{yyy}_y = F^{xyy}_x = F^{yyx}_x = F^{xxy}_y  = F^{yxx}_y = F^{xyx}_{\mathds{1}} = F^{xxy}_{\mathds{1}} = F^{yxx}_{\mathds{1}}= 1
+\end{align}
+Let $v_1, v_2$ be orthogonal unit vectors for the splitting space $V^{xx}_x$. 
+Then we define the F-symbols via, e.g., $V^{xy}_x \tp V^{xx}_x  = F^{xyx}_x V^{xx}_x \tp V^{yx}_x$ in the basis $(v_1, v_2)^{T}$.
+Explicitly we have,
+\begin{align}
+&F^{xyx}_x = \left(\begin{matrix}
+0&1\\
+1&0
+\end{matrix} \right) \quad
+F^{xxy}_x = \left(\begin{matrix}
+0&-i\\
+i&0
+\end{matrix} \right) \quad
+F^{yxx}_x = \left(\begin{matrix}
+1&0\\
+0&-1
+\end{matrix} \right) 
+\\
+\\
+&F^{xxx}_{\mathds{1}} = c_2^* \left(\begin{matrix}
+1&-i\\
+1&i
+\end{matrix} \right) \quad
+F^{xxx}_y = c_2^*\left(\begin{matrix}
+1&-i\\
+-1&-i
+\end{matrix} \right), \quad \quad c_2  = \frac{e^{7 i \pi/12}}{\sqrt{2}}
+\end{align}
+
+Lastly we have the F symbol when the four external labels are all $x$.
+We write this one down in the basis $(0,y, v_1\tp v_1,v_1 \tp v_2, v_2 \tp v_1, v_2 \tp v_2)$, and have,
+\begin{align}
+F^{xxx}_x  = 
+ \left(\begin{matrix}
+\frac{1}{d} & \frac{1}{d} & \frac{c_1^*}{\sqrt{2}} & \frac{c_1^*}{\sqrt{2}} & \frac{c_1^*}{\sqrt{2}} & - \frac{c_1^*}{\sqrt{2}} \\
+\frac{1}{d} & - \frac{1}{d} & \frac{c_1^*}{\sqrt{2}} & -\frac{c_1^*}{\sqrt{2}} & \frac{c_1^*}{\sqrt{2}} & \frac{c_1^*}{\sqrt{2}} \\
+\frac{e^{- i \pi/4}}{\sqrt{d}} & 0 & -\frac{1}{d} & 0 & -i c_4^* & 0 \\
+0 & \frac{e^{i \pi /4}}{\sqrt{d}} & 0 &c_4^* & 0 & \frac{ i}{d} \\
+0 & \frac{e^{- i \pi /4}}{\sqrt{d}} & 0 & -\frac{1}{d} & 0 & i c_4^* \\ 
+\frac{e^{i \pi /4}}{\sqrt{d}} & 0 & c_4^* & 0 & - \frac{i}{d} & 0
+\end{matrix} \right) \\
+d = 1 + \sqrt{3} \quad \quad c_1 = \frac{e^{-5 i \pi/6} }{\sqrt{d}} \quad \quad c_4 = \frac{e^{-i \pi/4}}{\sqrt{2}}
+\end{align}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
