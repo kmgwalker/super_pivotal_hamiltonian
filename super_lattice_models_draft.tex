@@ -1084,8 +1084,11 @@ This relation does {\it not} hold in the superfusion case, and needs to be modif
 where $v\in V^{ab}_c$ is any vector in the fusion space $V^{ab}_c$ and $|v| \in \{0,1\}$ is the parity of $v$, and where $|c| = 1$ $(|c|=0)$ if $c$ is a quasiparticle with a vortex (non-vortex) spin structure. In the $C_2$ theory, the factor of $(-1)^{|v||c|}$ will only contribute for braids between m-type and q-type particles. 
 
 To derive \eqref{stwist_fermionic}, we use the following manipulations:
-\be\label{stwist_proof} \includegraphics{stwist_proof.pdf}, \ee
-where $a$ and $b$ are such that $c\in a\tp b$, and $v$ is any vector in the fusion space $V^{ab}_c$. These steps relate $\theta_c$ (the rightmost diagram) to something proportional to $\theta_a\theta_b [R^{ab}_c]_{vv}[R^{ba}_c]_{vv}$. In the bosonic case this relation is an exact equality, but this is not true in the fermionic setting. Firstly, we see that the first step in \eqref{stwist_proof} involves passing the vertex $v$ under a $c$ tube. When the braiding process is embedded in $S^3$, the branch cuts associated with vortex-type quasiparticles become branch sheets, which we will define to always be pointing out of the page. This means that passing an odd vector in $V^{ab}_c$ over a vortex-type quasiparticle gives a phase factor of $-1$. Additionally, we notice that vectors in $V^{ab}_c$ are transported in a loop during steps 1 and 2, which contributes a sign of $-1$ if the vector $v$ is odd. These two effects are responsible for the factor of $(-1)^{|v|(|c|+1)$ in \eqref{stwist_fermionic}, meaning that the correct expression for $S$ in the fermionic setting is 
+\be\label{stwist_proof} 
+[stub]
+% new file stwist_proof.pdf not in repo, so suppressing this for now    \includegraphics{stwist_proof.pdf}, 
+\ee
+where $a$ and $b$ are such that $c\in a\tp b$, and $v$ is any vector in the fusion space $V^{ab}_c$. These steps relate $\theta_c$ (the rightmost diagram) to something proportional to $\theta_a\theta_b [R^{ab}_c]_{vv}[R^{ba}_c]_{vv}$. In the bosonic case this relation is an exact equality, but this is not true in the fermionic setting. Firstly, we see that the first step in \eqref{stwist_proof} involves passing the vertex $v$ under a $c$ tube. When the braiding process is embedded in $S^3$, the branch cuts associated with vortex-type quasiparticles become branch sheets, which we will define to always be pointing out of the page. This means that passing an odd vector in $V^{ab}_c$ over a vortex-type quasiparticle gives a phase factor of $-1$. Additionally, we notice that vectors in $V^{ab}_c$ are transported in a loop during steps 1 and 2, which contributes a sign of $-1$ if the vector $v$ is odd. These two effects are responsible for the factor of $(-1)^{|v|(|c|+1)}$ in \eqref{stwist_fermionic}, meaning that the correct expression for $S$ in the fermionic setting is 
 \be S_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in V^{ab}_c} d_c (-1)^{|v| (|c|+1)}   \frac{\theta_c}{\theta_a\theta_b}.\ee
 
 
@@ -1431,14 +1434,56 @@ The definition differs from the usual bosonic case in the following ways:
 	
 \end{enumerate}
 
+\kw{should add ``see XXX below" wherever possible in the above outline}
 
 \kwsep 
  
 Goal: Define super fusion categories for target audience. Target audience = physicists who have spent some time in Appendix E of Kitaev's 2006 anyon paper. 
 
 \subsection{Simple objects}
-We will assume that our category is {\it idempotent complete} -- 
+
+We will assume that our category $C$ is {\it idempotent complete} -- 
 every idempotent is the identity morphism of an associated object.
+We also assume that $C$ is {\it additive} -- we can take direct sums of objects.
+
+\kw{need to say somewhere near the start that we assume our category is enriched in super vector spaces}
+
+A object $a$ of $C$ is called {\it simple} if any homogeneous non-zero endomorphism of $a$ is an isomorphism.
+Equivalently, $a$ is simple if it has no quotient objects.
+(We also stipulate that the zero object is not a simple object.)
+
+In the usual bosonic, non-super case, the only possible endomorphism algebra for a simple object
+is the trivial algebra $\cc$ (scalars).
+But in the fermionic/super case, there is a second possibility: the complex Clifford algebra $\cl_1$.
+$\cl_1$ is generated over $\cc$ by the identity (even) and an odd element $x$ such that $x^2 = \lambda \cdot \id$
+(or $x^2 = \lambda$ for short) for some non-zero complex number $\lambda$.
+Note that by rescaling the odd generator $x$ we can make $\lambda$ in the definition of $\cl_1$ anything we want, so long
+as it is non-zero.
+
+If follows that simple objects in a super pivotal category fall into two classes: {\it m-type} if the endomorphism algebra
+is $\cc$, and {\it q-type} if the endomorphism algebra is $\cl_1$.
+\begin{align}
+\vcenter{\xymatrix @!0 @M=1mm @C=25mm{
+& \text{End}(x) = \mathbb{C} \ar@{<->}[rr] &   &\text{$x$ is a simple m-type object}&  \\
+&\text{End}(x) = \mathbb{C} \ell_1 \ar@{<->}[rr]  &  &\text{$x$ is a simple q-type object}&
+	}}
+\end{align}
+
+(The terminology comes from the notation of [cite Jos], which classifies simple super algebras over $\cc$ as either
+$M(p,q) = \End(\cc^{p/q})$ or $Q(n)$ (see appendix XXX).
+Note that the meaning of ``simple" is inconsistent in these two contexts: any $M(p,q)$ or $Q(n)$ is a simple super algebra
+(because it has no non-trivial ideals), but the endomorphism algebra of a simple object must be either
+$M(1,0) \cong M(0,1) \cong \cc$ or $Q(1) \cong \cl_1$ 
+(because all of the larger $M(p,q)$ or $Q(n)$ contain non-invertible elements).
+
+
+\kwsep
+
+\kw{old subsection:}
+
+\medskip
+
+
 Simple objects correspond to minimal idempotents.
 %In an ordinary fusion category simple objects have the defining feature that there endomorphisms are given by $\mathbb{C}$.
 %This is because any simple algebra over $\mathbb{C}$ is Morita equivalent to $\mathbb{C}$. \ethan{true, 
@@ -1447,6 +1492,7 @@ This is due to Schur's lemma: if an object $x$ is simple, then any morphism in $
 must be an isomorphism, and hence $\End(x) = \cc$. 
 Objects with $\End(x) = \cc$ are still possible in the more general fermionic setting we consider here, 
 and we will refer to them as {\it m-type} objects.
+
 \kw{If we are going to use the [mq]-type terminology, then it probably we should have already introduced
 the classification of simple super algebras $M(p,q)$, $Q(n)$ and the Morita equivalences between them.
 Could possibly go in an appendix.}
@@ -1488,6 +1534,7 @@ d_x = \text{Tr} \; x = \text{picture}
 \end{align}
 
 \dave{I need to double check this.}
+\kw{probably this should be moved to the subsection where we discuss pivotal structure}
 Now lets look at some consistency equations on $Q$ type particles.
 \kw{maybe should say that the dot is a odd endomorphism whose square is $\lambda$}
 Define 
