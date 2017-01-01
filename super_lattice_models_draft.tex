@@ -2617,6 +2617,8 @@ The set of all tubes modulo local relations on the tubes forms an algebra called
 
 Every module $M_a$ of the tube algebra can be dually represented by an idempotent $\Pi_a$ that projects onto the vector space $M_a$. Since the quasiparticle excitations are invariant under scale transformations, we require the action of $\Pi_a$ to commute with the action of the tube algebra and so the $\Pi_a$ must be {\it central}. Therefore, classifying the quasiparticles that a given theory supports can be done by enumerating a set of minimal central idempotents of the tube algebra. 
 
+\subsection{Finding the quasiparticles}
+
 Now we will formalize these ideas. For any manifold $M$, we define the supervector space $V(M)$ as 
 \be V(M) = \{\text{$\cc$-linear combinations of field configurations on $M$}\} / (\text{local relations}). \ee
 Here, ``field configurations on $M$'' are string-net pictures drawn on $M$ with the strings labeled by the objects of the superfusion category we're working with, and the local relations consist of performing $F$-moves, removing contractible loops, and doing other operations that are given to us by the superfusion category data. These local relations allow us to reduce arbitrary field configurations on $M$ to one of a small set of different independent field configurations. Most importantly for us, if $M$ is the cylinder, every field configuration on $M$ can be reduced to one of the following form:
@@ -2647,30 +2649,31 @@ In \eqref{gluing} the use of $\tp_{V(S)}$ rather than the usual $\tp_\cc$ is for
 %\be s: [V(C)]^n \ra \End(V(S^2_n)).\ee
 
 Consider a punctured plane with a single quasiparticle localized at the location of the puncture. The exact type of quasiparticle will be determined by the flux passing through the puncture and the puncture's boundary conditions. Now consider acting with a scale transformation that ``zooms in'' to the location of the puncture, which is implemented by gluing cylinders supporting different field configurations onto the puncture. Mathematically, these scale transformations are encapsulated by a mapping 
-\be s : V(C) \ra \End(V(C)).\ee
-Since the quasiparticles localized around each puncture are topological they must scale-invariant\footnote{We are tacitly assuming that our phase is gapped and that the quasiparticles are separated by distance scales much larger than the correlation length.} and so the vector space of field configurations on $S^2_n$ must be invariant under the action of $s$. 
+\be s : V(C) \ra \End(V(C)),\ee
+where the $V(C)$ on the right-hand side is the superspace of field configurations on an annulus surrounding the puncture which characterizes the quasiparticle. The image of $V(C)$ under the map $s$ can be thought of as the formal definition of the tube algebra, namely the algebra whose scalars are drawn from $\cc$ and whose multiplication rule corresponds to the composition of maps in $\End(V(C))$, which is graphically given by stacking tubes on top of one another. We will write the tube algebra as $\fube$.	
 
-The image of $V(C)$ under the map $s$ can be thought of as the formal definition of the tube algebra, namely the algebra whose scalars are drawn from $\cc$ and whose multiplication rule corresponds to the composition of maps in $\End(V(C))$, which is physically given by stacking tubes on top of one another. We will write the tube algebra as $\fube$. Since we have a way to associate elements in $\fube$ with automorphisms of $V(C)$, $V(C)$ is a $\fube$-module.
+Since the quasiparticles localized around each puncture are topological they must scale-invariant\footnote{We are tacitly assuming that our phase is gapped and that the quasiparticles are separated by distance scales much larger than the correlation length.} and so the vector space of field configurations on the puncture must be mapped into itself under the action of $s$. If $M_a \subset V(C)$ is the subspace corresponding to the quasiparticle $a$, then this condition translates into the requirement that $s(v) (M_a) \subset M_a$, for all $v \in V(C)$. 
+Mathematically, this means that the spaces $M_a$ associated with quasiparticle excitations are modules of the tube algebra. Any (semi-simple) module can be written as a direct sum of simple modules, and so the elementary quasiparticle excitations correspond to simple $\tube$-modules. Summarizing, we identify elementary quasiparticles with the ``smallest'' subspaces of $V(C)$ that are mapped into themselves under the action of the tube algebra (scale transformations). 
 
 %Since all the elements in $\fube$ are isomorphisms on $V(C)$, $\fube$ is a ``representation'' of $V(S^2_1)$. The word ``representation'' is in quotes because $\fube$ isn't a group; it's actually an algebra, and so the more precise wording is to say that $V(C)$ is a $\fube$-{\it module}.% (for details on modules, see \S \ref{sec:morita}). 
 
-Now we are prepared to discuss how to obtain the quasiparticle spectrum of the theory. Because $V(C)$ is a $\fube$-module, we can always decompose it into a direct sum of simple modules as
-\be V(C) = \bigoplus_a V_a(C),\ee
-which is analogous to our ability to decompose any representation into a direct sum of irreducible representation. The simple modules $V_a(C)$ are the smallest vector spaces left invariant under the the action of $\fube$, and can thus be identified with the simple topological quasiparticles in the theory. \ethan{nope, talk about centrality}
+%Now we are prepared to discuss how to obtain the quasiparticle spectrum of the theory. Because $V(C)$ is a $\fube$-module, we can always decompose it into a direct sum of simple modules as
+%\be V(C) = \bigoplus_a V_a(C),\ee
+%which is analogous to our ability to decompose any representation into a direct sum of irreducible representation. The simple modules $V_a(C)$ are the smallest vector spaces left invariant under the the action of $\fube$, and can thus be identified with the simple topological quasiparticles in the theory. \ethan{nope, talk about centrality}
 
-We can also take a dual point of view with regards to the quasiparticles, and think of them as functions on $V(C)$, rather than as the simple sub-modules of $V(C)$. In this way of thinking, we define the maps $\Pi_a$ to be the canonical projectors from $V(C)$ to each of its submodules:
-\be \Pi_a : V(C) \twoheadrightarrow \fld_a(C).\ee
-We thus see that the $\Pi_a$ are in one-to-one correspondence with the simple modules of $V(C)$. In physical terms, the $\Pi_a$ are the idempotents which project onto states in which an $a$ quasiparticle is present. They are orthogonal:
-\be \Pi_a \Pi_b V(C) = \delta_{ab}\fld_a(C)\ee
-and are also central, since for any $f\in \fube$, we have 
-\be f\Pi_a V(C) = f\fld_a(C) = \fld_a(C),\qquad \Pi_a f V(C) = \Pi_a V(C) = \fld_a(C),\ee
-since $V(C)$ and by extension its simple submodules $\fld_a(C)$ are invariant under the action of $\fube$ by definition. 
+We can also take a dual point of view with regards to the quasiparticles, and think of them as functions on $V(C)$, rather than as $\tube$-modules. In this way of thinking, we define the maps $\Pi_a$ to be the canonical projectors from $V(C)$ onto its simple modules:
+\be \Pi_a : V(C) \twoheadrightarrow M_a.\ee
+The $\Pi_a$ are in one-to-one correspondence with the simple modules of $V(C)$. In physical terms, the $\Pi_a$ are the idempotents which project onto states in which an $a$ quasiparticle is present. They are orthogonal:
+\be \Pi_a \Pi_b V(C) = \delta_{ab}M_a.\ee
+Performing scale transformations (acting with the tube algebra) must not change quasiparticle types, and so the $\Pi_a$ projectors must commute with {\it all} elements of the tube algebra. Therefore, the $\Pi_a$ must be central, and so elementary quasiparticles can also be classified by enumerating the minimal central idempotents of $\tube$. 
+
+%and are also central, since for any $f\in \fube$, we have 
+%\be f\Pi_a V(C) = f\fld_a(C) = \fld_a(C),\qquad \Pi_a f V(C) = \Pi_a V(C) = \fld_a(C),\ee
+%since $V(C)$ and by extension its simple submodules $\fld_a(C)$ are invariant under the action of $\fube$ by definition. 
 
 \subsection{Finding the quasiparticle fusion rules}
 
-Now that we've seen how to obtain the simple modules (central idempotents) and compute the quasiparticle spectrum, it's time to figure out how to derive the quasiparticle fusion rules.
-
-Since quasiparticles are given by field configurations defined on copies of $S^1$s, the pair of pants bordism governs their fusion. If $Y$ is the pair of pants, then the field configurations come equipped with a natural action of $\fube \tp \fube \cong \Aut(V(S^2_2))$ from the left and $\fube \cong \Aut(V(C))$ from the right. Explicitly, for any $F,G \in \fube$, we can define a left action $(F \tp G) V(Y) \xrightarrow{\sim} V(Y)$ by stacking the superposition of tubes $F\tp G$ on top of $Y$, and for any $F \in \fube$ we can define a right action $V(Y) F \xrightarrow{\sim}  V(Y)$ by stacking the tubes $F$ onto the bottom of $Y$. Schematically, these actions look like 
+Now that we've seen how to classify the excitation spectrum, we now demonstrate how to obtain their fusion rules. Since quasiparticles are supported on circular punctures, the fusion of two quasiparticles into a third will can be described by a space of field configurations on the pair of pants. If $Y$ is the pair of pants, then the field configurations come equipped with a natural action of $\fube \tp \fube$ from the left (stacking tubes on the legs of the pants) and $\fube$ from the right (stacking tubes on the waist of the pants). Explicitly, for any $F,G \in \fube$, we can define a left action $(F \tp G) V(Y) \xrightarrow{\sim} V(Y)$ by stacking the horizontal superposition of tubes $F\tp G$ on top of $Y$, and for any $F \in \fube$ we can define a right action $V(Y) F \xrightarrow{\sim}  V(Y)$ by stacking the tubes $F$ onto the bottom of $Y$. Schematically, these actions look like 
 
 %\be (F\tp G) f = \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{piapibpop.pdf}}}},\quad f\in V(Y),\;F,G\in \fube\ee
 and
