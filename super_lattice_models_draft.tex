@@ -2087,7 +2087,7 @@ And we conclude that a dot slide must be purely imaginary. It is convenient to d
 By rescaling the dot we can make $\lambda$ any non-zero number.}
 
 
-\subsection{Fusion spaces}
+\subsection{Fusion spaces} \label{fusion_spaces}
 
 The input data for a super pivotal category includes a fusion space $V^{ab}_c$ for each triple $a,b,c$ of minimal idempotents
 of $C$.
@@ -2588,8 +2588,7 @@ Consider the configuration space of all possible configurations of $\psi$ endpoi
 \begin{align}
 \TwoFermion = (-1)\ \TwoFermionExchange = (-1)^2\ \TwoFermion,
 \end{align}
-which resolves the earlier inconsistency \eqref{pooj
-
+which resolves the earlier inconsistency.
 
 As we mentioned earlier, in order to perform a consistent condensation procedure, we must equip the $\psi$ endpoints with a spin structure. However, in order to take inner products we will need to consider how states transform under reflections, and so we actually need a more general $pin^+$ structure. Because we work in a gauge where the framing of the $\psi$ endpoints is globally fixed, we only need to consider what happens to $\psi$ endpoints when they are either rotated by $2\pi$ or reflected about an axis parallel to our global framing direction (which in our convention is horizontal), since both of these actions leave the framing of the $\psi$ endpoints invariant. Specifying the action of $2\pi$ rotations and reflections about the framing direction on is equivalent to specifying a $pin^+(1) \cong \zt \times \zt$ action on the fibers of our bundle over configuration space. To proceed we need to define how $pin^+(1)$ acts on $\cc$, which will give us a complex line bundle on configuration space. We do this by defining the $2\pi$ rotation to act as multiplication by $-1$ and the reflection about the framing direction to act as complex conjugation, which is needed for our theory to have a unitary structure. Since $2\pi$ rotations...
 
@@ -2628,13 +2627,15 @@ where $V(M)^*$ is the linear dual of $V(M)$. For example, if $C$ is the cylinder
 
 Since $V(M)$ is a graded vector space, we are prevented us from adding together two field configurations with different fermion parity. Also, since we will need to define physical (uncharged) fermions on $M$, we will always need to equip $M$ with a spin structure. This induces a decomposition 
 \be V(M) \cong \bigoplus_{\eta \in H^1(M,\zt)}V_\eta(M),\ee
-where $\fld^\eta(M)$ denotes field configurations compatible with the spin structure determined by the cocycle $\eta$. 
+where $V_\eta(M)$ denotes field configurations compatible with the spin structure determined by the cocycle $\eta$. 
 
 If $M$ and $N$ are two manifolds and there exists a closed manifold $S$ such that $\p M \ni S \in \p N$, then $M$ and $N$ can be glued together along $S$, provided that their spin structures agree on $S$. This induces a tensor product between field configurations on $M$ and those on $N$. However, when we do the gluing, we must take care to mod out by the degrees of freedom carried by the field configurations on $S$, by using a modified tensor product:
 \be \label{gluing} V(M\cup_SN) \cong V(M)\tp_{V(S)} V(N).\ee
 %where we require the spin structure on $S$ induced by the spin structure on $M$ agree with the one induced by the spin structure on $N$. 
 
-In \eqref{gluing} the use of $\tp_{V(S)}$ rather than the usual $\tp_\cc$ is for the same reason as the use of $\tp_{\End(Z)}$ in the usual coproduct isomorphism, which was discussed in detail back in \S \ref{sec:ccs}. This relation can be understood from a physical point of view by considering the entanglement created when we bipartition a cylinder. \ethan{fill in with AKLT perspective}.
+In \eqref{gluing} the use of $\tp_{V(S)}$ rather than the usual $\tp_\cc$ is for the same reason as the use of $\tp_{\End(x)}$ when tensoring together superfusion spaces, which was discussed in detail back in Sec \ref{fusion_spaces}. This relation can be understood from a physical point of view by considering the entanglement created when we bipartition a cylinder. When we create the partition, we cut some field lines that connect the two cylinders. When we glue the cylinders back together, we need to make sure that we project onto . 
+
+As an analogy, consider an infinite spin-1 AKLT chain in one dimension. Consider cutting the chain at a link, giving two chains possessing one spin-$1/2$ degree of freedom at their ends. We can then attempt to recover the chain by glueing the two chains back together, which we can do by tensoring the edge spins together. Since $\frac{1}{2}\tp \frac{1}{2} = 0\oplus 1$, this gives us a Hilbert space that is larger than what we started with: to recover the original AKLT chain Hilbert space, we need to mod out by some degrees of freedom and project onto the spin $1$ subspace. This projection is essentially the same as what is accomplished by our use of the modified tensor product $\tp_{V(S)}$. 
 
 %As an example, if $C$ is the cylinder and we let $V(C;a,b)$ denote the cylinder corresponding to the map $V(C;a,b) : a\ra b$ for $a,b\in V(S^1)$, we can write a resolution of the identity in the form 
 %\be \label{eq:tuberes} V_\gamma(C;a,b) = \bigoplus_{c\in V(S^1)} V_\alpha(C;a,c) \tp_c V_\beta(C;c,b)  \delta_{\alpha|_{S^1},\gamma}\delta_{\beta|_{S^1},\gamma},\ee
@@ -2673,29 +2674,30 @@ Performing scale transformations (acting with the tube algebra) must not change 
 
 \subsection{Finding the quasiparticle fusion rules}
 
-Now that we've seen how to classify the excitation spectrum, we now demonstrate how to obtain their fusion rules. Since quasiparticles are supported on circular punctures, the fusion of two quasiparticles into a third will can be described by a space of field configurations on the pair of pants. If $Y$ is the pair of pants, then the field configurations come equipped with a natural action of $\fube \tp \fube$ from the left (stacking tubes on the legs of the pants) and $\fube$ from the right (stacking tubes on the waist of the pants). Explicitly, for any $F,G \in \fube$, we can define a left action $(F \tp G) V(Y) \xrightarrow{\sim} V(Y)$ by stacking the horizontal superposition of tubes $F\tp G$ on top of $Y$, and for any $F \in \fube$ we can define a right action $V(Y) F \xrightarrow{\sim}  V(Y)$ by stacking the tubes $F$ onto the bottom of $Y$. Schematically, these actions look like 
+Now that we've seen how to classify the excitation spectrum, we now demonstrate how to obtain their fusion rules. Since quasiparticles are supported on circular punctures, the fusion of two quasiparticles into a third will can be described by a space of field configurations on the thrice-punctured sphere. If $a$ and $b$ fuse to $c$, then a generic vector in the fusion space $V^{abc}$ \ethan{should we work with $V^{ab}_c$s or $V^{abc}$s?} is 
+\be \label{pants_braiding_basis} \includegraphics{pants_braiding_basis.pdf},\ee
+where $v,u,w$ are labels drawn from the input category and the black crosses are punctures, around which the quasiparticles $a,b,$ and $c$ are localized. 
 
+The fusion space $V^{abc}$ must be invariant under application of idempotents which project onto the spaces associated with the quasiparticles localized around each puncture. Explicitly, $V^{abc}$ must be invariant under applying $\Pi_a$ to the puncture on which $a$ is localized, and likewise for $\Pi_b$ and $\Pi_c$. 
+%Field configurations on the thrice-punctured sphere come equipped with a natural action of $\fube^{\tp 3}$ generated by fusing tubes into the three punctures.  %Schematically, these actions look like 
 %\be (F\tp G) f = \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{piapibpop.pdf}}}},\quad f\in V(Y),\;F,G\in \fube\ee
-and
-\be fF =  \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{picpop.pdf}}}}\quad f\in V(Y),\; F\in\fube.\ee
+%and
+%\be fF =  \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{picpop.pdf}}}}\quad f\in V(Y),\; F\in\fube.\ee
+Therefore, we {\it define} the fusion space $V^{abc}$ as the smallest nonzero vector space of field configurations on the thrice-punctured sphere such that 
+\be (\Pi_a\tp \Pi_b \tp \Pi_c) V^{abc} = V^{abc}.\ee
 
-Since we want the fusion space of two quasiparticles $a$ and $b$ to be invariant under hitting the top legs of the pants with $\Pi_a$ and $\Pi_b$, we define the fusion space $\fld_{a\tp b}(Y)$ as the smallest nonzero vector space such that 
-\be (\Pi_a\tp \Pi_b)\fld_{a\tp b}(Y) = \fld_{a\tp b}(Y)\ee
-and 
-\be \fld_{a\tp b}(Y)\Pi_{a\tp b}= \fld_{a\tp b}(Y),\ee
-where $\Pi_{a\tp b}$ is the (not necessarily primitive) idempotent which projects onto the vector space $\fld_a(C)\tp \fld_b(C)$. 
+%At a formal level then, the contents of the fusion space $\fld_{a\tp b}(Y)$ can be computed by formally taking the tensor product of modules $\fld_a(C)\tp \fld_b(C)$. This algebraic approach is occasionally useful, but 
+In practice, the best way to identify $V^{abc}$ is to directly search for the smallest (nonzero) collection of independent field configurations on the thrice-punctured sphere that are mapped to themselves under stacking $\Pi_a$ tubes onto one puncture, $\Pi_b$ tubes onto another puncture, and $\Pi_c$ tubes onto the third puncture. $V^{abc}$ is a supervector space, and so it admits a decomposition into fermion-parity even and fermion-parity odd sectors. This opens up the possibility of having richer fusion space structure as compared to the bosonic case: in bosonic theories, a generic fusion space is of the form $\cc^n$, whereas in fermionic theories it is $\cc^{n|m}$, depending on the number of even and odd basis vectors that generate $V^{abc}$.
 
-At a formal level then, the contents of the fusion space $\fld_{a\tp b}(Y)$ can be computed by formally taking the tensor product of modules $\fld_a(C)\tp \fld_b(C)$. This algebraic approach is occasionally useful, but in practice, there is a better way to compute $\fld_{a\tp b}(Y)$, namely by writing down the smallest collection of independent field configurations on $Y$ that are mapped to themselves under stacking $\Pi_a$ and $\Pi_b$ fubes on top of the pants. 
+\ethan{add something about idempotents with both charge boundary conditions that have ambiguous charge, off-diagonal guys in the tube algebra rep, and fib / (1/2)E6 example.}
 
-A few more miscellaneous comments. First, note that if the theory possesses non-Abelian quasiparticles, $\fld_{a\tp b}(Y)$ will generically not be one-dimensional. Additionally, while we haven't talked about fermions much yet, $\fld_{a\tp b}(Y)$ should always be thought of as a superspace -- like all the other vector spaces considered so far, it admits a decomposition into fermion-parity even and fermion-parity odd sectors. This opens up the possibility of having more structured fusion spaces: in bosonic theories, a generic fusion space is of the form $\cc^n$, whereas in fermionic theories it is $\cc^{n|m}$, depending on the number of even and odd basis vectors that generate $\fld_{a\tp b}(Y)$. \ethan{Naively, one might think that the larger fusion spaces (and their possible non-abelian structure) could find applications in quantum information/quantum computating. }
-
-
-Of course, forming the vector space $\fld_{a\tp b}(Y)$ is only half the battle, since we would like to express the fusion product $a\tp b$ in terms of other quasiparticles in the theory. This can be done by resolving the idempotent $\Pi_{a\tp b}$ as a collection of primitive idempotents. To illustrate why this is the correct strategy, we exploit the following decomposition of $\fld_{a\tp b}(Y)$ into a direct sum 
+%Forming the vector space $V^{ab}$ is only half the battle, since we would like to express the fusion product $a\tp b$ in terms of other quasiparticles in the theory. This can be done by resolving the idempotent $\Pi_{a\tp b}$ as a collection of primitive idempotents. To illustrate why this is the correct strategy, we exploit the following decomposition of $\fld_{a\tp b}(Y)$ into a direct sum 
 %\be \fld_{a\tp b}(Y) = \bigoplus_{c_i} \fld_{c_i}(C),\ee
-\be \fld_{a\tp b}(Y) \cong \bigoplus_{c} \fld_{a\tp b}(Y) \tp_{V(S^1)} \fld_c(C),\ee
-where the sum is over all quasiparticles $c$ and as before, $\fld_{a\tp b}(Y) \tp_{V(S^1)} \fld_c(C)$ means ``glue the field configurations in $\fld_{a\tp b}(Y)$ on top of the field configurations in $\fld_c(C)$ and mod out by the space of field configurations on the $S^1$ that you used to do the gluing''. To figure out what $a\tp b$ is, we need to figure out what the fields $\fld_{c}(C)$ on the bottom leg of the pants are. But this is actually very straightforward: using the decomposition above, we see that we just have to compute $\fld_{a\tp b}(Y) \Pi_c$, where $\Pi_c$ runs over all primitive idempotents. Each time a product $\fld_{a\tp b}(Y) \Pi_c$ is nonzero, the quasiparticle $c$ is in the fusion product $a\tp b$, since then the space $\fld_c(C)$ admits a nonzero gluing with $\fld_{a\tp b}(Y)$. The number of times $c$ appears in $a\tp b$ is given by the fusion multiplicity
-\be N^{ab}_c = \dim [\fld_{a\tp b}(Y) \Pi_c].\ee 
-Note that in general, this will be a super-dimension, and will thus decompose as a sum $N^{ab}_c= [N^{ab}_c]^0 + [N^{ab}_c]^1$.
+%\be \fld_{a\tp b}(Y) \cong \bigoplus_{c} \fld_{a\tp b}(Y) \tp_{V(S^1)} \fld_c(C),\ee
+%where the sum is over all quasiparticles $c$ and as before, $\fld_{a\tp b}(Y) \tp_{V(S^1)} \fld_c(C)$ means ``glue the field configurations in $\fld_{a\tp b}(Y)$ on top of the field configurations in $\fld_c(C)$ and mod out by the space of field configurations on the $S^1$ that you used to do the gluing''. To figure out what $a\tp b$ is, we need to figure out what the fields $\fld_{c}(C)$ on the bottom leg of the pants are. But this is actually very straightforward: using the decomposition above, we see that we just have to compute $\fld_{a\tp b}(Y) \Pi_c$, where $\Pi_c$ runs over all primitive idempotents. Each time a product $\fld_{a\tp b}(Y) \Pi_c$ is nonzero, the quasiparticle $c$ is in the fusion product $a\tp b$, since then the space $\fld_c(C)$ admits a nonzero gluing with $\fld_{a\tp b}(Y)$. The number of times $c$ appears in $a\tp b$ is given by the fusion multiplicity
+%We will write the fusion rule coefficients by $N^{abc} = \dim V^{abc}.$ 
+%In general this will be a super-dimension, and will thus decompose as a sum $N^{ab}_c= [N^{ab}_c]^0 + [N^{ab}_c]^1$.
+
 
 
 %%%%%% 
