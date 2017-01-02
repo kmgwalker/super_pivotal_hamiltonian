@@ -401,7 +401,7 @@
 - state sum???
 
 
-\subsection{Ising TQFT}
+\subsection{Ising TQFT} \ethan{will be easy to finish later}
 Here we introduce the Ising TQFT via Kauffamann and Lins\cite{Lins1994}. We choose $A = e^{\frac{2 \pi i}{16}}$, a primitive 16th root of unity. 
 We label the identity particle $1$, Ising anyon $\sigma$ and the fermion $\psi$.
 The quantum dimensions are
@@ -427,103 +427,105 @@ for $C_2$. The first node in the $C_2$ Dynkin diagram is the (fermionic) vacuum,
 
 
 \subsection{Condensing $\psi$} \label{condensing_psi}
-In this subsection we describe our procedure for performing fermion condensation in the Ising theory. Although we are focusing on the Ising theory, the discussion in this subsection is completely general and can be used to perform fermion condensation in more generic settings. We should also mention that while we are indeed identifying emergent fermions with the vacuum, the term ``fermion condensation'' is a bit misleading, as what we will actually do is perform {\it boson} condensation of the bosonic bound state of the emergent fermion $\psi$ and an additional physical fermion. 
+In this subsection we describe our procedure for performing fermion condensation in the Ising theory. We will be a little light on rigor, with a more careful and general approach detailed in Sec \ref{carefully_condensing_psi}. 
 
-First, we notice that $\unit$ and $\psi$ form a fusion sub-algebra of the Ising fusion rules.
+First, we notice that $\unit$ and $\psi$ form a fusion sub-algebra of the Ising fusion algebra.
 We would like to ``condense" the $\psi$ particle by modding out this sub-algebra.
-Modding out by this sub-algebra is not straightforward though, as the $\psi$ particle is fermionic in both spin and statistics,
-\begin{align} \label{psiafermion}
+This is not straightforward though, as the $\psi$ particle is fermionic in both spin and statistics,
+\begin{align} \label{psi_a_fermion}
 \Spin = (-1) \times  \PsiIdentity
-\qquad \qquad \TwoPsiExchange =  (-1) \times\TwoPsiIdentity,
+\qquad \qquad \TwoPsiExchange =  (-1) \times\TwoPsiIdentity.
 \end{align}
 %and therefore cannot be simply identified with the vacuum. 
 %which means that it cannot be identified with the vacuum. Indeed, performing such an identification would result in a trivial theory \dave{Show picture.}
+
 In our graphical calculus, condensing $\psi$ means that $\psi$ worldlines are allowed to have endpoints at locations where they ``disappear'' into the condensate. We will mark the locations where $\psi$ particles are absorbed into the condensate with boxes:
 \begin{align}
-\label{box_defn}
+\label{box_def}
 \PsiFermion 
 \end{align}
-By itself this is inconsistent, since 
+By itself this leads to inconsistencies, since 
 \be 
-\label{twist_inconsistency} \PsiFermion = \PsiFermionTwist = (-1) \ \PsiFermion,
+\label{inconsistency1} \PsiFermion = \PsiFermionTwist = (-1) \ \PsiFermion,
 \ee
-where we have made use of \eqref{psiafermion} in the second step. There is also an additional inconsistency created by the fermionic exchange statistics of the $\psi$ worldlines:
-\be \label{exchange_inconsistency}
+where we have made use of \eqref{psi_a_fermion} in the second step. There is also an additional inconsistency created by the fermionic exchange statistics of the $\psi$ worldlines:
+\be \label{inconsistency2}
 \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermion_nolabels.pdf}}}} = \ \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermionExchange_nolabels.pdf}}}} = (-1) \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermion_nolabels.pdf}}}}.\ee
-The first equality follows by dragging the lower box around and over the upper box, which must be an equality since the points at which the $\psi$ particles disappear into the condensate are unphysical. The second equality follows by making use of \eqref{psiafermion}.
+The first equality follows by dragging the lower box around and over the upper box (we are free to move the boxes around at will since states with a $\psi$ particle disappearing into the condensate at different points are physically indistinguishable). The second equality follows by making use of \eqref{psi_a_fermion}.
 
-To fix these inconsistencies, we couple the boxes marking the $\psi$ endpoints to a spin (technically a pin) structure. Loosely, the spin structure will cancel out the factors of $-1$ picked up upon untwisting $2\pi$-twisted worldlines, allowing for the condensation (or ``transparentization'') process to go through. This essentially amounts to introducing physical fermions to the theory, which compensate for the fermionic nature of the $\psi$ particle in the condensate. We refer readers unfamiliar with spin and pin structures to Appendix \ref{spin_and_pin}.
-
-Throughout this section, we will assume that our theory is defined on an oriented manifold $M$. A spin structure is a section of the spin bundle $FSp(M)$. To facilitate our diagrammatic calculations, we find it convenient to fix a definite section of this bundle in which to draw our diagrams. Since sections of $FSp(M)$ are just consistent choices of spin framings on $M$, fixing a section of $FSp(M)$ amounts to making a fixed choice for the fermion framing at each point of $M$. We will choose a global framing that always points ``to the right'': that is, we will always draw boxes whose $\psi$ lines emanate from their left sides, as in \eqref{box_defn}. We emphasize that this is merely a gauge choice: other framing conventions are related to one another by gauge transformations, and do not necessarily have to be globally constant. 
-
-Consider the configuration space of all possible configurations of $\psi$ endpoints (boxes). We will now form a fiber bundle over the configuration space, whose fibers consist of all possible spin framings and different normal orderings of the $\psi$ endpoints. At a given point in configuration space with $k$ different $\psi$ endpoints, the fiber is $F = (\zt)^2\times S_k$, where $S_k$ is the symmetric group. The $(\zt)^k$ factor acts as spin flips ($2\pi$ framing rotations) on each of the $k$ endpoints, and the $S_k$ factor acts to permute the normal ordering of the endpoints. However, as we identify states that differ by an even number of combined spin flips and fermion swaps, we instead set the fiber to be the group $\mcf = F/G$, where $G$ is the subgroup of $F$ consisting of all elements with even total parity. We define odd permutations of endpoint ordering to act on $\cc$ as multiplication by $-1$, so that swapping the labelling of two $\psi$ endpoints comes at the expense of a minus sign. This means that the exchange of two $\psi$ endpoints is bosonic, in that 
-\begin{align} \label{boxbraid}
-\TwoFermion =\ \TwoFermionExchange = (-1)^2\ \TwoFermion,
-\end{align}
-which resolves the inconsistency \eqref{exchange_inconsistency}. 
-
-As we mentioned earlier, in order to perform a consistent condensation procedure, we must equip the $\psi$ endpoints with a spin structure. However, in order to take inner products we will need to consider how states transform under reflections, and so we actually need a more general $pin^+$ structure. Because we work in a gauge where the framing of the $\psi$ endpoints is globally fixed, we only need to consider what happens to $\psi$ endpoints when they are either rotated by $2\pi$ or reflected about an axis parallel to our global framing direction (which in our convention is horizontal), since both of these actions leave the framing of the $\psi$ endpoints invariant. Specifying the action of $2\pi$ rotations and reflections about the framing direction on is equivalent to specifying a $pin^+(1) \cong \zt \times \zt$ action on the fibers of our bundle over configuration space. To proceed we need to define how $pin^+(1)$ acts on $\cc$, which will give us a complex line bundle on configuration space. We do this by defining the $2\pi$ rotation to act as multiplication by $-1$ and the reflection about the framing direction to act as complex conjugation, which is needed for our theory to have a unitary structure. This fixes the remaining inconsistency \eqref{twist_inconsistency}, since the $-1$ sign associated with $2\pi$ rotations means that 
+To fix these inconsistencies, we equip the theory with a spin structure. We describe this in detail in Sec \ref{carefully_condensing_psi}, but loosely the idea is to couple the $\psi$ endpoints to a spin structure, which ``bosonizes'' them and allows the condensation procedure to go through. This essentially amounts to adding a phase of {\it physical} (not anyonic or emergent) fermions to the theory, and attaching a single physical fermion to each $\psi$ endpoint. 
+This fixes the first inconsistency \eqref{inconsistency1}, since rotating the physical fermion on the $\psi$ endpoint by $2\pi$ gives an extra factor of $-1$:
 \begin{align} \label{boxspin}
 \PsiFermion = (-1)\ \PsiFermionTwist = (-1)^2\ \PsiFermion. 
 \end{align}
+Adding fermions to the $\psi$ endpoints means that we have to keep track of their normal ordering, since permuting two $\psi$ endpoints must come at the expense of a minus sign. 
+This means that the exchange of two labeled $\psi$ endpoints is bosonic, in that 
+\begin{align} \label{boxbraid}
+\TwoFermion =\ \TwoFermionExchange = (-1)^2\ \TwoFermion,
+\end{align}
+which resolves the remaining inconsistency \eqref{inconsistency2}. Thus, the physical fermions attached to the $\psi$ endpoints compensate for the fermionic nature of the $\psi$ particle in the condensate, and transform the $\psi$ endpoints into bosonic objects, which we are then allowed to condense. Therefore, although we are indeed identifying emergent fermions with the vacuum, the term ``fermion condensation'' is a bit misleading, as what we are actually doing is closer to {\it boson} condensation of bound states of $\psi$ and a physical fermion. 
 
-To summarize, we resolved the difficulties presented by condensing $\psi$ by allowing $\psi$ lines to end on marked points that came equipped with a pin structure. Physically, adding the pin structure can be regarded as introducing a phase of physical (uncharged) fermions and coupling them to the $\psi$ endpoints. The endpoints then become composites of a physical fermion and an emergent fermion, and as a result are bosonic and allowed to condense.
+Although $\psi$ endpoints are bosonic with respect to self-exchange and twists, they are not strictly bosonic in the usual sense, as they still couple to the background spin structure: the emergent $\psi$ fermions do not see the spin structure, but the physical fermions attached to their endpoints do. This difference is only important when considering manifolds with nontrivial topology, and means that when a $\psi$ endpoint is carried around a topologically non-trivial cycle, it will pick up a factor of $\pm1$ that depends on the ambient spin structure. 
 
-However, although $\psi$ endpoints are bosonic with respect to self-exchange and twists, they are not strictly bosonic in the usual sense, as they still couple to the background spin structure: the emergent $\psi$ fermions do not see the spin structure, but the physical fermion attached to their endpoints do. This means that when a $\psi$ endpoint is carried around a topologically non-trivial cycle, it will pick up a factor of $\pm1$, depending on the ambient spin structure. 
 
-A useful picture for this condensation process is to imagine the existence of a codimenion-1 ``back wall'' that plays the role of the condensate. In this picture, we interpret the boxes at the endpoints of $\psi$ lines as marking the location where $\psi$ lines meet the back wall. The back wall carries a spin structure to provide the minus signs that make equations \eqref{boxspin} and \eqref{boxbraid} hold. This point of view allows us to interpret the condensation procedure as a projection of the (2+1)D Ising TQFT to the (1+1)D $C_2$ theory. The fact that the Ising theory looses a dimension upon condensation is roughly equivalent to the statement that the Ising theory is a {\it braided} modular tensor category, but the $C_2$ theory is not.\footnote{This is similar to the relationship between a (1+1)D phase described by the tensor category $\mcc$ and the (2+1)D phase described by the braided category $\mcz(\mcc)$.}
+%\ethan{The commented-out section that follows is the back wall picture, which I relegated to section 9}
+%A useful picture for this condensation process is to imagine the existence of a codimenion-1 ``back wall'' that plays the role of the condensate. In this picture, we interpret the boxes at the endpoints of $\psi$ lines as marking the location where $\psi$ lines meet the back wall. The back wall carries a spin structure to provide the minus signs that make equations \eqref{boxspin} and \eqref{boxbraid} hold. This point of view allows us to interpret the condensation procedure as a projection of the (2+1)D Ising TQFT to the (1+1)D $C_2$ theory. The fact that the Ising theory looses a dimension upon condensation is roughly equivalent to the statement that the Ising theory is a {\it braided} modular tensor category, but the $C_2$ theory is not.\footnote{This is similar to the relationship between a (1+1)D phase described by the tensor category $\mcc$ and the (2+1)D phase described by the braided category $\mcz(\mcc)$.}
 %This is because the spin structure ocurrs along on a two dimensional surface embedded in the TQFT. \ethan{I'm not sure how true this is}
 
-\begin{figure}
-  \centering
-    \includegraphics{BackWall.pdf}
-      \caption{The ``back wall'' picture. Starting from a (2+1)D Ising TQFT (left), we allow $\psi$ worldlines to be absorbed into the back wall of the box, which is required to possess a spin structure in order for this absorption to be consistent. In the condensed theory, we replace the points where the $\psi$ lines meet the back wall with boxes, as in the right panel. This allows us to ``squash'' the box down to a two dimensional plane, allowing us to view the condensed theory as a (1+1)D theory. \dave{need to number things.}.}
-\end{figure}
+%\begin{figure}
+%  \centering
+%    \includegraphics{BackWall.pdf}
+ %     \caption{The ``back wall'' picture. Starting from a (2+1)D Ising TQFT (left), we allow $\psi$ worldlines to be absorbed into the back wall of the box, which is required to possess a spin structure in order for this absorption to be consistent. In the condensed theory, we replace the points where the $\psi$ lines meet the back wall with boxes, as in the right panel. This allows us to ``squash'' the box down to a two dimensional plane, allowing us to view the condensed theory as a (1+1)D theory. \dave{need to number things.}.}
+%\end{figure}
 
+%\ethan{below is an abridged discussion of removing pairs of fermions... decided that it could be saved until sec 9}
+\begin{comment}
 Since $\psi$ lines can disappear into the condensate, we need to be able to annihilate pairs of boxes attached by a $\psi$ string, as these objects are part of the condensate. Annihilating a pair of connected boxes must give us a state proportional to the vacuum:
-\begin{align}
+\begin{align} 
 \PsiEnd  = \lambda \times \text{(vaccuum)},
 \label{EvalPsiPsi}
 \end{align}
-where $\lambda$ is some complex number. As described earlier, the reflection in $pin^+(1)$ about the framing direction acts as complex conjugation, and so we must have
+where $\lambda$ is some complex number. In Sec \ref{condensing_psi}, we show that $\lambda$ must be purely imaginary. We will see later on that consistency between $F$-moves and fermion removal requires that we choose $\lambda = A^4$, placing a nontrivial constraint on the choices of $A$ that allow us to perform fermion condensation. 
+\end{comment}
+
+%%% below is the proof that $\lambda$ must be imaginary---cut it here, left it in sec 9
+\begin{comment}
+Hermitian conjugation involves reflecting diagrams about the framing direction (horizontal in our drawings), and so Hermitian-conjugating \eqref{EvalPsiPsi} we get 
 %\footnote{The fact that spatial reflections act as complex conjugation follows from the fact that $pin^+(2)$ admits a real spinor representation.}
 \begin{align}
-\lambda^{*} = \left( \PsiEnd \right) ^{\dagger}  = \PsiEndExchange = - \lambda,
+\lambda^{*} \times \text{(vaccuum)} = \left( \PsiEnd \right) ^{\dagger}  = \PsiEndExchange = - \lambda \times \text{(vaccuum)},
 \label{phase}
 \end{align}
 where in the last step we have swapped the normal-ordering of the boxes at the expense of a minus sign. 
 This implies that $\lambda = - \lambda^*$, and so $\lambda$ must be purely imaginary. 
-We will see later on that consistency between $F$-moves and fermion removal requires that we choose $\lambda = A^4$, placing a nontrivial constraint on the choices of $A$ that allow us to perform fermion condensation. 
+\end{comment}
 
 %To summarize, we have seen that in order to condense an emergent fermion $\psi$ we must couple our theory to a spin structure, which is provided by a phase of free (physical) fermions $f$. Condensing the emergent fermions is then accomplished by coupling them to the spin structure, or equivalently by condensing $\psi f$ bound states. 
-
-Before moving on, we note in passing that we are using a pin structure (and not a pin$_c$ structure) to perform the condensation, and hence are assuming that the manifold we are working over is orientable and that the physical fermions which provide the spin structure are {\it uncharged} (i.e. they couple only to gravity). If the physical realization we have in mind for these fermions has $U(1)$ symmetry, we would need to generalize to a s$pin_c$ structure instead. However, if we are obtaining the physical fermions from a phase without $U(1)$ symmetry like a topological superconductor (we will see later that this is indeed what happens in the $C_2$ theory), then a pin structure is sufficient. 
  
-\subsection{Local relations in the $C_2$ theory}
+\subsection{Local relations in the $C_2$ theory (in progress)}
 %and so we can condense the $\psi$ particle by modding out this sub-algebra, provided that we introduce the spin structures needed to make this procedure legitimate. 
 Now that we have worked out how to condense $\psi$, we can determine the graphical rules that govern the condensed theory. 
 We will denote the condensed theory by $C_2$, for reasons that we will elaborate on later. We could alternatively write $C_2 = \mcc/\psi$, since we have introduced an isomorphism between $\psi$ and the identity object in Ising.
 
 We have already seen that in order for the condensation procedure to go through, the $C_2$ theory must come equipped with a spin structure. This introduces non-trivial local relations into the diagrammatic calculus that are not present in bosonic theories.  
 
-First, we first observe that any diagram consisting of a closed $\psi$ loop or an open $\psi$ string can be absorbed into the condensate at the expense of a phase by using (\ref{EvalPsiPsi}).
-This means that in the condensed theory, the only objects remaining will be $\sigma$ lines, which may or may not have $\psi$ fermions attached to them. 
-We will denote the image of $\sigma$ under the condensation procedure as $\beta$, and we will introduce a blue dot as a compact notation for a $\psi$ line that terminates on $\beta$.
+First, we first observe that any closed $\psi$ loop or an open $\psi$ string can be absorbed into the condensate at the expense of phase factors, and so in the condensed theory the only objects remaining will be $\sigma$ lines, which may or may not have $\psi$ fermions attached to them. 
+We will denote the image of $\sigma$ under the condensation procedure as $\beta$, and we will introduce a blue dot as a compact notation for a $\psi$ line that terminates on a $\beta$ line.
 Diagrammatically any section of the $\beta$ line may look like
 \begin{align} \label{betaendos}
 \FubeXss \qquad \qquad \FubeXsds,
 \end{align}
 where in the right picture the blue dot indicates the termination point of a $\psi$ worldline. We reiterate that this is just a convenient notation, with the dot serving as a compact way of drawing a $\psi$ line with a box \eqref{box_defn} whose left end is attached to the $\beta$ line:
-\be include figure! \ee
+\be make figure \ee
 
 The two diagrams in \eqref{betaendos} are the generators of the endorphism algebra of $\beta$.
 Since we have one even generator and one odd generator we see that $\text{End}(\beta) \cong \mathbb{C}\ell_1$, where $\cl_1$ is the first complex Clifford algebra. It turns out that objects in the condensed theory have nontrivial $\cl_1$ endomorphism algebras if and only if they can ``absorb'' fermion dots in the sense of \eqref{betaendos}. 
-Having objects whose endomorphism algebra is $\cl_1$ is impossible in bosonic theories (where any simple object $a$ always has $\End(a) \cong \cc$), and requires us to modify the type of tensor product used in fermionic theories, which we will elaborate on in Section \ref{IsingTensorProduct}. 
+Having objects whose endomorphism algebra is $\cl_1$ is impossible in bosonic theories (where any simple object $a$ always has $\End(a) \cong \cc$), and requires us to modify the type of tensor product used in fermionic theories. 
 
 Because $\beta$ lines in the condensed theory can have fermion dots on them, there are several new diagrammatic rules involving them that need to be included in our graphical calculus. \ethan{talking about tensoring over endos---motivate with the AKLT chain example}
 
 One of the most important local relations we will need to perform is the addition and removal of an even number of fermions on $\beta$ lines. 
-As shown in \eqref{phase} the process of removing two fermions results in a phase:
+As shown in \eqref{phase} the process of removing two fermions results in a phase: \ethan{add an extra step to show the $F$-move being done}
 \begin{align}
 \SigmaDotDot\; = A^4\; \FubeXss,
 \end{align}
@@ -563,8 +565,8 @@ using these relations we can infer both of the non-trivial F-moves of the conden
 \CupCap \; &= \frac{1}{d} \left(\TwoLine \; + \; \TwoLineDots \right).
 \end{align}
 
-\ethan{commented out ``Tensor product in $\mcc/\psi$'' section, since the full detail of tensoring over endos isn't needed for anything in the $C_2$ and since we're going over it in detail later on and don't want to repeat ourselves. I elaborated a bit about modding out by endos in the previous section to compensate.}
 
+%\ethan{commented out ``Tensor product in $\mcc/\psi$'' section, since the full detail of tensoring over endos isn't needed for anything in the $C_2$ and since we're going over it in detail later on and don't want to repeat ourselves. I elaborated a bit about modding out by endos in the previous section to compensate.}
 \begin{comment}
 %%%%%%%%%%%%%%%%%%
 \subsection{Tensor product in $\cal{C}/\psi$}
@@ -673,11 +675,10 @@ We will return to this in Section??? and describe in more detail.
 \subsection{Quasiparticle excitations and the center of $C_2$} %\label{qps}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this section, we identify the quasiparticle excitations in the $C_2$ theory. As was first shown in the mathematical literature by Occneanu [ref] and later demonstrated in the physics community by [lan wen, nick, yuting], the quasiparticle excitations in bosonic theories derived from a category $\mcc$ are given by the elements of the Drinfeld center $\mcz(\mcc)$, which can be obtained by finding the simple modules of an algebra known as the {\it tube algebra}. With appropriate modifications accounting for spin structure issues, this same construction holds in the more general fermionic setting considered here. Briefly, the tube algebra... \ethan{will finish later} \dave{We should figure out how the 'usual' definition of Drinfeld center is modified for super-fusion categories. }
+In this section, we identify the quasiparticle excitations in the $C_2$ theory. As was first shown in the mathematical literature by Occneanu [ref] and later demonstrated in the physics community by [lan wen, nick, yuting], the quasiparticle excitations in bosonic theories derived from a category $\mcc$ are given by the elements of the Drinfeld center $\mcz(\mcc)$, which can be obtained by finding the simple modules of an algebra known as the {\it tube algebra}. With appropriate modifications accounting for spin structure issues, this same construction holds in the more general fermionic setting considered here. 
 
-For a review and a more detailed discussion of how the tube algebra works in the fermionic setting, we refer readers to Appendix \ref{tubeapp}. 
-
-
+Briefly, the tube algebra is the algebra of ``scale transformations'' on topological quasiparticles, which are localized around circular punctures on the ambient manifold. These ``scale transformations'' consist of gluing in annuli with different field configurations to the punctures associated with each quasiparticle. At an operational level, the elements in the tube algebra are tubes decorated with different field configurations with multiplication given by stacking tubes on top of one another. Since the quasiparticle excitations are topological they must be invariant under these scale transformations, and thus finding the quasiparticle excitations in the theory reduces to finding the (simple) modules of the tube algebra. 
+For a review and a more detailed discussion of how the tube algebra works in the fermionic setting, we refer readers to Appendix \ref{tube_alg}. 
 
 After applying local relations, the diagrams on any tube can be reduced to linear combinations the following diagrams:\begin{align}
 \FubeXXX \quad \FubesXs    \quad \FubeXss \quad \FubessX   \quad \FubesdXs \quad  \FubeXsds \quad \FubessdX
@@ -826,9 +827,10 @@ Before moving on, we note that we could have obtained a large amount of informat
 \be \dim \tube = \sum_{M_a} (\dim M_a)^2.\ee
 In the fermionic case, this is modified slightly to account for the fact that the endomorphism algebras of these modules may be $\cl_1$ instead of $\cc$. The correct modification is
 \be \label{sumofsqs} \dim \tube = \sum_{a | \End(a) \cong \cc} (\dim M_a)^2 + 2\sum_{a|\End(a) \cong \cl_1} (\dim M_a)^2,\ee
-where the factor of 2 comes from the fact that the even and odd parts of $M_a$ have equal dimensions if $a$ is q-type. 
+where the factor of 2 comes from the fact that if $a$ is q-type the even and odd parts of $M_a$ have equal dimensions (as they are oddly isomorphic). 
 
-This formula actually allows us to exactly reproduce the quasiparticle content of the $C_2$ theory starting with equations \eqref{atubes} and \eqref{ptubes} enumerating the elements of the tube algebra. Since \eqref{sumofsqs} holds for any algebra, it holds for the subalgebras $\tube^P$ and $\tube^A$. Since taking fermions around tubes with periodic spin structures acts as the identity,\footnote{This is true in the $C_2$ theory, but not in general; see Sec \ref{e6} for a counterexample.} all of the quasiparticles associated with periodic spin structures will have $\cl_1$ endomorphism algebras (that is, they will all be q-type). Furthermore, since $\dim \tube^A = \dim \tube^P = 6$, for the $C_2$ theory we have 
+This formula actually allows us to exactly reproduce the quasiparticle content of the $C_2$ theory starting with equations \eqref{atubes} and \eqref{ptubes} enumerating the elements of the tube algebra. Since \eqref{sumofsqs} holds for any algebra, it holds for the subalgebras $\tube^P$ and $\tube^A$. Since taking fermions around tubes with periodic spin structures acts as the identity,%\footnote{This is true in the $C_2$ theory, but not in general; see Sec \ref{e6} for a counterexample.}
+all of the quasiparticles associated with periodic spin structures will have $\cl_1$ endomorphism algebras (that is, they will all be q-type). Furthermore, since $\dim \tube^A = \dim \tube^P = 6$, for the $C_2$ theory we have 
 \be 6 = \sum_{a \in \mcz^A(C_2)} (\dim M_a)^2,\qquad 6 = 2 \sum_{a\in \mcz^P(C_2)} (\dim M_a)^2,\ee
 where $\mcz^A(C_2)$ are all the quasiparticles associated with anti-periodic spin structures and $\mcz^P(C_2)$ are those associated with periodic spin structures. This immediately tells us that the periodic sector must contain three quasiparticles, while the anti-periodic sector must contain either six $(6 = 6\cdot 1^2)$ or three $(6=2\cdot 1^2 + 2^2)$ quasiparticles. However, since $\tube^A$ is non-abelian the former possibility is ruled out, and thus we have determined that $\mcz(C_2)$ must contain six quasiparticles, with three associated to each spin structure. The quasiparticle associated with the two-dimensional module in the non-vortex sector is $m_\sigma^\pm$, whose two-dimensionality comes from the fact that it is a ``composite'' of two oddly-isomorphic simple modules. 
 
@@ -1978,6 +1980,89 @@ The definition differs from the usual bosonic case in the following ways:
  
 Goal: Define super fusion categories for target audience. Target audience = physicists who have spent some time in Appendix E of Kitaev's 2006 anyon paper. 
 
+
+\subsection{Super pivotal categories from fermion condensation} \label{carefully_condensing_psi}
+
+\ethan{This subsection goes over the condensation process and $pin^+(1)$ action, etc. I put it first since we need to know how to do the condensation procedure before we can come up with examples of super fusion categories, but feel free to put it somewhere else.}
+
+In this section, we give a more precise explanation of how to obtain fermionic topological phases by condensing fermions in bosonic topological phases
+Throughout this section, we will let $\psi$ denote an emergent fermion (which we will mark in dark blue) in some arbitrary bosonic topological phase. We assume $\psi$ is fermionic in both spin and statistics:
+\begin{align} \label{psiafermion}
+\Spin = (-1) \times  \PsiIdentity
+\qquad \qquad \TwoPsiExchange =  (-1) \times\TwoPsiIdentity.
+\end{align}
+We will also assume that $\psi^2=\unit$, meaning that $\unit$ and $\psi$ form a fusion sub-algebra.
+We would like to ``condense" the $\psi$ particle by modding out this sub-algebra.
+This is not straightforward though, because of the fermionic nature of $\psi$. 
+
+%and therefore cannot be simply identified with the vacuum. 
+%which means that it cannot be identified with the vacuum. Indeed, performing such an identification would result in a trivial theory \dave{Show picture.}
+In our graphical calculus, condensing $\psi$ means that $\psi$ worldlines are allowed to have endpoints at locations where they ``disappear'' into the condensate. We will mark the locations where $\psi$ particles are absorbed into the condensate with boxes:
+\begin{align}
+\label{box_defn}
+\PsiFermion 
+\end{align}
+By itself this is inconsistent, since 
+\be 
+\label{twist_inconsistency} \PsiFermion = \PsiFermionTwist = (-1) \ \PsiFermion,
+\ee
+where we have made use of \eqref{psiafermion} in the second step. There is also an additional inconsistency created by the fermionic exchange statistics of the $\psi$ worldlines:
+\be \label{exchange_inconsistency}
+\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermion_nolabels.pdf}}}} = \ \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermionExchange_nolabels.pdf}}}} = (-1) \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermion_nolabels.pdf}}}}.\ee
+The first equality follows by dragging the lower box around and over the upper box, which must be an equality since the points at which the $\psi$ particles disappear into the condensate are unphysical. The second equality follows by making use of \eqref{psiafermion}.
+
+To fix these inconsistencies, we couple the boxes marking the $\psi$ endpoints to a spin (technically a pin) structure. Loosely, the spin structure will cancel out the factors of $-1$ picked up upon untwisting $2\pi$-twisted worldlines, allowing for the condensation (or ``transparentization'') process to go through. This essentially amounts to introducing physical fermions to the theory, which compensate for the fermionic nature of the $\psi$ particle in the condensate. We refer readers unfamiliar with spin and pin structures to Appendix \ref{spin_and_pin}.
+
+Throughout this section, we will assume that our theory is defined on an oriented manifold $M$. A spin structure on $M$ is determined by a spin framing chosen on $M$, which is a section of the spin bundle $FSp(M)$. To facilitate our diagrammatic calculations, we find it convenient to fix a definite spin framing in which to draw our diagrams. %Since sections of $FSp(M)$ are just consistent choices of spin framings on $M$, fixing a section of $FSp(M)$ amounts to making a fixed choice for the fermion framing at each point of $M$. 
+We will choose a global framing that always points ``to the right'': that is, we will always draw boxes whose $\psi$ lines emanate from their left sides, as in \eqref{box_defn}. We emphasize that this is merely a gauge choice: other framing conventions are related to one another by gauge transformations, and do not necessarily have to be globally constant. 
+
+Consider the configuration space of all possible configurations of $\psi$ endpoints (boxes). We will now form a fiber bundle over the configuration space, whose fibers consist of all possible spin framings and different normal orderings of the $\psi$ endpoints. At a given point in configuration space with $k$ different $\psi$ endpoints, the fiber is $F = (\zt)^2\times S_k$, where $S_k$ is the symmetric group. The $(\zt)^k$ factor acts as spin flips ($2\pi$ framing rotations) on each of the $k$ endpoints, and the $S_k$ factor acts to permute the normal ordering of the endpoints. However, as we identify states that differ by an even number of combined spin flips and fermion swaps, we instead set the fiber to be the group $\mcf = F/G$, where $G$ is the subgroup of $F$ consisting of all elements with even total parity. We define odd permutations of endpoint ordering to act on $\cc$ as multiplication by $-1$, so that swapping the labelling of two $\psi$ endpoints comes at the expense of a minus sign. This means that the exchange of two $\psi$ endpoints is bosonic, in that 
+\begin{align} \label{boxbraid}
+\TwoFermion =\ \TwoFermionExchange = (-1)^2\ \TwoFermion,
+\end{align}
+which resolves the inconsistency \eqref{exchange_inconsistency}. 
+
+As we mentioned earlier, in order to perform a consistent condensation procedure, we must equip the $\psi$ endpoints with a spin structure. However, in order to take inner products we will need to consider how states transform under reflections, and so we actually need a more general $pin^+$ structure. Because we work in a convention where $\psi$ endpoints always have a fixed framing, we only need to consider what happens to the endpoints when they are either rotated by $2\pi$ or reflected about an axis parallel to our global framing direction (which in our convention is horizontal), since both of these actions leave the framing of the $\psi$ endpoints invariant. Specifying the action of $2\pi$ rotations and reflections about the framing direction on is equivalent to specifying a $pin^+(1) \cong \zt \times \zt$ action on the fibers of our bundle over configuration space. To proceed we need to define how $pin^+(1)$ acts on $\cc$, which will give us a complex line bundle on configuration space. We do this by defining the $2\pi$ rotation to act as multiplication by $-1$ and the reflection about the framing direction to act as complex conjugation, which is needed for our theory to have the correct unitary structure. This fixes the remaining inconsistency \eqref{twist_inconsistency}, since the $-1$ sign associated with $2\pi$ rotations means that 
+\begin{align} \label{boxspin}
+\PsiFermion = (-1)\ \PsiFermionTwist = (-1)^2\ \PsiFermion. 
+\end{align}
+
+To summarize, we resolved the difficulties presented by condensing $\psi$ by allowing $\psi$ lines to end on marked points that came equipped with a pin structure. Physically, adding the pin structure can be regarded as introducing a phase of physical fermions\footnote{Since we are using a $pin^+$ structure to perform the condensation, we are tacitly assuming that the physical fermions which provide the spin structure are {\it uncharged}. If the physical realization we have in mind for these fermions has $U(1)$ symmetry, we would need to generalize to a $pin_c$ structure instead. However, if we are obtaining the physical fermions from a phase without $U(1)$ symmetry like a topological superconductor, then a pin structure is sufficient. %(this is indeed what happens in the $C_2$ theory)
+} 
+and coupling them to the $\psi$ endpoints. The endpoints then become composites of a physical fermion and an emergent fermion, and as a result are bosonic and are hence allowed to condense. However, although $\psi$ endpoints are bosonic with respect to self-exchange and twists, they are not strictly bosonic in the usual sense, as they still couple to the background spin structure: the emergent $\psi$ fermions do not see the spin structure, but the physical fermion attached to their endpoints do. This means that when a $\psi$ endpoint is carried around a topologically non-trivial cycle, it will pick up a factor of $\pm1$, depending on the ambient spin structure. 
+
+A useful picture for this condensation process is to imagine the existence of a codimenion-1 ``back wall'' that plays the role of the condensate. In this picture, we interpret the boxes at the endpoints of $\psi$ lines as marking the location where $\psi$ lines meet the back wall. The back wall carries a spin structure to provide the minus signs that make equations \eqref{boxspin} and \eqref{boxbraid} hold. This point of view allows us to interpret the condensation procedure as a form of dimensional reduction. For example, when condensing the fermion in the Ising TQFT, we can think of the condensation procedure as a map from the (2+1)D Ising theory to the (1+1)D $C_2$ theory. The fact that the Ising theory looses a dimension upon condensation is roughly equivalent to the statement that the Ising theory is a {\it braided} modular tensor category, but the $C_2$ theory is not: the condensation process destroys the braided structure.\footnote{This is similar to the relationship between a (1+1)D phase described by the tensor category $\mcc$ and the (2+1)D phase described by the braided category $\mcz(\mcc)$.}
+%This is because the spin structure ocurrs along on a two dimensional surface embedded in the TQFT. \ethan{I'm not sure how true this is}
+
+\begin{figure}
+  \centering
+    \includegraphics{BackWall.pdf}
+      \caption{The ``back wall'' picture. Starting from a (2+1)D Ising TQFT (left), we allow $\psi$ worldlines to be absorbed into the back wall of the box, which is required to possess a spin structure in order for this absorption to be consistent. In the condensed theory, we replace the points where the $\psi$ lines meet the back wall with boxes, as in the right panel. This allows us to ``squash'' the box down to a two dimensional plane, allowing us to view the condensed theory as a (1+1)D theory. \dave{need to number things.}.}
+\end{figure}
+%We will see later on that consistency between $F$-moves and fermion removal requires that we choose $\lambda = A^4$, placing a nontrivial constraint on the choices of $A$ that allow us to perform fermion condensation. 
+
+%To summarize, we have seen that in order to condense an emergent fermion $\psi$ we must couple our theory to a spin structure, which is provided by a phase of free (physical) fermions $f$. Condensing the emergent fermions is then accomplished by coupling them to the spin structure, or equivalently by condensing $\psi f$ bound states. 
+\ethan{Do we want the proof that $\lambda \in \cc \\\ \rr$ here? Not sure.}
+Since $\psi$ lines can disappear into the condensate, we need to be able to annihilate pairs of boxes attached by a $\psi$ string, as these objects are part of the condensate. Annihilating a pair of connected boxes must give us a state proportional to the vacuum:
+\begin{align}
+\PsiEnd  = \lambda \times \text{(vaccuum)},
+\label{EvalPsiPsi}
+\end{align}
+where $\lambda$ is some complex number (the semicircular nature of the above diagram comes from our choice of spin framing). As described earlier, the reflection in $pin^+(1)$ about the framing direction acts as complex conjugation, and so we must have
+%\footnote{The fact that spatial reflections act as complex conjugation follows from the fact that $pin^+(2)$ admits a real spinor representation.}
+\begin{align}
+\lambda^{*} = \left( \PsiEnd \right) ^{\dagger}  = \PsiEndExchange = - \lambda,
+\label{phase}
+\end{align}
+where in the last step we have swapped the normal-ordering of the boxes at the expense of a minus sign. 
+This implies that $\lambda = - \lambda^*$, and so $\lambda$ must be purely imaginary. 
+
+To summarize, we have taken a bosonic topological phase possessing an emergent fermion, and ``stacked'' it with a phase of physical fermions that can be regarded as a spin structure. In order to condense the emergent fermion, we couple the bosonic phase and the physical fermions together by condensing bound states of physical and emergent fermions.
+
+
+The result of the condensation procedure is a {\it fermionic topological phase}: one that has fermionic underlying degrees of freedom and which possesses a Hilbert space structure which is not realizable in bosonic theories. In the next section, we examine the properties of the simple objects in these phases in detail. 
+
+
 \subsection{Simple objects}
 
 We will assume that our category $C$ is {\it idempotent complete} -- 
@@ -2013,6 +2098,23 @@ Note that the meaning of ``simple" is inconsistent in these two contexts: any $M
 (because it has no non-trivial ideals), but the endomorphism algebra of a simple object must be either
 $M(1,0) \cong M(0,1) \cong \cc$ or $Q(1) \cong \cl_1$ 
 (because all of the larger $M(p,q)$ or $Q(n)$ contain non-invertible elements).
+
+%showing that \lambda is purely imaginary:
+\begin{comment}
+Since $\psi$ lines can disappear into the condensate, we need to be able to annihilate pairs of boxes attached by a $\psi$ string, as these objects are part of the condensate. Annihilating a pair of connected boxes must give us a state proportional to the vacuum:
+\begin{align}
+\PsiEnd  = \lambda \times \text{(vaccuum)},
+\label{EvalPsiPsi}
+\end{align}
+where $\lambda$ is some complex number (the semicircular nature of the above diagram comes from our choice of spin framing). As described earlier, the reflection in $pin^+(1)$ about the framing direction acts as complex conjugation, and so we must have
+%\footnote{The fact that spatial reflections act as complex conjugation follows from the fact that $pin^+(2)$ admits a real spinor representation.}
+\begin{align}
+\lambda^{*} = \left( \PsiEnd \right) ^{\dagger}  = \PsiEndExchange = - \lambda,
+\label{phase}
+\end{align}
+where in the last step we have swapped the normal-ordering of the boxes at the expense of a minus sign. 
+This implies that $\lambda = - \lambda^*$, and so $\lambda$ must be purely imaginary. 
+\end{comment}
 
 
 \kwsep
@@ -2618,7 +2720,7 @@ Physically, the spin structure we use to perform condensation can be thought of 
 
 
 %%%%%%%%%%%%%%%%%%%%
-\section{The tube algebra}
+\section{The tube algebra} \label{tube_alg}
 %%%%%%%%%%%%%%%%%%%%
 
 %\ethan{this section will definitely be improved at a later point (I'll also try to trim down on all the formal baggage that we don't really need)}
@@ -2679,7 +2781,7 @@ Mathematically, this means that the spaces $M_a$ associated with quasiparticle e
 %which is analogous to our ability to decompose any representation into a direct sum of irreducible representation. The simple modules $V_a(C)$ are the smallest vector spaces left invariant under the the action of $\fube$, and can thus be identified with the simple topological quasiparticles in the theory. \ethan{nope, talk about centrality}
 
 We can also take a dual point of view with regards to the quasiparticles, and think of them as functions on $V(C)$, rather than as $\tube$-modules. In this way of thinking, we define the maps $\Pi_a$ to be the canonical projectors from $V(C)$ onto its simple modules:
-\be \Pi_a : V(C) \twoheadrightarrow M_a.\ee
+\be \Pi_a : V(C) \rightarrow M_a.\ee
 The $\Pi_a$ are in one-to-one correspondence with the simple modules of $V(C)$. In physical terms, the $\Pi_a$ are the idempotents which project onto states in which an $a$ quasiparticle is present. They are orthogonal:
 \be \Pi_a \Pi_b V(C) = \delta_{ab}M_a.\ee
 Performing scale transformations (acting with the tube algebra) must not change quasiparticle types, and so the $\Pi_a$ projectors must commute with {\it all} elements of the tube algebra. Therefore, the $\Pi_a$ must be central, and so elementary quasiparticles can also be classified by enumerating the minimal central idempotents of $\tube$. 
