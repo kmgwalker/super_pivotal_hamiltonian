@@ -392,6 +392,7 @@ the $C_2$ super pivotal category.
 This theory 
 \kw{I can't decide whether to call these ``categories" or ``TQFTs" or ``theories"; maybe use all three terms.}
 is obtained from the Ising TQFT by condensing the emergent fermion $\psi$, as described below.
+\kw{need to revisit this, since there will be at least some general discussion of condensation in this section}
 
 \kwsep
 
@@ -415,7 +416,10 @@ Older outline:
 
 
 \subsection{Ising TQFT} \ethan{will be easy to finish later}
-Here we introduce the Ising TQFT via Kauffamann and Lins\cite{Lins1994}. We choose $A = e^{\frac{2 \pi i}{16}}$, a primitive 16th root of unity. 
+Here we introduce the Ising TQFT via Kauffamann and Lins\cite{Lins1994}. 
+We choose $A = e^{\frac{2 \pi i}{16}}$, a primitive 16th root of unity. 
+\kw{This contradicts $A = \pm ie^{\pm i\pi/8}$ below; perhaps just leave $A$ as an undetermined
+primitive 16th root of 1.}
 We label the identity particle $1$, Ising anyon $\sigma$ and the fermion $\psi$.
 The quantum dimensions are
 \be
@@ -423,6 +427,16 @@ d_1 = 1 \quad d_\sigma = -A^2 - A^{-2} \quad d_\psi =1
 \ee
 The four different choices $A = \pm ie^{\pm i\pi/8}$ all give us positive quantum dimensions $d = \sqrt{2}$. 
 \dave{will come back to this.}
+
+\medskip
+
+\kw{draw attention to the facts that (1) $\phi$ is not transparent, (2) $\psi$ has twist $-1$, 
+and (3) $\psi$ has fermionic statistics}
+
+
+
+
+
 
 \newcommand{\braid}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{braid.pdf}}}}}
 \newcommand{\TLIdentity}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TLIdentity.pdf}}}}}
@@ -438,11 +452,70 @@ The four different choices $A = \pm ie^{\pm i\pi/8}$ all give us positive quantu
 for $C_2$. The first node in the $C_2$ Dynkin diagram is the (fermionic) vacuum, and the second node is $\beta$, the image of $\sigma$ under condensation.
 \kw{Scott and I use the convention that q-type particles in the principal graph get a double circle, and lines connecting
 m-type and q-type particles are doubled, with arrow pointing to the m-type particle.}
+\kw{let's put this figure later in this section}
 } 
 \end{figure}
 
 
+
+\subsection{Condensation in general}
+
+Let $C$ be a ribbon category and let $\alpha$ be a particle (simple object) of $C$ which we hope to condense.
+In category theoretic terms, we want to add morphisms to $C$ so that $\alpha$ becomes
+isomorphic to the trivial particle $\unit$ (or, more generally, to a direct sum of several copies of $\unit$).
+In terms of string diagrams, we want to allow $\alpha$ world lines to disappear into the vacuum (or into
+the condensate), as shown in Figure [xxx, showing inverses].
+We can also think of this as a categorical quotient, with result denoted $C/\langle \alpha \cong 1 \rangle$ or
+more simply $C/\alpha$.
+
+In order for this procedure to not cause unintended collapse in $C$,
+$\alpha$ must satisfy two conditions.
+
+The first is that $\alpha$ braid trivially with every particle in $C$ 
+(i.e.\ $\alpha$ lies in the transparent subcategory of $C$).
+If $\beta$ braids non-trivially with $\alpha$ (i.e.\ if the left and right braidings are not equal),
+then any string diagram which includes a $\beta$ particle must be zero, as shown in 
+Figure [xxx; assume qdim of alpha is one for convenience].
+\kw{say something about bound (right term?) particles here?}
+
+The second condition is that the twist of $\alpha$ is 1.
+If not, then we have a contradiction, as shown in Figure [xxx].
+
+\kw{should add third condition that $\alpha$ has bosonic statistics}
+
+\medskip
+
+If $\alpha$ is not transparent, or if the twist of $\alpha$ is not 1, then we
+will have to work harder to construct $C/\alpha$.
+\kw{maybe mention statistics here too}
+
+
+
 \subsection{Condensing $\psi$} \label{condensing_psi}
+
+
+
+The $\psi$ particle of the Ising category has twist $-1$ and is not transparent,
+so we will have to define a different notion of condensation to define $\mbox{Ising}/\psi$.
+
+The non-transparency means we can only do ``back wall" condensation (explained below).
+One consequence of this is that the quotient category $\mbox{Ising}/\psi$ is not braided.
+It does, however, retain a ``front braiding" by the Ising category, so it is more than a mere tensor category.
+
+The fact that the twist $\theta_\psi = -1$ forces us to equip the back wall
+with a Spin structure.
+
+Finally, the fact that $\psi$ has fermionic statistics forces our vector spaces to be super vector spaces,
+which Koszul sign to keep track of signs related to the ordering of $\psi$ endpoints.
+
+
+
+
+
+\kwsep
+
+
+
 In this subsection we describe our procedure for performing fermion condensation in the Ising theory. We will be a little light on rigor, with a more careful and general approach detailed in Sec \ref{carefully_condensing_psi}. 
 
 First, we notice that $\unit$ and $\psi$ form a fusion sub-algebra of the Ising fusion algebra.
