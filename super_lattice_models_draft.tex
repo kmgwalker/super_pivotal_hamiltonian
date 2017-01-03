@@ -1950,27 +1950,120 @@ We can solve for any two of the vectors above, and use them as a basis for the o
 
 Hence the the vector space associated to the $(P,P)$ torus is $\mathbb{C}^{1|2}$, and we choose the linearly independent basis to be,
 \begin{align}
-A(T^2,P,P) = \mathbb{C} \left [ \hOdd, \quad \vOdd,\quad \TubeXa \right ] 
+A(T^2_{PP}) = \mathbb{C} \left [ \hOdd, \quad \vOdd,\quad \TubeXa \right ] 
+\end{align}
+We also define,
+\begin{align}
+\stackrel{\bullet}{h} \equiv  \hOdd, \quad \stackrel{\bullet}{v} \equiv \vOdd,\quad {X} \equiv \TubeXa
 \end{align}
 
 One can quite simply work out the $S$matrix in this basis,
 \begin{align}
 \left( \begin{matrix}
-\hOdd \\ 
-\vOdd\\
+\stackrel{\bullet}{h} \\
+\stackrel{\bullet}{v} \\
+X \\
 \end{matrix} \right)
 \xrightarrow{S_{PP}} 
 \left( \begin{matrix}
-0&i \\ 
-1&0\\
+0&i  &0 \\ 
+1&0 &0 \\
+0&0& -i \\
 \end{matrix} \right)
 \left( \begin{matrix}
-\hOdd \\ 
-\vOdd\\
-\end{matrix} \right)
-\quad \quad \quad
-\TubeXa \; \xrightarrow{S_{PP}}\; -i\; \TubeXa
+\stackrel{\bullet}{h} \\
+\stackrel{\bullet}{v} \\
+X \\\end{matrix} \right)
 \end{align}
+\dave{Should we seperate the even and odd parts into two seperate sub-blocks?}
+
+We now change to the idempotent basis. 
+We define $\left[ \stackrel{\bullet}{Q}_{i}\right]^2  = Q_i$. 
+This has a $\pm$ ambiguity, we denote the $\pm$ signs by $\sigma_i$. 
+We can also change to the idempotent basis with,
+\begin{align}
+\left( \begin{matrix}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right) \; =\;
+\left( \begin{matrix}
+\sigma_1 e^{- i \pi /4} &0&0\\
+0&\sigma_2 e^{- i \pi /4} &0\\
+0&0&1 \\
+\end{matrix} \right)
+\left( \begin{matrix}
+\frac{e^{- i \pi /4}}{\sqrt{2}} & 0&0 \\
+- \frac{e^{- i \pi /4}}{\sqrt{2}} & 1 & 0 \\
+0 & 0& - \frac{e^{5 i \pi /6}}{\sqrt{2 + d}}\\
+\end{matrix} \right)
+\left( \begin{matrix}
+\stackrel{\bullet}{h} \\
+\stackrel{\bullet}{v} \\
+X \\
+\end{matrix} \right)
+\end{align}
+
+So that the $S$-matrix is given by,
+\begin{align}
+\left( \begin{matrix}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right) \xrightarrow{S}
+\frac{e^{i \pi /4}}{\sqrt{2}}\left( \begin{matrix} 
+1&\Sigma &0 \\
+\Sigma &-1&0\\
+0&0& -\sqrt{2} e^{i \pi /4}\\
+\end{matrix} \right)
+\left( \begin{matrix}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right)
+\quad \quad \text{where $\Sigma = \sigma_1 \sigma_2$.}
+\end{align}
+\dave{It's probably natural to write this as two matrices one with the $Q$ particles, and one with the $M$ particle.}
+
+Can also do the Dehn twist,
+\begin{align}
+\left( \begin{matrix}
+\stackrel{\bullet}{h} \\
+\stackrel{\bullet}{v} \\
+X \\
+\end{matrix} \right)
+\xrightarrow{T_{PP}} 
+\left( \begin{matrix}
+1&0  &0 \\ 
+1&-i &0 \\
+0&0& e^{5 i \pi /6} \\
+\end{matrix} \right)
+\left( \begin{matrix}
+\stackrel{\bullet}{h} \\
+\stackrel{\bullet}{v} \\
+X \\\end{matrix} \right)
+\end{align}
+which gives,
+\begin{align}
+\left( \begin{matrix}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right) \xrightarrow{T_{PP}}
+\left( \begin{matrix} 
+1 & 0&0 \\
+0 & -i & 0 \\
+0 & 0& e^{5 i \pi /6}\\
+\end{matrix} \right) 
+\left( \begin{matrix}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right)
+\end{align}
+as expected.
+\dave{In the odd sector we have $S_o^4 = -1$, $(S_o^{\dagger} T)^3 = -1$, and in the even sector we have $S_e^4 = 1$, $(S_e^{\dagger} T)^3 = 1$.}
+
 
 
 \kwsep
