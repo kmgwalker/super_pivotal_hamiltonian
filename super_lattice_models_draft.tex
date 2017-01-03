@@ -1611,7 +1611,7 @@ e^{i \pi /4} \left( \begin{matrix}
 \TubeXav \\
 \end{matrix} \right) 
 \end{align}
-
+\dave{Left side is (A,P), right side is (P,A).}
 
 \dave{Lets stick with the conventions above for now and define}
 \begin{align}
@@ -1931,19 +1931,139 @@ Where we have denoted a normalized Q type idempotent by $\widehat{\text{Q}} = \t
 Notice that the matrix is symmetric, and unitary.
 
 \paragraph{$(P,P)$ sector:}
-Check that:
+
+
+We find the following local relation by multiplying two tadpoles in two different ways on the torus (will make picture).
 \begin{align}
-\xOdd = 0
+\frac{de^{ -i \pi / 4 }}{\sqrt{2}}\;  \hOdd = \vOdd \; + \; \tOdd \; - \frac{2 e^{i \pi /4}}{\sqrt{d}} \; \xOdd
 \end{align}
+applying $S$ to both sides we also find
 \begin{align}
-\frac{de^{ i \pi / 4 }}{\sqrt{2}}\;  \hOdd = \vOdd \; + \; \tOdd 
+\frac{d e^{i \pi/4}}{\sqrt{2}} \vOdd = \hOdd  + i \tOdd + \frac{2 e^{11i \pi /12}}{\sqrt{d}} \xOdd
+\end{align}
+No other linearly independent relations follow from applying $S$ since, in this basis $S^2 = i\mathds{1}$. 
+We can solve for any two of the vectors above, and use them as a basis for the odd parity sector of the $(P,P)$ torus.
+\begin{align}
+\tOdd \;&=\; \hOdd \; -i\; \vOdd \\
+\xOdd \;&=\;\sqrt{\frac{d}{2}}\left( e^{i \pi /3}\;  \hOdd \; -i \; \vOdd \right) 
 \end{align}
 
-So that we can take 
+Hence the the vector space associated to the $(P,P)$ torus is $\mathbb{C}^{1|2}$, and we choose the linearly independent basis to be,
 \begin{align}
-\hOdd \quad \vOdd \quad \TubeXa
+A(T^2_{PP}) = \mathbb{C} \left [ \hOdd, \quad \vOdd,\quad \TubeXa \right ] 
 \end{align}
-as a basis. 
+We also define,
+\begin{align}
+\stackrel{\bullet}{h} \equiv  \hOdd, \quad \stackrel{\bullet}{v} \equiv \vOdd,\quad {X} \equiv \TubeXa
+\end{align}
+
+One can quite simply work out the $S$matrix in this basis,
+\begin{align}
+\left( \begin{matrix}
+\stackrel{\bullet}{h} \\
+\stackrel{\bullet}{v} \\
+X \\
+\end{matrix} \right)
+\xrightarrow{S_{PP}} 
+\left( \begin{matrix}
+0&i  &0 \\ 
+1&0 &0 \\
+0&0& -i \\
+\end{matrix} \right)
+\left( \begin{matrix}
+\stackrel{\bullet}{h} \\
+\stackrel{\bullet}{v} \\
+X \\\end{matrix} \right)
+\end{align}
+\dave{Should we seperate the even and odd parts into two seperate sub-blocks?}
+
+We now change to the idempotent basis. 
+We define $\left[ \stackrel{\bullet}{Q}_{i}\right]^2  = Q_i$. 
+This has a $\pm$ ambiguity, we denote the $\pm$ signs by $\sigma_i$. 
+We can also change to the idempotent basis with,
+\begin{align}
+\left( \begin{matrix}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right) \; =\;
+\left( \begin{matrix}
+\sigma_1 e^{- i \pi /4} &0&0\\
+0&\sigma_2 e^{- i \pi /4} &0\\
+0&0&1 \\
+\end{matrix} \right)
+\left( \begin{matrix}
+\frac{e^{- i \pi /4}}{\sqrt{2}} & 0&0 \\
+- \frac{e^{- i \pi /4}}{\sqrt{2}} & 1 & 0 \\
+0 & 0& - \frac{e^{5 i \pi /6}}{\sqrt{2 + d}}\\
+\end{matrix} \right)
+\left( \begin{matrix}
+\stackrel{\bullet}{h} \\
+\stackrel{\bullet}{v} \\
+X \\
+\end{matrix} \right)
+\end{align}
+
+So that the $S$-matrix is given by,
+\begin{align}
+\left( \begin{matrix}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right) \xrightarrow{S}
+\frac{e^{i \pi /4}}{\sqrt{2}}\left( \begin{matrix} 
+1&\Sigma &0 \\
+\Sigma &-1&0\\
+0&0& -\sqrt{2} e^{i \pi /4}\\
+\end{matrix} \right)
+\left( \begin{matrix}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right)
+\quad \quad \text{where $\Sigma = \sigma_1 \sigma_2$.}
+\end{align}
+\dave{It's probably natural to write this as two matrices one with the $Q$ particles, and one with the $M$ particle.}
+
+Can also do the Dehn twist,
+\begin{align}
+\left( \begin{matrix}
+\stackrel{\bullet}{h} \\
+\stackrel{\bullet}{v} \\
+X \\
+\end{matrix} \right)
+\xrightarrow{T_{PP}} 
+\left( \begin{matrix}
+1&0  &0 \\ 
+1&-i &0 \\
+0&0& e^{5 i \pi /6} \\
+\end{matrix} \right)
+\left( \begin{matrix}
+\stackrel{\bullet}{h} \\
+\stackrel{\bullet}{v} \\
+X \\\end{matrix} \right)
+\end{align}
+which gives,
+\begin{align}
+\left( \begin{matrix}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right) \xrightarrow{T_{PP}}
+\left( \begin{matrix} 
+1 & 0&0 \\
+0 & -i & 0 \\
+0 & 0& e^{5 i \pi /6}\\
+\end{matrix} \right) 
+\left( \begin{matrix}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right)
+\end{align}
+as expected.
+\dave{In the odd sector we have $S_o^4 = -1$, $(S_o^{\dagger} T)^3 = -1$, and in the even sector we have $S_e^4 = 1$, $(S_e^{\dagger} T)^3 = 1$.}
+
 
 
 \kwsep
@@ -3080,7 +3200,8 @@ A nice feature of the diagrammatic notation is that the ``delocalization" of fem
 For example the fermion odd state does not have a femrion localized at either end, rather its free to slide from one end to the other.
 When transforming back to the original basis, one sees that the state is actually an even superposition of all possible placements of an even number of fermions, similarly for the odd state.
 
-\section{$\frac{1}{2}$E6 associators}
+\section{$\frac{1}{2}$E6 data}
+\subsection{Associators}
 \label{E6Fsymbols}
 There are four unitary solutions to the pentagon equation for $\frac{1}{2}$E6. They split into two sets, one pair has all positive quantum dimensions, while the other has negative quantum dimension on the $x$ particle. 
 The solutions in each set are related by complex conjugation. 
@@ -3132,8 +3253,423 @@ F^{xxx}_x  =
 d = 1 + \sqrt{3} \quad \quad c_1 = \frac{e^{-5 i \pi/6} }{\sqrt{d}} \quad \quad c_4 = \frac{e^{-i \pi/4}}{\sqrt{2}}
 \end{align}
 
+\newpage
+\subsection{Idempotents}
+\dave{These are data from an older version of the notes. We don't have to include them but they could be useful for other people. }
+
+\dave{e = empty diagram, $l_x$ = x-loop, $l_y$ = y-loop.}
+\dave{$v_y$ = verticle y lines, $t_y$ = y line with twist, $t_y l_x$ = verticle y line with an x looping the upper puncture.}
+\begin{table}
+{\tabulinesep=1.2mm
+\begin{tabu}{ c c | c c c c }
+particle & spin &e&$l_x$&$l_y$& \\ \hline
+$1$ & $
+       1       
+
+$ &
+$
+\frac{1}{2+d^2}
+$
+ &
+$
+\frac{1}{2 \sqrt3}
+$
+ &
+$
+\frac{1}{2+d^2}
+$
+ &
+\\
+$2$ & $
+       1       
+
+$ &
+$
+\frac{1}{2}
+$
+ &
+$
+$
+ &
+$ -
+\frac{1}{2}
+$
+ &
+\\
+$3$ & $
+       1       
+
+$ &
+$
+\frac{d}{4 \sqrt{3}}
+$
+ &
+$ -
+\frac{1}{2 \sqrt3}
+$
+ &
+$
+\frac{d}{4 \sqrt{3}}
+$
+ &
+\end{tabu}
+\caption{Charge $0$ idempotents.}
+}
+{\tabulinesep=1.2mm
+\begin{tabu}{ c c | c c c c }
+particle & spin &$t_y$&$t_y l_x$&$v_y$& \\ \hline
+$2$ 
+& $       1       $ 
+&$\frac{1}{2}$
+ &$$
+ &$\frac{1}{2}$
+ &
+\\
+$4$ & $
+       1/2     
+
+$ &
+$ -
+\frac{1}{2+d^2}
+$
+ &
+$ e^{\frac{6i\pi}{12}}
+\frac{1}{2 \sqrt3}
+$
+ &
+$
+\frac{1}{2+d^2}
+$
+ &
+\\
+$5$ & $
+       1/2     
+
+$ &
+$ -
+\frac{d}{4 \sqrt{3}}
+$
+ &
+$ e^{\frac{-6i\pi}{12}}
+\frac{1}{2 \sqrt3}
+$
+ &
+$
+\frac{d}{4 \sqrt{3}}
+$
+ &
+\end{tabu}
+}
+\caption{Charge $2$ idempotents.}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\dave{$t_x$ = verticle x line with a twist, $v_x$ = verticle x lines, $X_{ij}$ = X diagram with index $i$ at bottom and index $j$ at top. $v_x l_y$ = verticle x diagram with y looping around top puncture. $t_x h_y$ = x diagram with a twist and $y$  across center. }
+
+\begin{table}
+\resizebox{\textwidth}{!}{
+{\tabulinesep=1.2mm
+\begin{tabu}{ c c | c c c c c c c c c }
+particle & spin &$t_x$&$v_x$&$X_{11}$ & $X_{12}$ &$X_{21}$ & $X_{22}$ & $v_x l_y$ & $t_x h_y$ \\ \hline
+$2$ & $
+       1       
+$ &
+$
+\frac{1}{2d}
+$
+ &
+$
+\frac{1}{2d}
+$
+ &
+$ e^{\frac{-9i\pi}{12}}
+\frac{\sqrt{3d-8}}{4}
+$
+ &
+$ e^{\frac{-9i\pi}{12}}
+\frac{\sqrt{3d-8}}{4}
+$
+ &
+$ e^{\frac{9i\pi}{12}}
+\frac{\sqrt{3d-8}}{4}
+$
+ &
+$ e^{\frac{-3i\pi}{12}}
+\frac{\sqrt{3d-8}}{4}
+$
+ &
+$ e^{\frac{6i\pi}{12}}
+\frac{1}{2d}
+$
+ &
+$ e^{\frac{-6i\pi}{12}}
+\frac{1}{2d}
+$
+ &
+\\
+$3$ & $
+       1       
+
+$ &
+$
+\frac{1}{4 \sqrt{3}}
+$
+ &
+$
+\frac{1}{4 \sqrt{3}}
+$
+ &
+$ e^{\frac{3i\pi}{12}}
+\frac{1}{4 \sqrt{d} }
+$
+ &
+$ e^{\frac{9i\pi}{12}}
+\beta
+$
+ &
+$ e^{\frac{-9i\pi}{12}}
+\beta
+$
+ &
+$ e^{\frac{-3i\pi}{12}}
+\frac{1}{4 \sqrt{d} }
+$
+ &
+$ e^{\frac{-6i\pi}{12}}
+\frac{1}{4 \sqrt{3}}
+$
+ &
+$ e^{\frac{6i\pi}{12}}
+\frac{1}{4 \sqrt{3}}
+$
+ &
+\\
+$5$ & $
+       1/2     
+
+$ &
+$ -
+\frac{1}{4 \sqrt{3}}
+$
+ &
+$
+\frac{1}{4 \sqrt{3}}
+$
+ &
+$ e^{\frac{-3i\pi}{12}}
+\beta
+$
+ &
+$ e^{\frac{-9i\pi}{12}}
+\frac{1}{4 \sqrt{d} }
+$
+ &
+$ e^{\frac{-3i\pi}{12}}
+\frac{1}{4 \sqrt{d} }
+$
+ &
+$ e^{\frac{-9i\pi}{12}}
+\beta
+$
+ &
+$ e^{\frac{-6i\pi}{12}}
+\frac{1}{4 \sqrt{3}}
+$
+ &
+$ e^{\frac{-6i\pi}{12}}
+\frac{1}{4 \sqrt{3}}
+$
+ &
+\\
+$6$ & $
+      -5/12    
+
+$ &
+$ e^{\frac{-10i\pi}{12}}
+\frac{1}{2+d^2}
+$
+ &
+$
+\frac{1}{2+d^2}
+$
+ &
+$ e^{\frac{-2i\pi}{12}}
+\gamma
+$
+ &
+$ e^{\frac{10i\pi}{12}}
+\alpha
+$
+ &
+$ e^{\frac{4i\pi}{12}}
+\alpha
+$
+ &
+$ e^{\frac{4i\pi}{12}}
+\gamma
+$
+ &
+$ e^{\frac{6i\pi}{12}}
+\frac{1}{2+d^2}
+$
+ &
+$ e^{\frac{8i\pi}{12}}
+\frac{1}{2+d^2}
+$
+ &
+\\
+$7$ & $
+       1/4     
+
+$ &
+$ e^{\frac{6i\pi}{12}}
+\frac{1}{2+d^2}
+$
+ &
+$
+\frac{1}{2+d^2}
+$
+ &
+$ e^{\frac{6i\pi}{12}}
+\frac{1}{2 \sqrt{6d}}
+$
+ &
+$ e^{\frac{6i\pi}{12}}
+\frac{1}{2 \sqrt{6d}}
+$
+ &
+$
+\frac{1}{2 \sqrt{6d}}
+$
+ &
+$ -
+\frac{1}{2 \sqrt{6d}}
+$
+ &
+$ e^{\frac{6i\pi}{12}}
+\frac{1}{2+d^2}
+$
+ &
+$
+\frac{1}{2+d^2}
+$
+ &
+\\
+$8$ & $
+      -5/12    
+
+$ &
+$ e^{\frac{-10i\pi}{12}}
+\frac{1}{2+d^2}
+$
+ &
+$
+\frac{1}{2+d^2}
+$
+ &
+$ e^{\frac{10i\pi}{12}}
+\alpha
+$
+ &
+$ e^{\frac{-2i\pi}{12}}
+\gamma
+$
+ &
+$ e^{\frac{-8i\pi}{12}}
+\gamma
+$
+ &
+$ e^{\frac{-8i\pi}{12}}
+\alpha
+$
+ &
+$ e^{\frac{6i\pi}{12}}
+\frac{1}{2+d^2}
+$
+ &
+$ e^{\frac{8i\pi}{12}}
+\frac{1}{2+d^2}
+$
+ &
+\\
+$9$ & $
+       1/3     
+
+$ &
+$ e^{\frac{8i\pi}{12}}
+\frac{1}{2+d^2}
+$
+ &
+$
+\frac{1}{2+d^2}
+$
+ &
+$
+$
+ &
+$ e^{\frac{1i\pi}{12}}
+\frac{1}{2 \sqrt{3d} }
+$
+ &
+$ e^{\frac{7i\pi}{12}}
+\frac{1}{2 \sqrt{3d} }
+$
+ &
+$
+$
+ &
+$ e^{\frac{-6i\pi}{12}}
+\frac{1}{2+d^2}
+$
+ &
+$ e^{\frac{-10i\pi}{12}}
+\frac{1}{2+d^2}
+$
+ &
+\\
+$10$ & $
+      -1/6     
+
+$ &
+$ e^{\frac{-4i\pi}{12}}
+\frac{1}{2+d^2}
+$
+ &
+$
+\frac{1}{2+d^2}
+$
+ &
+$ e^{\frac{-11i\pi}{12}}
+\frac{1}{2 \sqrt{3d} }
+$
+ &
+$
+$
+ &
+$
+$
+ &
+$ e^{\frac{7i\pi}{12}}
+\frac{1}{2 \sqrt{3d} }
+$
+ &
+$ e^{\frac{-6i\pi}{12}}
+\frac{1}{2+d^2}
+$
+ &
+$ e^{\frac{2i\pi}{12}}
+\frac{1}{2+d^2}
+$
+ &
+\end{tabu}
+}
+}
+\caption{Charge $1$ idempotents.}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \end{document}
 
