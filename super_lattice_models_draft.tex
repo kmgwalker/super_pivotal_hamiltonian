@@ -2733,7 +2733,7 @@ Graphically, this is simply reflected in our ability to ``displace'' dots from t
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_displacement.pdf}}}}. \ee
 Mathematically, this is nothing more than the mapping $V^{ab}_{x,1} \mapsto V^{ab}_x \tp V^{x\unit}_{x,1}$.  
 
-\subsubsection{Modified tensor product}
+\subsubsection{Modified tensor product} \label{modified_tensor_product}
 There is an important subtlety involved when we tensor together fusion spaces which involve q-type particles, which stems from the non-triviality of the fusion space $V^{x\unit}_x$ if $x$ is q-type.
 To see where this comes from, suppose $x$ is a q-type particle, and consider the resolution of the identity 
 \begin{align} \label{resid}
@@ -2827,8 +2827,6 @@ We note that both $L_f$ and $R_f$ are always {\it even} maps, regardless of the 
 %In fact this is always the case, since as mentioned earlier both $L_f$ and $R_f$ are even maps. 
 %Although they may have a nontrivial action on the fusion spaces.
 %From now, when we write $\tp$ we will always mean $\tp_\cc$, unless specified otherwise.
-
-
 
 Quotienting by the local relations in (\ref{FusionSpaceRelation}) is reminiscent of the condensation of electron pairs in superconductors: these relations say that pairs of fermions can be freely added or removed from the condensate, and that fermions lines terminating on q-type objects (which are the Majorana spin structure defects in this analogy) are able to move around freely. 
 Indeed, a fermionic phase of matter will generate such terms at second order in perturbation theory when proximity coupled to a superconductor.
@@ -2980,7 +2978,10 @@ From now, when we write $\tp$ we will always mean $\tp_\cc$, unless specified ot
 \dave{Let $V^{ab}_x$ be a fusion vertex of $3$ Q type particles. Then if $U_L$ is the action of sliding a dot up past the vertex to the left and similarly $U_R$ for sliding a dot up to the right. Then you can show that $U_L = U_L^{-1}$ and $U_R = U_R^{-1}$ and $U_L U_R = - U_R U_L$.}
 
 
+
+%%%%%%%%%%%%%%%%%%
 \subsubsection{F-symbols}
+%%%%%%%%%%%%%%%%%%
 
 Outline:
 \begin{itemize}
@@ -2992,14 +2993,71 @@ Outline:
 \item pentagon (note explicit permutation op)
 \end{itemize}
 
+The $F$-symbols are defined as basis transformations between different fusion spaces. 
+There are two additional considerations when defining the $F$-symbols in the fermionic setting: they must account for the normal-ordering of the fusion spaces that are transformed during the $F$-move, and they must incorporate the modified tensor product introduced in Sec \ref{modified_tensor_product}. 
+There is some arbitrariness involved in our definition of the $F$-symbols, in terms of the type of diagram they are defined to act on and how they deal with the normal ordering issue.
+We will choose the following convention, in which the $F$-symbols are basis transformations between two fusion spaces of the form $V^{ab}_c$: \ethan{Choose this convention since it's what the majority of physics people use}
+\begin{align} \label{Fdef}
+F^{abc}_d: \; \; \bigoplus_x V^{ab}_{x,2} \tp_{\text{End}(x)} V^{xc}_{d,1} \rightarrow \bigoplus_y V^{ay}_{d,1} \tp_{\text{End}(y)} V^{bc}_{y,2}
+\end{align}
+Graphically, this is written in terms of the matrix elements of $F$ as \ethan{oops, forgot to add vertex multiplicities. Will fix later}
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{Fsymbol_defn.pdf}}}}\ee
+When we take tensor products of fusion spaces, the fusion spaces appear in the tensor product in the same left-to-right order that they appear in the fusion diagram, while the normal ordering of the fusion spaces to increase as we go ``up'' the diagram. 
+This means that the $F$-move permutes the normal ordering of the fusion spaces appearing in the fusion diagram, which we will see leads to Kozul-sign modifications of the pentagon relation. 
 
+To implement the modified tensor products $\tp_{\End(x)}$ and $\tp_{\End(y)}$ in \eqref{Fdef}, we impose the condition that the F-symbols commute with the gauge transformations $L,R$ that implement the modified tensor product. 
+Imposing this condition means that the following diagram must commute:
+\begin{align}
+	\vcenter{\xymatrix @!0 @M=1mm @R=30mm @C=42mm{
+		 \bigoplus_x V^{ab}_{x,2} \otimes V^{xc}_{d,1} \ar[d]^{L_{f}}\ar[r]^{F^{abc}_d}& \bigoplus_y V^{ay}_{d,1} \otimes V^{bc}_{y,2} \ar[d]^{R_{g}} \\
+		\bigoplus_x V^{ab}_{x,2} \otimes V^{xc}_{d,1}  \ar[r]^{F^{abc}_d}  & \bigoplus_y V^{ay}_{d,1} \otimes V^{bc}_{y,2}	
+	}} 
+	{ \quad\quad \forall f \in \oplus_x \text{End}(x), \; \; g \in \oplus_y \text{End}(y)}
+	\label{Fcommute}
+\end{align}
+In matrix form, this is simply $F^{abc}_d  L_f=   R_g F^{abc}_d$.
 
+The pentagon relation in the superfusion case is defined as an equivalence between the same two diagrammatic manipulations as in the bosonic case, and is the statement that the following diagram commutes:
+%\begin{align}
+%\newcommand{\A}{\bigoplus_{p,q}V^{xy}_{p,3}\tp_p V^{pz}_{q,2}  \tp_q V^{qw}_{u,1}}
+%\newcommand{\B}{\bigoplus_{p,t} V^{xy}_{p,2} \tp_p V^{pt}_{u,1} \tp_t V^{zw}_{t,2}}
+%\newcommand{\C}{\bigoplus_{t,s} V^{xs}_{u,1} \tp_s V^{yt}_{s,3} \tp_t V^{zw}_{t,2}}
+%\newcommand{\D}{\bigoplus_{r,q}V^{xr}_{q,2}\tp_r V^{yz}_{r,3}  \tp_q V^{qw}_{u,1}}
+%\newcommand{\E}{\bigoplus_{s,r}V^{xs}_{u,1}\tp_s V^{yz}_{r,3}  \tp_r V^{rw}_{s,2}}
+%\newcommand{\F}{\bigoplus_{t,s} V^{xs}_{u,1} \tp_s V^{yt}_{s,2} \tp_t V^{zw}_{t,3}}
+%\vcenter{\xymatrix @!0 @M=4mm @R=20mm @C=62mm{
+%&\B \ar[r]^{F^{xyz}_t}& \C \ar[dd]^{P_{23}}&\\
+%\A \ar[ru]^{F^{pzw}_u} \ar[rd]^{F^{xyz}_q}&&&\\
+%&\D\ar[r]^{F^{xrw}_u}&\E&
+%	}}
+%\end{align}
+\begin{align}
+\newcommand{\A}{\bigoplus_{p,q}V^{xy}_{p,3}\tp_p V^{pz}_{q,2}  \tp_q V^{qw}_{u,1}}
+\newcommand{\AB}{\ar[rru]^{F^{pzw}_u} \ar[rrd]^{F^{xyz}_q}}
+\newcommand{\B}{\bigoplus_{p,t} V^{xy}_{p,2} \tp_p V^{pt}_{u,1} \tp_t V^{zw}_{t,2}}
+\newcommand{\BC}{\ar[rrr]^{F^{xyz}_t}}
+\newcommand{\C}{\bigoplus_{t,s} V^{xs}_{u,1} \tp_s V^{yt}_{s,3} \tp_t V^{zw}_{t,2}}
+\newcommand{\CF}{\ar[rrd]^{P_{23}}}
+\newcommand{\D}{\bigoplus_{r,q}V^{xr}_{q,2}\tp_r V^{yz}_{r,3}  \tp_q V^{qw}_{u,1}}
+\newcommand{\DE}{\ar[rrr]^{F^{xrw}_u} }
+\newcommand{\E}{\bigoplus_{s,r}V^{xs}_{u,1}\tp_s V^{yz}_{r,3}  \tp_r V^{rw}_{s,2}}
+\newcommand{\EF}{\ar[rru]^{F^{yzw}_s}} 
+\newcommand{\F}{\bigoplus_{t,s} V^{xs}_{u,1} \tp_s V^{yt}_{s,2} \tp_t V^{zw}_{t,3}}
+\vcenter{\xymatrix @!0 @M=2mm @R=22mm @C=19mm{
+&&\B \BC &&&\C \CF &&\\
+\A \AB &&&&&&&\F \\
+&&\D \DE&&&\E \EF&&
+	}} 
+	\label{endoPentagon}
+\end{align}
+where we have used the notation $\tp_x \equiv \tp_{\text{End}(x)}$. Note that this is actually a hexagon, not a pentagon: the extra arrow is the one marked $P_{23}$, which is the Kozul sign originating from switching the normal-ordering of the $V^{yt}_s$ and $V^{z2}_t$ fusion spaces. 
+The use of the modified tensor products $\tp_x$ is how (\ref{endoPentagon}) differs from the ``super-pentagon" equation which has already appeared in the literature REFXXX and which is only applicable to theories that possess no q-type objects 
+(note that if our theory has no q-type objects we can set $\tp_x = \tp_\cc$ for all $x$, and so \eqref{endoPentagon} reduces to the super-pentagon equation in the case with no q-type particles).
+In practice, it is often easiest to first solve the pentagon equation in the ``extended space'' by replacing all $\tp_x$ tensor products with $\tp_\cc$ (yielding the super pentagon equation), and then requiring the resulting $F$-symbols to satisfy the constraint (\ref{Fcommute}), which is tantamount to implementing the modified tensor products.
 
 \kwsep
 
 \kw{old section:}
-
-
 
 \kw{Probably there should be some figures to accompany the definition of $F$ and the pentagon eqn.
 Also, $F$ depends on a choice of ordering of the trivalent vertices on either side of the ``I = H" relation.}
@@ -3079,14 +3137,16 @@ For a simple q-type object we have
 }
 
 \subsection{Pivotal structure}
-Here we remark on the pivotal structure of the super fusion category.
-We have the frobenius Schur indicator given by
+
+Here we remark on the pivotal structure of superfusion categories. First, we have the Frobenius Schur indicator, which is given by
 \begin{align}
-&\kappa_a: \;\; V^{a \bar{a}} \tp_{\text{End}(\bar{a})} V_{\bar{a}a} \rightarrow V^a_a \\
-&\tilde{\kappa}_a: \;\; V_{a \bar{a}} \tp_{\text{End}(\bar{a})} V^{\bar{a}a} \rightarrow V^a_a
+&\kappa_a: \;\; V^{a \bar{a}} \tp_{\text{End}(\bar{a})} V_{\bar{a}a} \rightarrow V^a_a% \\
+%&\tilde{\kappa}_a: \;\; V_{a \bar{a}} \tp_{\text{End}(\bar{a})} V^{\bar{a}a} \rightarrow V^a_a
 \end{align}
-\dave{inverse.}
-which is a special case of the pivot:
+Or diagrammatically, 
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{FS_defn.pdf}}}}
+ \ee
+The Frobenius-Schur move is a special case of the pivot: 
 %\dave{Could either do this (and also specify the dual spaces)}
 %\begin{align}
 %A^{ab}_c:&\;\; V^{\bar{a}a} \tp_{\text{End}({a})}  V^{ab}_c \rightarrow V_{\bar{a} c}^b \\
@@ -3094,16 +3154,29 @@ which is a special case of the pivot:
 %\end{align}
 %--OR--
 \begin{align}
-&X^{ab}_c: \; \; V_{\bar{c} c} \tp_{c} V^{ab}_c \tp_{b} V^{b \bar{b}} \rightarrow V^{\bar{c} a}_{\bar{b}} \\
-&\tilde{X}^{ab}_c: \; \; V^{\bar{a} a} \tp_a V^{ab}_c \tp_c V_{c \bar{c}} \rightarrow V^{b \bar{c}}_{\bar{a}}
+&R^{ab}_c: \; \; V_{\bar{c} c} \tp_{c} V^{ab}_c \tp_{b} V^{b \bar{b}} \rightarrow V^{\bar{c} a}_{\bar{b}} %\\
+%&\tilde{R}^{ab}_c: \; \; V^{\bar{a} a} \tp_a V^{ab}_c \tp_c V_{c \bar{c}} \rightarrow V^{b \bar{c}}_{\bar{a}}
 \end{align}
+Diagrammatically, this looks like 
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{pivot_defn.pdf}}}}
+\ee
+In terms of the $F$-symbols, we can derive \ethan{I used my own derivation---this doesn't agree with the stuff in Parsa's thesis, but I know there are some mistakes in there}
+\be R^{ab}_c = d_b [F^{abb}_a]_{c0} [F^{\bar c c \bar b}_{\bar b}]_{0a}.\ee
 
+From the diagrammatics, we see that the pivot implements a $2\pi/3$ rotation of the fusion space:
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{pivot_cubed.pdf}}}}\ee
 
+In bosonic theories, we have $R^3=\unit$ (the identity operator).
+In the superfusion setting this does not hold, because acting with $R^3$ on some vector $v\in V^{ab}_c$ performs a $2\pi$ rotation on the fermion framing of $v$:
+
+Since rotating the fermion framing is equivalent to multiplication by $-1$ if $v$ has odd fermion parity. 
+Therefore, in superfusion categories, the pivotal structure can be realized ``projectively'', in the sense that 
+\be R^3 = (-1)^F,\ee
+where $(-1)^F$ is the fermion parity operator, which acts on any $v\in V^{abc}$ as $(-1)^F v = (-1)^{|v|}v$.
 
 \dave{solve for $X$ from F-symbols.}
 
 Consistency between the pivotal structure and $F$-moves requires that the following diagram commute: 
-\dave{Is this necessary? Seems like it should following from the pentagon equation.}
 \begin{align}
 \newcommand{\A}{\bigoplus_x V^{ab}_{x,2} \tp_x V^{xc}_{d,1}}
 \newcommand{\B}{\bigoplus_y V^{ay}_{d,1} \tp_y V^{bc}_{y,2} }
