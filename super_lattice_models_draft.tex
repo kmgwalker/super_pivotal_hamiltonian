@@ -312,6 +312,10 @@
 \newcommand{\vOdd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{vOdd.pdf}}}}}
 \newcommand{\hOdd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{hOdd.pdf}}}}}
 
+\newcommand{\TorusBasisa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusBasisa.pdf}}}}}
+\newcommand{\TorusBasisb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusBasisb.pdf}}}}}
+\newcommand{\STorusBasisa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{STorusBasisa.pdf}}}}}
+
 \newcommand{\scale}{}
 
 \newcommand{\TubeXbv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeXbv.pdf}}}}}
@@ -319,6 +323,8 @@
 \newcommand{\TubeXtwistv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeXtwistv.pdf}}}}}
 \newcommand{\Tubeidxv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tubeidxv.pdf}}}}}
 \newcommand{\TubeEmptyv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeEmptyv.pdf}}}}}
+
+
 
 \newcommand{\TorusQQQa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusQQQa.pdf}}}}}
 \newcommand{\TorusQQQb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusQQQb.pdf}}}}}
@@ -329,6 +335,8 @@
 \newcommand{\VSb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VSb.pdf}}}}}
 \newcommand{\VSc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VSc.pdf}}}}}
 \newcommand{\VSd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VSd.pdf}}}}}
+
+\newcommand{\VSeven}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VSeven.pdf}}}}}
 
 \newcommand{\Vrhorhorhoodd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vrhorhorhoodd.pdf}}}}}
 \newcommand{\Vrhorhorho}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vrhorhorho.pdf}}}}}
@@ -1522,9 +1530,14 @@ Hence, this is the ``simplest" non-abelian purely Q type theory.
 \dave{Write down minimal set of associators for the condensed theory.}
 
 \subsection{Pivotal structure}
-Lets denote the odd endomorphism in $\text{End}(\rho)$ as $\gamma$. And let us denote the basis vectors in $V^{\rho \rho}_\rho$ as $v_1$ and $v_2$. 
-Lets also take $v_1$ and $v_2$ to be of even parity, and canonically identify there odd counterparts by ${v_1}_\gamma$ and ${v_{2}}_\gamma$. 
-These are just found by acting with $\gamma$ on the bottom of the trivalent vertex. 
+Lets denote the odd endomorphism in $\text{End}(\rho)$ as $\gamma$. 
+And let us denote the even basis vectors of $V^{\rho \rho}_\rho$ as $v_1$ and $v_2$. 
+We can then identify the odd vectors of $V^{\rho \rho}_\rho$ by ${v_1}_\gamma$ and ${v_{2}}_\gamma$. 
+Which are found by acting with $\gamma$ on the bottom of the trivalent vertex. 
+Diagrammatically we will denote this vector space by,
+\begin{align}
+V^{\rho \rho }_\rho \; \cong \; \mathbb{C} \left[ \VSeven , \quad \VSa \right] \quad \quad \quad a = 1, 2
+\end{align}
 We have the following local relations inherited on the trivalent vertices from the parent theory,
 \begin{align}
 \VSa = \sigma^z_{ab} \VSb \qquad \VSa = \sigma^y_{ab} \VSc \qquad \VSd = -i \sigma^x_{ab} \VSc
@@ -1556,9 +1569,9 @@ We differ from the tube algebra defined in the Ising section by using tubes that
 This makes it easier to hand with the rather involved pivoting moves in $\halfesix$. 
 Explicitly we choose 
 \begin{align}
-t_{abcd;\mu \nu }\equiv \SphereTube
+ t_{abcd;\mu \nu }\equiv \SphereTube
 \end{align}
-as a basis. 
+as a basis. \dave{We could make the indices line up a little more graphically, eg., $t\left(_d\; \substack{c\\ b\\ a\\}\; \substack{ \nu \\ \mu} \right) $}
 And define multiplication as \dave{will add indices later}
 \begin{align}
 \SphereTubeTube \;= \;\sum_{t} C_{t_1 t_2 }^{t_3} \; \SphereTube
@@ -1567,7 +1580,15 @@ And define multiplication as \dave{will add indices later}
 \begin{align}
 C_{t_1 t_2 }^{t_3} = \frac{1}{\sqrt{\text{normalization}}}  \TubeMultiplyTopCoefficent\; \; \times \; \; \TubeMultiplyBottomCoefficient
 \end{align}
-\dave{which in the case of $\halfesix$ should be fine since we have a standard inner product given by the trace. We can also compute tube multiplications in the condensed theory by lifting them to the parent theory, multiplying the tubes, then condensing the fermions away.}
+\dave{which in the case of $\halfesix$ should be fine since we have a standard inner product given by the trace.} 
+\dave{Add some discussion about computing tube multiplications in the condensed theory by lifting them to the parent theory, multiplying the tubes and condensing the fermions away. Discuss limitations of this techinique.}
+
+\dave{to do}
+\begin{itemize}
+\item write down which tubes are identically zero
+\item list non-zero tubes
+\item list local relations among them
+\end{itemize}
 
 
 Local relations given by sliding dots around different cycles.
@@ -1598,9 +1619,8 @@ A third local relation is given by the product of the two listed matrices.
 The quotient takes this four dimensional vector space to a one dimensional one.
 We take the state $(a,b) = (1,1)$ as a representitve and list the relations to the other states.
 
-\dave{Other local relations on anulus?}
-
 \subsubsection{Quasiparticles}
+Add discussion about computing quasi particles. 
 %%%%%%
 \begin{table}
 {{\tabulinesep=1.2mm
@@ -1738,17 +1758,105 @@ d\TubeEmptyv =
 \frac{2}{d}\TubeXtwistv +
 \frac{2\sqrt{d}e^{-3 i \pi /4}}{ d+1} \TubeXav
 \end{align}
-\dave{We could re-write the above as}
+
+- OR - 
+\begin{align}
+&\text{AA sector:} \quad \quad  \TubeXa = e^{-i \pi /12} \frac{d+1}{\sqrt{d}} \left( \TubeEmpty-  \frac{1}{d} \left(\Tubexloop  + \Tubeidx  \right) \right)\\
+&\text{AP sector:} \quad \quad  \TubeXa = e^{-5i \pi /12} \frac{d+1}{\sqrt{d}} \left( \TubeEmpty-  \frac{1}{d} \left(\Tubexloop   + \TubeXtwist \right) \right)\\
+&\text{PA sector:} \quad \quad  \TubeXa = e^{3 i \pi /4} \frac{d+1}{\sqrt{d}} \left( \TubeEmpty-  \frac{1}{d} \left( \Tubeidx + \TubeXtwist \right) \right)
+\end{align}
+-- OR -- 
 \begin{align}
 d\TubeEmpty = 
 \frac{2}{d} \TubeEmpty + 
 \frac{2}{d} \Tubexloop + 
 \frac{2}{d} \Tubeidx + 
 \frac{2}{d} \TubeXtwist + 
-\frac{2\sqrt{d}e^{-i \pi/4}}{d+1} e^{5 i \pi(\mu+1)(\nu+3)/12} \TubeXa \\
-\text{--OR--} \qquad e^{5 i \pi(\mu+1)(\nu+3)/12} \TubeXa = e^{i \pi /4} \frac{d+1}{\sqrt{d}} \left( \TubeEmpty-  \frac{1}{d} \left(\Tubexloop  + \Tubeidx + \TubeXtwist \right) \right)
+\frac{2\sqrt{d}e^{-i \pi/4}}{d+1} e^{5 i \pi(\mu+1)(\nu+3)/12} \TubeXa 
+\end{align}
+-- OR -- 
+\begin{align}
+\qquad e^{5 i \pi(\mu+1)(\nu+3)/12} \TubeXa = e^{i \pi /4} \frac{d+1}{\sqrt{d}} \left( \TubeEmpty-  \frac{1}{d} \left(\Tubexloop  + \Tubeidx + \TubeXtwist \right) \right)
 \end{align}
 \dave{With $(\mu, \nu) = (Y,X)$ $\mu = 1$ is antiperiodic, and $\mu =0$ is periodic. And the appropriate diagrams set to zero.}
+
+It will be useful to write down the change of basis from the tubes to the idempotents.
+These will be the natural basis to describe the action of the mapping class group.
+\begin{align}
+\left( \begin{matrix}
+\text{M}_1\\
+\text{M}_2\\
+\text{M}_3\\
+\end{matrix} \right)_{AA}
+%= \left( \begin{matrix}
+%\frac{1}{d \sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
+%\frac{d}{2 \sqrt{3}} & \frac{1}{2 \sqrt{3}} & - \frac{1}{2 \sqrt{3}} \\ 
+%0 & \frac{1}{2 \sqrt{3}} & 0
+%\end{matrix} \right)
+&= \left( \begin{matrix}
+\frac{1}{d\sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
+\frac{d}{2 \sqrt{3}} & 0 & - \frac{1}{2 \sqrt{3}} \\
+- \frac{d}{2 \sqrt{3}} & \frac{1}{2} & \frac{1}{2 \sqrt{3}}
+\end{matrix} \right)
+\left( \begin{matrix}
+e\\
+v\\
+h\\
+\end{matrix} \right)_{AA}\\
+\left( \begin{matrix}
+\text{M}_1\\
+\text{M}_2\\
+\text{M}_3\\
+\end{matrix} \right)_{AP}
+&= \left( \begin{matrix}
+\frac{1}{d\sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
+\frac{d}{2 \sqrt{3}} & 0 & - \frac{1}{2 \sqrt{3}} \\
+%\frac{e^{7 i \pi/12}}{\sqrt{2}} & \frac{e^{- i \pi/3}}{2\sqrt{3}} & \frac{e^{- i \pi/3}}{2 \sqrt{3}}
+\frac{d e^{2 \pi i/3}}{2 \sqrt{3}} & \frac{e^{- i \pi /3}}{2} & \frac{e^{- i \pi /3}}{2 \sqrt{3}}\\
+\end{matrix} \right)
+\left( \begin{matrix}
+e\\
+t\\
+h\\
+\end{matrix} \right)_{AP} \\
+\left( \begin{matrix}
+\text{Q}_1\\
+\text{Q}_2\\
+\text{M}_6\\
+\end{matrix} \right)_{PA}
+&= \left( \begin{matrix}
+1 & 0 & 0 \\
+\sqrt{\frac{1+d}{3}} e^{-3i \pi /4} & \frac{e^{i \pi /6}}{\sqrt{3}} & \frac{e^{i \pi /3}}{\sqrt{3}} \\
+\frac{e^{7 i \pi /12}}{\sqrt{6}} & \frac{e^{- i \pi / 6}}{2 \sqrt{3}} & \frac{e^{-2 i \pi /3}}{2 \sqrt{3}}\\
+\end{matrix} \right)
+\left( \begin{matrix}
+e\\
+v\\
+t\\
+\end{matrix} \right)_{PA} \\
+\end{align}
+\dave{spin stucture (XY) means X around puncture.}
+
+%%%%%%
+%%%%%%%
+%%%%%%%
+\subsection{S transformation}
+On the 2-torus, the S transformation is given by a $\pi/2$ rotation.
+Since we are working on the twice punctured sphere, the S transformation looks somewhat different:
+\dave{Forgot to number the vertices for Koszul signs.}
+\begin{align}
+S: \TorusBasisa \mapsto \STorusBasisa   = \sum_{xyz; \tau \sigma } S_{abc\mu \nu; xyz \tau \sigma} \TorusBasisb
+\end{align}
+The matrix elements of $S$ can be found with one F-move and a pivot,
+\dave{Will have to ammend these when we finish section 9.}
+\begin{align}
+S_{abc\mu \nu; xyz \tau \sigma} = \sum_{\kappa} \delta_{a \gamma} \delta_{\bar{c} \alpha} \left[ {F^{\bar{c}ac}_a}^{-1} \right]_{\mu b \nu; \sigma \beta \kappa} \left[ R^{\beta c}_c \right ] _{\kappa \tau}
+\end{align}
+
+
+
+
+
 The last two relations turn into one another under an $S$ transformation, which in this basis is given by,
 \begin{align}
 \left( \begin{matrix}
