@@ -473,8 +473,11 @@ the condensate), as shown in Figure [xxx, showing inverses].
 We can also think of this as a categorical quotient, with result denoted $C/\langle \alpha \cong 1 \rangle$ or
 more simply $C/\alpha$.
 
+For simplicity, we will now assume that $\alpha\otimes\alpha\cong \unit$, 
+though most of the following discussion works more generally.
+
 In order for this procedure to not cause unintended collapse in $C$,
-$\alpha$ must satisfy two conditions.
+$\alpha$ must satisfy three conditions.
 
 The first is that $\alpha$ braid trivially with every particle in $C$ 
 (i.e.\ $\alpha$ lies in the transparent subcategory of $C$).
@@ -486,13 +489,12 @@ Figure [xxx; assume qdim of alpha is one for convenience].
 The second condition is that the twist of $\alpha$ is 1.
 If not, then we have a contradiction, as shown in Figure [xxx].
 
-\kw{should add third condition that $\alpha$ has bosonic statistics}
+Finally, the statistics of $\alpha$ should be bosonic; otherwise we have a contradiction, as shown in Figure xxx.
 
 \medskip
 
-If $\alpha$ is not transparent, or if the twist of $\alpha$ is not 1, then we
+If $\alpha$ is not transparent, or if the twist of $\alpha$ is not 1, or if the statistics are not bosonic, then we
 will have to work harder to construct $C/\alpha$.
-\kw{maybe mention statistics here too}
 
 
 
@@ -500,8 +502,12 @@ will have to work harder to construct $C/\alpha$.
 
 
 
-The $\psi$ particle of the Ising category has twist $-1$ and is not transparent,
+The $\psi$ particle of the Ising category has twist $-1$, fermionic statistics, and is not transparent (see xxx above),
 so we will have to define a different notion of condensation to define $\mbox{Ising}/\psi$.
+
+\kw{Note: I'm emphasizing that $\psi$ has three {\it distinct and independent} characteristics which make condensation tricky.
+If we drop positivity requirements, we can violate the spin-statistics thm and have particles which are fermionic in one sense but
+not the other; this will be explored in the paper with Scott.}
 
 The non-transparency means we can only do ``back wall" condensation (explained below).
 One consequence of this is that the quotient category $\mbox{Ising}/\psi$ is not braided.
@@ -511,8 +517,29 @@ The fact that the twist $\theta_\psi = -1$ forces us to equip the back wall
 with a Spin structure.
 
 Finally, the fact that $\psi$ has fermionic statistics forces our vector spaces to be super vector spaces,
-which Koszul sign to keep track of signs related to the ordering of $\psi$ endpoints.
+which Koszul signs to keep track of signs related to the ordering of $\psi$ endpoints.
 
+\medskip
+
+As we saw above, we can't allow world lines of non-transparent particles like $\psi$ disappear anywhere
+in the 3-dimensional space-time.
+But if we restrict the $\psi$-ribbon endpoints to a 2-dimensional subset of the boundary of 3d spacetime,
+we can obtain a consistent graphical calculus.
+
+In this paper, we will adopt the convention that $\psi$ world lines can terminate on a ``back wall", parallel to the 
+blackboard and behind (i.e.\ further from the reader then) all other world lines drawn in figures.
+
+Figure xxx shows a shorthand notation for $\psi$-lines terminating on the back wall.
+A box means that the $\psi$-line heads straight back and terminates.
+Figure xxx shows that back wall condensation does not run afoul of the non-transparency of $\psi$ --
+the world lines of other particles (e.g.\ $\sigma$ in the Ising case) case pass in front of the boxes
+but not behind them.
+
+\ethan{I thought the ``add physical fermions picture'' would be a bit easier for physics people to understand, and that it might be better to do the more rigorous back-wall approach when do the general theory in Sec 9. 
+Either of you can definitely override me on this, though. 
+And If you do want to talk about the back wall and spin structure details here, there are some relevant figures and text we can borrow from sec 9.1.}
+
+\medskip
 
 
 
@@ -869,17 +896,37 @@ Since simple modules are associated with quasiparticles, this naively produces a
 \be \label{msig_defn} m_\sigma^\pm = \frac{1}{2} \left(\FubeXss_A \pm A^{-3}\ \FubessX_A\right).\ee
 %Note that we're letting each fube in the above expression represent its isomorphism class, which is why we haven't added any fubes in $\fld(C)^1$ with odd fermion parity to the expression for $m_\sigma^\pm$ (as they are isomorphic to the even-parity fubes in the expression for $m^\pm$) . 
 
-This looks to give us two quasiparticles, which seems to be in contradiction to our argument involving Morita equivalence. The resolution to this apparent contradiction is that the two simple modules $m^\pm_\sigma$ are actually {\it oddly isomorphic} to one another, by virtue of the anti-periodic spin structures they possess. Indeed, creating a fermion on the top of the $\gamma_2$ tube (which corresponds to the isomorphism given by left multiplication by $\gamma_1$), dragging it around the $\gamma_2$ tube to the bottom, and then annihilating it (through the isomorphism given by right multiplication by $\gamma_1$) acts on the matrix representations as $\rho^\pm(\gamma_2) \mapsto \rho^\mp(\gamma_2)$, and thus establishes an isomorphism $m^+_\sigma\cong m^-_\sigma$.%\footnote{This odd isomorphism follows from the exact sequence $0\ra \spin(n) \ra \pin^\pm(n) \ra \zt \ra 0$, which gives an automorphism on $\spin(n)$ that sends $v \mapsto \gamma_i v \gamma_i$ for $\gamma_i \in \pin^\pm(n)$.}. 
+This looks to give us two quasiparticles, which seems to be in contradiction to our argument involving Morita equivalence. 
+The resolution to this apparent contradiction is that the two simple modules $m^\pm_\sigma$ are actually {\it oddly isomorphic} to one another, by virtue of the anti-periodic spin structures they possess. 
+Indeed, creating a fermion on the top of the $\gamma_2$ tube (which corresponds to the isomorphism given by left multiplication by $\gamma_1$), dragging it around the $\gamma_2$ tube to the bottom, and then annihilating it (through the isomorphism given by right multiplication by $\gamma_1$) acts on the matrix representations as $\rho^\pm(\gamma_2) \mapsto \rho^\mp(\gamma_2)$, and thus establishes an isomorphism $m^+_\sigma\cong m^-_\sigma$.%\footnote{This odd isomorphism follows from the exact sequence $0\ra \spin(n) \ra \pin^\pm(n) \ra \zt \ra 0$, which gives an automorphism on $\spin(n)$ that sends $v \mapsto \gamma_i v \gamma_i$ for $\gamma_i \in \pin^\pm(n)$.}. 
 As an equation, this reads 
 \be \gamma_1 m_\sigma^\pm \gamma_1 = m_\sigma^\mp.\ee
 
-Since only isomorphism classes of quasiparticles are physical, we can therefore identify the two modules $m_\sigma^\pm$ with a single quasiparticle. When doing calculations it is often helpful to fix a particular representative of the $m_\sigma^\pm$ isomorphism class, which we will choose to be $m_\sigma^+$. 
+Since only isomorphism classes of quasiparticles are physical, we can therefore identify the two modules $m_\sigma^\pm$ with a single quasiparticle. 
+When doing calculations it is often helpful to fix a particular representative of the $m_\sigma^\pm$ isomorphism class, which we will choose to be $m_\sigma^+$. 
 
-We will examine the fusion rules and braiding properties of the three quasiparticles identified so far later in Sections \ref{fusion} and \ref{braiding}. For now, we repeat our quasiparticle identification procedure for quasiparticles in the vortex sector, which possess spin structures with periodic boundary conditions around the cylinder. 
+We will examine the fusion rules and braiding properties of the three quasiparticles identified so far later in Sections \ref{fusion} and \ref{braiding}. 
+For now, we repeat our quasiparticle identification procedure for quasiparticles in the vortex sector, which possess spin structures with periodic boundary conditions around the cylinder. 
+
+
+\ethan{I'm a bit confused about why $[m^+_\sigma]$ (the equivalence class of $m^+_\sigma$ and $m_\sigma^-$) is an m-type particle. 
+It seems to me that there are three different generators of $\End([m^+_\sigma])$: two are the idempotents $\Pi_\pm$, which project onto $m^\pm_\sigma$, and one is the odd isomorphism $s$ which exchanges $m^\pm_\sigma$ with $m^\mp_\sigma$. 
+This would seem to give some sort of matrix endomorphism algebra of the form $\begin{pmatrix} \Pi_+ & s \\ s & \Pi_- \end{pmatrix}$. 
+If $[m^+_\sigma]$ is m-type this can't be right. 
+I think that the error here is that I am wrong in thinking of $m^+_\sigma$ and $m^-_\sigma$ as different subspaces of a single ``composite'' two-dimensional (in the tube algebra sense) particle. 
+
+On a related note, I am trying to compute the endomorphism algebras of quasiparticles whose tube algebra representation has a dimension greater than one: examples are $\tau\bar\tau$ in Fib, $\sigma\bar\sigma$ in Ising, and a few of the particles in half $E_6$. 
+The easy example is $\tau\bar\tau = A\oplus B$ in Fib, where $A$ is a pair of tubes with no charge and $B$ is a linear combination of the three charged tubes. 
+It seems to me like the endomorphism algebra of $\tau\bar\tau$ has four generators: two are $\Pi_A$ and $\Pi_B$, which are the (non-central) idempotents which project onto $A$ and $B$. 
+The other two are $T_u,T_d$ which are the tadpole tubes that allow us to map $A$ to $B$ and vice versa. 
+I would think that this would give $\End(\tau\bar\tau) = \cc^{2\times2}$, with the matrices looking something like $\begin{pmatrix} \Pi_A & T_u \\ T_d & \Pi_B \end{pmatrix}$ (a consistency check is that the identity is $\Pi_A \oplus \Pi_B$, which is the diagonal part of the matrix algebra). 
+This implies that $\tau\bar\tau$ is semisimple (which it is, in a sense). Is this true? 
+Similar arguments like this go through for the $Q_1,M_3$, and $M_6$ particles in the half $E_6$ theory.}
 
 \subsubsection{Vortex spin structure} 
 
-As in the last section, we first examine the subalgebra $\tube^P_0$, consisting of tubes with no charge and with periodic boundary conditions. This algebra is two dimensional, generated by a single even vector and a single odd vector: 
+As in the last section, we first examine the subalgebra $\tube^P_0$, consisting of tubes with no charge and with periodic boundary conditions.
+ This algebra is two dimensional, generated by a single even vector and a single odd vector: 
 \be \tube^P_0 = \left\langle \FubeXXX_P,\; \FubesdXs_P\right\rangle.\ee
 As an algebra then, it must be isomorphic to $\cl_1$. 
 $\cl_1 = \langle 1,\gamma\rangle$ has only one simple module, namely $\cc^{1|1}$ with the matrix representation $\rho(1) = \sigma^0,\rho(\gamma)=\sigma^x$. Therefore, this subalgebra will support only one quasiparticle. Since idempotents must always be even, the explicit presentation of this quasiparticle is simply the empty tube. We will denote this quasiparticle by $q_\sigma$:
@@ -2344,19 +2391,21 @@ Goal: Define super fusion categories for target audience. Target audience = phys
 
 \ethan{This subsection goes over the condensation process and $pin^+(1)$ action, etc. I put it first since we need to know how to do the condensation procedure before we can come up with examples of super fusion categories, but feel free to put it somewhere else.}
 
-In this section, we give a more precise explanation of how to obtain fermionic topological phases by condensing fermions in bosonic topological phases
-Throughout this section, we will let $\psi$ denote an emergent fermion (which we will mark in dark blue) in some arbitrary bosonic topological phase. We assume $\psi$ is fermionic in both spin and statistics:
+In this section, we give a more precise explanation of how to obtain fermionic topological phases by condensing fermions in bosonic topological phases.
+Throughout this section, we will let $\psi$ denote an emergent fermion (which we will mark in dark blue) in some arbitrary bosonic topological phase. 
+We assume $\psi$ is fermionic in both spin and statistics:
 \begin{align} \label{psiafermion}
 \Spin = (-1) \times  \PsiIdentity
 \qquad \qquad \TwoPsiExchange =  (-1) \times\TwoPsiIdentity.
 \end{align}
-We will also assume that $\psi^2=\unit$, meaning that $\unit$ and $\psi$ form a fusion sub-algebra.
+We will also assume that $\psi\tp\psi=\unit$, meaning that $\unit$ and $\psi$ form a fusion sub-algebra.
 We would like to ``condense" the $\psi$ particle by modding out this sub-algebra.
 This is not straightforward though, because of the fermionic nature of $\psi$. 
 
 %and therefore cannot be simply identified with the vacuum. 
 %which means that it cannot be identified with the vacuum. Indeed, performing such an identification would result in a trivial theory \dave{Show picture.}
-In our graphical calculus, condensing $\psi$ means that $\psi$ worldlines are allowed to have endpoints at locations where they ``disappear'' into the condensate. We will mark the locations where $\psi$ particles are absorbed into the condensate with boxes:
+In our graphical calculus, condensing $\psi$ means that $\psi$ worldlines are allowed to have endpoints at locations where they ``disappear'' into the condensate. 
+We will mark the locations where $\psi$ particles are absorbed into the condensate with boxes:
 \begin{align}
 \label{box_defn}
 \PsiFermion 
@@ -2368,14 +2417,27 @@ By itself this is inconsistent, since
 where we have made use of \eqref{psiafermion} in the second step. There is also an additional inconsistency created by the fermionic exchange statistics of the $\psi$ worldlines:
 \be \label{exchange_inconsistency}
 \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermion_nolabels.pdf}}}} = \ \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermionExchange_nolabels.pdf}}}} = (-1) \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermion_nolabels.pdf}}}}.\ee
-The first equality follows by dragging the lower box around and over the upper box, which must be an equality since the points at which the $\psi$ particles disappear into the condensate are unphysical. The second equality follows by making use of \eqref{psiafermion}.
+The first equality follows by dragging the lower box around and over the upper box, which must be an equality since the points at which the $\psi$ particles disappear into the condensate are unphysical. 
+The second equality follows by making use of \eqref{psiafermion}.
 
-To fix these inconsistencies, we couple the boxes marking the $\psi$ endpoints to a spin (technically a pin) structure. Loosely, the spin structure will cancel out the factors of $-1$ picked up upon untwisting $2\pi$-twisted worldlines, allowing for the condensation (or ``transparentization'') process to go through. This essentially amounts to introducing physical fermions to the theory, which compensate for the fermionic nature of the $\psi$ particle in the condensate. We refer readers unfamiliar with spin and pin structures to Appendix \ref{spin_and_pin}.
+To fix these inconsistencies, we couple the boxes marking the $\psi$ endpoints to a spin (technically a pin) structure. 
+Loosely, the spin structure will cancel out the factors of $-1$ picked up upon untwisting $2\pi$-twisted worldlines, allowing for the condensation (or ``transparentization'') process to go through. 
+This essentially amounts to introducing physical fermions to the theory, which compensate for the fermionic nature of the $\psi$ particle in the condensate. 
+We refer readers unfamiliar with spin and pin structures to Appendix \ref{spin_and_pin}.
 
-Throughout this section, we will assume that our theory is defined on an oriented manifold $M$. A spin structure on $M$ is determined by a spin framing chosen on $M$, which is a section of the spin bundle $FSp(M)$. To facilitate our diagrammatic calculations, we find it convenient to fix a definite spin framing in which to draw our diagrams. %Since sections of $FSp(M)$ are just consistent choices of spin framings on $M$, fixing a section of $FSp(M)$ amounts to making a fixed choice for the fermion framing at each point of $M$. 
-We will choose a global framing that always points ``to the right'': that is, we will always draw boxes whose $\psi$ lines emanate from their left sides, as in \eqref{box_defn}. We emphasize that this is merely a gauge choice: other framing conventions are related to one another by gauge transformations, and do not necessarily have to be globally constant. 
+Throughout this section, we will assume that our theory is defined on an oriented manifold $M$. 
+A spin structure on $M$ is determined by a spin framing chosen on $M$, which is a section of the spin bundle $FSp(M)$. 
+To facilitate our diagrammatic calculations, we find it convenient to fix a definite spin framing in which to draw our diagrams. %Since sections of $FSp(M)$ are just consistent choices of spin framings on $M$, fixing a section of $FSp(M)$ amounts to making a fixed choice for the fermion framing at each point of $M$. 
+We will choose a global framing that always points ``to the right'': that is, we will always draw boxes whose $\psi$ lines emanate from their left sides, as in \eqref{box_defn}. 
+We emphasize that this is merely a gauge choice: other framing conventions are related to one another by gauge transformations, and do not necessarily have to be globally constant. 
 
-Consider the configuration space of all possible configurations of $\psi$ endpoints (boxes). We will now form a fiber bundle over the configuration space, whose fibers consist of all possible spin framings and different normal orderings of the $\psi$ endpoints. At a given point in configuration space with $k$ different $\psi$ endpoints, the fiber is $F = (\zt)^2\times S_k$, where $S_k$ is the symmetric group. The $(\zt)^k$ factor acts as spin flips ($2\pi$ framing rotations) on each of the $k$ endpoints, and the $S_k$ factor acts to permute the normal ordering of the endpoints. However, as we identify states that differ by an even number of combined spin flips and fermion swaps, we instead set the fiber to be the group $\mcf = F/G$, where $G$ is the subgroup of $F$ consisting of all elements with even total parity. We define odd permutations of endpoint ordering to act on $\cc$ as multiplication by $-1$, so that swapping the labelling of two $\psi$ endpoints comes at the expense of a minus sign. This means that the exchange of two $\psi$ endpoints is bosonic, in that 
+Consider the configuration space of all possible configurations of $\psi$ endpoints (boxes). 
+We will now form a fiber bundle over the configuration space, whose fibers consist of all possible spin framings and different normal orderings of the $\psi$ endpoints. 
+At a given point in configuration space with $k$ different $\psi$ endpoints, the fiber is $F = (\zt)^2\times S_k$, where $S_k$ is the symmetric group. 
+The $(\zt)^k$ factor acts as spin flips ($2\pi$ framing rotations) on each of the $k$ endpoints, and the $S_k$ factor acts to permute the normal ordering of the endpoints. 
+However, as we identify states that differ by an even number of combined spin flips and fermion swaps, we instead set the fiber to be the group $\mcf = F/G$, where $G$ is the subgroup of $F$ consisting of all elements with even total parity. 
+We define odd permutations of endpoint ordering to act on $\cc$ as multiplication by $-1$, so that swapping the labelling of two $\psi$ endpoints comes at the expense of a minus sign. 
+This means that the exchange of two $\psi$ endpoints is bosonic, in that 
 \begin{align} \label{boxbraid}
 \TwoFermion =\ \TwoFermionExchange = (-1)^2\ \TwoFermion,
 \end{align}
@@ -2416,65 +2478,50 @@ where $\lambda$ is some complex number (the semicircular nature of the above dia
 where in the last step we have swapped the normal-ordering of the boxes at the expense of a minus sign. 
 This implies that $\lambda = - \lambda^*$, and so $\lambda$ must be purely imaginary. \ethan{Add pictures to show that taking out two fermions on a $\beta$ line gives us $A^4$}
 
-To summarize, we have taken a bosonic topological phase possessing an emergent fermion, and ``stacked'' it with a phase of physical fermions that can be regarded as a spin structure. In order to condense the emergent fermion, we couple the bosonic phase and the physical fermions together by condensing bound states of physical and emergent fermions.
-
-
-The result of the condensation procedure is a {\it fermionic topological phase}: one that has fermionic underlying degrees of freedom and which possesses a Hilbert space structure which is not realizable in bosonic theories. In the next section, we examine the properties of the simple objects in these phases in detail. 
+To summarize, we have taken a bosonic topological phase possessing an emergent fermion, and ``stacked'' it with a phase of physical fermions that can be regarded as a spin structure. 
+In order to condense the emergent fermion, we couple the bosonic phase and the physical fermions together by condensing bound states of physical and emergent fermions. 
+At the formal level, the phase of physical fermions is represented by sVec, the category of supervector spaces. 
+Forming a stack of the physical fermions and the bosonic phase represented by the fusion category $\mcc$ results in the category $\mcc \boxtimes {\rm sVec}$, and performing the condensation procedure results in a superfusion category that is nontrivially enriched by sVec. 
+The result of the condensation procedure is a {\it fermionic topological phase}: one that has fermionic underlying degrees of freedom and which possesses a Hilbert space structure which is not realizable in bosonic theories. 
+In the next section, we examine the properties of the simple objects in these phases in detail. 
 
 
 \subsection{Simple objects}
 
-We will assume that our category $C$ is {\it idempotent complete} -- 
+We will assume that our category $\mcc$ is {\it idempotent complete} -- 
 every idempotent is the identity morphism of an associated object.
-We also assume that $C$ is {\it additive} -- we can take direct sums of objects.
+We also assume that $\mcc$ is {\it additive} -- we can take direct sums of objects.
 
-\kw{need to say somewhere near the start that we assume our category is enriched in super vector spaces}
+\kw{need to say somewhere near the start that we assume our category is enriched in super vector spaces} \ethan{added a short statement about this at the end of the previous section}
 
-A object $a$ of $C$ is called {\it simple} if any homogeneous non-zero endomorphism of $a$ is an isomorphism.
+A object $a$ of $\mcc$ is called {\it simple} if any homogeneous non-zero endomorphism of $a$ is an isomorphism.
 Equivalently, $a$ is simple if it has no quotient objects.
 (We also stipulate that the zero object is not a simple object.)
 
 In the usual bosonic, non-super case, the only possible endomorphism algebra for a simple object
-is the trivial algebra $\cc$ (scalars).
-But in the fermionic/super case, there is a second possibility: the complex Clifford algebra $\cl_1$.
-$\cl_1$ is generated over $\cc$ by the identity (even) and an odd element $x$ such that $x^2 = \lambda \cdot \id$
-(or $x^2 = \lambda$ for short) for some non-zero complex number $\lambda$.
-Note that by rescaling the odd generator $x$ we can make $\lambda$ in the definition of $\cl_1$ anything we want, so long
-as it is non-zero.
+is the trivial algebra $\cc$ (scalars)
+\footnote{The proof is as follows: by Schur's lemma every element in $\End(x)$ is invertible if $x$ is simple, and so $\End(x)$ must be a division algebra. 
+The only ungraded division algebra is $\cc$, and so $\End(x) = \cc$ for all simple $x$ in a regular fusion category.}
+In the fermionic/super case, there is a second possibility: the complex Clifford algebra $\cl_1$, which is the only nontrivial $\zt$-graded division algebra other than $\cc$.
+$\cl_1$ is generated over $\cc$ by the identity (which is even) and an odd element $\gamma$ such that $\gamma^2 = \lambda \cdot \id$
+(or $\gamma^2 = \lambda$ for short) for some non-zero complex number $\lambda$. \ethan{changed $x$ to $\gamma$, since $\gamma$ is standard in the physics literature and we use $x$ for simple objects at several points.}
+Note that by rescaling the odd generator $\gamma$ we can make $\lambda$ in the definition of $\cl_1$ any nonzero complex number. 
 
-If follows that simple objects in a super pivotal category fall into two classes: {\it m-type} if the endomorphism algebra
-is $\cc$, and {\it q-type} if the endomorphism algebra is $\cl_1$.
+If follows that simple objects in a super pivotal category fall into two classes, according to whether their endomorphism algebras are $\cc$ or $\cl_1$. 
+We will call a simple object {\it m-type} if its endomorphism algebra
+is $\cc$, and {\it q-type} if its endomorphism algebra is $\cl_1$:
 \begin{align}
 \vcenter{\xymatrix @!0 @M=1mm @C=25mm{
 & \text{End}(x) = \mathbb{C} \ar@{<->}[rr] &   &\text{$x$ is a simple m-type object}&  \\
 &\text{End}(x) = \mathbb{C} \ell_1 \ar@{<->}[rr]  &  &\text{$x$ is a simple q-type object}&
 	}}
 \end{align}
-
-(The terminology comes from the notation of [cite Jos], which classifies simple super algebras over $\cc$ as either
+This terminology comes from the notation of [cite Jos], which classifies simple super algebras over $\cc$ as either
 $M(p,q) = \End(\cc^{p|q})$ or $Q(n)$ (see appendix XXX).
 Note that the meaning of ``simple" is inconsistent in these two contexts: any $M(p,q)$ or $Q(n)$ is a simple super algebra
 (because it has no non-trivial ideals), but the endomorphism algebra of a simple object must be either
 $M(1,0) \cong M(0,1) \cong \cc$ or $Q(1) \cong \cl_1$ 
 (because all of the larger $M(p,q)$ or $Q(n)$ contain non-invertible elements).
-
-%showing that \lambda is purely imaginary:
-\begin{comment}
-Since $\psi$ lines can disappear into the condensate, we need to be able to annihilate pairs of boxes attached by a $\psi$ string, as these objects are part of the condensate. Annihilating a pair of connected boxes must give us a state proportional to the vacuum:
-\begin{align}
-\PsiEnd  = \lambda \times \text{(vaccuum)},
-\label{EvalPsiPsi}
-\end{align}
-where $\lambda$ is some complex number (the semicircular nature of the above diagram comes from our choice of spin framing). As described earlier, the reflection in $pin^+(1)$ about the framing direction acts as complex conjugation, and so we must have
-%\footnote{The fact that spatial reflections act as complex conjugation follows from the fact that $pin^+(2)$ admits a real spinor representation.}
-\begin{align}
-\lambda^{*} = \left( \PsiEnd \right) ^{\dagger}  = \PsiEndExchange = - \lambda,
-\label{phase}
-\end{align}
-where in the last step we have swapped the normal-ordering of the boxes at the expense of a minus sign. 
-This implies that $\lambda = - \lambda^*$, and so $\lambda$ must be purely imaginary. 
-\end{comment}
-
 
 \kwsep
 
@@ -2566,9 +2613,9 @@ By rescaling the dot we can make $\lambda$ any non-zero number.}
 
 \subsection{Fusion spaces} \label{fusion_spaces}
 
-The input data for a super pivotal category includes a fusion space $V^{ab}_c$ for each triple $a,b,c$ of minimal idempotents
-of $C$.
-This is, of course, a super vector space of super dimension \kw{is this the std term?} 
+The input data for a super pivotal category includes a list of simple objects and their types (q or m), as well as a fusion space $V^{ab}_c$ for each triple $a,b,c$ of minimal idempotents
+of $\mcc$.
+This is, of course, a supervector space of super-dimension \kw{is this the std term?} 
 denoted $N^{ab}_c = p|q$, where $p$ is the dimension of the even part
 of $V^{ab}_c$ and $q$ is the dimension of the odd part of $V^{ab}_c$.
 
@@ -2580,9 +2627,9 @@ structure is part of the input data.
 
 Note that the module structure implies that $N^{ab}_c = n|n$ if any of $a$, $b$ or $c$ is q-type.
 This is because any representation of $\cl_1$ has equal even and odd dimensions.
-Acting with the odd (and invertible) element of $\cl_1$ gives an isomorphism between the even and odd parts of $V^{ab}_c$.
+Acting with the odd (and invertible) element of $\cl_1$ gives an isomorphism between the even and odd parts of $V^{ab}_c$, and hence they must have the same dimension.
 
-Another part of the input data is the action of the $2\pi/3$ rotation
+Another part of the input data is the action of the $2\pi/3$ rotation \ethan{do we want to move this to the subsection on pivotal stuff?}
 \be
 	R : V^{ab}_c \to V^{bc}_a .
 \ee
@@ -2590,7 +2637,7 @@ In the bosonic case we have $R^3 = 1$, but in the super case we have
 \be
 	R^3 = (-1)^F .
 \ee
-\kw{(What is our preferred notation of the spin flip?)}
+\kw{(What is our preferred notation of the spin flip?)} \ethan{$(-1)^F$ is pretty standard for physicists, I think sticking with this is good.}
 
 \kw{I have tentatively adopted the convention that all arrows point out of the 3-valent vertex.
 If instead we use the convention that all arrows point up, then we would need $a^*$ and $c^*$ in the range of $R$ above.}
@@ -2599,6 +2646,146 @@ When doing computations, it is important to keep track of rotations of trivalent
 We will therefore always draw 3-valent vertices with one edge pointing down.
 \kw{Should we also somehow mark the down edge, so that we don't accidentally introduce $2\pi/3$ rotations?
 or is the fact the it points down enough to distinguish it?}
+
+
+
+\ethan{Everything below this until the triple kwsep line is stuff I've added, largely recycled from the stuff below the triple line.}
+
+\subsubsection{Kozul sign rule} Because of the anti-commuting nature of fusion spaces (i.e., because they can have odd fermion number), taking tensor products of fusion spaces necessitates defining a normal ordering of the fusion spaces. 
+We will write $V^{ab}_{c,n}$ to designate that the vector space $V^{ab}_c$ appears with normal order $n$ in a given tensor product (although when we are only talking about one fusion vertex we will omit the subscript). 
+\footnote{One possibility would be to assign a normal-ordering based on the order in which the fusion spaces appear in the tensor product. 
+However, for us fusion spaces are marked points on the spacetime manifold we're working over, and we will often want to move their locations around. 
+Therefore, we find that it is less error-prone to list the normal ordering of each fusion space explicitly.}
+
+Interchanging the normal ordering of two fusion spaces will generate a minus sign if both spaces have odd fermion parity, since doing this is equivalent to exchanging two fermions. 
+We write $P_{ij}$ for the map that exchanges the normal ordering of the fusion spaces with normal order $i$ and $j$. 
+The action of $P_{12}$ is encapsulated by the Kozul sign rule:
+\begin{align}
+\vcenter{\xymatrix @!0 @M=1mm @C=42mm{
+ &P_{12}: \; \;V^{ab}_{c,1} \tp_{\mathbb{C}} V^{xy}_{z,2} \ar[r]            & V^{ab}_{c,2} \tp_{\mathbb{C}} V^{xy}_{z,1} \\
+		  &\;\;\;\;\;\;\; \ket{\psi}\tp_\mathbb{C} \ket{\eta}  \ar@{|->}[r] & (-1)^{|\psi| |\eta|} \ket{\psi} \tp_{\mathbb{C}} \ket{\eta}
+	}} \quad \quad \ket{\psi} \in V^{ab}_{c} \;\; \text{and} \;\;  \ket{\eta} \in V^{xy}_{z}
+\end{align}
+\ethan{I think the following paragraph is important since we do this all the time when doing calculations. Could go as a footnote though.}
+We have defined the fusion spaces $V^{ab}_c$ for all $a,b,c$ as supervector spaces, which is a general formulation and works in all theories. 
+However, there is a slight simplification available in the examples we study in this paper: without loss of generality we can take the fusion spaces $V^{x\unit}_x,V^{\unit x}_x,$ and $V^{xx}_\unit$ for q-type $x$ to all be supervector spaces, while allowing {\it all other fusion spaces} to be regular ``bosonic'' vector spaces. 
+We are allowed to do this because in the examples we consider, a fusion space $V^{ab}_c$ will only ever contain odd vectors if at least one of $a,b,$ or $c$ is q-type. 
+We can then ``shift the oddness out of the fusion space'' by transferring the fermion residing on the fusion space to the q-type particle. 
+Graphically, this is simply reflected in our ability to ``displace'' dots from trivalent vertices onto q-type worldlines:
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_displacement.pdf}}}}. \ee
+Mathematically, this is nothing more than the mapping $V^{ab}_{x,1} \mapsto V^{ab}_x \tp V^{x\unit}_{x,1}$.  
+
+\subsubsection{Modified tensor product}
+There is an important subtlety involved when we tensor together fusion spaces which involve q-type particles, which stems from the non-triviality of the fusion space $V^{x\unit}_x$ if $x$ is q-type.
+To see where this comes from, suppose $x$ is a q-type particle, and consider the resolution of the identity 
+\begin{align} \label{resid}
+\Hom(x,x) \cong \bigoplus_y \Hom(x,y) \tp_\cc \Hom(y,x),
+\end{align}
+where $x$ is any object and the sum runs over simple objects $y$. 
+The above relation is actually {\it incorrect} when q-type particles are involved. 
+Indeed, if $x$ is simple then \eqref{resid} reads $\Hom(x,x) = \Hom(x,x) \tp_\cc \Hom(x,x).$ 
+If $x$ is q-type then $\End(x) = \cl_1$ implies $\cl_1 \cong \cl_1\tp_\cc \cl_1 \cong \cl_2$, which is a contradiction. 
+Furthermore, if $x$ is q-type then by iterating we see that the supervector space associated with a vertical $x$ worldline is $\End(x)^{\tp_{\cc} n} \cong \cl_n$ for arbitrarily large $n$, the dimension of which can be made arbitrarily large by increasing $n$. 
+Alternatively, we can also observe that the product $V_{\unit,1}^{xx} \tp_\cc V^\unit_{xx,2} \tp_\cc \dots \tp_\cc V_{\unit,n-1}^{xx} \tp_\cc V^\unit_{xx,n}$ is both isotopy-equivalent to $V^{x\unit}_x \cong \cl_1$ and isomorphic to $\cl_n$, which is also a contradiction. 
+These results mean that in the present formulation, the sizes of the Hilbert spaces assigned to fusion diagrams are not even well-defined! 
+%We will see that this inconsistency is caused by the incorrect use of the tensor product $\tp_\cc$ in \eqref{resid}.  
+
+In order to fix these inconsistencies, we need to mod out by ``internal'' degrees of freedom carried by q-type particles when taking tensor products. 
+These internal degrees of freedom are encapsulated in the fusion spaces $V^{x\unit}_x, V^{\unit x}_x,$ and $V^{xx}_\unit$, each of which is $\cl_1$ if $x$ is q-type.
+Graphically, modding out by these internal degrees of freedom is equivalent to modding out by local relations involving fermions and q-type particles.  
+These relations are given by locally creating pairs of fermions and by sliding fermions from one fusion vertex to another: \ethan{Still not sure if this is the best figure.}
+ \begin{align} 
+%\LocalRelationUp \sim \LocalRelationDown %\quad \quad  \LocalRelationLeft \sim \LocalRelationRight \lambda^{-1},
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{alternate_local_reln.pdf}}}}
+\label{FusionSpaceRelation}
+ \end{align}
+where $x$ is assumed to be q-type. A tensor product between fusion spaces taken over a q-type particle must be quotiented by isomorphisms like this. 
+%Since the first equivalence relation can be derived from the second, and vice versa, both relations define the same equivalence class on the fusion space.
+
+To do this, we examine the left equivalence relation in \eqref{FusionSpaceRelation}. 
+Explicitly, it reads
+\be (V^{ab}_x f_1) \tp_\cc V^{xc}_d \sim V^{ab}_x \tp_\cc (f_1 V^{xc}_d),\ee
+where $f_1$ is an odd endomorphism of $x$.
+\footnote{Here we are explicitly transferring all odd degrees of freedom onto fusion spaces of the form $V^{x\unit}_{x,1} = f_1$. See the discussion near the beginning of the section for details.}
+This equivalence relation is saying we need to be able to freely move {\it odd} elements between factors in a tensor product involving q-type particles. 
+Since $\cl_1 = \langle1,f\rangle$ and $\End(x) = \cl_1$ if $x$ is q-type, this can be accomplished by using $\End(x)$ as the tensor unit, {\it instead} of $\cc$. 
+This means that in order to achieve a self-consistent fermionic theory, we need to replace the tensor product of two fusion spaces linked by the simple object $x$ with a tensor product over $\End(x)$. 
+ Explicitly, 
+\be \ba
+ &V^{ab}_{x,2} \tp_{\mathbb{C}} V^{xc}_{d,1}\quad  \text{is replaced by} \quad V^{ab}_{x,2} \tp_{\text{End}(x)} V^{xc}_{d,1},\ \  {\rm and} \\ 
+  &V^{ax}_{d,1} \tp_{\mathbb{C}} V^{bc}_{x,2}\quad  \text{is replaced by} \quad V^{ax}_{d,1} \tp_{\End(x)} V^{bc}_{x,2},
+\ea 
+\ee
+where $\tp_{\End(x)}$ means that $\End(x)$ is taken to be the tensor unit. For example, this means explicitly  
+%\begin{align}
+%V^{ab}_{x,1} \tp_{\text{End}(x)} V^{xc}_{d,1} \equiv V^{ab}_{x,2} \tp_{\mathbb{C}}V^{xc}_{d,1}/\langle (V^{ab}_{x,2} \circ f_3) \tp_{\mathbb{C}}V^{xc}_{d,1} \sim V^{ab}_{x,2} \tp_{\mathbb{C}} (f_3\circ V^{xc}_{d,1}) \rangle
+%\label{qtensor}
+%\end{align}
+\begin{align}
+V^{ab}_{x,1} \tp_{\text{End}(x)} V^{xc}_{d,2} = V^{ab}_{x,1} \tp_{\mathbb{C}}V^{xc}_{d,2}/ \sim,
+\label{qtensor}
+\end{align}
+where $\sim$ is the equivalence relation 
+\begin{align} \label{equivreln}
+(V^{ab}_{x,1} f_3) \tp_{\mathbb{C}}V^{xc}_{d,2} \sim V^{ab}_{x,1} \tp_{\mathbb{C}} (f_3 V^{xc}_{d,2})
+\end{align}
+for all $f \in \text{End}(x)$. 
+%Likewise, we have $V^{ax}_d \tp_{\End(x)} V^{bc}_x = V^{ax}_d \tp_\cc V^{bc}_x / \sim$, where $\sim$ is the equivalence relation $(V^{ax}_{d,1} f_3) \tp_{\mathbb{C}}V^{bc}_{x,2} \sim V^{ax}_{d,1} \tp_{\mathbb{C}} (f_3 V^{bc}_{x,2})$ for all $f\in \End(x)$. 
+
+Using the modified tensor product allows us to easily write down the correct version of \eqref{resid}, which is 
+\begin{align}
+\Hom(x,x) \cong \bigoplus_y \Hom(x,y) \tp_{\End(y)} \Hom(y,x).
+\end{align}
+In particular, if $x$ is a simple q-type object, then we (correctly) have \be
+\cl_1 \cong \Hom(x,x) \cong \Hom(x,x)\tp_{\End(x)} \Hom(x,x) \cong \cl_1\tp_{\cl_1}\cl_1 \cong \cl_1.\ee  
+
+To take the modified tensor product $\End(x)$ when doing calculations or solving consistency equations numerically, we find it easiest to directly impose the condition that physical vectors in the space $V^{ab}_x \tp_{\mathbb{C}} V^{xc}_d$ be left invariant under the action of $\text{End}(x)$. 
+%For a q-type particle $x$, we have $\End(x) \cong \cl_1$. Each of the two generators of $\cl_1$ results in an isomorphism of the fusion spaces defined by
+There are two types of fusion diagrams we need to consider, depending how the fusion vertices that they are formed from are connected. This leads to two isomorphisms of fusion diagrams:
+\begin{align}
+&\vcenter{\xymatrix @!0 @M=1mm @C=42mm{
+ &L_f: \; \;V^{ab}_{x,2} \tp_{\mathbb{C}} V^{xc}_{d,1} \ar[r]            & V^{ab}_{x,2} \tp_{\mathbb{C}} V^{xc}_{d,1}  \\
+		  &\;\;\;\;\;\;\; \ket{\psi}\tp_\mathbb{C} \ket{\eta}  \ar@{|->}[r] & (f\ket{\psi}) \tp_{\mathbb{C}} (f^{-1} \ket{\eta})  
+		  }} \quad \quad f \in \text{End}(x)\\
+		  \\		  
+&		  \vcenter{\xymatrix @!0 @M=1mm @C=42mm{
+		  &R_f: \; \;V^{ay}_{d,1} \tp_{\mathbb{C}} V^{bc}_{y,2} \ar[r]            & V^{ay}_{d,1} \tp_{\mathbb{C}} V^{bc}_{y,2} \\
+		  &\;\;\;\;\;\;\; \ket{\psi}\tp_\mathbb{C} \ket{\eta}  \ar@{|->}[r] & (f\ket{\psi}) \tp_{\mathbb{C}} (f^{-1} \ket{\eta})
+	}}	\quad \quad f \in \text{End}(y)
+	\end{align}
+We note that both $L_f$ and $R_f$ are always {\it even} maps, regardless of the parity of $f$. 
+
+%Tensoring over endomorphisms in a fusion space is equivalent to requiring the fusion space to be invariant under the action of $L_f$ and $R_f$. 
+%Said another way, any vectors related by application of $L_f$ or $R_f$ are considered equivalent, which makes it natural to think of $L_f$ and $R_f$ as gauge transformations, since they encode redundancy in physical vector spaces.
+
+%It is often useful to do calculations %in the ``extended" vector space, i.e., where we compute with 
+%by working with explicit choices of representatives of vectors in each isomorphism class, imposing the requirement that any diagrammatic manipulation commutes with all endomorphisms generated by $L_f$ and $R_f$. 
+%After doing calculations, we can project back onto the physical subspace by modding out by the equivalence relation \eqref{equivreln}. 
+%This can be done provided that $L_f$ and $R_f$ commute on any fusion diagram. For example, for a fusion diagram built from three fusion vertices, we require that
+%\begin{align}
+%L_{f, 32}L_{g,21} V^{ab}_{x,3} \tp_{\mathbb{C}} V^{xc}_{y,2} \tp_{\mathbb{C}} V^{yd}_{w,1} = L_{g,21} L_{f, 32} V^{ab}_{x,3} \tp_{\mathbb{C}} V^{xc}_{y,2} \tp_{\mathbb{C}} V^{yd}_{w,1} 
+%\end{align}
+%for all $f \in \text{End}(x)$ and $g \in \text{End}(y)$. 
+%In fact this is always the case, since as mentioned earlier both $L_f$ and $R_f$ are even maps. 
+%Although they may have a nontrivial action on the fusion spaces.
+%From now, when we write $\tp$ we will always mean $\tp_\cc$, unless specified otherwise.
+
+
+
+Quotienting by the local relations in (\ref{FusionSpaceRelation}) is reminiscent of the condensation of electron pairs in superconductors: these relations say that pairs of fermions can be freely added or removed from the condensate, and that fermions lines terminating on q-type objects (which are the Majorana spin structure defects in this analogy) are able to move around freely. 
+Indeed, a fermionic phase of matter will generate such terms at second order in perturbation theory when proximity coupled to a superconductor.
+Thus, heuristically, we can think of q-type particles as the result of proximity induced superconductivity on a fusion category with only m-type particles.
+
+\subsubsection{F-symbols}
+
+Outline:
+\begin{itemize}
+\item move discussion of tensoring over $\End(x)$ to this subsection.
+\item Defining the domain and range diagrams for the standard $F$ symbol involves some arbitrary choices.
+\item The different possible conventions for defining $F$ are related by the rotation $R$.
+\item $F^2 = $ ...
+\item pentagon (note explicit permutation op)
+\end{itemize}
 
 \kwsep
 
@@ -2744,18 +2931,8 @@ From now, when we write $\tp$ we will always mean $\tp_\cc$, unless specified ot
 
 \dave{Let $V^{ab}_x$ be a fusion vertex of $3$ Q type particles. Then if $U_L$ is the action of sliding a dot up past the vertex to the left and similarly $U_R$ for sliding a dot up to the right. Then you can show that $U_L = U_L^{-1}$ and $U_R = U_R^{-1}$ and $U_L U_R = - U_R U_L$.}
 
+
 \subsection{F-symbols}
-
-Outline:
-\begin{itemize}
-\item move discussion of tensoring over $\End(x)$ to this subsection.
-\item Defining the domain and range diagrams for the standard $F$ symbol involves some arbitrary choices.
-\item The different possible conventions for defining $F$ are related by the rotation $R$.
-\item $F^2 = $ ...
-\item pentagon (note explicit permutation op)
-\end{itemize}
-
-
 \kwsep
 
 \kw{old section:}
@@ -2894,12 +3071,11 @@ can show
 
 \dave{May define a kind of tetrahedral symbol depending on its utility in Hamiltonian.}
 
-\subsection{Drinfeld center}
-\dave{We could define Drinfeld center here and relate it to irreps of the tube algebra. Presumably the defintion of 'collection of isomorphisms' needs to be modified to include spin structure -- not quite sure how this will work yet. }
 
-\subsection{Constructing superfusion categories by ``orbifolding''}
-\ethan{We should at least mention this and show how it happens for $A_3$ and $E_6/2$. We also should discuss the different types of superfusion cats (those with majorana objects and those without) and explain how our work relates to Kapustin's ``classification'' --- not sure if we should do that here or not. }
-\dave{I agree.}
+\subsection{Comments on the general construction of super pivotal categories}
+
+
+
 
 %%%%%%%%%%%%%%%%%% 
 \section{Conclusion}
