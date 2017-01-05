@@ -2554,7 +2554,7 @@ Thus the
  
  
 %%%%%%%%%%%%%%%%%%%%%%
-\section{Super fusion categories}
+\section{Super pivotal categories}  \label{def_sect}
 %%%%%%%%%%%%%%%%%%%%%%
 
 \kw{I've added some suggestions below for reorganizing this section.
@@ -2602,6 +2602,15 @@ Goal: Define super fusion categories for target audience. Target audience = phys
 \subsection{Super pivotal categories from fermion condensation} \label{carefully_condensing_psi}
 
 \ethan{This subsection goes over the condensation process and $pin^+(1)$ action, etc. I put it first since we need to know how to do the condensation procedure before we can come up with examples of super fusion categories, but feel free to put it somewhere else.}
+\kw{I'm more inclined to keep Section \ref{def_sect} about abstract definitions and put techniques for 
+constructing examples elsewhere.
+A lot of what's in this subsection needs to be said in the initial C2 section.
+Perhaps following that section there could be a short separate section saying that we can do the same
+for any emergent fermion like $\psi$, 
+and explain how to count to determine to m- and q-type simple objects in the quotient theory.}
+
+\kw{For pedagogical reasons, I'm inclined to first explain things without worrying about reflections and Pin structures;
+put Pin stuff in a separate and later discussion.}
 
 In this section, we give a more precise explanation of how to obtain fermionic topological phases by condensing fermions in bosonic topological phases.
 Throughout this section, we will let $\psi$ denote an emergent fermion (which we will mark in dark blue) in some arbitrary bosonic topological phase. 
@@ -2639,9 +2648,20 @@ We refer readers unfamiliar with spin and pin structures to Appendix \ref{spin_a
 
 Throughout this section, we will assume that our theory is defined on an oriented manifold $M$. 
 A spin structure on $M$ is determined by a spin framing chosen on $M$, which is a section of the spin bundle $FSp(M)$. 
+\kw{As we discussed, this needs to be rephrased.
+A spin structure is a double covering of the frame bundle.
+One way to specify a spin structure is to give a framing (ordinary, not spin) of the 1-skeleton of $M$
+which is extendable to the 2-skeleton of $M$.
+(There is then a unique spin structure on $M$ such that this framing can be lifted to a spin-framing.)}
 To facilitate our diagrammatic calculations, we find it convenient to fix a definite spin framing in which to draw our diagrams. %Since sections of $FSp(M)$ are just consistent choices of spin framings on $M$, fixing a section of $FSp(M)$ amounts to making a fixed choice for the fermion framing at each point of $M$. 
 We will choose a global framing that always points ``to the right'': that is, we will always draw boxes whose $\psi$ lines emanate from their left sides, as in \eqref{box_defn}. 
 We emphasize that this is merely a gauge choice: other framing conventions are related to one another by gauge transformations, and do not necessarily have to be globally constant. 
+
+\kw{Note on capitalization of Spin and Pin:
+The usual convention seems to be that (a) names of Lie groups are capitalized (Spin(n), Pin+),
+and (b) ``spin structure", ``spin framing" etc are not capitalized.
+I've been violating convention (b), and you guys have been violating convention (a).
+We should mend our ways.}
 
 Consider the configuration space of all possible configurations of $\psi$ endpoints (boxes). 
 We will now form a fiber bundle over the configuration space, whose fibers consist of all possible spin framings and different normal orderings of the $\psi$ endpoints. 
@@ -2711,12 +2731,14 @@ Equivalently, $a$ is simple if it has no quotient objects.
 (We also stipulate that the zero object is not a simple object.)
 
 In the usual bosonic, non-super case, the only possible endomorphism algebra for a simple object
-is the trivial algebra $\cc$ (scalars)
-\footnote{The proof is as follows: by Schur's lemma every element in $\End(x)$ is invertible if $x$ is simple, and so $\End(x)$ must be a division algebra. 
+is the trivial algebra $\cc$ (scalars)\footnote{The 
+proof is as follows: by Schur's lemma every element in $\End(x)$ is invertible if $x$ is simple, and so $\End(x)$ must be a division algebra. 
 The only ungraded division algebra is $\cc$, and so $\End(x) = \cc$ for all simple $x$ in a regular fusion category.}
+\kw{be sure to avoid white space before \textbackslash footnote}
 In the fermionic/super case, there is a second possibility: the complex Clifford algebra $\cl_1$, which is the only nontrivial $\zt$-graded division algebra other than $\cc$.
 $\cl_1$ is generated over $\cc$ by the identity (which is even) and an odd element $\gamma$ such that $\gamma^2 = \lambda \cdot \id$
 (or $\gamma^2 = \lambda$ for short) for some non-zero complex number $\lambda$. \ethan{changed $x$ to $\gamma$, since $\gamma$ is standard in the physics literature and we use $x$ for simple objects at several points.}
+\kw{Is it also standard to allow $\gamma^2 \ne \pm1$?}
 Note that by rescaling the odd generator $\gamma$ we can make $\lambda$ in the definition of $\cl_1$ any nonzero complex number. 
 
 If follows that simple objects in a super pivotal category fall into two classes, according to whether their endomorphism algebras are $\cc$ or $\cl_1$. 
@@ -2841,7 +2863,10 @@ Note that the module structure implies that $N^{ab}_c = n|n$ if any of $a$, $b$ 
 This is because any representation of $\cl_1$ has equal even and odd dimensions.
 Acting with the odd (and invertible) element of $\cl_1$ gives an isomorphism between the even and odd parts of $V^{ab}_c$, and hence they must have the same dimension.
 
-Another part of the input data is the action of the $2\pi/3$ rotation \ethan{do we want to move this to the subsection on pivotal stuff?}
+Another part of the input data is the action of the $2\pi/3$ rotation 
+\ethan{do we want to move this to the subsection on pivotal stuff?}
+\kw{I think that if we are emphasizing $V_a^{bc}$, $F$, pentagon eqn, etc. then it makes sense to put the rotation/pivotal
+stuff early in the discussion; no separate subsection for pivotal.}
 \be
 	R : V^{ab}_c \to V^{bc}_a .
 \ee
@@ -2849,23 +2874,27 @@ In the bosonic case we have $R^3 = 1$, but in the super case we have
 \be
 	R^3 = (-1)^F .
 \ee
-\kw{(What is our preferred notation of the spin flip?)} \ethan{$(-1)^F$ is pretty standard for physicists, I think sticking with this is good.}
+%\kw{(What is our preferred notation of the spin flip?)} 
+%\ethan{$(-1)^F$ is pretty standard for physicists, I think sticking with this is good.}
 
 \kw{I have tentatively adopted the convention that all arrows point out of the 3-valent vertex.
 If instead we use the convention that all arrows point up, then we would need $a^*$ and $c^*$ in the range of $R$ above.}
 
 When doing computations, it is important to keep track of rotations of trivalent vertices.
 We will therefore always draw 3-valent vertices with one edge pointing down.
-\kw{Should we also somehow mark the down edge, so that we don't accidentally introduce $2\pi/3$ rotations?
-or is the fact the it points down enough to distinguish it?}
+%\kw{Should we also somehow mark the down edge, so that we don't accidentally introduce $2\pi/3$ rotations?
+%or is the fact the it points down enough to distinguish it?}
 
 
 
 \ethan{Everything below this until the triple kwsep line is stuff I've added, largely recycled from the stuff below the triple line.}
 
-\subsubsection{Kozul sign rule} Because of the anti-commuting nature of fusion spaces (i.e., because they can have odd fermion number), taking tensor products of fusion spaces necessitates defining a normal ordering of the fusion spaces. 
-We will write $V^{ab}_{c,n}$ to designate that the vector space $V^{ab}_c$ appears with normal order $n$ in a given tensor product (although when we are only talking about one fusion vertex we will omit the subscript). 
-\footnote{One possibility would be to assign a normal-ordering based on the order in which the fusion spaces appear in the tensor product. 
+\subsubsection{Kozul sign rule} Because of the anti-commuting nature of fusion spaces (i.e., because they can have odd fermion number), taking tensor products of fusion spaces necessitates defining a normal ordering 
+\kw{doesn't ``normal ordering" mean putting creation operators before annihilation operators?;
+probably this should be just plain ``ordering" or maybe ``sign-ordering" (an ordering modulo even permutations)}
+of the fusion spaces. 
+We will write $V^{ab}_{c,n}$ to designate that the vector space $V^{ab}_c$ appears with normal order $n$ in a given tensor product (although when we are only talking about one fusion vertex we will omit the subscript).\footnote{One 
+possibility would be to assign a normal-ordering based on the order in which the fusion spaces appear in the tensor product. 
 However, for us fusion spaces are marked points on the spacetime manifold we're working over, and we will often want to move their locations around. 
 Therefore, we find that it is less error-prone to list the normal ordering of each fusion space explicitly.}
 
@@ -2879,9 +2908,13 @@ The action of $P_{12}$ is encapsulated by the Kozul sign rule:
 	}} \quad \quad \ket{\psi} \in V^{ab}_{c} \;\; \text{and} \;\;  \ket{\eta} \in V^{xy}_{z}
 \end{align}
 \ethan{I think the following paragraph is important since we do this all the time when doing calculations. Could go as a footnote though.}
+\kw{I would say that in calculations, once we have a graphical notation for an even element
+of $V^{ab}_c$, we can denote an odd element by putting a dot on one of the three edges.
+But I think it is not wise to adopt the convention that $V^{ab}_c$ is purely even.}
 We have defined the fusion spaces $V^{ab}_c$ for all $a,b,c$ as supervector spaces, which is a general formulation and works in all theories. 
 However, there is a slight simplification available in the examples we study in this paper: without loss of generality we can take the fusion spaces $V^{x\unit}_x,V^{\unit x}_x,$ and $V^{xx}_\unit$ for q-type $x$ to all be supervector spaces, while allowing {\it all other fusion spaces} to be regular ``bosonic'' vector spaces. 
 We are allowed to do this because in the examples we consider, a fusion space $V^{ab}_c$ will only ever contain odd vectors if at least one of $a,b,$ or $c$ is q-type. 
+\kw{I don't think this is true in general}
 We can then ``shift the oddness out of the fusion space'' by transferring the fermion residing on the fusion space to the q-type particle. 
 Graphically, this is simply reflected in our ability to ``displace'' dots from trivalent vertices onto q-type worldlines:
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_displacement.pdf}}}}. \ee
