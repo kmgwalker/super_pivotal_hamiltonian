@@ -2841,19 +2841,8 @@ Note that the module structure implies that $N^{ab}_c = n|n$ if any of $a$, $b$ 
 This is because any representation of $\cl_1$ has equal even and odd dimensions.
 Acting with the odd (and invertible) element of $\cl_1$ gives an isomorphism between the even and odd parts of $V^{ab}_c$, and hence they must have the same dimension.
 
-Another part of the input data is the action of the $2\pi/3$ rotation \ethan{do we want to move this to the subsection on pivotal stuff?}
-\be
-	R : V^{ab}_c \to V^{bc}_a .
-\ee
-In the bosonic case we have $R^3 = 1$, but in the super case we have
-\be
-	R^3 = (-1)^F .
-\ee
-\kw{(What is our preferred notation of the spin flip?)} \ethan{$(-1)^F$ is pretty standard for physicists, I think sticking with this is good.}
-
 \kw{I have tentatively adopted the convention that all arrows point out of the 3-valent vertex.
 If instead we use the convention that all arrows point up, then we would need $a^*$ and $c^*$ in the range of $R$ above.}
-
 When doing computations, it is important to keep track of rotations of trivalent vertices.
 We will therefore always draw 3-valent vertices with one edge pointing down.
 \kw{Should we also somehow mark the down edge, so that we don't accidentally introduce $2\pi/3$ rotations?
@@ -2863,7 +2852,8 @@ or is the fact the it points down enough to distinguish it?}
 
 \ethan{Everything below this until the triple kwsep line is stuff I've added, largely recycled from the stuff below the triple line.}
 
-\subsubsection{Kozul sign rule} Because of the anti-commuting nature of fusion spaces (i.e., because they can have odd fermion number), taking tensor products of fusion spaces necessitates defining a normal ordering of the fusion spaces. 
+\subsubsection{Kozul sign rule} \label{kozul_sign_rule}
+Because of the anti-commuting nature of fusion spaces (i.e., because they can have odd fermion number), taking tensor products of fusion spaces necessitates defining a normal ordering of the fusion spaces. 
 We will write $V^{ab}_{c,n}$ to designate that the vector space $V^{ab}_c$ appears with normal order $n$ in a given tensor product (although when we are only talking about one fusion vertex we will omit the subscript). 
 \footnote{One possibility would be to assign a normal-ordering based on the order in which the fusion spaces appear in the tensor product. 
 However, for us fusion spaces are marked points on the spacetime manifold we're working over, and we will often want to move their locations around. 
@@ -2885,7 +2875,7 @@ We are allowed to do this because in the examples we consider, a fusion space $V
 We can then ``shift the oddness out of the fusion space'' by transferring the fermion residing on the fusion space to the q-type particle. 
 Graphically, this is simply reflected in our ability to ``displace'' dots from trivalent vertices onto q-type worldlines:
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_displacement.pdf}}}}. \ee
-Mathematically, this is nothing more than the mapping $V^{ab}_{x,1} \mapsto V^{ab}_x \tp V^{x\unit}_{x,1}$.  
+Mathematically, this is nothing more than the mapping $V^{ab}_{x,1} \mapsto V^{ab}_x \tp V^{x\unit}_{x,1}$, where $V^{ab}_x$ is a regular (``bosonic'') vector space.  
 
 \subsubsection{Modified tensor product} \label{modified_tensor_product}
 There is an important subtlety involved when we tensor together fusion spaces which involve q-type particles, which stems from the non-triviality of the fusion space $V^{x\unit}_x$ if $x$ is q-type.
@@ -2917,8 +2907,7 @@ where $x$ is assumed to be q-type. A tensor product between fusion spaces taken 
 To do this, we examine the left equivalence relation in \eqref{FusionSpaceRelation}. 
 Explicitly, it reads
 \be (V^{ab}_x f_1) \tp_\cc V^{xc}_d \sim V^{ab}_x \tp_\cc (f_1 V^{xc}_d),\ee
-where $f_1$ is an odd endomorphism of $x$.
-\footnote{Here we are explicitly transferring all odd degrees of freedom onto fusion spaces of the form $V^{x\unit}_{x,1} = f_1$. See the discussion near the beginning of the section for details.}
+where $f_1$ is an odd endomorphism of $x$.\footnote{Here we are explicitly transferring all odd degrees of freedom onto fusion spaces of the form $V^{x\unit}_{x,1} = f_1$. See the discussion at the end of Sec \ref{kozul_sign_rule} for details.}
 This equivalence relation is saying we need to be able to freely move {\it odd} elements between factors in a tensor product involving q-type particles. 
 Since $\cl_1 = \langle1,f\rangle$ and $\End(x) = \cl_1$ if $x$ is q-type, this can be accomplished by using $\End(x)$ as the tensor unit, {\it instead} of $\cc$. 
 This means that in order to achieve a self-consistent fermionic theory, we need to replace the tensor product of two fusion spaces linked by the simple object $x$ with a tensor product over $\End(x)$. 
@@ -2928,8 +2917,7 @@ This means that in order to achieve a self-consistent fermionic theory, we need 
   &V^{ax}_{d,1} \tp_{\mathbb{C}} V^{bc}_{x,2}\quad  \text{is replaced by} \quad V^{ax}_{d,1} \tp_{\End(x)} V^{bc}_{x,2},
 \ea 
 \ee
-where $\tp_{\End(x)}$ means that $\End(x)$ is taken to be the tensor unit. For example, this means explicitly  
-%\begin{align}
+where $\tp_{\End(x)}$ means that $\End(x)$ is taken to be the tensor unit. Explicitly, %\begin{align}
 %V^{ab}_{x,1} \tp_{\text{End}(x)} V^{xc}_{d,1} \equiv V^{ab}_{x,2} \tp_{\mathbb{C}}V^{xc}_{d,1}/\langle (V^{ab}_{x,2} \circ f_3) \tp_{\mathbb{C}}V^{xc}_{d,1} \sim V^{ab}_{x,2} \tp_{\mathbb{C}} (f_3\circ V^{xc}_{d,1}) \rangle
 %\label{qtensor}
 %\end{align}
@@ -3308,27 +3296,24 @@ The Frobenius-Schur move is a special case of the pivot:
 %\end{align}
 %--OR--
 \begin{align}
-&R^{ab}_c: \; \; V_{\bar{c} c} \tp_{c} V^{ab}_c \tp_{b} V^{b \bar{b}} \rightarrow V^{\bar{c} a}_{\bar{b}} %\\
+&P^{ab}_c: \; \; V^{\bar{c} c} \tp_{c} V^{ab}_c \tp_{b} V_{b \bar{b}} \rightarrow V^{\bar{c} a}_{\bar{b}} %\\
 %&\tilde{R}^{ab}_c: \; \; V^{\bar{a} a} \tp_a V^{ab}_c \tp_c V_{c \bar{c}} \rightarrow V^{b \bar{c}}_{\bar{a}}
 \end{align}
 Diagrammatically, this looks like 
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{pivot_defn.pdf}}}}
 \ee
+Indeed, we see that $\kappa_a = [P^{0\bar a}_{\bar a}]_{00}$. From the diagrammatics, we see that the pivot implements a $2\pi/3$ rotation of the fusion space.
+
 In terms of the $F$-symbols, we can derive \ethan{I used my own derivation---this doesn't agree with the stuff in Parsa's thesis, but I know there are some mistakes in there}
-\be R^{ab}_c = d_b [F^{abb}_a]_{c0} [F^{\bar c c \bar b}_{\bar b}]_{0a}.\ee
+\be [P^{ab}_c]_{\mu\nu} = \sum_\lambda d_b [F^{ab\bar b}_a]_{(c;\mu\lambda)(0;00)} [F^{\bar c c \bar b}_{\bar b}]_{(0;00)(a;\lambda\nu)}.\ee
 
-From the diagrammatics, we see that the pivot implements a $2\pi/3$ rotation of the fusion space:
+In bosonic theories, we have $P^3=\unit$ (the identity operator).
+In the superfusion setting this does not hold, because acting with $P^3$ on some vector $v\in V^{ab}_c$ performs a $2\pi$ rotation on the fermion framing of $v$:
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{pivot_cubed.pdf}}}}\ee
-
-In bosonic theories, we have $R^3=\unit$ (the identity operator).
-In the superfusion setting this does not hold, because acting with $R^3$ on some vector $v\in V^{ab}_c$ performs a $2\pi$ rotation on the fermion framing of $v$:
-
-Since rotating the fermion framing is equivalent to multiplication by $-1$ if $v$ has odd fermion parity. 
-Therefore, in superfusion categories, the pivotal structure can be realized ``projectively'', in the sense that 
-\be R^3 = (-1)^F,\ee
+Rotating the fermion framing is equivalent to multiplication by $-1$ if $v$ has odd fermion parity. 
+Therefore, in superfusion categories, the pivotal structure relation $P^3$ can be realized projectively, in the sense that 
+\be P^3 = (-1)^F,\ee
 where $(-1)^F$ is the fermion parity operator, which acts on any $v\in V^{abc}$ as $(-1)^F v = (-1)^{|v|}v$.
-
-\dave{solve for $X$ from F-symbols.}
 
 Consistency between the pivotal structure and $F$-moves requires that the following diagram commute: 
 \begin{align}
@@ -3337,10 +3322,10 @@ Consistency between the pivotal structure and $F$-moves requires that the follow
 %\newcommand{\C}{V^{d\bar{d}} \tp_{\bar{d} } V^{ay}_{d,2} \tp_y V^{y \bar{y}} \tp_y V_{\bar{y} y} \tp_y V^{bc}_{y,1} \tp_c V^{c\bar{c}} \tp_c V_{\bar{c}c}}
 \newcommand{\C}{\bigoplus_y V^{d\bar{d}} \tp_{\bar{d}} V^{\bar{d} a}_{y,1} \tp_y V^{yb}_{\bar{c},2}  \tp_{\bar{c}} V_{\bar{c}c}  }
 \newcommand{\D}{\bigoplus_x V^{d\bar{d}} \tp_{\bar{d}} V^{\bar{d}x}_{\bar{c},2} \tp_x V^{ab}_{x,1}  \tp_{\bar{c}} V_{\bar{c}c} }
-\newcommand{\E}{\bigoplus_x V^{ab}_{x,2} \tp_x V^{xc}_{d,2}}
+\newcommand{\E}{\bigoplus_x V^{ab}_{x,1} \tp_x V^{xc}_{d,2}}
 \vcenter{\xymatrix @!0 @M=4mm @R=25mm @C=30mm{
 &\A \ar[ld]^{F^{abc}_d}\ar[rr]^{P_{12}} &&\E&\\
-\B \ar[rd]^{X^{ay}_{d,1} \tp X^{bc}_{y,2} \circ (\kappa_d  \kappa_y \kappa_c)^{-1}}&&&&\D \ar[ul]^{\kappa_d \kappa_c \circ (X^{\bar{d}x}_{\bar{c},2})^{-1}} \\
+\B \ar[rd]^{P^{ay}_{d,1} \tp P^{bc}_{y,2} \circ (\kappa_d  \kappa_y \kappa_c)^{-1}}&&&&\D \ar[ul]^{\kappa_d \kappa_c \circ (P^{\bar{d}x}_{\bar{c},2})^{-1}} \\
 &&\C &\ar[ru]^{F^{\bar{d}ab}_{\bar{c}}}&
 	}} 
 	\label{pivotconsistent}
@@ -3479,7 +3464,7 @@ In this section we review the basic definitions and properties of spin structure
 	%application and S_k bundle 
 	%physical interpretation, sVec, condensation stuff
 
-In brief, a spin structure is a way of associating factors of $-1$ to $2\pi$ rotations, which allows us to describe how spin-$1/2$ particles behave under rotations. 
+In brief, a spin structure is a way of describing how spin-$1/2$ particles behave under rotations. 
 To make this more precise, we define the group $Spin(n)$ though the short exact sequence
 \be \label{spin_gp_seq} 1 \ra \zt \ra Spin(n) \ra SO(n) \ra 1,\ee
 meaning that $Spin(n)$ is a central extension of $SO(n)$ by $\zt$ (and for $n>1$, $Spin(n)$ is the connected double-cover of $SO(n)$).  
