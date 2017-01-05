@@ -352,7 +352,7 @@
     \newcommand{\TubeMultiplyTopCoefficent}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TubeMultiplyTopCoefficent.pdf}}}}}
         \newcommand{\TubeMultiplyBottomCoefficient}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TubeMultiplyBottomCoefficient.pdf}}}}}
   
-
+ \newcommand{\TTorus}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TTorus.pdf}}}}}
 
  
  
@@ -1446,17 +1446,6 @@ The reader may be asking why we don't mimick the bosonic case, and search for a 
 In sec XXX we show that such a theory cannot exist.
 Hence the resulting quotient of $\frac{1}{2}$E6 is the most natural example to look at beyond Ising when interested in $Q$ type particles. 
 
-\dave{Will put this discussion somewhere in this section, or super-pivotal categories section.}
-\dave{Assume $\text{End}(\tau) = \mathbb{C} \ell_1$. And that $V^{\tau \tau \tau} \cong \mathbb{C}^{1|1}$.
-This theory does not exist. 
-A quick way to see this is by looking at the fusion vertex $V^{\tau \tau \tau}$. 
-Denote $\gamma \in \text{End}(\tau)$ as the odd endomorphism.
-Then we can write down three anti-commuting operators $\gamma \tp \gamma \tp 1$, $\gamma \tp 1 \tp \gamma$ and $1\tp \gamma \tp \gamma$. 
-Furthurmore these operators are even and so they preserve the grading on $\mathbb{C}^{1|1}$. 
-But the even and odd subspaces of $\mathbb{C}^{1|1}$ are one dimensional and so these operators cannot be represented.
-Hence a theory with Fibonacci like fusion rules of Q-type particles must have fusion multiplicity.
-}
-
 The quotient is much more involved than $C_2$ for multiple reasons. 
 First the category $\frac{1}{2}$E6 is not braided so the condensation process will require an additional step where we add a half braiding to the fermionic particle.
 \dave{In this case the half braid is uniquely determined. Is that always the case for particles that are abelian and self dual? Will check.}
@@ -1556,7 +1545,17 @@ Y_{ab} \Vrhorhorhoodd \quad \quad Y =  \frac{e^{7 i \pi/12}}{\sqrt{2}}\left( \be
  -1 & -1
  \end{matrix} \right) \quad \quad Y^3 = -1
  \end{align}
- 
+  
+ \dave{Perhaps this discussion (or one along similar lines should go in this section.}
+\dave{Assume $\text{End}(\tau) = \mathbb{C} \ell_1$. And that $V^{\tau \tau \tau} \cong \mathbb{C}^{1|1}$.
+This theory does not exist. 
+A quick way to see this is by looking at the fusion vertex $V^{\tau \tau \tau}$. 
+Denote $\gamma \in \text{End}(\tau)$ as the odd endomorphism.
+Then we can write down three anti-commuting operators $\gamma \tp \gamma \tp 1$, $\gamma \tp 1 \tp \gamma$ and $1\tp \gamma \tp \gamma$. 
+Furthurmore these operators are even and so they preserve the grading on $\mathbb{C}^{1|1}$. 
+But the even and odd subspaces of $\mathbb{C}^{1|1}$ are one dimensional and so these operators cannot be represented.
+Hence a theory with Fibonacci like fusion rules of Q-type particles must have fusion multiplicity.
+}
  \subsection{Center of condensed $\halfesix$}
  In this subsection we compute the center of $\halfesix$.
  \dave{Kevin, what's the proper nomenclature here?}
@@ -1684,22 +1683,6 @@ B_{AP}\\
 N_{PA} \\
 B_{AA} \\
 \end{matrix} \right)
-\xrightarrow{T} \left( \begin{matrix}
-0 & 0 & T_{AP \rightarrow PA} \\
-0 & T_{PA \rightarrow PA} & 0 \\
-T_{AA \rightarrow AA} & 0 & 0 \\
-\end{matrix} \right)
-\left(\begin{matrix}
-B_{AP}\\
-N_{PA} \\
-B_{AA} \\
-\end{matrix} \right)\\
-\\
-\left(\begin{matrix}
-B_{AP}\\
-N_{PA} \\
-B_{AA} \\
-\end{matrix} \right)
 \xrightarrow{S} \left( \begin{matrix}
 0 & S_{AP \rightarrow PA} &0 \\
 S_{PA \rightarrow AP} & 0 & 0 \\
@@ -1711,7 +1694,23 @@ N_{PA} \\
 B_{AA} \\
 \end{matrix} \right)\\
 \\
-N_{PP} \xrightarrow{T} T_{PP} N_{PP} \qquad\qquad\qquad N_{PP} \xrightarrow{S} S_{PP} N_{PP} 
+\left(\begin{matrix}
+B_{AP}\\
+N_{PA} \\
+B_{AA} \\
+\end{matrix} \right)
+\xrightarrow{T} \left( \begin{matrix}
+0 & 0 & T_{AP \rightarrow PA} \\
+0 & T_{PA \rightarrow PA} & 0 \\
+T_{AA \rightarrow AA} & 0 & 0 \\
+\end{matrix} \right)
+\left(\begin{matrix}
+B_{AP}\\
+N_{PA} \\
+B_{AA} \\
+\end{matrix} \right) \\
+\\
+N_{PP} \xrightarrow{S} S_{PP} N_{PP} \qquad\qquad\qquad  N_{PP} \xrightarrow{T} T_{PP} N_{PP} \\
 \end{align}
 Where the subscript denotes the spin structure. 
 
@@ -1720,6 +1719,7 @@ Where the subscript denotes the spin structure.
 \dave{Lets stick with the analogous conventions to the Ising section for now and define}
 \begin{align}
 e := \TubeEmpty, \qquad h := \Tubexloop, \qquad v: = \Tubeidx \qquad t: = \TubeXtwist \qquad X : = \TubeXa
+\label{TorusStates}
 \end{align}
 
 \dave{Show relations between $X_{11}$ and $X_{12}$ on the torus.}
@@ -1780,14 +1780,35 @@ d\TubeEmpty =
 \end{align}
 \dave{With $(\mu, \nu) = (Y,X)$ $\mu = 1$ is antiperiodic, and $\mu =0$ is periodic. And the appropriate diagrams set to zero.}
 
-It will be useful to write down the change of basis from the tubes to the idempotents.
-These will be the natural basis to describe the action of the mapping class group.
+Thus we see that that each bounding spin structure on the torus has one local relation. 
+Hence we need to pick three independent (non-zero) vectors from the list (\ref{TorusStates}). A natural choice is given by,
 \begin{align}
+\left( \begin{matrix}
+e\\
+v\\
+h\\
+\end{matrix} \right)_{AA} \quad \quad 
+\left( \begin{matrix}
+e\\
+t\\
+h\\
+\end{matrix} \right)_{AP}  \quad \quad
+\left( \begin{matrix}
+e\\
+v\\
+t\\
+\end{matrix} \right)_{PA}
+\end{align}
+
+It will be useful to write down the change of basis from the tubes to the idempotents.
+In doing so we will make use of the local relations above.
+\begin{align}
+\label{VAA}
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AA}
+\end{matrix} \right)_{AA} 
 %= \left( \begin{matrix}
 %\frac{1}{d \sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
 %\frac{d}{2 \sqrt{3}} & \frac{1}{2 \sqrt{3}} & - \frac{1}{2 \sqrt{3}} \\ 
@@ -1803,6 +1824,7 @@ e\\
 v\\
 h\\
 \end{matrix} \right)_{AA}\\
+\label{VAP}
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
@@ -1819,6 +1841,7 @@ e\\
 t\\
 h\\
 \end{matrix} \right)_{AP} \\
+\label{VPA}
 \left( \begin{matrix}
 \text{Q}_1\\
 \text{Q}_2\\
@@ -1836,6 +1859,7 @@ t\\
 \end{matrix} \right)_{PA} \\
 \end{align}
 \dave{spin stucture (XY) means X around puncture.}
+These will be the natural basis to describe the action of the mapping class group.
 
 %%%%%%
 %%%%%%%
@@ -1853,26 +1877,24 @@ The matrix elements of $S$ can be found with one F-move and a pivot,
 S_{abc\mu \nu; xyz \tau \sigma} = \sum_{\kappa} \delta_{a \gamma} \delta_{\bar{c} \alpha} \left[ {F^{\bar{c}ac}_a}^{-1} \right]_{\mu b \nu; \sigma \beta \kappa} \left[ R^{\beta c}_c \right ] _{\kappa \tau}
 \end{align}
 
+We can now work out the S-matrix for each spin structure in the topological basis, and then change over to the idempotent basis. 
 
 
-
-
-The last two relations turn into one another under an $S$ transformation, which in this basis is given by,
-\begin{align}
-\left( \begin{matrix}
-\TubeXtwist \\
-\TubeXa \\
-\end{matrix} \right) = 
-e^{i \pi /4} \left( \begin{matrix} 
-\frac{\sqrt{2}}{d} & - \frac{2}{\sqrt{d}} e^{- i \pi /6} \\
-- \frac{1}{\sqrt{d}} e^{i \pi /6} & - \frac{\sqrt{2}}{d} \\
-\end{matrix} \right)
-\left( \begin{matrix}
-\TubeXtwistv \\
-\TubeXav \\
-\end{matrix} \right) 
-\end{align}
-\dave{Left side is (A,P), right side is (P,A).}
+%The last two relations turn into one another under an $S$ transformation, which in this basis is given by,
+%\begin{align}
+%\left( \begin{matrix}
+%\TubeXtwist \\
+%\TubeXa \\
+%\end{matrix} \right)_{AP} = 
+%e^{i \pi /4} \left( \begin{matrix} 
+%\frac{\sqrt{2}}{d} & - \frac{2}{\sqrt{d}} e^{- i \pi /6} \\
+%- \frac{1}{\sqrt{d}} e^{i \pi /6} & - \frac{\sqrt{2}}{d} \\
+%\end{matrix} \right)
+%\left( \begin{matrix}
+%\TubeXtwistv \\
+%\TubeXav \\
+%\end{matrix} \right)_{PA}
+%\end{align}
 
 
 
@@ -1907,52 +1929,32 @@ e^{i \pi /4} \left( \begin{matrix}
 %\end{align}
 
 \paragraph{$(A,A)$ sector:}
-In the $(A,A)$ sector, $t$ is idenitfied with the zero vector. We can see this by sliding dots around the torus to find $t = -t$.
-Also there is one linear relation among $e$, $h$, $v$, and $X$ given by (\ref{RelationAA}).
-Which we can use to find $X$,
+For the (AA) spin structure one simply finds that $v$ and $h$ are interchanged so that,
 \begin{align}
-e^{i \pi /12} X = \frac{d+1}{\sqrt{d}}(e -\frac{h + v}{d})
-\end{align}
-
-
-Hence a complete set of states on the $(A,A)$ torus is given by $(e, v, h)^{T}$ and in this basis the $S$ matrix is given by,
-\begin{align}
-S^{AA} = \left(\begin{matrix}
+\left( \begin{matrix}
+e\\
+v\\
+h\\
+\end{matrix} \right)_{AA}
+\xrightarrow{S^{AA}}
+\left(\begin{matrix}
 1& 0& 0 \\
 0& 0&1  \\
 0&1 &0 \\ 
-\end{matrix} \right)
-\end{align}
-We have the change of basis
-\begin{align}
-\left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
-\end{matrix} \right)
-%= \left( \begin{matrix}
-%\frac{1}{d \sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
-%\frac{d}{2 \sqrt{3}} & \frac{1}{2 \sqrt{3}} & - \frac{1}{2 \sqrt{3}} \\ 
-%0 & \frac{1}{2 \sqrt{3}} & 0
-%\end{matrix} \right)
-= \left( \begin{matrix}
-\frac{1}{d\sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
-\frac{d}{2 \sqrt{3}} & 0 & - \frac{1}{2 \sqrt{3}} \\
-- \frac{d}{2 \sqrt{3}} & \frac{1}{2} & \frac{1}{2 \sqrt{3}}
 \end{matrix} \right)
 \left( \begin{matrix}
 e\\
 v\\
 h\\
-\end{matrix} \right)
+\end{matrix} \right)_{AA}
 \end{align}
-We can now write down the S-matrix in the idempotent basis
+We can now write down the S-matrix in the idempotent basis using the change of basis in (\ref{VAA})
 \begin{align}
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right) \xrightarrow{S} 
+\end{matrix} \right)_{AA} \xrightarrow{S_{AA \rightarrow AA}} 
 \frac{1}{\sqrt{3}}\left( \begin{matrix}
 \frac{1}{d} & \frac{d}{2} & 1\\ 
 \frac{d}{2} & \frac{1}{d} & -1\\
@@ -1962,62 +1964,14 @@ We can now write down the S-matrix in the idempotent basis
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)
+\end{matrix} \right)_{AA}
 \end{align}
+
 
 
 \paragraph{$(A,P)$ and $(P,A)$ sectors:}
-Similarly in the $(A,P)$ sector $v$ is zero, while in the $(P,A)$ sector $h$ is zero. 
-We also have the linear relations implied by () and ()
-\begin{align}
-\text{(A,P) sector:} \quad \quad e^{5i\pi /12} X = \frac{d+1}{\sqrt{d}}(e -\frac{h + t}{d})\\
-\text{(P,A) sector:} \quad \quad e^{-9i\pi /12} X = \frac{d+1}{\sqrt{d}}(e -\frac{t + v}{d})
-\end{align}
-Thus the change of basis from topological basis to idempotent basis is given by,
-\begin{align}
-&\text{(A,P) sector: } \quad \quad \left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
-\end{matrix} \right)
-%= \left( \begin{matrix}
-%\frac{1}{d \sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
-%\frac{d}{2 \sqrt{3}} & \frac{1}{2 \sqrt{3}} & - \frac{1}{2 \sqrt{3}} \\ 
-%0 & \frac{1}{2 \sqrt{3}} & 0
-%\end{matrix} \right)
-= \left( \begin{matrix}
-\frac{1}{d\sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
-\frac{d}{2 \sqrt{3}} & 0 & - \frac{1}{2 \sqrt{3}} \\
-%\frac{e^{7 i \pi/12}}{\sqrt{2}} & \frac{e^{- i \pi/3}}{2\sqrt{3}} & \frac{e^{- i \pi/3}}{2 \sqrt{3}}
-\frac{d e^{2 \pi i/3}}{2 \sqrt{3}} & \frac{e^{- i \pi /3}}{2} & \frac{e^{- i \pi /3}}{2 \sqrt{3}}\\
-\end{matrix} \right)
-\left( \begin{matrix}
-e\\
-t\\
-h\\
-\end{matrix} \right) \\
-&\text{(P,A) sector:} \quad \quad  \left( \begin{matrix}
-\text{Q}_1\\
-\text{Q}_2\\
-\text{M}_6\\
-\end{matrix} \right)
-%= \left( \begin{matrix}
-%\frac{1}{d \sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
-%\frac{d}{2 \sqrt{3}} & \frac{1}{2 \sqrt{3}} & - \frac{1}{2 \sqrt{3}} \\ 
-%0 & \frac{1}{2 \sqrt{3}} & 0
-%\end{matrix} \right)
-= \left( \begin{matrix}
-1 & 0 & 0 \\
-\sqrt{\frac{1+d}{3}} e^{-3i \pi /4} & \frac{e^{i \pi /6}}{\sqrt{3}} & \frac{e^{i \pi /3}}{\sqrt{3}} \\
-\frac{e^{7 i \pi /12}}{\sqrt{6}} & \frac{e^{- i \pi / 6}}{2 \sqrt{3}} & \frac{e^{-2 i \pi /3}}{2 \sqrt{3}}\\
-\end{matrix} \right)
-\left( \begin{matrix}
-e\\
-v\\
-t\\
-\end{matrix} \right) \\
-\end{align}
-
+The (AP) and (PA) tori are interechanged by S. 
+We first find the action of S on the (AP) torus. 
 S matrices in the topological basis:
 %\begin{align}
 %\left( \begin{matrix}
@@ -2042,75 +1996,29 @@ S matrices in the topological basis:
 %\end{align}
 \begin{align}
 \left( \begin{matrix}
-\scalebox{0.5}{$\TubeEmpty$} \\
-\scalebox{0.5}{$\Tubexloop$}\\
-\scalebox{0.5}{$\TubeXtwist $}\\
-\end{matrix} \right) 
- \xrightarrow{S_{AP}}
+e\\
+h\\
+v\\
+\end{matrix} \right)_{AP} 
+ \xrightarrow{S_{AP\rightarrow PA}}
 \left( \begin{matrix}
 1&0&0\\
 0&1&0\\
 d e^{-i \pi/6} & e^{5 i \pi/6}  & e^{2 \pi i /3}\\
 \end{matrix} \right)
 \left( \begin{matrix}
-\scalebox{0.5}{$\TubeEmptyv$} \\
-\scalebox{0.5}{$\Tubeidxv$}\\
-\scalebox{0.5}{$\TubeXtwistv$} \\
-\end{matrix} \right)
+e\\
+v\\
+t\\
+\end{matrix} \right)_{PA}
 \end{align}
-
-
-
-%\begin{align}
-%\left( \begin{matrix}
-%\scalebox{0.5}{$\TubeEmptyv$} \\
-%\scalebox{0.5}{$\Tubeidxv$}\\
-%\scalebox{0.5}{$\TubeXtwistv$} \\
-%\scalebox{0.5}{$\TubeXav$} \\
-%\end{matrix} \right)
-%  \xrightarrow{S_{PA}}
-%\left( \begin{matrix}
-%1&0&0&0\\
-%0&1&0&0\\
-%0&0&\frac{\sqrt{2}e^{-i \pi /4}}{d} & 2 c_1^* e^{-i \pi /4}\\
-%0&0&c_1 e^{-i \pi /4}& \sqrt{2} c_2 (i c_4 - \frac{1}{d})e^{-i \pi /4} \\
-%\end{matrix} \right)
-%\left( \begin{matrix}
-%\scalebox{0.5}{$\TubeEmpty$} \\
-%\scalebox{0.5}{$\Tubexloop$}\\
-%\scalebox{0.5}{$\TubeXtwist $}\\
-%\scalebox{0.5}{$\TubeXa$} \\
-%\end{matrix} \right) 
-%\end{align}
-
-\begin{align}
-\left( \begin{matrix}
-\scalebox{0.5}{$\TubeEmptyv$} \\
-\scalebox{0.5}{$\Tubeidxv$}\\
-\scalebox{0.5}{$\TubeXtwistv$} \\
-\end{matrix} \right)
-  \xrightarrow{S_{PA}}
-\left( \begin{matrix}
-1&0&0\\
-0&1&0\\
-de^{i \pi/6} & e^{-5 i \pi /6} & e^{-2 i \pi /3}
-\end{matrix} \right)
-\left( \begin{matrix}
-\scalebox{0.5}{$\TubeEmpty$} \\
-\scalebox{0.5}{$\Tubexloop$}\\
-\scalebox{0.5}{$\TubeXtwist $}\\
-\end{matrix} \right) 
-\end{align}
-\dave{Need to double check these. Notice they aren't unitary even in the topological basis.}
-
-We can finally work out the S-matrix in the idempotent basis:
-
+which can be written in the idempotent basis to find,
 \begin{align}\left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)
-\xrightarrow{S}
+\end{matrix} \right)_{AP}
+\xrightarrow{S_{AP \rightarrow PA}}
 %\left( \begin{matrix}
 %\frac{1}{d \sqrt{3}} & \frac{i}{\sqrt{3}} & - \frac{i}{\sqrt{3}} \\
 %\frac{d}{2 \sqrt{3}} & - \frac{i}{\sqrt{3}} & \frac{i}{\sqrt{3}} \\
@@ -2125,15 +2033,36 @@ We can finally work out the S-matrix in the idempotent basis:
 \text{Q}_1\\
 \text{Q}_2\\
 \text{M}_6\\
-\end{matrix} \right)
+\end{matrix} \right)_{PA}
 \end{align}
+
+Next we work out the S-matrix in the topological basis for the  (PA) vector,
+\begin{align}
+\left( \begin{matrix}
+e \\ 
+v\\ 
+t\\ 
+\end{matrix} \right)
+  \xrightarrow{S_{PA \rightarrow AP}}
+\left( \begin{matrix}
+1&0&0\\
+0&1&0\\
+de^{i \pi/6} & e^{-5 i \pi /6} & e^{-2 i \pi /3}
+\end{matrix} \right)
+\left( \begin{matrix}
+e \\
+h\\ 
+t\\ 
+\end{matrix} \right)_{AP} 
+\end{align}
+And again we can write this in the idempotent basis:
 \begin{align}
 \left( \begin{matrix}
 \text{Q}_1\\
 \text{Q}_2\\
 \text{M}_6\\
-\end{matrix} \right)
-\xrightarrow{S}
+\end{matrix} \right)_{PA}
+\xrightarrow{S_{PA \rightarrow AP}}
 \left( \begin{matrix}
 1& 1& 0 \\
 \frac{1}{\sqrt{3}} & - \frac{1}{\sqrt{3}} & \frac{2}{\sqrt{3}} \\
@@ -2143,16 +2072,19 @@ We can finally work out the S-matrix in the idempotent basis:
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)
+\end{matrix} \right)_{AP}
 \end{align}
-These become more symmetric when we properly normalize the idempotents. A Q type idempotent has a norm of $\sqrt{2}$, while an M type idempotent has norm $1$.
-Hence the normalizaed S-matrix is given by,
+Notice that the $S$ matrix is invertible, but not unitary. 
+This is because we didn't normalize our idempotents appropriately. 
+An M type idempotent has norm square equal to 1, while a Q type idempotent has norm square equal to 2.
+Thus we write the normalized Q idempotents with a hat, $\widehat{Q}_i = Q_i /\sqrt{2}$.
+Once doing so we find the appropriately normalized S matrix is given by,
 \begin{align}\left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)
-\xrightarrow{S}
+\end{matrix} \right)_{AP}
+\xrightarrow{S_{AP \rightarrow PA}}
 %\left( \begin{matrix}
 %\frac{1}{d \sqrt{3}} & \frac{i}{\sqrt{3}} & - \frac{i}{\sqrt{3}} \\
 %\frac{d}{2 \sqrt{3}} & - \frac{i}{\sqrt{3}} & \frac{i}{\sqrt{3}} \\
@@ -2167,15 +2099,15 @@ Hence the normalizaed S-matrix is given by,
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)
+\end{matrix} \right)_{PA}
 \end{align}
 \begin{align}
 \left( \begin{matrix}
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)
-\xrightarrow{S}
+\end{matrix} \right)_{PA}
+\xrightarrow{S_{PA \rightarrow AP}}
 \left( \begin{matrix}
 \frac{1}{\sqrt{2}}& \frac{1}{\sqrt{2}}& 0 \\
 \frac{1}{\sqrt{6}} & - \frac{1}{\sqrt{6}} & \sqrt{\frac{2}{3}} \\
@@ -2185,19 +2117,78 @@ Hence the normalizaed S-matrix is given by,
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)
+\end{matrix} \right)_{AP}
 \end{align}
-Where we have denoted a normalized Q type idempotent by $\widehat{\text{Q}} = \text{Q}/\sqrt{2}$.
 Notice that the matrix is symmetric, and unitary.
 
+\dave{Is a summary like this useful? Perhaps at the end of the section we could display this with T}In summary we have
+\begin{align}
+\left(\begin{matrix}
+\left( \begin{matrix}
+\text{M}_1\\
+\text{M}_2\\
+\text{M}_3\\
+\end{matrix} \right)_{AP} \\
+\\
+\left( \begin{matrix}
+\widehat{\text{Q}}_1\\
+\widehat{\text{Q}}_2\\
+\text{M}_6\\
+\end{matrix} \right)_{PA}\\
+\\
+\left( \begin{matrix}
+\text{M}_1\\
+\text{M}_2\\
+\text{M}_3\\
+\end{matrix} \right)_{AA} \\
+\end{matrix} \right)
+\xrightarrow{S} \left( \begin{matrix}
+&&&			\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{6}} &  \frac{1}{\sqrt{3}} &			&&\\
+&&&			\frac{1}{\sqrt{2}} & - \frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{3}}& 			&&\\
+&&&			0& \sqrt{\frac{2}{3}} & -\frac{1}{\sqrt{3}}& 			&&\\
+\frac{1}{\sqrt{2}}& \frac{1}{\sqrt{2}}& 0&			&&& 			&&\\
+\frac{1}{\sqrt{6}} & - \frac{1}{\sqrt{6}} & \sqrt{\frac{2}{3}}&			&&& 			&&\\
+\frac{1}{\sqrt{3}} & - \frac{1}{\sqrt{3}} & - \frac{1}{\sqrt{3}}&			&&& 			&&\\
+&&&			&&&			\frac{1}{d\sqrt{3}} & \frac{d}{2\sqrt{3}} & \frac{1}{\sqrt{3}}\\
+&&&			&&& 			\frac{d}{2\sqrt{3}} & \frac{1}{d\sqrt{3}} & -\frac{1}{\sqrt{3}}\\
+&&&			&&& 			\frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}}\\
+\end{matrix} \right)
+\left(\begin{matrix}
+\left( \begin{matrix}
+\text{M}_1\\
+\text{M}_2\\
+\text{M}_3\\
+\end{matrix} \right)_{AP} \\
+\\
+\left( \begin{matrix}
+\widehat{\text{Q}}_1\\
+\widehat{\text{Q}}_2\\
+\text{M}_6\\
+\end{matrix} \right)_{PA}\\
+\\
+\left( \begin{matrix}
+\text{M}_1\\
+\text{M}_2\\
+\text{M}_3\\
+\end{matrix} \right)_{AA} \\
+\end{matrix} \right)
+\end{align}
+
 \subsubsection{Dehn twists}
-Dehn twists:
+\dave{Note that with the conventions I've been using we have $(S^{-1} T)^3 = 1$ }
+The action of T is given by,
+\begin{align}
+T: \TorusBasisa \rightarrow  \TTorus = \sum_{xyz; \tau \sigma}T_{abc \mu \nu; xyz \tau \sigma} \TorusBasisb
+\end{align}
+
+Lets start with the (PA) torus. 
+This spin structure is invariant under $T$, and we have in the topological basis,
 \begin{align}
 \left( \begin{matrix}
 e\\
 v\\
 t\\
-\end{matrix} \right) \xrightarrow{T_{PA}} 
+\end{matrix} \right)_{PA} \xrightarrow{T_{PA \rightarrow PA}} 
 \left( \begin{matrix}
 1 & 0 & 0 \\
 0 & 0 & 1 \\
@@ -2207,7 +2198,7 @@ d e^{i \pi /6} & e^{-2 \pi i/3} & e^{- 5i \pi /6}\\
 e\\
 v\\
 t\\
-\end{matrix} \right)
+\end{matrix} \right)_{PA}
 \end{align}
 In the idempotent basis we have:
 \begin{align}
@@ -2215,7 +2206,7 @@ In the idempotent basis we have:
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right) \xrightarrow{T_{PA}}
+\end{matrix} \right)_{PA} \xrightarrow{T_{PA \rightarrow PA}}
 \left( \begin{matrix}
 1 & 0 & 0\\
 0 & -i & 0 \\
@@ -2225,18 +2216,18 @@ In the idempotent basis we have:
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)
+\end{matrix} \right)_{PA}
 \end{align}
 
 
-Now (A,A) to (A,P).
+Now we investigate the (AA) and (AP) spin structures which are mixed under the action of $T$.
 \begin{align}
 \left( \begin{matrix}
 e\\
 v\\
 h\\
-\end{matrix} \right)
-\xrightarrow{T_{AA}}
+\end{matrix} \right)_{AA}
+\xrightarrow{T_{AA \rightarrow AP}}
 \left(\begin{matrix} 
 1 & 0 &0 \\
 0 & 1 & 0 \\
@@ -2246,16 +2237,16 @@ h\\
 e\\
 t\\
 h\\
-\end{matrix} \right)
+\end{matrix} \right)_{AP}
 \end{align}
-idempotent basis:
+in the idempotent basis we find
 \begin{align}
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
 \end{matrix} \right) 
-\xrightarrow{T_{AA}} 
+\xrightarrow{T_{AA \rightarrow AP}} 
 \left(\begin{matrix} 
 1 & 0 &0 \\
 0 & 1 & 0 \\
@@ -2265,17 +2256,17 @@ idempotent basis:
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)
+\end{matrix} \right)_{AP}
 \end{align}
 
-Now we do (A,P) to (P,A):
+Now we do (A,P) to (AA):
 \begin{align}
 \left( \begin{matrix}
 e\\
 t\\
 h\\
-\end{matrix} \right)
-\xrightarrow{T_{AP}}
+\end{matrix} \right)_{AP}
+\xrightarrow{T_{AP \rightarrow AA}}
 \left(\begin{matrix} 
 1 & 0 &0 \\
 de^{-i \pi /6} &e^{2\pi i /3} &e^{5 i \pi /6} \\
@@ -2285,16 +2276,17 @@ de^{-i \pi /6} &e^{2\pi i /3} &e^{5 i \pi /6} \\
 e\\
 v\\
 h\\
-\end{matrix} \right)
+\end{matrix} \right)_{AA}
 \end{align}
 
+In the idempotent basis we have
 \begin{align}
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right) 
-\xrightarrow{T_{AP}} 
+\end{matrix} \right)_{AP} 
+\xrightarrow{T_{AP \rightarrow AA}} 
 \left(\begin{matrix} 
 1 & 0 &0 \\
 0 & 1 & 0 \\
@@ -2304,6 +2296,59 @@ h\\
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
+\end{matrix} \right)_{AA}
+\end{align}
+
+In summary we find
+\begin{align}
+\left(\begin{matrix}
+\left( \begin{matrix}
+\text{M}_1\\
+\text{M}_2\\
+\text{M}_3\\
+\end{matrix} \right)_{AP} \\
+\\
+\left( \begin{matrix}
+\widehat{\text{Q}}_1\\
+\widehat{\text{Q}}_2\\
+\text{M}_6\\
+\end{matrix} \right)_{PA}\\
+\\
+\left( \begin{matrix}
+\text{M}_1\\
+\text{M}_2\\
+\text{M}_3\\
+\end{matrix} \right)_{AA} \\
+\end{matrix} \right)
+\xrightarrow{T} \left( \begin{matrix}
+&&&			&&&			1&0&0	\\
+&&&			&&&			0&1&0	\\
+&&&			&&&			0&0&e^{i \pi/3}	\\
+&&&			1&0&0&			&&	\\
+&&&			0&-i&0&			&&	\\
+&&&			0&0&e^{5 i \pi /6}&			&&	\\
+1&0&0&			&&&			&&	\\
+0&1&0&			&&&			&&	\\
+0&0&e^{i \pi /3}&			&&&			&&	\\		
+\end{matrix} \right)
+\left(\begin{matrix}
+\left( \begin{matrix}
+\text{M}_1\\
+\text{M}_2\\
+\text{M}_3\\
+\end{matrix} \right)_{AP} \\
+\\
+\left( \begin{matrix}
+\widehat{\text{Q}}_1\\
+\widehat{\text{Q}}_2\\
+\text{M}_6\\
+\end{matrix} \right)_{PA}\\
+\\
+\left( \begin{matrix}
+\text{M}_1\\
+\text{M}_2\\
+\text{M}_3\\
+\end{matrix} \right)_{AA} \\
 \end{matrix} \right)
 \end{align}
 
@@ -2312,6 +2357,7 @@ One can check that these, together with the S-matrix defined above satisfy $S^2 
 
 
 \paragraph{$(P,P)$ sector:}
+The non-bounding torus is a little more subtle than the bounding torus so we saved it for last. 
 
 
 We find the following local relation by multiplying two tadpoles in two different ways on the torus (will make picture).
@@ -2344,7 +2390,7 @@ One can quite simply work out the $S$matrix in this basis,
 \stackrel{\bullet}{h} \\
 \stackrel{\bullet}{v} \\
 X \\
-\end{matrix} \right)
+\end{matrix} \right)_{PP}
 \xrightarrow{S_{PP}} 
 \left( \begin{matrix}
 0&i  &0 \\ 
@@ -2354,7 +2400,7 @@ X \\
 \left( \begin{matrix}
 \stackrel{\bullet}{h} \\
 \stackrel{\bullet}{v} \\
-X \\\end{matrix} \right)
+X \\\end{matrix} \right)_{PP}
 \end{align}
 \dave{Should we seperate the even and odd parts into two seperate sub-blocks?}
 
@@ -2457,8 +2503,8 @@ We could add an appendix with some of the details, e.g., 6j symbols and particle
 \dave{We could do this example, or throw it in an appendix if we have time. It should be straightforward to compute. }
 
 
-\section{Q-Fibonacci}
-\dave{Does not exist.}
+%\section{Q-Fibonacci}
+%\dave{Does not exist.}
 %\dave{Assume $\text{End}(\tau) = \mathbb{C} \ell_1$. And that $V^{\tau \tau \tau} \cong \mathbb{C}^{1|1}$.
 %This theory does not exist. 
 %A quick way to see this is by looking at the fusion vertex $V^{\tau \tau \tau}$. 
