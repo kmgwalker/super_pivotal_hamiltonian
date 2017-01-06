@@ -2890,13 +2890,15 @@ The Frobenius-Schur move is a special case of the pivot:
 Diagrammatically, this looks like 
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{pivot_defn.pdf}}}}
 \ee
-Indeed, we see that $\kappa_a = [P^{0\bar a}_{\bar a}]_{00}$. From the diagrammatics, we see that the pivot implements a $2\pi/3$ rotation of the fusion space. When we discuss the $F$-symbols in Sec \ref{Fsymbols}, we will be able to derive an expression for $P^{ab}_c$ in terms of the $F$-symbols and quantum dimensions. 
+In terms of the pivot, we see that $\kappa_a = [P^{0\bar a}_{\bar a}]_{00}$. From the diagrammatics, we see that the pivot implements a $2\pi/3$ rotation of the fusion space. When we discuss the $F$-symbols in Sec \ref{Fsymbols}, we will be able to derive an expression for $P^{ab}_c$ in terms of the $F$-symbols and quantum dimensions. 
 
-In bosonic theories, we have $P^3=\unit$ (the identity operator).
-In the superfusion setting this does not hold, because acting with $P^3$ on some vector $v\in V^{ab}_c$ performs a $2\pi$ rotation on the fermion framing of $v$:
+Acting with $P$ three times performs a $2\pi$ rotation of a fusion vertex:
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{pivot_cubed.pdf}}}}\ee
+In bosonic theories, we must always have $P^3=\unit$: rotating a fusion vertex by $2\pi$ is equivalent to doing nothing.
+In the superfusion setting there is a more interesting posibility, because acting with $P^3$ on some vector $v\in V^{ab}_c$ performs a $2\pi$ rotation on the fermion framing of $v$.
 Rotating the fermion framing is equivalent to multiplication by $-1$ if $v$ has odd fermion parity. 
-Therefore, in superfusion categories, the pivotal structure relation $P^3$ can be realized projectively, in the sense that 
+
+Therefore, in superfusion categories, the pivotal structure relation $P^3=\unit$ is realized {\it projectively}, in the sense that 
 \be P^3 = (-1)^F,\ee
 where $(-1)^F$ is the fermion parity operator, which acts on any $v\in V^{abc}$ as $(-1)^F v = (-1)^{|v|}v$.
 
@@ -3195,13 +3197,13 @@ Outline:
 
 The $F$-symbols are defined as basis transformations between different fusion spaces. 
 There are two additional considerations when defining the $F$-symbols in the fermionic setting: they must account for the normal-ordering of the fusion spaces that are transformed during the $F$-move, and they must incorporate the modified tensor product introduced in Sec \ref{modified_tensor_product}. 
-There is some arbitrariness involved in our definition of the $F$-symbols, in terms of the type of diagram they are defined to act on and how they deal with the normal ordering issue.
-We will choose the following convention, in which the $F$-symbols are basis transformations between two fusion spaces of the form $V^{ab}_c$: \ethan{Choose this convention since it's what the majority of physics people use}
+
+There is some arbitrariness involved in our definition of the $F$-moves. They must be linear transformations between two different fusion graphs with four outgoing anyon worldlines, although the details of the structure of the graphs they provide a relation between (e.g. how many of their outgoing legs point up or down) is arbitrary, with the different choices being related by the pivotal matrices $P^{ab}_c$. Additionally, we must choose how they act on the relative sign-ordering of the fusion spaces involved in the $F$-move. We will choose the following convention, in which the $F$-symbols are basis transformations between two fusion spaces of the form $V^{ab}_c$, and such that the vertical sign-ordering of the fusion spaces in any diagram is preserved under $F$-moves: 
 \begin{align} \label{Fdef}
 F^{abc}_d: \; \; \bigoplus_x V^{ab}_{x,2} \tp_{\text{End}(x)} V^{xc}_{d,1} \rightarrow \bigoplus_y V^{ay}_{d,1} \tp_{\text{End}(y)} V^{bc}_{y,2}
 \end{align}
-Graphically, this is written in terms of the matrix elements of $F$ as \ethan{oops, forgot to add vertex multiplicities. Will fix later}
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{Fsymbol_defn.pdf}}}}\ee
+Graphically, this is written in terms of the matrix elements of $F$ as
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{Fsymbol_defn.pdf}}}}.\ee
 When we take tensor products of fusion spaces, the fusion spaces appear in the tensor product in the same left-to-right order that they appear in the fusion diagram, while the normal ordering of the fusion spaces to increase as we go ``up'' the diagram. 
 This means that the $F$-move permutes the normal ordering of the fusion spaces appearing in the fusion diagram, which we will see leads to Kozul-sign modifications of the pentagon relation. 
 
@@ -3521,35 +3523,31 @@ where second-to-last map $p : \pin^\pm(n) \ra \zt$ sends orientation-reversing (
 
 The difference between $pin^+(n)$ and $pin^-(n)$ is the way in which reflection acts: reflection squares to $1$ in $pin^+(n)$ (i.e. carries a trivial reflection quantum number) and to $-1$ in $pin^-(n)$ (i.e. carries a nontrivial reflection quantum number). This in turn corresponds to whether \eqref{pinseq} splits: if it splits we have a $pin^+(n)$ structure, with $pin^+(n) \cong Spin(n) \rtimes \zt$. If it does not split we have a $pin^-(n)$ structure, with $pin^-(n) \cong (Spin(n) \rtimes \zz_4)/\zt$. In what follows, we will fix a $pin^+(n)$ structure for concreteness (which is always possible as long as $M$ is orientable). The relation $pin^+(n) \cong Spin(n) \rtimes \zt$ gives an automorphism of $Spin(n)$ by conjugation, $\phi \mapsto \gamma \phi \gamma$, for $\phi \in Spin(n)$ and $\gamma \in pin^+(n)$. This is exactly the isomorphism that establishes the equivalence between $m_\sigma^+$ and $m_\sigma^-$ in the main text. 
 
-\ethan{(the following paragraph might not be needed)}
-So far we have discussed (s)pin structures from a rather geometric point of view, but there is a more algebraic approach that is also useful for us. Consider the real clifford algebra $C\ell_n$, generated by $n$ odd generators $\gamma_1,\dots,\gamma_n$ subject to the anticommutation relations $\{\gamma_i,\gamma_j\} = 2\delta_{ij}$\footnote{Unlike in the complex case, we cannot set the quadratic form $Q_{ij}$ in the more general $\{\gamma_i,\gamma_j\} = 2Q_{ij}$ to be $\delta_{ij}$ without loss of generality, since the signature of the quadratic form is physically meaningful in the real case. Our choice of $Q_{ij} = \delta_{ij}$ is because we are working in Euclidean signature.}. Geometrically, each $\gamma_i$ can be realized as a reflection about the plane normal to $v_i$, where $v_i$ is a basis vector of $\mathbb{R}^n$. Taking all the invertible elements of unit norm in $C\ell_n$ gives us $pin^+(n)$\footnote{Not $pin^-(n)$, since we have taken the quadratic form $Q_{ij} = \delta_{ij}$ to be positive-definite.}. Taking the even-parity elements (those containing an even number of different $\gamma_i$s) gives us the spin groups:
-\be Spin(n) = pin^+(n) \cap [C\ell_n]^0.\ee
+%\ethan{(the following paragraph might not be needed)}
+%So far we have discussed (s)pin structures from a rather geometric point of view, but there is a more algebraic approach that is also useful for us. Consider the real clifford algebra $C\ell_n$, generated by $n$ odd generators $\gamma_1,\dots,\gamma_n$ subject to the anticommutation relations $\{\gamma_i,\gamma_j\} = 2\delta_{ij}$\footnote{Unlike in the complex case, we cannot set the quadratic form $Q_{ij}$ in the more general $\{\gamma_i,\gamma_j\} = 2Q_{ij}$ to be $\delta_{ij}$ without loss of generality, since the signature of the quadratic form is physically meaningful in the real case. Our choice of $Q_{ij} = \delta_{ij}$ is because we are working in Euclidean signature.}. Geometrically, each $\gamma_i$ can be realized as a reflection about the plane normal to $v_i$, where $v_i$ is a basis vector of $\mathbb{R}^n$. Taking all the invertible elements of unit norm in $C\ell_n$ gives us $pin^+(n)$\footnote{Not $pin^-(n)$, since we have taken the quadratic form $Q_{ij} = \delta_{ij}$ to be positive-definite.}. Taking the even-parity elements (those containing an even number of different $\gamma_i$s) gives us the spin groups:
+%\be Spin(n) = pin^+(n) \cap [C\ell_n]^0.\ee
 
-%\ethan{the following probably isn't needed anymore}
-\begin{comment}
-We now turn to applying spin structures to achieve the ``fermion condensation'' mechanism discussed in the main text. Our discussion will be based around $C_2$ theory, but can be straightforwardly extended to more general examples. As mentioned in Sec. \ref{condensing_psi}, we condense $\psi$ by letting $\psi$ worldlines terminate on vacuum. We mark each $\psi$ worldline endpoint with a box:
-\be\label{boxdef} \PsiFermion. \ee
-In order for this to be a physically well-defined condensation procedure, we should not be able to determine the locations of the boxes with any topological (string) operator, since the boxes identify the $\psi$ particles with the vacuum. 
-%A useful picture is to think of the $\psi$ lines at boxes at going straight back into a codimension-1 ``back wall'', on which they are absorbed. 
-However, this leads to inconsistencies in the ``condensed'' theory, since 
-\be\PsiFermion = \PsiFermionTwist = (-1) \ \PsiFermion. \ee
+\section{Reflection and Pin structures} \label{pins_and_reflection}
 
-To fix these inconsistencies, we couple the boxes marking the $\psi$ endpoints to a spin structure. Loosely, the spin structure will cancel out the factors of $-1$ picked up upon untwisting $2\pi$-twisted worldlines, allowing for the condensation (or ``transparentization'') process to go through. A spin structure is a section of the spin bundle $FSp(M)$ (see \eqref{spinbundleseq}). To facilitate our diagrammatic calculations, we find it convenient to fix a definite section of this bundle in which to draw our diagrams. Since sections of $FSp(M)$ are just consistent choices of spin framings on $M$, fixing a section of $FSp(M)$ amounts to making a fixed choice for the fermion framing at each point of $M$. We will choose a global framing that always points ``to the right'': that is, we will always draw boxes whose $\psi$ lines emanate from their left sides, as in \eqref{boxdef}. We emphasize that this is merely a gauge choice: other framing conventions are related to one another by gauge transformations, and do not necessarily have to be globally constant. 
+In diagrammatics, inner products of diagrams are taken by stacking them on top of one another. 
+Therefore, in order to compute the inner product of a diagram with itself, we need to know how to reflect it about a given axis---we need to determine how reflection acts on fusion diagrams. 
 
-Consider the configuration space of all possible configurations of $\psi$ endpoints (boxes). We will now form a fiber bundle over the configuration space, whose fibers consist of all possible spin framings and different normal orderings of the $\psi$ endpoints. At a given point in configuration space with $k$ different $\psi$ endpoints, the fiber is $F = (\zt)^2\times S_k$, where $S_k$ is the symmetric group. The $(\zt)^k$ factor acts as spin flips ($2\pi$ framing rotations) on each of the $k$ endpoints, and the $S_k$ factor acts to permute the normal ordering of the endpoints. However, as we identify states that differ by an even number of combined spin flips and fermion swaps, we instead set the fiber to be the group $\mcf = F/G$, where $G$ is the subgroup of $F$ consisting of all elements with even total parity. We define odd permutations of endpoint ordering to act on $\cc$ as multiplication by $-1$, so that swapping the labelling of two $\psi$ endpoints comes at the expense of a minus sign. This means that the exchange of two $\psi$ endpoints is bosonic, in that 
+To study how orientation-reversing spacetime transformations interplay with the fermion framing, we will need to equip the back wall which provides the fermion condensate with a Pin structure. Because we work in a convention where $\psi$ endpoints always have a fixed framing, the only orientation-reversing spacetime transformation we need to consider is one that  reflects spacetime about an axis parallel to our global framing direction (which in our convention is horizontal in diagrams), since this is the only reflection that leaves the framing of the $\psi$ endpoints invariant. 
+
+Together with specifying how $2\pi$ rotations act on the fermion framing, specifying how reflections about the framing direction act is equivalent to specifying a $Pin^+(1) \cong \zt \times \zt$ action on the fibers of the bundle over the configuration space of ordered fermion framings used in Sec \ref{condensing_psi}. To proceed we need to define how $Pin^+(1)$ acts on $\cc$, which will give us a complex line bundle on configuration space. Of course, the $2\pi$ rotation must act as multiplication by $-1$, since it acts as the spin flip of a fermion. Reflection about the framing direction is then required to act as complex conjugation in order for our theory to have the correct unitary structure. \ethan{elaborate on this}
+
+We are now in a position to prove that annihilating a pair of connected $\psi$ endpoints gives the vacuum, up to a phase that must be purely imaginary. As in \eqref{EvalPsiPsi}, we must have 
 \begin{align}
-\TwoFermion = (-1)\ \TwoFermionExchange = (-1)^2\ \TwoFermion,
+\PsiEnd  = \lambda \times \text{(vaccuum)},
 \end{align}
-which resolves the earlier inconsistency.
-
-As we mentioned earlier, in order to perform a consistent condensation procedure, we must equip the $\psi$ endpoints with a spin structure. However, in order to take inner products we will need to consider how states transform under reflections, and so we actually need a more general $pin^+$ structure. Because we work in a gauge where the framing of the $\psi$ endpoints is globally fixed, we only need to consider what happens to $\psi$ endpoints when they are either rotated by $2\pi$ or reflected about an axis parallel to our global framing direction (which in our convention is horizontal), since both of these actions leave the framing of the $\psi$ endpoints invariant. Specifying the action of $2\pi$ rotations and reflections about the framing direction on is equivalent to specifying a $pin^+(1) \cong \zt \times \zt$ action on the fibers of our bundle over configuration space. To proceed we need to define how $pin^+(1)$ acts on $\cc$, which will give us a complex line bundle on configuration space. We do this by defining the $2\pi$ rotation to act as multiplication by $-1$ and the reflection about the framing direction to act as complex conjugation, which is needed for our theory to have a unitary structure. Since $2\pi$ rotations...
-
-Physically, the spin structure we use to perform condensation can be thought of as a simple theory of physical fermions. To make the condensation procedure well-defined, we can equip the boxes that mark the $\psi$ worldline endpoints with a spin structure, or we can think of the boxes as denoting the location of both a $\psi$ fermion and a physical fermion $f$: these two points of view are exactly the same. Condensing the boxes ``condenses'' $\psi$, although we are really condensing $\psi f$ bound states. 
-\end{comment}
-
-%Finally, we mention that while spin structures allow us to carry out our condensation procedure, they also play a key role in our analysis of the quasiparticle excitations in fermionic theories. We describe quasiparticles by simple modules of the tube algebra, and hence they are constructed out of linear combinations of tubes with string-net pictures drawn on them. 
-%Since there are two different spin structures on the cylinder (corresponding to periodic or anti-periodic fermion boundary conditions around the non-contractible loop of the cylinder), the quasiparticles carry $\zt$ degrees of freedom corresponding to their spin structure.  need to come with spin structures in order for the fermions that live on them to be well-defined.
-
+where $\lambda$ is some as-yet undetermined complex number (the semicircular nature of the above diagram comes from our choice of spin framing). Since the reflection in $Pin^+(1)$ about the framing direction acts as complex conjugation, we can Hermitian-conjugate both sides of the previous relation to obtain
+%\footnote{The fact that spatial reflections act as complex conjugation follows from the fact that $pin^+(2)$ admits a real spinor representation.}
+\begin{align}
+\lambda^{*} \times ({\rm vaccuum}) = \left( \PsiEnd \right) ^{\dagger}  = \PsiEndExchange = - \PsiEnd  = - \lambda \times ({\rm vaccuum}),
+\label{phase}
+\end{align}
+where in the last step we have swapped the sign-ordering of the boxes at the expense of a minus sign. 
+This implies that $\lambda = - \lambda^*$, and so $\lambda$ must be purely imaginary. \ethan{Add pictures to show that taking out two fermions on a $\beta$ line gives us $A^4$}
 
 
 
@@ -3562,7 +3560,6 @@ Physically, the spin structure we use to perform condensation can be thought of 
 
 The setting for examining a collection of $n$ quasiparticle excitations is an $n$-punctured sphere, with a quasiparticle excitation localized at the location of each puncture. 
 Since the quasiparticles in the phases we are studying are topological, our way of describing them should be invariant under ``zooming in'' or ``zooming out'' of the region around the puncture. That is, our way of describing a quasiparticle should be unchanged if we perform a scale transformation by adding in extra space around the puncture on which the quasiparticle is localized. These scale transformations are implemented by stacking tubes onto the location of each puncture. The condition that our quasiparticles be ``topological'' is equivalent to demanding that the quasiparticle at a given puncture remains invariant under such scale transformations. \ethan{make figure to show this}
-
 
 The set of all tubes modulo local relations on the tubes forms an algebra called the {\it tube algebra}, where the multiplication of two tubes is given by stacking one tube on top of the other. The statement that a quasiparticle located at a puncture is invariant under scale transformations is equivalent to saying that the vector space corresponding to the quasiparticle remains invariant under the action of the tube algebra. Mathematically, such invariant vector spaces are the modules of the tube algebra. If a module is semisimple, it corresponds to a collection of quasiparticles, while if it is simple it is associated with an irreducible quasiparticle. 
 
