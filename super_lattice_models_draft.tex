@@ -150,7 +150,59 @@
 \newcommand{\FubeXss}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OneLine.pdf}}}}}
 \newcommand{\FubeXsds}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OneLineDot.pdf}}}}}
 
-\newcommand{\AnnularTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{AnnularTube.pdf}}}}}
+\newcommand{\AnnularTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{AnnularTube.pdf}}}}}
+\newcommand{\AnnularTubeNoIndex}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{AnnularTubeNoIndex.pdf}}}}}
+
+%\newcommand{\AnnulsLabel}[5]{\mathord{ \raisebox{.2ex}{$\scriptstyle{#2}$}\mkern2mu\overset{#3}{\underset{#4}{#1}}\mkern2mu\raisebox{0.2ex}{$\scriptstyle{#5}$} }}
+
+\newcommand{\Annulusxprime}[2]{\mathord{\ooalign{
+ \vphantom{\raisebox{1.3ex}{$\Big|^2$}}\cr\hidewidth
+ \ensuremath{\scriptstyle{#2}}
+ \hidewidth\cr 
+ $\vcenter{\hbox{$#1$ }}$
+ \cr\vphantom{ \raisebox{-1.3ex}{$\Big|_q$}} }}}
+
+\newcommand{\AnnulsLabel}[5]{\mathord{ 
+\mkern2mu\overset{#3}{{\Annulusxprime{#1}{#2}}}\mkern2mu\raisebox{0ex}{$\scriptstyle{#4}$} }}
+
+%\newcommand{\AnnulsLabel}[5]{\mathord{ 
+%\raisebox{.2ex}{$\scriptstyle{#2}$}\mkern2mu\overset{#3}{{#1}}\mkern2mu\raisebox{0.2ex}{$\scriptstyle{#5}$} }}
+
+%\newcommand{\AnnulsLabel}[5]{\mathord{ 
+%\raisebox{.2ex}{$\scriptstyle{#2}$}\mkern2mu\overset{#3}{{#1}}\mkern2mu\raisebox{0.2ex}{$\scriptstyle{#5}$} }}
+
+%\newcommand{\Annulsx}[1]{{\mathord{\ooalign{ \vphantom{$\Big|^2$}\cr\hidewidth \ensuremath{#1}\hidewidth\cr$\vcenter{\hbox{\includegraphics[scale=1]{AnnularTubeNoIndex.pdf}}}$\cr\vphantom{$\Big|_q$} }}}}		% Annulus with a spin structure label inside.
+%
+%\newcommand{\Annulsx}[1]{{\mathord{\ooalign{ \cr \hidewidth 
+%{{\raisebox{1.2ex}{\hspace{1cm}$\scriptstyle{#1}$}}}
+%\hidewidth\cr$\vcenter{\hbox{\includegraphics[scale=1]{AnnularTubeNoIndex.pdf}}}$ }}}}		% Annulus with a spin structure label inside.
+
+\newcommand{\Annulusx}[1]{{\mathord{\ooalign{ \vphantom{$\Big|^{\Big|^2}_{\Big|^2}$}\cr\hidewidth\ensuremath{#1}\hidewidth\cr$\vcenter{\hbox{\includegraphics[scale=1]{AnnularTubeNoIndex.pdf}}}$\cr\vphantom{$\Big|_q$} }}}}		% BWbare with a symbol inside
+
+
+%\newcommand{\Annulusx}[1]{{\mathord{\ooalign{ \vphantom{$\Big|^{\Big|}$} \cr \hidewidth 
+%\raisebox{1ex}{$\scriptstyle{#1}$}
+%\hidewidth\cr$\vcenter{\hbox{\includegraphics[scale=1]{AnnularTubeNoIndex.pdf}}}$ }}}}		% Annulus with a spin structure label inside.
+
+
+\newcommand{\AnTorusx}[2]{{\mathord{\ooalign{\vphantom{$\Big|^2$} \cr \hidewidth 
+{\raisebox{-.5ex}{\hspace{1.8cm}$\scriptstyle{#2}$}}
+\hidewidth\cr $\Annulusx{#1}$ }}}}		% Annulus with a spin structure label inside.
+
+%\newcommand{\Vx}[1]{%
+%  \ooalign{\Large $#1$\cr\hss\raisebox{1.4ex}{\scriptsize $x$}\hss}}
+  
+%\newcommand*{\Vx}{{ \AnnularTubeNoIndex }\kern0.2em\raisebox{1.4ex}{\tiny x}}
+
+
+%\newcommand*{\Vx}{{ \AnnularTubeNoIndex }
+%\kern-1.0em\raisebox{1.4ex}{ $\scriptstyle{x}$} \kern1.0em}
+\newcommand*{\Annulus}[2]{{ #1 }
+\kern-3.5em\raisebox{0ex}{ $\scriptstyle{#2}$} \kern3.5em} %Could change 0 to 1.2 to raise the B.
+
+\newcommand*{\AnnulusP}[3]{{ \Annulus{#1}{#2} }
+\kern-1.3em\raisebox{3.5ex}{ $\scriptstyle{#3}$} \kern1.3em} %Could change 0 to 1.2 to raise the B.
+
 
 \newcommand{\FubesXs}{\mathord{\vcenter{\hbox{\includegraphics[scale=1,angle=90,origin=c]{OneLine.pdf}}}}}
 \newcommand{\FubesdXs}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesdXs.pdf}}}}}
@@ -1707,11 +1759,11 @@ In the non-bounding sector we have three simple objects, two $Q$ type and one $M
 
 %\subsection{Modular transformations}
 \subsubsection{Tube algebra and local relations}
-
-\begin{align}
-\AnnularTube B
-\end{align}
 We differ from the tube algebra defined in the Ising section by using tubes that are defined on the twice punctured sphere. 
+\begin{align}
+\Annulus{\AnnularTubeNoIndex}{B}
+\AnnulusP{\AnnularTubeNoIndex}{B}{N}
+\end{align}
 This makes it easier to hand with the rather involved pivoting moves in $\halfesix$. 
 Explicitly we choose 
 \begin{align}
@@ -1873,6 +1925,12 @@ $\alpha = \frac{1}{2} \left( 1+ 1/\sqrt{2d+1} \right)$, and $\beta = \frac{1}{2}
 \dave{We should put this figure (or an analogous figure) in the Ising section when we describe the action of the mapping class group.}}
 \end{figure}
 
+
+\begin{align}
+\xymatrix @!0 @M=1mm @R=6mm @C=25mm{
+\AnnulusP{\AnnularTubeNoIndex}{N}{N} & \AnnulusP{\AnnularTubeNoIndex}{N}{B}& \AnnulusP{\AnnularTubeNoIndex}{B}{N} & \AnnulusP{\AnnularTubeNoIndex}{B}{B}
+}
+\end{align}
 
 \dave{Group or groupoid?}
 \dave{Note to self: Find better notation for denoting and depicting spin structures. Change the crosses on the tubes to disks when on torri.}
