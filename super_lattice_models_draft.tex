@@ -522,136 +522,133 @@ m-type and q-type particles are doubled, with arrow pointing to the m-type parti
 
 \subsection{Condensation in general}
 
-Let $C$ be a ribbon category and let $\alpha$ be a particle (simple object) of $C$ which we hope to condense.
-In category theoretic terms, we want to add morphisms to $C$ so that $\alpha$ becomes
-isomorphic to the trivial particle $\unit$ (or, more generally, to a direct sum of several copies of $\unit$).
-In terms of string diagrams, we want to allow $\alpha$ world lines to disappear into the vacuum (or into
-the condensate), as shown in Figure [xxx, showing inverses].
-We can also think of this as a categorical quotient, with result denoted $C/\langle \alpha \cong 1 \rangle$ or
-more simply $C/\alpha$.
+Let $\mcc$ be a ribbon category and let $\alpha$ be a particle (simple object) of $\mcc$ which we hope to condense.
+In category theoretic terms, we want to add morphisms to $\mcc$ so that $\alpha$ becomes
+isomorphic to the trivial particle $\unit$ (or, more generally, to a direct sum of several copies of $\unit$). 
+We can think of this as a categorical quotient, with result denoted $\mcc/\langle \alpha \cong \unit \rangle$ or
+more simply $\mcc/\alpha$.
 
-For simplicity, we will now assume that $\alpha\otimes\alpha\cong \unit$, 
-though most of the following discussion works more generally.
+In our graphical calculus, condensing $\alpha$ means that $\alpha$ worldlines are allowed to have endpoints at locations where they are ``absorbed'' into the condensate. 
+We will mark the locations where $\alpha$ particles are absorbed into the condensate with boxes:
+\begin{align}
+\label{box_def}
+\alpha\; \PsiFermion\; , 
+\end{align}
+where the horizontal blue line is an $\alpha$ worldline. 
+For simplicity, we will assume that $\alpha\otimes\alpha\cong \unit$ (which will be true in the examples considered in this paper), 
+although most of the following discussion works more generally.
 
-In order for this procedure to not cause unintended collapse in $C$,
-$\alpha$ must satisfy three conditions.
+In order for this condensation procedure to not cause unintended collapse in $\mcc$,
+$\alpha$ must satisfy three conditions:
 
-The first is that $\alpha$ braid trivially with every particle in $C$ 
-(i.e.\ $\alpha$ lies in the transparent subcategory of $C$).
-If $\beta$ braids non-trivially with $\alpha$ (i.e.\ if the left and right braidings are not equal),
-then any string diagram which includes a $\beta$ particle must be zero, as shown in 
-Figure [xxx; assume qdim of alpha is one for convenience].
-\kw{say something about bound (right term?) particles here?}
+\begin{itemize}
 
-The second condition is that the twist of $\alpha$ is 1.
-If not, then we have a contradiction, as shown in Figure [xxx].
+\item First, $\alpha$ must have the spin of a boson: that is, the twist of $\alpha$ must be 1.
+This is because
+\be 
+\label{twist_inconsistency} \PsiFermion = \PsiFermionTwist = \theta_\alpha \ \PsiFermion\;,
+\ee
+and so if $\theta_\alpha \neq 1$, diagrams in which $\alpha$ worldlines are absorbed into the condensate are identically zero, and condensation is impossible. 
 
-Finally, the statistics of $\alpha$ should be bosonic; otherwise we have a contradiction, as shown in Figure xxx.
+\item Secondly, $\alpha$ must be statistically bosonic, i.e. it must braid trivially with itself.  
+To see this, we make the following manipulations:
+\be \label{statistics_inconsistency}
+\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermion_nolabels.pdf}}}} = \ \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermionExchange_nolabels.pdf}}}} = \theta_{\alpha,\alpha} \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermion_nolabels.pdf}}}},\ee
+where $\theta_{\alpha,\alpha}$ is the self-statistics of $\alpha$. 
+By the spin-statistics relation this condition is not independent of the previous one, but it will be useful to regard them as separate constraints for the purpose of the fermion condensation procedure described in the next section\footnote{If we drop positivity requirements, we can violate the spin-statistics theorem and have particles which are fermionic in spin but not statistics or vice-versa; see [Scott and Kevin's paper] for a discussion of this.}. 
 
-\medskip
+\item Finally, 
+$\alpha$ must braid trivially with every particle in $\mcc$. In category-theoretic language, this means that $\alpha$ must lie in the transparent subcategory of $\mcc$.
+If a particle $\beta$ braids non-trivially with $\alpha$ (i.e.\ if the left and right braidings are not equal),
+then any string diagram which includes a $\beta$ particle must be zero: (we assume the quantum dimension of alpha is one for convenience)
+\be\label{transparency_inconsistency} 
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{alphabox_beta_braiding.pdf}}}},
+\ee
+where the orange line is a $\beta$ worldline and $\theta_{\alpha,\beta}$ is the mutual statistics of $\alpha$ and $\beta$. 
+The first two equalities follow from the fact that the location of a particle being absorbed into the condensate is not physically significant: no operator can distinguish between states that differ only by the location of an $\alpha$ endpoint. 
+Therefore, if $\theta_{\alpha,\beta}\neq1$, condensing $\alpha$ causes unintended collapse in $\mcc$, since it confines $\beta$. 
+\end{itemize}
 
-If $\alpha$ is not transparent, or if the twist of $\alpha$ is not 1, or if the statistics are not bosonic, then we
-will have to work harder to construct $C/\alpha$.
-
-
-
-\subsection{Condensing $\psi$} \label{condensing_psi}
-
-
-
-The $\psi$ particle of the Ising category has twist $-1$, fermionic statistics, and is not transparent (see xxx above),
-so we will have to define a different notion of condensation to define $\mbox{Ising}/\psi$.
-
-\kw{Note: I'm emphasizing that $\psi$ has three {\it distinct and independent} characteristics which make condensation tricky.
-If we drop positivity requirements, we can violate the spin-statistics thm and have particles which are fermionic in one sense but
-not the other; this will be explored in the paper with Scott.}
-
-The non-transparency means we can only do ``back wall" condensation (explained below).
-One consequence of this is that the quotient category $\mbox{Ising}/\psi$ is not braided.
-It does, however, retain a ``front braiding" by the Ising category, so it is more than a mere tensor category.
-
-The fact that the twist $\theta_\psi = -1$ forces us to equip the back wall
-with a Spin structure.
-
-Finally, the fact that $\psi$ has fermionic statistics forces our vector spaces to be super vector spaces,
-which Koszul signs to keep track of signs related to the ordering of $\psi$ endpoints.
-
-\medskip
-
-As we saw above, we can't allow world lines of non-transparent particles like $\psi$ disappear anywhere
-in the 3-dimensional space-time.
-But if we restrict the $\psi$-ribbon endpoints to a 2-dimensional subset of the boundary of 3d spacetime,
-we can obtain a consistent graphical calculus.
-
-In this paper, we will adopt the convention that $\psi$ world lines can terminate on a ``back wall", parallel to the 
-blackboard and behind (i.e.\ further from the reader then) all other world lines drawn in figures.
-
-Figure xxx shows a shorthand notation for $\psi$-lines terminating on the back wall.
-A box means that the $\psi$-line heads straight back and terminates.
-Figure xxx shows that back wall condensation does not run afoul of the non-transparency of $\psi$ --
-the world lines of other particles (e.g.\ $\sigma$ in the Ising case) case pass in front of the boxes
-but not behind them.
-
-\ethan{I thought the ``add physical fermions picture'' would be a bit easier for physics people to understand, and that it might be better to do the more rigorous back-wall approach when do the general theory in Sec 9. 
-Either of you can definitely override me on this, though. 
-And If you do want to talk about the back wall and spin structure details here, there are some relevant figures and text we can borrow from sec 9.1.}
-\kw{I thought it was important to emphasize that $\psi$ being non-transparent makes a very big difference -- the quotient is a 2-category (tensor category) rather than a 3-category (braided category).
-The Spin structure or ``add physical fermion" issue is separate from the non-transparent/back-wall stuff.
-(If $\psi$ were non-transparent but bosonic, we would still need a back wall, but the back wall would not need a Spin structure.
-Conversely, if $\psi$ were transparent but twist-fermionic, then we would not need a back wall but we would need to introduce Spin
-structures.)
-I'm happy to include the ``add physical fermion" stuff up here if you think it would be helpful to some readers.}
-
-\dave{I would vote for the back wall picture and then supplement with the physical picture of adding fermions. }
-
-\medskip
+To summarize, in order to condense $\alpha$, $\alpha$ must have a twist of 1, bosonic self-statistics, and must braid trivially with every other particle in the theory. 
+If any of these conditions are violated, we
+will have to work harder to construct $\mcc/\alpha$.
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Condensing $\psi$ in Ising \ethan{in progress}} \label{condensing_psi}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\kwsep
-
-
-
-In this subsection we describe our procedure for performing fermion condensation in the Ising theory. We will be a little light on rigor, with a more careful and general approach detailed in Sec \ref{carefully_condensing_psi}. 
-
-First, we notice that $\unit$ and $\psi$ form a fusion sub-algebra of the Ising fusion algebra.
-We would like to ``condense" the $\psi$ particle by modding out this sub-algebra.
-This is not straightforward though, as the $\psi$ particle is fermionic in both spin and statistics,
+In this subsection we describe our procedure for condensing $\psi$ in the Ising theory. 
+We would like to ``condense" the $\psi$ particle by constructing the quotient theory $\mcc / \psi$. 
+First, we note that $\psi$ is fermionic in both spin and statistics,
 \begin{align} \label{psi_a_fermion}
 \Spin = (-1) \times  \PsiIdentity
 \qquad \qquad \TwoPsiExchange =  (-1) \times\TwoPsiIdentity.
 \end{align}
-%and therefore cannot be simply identified with the vacuum. 
-%which means that it cannot be identified with the vacuum. Indeed, performing such an identification would result in a trivial theory \dave{Show picture.}
+Additionally, $\psi$ has nontrivial braiding with $\sigma$, and as such $\psi$ is not transparent. We will denote the image of $\sigma$ under the condensation process as $\beta$. This means that If we perform unrestricted condensation on $\psi$, $\beta$ worldlines are confined, since
+\be \label{box_beta_nowall_braiding}
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{box_beta_nowall_braiding.pdf}}}}.\ee
+Thus, $\psi$ violates all three of the conditions that particles in a condensate must satisfy! 
+To condense $\psi$, we will clearly need some additional help. 
 
-In our graphical calculus, condensing $\psi$ means that $\psi$ worldlines are allowed to have endpoints at locations where they ``disappear'' into the condensate. We will mark the locations where $\psi$ particles are absorbed into the condensate with boxes:
-\begin{align}
-\label{box_def}
-\PsiFermion 
-\end{align}
-By itself this leads to inconsistencies, since 
-\be 
-\label{inconsistency1} \PsiFermion = \PsiFermionTwist = (-1) \ \PsiFermion,
-\ee
-where we have made use of \eqref{psi_a_fermion} in the second step. There is also an additional inconsistency created by the fermionic exchange statistics of the $\psi$ worldlines:
-\be \label{inconsistency2}
-\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermion_nolabels.pdf}}}} = \ \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermionExchange_nolabels.pdf}}}} = (-1) \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermion_nolabels.pdf}}}}.\ee
-The first equality follows by dragging the lower box around and over the upper box (we are free to move the boxes around at will since states with a $\psi$ particle disappearing into the condensate at different points are physically indistinguishable). The second equality follows by making use of \eqref{psi_a_fermion}.
+We will first examine how to address the non-transparency of $\psi$. As we saw above in \eqref{box_beta_nowall_braiding}, we can't allow world lines of $\psi$ to disappear anywhere
+in the 3-dimensional space-time.
+However, if we restrict the $\psi$ worldline endpoints to a 2-dimensional subset of the boundary of 3-dimensional spacetime,
+we {\it can} obtain a consistent graphical calculus.
+In this paper, we will adopt the convention that $\psi$ world lines are allowed to terminate on a codimension-1 ``back wall", located on a spatial boundary of the system that is located ``behind'' all other world lines drawn in our graphical calculus. 
 
-To fix these inconsistencies, we equip the theory with a spin structure. We describe this in detail in Sec \ref{carefully_condensing_psi}, but loosely the idea is to couple the $\psi$ endpoints to a spin structure, which ``bosonizes'' them and allows the condensation procedure to go through. This essentially amounts to adding a phase of {\it physical} (not anyonic or emergent) fermions to the theory, and attaching a single physical fermion to each $\psi$ endpoint. 
-This fixes the first inconsistency \eqref{inconsistency1}, since rotating the physical fermion on the $\psi$ endpoint by $2\pi$ gives an extra factor of $-1$:
+Figure \ref{backwall} (a) demonstrates this graphically, with the light blue back section of the box denoting the back wall, on which the $\psi$ worldlines can be absorbed. 
+String-net graphs in our (2+1)D spacetime can be reduced to string-net graphs in (1+1)D spacetime by introducing a shorthand notation for $\psi$-lines terminating on the back wall. This notation is shown in Figure \ref{backwall} (b), where we use boxes to denote places where $\psi$ worldlines head straight back into the back wall and terminate.
+
+The ``back wall'' condensation process ``transparentizes'' $\psi$, and allows us to condense $\psi$ without confining $\beta$. Indeed, we have 
+\be \label{box_beta_braiding}
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{box_beta_braiding.pdf}}}},\ee
+where we have performed an $F$-move to obtain the second equality. 
+\ethan{I guess I still don't understand why this means the theory isn't braided: we can move endpoints over $\beta$ lines if we want.}
+
+An important consequence of the existence of the back wall this is that the quotient category $C_2$ is not braided, as it maps onto a (1+1)D theory. In category theoretic terms, the condensation process takes a 3-category (braided category) to a 2-category (tensor category)\footnote{The condensed theory does however retain a ``front braiding" by the Ising category, so it is more than a mere tensor category.}.
+
+A useful picture for this condensation process is to imagine the existence of a codimenion-1 ``back wall'' that plays the role of the condensate. In this picture, we interpret the boxes at the endpoints of $\psi$ lines as marking the location where $\psi$ lines meet the back wall. The back wall carries a spin structure to provide the minus signs that make equations \eqref{boxspin} and \eqref{boxbraid} hold. This point of view allows us to interpret the condensation procedure as a form of dimensional reduction. For example, when condensing the fermion in the Ising TQFT, we can think of the condensation procedure as a map from the (2+1)D Ising theory to the (1+1)D $C_2$ theory. The fact that the Ising theory looses a dimension upon condensation is roughly equivalent to the statement that the Ising theory is a {\it braided} modular tensor category, but the $C_2$ theory is not: the condensation process destroys the braided structure.\footnote{This is similar to the relationship between a (1+1)D phase described by the tensor category $\mcc$ and the (2+1)D phase described by the braided category $\mcz(\mcc)$.}
+%This is because the spin structure ocurrs along on a two dimensional surface embedded in the TQFT. \ethan{I'm not sure how true this is}
+
+\begin{figure}
+  \centering
+    \includegraphics{Backwall_figure.pdf}
+      \caption{\label{backwall} (a) The ``back wall'' picture. The box represents a section of a (2+1)D Ising TQFT, with the codimension-1 back wall indicated by the blue back side of the box. $\psi$ worldlines to be absorbed into the back wall at marked points labelled by $1,2,3,4$. Free $\psi$ endpoints which do not terminate on the back wall are not allowed. (b) Our way of representing the picture (a) in a (1+1)D graphical calculus. We have squashed the box down to a two dimensional plane, with the blue boxes representing the points at which the $\psi$ lines ``go straight back and hit the back wall''. \ethan{this is just about at the limit of my artistic rendering abilities---hopefully it does the job.}}
+\end{figure}
+
+
+
+The back wall construction ``transparentizes'' $\psi$, fixing the inconsistency presented by \eqref{transparency_inconsistency}. 
+However, we have not yet addressed the spin and statistics inconsistencies \eqref{twist_inconsistency} and \eqref{statistics_inconsistency}.
+
+To fix the twist inconsistency \eqref{twist_inconsistency}, we will equip the theory with a spin structure. Loosely, the idea is to couple the $\psi$ endpoints to a spin structure, which ``bosonizes'' them and allows the condensation procedure to go through. 
+This amounts to adding a phase of {\it physical} (not anyonic or emergent) fermions to the theory, and attaching a single physical fermion to each $\psi$ endpoint. 
+This fixes the spin inconsistency \eqref{spin_inconsistency}, since rotating the physical fermion on the $\psi$ endpoint by $2\pi$ gives an extra factor of $-1$:
 \begin{align} \label{boxspin}
 \PsiFermion = (-1)\ \PsiFermionTwist = (-1)^2\ \PsiFermion. 
 \end{align}
+
+To satisfy the statistical constraint \eqref{statistics_inconsistency}, we will add Kozul signs supervector spaces...Finally, the fact that $\psi$ has fermionic statistics forces our vector spaces to be super vector spaces,
+which Koszul signs to keep track of signs related to the ordering of $\psi$ endpoints.
+
 Adding fermions to the $\psi$ endpoints means that we have to keep track of their normal ordering, since permuting two $\psi$ endpoints must come at the expense of a minus sign. 
 This means that the exchange of two labeled $\psi$ endpoints is bosonic, in that 
 \begin{align} \label{boxbraid}
 \TwoFermion =\ \TwoFermionExchange = (-1)^2\ \TwoFermion,
 \end{align}
-which resolves the remaining inconsistency \eqref{inconsistency2}. Thus, the physical fermions attached to the $\psi$ endpoints compensate for the fermionic nature of the $\psi$ particle in the condensate, and transform the $\psi$ endpoints into bosonic objects, which we are then allowed to condense. Therefore, although we are indeed identifying emergent fermions with the vacuum, the term ``fermion condensation'' is a bit misleading, as what we are actually doing is closer to {\it boson} condensation of bound states of $\psi$ and a physical fermion. 
+which resolves the remaining inconsistency \eqref{statistics_inconsistency}. Thus, the physical fermions attached to the $\psi$ endpoints compensate for the fermionic nature of the $\psi$ particle in the condensate, and transform the $\psi$ endpoints into bosonic objects, which we are then allowed to condense. 
+Therefore, although we are indeed identifying emergent fermions with the vacuum, the term ``fermion condensation'' is a bit misleading, as what we are actually doing is closer to {\it boson} condensation of bound states of $\psi$ and a physical fermion. 
+However, while $\psi$ endpoints are bosonic with respect to self-exchange and twists, they are not strictly bosonic in the usual sense, as they still couple to the background spin structure: the emergent $\psi$ fermions do not see the spin structure, but the physical fermions attached to their endpoints do. 
+This difference is only important when considering manifolds with nontrivial topology, and means that when a $\psi$ endpoint is carried around a topologically non-trivial cycle, it will pick up a factor of $\pm1$ that depends on the ambient spin structure. 
 
-Although $\psi$ endpoints are bosonic with respect to self-exchange and twists, they are not strictly bosonic in the usual sense, as they still couple to the background spin structure: the emergent $\psi$ fermions do not see the spin structure, but the physical fermions attached to their endpoints do. This difference is only important when considering manifolds with nontrivial topology, and means that when a $\psi$ endpoint is carried around a topologically non-trivial cycle, it will pick up a factor of $\pm1$ that depends on the ambient spin structure. 
+Finally, we emphasize that the spin-structure-equipped back wall used in our condensation is needed because $\psi$ is both fermionic and non-transparent. If $\psi$ were non-transparent but bosonic, we would still need a back wall, but the back wall would not need a Spin structure.
+Conversely, if $\psi$ were transparent but fermionic, then we would not need a back wall, but we would still need to introduce Spin
+structures.
+
+\subsubsection{How to condense $\psi$ without loosing the braiding (just for fun)}
+\ethan{This subsubsection is just an extended comment on my part.}
 
 
 %\ethan{The commented-out section that follows is the back wall picture, which I relegated to section 9}
@@ -691,7 +688,7 @@ This implies that $\lambda = - \lambda^*$, and so $\lambda$ must be purely imagi
 \subsection{Local relations in the $C_2$ theory (in progress)}
 %and so we can condense the $\psi$ particle by modding out this sub-algebra, provided that we introduce the spin structures needed to make this procedure legitimate. 
 Now that we have worked out how to condense $\psi$, we can determine the graphical rules that govern the condensed theory. 
-We will denote the condensed theory by $C_2$, for reasons that we will elaborate on later. We could alternatively write $C_2 = \mcc/\psi$, since we have introduced an isomorphism between $\psi$ and the identity object in Ising.
+We will denote the condensed theory by $C_2$, for reasons that we will elaborate on later. We could alternatively write $C_2 = {\rm Ising} /\psi$, since we have introduced an isomorphism between $\psi$ and the identity object in Ising.
 
 We have already seen that in order for the condensation procedure to go through, the $C_2$ theory must come equipped with a spin structure. This introduces non-trivial local relations into the diagrammatic calculus that are not present in bosonic theories.  
 
@@ -2893,7 +2890,7 @@ A useful picture for this condensation process is to imagine the existence of a 
 \begin{figure}
   \centering
     \includegraphics{Backwall_figure.pdf}
-      \caption{The ``back wall'' picture. Starting from a (2+1)D Ising TQFT (left), we allow $\psi$ worldlines to be absorbed into the back wall of the box, which is required to possess a spin structure in order for this absorption to be consistent. In the condensed theory, we replace the points where the $\psi$ lines meet the back wall with boxes, as in the right panel. This allows us to ``squash'' the box down to a two dimensional plane, allowing us to view the condensed theory as a (1+1)D theory. \ethan{this is just about at the limit of my artistic rendering abilities---hopefully it does the job.}}
+      \caption{The ``back wall'' picture. (a): The ``back wall'' picture. The box represents a section of a (2+1)D Ising TQFT, with the codimension-1 back wall indicated by the blue back side of the box. $\psi$ worldlines to be absorbed into the back wall at points labelled by $1,2,3,4$. Free $\psi$ endpoints not ending on the back wall are not allowed. (b): Our way of representing the picture (a) in a (1+1)D graphical calculus. We have squashed the box down to a two dimensional plane, with the blue boxes representing the points at which the $\psi$ lines ``go straight back and hit the back wall''. \ethan{this is just about at the limit of my artistic rendering abilities---hopefully it does the job.}}
 \end{figure}
 %We will see later on that consistency between $F$-moves and fermion removal requires that we choose $\lambda = A^4$, placing a nontrivial constraint on the choices of $A$ that allow us to perform fermion condensation. 
 
