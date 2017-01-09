@@ -214,6 +214,7 @@
 \newcommand{\hTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{hTube.pdf}}}}}
 \newcommand{\tTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{tTube.pdf}}}}}
 \newcommand{\eTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{eTube.pdf}}}}}
+\newcommand{\vTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{vTube.pdf}}}}}
 
 
 \newcommand{\dota}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{dota.pdf}}}}}
@@ -222,7 +223,7 @@
 
 \newcommand{\XTubeNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{XTube.pdf}}}}}
 \newcommand{\XTube}[2]{\mathrel{\ooalign{$\XTubeNoLabel$\cr
-  \hidewidth\raise-2.5ex\hbox{$\scriptstyle{#2}\mkern30mu$}\cr
+  \hidewidth\raise-2.7ex\hbox{$\scriptstyle{#2}\mkern30mu$}\cr
     \hidewidth\raise-3ex\hbox{$\scriptstyle{#1}\mkern50mu$}\cr
   }}}
 
@@ -235,10 +236,19 @@
   }}}
 
 
+\newcommand{\VerticalSpace}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{VerticalSpace.pdf}}}}}
 
-\newcommand{\AddDat}[3]{\mathrel{\ooalign{ \vphantom{$\Big|^{\Big|^{\Big|}}$} $#1$\cr
+\newcommand{\AddDat}[3]{\mathrel{\ooalign{  $#1$\cr
   \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern38mu$}\cr
   \hidewidth\raise0ex\hbox{${#3}\mkern0mu$}\cr
+  \hidewidth\raise0ex\hbox{$\VerticalSpace$}\cr
+  }}}
+  
+  \newcommand{\AddDatTorus}[4]{\mathrel{\ooalign{  $#1$\cr
+  \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern38mu$}\cr
+  \hidewidth\raise3.8ex\hbox{$\scriptstyle{#3}\mkern0mu$}\cr
+  \hidewidth\raise0ex\hbox{${#4}\mkern0mu$}\cr
+  \hidewidth\raise0ex\hbox{$\VerticalSpace$}\cr
   }}}
   
   
@@ -265,9 +275,9 @@
   \newcommand{\TubeProductCoefficientax}[5]{\mathrel{\ooalign{$\TubeProductCoefficienta$\cr
       \hidewidth\raise-4.2ex\hbox{$\scriptstyle{#1} \mkern30mu$}\cr
       \hidewidth\raise-1.8ex\hbox{$\scriptstyle{#2} \mkern30mu$}\cr
-  \hidewidth\raise5.9ex\hbox{$\scriptstyle{#3}\mkern48mu$}\cr
-  \hidewidth\raise2.05ex\hbox{$\scriptstyle{#4}\mkern65mu$}\cr
-    \hidewidth\raise3.3ex\hbox{$\scriptstyle{#5}\mkern4mu$}\cr
+  \hidewidth\raise6.1ex\hbox{$\scriptstyle{#3}\mkern44mu$}\cr
+  \hidewidth\raise2.05ex\hbox{$\scriptstyle{#4}\mkern82mu$}\cr
+    \hidewidth\raise3.3ex\hbox{$\scriptstyle{#5}\mkern2mu$}\cr
   }}}
 
   
@@ -1971,24 +1981,31 @@ Lets also use the notation
 \end{align}
 then we have
 \begin{align}
-& \AddDat{\hTube}{X}{} \; \sim  -(-1)^{|X|}  \AddDat{\hTube}{X}{} \\
-&\AddDat{\hTube}{X}{\dotb} \; \sim  (-1)^{|X|}  \AddDat{\hTube}{X}{\dotb} 
+& \AddDat{\hTube}{X}{} \; =  -(-1)^{|X|}  \AddDat{\hTube}{X}{} \quad \quad \quad \AddDat{\hTube}{X}{\dotb} \; =  (-1)^{|X|}  \AddDat{\hTube}{X}{\dotb} 
 \end{align}
-which is found from taking two fermions out of the vacuum and taking them sliding them around the annulus.
+which is found from taking two fermions out of the vacuum and sliding them around the annulus.
 
 \begin{align}
- \AddDat{\XTube{\mu}{\nu}}{N}{\dotc} 
+\xymatrix @!0 @M=1mm @C=55mm{
+\AddDat{\TadupTube{\mu}}{X}{\dota}= \# \AddDat{\TadupTube{\nu}}{X}{}& \AddDat{\TadupTube{\mu}}{X}{\dota}= \# \AddDat{\TadupTube{\nu}}{X}{\dota} \\
+\\
+\AddDat{\TaddownTube{\mu}}{X}{\dota}= \# \AddDat{\TaddownTube{\nu}}{X}{}& \AddDat{\TaddownTube{\mu}}{X}{\dota}= \# \AddDat{\TaddownTube{\nu}}{X}{\dota}
+}
 \end{align}
-
 \begin{align}
-\AddDat{\TaddownTube{\mu}}{B}{\dota}
-\TadupTube{\mu}
-\XTube{\mu}{\nu}
-\hTube
-\tTube
-\eTube
+ \AddDat{\XTube{\mu}{\nu}}{X}{}  = \# \AddDat{\XTube{\mu}{\nu}}{X}{} \quad \quad \AddDat{\XTube{\mu}{\nu}}{X}{\dotc}  = \#  \AddDat{\XTube{\mu}{\nu}}{X}{\dotc}
 \end{align}
 
+
+Hence for the annulus, and given spin structure we can take
+\begin{align}
+\xymatrix @!0 @M=1mm @C=20mm{
+\text{Bounding}\quad &\AddDat{\eTube}{B}{} &\AddDat{\hTube}{B}{} & \AddDat{\vTube}{B}{} & \AddDat{\tTube}{B}{} & \AddDat{\XTube{1}{1}}{B}{} & \AddDat{\XTube{1}{2}}{B}{}\\
+\\
+\text{Non-bounding}\quad &\AddDat{\eTube}{N}{} &\ & \AddDat{\vTube}{N}{} & \AddDat{\tTube}{N}{} & \AddDat{\XTube{1}{1}}{N}{} & \AddDat{\XTube{1}{2}}{N}{}\\
+}
+\end{align}
+Local relations given by sliding dots around different cycles.
 \dave{to do}
 \begin{itemize}
 \item write down which tubes are identically zero
@@ -1996,6 +2013,15 @@ which is found from taking two fermions out of the vacuum and taking them slidin
 \item list local relations among them
 \end{itemize}
 
+
+On the torus we have
+\begin{align}
+\AddDatTorus{\XTube{a}{b}}{X}{Y}{} \; = M_{ab;\alpha \beta} \AddDatTorus{\XTube{\alpha}{\beta}}{X}{Y}{} \qquad M = (-1)^{|X|+1} \sigma^x \tp \sigma^y, \; \; (-1)^{|Y| +1} \sigma^y \tp \sigma^z 
+\end{align}
+so that,
+\begin{align}
+\AddDatTorus{\XTube{1}{1}}{X}{Y}{} \; = (-1)^{|X|+|Y|+1} \AddDatTorus{\XTube{1}{2}}{X}{Y}{}  \; = i (-1)^{|Y|} \AddDatTorus{\XTube{2}{1}}{X}{Y}{} \; = i (-1)^{|X|} \AddDatTorus{\XTube{2}{2}}{X}{Y}{} 
+\end{align}
 
 Local relations given by sliding dots around different cycles.
 \begin{align}
@@ -2086,7 +2112,7 @@ $\text{M}_{2}$&$1$ & $ \frac{d}{2 \sqrt{3}}$ & $\frac{-1}{2 \sqrt{3}}$
 }
 $\qquad\qquad$ {\tabulinesep=1.2mm
 \begin{tabu}{ c c | c c c c }
-type &spin &  $\Tubeidx$ & $\TubeXtwist$ & $\TubeXa$ & $\TubeXb$ \\ \hline
+type &spin &  $\AddDat{\vTube}{B}{} $ & $\AddDat{\tTube}{B}{} $ & $\AddDat{\XTube{1}{1}}{B}{} $ & $\AddDat{\XTube{1}{2}}{B}{} $ \\ \hline
 $\text{M}_{2}$&$1$ & $\frac{1}{2 \sqrt{3}}$  & $\frac{1}{2 \sqrt{3}}$  & $\frac{e^{i \pi /4}}{2 \sqrt{d}}$ & $\frac{- e^{-i \pi/4} }{2 \sqrt{3d}}$ \\
 $\Pi(\text{M}_2)$&$-1$  & $\frac{1}{2 \sqrt{3}}$  & $\frac{-1}{2 \sqrt{3}}$  &  $\frac{ e^{-i \pi/4} }{2 \sqrt{3d}}$& $\frac{-e^{i \pi /4}}{2 \sqrt{d}}$ \\ \hline
 $\text{M}_3$&$e^{i \pi /3}$  & $\frac{1}{2 + d}$ & $\frac{e^{- i \pi /3}}{2+d}$ & $\frac{- e^{i \pi /12}}{\sqrt{3d}}$ &  \\
