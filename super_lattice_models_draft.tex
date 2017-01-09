@@ -536,9 +536,10 @@
 
 
 
-
-
-
+\newcommand{\cupleftdot}{\mathord{\vcenter{\hbox{\includegraphics{cup_left_dot.pdf}}}}}
+\newcommand{\cuprightdot}{\mathord{\vcenter{\hbox{\includegraphics{cup_right_dot.pdf}}}}}
+\newcommand{\capleftdot}{\mathord{\vcenter{\hbox{\includegraphics{cap_left_dot.pdf}}}}}
+\newcommand{\caprightdot}{\mathord{\vcenter{\hbox{\includegraphics{cap_right_dot.pdf}}}}}
 
 %%% if we want to leave a secret message
 %\usepackage[pdftex, bookmarks={false}, pdftitle={Super lattice models}]{hyperref}
@@ -714,10 +715,11 @@ will have to work harder to construct $\mcc/\alpha$.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Condensing $\psi$ in Ising \ethan{in progress}} \label{condensing_psi}
+\subsection{Condensing $\psi$ in Ising} \label{condensing_psi}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In this subsection we describe our procedure for condensing $\psi$ in the Ising theory. 
+While we will focus on the Ising theory in this section, our discussion will be fairly general, and can be applied to perform fermion condensation in more general scenarios. 
 We would like to ``condense" the $\psi$ particle by constructing the quotient theory $\mcc / \psi$. We will denote the condensed theory by $C_2$, for reasons that we will elaborate on later, and we will denote the image of $\sigma$ under the condensation process as $\beta$.
 
 First, we note that $\psi$ is fermionic in both spin and statistics,
@@ -760,9 +762,8 @@ where we have performed an $F$-move to obtain the second equality.
 
 An important consequence of the existence of the back wall this is that the quotient category $C_2$ is not braided, as it maps onto a (1+1)D theory.
 In category theoretic terms, the condensation process takes a 3-category (braided category) to a 2-category (tensor category)\footnote{The condensed theory does however retain a ``front braiding" by the Ising category, so it is more than a mere tensor category.}. 
-This point of view allows us to interpret the condensation procedure as a form of dimensional reduction, where we map the (2+1)D Ising theory to the (1+1)D $C_2$ theory
-\footnote{The fact that the Ising theory looses a dimension upon condensation is similar to the relationship between a (1+1)D phase described by the tensor category $\mcc$ and the (2+1)D phase described by the braided category $\mcz(\mcc)$. 
-Indeed, the bulk-to-boundary maps Forg:$\mcz(\mcc)\ra\mcc$ in (2+1)D TQFTs are precisely the maps which condense different particles. For example, the bulk-to-boundary map Forg$:\mcz(\mcc)\ra\mcc$ for the toric code condenses either $m$ or $e$.}.
+This point of view allows us to interpret the condensation procedure as a form of dimensional reduction, where we map the (2+1)D Ising theory to the (1+1)D $C_2$ theory\footnote{The fact that the Ising theory looses a dimension upon condensation is similar to the relationship between a (1+1)D phase described by the tensor category $\mcc$ and the (2+1)D phase described by the braided category $\mcz(\mcc)$. 
+Indeed, the bulk-to-boundary maps ${\rm Forg}:\mcz(\mcc)\ra\mcc$ in (2+1)D TQFTs are precisely the maps which condense different particles. For example, the bulk-to-boundary map ${\rm Forg}:\mcz(\mcc)\ra\mcc$ for the toric code condenses either $m$ or $e$.}.
 
 The back wall construction ``transparentizes'' $\psi$, fixing the inconsistency presented by \eqref{transparency_inconsistency}. 
 However, we have not yet addressed the spin and statistics inconsistencies \eqref{twist_inconsistency} and \eqref{statistics_inconsistency}.
@@ -784,41 +785,60 @@ We will also find it helpful to make an explicit choice of fermion framing at ea
 We will choose a global fermion framing that always points ``to the left'': that is, we will always draw boxes whose $\psi$ lines emanate from their left sides, as in \eqref{box_defn}. 
 This is merely a gauge choice: other framing conventions are related to one another by gauge transformations, and do not necessarily have to be globally constant. 
 
-The final piece of data we will need to define a spin structure on the back wall is a numerical ordering of the marked $\psi$ endpoints (as in Figure \ref{backwall}). Crucially, we define odd permutations of endpoint ordering to act on states as multiplication by $-1$, so that swapping the labelling of two $\psi$ endpoints comes at the expense of a minus sign. 
+The final piece of data we will need on the back wall is a numerical ordering of the marked $\psi$ endpoints (as in Figure \ref{backwall}). Crucially, we define {\it odd} permutations of endpoint ordering to act on states as multiplication by $-1$, so that swapping the labelling of two $\psi$ endpoints comes at the expense of a minus sign. 
 We consider all orderings related by an {\it even} permutation to be equivalent. 
-This property will force us to use supervector spaces (instead of vector spaces) when defining the fusion spaces of the condensed theory---see Sec \ref{fusion} for a detailed discussion. 
+This property will introduce an anti-commuting character to the Hilbert space of the condensed theory, and will force us to use supervector spaces (instead of vector spaces) when defining the fusion spaces of the condensed theory---see Sec \ref{fusion_spaces} for a detailed discussion. 
 
-Consider the configuration space $C$ of all possible configurations of $\psi$ endpoints (boxes). 
-We will now form a fiber bundle over $C$, whose fibers consist of all possible spin framings and different orderings of the $\psi$ endpoints. 
-At a given point in configuration space with $k$ different $\psi$ endpoints, the fiber is $F = (\zt)^2\times S_k$, where $S_k$ is the symmetric group. 
-The $(\zt)^k$ factor acts as spin flips ($2\pi$ framing rotations) on each of the $k$ endpoints, and the $S_k$ factor acts to permute the ordering of the endpoints. 
-However, as we identify states that differ by an even number of combined spin flips and fermion swaps, we instead set the fiber to be the group $\mcf = F/G$, where $G$ is the subgroup of $F$ consisting of all elements with even total parity. \ethan{do we need the bundle language at all?}
+Consider the configuration space $C$ of all possible configurations of $\psi$ endpoints (boxes). Any given point in $C$ with $k$ different $\psi$ endpoints is acted naturally on by $S_k$ (the symmetric group on $k$ elements), where $S_k$ acts to permute the ordering of the endpoints.
+As mentioned above, the action of $S_k$ is determined by the sign representation: odd permutations act on points in $C$ as multiplication by $-1$, and even permutations act trivially on $C$.
 
+We also need to consider how points in $C$ with different fermion framings are related. 
+Since we have fixed a gauge in which the spin framing at each $\psi$ endpoint always points ``to the left'', the only actions on the endpoint framing we need to consider are those which rotate the framing by $2\pi$, since these are the only ones which preserve our chosen framing convention. 
+Furthermore, since a spin structure is a double-covering of the frame bundle, $2\pi$ framing rotations are realized projectively in $FSp(B)$, in that they act on points in $C$ as multiplication by $-1$. 
+Therefore, $C$ also admits an action by $(\zt)^k$, with each $\zt$ factor acting as the generator of spin flips ($2\pi$ framing rotations) on each of the $k$ $\psi$ endpoints.
 
-This means that the $\psi$ endpoints are statistically bosonic, in that 
+Since we identify states that differ by an even number of combined spin flips and fermion swaps, the entire configuration space admits an action by $F = (\zt)^k\times S_k / G$, 
+where $G$ is the index-2 subgroup of $(\zt)^k\times S_k$ consisting of all elements with even total parity.
+
+The fact that nontrivial elements in $F$ act on $C$ as multiplication by $-1$ is enough to remove the remaining inconsistencies \eqref{statistics_inconsistency} and \eqref{twist_inconsistency}.
+%We will now form a fiber bundle over $C$, whose fibers consist of all possible spin framings %and different orderings of the $\psi$ endpoints. 
+%At a given point in configuration space with $k$ different $\psi$ endpoints, the fiber is $F = (\zt)^2\times S_k$, where $S_k$ is the symmetric group. 
+%The $(\zt)^k$ factor acts as spin flips ($2\pi$ framing rotations) on each of the $k$ endpoints, and the $S_k$ factor acts to permute the ordering of the endpoints. 
+%However, as we identify states that differ by an even number of combined spin flips and fermion swaps, we instead set the fiber to be the group $\mcf = F/G$, where $G$ is the subgroup of $F$ consisting of all elements with even total parity. \ethan{do we need the bundle language at all?}
+In particular, the fact that changing the ordering of the $\psi$ endpoints by an odd permutation acts as multiplication by $-1$ means that the $\psi$ endpoints are now statistically bosonic:
 \begin{align} \label{boxbraid}
-\TwoFermion =\ \TwoFermionExchange = (-1)^2\ \TwoFermion,
+\TwoFermion =\ \TwoFermionExchange = (-1)^2\ \TwoFermion\;.
 \end{align}
-which resolves the inconsistency \eqref{statistics_inconsistency}. 
-
-$2\pi$ acts as -1.
-This fixes the spin inconsistency \eqref{twist_inconsistency}, since rotating the fermion framing at the $\psi$ endpoint by $2\pi$ gives an extra factor of $-1$:
+This resolves the inconsistency \eqref{statistics_inconsistency}. Additionally, since spin flips (or $2\pi$ fermion framing rotations) act on a $\psi$ endpoint as multiplication by $-1$, 
+the $\psi$ endpoints have bosonic spins:
 \begin{align} \label{boxspin}
-\PsiFermion = (-1)\ \PsiFermionTwist = (-1)^2\ \PsiFermion. 
+\PsiFermion = (-1)\ \PsiFermionTwist = (-1)^2\ \PsiFermion\;. 
 \end{align}
+This fixes the remaining inconsistency \eqref{twist_inconsistency}. 
+Thus, by introducing the back wall and equipping it with a spin structure, all three conditions necessary for $\psi$ endpoints to condense are satisfied---we are now free to go ahead and complete the condensation procedure. 
 
-To provide a physical interpretation of the condensation procedure, we note that equipping the back wall with a spin structure is equivalent to adding a phase of {\it physical} (not emergent) fermions to the theory, and binding single physical fermions to each $\psi$ endpoint.
+Before moving on, we should point out that although the $\psi$ endpoints have bosonic spins and are statistically self-bosonic, they are not bosons in the strictest sense. This is because they still couple to the background spin structure: when we take a $\psi$ endpoint around a topologically non-trivial cycle in the spacetime manifold it will pick up a factor of $\pm1$ that depends on the ambient spin structure. 
+
+Since $\psi$ lines can disappear into the condensate, we need to be able to annihilate pairs of boxes attached by a $\psi$ string, as these objects are part of the condensate. 
+Annihilating a pair of connected boxes must give us a state proportional to the vacuum:
+\begin{align}
+\PsiEnd  = \lambda \times \text{(vaccuum)},
+\label{EvalPsiPsi}
+\end{align}
+where $\lambda$ is some complex number (the semicircular nature of the above diagram comes from our choice of spin framing). 
+In Appendix \ref{pins_and_reflection}, we extend the spin structure on the back wall to a pin structure, which allows us to prove that $\lambda$ must be purely imaginary in any unitary theory.  
+
+Our spin-structure-equipped back wall construction admits a simple physical interpretation: equipping the back wall with a spin structure is equivalent to adding a phase of {\it physical} (not emergent) fermions to the theory, and binding single physical fermions to each $\psi$ endpoint.
 The physical fermion attached to each $\psi$ endpoint compensates for the fermionic nature of the $\psi$ particle in the condensate: the factors of $-1$ that relate two different orderings of the $\psi$ endpoints are the Kozul signs associated with the physical fermions, and the factors of $-1$ that we pick up when rotating the $\psi$ endpoint framing by $2\pi$ come from the spin $1/2$ of the physical fermions. 
-Thus, attaching physical fermions to the $\psi$ endpoints transforms them into bosonic objects, which are then allowed to undergo normal boson condensation. 
+Thus, attaching physical fermions to the $\psi$ endpoints transforms them into bosonic objects (although they are not strictly bosonic, as they still see the spin structure when traveling around topologically non-trivial loops), which are then allowed to undergo normal boson condensation. 
 Therefore, although we are indeed identifying emergent fermions with the vacuum, the term ``fermion condensation'' is a bit misleading, as what we are actually doing is closer to {\it boson} condensation of bound states of $\psi$ and a physical fermion. 
-However, while $\psi$ endpoints are bosonic with respect to self-exchange and twists, they are not strictly bosonic in the usual sense, as they still couple to the background spin structure: the emergent $\psi$ fermions do not see the spin structure, but the physical fermions attached to their endpoints do. 
-This difference is only important when considering manifolds with nontrivial topology, and means that when a $\psi$ endpoint is carried around a topologically non-trivial cycle, it will pick up a factor of $\pm1$ that depends on the ambient spin structure. 
+However, we reiterate that the $\psi$ endpoints are not technically bosons, since they see the background spin structure: the emergent $\psi$ fermions do not see the spin structure, but the physical fermions attached to their endpoints do. 
 
 Finally, we emphasize that the spin-structure-equipped back wall used in our condensation is needed because $\psi$ is both fermionic and non-transparent. If $\psi$ were non-transparent but bosonic, we would still need a back wall, but the back wall would not need a spin structure.
 Conversely, if $\psi$ were transparent but fermionic, then we would not need a back wall, but we would still need to introduce spin
 structures.
 
-\ethan{ Using the back wall construction is one way to take care of the transparency issue, but there's actually another way of doing it that doesn't rely on introducing a spatial boundary to the system or performing condensation only on a codimension-1 surface. 
+\ethan{Using the back wall construction is one way to take care of the transparency issue, but there's actually another way of doing it that doesn't rely on introducing a spatial boundary to the system or performing condensation only on a codimension-1 surface. 
 We can allow the $\psi$ worldlines to be absorbed into the vacuum at any point, with the endpoints coupled to a spin structure as usual. 
 In this picture the $\psi$ lines literally end, they do not run down to some back wall. 
 This seems to be inconsistent because of the transparency issue. 
@@ -828,7 +848,7 @@ If the $\beta$ worldlines get bound to spin structure defects during the condens
 This allows the condensation to go through without sacrificing the existence of a braided structure. 
 
 To summarize, the transparency issue is solved if during condensation the $\beta$ worldlines bind to spin structure defects. 
-To go the other way and ``un-condense'' $\psi$, we just un-bind the $\beta$ lines from the spin structure defects: we get a loop gas of spin structure defects, which confines free $\psi$ endpoints and restores the original Ising theory. }
+To go the other way and ``un-condense'' $\psi$, we just un-bind the $\beta$ lines from the spin structure defects: we get a loop gas of spin structure defects, which confines free $\psi$ endpoints and restores the original Ising theory. } 
 
 
 %\ethan{below is an abridged discussion of removing pairs of fermions... decided that it could be saved until sec 9}
@@ -839,7 +859,7 @@ Since $\psi$ lines can disappear into the condensate, we need to be able to anni
 \label{EvalPsiPsi}
 \end{align}
 where $\lambda$ is some complex number. In Sec \ref{condensing_psi}, we show that $\lambda$ must be purely imaginary. We will see later on that consistency between $F$-moves and fermion removal requires that we choose $\lambda = A^4$, placing a nontrivial constraint on the choices of $A$ that allow us to perform fermion condensation. 
-\end{comment}
+\end{comment} 
 
 %%% below is the proof that $\lambda$ must be imaginary---cut it here, left it in sec 9
 \begin{comment}
@@ -861,15 +881,13 @@ Now that we have worked out how to condense $\psi$, we can determine the graphic
 
 We have already seen that in order for the condensation procedure to go through, the $C_2$ theory must come equipped with a spin structure. This introduces non-trivial local relations into the diagrammatic calculus that are not present in bosonic theories.  
 
-First, we first observe that any closed $\psi$ loop or an open $\psi$ string can be absorbed into the condensate at the expense of phase factors, and so in the condensed theory the only objects remaining will be $\sigma$ lines, which may or may not have $\psi$ fermions attached to them. 
-We will denote the image of $\sigma$ under the condensation procedure as $\beta$, and we will introduce a blue dot as a compact notation for a $\psi$ line that terminates on a $\beta$ line.
-Diagrammatically any section of the $\beta$ line may look like
+First, we first observe that any closed $\psi$ loop or an open $\psi$ string can be absorbed into the condensate at the expense of phase factors, and so in the condensed theory the only objects remaining will be $\beta$ (the image of $\sigma$ under condensation) lines, which may or may not have $\psi$ fermions attached to them. 
+We will introduce a blue dot as a compact notation for a $\psi$ line that terminates on a $\beta$ line:
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta_dot.pdf}}}}\quad = \quad\mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta_box.pdf}}}}\ee
+Diagrammatically, any section of the $\beta$ line may thus look like
 \begin{align} \label{betaendos}
-\FubeXss \qquad \qquad \FubeXsds,
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta.pdf}}}} \qquad {\rm or} \qquad \mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta_dot.pdf}}}}.
 \end{align}
-where in the right picture the blue dot indicates the termination point of a $\psi$ worldline. We reiterate that this is just a convenient notation, with the dot serving as a compact way of drawing a $\psi$ line with a box \eqref{box_defn} whose left end is attached to the $\beta$ line:
-\be make figure \ee
-
 The two diagrams in \eqref{betaendos} are the generators of the endorphism algebra of $\beta$.
 Since we have one even generator and one odd generator we see that $\text{End}(\beta) \cong \mathbb{C}\ell_1$, where $\cl_1$ is the first complex Clifford algebra. It turns out that objects in the condensed theory have nontrivial $\cl_1$ endomorphism algebras if and only if they can ``absorb'' fermion dots in the sense of \eqref{betaendos}. 
 Having objects whose endomorphism algebra is $\cl_1$ is impossible in bosonic theories (where any simple object $a$ always has $\End(a) \cong \cc$), and requires us to modify the type of tensor product used in fermionic theories. 
@@ -891,14 +909,16 @@ where the labels $1$ and $2$ denote the normal-ordering of the fermions in quest
 
 Most importantly, the braiding in the parent Ising theory means that we pick up non-trivial phase factors when sliding fermion dots over and around $\beta$ caps and cups. For example, we can compute,
 \begin{align}
-\DotSlidea =
-\DotSlideb =
--A^4\DotSlidec =
--A^4\DotSlided 
-\end{align} \ethan{should add a step between third and fourth steps to show why we need braiding stuff from the parent theory, and talk about the issue of $\psi$'s transparency more.}
-Hence by unitarity we also have
+\capleftdot =
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{cap_left_box.pdf}}}} =
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{cap_left_through_box.pdf}}}} =
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{cap_right_twist_box.pdf}}}}
+= -A^4 \caprightdot,
+\end{align}
+where in the third quality we have used an $F$-move, and in the last step we have used the $R$-symbol $R^{\psi\sigma}_\sigma = A^4$. 
+Hence by unitarity, we also have
 \begin{align} \label{dotslides}
-\CapDotRight\; &= - A^4 \; \CapDotLeft & \CupDotRight\; &=  A^4 \; \CupDotLeft.
+\caprightdot\; &= - A^4 \; \capleftdot & \cuprightdot\; &=  A^4 \; \cupleftdot.
 \end{align}
 We stress that these phases can be derived completely from the {\it braiding data} of the Ising theory. They also must be such that taking a fermion dot around a circular $\beta$ loop gives a factor of $-1$, which enforces the constraint that $A^8 = -1$. This is both to ensure that even-parity $\beta$ loops are nonzero, and because it amounts to a $2\pi$ rotation of the fermion framing, which must be equivalent to multiplication by $-1$. The constraint that $A^8=-1$ is satisfied in all the Ising theories, but in more general examples this constraint on the braiding data significantly limits the types of theories that can have objects with $\cl_1$ endomorphism algebras.
 
@@ -1871,6 +1891,7 @@ In the non-bounding sector we have three simple objects, two $Q$ type and one $M
 
 %\subsection{Modular transformations}
 \subsubsection{Tube algebra and local relations}
+\ethan{The handedness convention for the tubes got switched in this section---we need to remember to go back and change either this section or the $C_2$ section.}
 We differ from the tube algebra defined in the Ising section by using tubes that are defined on the anulus (or equivalently the twice punctured sphere). 
 The tube algebra is given by
 \begin{align}
@@ -3991,7 +4012,7 @@ We are now in a position to prove that annihilating a pair of connected $\psi$ e
 where $\lambda$ is some as-yet undetermined complex number (the semicircular nature of the above diagram comes from our choice of spin framing). Since the reflection in $Pin^+(1)$ about the framing direction acts as complex conjugation, we can Hermitian-conjugate both sides of the previous relation to obtain
 %\footnote{The fact that spatial reflections act as complex conjugation follows from the fact that $pin^+(2)$ admits a real spinor representation.}
 \begin{align}
-\lambda^{*} \times ({\rm vaccuum}) = \left( \PsiEnd \right) ^{\dagger}  = \PsiEndExchange = - \PsiEnd  = - \lambda \times ({\rm vaccuum}),
+\lambda^{*} \times ({\rm vaccuum}) = \left( \PsiEnd \right) ^{\dagger}  = \PsiEndExchange = (-1) \PsiEnd  = - \lambda \times ({\rm vaccuum}),
 \label{phase}
 \end{align}
 where in the last step we have swapped the sign-ordering of the boxes at the expense of a minus sign. 
