@@ -182,8 +182,8 @@
 
 \newcommand{\AnnularTubex}[6]{\mathrel{\ooalign{$#1$\cr
   \hidewidth\raise5ex\hbox{$\scriptstyle{#6}\mkern1mu$}\cr
-  \hidewidth\raise1ex\hbox{$\scriptstyle{#5}\mkern65mu$}\cr
-  \hidewidth\raise-1ex\hbox{$\scriptstyle{#3}\mkern68mu$}\cr
+  \hidewidth\raise1ex\hbox{$\scriptstyle{#5}\mkern63mu$}\cr
+  \hidewidth\raise-.9ex\hbox{$\scriptstyle{#3}\mkern68mu$}\cr
     \hidewidth\raise-4.5ex\hbox{$\scriptstyle{#4} \mkern50mu$}\cr
   \hidewidth\raise-7ex\hbox{$\scriptstyle{#2}\mkern68mu$}\cr
   }}}
@@ -204,7 +204,36 @@
   \hidewidth\raise-7.3ex\hbox{$\scriptstyle{#2}\mkern68mu$}\cr
   }}}
   
+   
+  \newcommand{\TubeProductCoefficienta}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeProductCoefficienta.pdf}}}}}
+  \newcommand{\TubeProductCoefficientb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeProductCoefficientb.pdf}}}}}
+  
+    \newcommand{\ThetaSymbol}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Theta.pdf}}}}}
+ 
+   \newcommand{\ThetaSymbolx}[1]{\mathrel{\ooalign{$\ThetaSymbol$\cr
+      \hidewidth\raise-1.2ex\hbox{$\scriptstyle{#1} \mkern0mu$}\cr
+  }}}
+  
+  
+    
+  \newcommand{\TubeProductCoefficientbx}[2]{\mathrel{\ooalign{$\TubeProductCoefficientb \;\;\; $\cr
+      \hidewidth\raise-.7ex\hbox{$\scriptstyle{#1} \mkern54mu$}\cr
+      \hidewidth\raise-.7ex\hbox{$\scriptstyle{#2} \mkern3mu$}\cr
+  }}}
+  
+  \newcommand{\TubeProductCoefficientax}[5]{\mathrel{\ooalign{$\TubeProductCoefficienta$\cr
+      \hidewidth\raise-4.2ex\hbox{$\scriptstyle{#1} \mkern30mu$}\cr
+      \hidewidth\raise-1.8ex\hbox{$\scriptstyle{#2} \mkern30mu$}\cr
+  \hidewidth\raise5.9ex\hbox{$\scriptstyle{#3}\mkern48mu$}\cr
+  \hidewidth\raise2.05ex\hbox{$\scriptstyle{#4}\mkern65mu$}\cr
+    \hidewidth\raise3.3ex\hbox{$\scriptstyle{#5}\mkern4mu$}\cr
+  }}}
 
+  
+
+  
+    
+\newcommand{\tubex}[8]{#1 \left(\substack{#8\\ \\ #5\\ } \; \substack{#4\\ #3\\ #2\\ }\; \substack{ #7 \\ #6} \right)}
 %\newcommand*{\SmallTorus}[3]{\kern 2.05 em\raisebox{0ex}{ $\scriptstyle{#2}$} \kern-2.05em{ #1 } 
 %\kern-1.1em\raisebox{-1.5ex}{$\scriptstyle{#3}$} \kern1.1em} %Could change 0 to 1.2 to raise the B.
 
@@ -1831,28 +1860,61 @@ where $a,b,c,d$ are simple objects in $\cal{C}$. The multiplicity indices $\mu$,
 
 It is somewhat cumbersome to continually label all indices in the tube, so we shift to a compact notation given by [REF]\dave{I've seen Oceanu papers (around 1990,91, though not actually written by him) with this notation, is that the first place it showed up?},
 \begin{align}
- \AnnularTubex{\AnnularTubeNoIndex}{a}{c}{\psi}{X}{}= \sum_{abcd \mu \nu} \; \psi_{abcd; \mu \nu}  \;\Annulus{\AnnularTube}{X} \quad \quad \quad \psi \in \bigoplus_{xy} V^{xy}_{a,1} \tp_{y,x} V^{c\bar{x}}_{y,2}
+ \AnnularTubex{\AnnularTubeNoIndex}{a}{c}{\psi}{X}{}= \sum_{abcd \mu \nu} \; \psi_{abcd; \mu \nu} ^{X} \;\Annulus{\AnnularTube}{X} \quad \quad \quad \psi \in \bigoplus_{xy} V^{xy}_{a,1} \tp_{y,x} V^{c\bar{x}}_{y,2}
 \end{align}
-where the $\tp_{\text{End}(x)}$ is allowing fermions to slide around the annulus. When tensoring over endomorphisms one has to be mindful of the spin structure.
+where the $\tp_{\text{End}(x)}$ is allowing fermions to slide around the annulus. 
+When tensoring over endomorphisms one has to be mindful of the spin structure.
+For example, as we saw in Ising many of the tubes will be identified with zero, and many will become identified with each other, we discuss this at length below [REF secXXX].
+%Explicitly we choose 
+%\begin{align}
+% t_{abcd;\mu \nu }\equiv \SphereTube
+%\end{align}
+\dave{Could do more graphical indices. $ \tubex{\psi}{a}{b}{c}{d}{\mu}{\nu}{X}$}
 
-Explicitly we choose 
+Multiplication in the algebra is defined by stacking
 \begin{align}
- t_{abcd;\mu \nu }\equiv \SphereTube
+\AnnularTubex{\AnnularTubeNoIndex}{\alpha}{\gamma}{\eta}{X}{} \tp_{A(S^1)}
+\AnnularTubex{\AnnularTubeNoIndex}{a}{c}{\psi}{X}{} \;
+\mapsto \; \AnnulusTubeTubex{\AnnulusTubeTube}{a}{\gamma}{\psi}{\eta}{X}
 \end{align}
-as a basis. \dave{We could make the indices line up a little more graphically, eg., $t\left(_d\; \substack{c\\ b\\ a\\}\; \substack{ \nu \\ \mu} \right) $}
-And define multiplication as \dave{will add indices later}
+\dave{Need to use consistent notation}
+If the labels don't agree on the boundary, or the spin structures, aren't the same the multiplication is zero.
+Otherwise, we can use a series of $F$ moves to reduce the two multiplied tubes to a linear combination of tubes in the algebra, i.e.,
+\dave{Do we have a name for these structure factors?}
 \begin{align}
-\AnnulusTubeTubex{\AnnulusTubeTube}{a}{b}{\psi}{\eta}{B} = \sum_\lambda C_{\psi \eta}^{\lambda}  \AnnularTubex{\AnnularTubeNoIndex}{a}{b}{\psi}{B}{}
+\AnnulusTubeTubex{\AnnulusTubeTube}{a}{\gamma}{\psi}{\eta}{X} = \delta_{c\alpha} \sum_\lambda C_{\eta \psi}^{\lambda}  \; \AnnularTubex{\AnnularTubeNoIndex}{a}{\gamma}{\lambda}{X}{}
+\end{align}
+%\begin{align}
+%\SphereTubeTube \;= \;\sum_{t} C_{t_1 t_2 }^{t_3} \; \SphereTube
+%\end{align}
+%\dave{There are many ways to compute the coefficients $ C_{t_1 t_2 }^{t_3}$. My personal favourite is given by (will add indices later)}
+We will reduce this tube multiplication via $F$-moves in the super pivotal category explicitly in SecXXX. 
+
+\dave{Will wait to finish this paragraph. Could also probably do it in the same way without lifting, but need the inner product.}
+Instead, here we will do this multiplication in a slightly easier way by lifting the tubes to the parent theory.
+Then performing the multiplication and condensing the fermions off the tubes.
+We will choose to trivially lift the diagram if there are no fermions present on the tube.
+If there are fermions present, we choose one spot on the diagram to place termination of the $y$ ribbon. 
+Two terminations of $y$ ribbons can be removed at the expense of a factor of $i$.\dave{Will add a picture.}
+\begin{align}
+\AnnulusTubeTubex{\AnnulusTubeTube}{a}{\gamma}{\psi}{\eta}{X}  =
+\sum_{\lambda \mu \nu}  \frac{1}{\sqrt{d_a d_\gamma}} 
+\frac{\text{\raisebox{1.7ex}{$\TubeProductCoefficientbx{\mu^*}{\nu^*}$}}}{\ThetaSymbolx{\mu} \;\; \ThetaSymbolx{\nu}}
+\TubeProductCoefficientax{\psi}{\eta}{\lambda^*}{\mu}{\nu} \; \times \;
+\AnnularTubex{\AnnularTubeNoIndex}{a}{\gamma}{\lambda}{X}{}
 \end{align}
 \begin{align}
-\SphereTubeTube \;= \;\sum_{t} C_{t_1 t_2 }^{t_3} \; \SphereTube
+C^{\lambda}_{ \eta \psi} =  \sum_{\mu, \nu} \frac{1}{\sqrt{d_a d_\gamma}} 
+\frac{\text{\raisebox{1.7ex}{$\TubeProductCoefficientbx{\mu^*}{\nu^*}$}}}{\ThetaSymbolx{\mu} \;\; \ThetaSymbolx{\nu}}
+\TubeProductCoefficientax{\psi}{\eta}{\lambda^*}{\mu}{\nu} \; \times \;
+\AnnularTubex{\AnnularTubeNoIndex}{a}{\gamma}{\lambda}{X}{}
 \end{align}
-\dave{There are many ways to compute the coefficients $ C_{t_1 t_2 }^{t_3}$. My personal favourite is given by (will add indices later)}
-\begin{align}
-C_{t_1 t_2 }^{t_3} = \frac{1}{\sqrt{\text{normalization}}}  \TubeMultiplyTopCoefficent\; \; \times \; \; \TubeMultiplyBottomCoefficient
-\end{align}
-\dave{which in the case of $\halfesix$ should be fine since we have a standard inner product given by the trace.} 
-\dave{Add some discussion about computing tube multiplications in the condensed theory by lifting them to the parent theory, multiplying the tubes and condensing the fermions away. Discuss limitations of this techinique.}
+
+%\begin{align}
+%C_{t_1 t_2 }^{t_3} = \frac{1}{\sqrt{\text{normalization}}}  \TubeMultiplyTopCoefficent\; \; \times \; \; \TubeMultiplyBottomCoefficient
+%\end{align}
+%\dave{which in the case of $\halfesix$ should be fine since we have a standard inner product given by the trace.} 
+%\dave{Add some discussion about computing tube multiplications in the condensed theory by lifting them to the parent theory, multiplying the tubes and condensing the fermions away. Discuss limitations of this techinique.}
 
 \dave{to do}
 \begin{itemize}
@@ -1896,7 +1958,21 @@ We take the state $(a,b) = (1,1)$ as a representitve and list the relations to t
 - Add discussion about computing quasi particles. 
 %%%%%%
 
-\dave{Add paragraph about predicting particles of condensed theory via principle graph of parent theory.}
+%\dave{Add paragraph about predicting particles of condensed theory via principle graph of parent theory.}
+%In order to gain some intuition for what we expect in the center of $\halfesix/y$, we first take a look at the center of $\halfesix$. 
+%The fusion rules, spins, and S matrix are all known, see, for example, [refs]. 
+%We use the notation of \cite{Hong2008}. 
+%The particles of $Z(\halfesix)$ can be split into three subcategories which are closed under fusion. 
+%\dave{Will double check these.}
+%\begin{align}
+%\mathds{1} \quad \{\mathds{1},Y\} \quad G = \{ \mathds{1}, Y,U,V,W, X_2, X_3, X_4, X_5\} \quad P =\{\mathds{1},Y, U, V, X_4, X_5\} \quad Z\left(\halfesix \right)
+%\end{align}
+%The whole of $\halfesix$ is tensor generated by $X_1$. 
+%Notice that $Y$, the fermion in $\halfesix$ appears in each sub-category (which is of course closed under fusion with $Y$).
+%Knowing these sub-categories gives us some intuition on which particles could appear in the center of condensed $\halfesix$. 
+%On investigating the fusion rules we have $G \tp P \subset G$
+
+
 
 %%%%%%
 
