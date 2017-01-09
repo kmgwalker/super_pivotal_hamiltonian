@@ -204,6 +204,47 @@
   \hidewidth\raise-7.3ex\hbox{$\scriptstyle{#2}\mkern68mu$}\cr
   }}}
   
+
+
+
+
+
+\newcommand{\TaddownTubeNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TaddownTube.pdf}}}}}
+\newcommand{\TadupTubeNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TadupTube.pdf}}}}}
+\newcommand{\hTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{hTube.pdf}}}}}
+\newcommand{\tTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{tTube.pdf}}}}}
+\newcommand{\eTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{eTube.pdf}}}}}
+
+
+\newcommand{\dota}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{dota.pdf}}}}}
+\newcommand{\dotb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{dotb.pdf}}}}}
+\newcommand{\dotc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{dotc.pdf}}}}}
+
+\newcommand{\XTubeNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{XTube.pdf}}}}}
+\newcommand{\XTube}[2]{\mathrel{\ooalign{$\XTubeNoLabel$\cr
+  \hidewidth\raise-2.5ex\hbox{$\scriptstyle{#2}\mkern30mu$}\cr
+    \hidewidth\raise-3ex\hbox{$\scriptstyle{#1}\mkern50mu$}\cr
+  }}}
+
+
+\newcommand{\TaddownTube}[1]{\mathrel{\ooalign{$\TaddownTubeNoLabel$\cr
+    \hidewidth\raise-2.6ex\hbox{$\scriptstyle{#1}\mkern29mu$}\cr
+  }}}
+  \newcommand{\TadupTube}[1]{\mathrel{\ooalign{$\TadupTubeNoLabel$\cr
+    \hidewidth\raise-2.5ex\hbox{$\scriptstyle{#1}\mkern29mu$}\cr
+  }}}
+
+
+
+\newcommand{\AddDat}[3]{\mathrel{\ooalign{ \vphantom{$\Big|^{\Big|^{\Big|}}$} $#1$\cr
+  \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern38mu$}\cr
+  \hidewidth\raise0ex\hbox{${#3}\mkern0mu$}\cr
+  }}}
+  
+  
+  
+ 
+  
    
   \newcommand{\TubeProductCoefficienta}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeProductCoefficienta.pdf}}}}}
   \newcommand{\TubeProductCoefficientb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeProductCoefficientb.pdf}}}}}
@@ -1885,8 +1926,7 @@ Two terminations of $y$ ribbons can be removed at the expense of a factor of $i$
 \begin{align}
 C^{\lambda}_{ \eta \psi} =  \sum_{\mu, \nu} \frac{1}{\sqrt{d_a d_\gamma}} 
 \frac{\text{\raisebox{1.7ex}{$\TubeProductCoefficientbx{\mu^*}{\nu^*}$}}}{\ThetaSymbolx{\mu} \;\; \ThetaSymbolx{\nu}}
-\TubeProductCoefficientax{\psi}{\eta}{\lambda^*}{\mu}{\nu} \; \times \;
-\AnnularTubex{\AnnularTubeNoIndex}{a}{\gamma}{\lambda}{X}{}
+\TubeProductCoefficientax{\psi}{\eta}{\lambda^*}{\mu}{\nu}
 \end{align}
 
 %\begin{align}
@@ -1894,6 +1934,39 @@ C^{\lambda}_{ \eta \psi} =  \sum_{\mu, \nu} \frac{1}{\sqrt{d_a d_\gamma}}
 %\end{align}
 %\dave{which in the case of $\halfesix$ should be fine since we have a standard inner product given by the trace.} 
 %\dave{Add some discussion about computing tube multiplications in the condensed theory by lifting them to the parent theory, multiplying the tubes and condensing the fermions away. Discuss limitations of this techinique.}
+
+It is important to mod out by local relations in the algebra. In the basis we have chosen, the only local relations are given by creating fermions out of the vacuum and dragging them around different cycles.
+For the rest of this section, unless specified otherwise, a solid line is always labeled by $x$ and a dashed line, or no line is assumed to be the identity.
+
+Let us now investigate local relations on the tubes. 
+Lets also use the notation
+\begin{align}
+|X| =\left\{
+                \begin{array}{ll}
+                  1 \quad \text{if } X =B \quad \text{Bounding} \\
+                  0 \quad \text{if } X = N \quad \text{Non-bounding}
+                \end{array}
+              \right.
+\end{align}
+then we have
+\begin{align}
+& \AddDat{\hTube}{X}{} \; \sim  -(-1)^{|X|}  \AddDat{\hTube}{X}{} \\
+&\AddDat{\hTube}{X}{\dotb} \; \sim  (-1)^{|X|}  \AddDat{\hTube}{X}{\dotb} 
+\end{align}
+which is found from taking two fermions out of the vacuum and taking them sliding them around the annulus.
+
+\begin{align}
+ \AddDat{\XTube{\mu}{\nu}}{N}{\dotc} 
+\end{align}
+
+\begin{align}
+\AddDat{\TaddownTube{\mu}}{B}{\dota}
+\TadupTube{\mu}
+\XTube{\mu}{\nu}
+\hTube
+\tTube
+\eTube
+\end{align}
 
 \dave{to do}
 \begin{itemize}
