@@ -493,12 +493,18 @@
 \newcommand{\xyxpivotb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{xyxpivotb.pdf}}}}}
 \newcommand{\xyxpivota}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{xyxpivota.pdf}}}}}
 
-
-
 \newcommand{\cupleftdot}{\mathord{\vcenter{\hbox{\includegraphics{cup_left_dot.pdf}}}}}
 \newcommand{\cuprightdot}{\mathord{\vcenter{\hbox{\includegraphics{cup_right_dot.pdf}}}}}
 \newcommand{\capleftdot}{\mathord{\vcenter{\hbox{\includegraphics{cap_left_dot.pdf}}}}}
 \newcommand{\caprightdot}{\mathord{\vcenter{\hbox{\includegraphics{cap_right_dot.pdf}}}}}
+
+\newcommand{\doublebeta}{\mathord{\vcenter{\hbox{\includegraphics{double_straight_beta.pdf}}}}}
+\newcommand{\doublebetadots}{\mathord{\vcenter{\hbox{\includegraphics{double_straight_beta_dots.pdf}}}}}
+\newcommand{\doublecups}{\mathord{\vcenter{\hbox{\includegraphics{double_cup.pdf}}}}}
+\newcommand{\doublecupdots}{\mathord{\vcenter{\hbox{\includegraphics{double_cup_dots.pdf}}}}}
+\newcommand{\doublecuppsi}{\mathord{\vcenter{\hbox{\includegraphics{double_cup_psi_line.pdf}}}}}
+
+
 
 %%% if we want to leave a secret message
 %\usepackage[pdftex, bookmarks={false}, pdftitle={Super lattice models}]{hyperref}
@@ -576,17 +582,17 @@ Older outline:
 
 
 \subsection{Ising TQFT} \ethan{will be easy to finish later}
-Here we introduce the Ising TQFT via Kauffamann and Lins\cite{Lins1994}. 
-We choose $A = e^{\frac{2 \pi i}{16}}$, a primitive 16th root of unity. 
-\kw{This contradicts $A = \pm ie^{\pm i\pi/8}$ below; perhaps just leave $A$ as an undetermined
-primitive 16th root of 1.}
-We label the identity particle $1$, Ising anyon $\sigma$ and the fermion $\psi$.
-The quantum dimensions are
+Here we provide a brief review the the Ising TQFT, following Kauffamann and Lins\cite{Lins1994}. 
+There are three particles in the theory, which we label as $\unit$ (the identity), $\sigma$ (the non-abelian Ising anyon), and $\psi$ (the emergent fermion).
+The quantum dimensions of the particles are 
 \be
-d_1 = 1 \quad d_\sigma = -A^2 - A^{-2} \quad d_\psi =1 
+d_\unit = 1 \quad d_\sigma = -A^2 - A^{-2} \quad d_\psi =1,
 \ee
-The four different choices $A = \pm ie^{\pm i\pi/8}$ all give us positive quantum dimensions $d = \sqrt{2}$. 
-\dave{will come back to this.}
+where $A$ is a primitive 16th root of unity. 
+Out of the eight possible choices for $A$, the four different choices $A = ie^{\pm i\pi/8}, -ie^{\pm i\pi/8}$ all give a positive quantum dimension for the $\sigma$ particle of $d := d_\sigma = \sqrt{2}$. 
+The remaining four choices $A=e^{\pm i\pi/8},-e^{\pm i\pi/8}$ with $d = -\sqrt{2}$ are equivalent to a unitary theories with positive $d=\sqrt{2}$ and a nontrivial Frobenius-Schur indicator of $\kappa_\sigma = -1$, and so we will set $d=\sqrt{2}$ in what follows. 
+%The Frobenius-Schur indicator of $\sigma$ will play essentially no role in what follows, and 
+
 
 \medskip
 
@@ -616,7 +622,8 @@ m-type and q-type particles are doubled, with arrow pointing to the m-type parti
 } 
 \end{figure}
 
-
+Our goal in this section is to describe how to condense the $\psi$ particle in the Ising TQFT. 
+Before showing how this is done, we need to make a few remarks on the general procedure of anyon condensation. 
 
 \subsection{Condensation in general}
 
@@ -854,48 +861,59 @@ Having objects whose endomorphism algebra is $\cl_1$ is impossible in bosonic th
 Because $\beta$ lines in the condensed theory can have fermion dots on them, there are several new diagrammatic rules involving them that need to be included in our graphical calculus. \ethan{talking about tensoring over endos---motivate with the AKLT chain example}
 
 One of the most important local relations we will need to perform is the addition and removal of an even number of fermions on $\beta$ lines. 
-We show in Sec \ref{carefully_condensing_psi} that the process of removing two fermions can be done at the cost of a phase factor: \ethan{add an extra step to show the $F$-move being done}
+We show in Sec \ref{carefully_condensing_psi} that the process of removing two fermions can be done at the cost of a phase factor: 
 \begin{align}
-\SigmaDotDot\; = A^4\; \FubeXss,
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot.pdf}}}} \quad =  \quad \mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_boxbox.pdf}}}} \quad = \quad 
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_curvy_boxbox.pdf}}}} \quad =\quad  
+A^4\; \mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta.pdf}}}}\;,
 \end{align}
-where $A^4 = \pm i$. We will see later that choosing $A^4=i$ ($A^4=-i$) implies that the physical fermions which provide the spin structure come from a $p+ip$ ($p-ip$) superconductor. 
+where we've performed an $F$-move on the $\psi$ worldlines to get the second equality, and in the last step we have used \eqref{EvalPsiPsi} with $\lambda = A^4$ in the last step. 
+In the Ising theory we have $A^4 = \pm i$, which is purely imaginary as it must be by virtue of the discussion in Appendix \ref{pins_and_reflection}. We will see later that choosing $A^4=i$ ($A^4=-i$) implies that the physical fermions which provide the spin structure come from a $p+ip$ ($p-ip$) superconductor. 
 
 Of course, exchanging two fermions on a $\beta$ line results in a minus sign
 \begin{align}
-\SigmaDotDot\;  &= - \; \SigmaDotDotExchange,
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot.pdf}}}} \quad = \quad (-1)\times
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot_switched.pdf}}}}
 \end{align}
 where the labels $1$ and $2$ denote the normal-ordering of the fermions in question. We will always work in a ``gauge'' in which pairs of fermions are only ever created or annihilated when their normal ordering {\it increases} when going from the bottom to the top of diagrams. 
 
-Most importantly, the braiding in the parent Ising theory means that we pick up non-trivial phase factors when sliding fermion dots over and around $\beta$ caps and cups. For example, we can compute,
-\begin{align}
+Most importantly, the braiding in the parent Ising theory means that we pick up non-trivial phase factors when sliding fermion dots over and around $\beta$ caps and cups. For example, we can compute, \ethan{Wanted to add some more steps to a few things, so I redid a few figures}
+\begin{align} \label{capslide}
 \capleftdot =
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{cap_left_box.pdf}}}} =
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{cap_left_through_box.pdf}}}} =
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{cap_right_twist_box.pdf}}}}
-= -A^4 \caprightdot,
+= A^4 \caprightdot,
 \end{align}
-where in the third quality we have used an $F$-move, and in the last step we have used the $R$-symbol $R^{\psi\sigma}_\sigma = A^4$. 
-Hence by unitarity, we also have
-\begin{align} \label{dotslides}
-\caprightdot\; &= - A^4 \; \capleftdot & \cuprightdot\; &=  A^4 \; \cupleftdot.
+where in the third quality we have used an $F$-move, and in the last step we have used the $R$-symbol $R^{\psi\sigma}_\sigma = -A^4$. In the Ising theory $A^4=\pm i$, and so by inverting \eqref{capslide} we find 
+\begin{align} \label{cap_slide_back}
+\caprightdot\; &= - A^4 \; \capleftdot.
 \end{align}
+In appendix \ref{pins_and_reflection} we show that reflecting diagrams about the horizontal axis acts as Hermitian conjugation, and so by Hermitian conjugating \eqref{cap_slide_back} we find
+\be  \cuprightdot\; =  A^4 \; \cupleftdot\;. \ee
+These phases ensure that odd parity $\beta$ loops vanish
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_circle.pdf}}}}=0,\ee
+which can be easily seen by dragging the dot once around the circle. 
+
 We stress that these phases can be derived completely from the {\it braiding data} of the Ising theory. They also must be such that taking a fermion dot around a circular $\beta$ loop gives a factor of $-1$, which enforces the constraint that $A^8 = -1$. This is both to ensure that even-parity $\beta$ loops are nonzero, and because it amounts to a $2\pi$ rotation of the fermion framing, which must be equivalent to multiplication by $-1$. The constraint that $A^8=-1$ is satisfied in all the Ising theories, but in more general examples this constraint on the braiding data significantly limits the types of theories that can have objects with $\cl_1$ endomorphism algebras.
 
 The final local relations that will be important in what follows are the $F$-moves, which provide linear relations between different isotopy classes of diagrams.
 The $F$-symbols in the condensed $C_2$ theory can be worked out using our rules for manipulating condensed $\psi$ worldlines and our knowledge of the $F$-symbols in the parent Ising theory: we begin with a diagram in the Ising theory, apply an $F$-move, and then remove all $\psi$ lines through condensation to evaluate the $F$-move in the $C_2$ theory. 
 For example, in the parent Ising theory we have
 \begin{align}
-\TwoLine =\frac{1}{d} \left( \CupCap +  \CupCapPsi \right).
+\doublebeta = \frac{1}{d} \left(\doublecups + \doublecuppsi\right).
+%\TwoLine =\frac{1}{d} \left( \CupCap +  \CupCapPsi \right).
 \end{align}
 When we condense $\psi$, the second diagram on the left hand side becomes 
-\be \quad \CupCapPsi \rightarrow A^{-4} \CupCapDots,\ee
+\be %\quad \CupCapPsi \rightarrow A^{-4} \CupCapDots,\ee
+\doublecuppsi = A^{-4}\; \mathord{\vcenter{\hbox{\includegraphics[scale=1]{double_cup_psi_line_wsemicircle.pdf}}}}\; =A^{-4}\;
+\doublecupdots\;, \ee
 and so in the condensed theory, 
-\be \TwoLine\; = \frac{1}{d} \left( \CupCap \; + \;A^{-4} \CupCapDots \right).\ee
-Likewise, we derive the other nontrivial $F$-move:
+\be \doublebeta\; = \frac{1}{d} \left( \doublecups \; + \;A^{-4} \doublecupdots\right).\ee
+Likewise, we can derive the other nontrivial $F$-move:
 \begin{align}
-\CupCap \; &= \frac{1}{d} \left(\TwoLine \; + \; \TwoLineDots \right).
+\doublecups\; &= \frac{1}{d} \left(\doublebeta \; + \; \doublebetadots \right).
 \end{align}
-
 
 %\ethan{commented out ``Tensor product in $\mcc/\psi$'' section, since the full detail of tensoring over endos isn't needed for anything in the $C_2$ and since we're going over it in detail later on and don't want to repeat ourselves. I elaborated a bit about modding out by endos in the previous section to compensate.}
 \begin{comment}
