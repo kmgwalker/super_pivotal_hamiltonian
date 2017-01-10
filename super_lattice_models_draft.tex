@@ -607,9 +607,11 @@ Before discussing super pivotal categories in the abstract and general technique
 we will give a detailed account of one of the simplest examples:
 the $C_2$ super pivotal category.
 This theory 
-\kw{I can't decide whether to call these ``categories" or ``TQFTs" or ``theories"; maybe use all three terms.}
-is obtained from the Ising TQFT by condensing the emergent fermion $\psi$, as described below.
-\kw{need to revisit this, since there will be at least some general discussion of condensation in this section}
+is obtained from the Ising TQFT by condensing the emergent fermion $\psi$, and provides a good demonstration of the qualitatively new features that occur as a result of fermion condensation. 
+This section is organized as follows: in \ref{Ising_review} we briefly review the aspects of the Ising TQFT we will need in later sections. 
+In \ref{general_condensation} we comment on the general procedure of anyon condensation, and in \ref{condensing_psi} we show how to condense $\psi$ in the Ising theory, obtaining the $C_2$ super pivotal theory. 
+\ref{C2_local_relns} details the diagrammatic properties of the $C_2$ theory, and in \ref{C2_quasiparticles} we compute the quasiparticle excitations of the theory. 
+In \ref{C2_fusion_rules} we determine the fusion rules of these quasiparticles, and in \ref{C2_braiding} we compute their statistical and braiding data and analyze the modular $S$ and $T$ matrices in detail. 
 
 \kwsep
 
@@ -631,59 +633,68 @@ Older outline:
 \end{itemize}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ising TQFT}  \label{Ising_review}
+%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Ising TQFT} \ethan{will be easy to finish later}
-Here we provide a brief review the the Ising TQFT, following Kauffamann and Lins\cite{Lins1994}. 
+Here we provide a brief review the the Ising TQFT \cite{Lins1994}. 
 There are three particles in the theory, which we label as $\unit$ (the identity), $\sigma$ (the non-abelian Ising anyon), and $\psi$ (the emergent fermion).
+The nontrivial fusion rules of the theory are as follows:
+\be \sigma\tp\sigma=\unit\oplus\psi,\quad \sigma\tp\psi=\sigma,\quad\psi\tp\psi=\unit.\ee
+
 The quantum dimensions of the particles are 
 \be
 d_\unit = 1 \quad d:=d_\sigma = -A^2 - A^{-2} \quad d_\psi =1,
 \ee
-where $A$ is a primitive 16th root of unity. Graphically, 
+where $A$ is a primitive 16th root of unity. Graphically, this means that
 \be 
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{psi_qdim.pdf}}}} \qquad \qquad 
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_qdim.pdf}}}},\ee
-where we have drawn $\psi$ worldlines in dark blue and $\sigma$ worldlines in orange.
+where the blue (orange) circle denotes a circular $\psi$ ($\sigma$) worldline. $\unit$ worldlines, being identified with the vaccuum, are not drawn in diagrams. 
+
 Out of the eight possible choices for $A$, the four different choices $A = ie^{\pm i\pi/8}, -ie^{\pm i\pi/8}$ all give a positive quantum dimension for the $\sigma$ particle of $d = \sqrt{2}$. 
-The remaining four choices $A=e^{\pm i\pi/8},-e^{\pm i\pi/8}$ with $d = -\sqrt{2}$ are equivalent to a unitary theories with positive $d=\sqrt{2}$ and a nontrivial Frobenius-Schur indicator of $\kappa_\sigma = -1$, and so we will set $d=\sqrt{2}$ in what follows. 
-
-
+The remaining four choices $A=e^{\pm i\pi/8},-e^{\pm i\pi/8}$ with $d = -\sqrt{2}$ are equivalent to unitary theories with $d=\sqrt{2}$ and a nontrivial Frobenius-Schur indicator $\kappa_\sigma = -1$.% and so we will set $d=\sqrt{2}$ in what follows. 
 %The Frobenius-Schur indicator of $\sigma$ will play essentially no role in what follows, and 
 
+We now turn our attention to the graphical calculus of the Ising TQFT. 
+Bubbles in diagrams can be eliminated by using the rules
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{sigpsi_bubble.pdf}}}}\;, \qquad \qquad \mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_bubble.pdf}}}}\;,  \ee
+where again, we are marking $\psi$ worldlines in dark blue and $\sigma$ worldlines in orange. 
 
-\medskip
-
-\kw{draw attention to the facts that (1) $\phi$ is not transparent, (2) $\psi$ has twist $-1$, 
-and (3) $\psi$ has fermionic statistics}
-
-
-$\psi$ lines can be recoupled using 
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{psi_recoupling.pdf}}}} .\ee
-
-Bubbles in diagrams can be eliminated using 
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{sigpsi_bubble.pdf}}}}, \qquad \qquad \mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_bubble.pdf}}}}  \ee
-
-
-
-\newcommand{\braid}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{braid.pdf}}}}}
-\newcommand{\TLIdentity}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TLIdentity.pdf}}}}}
-\newcommand{\TemperleyLieb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TemperleyLieb.pdf}}}}}
+%\newcommand{\braid}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{braid.pdf}}}}}
+%\newcommand{\TLIdentity}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TLIdentity.pdf}}}}}
+%\newcommand{\TemperleyLieb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TemperleyLieb.pdf}}}}}
   
-\begin{align}
-\braid = A\;  \TemperleyLieb \; +\;  A^{-1}\;  \TLIdentity
-\end{align}
+%\begin{align}
+%\braid = A\;  \TemperleyLieb \; +\;  A^{-1}\;  \TLIdentity
+%\end{align}
 
+The non-trivial $F$-moves in the theory are as follows:
+\begin{align}  
+&\mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_psi_Fmove.pdf}}}},  \qquad\qquad\mathord{\vcenter{\hbox{\includegraphics[scale=1]{psi_Fmove.pdf}}}},  \\
+&\doublecups = \frac{1}{d} \left(\doublebeta +  \mathord{\vcenter{\hbox{\includegraphics[scale=1]{sigsig_psi.pdf}}}} \right),\qquad\qquad
+\doublebeta = \frac{1}{d} \left(\doublecups + \doublecuppsi\right). \end{align}
+The spin and self-statistics of the $\sigma$ particle are uniquely determined by the primitive 16th root of unity $A$:
+\be
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_twist.pdf}}}}, \qquad  \qquad
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{sigsig_recoupling.pdf}}}}. \ee
+Most importantly for us, the
+$\psi$ particle is fermionic in both spin and statistics, regardless of the choice of $A$:
+\be \label{psi_a_fermion}
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{psi_twist.pdf}}}}
+\qquad \qquad \mathord{\vcenter{\hbox{\includegraphics[scale=1]{psi_recoupling.pdf}}}} 
+\ee
+Additionally, $\psi$ is not transparent, as it braids nontrivially with $\sigma$:
+\be \label{sig_psi_Rsymbol} \mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_psi_R.pdf}}}}, \qquad \qquad 
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_psi_braid.pdf}}}}.\ee
 
-
-Importantly for our discussion, $\psi$ is not transparent, i.e. it braids nontrivially with $\sigma$:
-\be \label{sig_psi_Rsymbol} \mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_psi_R.pdf}}}}\ee
-and 
-\be\mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_psi_braid.pdf}}}}. \ee
-
-Our goal in this section is to describe how to condense the $\psi$ particle in the Ising TQFT. 
+Our goal in what follows is to describe how to condense the $\psi$ particle in the Ising TQFT. 
 Before showing how this is done, we need to make a few remarks on the general procedure of anyon condensation. 
 
-\subsection{Condensation in general}
+
+%%%%%%%%%%%%%%%%%%%
+\subsection{Condensation in general}\label{general_condensation}
+%%%%%%%%%%%%%%%%%%%
 
 Let $\mcc$ be a ribbon category and let $\alpha$ be a particle (simple object) of $\mcc$ which we hope to condense.
 In category theoretic terms, we want to add morphisms to $\mcc$ so that $\alpha$ becomes
@@ -714,7 +725,7 @@ This is because
 and so if $\theta_\alpha \neq 1$, diagrams in which $\alpha$ worldlines are absorbed into the condensate are identically zero, and condensation is impossible. 
 
 \item Secondly, $\alpha$ must be statistically bosonic, i.e. it must braid trivially with itself.  
-To see this, we make the following manipulations:
+This is because
 \be \label{statistics_inconsistency}
 \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermion_nolabels.pdf}}}} = \ \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermionExchange_nolabels.pdf}}}} = \theta_{\alpha,\alpha} \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermion_nolabels.pdf}}}},\ee
 where $\theta_{\alpha,\alpha}$ is the self-statistics of $\alpha$. 
@@ -746,23 +757,19 @@ In this subsection we describe our procedure for condensing $\psi$ in the Ising 
 While we will focus on the Ising theory in this section, our discussion will be fairly general, and can be applied to perform fermion condensation in more general scenarios. 
 We would like to ``condense" the $\psi$ particle by constructing the quotient theory $\mcc / \psi$. We will denote the condensed theory by $C_2$, for reasons that we will elaborate on later, and we will denote the image of $\sigma$ under the condensation process as $\beta$.
 
-First, we note that $\psi$ is fermionic in both spin and statistics,
-\begin{align} \label{psi_a_fermion}
-\Spin = (-1) \times  \PsiIdentity
-\qquad \qquad \TwoPsiExchange =  (-1) \times\TwoPsiIdentity.
-\end{align}
-Additionally, $\psi$ has nontrivial braiding with $\beta$, and as such $\psi$ is not transparent. This means that If we perform unrestricted condensation on $\psi$, $\beta$ worldlines are confined, since
+First, from \eqref{psi_a_fermion}, we recall that $\psi$ is fermionic in both spin and statistics,
+Additionally, we recall that $\psi$ has nontrivial braiding with $\beta$, and as such $\psi$ is not transparent. This means that If we perform unrestricted condensation on $\psi$, $\beta$ worldlines are confined (are identically zero), since
 \be \label{box_beta_nowall_braiding}
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{box_beta_nowall_braiding.pdf}}}},\ee
 where the orange line is a $\beta$ worldline. 
 Thus, $\psi$ violates all three of the conditions that particles in a condensate must satisfy! 
 To condense $\psi$, we will clearly need some additional help. 
 
-We will first examine how to address the non-transparency of $\psi$. As we saw above in \eqref{box_beta_nowall_braiding}, we can't allow world lines of $\psi$ to disappear anywhere
-in the 3-dimensional space-time.
-However, if we restrict the $\psi$ worldline endpoints to a 2-dimensional subset of the boundary of 3-dimensional spacetime,
+We will first examine how to address the non-transparency of $\psi$. As we saw above in \eqref{box_beta_nowall_braiding}, we can't allow world lines of $\psi$ to disappear at arbitrary points in the 3-dimensional spacetime.
+However, if we restrict the $\psi$ worldline endpoints to lie on a 2-dimensional subset of the boundary of the ambient 3-dimensional spacetime,
 we {\it can} obtain a consistent graphical calculus.
-In this paper, we will adopt the convention that $\psi$ world lines are allowed to terminate on a codimension-1 ``back wall", located on a spatial boundary of the system that is located ``behind'' all other world lines drawn in our graphical calculus. 
+
+In this paper, we will adopt the convention that $\psi$ world lines are allowed to terminate on a codimension-1 ``back wall", located on a spatial boundary of the system that is positioned ``behind'' all other world lines drawn in our graphical calculus. 
 
 \begin{figure}
   \centering
@@ -791,14 +798,17 @@ Indeed, the bulk-to-boundary maps ${\rm Forg}:\mcz(\mcc)\ra\mcc$ in (2+1)D TQFTs
 
 The back wall construction ``transparentizes'' $\psi$, fixing the inconsistency presented by \eqref{transparency_inconsistency}. 
 However, we have not yet addressed the spin and statistics inconsistencies \eqref{twist_inconsistency} and \eqref{statistics_inconsistency}.
-To fix these inconsistencies, we will couple the boxes marking the $\psi$ endpoints to a spin (technically a pin) structure. Readers unfamiliar with spin and pin structures are referred to Appendix \ref{spin_and_pin}. 
-Loosely, the spin structure will cancel out the factors of $-1$ picked up upon untwisting $2\pi$-twisted worldlines, ``bosonizing'' the $\psi$ endpoints and allowing the condensation process to go through. Describing this rigorously is slightly technical, and readers are invited to skip ahead to [somewhere] if they wish. 
+To fix these inconsistencies, we will couple the boxes marking the $\psi$ endpoints to a spin (technically a pin) structure. 
+Readers unfamiliar with spin and pin structures are referred to Appendix \ref{spin_and_pin}. 
+Loosely, the spin structure will cancel out the factors of $-1$ picked up upon untwisting $2\pi$-twisted worldlines, ``bosonizing'' the $\psi$ endpoints and allowing the condensation process to go through. 
+Describing this rigorously is slightly technical, and readers are invited to skip ahead to [somewhere] if they wish. 
 %This essentially amounts to introducing physical fermions to the theory, which compensate for the fermionic nature of the $\psi$ particle in the condensate. 
 
 
 Throughout the remainder of this section, we will assume that our theory is defined on an oriented manifold $M$. 
 %A spin structure on $M$ is a double covering of the oriented frame bundle $FSO(M)$, the bundleand allows us to determine how different fermion framings are related to one another. 
-Our goal is to couple the $\psi$ endpoints to a spin structure on the back wall $B \subset \partial M$. In order to do this, we must first establish a way of assigning a fermion framing to each marked endpoint where a $\psi$ worldline is absorbed into the back wall. We will use the graphical depiction of the boxes to do this, by assigning the first basis vector in the framing to the direction in which the $\psi$ worldline enters the box (with the second basis vector assigned according to the right-hand rule).
+Our goal is to couple the $\psi$ endpoints to a spin structure on the back wall $B \subset \partial M$. In order to do this, we must first establish a way of assigning a fermion framing to each marked endpoint where a $\psi$ worldline is absorbed into the back wall. 
+We will use the graphical depiction of the boxes to do this, by assigning the first basis vector in the framing to the direction in which the $\psi$ worldline enters the box (with the second basis vector assigned according to the right-hand rule).
 We will also find it helpful to make an explicit choice of fermion framing at each $\psi$ endpoint, which amounts to fixing an explicit section of the oriented spin bundle $FSp(B)$. 
 %\kw{As we discussed, this needs to be rephrased.
 %A spin structure is a double covering of the frame bundle.
@@ -809,9 +819,10 @@ We will also find it helpful to make an explicit choice of fermion framing at ea
 We will choose a global fermion framing that always points ``to the left'': that is, we will always draw boxes whose $\psi$ lines emanate from their left sides, as in \eqref{box_defn}. 
 This is merely a gauge choice: other framing conventions are related to one another by gauge transformations, and do not necessarily have to be globally constant. 
 
-The final piece of data we will need on the back wall is a numerical ordering of the marked $\psi$ endpoints (as in Figure \ref{backwall}). Crucially, we define {\it odd} permutations of endpoint ordering to act on states as multiplication by $-1$, so that swapping the labelling of two $\psi$ endpoints comes at the expense of a minus sign. 
+The final piece of data we will need on the back wall is a numerical ordering of the marked $\psi$ endpoints (as in Figure \ref{backwall}). 
+Crucially, we define {\it odd} permutations of endpoint ordering to act on states as multiplication by $-1$, so that swapping the labelling of two $\psi$ endpoints comes at the expense of a minus sign. 
 We consider all orderings related by an {\it even} permutation to be equivalent. 
-This property will introduce an anti-commuting character to the Hilbert space of the condensed theory, and will force us to use supervector spaces (instead of vector spaces) when defining the fusion spaces of the condensed theory---see Sec \ref{fusion_spaces} for a detailed discussion. 
+This property will introduce an anti-commuting character to the Hilbert space of the condensed theory, and will force us to use supervector spaces (instead of vector spaces) when defining the fusion spaces of the condensed theory---see Sec \ref{fusion_spaces} for a detailed discussion of this issue. 
 
 Consider the configuration space $C$ of all possible configurations of $\psi$ endpoints (boxes). Any given point in $C$ with $k$ different $\psi$ endpoints is acted naturally on by $S_k$ (the symmetric group on $k$ elements), where $S_k$ acts to permute the ordering of the endpoints.
 As mentioned above, the action of $S_k$ is determined by the sign representation: odd permutations act on points in $C$ as multiplication by $-1$, and even permutations act trivially on $C$.
@@ -821,15 +832,15 @@ Since we have fixed a gauge in which the spin framing at each $\psi$ endpoint al
 Furthermore, since a spin structure is a double-covering of the frame bundle, $2\pi$ framing rotations are realized projectively in $FSp(B)$, in that they act on points in $C$ as multiplication by $-1$. 
 Therefore, $C$ also admits an action by $(\zt)^k$, with each $\zt$ factor acting as the generator of spin flips ($2\pi$ framing rotations) on each of the $k$ $\psi$ endpoints.
 
-Since we identify states that differ by an even number of combined spin flips and fermion swaps, the entire configuration space admits an action by $F = (\zt)^k\times S_k / G$, 
+Since we identify states that differ by an even number of combined spin flips and fermion swaps, the entire configuration space is acted naturally on by $F = (\zt)^k\times S_k / G$, 
 where $G$ is the index-2 subgroup of $(\zt)^k\times S_k$ consisting of all elements with even total parity.
 
-The fact that nontrivial elements in $F$ act on $C$ as multiplication by $-1$ is enough to remove the remaining inconsistencies \eqref{statistics_inconsistency} and \eqref{twist_inconsistency}.
+The fact that combinations of an odd number of spin flips and swaps of the ordering of two $\psi$ endpoints acts as multiplication by $-1$ is enough to remove the remaining inconsistencies \eqref{statistics_inconsistency} and \eqref{twist_inconsistency}.
 %We will now form a fiber bundle over $C$, whose fibers consist of all possible spin framings %and different orderings of the $\psi$ endpoints. 
 %At a given point in configuration space with $k$ different $\psi$ endpoints, the fiber is $F = (\zt)^2\times S_k$, where $S_k$ is the symmetric group. 
 %The $(\zt)^k$ factor acts as spin flips ($2\pi$ framing rotations) on each of the $k$ endpoints, and the $S_k$ factor acts to permute the ordering of the endpoints. 
 %However, as we identify states that differ by an even number of combined spin flips and fermion swaps, we instead set the fiber to be the group $\mcf = F/G$, where $G$ is the subgroup of $F$ consisting of all elements with even total parity. \ethan{do we need the bundle language at all?}
-In particular, the fact that changing the ordering of the $\psi$ endpoints by an odd permutation acts as multiplication by $-1$ means that the $\psi$ endpoints are now statistically bosonic:
+Indeed, the fact that changing the ordering of the $\psi$ endpoints by an odd permutation acts as multiplication by $-1$ means that the $\psi$ endpoints are now statistically bosonic:
 \begin{align} \label{boxbraid}
 \TwoFermion =\ \TwoFermionExchange = (-1)^2\ \TwoFermion\;.
 \end{align}
@@ -840,30 +851,33 @@ the $\psi$ endpoints have bosonic spins:
 \end{align}
 This fixes the remaining inconsistency \eqref{twist_inconsistency}. 
 Thus, by introducing the back wall and equipping it with a spin structure, all three conditions necessary for $\psi$ endpoints to condense are satisfied---we are now free to go ahead and complete the condensation procedure. 
+We emphasize that we have utilized the back wall and the spin structure for two {\it independent} reasons (the non-transparency of $\psi$ and $\psi$'s fermionic spin and statistics, respectivley). 
+For example, if $\psi$ were non-transparent but bosonic, we would still need a back wall, but the back wall would not need a spin structure.
+Conversely, if $\psi$ were transparent but fermionic, then we would not need a back wall, but we would still need to introduce spin
+structures.
 
-Before moving on, we should point out that although the $\psi$ endpoints have bosonic spins and are statistically self-bosonic, they are not bosons in the strictest sense. This is because they still couple to the background spin structure: when we take a $\psi$ endpoint around a topologically non-trivial cycle in the spacetime manifold it will pick up a factor of $\pm1$ that depends on the ambient spin structure. 
+We should also point out that although the $\psi$ endpoints have bosonic spins and are statistically self-bosonic, they are not actually bosons in the strictest sense. 
+This is because they still couple to the background spin structure: when we take a $\psi$ endpoint around a topologically non-trivial cycle in the spacetime manifold it will pick up a factor of $\pm1$ that depends on the ambient spin structure. 
+This fact will play an integral role in our construction of the excitation spectrum of the $C_2$ theory. 
 
+\ethan{feel free to move this paragraph to the next section}
 Since $\psi$ lines can disappear into the condensate, we need to be able to annihilate pairs of boxes attached by a $\psi$ string, as these objects are part of the condensate. 
 Annihilating a pair of connected boxes must give us a state proportional to the vacuum:
 \begin{align}
 \PsiEnd  = \lambda \times \text{(vaccuum)},
 \label{EvalPsiPsi}
 \end{align}
-where $\lambda$ is some complex number (the semicircular nature of the above diagram comes from our choice of spin framing). 
+where $\lambda$ is some complex number (the semicircular nature of the above diagram comes from our choice of a spin framing that always points to the left). 
 In Appendix \ref{pins_and_reflection}, we extend the spin structure on the back wall to a pin structure, which allows us to prove that $\lambda$ must be purely imaginary in any unitary theory.  
 
 Our spin-structure-equipped back wall construction admits a simple physical interpretation: equipping the back wall with a spin structure is equivalent to adding a phase of {\it physical} (not emergent) fermions to the theory, and binding single physical fermions to each $\psi$ endpoint.
 The physical fermion attached to each $\psi$ endpoint compensates for the fermionic nature of the $\psi$ particle in the condensate: the factors of $-1$ that relate two different orderings of the $\psi$ endpoints are the Kozul signs associated with the physical fermions, and the factors of $-1$ that we pick up when rotating the $\psi$ endpoint framing by $2\pi$ come from the spin $1/2$ of the physical fermions. 
-Thus, attaching physical fermions to the $\psi$ endpoints transforms them into bosonic objects (although they are not strictly bosonic, as they still see the spin structure when traveling around topologically non-trivial loops), which are then allowed to undergo normal boson condensation. 
+Thus, attaching physical fermions to the $\psi$ endpoints transforms them into bosonic objects, which are then allowed to undergo normal boson condensation. 
 Therefore, although we are indeed identifying emergent fermions with the vacuum, the term ``fermion condensation'' is a bit misleading, as what we are actually doing is closer to {\it boson} condensation of bound states of $\psi$ and a physical fermion. 
 However, we reiterate that the $\psi$ endpoints are not technically bosons, since they see the background spin structure: the emergent $\psi$ fermions do not see the spin structure, but the physical fermions attached to their endpoints do. 
 
-Finally, we emphasize that the spin-structure-equipped back wall used in our condensation is needed because $\psi$ is both fermionic and non-transparent. If $\psi$ were non-transparent but bosonic, we would still need a back wall, but the back wall would not need a spin structure.
-Conversely, if $\psi$ were transparent but fermionic, then we would not need a back wall, but we would still need to introduce spin
-structures.
-
 \ethan{Using the back wall construction is one way to take care of the transparency issue, but there's actually another way of doing it that doesn't rely on introducing a spatial boundary to the system or performing condensation only on a codimension-1 surface. 
-We can allow the $\psi$ worldlines to be absorbed into the vacuum at any point, with the endpoints coupled to a spin structure as usual. 
+We will allow the $\psi$ worldlines to be absorbed into the vacuum at any point, with the endpoints coupled to a spin structure as usual. 
 In this picture the $\psi$ lines literally end, they do not run down to some back wall. 
 This seems to be inconsistent because of the transparency issue. 
 However, we note that the $\psi$ endpoints would be transparent if the box (the physical fermion attached to the $\psi$ endpoint) had a $-1$ braiding with $\beta$. 
@@ -899,43 +913,54 @@ This implies that $\lambda = - \lambda^*$, and so $\lambda$ must be purely imagi
 
 %To summarize, we have seen that in order to condense an emergent fermion $\psi$ we must couple our theory to a spin structure, which is provided by a phase of free (physical) fermions $f$. Condensing the emergent fermions is then accomplished by coupling them to the spin structure, or equivalently by condensing $\psi f$ bound states. 
  
-\subsection{Local relations in the $C_2$ theory (in progress)}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Local relations in the $C_2$ theory} \label{C2_local_relns}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %and so we can condense the $\psi$ particle by modding out this sub-algebra, provided that we introduce the spin structures needed to make this procedure legitimate. 
 Now that we have worked out how to condense $\psi$, we can determine the graphical rules that govern the condensed theory. 
 
 We have already seen that in order for the condensation procedure to go through, the $C_2$ theory must come equipped with a spin structure. This introduces non-trivial local relations into the diagrammatic calculus that are not present in bosonic theories.  
 
-First, we first observe that any closed $\psi$ loop or an open $\psi$ string can be absorbed into the condensate at the expense of phase factors, and so in the condensed theory the only objects remaining will be $\beta$ (the image of $\sigma$ under condensation) lines, which may or may not have $\psi$ fermions attached to them. 
-We will introduce a blue dot as a compact notation for a $\psi$ line that terminates on a $\beta$ line:
+First, we first observe that any closed $\psi$ loop or an open $\psi$ string can be absorbed into the condensate at the expense of phase factors, and so in the condensed theory the only object remaining will be the image of $\sigma$ under condensation, which will denote by $\beta$. 
+In the condensed theory, the $\beta$ line may or may not have $\psi$ fermions attached to them. 
+We will introduce a blue dot as a compact notation for a $\psi$ worldline that terminates on a $\beta$ line:
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta_dot.pdf}}}}\quad = \quad\mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta_box.pdf}}}}\ee
 Diagrammatically, any section of the $\beta$ line may thus look like
 \begin{align} \label{betaendos}
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta.pdf}}}} \qquad {\rm or} \qquad \mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta_dot.pdf}}}}.
 \end{align}
 The two diagrams in \eqref{betaendos} are the generators of the endorphism algebra of $\beta$.
-Since we have one even generator and one odd generator we see that $\text{End}(\beta) \cong \mathbb{C}\ell_1$, where $\cl_1$ is the first complex Clifford algebra. It turns out that objects in the condensed theory have nontrivial $\cl_1$ endomorphism algebras if and only if they can ``absorb'' fermion dots in the sense of \eqref{betaendos}. 
+Since we have one even generator and one odd generator we see that $\text{End}(\beta) \cong \mathbb{C}\ell_1$, where $\cl_1$ is the first complex Clifford algebra. 
+It turns out that this property holds in more general scenarios: objects in the condensed theory have and endomorphism algebra of $\cl_1$ if and only if they can ``absorb'' fermion dots in the sense of \eqref{betaendos}. 
 Having objects whose endomorphism algebra is $\cl_1$ is impossible in bosonic theories (where any simple object $a$ always has $\End(a) \cong \cc$), and requires us to modify the type of tensor product used in fermionic theories. 
+We will see that the existence of objects with $\cl_1$ endomorphism algebras is responsible for a large part of the novel physics that occurs as a result of performing fermion condensation. 
 
-Because $\beta$ lines in the condensed theory can have fermion dots on them, there are several new diagrammatic rules involving them that need to be included in our graphical calculus. \ethan{talking about tensoring over endos---motivate with the AKLT chain example}
+Because $\beta$ lines in the condensed theory can have fermion dots on them, there are several new diagrammatic rules involving them that need to be included in our graphical calculus. \ethan{talking about tensoring over endos---motivate with the AKLT chain example. Will fill in later.}
 
 One of the most important local relations we will need to perform is the addition and removal of an even number of fermions on $\beta$ lines. 
-We show in Sec \ref{carefully_condensing_psi} that the process of removing two fermions can be done at the cost of a phase factor: 
-\begin{align}
+The process of removing two fermions can be done at the cost of a phase factor: 
+\begin{align} \label{removing_fermions}
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot.pdf}}}} \quad =  \quad \mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_boxbox.pdf}}}} \quad = \quad 
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_curvy_boxbox.pdf}}}} \quad =\quad  
 A^4\; \mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta.pdf}}}}\;,
 \end{align}
 where we've performed an $F$-move on the $\psi$ worldlines to get the second equality, and in the last step we have used \eqref{EvalPsiPsi} with $\lambda = A^4$ in the last step. 
-In the Ising theory we have $A^4 = \pm i$, which is purely imaginary as it must be by virtue of the discussion in Appendix \ref{pins_and_reflection}. We will see later that choosing $A^4=i$ ($A^4=-i$) implies that the physical fermions which provide the spin structure come from a $p+ip$ ($p-ip$) superconductor. 
+In the Ising theory $A$ is a primitive 16th root of unity, and so we always have $A^4 = \pm i$. 
+In Appendix \ref{pins_and_reflection} we show that the phase picked up when annihilating a semicircular fermion worldline (as during the last step of \eqref{removing_fermions} {\it must} be purely imaginary, and so the fact that $A^4=\pm i$ is a nontrivial check of our ability to condense $\psi$. 
+We will see later that choosing $A^4=i$ ($A^4=-i$) implies that the physical fermions which provide the spin structure come from a $p+ip$ ($p-ip$) superconductor. \ethan{need to elaborate on this last paragraph, or defer it untill later when I can talk about chiral central charge.}
 
-Of course, exchanging two fermions on a $\beta$ line results in a minus sign
+Since $\psi$ is statistically fermionic, exchanging two fermions on a $\beta$ line results in a minus sign:
 \begin{align}
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot.pdf}}}} \quad = \quad (-1)\times
-\mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot_switched.pdf}}}}
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot_switched.pdf}}}}\;,
 \end{align}
-where the labels $1$ and $2$ denote the normal-ordering of the fermions in question. We will always work in a ``gauge'' in which pairs of fermions are only ever created or annihilated when their normal ordering {\it increases} when going from the bottom to the top of diagrams. 
+where the labels $1$ and $2$ denote the ordering of the fermions in question. 
+We will always work in a ``gauge'' in which pairs of fermions are only ever created or annihilated when their normal ordering {\it increases} when going from the bottom to the top of diagrams. 
 
-Most importantly, the braiding in the parent Ising theory means that we pick up non-trivial phase factors when sliding fermion dots over and around $\beta$ caps and cups. For example, we can compute, \ethan{Wanted to add some more steps to a few things, so I redid a few figures}
+Most importantly, the braiding in the parent Ising theory means that we pick up non-trivial phase factors when sliding fermion dots over and around $\beta$ caps and cups. 
+For example, we can compute \ethan{Wanted to add some more steps to a few things, so I redid a few figures}
 \begin{align} \label{capslide}
 \capleftdot =
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{cap_left_box.pdf}}}} =
@@ -943,17 +968,23 @@ Most importantly, the braiding in the parent Ising theory means that we pick up 
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{cap_right_twist_box.pdf}}}}
 = A^4 \caprightdot,
 \end{align}
-where in the third quality we have used an $F$-move, and in the last step we have used \eqref{sig_psi_Rsymbol}. In the Ising theory $A^4=\pm i$, and so by inverting \eqref{capslide} we find 
+where in the third quality we have used an $F$-move, and in the last step we have used \eqref{sig_psi_Rsymbol}. 
+Since in the Ising theory $A^4=\pm i$, we can invert \eqref{capslide} to find 
 \begin{align} \label{cap_slide_back}
 \caprightdot\; &= - A^4 \; \capleftdot.
 \end{align}
 In appendix \ref{pins_and_reflection} we show that reflecting diagrams about the horizontal axis acts as Hermitian conjugation, and so by Hermitian conjugating \eqref{cap_slide_back} we find
 \be  \cuprightdot\; =  A^4 \; \cupleftdot\;. \ee
-These phases ensure that odd parity $\beta$ loops vanish
+
+We stress that these phases are derived completely from the {\it braiding data} of the Ising theory. 
+They also must be such that taking a fermion dot around a circular $\beta$ loop gives a factor of $-1$, which enforces the constraint that $A^8 = -1$. 
+This ensures that even-parity $\beta$ loops are non-zero, while odd-parity $\beta$ loops vanish:
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_circle.pdf}}}}=0,\ee
 which can be easily seen by dragging the dot once around the circle. 
+The fact that $A^8=-1$ must also be true because dragging the fermion once around the circle amounts to a $2\pi$ rotation of the fermion framing, which must be equivalent to multiplication by $-1$. 
+The constraint $A^8=-1$ is satisfied in all the Ising theories. 
+However, in more general examples this constraint on the braiding data is a strong one, and significantly limits the types of theories that can have objects with $\cl_1$ endomorphism algebras capable of ``absorbing'' fermions.
 
-We stress that these phases can be derived completely from the {\it braiding data} of the Ising theory. They also must be such that taking a fermion dot around a circular $\beta$ loop gives a factor of $-1$, which enforces the constraint that $A^8 = -1$. This is both to ensure that even-parity $\beta$ loops are nonzero, and because it amounts to a $2\pi$ rotation of the fermion framing, which must be equivalent to multiplication by $-1$. The constraint that $A^8=-1$ is satisfied in all the Ising theories, but in more general examples this constraint on the braiding data significantly limits the types of theories that can have objects with $\cl_1$ endomorphism algebras.
 
 The final local relations that will be important in what follows are the $F$-moves, which provide linear relations between different isotopy classes of diagrams.
 The $F$-symbols in the condensed $C_2$ theory can be worked out using our rules for manipulating condensed $\psi$ worldlines and our knowledge of the $F$-symbols in the parent Ising theory: we begin with a diagram in the Ising theory, apply an $F$-move, and then remove all $\psi$ lines through condensation to evaluate the $F$-move in the $C_2$ theory. 
@@ -966,134 +997,40 @@ When we condense $\psi$, the second diagram on the left hand side becomes
 \be %\quad \CupCapPsi \rightarrow A^{-4} \CupCapDots,\ee
 \doublecuppsi = A^{-4}\; \mathord{\vcenter{\hbox{\includegraphics[scale=1]{double_cup_psi_line_wsemicircle.pdf}}}}\; =A^{-4}\;
 \doublecupdots\;, \ee
-and so in the condensed theory, 
+and so in the $C_2$ theory, we obtain the $F$-move
 \be \doublebeta\; = \frac{1}{d} \left( \doublecups \; + \;A^{-4} \doublecupdots\right).\ee
-Likewise, we can derive the other nontrivial $F$-move:
+By similar reasoning we can derive the other nontrivial $F$-move in the $C_2$ theory, which is
 \begin{align}
 \doublecups\; &= \frac{1}{d} \left(\doublebeta \; + \; \doublebetadots \right).
 \end{align}
 
-%\ethan{commented out ``Tensor product in $\mcc/\psi$'' section, since the full detail of tensoring over endos isn't needed for anything in the $C_2$ and since we're going over it in detail later on and don't want to repeat ourselves. I elaborated a bit about modding out by endos in the previous section to compensate.}
-\begin{comment}
-%%%%%%%%%%%%%%%%%%
-\subsection{Tensor product in $\cal{C}/\psi$}
-%%%%%%%%%%%%%%%%%%
-
-\label{IsingTensorProduct}
-\ethan{I'm not sure if we should call this the $\tp$. I think we should maybe reserve $\tp$ for horizontal superposition as usual, and just call tube stacking tube algebra multiplication.}
-The dots representing the points where $\psi$ lines end on $\beta$ lines can slide around on $\beta$ lines freely, provided that we keep track of the phase factors \eqref{dotslides} associated with passing them over caps and cups. 
-This has non-trivial implications on the tensor products, indeed defining the tensor product of the squares above by stacking,
-\begin{align}
-\FubeXss \otimes \FubeXsds = \overset{\FubeXss}{\FubeXsds} \sim \overset{\FubeXsds }{\FubeXss}
-\label{Exampletp}
-\end{align}
-To the right, we have denoted an equivalent state using isotopy. 
-If we are interested in pictures modulo local relations, we should define our tensor product so that it accounts for this equivalence relation. 
-For example, naively tensoring over $\mathbb{C}$ can yield the following,
-\begin{align}
-V^{\beta 1}_\beta \tp_\mathbb{C} V^{\beta 1}_\beta = \overset{\FubeXss}{\FubeXss} \oplus \overset{\FubeXss}{\FubeXsds} \oplus \overset{\FubeXsds}{\FubeXss} \oplus \overset{\FubeXsds_2}{\FubeXsds_1}
-\end{align}
-from which we naively conclude that the tensor product of the two vector spaces, each which has one even state and one odd state, results in a four dimensional vector space of two even state and two odd states. 
-However, it's clear that not all the vectors appearing on the right hand side are linearly independant, indeed the middle two are related by isotopy, and so are the outer two. 
-Hence we have to quotient out by isotopy. 
-
-We will incorporate this equivalence relation into the tensor product of the super fusion category.
-We are already used to modding out by a similar equivalence relation with the ordinary tensor product of a vector space of the complex numbers. 
-Indeed, the analog of shuttling the dot past the junction is shuttling a complex number from one vector to another in a complex vector space we have 
-\begin{align}
-(\alpha \ket{x}) \tp_\mathbb{C} \ket{y} \sim \ket{x} \tp_\mathbb{C} (\alpha \ket{y}) \quad \forall \alpha \in \mathbb{C}
-\end{align}
-Similarly in a bosonic fusion category, our vectors are pictures, and the the tensor product glues those pictures together. 
-
-In doing so we have to allow for arbitrary pictures  that matching the boundary conditions to be shuttled past the gluing junction. 
-Shuttling a picture past the junction is just an endomorphism of the boundary condition. \dave{Include such abstract stuff? Also who to reference?}
-Thus for gluing two pictures $P(Y_i)$ on surfaces $Y_i$  along a boundary $S \in \partial Y_i$ we have the natural extension to \dave{picture.}
-\begin{align}
-P_{(Y_1, S)} \tp_{\text{End}(S)}P_{(Y_2,S)} \equiv P_{(Y_1,S)} \tp_{\mathbb{C}} P_{(Y_2,S)} /\sim
-\end{align}
-where the equivalence relation $\sim$ is given by,
-\begin{align}
- (P_{(Y_1,S)} \text{End}(S)) \tp_{\mathbb{C}} P_{(Y_2,S)}  \sim P_{(Y_1,S)} \tp_{\mathbb{C}} (\text{End}(S) P_{(Y_2,S)}). 
-\end{align}
-This formulation of tensor products looks rather abstract, but at the same time familiar from the context of guage theories. 
-It is useful to think of the tensoring over endomorphisms as ``integrating" over all gauge field configurations, consistent with the boundary conditions.
-
-In this light, we will implement the ``guage" transformations with a series of isomorphims. 
-At the end of the day it is a choice on whether we represent a quantum state by choosing one vector in the equivalence relation, or if we symmetrize over all possible states. 
-Indeed, when writing down the string net Hamiltonian we will implement the symmetrization over all states by simply adding those terms to the Hamiltonian. 
-
-Lets revisit the example in (\ref{Exampletp}). 
-To tensor product over the endomorphisms of the boundary, which in this case is $\text{End}(\beta)$ we have \dave{obviously we have to clean this up.},
-\begin{align}
-\FubeXss \otimes_{\text{End}(\beta)} \FubeXsds  = \overset{\FubeXss}{\FubeXss}  / \sim \\
-\text{where} 
- \overset{\FubeXss}{\FubeXss}  \sim  \overset{ \FubeXss }{\FubeXss} 
-\end{align}
-as anticipated.
-We are also free to choose a single representative of this equivalence class which, for example
-\begin{align}
-\FubeXss \otimes_{\text{End}(\beta) }\FubeXsds = \overset{\FubeXss}{\FubeXsds} =  \FubeXsds \otimes_{\text{End}(\beta)}  \FubeXss
-\end{align}
-At this point, it may appear like we've introduced an unnecessary complication. 
-The tensor product we originally looked at in (\ref{Exampletp}) ended up giving the right result. 
-However, in the general theory it will be useful to explicitly write down a basis for these endomorphisms to make the pentagon equation explicit.
-
-By just doing the diagrammatics, we have avoided the subtlety of tensoring over the endomorphisms of $\beta$.
-More formally, the F-symbol is a change of basis in the Hom space $V^{abc}_d$ \dave{explained in intro to Ising TQFT?}
-\begin{align}
-F^{abc}_d: \oplus_x V^{ab}_x \tp_{\text{End}(x)} V^{xc}_d \rightarrow \oplus_y V^{ay}_d \tp_{\text{End}(y)} V^{cd}_y
-\end{align}
-It is useful to choose an explicit basis for the splitting spaces and use $F$-symbols which are purely complex subject to some constraints, i.e., they must commute with the ``gauage transformations". 
-To that end, we pick a basis for the splitting spaces, and explicitly write down the matrices which induce the ``gauage" transformations. 
-
-Hence we will consider all pictures in the ``extended" space $V^{ab}_x \tp_\mathbb{C} V^{xc}_d$, find all solutions to $F$-symbols subject to the constraint that they commute with the endomorphisms. 
-Then we will project back into the ``physical" vector space $V^{ab}_x \tp_\text{End}(x) V^{xc}_d$ by symmetrizing over all the gauge transformations.
-
-In the cases of interest, the generators of $\text{End}(x)$ are isomorphisms, lets choose a basis $f_i$ for these isomorphisms.
-We wish to solve for 
-\begin{align}
-V^{ab}_x \tp V^{xc}_d /\prod_i \langle V^{ab}_x f_i \tp V^{xc}_d \sim V^{ab}_x  \tp f_i V^{xc}_d  \rangle
-\label{physicalspace}
-\end{align}
-Lets do this by introducing a set of matrices $M(f_i)$ defined via,
-\begin{align}
-M(f_i) V^{ab}_x \tp V^{xc}_d = (V^{ab}_x f_i )\tp (f_i^{-1} V^{xc}_d).
-\end{align}
-Notice that the matrices $M(f_i)$ are always even. 
-Hence as a representation they are always of type M.
-They are also complex linear in the $f_i$: $M(\alpha f_i + \beta f_j) = \alpha M(f_i) + \beta M(f_j) $ for all $ \alpha, \beta \in \mathbb{C}$.
-Hence the $M(f_i)$ form a finite dimensional matrix algebra, and the physical space in (\ref{physicalspace}) is just an irreducible representation of this matrix algebra. 
-
-The equivalence relation is now simply given by any two vectors related by some complex linear combination of the $M(f_i)$. 
-Hence for the $F$-symbol, we require the following diagram to be commutative, 
-\begin{align}
-	\vcenter{\xymatrix @!0 @M=1mm @R=30mm @C=42mm{
-		 \oplus_x V^{ab}_x \otimes V^{xc}_d \ar[d]^{M(f_x)}\ar[r]^{F^{abc}_d}& \oplus_y V^{ay}_d \otimes V^{bc}_y \ar[d]^{M(f_y)} \\
-		\oplus_x V^{ab}_x \otimes V^{xc}_d  \ar[r]^{F^{abc}_d}  & \oplus_y V^{ay}_d \otimes V^{bc}_y	
-	}} \quad \text{i.e.,} \quad F^{abc}_d M(f_x) = M(f_y) F^{abc}_d
-\end{align}
-for all $f_x \in \text{End}(x)$ and $f_y \in \text{End}(y)$.
-We will return to this in Section??? and describe in more detail. 
-\end{comment}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Quasiparticle excitations and the center of $C_2$} %\label{qps}
+\subsection{Quasiparticle excitations and the center of $C_2$} \label{C2_quasiparticles}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this section, we identify the quasiparticle excitations in the $C_2$ theory. As was first shown in the mathematical literature by Occneanu [ref] and later demonstrated in the physics community by [lan wen, nick, yuting], the quasiparticle excitations in bosonic theories derived from a category $\mcc$ are given by the elements of the Drinfeld center $\mcz(\mcc)$, which can be obtained by finding the simple modules of an algebra known as the {\it tube algebra}. With appropriate modifications accounting for spin structure issues, this same construction holds in the more general fermionic setting considered here. 
+In this section, we identify the quasiparticle excitations in the $C_2$ theory. 
+As was first shown in the mathematical literature by Occneanu [ref] and later demonstrated in the physics community by [lan wen, nick, yuting], the quasiparticle excitations in bosonic theories derived from a category $\mcc$ are given by the elements of the Drinfeld center $\mcz(\mcc)$, which can be obtained by finding the simple modules of an algebra known as the {\it tube algebra}. 
+With appropriate modifications accounting for spin structure issues, this same construction holds in the more general fermionic setting considered here. 
 
-Briefly, the tube algebra is the algebra of ``scale transformations'' on topological quasiparticles, which are localized around circular punctures on the ambient manifold. These ``scale transformations'' consist of gluing in annuli with different field configurations to the punctures associated with each quasiparticle. At an operational level, the elements in the tube algebra are tubes decorated with different field configurations with multiplication given by stacking tubes on top of one another. Since the quasiparticle excitations are topological they must be invariant under these scale transformations, and thus finding the quasiparticle excitations in the theory reduces to finding the (simple) modules of the tube algebra. 
+Briefly, the tube algebra is the algebra of ``scale transformations'' on topological quasiparticles, which are localized around circular punctures on the ambient manifold. 
+These ``scale transformations'' consist of gluing in annuli with different field configurations to the punctures associated with each quasiparticle. 
+At an operational level, the elements in the tube algebra are tubes decorated with different field configurations with multiplication given by stacking tubes on top of one another. 
+Since the quasiparticle excitations are topological they must be invariant under these scale transformations, and thus finding the quasiparticle excitations in the theory reduces to finding the (simple) modules of the tube algebra. 
 For a review and a more detailed discussion of how the tube algebra works in the fermionic setting, we refer readers to Appendix \ref{tube_alg}. 
 
-After applying local relations, the diagrams on any tube can be reduced to linear combinations the following diagrams:\begin{align}
+After applying local relations, an arbitrary string-net diagram on any tube can be reduced to a linear combination of the following diagrams:\begin{align}
 \FubeXXX \quad \FubesXs    \quad \FubeXss \quad \FubessX   \quad \FubesdXs \quad  \FubeXsds \quad \FubessdX
 \end{align}
 
-The above tubes form a complete basis for the tube algebra in the bosonic case. In the fermionic case however, each tube also comes equipped with a spin structure, given by an element $\eta \in H^1(C,\zt) \cong \zt$, where $C$ is the cylinder.\footnote{On manifolds $M$ like the cylinder or the torus, there is a canonical identification of spin structures with elements of $H^1(M,\zt)$; in more general cases spin structures on $M$ are merely an $H^1(M,\zt)$-torsor.} $\eta$ simply determines the nature of the boundary conditions for fermions traveling around the non-contractible cycle of the cylinder. We have to be a little careful about making this identification, though: contractible fermionic loops that twist fermion ribbons by $2\pi$ are associated with a $-1$ sign, and so the identity element in $H^1(C,\zt)$ corresponds to {\it anti-periodic} (or non-vorex) boundary conditions, with the nontrivial element corresponding to periodic (or vortex) boundary conditions.
+The above tubes form a complete basis for the tube algebra in the bosonic case. 
+In the fermionic case however, each tube also comes equipped with a spin structure, given by an element $\eta \in H^1(C,\zt) \cong \zt$, where $C$ is the cylinder.\footnote{On manifolds $M$ like the cylinder or the torus, there is a canonical identification of spin structures with elements of $H^1(M,\zt)$; in more general cases spin structures on $M$ are merely an $H^1(M,\zt)$-torsor.} 
+$\eta$ simply determines the nature of the boundary conditions for fermions traveling around the non-contractible cycle of the cylinder. 
+We have to be a little careful about making this identification, though: contractible fermionic loops that twist fermion ribbons by $2\pi$ are associated with a $-1$ sign, and so the identity element in $H^1(C,\zt)$ corresponds to {\it anti-periodic} (or non-vorex) boundary conditions, with the nontrivial element corresponding to periodic (or vortex) boundary conditions.
 
-We will denote the spin structure of a given tube with a subscript, using $A$ for anti-periodic/non-vortex spin structure and $P$ for periodic/vortex spin structures. Interestingly, not every tube is consistent with each spin structure.
+We will denote the spin structure of a given tube with a subscript, using $A$ for anti-periodic/non-vortex spin structure and $P$ for periodic/vortex spin structures. 
+Interestingly, not every tube is consistent with each spin structure.
 For example,
 \begin{align}
 \FubesdXs_A\;  = - \; \FubesdXs_A \implies \FubesdXs_A = 0,
@@ -1117,17 +1054,20 @@ For example, in the periodic sector we have
 \FubesdXs_P \; \times \; \FubesdXs_P \; = \; \RDotTwoa_P \; = \; \frac{1}{d} \left(\RDotTwob_P + \RDotTwoc_P \right) = 2 \; \FubeXXX_P
 \end{align}
 
-Note that when we annihilate fermions into the vacuum to derive relations like this, we have to be careful about the order in which we do it, which is why we can never create two fermions side-by-side at the same time slice. For example, if we create fermion 2 above fermion 1 in a diagram, we must annihilate them along a $\beta$ string where fermion 2 is above fermion 1.
+Note that when we annihilate fermions into the vacuum to derive relations like this, we have to be careful about the order in which we do it, which is why we can never create two fermions side-by-side at the same time slice. 
+For example, if we create fermion 2 above fermion 1 in a diagram, we must annihilate them along a $\beta$ string where fermion 2 is above fermion 1.
 Also, note that since the spin structures on two tubes being fused must agree on the boundary at which they are being fused, periodic tubes can only be stacked on top of periodic tubes, and similarly for anti-periodic tubes.
 
-Relations like the ones above allow us to find the primitive central idempotents of the tube algebra, which carry the same information as the simple modules of the tube algebra, which in turn correspond to the irreducible vector spaces left invariant under the action of tube stacking. The simple modules are identified with quasiparticles, and so to find the quasiparticle spectrum of the theory, we simply need to find the irreducible spaces left invariant under action of the tube algebra. 
+Relations like the ones above allow us to find the primitive central idempotents of the tube algebra, which carry the same information as the simple modules of the tube algebra, which in turn correspond to the irreducible vector spaces left invariant under the action of tube stacking. 
+The simple modules are identified with quasiparticles, and so to find the quasiparticle spectrum of the theory, we simply need to find the irreducible spaces left invariant under action of the tube algebra. 
 Since the tube algebra splits into a direct sum of tubes with different spin structures, its simple modules will split in a similar way. First, we turn to an analysis of tubes with non-vortex spin structure. 
 
 \subsubsection{Non-vortex spin structure}
 
 Let us first examine the subalgebra of tubes with no charge: that is, cylinders with empty boundary conditions on both their top and bottom. Writing this subalgebra as $\tube_0^A$, we see that it has two even generators:
 \be \tube_0^A = \left\langle\; \FubeXXX_A,\; \FubesXs_A\;\right\rangle.\ee
-Since $\tube_0^A$ has two even generators, as an algebra it must be isomorphic to $\cc^{2|0}$. The idempotents associated with this sector are easy to compute: $\cc^{2|0} = \cc \oplus \cc$ has two simple modules and hence we obtain a pair of zero-charge quasiparticles, which we label by $m_\unit$ and $m_\psi$. Explicitly, they are 
+Since $\tube_0^A$ has two even generators, as an algebra it must be isomorphic to $\cc^{2|0}$. 
+The idempotents associated with this sector are easy to compute: $\cc^{2|0} = \cc \oplus \cc$ has two simple modules and hence we obtain a pair of zero-charge quasiparticles, which we label by $m_\unit$ and $m_\psi$. Explicitly, they are 
 \be m_\unit = \frac{1}{2}\left( \FubeXXX_A +\;\; \frac{1}{d}\FubesXs_A\right),\qquad m_\psi = \frac{1}{2} \left( \FubeXXX_A -\;\; \frac{1}{d} \FubesXs_A\right).\ee
 One can check that the action of the full tube algebra on both $m_\unit$ and $m_\psi$ is simply scalar multiplication. 
 
@@ -1135,7 +1075,10 @@ Now we turn to the subalgebra $\tube^A_\beta$ of charged tubes: those whose top 
 \be \tube^A_\beta = \left\langle\; \FubeXss_A,\;\FubeXsds_A,\; \FubessX_A,\; \FubessdX_A\right\rangle,\ee
 meaning that $\tube^A_\beta \cong \cc^{2|2}$. This means that as an algebra $\tube^A_\beta$ is either $\cl_2$ or $\cl_1\oplus \cl_1$, and so we know that this sector will contribute either one (if $\cl_2$, since $\cl_2$ is Morita equivalent to $\cc$ which has one simple module) or two (if $\cl_1 \oplus \cl_1$) quasiparticle excitations. 
 
-To identify the simple modules of this subalgebra, we begin by writing down the multiplication rules. By using the local relations in the $C_2$ theory we can work out the multiplication table, which is presented in the following table. In the table, $A\times B$ means ``stack $A$ on top of $B$''. For multiplications involving odd tubes, we always take fermions in the $A$ tube to have a higher normal order than fermions in the $B$ tube. 
+To identify the simple modules of this subalgebra, we begin by writing down the multiplication rules. 
+By using the local relations in the $C_2$ theory we can work out the multiplication table, which is presented in the following table. 
+In the table, $A\times B$ means ``stack $A$ on top of $B$''. 
+For multiplications involving odd tubes, we always take fermions in the $A$ tube to have a higher normal order than fermions in the $B$ tube. 
 
 \be
 \renewcommand{\arraystretch}{3}
@@ -1172,13 +1115,19 @@ $\FubessdX    $&$ \FubessdX $&$ -\FubessX $&$ -\FubeXsds $&$ \FubeXss$   \\
 \ee
 which is precisely the multiplication table of $\cl_2$. Indeed, recall that $\cl_2$ has two anticommuting odd generators $\gamma_1$ and $\gamma_2$ with $\gamma_1^2 = \gamma_2^2 = 1$, and two even generators, namely $1$ and $\gamma_1\gamma_2$. Therefore, we are led to make the identifications
 \be 1 =\FubeXss,\quad \gamma_1 =  \FubeXsds,\quad \gamma_2 = \FubessdX,\quad i\gamma_1\gamma_2 =  \FubessX.\ee
-We have the required anticommutation relations $\{\gamma_i,\gamma_j\} = 2\delta_{ij}$ and so indeed, $\tube^A_\beta \cong \cl_2$. We also note that the chirality operator in this setting is $\bar\gamma=i\gamma_1\gamma_2$, which is just the two-dimensional analogue of the familiar four-dimensional chirality operator $\gamma_5=i\gamma_0\gamma_1\gamma_2\gamma_3$. Such an identification for $\bar\gamma$ makes perfect sense from the TQFT standpoint, since the operator $\bar\gamma=i\gamma_1\gamma_2$ implements the topological twist.  
+We have the required anticommutation relations $\{\gamma_i,\gamma_j\} = 2\delta_{ij}$ and so indeed, $\tube^A_\beta \cong \cl_2$. 
+We also note that the chirality operator in this setting is $\bar\gamma=i\gamma_1\gamma_2$, which is just the two-dimensional analogue of the familiar four-dimensional chirality operator $\gamma_5=i\gamma_0\gamma_1\gamma_2\gamma_3$. 
+Such an identification for $\bar\gamma$ makes perfect sense from the TQFT standpoint, since the operator $\bar\gamma=i\gamma_1\gamma_2$ implements the topological twist.  
 
 We now turn to the task of identifying the quasiparticles (simple modules) of this subalgebra. 
 At a high level, we can appeal to the Morita equivalence between $\cl_2$ and $\cc$ which states that $\cl_2$ and $\cc$ must have the same simple modules, implying that the subalgebra $\tube^A_\beta$ must correspond to only one type of quasiparticle\footnote{More generally, if $n$ is odd $\cl_n$ has a single irreducible representation (giving a single quasiparticle), while if $n$ is even $\cl_n$ always has a pair of oddly isomorphic irreducible representations differing by the sign of the representation of the chirality operator (also giving a single quasiparticle). }.
 
-To see this more directly, we note that since $\cl_2 \cong \End(\cc^{1|1})$, its simple modules (quasiparticles) can each be identified with the space $\cc^{1|1}$. It's easy to check that there are two different simple modules corresponding to this space, which we will write as $m^{\pm}_\sigma$ for reasons that will become clear later. These simple modules correspond to the representations $\rho^\pm : \cl_2 \ra \Aut(\cc^{1|1})$ given by $\rho^\pm(1) = \sigma^0,\rho^\pm(\gamma_1) = \sigma^y,$ and $\rho^\pm(\gamma_2) = \pm \sigma^x$, where the $\gamma_i$ maintain their earlier identifications. We see that the difference between these two representations is the sign of the representation of the chirality operator $\bar\gamma = \pm \sigma^z $, and as such these representations form a left- and right-handed opposite-chirality pair. 
-Since simple modules are associated with quasiparticles, this naively produces a pair of quasiparticles. Since the two representations differ in the sign of the representation matrix of the chirality operator $\bar\gamma$, we may write them explicitly as 
+To see this more directly, we note that since $\cl_2 \cong \End(\cc^{1|1})$, its simple modules (quasiparticles) can each be identified with the space $\cc^{1|1}$. 
+It's easy to check that there are two different simple modules corresponding to this space, which we will write as $m^{\pm}_\sigma$ for reasons that will become clear later. 
+These simple modules correspond to the representations $\rho^\pm : \cl_2 \ra \Aut(\cc^{1|1})$ given by $\rho^\pm(1) = \sigma^0,\rho^\pm(\gamma_1) = \sigma^y,$ and $\rho^\pm(\gamma_2) = \pm \sigma^x$, where the $\gamma_i$ maintain their earlier identifications. 
+We see that the difference between these two representations is the sign of the representation of the chirality operator $\bar\gamma = \pm \sigma^z $, and as such these representations form a left- and right-handed opposite-chirality pair. 
+Since simple modules are associated with quasiparticles, this naively produces a pair of quasiparticles. 
+Since the two representations differ in the sign of the representation matrix of the chirality operator $\bar\gamma$, we may write them explicitly as 
 \be \label{msig_defn} m_\sigma^\pm = \frac{1}{2} \left(\FubeXss_A \pm A^{-3}\ \FubessX_A\right).\ee
 %Note that we're letting each fube in the above expression represent its isomorphism class, which is why we haven't added any fubes in $\fld(C)^1$ with odd fermion parity to the expression for $m_\sigma^\pm$ (as they are isomorphic to the even-parity fubes in the expression for $m^\pm$) . 
 
@@ -1247,24 +1196,34 @@ To see this explicitly, we make the identifications
 \be \unit^\pm = \frac{1}{2}\left(\FubeXss \pm A^3\ \FubessX\right),\qquad   \gamma^\pm = \frac{A^6}{2}\left(\FubeXsds \pm A^3\ \FubessdX\right).\ee
 If we then re-write the multiplication table for $\fube_\Sigma^P$, we see that we indeed get a $\langle \unit^+ ,\gamma^+\rangle \oplus \langle \unit^- \oplus \gamma^-\rangle =\cl_1\oplus\cl_1$ structure with $(\gamma^\pm)^2 = \unit^\pm$. Thus, the $\fube_\Sigma^P$ subalgebra gives rise to two $\cl_1$-type quasiparticles, corresponding to the even simple modules $\unit^\pm$. We will denote these two quasiparticles as $q_\unit$ and $q_\psi$.
 
-To summarize, we have found six types of quasiparticles in the theory: three vortex quasiparticles associated with tubes possessing periodic spin structures, and three non-vortex quasiparticles associated with tubes possessing anti-periodic boundary spin structures. The three non-vortex quasiparticles are 
+To summarize, we have found six types of quasiparticles in the theory: three vortex quasiparticles associated with tubes possessing periodic spin structures, and three non-vortex quasiparticles associated with tubes possessing anti-periodic boundary spin structures. 
+The three non-vortex quasiparticles are 
 \be \ba & m_\unit = \frac{1}{2} \left( \FubeXXX_A  +\frac{1}{d}\ \FubesXs_A\right),\ m_\psi = \frac{1}{2} \left( \FubeXXX_A - \frac{1}{d}\ \FubesXs_A\right),\\ & m_\sigma^\pm = \frac{1}{2} \left(\FubeXss_A \pm A^{-3}\ \FubessX_A\right),\ea\ee
 while the three vortex quasiparticles are 
 \be q_\unit = \frac{1}{2}\left(\FubeXss + A^{3}\ \FubessX\right),\ q_\psi = \frac{1}{2}\left(\FubeXss - A^3\ \FubessX\right),\ q_\sigma = \FubeXXX.\ee
 
-Before moving on, we note that we could have obtained a large amount of information about the quasiparticle content of the theory without actually finding the explicit representations of the simple modules of the tube algebra. The idea is to exploit the sum-of-squares formula, relating the dimension of an algebra to the dimensions of its simple modules. In the bosonic case, the formula is as follows: if $\{M_a\}$ is a list of the simple modules of the tube algebra, then 
+Before moving on, we note that we could have obtained a large amount of information about the quasiparticle content of the theory without actually finding the explicit representations of the simple modules of the tube algebra. 
+The idea is to exploit the sum-of-squares formula, relating the dimension of an algebra to the dimensions of its simple modules. 
+In the bosonic case, the formula is as follows: if $\{M_a\}$ is a list of the simple modules of the tube algebra, then 
 \be \dim \tube = \sum_{M_a} (\dim M_a)^2.\ee
 In the fermionic case, this is modified slightly to account for the fact that the endomorphism algebras of these modules may be $\cl_1$ instead of $\cc$. The correct modification is
 \be \label{sumofsqs} \dim \tube = \sum_{a | \End(a) \cong \cc} (\dim M_a)^2 + 2\sum_{a|\End(a) \cong \cl_1} (\dim M_a)^2,\ee
 where the factor of 2 comes from the fact that if $a$ is q-type the even and odd parts of $M_a$ have equal dimensions (as they are oddly isomorphic). 
 
-This formula actually allows us to exactly reproduce the quasiparticle content of the $C_2$ theory starting with equations \eqref{atubes} and \eqref{ptubes} enumerating the elements of the tube algebra. Since \eqref{sumofsqs} holds for any algebra, it holds for the subalgebras $\tube^P$ and $\tube^A$. Since taking fermions around tubes with periodic spin structures acts as the identity,%\footnote{This is true in the $C_2$ theory, but not in general; see Sec \ref{e6} for a counterexample.}
+This formula actually allows us to exactly reproduce the quasiparticle content of the $C_2$ theory starting with equations \eqref{atubes} and \eqref{ptubes} enumerating the elements of the tube algebra. 
+Since \eqref{sumofsqs} holds for any algebra, it holds for the subalgebras $\tube^P$ and $\tube^A$. 
+Since taking fermions around tubes with periodic spin structures acts as the identity,%\footnote{This is true in the $C_2$ theory, but not in general; see Sec \ref{e6} for a counterexample.}
 all of the quasiparticles associated with periodic spin structures will have $\cl_1$ endomorphism algebras (that is, they will all be q-type). Furthermore, since $\dim \tube^A = \dim \tube^P = 6$, for the $C_2$ theory we have 
 \be 6 = \sum_{a \in \mcz^A(C_2)} (\dim M_a)^2,\qquad 6 = 2 \sum_{a\in \mcz^P(C_2)} (\dim M_a)^2,\ee
-where $\mcz^A(C_2)$ are all the quasiparticles associated with anti-periodic spin structures and $\mcz^P(C_2)$ are those associated with periodic spin structures. This immediately tells us that the periodic sector must contain three quasiparticles, while the anti-periodic sector must contain either six $(6 = 6\cdot 1^2)$ or three $(6=2\cdot 1^2 + 2^2)$ quasiparticles. However, since $\tube^A$ is non-abelian the former possibility is ruled out, and thus we have determined that the $C_2$ theory must contain six quasiparticles, with three associated to each spin structure. The quasiparticle associated with the two-dimensional module in the non-vortex sector is $m_\sigma^\pm$, whose two-dimensionality comes from the fact that it is a ``composite'' of two oddly-isomorphic simple modules. 
+where $\mcz^A(C_2)$ are all the quasiparticles associated with anti-periodic spin structures and $\mcz^P(C_2)$ are those associated with periodic spin structures. 
+This immediately tells us that the periodic sector must contain three quasiparticles, while the anti-periodic sector must contain either six $(6 = 6\cdot 1^2)$ or three $(6=2\cdot 1^2 + 2^2)$ quasiparticles. 
+However, since $\tube^A$ is non-abelian the former possibility is ruled out, and thus we have determined that the $C_2$ theory must contain six quasiparticles, with three associated to each spin structure. 
+The quasiparticle associated with the two-dimensional module in the non-vortex sector is $m_\sigma^\pm$, whose two-dimensionality comes from the fact that it is a ``composite'' of two oddly-isomorphic simple modules. 
 
 
-\subsection{Obtaining the quasiparticle fusion rules} \label{fusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Obtaining the quasiparticle fusion rules} \label{C2_fusion_rules}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 With all quasiparticles in hand, we are ready to compute their fusion rules. As quasiparticles are supported on punctures of the underlying manifold, a fusion space like $V^{ab}_c$ will be given by a vector space whose vectors are string-net configurations on pairs of pants, with $a$ and $b$ supported on the ``incoming'' legs of the pants and $c$ supported on the ``outgoing'' leg. Let $\Pi_a$ be a projector that projects onto the simple module corresponding to the quasiparticle $a$. Each $\Pi_a$ is given precisely by the tube algebra representation of the simple module corresponding to $a$: for example, $\Pi_{m_\sigma^\pm}$ is simply given by the vector \eqref{msig_defn}. In order for $V^{ab}_c$ to be a bona fide fusion space, the vector space $V^{ab}_c$ must be invariant under the action of $\Pi_a$ on the leg of the pants supporting the $a$ quasiparticle, and likewise for the $b$ and $c$ legs. Therefore, determining the fusion space $V^{ab}_c$ is tantamount to finding a vector space supported on the pair of pants invariant under the application of $\Pi_a\tp \Pi_b$ on the ``top'' of the pants, and invariant under $\Pi_c$ on the ``bottom'' of the pants. The (super)dimension of this vector space is the fusion multiplicity $N^{ab}_c = \dim V^{ab}_c$. 
 
@@ -1405,32 +1364,41 @@ $q_\psi $&$\bullet q_\psi$&$\bullet q_\sigma$&$\bullet q_\unit$&$\bullet m_\psi$
 
 
 %%%%%%%%%%%%%%%%%%%%%%% 
-\section{Braiding data} \label{braiding}
+\section{Braiding data} \label{C2_braiding}
 %%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{$R$-matrices}
-In this subsection we provide a table of the $R$ symbols in the theory. First, we need to set some conventions on our fusion spaces. We will work on the three-punctured sphere rather than drawing out pairs of pants, as it is much easier to perform calculations using the three-punctured sphere picture. 
+In this subsection we provide a table of the $R$ symbols in the theory. 
+First, we need to set some conventions on our fusion spaces. 
+We will work on the three-punctured sphere rather than drawing out pairs of pants, as it is much easier to perform calculations using the three-punctured sphere picture. 
 
 We will write a generic even fusion space, which is an even vector in the fusion space $V^{ab}_c$, as 
 \be \label{pants_braiding_basis} \includegraphics{pants_braiding_basis.pdf},\ee
 where $a,b,c\in \mcz(C_2)$ and $u,v,w\in \zt$ are variables indicating whether or not a $\beta$ line is present on the given link. The idempotent labels represent a collection of pictures, one for each tube in their definition. For example, 
 \be \includegraphics{msig_def.pdf} \ee
 
-We will calculate the braiding in the fusion space $V^{ab}_c$ by moving the $a$ and $b$ punctures around one other and re-expressing the result in terms of the basis vectors in $V^{ba}_c$. When braiding q-type particles, we enforce their periodic boundary conditions graphically by introducing branch cuts ending on each q-type puncture, with the rule that dots sliding past a branch cut pick up a phase of $-1$. For concreteness, we will draw our branch cuts to always meet near the center of the three punctures. For example, to calculate $R^{q_\psi q_{1/\psi}}_{m_{\psi/1}}$, we write
+We will calculate the braiding in the fusion space $V^{ab}_c$ by moving the $a$ and $b$ punctures around one other and re-expressing the result in terms of the basis vectors in $V^{ba}_c$. 
+When braiding q-type particles, we enforce their periodic boundary conditions graphically by introducing branch cuts ending on each q-type puncture, with the rule that dots sliding past a branch cut pick up a phase of $-1$. 
+For concreteness, we will draw our branch cuts to always meet near the center of the three punctures. 
+For example, to calculate $R^{q_\psi q_{1/\psi}}_{m_{\psi/1}}$, we write
 \be \includegraphics{qpsiq1psi_braiding} \ee
 where the dashed blue lines are the branch cuts, and we have taken advantage of our knowledge of the eigenvalue of $q_\psi$ under the twisted tube (i.e. the spin of $q_\psi$). 
 
-We define odd vectors in $V^{a,b}_c$ by placing dots on the top left leg of the pants, on the leg marked $u$ in \eqref{pants_braiding_basis}. If this is impossible (e.g. if the top left leg is an $m_\psi$ idempotent), we put the dot on the top right leg of the pants, marked $v$ in \eqref{pants_braiding_basis}. For example, we can calculate the $R$-symbol $R^{m_\psi m_\sigma^+}_{m_\sigma^+} = -1$ by
+We define odd vectors in $V^{a,b}_c$ by placing dots on the top left leg of the pants, on the leg marked $u$ in \eqref{pants_braiding_basis}. 
+If this is impossible (e.g. if the top left leg is an $m_\psi$ idempotent), we put the dot on the top right leg of the pants, marked $v$ in \eqref{pants_braiding_basis}. 
+For example, we can calculate the $R$-symbol $R^{m_\psi m_\sigma^+}_{m_\sigma^+} = -1$ by
 \be \includegraphics{mpsimsig_braiding.pdf}.\ee
 A slightly more complicated example is the odd fusion channel in $R^{q_\psi q_{1/\psi}}_{m_{\psi/1}}$:
 \be \includegraphics{qpsiq1psidot_braiding.pdf} \ee
 Note that we have assumed we can ``pivot'' branch cuts around the punctures on which they are located, provided that we pick up a factor of $-1$ each time the branch cut crosses a fermion. 
 
-We have to remember to always move the dots back to the left side of the pants after the braid takes place, if possible. As an example, we can calculate the braiding of the odd fusion channel in $R^{q_\sigma q_{1/\psi}}_{m_\sigma^+}$:
+We have to remember to always move the dots back to the left side of the pants after the braid takes place, if possible. 
+As an example, we can calculate the braiding of the odd fusion channel in $R^{q_\sigma q_{1/\psi}}_{m_\sigma^+}$:
 \be \includegraphics{qsigq1psidot_braiding.pdf} \ee
 
 
-Manipulations like these can be used to work out the full table of $R$-symbols, which we present in Table \ref{Rtable}. The $\bullet$ symbol is used to denote odd fusion channels, i.e. the action of the braiding operation on an odd vector in the fusion space $V^{ab}_c$.  
+Manipulations like these can be used to work out the full table of $R$-symbols, which we present in Table \ref{Rtable}. 
+The $\bullet$ symbol is used to denote odd fusion channels, i.e. the action of the braiding operation on an odd vector in the fusion space $V^{ab}_c$.  
 \begin{table}
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{c||c|c|c||c|c|c}
