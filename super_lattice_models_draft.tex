@@ -479,7 +479,9 @@
 \newcommand{\TorusBasisb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusBasisb.pdf}}}}}
 \newcommand{\STorusBasisa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{STorusBasisa.pdf}}}}}
 
-\newcommand{\scale}{}
+\newcommand{\scale}[2]{\scalebox{#1}{$#2$}}
+
+
 
 \newcommand{\TubeXbv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeXbv.pdf}}}}}
 \newcommand{\TubeXav}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeXav.pdf}}}}}
@@ -2312,14 +2314,14 @@ $\Pi(\text{M}_3)$&$-e^{i \pi /3}$  & $\frac{1}{2 + d}$ & $\frac{-e^{- i \pi /3}}
 \caption{Quasiparticles of $\frac{1}{2} E6$ with non-vortex (anti-periodic) spin structures. All are m-type, with the horizontal lines separating the three quasiparticles. Two of the three quasiparticles are two dimensional, formed out of two smaller simple modules. $\Pi$ is an odd isomorphism. \dave{I will do some table formatting in the near future. Note: old notation for odd isomorphism is $X(.)$}}}
 {{\tabulinesep=1.2mm
 \begin{tabu}{ c c | c }
-type& spin & $\TubeEmptyv$ \\ \hline
+type& spin & $\AddDat{\eTube}{N}{}$ \\ \hline
 $\text{Q}_{1}$ &$1$&1
 \end{tabu}
 }
-$\qquad\qquad$
+$\qquad$
 {\tabulinesep=1.2mm
 \begin{tabu}{c  c | c c c c }
-type& spin & $\Tubeidxv$ & $\TubeXtwistv$  & $\TubeXav$ & $\TubeXbv$ \\ \hline
+type& spin & $\AddDat{\vTube}{N}{}$ & $\AddDat{\tTube}{N}{}$  & $\AddDat{\XTube{1}{1}}{N}{}$ & $\AddDat{\XTube{1}{2}}{N}{}$ \\ \hline
 $\text{Q}_1$&$1$ & $ \frac{1}{d}$&$ \frac{1}{d} $& $\frac{- e^{i \pi/4}}{d\sqrt{d}}$ & $\frac{- e^{i \pi/4}}{d\sqrt{d}}$ \\ \hline
 $\text{Q}_2$&$-i$ &$ \frac{1}{2+d} $& $\frac{i}{2+d}$ & $\frac{i \gamma}{\sqrt{2+d}}$ & $\frac{i \gamma}{\sqrt{2+d}}$ \\ \hline 
 $\text{M}_6$&$e^{5i \pi/6}$&$ \frac{1}{2+d} $&$ \frac{e^{-5i\pi/6}}{2+d} $ & $\frac{- \alpha e^{5 i \pi/6}}{\sqrt{2+d}}$ & $\frac{\beta e^{5 i \pi /6}}{\sqrt{2+d}}$ \\ 
@@ -2390,17 +2392,15 @@ The notation $B$ is for a bounding spint structures, and $N$ is for a non-boundi
 \end{figure}
 
 \dave{Group or groupoid?}
-\dave{Note to self: Find better notation for denoting and depicting spin structures. Change the crosses on the tubes to disks when on torri.}
-In this subsection we compute the action of the mapping class group on the four spin torri. 
-We have four spin structures on the torus, the general form of the $S$ and $T$ matrices will be similar to Ising. 
-We have two sets of particles, 
+In this subsection we compute the action of the mapping class group on the four spin tori. 
+Conceptually the calculations will be the same as Ising.
+As shown in the previous subsection we have two sets of particles
 \begin{align}
 B = (M_1, M_2, M_3)^{T} \quad \quad N = (Q_1, Q_2, M_6)^{T}
 \end{align}
 Where we use $B$ for bounding, and $N$ for non-bounding spin structures.
 The mapping class group mixes these states. 
 The $S$ and $T$ matrices take the form,
-\dave{I realize I'm mixing notations. I think if there is a good notation already in use by the physics or math community we should conform. I'll look into this when I get a chance.}
 \begin{align}
 \left(\begin{matrix}
 B_{AP}\\
@@ -2440,6 +2440,7 @@ Where the subscript denotes the spin structure.
 
 \dave{First do the PA,AP,AA sectors, then repeat with PP sector.}
 \subsubsection{Local relations and bases for the bounding spin tori}
+
 \dave{Lets stick with the analogous conventions to the Ising section for now and define}
 \begin{align}
 e := \TubeEmpty, \qquad h := \Tubexloop, \qquad v: = \Tubeidx \qquad t: = \TubeXtwist \qquad X : = \TubeXa
@@ -2592,14 +2593,14 @@ These will be the natural basis to describe the action of the mapping class grou
 The transformation looks like 
 \begin{align}
 \xymatrix @!0 @M=1mm  @C=20mm{
-S: A(T^2,XY) \ar[rr] && A(T^2,\widetilde{X} \widetilde{Y}) & \\
+S^{XY \rightarrow \widetilde{X}\widetilde{Y}}: A(T^2,XY) \ar[rr] && A(T^2,\widetilde{X} \widetilde{Y}) & \\
 &&&\\
  \AnnularTubex{\AnnularTubeNoIndex}{}{}{\psi}{X}{Y}\ar[rr]&&\SAnnulusx{\psi}{\widetilde{X}}{\widetilde{Y}}\; & 
  }
 \end{align}
 and the spin structures transform according to Fig. \ref{MappingClassGroupTorus}. 
 \begin{align}
-\SAnnulusx{\psi}{\widetilde{X}}{\widetilde{Y}} \;= \sum_{\lambda \in A(T^2,\widetilde{X}\widetilde{Y})}  S_{\psi \lambda} \AnnularTubex{\AnnularTubeNoIndex}{}{}{\lambda}{\widetilde{X}}{\widetilde{Y}} \\
+\SAnnulusx{\psi}{\widetilde{X}}{\widetilde{Y}} \;= \sum_{\lambda \in A(T^2,\widetilde{X}\widetilde{Y})}  S^{XY \rightarrow \widetilde{X}\widetilde{Y}}_{\psi \lambda} \AnnularTubex{\AnnularTubeNoIndex}{}{}{\lambda}{\widetilde{X}}{\widetilde{Y}} \\
 \end{align}
 
 On the 2-torus, the S transformation is given by a $\pi/2$ rotation.
