@@ -157,6 +157,8 @@
 \newcommand{\AnnularTubeNoIndex}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{AnnularTubeNoIndex.pdf}}}}}
 \newcommand{\AnnulusTubeTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{AnnulusTubeTube.pdf}}}}}
 
+\newcommand{\SAnnulusNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{SAnnulusNoLabel.pdf}}}}}
+
 \newcommand{\AnnulsLabel}[5]{\mathord{ 
 \mkern2mu\overset{#3}{{\Annulusxprime{#1}{#2}}}\mkern2mu\raisebox{0ex}{$\scriptstyle{#4}$} }}
 
@@ -178,11 +180,15 @@
 %\newcommand*{\AnnularTubex}[5]{\AnnulusPx{#1}{#2}{}{\; \; \;#3}
 %\kern-3.9em\raisebox{-4.5ex}{ $\overset{#5}{\underset{#4}{\vphantom{\Big|^2}}}$} \kern2.7em} %Could change 0 to 1.2 to raise the B.
 
-
+\newcommand{\SAnnulusx}[3]{\mathrel{\ooalign{$\SAnnulusNoLabel$\cr
+  \hidewidth\raise5ex\hbox{$\scriptstyle{#3}\mkern1mu$}\cr
+  \hidewidth\raise.8ex\hbox{$\scriptstyle{#2}\mkern63mu$}\cr
+    \hidewidth\raise-3.8ex\hbox{$\scriptstyle{#1}\mkern39mu$}\cr
+  }}}
 
 \newcommand{\AnnularTubex}[6]{\mathrel{\ooalign{$#1$\cr
   \hidewidth\raise5ex\hbox{$\scriptstyle{#6}\mkern1mu$}\cr
-  \hidewidth\raise1ex\hbox{$\scriptstyle{#5}\mkern63mu$}\cr
+  \hidewidth\raise.8ex\hbox{$\scriptstyle{#5}\mkern63mu$}\cr
   \hidewidth\raise-.9ex\hbox{$\scriptstyle{#3}\mkern68mu$}\cr
     \hidewidth\raise-4.5ex\hbox{$\scriptstyle{#4} \mkern50mu$}\cr
   \hidewidth\raise-7ex\hbox{$\scriptstyle{#2}\mkern68mu$}\cr
@@ -2127,7 +2133,7 @@ Furthurmore, the same calculation as \ref{rhoLoopRelation} implies that the the 
 \begin{align}
 \AddDatTorus{\eTube}{N}{N} \; = 0
 \end{align}
-The only non-zero tubes with even parity is given by
+The only non-zero tube with even parity is given by
 \begin{align}
 \AddDatTorus{\XTube{1}{1}}{N}{N}
 \end{align}
@@ -2290,12 +2296,12 @@ In the notation of \cite{Hong2008} we have\footnote{The associaters we have used
 \begin{table}
 {{\tabulinesep=1.2mm
 \begin{tabu}{ c c | c c }
-type &spin & $\TubeEmpty$ & $\Tubexloop$ \\ \hline
+type &spin & $\AddDat{\eTube}{B}{}$ & $\AddDat{\hTube}{B}{}$ \\ \hline
 $\text{M}_{1}$ &$1$ & $\frac{1}{d \sqrt{3}}$ & $\frac{1}{2 \sqrt{3}}$\\ \hline
 $\text{M}_{2}$&$1$ & $ \frac{d}{2 \sqrt{3}}$ & $\frac{-1}{2 \sqrt{3}}$ 
 \end{tabu}
 }
-$\qquad\qquad$ {\tabulinesep=1.2mm
+$\qquad$ {\tabulinesep=1.2mm
 \begin{tabu}{ c c | c c c c }
 type &spin &  $\AddDat{\vTube}{B}{} $ & $\AddDat{\tTube}{B}{} $ & $\AddDat{\XTube{1}{1}}{B}{} $ & $\AddDat{\XTube{1}{2}}{B}{} $ \\ \hline
 $\text{M}_{2}$&$1$ & $\frac{1}{2 \sqrt{3}}$  & $\frac{1}{2 \sqrt{3}}$  & $\frac{e^{i \pi /4}}{2 \sqrt{d}}$ & $\frac{- e^{-i \pi/4} }{2 \sqrt{3d}}$ \\
@@ -2363,6 +2369,7 @@ $\alpha = \frac{1}{2} \left( 1+ 1/\sqrt{2d+1} \right)$, and $\beta = \frac{1}{2}
 %\end{figure}
 
 \begin{figure}
+\label{MappingClassGroupTorus}
 \newcommand{\Space}{\;}
  %\mathop{\vphantom{\int}}
 %R controls where the arrows start from the box. 
@@ -2583,6 +2590,19 @@ These will be the natural basis to describe the action of the mapping class grou
 %%%%%%%
 %%%%%%%
 \subsection{S transformation}
+The transformation looks like 
+\begin{align}
+\xymatrix @!0 @M=1mm  @C=20mm{
+S: A(T^2,XY) \ar[rr] && A(T^2,\widetilde{X} \widetilde{Y}) & \\
+&&&\\
+ \AnnularTubex{\AnnularTubeNoIndex}{}{}{\psi}{X}{Y}\ar[rr]&&\SAnnulusx{\psi}{\widetilde{X}}{\widetilde{Y}}\; & 
+ }
+\end{align}
+and the spin structures transform according to Fig. \ref{MappingClassGroupTorus}. 
+\begin{align}
+\SAnnulusx{\psi}{\widetilde{X}}{\widetilde{Y}} \;= \sum_{\lambda \in A(T^2,\widetilde{X}\widetilde{Y})}  S_{\psi \lambda} \AnnularTubex{\AnnularTubeNoIndex}{}{}{\lambda}{\widetilde{X}}{\widetilde{Y}} \\
+\end{align}
+
 On the 2-torus, the S transformation is given by a $\pi/2$ rotation.
 Since we are working on the twice punctured sphere, the S transformation looks somewhat different:
 \dave{Forgot to number the vertices for Koszul signs.}
