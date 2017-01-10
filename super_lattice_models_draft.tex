@@ -1899,7 +1899,6 @@ Hence a theory with Fibonacci like fusion rules of Q-type particles must have fu
 In the bounding sector we have three simple $M$ type objects. 
 In the non-bounding sector we have three simple objects, two $Q$ type and one $M$ type.
 
-%\subsection{Modular transformations}
 \subsubsection{Tube algebra and local relations}
 \ethan{The handedness convention for the tubes got switched in this section---we need to remember to go back and change either this section or the $C_2$ section.}
 \dave{True. Do we have a preference for one over the other? It would be a little tedious to change basis section. E.g., we'd have to re-write the table of idempotents, but that's not a super big deal.
@@ -1912,6 +1911,8 @@ The tube algebra is given by
 \text{Tube}({\cal C})\; =\; \mathbb{C} \left[ \Annulus{\AnnularTube}{X} \right]%\AnnulusP{\AnnularTube}{B}{} \right] 
 \end{align}
 where $a,b,c,d$ are simple objects in $\cal{C}$. The multiplicity indices $\mu$, and $\nu$ are collective indices that denote the vector in the fusion space $V^{db}_a$ and $V^{c \bar{d}}{b}$, as well as the ordering in the tensor product $V^{d b}_a \tp_b V^{c \bar{d}}_b$. Lastly, $X$ denotes the spin structure, either $B$ for bounding, or $N$ for non-bounding.
+
+\subsubsection{Tube multiplication}
 
 It is somewhat cumbersome to continually label all indices in the tube, so we shift to a compact notation given by [REF]\dave{I've seen Oceanu papers (around 1990,91, though not actually written by him) with this notation, is that the first place it showed up?},
 \begin{align}
@@ -1985,6 +1986,7 @@ C^{\lambda}_{ \eta \psi} =  \sum_{s, t} \frac{1}{\sqrt{d_a d_\gamma}}
 It is important to mod out by local relations in the algebra. In the basis we have chosen, the only local relations are given by creating fermions out of the vacuum and dragging them around different cycles.
 For the rest of this section, unless specified otherwise, a solid line is always labeled by $x$ and a dashed line, or no line is assumed to be the identity.
 
+\subsubsection{Local relations on the Annulus}
 Let us now investigate local relations on the tubes. 
 Lets also use the notation
 \begin{align}
@@ -2030,7 +2032,7 @@ Thus a minimal basis for the annulus is given in Fig. (\ref{AnnulusBasis}).
 &&&&&\;  \ar@/_1pc/[r]_{\Pi} &\; \\
 }
 \label{AnnulusBasis}
-\nonumbar
+\nonumber
 \end{align}
 \caption{The table above table is the basis of tubes we use on the annulus for a bounding spin structure ($B$) and non-bounding spin structure ($N$). 
 We also list which tubes are oddly isomorphic by labeling an arrow between them with $\Pi$, and which tubes have odd endomorphisms by labeling them with $\Pi_e$. 
@@ -2038,7 +2040,55 @@ The charectors above each tube are short-hand for that tube, $e$-- empty, $h$-- 
 \end{figure}
 
 
+\subsubsection{Local relations on the Torus}
+Local relations given by sliding dots around different cycles.
+\dave{to do}
+\begin{itemize}
+\item write down which tubes are identically zero
+\item list non-zero tubes
+\item list local relations among them
+\end{itemize}
 
+
+On the torus we have
+\begin{align}
+\AddDatTorus{\XTube{a}{b}}{X}{Y}{} \; = M_{ab;\alpha \beta} \AddDatTorus{\XTube{\alpha}{\beta}}{X}{Y}{} \qquad M = (-1)^{|X|+1} \sigma^x \tp \sigma^y, \; \; (-1)^{|Y| +1} \sigma^y \tp \sigma^z 
+\end{align}
+so that,
+\begin{align}
+\AddDatTorus{\XTube{1}{1}}{X}{Y}{} \; = (-1)^{|X|+|Y|+1} \AddDatTorus{\XTube{1}{2}}{X}{Y}{}  \; = i (-1)^{|Y|} \AddDatTorus{\XTube{2}{1}}{X}{Y}{} \; = i (-1)^{|X|} \AddDatTorus{\XTube{2}{2}}{X}{Y}{} 
+\end{align}
+
+
+Local relations given by sliding dots around different cycles.
+\begin{align}
+&\TorusQQQa \; \;  = M_{ab;\alpha \beta} \;\; \TorusQQQb, \qquad M = (-1)^{\nu+1} \sigma^x \tp \sigma^y, \; \; (-1)^{\mu +1} \sigma^y \tp \sigma^z  \\
+&\text{hence taking $(a,b) = (1,1)$ we have } (1,1) = 
+\left \{ \begin{matrix}
+\;\; -(-1)^{\mu +\nu} \; (1,2)\\
+\;\; i (-1)^{\mu} \; (2,1)\\
+\;\; i (-1)^\nu \; (2,2)\\
+\end{matrix}
+\right . 
+\end{align}
+and similarly,
+\begin{align}
+&\TorusQQQc \; \;  = \tilde{M}_{ab; \alpha \beta} \;\; \TorusQQQd, \qquad \tilde{M} = (-1)^{\nu +1} \sigma^x \tp \sigma^z, \;\; (-1)^{\mu+1} \sigma^z \tp \sigma^y \\
+&\text{hence taking $(a,b) = (1,1)$ we have } (1,1) = 
+\left \{ \begin{matrix}
+\;\; i(-1)^{\mu} \; (1,2)\\
+\;\; -(-1)^{\nu} \; (2,1)\\
+\;\; i (-1)^{\nu+\mu} \; (2,2)\\
+\end{matrix}
+\right .
+\end{align}
+Where $\nu$ and $\mu$ are either $0$ for non-bounding spin structure or $1$ for bounding spin structure.
+The cycle around the cross corresponds to $\nu$, while the one that goes through the cross corresponds to $\mu$. 
+A third local relation is given by the product of the two listed matrices.
+The quotient takes this four dimensional vector space to a one dimensional one.
+We take the state $(a,b) = (1,1)$ as a representitve and list the relations to the other states.
+
+%%%%%%%%%%%%%%
 
 \subsubsection{Quasiparticles}
 - Add discussion about computing quasi particles. 
@@ -2233,59 +2283,6 @@ B_{AA} \\
 N_{PP} \xrightarrow{S} S_{PP} N_{PP} \qquad\qquad\qquad  N_{PP} \xrightarrow{T} T_{PP} N_{PP} \\
 \end{align}
 Where the subscript denotes the spin structure. 
-
-\subsubsection{Local relations}
-
-%%%%%%%% 
-\dave{Moved from above.}
-Local relations given by sliding dots around different cycles.
-\dave{to do}
-\begin{itemize}
-\item write down which tubes are identically zero
-\item list non-zero tubes
-\item list local relations among them
-\end{itemize}
-
-
-On the torus we have
-\begin{align}
-\AddDatTorus{\XTube{a}{b}}{X}{Y}{} \; = M_{ab;\alpha \beta} \AddDatTorus{\XTube{\alpha}{\beta}}{X}{Y}{} \qquad M = (-1)^{|X|+1} \sigma^x \tp \sigma^y, \; \; (-1)^{|Y| +1} \sigma^y \tp \sigma^z 
-\end{align}
-so that,
-\begin{align}
-\AddDatTorus{\XTube{1}{1}}{X}{Y}{} \; = (-1)^{|X|+|Y|+1} \AddDatTorus{\XTube{1}{2}}{X}{Y}{}  \; = i (-1)^{|Y|} \AddDatTorus{\XTube{2}{1}}{X}{Y}{} \; = i (-1)^{|X|} \AddDatTorus{\XTube{2}{2}}{X}{Y}{} 
-\end{align}
-
-
-Local relations given by sliding dots around different cycles.
-\begin{align}
-&\TorusQQQa \; \;  = M_{ab;\alpha \beta} \;\; \TorusQQQb, \qquad M = (-1)^{\nu+1} \sigma^x \tp \sigma^y, \; \; (-1)^{\mu +1} \sigma^y \tp \sigma^z  \\
-&\text{hence taking $(a,b) = (1,1)$ we have } (1,1) = 
-\left \{ \begin{matrix}
-\;\; -(-1)^{\mu +\nu} \; (1,2)\\
-\;\; i (-1)^{\mu} \; (2,1)\\
-\;\; i (-1)^\nu \; (2,2)\\
-\end{matrix}
-\right . 
-\end{align}
-and similarly,
-\begin{align}
-&\TorusQQQc \; \;  = \tilde{M}_{ab; \alpha \beta} \;\; \TorusQQQd, \qquad \tilde{M} = (-1)^{\nu +1} \sigma^x \tp \sigma^z, \;\; (-1)^{\mu+1} \sigma^z \tp \sigma^y \\
-&\text{hence taking $(a,b) = (1,1)$ we have } (1,1) = 
-\left \{ \begin{matrix}
-\;\; i(-1)^{\mu} \; (1,2)\\
-\;\; -(-1)^{\nu} \; (2,1)\\
-\;\; i (-1)^{\nu+\mu} \; (2,2)\\
-\end{matrix}
-\right .
-\end{align}
-Where $\nu$ and $\mu$ are either $0$ for non-bounding spin structure or $1$ for bounding spin structure.
-The cycle around the cross corresponds to $\nu$, while the one that goes through the cross corresponds to $\mu$. 
-A third local relation is given by the product of the two listed matrices.
-The quotient takes this four dimensional vector space to a one dimensional one.
-We take the state $(a,b) = (1,1)$ as a representitve and list the relations to the other states.
-
-%%%%%%%%%%%%%%
 
 \dave{First do the PA,AP,AA sectors, then repeat with PP sector.}
 \subsubsection{Local relations and bases for the bounding spin tori}
