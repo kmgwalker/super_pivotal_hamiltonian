@@ -2066,7 +2066,7 @@ The charectors above each tube are short-hand for that tube, $e$-- empty, $h$-- 
 \end{figure}
 
 
-\subsubsection{Local relations on the torus}
+\subsubsection{Local relations on the torus} \label{TorusLocalRelations}
 On the torus we have four spin structures, and extra local relations coming from the additional cycle. 
 We label the spin structures by with either a $B$ for bounding, and $N$ for non-bounding. 
 The notation we use is that the inner label of
@@ -2174,6 +2174,7 @@ We can now solve for any two of the above four states, we choose,
 
 In summary we have
 \begin{align}
+\begin{split}
 A(T^2, BB)  &\cong \mathbb{C}^{3|0} = \mathbb{C}\left[ \AddDatTorus{\eTube}{B}{B}{},\AddDatTorus{\hTube}{B}{B}{},\AddDatTorus{\vTube}{B}{B}{}\right]\\
 &\\
 A(T^2, BN)  &\cong \mathbb{C}^{3|0}  = \mathbb{C}\left[\AddDatTorus{\eTube}{B}{N}{}, \AddDatTorus{\hTube}{B}{N}{}, \AddDatTorus{\tTube}{B}{N}{} \right]\\
@@ -2181,6 +2182,8 @@ A(T^2, BN)  &\cong \mathbb{C}^{3|0}  = \mathbb{C}\left[\AddDatTorus{\eTube}{B}{N
 A(T^2, NB)  &\cong \mathbb{C}^{3|0}=   \mathbb{C}\left[\AddDatTorus{\eTube}{N}{B}{}, \AddDatTorus{\vTube}{N}{B}{}, \AddDatTorus{\tTube}{N}{B}{} \right] \\
 &\\
 A(T^2, NN)  &\cong \mathbb{C}^{1|2} = \mathbb{C} \left[ \AddDatTorusDot{\hTube}{N}{N}{\dotb}\;,\AddDatTorusDot{\tTube}{N}{N}{\dotc}\;,  \AddDatTorusDot{\XTube{1}{1}}{N}{N}{} \right]
+\end{split}
+\label{TorusBasis}
 \end{align}
 
 %We find the following local relation by multiplying two tadpoles in two different ways on the torus (will make picture).
@@ -2307,7 +2310,7 @@ $\Pi(\text{M}_2)$&$-1$  & $\frac{1}{2 \sqrt{3}}$  & $\frac{-1}{2 \sqrt{3}}$  &  
 $\text{M}_3$&$e^{i \pi /3}$  & $\frac{1}{2 + d}$ & $\frac{e^{- i \pi /3}}{2+d}$ & $\frac{- e^{i \pi /12}}{\sqrt{3d}}$ &  \\
 $\Pi(\text{M}_3)$&$-e^{i \pi /3}$  & $\frac{1}{2 + d}$ & $\frac{-e^{- i \pi /3}}{2+d} $&  & $\frac{e^{i \pi /12}}{\sqrt{3d}}$  \\ 
 \end{tabu}
-}
+\label{MIdempotents}}
 \caption{Quasiparticles of $\frac{1}{2} E6$ with non-vortex (anti-periodic) spin structures. All are m-type, with the horizontal lines separating the three quasiparticles. Two of the three quasiparticles are two dimensional, formed out of two smaller simple modules. $\Pi$ is an odd isomorphism. \dave{I will do some table formatting in the near future. Note: old notation for odd isomorphism is $X(.)$}}}
 {{\tabulinesep=1.2mm
 \begin{tabu}{ c c | c }
@@ -2324,7 +2327,7 @@ $\text{Q}_2$&$-i$ &$ \frac{1}{2+d} $& $\frac{i}{2+d}$ & $\frac{i \gamma}{\sqrt{2
 $\text{M}_6$&$e^{5i \pi/6}$&$ \frac{1}{2+d} $&$ \frac{e^{-5i\pi/6}}{2+d} $ & $\frac{- \alpha e^{5 i \pi/6}}{\sqrt{2+d}}$ & $\frac{\beta e^{5 i \pi /6}}{\sqrt{2+d}}$ \\ 
 $\Pi(\text{M}_6)$&$e^{5i \pi/6}$&$ \frac{1}{2+d} $&$ \frac{e^{-5i\pi/6}}{2+d} $ &  $\frac{\beta e^{5 i \pi /6}}{\sqrt{2+d}}$  &$\frac{- \alpha e^{5 i \pi/6}}{\sqrt{2+d}}$ 
 \end{tabu}
-   }
+  \label{QIdempotents} }
 \caption{Quasiparticles of $\frac{1}{2} E6$ with vortex (periodic) spin structures. Two are q-type, and one is m-type. The m-type particle is two-dimensional, consisting of of two smaller simple modules.  $\Pi$ is an odd isomorphism, and %$\alpha = (3 + \sqrt{3(2\sqrt{3}-3)})/6$, $\beta = (3 - \sqrt{3(2\sqrt{3}-3)})/6$, $\gamma = 1/\sqrt{2\sqrt{3}}$.
 $\alpha = \frac{1}{2} \left( 1+ 1/\sqrt{2d+1} \right)$, and $\beta = \frac{1}{2} \left( 1- 1/\sqrt{2d+1} \right)$. \dave{Note: old notation for odd isomorphism is $X(.)$}}}
 \end{table}
@@ -2393,61 +2396,108 @@ In this subsection we compute the action of the mapping class group on the four 
 Conceptually the calculations will be the same as Ising.
 As shown in the previous subsection we have two sets of particles
 \begin{align}
-B = (M_1, M_2, M_3)^{T} \quad \quad N = (Q_1, Q_2, M_6)^{T}
+%B = (M_1, M_2, M_3)^{T} \quad \quad N = (Q_1, Q_2, M_6)^{T}
+A_B = (M_1, M_2, M_3)^{T} \quad \quad A_N = (Q_1, Q_2, M_6)^{T}
 \end{align}
 Where we use $B$ for bounding, and $N$ for non-bounding spin structures.
 The mapping class group mixes these states. 
+Let us denote the projection of the particle onto the torus with spin structure $(X,Y)$ as $A_{XY}$.
 The $S$ and $T$ matrices take the form,
+%\begin{align}
+%\left(\begin{matrix}
+%B_{AP}\\
+%N_{PA} \\
+%B_{AA} \\
+%\end{matrix} \right)
+%\xrightarrow{S} \left( \begin{matrix}
+%0 & S_{AP \rightarrow PA} &0 \\
+%S_{PA \rightarrow AP} & 0 & 0 \\
+%0& 0 & S_{AA \rightarrow AA} \\
+%\end{matrix} \right)
+%\left(\begin{matrix}
+%B_{AP}\\
+%N_{PA} \\
+%B_{AA} \\
+%\end{matrix} \right)\\
+%\\
+%\left(\begin{matrix}
+%B_{AP}\\
+%N_{PA} \\
+%B_{AA} \\
+%\end{matrix} \right)
+%\xrightarrow{T} \left( \begin{matrix}
+%0 & 0 & T_{AP \rightarrow PA} \\
+%0 & T_{PA \rightarrow PA} & 0 \\
+%T_{AA \rightarrow AA} & 0 & 0 \\
+%\end{matrix} \right)
+%\left(\begin{matrix}
+%B_{AP}\\
+%N_{PA} \\
+%B_{AA} \\
+%\end{matrix} \right) \\
+%\\
+%N_{PP} \xrightarrow{S} S_{PP} N_{PP} \qquad\qquad\qquad  N_{PP} \xrightarrow{T} T_{PP} N_{PP} \\
+%\end{align}
 \begin{align}
 \left(\begin{matrix}
-B_{AP}\\
-N_{PA} \\
-B_{AA} \\
+A_{BN}\\
+A_{NB} \\
+A_{BB} \\
 \end{matrix} \right)
 \xrightarrow{S} \left( \begin{matrix}
-0 & S_{AP \rightarrow PA} &0 \\
-S_{PA \rightarrow AP} & 0 & 0 \\
-0& 0 & S_{AA \rightarrow AA} \\
+0 & S^{BN \rightarrow NB} &0 \\
+S^{NB \rightarrow BN} & 0 & 0 \\
+0& 0 & S^{BB \rightarrow BB} \\
 \end{matrix} \right)
 \left(\begin{matrix}
-B_{AP}\\
-N_{PA} \\
-B_{AA} \\
+A_{BN}\\
+A_{NB} \\
+A_{BB} \\
 \end{matrix} \right)\\
 \\
 \left(\begin{matrix}
-B_{AP}\\
-N_{PA} \\
-B_{AA} \\
+A_{BN}\\
+A_{NB} \\
+A_{BB} \\
 \end{matrix} \right)
 \xrightarrow{T} \left( \begin{matrix}
-0 & 0 & T_{AP \rightarrow PA} \\
-0 & T_{PA \rightarrow PA} & 0 \\
-T_{AA \rightarrow AA} & 0 & 0 \\
+0 & 0 & T^{BN \rightarrow BB} \\
+0 & T^{NB \rightarrow NB} & 0 \\
+T^{BB \rightarrow BN} & 0 & 0 \\
 \end{matrix} \right)
 \left(\begin{matrix}
-B_{AP}\\
-N_{PA} \\
-B_{AA} \\
+A_{BN}\\
+A_{NB} \\
+A_{BB} \\
 \end{matrix} \right) \\
 \\
-N_{PP} \xrightarrow{S} S_{PP} N_{PP} \qquad\qquad\qquad  N_{PP} \xrightarrow{T} T_{PP} N_{PP} \\
+A_{NN} \xrightarrow{S} S^{NN} A_{NN} \qquad\qquad\qquad  A_{NN} \xrightarrow{T} T^{NN} A_{NN} \\
 \end{align}
 Where the subscript denotes the spin structure. 
 
-\dave{First do the PA,AP,AA sectors, then repeat with PP sector.}
-\subsubsection{Local relations and bases for the bounding spin tori}
+\subsubsection{Topological and particle bases}
+There are two natural bases on the torus. 
+One is the topological basis, corresponding to (\ref{TorusBasis}), the other is the particle basis given in tables \ref{MIdempotents} and \ref{QIdempotents}.
+We will be to compute the modular transformations in the topological basis, and then change over to the particle basis.
+Thus we compute the change of basis needed in this section.
 
-\dave{Lets stick with the analogous conventions to the Ising section for now and define}
+We define the shorthand for the tubes as,
 \begin{align}
-e := \TubeEmpty, \qquad h := \Tubexloop, \qquad v: = \Tubeidx \qquad t: = \TubeXtwist \qquad X : = \TubeXa
+\begin{split}
+e =\; \AddDatTorus{\eTube}{}{}{}\quad &h =\; \AddDatTorus{\hTube}{}{}{} \quad v=\; \AddDatTorus{\vTube}{}{}{} \quad  t=\; \AddDatTorus{\tTube}{}{}{} \quad X = \; \AddDatTorus{\XTube{1}{1}}{}{}{}\\
+& \stackrel{\bullet}{h}\; =\; \AddDatTorusDot{\hTube}{}{}{\dotb} \quad \stackrel{\bullet}{v}\;=\; \AddDatTorusDot{\vTube}{}{}{\dotb} 
+\end{split}
 \label{TorusStates}
 \end{align}
-
-\dave{Show relations between $X_{11}$ and $X_{12}$ on the torus.}
-
-We also have the local relation (given by expanding a $\rho$ loop around the torus):
+We will then denote the spin structure by a subscript, for example,
 \begin{align}
+h_{BN} =\; \AddDatTorus{\hTube}{B}{N}{}
+\end{align}
+
+
+
+%We also have the local relation (given by expanding a $\rho$ loop around the torus):
+%\begin{align}
 %&\text{AA sector:} \quad \TubeEmpty = 
 %\frac{3}{2 (d + 1)} \TubeEmpty + 
 %\frac{1}{d+1} \Tubexloop + 
@@ -2458,79 +2508,76 @@ We also have the local relation (given by expanding a $\rho$ loop around the tor
 %\frac{2}{d} \Tubexloop + 
 %\frac{2}{d} \Tubeidx + 
 %\frac{2\sqrt{d}e^{i \pi/12}}{d+1} \TubeXa \\
-&\text{AA sector:} \quad d\TubeEmpty = 
-\frac{2}{d} \TubeEmpty + 
-\frac{2}{d} \Tubexloop + 
-\frac{2}{d} \Tubeidx + 
-\frac{2\sqrt{d}e^{i \pi/12}}{d+1} \TubeXa 
-\label{RelationAA} \\
+%&\text{AA sector:} \quad d\TubeEmpty = 
+%\frac{2}{d} \TubeEmpty + 
+%\frac{2}{d} \Tubexloop + 
+%\frac{2}{d} \Tubeidx + 
+%\frac{2\sqrt{d}e^{i \pi/12}}{d+1} \TubeXa 
+%\label{RelationAA} \\
 %&\text{AP sector:} \quad d\TubeEmpty = 
 %\frac{2}{d} \Tubexloop + 
 %\frac{2}{d} \TubeXtwist + 
 % \frac{2\sqrt{d}e^{5i \pi/12}}{d+1}\TubeXa \\
- &\text{AP sector:} \quad d\TubeEmpty = 
-\frac{2}{d} \TubeEmpty +  
-\frac{2}{d} \Tubexloop + 
-\frac{2}{d} \TubeXtwist + 
- \frac{2\sqrt{d}e^{5i \pi/12}}{d+1}\TubeXa \\
-& \text{PA sector:} \quad 
-d\TubeEmptyv = 
-\frac{2}{d} \TubeEmptyv +
-\frac{2}{d} \Tubeidxv +
-\frac{2}{d}\TubeXtwistv +
-\frac{2\sqrt{d}e^{-3 i \pi /4}}{ d+1} \TubeXav
-\end{align}
+% &\text{AP sector:} \quad d\TubeEmpty = 
+%\frac{2}{d} \TubeEmpty +  
+%\frac{2}{d} \Tubexloop + 
+%\frac{2}{d} \TubeXtwist + 
+% \frac{2\sqrt{d}e^{5i \pi/12}}{d+1}\TubeXa \\
+%& \text{PA sector:} \quad 
+%d\TubeEmptyv = 
+%\frac{2}{d} \TubeEmptyv +
+%\frac{2}{d} \Tubeidxv +
+%\frac{2}{d}\TubeXtwistv +
+%\frac{2\sqrt{d}e^{-3 i \pi /4}}{ d+1} \TubeXav
+%\end{align}
 
-- OR - 
-\begin{align}
-&\text{AA sector:} \quad \quad  \TubeXa = e^{-i \pi /12} \frac{d+1}{\sqrt{d}} \left( \TubeEmpty-  \frac{1}{d} \left(\Tubexloop  + \Tubeidx  \right) \right)\\
-&\text{AP sector:} \quad \quad  \TubeXa = e^{-5i \pi /12} \frac{d+1}{\sqrt{d}} \left( \TubeEmpty-  \frac{1}{d} \left(\Tubexloop   + \TubeXtwist \right) \right)\\
-&\text{PA sector:} \quad \quad  \TubeXa = e^{3 i \pi /4} \frac{d+1}{\sqrt{d}} \left( \TubeEmpty-  \frac{1}{d} \left( \Tubeidx + \TubeXtwist \right) \right)
-\end{align}
--- OR -- 
-\begin{align}
-d\TubeEmpty = 
-\frac{2}{d} \TubeEmpty + 
-\frac{2}{d} \Tubexloop + 
-\frac{2}{d} \Tubeidx + 
-\frac{2}{d} \TubeXtwist + 
-\frac{2\sqrt{d}e^{-i \pi/4}}{d+1} e^{5 i \pi(\mu+1)(\nu+3)/12} \TubeXa 
-\end{align}
--- OR -- 
-\begin{align}
-\qquad e^{5 i \pi(\mu+1)(\nu+3)/12} \TubeXa = e^{i \pi /4} \frac{d+1}{\sqrt{d}} \left( \TubeEmpty-  \frac{1}{d} \left(\Tubexloop  + \Tubeidx + \TubeXtwist \right) \right)
-\end{align}
-\dave{With $(\mu, \nu) = (Y,X)$ $\mu = 1$ is antiperiodic, and $\mu =0$ is periodic. And the appropriate diagrams set to zero.}
-
-Thus we see that that each bounding spin structure on the torus has one local relation. 
-Hence we need to pick three independent (non-zero) vectors from the list (\ref{TorusStates}). A natural choice is given by,
-\begin{align}
-\left( \begin{matrix}
-e\\
-v\\
-h\\
-\end{matrix} \right)_{AA} \quad \quad 
-\left( \begin{matrix}
-e\\
-t\\
-h\\
-\end{matrix} \right)_{AP}  \quad \quad
-\left( \begin{matrix}
-e\\
-v\\
-t\\
-\end{matrix} \right)_{PA}
-\end{align}
-
-It will be useful to write down the change of basis from the tubes to the idempotents.
-In doing so we will make use of the local relations above.
+%- OR - 
+%\begin{align}
+%&\text{AA sector:} \quad \quad  \TubeXa = e^{-i \pi /12} \frac{d+1}{\sqrt{d}} \left( \TubeEmpty-  \frac{1}{d} \left(\Tubexloop  + \Tubeidx  \right) \right)\\
+%&\text{AP sector:} \quad \quad  \TubeXa = e^{-5i \pi /12} \frac{d+1}{\sqrt{d}} \left( \TubeEmpty-  \frac{1}{d} \left(\Tubexloop   + \TubeXtwist \right) \right)\\
+%&\text{PA sector:} \quad \quad  \TubeXa = e^{3 i \pi /4} \frac{d+1}{\sqrt{d}} \left( \TubeEmpty-  \frac{1}{d} \left( \Tubeidx + \TubeXtwist \right) \right)
+%\end{align}
+%-- OR -- 
+%\begin{align}
+%d\TubeEmpty = 
+%\frac{2}{d} \TubeEmpty + 
+%\frac{2}{d} \Tubexloop + 
+%\frac{2}{d} \Tubeidx + 
+%\frac{2}{d} \TubeXtwist + 
+%\frac{2\sqrt{d}e^{-i \pi/4}}{d+1} e^{5 i \pi(\mu+1)(\nu+3)/12} \TubeXa 
+%\end{align}
+%-- OR -- 
+%\begin{align}
+%\qquad e^{5 i \pi(\mu+1)(\nu+3)/12} \TubeXa = e^{i \pi /4} \frac{d+1}{\sqrt{d}} \left( \TubeEmpty-  \frac{1}{d} \left(\Tubexloop  + \Tubeidx + \TubeXtwist \right) \right)
+%\end{align}
+%\dave{With $(\mu, \nu) = (Y,X)$ $\mu = 1$ is antiperiodic, and $\mu =0$ is periodic. And the appropriate diagrams set to zero.}
+Every state on the torus can be expanded in terms of the above states, as long as we are also careful to use the local relations provided in Sec. \ref{TorusLocalRelations}.
+%Hence we need to pick three independent (non-zero) vectors from the list (\ref{TorusStates}). A natural choice is given by,
+%\begin{align}
+%\left( \begin{matrix}
+%e\\
+%v\\
+%h\\
+%\end{matrix} \right)_{AA} \quad \quad 
+%\left( \begin{matrix}
+%e\\
+%t\\
+%h\\
+%\end{matrix} \right)_{AP}  \quad \quad
+%\left( \begin{matrix}
+%e\\
+%v\\
+%t\\
+%\end{matrix} \right)_{PA}
+%\end{align}
+Hence one can directly compute the change of basis by taking the particles in tables \ref{MIdempotents}, \ref{QIdempotents} and pojecting them onto the torus, modulo the local relations in Sec. \ref{TorusLocalRelations}.
 \begin{align}
 \label{VAA}
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AA} 
+\end{matrix} \right)_{BB} 
 %= \left( \begin{matrix}
 %\frac{1}{d \sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
 %\frac{d}{2 \sqrt{3}} & \frac{1}{2 \sqrt{3}} & - \frac{1}{2 \sqrt{3}} \\ 
@@ -2545,13 +2592,13 @@ In doing so we will make use of the local relations above.
 e\\
 v\\
 h\\
-\end{matrix} \right)_{AA}\\
+\end{matrix} \right)_{BB}\\
 \label{VAP}
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AP}
+\end{matrix} \right)_{BN}
 &= \left( \begin{matrix}
 \frac{1}{d\sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
 \frac{d}{2 \sqrt{3}} & 0 & - \frac{1}{2 \sqrt{3}} \\
@@ -2562,13 +2609,13 @@ h\\
 e\\
 t\\
 h\\
-\end{matrix} \right)_{AP} \\
+\end{matrix} \right)_{BN} \\
 \label{VPA}
 \left( \begin{matrix}
 \text{Q}_1\\
 \text{Q}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}
+\end{matrix} \right)_{NB}
 &= \left( \begin{matrix}
 1 & 0 & 0 \\
 \sqrt{\frac{1+d}{3}} e^{-3i \pi /4} & \frac{e^{i \pi /6}}{\sqrt{3}} & \frac{e^{i \pi /3}}{\sqrt{3}} \\
@@ -2578,16 +2625,48 @@ h\\
 e\\
 v\\
 t\\
-\end{matrix} \right)_{PA} \\
+\end{matrix} \right)_{NB} \\
 \end{align}
-\dave{spin stucture (XY) means X around puncture.}
 These will be the natural basis to describe the action of the mapping class group.
 
+In the for the non-bounding spin structure some of the idempotents will have to be odd. 
+Namely any $Q$ type idempotent glued around a non-bounding spin structure is odd.
+\dave{Need to come back to this.}
+We define $\left[ \stackrel{\bullet}{Q}_{i}\right]^2  = Q_i$. 
+This has a $\pm$ ambiguity, we denote the $\pm$ signs by $\sigma_i$. 
+We can also change to the idempotent basis with,
+\begin{align}
+\left( \begin{matrix}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right) \; =\;
+\left( \begin{matrix}
+\sigma_1 e^{- i \pi /4} &0&0\\
+0&\sigma_2 e^{- i \pi /4} &0\\
+0&0&1 \\
+\end{matrix} \right)
+\left( \begin{matrix}
+\frac{e^{- i \pi /4}}{\sqrt{2}} & 0&0 \\
+- \frac{e^{- i \pi /4}}{\sqrt{2}} & 1 & 0 \\
+0 & 0& - \frac{e^{5 i \pi /6}}{\sqrt{2 + d}}\\
+\end{matrix} \right)
+\left( \begin{matrix}
+\stackrel{\bullet}{h} \\
+\stackrel{\bullet}{v} \\
+X \\
+\end{matrix} \right)
+\end{align}
+
+\dave{This is due to the dimension of the endomorphism algebra?}
+We also mention that the Q type idempotents have norm square of $2$, opposed to the M type idempotents that have norm square of $1$. We define $\widehat{Q} = Q/\sqrt{2}$. 
+With this convetion the S and T matrices become unitary. 
 %%%%%%
 %%%%%%%
 %%%%%%%
 \subsection{S transformation}
-The transformation looks like 
+On the 2-torus, the S transformation is given by a $\pi/2$ rotation.
+Since we are working on the twice punctured sphere, the S transformation looks somewhat different:
 \begin{align}
 \xymatrix @!0 @M=1mm  @C=20mm{
 S^{XY \rightarrow \widetilde{X}\widetilde{Y}}: A(T^2,XY) \ar[rr] && A(T^2,\widetilde{X} \widetilde{Y}) & \\
@@ -2595,25 +2674,24 @@ S^{XY \rightarrow \widetilde{X}\widetilde{Y}}: A(T^2,XY) \ar[rr] && A(T^2,\widet
  \AnnularTubex{\AnnularTubeNoIndex}{}{}{\psi}{X}{Y}\ar[rr]&&\SAnnulusx{\psi}{\widetilde{X}}{\widetilde{Y}}\; & 
  }
 \end{align}
+\dave{Need some notation.}
 and the spin structures transform according to Fig. \ref{MappingClassGroupTorus}. 
 \begin{align}
 \SAnnulusx{\psi}{\widetilde{X}}{\widetilde{Y}} \;= \sum_{\lambda \in A(T^2,\widetilde{X}\widetilde{Y})}  S^{XY \rightarrow \widetilde{X}\widetilde{Y}}_{\psi \lambda} \AnnularTubex{\AnnularTubeNoIndex}{}{}{\lambda}{\widetilde{X}}{\widetilde{Y}} \\
 \end{align}
+Where we have taken $\psi,\lambda  \in \bigoplus_{ab} V^{ab\bar{a}}_b$ modulo local relations.
+The explicit matrix elements are given by
+\dave{Need to think of a nice way to write this down. But we can always lift the vector $\lambda$ to $\bigoplus_{ab} V^{ab\bar{a}}_b$ apply $X \circ F^{-1}$ and then project back into the torus basis. }
 
-On the 2-torus, the S transformation is given by a $\pi/2$ rotation.
-Since we are working on the twice punctured sphere, the S transformation looks somewhat different:
-\dave{Forgot to number the vertices for Koszul signs.}
-\begin{align}
-S: \TorusBasisa \mapsto \STorusBasisa   = \sum_{xyz; \tau \sigma } S_{abc\mu \nu; xyz \tau \sigma} \TorusBasisb
-\end{align}
-The matrix elements of $S$ can be found with one F-move and a pivot,
-\dave{Will have to ammend these when we finish section 9.}
-\begin{align}
-S_{abc\mu \nu; xyz \tau \sigma} = \sum_{\kappa} \delta_{a \gamma} \delta_{\bar{c} \alpha} \left[ {F^{\bar{c}ac}_a}^{-1} \right]_{\mu b \nu; \sigma \beta \kappa} \left[ R^{\beta c}_c \right ] _{\kappa \tau}
-\end{align}
-
-We can now work out the S-matrix for each spin structure in the topological basis, and then change over to the idempotent basis. 
-
+%\dave{Forgot to number the vertices for Koszul signs.}
+%\begin{align}
+%S: \TorusBasisa \mapsto \STorusBasisa   = \sum_{xyz; \tau \sigma } S_{abc\mu \nu; xyz \tau \sigma} \TorusBasisb
+%\end{align}
+%The matrix elements of $S$ can be found with one F-move and a pivot,
+%\dave{Will have to ammend these when we finish section 9.}
+%\begin{align}
+%S_{abc\mu \nu; xyz \tau \sigma} = \sum_{\kappa} \delta_{a \gamma} \delta_{\bar{c} \alpha} \left[ {F^{\bar{c}ac}_a}^{-1} \right]_{\mu b \nu; \sigma \beta \kappa} \left[ R^{\beta c}_c \right ] _{\kappa \tau}
+%\end{align}
 
 %The last two relations turn into one another under an $S$ transformation, which in this basis is given by,
 %\begin{align}
@@ -2663,6 +2741,7 @@ We can now work out the S-matrix for each spin structure in the topological basi
 %\end{matrix} \right)
 %\end{align}
 
+We can now work out the S-matrix for each spin structure in the topological basis, and then change over to the idempotent basis. 
 \paragraph{$(A,A)$ sector:}
 For the (AA) spin structure one simply finds that $v$ and $h$ are interchanged so that,
 \begin{align}
@@ -3125,32 +3204,7 @@ X \\\end{matrix} \right)_{PP}
 \end{align}
 \dave{Should we seperate the even and odd parts into two seperate sub-blocks?}
 
-We now change to the idempotent basis. 
-We define $\left[ \stackrel{\bullet}{Q}_{i}\right]^2  = Q_i$. 
-This has a $\pm$ ambiguity, we denote the $\pm$ signs by $\sigma_i$. 
-We can also change to the idempotent basis with,
-\begin{align}
-\left( \begin{matrix}
-\stackrel{\bullet}{Q}_{1}\\
-\stackrel{\bullet}{Q}_{2}\\
-\text{M}_6 \\ 
-\end{matrix} \right) \; =\;
-\left( \begin{matrix}
-\sigma_1 e^{- i \pi /4} &0&0\\
-0&\sigma_2 e^{- i \pi /4} &0\\
-0&0&1 \\
-\end{matrix} \right)
-\left( \begin{matrix}
-\frac{e^{- i \pi /4}}{\sqrt{2}} & 0&0 \\
-- \frac{e^{- i \pi /4}}{\sqrt{2}} & 1 & 0 \\
-0 & 0& - \frac{e^{5 i \pi /6}}{\sqrt{2 + d}}\\
-\end{matrix} \right)
-\left( \begin{matrix}
-\stackrel{\bullet}{h} \\
-\stackrel{\bullet}{v} \\
-X \\
-\end{matrix} \right)
-\end{align}
+
 
 So that the $S$-matrix is given by,
 \begin{align}
