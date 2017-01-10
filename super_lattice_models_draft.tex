@@ -206,7 +206,9 @@
   
 
 
-
+\newcommand{\TorusLocalRelationc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusLocalRelationc.pdf}}}}}
+\newcommand{\TorusLocalRelationb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusLocalRelationb.pdf}}}}}
+\newcommand{\TorusLocalRelationa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusLocalRelationa.pdf}}}}}
 
 
 \newcommand{\TaddownTubeNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TaddownTube.pdf}}}}}
@@ -234,7 +236,11 @@
   \newcommand{\TadupTube}[1]{\mathrel{\ooalign{$\TadupTubeNoLabel$\cr
     \hidewidth\raise-2.6ex\hbox{$\scriptstyle{#1}\mkern30mu$}\cr
   }}}
-
+  
+  \newcommand{\TorusNoLabels}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusNoLabels.pdf}}}}}
+\newcommand{\TorusNoLabelsx}[1]{\mathrel{\ooalign{$\TorusNoLabels$\cr
+    \hidewidth\raise-2.8ex\hbox{$\scriptstyle{#1}\mkern30mu$}\cr
+  }}}
 
 \newcommand{\VerticalSpace}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{VerticalSpace.pdf}}}}}
 
@@ -244,7 +250,13 @@
   \hidewidth\raise0ex\hbox{$\VerticalSpace$}\cr
   }}}
   
-  \newcommand{\AddDatTorus}[4]{\mathrel{\ooalign{  $#1$\cr
+  \newcommand{\AddDatTorus}[3]{\mathrel{\ooalign{  $#1$\cr
+  \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern38mu$}\cr
+  \hidewidth\raise3.8ex\hbox{$\scriptstyle{#3}\mkern0mu$}\cr
+  \hidewidth\raise0ex\hbox{$\VerticalSpace$}\cr
+  }}}
+  
+    \newcommand{\AddDatTorusDot}[4]{\mathrel{\ooalign{  $#1$\cr
   \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern38mu$}\cr
   \hidewidth\raise3.8ex\hbox{$\scriptstyle{#3}\mkern0mu$}\cr
   \hidewidth\raise0ex\hbox{${#4}\mkern0mu$}\cr
@@ -1886,13 +1898,11 @@ Furthurmore these operators are even and so they preserve the grading on $\mathb
 But the even and odd subspaces of $\mathbb{C}^{1|1}$ are one dimensional and so these operators cannot be represented.
 Hence a theory with Fibonacci like fusion rules of Q-type particles must have fusion multiplicity.
 }
- \subsection{Center of condensed $\halfesix$}
- In this subsection we compute the center of $\halfesix$.
- \dave{Kevin, what's the proper nomenclature here?}
-In the bounding sector we have three simple $M$ type objects. 
-In the non-bounding sector we have three simple objects, two $Q$ type and one $M$ type.
 
-\subsubsection{Tube algebra and local relations}
+
+\subsection{Tube algebra, local relations, and the torus}
+
+\subsubsection{Tube algebra}
 \ethan{The handedness convention for the tubes got switched in this section---we need to remember to go back and change either this section or the $C_2$ section.}
 \dave{True. Do we have a preference for one over the other? It would be a little tedious to change basis section. E.g., we'd have to re-write the table of idempotents, but that's not a super big deal.
 Although if we were to change notation I'd rather do it sooner than later.
@@ -1905,7 +1915,6 @@ The tube algebra is given by
 \end{align}
 where $a,b,c,d$ are simple objects in $\cal{C}$. The multiplicity indices $\mu$, and $\nu$ are collective indices that denote the vector in the fusion space $V^{db}_a$ and $V^{c \bar{d}}{b}$, as well as the ordering in the tensor product $V^{d b}_a \tp_b V^{c \bar{d}}_b$. Lastly, $X$ denotes the spin structure, either $B$ for bounding, or $N$ for non-bounding.
 
-\subsubsection{Tube multiplication}
 
 It is somewhat cumbersome to continually label all indices in the tube, so we shift to a compact notation given by [REF]\dave{I've seen Oceanu papers (around 1990,91, though not actually written by him) with this notation, is that the first place it showed up?},
 \begin{align}
@@ -1969,7 +1978,7 @@ C^{\lambda}_{ \eta \psi} =  \sum_{s, t} \frac{1}{\sqrt{d_a d_\gamma}}
 \frac{\text{\raisebox{1.7ex}{$\TubeProductCoefficientbx{s^*}{t^*}$}}}{\ThetaSymbolx{s} \;\; \ThetaSymbolx{t}}
 \TubeProductCoefficientax{\psi}{\eta}{\lambda^*}{s}{t}
 \end{align}
-
+and $s,t \in \bigoplus_{abc} V^{ab}_c$.
 %\begin{align}
 %C_{t_1 t_2 }^{t_3} = \frac{1}{\sqrt{\text{normalization}}}  \TubeMultiplyTopCoefficent\; \; \times \; \; \TubeMultiplyBottomCoefficient
 %\end{align}
@@ -1979,7 +1988,7 @@ C^{\lambda}_{ \eta \psi} =  \sum_{s, t} \frac{1}{\sqrt{d_a d_\gamma}}
 It is important to mod out by local relations in the algebra. In the basis we have chosen, the only local relations are given by creating fermions out of the vacuum and dragging them around different cycles.
 For the rest of this section, unless specified otherwise, a solid line is always labeled by $x$ and a dashed line, or no line is assumed to be the identity.
 
-\subsubsection{Local relations on the Annulus}
+\subsubsection{Local relations on the annulus}
 Let us now investigate local relations on the tubes. 
 Lets also use the notation
 \begin{align}
@@ -1994,6 +2003,7 @@ Lets also use the notation
 then we have
 \begin{align}
 & \AddDat{\hTube}{X}{} \; =  -(-1)^{|X|}  \AddDat{\hTube}{X}{} \quad \quad \quad \AddDat{\hTube}{X}{\dotb} \; =  (-1)^{|X|}  \AddDat{\hTube}{X}{\dotb} 
+\label{hlocalrelation}
 \end{align}
 which is found from taking two fermions out of the vacuum and sliding them around the annulus.
 Similarly we have,
@@ -2003,7 +2013,8 @@ Similarly we have,
 \end{align}
 
 \begin{align}
-& \AddDat{\XTube{\mu}{\nu}}{X}{} \;\;  =-(-1)^{|X|} (\sigma^x \tp \sigma^y )_{\mu \nu; \kappa \tau}\AddDat{\XTube{\kappa}{\tau}}{X}{} \quad \quad 
+& \AddDat{\XTube{\mu}{\nu}}{X}{} \;\;  =-(-1)^{|X|} (\sigma^x \tp \sigma^y )_{\mu \nu; \kappa \tau}\AddDat{\XTube{\kappa}{\tau}}{X}{} 
+\label{XlocalRelationAnnulus}
 \end{align}
 
 
@@ -2018,11 +2029,11 @@ Thus a minimal basis for the annulus is given in Fig. (\ref{AnnulusBasis}).
 \xymatrix @!0 @M=1mm @C=20mm{
 &e&h&v&t&X_{11}&X_{12} \\
 &&&&&& \\
-&&&&&\;  \ar@/^1pc/[r]^{\Pi} &\; \\
+&&&&&\;  \ar@{<->} @/^1pc/[r]^{\Pi} &\; \\
 \text{Bounding}\quad &\AddDat{\eTube}{B}{} &\AddDat{\hTube}{B}{} & \AddDat{\vTube}{B}{}\ar @`{p+(-15,20),p+(15,20)}^{\Pi_e} & \AddDat{\tTube}{B}{}  \ar @`{p+(-15,20),p+(15,20)}^{\Pi} & \AddDat{\XTube{1}{1}}{B}{} & \AddDat{\XTube{1}{2}}{B}{}\\
 \\
 \text{Non-bounding}\quad &\AddDat{\eTube}{N}{}  \ar @`{p+(-15,-20),p+(15,-20)}_{\Pi_e } & & \AddDat{\vTube}{N}{} \ar @`{p+(-15,-20),p+(15,-20)}_{\Pi_e } & \AddDat{\tTube}{N}{} \ar @`{p+(-15,-20),p+(15,-20)}_{\Pi_e } & \AddDat{\XTube{1}{1}}{N}{} & \AddDat{\XTube{1}{2}}{N}{}\\
-&&&&&\;  \ar@/_1pc/[r]_{\Pi} &\; \\
+&&&&&\;  \ar@{<->} @/_1pc/[r]_{\Pi} &\; \\
 }
 \label{AnnulusBasis}
 \nonumber
@@ -2033,57 +2044,183 @@ The charectors above each tube are short-hand for that tube, $e$-- empty, $h$-- 
 \end{figure}
 
 
-\subsubsection{Local relations on the Torus}
-Local relations given by sliding dots around different cycles.
-\dave{to do}
-\begin{itemize}
-\item write down which tubes are identically zero
-\item list non-zero tubes
-\item list local relations among them
-\end{itemize}
+\subsubsection{Local relations on the torus}
+On the torus we have four spin structures, and extra local relations coming from the additional cycle. 
+We label the spin structures by with either a $B$ for bounding, and $N$ for non-bounding. 
+The notation we use is that the inner label of
+\begin{align}
+\SmallTorus{\AnnulusBare}{X}{Y} \quad \quad \quad X,Y = N, B
+\end{align}
+corresponds to the spin structure before identifying the edges, while the other label, here denoted $Y$ corresponds to the spin structure put on the cycle after identifying edges. 
+Usually we will have pictures on the torus, and will move the label for the spin structure outside of the torus as in,
+\begin{align}
+\SmallTorus{\AnnulusBare}{X}{Y} \; \longrightarrow \; \AddDatTorus{\eTube}{X}{Y}{}.
+\end{align}
+We will first investigate the local relations on the three tori which have spin structure $(X,Y) = (B,B),(N,B),(B,N)$.
+Then we will consider the $(N,N)$ torus separately.
 
+Depending on the spin structure, some of the annular tubes become zero after identifying the boundaries.
+Since there is always one cycle with bounding spin structure, an odd tube is identified with zero for the same reason as in REF.ISING.
+For example, due to (\ref{hlocalrelation}), and the analogous ones with the extra cycles we have,
+\begin{align}
+ 0 = \;\AddDatTorus{\hTube}{N}{B} \;=\; \AddDatTorus{\vTube}{B}{N}\; = \; \AddDatTorus{\tTube}{B}{B}
+\end{align}
 
-On the torus we have
+By symmetry, we know that (\ref{XlocalRelationAnnulus}), must gain another local relation, and indeed we have,
 \begin{align}
 \AddDatTorus{\XTube{a}{b}}{X}{Y}{} \; = M_{ab;\alpha \beta} \AddDatTorus{\XTube{\alpha}{\beta}}{X}{Y}{} \qquad M = (-1)^{|X|+1} \sigma^x \tp \sigma^y, \; \; (-1)^{|Y| +1} \sigma^y \tp \sigma^z 
 \end{align}
-so that,
+The two relations above can be multiplied to find a third, and hence all tubes of this form become linearly dependant,
 \begin{align}
 \AddDatTorus{\XTube{1}{1}}{X}{Y}{} \; = (-1)^{|X|+|Y|+1} \AddDatTorus{\XTube{1}{2}}{X}{Y}{}  \; = i (-1)^{|Y|} \AddDatTorus{\XTube{2}{1}}{X}{Y}{} \; = i (-1)^{|X|} \AddDatTorus{\XTube{2}{2}}{X}{Y}{} 
+\label{XLocalRelation}
+\end{align}
+We take the state with $(a,b) = (1,1)$ as the representative. 
+
+There is one additional linear that shows that the tube above is linearly dependant on the other three non-zero tubes.
+This relation can be found many different ways, here we show one, and will use a different method for the $(N,N)$ spin structure. 
+It comes form nucleating $\rho$ loop, and extending it around the torus before fusing it back into the canonical basis
+\begin{align}
+d_\rho \AddDatTorus{\eTube}{X}{Y} \; = \;
+\AddDatTorus{\TorusLocalRelationa}{X}{Y} \;=\;
+\AddDatTorus{\TorusLocalRelationb}{X}{Y} \;=\; 
+\AddDatTorus{\TorusLocalRelationc}{X}{Y} \;=\; 
+\sum_\lambda \; m_\lambda \AddDatTorus{\TorusNoLabelsx{\lambda}}{X}{Y}.
+\label{rhoLoopRelation}
+\end{align}
+Where $m_\lambda$ are coefficients that depend on the F-symbols.
+The string of equalities gives an additional local relation, in particular, it allows us solve for the tubes in (\ref{XLocalRelation}) above in terms of the other non-zero tubes.
+Explicitly in the three sectors $(B,B), (B,N)$, and $(N,B)$ we have,
+\begin{align}
+& \AddDatTorus{\XTube{1}{1}}{B}{B} \;= e^{-i \pi /12} \frac{d+1}{\sqrt{d}} \left( \;\AddDatTorus{\eTube}{B}{B}\; -  \frac{1}{d} \left(\AddDatTorus{\hTube}{B}{B}   +  \AddDatTorus{\vTube}{B}{B}  \right) \right)\\
+&\\
+ & \AddDatTorus{\XTube{1}{1}}{B}{N} \; = e^{-5i \pi /12} \frac{d+1}{\sqrt{d}} \left( \AddDatTorus{\eTube}{B}{N} -  \frac{1}{d} \left( \AddDatTorus{\hTube}{B}{N}   + \AddDatTorus{\tTube}{B}{N} \right) \right)\\
+ &\\
+& \AddDatTorus{\XTube{1}{1}}{N}{B}  \;= e^{3 i \pi /4} \frac{d+1}{\sqrt{d}} \left( \AddDatTorus{\eTube}{N}{B}-  \frac{1}{d} \left( \AddDatTorus{\vTube}{N}{B} + \AddDatTorus{\tTube}{N}{B} \right) \right)
 \end{align}
 
+We now move onto the torus with where the spin structure is non-bounding a long both cycles.
+We first notice that,
+\begin{align}
+ 0 = \;\AddDatTorus{\hTube}{N}{N} \;=\; \AddDatTorus{\vTube}{N}{N}\; = \; \AddDatTorus{\tTube}{N}{N}
+\end{align}
+by nucleating two fermions out of the vacuum and dragging them along the $\rho$ line.
+Furthurmore, the same calculation as \ref{rhoLoopRelation} implies that the the empty tube is identified with zero, 
+\begin{align}
+\AddDatTorus{\eTube}{N}{N} \; = 0
+\end{align}
+The only non-zero tubes with even parity is given by
+\begin{align}
+\AddDatTorus{\XTube{1}{1}}{N}{N}
+\end{align}
+and those which are proportional to it given by \ref{XLocalRelation}. 
+\dave{Do we have a nice way to see that this tube is non-zero other than there is no local relation that makes it proportional to the other even tubes?}
 
-Local relations given by sliding dots around different cycles.
+As one may expect from the Ising example, there are odd tubes which are non-zero.
+Indeed we can find four of them,
 \begin{align}
-&\TorusQQQa \; \;  = M_{ab;\alpha \beta} \;\; \TorusQQQb, \qquad M = (-1)^{\nu+1} \sigma^x \tp \sigma^y, \; \; (-1)^{\mu +1} \sigma^y \tp \sigma^z  \\
-&\text{hence taking $(a,b) = (1,1)$ we have } (1,1) = 
-\left \{ \begin{matrix}
-\;\; -(-1)^{\mu +\nu} \; (1,2)\\
-\;\; i (-1)^{\mu} \; (2,1)\\
-\;\; i (-1)^\nu \; (2,2)\\
-\end{matrix}
-\right . 
+\AddDatTorusDot{\hTube}{N}{N}{\dotb}\quad \AddDatTorusDot{\vTube}{N}{N}{\dotb} \quad \AddDatTorusDot{\tTube}{N}{N}{\dotc} \quad \AddDatTorusDot{\XTube{1}{1}}{N}{N}{\dotc}.
 \end{align}
-and similarly,
+As before one can find linear relations between the fourth tube above and the ones with different multiplicity index.
+However, these four tubes are not linearly independent. 
+There are two distinct linear relations that can be found between them by multiplying the tadpole like diagrams in two different ways,
 \begin{align}
-&\TorusQQQc \; \;  = \tilde{M}_{ab; \alpha \beta} \;\; \TorusQQQd, \qquad \tilde{M} = (-1)^{\nu +1} \sigma^x \tp \sigma^z, \;\; (-1)^{\mu+1} \sigma^z \tp \sigma^y \\
-&\text{hence taking $(a,b) = (1,1)$ we have } (1,1) = 
-\left \{ \begin{matrix}
-\;\; i(-1)^{\mu} \; (1,2)\\
-\;\; -(-1)^{\nu} \; (2,1)\\
-\;\; i (-1)^{\nu+\mu} \; (2,2)\\
-\end{matrix}
-\right .
+\AddDatTorusDot{\TaddownTube{\mu}}{N}{N}{} \tp_{A(S^1)} \AddDatTorusDot{\TadupTube{\nu}}{N}{N}{\dotc} \;=\;
+\AddDatTorusDot{\TadupTube{\nu}}{N}{N}{\dotc} \tp_{A(S^1)} \AddDatTorusDot{\TaddownTube{\mu}}{N}{N}{} .
 \end{align}
-Where $\nu$ and $\mu$ are either $0$ for non-bounding spin structure or $1$ for bounding spin structure.
-The cycle around the cross corresponds to $\nu$, while the one that goes through the cross corresponds to $\mu$. 
-A third local relation is given by the product of the two listed matrices.
-The quotient takes this four dimensional vector space to a one dimensional one.
-We take the state $(a,b) = (1,1)$ as a representitve and list the relations to the other states.
+Despite the indices $\mu$ and $\nu$ varying over four distinct values, this yields only two linearly independant relations on the torus. 
+They are given by,
+\begin{align}
+\frac{de^{ -i \pi / 4 }}{\sqrt{2}}  \AddDatTorusDot{\hTube}{N}{N}{\dotb}\; =\;
+ \AddDatTorusDot{\vTube}{N}{N}{\dotb}  \; + \; 
+ \AddDatTorusDot{\tTube}{N}{N}{\dotc} \; - \frac{2 e^{i \pi /4}}{\sqrt{d}}  
+ \AddDatTorusDot{\XTube{1}{1}}{N}{N}{\dotc}
+\end{align}
+and\footnote{One can check that the second relation follows from the first by performing an $S$ transformation}
+\begin{align}
+\frac{d e^{i \pi/4}}{\sqrt{2}}  \AddDatTorusDot{\vTube}{N}{N}{\dotb}\; = \;
+\AddDatTorusDot{\hTube}{N}{N}{\dotb}\; + i 
+ \AddDatTorusDot{\tTube}{N}{N}{\dotc}\; + \frac{2 e^{11i \pi /12}}{\sqrt{d}} 
+ \AddDatTorusDot{\XTube{1}{1}}{N}{N}{\dotc}
+\end{align}
+We can now solve for any two of the above four states, we choose,
+\begin{align}
+ \AddDatTorusDot{\tTube}{N}{N}{\dotc}  \;&=\; \AddDatTorusDot{\hTube}{N}{N}{\dotb} \; -i\;  \AddDatTorusDot{\vTube}{N}{N}{\dotb}  \\
+ &\\
+ \AddDatTorusDot{\XTube{1}{1}}{N}{N}{\dotc} \;&=\;\sqrt{\frac{d}{2}}\left( e^{i \pi /3}\;  \AddDatTorusDot{\hTube}{N}{N}{\dotb} \; -i \; \AddDatTorusDot{\vTube}{N}{N}{\dotb} \;\right) 
+\end{align}
+
+In summary we have
+\begin{align}
+A(T^2, BB)  &\cong \mathbb{C}^{3|0} = \mathbb{C}\left[ \AddDatTorus{\eTube}{B}{B}{},\AddDatTorus{\hTube}{B}{B}{},\AddDatTorus{\vTube}{B}{B}{}\right]\\
+&\\
+A(T^2, BN)  &\cong \mathbb{C}^{3|0}  = \mathbb{C}\left[\AddDatTorus{\eTube}{B}{N}{}, \AddDatTorus{\hTube}{B}{N}{}, \AddDatTorus{\tTube}{B}{N}{} \right]\\
+&\\
+A(T^2, NB)  &\cong \mathbb{C}^{3|0}=   \mathbb{C}\left[\AddDatTorus{\eTube}{N}{B}{}, \AddDatTorus{\vTube}{N}{B}{}, \AddDatTorus{\tTube}{N}{B}{} \right] \\
+&\\
+A(T^2, NN)  &\cong \mathbb{C}^{1|2} = \mathbb{C} \left[ \AddDatTorusDot{\hTube}{N}{N}{\dotb}\;,\AddDatTorusDot{\tTube}{N}{N}{\dotc}\;,  \AddDatTorusDot{\XTube{1}{1}}{N}{N}{} \right]
+\end{align}
+
+%We find the following local relation by multiplying two tadpoles in two different ways on the torus (will make picture).
+%\begin{align}
+%\frac{de^{ -i \pi / 4 }}{\sqrt{2}}\;  \hOdd = \vOdd \; + \; \tOdd \; - \frac{2 e^{i \pi /4}}{\sqrt{d}} \; \xOdd
+%\end{align}
+%applying $S$ to both sides we also find
+%\begin{align}
+%\frac{d e^{i \pi/4}}{\sqrt{2}} \vOdd = \hOdd  + i \tOdd + \frac{2 e^{11i \pi /12}}{\sqrt{d}} \xOdd
+%\end{align}
+%No other linearly independent relations follow from applying $S$ since, in this basis $S^2 = i\mathds{1}$. 
+%We can solve for any two of the vectors above, and use them as a basis for the odd parity sector of the $(P,P)$ torus.
+%\begin{align}
+%\tOdd \;&=\; \hOdd \; -i\; \vOdd \\
+%\xOdd \;&=\;\sqrt{\frac{d}{2}}\left( e^{i \pi /3}\;  \hOdd \; -i \; \vOdd \right) 
+%\end{align}
+
+
+%\begin{align}
+%&\text{AA sector:} \quad \quad  \TubeXa = e^{-i \pi /12} \frac{d+1}{\sqrt{d}} \left( \TubeEmpty-  \frac{1}{d} \left(\Tubexloop  + \Tubeidx  \right) \right)\\
+%&\text{AP sector:} \quad \quad  \TubeXa = e^{-5i \pi /12} \frac{d+1}{\sqrt{d}} \left( \TubeEmpty-  \frac{1}{d} \left(\Tubexloop   + \TubeXtwist \right) \right)\\
+%&\text{PA sector:} \quad \quad  \TubeXa = e^{3 i \pi /4} \frac{d+1}{\sqrt{d}} \left( \TubeEmpty-  \frac{1}{d} \left( \Tubeidx + \TubeXtwist \right) \right)
+%\end{align}
+
+%
+%Local relations given by sliding dots around different cycles.
+%\begin{align}
+%&\TorusQQQa \; \;  = M_{ab;\alpha \beta} \;\; \TorusQQQb, \qquad M = (-1)^{\nu+1} \sigma^x \tp \sigma^y, \; \; (-1)^{\mu +1} \sigma^y \tp \sigma^z  \\
+%&\text{hence taking $(a,b) = (1,1)$ we have } (1,1) = 
+%\left \{ \begin{matrix}
+%\;\; -(-1)^{\mu +\nu} \; (1,2)\\
+%\;\; i (-1)^{\mu} \; (2,1)\\
+%\;\; i (-1)^\nu \; (2,2)\\
+%\end{matrix}
+%\right . 
+%\end{align}
+%and similarly,
+%\begin{align}
+%&\TorusQQQc \; \;  = \tilde{M}_{ab; \alpha \beta} \;\; \TorusQQQd, \qquad \tilde{M} = (-1)^{\nu +1} \sigma^x \tp \sigma^z, \;\; (-1)^{\mu+1} \sigma^z \tp \sigma^y \\
+%&\text{hence taking $(a,b) = (1,1)$ we have } (1,1) = 
+%\left \{ \begin{matrix}
+%\;\; i(-1)^{\mu} \; (1,2)\\
+%\;\; -(-1)^{\nu} \; (2,1)\\
+%\;\; i (-1)^{\nu+\mu} \; (2,2)\\
+%\end{matrix}
+%\right .
+%\end{align}
+%Where $\nu$ and $\mu$ are either $0$ for non-bounding spin structure or $1$ for bounding spin structure.
+%The cycle around the cross corresponds to $\nu$, while the one that goes through the cross corresponds to $\mu$. 
+%A third local relation is given by the product of the two listed matrices.
+%The quotient takes this four dimensional vector space to a one dimensional one.
+%We take the state $(a,b) = (1,1)$ as a representitve and list the relations to the other states.
 
 %%%%%%%%%%%%%%
 
-\subsubsection{Quasiparticles}
+
+ \subsection{Center of condensed $\halfesix$}
+ In this subsection we compute the center of $\halfesix$.
+ \dave{Kevin, what's the proper nomenclature here?}
+In the bounding sector we have three simple $M$ type objects. 
+In the non-bounding sector we have three simple objects, two $Q$ type and one $M$ type.
+
 - Add discussion about computing quasi particles. 
 %%%%%%
 
@@ -2923,20 +3060,6 @@ One can check that these, together with the S-matrix defined above satisfy $S^2 
 The non-bounding torus is a little more subtle than the bounding torus so we saved it for last. 
 
 
-We find the following local relation by multiplying two tadpoles in two different ways on the torus (will make picture).
-\begin{align}
-\frac{de^{ -i \pi / 4 }}{\sqrt{2}}\;  \hOdd = \vOdd \; + \; \tOdd \; - \frac{2 e^{i \pi /4}}{\sqrt{d}} \; \xOdd
-\end{align}
-applying $S$ to both sides we also find
-\begin{align}
-\frac{d e^{i \pi/4}}{\sqrt{2}} \vOdd = \hOdd  + i \tOdd + \frac{2 e^{11i \pi /12}}{\sqrt{d}} \xOdd
-\end{align}
-No other linearly independent relations follow from applying $S$ since, in this basis $S^2 = i\mathds{1}$. 
-We can solve for any two of the vectors above, and use them as a basis for the odd parity sector of the $(P,P)$ torus.
-\begin{align}
-\tOdd \;&=\; \hOdd \; -i\; \vOdd \\
-\xOdd \;&=\;\sqrt{\frac{d}{2}}\left( e^{i \pi /3}\;  \hOdd \; -i \; \vOdd \right) 
-\end{align}
 
 Hence the the vector space associated to the $(P,P)$ torus is $\mathbb{C}^{1|2}$, and we choose the linearly independent basis to be,
 \begin{align}
