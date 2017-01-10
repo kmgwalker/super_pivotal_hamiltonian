@@ -1871,6 +1871,7 @@ Thus when we say condense $y$, we actually mean lift $y$ to the Drinfeld center,
 We first describe the lift, then we condense that particle and write down all the topological data of the $\halfesix/y$. 
 
 \subsubsection{Half braid}
+\dave{This subsubsection is still under progress.}
 \dave{Add picture to show computation.}
 A generic element in the Drinfeld center is given by an object $A$ from the fusion category and a collection of isomorphisms $e_A$ that define the half braid of $A$ with any object from the fusion category $e_A(x): A \tp x \rightarrow x \tp A$ for all $x$ in the fusion category.
 In the center there are two particles with fermionic spin, one of which has $y$ as the object from the fusion category and the half braids are given by,
@@ -2261,6 +2262,7 @@ A(T^2, NN)  &\cong \mathbb{C}^{1|2} = \mathbb{C} \left[ \AddDatTorusDot{\hTube}{
 
 
  \subsection{Center of condensed $\halfesix$}
+ \dave{Subsection still in progress.}
  In this subsection we compute the center of $\halfesix$.
  \dave{Kevin, what's the proper nomenclature here?}
 In the bounding sector we have three simple $M$ type objects. 
@@ -2355,6 +2357,7 @@ $\alpha = \frac{1}{2} \left( 1+ 1/\sqrt{2d+1} \right)$, and $\beta = \frac{1}{2}
 \dave{to do}
 \begin{itemize}
 \item table/matrix that shows isomorphsims between particles. E.g., $X_i T_\alpha X_j = \sum_\beta C_{i\alpha j}^{ \beta} T_\beta$ for each tube $T_{\alpha}$, and idempotents $X_i$.
+\item list quantum dimesions of particles
 \end{itemize}
 
 
@@ -2613,7 +2616,7 @@ e\\
 v\\
 h\\
 \end{matrix} \right)_{BB}\\
-\label{VAP}
+\label{VAP}  
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
@@ -2630,7 +2633,7 @@ e\\
 t\\
 h\\
 \end{matrix} \right)_{BN} \\
-\label{VPA}
+\label{VPA} 
 \left( \begin{matrix}
 \text{Q}_1\\
 \text{Q}_2\\
@@ -2656,6 +2659,7 @@ We define $\left[ \stackrel{\bullet}{Q}_{i}\right]^2  = Q_i$.
 This has a $\pm$ ambiguity, we denote the $\pm$ signs by $\sigma_i$. 
 We can also change to the idempotent basis with,
 \begin{align}
+\label{VPP}
 \left( \begin{matrix}
 \stackrel{\bullet}{Q}_{1}\\
 \stackrel{\bullet}{Q}_{2}\\
@@ -2693,6 +2697,7 @@ S^{XY \rightarrow \widetilde{X}\widetilde{Y}}: A(T^2,XY) \ar[rr] && A(T^2,\widet
 &&&\\
  \AnnularTubex{\AnnularTubeNoIndex}{}{}{\psi}{X}{Y}\ar[rr]&&\SAnnulusx{\psi}{\widetilde{X}}{\widetilde{Y}}\; & 
  }
+ \label{STopologicalBasis}
 \end{align}
 \dave{Need some notation.}
 and the spin structures transform according to Fig. \ref{MappingClassGroupTorus}. 
@@ -2762,15 +2767,17 @@ The explicit matrix elements are given by
 %\end{align}
 
 We can now work out the S-matrix for each spin structure in the topological basis, and then change over to the idempotent basis. 
-\paragraph{$(A,A)$ sector:}
-For the (AA) spin structure one simply finds that $v$ and $h$ are interchanged so that,
+The calculation is the same in each case, we find the linear map on the in to the topological basis based on (\ref{STopologicalBasis}), and then change back to the particle basis using (\ref{VPA}--\ref{VPP}).
+%(\ref{VPA,VAP,VAA,VPP}).
+
+For the (BB) spin structure one simply finds that $v$ and $h$ are interchanged so that,
 \begin{align}
 \left( \begin{matrix}
 e\\
 v\\
 h\\
-\end{matrix} \right)_{AA}
-\xrightarrow{S^{AA}}
+\end{matrix} \right)_{BB}
+\xrightarrow{S^{BB \rightarrow BB}}
 \left(\begin{matrix}
 1& 0& 0 \\
 0& 0&1  \\
@@ -2780,7 +2787,7 @@ h\\
 e\\
 v\\
 h\\
-\end{matrix} \right)_{AA}
+\end{matrix} \right)_{BB}
 \end{align}
 We can now write down the S-matrix in the idempotent basis using the change of basis in (\ref{VAA})
 \begin{align}
@@ -2788,7 +2795,7 @@ We can now write down the S-matrix in the idempotent basis using the change of b
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AA} \xrightarrow{S_{AA \rightarrow AA}} 
+\end{matrix} \right)_{BB} \xrightarrow{S^{BB \rightarrow BB}} 
 \frac{1}{\sqrt{3}}\left( \begin{matrix}
 \frac{1}{d} & \frac{d}{2} & 1\\ 
 \frac{d}{2} & \frac{1}{d} & -1\\
@@ -2798,15 +2805,11 @@ We can now write down the S-matrix in the idempotent basis using the change of b
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AA}
+\end{matrix} \right)_{BB}
 \end{align}
 
-
-
-\paragraph{$(A,P)$ and $(P,A)$ sectors:}
-The (AP) and (PA) tori are interechanged by S. 
-We first find the action of S on the (AP) torus. 
-S matrices in the topological basis:
+Next we compute the S-matrix elements that transition between the $(BN)$ and $(NB)$ tori.
+We first find the action of S on the (BN) torus:
 %\begin{align}
 %\left( \begin{matrix}
 %\scalebox{0.5}{$\TubeEmpty$} \\
@@ -2833,8 +2836,8 @@ S matrices in the topological basis:
 e\\
 h\\
 v\\
-\end{matrix} \right)_{AP} 
- \xrightarrow{S_{AP\rightarrow PA}}
+\end{matrix} \right)_{BN} 
+ \xrightarrow{S^{BN\rightarrow NB}}
 \left( \begin{matrix}
 1&0&0\\
 0&1&0\\
@@ -2844,15 +2847,15 @@ d e^{-i \pi/6} & e^{5 i \pi/6}  & e^{2 \pi i /3}\\
 e\\
 v\\
 t\\
-\end{matrix} \right)_{PA}
+\end{matrix} \right)_{NB}
 \end{align}
 which can be written in the idempotent basis to find,
 \begin{align}\left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AP}
-\xrightarrow{S_{AP \rightarrow PA}}
+\end{matrix} \right)_{BN}
+\xrightarrow{S^{BN \rightarrow NB}}
 %\left( \begin{matrix}
 %\frac{1}{d \sqrt{3}} & \frac{i}{\sqrt{3}} & - \frac{i}{\sqrt{3}} \\
 %\frac{d}{2 \sqrt{3}} & - \frac{i}{\sqrt{3}} & \frac{i}{\sqrt{3}} \\
@@ -2867,17 +2870,16 @@ which can be written in the idempotent basis to find,
 \text{Q}_1\\
 \text{Q}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}
+\end{matrix} \right)_{NB}.
 \end{align}
-
-Next we work out the S-matrix in the topological basis for the  (PA) vector,
+Similarly we can work out the S-matrix in the topological basis for the $(NB)$ torus,
 \begin{align}
 \left( \begin{matrix}
 e \\ 
 v\\ 
 t\\ 
-\end{matrix} \right)
-  \xrightarrow{S_{PA \rightarrow AP}}
+\end{matrix} \right)_{NB}
+  \xrightarrow{S^{NB \rightarrow BN}}
 \left( \begin{matrix}
 1&0&0\\
 0&1&0\\
@@ -2887,7 +2889,7 @@ de^{i \pi/6} & e^{-5 i \pi /6} & e^{-2 i \pi /3}
 e \\
 h\\ 
 t\\ 
-\end{matrix} \right)_{AP} 
+\end{matrix} \right)_{BN} 
 \end{align}
 And again we can write this in the idempotent basis:
 \begin{align}
@@ -2895,8 +2897,8 @@ And again we can write this in the idempotent basis:
 \text{Q}_1\\
 \text{Q}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}
-\xrightarrow{S_{PA \rightarrow AP}}
+\end{matrix} \right)_{NB}
+\xrightarrow{S^{NB \rightarrow BN}}
 \left( \begin{matrix}
 1& 1& 0 \\
 \frac{1}{\sqrt{3}} & - \frac{1}{\sqrt{3}} & \frac{2}{\sqrt{3}} \\
@@ -2906,19 +2908,18 @@ And again we can write this in the idempotent basis:
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AP}
+\end{matrix} \right)_{BN}
 \end{align}
 Notice that the $S$ matrix is invertible, but not unitary. 
 This is because we didn't normalize our idempotents appropriately. 
-An M type idempotent has norm square equal to 1, while a Q type idempotent has norm square equal to 2.
 Thus we write the normalized Q idempotents with a hat, $\widehat{Q}_i = Q_i /\sqrt{2}$.
 Once doing so we find the appropriately normalized S matrix is given by,
 \begin{align}\left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AP}
-\xrightarrow{S_{AP \rightarrow PA}}
+\end{matrix} \right)_{BN}
+\xrightarrow{S^{BN \rightarrow NB}}
 %\left( \begin{matrix}
 %\frac{1}{d \sqrt{3}} & \frac{i}{\sqrt{3}} & - \frac{i}{\sqrt{3}} \\
 %\frac{d}{2 \sqrt{3}} & - \frac{i}{\sqrt{3}} & \frac{i}{\sqrt{3}} \\
@@ -2933,15 +2934,15 @@ Once doing so we find the appropriately normalized S matrix is given by,
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}
+\end{matrix} \right)_{NB}
 \end{align}
 \begin{align}
 \left( \begin{matrix}
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}
-\xrightarrow{S_{PA \rightarrow AP}}
+\end{matrix} \right)_{NB}
+\xrightarrow{S^{NB \rightarrow BN}}
 \left( \begin{matrix}
 \frac{1}{\sqrt{2}}& \frac{1}{\sqrt{2}}& 0 \\
 \frac{1}{\sqrt{6}} & - \frac{1}{\sqrt{6}} & \sqrt{\frac{2}{3}} \\
@@ -2951,9 +2952,49 @@ Once doing so we find the appropriately normalized S matrix is given by,
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AP}
+\end{matrix} \right)_{BN}
 \end{align}
 Notice that the matrix is symmetric, and unitary.
+
+Lastly, we can work out the S-matrix on the non-bounding torus.
+\begin{align}
+\left( \begin{matrix}
+\stackrel{\bullet}{h} \\
+\stackrel{\bullet}{v} \\
+X \\
+\end{matrix} \right)_{NN}
+\xrightarrow{S^{NN\rightarrow NN}} 
+\left( \begin{matrix}
+0&i  &0 \\ 
+1&0 &0 \\
+0&0& -i \\
+\end{matrix} \right)
+\left( \begin{matrix}
+\stackrel{\bullet}{h} \\
+\stackrel{\bullet}{v} \\
+X \\\end{matrix} \right)_{NN}
+\end{align}
+So that the $S$-matrix is given by,
+\begin{align}
+\left( \begin{matrix}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right)_{NN}
+ \xrightarrow{S^{NN \rightarrow NN}}
+\frac{e^{i \pi /4}}{\sqrt{2}}\left( \begin{matrix} 
+1&\Sigma &0 \\
+\Sigma &-1&0\\
+0&0& -\sqrt{2} e^{i \pi /4}\\
+\end{matrix} \right)
+\left( \begin{matrix}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right)_{NN}
+\quad \quad \text{where $\Sigma = \sigma_1 \sigma_2$.}
+\end{align}
+\dave{It's probably natural to write this as two matrices one with the $Q$ particles, and one with the $M$ particle.}
 
 \dave{Is a summary like this useful? Perhaps at the end of the section we could display this with T}In summary we have
 \begin{align}
@@ -2962,19 +3003,19 @@ Notice that the matrix is symmetric, and unitary.
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AP} \\
+\end{matrix} \right)_{BN} \\
 \\
 \left( \begin{matrix}
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}\\
+\end{matrix} \right)_{NB}\\
 \\
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AA} \\
+\end{matrix} \right)_{BB} \\
 \end{matrix} \right)
 \xrightarrow{S} \left( \begin{matrix}
 &&&			\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{6}} &  \frac{1}{\sqrt{3}} &			&&\\
@@ -2992,23 +3033,23 @@ Notice that the matrix is symmetric, and unitary.
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AP} \\
+\end{matrix} \right)_{BN} \\
 \\
 \left( \begin{matrix}
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}\\
+\end{matrix} \right)_{NB}\\
 \\
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AA} \\
+\end{matrix} \right)_{BB} \\
 \end{matrix} \right)
 \end{align}
 
-\subsubsection{Dehn twists}
+\subsubsection{Dehn twist}
 \dave{Note that with the conventions I've been using we have $(S^{-1} T)^3 = 1$ }
 The action of T is given by,
 \begin{align}
@@ -3204,48 +3245,6 @@ We also define,
 \stackrel{\bullet}{h} \equiv  \hOdd, \quad \stackrel{\bullet}{v} \equiv \vOdd,\quad {X} \equiv \TubeXa
 \end{align}
 
-One can quite simply work out the $S$matrix in this basis,
-\begin{align}
-\left( \begin{matrix}
-\stackrel{\bullet}{h} \\
-\stackrel{\bullet}{v} \\
-X \\
-\end{matrix} \right)_{PP}
-\xrightarrow{S_{PP}} 
-\left( \begin{matrix}
-0&i  &0 \\ 
-1&0 &0 \\
-0&0& -i \\
-\end{matrix} \right)
-\left( \begin{matrix}
-\stackrel{\bullet}{h} \\
-\stackrel{\bullet}{v} \\
-X \\\end{matrix} \right)_{PP}
-\end{align}
-\dave{Should we seperate the even and odd parts into two seperate sub-blocks?}
-
-
-
-So that the $S$-matrix is given by,
-\begin{align}
-\left( \begin{matrix}
-\stackrel{\bullet}{Q}_{1}\\
-\stackrel{\bullet}{Q}_{2}\\
-\text{M}_6 \\ 
-\end{matrix} \right) \xrightarrow{S}
-\frac{e^{i \pi /4}}{\sqrt{2}}\left( \begin{matrix} 
-1&\Sigma &0 \\
-\Sigma &-1&0\\
-0&0& -\sqrt{2} e^{i \pi /4}\\
-\end{matrix} \right)
-\left( \begin{matrix}
-\stackrel{\bullet}{Q}_{1}\\
-\stackrel{\bullet}{Q}_{2}\\
-\text{M}_6 \\ 
-\end{matrix} \right)
-\quad \quad \text{where $\Sigma = \sigma_1 \sigma_2$.}
-\end{align}
-\dave{It's probably natural to write this as two matrices one with the $Q$ particles, and one with the $M$ particle.}
 
 Can also do the Dehn twist,
 \begin{align}
