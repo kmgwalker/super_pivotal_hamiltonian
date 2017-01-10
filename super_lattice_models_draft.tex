@@ -883,7 +883,6 @@ Since $\psi$ lines can disappear into the condensate, we need to be able to anni
 Annihilating a pair of connected boxes must give us a state proportional to the vacuum:
 \begin{align} \label{semicircular_boxes}
 \PsiEnd  = \lambda \times \text{(vaccuum)},
-\label{EvalPsiPsi}
 \end{align}
 where $\lambda$ is some complex number (the semicircular nature of the above diagram comes from our choice of a spin framing that always points to the left). 
 In Appendix \ref{pins_and_reflection}, we extend the spin structure on the back wall to a pin structure, which allows us to prove that $\lambda$ must be purely imaginary. 
@@ -968,7 +967,7 @@ The process of removing two fermions can be done at the cost of a phase factor:
 \end{align}
 where we've performed an $F$-move on the $\psi$ worldlines to get the second equality, and in the last step we have used \eqref{semicircular_boxes} in the last step. 
 As mentioned earlier we must have $\lambda=\pm i$, and since $A^4=\pm i$ in the Ising theory, we may choose either $\lambda = A^4$ or $\lambda = -A^{4}$.  
-The choice of $\lambda = \om A^4$ affects the $F$-symbols in the condensed theory, but does not affect observable quantities like the twists or mutual statistics of the quasiparticles in the theory. \ethan{This is because the choice of $\lambda=\pm A^4$ doesn't change the tube algebra multiplication table}
+The choice of $\lambda = \pm A^4$ affects the $F$-symbols in the condensed theory, but does not affect observable quantities like the twists or mutual statistics of the quasiparticles in the theory. \ethan{This is because the choice of $\lambda=\pm A^4$ doesn't change the tube algebra multiplication table}
 Therefore without loss of generality we may choose a gauge in which $\lambda=A^4$, and so 
 \begin{align}  \label{removing_fermions}
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot.pdf}}}} \quad = A^4\; \mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta.pdf}}}}\;,
@@ -3320,22 +3319,13 @@ The definition differs from the usual bosonic case in the following ways:
 
 \kwsep 
  
-Goal: Define super fusion categories for target audience. Target audience = physicists who have spent some time in Appendix E of Kitaev's 2006 anyon paper. 
+\subsection{General remarks on fermion condensation} \label{general_condensation}
 
+In this section, we briefly comment on the general procedure of fermion condensation in braided categories. 
 
-\subsection{Super pivotal categories from fermion condensation} \label{carefully_condensing_psi}
-
-\ethan{This subsection goes over the condensation process and $pin^+(1)$ action, etc. I put it first since we need to know how to do the condensation procedure before we can come up with examples of super fusion categories, but feel free to put it somewhere else.}
-\kw{I'm more inclined to keep Section \ref{def_sect} about abstract definitions and put techniques for 
-constructing examples elsewhere.
-A lot of what's in this subsection needs to be said in the initial C2 section.
-Perhaps following that section there could be a short separate section saying that we can do the same
-for any emergent fermion like $\psi$, 
-and explain how to count to determine to m- and q-type simple objects in the quotient theory.}
-
-\kw{For pedagogical reasons, I'm inclined to first explain things without worrying about reflections and Pin structures;
-put Pin stuff in a separate and later discussion.}
-
+%\ethan{the commented-out part that follows is the old section I wrote with all the details about condensation}
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
 In this section, we give a more precise explanation of how to obtain fermionic topological phases by condensing fermions in bosonic topological phases.
 Throughout this section, we will let $\psi$ denote an emergent fermion (which we will mark in dark blue) in some arbitrary bosonic topological phase. 
 We assume $\psi$ is fermionic in both spin and statistics:
@@ -3364,7 +3354,6 @@ where we have made use of \eqref{psiafermion} in the second step. There is also 
 \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermion_nolabels.pdf}}}} = \ \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermionExchange_nolabels.pdf}}}} = (-1) \mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermion_nolabels.pdf}}}}.\ee
 The first equality follows by dragging the lower box around and over the upper box, which must be an equality since the points at which the $\psi$ particles disappear into the condensate are unphysical. 
 The second equality follows by making use of \eqref{psiafermion}.
-
 
 As we mentioned earlier, in order to perform a consistent condensation procedure, we must equip the $\psi$ endpoints with a spin structure. However, in order to take inner products we will need to consider how states transform under reflections, and so we actually need a more general $pin^+$ structure. Because we work in a convention where $\psi$ endpoints always have a fixed framing, we only need to consider what happens to the endpoints when they are either rotated by $2\pi$ or reflected about an axis parallel to our global framing direction (which in our convention is horizontal), since both of these actions leave the framing of the $\psi$ endpoints invariant. Specifying the action of $2\pi$ rotations and reflections about the framing direction on is equivalent to specifying a $pin^+(1) \cong \zt \times \zt$ action on the fibers of our bundle over configuration space. To proceed we need to define how $pin^+(1)$ acts on $\cc$, which will give us a complex line bundle on configuration space. We do this by defining the $2\pi$ rotation to act as multiplication by $-1$ and the reflection about the framing direction to act as complex conjugation, which is needed for our theory to have the correct unitary structure. This fixes the remaining inconsistency \eqref{twist_inconsistency}, since the $-1$ sign associated with $2\pi$ rotations means that 
 \begin{align} \label{boxspin}
@@ -3407,9 +3396,40 @@ At the formal level, the phase of physical fermions is represented by sVec, the 
 Forming a stack of the physical fermions and the bosonic phase represented by the fusion category $\mcc$ results in the category $\mcc \boxtimes {\rm sVec}$, and performing the condensation procedure results in a superfusion category that is nontrivially enriched by sVec. 
 The result of the condensation procedure is a {\it fermionic topological phase}: one that has fermionic underlying degrees of freedom and which possesses a Hilbert space structure which is not realizable in bosonic theories. 
 In the next section, we examine the properties of the simple objects in these phases in detail. 
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+
+Since we use a spin structure %(technically a pin$^+$ structure, see Appendix \ref{pins_and_reflection}) 
+to perform the condensation, we are tacitly assuming that the physical fermions which provide the spin structure are {\it uncharged} (i.e. that they couple only to gravity). 
+If the physical realization we have in mind for these fermions carries a $U(1)$ charge, we would need to generalize this to a spin$_c$ structure instead. 
+However, if we are obtaining the physical fermions from a phase without $U(1)$ symmetry like a topological superconductor, then a spin structure is sufficient. 
+
+
+As remarked earlier in Sec \ref{condensing_psi}, adding a spin structure to the back wall which couples to the endpoints of the emergent fermion we aim to condense is equivalent to ``stacking'' the parent bosonic TQFT with with a phase of physical fermions (which are regarded as the spin structure). 
+In order to condense the emergent fermion, we couple the bosonic phase and the physical fermions together by condensing bound states of physical and emergent fermions. 
+At the formal level, the phase of physical fermions is represented by sVec, the category of supervector spaces.
+As a TQFT, sVec is rather trivial: in keeping with the fact that it is built out of physical fermions, it possesses no quasiparticle excitations.  
+Forming a stack of the physical fermions and the bosonic phase represented by the fusion category $\mcc$ results in the category $\mcc \boxtimes {\rm sVec}$, and performing the condensation procedure results in a superfusion category that is nontrivially enriched by sVec. 
+The result of the condensation procedure is a {\it fermionic topological phase}: one that has fermionic underlying degrees of freedom and which possesses a Hilbert space structure which is not realizable in bosonic theories. 
+
+A natural question to ask at this stage is: what kind of fermionic topologically ordered phases can exist? At this point, is seems like there are essentially two broad classes of fermionic phases, both of which can be obtained from bosonic theories. Suppose we have some bosonic theory $\mcc$. One way to obtain a fermionic theory is to simply stack $\mcc$ with a phase of physical fermions:
+\be \label{fermion_phase_prod} \mcc_f = \mcc \boxtimes {\rm sVec}, \ee
+where sVec is the category of supervector spaces, a categorical representation of a phase of physical fermions. $\mcc_f$ is indeed fermionic, but in a rather trivial sense, since its ``fermionic-ness'' is contained entirely within the sVec part of the product. The other (more interesting) way to obtain a fermion phase is to perform ``fermion'' condensation on $\mcc_f$:
+\be \label{fermion_phase_cond} \mcc_f' = (\mcc \boxtimes {\rm sVec}) / (\psi \boxtimes f),\ee
+where $\psi \in \mcc$ is an emergent fermion. 
+Another natural question to ask is whether all fermionic topological phases can be written in the form of \eqref{fermion_phase_prod} or \eqref{fermion_phase_cond}. 
+
+\ethan{talk about $\mcc \boxtimes ({\rm sVec})^{\boxtimes n}$ as adding on a bunch of superconductors, and chiral charge stuff ($c_-$ for invertible fermionic orders is quantized as $n/2$ from cobordism argument)} 
+\ethan{and spinlessness of fermions in p+ip SCs}
+\ethan{mention difference between our approach and ``double the objects'' approach of wen in 1507.04673}
+\ethan{inverse of condensation is modular extension, and there are 16 modular extensions of sVec: eight Ising ones and eight TC-like ones (arXiv:0906.0620)}
+
+
+%%%%%%%%%%%%%%%
 \subsection{Simple objects}
+%%%%%%%%%%%%%%%
 
 We will assume that our category $\mcc$ is {\it idempotent complete} -- 
 every idempotent is the identity morphism of an associated object.
@@ -4076,12 +4096,6 @@ m-type and q-type particles are doubled, with arrow pointing to the m-type parti
 \section{Conclusion}
 %%%%%%%%%%%%%%%%%%
 
-A natural question to ask at this stage is: what kind of fermionic topologically ordered phases can exist? At this point, is seems like there are essentially two broad classes of fermionic phases, both of which can be obtained from bosonic theories. Suppose we have some bosonic theory $\mcc$. One way to obtain a fermionic theory is to simply stack $\mcc$ with a phase of physical fermions:
-\be \label{fermion_phase_prod} \mcc_f = \mcc \boxtimes {\rm sVec}, \ee
-where sVec is the category of supervector spaces, a categorical representation of a phase of physical fermions. $\mcc_f$ is indeed fermionic, but in a rather trivial sense, since its ``fermionic-ness'' is contained entirely within the sVec part of the product. The other (more interesting) way to obtain a fermion phase is to perform ``fermion'' condensation on $\mcc_f$:
-\be \label{fermion_phase_cond} \mcc_f' = (\mcc \boxtimes {\rm sVec}) / (\psi \boxtimes f),\ee
-where $\psi \in \mcc$ is an emergent fermion. 
-Another natural question to ask is whether all fermionic topological phases can be written in the form of \eqref{fermion_phase_prod} or \eqref{fermion_phase_cond}. 
 
  - ....
  
