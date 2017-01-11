@@ -469,10 +469,37 @@
 
 \newcommand{\PlaquettePrime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{PlaquettePrime.pdf}}}}}
 
-\newcommand{\ycenter}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{ycenter.pdf}}}}}
-\newcommand{\ex}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{ex.pdf}}}}}
-\newcommand{\ey}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{ey.pdf}}}}}
-\newcommand{\eone}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{eone.pdf}}}}}
+%\newcommand{\ycenter}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{ycenter.pdf}}}}}
+%\newcommand{\ex}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{ex.pdf}}}}}
+%\newcommand{\ey}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{ey.pdf}}}}}
+%\newcommand{\eone}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{eone.pdf}}}}}
+
+\newcommand{\ebox}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{ycenterNoLabel.pdf}}}}}
+\newcommand{\ex}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{exNoLabel.pdf}}}}}
+\newcommand{\ey}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{eyNoLabel.pdf}}}}}
+\newcommand{\eone}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{eoneNoLabel.pdf}}}}}
+\newcommand{\egeneral}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{egeneral.pdf}}}}}
+
+
+
+  \newcommand{\halfbraid}[4]{\mathrel{\ooalign{
+  \vphantom{$\Big|^2$}  
+  $\sideset{_{#2}}{}{\overset{#3}{\underset{#3}{#1}}^{#2}}$\cr
+   \hidewidth \hbox{$\scriptstyle{#4}\mkern32mu$}\cr
+     \hidewidth\raise0ex\hbox{$\scale{1.5}{\VerticalSpace}$}\cr
+ }}}
+
+
+\newcommand{\HalfBraidHexa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{HalfBraidHexa.pdf}}}}}
+\newcommand{\HalfBraidHexb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{HalfBraidHexb.pdf}}}}}
+ 
+  \newcommand{\halfbraidHex}[5]{\mathrel{\ooalign{
+  \vphantom{$\Big|^2$}  
+  $\sideset{_{#2}}{}{\overset{#4 \quad \;  \; \; #5}{\underset{#3}{#1}}^{#2}}$\cr
+       \hidewidth\raise0ex\hbox{$\scale{2.5}{\VerticalSpace}$}\cr
+ }}}
+
+
 
 \newcommand{\TubeXb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeXb.pdf}}}}}
 \newcommand{\TubeXa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeXa.pdf}}}}}
@@ -1779,38 +1806,36 @@ Super example with no $q$ type particles in condensed theory.
 In this section we condense a fermion in the category $\halfesix$.
 This provides the first example of a super pivotal category with fusion multiplicity\dave{Have there been any other examples of super-pivotal-categories with fusion multiplicity discussed in the literature?}.
 The resulting super pivotal fusion category has one non-trivial particle of $Q$-type, which we denote $\rho$.
-This particle obeys the fusion rule,
+This particle obeys the fusion rule\footnote{\dave{Will move this to where we discuss the fusion rules.} We actually have $V^{\rho \rho}_\rho \cong \mathbb{C}^{2|2}$. 
+This is one subtle difference from the purely bosonic fusion theories, the dimensions of the fusion spaces are not the same as the fusion rules. We need to quotient by $\text{End}(x)$ when writing $V^{\rho \rho}_{\rho \rho} = \oplus_x V^{\rho \rho}_x \tp_x V^{x}_{\rho \rho}$, see Sec. \ref{fusion_spaces} for more details.},
 \begin{align}
-\rho \tp \rho = \mathbb{C}^{1|1} \mathds{1} \oplus \mathbb{C}^{2|2} \rho
+\rho \tp \rho = \mathbb{C}^{1|1} \mathds{1} \oplus \mathbb{C}^{1|1} \rho
 \end{align}
 \dave{Do we have a convention for this yet? I have written it as above since $V^{\rho \rho}_\mathds{1}  \cong  \mathbb{C}^{1|1}$ and $ V^{\rho \rho}_\rho \cong \mathbb{C}^{2|2}$.}
 \kw{Both coefficients should be $\mathbb{C}^{1|1}$; the endomorphism algebras of the LHS and RHS should be isomorphic.}
+\dave{Right. I was thinking about $\text{dim} V^{\rho \rho}_\rho$. Thanks for pointing that out. This is where my bosonic intuition was wrong.}
 This theory is quite a bit more rich than $C_2$. 
 \dave{List significant differences from $C_2$}e.g.,
 - As a fusion category, there is a fusion rule that takes two $Q$ type particles to another $Q$ type particle. 
-But as we show in Sec XXX, the center of any super pivotal category cannot have this fusion rule.
-
+- The center has an M type vortex.
 -The ground state degeneracy on the torus is $\mathbb{C}^{3|0}$ in all sectors with bounding spin structures, and $\mathbb{C}^{1|2}$ in the sector with non-bounding spin structure.
+But as we show in Sec. XXX, the center of any super pivotal category cannot have this fusion rule.
 
-The reader may be asking why we don't mimick the bosonic case, and search for a super-pivotal fibonacci theory, with one non-trivial $Q$ type particle, and fusion rule $\tilde{\tau} \tp \tilde{\tau} = \mathbb{C}^{1|1} \oplus \mathbb{C}^{1|1}$?
+The reader may be asking why we don't mimick the bosonic case, and search for a super-pivotal fibonacci theory, with one non-trivial $Q$ type particle and fusion space $V^{\tilde{\tau} \tilde{\tau}}_{\tilde {\tau}}\cong \mathbb{C}^{1|1}$?
 In sec XXX we show that such a theory cannot exist.
-Hence the resulting quotient of $\frac{1}{2}$E6 is the most natural example to look at beyond Ising when interested in $Q$ type particles. 
+The resulting quotient of $\halfesix$ is a very natural example to look at beyond Ising when interested in $Q$ type particles. 
 
-The quotient is much more involved than $C_2$ for multiple reasons. 
-First the category $\frac{1}{2}$E6 is not braided so the condensation process will require an additional step where we add a half braiding to the fermionic particle.
-\dave{In this case the half braid is uniquely determined. Is that always the case for particles that are abelian and self dual? Will check.}
-Once doing that, we will be able to condense this particle in the same fashion as we did with Ising.
-\dave{Add more remarks.}
+The quotient requires one additional step that did not appear in the $A_3 \rightarrow C_2$ example. 
+The category $\halfesix$ is not braided and so there is no notion of a fermionic particle to condense.
+Hence, by fermion condensation in $\halfesix$ we mean that we lift a particle of $\halfesix$ to the cernter, where it gains a braiding, that is fermionic.
 
-\dave{Not to self: Highlight that this example poses a good reason to not call Q type objects 'Majorana' type or vortices. Mention objects in the center cannot have a $Q\tp Q \rightarrow Q$ fusion rule. 
-Can a 1d anyon spin chain built from this category have more exotic excitations than Majorana zero modes? 
-The folk lore (which stands on more rigoruous grounds, I'm just not familiar with the literature) is that this is impossible unless it ocurrs at the boundary of a 2+1d system.
-The fact that we have to use a half braid to define the condensation suggests that this kind of spin chain could only live at the boundary of some other 2+1D phase.
-}
+We first introduce the fusion theory of $\halfesix$ and its properties that are pertinent to the rest of the section.
+We then çompute the half braid for the emergent fermion, and condense that in the same way we did for Ising. 
+Following this we compute the center of the condensed theory, and modular S and T matrices. 
 
 \subsection{Fusion theory of $\halfesix$}
 We call the fusion category whose principle graph is given by the $\text{E}_6$ Dynkin diagram, shown to the left in Fig. \ref{EsixDynkin}, the $E_6$ fusion category.
-The $E_6$ fusion category has two sub-categories, on is given by the fusion rules of the Ising theory, while the other is known as $\halfesix$[REF].
+The $E_6$ fusion category has two sub-categories, one is given by the fusion rules of the Ising theory, while the other is known as $\halfesix$[REF].
 \begin{figure}
 \begin{align}
 \vcenter{\xymatrix @!0 @M=1mm @C=35mm{
@@ -1831,9 +1856,14 @@ The non-trivial fusion rules are
 y \tp y = \mathds{1} \quad \quad y \tp x = x \tp y = x \quad \quad x\tp x = \mathds{1}\oplus 2x \oplus y
 \label{halfEsixFusionRules}
 \end{align}
-Notice that $x$ is invariant under fusion with $y$, and $y$ is abelian. 
-Therefore, condensing the $y$ particle, would result in a fusion category with only two objects, $\mathds{1}$ and $\rho$, the image of $x$ under condensation of $y$. 
-The next subsection is devoted to the intricacies of condensing the $y$ particle in this theory.
+and the quantum dimensions are given by,
+\begin{align}
+d_{\mathds{1}} = 1 \quad \quad d_x = 1 + \sqrt{3} \quad \quad d_y = 1
+\end{align}
+Notice that $x$ has non-abelian fusion rules, is invariant under fusion with $y$, and $y$ is abelian. 
+A similar scenario appeared in the Ising theory.
+If the theory were braided, and $y$ were fermionic, this would suggest that that condensing $y$ would lead to a super pivotal fusion theory with only two objects, $\mathds{1}$ and $\rho$, the image of $x$ under condensation of $y$. 
+This theory however is not braided, and so we will have to do more work to quotient by $y$, as discussed in the next subsection \ref{condensey}.
 
 It is useful to layout some of the basic data of $\halfesix$ which will be useful to us in the following sections. 
 Specifically we will give all information required to manipulate the $y$ line, this will be crucial when we are condensing $y$. 
@@ -1847,7 +1877,7 @@ In this case both Frobenius Schur indicators are equal to $1$:
 \end{align}
 These can be found from the associateors $\kappa_x = d_x \left[ F^{xxx}_x \right]_{\mathds{1}\mathds{1}}$, and simlarly for $y$. 
 We list all the F-symbols (as found in \cite{okazaki2013,Wakui2002}) in App.~\ref{E6Fsymbols}.
-Using the F-symbols in App.~\ref{E6Fsymbols} we can compute what happens when we pivot a $y$ line around fusion vertex with two $x$'s:
+Using the F-symbols in App.~\ref{E6Fsymbols} we can check that, in this guage, $y$ has nice pivotal properties:
 \begin{align}
 \begin{matrix}
 &{\xxypivotadual  = \xxypivotbdual  =  \Vxxydual} \\
@@ -1867,16 +1897,16 @@ Using the F-symbols in App.~\ref{E6Fsymbols} we can compute what happens when we
 &{\xyxpivota =  \xyxpivotb =  \Vxyx}\\
 \end{matrix}
 \end{align}
-Note that the fact that these are trivially pivotal is a reflection of the guage choice of basis used for the splitting spaces.
+Note that the fact that these are trivially pivotal is a reflection of the guage choice used for the splitting spaces.
 A guage transformation could introduce phases. 
 This is in contrast to the Frobenius-Schur indicator above which will not change under gauge transformations.
 
 Next, we look at what happens when we slide a $y$ line past a $V^{xx}_x$ fusion space.
-Since $2 = N_{xx}^{x} = \text{dim} V^{xx}_x$ the fusion space requires a multiplicity index labeling the independant vectors spanning this fusion. We denote them $v_1$ and $v_2$, and diagrammatically label them with an index at the fusion vertex:
+Since $2 = N_{xx}^{x} = \text{dim} V^{xx}_x$ the fusion space requires a multiplicity index labeling the independant vectors spanning this vector space. We denote them $v_1$ and $v_2$, and diagrammatically label them with an index at the fusion vertex:
 \begin{align}
 V^{xx}_x \cong \mathbb{C} \left[\;\; \Vxxxa \;\;  \right  ] \qquad \qquad a = 1, 2.
 \end{align}
-The next three relations show what happens when $y$ shifts past a the fusion space $V^{xx}_x$,
+The next three relations show what happens when $y$ shifts past the fusion space $V^{xx}_x$,
 \begin{align}
 \Vxyxxa = \sigma^x_{ab} \; \Vxyxxb
 \quad \quad 
@@ -1886,7 +1916,7 @@ The next three relations show what happens when $y$ shifts past a the fusion spa
 \label{yslide}
 \end{align}
 where the $\sigma^w$, $w = x,y,z$ are the standard pauli matrices\footnote{Expclicitly $\sigma^x = \left( \begin{matrix} 0 &1\\ 1&0 \end{matrix} \right) \quad  \sigma^y = \left( \begin{matrix} 0 &-i\\ i&0 \end{matrix} \right)  \quad \sigma^z = \left( \begin{matrix} 1 &0\\ 0&-1 \end{matrix} \right)$}. 
-These will be extremely useful when finding the half braid on $y$ in the section, which will later become useful when we condense $y$ in Sec.~\ref{condensey}.
+When we condense $y$, these shifts will correspond to even endomorphisms of the fusion space.
 Lastly we have,
 \begin{align}
 &\Vxxxva \; = \; \left( W_{\mathds{1}} \right)_{ab} \Vxxxvb \quad \quad 
@@ -1895,32 +1925,74 @@ W_{\mathds{1}} = \frac{e^{-7 i \pi /12}}{\sqrt{2}}\left( \begin{matrix} 1 &-i \\
 &  \Vxxxya \; = \;  \left( W_{y} \right )_{ab} \; \Vxxxyb  \quad \quad   W_y = \frac{e^{-7 i \pi /12}}{\sqrt{2}}\left( \begin{matrix} 1 &-i \\ -1 & -i \end{matrix} \right)
 \end{align}
 These will be of use to us when we specify the pivotal properties of $\halfesix$ after condensing $y$, see Sec. \ref{ESixPivotal} for more details.
-The only data left to specify is the associators for the $V^{xxx}_x$ fusion space, which we leave in the appendix.
+The only data left to specify is the associators for the $V^{xxx}_x$ fusion space which we have in the appendix.
 \dave{Or we could display it}
 
-The above relations will be used extensively when condense the $y$ particle. Explicitly (\ref{yslide}) appears again in (\ref{esixdotslide}). All associators above make an appearence when solvig for the half braid on $y$ in the next section. 
+The above relations will be used extensively in the following sections. 
 
 \subsection{Fermion condensation in $\halfesix$}
 \label{condensey}
-In this subsection we will descibe the procedue for condensing the $y$ particle in $\halfesix$. 
+In this subsection we will descibe the procedure for condensing the $y$ particle in $\halfesix$. 
 The technique is identical to fermion condensation in the Ising theory, with one technical difference, $\halfesix$ does not admit a consistent braiding [REF Ostrik?].
 Thus when we say condense $y$, we actually mean lift $y$ to the Drinfeld center, verify that it behaves like an emergent fermion, and condense that object. 
 We first describe the lift, then we condense that particle and write down all the topological data of the $\halfesix/y$. 
 
 \subsubsection{Half braid}
-\dave{This subsubsection is still under progress.}
-\dave{Add picture to show computation.}
-A generic element in the Drinfeld center is given by an object $A$ from the fusion category and a collection of isomorphisms $e_A$ that define the half braid of $A$ with any object from the fusion category $e_A(x): A \tp x \rightarrow x \tp A$ for all $x$ in the fusion category.
-In the center there are two particles with fermionic spin, one of which has $y$ as the object from the fusion category and the half braids are given by,
+We first need a fermionic particle to condense.
+Since $\halfesix$ is not braided we search for a particle in the center of $\halfesix$ that is fermionic.
+The only natural particle that could lift to a fermion in the sense of statistics, spin, and fusion rules is $y$.
+Hence we really only need to check that that half braid corresponding to $y$ is fermionic.
+The fusion rules will necessarly remain abelian.
+Since the center of $\halfesix$ has been computed in several places [REF] we will not provide all details. 
+
+For a formal definition of half braid see \ref{muger2003b} definition 3.1\dave{I put Muger here. Is there a canonical reference for half braid?}, see also Lemma 3.3 of the same reference.
+To define a braid on an object $y \in {\cal C}$ we need to specify an isomorphism from $y \tp r \rightarrow r \tp y$ for each $r \in {\cal C}$.
+The isomorphism is the braiding of $y$ with $r$. 
+We will denote these isomorphisms as $e_y(r)$, and write them diagrammatically as
+\begin{align} 
+e_y(r)  = \halfbraid{\ebox}{y}{r}{}.
+\end{align}
+One should think of the box above as the object $y$ braiding $r$ over $y$. 
+One could equally well think of this as braiding $y$ over $r$, but since we will use ``back wall condensation" it is natural to choose $r$ over $y$. 
+Not any isomorphism will work, we need them to satisfy some conditions.
+For example, braiding with the identity object should be trivial,
 \begin{align}
-\overset{1+x+y}{\underset{1+x+y}{\ycenter}} = \ey - i  \ex -   \eone.
+\halfbraid{\ebox}{y}{\mathds{1}}{} = \text{id}_y
+\label{identityBraid}
+\end{align} 
+We should also require that the braids can slide past trivalent junctions $V^{ab}_c$,
+\begin{align}
+\halfbraidHex{\HalfBraidHexa}{y}{a}{b}{c} = \halfbraidHex{\HalfBraidHexb}{y}{a}{b}{c}
+\label{junctionBraid}
+\end{align}
+This second equation is necessary for for conistent braiding. 
+
+Solving these relations can be rather tedious in general.
+To do so one re-writes $e_y(r)$ as,
+\begin{align}
+e_y(r)  = \halfbraid{\ebox}{y}{r}{} = \sum_{w \in V^{ry}_{yr}} \left[ e_y(r)  \right]_{w} \halfbraid{\egeneral}{y}{r}{w}  
+\end{align}
+and plug it into \ref{identityBraid} and \ref{junctionBraid}. 
+Since we only require a half braid on $y$ there are only a few equations to solve and one can readily do this by hand to find,
+\begin{align}
+\halfbraid{\ebox}{y}{1+x+y}{} = \halfbraid{\eone}{y}{\mathds{1}}{} - \; i   \halfbraid{\ex}{y}{x}{x} -   \halfbraid{\ey}{y}{y}{\mathds{1}}.
 \label{yhalfbraid}
 \end{align}
-We have used a box to depict the isomorphism $e_y( \; \;)$. 
-One can check that this braid is fermionic in both spin and statistics. 
-\dave{Should probably demonstrate at least the braiding of the $y$ particle. }
+The all important negative sign on the last term makes the statistics and spin of $y$ fermionic. 
 
-We can now condense the $y$ particle by using this braiding from the center \ref{yhalfbraid}.
+
+%A generic element in the Drinfeld center is given by an object $A$ from the fusion category and a collection of isomorphisms $e_A$ that define the half braid of $A$ with any object from the fusion category $e_A(x): A \tp x \rightarrow x \tp A$ for all $x$ in the fusion category.
+%In the center there are two particles with fermionic spin, one of which has $y$ as the object from the fusion category and the half braids are given by,
+%\begin{align}
+%\overset{1+x+y}{\underset{1+x+y}{\ebox}} = \ey - i  \ex -   \eone.
+%\label{yhalfbraid}
+%\end{align}
+%We have used a box to depict the isomorphism $e_y( \; \;)$. 
+%One can check that this braid is fermionic in both spin and statistics. 
+%\dave{Should probably demonstrate at least the braiding of the $y$ particle. }
+%We can now condense the $y$ particle by using this braiding from the center \ref{yhalfbraid}.
+
+We are now in a position to condense $y$.
 Since $x$ is invariant under fusion with $y$ after condensation it becomes a Q type simple object, which we denote $\rho$.
 Furthurmore, since $x$ had fusion multiplicity in the parent theory, $\rho$, the image of $x$ under condensation will have fusion multiplicity in the condensed theory. 
 In summary we have,
@@ -3300,6 +3372,14 @@ In summary we find
 
 One can check that these, together with the S-matrix defined above satisfy $S^2 =1$, and $(ST)^3 = 1$. 
 \dave{The S-transformation I have been doing is actually the conjugate transpose of the one that should appear in $(ST)^3  =1$. But since $S = S^{\dagger}$ the relation still holds. }
+
+
+\subsection{Remarks}
+\dave{Not to self: Mention objects in the center cannot have a $Q\tp Q \rightarrow Q$ fusion rule. 
+Can ask: is it poassible 1d anyon spin chain built from this category host more exotic excitations than Majorana zero modes? 
+The folk lore (which stands on more rigoruous grounds, I'm just not familiar with the literature) is that this is impossible unless it ocurrs at the boundary of a 2+1d system.
+The fact that we have to use a half braid to define the condensation suggests that this kind of spin chain could only live at the boundary of some other 2+1D phase.
+}
 
 
 %\paragraph{$(P,P)$ sector:}
