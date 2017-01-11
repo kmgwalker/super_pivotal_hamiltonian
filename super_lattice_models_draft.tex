@@ -158,6 +158,9 @@
 \newcommand{\AnnulusTubeTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{AnnulusTubeTube.pdf}}}}}
 
 \newcommand{\SAnnulusNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{SAnnulusNoLabel.pdf}}}}}
+\newcommand{\TAnnulusNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TAnnulusNoLabel.pdf}}}}}
+
+
 
 \newcommand{\AnnulsLabel}[5]{\mathord{ 
 \mkern2mu\overset{#3}{{\Annulusxprime{#1}{#2}}}\mkern2mu\raisebox{0ex}{$\scriptstyle{#4}$} }}
@@ -180,10 +183,18 @@
 %\newcommand*{\AnnularTubex}[5]{\AnnulusPx{#1}{#2}{}{\; \; \;#3}
 %\kern-3.9em\raisebox{-4.5ex}{ $\overset{#5}{\underset{#4}{\vphantom{\Big|^2}}}$} \kern2.7em} %Could change 0 to 1.2 to raise the B.
 
+
+
 \newcommand{\SAnnulusx}[3]{\mathrel{\ooalign{$\SAnnulusNoLabel$\cr
   \hidewidth\raise5ex\hbox{$\scriptstyle{#3}\mkern1mu$}\cr
   \hidewidth\raise.8ex\hbox{$\scriptstyle{#2}\mkern63mu$}\cr
     \hidewidth\raise-3.8ex\hbox{$\scriptstyle{#1}\mkern39mu$}\cr
+  }}}
+  
+  \newcommand{\TAnnulusx}[3]{\mathrel{\ooalign{$\TAnnulusNoLabel$\cr
+  \hidewidth\raise5ex\hbox{$\scriptstyle{#3}\mkern1mu$}\cr
+  \hidewidth\raise.8ex\hbox{$\scriptstyle{#2}\mkern63mu$}\cr
+    \hidewidth\raise-4.9ex\hbox{$\scriptstyle{#1}\mkern51mu$}\cr
   }}}
 
 \newcommand{\AnnularTubex}[6]{\mathrel{\ooalign{$#1$\cr
@@ -2688,14 +2699,14 @@ With this convetion the S and T matrices become unitary.
 %%%%%%
 %%%%%%%
 %%%%%%%
-\subsection{S transformation}
+\subsubsection{S transformation}
 On the 2-torus, the S transformation is given by a $\pi/2$ rotation.
-Since we are working on the twice punctured sphere, the S transformation looks somewhat different:
+Since we are working on the anulus, the S transformation looks somewhat different:
 \begin{align}
 \xymatrix @!0 @M=1mm  @C=20mm{
-S^{XY \rightarrow \widetilde{X}\widetilde{Y}}: A(T^2,XY) \ar[rr] && A(T^2,\widetilde{X} \widetilde{Y}) & \\
-&&&\\
- \AnnularTubex{\AnnularTubeNoIndex}{}{}{\psi}{X}{Y}\ar[rr]&&\SAnnulusx{\psi}{\widetilde{X}}{\widetilde{Y}}\; & 
+S^{XY \rightarrow \widetilde{X}\widetilde{Y}}:& A(T^2,XY) \ar[rr] && A(T^2,\widetilde{X} \widetilde{Y}) & \\
+&&&&\\
+& \AnnularTubex{\AnnularTubeNoIndex}{}{}{\psi}{X}{Y}\ar@{|->}[rr] &&\SAnnulusx{\psi}{\widetilde{X}}{\widetilde{Y}}\; & 
  }
  \label{STopologicalBasis}
 \end{align}
@@ -2996,7 +3007,8 @@ So that the $S$-matrix is given by,
 \end{align}
 \dave{It's probably natural to write this as two matrices one with the $Q$ particles, and one with the $M$ particle.}
 
-\dave{Is a summary like this useful? Perhaps at the end of the section we could display this with T}In summary we have
+\dave{Is a summary like this useful? Perhaps at the end of the section we could display this with T}
+In summary we have
 \begin{align}
 \left(\begin{matrix}
 \left( \begin{matrix}
@@ -3049,39 +3061,57 @@ So that the $S$-matrix is given by,
 \end{matrix} \right)
 \end{align}
 
-\subsubsection{Dehn twist}
-\dave{Note that with the conventions I've been using we have $(S^{-1} T)^3 = 1$ }
-The action of T is given by,
+\subsubsection{T - transformation}
+The Dehn twist is just a corresponds to cutting the torus open along one cycle, applying a full $2\pi$ rotation and then gluing the torus back together along that cycle.
 \begin{align}
-T: \TorusBasisa \rightarrow  \TTorus = \sum_{xyz; \tau \sigma}T_{abc \mu \nu; xyz \tau \sigma} \TorusBasisb
+\xymatrix @!0 @M=1mm  @C=20mm{
+T^{XY \rightarrow \widetilde{X}\widetilde{Y}}:& A(T^2,XY) \ar[rr] && A(T^2,\widetilde{X} \widetilde{Y}) & \\
+&&&&\\
+& \AnnularTubex{\AnnularTubeNoIndex}{}{}{\psi}{X}{Y}\ar@{|->}[rr] &&\TAnnulusx{\psi}{\widetilde{X}}{\widetilde{Y}}\; & 
+ }
+ \label{TTopologicalBasis}
 \end{align}
+and the spin structures transform according to Fig. \ref{MappingClassGroupTorus}. 
+\begin{align}
+\TAnnulusx{\psi}{\widetilde{X}}{\widetilde{Y}} \;= \sum_{\lambda \in A(T^2,\widetilde{X}\widetilde{Y})}  T^{XY \rightarrow \widetilde{X}\widetilde{Y}}_{\psi \lambda} \AnnularTubex{\AnnularTubeNoIndex}{}{}{\lambda}{\widetilde{X}}{\widetilde{Y}} \\
+\end{align}
+It is clear that the application of a Dehn twist acts like the multiplication of a tube in the tube algebra, along with gluing the boundaries together.
+Since the idempotent basis commutes with the twisted tube, we know that all idempotents must be eigenstates of the Dehn twist. 
+In, fact this is how we label there spin in table [XXX].
+It is illuminating to explicitly compute the transformation in the topological basis, and then change to the idempotent basis as we did above. 
+But no furthur insight is gained, other than the result you expect. 
+Hence we will write down the results.
+%\dave{Note that with the conventions I've been using we have $(S^{-1} T)^3 = 1$ }
+%The action of T is given by,
+%\begin{align}
+%T: \TorusBasisa \rightarrow  \TTorus = \sum_{xyz; \tau \sigma}T_{abc \mu \nu; xyz \tau \sigma} \TorusBasisb
+%\end{align}
 
-Lets start with the (PA) torus. 
-This spin structure is invariant under $T$, and we have in the topological basis,
-\begin{align}
-\left( \begin{matrix}
-e\\
-v\\
-t\\
-\end{matrix} \right)_{PA} \xrightarrow{T_{PA \rightarrow PA}} 
-\left( \begin{matrix}
-1 & 0 & 0 \\
-0 & 0 & 1 \\
-d e^{i \pi /6} & e^{-2 \pi i/3} & e^{- 5i \pi /6}\\
-\end{matrix} \right) 
-\left( \begin{matrix}
-e\\
-v\\
-t\\
-\end{matrix} \right)_{PA}
-\end{align}
-In the idempotent basis we have:
+%Lets start with the (PA) torus. 
+%This spin structure is invariant under $T$, and we have in the topological basis,
+%\begin{align}
+%\left( \begin{matrix}
+%e\\
+%v\\
+%t\\
+%\end{matrix} \right)_{PA} \xrightarrow{T_{PA \rightarrow PA}} 
+%\left( \begin{matrix}
+%1 & 0 & 0 \\
+%0 & 0 & 1 \\
+%d e^{i \pi /6} & e^{-2 \pi i/3} & e^{- 5i \pi /6}\\
+%\end{matrix} \right) 
+%\left( \begin{matrix}
+%e\\
+%v\\
+%t\\
+%\end{matrix} \right)_{PA}
+%\end{align}
 \begin{align}
 \left( \begin{matrix}
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA} \xrightarrow{T_{PA \rightarrow PA}}
+\end{matrix} \right)_{NB} \xrightarrow{T^{NB \rightarrow NB}}
 \left( \begin{matrix}
 1 & 0 & 0\\
 0 & -i & 0 \\
@@ -3091,89 +3121,104 @@ In the idempotent basis we have:
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}
+\end{matrix} \right)_{NB}
 \end{align}
 
-
-Now we investigate the (AA) and (AP) spin structures which are mixed under the action of $T$.
-\begin{align}
-\left( \begin{matrix}
-e\\
-v\\
-h\\
-\end{matrix} \right)_{AA}
-\xrightarrow{T_{AA \rightarrow AP}}
-\left(\begin{matrix} 
-1 & 0 &0 \\
-0 & 1 & 0 \\
-0 & 0 & 1\\
-\end{matrix} \right)
-\left( \begin{matrix}
-e\\
-t\\
-h\\
-\end{matrix} \right)_{AP}
-\end{align}
-in the idempotent basis we find
+%\begin{align}
+%\left( \begin{matrix}
+%e\\
+%v\\
+%h\\
+%\end{matrix} \right)_{AA}
+%\xrightarrow{T_{AA \rightarrow AP}}
+%\left(\begin{matrix} 
+%1 & 0 &0 \\
+%0 & 1 & 0 \\
+%0 & 0 & 1\\
+%\end{matrix} \right)
+%\left( \begin{matrix}
+%e\\
+%t\\
+%h\\
+%\end{matrix} \right)_{AP}
+%\end{align}
+%in the idempotent basis we find
 \begin{align}
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
+\end{matrix} \right)_{BB} 
+\xrightarrow{T_{BB \rightarrow BN}} 
+\left(\begin{matrix} 
+1 & 0 &0 \\
+0 & 1 & 0 \\
+0 & 0 & e^{i \pi /3} \\
+\end{matrix} \right)
+\left( \begin{matrix}
+\text{M}_1\\
+\text{M}_2\\
+\text{M}_3\\
+\end{matrix} \right)_{BN}
+\end{align}
+
+%Now we do (A,P) to (AA):
+%\begin{align}
+%\left( \begin{matrix}
+%e\\
+%t\\
+%h\\
+%\end{matrix} \right)_{AP}
+%\xrightarrow{T_{AP \rightarrow AA}}
+%\left(\begin{matrix} 
+%1 & 0 &0 \\
+%de^{-i \pi /6} &e^{2\pi i /3} &e^{5 i \pi /6} \\
+%0 & 0 & 1\\
+%\end{matrix} \right)
+%\left( \begin{matrix}
+%e\\
+%v\\
+%h\\
+%\end{matrix} \right)_{AA}
+%\end{align}
+\begin{align}
+\left( \begin{matrix}
+\text{M}_1\\
+\text{M}_2\\
+\text{M}_3\\
+\end{matrix} \right)_{BN} 
+\xrightarrow{T_{BN \rightarrow BB}} 
+\left(\begin{matrix} 
+1 & 0 &0 \\
+0 & 1 & 0 \\
+0 & 0 & e^{i \pi /3} \\
+\end{matrix} \right)
+\left( \begin{matrix}
+\text{M}_1\\
+\text{M}_2\\
+\text{M}_3\\
+\end{matrix} \right)_{BB}
+\end{align}
+
+\begin{align}
+\left( \begin{matrix}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right)_{NN} \xrightarrow{T^{NN\rightarrow NN}}
+\left( \begin{matrix} 
+1 & 0&0 \\
+0 & -i & 0 \\
+0 & 0& e^{5 i \pi /6}\\
 \end{matrix} \right) 
-\xrightarrow{T_{AA \rightarrow AP}} 
-\left(\begin{matrix} 
-1 & 0 &0 \\
-0 & 1 & 0 \\
-0 & 0 & e^{i \pi /3} \\
-\end{matrix} \right)
 \left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
-\end{matrix} \right)_{AP}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right)_{NN}
 \end{align}
 
-Now we do (A,P) to (AA):
-\begin{align}
-\left( \begin{matrix}
-e\\
-t\\
-h\\
-\end{matrix} \right)_{AP}
-\xrightarrow{T_{AP \rightarrow AA}}
-\left(\begin{matrix} 
-1 & 0 &0 \\
-de^{-i \pi /6} &e^{2\pi i /3} &e^{5 i \pi /6} \\
-0 & 0 & 1\\
-\end{matrix} \right)
-\left( \begin{matrix}
-e\\
-v\\
-h\\
-\end{matrix} \right)_{AA}
-\end{align}
-
-In the idempotent basis we have
-\begin{align}
-\left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
-\end{matrix} \right)_{AP} 
-\xrightarrow{T_{AP \rightarrow AA}} 
-\left(\begin{matrix} 
-1 & 0 &0 \\
-0 & 1 & 0 \\
-0 & 0 & e^{i \pi /3} \\
-\end{matrix} \right)
-\left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
-\end{matrix} \right)_{AA}
-\end{align}
-
+\dave{Didn't want to delete this in case we end up using it somewhere.}
 In summary we find
 \begin{align}
 \left(\begin{matrix}
@@ -3181,19 +3226,19 @@ In summary we find
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AP} \\
+\end{matrix} \right)_{BN} \\
 \\
 \left( \begin{matrix}
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}\\
+\end{matrix} \right)_{NB}\\
 \\
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AA} \\
+\end{matrix} \right)_{BB} \\
 \end{matrix} \right)
 \xrightarrow{T} \left( \begin{matrix}
 &&&			&&&			1&0&0	\\
@@ -3211,19 +3256,19 @@ In summary we find
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AP} \\
+\end{matrix} \right)_{BN} \\
 \\
 \left( \begin{matrix}
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}\\
+\end{matrix} \right)_{NB}\\
 \\
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AA} \\
+\end{matrix} \right)_{BB} \\
 \end{matrix} \right)
 \end{align}
 
@@ -3231,59 +3276,57 @@ One can check that these, together with the S-matrix defined above satisfy $S^2 
 \dave{The S-transformation I have been doing is actually the conjugate transpose of the one that should appear in $(ST)^3  =1$. But since $S = S^{\dagger}$ the relation still holds. }
 
 
-\paragraph{$(P,P)$ sector:}
-The non-bounding torus is a little more subtle than the bounding torus so we saved it for last. 
+%\paragraph{$(P,P)$ sector:}
+%The non-bounding torus is a little more subtle than the bounding torus so we saved it for last. 
+
+%Hence the the vector space associated to the $(P,P)$ torus is $\mathbb{C}^{1|2}$, and we choose the linearly independent basis to be,
+%\begin{align}
+%A(T^2_{PP}) = \mathbb{C} \left [ \hOdd, \quad \vOdd,\quad \TubeXa \right ] 
+%\end{align}
+%We also define,
+%\begin{align}
+%\stackrel{\bullet}{h} \equiv  \hOdd, \quad \stackrel{\bullet}{v} \equiv \vOdd,\quad {X} \equiv \TubeXa
+%\end{align}
 
 
-
-Hence the the vector space associated to the $(P,P)$ torus is $\mathbb{C}^{1|2}$, and we choose the linearly independent basis to be,
-\begin{align}
-A(T^2_{PP}) = \mathbb{C} \left [ \hOdd, \quad \vOdd,\quad \TubeXa \right ] 
-\end{align}
-We also define,
-\begin{align}
-\stackrel{\bullet}{h} \equiv  \hOdd, \quad \stackrel{\bullet}{v} \equiv \vOdd,\quad {X} \equiv \TubeXa
-\end{align}
-
-
-Can also do the Dehn twist,
-\begin{align}
-\left( \begin{matrix}
-\stackrel{\bullet}{h} \\
-\stackrel{\bullet}{v} \\
-X \\
-\end{matrix} \right)
-\xrightarrow{T_{PP}} 
-\left( \begin{matrix}
-1&0  &0 \\ 
-1&-i &0 \\
-0&0& e^{5 i \pi /6} \\
-\end{matrix} \right)
-\left( \begin{matrix}
-\stackrel{\bullet}{h} \\
-\stackrel{\bullet}{v} \\
-X \\\end{matrix} \right)
-\end{align}
-which gives,
-\begin{align}
-\left( \begin{matrix}
-\stackrel{\bullet}{Q}_{1}\\
-\stackrel{\bullet}{Q}_{2}\\
-\text{M}_6 \\ 
-\end{matrix} \right) \xrightarrow{T_{PP}}
-\left( \begin{matrix} 
-1 & 0&0 \\
-0 & -i & 0 \\
-0 & 0& e^{5 i \pi /6}\\
-\end{matrix} \right) 
-\left( \begin{matrix}
-\stackrel{\bullet}{Q}_{1}\\
-\stackrel{\bullet}{Q}_{2}\\
-\text{M}_6 \\ 
-\end{matrix} \right)
-\end{align}
-as expected.
-\dave{In the odd sector we have $S_o^4 = -1$, $(S_o^{\dagger} T)^3 = -1$, and in the even sector we have $S_e^4 = 1$, $(S_e^{\dagger} T)^3 = 1$.}
+%Can also do the Dehn twist,
+%\begin{align}
+%\left( \begin{matrix}
+%\stackrel{\bullet}{h} \\
+%\stackrel{\bullet}{v} \\
+%X \\
+%\end{matrix} \right)
+%\xrightarrow{T_{PP}} 
+%\left( \begin{matrix}
+%1&0  &0 \\ 
+%1&-i &0 \\
+%0&0& e^{5 i \pi /6} \\
+%\end{matrix} \right)
+%\left( \begin{matrix}
+%\stackrel{\bullet}{h} \\
+%\stackrel{\bullet}{v} \\
+%X \\\end{matrix} \right)
+%\end{align}
+%which gives,
+%\begin{align}
+%\left( \begin{matrix}
+%\stackrel{\bullet}{Q}_{1}\\
+%\stackrel{\bullet}{Q}_{2}\\
+%\text{M}_6 \\ 
+%\end{matrix} \right) \xrightarrow{T_{PP}}
+%\left( \begin{matrix} 
+%1 & 0&0 \\
+%0 & -i & 0 \\
+%0 & 0& e^{5 i \pi /6}\\
+%\end{matrix} \right) 
+%\left( \begin{matrix}
+%\stackrel{\bullet}{Q}_{1}\\
+%\stackrel{\bullet}{Q}_{2}\\
+%\text{M}_6 \\ 
+%\end{matrix} \right)
+%\end{align}
+%as expected.
+%\dave{In the odd sector we have $S_o^4 = -1$, $(S_o^{\dagger} T)^3 = -1$, and in the even sector we have $S_e^4 = 1$, $(S_e^{\dagger} T)^3 = 1$.}
 
 
 
