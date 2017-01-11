@@ -158,6 +158,9 @@
 \newcommand{\AnnulusTubeTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{AnnulusTubeTube.pdf}}}}}
 
 \newcommand{\SAnnulusNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{SAnnulusNoLabel.pdf}}}}}
+\newcommand{\TAnnulusNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TAnnulusNoLabel.pdf}}}}}
+
+
 
 \newcommand{\AnnulsLabel}[5]{\mathord{ 
 \mkern2mu\overset{#3}{{\Annulusxprime{#1}{#2}}}\mkern2mu\raisebox{0ex}{$\scriptstyle{#4}$} }}
@@ -180,10 +183,18 @@
 %\newcommand*{\AnnularTubex}[5]{\AnnulusPx{#1}{#2}{}{\; \; \;#3}
 %\kern-3.9em\raisebox{-4.5ex}{ $\overset{#5}{\underset{#4}{\vphantom{\Big|^2}}}$} \kern2.7em} %Could change 0 to 1.2 to raise the B.
 
+
+
 \newcommand{\SAnnulusx}[3]{\mathrel{\ooalign{$\SAnnulusNoLabel$\cr
   \hidewidth\raise5ex\hbox{$\scriptstyle{#3}\mkern1mu$}\cr
   \hidewidth\raise.8ex\hbox{$\scriptstyle{#2}\mkern63mu$}\cr
     \hidewidth\raise-3.8ex\hbox{$\scriptstyle{#1}\mkern39mu$}\cr
+  }}}
+  
+  \newcommand{\TAnnulusx}[3]{\mathrel{\ooalign{$\TAnnulusNoLabel$\cr
+  \hidewidth\raise5ex\hbox{$\scriptstyle{#3}\mkern1mu$}\cr
+  \hidewidth\raise.8ex\hbox{$\scriptstyle{#2}\mkern63mu$}\cr
+    \hidewidth\raise-4.9ex\hbox{$\scriptstyle{#1}\mkern51mu$}\cr
   }}}
 
 \newcommand{\AnnularTubex}[6]{\mathrel{\ooalign{$#1$\cr
@@ -823,22 +834,39 @@ In this paper, we will adopt the convention that $\psi$ world lines are allowed 
 \begin{figure}
   \centering
     \includegraphics{Backwall_figure.pdf}
-      \caption{\label{backwall} (a) The ``back wall'' picture. The box represents a section of a (2+1)D Ising TQFT, with the codimension-1 back wall indicated by the blue back side of the box. 
-$\psi$ worldlines to be absorbed into the back wall at marked points labelled by $1,2,3,4$. 
+      \caption{\label{backwall} (a) The ``back wall'' picture. 
+      The box represents a section of a (2+1)D Ising TQFT, with the codimension-1 back wall 
+      indicated by the blue back side of the box. 
+$\psi$ worldlines are absorbed into (or emitted from) the back wall at marked points labelled by $1,2,3,4$. 
 Free $\psi$ endpoints which do not terminate on the back wall are not allowed. 
 (b) Our way of representing the picture (a) in a (1+1)D graphical calculus. 
 We have squashed the box down to a two dimensional plane, with the blue boxes representing the points at which the $\psi$ lines ``go straight back and hit the back wall''.}
 \end{figure}
 
-Figure \ref{backwall} (a) demonstrates this graphically, with the light blue back section of the box denoting the back wall, on which the $\psi$ worldlines can be absorbed. 
-String-net graphs in our (2+1)D spacetime can be reduced to string-net graphs in (1+1)D spacetime by introducing a shorthand notation for $\psi$-lines terminating on the back wall. 
-This notation is shown in Figure \ref{backwall} (b), where we use boxes to denote places where $\psi$ worldlines head straight back into the back wall and terminate.
+Figure \ref{backwall}(a) demonstrates this graphically, 
+with the light blue back section of the box denoting the back wall, 
+on which the $\psi$ worldlines can be absorbed or emitted. 
+String-net graphs in our (2+1)D spacetime can be reduced to string-net graphs 
+in (1+1)D spacetime by introducing a shorthand notation for $\psi$-lines terminating on the back wall. 
+This notation is shown in Figure \ref{backwall}(b), 
+where we use boxes to denote places where $\psi$ worldlines head straight back into the back wall and terminate.
 
+\kw{I would drop this paragraph and figure}
 The ``back wall'' condensation process ``transparentizes'' $\psi$, and allows us to condense $\psi$ without confining $\beta$. Indeed, keeping in mind that the boxes represent $\psi$ lines which head straight into the page until they hit the back wall, we have 
 \be \label{box_beta_braiding}
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{box_beta_braiding.pdf}}}},\ee
 where we have performed an $F$-move to obtain the second equality. 
 \ethan{I guess I still don't understand why this means the theory isn't braided: we can move endpoints over $\beta$ lines if we want.}
+
+\kw{proposed replacement for above paragraph and fig}
+Even though we use the same box-at-the-end-of-the-string graphical convention to denote ordinary condensation
+and back wall condensation, there is an important difference.
+In both cases, we can slide a box behind another strand [fig showing this]; the before and after pictures differ by an isotopy.
+But in the back wall case, we cannot slide a box in front of another strand [fig with a $\ne$ between two diagrams].
+This is because doing so would involve the other strand crossing the $\psi$ strand as it
+heads into the page en route to the back wall; the before and after pictures are not isotopic.
+Thus restricting $\psi$ emission/absorption to the back wall
+disallows the series of diagram equalities in Figure \ref{box_beta_nowall_braiding}.
 
 An important consequence of the existence of the back wall this is that the quotient category $C_2$ is not braided, as it maps onto a (1+1)D theory.
 In category theoretic terms, the condensation process takes a 3-category (braided category) to a 2-category (tensor category)\footnote{The condensed theory does however retain a ``front braiding" by the Ising category, so it is more than a mere tensor category.}. 
@@ -1756,6 +1784,7 @@ This particle obeys the fusion rule,
 \rho \tp \rho = \mathbb{C}^{1|1} \mathds{1} \oplus \mathbb{C}^{2|2} \rho
 \end{align}
 \dave{Do we have a convention for this yet? I have written it as above since $V^{\rho \rho}_\mathds{1}  \cong  \mathbb{C}^{1|1}$ and $ V^{\rho \rho}_\rho \cong \mathbb{C}^{2|2}$.}
+\kw{Both coefficients should be $\mathbb{C}^{1|1}$; the endomorphism algebras of the LHS and RHS should be isomorphic.}
 This theory is quite a bit more rich than $C_2$. 
 \dave{List significant differences from $C_2$}e.g.,
 - As a fusion category, there is a fusion rule that takes two $Q$ type particles to another $Q$ type particle. 
@@ -1879,6 +1908,7 @@ Thus when we say condense $y$, we actually mean lift $y$ to the Drinfeld center,
 We first describe the lift, then we condense that particle and write down all the topological data of the $\halfesix/y$. 
 
 \subsubsection{Half braid}
+\dave{This subsubsection is still under progress.}
 \dave{Add picture to show computation.}
 A generic element in the Drinfeld center is given by an object $A$ from the fusion category and a collection of isomorphisms $e_A$ that define the half braid of $A$ with any object from the fusion category $e_A(x): A \tp x \rightarrow x \tp A$ for all $x$ in the fusion category.
 In the center there are two particles with fermionic spin, one of which has $y$ as the object from the fusion category and the half braids are given by,
@@ -2269,6 +2299,7 @@ A(T^2, NN)  &\cong \mathbb{C}^{1|2} = \mathbb{C} \left[ \AddDatTorusDot{\hTube}{
 
 
  \subsection{Center of condensed $\halfesix$}
+ \dave{Subsection still in progress.}
  In this subsection we compute the center of $\halfesix$.
  \dave{Kevin, what's the proper nomenclature here?}
 In the bounding sector we have three simple $M$ type objects. 
@@ -2363,6 +2394,7 @@ $\alpha = \frac{1}{2} \left( 1+ 1/\sqrt{2d+1} \right)$, and $\beta = \frac{1}{2}
 \dave{to do}
 \begin{itemize}
 \item table/matrix that shows isomorphsims between particles. E.g., $X_i T_\alpha X_j = \sum_\beta C_{i\alpha j}^{ \beta} T_\beta$ for each tube $T_{\alpha}$, and idempotents $X_i$.
+\item list quantum dimesions of particles
 \end{itemize}
 
 
@@ -2621,7 +2653,7 @@ e\\
 v\\
 h\\
 \end{matrix} \right)_{BB}\\
-\label{VAP}
+\label{VAP}  
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
@@ -2638,7 +2670,7 @@ e\\
 t\\
 h\\
 \end{matrix} \right)_{BN} \\
-\label{VPA}
+\label{VPA} 
 \left( \begin{matrix}
 \text{Q}_1\\
 \text{Q}_2\\
@@ -2664,6 +2696,7 @@ We define $\left[ \stackrel{\bullet}{Q}_{i}\right]^2  = Q_i$.
 This has a $\pm$ ambiguity, we denote the $\pm$ signs by $\sigma_i$. 
 We can also change to the idempotent basis with,
 \begin{align}
+\label{VPP}
 \left( \begin{matrix}
 \stackrel{\bullet}{Q}_{1}\\
 \stackrel{\bullet}{Q}_{2}\\
@@ -2692,15 +2725,16 @@ With this convetion the S and T matrices become unitary.
 %%%%%%
 %%%%%%%
 %%%%%%%
-\subsection{S transformation}
+\subsubsection{S transformation}
 On the 2-torus, the S transformation is given by a $\pi/2$ rotation.
-Since we are working on the twice punctured sphere, the S transformation looks somewhat different:
+Since we are working on the anulus, the S transformation looks somewhat different:
 \begin{align}
 \xymatrix @!0 @M=1mm  @C=20mm{
-S^{XY \rightarrow \widetilde{X}\widetilde{Y}}: A(T^2,XY) \ar[rr] && A(T^2,\widetilde{X} \widetilde{Y}) & \\
-&&&\\
- \AnnularTubex{\AnnularTubeNoIndex}{}{}{\psi}{X}{Y}\ar[rr]&&\SAnnulusx{\psi}{\widetilde{X}}{\widetilde{Y}}\; & 
+S^{XY \rightarrow \widetilde{X}\widetilde{Y}}:& A(T^2,XY) \ar[rr] && A(T^2,\widetilde{X} \widetilde{Y}) & \\
+&&&&\\
+& \AnnularTubex{\AnnularTubeNoIndex}{}{}{\psi}{X}{Y}\ar@{|->}[rr] &&\SAnnulusx{\psi}{\widetilde{X}}{\widetilde{Y}}\; & 
  }
+ \label{STopologicalBasis}
 \end{align}
 \dave{Need some notation.}
 and the spin structures transform according to Fig. \ref{MappingClassGroupTorus}. 
@@ -2770,15 +2804,17 @@ The explicit matrix elements are given by
 %\end{align}
 
 We can now work out the S-matrix for each spin structure in the topological basis, and then change over to the idempotent basis. 
-\paragraph{$(A,A)$ sector:}
-For the (AA) spin structure one simply finds that $v$ and $h$ are interchanged so that,
+The calculation is the same in each case, we find the linear map on the in to the topological basis based on (\ref{STopologicalBasis}), and then change back to the particle basis using (\ref{VPA}--\ref{VPP}).
+%(\ref{VPA,VAP,VAA,VPP}).
+
+For the (BB) spin structure one simply finds that $v$ and $h$ are interchanged so that,
 \begin{align}
 \left( \begin{matrix}
 e\\
 v\\
 h\\
-\end{matrix} \right)_{AA}
-\xrightarrow{S^{AA}}
+\end{matrix} \right)_{BB}
+\xrightarrow{S^{BB \rightarrow BB}}
 \left(\begin{matrix}
 1& 0& 0 \\
 0& 0&1  \\
@@ -2788,7 +2824,7 @@ h\\
 e\\
 v\\
 h\\
-\end{matrix} \right)_{AA}
+\end{matrix} \right)_{BB}
 \end{align}
 We can now write down the S-matrix in the idempotent basis using the change of basis in (\ref{VAA})
 \begin{align}
@@ -2796,7 +2832,7 @@ We can now write down the S-matrix in the idempotent basis using the change of b
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AA} \xrightarrow{S_{AA \rightarrow AA}} 
+\end{matrix} \right)_{BB} \xrightarrow{S^{BB \rightarrow BB}} 
 \frac{1}{\sqrt{3}}\left( \begin{matrix}
 \frac{1}{d} & \frac{d}{2} & 1\\ 
 \frac{d}{2} & \frac{1}{d} & -1\\
@@ -2806,15 +2842,11 @@ We can now write down the S-matrix in the idempotent basis using the change of b
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AA}
+\end{matrix} \right)_{BB}
 \end{align}
 
-
-
-\paragraph{$(A,P)$ and $(P,A)$ sectors:}
-The (AP) and (PA) tori are interechanged by S. 
-We first find the action of S on the (AP) torus. 
-S matrices in the topological basis:
+Next we compute the S-matrix elements that transition between the $(BN)$ and $(NB)$ tori.
+We first find the action of S on the (BN) torus:
 %\begin{align}
 %\left( \begin{matrix}
 %\scalebox{0.5}{$\TubeEmpty$} \\
@@ -2841,8 +2873,8 @@ S matrices in the topological basis:
 e\\
 h\\
 v\\
-\end{matrix} \right)_{AP} 
- \xrightarrow{S_{AP\rightarrow PA}}
+\end{matrix} \right)_{BN} 
+ \xrightarrow{S^{BN\rightarrow NB}}
 \left( \begin{matrix}
 1&0&0\\
 0&1&0\\
@@ -2852,15 +2884,15 @@ d e^{-i \pi/6} & e^{5 i \pi/6}  & e^{2 \pi i /3}\\
 e\\
 v\\
 t\\
-\end{matrix} \right)_{PA}
+\end{matrix} \right)_{NB}
 \end{align}
 which can be written in the idempotent basis to find,
 \begin{align}\left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AP}
-\xrightarrow{S_{AP \rightarrow PA}}
+\end{matrix} \right)_{BN}
+\xrightarrow{S^{BN \rightarrow NB}}
 %\left( \begin{matrix}
 %\frac{1}{d \sqrt{3}} & \frac{i}{\sqrt{3}} & - \frac{i}{\sqrt{3}} \\
 %\frac{d}{2 \sqrt{3}} & - \frac{i}{\sqrt{3}} & \frac{i}{\sqrt{3}} \\
@@ -2875,17 +2907,16 @@ which can be written in the idempotent basis to find,
 \text{Q}_1\\
 \text{Q}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}
+\end{matrix} \right)_{NB}.
 \end{align}
-
-Next we work out the S-matrix in the topological basis for the  (PA) vector,
+Similarly we can work out the S-matrix in the topological basis for the $(NB)$ torus,
 \begin{align}
 \left( \begin{matrix}
 e \\ 
 v\\ 
 t\\ 
-\end{matrix} \right)
-  \xrightarrow{S_{PA \rightarrow AP}}
+\end{matrix} \right)_{NB}
+  \xrightarrow{S^{NB \rightarrow BN}}
 \left( \begin{matrix}
 1&0&0\\
 0&1&0\\
@@ -2895,7 +2926,7 @@ de^{i \pi/6} & e^{-5 i \pi /6} & e^{-2 i \pi /3}
 e \\
 h\\ 
 t\\ 
-\end{matrix} \right)_{AP} 
+\end{matrix} \right)_{BN} 
 \end{align}
 And again we can write this in the idempotent basis:
 \begin{align}
@@ -2903,8 +2934,8 @@ And again we can write this in the idempotent basis:
 \text{Q}_1\\
 \text{Q}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}
-\xrightarrow{S_{PA \rightarrow AP}}
+\end{matrix} \right)_{NB}
+\xrightarrow{S^{NB \rightarrow BN}}
 \left( \begin{matrix}
 1& 1& 0 \\
 \frac{1}{\sqrt{3}} & - \frac{1}{\sqrt{3}} & \frac{2}{\sqrt{3}} \\
@@ -2914,19 +2945,18 @@ And again we can write this in the idempotent basis:
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AP}
+\end{matrix} \right)_{BN}
 \end{align}
 Notice that the $S$ matrix is invertible, but not unitary. 
 This is because we didn't normalize our idempotents appropriately. 
-An M type idempotent has norm square equal to 1, while a Q type idempotent has norm square equal to 2.
 Thus we write the normalized Q idempotents with a hat, $\widehat{Q}_i = Q_i /\sqrt{2}$.
 Once doing so we find the appropriately normalized S matrix is given by,
 \begin{align}\left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AP}
-\xrightarrow{S_{AP \rightarrow PA}}
+\end{matrix} \right)_{BN}
+\xrightarrow{S^{BN \rightarrow NB}}
 %\left( \begin{matrix}
 %\frac{1}{d \sqrt{3}} & \frac{i}{\sqrt{3}} & - \frac{i}{\sqrt{3}} \\
 %\frac{d}{2 \sqrt{3}} & - \frac{i}{\sqrt{3}} & \frac{i}{\sqrt{3}} \\
@@ -2941,15 +2971,15 @@ Once doing so we find the appropriately normalized S matrix is given by,
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}
+\end{matrix} \right)_{NB}
 \end{align}
 \begin{align}
 \left( \begin{matrix}
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}
-\xrightarrow{S_{PA \rightarrow AP}}
+\end{matrix} \right)_{NB}
+\xrightarrow{S^{NB \rightarrow BN}}
 \left( \begin{matrix}
 \frac{1}{\sqrt{2}}& \frac{1}{\sqrt{2}}& 0 \\
 \frac{1}{\sqrt{6}} & - \frac{1}{\sqrt{6}} & \sqrt{\frac{2}{3}} \\
@@ -2959,30 +2989,71 @@ Once doing so we find the appropriately normalized S matrix is given by,
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AP}
+\end{matrix} \right)_{BN}
 \end{align}
 Notice that the matrix is symmetric, and unitary.
 
-\dave{Is a summary like this useful? Perhaps at the end of the section we could display this with T}In summary we have
+Lastly, we can work out the S-matrix on the non-bounding torus.
+\begin{align}
+\left( \begin{matrix}
+\stackrel{\bullet}{h} \\
+\stackrel{\bullet}{v} \\
+X \\
+\end{matrix} \right)_{NN}
+\xrightarrow{S^{NN\rightarrow NN}} 
+\left( \begin{matrix}
+0&i  &0 \\ 
+1&0 &0 \\
+0&0& -i \\
+\end{matrix} \right)
+\left( \begin{matrix}
+\stackrel{\bullet}{h} \\
+\stackrel{\bullet}{v} \\
+X \\\end{matrix} \right)_{NN}
+\end{align}
+So that the $S$-matrix is given by,
+\begin{align}
+\left( \begin{matrix}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right)_{NN}
+ \xrightarrow{S^{NN \rightarrow NN}}
+\frac{e^{i \pi /4}}{\sqrt{2}}\left( \begin{matrix} 
+1&\Sigma &0 \\
+\Sigma &-1&0\\
+0&0& -\sqrt{2} e^{i \pi /4}\\
+\end{matrix} \right)
+\left( \begin{matrix}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right)_{NN}
+\quad \quad \text{where $\Sigma = \sigma_1 \sigma_2$.}
+\end{align}
+\dave{It's probably natural to write this as two matrices one with the $Q$ particles, and one with the $M$ particle.}
+
+\dave{Is a summary like this useful? Perhaps at the end of the section we could display this with T}
+In summary we have
 \begin{align}
 \left(\begin{matrix}
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AP} \\
+\end{matrix} \right)_{BN} \\
 \\
 \left( \begin{matrix}
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}\\
+\end{matrix} \right)_{NB}\\
 \\
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AA} \\
+\end{matrix} \right)_{BB} \\
 \end{matrix} \right)
 \xrightarrow{S} \left( \begin{matrix}
 &&&			\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{6}} &  \frac{1}{\sqrt{3}} &			&&\\
@@ -3000,55 +3071,73 @@ Notice that the matrix is symmetric, and unitary.
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AP} \\
+\end{matrix} \right)_{BN} \\
 \\
 \left( \begin{matrix}
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}\\
+\end{matrix} \right)_{NB}\\
 \\
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AA} \\
+\end{matrix} \right)_{BB} \\
 \end{matrix} \right)
 \end{align}
 
-\subsubsection{Dehn twists}
-\dave{Note that with the conventions I've been using we have $(S^{-1} T)^3 = 1$ }
-The action of T is given by,
+\subsubsection{T - transformation}
+The Dehn twist is just a corresponds to cutting the torus open along one cycle, applying a full $2\pi$ rotation and then gluing the torus back together along that cycle.
 \begin{align}
-T: \TorusBasisa \rightarrow  \TTorus = \sum_{xyz; \tau \sigma}T_{abc \mu \nu; xyz \tau \sigma} \TorusBasisb
+\xymatrix @!0 @M=1mm  @C=20mm{
+T^{XY \rightarrow \widetilde{X}\widetilde{Y}}:& A(T^2,XY) \ar[rr] && A(T^2,\widetilde{X} \widetilde{Y}) & \\
+&&&&\\
+& \AnnularTubex{\AnnularTubeNoIndex}{}{}{\psi}{X}{Y}\ar@{|->}[rr] &&\TAnnulusx{\psi}{\widetilde{X}}{\widetilde{Y}}\; & 
+ }
+ \label{TTopologicalBasis}
 \end{align}
+and the spin structures transform according to Fig. \ref{MappingClassGroupTorus}. 
+\begin{align}
+\TAnnulusx{\psi}{\widetilde{X}}{\widetilde{Y}} \;= \sum_{\lambda \in A(T^2,\widetilde{X}\widetilde{Y})}  T^{XY \rightarrow \widetilde{X}\widetilde{Y}}_{\psi \lambda} \AnnularTubex{\AnnularTubeNoIndex}{}{}{\lambda}{\widetilde{X}}{\widetilde{Y}} \\
+\end{align}
+It is clear that the application of a Dehn twist acts like the multiplication of a tube in the tube algebra, along with gluing the boundaries together.
+Since the idempotent basis commutes with the twisted tube, we know that all idempotents must be eigenstates of the Dehn twist. 
+In, fact this is how we label there spin in table [XXX].
+It is illuminating to explicitly compute the transformation in the topological basis, and then change to the idempotent basis as we did above. 
+But no furthur insight is gained, other than the result you expect. 
+Hence we will write down the results.
+%\dave{Note that with the conventions I've been using we have $(S^{-1} T)^3 = 1$ }
+%The action of T is given by,
+%\begin{align}
+%T: \TorusBasisa \rightarrow  \TTorus = \sum_{xyz; \tau \sigma}T_{abc \mu \nu; xyz \tau \sigma} \TorusBasisb
+%\end{align}
 
-Lets start with the (PA) torus. 
-This spin structure is invariant under $T$, and we have in the topological basis,
-\begin{align}
-\left( \begin{matrix}
-e\\
-v\\
-t\\
-\end{matrix} \right)_{PA} \xrightarrow{T_{PA \rightarrow PA}} 
-\left( \begin{matrix}
-1 & 0 & 0 \\
-0 & 0 & 1 \\
-d e^{i \pi /6} & e^{-2 \pi i/3} & e^{- 5i \pi /6}\\
-\end{matrix} \right) 
-\left( \begin{matrix}
-e\\
-v\\
-t\\
-\end{matrix} \right)_{PA}
-\end{align}
-In the idempotent basis we have:
+%Lets start with the (PA) torus. 
+%This spin structure is invariant under $T$, and we have in the topological basis,
+%\begin{align}
+%\left( \begin{matrix}
+%e\\
+%v\\
+%t\\
+%\end{matrix} \right)_{PA} \xrightarrow{T_{PA \rightarrow PA}} 
+%\left( \begin{matrix}
+%1 & 0 & 0 \\
+%0 & 0 & 1 \\
+%d e^{i \pi /6} & e^{-2 \pi i/3} & e^{- 5i \pi /6}\\
+%\end{matrix} \right) 
+%\left( \begin{matrix}
+%e\\
+%v\\
+%t\\
+%\end{matrix} \right)_{PA}
+%\end{align}
 \begin{align}
 \left( \begin{matrix}
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA} \xrightarrow{T_{PA \rightarrow PA}}
+\end{matrix} \right)_{NB} \xrightarrow{T^{NB \rightarrow NB}}
 \left( \begin{matrix}
 1 & 0 & 0\\
 0 & -i & 0 \\
@@ -3058,89 +3147,104 @@ In the idempotent basis we have:
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}
+\end{matrix} \right)_{NB}
 \end{align}
 
-
-Now we investigate the (AA) and (AP) spin structures which are mixed under the action of $T$.
-\begin{align}
-\left( \begin{matrix}
-e\\
-v\\
-h\\
-\end{matrix} \right)_{AA}
-\xrightarrow{T_{AA \rightarrow AP}}
-\left(\begin{matrix} 
-1 & 0 &0 \\
-0 & 1 & 0 \\
-0 & 0 & 1\\
-\end{matrix} \right)
-\left( \begin{matrix}
-e\\
-t\\
-h\\
-\end{matrix} \right)_{AP}
-\end{align}
-in the idempotent basis we find
+%\begin{align}
+%\left( \begin{matrix}
+%e\\
+%v\\
+%h\\
+%\end{matrix} \right)_{AA}
+%\xrightarrow{T_{AA \rightarrow AP}}
+%\left(\begin{matrix} 
+%1 & 0 &0 \\
+%0 & 1 & 0 \\
+%0 & 0 & 1\\
+%\end{matrix} \right)
+%\left( \begin{matrix}
+%e\\
+%t\\
+%h\\
+%\end{matrix} \right)_{AP}
+%\end{align}
+%in the idempotent basis we find
 \begin{align}
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
+\end{matrix} \right)_{BB} 
+\xrightarrow{T_{BB \rightarrow BN}} 
+\left(\begin{matrix} 
+1 & 0 &0 \\
+0 & 1 & 0 \\
+0 & 0 & e^{i \pi /3} \\
+\end{matrix} \right)
+\left( \begin{matrix}
+\text{M}_1\\
+\text{M}_2\\
+\text{M}_3\\
+\end{matrix} \right)_{BN}
+\end{align}
+
+%Now we do (A,P) to (AA):
+%\begin{align}
+%\left( \begin{matrix}
+%e\\
+%t\\
+%h\\
+%\end{matrix} \right)_{AP}
+%\xrightarrow{T_{AP \rightarrow AA}}
+%\left(\begin{matrix} 
+%1 & 0 &0 \\
+%de^{-i \pi /6} &e^{2\pi i /3} &e^{5 i \pi /6} \\
+%0 & 0 & 1\\
+%\end{matrix} \right)
+%\left( \begin{matrix}
+%e\\
+%v\\
+%h\\
+%\end{matrix} \right)_{AA}
+%\end{align}
+\begin{align}
+\left( \begin{matrix}
+\text{M}_1\\
+\text{M}_2\\
+\text{M}_3\\
+\end{matrix} \right)_{BN} 
+\xrightarrow{T_{BN \rightarrow BB}} 
+\left(\begin{matrix} 
+1 & 0 &0 \\
+0 & 1 & 0 \\
+0 & 0 & e^{i \pi /3} \\
+\end{matrix} \right)
+\left( \begin{matrix}
+\text{M}_1\\
+\text{M}_2\\
+\text{M}_3\\
+\end{matrix} \right)_{BB}
+\end{align}
+
+\begin{align}
+\left( \begin{matrix}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right)_{NN} \xrightarrow{T^{NN\rightarrow NN}}
+\left( \begin{matrix} 
+1 & 0&0 \\
+0 & -i & 0 \\
+0 & 0& e^{5 i \pi /6}\\
 \end{matrix} \right) 
-\xrightarrow{T_{AA \rightarrow AP}} 
-\left(\begin{matrix} 
-1 & 0 &0 \\
-0 & 1 & 0 \\
-0 & 0 & e^{i \pi /3} \\
-\end{matrix} \right)
 \left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
-\end{matrix} \right)_{AP}
+\stackrel{\bullet}{Q}_{1}\\
+\stackrel{\bullet}{Q}_{2}\\
+\text{M}_6 \\ 
+\end{matrix} \right)_{NN}
 \end{align}
 
-Now we do (A,P) to (AA):
-\begin{align}
-\left( \begin{matrix}
-e\\
-t\\
-h\\
-\end{matrix} \right)_{AP}
-\xrightarrow{T_{AP \rightarrow AA}}
-\left(\begin{matrix} 
-1 & 0 &0 \\
-de^{-i \pi /6} &e^{2\pi i /3} &e^{5 i \pi /6} \\
-0 & 0 & 1\\
-\end{matrix} \right)
-\left( \begin{matrix}
-e\\
-v\\
-h\\
-\end{matrix} \right)_{AA}
-\end{align}
-
-In the idempotent basis we have
-\begin{align}
-\left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
-\end{matrix} \right)_{AP} 
-\xrightarrow{T_{AP \rightarrow AA}} 
-\left(\begin{matrix} 
-1 & 0 &0 \\
-0 & 1 & 0 \\
-0 & 0 & e^{i \pi /3} \\
-\end{matrix} \right)
-\left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
-\end{matrix} \right)_{AA}
-\end{align}
-
+\dave{Didn't want to delete this in case we end up using it somewhere.}
 In summary we find
 \begin{align}
 \left(\begin{matrix}
@@ -3148,19 +3252,19 @@ In summary we find
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AP} \\
+\end{matrix} \right)_{BN} \\
 \\
 \left( \begin{matrix}
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}\\
+\end{matrix} \right)_{NB}\\
 \\
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AA} \\
+\end{matrix} \right)_{BB} \\
 \end{matrix} \right)
 \xrightarrow{T} \left( \begin{matrix}
 &&&			&&&			1&0&0	\\
@@ -3178,19 +3282,19 @@ In summary we find
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AP} \\
+\end{matrix} \right)_{BN} \\
 \\
 \left( \begin{matrix}
 \widehat{\text{Q}}_1\\
 \widehat{\text{Q}}_2\\
 \text{M}_6\\
-\end{matrix} \right)_{PA}\\
+\end{matrix} \right)_{NB}\\
 \\
 \left( \begin{matrix}
 \text{M}_1\\
 \text{M}_2\\
 \text{M}_3\\
-\end{matrix} \right)_{AA} \\
+\end{matrix} \right)_{BB} \\
 \end{matrix} \right)
 \end{align}
 
@@ -3198,101 +3302,57 @@ One can check that these, together with the S-matrix defined above satisfy $S^2 
 \dave{The S-transformation I have been doing is actually the conjugate transpose of the one that should appear in $(ST)^3  =1$. But since $S = S^{\dagger}$ the relation still holds. }
 
 
-\paragraph{$(P,P)$ sector:}
-The non-bounding torus is a little more subtle than the bounding torus so we saved it for last. 
+%\paragraph{$(P,P)$ sector:}
+%The non-bounding torus is a little more subtle than the bounding torus so we saved it for last. 
+
+%Hence the the vector space associated to the $(P,P)$ torus is $\mathbb{C}^{1|2}$, and we choose the linearly independent basis to be,
+%\begin{align}
+%A(T^2_{PP}) = \mathbb{C} \left [ \hOdd, \quad \vOdd,\quad \TubeXa \right ] 
+%\end{align}
+%We also define,
+%\begin{align}
+%\stackrel{\bullet}{h} \equiv  \hOdd, \quad \stackrel{\bullet}{v} \equiv \vOdd,\quad {X} \equiv \TubeXa
+%\end{align}
 
 
-
-Hence the the vector space associated to the $(P,P)$ torus is $\mathbb{C}^{1|2}$, and we choose the linearly independent basis to be,
-\begin{align}
-A(T^2_{PP}) = \mathbb{C} \left [ \hOdd, \quad \vOdd,\quad \TubeXa \right ] 
-\end{align}
-We also define,
-\begin{align}
-\stackrel{\bullet}{h} \equiv  \hOdd, \quad \stackrel{\bullet}{v} \equiv \vOdd,\quad {X} \equiv \TubeXa
-\end{align}
-
-One can quite simply work out the $S$matrix in this basis,
-\begin{align}
-\left( \begin{matrix}
-\stackrel{\bullet}{h} \\
-\stackrel{\bullet}{v} \\
-X \\
-\end{matrix} \right)_{PP}
-\xrightarrow{S_{PP}} 
-\left( \begin{matrix}
-0&i  &0 \\ 
-1&0 &0 \\
-0&0& -i \\
-\end{matrix} \right)
-\left( \begin{matrix}
-\stackrel{\bullet}{h} \\
-\stackrel{\bullet}{v} \\
-X \\\end{matrix} \right)_{PP}
-\end{align}
-\dave{Should we seperate the even and odd parts into two seperate sub-blocks?}
-
-
-
-So that the $S$-matrix is given by,
-\begin{align}
-\left( \begin{matrix}
-\stackrel{\bullet}{Q}_{1}\\
-\stackrel{\bullet}{Q}_{2}\\
-\text{M}_6 \\ 
-\end{matrix} \right) \xrightarrow{S}
-\frac{e^{i \pi /4}}{\sqrt{2}}\left( \begin{matrix} 
-1&\Sigma &0 \\
-\Sigma &-1&0\\
-0&0& -\sqrt{2} e^{i \pi /4}\\
-\end{matrix} \right)
-\left( \begin{matrix}
-\stackrel{\bullet}{Q}_{1}\\
-\stackrel{\bullet}{Q}_{2}\\
-\text{M}_6 \\ 
-\end{matrix} \right)
-\quad \quad \text{where $\Sigma = \sigma_1 \sigma_2$.}
-\end{align}
-\dave{It's probably natural to write this as two matrices one with the $Q$ particles, and one with the $M$ particle.}
-
-Can also do the Dehn twist,
-\begin{align}
-\left( \begin{matrix}
-\stackrel{\bullet}{h} \\
-\stackrel{\bullet}{v} \\
-X \\
-\end{matrix} \right)
-\xrightarrow{T_{PP}} 
-\left( \begin{matrix}
-1&0  &0 \\ 
-1&-i &0 \\
-0&0& e^{5 i \pi /6} \\
-\end{matrix} \right)
-\left( \begin{matrix}
-\stackrel{\bullet}{h} \\
-\stackrel{\bullet}{v} \\
-X \\\end{matrix} \right)
-\end{align}
-which gives,
-\begin{align}
-\left( \begin{matrix}
-\stackrel{\bullet}{Q}_{1}\\
-\stackrel{\bullet}{Q}_{2}\\
-\text{M}_6 \\ 
-\end{matrix} \right) \xrightarrow{T_{PP}}
-\left( \begin{matrix} 
-1 & 0&0 \\
-0 & -i & 0 \\
-0 & 0& e^{5 i \pi /6}\\
-\end{matrix} \right) 
-\left( \begin{matrix}
-\stackrel{\bullet}{Q}_{1}\\
-\stackrel{\bullet}{Q}_{2}\\
-\text{M}_6 \\ 
-\end{matrix} \right)
-\end{align}
-as expected.
-\dave{In the odd sector we have $S_o^4 = -1$, $(S_o^{\dagger} T)^3 = -1$, and in the even sector we have $S_e^4 = 1$, $(S_e^{\dagger} T)^3 = 1$.}
+%Can also do the Dehn twist,
+%\begin{align}
+%\left( \begin{matrix}
+%\stackrel{\bullet}{h} \\
+%\stackrel{\bullet}{v} \\
+%X \\
+%\end{matrix} \right)
+%\xrightarrow{T_{PP}} 
+%\left( \begin{matrix}
+%1&0  &0 \\ 
+%1&-i &0 \\
+%0&0& e^{5 i \pi /6} \\
+%\end{matrix} \right)
+%\left( \begin{matrix}
+%\stackrel{\bullet}{h} \\
+%\stackrel{\bullet}{v} \\
+%X \\\end{matrix} \right)
+%\end{align}
+%which gives,
+%\begin{align}
+%\left( \begin{matrix}
+%\stackrel{\bullet}{Q}_{1}\\
+%\stackrel{\bullet}{Q}_{2}\\
+%\text{M}_6 \\ 
+%\end{matrix} \right) \xrightarrow{T_{PP}}
+%\left( \begin{matrix} 
+%1 & 0&0 \\
+%0 & -i & 0 \\
+%0 & 0& e^{5 i \pi /6}\\
+%\end{matrix} \right) 
+%\left( \begin{matrix}
+%\stackrel{\bullet}{Q}_{1}\\
+%\stackrel{\bullet}{Q}_{2}\\
+%\text{M}_6 \\ 
+%\end{matrix} \right)
+%\end{align}
+%as expected.
+%\dave{In the odd sector we have $S_o^4 = -1$, $(S_o^{\dagger} T)^3 = -1$, and in the even sector we have $S_e^4 = 1$, $(S_e^{\dagger} T)^3 = 1$.}
 
 
 
