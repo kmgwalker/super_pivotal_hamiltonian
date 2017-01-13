@@ -774,13 +774,14 @@ $g : \mcc \mapsto U(1)$ is some homomorphism), then we get an equivalent theory
 with the same $F$-symbols (we also have to change the higher FSIs, but this doesn't 
 matter for us).}
 \kw{let's duscuss further on skype.  Is there something to cite for this?}
+\ethan{That'd be good---I'm definitely not sure whether this is rigorous or not, and was planning to ask you at some point. 
+I initially saw the idea in arXiv:1402.4081 (physics paper), although it's not explained very well there.}
 % and so we will set $d=\sqrt{2}$ in what follows. 
 %The Frobenius-Schur indicator of $\sigma$ will play essentially no role in what follows, and 
 
 We now turn our attention to the graphical calculus of the Ising TQFT. 
 Bubbles in diagrams can be eliminated by using the rule
-\kw{[need to add bubble defn.pdf]}
-%\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{bubble_defn.pdf}}}}\;. \ee
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{bubble_defn.pdf}}}}\;. \ee
 In particular, we have 
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{sigpsi_bubble.pdf}}}}\;, \qquad \qquad \mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_bubble.pdf}}}}\;,  \ee
 where again, we are marking $\psi$ worldlines in dark blue and $\sigma$ worldlines in orange. 
@@ -860,9 +861,11 @@ $\alpha$ must satisfy three conditions:
 \item First, $\alpha$ must have the spin of a boson: that is, the twist of $\alpha$ must be 1.
 This is because
 \be 
-\label{twist_inconsistency} \PsiFermion = \PsiFermionTwist = \theta_\alpha \ \PsiFermion\;,
+\label{twist_inconsistency} \PsiFermion = \mathord{\vcenter{\hbox{\includegraphics[trim=0 0 0 .25cm,scale=1.3]{half_bent_fermion_line.pdf}}}} = \PsiFermionTwist = 
+\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{kinked_fermion_line.pdf}}}} =
+\theta_\alpha \ \PsiFermion\;,
 \ee
-\kw{Shjould add two more intermediate frames here: box with rotation less that $2\pi$, and kink without theta factor}
+%\kw{Shjould add two more intermediate frames here: box with rotation less that $2\pi$, and kink without theta factor}
 and so if $\theta_\alpha \neq 1$, diagrams in which $\alpha$ worldlines are absorbed into the condensate are identically zero, and condensation is impossible. 
 
 \item Secondly, $\alpha$ must be statistically bosonic, i.e. it must braid trivially with itself.  
@@ -967,10 +970,6 @@ connecting Ising to the vacuum.
 %In category theoretic terms, the condensation process takes a 3-category (braided category) to a 2-category (tensor category)\footnote{The condensed theory does however retain a ``front braiding" by the Ising category, so it is more than a mere tensor category.}. 
 %This point of view allows us to interpret the condensation procedure as a form of dimensional reduction, where we map the (2+1)D Ising theory to the (1+1)D $C_2$ theory\footnote{The fact that the Ising theory looses a dimension upon condensation is similar to the relationship between a (1+1)D phase described by the tensor category $\mcc$ and the (2+1)D phase described by the braided category $\mcz(\mcc)$. 
 %Indeed, the bulk-to-boundary maps ${\rm Forg}:\mcz(\mcc)\ra\mcc$ in (2+1)D TQFTs are precisely the maps which condense different particles. For example, the bulk-to-boundary map ${\rm Forg}:\mcz(\mcc)\ra\mcc$ for the toric code condenses either $m$ or $e$.}.
-
-The back wall construction ``transparentizes'' $\psi$, fixing the inconsistency presented by \eqref{transparency_inconsistency}. 
-\kw{I don't think ``transparentizes'' is a good term; $\psi$ is not being made transparent.
-Alternative sentence below.}
 
 The back wall construction fixes the problems caused by $\psi$ not being transparent.
 However, we have not yet addressed the spin and statistics inconsistencies \eqref{twist_inconsistency} and \eqref{statistics_inconsistency}.
@@ -1120,13 +1119,92 @@ I think the logical order is (1) introduce dot notation, (2) give complete set o
 that the endomorphism algebra of a beta strand is CL1 (and maybe also observer that the endomorphism
 algebra of $n$ beta strands is CLn).}
 
-Diagrammatically, any section of the $\beta$ line may thus look like
+Because $\beta$ lines in the condensed theory can have fermion dots on them, there are several new diagrammatic rules involving them that need to be included in our graphical calculus. 
+One of the most important local relations we will need to perform is the addition and removal of an even number of fermions on $\beta$ lines. 
+The process of removing two fermions can be done at the cost of a phase factor: 
+\begin{align} \label{removing_fermions}
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot.pdf}}}} \quad =  \quad \mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_boxbox.pdf}}}} \quad = \quad 
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_curvy_boxbox.pdf}}}} \quad =\quad  
+\lambda\; \mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta.pdf}}}}\;,
+\end{align}
+where we've performed an $F$-move on the $\psi$ worldlines to get the second equality, we have used \eqref{semicircular_boxes} in the last step, and where the labels $1$ and $2$ denote the ordering of the fermions in question. 
+As mentioned earlier we must have $\lambda=\pm i$, and since $A^4=\pm i$ in the Ising theory, we may choose either $\lambda = A^4$ or $\lambda = -A^{4}$.  
+The choice of $\lambda = \pm A^4$ affects the $F$-symbols in the condensed theory, but does not affect observable quantities like the twists or mutual statistics of the quasiparticles in the theory. \ethan{This is because the choice of $\lambda=\pm A^4$ doesn't change the tube algebra multiplication table}
+Therefore without loss of generality we may choose a gauge in which $\lambda=A^4$, and so 
+\begin{align}  \label{removing_fermions}
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot.pdf}}}} \quad = A^4\; \mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta.pdf}}}}\;,
+\end{align}
+%In the Ising theory $A$ is a primitive 16th root of unity, and so we always have $A^4 = \pm i$. 
+%In Appendix \ref{pins_and_reflection} we show that the phase picked up when annihilating a semicircular fermion worldline (as during the last step of \eqref{removing_fermions} {\it must} be purely imaginary, and so the fact that $A^4=\pm i$ is a nontrivial check of our ability to condense $\psi$. 
+
+Since $\psi$ is statistically fermionic, exchanging two fermions on a $\beta$ line results in a minus sign:
+\begin{align}
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot.pdf}}}} \quad = \quad (-1)\times
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot_switched.pdf}}}}\;.
+\end{align}
+In order to account for all statistical signs like this correctly, when we annihilate a pair of dots using \eqref{removing_fermions}, we must be careful to only annihilate pairs that have the same ordering as they did when they were created.
+For example, if we create a pair of dots using \eqref{removing_fermions} in a configuration where the upper fermion has order $m$ and the lower fermion has order $n$, we must be careful to only annihilate them when they are in this configuration. 
+Failing to follow this rule will result in diagrams possessing erroneous minus signs. 
+ \kw{I don't think ``normal ordering" is the right term here.  Also, I don't think we should restrict ourselves by
+making this promise.}
+\ethan{Right, normal ordering isn't the right term---old habits die hard.
+Choosing a gauge in which the sign-ordering always increase as you go ``up'' the page 
+is convenient, but perhaps too restrictive. 
+I tried to clean this up a bit.   }
+
+Most importantly, the braiding in the parent Ising theory means that we pick up non-trivial phase factors when sliding fermion dots over and around $\beta$ caps and cups. 
+For example, we can compute \ethan{Wanted to add some more steps to a few things, so I redid a few figures}
+\begin{align} \label{capslide}
+\capleftdot =
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{cap_left_box.pdf}}}} =
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{cap_left_through_box.pdf}}}} =
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{cap_right_twist_box.pdf}}}}
+= A^4 \caprightdot,
+\end{align}
+%where in the third quality we have used an $F$-move, 
+\kw{I think the third equality is just isotopy, not an F move}
+\ethan{Sure---you can also look at it as an $F$-move with one of the outgoing legs equal to $\unit$ (which we can always set to be the identity operator in the right gauge). I took out the offending remark.}
+where in the last step we have used \eqref{sig_psi_Rsymbol}. 
+Since in the Ising theory $A^4=\pm i$, we can invert \eqref{capslide} to find 
+\begin{align} \label{cap_slide_back}
+\caprightdot\; &= - A^4 \; \capleftdot.
+\end{align}
+In appendix \ref{pins_and_reflection} we show that reflecting diagrams about the horizontal axis acts as Hermitian conjugation, and so by Hermitian conjugating \eqref{cap_slide_back} we find
+\be  \cuprightdot\; =  A^4 \; \cupleftdot\;. \ee
+Because of the nontrivial rules for sliding dots through cups and caps, dots which live on the apex of a cup or the bottom of a cap (where the $\beta$ line is horizontal) are ambiguous, and we will not allow them to be drawn in our fusion diagrams.
+%(this is a consequence of our choice of a global fermion framing that always points ``to the left'' and the nontrivial braiding of $\psi$ with $\beta$).
+
+We stress that these phases are derived completely from the {\it braiding data} of the Ising theory. 
+They also must be such that taking a fermion dot around a circular $\beta$ loop gives a factor of $-1$, which enforces the constraint that $A^8 = -1$. 
+This ensures that even-parity $\beta$ loops are non-zero, while odd-parity $\beta$ loops vanish:
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_circle.pdf}}}}=0,\ee
+which can be easily seen by dragging the dot once around the circle. 
+The fact that $A^8=-1$ must also be true because dragging the fermion once around the circle amounts to a $2\pi$ rotation of the fermion framing, which must be equivalent to multiplication by $-1$. 
+The constraint $A^8=-1$ is satisfied in all the Ising theories. 
+However, in more general examples this constraint on the braiding data is a strong one, and significantly limits the types of theories that can have objects with $\cl_1$ endomorphism algebras capable of ``absorbing'' fermions.
+%We will see later that choosing $A^4=i$ ($A^4=-i$) implies that the physical fermions which provide the spin structure come from a $p+ip$ ($p-ip$) superconductor. \ethan{need to elaborate on this last paragraph, or defer it untill later when I can talk about chiral central charge.}
+
+\ethan{put the discussion of endos here---may want to move until after we talk about the $F$-symbols, not sure.}
+The fact that $\beta$ lines can host dots means that $\beta$ has an endomorphism which is not a multiple of the identity, which is a hallmark of physics that cannot be found in bosonic topological phases. 
+Indeed, any section of a given $\beta$ worldline may look like
 \begin{align} \label{betaendos}
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta.pdf}}}} \qquad {\rm or} \qquad \mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta_dot.pdf}}}}.
 \end{align}
 The two diagrams in \eqref{betaendos} are the generators of the endorphism algebra of $\beta$.
 Since we have one even generator and one odd generator we see that $\text{End}(\beta) \cong \mathbb{C}\ell_1$, where $\cl_1$ is the first complex Clifford algebra. 
-It turns out that this property holds in more general scenarios: objects in the condensed theory have and endomorphism algebra of $\cl_1$ if and only if they can ``absorb'' fermion dots in the sense of \eqref{betaendos}. 
+%It turns out that this property holds in more general scenarios: objects in the condensed theory have and endomorphism algebra of $\cl_1$ if and only if they can ``absorb'' fermion dots in the sense of \eqref{betaendos}. 
+In bosonic theories, having $\End(\beta)\cong\cl_1$ would imply that $\beta$ is not a simple object, since any simple object in a bosonic theory must have an endomorphism algebra of $\cc$. 
+Indeed, $\beta$ being simple implies that every nontrivial element in $\End(\beta)$ be an isomorphism. 
+This means that $\End(\beta)$ must be a division algebra, and the only division algebra over $\cc$ is $\cc$ itself. 
+
+Nevertheless, $\beta$ {\it is} a simple object\footnote{Indeed, if we tried to decompose $\beta$ into two idempotents, one of those idempotents would have odd fermion parity and the other would have even fermion parity. 
+Since states with different fermion parities are in different superselection sectors, we are not allowed to add these idempotents together to obtain $\beta$, which is a contradiction.}.
+%Even if we were to overcome our abhorrence of inhomogeneous linear combinations,
+%rotating these idempotents through $\pi$ leads to $(1\pm A^{2}\mbox{dot})/2$, which is not an idempotent.
+This is possible because in fermionic theories, the Hilbert spaces we use are supervector spaces, compared to the regular vector spaces of bosonic theories. 
+Unlike in the bosonic case, there are {\it two} super division algebras, $\cc$ and $\cl_1$.
+This means that simple objects in the fermionic setting can have endomorphism algebras of either $\cc$ or $\cl_1$.  
+Later on, we will see that the existence of simple objects with $\cl_1$ endomorphism algebras is responsible for a large part of the novel physics that occurs as a result of fermion condensation. 
 
 \kw{I would say this differently, and maybe also say it later in this subsection.
 Non-simple m-type objects can ``absorb" fermions, so we have to be careful how we say this.
@@ -1139,76 +1217,7 @@ endomorphism algebras for a simple object.}
 $\beta$ as the sum of two idempotents, those idempotents would be $(1\pm A^{-2}\mbox{dot})/2$.
 Even if we were to overcome our abhorrence of inhomogeneous linear combinations,
 rotating these idempotents through $\pi$ leads to $(1\pm A^{2}\mbox{dot})/2$, which is not an idempotent.}
-
-Having objects whose endomorphism algebra is $\cl_1$ is impossible in bosonic theories (where any simple object $a$ always has $\End(a) \cong \cc$), and requires us to modify the type of tensor product used in fermionic theories. 
-We will see that the existence of objects with $\cl_1$ endomorphism algebras is responsible for a large part of the novel physics that occurs as a result of performing fermion condensation. 
-
-Because $\beta$ lines in the condensed theory can have fermion dots on them, there are several new diagrammatic rules involving them that need to be included in our graphical calculus. \ethan{talking about tensoring over endos---motivate with the AKLT chain example. Will fill in later.}
-
-One of the most important local relations we will need to perform is the addition and removal of an even number of fermions on $\beta$ lines. 
-The process of removing two fermions can be done at the cost of a phase factor: 
-\begin{align} \label{removing_fermions}
-\mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot.pdf}}}} \quad =  \quad \mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_boxbox.pdf}}}} \quad = \quad 
-\mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_curvy_boxbox.pdf}}}} \quad =\quad  
-\lambda\; \mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta.pdf}}}}\;,
-\end{align}
-where we've performed an $F$-move on the $\psi$ worldlines to get the second equality, and in the last step we have used \eqref{semicircular_boxes} in the last step. 
-As mentioned earlier we must have $\lambda=\pm i$, and since $A^4=\pm i$ in the Ising theory, we may choose either $\lambda = A^4$ or $\lambda = -A^{4}$.  
-The choice of $\lambda = \pm A^4$ affects the $F$-symbols in the condensed theory, but does not affect observable quantities like the twists or mutual statistics of the quasiparticles in the theory. \ethan{This is because the choice of $\lambda=\pm A^4$ doesn't change the tube algebra multiplication table}
-Therefore without loss of generality we may choose a gauge in which $\lambda=A^4$, and so 
-\begin{align}  \label{removing_fermions}
-\mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot.pdf}}}} \quad = A^4\; \mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta.pdf}}}}\;,
-\end{align}
-where we've performed an $F$-move on the $\psi$ worldlines to get the second equality, and in the last step we have used \eqref{semicircular_boxes} in the last step. 
-\kw{there is some unintentional repetition here}
-As mentioned earlier we must have $\lambda=\pm i$, and since $A^4=\pm i$ in the Ising theory, we may choose either $\lambda = A^4$ or $\lambda = -A^{4}$.  
-The choice of $\lambda = \pm A^4$ affects the $F$-symbols in the condensed theory, but does not affect observable quantities like the twists or mutual statistics of the quasiparticles in the theory. \ethan{This is because the choice of $\lambda=\pm A^4$ doesn't change the tube algebra multiplication table}
-Therefore without loss of generality we may choose a gauge in which $\lambda=A^4$, and so 
-\begin{align}  \label{removing_fermions}
-\mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot.pdf}}}} \quad = A^4\; \mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta.pdf}}}}\;,
-\end{align}
-
-%In the Ising theory $A$ is a primitive 16th root of unity, and so we always have $A^4 = \pm i$. 
-%In Appendix \ref{pins_and_reflection} we show that the phase picked up when annihilating a semicircular fermion worldline (as during the last step of \eqref{removing_fermions} {\it must} be purely imaginary, and so the fact that $A^4=\pm i$ is a nontrivial check of our ability to condense $\psi$. 
-
-Since $\psi$ is statistically fermionic, exchanging two fermions on a $\beta$ line results in a minus sign:
-\begin{align}
-\mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot.pdf}}}} \quad = \quad (-1)\times
-\mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot_switched.pdf}}}}\;,
-\end{align}
-where the labels $1$ and $2$ denote the ordering of the fermions in question. 
-We will always work in a ``gauge'' in which pairs of fermions are only ever created or annihilated when their normal ordering {\it increases} when going from the bottom to the top of diagrams. 
-\kw{I don't think ``normal ordering" is the right term here.  Also, I don't think we should restrict ourselves by
-making this promise.}
-
-Most importantly, the braiding in the parent Ising theory means that we pick up non-trivial phase factors when sliding fermion dots over and around $\beta$ caps and cups. 
-For example, we can compute \ethan{Wanted to add some more steps to a few things, so I redid a few figures}
-\begin{align} \label{capslide}
-\capleftdot =
-\mathord{\vcenter{\hbox{\includegraphics[scale=1]{cap_left_box.pdf}}}} =
-\mathord{\vcenter{\hbox{\includegraphics[scale=1]{cap_left_through_box.pdf}}}} =
-\mathord{\vcenter{\hbox{\includegraphics[scale=1]{cap_right_twist_box.pdf}}}}
-= A^4 \caprightdot,
-\end{align}
-where in the third quality we have used an $F$-move, 
-\kw{I think the third equality is just isotopy, not an F move}
-and in the last step we have used \eqref{sig_psi_Rsymbol}. 
-Since in the Ising theory $A^4=\pm i$, we can invert \eqref{capslide} to find 
-\begin{align} \label{cap_slide_back}
-\caprightdot\; &= - A^4 \; \capleftdot.
-\end{align}
-In appendix \ref{pins_and_reflection} we show that reflecting diagrams about the horizontal axis acts as Hermitian conjugation, and so by Hermitian conjugating \eqref{cap_slide_back} we find
-\be  \cuprightdot\; =  A^4 \; \cupleftdot\;. \ee
-
-We stress that these phases are derived completely from the {\it braiding data} of the Ising theory. 
-They also must be such that taking a fermion dot around a circular $\beta$ loop gives a factor of $-1$, which enforces the constraint that $A^8 = -1$. 
-This ensures that even-parity $\beta$ loops are non-zero, while odd-parity $\beta$ loops vanish:
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_circle.pdf}}}}=0,\ee
-which can be easily seen by dragging the dot once around the circle. 
-The fact that $A^8=-1$ must also be true because dragging the fermion once around the circle amounts to a $2\pi$ rotation of the fermion framing, which must be equivalent to multiplication by $-1$. 
-The constraint $A^8=-1$ is satisfied in all the Ising theories. 
-However, in more general examples this constraint on the braiding data is a strong one, and significantly limits the types of theories that can have objects with $\cl_1$ endomorphism algebras capable of ``absorbing'' fermions.
-We will see later that choosing $A^4=i$ ($A^4=-i$) implies that the physical fermions which provide the spin structure come from a $p+ip$ ($p-ip$) superconductor. \ethan{need to elaborate on this last paragraph, or defer it untill later when I can talk about chiral central charge.}
+\ethan{Yeah, sounds good. I tried my hand at implementing this, but I might have to fuss with it a bit more later.}
 
 The final local relations that will be important in what follows are the $F$-moves, which provide linear relations between different isotopy classes of diagrams.
 The $F$-symbols in the condensed $C_2$ theory can be worked out using our rules for manipulating condensed $\psi$ worldlines and our knowledge of the $F$-symbols in the parent Ising theory: we begin with a diagram in the Ising theory, apply an $F$-move, and then remove all $\psi$ lines through condensation to evaluate the $F$-move in the $C_2$ theory. 
@@ -1218,10 +1227,13 @@ For example, in the parent Ising theory we have
 %\TwoLine =\frac{1}{d} \left( \CupCap +  \CupCapPsi \right).
 \end{align}
 When we condense $\psi$, the second diagram on the left hand side becomes 
-\be %\quad \CupCapPsi \rightarrow A^{-4} \CupCapDots,\ee
-\doublecuppsi = A^{-4}\; \mathord{\vcenter{\hbox{\includegraphics[scale=1]{double_cup_psi_line_wsemicircle.pdf}}}}\; =A^{-4}\;
-\doublecupdots\;, \ee
-and so in the $C_2$ theory, we obtain the $F$-move
+\be \label{fmove_isingtoC2}%\quad \CupCapPsi \rightarrow A^{-4} \CupCapDots,\ee
+\doublecuppsi = A^{-4}\; \mathord{\vcenter{\hbox{\includegraphics[scale=1]{double_cup_psi_line_wsemicircle.pdf}}}}\; \mapsto A^{-4}\;
+\doublecupdots\;. \ee
+Note that in the first step of \eqref{fmove_isingtoC2} we have displaced the vertical $\psi$ line to the right, so that it never intersects the $\beta$ line at the apex of a cap or the bottom of a cup.
+We do this to avoid ambiguities in the fermion framing, which as discussed earlier always points ``to the left'', meaning that dots living on horizontal $\beta$ lines are not well-defined. 
+While we choose to displace the $\psi$ line to the right in \eqref{fmove_isingtoC2}, this is merely a gauge choice: we could have equally well chosen it to be displaced to the left. 
+Recapitulating, we see that in the $C_2$ theory we have the $F$-move
 \be \doublebeta\; = \frac{1}{d} \left( \doublecups \; + \;A^{-4} \doublecupdots\right).\ee
 By similar reasoning we can derive the other nontrivial $F$-move in the $C_2$ theory, which is
 \begin{align}
