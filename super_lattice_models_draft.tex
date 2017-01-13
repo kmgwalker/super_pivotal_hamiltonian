@@ -3568,24 +3568,73 @@ We could add an appendix with some of the details, e.g., 6j symbols and particle
 %But the even and odd subspaces of $\mathbb{C}^{1|1}$ are one dimensional and so these operators cannot be represented.
 %Hence a theory with Fibonacci like fusion rules of Q-type particles must have fusion multiplicity.
 %}
- \section{Hamiltonian} 
+ \section{Super pivotal Hamiltonian}
+% \section{Hamiltonian} 
+ 
  \begin{figure}
- \includegraphics{Lattice.pdf}
+% \includegraphics{Lattice.pdf}
+  \includegraphics{Lattice2.pdf}
  \caption{One option.}
+ \label{HoneycombLattice}
  \end{figure}
  
-  \begin{figure}
- \includegraphics{Latticetwo.pdf}
- \caption{Another option}
- \end{figure}
+%  \begin{figure}
+% \includegraphics{Latticetwo.pdf}
+% \caption{Another option}
+% \end{figure}
   
  - Briefly mention string net hamiltonian
 
- \subsection{Super lattice Hamiltonian}
-The Hamiltonian we define here is exactly the string net Hamiltonian but for the super fusion category defined above. 
-Thus the 
-\subsubsection{Edge terms}
-\subsubsection{Plaquette and vertex term}
+
+The Hamiltonian naturally lives on a planar trivalent lattice trivalent lattice.
+In this section we focus on the honeycomb lattice in Fig.~\ref{HoneycombLattice}. 
+
+Stuff to consider in back of head:
+
+Input to model
+\begin{itemize}
+\item super pivotal category
+\item Surface trivalent graph with planar imbedding on surface $\Sigma$. Denote vertices $V$, edges $E$, and plaquettes $P$, such that $V \cup E \cup P = \Sigma$ and $V \cap E = V \cap P = E \cap P = \phi$. \dave{I'm tempted to call these faces.}
+\item spin structure on $\Sigma \setminus P$
+\end{itemize}
+
+The degrees of freedom live on the vertices and edges of lattice. 
+We require fermions to live on the vertices, although this requirement could be relaxed.
+This necessitates a global ordering on the vertices which is given by a map from the index set $\mathcal{I}$ to $v = v(i)$.
+The vector space is given by,
+\begin{align}
+\mathcal{H}= \tp_{e \in E } \mathcal{H}_e \tp_{v \in V} \mathcal{H}_{v}\quad \quad \mathcal{H}_e = \bigoplus_{x \in \cal{C}} \mathbb{C}_x,\quad   \mathcal{H}_v = \bigoplus_{abc \in \cal{C}} V^{ab}_{c,i}. 
+\end{align}
+Where $\mathcal{H}_e$ is the vector space associated to each edge and of dimension equal to the number of simple objects.
+The ordering in the tensor product of the vertices is determined by the index set $\mathcal{I}$ so that $\tp_{v \in V} \mathcal{H}_v =\cdots \tp \mathcal{H}_{v_i} \tp \mathcal{H}_{v_{i+1}} \tp \cdots $.
+Each $\mathcal{H}_v$ is a super vector of super dimension $\sum_{abc} N_{ab}^c$, where $N_{**}^*$ denotes the super dimension of $V^{**}_*$.
+
+The Hamiltonian is a commuting projector Hamiltonian. 
+It is written as the sum of three terms,
+\begin{align}
+H = \lambda_p \sum_{p \in P} (1-B_p) + \lambda_e \sum_{e \in E} (1-D_{e}) + \lambda_v \sum_{v \in V} (1-A_v)
+\end{align}
+which all commute. 
+They act on the plaquettes, edges and vertices respectively. 
+In Fig.\ref{HoneycombLattice} we show the support of each term. 
+It is natural to require a hierarchy in the couplings, $\lambda_p \ll \lambda_e \ll \lambda_v$.
+\dave{Will come back to this.}
+In this scenario the low energy excitations will be simple objects of $Z(\mathcal{C})$.
+
+We first define the vertex term, then the edge term, then the plaquette.
+
+\subsection{Vertex}
+The vertex term simply measures if the the vector $\ket{\psi} \in V^{ab}_{c,i}$ is compatible with the edges. 
+...
+\subsection{Edge}
+The edge terms allow fermions to fluctuate across $Q$ type bonds, and act as the identity otherwise.
+These are give by the isomorphisms in (\ref{DotSlide}). 
+We need to define three terms
+\begin{align}
+V^{ab}_{c1}\tp V^{xy
+\end{align}
+
+\subsection{Plaquette}
 \dave{Only here as a reference for calculation.}
 \begin{align}
 &\Bpa \xrightarrow{A} \Bpb \xrightarrow{B} \Bpc \\
@@ -3977,6 +4026,7 @@ There are two types of fusion diagrams we need to consider, depending how the fu
 		  &R_f: \; \;V^{ay}_{d,1} \tp_{\mathbb{C}} V^{bc}_{y,2} \ar[r]            & V^{ay}_{d,1} \tp_{\mathbb{C}} V^{bc}_{y,2} \\
 		  &\;\;\;\;\;\;\; \ket{\psi}\tp_\mathbb{C} \ket{\eta}  \ar@{|->}[r] & (f\ket{\psi}) \tp_{\mathbb{C}} (f^{-1} \ket{\eta})
 	}}	\quad \quad f \in \text{End}(y)
+	\label{DotSlide}
 	\end{align}
 We note that both $L_f$ and $R_f$ are always {\it even} maps, regardless of the parity of $f$. 
 
