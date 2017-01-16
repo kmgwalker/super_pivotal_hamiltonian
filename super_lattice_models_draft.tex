@@ -668,6 +668,16 @@
 
 
 
+\newcommand{\Vertexa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Vertexa.pdf}}}}}
+\newcommand{\Vertexb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Vertexb.pdf}}}}}
+\newcommand{\Vertexc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Vertexc.pdf}}}}}
+\newcommand{\Vertexd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Vertexd.pdf}}}}}
+\newcommand{\Vertexe}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Vertexe.pdf}}}}}
+
+
+
+
+
 %%% if we want to leave a secret message
 %\usepackage[pdftex, bookmarks={false}, pdftitle={Super lattice models}]{hyperref}
 %%%
@@ -2671,12 +2681,13 @@ where we define
 t_{\bullet}  = e^{-i \pi/4} \sqrt{\frac{d}{6}} \AddDatTorusDot{\TaddownTube{1}}{B}{}{\dota} 
 \end{align}
 
+\begin{align}
+&A =\sqrt{\frac{d}{6}}\; \AddDatTorusDot{\TaddownTube{1}}{B}{}{} \quad \quad
+\bar{t} = e^{i\pi/4}\sqrt{\frac{d}{6}} \; \AddDatTorusDot{\TadupTube{1}}{B}{}{}  \\
+& \bar{t}_{\bullet}= \sqrt{\frac{d}{6}} \AddDatTorusDot{\TadupTube{1}}{B}{}{\dotc} \quad \quad
+t_{\bullet}  = e^{-i \pi/4} \sqrt{\frac{d}{6}} \AddDatTorusDot{\TaddownTube{1}}{B}{}{\dota} 
+\end{align}
 %%%%%%%
-\dave{to do}
-\begin{itemize}
-\item table/matrix that shows isomorphsims between particles. E.g., $X_i T_\alpha X_j = \sum_\beta C_{i\alpha j}^{ \beta} T_\beta$ for each tube $T_{\alpha}$, and idempotents $X_i$.
-\item list quantum dimesions of particles
-\end{itemize}
 
 
 \subsection{Action of Mapping class group on Torus }
@@ -3698,14 +3709,23 @@ Input to model
 
 The degrees of freedom live on the vertices and edges of lattice. 
 We require fermions to live on the vertices, although this requirement could be relaxed.
-This necessitates a global ordering on the vertices which is given by a map from the index set $\mathcal{I}$ to $v = v(i)$.
+This necessitates a global ordering on the vertices which is given by a map from the index set $\mathcal{I}$ to $v = v(r)$.
+We also define the integer $r(v) \in \mathcal{I}$, the inverse of $v(r)$.
 The vector space is given by,
 \begin{align}
 \mathcal{H}= \tp_{e \in E } \mathcal{H}_e \tp_{v \in V} \mathcal{H}_{v}\quad \quad \mathcal{H}_e = \bigoplus_{x \in \cal{C}} \mathbb{C}_x,\quad   \mathcal{H}_v = \bigoplus_{abc \in \cal{C}} V^{ab}_{c,i}. 
+\label{HamiltonianVectorSpace}
 \end{align}
 Where $\mathcal{H}_e$ is the vector space associated to each edge and of dimension equal to the number of simple objects.
-The ordering in the tensor product of the vertices is determined by the index set $\mathcal{I}$ so that $\tp_{v \in V} \mathcal{H}_v =\cdots \tp \mathcal{H}_{v_i} \tp \mathcal{H}_{v_{i+1}} \tp \cdots $.
+The ordering in the tensor product of the vertices is determined by the index set $\mathcal{I}$ so that $\tp_{v \in V} \mathcal{H}_v =\cdots \tp \mathcal{H}_{v_r} \tp \mathcal{H}_{v_{r+1}} \tp \cdots $.
 Each $\mathcal{H}_v$ is a super vector of super dimension $\sum_{abc} N_{ab}^c$, where $N_{**}^*$ denotes the super dimension of $V^{**}_*$.
+A generic state in $\mathcal{H}$ takes the form,
+\begin{align}
+\ket{E} \tp \ket{V} = \tp_{e \in E} \ket{a(e)} \tp_{v\in V} \ket{\psi(v)}.
+\end{align}
+The ordering of the vertex terms is important since each $\ket{\psi(v)} \in \mathcal{H}_v$ could be fermionic.
+Indeed lets choose a basis for each $\mathcal{H}_v$ as $\ket{\psi^{ab}_{c,\mu}(v)}$ where $\mu$ runs over all basis vectors of $V^{ab}_c$. 
+We'll denote the parity of the vector by $p^{ab}_{c,\mu}$.
 
 The Hamiltonian is a commuting projector Hamiltonian. 
 It is written as the sum of three terms,
@@ -3725,9 +3745,120 @@ We first define the vertex term, then the edge term, then the plaquette.
 The vertex term simply measures if the the vector $\ket{\psi} \in V^{ab}_{c,i}$ is compatible with the edges. 
 ...
 \subsection{Edge}
+\dave{Still in major progress. Presentation needs to be improved.}
 The edge terms allow fermions to fluctuate across $Q$ type bonds, and act as the identity otherwise.
-These are give by the isomorphisms in (\ref{DotSlide}). 
+Lets write this operator down explicitly by its action on the basis states, written in the text following (\ref{HamiltonianVectorSpace}).
+
+It will be useful to separate the fermionic book keeping from the local action of the operators. 
+We denote the matrix elements of the edge operator as,
+\begin{align}
+D_{e} \ket{E} \tp \ket{V} = \sum_{\widetilde{E} \widetilde{V}} \left[ D_{e} \right]_{E,V; \widetilde{E} \widetilde{V}} \tilde{\ket{E}} \tp \tilde{\ket{V}}
+\end{align}
+The operater first creates two fermions on edge $e$ if it's of Q type and does nothing if it is of M type. 
+We denote this by,
+\dave{Will make this look better later. Will also make indices $\tilde{1}$, and $\tilde{2}$.}
+\begin{align}
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta.pdf}}}} \mapsto
+\lambda^{-1} \mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot.pdf}}}} 
+\end{align}
+This this takes the edge out of the canonical basis defined in (\ref{HamiltonianVectorSpace}).
+Therefore we need to apply local relations in order to reduce the state to the form of (\ref{HamiltonianVectorSpace}).
+The only way to do this is to slide the two fermions off the edge and act with them on the vertices.
+Sliding the fermions off the edge involves pushing an odd operator past each vector in the ordered tensor product $\tp_{v \in V} \ket{\psi(v)}$. 
+The odd operator being the action of the fermion on the vertex Hilbert spaces $\mathcal{H}_u$, and $\mathcal{H}_w$ for vertices $u$ and $w$ living at the boundary of $e$.
+Lets suppose that $w$ is the vertex nearest $\tilde{2}$, and $u$ is the vertex nearest $\tilde{1}$ when walking along the edge.
+The potential negative sign is introduced due permuting the odd operator past each super vector space \dave{Do we have a name for this operator, maybe $\Gamma_u$? on vertex $u$. }
+This sign is given by 
+\begin{align}
+S = \text{sign}(r(w) - r(u)) \times \prod_{s<r(u)} p_{v(s)} \times \prod_{t<r(u)} p_{v(t)}
+\end{align}
+where $p_v$ is parity of the vector living at site $v$.
+
+Next we define the action of the fermion locally at the vertex. 
+In the lattice we have chosen (Fig. \ref{HoneycombLattice}) we have three kinds of edges, labeled $x$, $y$ and $z$. 
+We need to write one Hamiltonian term per edge. 
+Lets start with the $x$ type. 
+\begin{align}
+\Vertexa \rightarrow \Vertexb = \sum_{\tilde\psi} \; \frac{\Vertexc}{\Vertexd} \; \Vertexe
+\end{align}
+where $\tilde{\psi}^*$ is the dual of $\tilde{\psi}$. 
+\dave{Have we decided on an inner product? Do we need one to define the above?}
+$$
+$$
+\dave{Will continue.}
+
+
+
+
+
+%There is a Koszul sign coming from introducing the two fermions
+
+%We will denote the entire state by $\ket{E} \tp \ket{V} \in \mathcal{H}$.
+%We wish to specify the action $D_e$ on the state $\ket{E} \tp \ket{V}$.
+%First denote the vertices at the ends of the edge $e$ by $u$ and $w$.
+%Then we have
+%\begin{align}
+%D_e \ket{E} \ket{V} =\left\{
+%                \begin{array}{ll}
+%\ket{E} \ket{V} \quad \text{if} \quad \text{End}(a(e)) = \mathbb{C} \\
+%-i (-1)^{\sum_{i<}}\\
+  %              \end{array}
+    %          \right.
+%\end{align}
+
+\begin{comment}
+The explicit representation of the operator on the vector space written in (\ref{HamiltonianVectorSpace}) will implicitly appear non-local due to the Koszul signs introduced, despite the operator being entirely local.
+
+The operator acts as the identity if the edge is of M type, while if it is of Q type it adds two fermions to the edge then pulls them into the vertices. 
+We can write this as,
+\begin{align}
+D_e = \sum_{a} \delta_{\text{End}(a), \mathbb{C}} +\delta_{\text{End}(a), \mathbb{C}\ell_1}  X_{v\in \partial e}
+\end{align}
+Where $e$ is the edge which the Hamiltonian is acting on. 
+The two kronecker products measure whether the edge label term is of M type or Q type. 
+If the edge is M type, the operator acts as the identity. 
+While if it is of Q type it acts by $X_{v \in  \partial e}$. 
+Where $\partial e$ denotes the two vertices appearing at the end points of these edges.
+This operator acts on the two vertices neighbouring edge $e$.
+
+Lets describe the action of $X_{v\in \partial e}$ in detail. 
+To that this end, denote the two vertices in $\partial e$ as $u$ and $w$. 
+Where $u$ is the lower vertex, and $w$ is the higher one. \dave{Need to figure out how to say this properly. 
+But the one closer to the top of the page in \ref{HoneycombLattice}}
+We write the action of $X_{v \in \partial e}$ on the basis states of (\ref{HamiltonianVectorSpace}).
+
+
+
+We will denote the vector at vertex $v$ by $\alpha$ and the vector at vertex $w$ by $\beta$.
+
+These vertices have indices attached to them which denote the order which they appear in the tensor product (\ref{HamiltonianVectorSpace}), we can write these indices as $ i(v)$ and $j(w)$.
+
+
+There will be a phase appearing due to sliding the dots to the vertices of the lattice.
+This will depend on whether the edge is of $x$ type, $y$ type, or $z$ type, see Fig. \ref{HoneycombLattice}.
+
+the different orientations of the edges in the lattice shown in Fig. \ref{HoneycombLattice}.
+
+
+
+The insertion of the two fermions on the edge always appears 
+The two vertices appearing at the end points of the edge come equipped with an ordering in the tensor product appearing in (\ref{HamiltonianVectorSpace}).
+
+
+
+The fermions are inserted on the edge vertically with an ordering $\tilde{1}$ and $\tilde{2}$. 
+With $\tilde{1}$ below $\tilde{2}$ on the vertical edge, and $\tilde{1}$, $\tilde{2}$ appearing at the beginning of the index set, i.e., for $j \in \mathcal{I}$ we have $\tilde{1} <\tilde{2} < j$.
+Each of those vertices have an index which denotes which denotes the ordering which the appear in the tensor product in (\ref{HamiltonianVectorSpace}). 
+
+
+
+
+
+Given that each edge term changes the pairing of the neighbouring
+
 We need to define three terms
+
+\end{comment}
 
 
 \subsection{Plaquette}
