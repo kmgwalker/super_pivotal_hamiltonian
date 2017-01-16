@@ -675,6 +675,12 @@
 \newcommand{\Vertexe}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Vertexe.pdf}}}}}
 
 
+\newcommand{\HedgeZa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{HedgeZa.pdf}}}}}
+\newcommand{\HedgeZb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{HedgeZb.pdf}}}}}
+\newcommand{\HedgeZc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{HedgeZc.pdf}}}}}
+\newcommand{\HedgeZd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{HedgeZd.pdf}}}}}
+
+
 
 
 
@@ -3683,50 +3689,35 @@ We could add an appendix with some of the details, e.g., 6j symbols and particle
  \begin{figure}
 % \includegraphics{Lattice.pdf}
   \includegraphics{Lattice2.pdf}
- \caption{One option.}
+ \caption{An example lattice for the super pivotal Hamiltonian. 
+ We keep every vertex in a standard orientation, that's why they are twisted on one sublattice (see vertex $v$ compared with $w$). 
+ We have put circles wherever a term in the Hamiltonian acts. 
+ There are vertex terms which measure whether the vertex is compatible with the edge labeling. 
+There are three kinds of edge terms, an $x$ type, $y$ type, and a $z$-type, corresponding to the three different orientation of edges in the lattice. 
+The edge term performs the tensor product over $\text{End}(a(e))$, i.e., if the edge label is Q type, it allows fermions to fluctuate across the bond.
+There is a single plaquette term, we have labeled one of them by $p$. 
+It involves the six spins coming into the plaquette and as well as all vertices and edges neighbouring the plaquette.
+This is just the usual string net term which projects onto the trivial idempotent at every plaquette. 
+\dave{Need to add arrows. Need to make figure with example configuration + excitations. Need to make picture with punctures rather than lattice.}
+}
  \label{HoneycombLattice}
  \end{figure}
- 
-%  \begin{figure}
-% \includegraphics{Latticetwo.pdf}
-% \caption{Another option}
-% \end{figure}
-  
- - Briefly mention string net hamiltonian
+Here we write down a fermionic string net Hamiltonian whose ground state is topologically ordered. 
+We follow the same construction as \cite{levin2005} with a few differences. 
+See also [REF other fermionic commuting projectors].
+The main differences in between the super pivotal Hamiltonian and the bosonic string net Hamiltonian are:
+\begin{enumerate}
+\item we fix a spin structure on the lattice \dave{Would be great to connect this to Kastelyn orientation} \ref{VectorSpace}
+\item the vertices are all super vector spaces \ref{VertexHamiltonian}
+\item there is a new term in the Hamiltonian allowing fermions to fluctuate across Q type edges \ref{EdgeHamiltonian}
+\end{enumerate}
+The input to the model is a super pivotal fusion category ${\cal C}$, an orientable surface $\Sigma$, a graph $\mathcal{G} = \{\mathcal{V},\mathcal{E},\mathcal{F} \}$ with a planar imbedding on $\Sigma$ and spin structure on $\Sigma \setminus \mathcal{F}$.
+Where $\mathcal{V}$, $\mathcal{E}$, and $\mathcal{F}$, denote the vertices, edges and faces of the graph ${\cal G}$. 
+Each vertex is a point, each edge is a line, and each face is a homeomorphic to a disk. 
+We require the three sets to be non-intersecting and there union to be the entire surface $\Sigma$.
+For simplicity we will assume that all vertices are trivalent.
 
-
-The Hamiltonian naturally lives on a planar trivalent lattice trivalent lattice.
-In this section we focus on the honeycomb lattice in Fig.~\ref{HoneycombLattice}. 
-
-Stuff to consider in back of head:
-
-Input to model
-\begin{itemize}
-\item super pivotal category
-\item Surface trivalent graph with planar imbedding on surface $\Sigma$. Denote vertices $V$, edges $E$, and plaquettes $P$, such that $V \cup E \cup P = \Sigma$ and $V \cap E = V \cap P = E \cap P = \phi$. \dave{I'm tempted to call these faces.}
-\item spin structure on $\Sigma \setminus P$
-\end{itemize}
-
-The degrees of freedom live on the vertices and edges of lattice. 
-We require fermions to live on the vertices, although this requirement could be relaxed.
-This necessitates a global ordering on the vertices which is given by a map from the index set $\mathcal{I}$ to $v = v(r)$.
-We also define the integer $r(v) \in \mathcal{I}$, the inverse of $v(r)$.
-The vector space is given by,
-\begin{align}
-\mathcal{H}= \tp_{e \in E } \mathcal{H}_e \tp_{v \in V} \mathcal{H}_{v}\quad \quad \mathcal{H}_e = \bigoplus_{x \in \cal{C}} \mathbb{C}_x,\quad   \mathcal{H}_v = \bigoplus_{abc \in \cal{C}} V^{ab}_{c,i}. 
-\label{HamiltonianVectorSpace}
-\end{align}
-Where $\mathcal{H}_e$ is the vector space associated to each edge and of dimension equal to the number of simple objects.
-The ordering in the tensor product of the vertices is determined by the index set $\mathcal{I}$ so that $\tp_{v \in V} \mathcal{H}_v =\cdots \tp \mathcal{H}_{v_r} \tp \mathcal{H}_{v_{r+1}} \tp \cdots $.
-Each $\mathcal{H}_v$ is a super vector of super dimension $\sum_{abc} N_{ab}^c$, where $N_{**}^*$ denotes the super dimension of $V^{**}_*$.
-A generic state in $\mathcal{H}$ takes the form,
-\begin{align}
-\ket{E} \tp \ket{V} = \tp_{e \in E} \ket{a(e)} \tp_{v\in V} \ket{\psi(v)}.
-\end{align}
-The ordering of the vertex terms is important since each $\ket{\psi(v)} \in \mathcal{H}_v$ could be fermionic.
-Indeed lets choose a basis for each $\mathcal{H}_v$ as $\ket{\psi^{ab}_{c,\mu}(v)}$ where $\mu$ runs over all basis vectors of $V^{ab}_c$. 
-We'll denote the parity of the vector by $p^{ab}_{c,\mu}$.
-
+We will explicitly write out the Hamiltonian for the example of the honeycomb lattice shown in Fig.~\ref{HoneycombLattice}, but much of what we say holds more generally.
 The Hamiltonian is a commuting projector Hamiltonian. 
 It is written as the sum of three terms,
 \begin{align}
@@ -3739,23 +3730,112 @@ It is natural to require a hierarchy in the couplings, $\lambda_p \ll \lambda_e 
 \dave{Will come back to this.}
 In this scenario the low energy excitations will be simple objects of $Z(\mathcal{C})$.
 
-We first define the vertex term, then the edge term, then the plaquette.
+We first define the vector space on which the Hamiltonian acts, then each piece of the Hamiltonian individually.
+
+\subsection{Vector space}
+\label{VectorSpace}
+A state in the vector space is given by a labeling of all vertices and edges of the graph ${\mathcal G}$. 
+The edges take labels of simple objects in $\cal{C}$, i.e., each edge has a bosonic vector space given by $\mathcal{H}_e = \bigoplus_{x \in \mathcal{C}} \mathbb{C}_x$.
+The vertex degrees of freedom are given by basis vectors for the fusion space of three simple objects in $\cal C$, hence $\mathcal{H}_v = \bigoplus_{abc} V^{ab}_c$.
+\dave{Mention dimension of edge and vertex space.}
+The vertex Hilber space is a super vector space, and so special attention will be needed to take care of Koszul signs.
+
+In order to keep track of Koszul signs, associated with the vertex degrees of freedom we define a global ordering on all vertices.
+This is given a map from an index set $\mathcal{I}$ to the vertices $\mathcal{V}$. 
+Explicitly, to each vertex we assign an integer $r(v) \in \mathcal{I}$ and to each integer $ r \in \mathcal{I}$ we assign a vertex $v(r) \in \mathcal{V}$. 
+The total vector space is just the tensor product over the local ones,
+\begin{align}
+\mathcal{H}= \tp_{e \in E } \mathcal{H}_e \tp_{v \in V} \mathcal{H}_{v}\quad \quad \mathcal{H}_e = \bigoplus_{x \in \cal{C}} \mathbb{C}_x,\quad   \mathcal{H}_v = \bigoplus_{abc \in \cal{C}} V^{ab}_{c}. 
+\label{HamiltonianVectorSpace}
+\end{align}
+%Where $\mathcal{H}_e$ is the vector space associated to each edge and of dimension equal to the number of simple objects.
+The tensor product over all the vertex vector spaces is actually a graded tensor product. 
+Meaning that if two odd vertices are interchanged you pick up a Koszul sign.
+The ordering we choose on the super tensor product is determined by the index set above so that $\tp_{v \in V} \mathcal{H}_v =\cdots \tp \mathcal{H}_{v_r} \tp \mathcal{H}_{v_{r+1}} \tp \cdots $.
+
+We will label a generic basis state in $\mathcal{H}$ by
+\begin{align}
+\ket{E} \tp \ket{V} = \tp_{e \in E} \ket{a(e)} \tp_{v\in V} \ket{\psi(v)}.
+\end{align}
+The label $a(e)$ is a simple object in $\mathcal{C}$. 
+The label $\psi(v)$ is a graded vector in $\mathcal{H}_v$. 
+It is really a short hand for the vector$\psi^{ab}_{c,\mu}(v)$ where $a,b$ and $c$ must be admissible by the fusion rule $N_{ab}^c$, and $\mu$ denotes the multiplicity index, which runs over the even and odd vectors.
+We denote the grading of $\ket{\psi(v)}$ by $p_v$. 
+States with different labelings are orthogonal. 
+\dave{I think in the original string nets the inner product used was $\delta_{E, E'}$, i.e., just the usual kronnecker inner product. Should we do the same?}
+% run over values such that $N^{ab}_c$ is non-zero, and $\mu$ denotes the multiplicity index.
+%The ordering of the vertex terms is important since each $\ket{\psi(v)} \in \mathcal{H}_v$ could be fermionic.
+%Indeed lets choose a basis for each $\mathcal{H}_v$ as $\ket{\psi^{ab}_{c,\mu}(v)}$ where $\mu$ runs over all basis vectors of $V^{ab}_c$. 
+%We'll denote the parity of the vector by $p^{ab}_{c,\mu}$.
+
+\dave{Talk about spin structure here?}
 
 \subsection{Vertex}
-The vertex term simply measures if the the vector $\ket{\psi} \in V^{ab}_{c,i}$ is compatible with the edges. 
-...
+\label{VertexHamiltonian}
+The vertex term in the Hamiltonian is the same as the usual string net. 
+We will follow the same construction as in \cite{Kitaev2012}.
+The vertex term is defined by,
+\begin{align}
+A_v \ket{E} \ket{V} = 
+\left\{
+                \begin{array}{ll}
+                   \ket{E} \ket{V}\quad & \text{if the edges are compatible with $\psi(v)$} \\
+                  0 & \text{otherwise}
+                \end{array}
+              \right.
+\end{align}
+In the context of \cite{Kitaev2012}, a vertex compatible with the edge labeling was called stable.
+
 \subsection{Edge}
+\label{EdgeHamiltonian}
 \dave{Need to mention spin structure as well.}
-\dave{Still in major progress. Presentation needs to be improved.}
 The edge terms allow fermions to fluctuate across $Q$ type bonds, and act as the identity otherwise.
 Lets write this operator down explicitly by its action on the basis states, written in the text following (\ref{HamiltonianVectorSpace}).
 
 It will be useful to separate the fermionic book keeping from the local action of the operators. 
 We denote the matrix elements of the edge operator as,
+\dave{need to think of good notation.}
 \begin{align}
-D_{e} \ket{E} \tp \ket{V} = \sum_{\widetilde{E} \widetilde{V}} \left[ D_{e} \right]_{E,V; \widetilde{E} \widetilde{V}} \tilde{\ket{E}} \tp \tilde{\ket{V}}
+D_{e} \ket{E} \tp \ket{V} = \sum_{\widetilde{E} \widetilde{V}} \left[ D_{e} \right]_{EV; \widetilde{E} \widetilde{V}} \tilde{\ket{E}} \tp \tilde{\ket{V}}\\
+\text{--OR--  }D_{e} = \mathds{1}_{\mathcal{H}_e} \tp \mathds{1}_{\mathcal{H}_{v \in V \setminus \partial e}} \tp D_{e,\partial e}
 \end{align}
-The operater first creates two fermions on edge $e$ if it's of Q type and does nothing if it is of M type. 
+The operator acts as the identity everywhere except for the edge $e$ and the two vertices, say $v$ and $w$ at the end points of $e$.
+The operator is meant to perform the isotopy relation of sliding dots along Q type bonds. 
+This is done by creating two fermions out of the vacuum sliding them along the edge and fusing them into the vertices at the endpoints of the edge.
+For a $z$ type edge with $\text{End}(a_e) = \mathbb{C}\ell_1$ this is just
+\begin{align}
+D_e \left(\HedgeZa  \right) =\lambda^{-1}
+\HedgeZb=
+\lambda^{-1} \HedgeZc=
+\sum_{\tilde{\psi}_w \tilde{\psi}_u} \left[D_e^{z} \right]_{\psi_w a_e \psi_u; \tilde{\psi}_w a_e \tilde{\psi}_u} \HedgeZd
+\end{align}
+where in the last step we fused the fermions into the vertices $w$ and $u$.
+We have also introduced the indices $\tilde{1}$ and $\tilde{2}$.
+These are only used in describing the action of the operator on the basis states, but are important for fermionic book keeping. 
+They have the property that $\tilde{1} < \tilde{2} < r$ for all $r \in \mathcal{I}$. \dave{Is there a more standard way of saying this?}
+Notice that these do not appear in the final vector.
+We have similar operators for $x$-type edges, and $y$-type edges. 
+
+There are a few subtelties to address when we want to represent this operation on the vector space (\ref{HamiltonianVectorSpace}).
+The first is that we need to properly account for the spin structure. 
+The bounding spin structure is built into the diagrammatics, recall [REF -- discussed elsewhere?].
+When vortices are introduced on plaquettes, or non-bounding spin structure on a higher genus manifold we pick up an extra minus sign every time a fermion circles the non-bounding disc. 
+We can account for this by associating to every edge a $q_e = \pm1$, such that $\prod_{e \in L} q_e = +1$, if the loop $L$ is bounding, and $-1$ if the loop $L$ is non-bounding.
+\dave{I think I have some idea how to connect this to Kastelyn orientations, I'll try to do that.}
+Hence on the edge term above we should mutiply by $q_e$. 
+A related subtlety comes into play when considering the $y$ type edges in Fig.~\ref{HoneycombLattice}. 
+We need to introduce another phase due to the fermion traversing the cap near the twisted vertices (vertex $v$ in the figure).
+Lastly, we have to find the explicit representation of this linear map on the vector space (\ref{HamiltonianVectorSpace}). 
+
+Lets first split the action of $D_e$ into two parts. 
+One will be the phase associated with the fermionic book keeping. 
+The other will be the action of the edge term on the the vertices. 
+
+
+
+$$
+$$
+
 We denote this by,
 \dave{Will make this look better later. Will also make indices $\tilde{1}$, and $\tilde{2}$.}
 \begin{align}
