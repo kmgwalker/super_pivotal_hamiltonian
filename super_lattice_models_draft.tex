@@ -101,6 +101,11 @@
 \newcommand{\tube}{\textbf{Tube}}
 \newcommand{\fld}{\mathcal{F}} %fld was for field config
 
+% KW
+\newcommand{\ot}{\otimes}
+\newcommand{\bd}{\partial}
+\DeclareMathOperator{\Arf}{Arf}
+
 \newcommand{\bra}[1]{\ensuremath{\left\langle#1\right|}}
 \newcommand{\ket}[1]{\ensuremath{\left|#1\right\rangle}}
 
@@ -2000,6 +2005,83 @@ orbits of size 2 lead to m-type particles in the quotient; orbits of size 1 lead
 
 
 
+\section{Dimension formula}
+
+
+In this section we give a Verlinde-type formula for the super dimension of the Hilbert space of a surface $Y$.
+
+
+\subsection{The formula}
+
+Let $Y$ be a spin surface with boundary components $U_1, \ldots, U_k$.
+Each $U_i$ inherits either a bounding (a.k.a.\ antiperiodic or non-vortex) or nonbounding 
+(a.k.a.\ periodic or vortex) spin structure.
+
+Let $a_i,\ldots, a_k$ be a set of labels for $\bd Y$.
+Each $a_i$ is a minimal idempotent in the annular category $A(U_i)$; either a non-vortex anyon or a vortex anyon.
+
+The predual Hilbert space $A(Y; a_1,\ldots, a_k)$ is isomorphic to the super vector space $\cc^{p|q}$.
+Our goal is to compute $p$ and $q$.
+
+\medskip
+
+Let $S_{ab}$ denote the normalized, unitary $S$ matrix.
+The indices $a$ and $b$ are closed-up idempotents on a spin torus.
+They are specified by giving an idempotent (either bounding or nonbounding) together with
+the way the annulus was glued to obtain the torus (again either bounding or nonbounding,
+independent of the bounding/nonbounding status of the idempotent).
+The idempotent $a$ is glued up in a [non]bounding way according to whether $b$ is [non]bounding, and vice versa.
+If the idempotent is q-type, it is rescaled by $1/\sqrt 2$ to obtain a unit vector in $A(T^2)$.
+See xxx or yyy.
+
+Let $S'_{ab}$ be $S_{ab}$ if $a$ is m-type and $\sqrt 2 \cdot S_{ab}$ if $a$ is q-type.
+Note that this is asymmetric in $a$ and $b$;
+we're undoing the normalization for $a$ but not for $b$.
+
+Recall (from xxx) that bounding idempotents are always m-type.
+
+\medskip
+
+We can now state the dimension formula.
+We have
+\be
+	p + q = \sum_{x\;  \mathrm{bounding}} {S_{1x}}^{\chi(Y)} {\textstyle \prod_i} S'_{a_i x} .
+\ee
+If any of the $a_i$ are q-type, then we know that $p=q$ and we are done.
+So now assume that none of the $a_i$ are q-type.
+In this case we have
+\be
+	p - q = \sum_{x\;  \mathrm{n.b.\ m-type}} {S_{1x}}^{\chi(Y)} {\textstyle \prod_i} S'_{a_i x}
+			\;\;+\;\; (-1)^{\Arf(Y)} \sum_{x\;  \mathrm{n.b.\ q-type}} {S_{1x}}^{\chi(Y)} {\textstyle \prod_i} S'_{a_i x} .
+\ee
+
+We must explain what we mean by $\Arf(Y)$.
+If $Y$ is closed then $\Arf(Y) = 0$ if $Y$ has a bounding spin structure and 
+$\Arf(Y) = 1$ if $Y$ has a nonbounding spin structure.
+For a torus, the $AA$, $AP$ and $PA$ spin structures are bounding and the $PP$ spin structure is nonbounding.
+A higher genus spin surface can be written as a connect sum of spin tori,
+and $Arf(Y)$ is additive under connected sums.
+
+If $Y$ has non-empty boundary for each boundary component has a bounding spin structure, 
+we define $\Arf(Y)$ to be the Arf invariant of the closed 
+surface obtained by capping each boundary component off with a disk.
+
+If $Y$ has a nonbounding boundary component, say $U_1$, then by assumption
+the label $a_1$ is m-type.
+It follows that $S'_{a_1 x} = 0$ if $x$ is q-type.
+Thus there is no need to define $\Arf(Y)$ in this case.
+
+
+
+
+\subsection{Sketch of proof}
+
+
+\kw{only sketch; refer to paper in prep for full details.}
+
+
+
+
 \section{$SO(3)_6$ and/or sFib?}
 
 
@@ -2263,7 +2345,7 @@ This theory does not exist.
 A quick way to see this is by looking at the fusion vertex $V^{\tau \tau \tau}$. 
 Denote $\gamma \in \text{End}(\tau)$ as the odd endomorphism.
 Then we can write down three anti-commuting operators $\gamma \tp \gamma \tp 1$, $\gamma \tp 1 \tp \gamma$ and $1\tp \gamma \tp \gamma$. 
-Furthurmore these operators are even and so they preserve the grading on $\mathbb{C}^{1|1}$. 
+Furthermore these operators are even and so they preserve the grading on $\mathbb{C}^{1|1}$. 
 But the even and odd subspaces of $\mathbb{C}^{1|1}$ are one dimensional and so these operators cannot be represented.
 Hence a theory with Fibonacci like fusion rules of Q-type particles must have fusion multiplicity.
 }
