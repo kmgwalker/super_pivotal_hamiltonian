@@ -593,6 +593,31 @@
 \newcommand{\VSd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VSd.pdf}}}}}
 
 
+\newcommand{\VNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VNoLabel.pdf}}}}}
+
+\newcommand{\DotX}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{DotX.pdf}}}}}
+\newcommand{\DotY}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{DotY.pdf}}}}}
+\newcommand{\DotZ}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{DotZ.pdf}}}}} 
+ 
+     \newcommand{\VNoLabelDot}[1]{\mathrel{\ooalign{  $\VNoLabel$\cr
+  \hidewidth\raise0ex\hbox{${#1}\mkern0mu$}\cr %dot
+%     \hidewidth\raise0ex\hbox{$\scale{0.9}{\VerticalSpace}$}\cr
+%  \hidewidth\raise0ex\hbox{$\VerticalSpace$}\cr
+  }}}
+ 
+%   $\leftidx{^{#1}}{\underset{\VNoLabel}{#3}}{^{#2}}$\cr
+ %\psi^{ab}_{c,\mu}, \DotX
+
+    \newcommand{\Vx}[4]{\mathrel{\ooalign{  $\overset{#1\kern2.8em #2}{\underset{#3}{\VNoLabel}}$\cr
+  \hidewidth\raise0ex\hbox{${#4}\mkern12mu$}\cr 
+  }}}
+
+    \newcommand{\VDotx}[5]{\mathrel{\ooalign{  $\overset{#1\kern2.8em #2}{\underset{#3}{\VNoLabelDot{#5}}}$\cr
+  \hidewidth\raise0ex\hbox{${#4}\mkern12mu$}\cr 
+       \hidewidth\raise0ex\hbox{$\scale{1.1}{\VerticalSpace}$}\cr
+  }}}
+
+
 \newcommand{\Vxyxxa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vxyxxa.pdf}}}}}
 \newcommand{\Vxyxxb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vxyxxb.pdf}}}}}
 \newcommand{\Vyxxxa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vyxxxa.pdf}}}}}
@@ -3808,6 +3833,7 @@ D_e \left(\HedgeZa  \right) =\lambda^{-1}
 \HedgeZb=
 \lambda^{-1} \HedgeZc=
 \sum_{\tilde{\psi}_w \tilde{\psi}_u} \left[D_e^{z} \right]_{\psi_w a_e \psi_u; \tilde{\psi}_w a_e \tilde{\psi}_u} \HedgeZd
+\label{ZEdgeExample}
 \end{align}
 where in the last step we fused the fermions into the vertices $w$ and $u$.
 We have also introduced the indices $\tilde{1}$ and $\tilde{2}$.
@@ -3822,51 +3848,116 @@ The bounding spin structure is built into the diagrammatics, recall [REF -- disc
 When vortices are introduced on plaquettes, or non-bounding spin structure on a higher genus manifold we pick up an extra minus sign every time a fermion circles the non-bounding disc. 
 We can account for this by associating to every edge a $q_e = \pm1$, such that $\prod_{e \in L} q_e = +1$, if the loop $L$ is bounding, and $-1$ if the loop $L$ is non-bounding.
 \dave{I think I have some idea how to connect this to Kastelyn orientations, I'll try to do that.}
-Hence on the edge term above we should mutiply by $q_e$. 
+Hence on the edge term above we should multiply by $q_e$. 
 A related subtlety comes into play when considering the $y$ type edges in Fig.~\ref{HoneycombLattice}. 
 We need to introduce another phase due to the fermion traversing the cap near the twisted vertices (vertex $v$ in the figure).
 Lastly, we have to find the explicit representation of this linear map on the vector space (\ref{HamiltonianVectorSpace}). 
 
-Lets first split the action of $D_e$ into two parts. 
-One will be the phase associated with the fermionic book keeping. 
-The other will be the action of the edge term on the the vertices. 
-
-
-
-$$
-$$
-
-We denote this by,
-\dave{Will make this look better later. Will also make indices $\tilde{1}$, and $\tilde{2}$.}
+Lets first split the action of $D_e$ into three parts. 
+The first will be the phase associated with the fermionic book keeping. 
+The other two take care of the spin structure, and the action of the odd endomorphism on the fusion space.
+Hence we write the edge term $D_e$ and $u, v \in \partial e$ as,
 \begin{align}
-\mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta.pdf}}}} \mapsto
-\lambda^{-1} \mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot.pdf}}}} 
+D_e\ket{E}\ket{V} &= 
+\left\{
+                \begin{array}{ll}
+                  \lambda^{-1} S_{uv} Z_{uv}(e) \ket{\cdots a(e)\cdots }\ket{\cdots \Gamma_e (\psi_u) \cdots \Gamma_e (\psi_w) \cdots} \quad & \text{if }\text{End}(a) = \mathbb{C} \ell_1 \\
+                  \\
+                  \ket{E} \ket{V} & \text{if } \text{End}(a) = \mathbb{C}
+                \end{array}
+              \right.
+              \label{EdgeHamiltonian}
 \end{align}
-This this takes the edge out of the canonical basis defined in (\ref{HamiltonianVectorSpace}).
-Therefore we need to apply local relations in order to reduce the state to the form of (\ref{HamiltonianVectorSpace}).
-The only way to do this is to slide the two fermions off the edge and act with them on the vertices.
-Sliding the fermions off the edge involves pushing an odd operator past each vector in the ordered tensor product $\tp_{v \in V} \ket{\psi(v)}$. 
-The odd operator being the action of the fermion on the vertex Hilbert spaces $\mathcal{H}_u$, and $\mathcal{H}_w$ for vertices $u$ and $w$ living at the boundary of $e$.
-Lets suppose that $w$ is the vertex nearest $\tilde{2}$, and $u$ is the vertex nearest $\tilde{1}$ when walking along the edge.
-The potential negative sign is introduced due permuting the odd operator past each super vector space \dave{Do we have a name for this operator, maybe $\Gamma_u$? on vertex $u$. }
-This sign is given by 
-\begin{align}
-S = \text{sign}(r(u) - r(w)) \times \prod_{s<r(u)} p_{v(s)} \times \prod_{t<r(u)} p_{v(t)}
-\end{align}
-where $p_v$ is parity of the vector living at site $v$.
+where $\lambda^{-1}$ comes from nucleating two fermions out of the vacuum. The prefactor $S_{uv}$ is $\pm1$ due to super commuting the odd endomorphisms through the vertex Hilbert space.
+The $Z_{uv}(e)$ is the phase picked up due taking the fermions from a vertical part of the edge and sliding them along until they act on the vertices in the canonical position.
+And $\Gamma_e(\psi)$ is the action of the odd endomorphism on the vertex space. 
+We now carefully look at each term appearing above. 
+Notice that we didn't label the $\Gamma_e$ with a subscript $\tilde{1}$ and $\tilde{2}$ as we did in (\ref{ZEdgeExample}). 
+This is because those indices are merely there for book keeping, and have no physical significance. 
 
-Next we define the action of the fermion locally at the vertex. 
-In the lattice we have chosen (Fig. \ref{HoneycombLattice}) we have three kinds of edges, labeled $x$, $y$ and $z$. 
-We need to write one Hamiltonian term per edge. 
-Lets start with the $x$ type. 
+\dave{I think there is a more elegant way to do this, perhaps using \cite{Novak2015}. Will look into it.}
+Lets begin with the prefactor $S_{uw}$.
+This is the phase associated super commuting the odd endomorphisms through the tensor product of vertices.
+Each edge be given an orientation that points up the page (in (\ref{ZEdgeExample}) this would be pointing from $\tilde{1}$ to $\tilde{2}$). 
+Lets call the vertex where the arrow begins $u$ and the vertex where the arrow is pointing $w$.
+When super commuting the odd endomorphisms through the vertex Hilbert space in (\ref{HamiltonianVectorSpace}), we find a minus sign every time the we pass an odd vector. 
+This minus sign is accounted for by $\prod_{s<r(u)} p_{v(s)}$, and similarly for $w$. 
+However we can pick up an extra sign due to the anticommutativity of the odd endomorphisms. 
+So there is an additional sign if $r(u)<r(w)$.
+Hence we can write,
 \begin{align}
-\Vertexa \rightarrow \Vertexb = \sum_{\tilde\psi} \; \frac{\Vertexc}{\Vertexd} \; \Vertexe
+S_{uv} = \text{sign}(r(u) - r(w)) \times \prod_{s<r(u)} p_{v(s)} \times \prod_{t<r(w)} p_{v(t)}
+\end{align} 
+Next we consider the phases due to the spin structure. 
+For the lattice chosen in Fig.~\ref{HoneycombLattice} we have,
+\begin{align}
+Z_{uv}(e) &= 
+q(e) \times\left\{
+                \begin{array}{ll}
+1 \quad & \text{if $e$ is an $x$-- or $z$--type edge} \\
+-i &\text{if $e$ is a $y$--type edge} 
+                \end{array}
+              \right.
+              \label{EdgePhase}
+\end{align}
+
+Lastly, we need to define the action of the odd endomorphism on the fusion space $\Gamma_e(\psi)$.
+The edge determines which endomorphism is applied to $\psi$. 
+We will return to that momentarily. 
+There are three kinds of odd endomorphisms, one for each leg of the fusion space. 
+It is natural to denote them $\Gamma^x$, $\Gamma^y$, and $\Gamma^z$ given the orientation of the lattice (i.e., commensurate with the labeling of the un-twisted vertex in Fig.~\ref{HoneycombLattice}.  
+\begin{align}
+\Gamma^x\left(\Vx{a}{b}{c}{\psi}\right) = \VDotx{a}{b}{c}{\psi}{\DotX} = \sum_{\eta} \Gamma^x_{\psi \eta} \Vx{a}{b}{c}{\eta} \\
+\Gamma^y\left(\Vx{a}{b}{c}{\psi} \right) = \VDotx{a}{b}{c}{\psi}{\DotY}= \sum_{\eta} \Gamma^y_{\psi \eta} \Vx{a}{b}{c}{\eta}  \\
+\Gamma^z\left(\Vx{a}{b}{c}{\psi} \right) = \VDotx{a}{b}{c}{\psi}{\DotZ} =  \sum_{\eta} \Gamma^z_{\psi \eta} \Vx{a}{b}{c}{\eta} 
+\end{align}
+where we have, \dave{this is an old figure, will make new ones soon.}
+\begin{align}
+\Gamma^x_{\psi \tilde{\psi}} =  \frac{\Vertexc}{\Vertexd} 
 \end{align}
 where $\tilde{\psi}^*$ is the dual of $\tilde{\psi}$. 
-\dave{Have we decided on an inner product? Do we need one to define the above? Should we just define the dual to be the vector with all arrows reversed? (I'll start including arrows in the diagrams).}
-$$
-$$
-\dave{Will continue.}
+Hence if the label on edge $e$ is Q type we get,
+\begin{align}
+\ket{\cdots \Gamma_e (\psi_u) \cdots \Gamma_e (\psi_w) \cdots} &= 
+              \left\{
+                \begin{array}{ll}
+   \sum_{\eta_u, \eta_w}       \Gamma^y_{\psi_u \eta_u} \Gamma^{z}_{\psi_w \eta_w} \ket{\cdots  \eta_u \cdots  \eta_w \cdots} \\
+   \\
+\sum \Gamma \Gamma \ket{\cdots} \\
+\\
+\sum \Gamma \Gamma \ket{\cdots}
+                \end{array}
+              \right.
+\end{align}
+
+%We denote this by,
+%\dave{Will make this look better later. Will also make indices $\tilde{1}$, and $\tilde{2}$.}
+%\begin{align}
+%\mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta.pdf}}}} \mapsto
+%\lambda^{-1} \mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot.pdf}}}} 
+%\end{align}
+%This this takes the edge out of the canonical basis defined in (\ref{HamiltonianVectorSpace}).
+%Therefore we need to apply local relations in order to reduce the state to the form of (\ref{HamiltonianVectorSpace}).
+%The only way to do this is to slide the two fermions off the edge and act with them on the vertices.
+%Sliding the fermions off the edge involves pushing an odd operator past each vector in the ordered tensor product $\tp_{v \in V} \ket{\psi(v)}$. 
+%The odd operator being the action of the fermion on the vertex Hilbert spaces $\mathcal{H}_u$, and $\mathcal{H}_w$ for vertices $u$ and $w$ living at the boundary of $e$.
+%Lets suppose that $w$ is the vertex nearest $\tilde{2}$, and $u$ is the vertex nearest $\tilde{1}$ when walking along the edge.
+%The potential negative sign is introduced due permuting the odd operator past each super vector space \dave{Do we have a name for this operator, maybe $\Gamma_u$? on vertex $u$. }
+%This sign is given by 
+%\begin{align}
+%S = \text{sign}(r(u) - r(w)) \times \prod_{s<r(u)} p_{v(s)} \times \prod_{t<r(u)} p_{v(t)}
+%\end{align}
+%where $p_v$ is parity of the vector living at site $v$.
+
+%Next we define the action of the fermion locally at the vertex. 
+%In the lattice we have chosen (Fig. \ref{HoneycombLattice}) we have three kinds of edges, labeled $x$, $y$ and $z$. 
+%We need to write one Hamiltonian term per edge. 
+%Lets start with the $x$ type. 
+%\begin{align}
+%\Vertexa \rightarrow \Vertexb = \sum_{\tilde\psi} \; \frac{\Vertexc}{\Vertexd} \; \Vertexe
+%\end{align}
+%where $\tilde{\psi}^*$ is the dual of $\tilde{\psi}$. 
+%\dave{Have we decided on an inner product? Do we need one to define the above? Should we just define the dual to be the vector with all arrows reversed? (I'll start including arrows in the diagrams).}
 
 
 
