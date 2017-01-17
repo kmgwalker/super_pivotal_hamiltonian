@@ -599,12 +599,27 @@
 
 
 \newcommand{\VNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VNoLabel.pdf}}}}}
+\newcommand{\VVNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VVNolabel.pdf}}}}}
 
 \newcommand{\DotX}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{DotX.pdf}}}}}
 \newcommand{\DotY}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{DotY.pdf}}}}}
 \newcommand{\DotZ}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{DotZ.pdf}}}}} 
+
+\newcommand{\VVDotX}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VVDotX.pdf}}}}}
+\newcommand{\VVDotY}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VVDotY.pdf}}}}}
+\newcommand{\VVDotZ}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VVDotZ.pdf}}}}} 
+
+
+
+
  
      \newcommand{\VNoLabelDot}[1]{\mathrel{\ooalign{  $\VNoLabel$\cr
+  \hidewidth\raise0ex\hbox{${#1}\mkern0mu$}\cr %dot
+%     \hidewidth\raise0ex\hbox{$\scale{0.9}{\VerticalSpace}$}\cr
+%  \hidewidth\raise0ex\hbox{$\VerticalSpace$}\cr
+  }}}
+  
+       \newcommand{\VVNoLabelDot}[1]{\mathrel{\ooalign{  $\VVNoLabel$\cr
   \hidewidth\raise0ex\hbox{${#1}\mkern0mu$}\cr %dot
 %     \hidewidth\raise0ex\hbox{$\scale{0.9}{\VerticalSpace}$}\cr
 %  \hidewidth\raise0ex\hbox{$\VerticalSpace$}\cr
@@ -621,6 +636,14 @@
   \hidewidth\raise0ex\hbox{${#4}\mkern12mu$}\cr 
        \hidewidth\raise0ex\hbox{$\scale{1.1}{\VerticalSpace}$}\cr
   }}}
+  
+      \newcommand{\VVDotx}[3]{\mathrel{\ooalign{  $\VVNoLabelDot{#3}$\cr
+  \hidewidth\raise-.7ex\hbox{${#2}\mkern-8mu$}\cr 
+    \hidewidth\raise-.7ex\hbox{${#1}\mkern65mu$}\cr 
+       \hidewidth\raise0ex\hbox{$\scale{1.1}{\VerticalSpace}$}\cr
+  }}}
+  
+
 
 
 \newcommand{\Vxyxxa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vxyxxa.pdf}}}}}
@@ -3939,6 +3962,7 @@ Lets first split the action of $D_e$ into three parts.
 The first will be the phase associated with the fermionic book keeping. 
 The other two take care of the spin structure, and the action of the odd endomorphism on the fusion space.
 Hence we write the edge term $D_e$ and $u, v \in \partial e$ as,
+\dave{Just realized that S is obviously a bad name for the variable. Will fix.}
 \begin{align}
 D_e\ket{E}\ket{V} &= 
 \left\{
@@ -3993,11 +4017,19 @@ It is natural to denote them $\Gamma^x$, $\Gamma^y$, and $\Gamma^z$ given the or
 \Gamma^y\left(\Vx{a}{b}{c}{\psi} \right) = \VDotx{a}{b}{c}{\psi}{\DotY}= \sum_{\eta} \Gamma^y_{\psi \eta} \Vx{a}{b}{c}{\eta}  \\
 \Gamma^z\left(\Vx{a}{b}{c}{\psi} \right) = \VDotx{a}{b}{c}{\psi}{\DotZ} =  \sum_{\eta} \Gamma^z_{\psi \eta} \Vx{a}{b}{c}{\eta} 
 \end{align}
-where we have, \dave{this is an old figure, will make new ones soon.}
+where we have
+%\begin{align}
+%\Gamma^x_{\psi \tilde{\psi}} =  \frac{\Vertexc}{\Vertexd} 
+%\end{align}
 \begin{align}
-\Gamma^x_{\psi \tilde{\psi}} =  \frac{\Vertexc}{\Vertexd} 
-\end{align}
-where $\tilde{\psi}^*$ is the dual of $\tilde{\psi}$. 
+\xymatrix{
+\Gamma^x_{\psi \eta} = \frac{ \VVDotx{\eta^*}{\psi}{\VVDotX}}{\VVDotx{\eta^*}{\eta}{}}&
+\Gamma^y_{\psi \eta} = \frac{ \VVDotx{\eta^*}{\psi}{\VVDotY}}{\VVDotx{\eta^*}{\eta}{}}&
+\Gamma^z_{\psi \eta} = \frac{ \VVDotx{\eta^*}{\psi}{\VVDotZ}}{\VVDotx{\eta^*}{\eta}{}}
+}
+ \end{align}
+where ${\eta}^*$ is the dual of ${\eta}$. 
+\dave{Should comment on fermion ordering of $\psi, \eta$ and the dot.}
 Hence if the label on edge $e$ is Q type we get,
 \begin{align}
 \ket{\cdots \Gamma_e (\psi_u) \cdots \Gamma_e (\psi_w) \cdots} &= 
