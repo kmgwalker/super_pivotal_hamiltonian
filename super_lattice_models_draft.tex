@@ -1551,7 +1551,7 @@ The quasiparticle associated with the two-dimensional module in the non-vortex s
 To do this, we will need to know the quantum dimensions of the quasiparticles. They are
 \be d_{m_1} = d_{m_\psi} = 1,\quad d_{m_\sigma^+} = d_{q_1} = d_{q_\psi} = \sqrt{2},\quad d_{q_\sigma} = 2.\ee
 
-When we calculate the total quantum dimension $\mcd$ which is related to something expectation value of thing. 
+When we calculate the total quantum dimension $\mcd$ which... 
 In bosonic theories we have $\mcd^2 = \sum_a d_a^2$, where the sum runs over all simple objects $a$. 
 This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
 
@@ -1702,45 +1702,81 @@ $q_\psi $&$\bullet q_\psi$&$\bullet q_\sigma$&$\bullet q_\unit$&$\bullet m_\psi$
 
 
 
-\subsection{Modular transformations on tori} \label{modulartforms}
+\subsection{Modular transformations and ground states on the torus} \label{modulartforms}
 
-If there was no interplay between the spin structure and the string-net pictures drawn on the torus, we would expect $|H_1(T^2;\zt)|=4$ degenerate ground states for each spin structure, since the $\beta$ lines obey the $\zt$ fusion rules of the toric code and, which has four degenerate ground states on the torus. This naive guess is actually incorrect: instead, for each spin structure, one of the four putative ground states turns out to actually have a higher energy than the other three, meaning that there will only be three degenerate ground states for each choice of spin structure. 
-For concreteness, we will explicitly list the ground states. For the $(A,A)$ sector, we have the three states 
-\be GS_{(A,A)} = \left\{\FubeXXX,\ \FubeXss,\ \FubesXs\right\}.\ee
-For periodic boundary conditions around the longitudinal cycle (the shorter cycle, which is horizontal in our pictures), we have 
+\subsubsection{Ground states}
+
+In this section, we enumerate the ground states of the $C_2$ theory when placed on a torus, and derive the modular $S$-matrix that serves as a linear transformation between them. 
+The modular $S$-matrix is related to, but distinct from, the statistical $S$-matrix which gives the mutual statistics of the quasiparticles in the theory; this $S$-matrix is discussed in Sec.\ref{mutual_statistics}. 
+
+Because the $C_2$ theory is dependent on the existence of a spin structure, in order to talk about ground states on a torus we must first equip the torus with a spin structure. 
+There are $|H_1(T^2;\zt)|=4$ different spin structures on the torus, obtained by choosing either periodic or anti-periodic fermionic boundary conditions around each of the torus' non-contractible cycles. 
+We will label the different spin structures on the torus by $(X,Y)$, where $X \in \{A,P\}$ specifies the fermionic boundary conditions along the meridional cycle (the shorter, spatial cycle), and $Y \in \{A,P\}$ denotes the fermionic boundary conditions along the longitudinal cycle (the longer temporal cycle). 
+The ground states on the torus with $(P,P)$ spin structure have been studied before in [brayden], and our results agree with theirs in this case. 
+
+If there was no interplay between a chosen spin structure and the string-net pictures drawn on the torus, we would expect $|H_1(T^2;\zt)|=4$ degenerate ground states for each choice of spin structure, since the $\beta$ lines obey $\zt$ fusion rules. 
+We will see that naive guess is actually incorrect: instead, for each spin structure, one of the four putative ground states turns out to actually have a higher energy than the other three, meaning that there are only three degenerate ground states for each choice of spin structure. 
+
+For a torus with a given spin structure, we can enumerate degenerate ground states it admits by writing down a maximal independent set of string-net pictures that can be drawn on it. 
+For the torus possessing an $(A,A)$ spin structure, we find the three states 
+\be GS_{(A,A)} = \left\{\FubeXXX,\ \FubeXss,\ \FubesXs\right\},\ee
+where in our diagrams we are now identifying the tops and bottoms of the squares (in this case with an anti-periodic boundary condition), as well as their right and left sides. 
+Notice that the fourth linearly independent even string-net configuration we could have drawn (namely the one with a single $\beta$ line wrapping around both cycles of the torus) is zero, which can be seen by nucleating a pair of fermions on the $\beta$ line and dragging one of them around both cycles of the torus. 
+A similar effect happens for the remaining spin structures. 
+
+For periodic boundary conditions around the meridional cycle (horizontal in our pictures, we have 
 \be GS_{(P,A)} = \left\{\FubeXXX,\ \FubeXss,\ \FubessX\right\}.\ee
-For periodic boundary conditions around the meridional cycle (the big cycle, vertical in our pictures), we have 
+For periodic boundary conditions around the longitudinal cycle (vertical in our pictures), we find
 \be GS_{(A,P)} = \left\{\FubeXXX,\ \FubesXs,\ \FubessX\right\},\ee
-and for periodic boundary conditions around both cycles, we get 
+and for periodic boundary conditions around both cycles, we have 
 \be GS_{(P,P)} = \left\{\FubesdXs,\ \FubeXsds,\ \FubessdX\right\}.\ee 
-Importantly, we wee that all of the ground states on the $(P,P)$ torus have odd fermion parity. This substantiates the evidence for the presence of a background topological superconductor, since a $p\pm ip$ superconductor always has odd fermion parity when placed on a $(P,P)$ torus [cite meng and brayden]. 
+Importantly, we wee that all of the ground states on the torus with $(P,P)$ spin structure have {\it odd} fermion parity. 
+This substantiates the evidence for the presence of a background topological superconductor, since a $p\pm ip$ superconductor always has odd fermion parity when placed on a $(P,P)$ torus [cite meng and brayden]. 
 
 %Also note that on every torus, there is one additional non-zero picture which lies at higher energy, which can be obtained by drawing the configuration of $\Sigma$ lines not present in the given collection of three pictures, adding on a dot, and creating a massive fermionic excitation somewhere in the background\dave{Not higher energy, but the state is equal to zero.}. For the $(P,P)$ torus, this high-energy state is the empty picture with a massive fermionic excitation (will elaborate later). 
 
-Having three ground states for each spin structure means that we have 12 ground states across all spin structures. However, we only have six quasiparticles, and so the equality between the number of degenerate ground states on the torus and the number of quasiparticles which is familiar from bosonic theories does not hold in the most naive sense. 
+Having three ground states for each spin structure means that we have 12 ground states across all spin structures. 
+However, we only have six quasiparticles, and so the equality between the number of degenerate ground states on the torus and the number of quasiparticles which is familiar from bosonic theories does not hold in the most naive sense. 
+To understand this, we will examine the trace of the identity operator in the tube algebra, which computes the number of quasiparticle types. 
 
-To elaborate on this, we examine the trace of the identity functor, which computes the number of quasiparticle types. When we traced out the $R$-matrices in \eqref{Smattr} and \eqref{Tmattr} we simply calculated the matrix elements and performed a matrix trace, but here it will be helpful to discuss another way of thinking about the trace. When we trace out a diagram of tubes, we form a timelike $S^1$ by closing up the top of the tubes with the bottom of the tubes, which forms a closed surface that we embed in an ambient three-sphere. We then evaluate the resulting configuration by filling in the complement of the tubes with a Turaev-Viro state-sum with boundary conditions given by the field configurations on the diagram we are tracing out. Thus, tracing out a diagram is equivalent to computing the partition function of the manifold formed when the diagram is closed and made periodic along the time direction. 
+Before we look at this, we should mention how the trace of a generic operator $\mco$ which acts on the tube algebra is defined. 
+We write ${\rm Tr}(\mco)$ diagrammatically by 
+writing $\mco$ as a collection of tubes, compactifying $\mco$ by joining up the top and bottom of the tubes in $\mco$ along the time direction to form a torus, and summing over the independent string-net configurations that can be drawn on the part of the torus not occupied by $\mco$. 
+This procedure results in a linear combination of string-net configurations drawn on the torus, which may then be evaluated to give the trace of $\mco$. 
+On a technical level, the evaluation is done by embedding the torus inside of $S^3$, filling in the complement of the torus with a Turaev-Viro state-sum whose boundary conditions are given by the field configurations on the torus, and computing the resulting state-sum.  
+Graphically, the trace of $\mco$ according to this definition looks like \ethan{does this picture make sense?}
+\be \label{TrO_def} {\rm Tr}(\mco) = \sum_X\mathord{\vcenter{\hbox{\includegraphics[scale=1]{trace_O.pdf}}}}, \ee
+where the sum is over all linearly independent field configurations $X$. 
+To define the trace this way, we need to specify a spin structure appearing on the torus in \eqref{TrO_def}. 
+The fermionic boundary conditions around the meridional cycle of the torus are fixed by the spin structure possessed by the tubes appearing in $\mco$.
+For example, if $\mco$ is a projector onto the space spanned by a quasiparticle associated with a vortex spin structure, the boundary conditions around the torus' meridional cycle will be periodic. 
+However, the boundary conditions around the longitudinal (timelike) cycle of the torus are fixed to be {\it anti-periodic}. 
+This is because in order to evaluate the right-hand side of \eqref{TrO_def}, we need embed the torus into the three-sphere and fill in the exterior of the torus with a Turaev-Viro state-sum. 
+Periodic boundary conditions along the longitudinal cycle of the torus would require a spin structure defect to pass through the hole in the torus \ethan{better term?}, which would prevent the exterior of the torus from being filled in during the evaluation of the trace, as it would be impossible to smoothly extend the spin structure on the torus to a spin structure in the $S^3$ bulk. 
 
-Filling in the complement of the tubes with a Turaev-Viro state-sum can only be done if we choose a spin structure on the timelike $S^1$ that can be smoothly extended to a spin structure on a disk, which means that we must choose {\it anti-periodic} boundary conditions for the timelike $S^1$. Therefore, only half ($6$ out of 12) of the ground states on the collection of tori come from tracing out the identity functor, so only half of the collection of ground states can be directly associated with quasiparticles. The other six ground states come from tracing out a twisted identity functor, which has a $\pi$ flux inserted through the cycle of the $S^1$, so that the timelike direction has {\it periodic} boundary conditions. Therefore, the six ground states on tori with anti-periodic boundary conditions along their major cycle (timelike direction) correspond directly to quasiparticles, while the six ground states on tori with periodic boundary conditions along their major circle map to quasiparticles that have been ``twisted'' along the timelike direction. \ethan{That was bad and confusing; I'll come back and fix this up later.}
-
+Now we return to the problem of computing the trace of the identity operator on the tube algebra. 
+We can write the identity operator as $\unit = \oplus_a\Pi_a$, where $a$ runs over the simple quasiparticles in the theory and where as before $\Pi_a$ is a projector onto the simple module associated with $a$.  
+With the help of \eqref{TrO_def}, we see that there are six nonzero contributions to ${\rm Tr}(\unit)$, corresponding to the sum of the three ground states on the $(A,A)$ torus and the three on the $(P,A)$ torus. 
+The remaining six ground sates coming from the tori with $(A,P)$ and $(P,P)$ spin structures do not contribute to ${\rm Tr}(\unit)$, since they have periodic boundary conditions along the torus' longitudinal cycle. 
+Therefore, the six ground states on tori with anti-periodic boundary conditions along their longitudinal cycles correspond directly to quasiparticles, while the six ground states on tori with periodic boundary conditions along their longitudinal cycle do not (they map to quasiparticles that have been ``twisted'' along the timelike direction). 
 %These arguments make the case for using anti-periodic boundary conditions on the timelike $S^1$ when calculating the twists and braids of the idempotents through the $R$-symbols. All that's left is to decide whether this means we should use the trace or supertrace. At this moment in time, all signs seem to point to the trace being associated with antiperiodic boundary conditions. This is for two reasons. First, we can observe that the using the supertrace to calculate the $S$ matrix in the $qq$ braiding sector gives us something (almost) proportional to $\zeta^2$ (the fact that $S_{q_\sigma q_\sigma}$ isn't may not be a problem), while using the trace gives us a $qq$ $S$-matrix of $0$. We know that we should have $S^4 = -1$ when acting on the ground states of a $(P,P)$ torus, which suggests that the supertrace is what we want to use to compute $S$ for the $(P,P)$ torus. Thus, the supertrace should be associated with periodic boundary conditions along the timelike $S^1$, leaving the trace to be associated with anti-periodic boundary conditions along the timelike $S^1$. 
 
-When we calculated the $S$-matrix in \eqref{Smattr}, we calculated it using the ``braiding statistics'' picture, in which the matrix element $S_{ab}$ denotes the mutual statistics of $a,b\in \mcz(\mcc)$. In what follows, we will examine the other meaning of the $S$-matrix: it is the matrix which implements the modular transformation $S : z \mapsto -1/z$. To avoid confusion, we will refer to the $S$-matrix as the modular $S$-matrix in this context. To explain what the modular $S$-matrix does, we note that there are two ways of representing a given string-net configuration on a torus embedded in $S^3$: one way is to fill the inside of the torus with a Turaev-Viro state-sum with boundary conditions specified by the given string-net configuration. The other is to fill the {\it outside} of the torus with a Turaev-Viro state-sum with the same boundary conditions. The modular $S$-matrix performs the change of basis between these two choices. Diagrammatically, such a change of basis corresponds to interchanging the major and minor cycles of the torus. 
+\subsubsection{The modular $S$ and $T$ matrices}
 
-We are now in a position to explain why the mutual statistics between two q-type particles is always zero: evaluating the braiding using the modular transformation picture yields a configuration of tori with incompatible spin structure. Since each q-type idempotent is associated with a torus with $(P,A)$ spin structure (periodic around the minor (spatial) cycle, anti-periodic around the major (timelike) cycle), a double-braid between two q-type particles is schematically obtained by computing the partition function of the two tori shown in Figure \ref{linked_tori}. 
-\begin{figure} 
-\centering
-\includegraphics{linked_qtori.pdf}
-\caption{\label{linked_tori} An illustration of why the mutual statistics between q-type particles is always zero: thickening the tori shown above until they fill the ambient $S^3$ is incompatible with the spin structures indicated by the arrows.}
-\end{figure}
+In this section, we will compute the modular $S$ and $T$ matrices on the torus, which generate the modular group. 
+To explain what the modular $S$-matrix does, we note that there are two ways of representing a given string-net configuration on a torus embedded in $S^3$ in terms of Turaev-Viro state-sums: one way is to fill the exterior of the torus with a Turaev-Viro state-sum with boundary conditions specified by the given string-net configuration, as discussed in the previous section. 
+The other is to fill the {\it interior} of the torus with a Turaev-Viro state-sum possessing the same boundary conditions. 
+The modular $S$-matrix performs the change of basis between these two choices. 
+Operationally, such a change of basis corresponds to interchanging the meridional and longitudinal cycles of the torus. 
+The modular $T$ matrix represents the action of the Dehn twist on the torus, which corresponds to cutting the torus along a meridional cycle, twisting the boundary conditions at the cut by $2\pi$ relative to one another, and glueing the torus back together.
+In bosonic theories, the $T$-matrix is diagonalized in the quasiparticle basis, with entries corresponding to the topological twists of the quasiparticles in the theory. 
 
-When we compute this partition function, we thicken the two tori so that their boundaries become glued with one another. The common boundary of the two tori forms a torus that divides the ambient $S^3$ into two solid tori. However, we see that the above choice of spin structures makes this gluing process impossible, since the spin structures on the two linked tori do not agree when one another when the tori are glued. More precisely, we see that the boundary conditions on the major cycle of one linked torus must match the minor cycle boundary conditions of the other in order for the gluing procedure to be well-defined, which is not the case in the above figure. This means that the partition function of a linking of two q-type idempotents must be always be zero, and hence q-type particles always have 0 mutual statistics with one another. 
-
-
-
-We now turn to computing the set of modular transformations that define the modular $S$ and $T$-matrices. We will label spin structures on the torus by tuples $(X,Y)$, where $X$ is the boundary condition along the minor (spatial) $S^1$ and $Y$ the boundary condition along the major (timelike) $S^1$. Importantly, the $S$ and $T$ modular transformations do {\it not} preserve the spin structure. Figure \ref{spin_str_mapping_class_group} shows how the different possible spin structures are permuted under $S$ and $T$. 
-
-Note that $T^2$ preserves spin structures, and so $T^2$ can have well-defined eigenstates with a definite spin structure. However, since $T$ does not preserve the spin structures, this is not true for $T$: this is another sign that only $T^2$ is physical, and that the twists of the non-vortex particles are ambiguous up to a factor of $-1$. 
+Importantly, the $S$ and $T$ modular transformations do {\it not} always preserve the spin structure of the torus they act on. 
+Figure \ref{spin_str_mapping_class_group} shows how the different possible spin structures are permuted under $S$ and $T$. 
+Since $T$ does not preserve the spin structures, it cannot generically have well-defined eigenstates with a definite spin structure. 
+This precludes an ability to associate a definite topological twist ($T$-matrix eigenvalue) to every quasiparticle in the theory: the spins of quasiparticles excitations in super fusion categories are in general not well defined. 
+However, the action of $T^2$ preserves spin structures, and so we are still able to associate definite $T^2$ eigenvalues to the quasiparticles in the theory.
+This means that the twists of the particles whose associated spin structures are not preserved by $T$ (i.e., the particles associated with a bounding spin structure) are ambiguous up to a factor of $\pm1$.  
 
 \begin{figure} \label{spin_str_mapping_class_group}
 \newcommand{\Space}{\; \; \; \; \; \; }
@@ -1767,7 +1803,6 @@ Note that $T^2$ preserves spin structures, and so $T^2$ can have well-defined ei
 \end{align} \nonumber
 \caption{Top: The action of the mapping class group on the four spin tori. The notation is such that the disk which bounds the cycle of the torus labeled by $B$ or $N$ has either a bounding ($B$) or non-bounding ($N$) spin structure. Bottom: the boundary conditions ($P$ for periodic and $A$ for anti-periodic) associated with each spin structure.}
 \end{figure}
-
 
 For simplicity of notation, we will define 
 \be e := \FubeXXX,\quad h := \FubesXs,\quad v := \FubeXss,\quad t:= \FubessX.\ee
@@ -2018,7 +2053,14 @@ where $f(a,b,c)$ measures the number of {\it physical} fermions attached to any 
 The simplest convention is probably to take $m_\unit$ and $m_\psi$ to be bosonic and to use $m_\sigma^+$ as our representative for the $m_\sigma$ isomorphism class, which we have been doing throughout and will continue to do. However, we might also want to take $m_\psi$ to be fermionic, to jive with the Ising theory better. In any case, $S$ is at least independent of this choice. 
 \end{comment}
 
+We are now in a position to explain why the mutual statistics between two q-type particles is always zero: evaluating the braiding using the modular transformation picture yields a configuration of tori with incompatible spin structure. Since each q-type idempotent is associated with a torus with $(P,A)$ spin structure (periodic around the minor (spatial) cycle, anti-periodic around the major (timelike) cycle), a double-braid between two q-type particles is schematically obtained by computing the partition function of the two tori shown in Figure \ref{linked_tori}. 
+\begin{figure} 
+\centering
+\includegraphics{linked_qtori.pdf}
+\caption{\label{linked_tori} An illustration of why the mutual statistics between q-type particles is always zero: thickening the tori shown above until they fill the ambient $S^3$ is incompatible with the spin structures indicated by the arrows.}
+\end{figure}
 
+When we compute this partition function, we thicken the two tori so that their boundaries become glued with one another. The common boundary of the two tori forms a torus that divides the ambient $S^3$ into two solid tori. However, we see that the above choice of spin structures makes this gluing process impossible, since the spin structures on the two linked tori do not agree when one another when the tori are glued. More precisely, we see that the boundary conditions on the major cycle of one linked torus must match the minor cycle boundary conditions of the other in order for the gluing procedure to be well-defined, which is not the case in the above figure. This means that the partition function of a linking of two q-type idempotents must be always be zero, and hence q-type particles always have 0 mutual statistics with one another. 
 
 
 
