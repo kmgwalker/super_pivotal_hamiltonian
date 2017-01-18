@@ -10,7 +10,7 @@
 \usepackage{tikz}
 \usepackage{tikz-cd}
 \definecolor{hanpurple}{rgb}{0.32, 0.09, 0.98}
-
+\setcounter{MaxMatrixCols}{12}
 \usepackage{tabu}
 
 \usepackage[numbers]{natbib}
@@ -1522,7 +1522,7 @@ If we then re-write the multiplication table for $\fube_\Sigma^P$, we see that w
 
 To summarize, we have found six types of quasiparticles in the theory: three vortex quasiparticles associated with tubes possessing periodic spin structures, and three non-vortex quasiparticles associated with tubes possessing anti-periodic boundary spin structures. 
 The three non-vortex quasiparticles are 
-\be \ba & m_\unit = \frac{1}{2} \left( \FubeXXX_A  +\frac{1}{d}\ \FubesXs_A\right),\ m_\psi = \frac{1}{2} \left( \FubeXXX_A - \frac{1}{d}\ \FubesXs_A\right),\\ & m_\sigma^\pm = \frac{1}{2} \left(\FubeXss_A \pm A^{-3}\ \FubessX_A\right),\ea\ee
+\be \label{nonvortex_qps} \ba & m_\unit = \frac{1}{2} \left( \FubeXXX_A  +\frac{1}{d}\ \FubesXs_A\right),\ m_\psi = \frac{1}{2} \left( \FubeXXX_A - \frac{1}{d}\ \FubesXs_A\right),\\ & m_\sigma^\pm = \frac{1}{2} \left(\FubeXss_A \pm A^{-3}\ \FubessX_A\right),\ea\ee
 while the three vortex quasiparticles are 
 \be q_\unit = \frac{1}{2}\left(\FubeXss + A^{3}\ \FubessX\right),\ q_\psi = \frac{1}{2}\left(\FubeXss - A^3\ \FubessX\right),\ q_\sigma = \FubeXXX.\ee
 
@@ -1543,6 +1543,8 @@ where $\mcz^A(C_2)$ are all the quasiparticles associated with anti-periodic spi
 This immediately tells us that the periodic sector must contain three quasiparticles, while the anti-periodic sector must contain either six $(6 = 6\cdot 1^2)$ or three $(6=2\cdot 1^2 + 2^2)$ quasiparticles. 
 However, since $\tube^A$ is non-abelian the former possibility is ruled out, and thus we have determined that the $C_2$ theory must contain six quasiparticles, with three associated to each spin structure. 
 The quasiparticle associated with the two-dimensional module in the non-vortex sector is $m_\sigma^\pm$, whose two-dimensionality comes from the fact that it is a ``composite'' of two oddly-isomorphic simple modules. 
+
+
 
 %%%%%%%%%%%%%%%%%%%%
 \subsubsection{Quantum dimensions}
@@ -1711,7 +1713,7 @@ The modular $S$-matrix is related to, but distinct from, the statistical $S$-mat
 
 Because the $C_2$ theory is dependent on the existence of a spin structure, in order to talk about ground states on a torus we must first equip the torus with a spin structure. 
 There are $|H_1(T^2;\zt)|=4$ different spin structures on the torus, obtained by choosing either periodic or anti-periodic fermionic boundary conditions around each of the torus' non-contractible cycles. 
-We will label the different spin structures on the torus by $(X,Y)$, where $X \in \{A,P\}$ specifies the fermionic boundary conditions along the meridional cycle (the shorter, spatial cycle), and $Y \in \{A,P\}$ denotes the fermionic boundary conditions along the longitudinal cycle (the longer temporal cycle). 
+We will label the different spin structures on the torus by $(X,Y)$, where $X \in \{A,P\}$ specifies the fermionic boundary conditions along the meridional cycle (the shorter, spatial cycle), and $Y \in \{A,P\}$ denotes the fermionic boundary conditions along the longitudinal cycle (the longer, temporal cycle). 
 The ground states on the torus with $(P,P)$ spin structure have been studied before in [brayden], and our results agree with theirs in this case. 
 
 If there was no interplay between a chosen spin structure and the string-net pictures drawn on the torus, we would expect $|H_1(T^2;\zt)|=4$ degenerate ground states for each choice of spin structure, since the $\beta$ lines obey $\zt$ fusion rules. 
@@ -1729,7 +1731,7 @@ For periodic boundary conditions around the meridional cycle (horizontal in our 
 For periodic boundary conditions around the longitudinal cycle (vertical in our pictures), we find
 \be GS_{(A,P)} = \left\{\FubeXXX,\ \FubesXs,\ \FubessX\right\},\ee
 and for periodic boundary conditions around both cycles, we have 
-\be GS_{(P,P)} = \left\{\FubesdXs,\ \FubeXsds,\ \FubessdX\right\}.\ee 
+\be \label{pp_gss} GS_{(P,P)} = \left\{\FubesdXs,\ \FubeXsds,\ \FubessdX\right\}.\ee 
 Importantly, we wee that all of the ground states on the torus with $(P,P)$ spin structure have {\it odd} fermion parity. 
 This substantiates the evidence for the presence of a background topological superconductor, since a $p\pm ip$ superconductor always has odd fermion parity when placed on a $(P,P)$ torus [cite meng and brayden]. 
 
@@ -1776,7 +1778,7 @@ Figure \ref{spin_str_mapping_class_group} shows how the different possible spin 
 Since $T$ does not preserve the spin structures, it cannot generically have well-defined eigenstates with a definite spin structure. 
 This precludes an ability to associate a definite topological twist ($T$-matrix eigenvalue) to every quasiparticle in the theory: the spins of quasiparticles excitations in super fusion categories are in general not well defined. 
 However, the action of $T^2$ preserves spin structures, and so we are still able to associate definite $T^2$ eigenvalues to the quasiparticles in the theory.
-This means that the twists of the particles whose associated spin structures are not preserved by $T$ (i.e., the particles associated with a bounding spin structure) are ambiguous up to a factor of $\pm1$.  
+This means that the twists of the particles whose associated spin structures are not preserved by $T$ (i.e., the particles associated with a bounding spin structure, $m_\unit,m_\psi,$ and $m_\sigma^+$ in the present example) are ambiguous up to a factor of $\pm1$.  
 
 \begin{figure} \label{spin_str_mapping_class_group}
 \newcommand{\Space}{\; \; \; \; \; \; }
@@ -1805,17 +1807,22 @@ This means that the twists of the particles whose associated spin structures are
 \end{figure}
 
 For simplicity of notation, we will define 
-\be e := \FubeXXX,\quad h := \FubesXs,\quad v := \FubeXss,\quad t:= \FubessX.\ee
+\be \label{tube_shorthands} e := \FubeXXX,\quad h := \FubesXs,\quad v := \FubeXss,\quad t:= \FubessX.\ee
+We now proceed to examine the action of the $S$ and $T$ modular transformations on the twelve ground states, going in groups of three for each of the four different spin structures. 
+
+\medskip
 
 \underline{$\mathbf{(A,A)}$:} We'll start with the $(A,A)$ spin structure, which is preserved under the action of $S$. 
 In the ground state basis $(e,v,h)^T$, we see that
 \be S^{gs}_{AA} = \begin{pmatrix} 1 & 0 &0 \\ 0 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}. \ee
 To transform $S$ into the quasiparticle basis, we take $S_{AA}= V_{AA}^{-1}S^{gs}_{AA}V_{AA}$, where $V_{AA}$ is the matrix mapping the quasiparticle basis $(m_\unit,m_\sigma^+,m_\psi)^T$ to the ground state basis $(e,v,h)^T$. Explicitly, 
 \be V_{AA}= \frac{1}{2}\begin{pmatrix}1&0&1 \\ 0 & 1 & 0\\ 1/d & 0 & -1/d \end{pmatrix},\ee
-and so we obtain
+which can be verified from \eqref{nonvortex_qps}.
+Note that the basis consists only of $m$-type particles associated with a non-vortex spin structure, this is due to the anti-periodic boundary conditions chosen along the meridional cycle of the torus. 
+Conjugating $S^{gs}_{AA}$ by $V_{AA}$, we obtain
 \be S_{AA} = \frac{1}{2}\begin{pmatrix} 1 & d & 1 \\ d & 0 & -d \\ 1 & -d & 1 \end{pmatrix} = S_{Ising}.\ee
 
-The $T$-matrix does not preserve the spin structure, as we can see from \eqref{modular_spinstr_tforms}. As a map between the ground state bases $(e,v,h)^T_{AA}$ and $(e,t,h)_{AP}^T$, we simply have
+The $T$-matrix does not preserve the spin structure, as we can see from Figure \ref{spin_str_mapping_class_group}. As a map between the ground state bases $(e,v,h)^T_{AA}$ and $(e,t,h)_{AP}^T$, we find
 \be T_{AA\mapsto AP}^{gs} = \unit_{3\times 3}.\ee
 The matrix mapping the idempotent basis $(m_\unit,m_\sigma^+,m_\psi)^T_{AP}$ onto the ground state basis $(e,t,h)_{AP}^T$  is
 \be V_{AP} = \frac{1}{2} \begin{pmatrix} 1 & 0 & 1 \\ 0 & A^{-3} & 0 \\ 1/d & 0 & -1/d \end{pmatrix},\ee
@@ -1824,16 +1831,19 @@ which tells us that
 1 &0&0 \\ 0&A^3&0\\0&0&1
 \end{pmatrix}.\ee
 
-
-\underline{$\mathbf{(P,P)}$:} More interesting is the $(P,P)$ torus, whose spin structure is preserved under both $S$ and $T$. The three vectors in the basis of ground states are $v_\bullet,h_\bullet,$ and $t_\bullet$,
+\underline{$\mathbf{(P,P)}$:} More interesting is the $(P,P)$ torus, whose spin structure is preserved under both $S$ and $T$. According to \eqref{pp_gss}, the three vectors in the basis of ground states are $v_\bullet,h_\bullet,$ and $t_\bullet$,
 where the $\bullet$s in labels mean that their associated tubes have odd fermion parity.
 In the ground state basis $(v_\bullet,h_\bullet,t_\bullet)^T$, we obtain
 \be S^{gs}_{PP} = \begin{pmatrix}0 & 1 & 0 \\ A^4 & 0 & 0 \\ 0 & 0 & A^{-6} \end{pmatrix},\quad T^{gs}_{PP} = \begin{pmatrix} 0 & 0 & A^{-6} \\ 0 & 1 & 0 \\ 1 & 0 & 0 \end{pmatrix}\ee
 One can check that we have the modular relations
-\be (ST)^3 = S^4= A^4\unit_{3\times3} = -\unit_{3\times 3}.\ee 
-The minus sign, which does not appear in bosonic theories, comes from the fact that the action of $S^4$ on a $(P,P)$ torus performs a $2\pi$ rotation of the fermion framing, resulting in a phase of $-1$ since the $(P,P)$ torus has odd fermion parity. This also means that in the fermionic setting, the $S$ matrix is not self-dual as it is for bosonic theories. %Also, as a sanity check we see that the eigenvalues of $T$ are $1,\pm A^{-3}$ (if $A^4=i$, then $A^{-3} = e^{i\pi/8}$).
+\be (S_{PP}T_{PP})^3 = S_{PP}^4= A^{-8}\unit_{3\times3} = -\unit_{3\times 3}.\ee 
+The minus sign, which can never appear in bosonic theories, comes from the fact that the action of $S^4$ on a $(P,P)$ torus performs a $2\pi$ rotation of the fermion framing, resulting in a phase of $-1$, since the $(P,P)$ torus has odd fermion parity. 
+These relations easily generalize to $(ST)^3=S^4=(-1)^F\unit$, where $(-1)^F$ denotes the fermion parity of the tori being acted upon.
+This also means that in the fermionic setting, the $S$ matrix is not self-dual as it is for bosonic theories. %Also, as a sanity check we see that the eigenvalues of $T$ are $1,\pm A^{-3}$ (if $A^4=i$, then $A^{-3} = e^{i\pi/8}$).
 
-Note that none of $q_{\unit\bullet},q_{\sigma\bullet},q_{\psi\bullet}$ are idempotents in the strict sense of the word, since they multiply together to give even tubes. To ensure they are normalized correctly, we require that they square to their associated even idempotents:
+Now we need to transform $S_{PP}$ and $T_{PP}$ into the quasiparticle basis. 
+Note that none of $q_{\unit\bullet},q_{\sigma\bullet},q_{\psi\bullet}$ are idempotents in the strict sense of the word, since they multiply together to give even tubes. 
+To ensure they are normalized correctly, we will require that they square to their associated even idempotents:
 \be q_{\unit\bullet}^2 = q_\unit,\quad q_{\psi\bullet}^2 = q_\psi,\quad q_{\sigma\bullet}^2 = q_\sigma.\ee
 In order for this to hold, we %see that we need to take
 %\be q_{\unit\bullet} = \frac{A^{-2}}{2}(v_\bullet + A^3 t_\bullet),\quad q_{\psi\bullet} = \frac{A^{-2}}{2}(v_\bullet - A^3t_\bullet),\quad q_{\sigma\bullet} = \frac{1}{d}h_\bullet.\ee
@@ -1843,9 +1853,6 @@ take the matrix that maps the basis $(q_{\unit\bullet},q_{\sigma\bullet},q_{\psi
 which gives 
 \be S_{PP} = \frac{A^{-2}}{2} \begin{pmatrix} -1 & d & 1 \\ d & 0 & d \\ 1 & d & -1 \end{pmatrix},\quad T_{PP} = \begin{pmatrix} A^{-3} & 0 & 0 \\ 0 & 1 & 0 \\ 0& 0& -A^{-3}.\end{pmatrix}.\ee
 %The prefactor of $A^2$ in $S_{PP}$ takes care of the $S^4=-\unit$ constraint for us. 
-
-
-
 
 \underline{$\mathbf{(P,A)}$:} Now for the $(P,A)$ spin structure, which is preserved by $T$ (as the q-type quasiparticles have well-defined self-statistics). First for the $S$-matrix, which maps the $PA$ spin structure to the $AP$ spin structure. As a map between the ground state basis $(e,v,t)_{PA}^T$ and the ground state basis $(e,t,h)_{AP}^T$, the $S$ matrix is
 \be S^{gs}_{PA\mapsto AP} = \begin{pmatrix}
@@ -1863,11 +1870,11 @@ d/2 & 1 & d/2 \\ 1 & 0 & -1 \\ -d/2 & 1 & -d/2
 Now for $T$, which preserves the spin structure. In the ground state basis basis $(e,v,t)^T$, $T$ takes the form 
 \be T^{gs}_{PA} = \begin{pmatrix}
 1 & 0 & 0\\ 0 & 0 & A^{-6} \\ 0&1&0 
-\end{pmatrix}\ee
-which tells us that in the idempotent basis, 
+\end{pmatrix},\ee
+which in the idempotent basis becomes 
 \be T_{PA}  = \begin{pmatrix}
 A^{-3} & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -A^{-3}
-\end{pmatrix}\ee
+\end{pmatrix}.\ee
 
 \underline{$\mathbf{(A,P)}$:} Finally, we turn to the $(A,P)$ spin structure. 
 Since the $S$-matrix must be symmetric, we can immediately write 
@@ -1882,8 +1889,43 @@ Therefore, in the idempotent basis,
 \be T_{AP\mapsto AA} = V_{AA}^{-1} T^{gs}_{AP\mapsto AA} V_{AP} = \begin{pmatrix}
 1 &0&0 \\ 0&A^3&0\\0&0&1
 \end{pmatrix}.\ee
-\ethan{Will clean up and finish later. Also should discuss arXiv:1502.03192}. 
 
+\medskip
+
+Collecting these results, we can now write down the complete modular $S$ and $T$ matrices in the $C_2$ theory, which act across all spin structures. 
+We will write them down in the quasiparticle basis $[(m_\unit,m_\psi,m_\sigma^+)_{AA},(m_\unit,m_\psi,m_\sigma^+)_{AP},(q_\unit,q_\psi,q_\sigma)_{PA},(q_\unit,q_\psi,q_\sigma)_{PP}]^T$, in which 
+\be 
+S = \frac{1}{2}\begin{pmatrix} 1 & d & 1 &			&&&			&&&			&& \\ 
+					      d & 0 &-d &			&&&			&&&			&&\\
+					      1&-d&1 & 			&&&			&&&			&&\\
+						&&&				&&&			d&2&d&		&& \\
+						&&&				&&&			2&0&-2&		&&\\
+						&&&				&&&			-d&2&-d&		&&\\
+						&&&				d&2&-d&		&&&			&&\\
+						&&&				2&0&2&		&&&			&&\\
+						&&&				d&-2&-d&		&&&			&&\\
+						&&&				&&&			&&&			-A^{-2} & A^{-2}d & A^{-2}\\
+						&&&				&&&			&&&			A^{-2}d & 0 & A^{-2}d \\ 
+						&&&				&&&			&&&			A^{-2} & dA^{-2} & -A^{-2} \end{pmatrix}\ee		
+where we have only listed the non-zero entries. 
+Note that we have $S = S_{even} \oplus S_{odd}$ where $S_{odd}$ is the $S$-matrix acting on ground states with odd fermion parity, and so the $S$-matrix preserves fermion parity (as it must). 
+Also note that $S^4 = \unit_{9\times9}\oplus(-\unit_{3\times3})$. 
+In the same quasiparticle basis, the $T$-matrix is
+\be 
+T = \frac{1}{2}\begin{pmatrix}    &&&				1&0&0&			&&&			&& \\ 
+					        &&&				0&A^3&0&			&&&			&&\\
+					        &&& 				0&0&1&			&&&			&&\\
+						1&0&0&				&&&			&&&			&& \\
+						0&A^3&0&				&&&			&&&			&&\\
+						0&0&1&				&&&			&&&			&&\\
+						&&&				&&&			A^{-3}&0&0&			&&\\
+						&&&				&&&			0&1&0&			&&\\
+						&&&				&&&			0&0&-A^{-3}&			&&\\
+						&&&				&&&			&&&			A^{-3}&0&0\\
+						&&&				&&&			&&&			0&1&0 \\ 
+						&&&				&&&			&&&			0&0&-A^{-3} \end{pmatrix}\ee	
+The $T$-matrix is not completely diagonalized, since it acts nontrivially on the spin structures. 
+This leads to subtleties involved with identifying the topological twists of the quasiparticles, which we elaborate on in the next section. 
 
 
 
@@ -1891,9 +1933,16 @@ Therefore, in the idempotent basis,
 \subsection{Braiding data} \label{C2_braiding}
 %%%%%%%%%%%%%%%%%%%%%%%
 
+In this section we compute the braiding data of the quasiparticles in the $C_2$ theory, namely their mutual- and self-statistics. 
+We will do this by computing the $R$-matrices, which we will trace out to obtain the braiding data. 
+This in turn allows us to define statistical $S$ and $T$ matrices, which measure the mutual- and self-statistics of the quasiparticles in the theory, respectively. 
+In conventional bosonic topological phases, the statistical $S$ and $T$ matrices are identical to the modular $S$ and $T$ matrices, which we computed in the previous section.
+However, we will see that the presence of spin structures means that this correspondence does {\it not} hold in the $C_2$ theory (as well as in more general fermionic theories). 
+While the modular $S$ and $T$ matrices are still intimately related to the statistical $S$ and $T$ matrices, we will have to work a bit harder to establish this relationship. 
+
 \subsubsection{$R$-matrices}
-In this subsection we provide a table of the $R$ symbols in the theory. 
-First, we need to set some conventions on our fusion spaces. 
+To begin, we will construct a table of the $R$ symbols in the theory. 
+First, we need to set some conventions on our fusion spaces in this section. 
 We will work on the three-punctured sphere rather than drawing out pairs of pants, as it is much easier to perform calculations using the three-punctured sphere picture. 
 
 We will write a generic even fusion space, which is an even vector in the fusion space $V^{ab}_c$, as 
@@ -1992,21 +2041,30 @@ $q_\psi $&$(1+1\bullet)q_\psi$&$-A^3(1-A^4\bullet)q_\sigma$&$(1+1 \bullet)q_\uni
 %\subsection{Exchange statistics}
 
 \subsubsection{Twists and self-statistics}
-There are three ways to compute the twist: by statistics (braiding two identical idempotents around one another), by spin (applying Dehn twists on the idempotents), and by modular transformations (by performing Dehn twists on the torus). 
+There are three ways to compute the topological twist $\theta_a$ (self-statistics) of a quasiparticle $a$: by statistics (braiding two identical $a$ quasiparticles around one another), by spin (applying Dehn twists on the tubes associated with $a$), and by modular transformations (by acting with the modular $T$-matrix on the ground states on the tori associated with $a$). 
+We'll examine the first two methods below, and will comment on the relation between these and the third method at the end of the section. 
 
-We'll start by computing the twists by statistics, namely by tracing out the $R$ symbols:
-\be \label{Tmattr} \theta_a = \frac{1}{d_a}\sum_b d_b \text{Tr}[R^{aa}_b].\ee
+We'll start by computing the twists $\{\theta_a\}$ by statistics, namely by braiding two identical quasiparticles once around one another. 
+This corresponds to tracing out the $R$ symbols [Ref someone]:
+\be \label{Tmattr} \theta_a = \frac{1}{d_a}\sum_b d_b \text{Tr}[R^{aa}_b],\ee
+where the trace is to be understood in the context of \eqref{TrO_def}.
 Using Table \ref{Rtable}, we obtain
 \be \theta_{m_\unit} = 1,\ \theta_{m_\psi} = 1,\ \theta_{m^\pm_\sigma} = \pm A^3\ee
 for the non-vortex particles, and 
 \be \theta_{q_\unit} = A^{-3},\ \theta_{q_\psi} = -A^{-3},\ \theta_{q_\sigma} = 1\ee
-for the vortex particles. The twists can also be obtained by directly Dehn-twisting the tubes in question. This yields the same result, implying that the spin-statistics relation holds in this theory. In the basis $(m_\unit,m^\pm_\sigma,m_\psi,q_\unit,q_\sigma,q_\psi)^T$, the $T$-matrix is thus
+for the vortex particles. 
+
+The twists can also be obtained by computing their spins, which is done by directly Dehn-twisting the tubes in question. 
+This amounts to computing the eigenvalue of each quasiparticle under $t$, where $t$ is the twisted tube defined in \eqref{tube_shorthands}.
+We can then use the tube algebra multiplication tables to read off the eigenvalues, and in the basis $(m_\unit,m^\pm_\sigma,m_\psi,q_\unit,q_\sigma,q_\psi)^T$ we find the $T$-matrix to be
 \be T = {\rm diag}[1,\pm A^3,1,A^{-3},1,-A^{-3}].\ee
+This yields the same result as we obtained by tracing out the $R$-symbols, confirming that the spin-statistics relation holds in this theory.
 
 Making an explicit choice for $A$ can help to shed some light on these results. If we choose $A = ie^{\pm i \pi/8}$ (giving $d=+\sqrt{2}$ and $A^4 = \pm i$), then the $T$-matrix in the vortex sector decomposes as the tensor product
 \be T_P = T_{p\pm ip} \tp T_{\text{Ising}_{\nu =\mp1}},\ee
-where $T_{p\pm ip} = e^{\pm i\pi/8}$. %Other allowed choices for $A$ correspond to $\nu = 3,5$ and...
-This hints at the existence of a secret topological superconductor in the vortex sector. We will have more to say about this later when we discuss modular transformations on the torus.
+where $T_{p\pm ip} = e^{\pm i\pi/8}$ is the $T$-matrix of a $p\pm ip$ superconductor. %Other allowed choices for $A$ correspond to $\nu = 3,5$ and...
+\ethan{discuss}
+
 
 In the expressions above, the twists of every non-vortex particle are ambiguous up to a factor of $\pm1$, corresponding to an ambiguity in the parity of physical fermions attached to the tubes at the time of twisting. The vortex particles have no such ambiguity, since moving a physical fermion around a tube with periodic boundary conditions picks up no $-1$ signs.   
 
@@ -2015,9 +2073,18 @@ If we believe that the chiral central charge of these theories can be computed i
 
 \subsubsection{Mutual statistics}
 
-Having obtained the $R$ symbols, we can also calculate the mutual statistics of the quasiparticles, which is encapsulated by the braiding $S$-matrix. Unlike in bosonic theories, the $S$-matrix that contains information about the mutual statistics of quasiparticles is {\it distinct} from the $S$-matrix that characterizes how the ground states on the torus transform under the modular transformation $z\mapsto 1/z$. This distinction is because of the need to choose a spin structure on the torus: we will return to this issue in Section \ref{modulartforms}. For now, we will restrict ourselves to calculating the $S$-matrix measuring the mutual statistics of the quasiparticles in the theory. 
+Having obtained the $R$ symbols, we can also calculate the mutual statistics of the quasiparticles, which is encapsulated by the braiding $S$-matrix. 
+Unlike in bosonic theories, the $S$-matrix that contains information about the mutual statistics of quasiparticles is {\it distinct} from the $S$-matrix that characterizes how the ground states on the torus transform under the modular transformation $z\mapsto 1/z$. This distinction is because of the need to choose a spin structure on the torus: we will return to this issue in Section \ref{modulartforms}. For now, we will restrict ourselves to calculating the $S$-matrix measuring the mutual statistics of the quasiparticles in the theory. 
 
 When we calculate $S$, we should keep in mind that although there are some $\pm1$ ambiguities in the $T$-matrix, there should be no ambiguities present in $S$, since physical fermions have trivial double-braiding with one another. That is, mapping $m_a \mapsto fm_a$ where $a\in \{\unit,\psi,\sigma\}$ and $f$ is a physical fermion should not affect the answer we get for the $S$-matrix.
+
+
+\begin{figure}
+\includegraphics{both_braided_tubes}
+\caption{\label{braided_tubes} 
+}
+\end{figure}
+
 
 There are several ways to calculate $S$. 
 First, we can calculate $S$ by tracing out the $R$-symbols, using the formula
