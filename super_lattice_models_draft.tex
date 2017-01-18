@@ -608,6 +608,7 @@
 \newcommand{\VVDotY}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VVDotY.pdf}}}}}
 \newcommand{\VVDotZ}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VVDotZ.pdf}}}}} 
 
+\newcommand{\VertexInnerProduct}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VertexInnerProduct.pdf}}}}}
 
 
 
@@ -4051,7 +4052,8 @@ A_v \ket{E} \ket{V} =
 \end{align}
 In the context of \cite{Kitaev2012}, a vertex compatible with the edge labeling was called stable.
 
-\subsection{Edge}\label{EdgeHamiltonianTerms}
+\begin{comment}
+\subsection{Edge}
 \dave{Need to mention spin structure as well.}
 The edge terms allow fermions to fluctuate across $Q$ type bonds, and act as the identity otherwise.
 Lets write this operator down explicitly by its action on the basis states, written in the text following (\ref{HamiltonianVectorSpace}).
@@ -4180,6 +4182,8 @@ Hence if the label on edge $e$ is Q type we get,
               \right.
 \end{align}
 
+\end{comment}
+
 %We denote this by,
 %\dave{Will make this look better later. Will also make indices $\tilde{1}$, and $\tilde{2}$.}
 %\begin{align}
@@ -4227,6 +4231,108 @@ Hence if the label on edge $e$ is Q type we get,
   %              \end{array}
     %          \right.
 %\end{align}
+\subsection{Edge (\dave{Take two})}\label{EdgeHamiltonianTerms}
+The edge terms allow fermions to fluctuate across $Q$ type bonds, and act as the identity otherwise.
+Lets write this operator down explicitly by its action on the basis states, written in the text following (\ref{HamiltonianVectorSpace}). We will first demonstrate the action of the edge term on one picture, then provide the full details of how we write the term. 
+
+
+The operator impliments the isotopy relation [REF] of sliding dots fermions along Q type bonds.
+This is accomplished by creating a term which will add fermions to the two vertices at either end of the Q-type bond if there are none there. 
+It will remove two fermions if both vertices are odd. 
+Lastly it will hop the fermions from one vertex to the other if one is occupied and the other is not\footnote{Heuristically we can think of the two vertices as fermionic islands, that can be of odd and even parity, and the Q type bond as a 1D superconductor which coherently couples the two islands together.}. 
+We can implement this action straightforwardly by creating two fermions on the Q-type bond and fusing them into the vertices.
+For the edge term on a $z$ type edge $\text{End}(a_e) = \mathbb{C}\ell_1$ act as,
+\begin{align}
+D_e \left(\HedgeZa  \right) =\lambda^{-1}
+\HedgeZb=
+\lambda^{-1} \HedgeZc=
+\sum_{\tilde{\psi}_w \tilde{\psi}_u} \left[D_e \right]_{\cdots} \HedgeZd
+\label{ZEdgeExample}
+\end{align}
+where in the last step we fused the fermions into the vertices $w$ and $u$.
+We have also introduced the indices $\tilde{1}$ and $\tilde{2}$.
+These are only used in describing the action of the operator on the basis states, but are important for fermionic book keeping. 
+They have the property that $\tilde{1} < \tilde{2} < r$ for all $r \in \mathcal{I}$. \dave{Is there a more standard way of saying this?}
+We have similar operators for $x$-type edges, and $y$-type edges. 
+We now look for a concrete representation of the edge terms.
+
+The fact that the fermions were pulled out of the vaccuum, means they come with some ordering, in the above example we used $\tilde{1}$ and $\tilde{2}$. 
+If we reverse this ordering we must compensate with a minus sign.
+To properly account for this sign, we need to append a reference orienation to each edge. 
+This is just an oriented adjacency graph which we denote $K_{uv}$, where $K_{uv} = +1$ if the edge is oriented from $u$ to $v$, $-1$ if the edge is oriented from $v$ to $u$, and $0$ is the vertices $u$ and $v$ are not sharing an edge.
+In particular $K_{uv} = - K_{vu}$, so that it is compatible with fermi statistics. 
+In the lattice shown in Fig.~\ref{HoneycombLattice} we choose the orientation to always point ``up" the page.
+For the $x$, $y$, and $z$ type bonds connected to $v$ we define $K_{vw} = K_{sv} = K_{tv}$. 
+
+\dave{I need to figure out how to say this properly. I will go back to Reshitikhin's paper on K-orientations and try to adopt some of there notation. In the interest of moving forward I will start with the following:}
+We also need to account for the spin structure built on $\Sigma \setminus  \mathcal{F} = \mathcal{V} \cup \mathcal{E}$. 
+The diagrammatic rules of the fusion theory already incorporates the spin structure for diagrams living over with bounding spin structure. 
+However, we do have to specify what happens when a fermion traverses a loop with non-bounding spin structure.
+To do this, we define an edge variable $q(e)$, such that for a given loop in the graph $\mathcal{L}$ we have 
+\begin{align}
+\prod_{e \in \mathcal{L} } q(e) = 
+\left\{
+                \begin{array}{ll}
+1 \quad & \text{if $\mathcal{L}$ is bounding} \\
+-1 &\text{if $\mathcal{L}$ is non-bounding} 
+                \end{array} \right.
+\end{align}
+\dave{No cannonical definition, so guage transformations,....}
+This term is multiplied onto the edge term so that non-bounding spin structures can be considered.
+
+Lastly, we need to define the action of fusing a fermion into $\mathcal{H}_v$.
+There are three edges which exit $\mathcal{H}_v$, if a given edgeis Q type, it will have an odd endomorphism whose square is given by $\pm \lambda$. 
+It is natural to denote them $\Gamma^x$, $\Gamma^y$, and $\Gamma^z$ given the orientation of the lattice (i.e., commensurate with the labeling of the un-twisted vertex in Fig.~\ref{HoneycombLattice}). 
+Explicitly we have,  
+\begin{align}
+\Gamma^x\left(\Vx{a}{b}{c}{\psi}\right) = \VDotx{a}{b}{c}{\psi}{\DotX} \quad \quad \Gamma^y\left(\Vx{a}{b}{c}{\psi} \right) = \VDotx{a}{b}{c}{\psi}{\DotY} \quad \quad  \Gamma^z\left(\Vx{a}{b}{c}{\psi} \right) = \VDotx{a}{b}{c}{\psi}{\DotZ} 
+\end{align}
+when the operator makes sense, i.e., for $\Gamma^x$ we require $\text{End}(b) = \mathbb{C} \ell_1$.
+From which we see that $(\Gamma^x)^2 = (\Gamma^y)^2 = \lambda$ and $(\Gamma^z)^2 = -\lambda$.
+We specify the matrix elements of the odd operators via,
+\begin{align}
+\Gamma^{\alpha} \left(\Vx{a}{b}{c}{\psi}\right) = \sum_{\eta} \Gamma^{\alpha}_{\psi \eta} \Vx{a}{b}{c}{\eta} \quad \quad \alpha = x,y,z
+\end{align}
+It is important to note that the parity of $\psi$ and $\eta$ differ on either side of the equation while the list of numbers $\Gamma^{\alpha}_{\psi \eta}$ are purely even  $\mathbb{C}$. 
+This defines $\Gamma^\alpha$ on the graded vector space, which can be extended linearly to the entire vector space.
+These matrix elements can be specified diagrammatically,
+\begin{align}
+\xymatrix{
+\Gamma^x_{\psi \eta} = \frac{ \VVDotx{\eta^*}{\psi}{\VVDotX}}{\VVDotx{\eta^*}{\eta}{}}&
+\Gamma^y_{\psi \eta} = \frac{ \VVDotx{\eta^*}{\psi}{\VVDotY}}{\VVDotx{\eta^*}{\eta}{}}&
+\Gamma^z_{\psi \eta} = \frac{ \VVDotx{\eta^*}{\psi}{\VVDotZ}}{\VVDotx{\eta^*}{\eta}{}}
+}
+ \end{align}
+ Where $\eta^*$ is canonically dual to $\eta$. i.e., if $\eta \in V^{ab}_c$ with parity $\eta^* \in V^{b^* a^*}_{c^*}$ and $(\alpha \eta)^* = \alpha^* \eta^*$ for $\alpha \in \mathbb{C}$. 
+ We have to be careful about how we define the pairing of our vertices.  
+One way to do it is the following:
+\begin{align}
+\VertexInnerProduct
+\end{align}
+\dave{Where the box on the right labeled with a $1$ and the box on the left is labeled with $2$. If we decided to go with this definition I would add labels etc.
+I am also not pretending that this is an inner product. 
+Would we prefer to define an inner product and use that here, or continue in this fashion? }
+
+We are now in position to define the edge Hamiltonian. 
+For an edge $e$ and a $u, v \in \partial e$ we have,
+\begin{align}
+D_e =\lambda^{-1} q(e) K_{uw} \times \left\{
+                \begin{array}{ll}
+                & \lambda q(e) K_{uw} \quad \text{if $a(e)$ is M type, otherwise} \\
+                \\
+&\Gamma^z_w \tp \Gamma^x_u \quad \text{if $e$ is a $z$ type edge}            \\
+\\
+&\Gamma^x_w \tp \Gamma^y_u \quad  \text{if $e$ is a $x$ type edge}            \\
+\\
+&-i \Gamma^z_w \tp \Gamma^x_u \quad \text{if $e$ is a $y$ type edge}           
+                \end{array} \right.
+\end{align}
+%\begin{align}
+%\Gamma^x\left(\Vx{a}{b}{c}{\psi}\right) = \VDotx{a}{b}{c}{\psi}{\DotX} = \sum_{\eta} \Gamma^x_{\psi \eta} \Vx{a}{b}{c}{\eta} \\
+%\Gamma^y\left(\Vx{a}{b}{c}{\psi} \right) = \VDotx{a}{b}{c}{\psi}{\DotY}= \sum_{\eta} \Gamma^y_{\psi \eta} \Vx{a}{b}{c}{\eta}  \\
+%\Gamma^z\left(\Vx{a}{b}{c}{\psi} \right) = \VDotx{a}{b}{c}{\psi}{\DotZ} =  \sum_{\eta} \Gamma^z_{\psi \eta} \Vx{a}{b}{c}{\eta} 
+%\end{align}
+
 
 \begin{comment}
 The explicit representation of the operator on the vector space written in (\ref{HamiltonianVectorSpace}) will implicitly appear non-local due to the Koszul signs introduced, despite the operator being entirely local.
