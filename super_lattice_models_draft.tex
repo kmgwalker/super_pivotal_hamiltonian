@@ -1485,6 +1485,22 @@ This immediately tells us that the periodic sector must contain three quasiparti
 However, since $\tube^A$ is non-abelian the former possibility is ruled out, and thus we have determined that the $C_2$ theory must contain six quasiparticles, with three associated to each spin structure. 
 The quasiparticle associated with the two-dimensional module in the non-vortex sector is $m_\sigma^\pm$, whose two-dimensionality comes from the fact that it is a ``composite'' of two oddly-isomorphic simple modules. 
 
+%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Quantum dimensions}
+%%%%%%%%%%%%%%%%%%%%
+
+To do this, we will need to know the quantum dimensions of the quasiparticles. They are
+\be d_{m_1} = d_{m_\psi} = 1,\quad d_{m_\sigma^+} = d_{q_1} = d_{q_\psi} = \sqrt{2},\quad d_{q_\sigma} = 2.\ee
+
+When we calculate the total quantum dimension $\mcd$ which is related to something expectation value of thing. 
+In bosonic theories we have $\mcd^2 = \sum_a d_a^2$, where the sum runs over all simple objects $a$. 
+This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
+
+\be \mcd^2 = \sum_a \frac{d_a^2}{\dim \End(a)}.\ee
+
+For the $C_2$ theory, we have $\mcd = \sqrt{1^2+1^2+2^2+\sqrt{2}^2/2 + \sqrt{2}^2/2 + 2^2/2} = \sqrt{8}$. 
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Obtaining the quasiparticle fusion rules} \label{C2_fusion_rules}
@@ -1626,177 +1642,6 @@ $q_\psi $&$\bullet q_\psi$&$\bullet q_\sigma$&$\bullet q_\unit$&$\bullet m_\psi$
 \end{table}
 
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%% 
-\subsection{Braiding data} \label{C2_braiding}
-%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{$R$-matrices}
-In this subsection we provide a table of the $R$ symbols in the theory. 
-First, we need to set some conventions on our fusion spaces. 
-We will work on the three-punctured sphere rather than drawing out pairs of pants, as it is much easier to perform calculations using the three-punctured sphere picture. 
-
-We will write a generic even fusion space, which is an even vector in the fusion space $V^{ab}_c$, as 
-\be \label{pants_braiding_basis} \includegraphics{pants_braiding_basis.pdf},\ee
-where $a,b,c\in \mcz(C_2)$ and $u,v,w\in \zt$ are variables indicating whether or not a $\beta$ line is present on the given link. The idempotent labels represent a collection of pictures, one for each tube in their definition. For example, 
-\be \includegraphics{msig_def.pdf} \ee
-
-We will calculate the braiding in the fusion space $V^{ab}_c$ by moving the $a$ and $b$ punctures around one other and re-expressing the result in terms of the basis vectors in $V^{ba}_c$. 
-When braiding q-type particles, we enforce their periodic boundary conditions graphically by introducing branch cuts ending on each q-type puncture, with the rule that dots sliding past a branch cut pick up a phase of $-1$. 
-For concreteness, we will draw our branch cuts to always meet near the center of the three punctures. 
-For example, to calculate $R^{q_\psi q_{1/\psi}}_{m_{\psi/1}}$, we write
-\be \includegraphics{qpsiq1psi_braiding} \ee
-where the dashed blue lines are the branch cuts, and we have taken advantage of our knowledge of the eigenvalue of $q_\psi$ under the twisted tube (i.e. the spin of $q_\psi$). 
-
-We define odd vectors in $V^{a,b}_c$ by placing dots on the top left leg of the pants, on the leg marked $u$ in \eqref{pants_braiding_basis}. 
-If this is impossible (e.g. if the top left leg is an $m_\psi$ idempotent), we put the dot on the top right leg of the pants, marked $v$ in \eqref{pants_braiding_basis}. 
-For example, we can calculate the $R$-symbol $R^{m_\psi m_\sigma^+}_{m_\sigma^+} = -1$ by
-\be \includegraphics{mpsimsig_braiding.pdf}.\ee
-A slightly more complicated example is the odd fusion channel in $R^{q_\psi q_{1/\psi}}_{m_{\psi/1}}$:
-\be \includegraphics{qpsiq1psidot_braiding.pdf} \ee
-Note that we have assumed we can ``pivot'' branch cuts around the punctures on which they are located, provided that we pick up a factor of $-1$ each time the branch cut crosses a fermion. 
-
-We have to remember to always move the dots back to the left side of the pants after the braid takes place, if possible. 
-As an example, we can calculate the braiding of the odd fusion channel in $R^{q_\sigma q_{1/\psi}}_{m_\sigma^+}$:
-\be \includegraphics{qsigq1psidot_braiding.pdf} \ee
-
-
-Manipulations like these can be used to work out the full table of $R$-symbols, which we present in Table \ref{Rtable}. 
-The $\bullet$ symbol is used to denote odd fusion channels, i.e. the action of the braiding operation on an odd vector in the fusion space $V^{ab}_c$.  
-\begin{table}
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{c||c|c|c||c|c|c}
-$     R^{ab}_{c \in a\otimes b} $&$m_\unit $&$m_\sigma^+$&$m_\psi$&$q_\unit$&$q_\sigma$&$q_\psi $\\
-     \hline
-     \hline
-     
-$m_\unit $&$m_\unit$&$ m_\sigma^+$&$m_\psi$&    $(1+1\bullet)q_\unit$&$(1+1\bullet)q_\sigma$&$(1+1\bullet)q_\psi$ \\ %yup
-
-     \hline
-$m_\sigma^+ $&$m_\sigma^+$&$A^{-3}(m_\unit-A^4\bullet m_\psi) $&$ \bullet m_\sigma^+ $&$      A^{-3}(1+A^4\bullet)q_\sigma $&$ (1-A^6/d\bullet ) q_\unit$&$ A^{-3}(1+A^4\bullet)q_\sigma$ \\
-
- $$&$$&$$&$$&$$&$+(1+A^6/d\bullet) q_\psi$&$$\\
-     \hline
-     
-$m_\psi $&$m_\psi$&$(-1\bullet) m_\sigma^+$&$m_\unit$&      $-(1+ 1\bullet)q_\psi$&$(1+1\bullet )q_\sigma$&$-(1+1\bullet)q_\unit $\\
-
-     \hline
-     \hline
-     
-$q_\unit $&$(1+1\bullet)q_\unit$&$A^3(1-A^4 \bullet)q_\sigma $&$(1+1\bullet)q_\psi$&$A^3(1+A^4 \bullet)m_\unit$&$(1+ A^{-6}/d \bullet )m_\sigma^+$&$A^3(1+A^4 \bullet)m_\psi$\\
-
-\hline
-$q_\sigma $&$(1+1\bullet)q_\sigma$&$(A^{-6}- d A^4 \bullet)q_\unit$&$(1+1\bullet)q_\sigma$&$(A^6+A^4 d \bullet )m_\sigma^+$&$(1+A^4\bullet) m_\unit$&$(-A^6+A^4 d \bullet)m_\sigma^+$ \\
-
-$                $&$$&$(-A^{-6}- d A^4 \bullet)q_\psi$&$$&$$&$+(1-A^4\bullet)m_\psi$&$$ \\
-
-\hline
-$q_\psi $&$(1+1\bullet)q_\psi$&$-A^3(1-A^4\bullet)q_\sigma$&$(1+1 \bullet)q_\unit$&$-A^3(1+A^4\bullet)m_\psi$&$(1-A^{-6}/d \bullet )m_\sigma^+$&$-A^3(1+A^4 \bullet)m_\unit$
-\end{tabular}
-}
-\caption{\label{Rtable} The R-symbols for the $C_2$ theory. The particle labels in each entry denote fusion channels, with the bullets signifying which fusion channels are odd. For example, the bottom right entry tells us that $R^{q_\psi q_\psi}_{m_\unit} = -A^3$ when acting on the even vector in $V^{q_\psi q_\psi}_{m_\unit}$ and $R^{q_\psi q_\psi}_{m_\unit} = -A^7 = A^{-1}$ when acting on the odd vector. }
-\end{table}
-\\ \ \\
-%\ethan{below is the table where we took A^4 = i, in case I messed up converting to the general case
-%\begin{table}
-%\resizebox{\linewidth}{!}{%
-%\begin{tabular}{c||c|c|c||c|c|c}
-%$     R^{ab}_{c \in a\otimes b} $&$m_\unit $&$m_\sigma^+$&$m_\psi$&$q_\unit$&$q_\sigma$&$q_\psi $\\
-%     \hline
-%     \hline
-%$m_\unit $&$m_\unit$&$ m_\sigma^+$&$m_\psi$&    $(1+1\bullet)q_\unit$&$(1+1\bullet)q_\sigma$&$(1+1\bullet)q_\psi$ \\ %yup
-%     \hline
-%$m_\sigma^+ $&$m_\sigma^+$&$\zeta^{-1}(m_\unit-i\bullet m_\psi) $&$ \bullet m_\sigma^+ $&$      \zeta^{-1}(1+i \bullet)q_\sigma $&$ (1-\zeta^2/d\bullet ) q_\unit$&$ \zeta^{-1}(1+i\bullet)q_\sigma$ \\
-% $$&$$&$$&$$&$$&$+(1+\zeta^2/d\bullet) q_\psi$&$$\\
-%     \hline
-%$m_\psi $&$m_\psi$&$(-1\bullet) m_\sigma^+$&$m_\unit$&      $-(1+ 1\bullet)q_\psi$&$(1+1\bullet )q_\sigma$&$-(1+1\bullet)q_\unit $\\
-%     \hline
-%     \hline
-%$q_\unit $&$(1+1\bullet)q_\unit$&$\zeta(1-i \bullet)q_\sigma $&$(1+1\bullet)q_\psi$&$\zeta(1+i \bullet)m_\unit$&$(1+ \zeta^{-2}/d \bullet )m_\sigma^+$&$\zeta(1+i \bullet)m_\psi$\\
-%\hline
-%$q_\sigma $&$(1+1\bullet)q_\sigma$&$(\zeta^{-2}- d i \bullet)q_\unit$&$(1+1\bullet)q_\sigma$&$(\zeta^2+i d \bullet )m_\sigma^+$&$(1+i\bullet) m_\unit$&$(-\zeta^2+i d \bullet)m_\sigma^+$ \\
-%
-%$                $&$$&$(-\zeta^{-2}- d i \bullet)q_\psi$&$$&$$&$+(1-i\bullet)m_\psi$&$$ \\
-%
-%\hline
-%$q_\psi $&$(1+1\bullet)q_\psi$&$-\zeta(1-i\bullet)q_\sigma$&$(1+1 \bullet)q_\unit$&$-\zeta(1+i\bullet)m_\psi$&$(1-\zeta^{-2}/d \bullet )m_\sigma^+$&$-\zeta(1+i \bullet)m_\unit$
-%\end{tabular}
-%}
-%\caption{\label{Rtable} The R-symbols for the $C_2$ theory. The particle labels in each entry denote fusion channels, with the bullets signifying which fusion channels are odd. For example, the bottom right entry tells us that $R^{q_\psi q_\psi}_{m_\unit} = -\zeta$ when acting on the even vector in $V^{q_\psi q_\psi}_{m_\unit}$ and $R^{q_\psi q_\psi}_{m_\unit} = -i\zeta$ when acting on the odd vector. \ethan{will convert to $A$s later} }
-%\end{table}
-%
-%For convenience, we have defined 
-%\be \zeta := e^{-i\pi/8} = \theta_{m_\sigma^+}.\ee
-%If we switched the choice for $A^4$ (e.g. from $i$ to $-i$), we could obtain the switched $R$-symbols by sending $\zeta \mapsto \zeta^*$. 
-
-%\subsection{Exchange statistics}
-
-\subsubsection{Twists and the $T$ matrix}
-There are three ways to compute the twist: by statistics (braiding two identical idempotents around one another), by spin (applying Dehn twists on the idempotents), and by modular transformations (by performing Dehn twists on the torus). 
-
-We'll start by computing the twists by statistics, namely by tracing out the $R$ symbols:
-\be \label{Tmattr} \theta_a = \frac{1}{d_a}\sum_b d_b \text{Tr}[R^{aa}_b].\ee
-Using Table \ref{Rtable}, we obtain
-\be \theta_{m_\unit} = 1,\ \theta_{m_\psi} = 1,\ \theta_{m^\pm_\sigma} = \pm A^3\ee
-for the non-vortex particles, and 
-\be \theta_{q_\unit} = A^{-3},\ \theta_{q_\psi} = -A^{-3},\ \theta_{q_\sigma} = 1\ee
-for the vortex particles. The twists can also be obtained by directly Dehn-twisting the tubes in question. This yields the same result, implying that the spin-statistics relation holds in this theory. In the basis $(m_\unit,m^\pm_\sigma,m_\psi,q_\unit,q_\sigma,q_\psi)^T$, the $T$-matrix is thus
-\be T = {\rm diag}[1,\pm A^3,1,A^{-3},1,-A^{-3}].\ee
-
-Making an explicit choice for $A$ can help to shed some light on these results. If we choose $A = ie^{\pm i \pi/8}$ (giving $d=+\sqrt{2}$ and $A^4 = \pm i$), then the $T$-matrix in the vortex sector decomposes as the tensor product
-\be T_P = T_{p\pm ip} \tp T_{\text{Ising}_{\nu =\mp1}},\ee
-where $T_{p\pm ip} = e^{\pm i\pi/8}$. %Other allowed choices for $A$ correspond to $\nu = 3,5$ and...
-This hints at the existence of a secret topological superconductor in the vortex sector. We will have more to say about this later when we discuss modular transformations on the torus.
-
-In the expressions above, the twists of every non-vortex particle are ambiguous up to a factor of $\pm1$, corresponding to an ambiguity in the parity of physical fermions attached to the tubes at the time of twisting. The vortex particles have no such ambiguity, since moving a physical fermion around a tube with periodic boundary conditions picks up no $-1$ signs.   
-
-We now briefly comment on the issue of the chiral central charge of this theory. Since we have realized this theory as a lattice model, we expect that it possesses chiral central charge $c_- = 0$. 
-If we believe that the chiral central charge of these theories can be computed in the same way as in bosonic theories, then we see that we indeed have $c_- =0$ for the vortex sector, which is a nontrivial consistency check. We do not have $c_-=0$ in the non-vortex sector if we use the twists as written, but we have to keep in mind that the non-vortex twists possess a $\pm$ phase ambiguity. We then expect that in the expression for $c_-$ in the non-vortex sector, the sum over twists ``averages out'' and becomes zero. 
-
-\subsubsection{Topological $S$-matrix}
-
-Having obtained the $R$ symbols, we can also calculate the mutual statistics of the quasiparticles, which is encapsulated by the $S$-matrix. Unlike in bosonic theories, the $S$-matrix that contains information about the mutual statistics of quasiparticles is {\it distinct} from the $S$-matrix that characterizes how the ground states on the torus transform under the modular transformation $z\mapsto 1/z$. This distinction is because of the need to choose a spin structure on the torus: we will return to this issue in Section \ref{modulartforms}. For now, we will restrict ourselves to calculating the $S$-matrix measuring the mutual statistics of the quasiparticles in the theory. 
-
-To do this, we will need to know the quantum dimensions of the quasiparticles. They are
-\be d_{m_1} = d_{m_\psi} = 1,\quad d_{m_\sigma^+} = d_{q_1} = d_{q_\psi} = \sqrt{2},\quad d_{q_\sigma} = 2,\ee
-which gives $\mcd = \sqrt{\sum_{a\in \mcz(C_2)} d_a^2} = \sqrt{12}$. 
-
-When we calculate $S$, we should keep in mind that although there are some $\pm1$ ambiguities in the $T$-matrix, there should be no ambiguities present in $S$, since physical fermions have trivial double-braiding with one another. That is, mapping $m_a \mapsto fm_a$ where $a\in \{\unit,\psi,\sigma\}$ and $f$ is a physical fermion should not affect the answer we get for the $S$-matrix.
-
-There are several ways to calculate $S$. 
-First, we can calculate $S$ by tracing out the $R$-symbols, using the formula
-\be \label{Smattr} S_{ab} = \frac{1}{\mcd}\sum_{c}d_c{\rm Tr}[R^{ab}_cR^{ba}_c],\ee
-which continues to hold in the fermionic setting. Computing this with the aid of Table \ref{Rtable}, we find
-\be 
- S= \frac{1}{\mcd} \begin{pmatrix} 
-1&\sqrt{2}&1&2\sqrt{2}&4&2\sqrt{2} \\
- \sqrt{2}&0&-\sqrt{2}&4&0&-4 \\ 
- 1&-\sqrt{2}&1&-2\sqrt{2}&4&-2\sqrt{2} \\ 
- 2\sqrt{2}&4& -2\sqrt{2}&0&0&0 \\ 
- 4&0&4&0&0&0 \\ 
-  2\sqrt{2}&-4&- 2\sqrt{2}&0 & 0 & 0 \end{pmatrix}, \ee
-The block of zeros in the bottom right means that braiding any two of the q-type particles in a given state yields a state orthogonal to the original. We might expect something like this for physical reasons, since braiding a q-type particle through a q-type loop changes the Q-loop's fermion parity, preventing it from fusing to the vacuum, and evaluating to a tadpole diagram. Indeed, this is exactly the same as the reason why $S_{\sigma\sigma}=0$ in the regular Ising theory. A more precise understanding of why the bottom block is zero comes from an analysis of modular transformations on the torus, which we carry out in Section \ref{modulartforms}.   
-
-Instead of tracing the $R$ matrices, we can appeal to a formula relating the $S$ matrix to the topological twists. In bosonic theories, we have 
-\be \label{stwist_bosonic} S^{bos}_{ab} = \frac{1}{\mcd} \sum_c d_c N^{ab}_c \frac{\theta_c}{\theta_a\theta_b}.\ee
-This relation does {\it not} hold in the superfusion case, and needs to be modified. The derivation of the correct version of \eqref{stwist_bosonic} relies on the fact that 
-\be \label{stwist_fermionic} \theta_c = (-1)^{|v|(|c|+1)} \theta_a\theta_b [R^{ab}_c]_{vv} [R^{ba}_c]_{vv},\ee
-where $v\in V^{ab}_c$ is any vector in the fusion space $V^{ab}_c$ and $|v| \in \{0,1\}$ is the parity of $v$, and where $|c| = 1$ $(|c|=0)$ if $c$ is a quasiparticle with a vortex (non-vortex) spin structure. In the $C_2$ theory, the factor of $(-1)^{|v||c|}$ will only contribute for braids between m-type and q-type particles. 
-
-To derive \eqref{stwist_fermionic}, we use the following manipulations:
-\be\label{stwist_proof} \includegraphics{stwist_proof.pdf}, \ee
-where $a$ and $b$ are such that $c\in a\tp b$, and $v$ is any vector in the fusion space $V^{ab}_c$. These steps relate $\theta_c$ (the rightmost diagram) to something proportional to $\theta_a\theta_b [R^{ab}_c]_{vv}[R^{ba}_c]_{vv}$. In the bosonic case this relation is an exact equality, but this is not true in the fermionic setting. Firstly, we see that the first step in \eqref{stwist_proof} involves passing the vertex $v$ under a $c$ tube. When the braiding process is embedded in $S^3$, the branch cuts associated with vortex-type quasiparticles become branch sheets, which we will define to always be pointing out of the page. This means that passing an odd vector in $V^{ab}_c$ over a vortex-type quasiparticle gives a phase factor of $-1$. Additionally, we notice that vectors in $V^{ab}_c$ are transported in a loop during steps 1 and 2, which contributes a sign of $-1$ if the vector $v$ is odd. These two effects are responsible for the factor of $(-1)^{|v|(|c|+1)}$ in \eqref{stwist_fermionic}, meaning that the correct expression for $S$ in the fermionic setting is 
-\be S_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in V^{ab}_c} d_c (-1)^{|v| (|c|+1)}   \frac{\theta_c}{\theta_a\theta_b}.\ee
-
-
-\begin{comment}
-There is a slight technicality here, since our formula for $S$ depends on our choice of twists for the m-type particles, even though we argued that the $S$ matrix should not suffer from the $\pm$ ambiguities that $T$ possesses. This means that the expression must be further modified so as to be invariant under fusing physical fermions onto m-type particles. This is done by writing 
-\be S^{Tr}_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in V^{ab}_c} d_c (-1)^{|v| (|c| + 1) + f(a,b,c)}   \frac{\theta_c}{\theta_a\theta_b},\ee
-where $f(a,b,c)$ measures the number of {\it physical} fermions attached to any m-type particles in $a$, $b$ and $c$. For example, if we were to choose $\theta_{m_\unit} = 1, \theta_{m_\psi} = -1,\theta_{m^+_\sigma} = e^{-i\pi/8}$ (e.g, if we chose $\psi$ to come with a single physical fermion attached to it), we would have 
-\be {f(a,b,c)} = \delta_{a,m_\psi} + \delta_{b,m_\psi} + \delta_{c,m_\psi}.\ee
-The simplest convention is probably to take $m_\unit$ and $m_\psi$ to be bosonic and to use $m_\sigma^+$ as our representative for the $m_\sigma$ isomorphism class, which we have been doing throughout and will continue to do. However, we might also want to take $m_\psi$ to be fermionic, to jive with the Ising theory better. In any case, $S$ is at least independent of this choice. 
-\end{comment}
 
 \subsection{Modular transformations on tori} \label{modulartforms}
 
@@ -1944,6 +1789,177 @@ Therefore, in the idempotent basis,
 1 &0&0 \\ 0&A^3&0\\0&0&1
 \end{pmatrix}.\ee
 \ethan{Will clean up and finish later. Also should discuss arXiv:1502.03192}. 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%% 
+\subsection{Braiding data} \label{C2_braiding}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{$R$-matrices}
+In this subsection we provide a table of the $R$ symbols in the theory. 
+First, we need to set some conventions on our fusion spaces. 
+We will work on the three-punctured sphere rather than drawing out pairs of pants, as it is much easier to perform calculations using the three-punctured sphere picture. 
+
+We will write a generic even fusion space, which is an even vector in the fusion space $V^{ab}_c$, as 
+\be \label{pants_braiding_basis} \includegraphics{pants_braiding_basis.pdf},\ee
+where $a,b,c\in \mcz(C_2)$ and $u,v,w\in \zt$ are variables indicating whether or not a $\beta$ line is present on the given link. The idempotent labels represent a collection of pictures, one for each tube in their definition. For example, 
+\be \includegraphics{msig_def.pdf} \ee
+
+We will calculate the braiding in the fusion space $V^{ab}_c$ by moving the $a$ and $b$ punctures around one other and re-expressing the result in terms of the basis vectors in $V^{ba}_c$. 
+When braiding q-type particles, we enforce their periodic boundary conditions graphically by introducing branch cuts ending on each q-type puncture, with the rule that dots sliding past a branch cut pick up a phase of $-1$. 
+For concreteness, we will draw our branch cuts to always meet near the center of the three punctures. 
+For example, to calculate $R^{q_\psi q_{1/\psi}}_{m_{\psi/1}}$, we write
+\be \includegraphics{qpsiq1psi_braiding} \ee
+where the dashed blue lines are the branch cuts, and we have taken advantage of our knowledge of the eigenvalue of $q_\psi$ under the twisted tube (i.e. the spin of $q_\psi$). 
+
+We define odd vectors in $V^{a,b}_c$ by placing dots on the top left leg of the pants, on the leg marked $u$ in \eqref{pants_braiding_basis}. 
+If this is impossible (e.g. if the top left leg is an $m_\psi$ idempotent), we put the dot on the top right leg of the pants, marked $v$ in \eqref{pants_braiding_basis}. 
+For example, we can calculate the $R$-symbol $R^{m_\psi m_\sigma^+}_{m_\sigma^+} = -1$ by
+\be \includegraphics{mpsimsig_braiding.pdf}.\ee
+A slightly more complicated example is the odd fusion channel in $R^{q_\psi q_{1/\psi}}_{m_{\psi/1}}$:
+\be \includegraphics{qpsiq1psidot_braiding.pdf} \ee
+Note that we have assumed we can ``pivot'' branch cuts around the punctures on which they are located, provided that we pick up a factor of $-1$ each time the branch cut crosses a fermion. 
+
+We have to remember to always move the dots back to the left side of the pants after the braid takes place, if possible. 
+As an example, we can calculate the braiding of the odd fusion channel in $R^{q_\sigma q_{1/\psi}}_{m_\sigma^+}$:
+\be \includegraphics{qsigq1psidot_braiding.pdf} \ee
+
+
+Manipulations like these can be used to work out the full table of $R$-symbols, which we present in Table \ref{Rtable}. 
+The $\bullet$ symbol is used to denote odd fusion channels, i.e. the action of the braiding operation on an odd vector in the fusion space $V^{ab}_c$.  
+\begin{table}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{c||c|c|c||c|c|c}
+$     R^{ab}_{c \in a\otimes b} $&$m_\unit $&$m_\sigma^+$&$m_\psi$&$q_\unit$&$q_\sigma$&$q_\psi $\\
+     \hline
+     \hline
+     
+$m_\unit $&$m_\unit$&$ m_\sigma^+$&$m_\psi$&    $(1+1\bullet)q_\unit$&$(1+1\bullet)q_\sigma$&$(1+1\bullet)q_\psi$ \\ %yup
+
+     \hline
+$m_\sigma^+ $&$m_\sigma^+$&$A^{-3}(m_\unit-A^4\bullet m_\psi) $&$ \bullet m_\sigma^+ $&$      A^{-3}(1+A^4\bullet)q_\sigma $&$ (1-A^6/d\bullet ) q_\unit$&$ A^{-3}(1+A^4\bullet)q_\sigma$ \\
+
+ $$&$$&$$&$$&$$&$+(1+A^6/d\bullet) q_\psi$&$$\\
+     \hline
+     
+$m_\psi $&$m_\psi$&$(-1\bullet) m_\sigma^+$&$m_\unit$&      $-(1+ 1\bullet)q_\psi$&$(1+1\bullet )q_\sigma$&$-(1+1\bullet)q_\unit $\\
+
+     \hline
+     \hline
+     
+$q_\unit $&$(1+1\bullet)q_\unit$&$A^3(1-A^4 \bullet)q_\sigma $&$(1+1\bullet)q_\psi$&$A^3(1+A^4 \bullet)m_\unit$&$(1+ A^{-6}/d \bullet )m_\sigma^+$&$A^3(1+A^4 \bullet)m_\psi$\\
+
+\hline
+$q_\sigma $&$(1+1\bullet)q_\sigma$&$(A^{-6}- d A^4 \bullet)q_\unit$&$(1+1\bullet)q_\sigma$&$(A^6+A^4 d \bullet )m_\sigma^+$&$(1+A^4\bullet) m_\unit$&$(-A^6+A^4 d \bullet)m_\sigma^+$ \\
+
+$                $&$$&$(-A^{-6}- d A^4 \bullet)q_\psi$&$$&$$&$+(1-A^4\bullet)m_\psi$&$$ \\
+
+\hline
+$q_\psi $&$(1+1\bullet)q_\psi$&$-A^3(1-A^4\bullet)q_\sigma$&$(1+1 \bullet)q_\unit$&$-A^3(1+A^4\bullet)m_\psi$&$(1-A^{-6}/d \bullet )m_\sigma^+$&$-A^3(1+A^4 \bullet)m_\unit$
+\end{tabular}
+}
+\caption{\label{Rtable} The R-symbols for the $C_2$ theory. The particle labels in each entry denote fusion channels, with the bullets signifying which fusion channels are odd. For example, the bottom right entry tells us that $R^{q_\psi q_\psi}_{m_\unit} = -A^3$ when acting on the even vector in $V^{q_\psi q_\psi}_{m_\unit}$ and $R^{q_\psi q_\psi}_{m_\unit} = -A^7 = A^{-1}$ when acting on the odd vector. }
+\end{table}
+\\ \ \\
+%\ethan{below is the table where we took A^4 = i, in case I messed up converting to the general case
+%\begin{table}
+%\resizebox{\linewidth}{!}{%
+%\begin{tabular}{c||c|c|c||c|c|c}
+%$     R^{ab}_{c \in a\otimes b} $&$m_\unit $&$m_\sigma^+$&$m_\psi$&$q_\unit$&$q_\sigma$&$q_\psi $\\
+%     \hline
+%     \hline
+%$m_\unit $&$m_\unit$&$ m_\sigma^+$&$m_\psi$&    $(1+1\bullet)q_\unit$&$(1+1\bullet)q_\sigma$&$(1+1\bullet)q_\psi$ \\ %yup
+%     \hline
+%$m_\sigma^+ $&$m_\sigma^+$&$\zeta^{-1}(m_\unit-i\bullet m_\psi) $&$ \bullet m_\sigma^+ $&$      \zeta^{-1}(1+i \bullet)q_\sigma $&$ (1-\zeta^2/d\bullet ) q_\unit$&$ \zeta^{-1}(1+i\bullet)q_\sigma$ \\
+% $$&$$&$$&$$&$$&$+(1+\zeta^2/d\bullet) q_\psi$&$$\\
+%     \hline
+%$m_\psi $&$m_\psi$&$(-1\bullet) m_\sigma^+$&$m_\unit$&      $-(1+ 1\bullet)q_\psi$&$(1+1\bullet )q_\sigma$&$-(1+1\bullet)q_\unit $\\
+%     \hline
+%     \hline
+%$q_\unit $&$(1+1\bullet)q_\unit$&$\zeta(1-i \bullet)q_\sigma $&$(1+1\bullet)q_\psi$&$\zeta(1+i \bullet)m_\unit$&$(1+ \zeta^{-2}/d \bullet )m_\sigma^+$&$\zeta(1+i \bullet)m_\psi$\\
+%\hline
+%$q_\sigma $&$(1+1\bullet)q_\sigma$&$(\zeta^{-2}- d i \bullet)q_\unit$&$(1+1\bullet)q_\sigma$&$(\zeta^2+i d \bullet )m_\sigma^+$&$(1+i\bullet) m_\unit$&$(-\zeta^2+i d \bullet)m_\sigma^+$ \\
+%
+%$                $&$$&$(-\zeta^{-2}- d i \bullet)q_\psi$&$$&$$&$+(1-i\bullet)m_\psi$&$$ \\
+%
+%\hline
+%$q_\psi $&$(1+1\bullet)q_\psi$&$-\zeta(1-i\bullet)q_\sigma$&$(1+1 \bullet)q_\unit$&$-\zeta(1+i\bullet)m_\psi$&$(1-\zeta^{-2}/d \bullet )m_\sigma^+$&$-\zeta(1+i \bullet)m_\unit$
+%\end{tabular}
+%}
+%\caption{\label{Rtable} The R-symbols for the $C_2$ theory. The particle labels in each entry denote fusion channels, with the bullets signifying which fusion channels are odd. For example, the bottom right entry tells us that $R^{q_\psi q_\psi}_{m_\unit} = -\zeta$ when acting on the even vector in $V^{q_\psi q_\psi}_{m_\unit}$ and $R^{q_\psi q_\psi}_{m_\unit} = -i\zeta$ when acting on the odd vector. \ethan{will convert to $A$s later} }
+%\end{table}
+%
+%For convenience, we have defined 
+%\be \zeta := e^{-i\pi/8} = \theta_{m_\sigma^+}.\ee
+%If we switched the choice for $A^4$ (e.g. from $i$ to $-i$), we could obtain the switched $R$-symbols by sending $\zeta \mapsto \zeta^*$. 
+
+%\subsection{Exchange statistics}
+
+\subsubsection{Twists and self-statistics}
+There are three ways to compute the twist: by statistics (braiding two identical idempotents around one another), by spin (applying Dehn twists on the idempotents), and by modular transformations (by performing Dehn twists on the torus). 
+
+We'll start by computing the twists by statistics, namely by tracing out the $R$ symbols:
+\be \label{Tmattr} \theta_a = \frac{1}{d_a}\sum_b d_b \text{Tr}[R^{aa}_b].\ee
+Using Table \ref{Rtable}, we obtain
+\be \theta_{m_\unit} = 1,\ \theta_{m_\psi} = 1,\ \theta_{m^\pm_\sigma} = \pm A^3\ee
+for the non-vortex particles, and 
+\be \theta_{q_\unit} = A^{-3},\ \theta_{q_\psi} = -A^{-3},\ \theta_{q_\sigma} = 1\ee
+for the vortex particles. The twists can also be obtained by directly Dehn-twisting the tubes in question. This yields the same result, implying that the spin-statistics relation holds in this theory. In the basis $(m_\unit,m^\pm_\sigma,m_\psi,q_\unit,q_\sigma,q_\psi)^T$, the $T$-matrix is thus
+\be T = {\rm diag}[1,\pm A^3,1,A^{-3},1,-A^{-3}].\ee
+
+Making an explicit choice for $A$ can help to shed some light on these results. If we choose $A = ie^{\pm i \pi/8}$ (giving $d=+\sqrt{2}$ and $A^4 = \pm i$), then the $T$-matrix in the vortex sector decomposes as the tensor product
+\be T_P = T_{p\pm ip} \tp T_{\text{Ising}_{\nu =\mp1}},\ee
+where $T_{p\pm ip} = e^{\pm i\pi/8}$. %Other allowed choices for $A$ correspond to $\nu = 3,5$ and...
+This hints at the existence of a secret topological superconductor in the vortex sector. We will have more to say about this later when we discuss modular transformations on the torus.
+
+In the expressions above, the twists of every non-vortex particle are ambiguous up to a factor of $\pm1$, corresponding to an ambiguity in the parity of physical fermions attached to the tubes at the time of twisting. The vortex particles have no such ambiguity, since moving a physical fermion around a tube with periodic boundary conditions picks up no $-1$ signs.   
+
+We now briefly comment on the issue of the chiral central charge of this theory. Since we have realized this theory as a lattice model, we expect that it possesses chiral central charge $c_- = 0$. 
+If we believe that the chiral central charge of these theories can be computed in the same way as in bosonic theories, then we see that we indeed have $c_- =0$ for the vortex sector, which is a nontrivial consistency check. We do not have $c_-=0$ in the non-vortex sector if we use the twists as written, but we have to keep in mind that the non-vortex twists possess a $\pm$ phase ambiguity. We then expect that in the expression for $c_-$ in the non-vortex sector, the sum over twists ``averages out'' and becomes zero. 
+
+\subsubsection{Mutual statistics}
+
+Having obtained the $R$ symbols, we can also calculate the mutual statistics of the quasiparticles, which is encapsulated by the braiding $S$-matrix. Unlike in bosonic theories, the $S$-matrix that contains information about the mutual statistics of quasiparticles is {\it distinct} from the $S$-matrix that characterizes how the ground states on the torus transform under the modular transformation $z\mapsto 1/z$. This distinction is because of the need to choose a spin structure on the torus: we will return to this issue in Section \ref{modulartforms}. For now, we will restrict ourselves to calculating the $S$-matrix measuring the mutual statistics of the quasiparticles in the theory. 
+
+When we calculate $S$, we should keep in mind that although there are some $\pm1$ ambiguities in the $T$-matrix, there should be no ambiguities present in $S$, since physical fermions have trivial double-braiding with one another. That is, mapping $m_a \mapsto fm_a$ where $a\in \{\unit,\psi,\sigma\}$ and $f$ is a physical fermion should not affect the answer we get for the $S$-matrix.
+
+There are several ways to calculate $S$. 
+First, we can calculate $S$ by tracing out the $R$-symbols, using the formula
+\be \label{Smattr} S_{ab} = \frac{1}{\mcd}\sum_{c}d_c{\rm Tr}[R^{ab}_cR^{ba}_c],\ee
+which continues to hold in the fermionic setting. Computing this with the aid of Table \ref{Rtable}, we find
+\be 
+ S= \frac{1}{\mcd} \begin{pmatrix} 
+1&\sqrt{2}&1&2\sqrt{2}&4&2\sqrt{2} \\
+ \sqrt{2}&0&-\sqrt{2}&4&0&-4 \\ 
+ 1&-\sqrt{2}&1&-2\sqrt{2}&4&-2\sqrt{2} \\ 
+ 2\sqrt{2}&4& -2\sqrt{2}&0&0&0 \\ 
+ 4&0&4&0&0&0 \\ 
+  2\sqrt{2}&-4&- 2\sqrt{2}&0 & 0 & 0 \end{pmatrix}, \ee
+The block of zeros in the bottom right means that braiding any two of the q-type particles in a given state yields a state orthogonal to the original. We might expect something like this for physical reasons, since braiding a q-type particle through a q-type loop changes the Q-loop's fermion parity, preventing it from fusing to the vacuum, and evaluating to a tadpole diagram. Indeed, this is exactly the same as the reason why $S_{\sigma\sigma}=0$ in the regular Ising theory. A more precise understanding of why the bottom block is zero comes from an analysis of modular transformations on the torus, which we carry out in Section \ref{modulartforms}.   
+
+Instead of tracing the $R$ matrices, we can appeal to a formula relating the $S$ matrix to the topological twists. In bosonic theories, we have 
+\be \label{stwist_bosonic} S^{bos}_{ab} = \frac{1}{\mcd} \sum_c d_c N^{ab}_c \frac{\theta_c}{\theta_a\theta_b}.\ee
+This relation does {\it not} hold in the superfusion case, and needs to be modified. The derivation of the correct version of \eqref{stwist_bosonic} relies on the fact that 
+\be \label{stwist_fermionic} \theta_c = (-1)^{|v|(|c|+1)} \theta_a\theta_b [R^{ab}_c]_{vv} [R^{ba}_c]_{vv},\ee
+where $v\in V^{ab}_c$ is any vector in the fusion space $V^{ab}_c$ and $|v| \in \{0,1\}$ is the parity of $v$, and where $|c| = 1$ $(|c|=0)$ if $c$ is a quasiparticle with a vortex (non-vortex) spin structure. In the $C_2$ theory, the factor of $(-1)^{|v||c|}$ will only contribute for braids between m-type and q-type particles. 
+
+To derive \eqref{stwist_fermionic}, we use the following manipulations:
+\be\label{stwist_proof} \includegraphics{stwist_proof.pdf}, \ee
+where $a$ and $b$ are such that $c\in a\tp b$, and $v$ is any vector in the fusion space $V^{ab}_c$. These steps relate $\theta_c$ (the rightmost diagram) to something proportional to $\theta_a\theta_b [R^{ab}_c]_{vv}[R^{ba}_c]_{vv}$. In the bosonic case this relation is an exact equality, but this is not true in the fermionic setting. Firstly, we see that the first step in \eqref{stwist_proof} involves passing the vertex $v$ under a $c$ tube. When the braiding process is embedded in $S^3$, the branch cuts associated with vortex-type quasiparticles become branch sheets, which we will define to always be pointing out of the page. This means that passing an odd vector in $V^{ab}_c$ over a vortex-type quasiparticle gives a phase factor of $-1$. Additionally, we notice that vectors in $V^{ab}_c$ are transported in a loop during steps 1 and 2, which contributes a sign of $-1$ if the vector $v$ is odd. These two effects are responsible for the factor of $(-1)^{|v|(|c|+1)}$ in \eqref{stwist_fermionic}, meaning that the correct expression for $S$ in the fermionic setting is 
+\be S_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in V^{ab}_c} d_c (-1)^{|v| (|c|+1)}   \frac{\theta_c}{\theta_a\theta_b}.\ee
+
+
+\begin{comment}
+There is a slight technicality here, since our formula for $S$ depends on our choice of twists for the m-type particles, even though we argued that the $S$ matrix should not suffer from the $\pm$ ambiguities that $T$ possesses. This means that the expression must be further modified so as to be invariant under fusing physical fermions onto m-type particles. This is done by writing 
+\be S^{Tr}_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in V^{ab}_c} d_c (-1)^{|v| (|c| + 1) + f(a,b,c)}   \frac{\theta_c}{\theta_a\theta_b},\ee
+where $f(a,b,c)$ measures the number of {\it physical} fermions attached to any m-type particles in $a$, $b$ and $c$. For example, if we were to choose $\theta_{m_\unit} = 1, \theta_{m_\psi} = -1,\theta_{m^+_\sigma} = e^{-i\pi/8}$ (e.g, if we chose $\psi$ to come with a single physical fermion attached to it), we would have 
+\be {f(a,b,c)} = \delta_{a,m_\psi} + \delta_{b,m_\psi} + \delta_{c,m_\psi}.\ee
+The simplest convention is probably to take $m_\unit$ and $m_\psi$ to be bosonic and to use $m_\sigma^+$ as our representative for the $m_\sigma$ isomorphism class, which we have been doing throughout and will continue to do. However, we might also want to take $m_\psi$ to be fermionic, to jive with the Ising theory better. In any case, $S$ is at least independent of this choice. 
+\end{comment}
+
+
 
 
 
