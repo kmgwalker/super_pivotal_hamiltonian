@@ -3941,7 +3941,8 @@ We could add an appendix with some of the details, e.g., 6j symbols and particle
 %}
  \section{Super pivotal Hamiltonian}
 % \section{Hamiltonian} 
- 
+
+ \subsection{Details}
  \begin{figure}
 % \includegraphics{Lattice.pdf}
   \includegraphics{Lattice2.pdf}
@@ -3958,22 +3959,27 @@ This is just the usual string net term which projects onto the trivial idempoten
 }
  \label{HoneycombLattice}
  \end{figure}
-Here we write down a fermionic string net Hamiltonian whose ground state is topologically ordered.
-The excitations are in one one -- to -- one correspondence with the isomorphism classes of primitive idempotents, as discessed in [REF].
+Here we write down a fermionic string net Hamiltonian.
+The excitations are in one one -- to -- one correspondence with the isomorphism classes of primitive idempotents, as discussed in [REFSec].
 
-We follow the same construction as \cite{levin2005} with a few differences. 
+We follow the same construction as \cite{levin2005} with with some differences. 
 See also [REF other fermionic commuting projectors].
 The main differences between the super pivotal Hamiltonian and the bosonic string net Hamiltonian are:
 \begin{enumerate}
-\item we fix a spin structure on the lattice \dave{Would be great to connect this to Kastelyn orientation} \ref{VectorSpace}
-\item the vertices can carry fermionic degrees of freedom \ref{VertexHamiltonian}
-\item there is a new term in the Hamiltonian allowing fermions to fluctuate across Q type edges \ref{EdgeHamiltonianTerms}
+\item We need to fix a spin structure on the manifold which the lattice is embedded into \ref{VectorSpace}
+\item The Hilbert space is a super vector space \ref{VertexHamiltonian}
+\item There is a new term in the Hamiltonian with support on the edges of the lattice that allows fermions to fluctuate across Q type edges \ref{EdgeHamiltonianTerms}
 \end{enumerate}
-The input to the model is a super pivotal fusion category ${\cal C}$, an orientable surface $\Sigma$, a graph $\mathcal{G} = \{\mathcal{V},\mathcal{E},\mathcal{F} \}$ with a planar imbedding on $\Sigma$ and spin structure on $\Sigma \setminus \mathcal{F}$.
-Where $\mathcal{V}$, $\mathcal{E}$, and $\mathcal{F}$, denote the vertices, edges and faces of the graph ${\cal G}$. 
-Each vertex is a point, each edge is a line, and each face is homeomorphic to a disk. 
-We require the three sets to be non-intersecting and there union to be the entire surface $\Sigma$.
-For simplicity we will assume that all vertices are trivalent, this can be relaxed at the expense of increasing the dimension of the vertex Hilbert space.
+
+The input data to the model is:
+\dave{Some of these may depend on the others.}
+\begin{enumerate}
+\item a super pivotal fusion category ${\cal C}$
+\item an oriented surface $\Sigma$ with spin structure $\sigma$, denoted $(\Sigma,\sigma)$
+\item a graph $\mathcal{G}$ denoted by a collection of vertices, edges, and faces by $ \{\mathcal{V},\mathcal{E},\mathcal{F} \}$ respectively
+\item an embedding of the graph $\mathcal{G}$ into $\Sigma$, and a ``spin" graph $(\mathcal{G}, s)$ with embedding into $(\Sigma, \sigma)$
+\end{enumerate}
+In the following sections we define the Hamiltonian explicitly in terms of the above data.
 
 We will explicitly write out the Hamiltonian for the example of the honeycomb lattice shown in Fig.~\ref{HoneycombLattice}, but much of what we say holds more generally.
 The Hamiltonian is a sum of commuting three projectors,
@@ -3985,14 +3991,58 @@ They act on the plaquettes, edges and vertices respectively.
 In Fig.\ref{HoneycombLattice} we show the support of each term with dashed circles. 
 It is natural to require a hierarchy in the couplings, $\lambda_p \ll \lambda_e \ll \lambda_v$.
 The hierchy comes from the fact that we want the low energy spectrum to be simple objects in $Z(\mathcal{C})$.
-\dave{make and refer to punctures plane picture.}
+
+\subsection{The spin surface}
+We take an orientable surface $\Sigma$ and denote a spin structure on this surface by $\sigma$. 
+It is a well known fact that isomorphism classes of spin structures on a surface are in one -- to -- one correspondence with the elements of $H^1(\Sigma, \mathbb{Z}_2)$.
+For any closed curve $\gamma \in \Sigma$ we can assign a number $q_\sigma( \gamma) \in \mathbb{Z}_2$ such that if $\sigma$ restricted to $\gamma$ is bounding $q_\sigma(\gamma) = 0$ and equal to $1$ otherwise.
+The phase picked up by transporting a fermion along path $\gamma$ is just $-(-1)^{q_{\sigma}(\gamma)}$.
+
+These $q_{\sigma}(\gamma)$ will allow us to define a spin structure on the graph which embedds into $\Sigma$.
+\dave{I don't know if this is the correct terminology. Need to go reading, but will write down what I am thinking.}
+We need to be able to cut paths into pieces and and assign $\mathbb{Z}_2$ valued degrees of freedom to each segment, such that if $\gamma = \cup_i \gamma_i$ then $q_\sigma(\gamma) = \prod_i \tilde{q}_{\sigma}(\gamma_i)$. \dave{Is there endpoint data as well or can we ignore that?  I know that we need to define a ``trivialization" of the spin bundle, but not sure how to do this so that we can compare the beginning of the path with the end to see if the fermion has picked up a minus sign or not.}
+$$
+\cdots
+$$
+
+\subsection{The spin graph }
+Our goal is to define a graph, that embeds into $\Sigma$ along with some extra data inherited from the spin structure. 
+In the following subsection we will define a Hilbert space over this graph which encodes the degrees of freedom needed to describe any string-net configuration over this graph. 
+
+\dave{Need to add assumptions on graph, e.g., 2 connected, ...}
+We define a graph $\mathcal{G}$ along with a planar embedding in the surface $\Sigma$.
+We denote the graph along with its embedding by a collection of vertices $\mathcal{V}$, edges $\mathcal{E}$ and faces $\mathcal{F}$. 
+Such that the edges $e \in  \mathcal{E} $ are homeomorphic to the unit interval and the faces $f \in \mathcal{F}$ are homeomorphic to the unit disc. 
+These sets are non intersecting, and there union is $\Sigma$.
+For simplicity we will assume that all vertices are trivalent, this can be relaxed at the expense of increasing the dimension of the vertex Hilbert space.
+
+We now need to equip the graph $\mathcal{G}$ with a spin structure. 
+We do not claim to do the most formal treatment, but only use what's necessary to define the Hamiltonian and the corresponding tensor networks. 
+\dave{Add references to K-oritentations+spin structure e.g., Resheitkhin+..., Novak + Runkel, etc}
+We first fix a basis in $H_1(\Sigma)$ denoted $\alpha_1, \alpha_2, \cdots, \alpha_n$. 
+We require that these $\alpha_i$ do not interesect any of the vertices $\alpha_i \cap \mathcal{V} = \text{empty}$.
+Each $\alpha_i$ is homotopic to a closed path on the dual graph. 
+
+
 %In this scenario the low energy excitations will be simple objects of $Z(\mathcal{C})$.
 
 We first define the vector space on which the Hamiltonian acts, then each piece of the Hamiltonian individually.
 
+\subsection{Spin super graph}
+Here we define the Hilbert space over which the Hamiltonian lives. 
+
+\dave{The rest is old.}
+
 \subsection{Super vector space}
 \label{VectorSpace}
 The fermionic nature of the Hamiltonian necessitates a super vector space. 
+In fact we will require a super Hilbert space, i.e., a super vector space with star structure and a sesquilinear form subject to some conditions.
+
+
+
+
+In order to produce a Hermitian Hamiltonian, the super vector space must be equipped with a hermitian form 
+
 A state in the vector space is given by a labeling of all vertices and edges of the graph ${\mathcal G}$. 
 The basis states for the are taken to be simple objects in $\cal{C}$, i.e., each edge has a bosonic vector space given by $\mathcal{H}_e = \bigoplus_{x \in \mathcal{C}} \mathbb{C}_x$.
 The vertex degrees of freedom are given by basis vectors for the fusion space of three simple objects in $\cal C$, hence $\mathcal{H}_v = \bigoplus_{abc} V^{ab}_c$.
