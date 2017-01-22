@@ -1905,7 +1905,7 @@ S = \frac{1}{2}\begin{pmatrix} 1 & d & 1 &			&&&			&&&			&& \\
 						&&&				d&-2&-d&		&&&			&&\\
 						&&&				&&&			&&&			-A^{-2} & A^{-2}d & A^{-2}\\
 						&&&				&&&			&&&			A^{-2}d & 0 & A^{-2}d \\ 
-						&&&				&&&			&&&			A^{-2} & dA^{-2} & -A^{-2} \end{pmatrix}\ee		
+						&&&				&&&			&&&			A^{-2} & A^{-2}d & -A^{-2} \end{pmatrix}\ee		
 where we have only listed the non-zero entries. 
 Note that we have $S = S_{even} \oplus S_{odd}$ where $S_{odd}$ is the $S$-matrix acting on ground states with odd fermion parity, and so the $S$-matrix preserves fermion parity (as it must). 
 Also note that $S^4 = \unit_{9\times9}\oplus(-\unit_{3\times3})$. 
@@ -2055,15 +2055,14 @@ for the vortex particles.
 
 The twists can also be obtained by computing their spins, which is done by directly Dehn-twisting the tubes in question. 
 This amounts to computing the eigenvalue of each quasiparticle under $t$, where $t$ is the twisted tube defined in \eqref{tube_shorthands}.
-We can then use the tube algebra multiplication tables to read off the eigenvalues, and in the basis $(m_\unit,m^\pm_\sigma,m_\psi,q_\unit,q_\sigma,q_\psi)^T$ we find the $T$-matrix to be
-\be T = {\rm diag}[1,\pm A^3,1,A^{-3},1,-A^{-3}].\ee
+We can then use the tube algebra multiplication tables to read off the eigenvalues, and in the basis $(m_\unit,m^\pm_\sigma,m_\psi,q_\unit,q_\sigma,q_\psi)^T$ we find the $\mct$-matrix to be
+\be \mct = {\rm diag}[1,\pm A^3,1,A^{-3},1,-A^{-3}].\ee
 This yields the same result as we obtained by tracing out the $R$-symbols, confirming that the spin-statistics relation holds in this theory.
 
-Making an explicit choice for $A$ can help to shed some light on these results. If we choose $A = ie^{\pm i \pi/8}$ (giving $d=+\sqrt{2}$ and $A^4 = \pm i$), then the $T$-matrix in the vortex sector decomposes as the tensor product
-\be T_P = T_{p\pm ip} \tp T_{\text{Ising}_{\nu =\mp1}},\ee
-where $T_{p\pm ip} = e^{\pm i\pi/8}$ is the $T$-matrix of a $p\pm ip$ superconductor. %Other allowed choices for $A$ correspond to $\nu = 3,5$ and...
+Making an explicit choice for $A$ can help to shed some light on these results. If we choose $A = ie^{\pm i \pi/8}$ (giving $d=+\sqrt{2}$ and $A^4 = \pm i$), then the $\mct$-matrix in the vortex sector decomposes as the tensor product
+\be \mct_P = \mct_{p\pm ip} \tp \mct_{\text{Ising}_{\nu =\mp1}},\ee
+where $\mct_{p\pm ip} = e^{\pm i\pi/8}$ is the $\mct$-matrix of a $p\pm ip$ superconductor. %Other allowed choices for $A$ correspond to $\nu = 3,5$ and...
 \ethan{discuss}
-
 
 In the expressions above, the twists of every non-vortex particle are ambiguous up to a factor of $\pm1$, corresponding to an ambiguity in the parity of physical fermions attached to the tubes at the time of twisting. The vortex particles have no such ambiguity, since moving a physical fermion around a tube with periodic boundary conditions picks up no $-1$ signs.   
 
@@ -2073,51 +2072,89 @@ If we believe that the chiral central charge of these theories can be computed i
 \subsubsection{Mutual statistics}
 
 Having obtained the $R$ symbols, we can also calculate the mutual statistics of the quasiparticles, which is encapsulated by the braiding $S$-matrix. 
-Unlike in bosonic theories, the $S$-matrix that contains information about the mutual statistics of quasiparticles is {\it distinct} from the $S$-matrix that characterizes how the ground states on the torus transform under the modular transformation $z\mapsto 1/z$. This distinction is because of the need to choose a spin structure on the torus: we will return to this issue in Section \ref{modulartforms}. For now, we will restrict ourselves to calculating the $S$-matrix measuring the mutual statistics of the quasiparticles in the theory. 
-
-When we calculate $S$, we should keep in mind that although there are some $\pm1$ ambiguities in the $T$-matrix, there should be no ambiguities present in $S$, since physical fermions have trivial double-braiding with one another. That is, mapping $m_a \mapsto fm_a$ where $a\in \{\unit,\psi,\sigma\}$ and $f$ is a physical fermion should not affect the answer we get for the $S$-matrix.
-
+As with the statistical $\mct$-matrix, unlike in bosonic theories, the braiding $S$-matrix that contains information about the mutual statistics of quasiparticles is {\it distinct} from the modular $S$-matrix governing how the ground states on the torus transform under the $S$ modular transformation. 
+To distinguish these two matrices, we will write the $S$-matrix pertaining to the mutual statistics of the quasiparticles in the theory as $\mcs$. 
+%This distinction is because of the need to choose a spin structure on the torus: we will return to this issue in Section \ref{modulartforms}. For now, we will restrict ourselves to calculating the $S$-matrix measuring the mutual statistics of the quasiparticles in the theory. 
+When we calculate the mutual statistics, we should keep in mind that although there are some $\pm1$ ambiguities in the statistical $\mct$-matrix, there should be no similar ambiguities present in $\mcs$, since physical fermions have trivial double-braiding with one another. 
+That is, mapping $m_a \mapsto fm_a$ where $a\in \{\unit,\psi,\sigma\}$ and $f$ is a physical fermion should not affect the matrix elements of $\mcs$. 
+Also, we should mention that the action of $\mcs$, which performs double braids of quasiparticles, does not act on any spin structure data.
+We were unable to find a complete set of eigenvectors of the modular $S$-matrix with well-defined spin structures, but this issue does not arise when considering the statistical $\mcs$ matrix.  
 
 \begin{figure}
+\begin{center}
 \includegraphics{both_braided_tubes}
 \caption{\label{braided_tubes} 
-}
+(a): How the tracing out of the $R$-symbols is performed when calculating the elements $\mcs_{ab}$ of the statistical $\mcs$-matrix. 
+Here, the $a$ and $b$ label tori hosting different quasiparticles, and are contained within a larger torus marked $c$. 
+The entire network of tubes is embedded with the three-sphere, where it can then be evaluated to give a number (the partition function). 
+(b): The setup for calculating the matrix $\mcs^\psi$, which encapsulates odd braiding processes during which a fermion is exchanged (represented by the two connected blue dots) between the two particles being braided. }
+\end{center}
 \end{figure}
 
-
-There are several ways to calculate $S$. 
-First, we can calculate $S$ by tracing out the $R$-symbols, using the formula
-\be \label{Smattr} S_{ab} = \frac{1}{\mcd}\sum_{c}d_c{\rm Tr}[R^{ab}_cR^{ba}_c],\ee
-which continues to hold in the fermionic setting. Computing this with the aid of Table \ref{Rtable}, we find
-\be 
- S= \frac{1}{\mcd} \begin{pmatrix} 
+As with the $\mct$ matrix, there are 
+several ways to calculate $\mcs$. 
+First, we will calculate $\mcs$ by tracing out the square of the $R$-symbols, using the formula [Ref someone]
+\be \label{Smattr} \mcs_{ab} = \frac{1}{\mcd}\sum_{c}d_c{\rm Tr}[R^{ab}_cR^{ba}_c].\ee
+which continues to hold in the fermionic setting. 
+Computing the trace with the aid of Table \ref{Rtable}, we find
+\be \label{statistical_S}
+ \mcs= \frac{1}{\mcd} \begin{pmatrix} 
 1&\sqrt{2}&1&2\sqrt{2}&4&2\sqrt{2} \\
  \sqrt{2}&0&-\sqrt{2}&4&0&-4 \\ 
  1&-\sqrt{2}&1&-2\sqrt{2}&4&-2\sqrt{2} \\ 
  2\sqrt{2}&4& -2\sqrt{2}&0&0&0 \\ 
  4&0&4&0&0&0 \\ 
-  2\sqrt{2}&-4&- 2\sqrt{2}&0 & 0 & 0 \end{pmatrix}, \ee
-The block of zeros in the bottom right means that braiding any two of the q-type particles in a given state yields a state orthogonal to the original. We might expect something like this for physical reasons, since braiding a q-type particle through a q-type loop changes the Q-loop's fermion parity, preventing it from fusing to the vacuum, and evaluating to a tadpole diagram. Indeed, this is exactly the same as the reason why $S_{\sigma\sigma}=0$ in the regular Ising theory. A more precise understanding of why the bottom block is zero comes from an analysis of modular transformations on the torus, which we carry out in Section \ref{modulartforms}.   
+  2\sqrt{2}&-4&- 2\sqrt{2}&0 & 0 & 0 \end{pmatrix}. \ee
+  
+Let us now take a closer look at $\mcs$. 
+The block of zeros in the bottom right warrants special attention, and means that braiding any two of the q-type particles around one another yields a state orthogonal to one in which they started. 
+This is physically reasonable, since braiding a q-type particle through a q-type loop changes the q-loop's fermion parity, preventing it from fusing back to the vacuum. 
+Indeed, the block of zeros in the bottom right of $\mcs$ occurs for the same reason why the matrix element $S_{\sigma\sigma}=0$ in the regular Ising theory. 
 
-Instead of tracing the $R$ matrices, we can appeal to a formula relating the $S$ matrix to the topological twists. In bosonic theories, we have 
-\be \label{stwist_bosonic} S^{bos}_{ab} = \frac{1}{\mcd} \sum_c d_c N^{ab}_c \frac{\theta_c}{\theta_a\theta_b}.\ee
-This relation does {\it not} hold in the superfusion case, and needs to be modified. The derivation of the correct version of \eqref{stwist_bosonic} relies on the fact that 
+A more precise understanding for why the braiding between two q-type quasiparticles vanishes comes from considering the meaning of the trace in \eqref{Smattr}.
+As described during our discussion of the ground states on the torus, the trace of an operator that acts on a collection of tubes (like the $\mcs$ matrix) is computed by identifying the top and bottom of the operator by ``closing up'' the tubes it contains along the time direction (see \eqref{TrO_def}).
+The braiding of two quasiparticles $a$ and $b$ is then found by computing the partition function for the picture given in Figure \ref{braided_tubes} (a). 
+In the figure, the two quasiparticles we are interested in braiding are hosted on the surface of the tori marked $a$ and $b$, which are contained inside a larger torus $c$, all of which are then embedded in $S^3$. 
+In order for the diagram in the figure to possess a self-consistent spin structure, we must place constraints on the spin structures of the tori $a,b,$ and $c$. 
+
+
+Furthermore, if Figure \ref{TrO_def} is to represent the trace of an operator, the torus $c$ must possess antiperiodic boundary conditions along it's (larger, timelike) longitudinal cycle. 
+In particular, fixing $c_l=A$ forces 
+\be a_m = b_l,\quad a_l=b_m.\ee
+Therefore, if $a_m = b_m = P$ (as is the case if both $a$ and $b$ host q-type particles), then we must have $a_l = b_l = P$. 
+
+We are finally in a position to explain why $\mcs_{ab}=0$ if both $a$ and $b$ are q-type. 
+
+The $\mcs$ matrix in \eqref{statistical_S} carries almost the same amount of information as the modular $S$-matrix worked out previously. 
+
+Instead of tracing the $R$ matrices, we can appeal to a formula relating the $\mcs$ matrix to the topological twists. In bosonic theories, we have 
+\be \label{stwist_bosonic} \mcs^{bos}_{ab} = \frac{1}{\mcd} \sum_c d_c N^{ab}_c \frac{\theta_c}{\theta_a\theta_b}.\ee
+This relation does {\it not} hold in the superfusion case, and needs to be modified. 
+The derivation of the correct version of \eqref{stwist_bosonic} relies on the fact that
 \be \label{stwist_fermionic} \theta_c = (-1)^{|v|(|c|+1)} \theta_a\theta_b [R^{ab}_c]_{vv} [R^{ba}_c]_{vv},\ee
-where $v\in V^{ab}_c$ is any vector in the fusion space $V^{ab}_c$ and $|v| \in \{0,1\}$ is the parity of $v$, and where $|c| = 1$ $(|c|=0)$ if $c$ is a quasiparticle with a vortex (non-vortex) spin structure. In the $C_2$ theory, the factor of $(-1)^{|v||c|}$ will only contribute for braids between m-type and q-type particles. 
+where $v\in V^{ab}_c$ is any vector in the fusion space $V^{ab}_c$ and $|v| \in \{0,1\}$ is the parity of $v$, and where $|c| = 1$ $(|c|=0)$ if $c$ is a quasiparticle with a vortex (non-vortex) spin structure. 
+In the $C_2$ theory, the factor of $(-1)^{|v||c|}$ will only contribute for braids between m-type and q-type particles. 
 
 To derive \eqref{stwist_fermionic}, we use the following manipulations:
 \be\label{stwist_proof} \includegraphics{stwist_proof.pdf}, \ee
-where $a$ and $b$ are such that $c\in a\tp b$, and $v$ is any vector in the fusion space $V^{ab}_c$. These steps relate $\theta_c$ (the rightmost diagram) to something proportional to $\theta_a\theta_b [R^{ab}_c]_{vv}[R^{ba}_c]_{vv}$. In the bosonic case this relation is an exact equality, but this is not true in the fermionic setting. Firstly, we see that the first step in \eqref{stwist_proof} involves passing the vertex $v$ under a $c$ tube. When the braiding process is embedded in $S^3$, the branch cuts associated with vortex-type quasiparticles become branch sheets, which we will define to always be pointing out of the page. This means that passing an odd vector in $V^{ab}_c$ over a vortex-type quasiparticle gives a phase factor of $-1$. Additionally, we notice that vectors in $V^{ab}_c$ are transported in a loop during steps 1 and 2, which contributes a sign of $-1$ if the vector $v$ is odd. These two effects are responsible for the factor of $(-1)^{|v|(|c|+1)}$ in \eqref{stwist_fermionic}, meaning that the correct expression for $S$ in the fermionic setting is 
-\be S_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in V^{ab}_c} d_c (-1)^{|v| (|c|+1)}   \frac{\theta_c}{\theta_a\theta_b}.\ee
+where $a$ and $b$ are such that $N^{ab}_c\neq0$, $v$ is any vector in the fusion space $V^{ab}_c$, and for clarity we have used the orange lines to represent collections of tubes hosting the quasiparticles $a,b,c$. 
+These steps relate something proportional to $\theta_c$ (the leftmost diagram) to something proportional to $\theta_a\theta_b [R^{ab}_c]_{vv}[R^{ba}_c]_{vv}$. 
+In the bosonic case this relation is an exact equality, but this is not true in the fermionic setting. 
+Firstly, we see that the first step in \eqref{stwist_proof} involves passing the vertex $v$ under a $c$ tube. 
+When the braiding process is embedded in $S^3$, the branch cuts associated with vortex-type quasiparticles become branch sheets, which we will define to always be pointing out of the page. 
+This means that passing an odd vector in $V^{ab}_c$ over a vortex-type quasiparticle gives a phase factor of $-1$.
+ Additionally, we notice that vectors in $V^{ab}_c$ are transported in a loop during steps 1 and 2, which contributes a sign of $-1$ if the vector $v$ is odd. 
+ These two effects are responsible for the factor of $(-1)^{|v|(|c|+1)}$ in \eqref{stwist_fermionic}, meaning that the correct expression for $\mcs$ in the fermionic setting is 
+\be \mcs_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in V^{ab}_c} d_c (-1)^{|v| (|c|+1)}   \frac{\theta_c}{\theta_a\theta_b}.\ee
 
 
+%\ethan{commented-out section below is old discussion of why qq braids vanish}
 \begin{comment}
 There is a slight technicality here, since our formula for $S$ depends on our choice of twists for the m-type particles, even though we argued that the $S$ matrix should not suffer from the $\pm$ ambiguities that $T$ possesses. This means that the expression must be further modified so as to be invariant under fusing physical fermions onto m-type particles. This is done by writing 
 \be S^{Tr}_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in V^{ab}_c} d_c (-1)^{|v| (|c| + 1) + f(a,b,c)}   \frac{\theta_c}{\theta_a\theta_b},\ee
 where $f(a,b,c)$ measures the number of {\it physical} fermions attached to any m-type particles in $a$, $b$ and $c$. For example, if we were to choose $\theta_{m_\unit} = 1, \theta_{m_\psi} = -1,\theta_{m^+_\sigma} = e^{-i\pi/8}$ (e.g, if we chose $\psi$ to come with a single physical fermion attached to it), we would have 
 \be {f(a,b,c)} = \delta_{a,m_\psi} + \delta_{b,m_\psi} + \delta_{c,m_\psi}.\ee
 The simplest convention is probably to take $m_\unit$ and $m_\psi$ to be bosonic and to use $m_\sigma^+$ as our representative for the $m_\sigma$ isomorphism class, which we have been doing throughout and will continue to do. However, we might also want to take $m_\psi$ to be fermionic, to jive with the Ising theory better. In any case, $S$ is at least independent of this choice. 
-\end{comment}
 
 We are now in a position to explain why the mutual statistics between two q-type particles is always zero: evaluating the braiding using the modular transformation picture yields a configuration of tori with incompatible spin structure. Since each q-type idempotent is associated with a torus with $(P,A)$ spin structure (periodic around the minor (spatial) cycle, anti-periodic around the major (timelike) cycle), a double-braid between two q-type particles is schematically obtained by computing the partition function of the two tori shown in Figure \ref{linked_tori}. 
 \begin{figure} 
@@ -2127,11 +2164,14 @@ We are now in a position to explain why the mutual statistics between two q-type
 \end{figure}
 
 When we compute this partition function, we thicken the two tori so that their boundaries become glued with one another. The common boundary of the two tori forms a torus that divides the ambient $S^3$ into two solid tori. However, we see that the above choice of spin structures makes this gluing process impossible, since the spin structures on the two linked tori do not agree when one another when the tori are glued. More precisely, we see that the boundary conditions on the major cycle of one linked torus must match the minor cycle boundary conditions of the other in order for the gluing procedure to be well-defined, which is not the case in the above figure. This means that the partition function of a linking of two q-type idempotents must be always be zero, and hence q-type particles always have 0 mutual statistics with one another. 
+\end{comment}
 
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Generalities on fermion condensation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Outline:
 \begin{itemize}
