@@ -256,6 +256,13 @@
 \newcommand{\TorusLocalRelationa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusLocalRelationa.pdf}}}}}
 
 
+\newcommand{\Dv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Dv.pdf}}}}}
+\newcommand{\Dfv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Dfv.pdf}}}}}
+
+\newcommand{\euv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{euv.pdf}}}}}
+\newcommand{\chieuv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{chieuv.pdf}}}}}
+
+
 \newcommand{\TaddownTubeNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TaddownTube.pdf}}}}}
 \newcommand{\TadupTubeNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TadupTube.pdf}}}}}
 \newcommand{\hTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{hTube.pdf}}}}}
@@ -2178,7 +2185,7 @@ It should be obvious that the techniques used in Section \ref{C2_condense_sect} 
 In this section we discuss the general case and some variants thereof.
 
 
-\subsection{Condensing non-transparent fermions in a braided category}
+\subsection{Condensing non-transparent fermions in a braided category}  \label{gntf_condense}
 
 Let $\mcc$ be a braided pivotal category.
 \kw{need to add more adjectives?}
@@ -2225,6 +2232,10 @@ There are two two cases:
 While $\mcc/\psi$ is not a braided category, it does have the structure of a front-braiding by $\mcc$.
 \kw{say a little more about this}
 
+\medskip
+
+\kw{probably should mention some examples; at least the $A_n/\psi$ family}
+
 
 \subsection{The annular category of $\mcc/\psi$}
 
@@ -2232,33 +2243,33 @@ To do:
 \begin{itemize}
 \item vortices and non-vortices
 \item front-braiding leads to grading 
-(half of the familiar $Z(\mcc) \cong \mcc \ot \overline\mcc$ when $mcc$ is modular)
+(half of the familiar $Z(\mcc) \cong \mcc \ot \overline\mcc$ when $\mcc$ is modular)
 \item non-vortices are all m-type
 \end{itemize}
 
 
 \subsection{Condensing transparent fermions in a braided category}
 
+In this subsection we make the same assumptions about $\psi$ and $\mcc$ as in \ref{gntf_condense}, and we add the assumption that $\psi$ is transparent in $\mcc$.
+
+Since $\psi$ is transparent, we can do ordinary condensation rather than back wall condensation.
+We still need a spin structure (since $\theta_\psi = -1$) and Koszul signs (since $\psi$ has fermionic statistics).
+
+The resulting category $\mcc/\psi$ is a fermionic braided pivotal.
+
+\kw{Give some $A_n$ examples, or at least refer to the $SO(3)_6$ example.}
+
+\medskip
+
+We note that q-type particles can never arise in this case.
+For if $\alpha\ot\psi = \beta$, it follows that $\theta_\beta = \theta_\alpha \theta_\psi = -\theta_\alpha$.
+(The first equality is because $\psi$ is transparent; see Figure xxx.)
+It follows that $\alpha \not\cong \beta$, and hence $\alpha$ descends to an m-type simple object in $\mcc/\psi$.
 
 
 \subsection{Condensing transparent fermions in the center of a pivotal tensor category}
 
 
-
-\subsection{old outline}
-
-Outline:
-\begin{itemize}
-\item Observe that what we did in $C_2$ section was fairly general; works for at braided cat with a non-transparent
-emergent fermion (still assume $\psi\otimes\psi\cong\unit$)
-\item necessarily (with our assumptions) tensoring with $\psi$ permutes the particle types of the parent theory;
-orbits of size 2 lead to m-type particles in the quotient; orbits of size 1 lead to q-type particles
-\item (??) front-braiding means that the tube cat of the quotient theory has a grading by the fusion algebra of the parent theory
-\item If fermion is transparent, then no need for back wall and quotient cat is braided; see e.g.\ $SO(3)_6$ below (??)
-\item If initial cat is not braided, then we can still condense if we can lift $\psi$ to the center.
-(see E6/2 section below)
-\item what else?
-\end{itemize}
 
 
 
@@ -4078,30 +4089,28 @@ This is just the usual string net term which projects onto the trivial idempoten
 }
  \label{HoneycombLattice}
  \end{figure}
-Here we write down a fermionic string net Hamiltonian.
-The excitations are in one one -- to -- one correspondence with the isomorphism classes of primitive idempotents, as discussed in [REFSec].
+Here we write down a fermionic string net Hamiltonian based on a super pivotal fusion category.
 
 We follow the same construction as \cite{levin2005} with with some differences. 
 See also [REF other fermionic commuting projectors].
-The main differences between the super pivotal Hamiltonian and the bosonic string net Hamiltonian are:
-\begin{enumerate}
-\item We need to fix a spin structure on the manifold which the lattice is embedded into \ref{VectorSpace}
-\item The Hilbert space is a super vector space \ref{VertexHamiltonian}
-\item There is a new term in the Hamiltonian with support on the edges of the lattice that allows fermions to fluctuate across Q type edges \ref{EdgeHamiltonianTerms}
-\end{enumerate}
+There are a few main differences between the super pivotal Hamiltonian and the bosonic string net Hamiltonian.
+We need to fix a spin structure on the manifold which the lattice is embedded into. 
+Contrarry to the conventional bosonic string net Hamiltonian, the Hilbert space is a super Hilbert space.
+There is a new term in the Hamiltonian with support on the edges and vertices of the lattice that allows fermions to fluctuate across Q type edges \ref{EdgeHamiltonianTerms}.
 
 The input data to the model is:
 \dave{Some of these may depend on the others.}
 \begin{enumerate}
 \item a super pivotal fusion category ${\cal C}$
 \item an oriented surface $\Sigma$ with spin structure $\sigma$, denoted $(\Sigma,\sigma)$
-\item a graph $\mathcal{G}$ denoted by a collection of vertices, edges, and faces by $ \{\mathcal{V},\mathcal{E},\mathcal{F} \}$ respectively
-\item an embedding of the graph $\mathcal{G}$ into $\Sigma$, and a ``spin" graph $(\mathcal{G}, s)$ with embedding into $(\Sigma, \sigma)$
+\item a graph $\mathcal{G}$ defined by a collection of vertices and edges
+\item an imbedding of the graph $\mathcal{G}$ into $\Sigma$
+%, and a ``spin" graph $(\mathcal{G}, s)$ with an imbedding into into the spin surface $(\Sigma, \sigma)$
 \end{enumerate}
 In the following sections we define the Hamiltonian explicitly in terms of the above data.
 
 We will explicitly write out the Hamiltonian for the example of the honeycomb lattice shown in Fig.~\ref{HoneycombLattice}, but much of what we say holds more generally.
-The Hamiltonian is a sum of commuting three projectors,
+The Hamiltonian is a sum of commuting three terms,
 \begin{align}
 H = \lambda_p \sum_{p \in P} (1-B_p) + \lambda_e \sum_{e \in E} (1-D_{e}) + \lambda_v \sum_{v \in V} (1-A_v)
 \end{align}
@@ -4112,43 +4121,99 @@ It is natural to require a hierarchy in the couplings, $\lambda_p \ll \lambda_e 
 The hierchy comes from the fact that we want the low energy spectrum to be simple objects in $Z(\mathcal{C})$.
 
 \subsection{The spin surface}
+\dave{All of this needs to be refined. Just wanted to get the general idea put into words, and then come back to it and flesh it out.}
 We take an orientable surface $\Sigma$ and denote a spin structure on this surface by $\sigma$. 
 It is a well known fact that isomorphism classes of spin structures on a surface are in one -- to -- one correspondence with the elements of $H^1(\Sigma, \mathbb{Z}_2)$.
 For any closed curve $\gamma \in \Sigma$ we can assign a number $q_\sigma( \gamma) \in \mathbb{Z}_2$ such that if $\sigma$ restricted to $\gamma$ is bounding $q_\sigma(\gamma) = 0$ and equal to $1$ otherwise.
 The phase picked up by transporting a fermion along path $\gamma$ is just $-(-1)^{q_{\sigma}(\gamma)}$.
 
-These $q_{\sigma}(\gamma)$ will allow us to define a spin structure on the graph which embedds into $\Sigma$.
-\dave{I don't know if this is the correct terminology. Need to go reading, but will write down what I am thinking.}
-We need to be able to cut paths into pieces and and assign $\mathbb{Z}_2$ valued degrees of freedom to each segment, such that if $\gamma = \cup_i \gamma_i$ then $q_\sigma(\gamma) = \prod_i \tilde{q}_{\sigma}(\gamma_i)$. \dave{Is there endpoint data as well or can we ignore that?  I know that we need to define a ``trivialization" of the spin bundle, but not sure how to do this so that we can compare the beginning of the path with the end to see if the fermion has picked up a minus sign or not.}
+We now need to encode this spin structure data in to the graph embedding.
+\dave{Need to discuss gluing of polygons. }
+
+\subsection{The spin graph }
+Our goal is to define a graph, that embeds into $\Sigma$ along with some extra data inherited from the spin structure $\sigma$. 
+
+We define a graph $\mathcal{G}$ along with a planar embedding in the surface $\Sigma$.
+Recall that a graph $\mathcal{G}$ is a list of vertices $\mathcal{V}$ and edges $\mathcal{E}$. 
+The edges denote the connectivity of the graph and can be encoded by an adjacency matrix $A_{uv}$, which is equal to $1$ if vertex $u$ is connected to $v$ and zero otherwise. 
+An imbedding of the graph into $\Sigma$ is a map $\chi : \mathcal{G} \rightarrow \Sigma$. 
+That is $\chi$ takes vertices to points on $\Sigma$ and edges to lines.
+We require this imbedding to to be planar, i.e., the complement of the image is homeomorphic to the disjoint union of a collection of discs. 
+Each component of the complement is called a face, and the imbedding is said to be a cellular imbedding.
+Lets denote the collection of faces by $\mathcal{F}$. 
+In particular $\chi$ is injective, and so the image of $\chi$ describes a disjoint set of vertices, lines, and faces whose union is $\Sigma$.
+\dave{Should also probably require that the graph be 2-connected so that we don't have dangling edges or boundaries.}
+
+We now need to assign some extra spin structure dependant data to the graph and the imbedding. 
+The extra data is assigned to the vertices and edges.\dave{May want to consider non-bounding spin structure on faces at some other point.}
+Soon we will assign a vector space each vertex and edge of the graph. 
+Local relations in this vector space will depedend on the input catefory, and the spin structure.
+The Hamiltonian will impliment these local relations so that the ground state will be an equal super position of string nets weighted by there evaluation. 
+Due to the fermionic Hilbert space and the spin structure, we have to work very hard to keep track of all minus signs. 
+One path to overcome this is to define a standard Hilbert space in say the plane and record local relations implimented on the manifold. 
+This allows us to constantly compare the manipulations on the surface $\Sigma$ with some ``standardized" manipulations we've worked out on the plane. 
+To do this precisely we need to define spin lifts from the ``standardized" manifolds and Hilbert space into $\Sigma$ which properly account for fermionic signs
+
+More explicitly, for each point $\chi(v) \in \Sigma$ we choose a neighbourhood $D_{f(v)} \subset \Sigma$ that is homeomorphic to a disc. 
+We then define our standard disc $D_v$ to have a trivial (i.e., flat) spin structure and the boundary to have $d_v = \sum_u A_{uv}$ marked points. 
+These marked points are ordered in a clockwise fashion. 
+We also order the edges terminating at the vertex $v$ to have the same ordering, which is induced by the orientation of $\Sigma$.
+We define a spin diffeomorphism $s_v: D_v \rightarrow D_{\chi(v)}$ from the unit disc with $d_v$ marked points into $\Sigma$:
+\begin{align}
+\vcenter{\xymatrix @!0 @M=1mm @R=14mm @C=35mm{
+ &s_v: \; \; D_v\ar[r]            & D_{\chi(v)} \\
+		  &\;\;\;\;\;\;\; \Dv \ar@{|->}[r] & \Dfv
+	}} 
+\end{align}
+In the second line we have shown an example of such a map. 
+We added some lines which show one way the edges may terminate at the vertex inside the disc. 
+
+Similarly for each path $\chi(e_{uv}) \subset \Sigma$ we define a spin diffeomorphism from the unit interval into $\Sigma$.
+This is just the restriction of $\sigma$ to $\chi(e_{uv})$. 
+\begin{align}
+\vcenter{\xymatrix @!0 @M=1mm @R=10mm @C=35mm{
+ &s_{uv}: \; \; I_{e_{uv}}\ar[r]            & I_{\chi(e_{uv})} \\
+		  &\;\;\;\;\;\;\; \euv \ar@{|->}[r] & \chieuv
+	}} 
+\end{align}
+\dave{Perhaps also choose a neighbourhood of this edge?}
+
+\dave{We may want to put some extra restrictions on these maps/graphs and imbeddings that make defining the Hamiltonian easier. 
+Although a somewhat general definitino of the ``spin graph" could be useful.
+Especially for tensor networks.}
+
+Lastly we need to address how to glue together the intervals with the discs so that the imbedding of the spin graph in $\Sigma$ has a spin structure that is in the same equivalence class as $\sigma$. 
+The ambiguity arises because the spin framing is defined up to a global $\mathbb{Z}_2$ action.
+\dave{What's the name for this?}
+Hence we not only need to specify a spin diffemorphism from the standardized manifolds into $(\Sigma,\sigma)$, but also a set of gluing data which accounts for this $\mathbb{Z}_2$ ambiguity. 
+These are just $\pm1$ signs associated to the marked points. 
+If the trivialization (\dave{Not sure what this is called, but if the fermions lie on different branches, or sheets? then there is an extra sign.}) of the fiber bundle differes across the marked point, we assign a minus sign to the gluing otherwise a plus sign.
+\dave{Need to check this, but this, or a similar statement should exist.}
+The fact that each disc is bounding means that the product of the gluing signs must be $+1$ around every disc, and the product of the gluing sings across each edge must also be $+1$. 
+To see this, take a disc with several marked points and consider a path that begins and ends at the same point but leaves through one of those marked points, and comes back though another. 
+If the path is bounding then a fermion transported along this path will pick up a minus sign. 
+Negating any of the gluing signs on that path results in a non-bounding spin structure. 
+This is just a manifestation of the fact that spin structures are allowed to differ by flat $\mathbb{Z}_2$ guage fields.
+
+\dave{Add references to K-oritentations+spin structure e.g., Resheitkhin+..., Novak + Runkel, etc}
+
+\subsection{Hilbert space}
+Here we define the Hilbert space over which the Hamiltonian lives. 
+We define this to be the tensor product of all Hilbert spaces defined on our standardized discs and intervals. 
 $$
 \cdots
 $$
+We need a complete ordering on all edges and vertices. 
+Although it is not necessary, lets define two index sets $\mathcal{I}_v$ and $\widetilde{\mathcal{I}}_e$.
+The first is a complete ordering on all vertices, and the second is a complete ordering on all edges. 
+We define the Hilbert space as,
+\begin{align}
+\mathcal{H} = \tp_{e \in E} \mathcal{A}(e_{uv}) \tp_{v \in V} \mathcal{A}(D_v)
+\end{align}
+Where the tensor product is ordered with respect to $\mathcal{I}_v$ and $\widetilde{\mathcal{I}}_e$.
 
-\subsection{The spin graph }
-Our goal is to define a graph, that embeds into $\Sigma$ along with some extra data inherited from the spin structure. 
-In the following subsection we will define a Hilbert space over this graph which encodes the degrees of freedom needed to describe any string-net configuration over this graph. 
+\dave{Note to self: We know that this Hilbert space isn't quite correct. If the image $f(e_{uv})$ is bent, then it is possible to have an odd edge. Will need to think about how to include this.}
 
-\dave{Need to add assumptions on graph, e.g., 2 connected, ...}
-We define a graph $\mathcal{G}$ along with a planar embedding in the surface $\Sigma$.
-We denote the graph along with its embedding by a collection of vertices $\mathcal{V}$, edges $\mathcal{E}$ and faces $\mathcal{F}$. 
-Such that the edges $e \in  \mathcal{E} $ are homeomorphic to the unit interval and the faces $f \in \mathcal{F}$ are homeomorphic to the unit disc. 
-These sets are non intersecting, and there union is $\Sigma$.
-For simplicity we will assume that all vertices are trivalent, this can be relaxed at the expense of increasing the dimension of the vertex Hilbert space.
-
-We now need to equip the graph $\mathcal{G}$ with a spin structure. 
-We do not claim to do the most formal treatment, but only use what's necessary to define the Hamiltonian and the corresponding tensor networks. 
-\dave{Add references to K-oritentations+spin structure e.g., Resheitkhin+..., Novak + Runkel, etc}
-We first fix a basis in $H_1(\Sigma)$ denoted $\alpha_1, \alpha_2, \cdots, \alpha_n$. 
-We require that these $\alpha_i$ do not interesect any of the vertices $\alpha_i \cap \mathcal{V} = \text{empty}$.
-Each $\alpha_i$ is homotopic to a closed path on the dual graph. 
-
-
-%In this scenario the low energy excitations will be simple objects of $Z(\mathcal{C})$.
-
-We first define the vector space on which the Hamiltonian acts, then each piece of the Hamiltonian individually.
-
-\subsection{Spin super graph}
-Here we define the Hilbert space over which the Hamiltonian lives. 
 
 \dave{The rest is old.}
 
