@@ -4061,37 +4061,40 @@ There are a few main differences between the super pivotal Hamiltonian and the b
 First and foremost we need to fix a spin structure on the manifold which the lattice is embedded into. 
 This is required for a fermionic lattice model or partition function to be well defined.
 The result of having fermions around means that the Hilbert space for the local spin degrees of freedom is actually a super Hilbert space, and as such special care needs to be with respect to the ordering of the tensor product.
-The second biggest difference is a new term in the Hamiltonian with support on the edges and vertices of the lattice that allows fermions to fluctuate across Q type edges \ref{EdgeHamiltonianTerms}.
-Other than these two qualitatively different features, the Hamiltonian is exactly the same, it impliments local relations of the fusion category, and so the ground space will be an isotopy weighted super position of string nets.
+The second biggest difference is a new term in the Hamiltonian with support on the edges and neighbouring vertices that allows fermions to fluctuate across Q type edges \ref{EdgeHamiltonianTerms}.
+Other than these two qualitatively different features, the Hamiltonian is exactly the same: it impliments local relations of the fusion category, and so the ground space will be an isotopy weighted super position of string nets.
 
 The input data to the model is:
 \begin{enumerate}
 \item a super pivotal fusion category ${\cal C}$
 \item an oriented surface $\Sigma$ with spin structure $\sigma$, denoted $(\Sigma,\sigma)$
-\item a graph $\mathcal{G}$ defined by a collection of vertices and edges
-\item a planar imbedding of the graph $\mathcal{G}$ into $\Sigma$
+%\item a graph $\mathcal{G}$ defined by a collection of vertices and edges
+%\item a planar imbedding of the graph $\mathcal{G}$ into $\Sigma$
+\item a cell decomposition of $\Sigma$
 %, and a ``spin" graph $(\mathcal{G}, s)$ with an imbedding into into the spin surface $(\Sigma, \sigma)$
 \end{enumerate}
 In the following sections we define the Hamiltonian explicitly in terms of the above data.
 
-We will explicitly write out the Hamiltonian for the example of the honeycomb lattice shown in Fig.~\ref{HoneycombLattice}, although much of what we say holds more generally.
-The Hamiltonian is a sum of commuting three terms,
+%We will explicitly write out the Hamiltonian for the example of the honeycomb lattice shown in Fig.~\ref{HoneycombLattice}, although much of what we say holds more generally.
+The Hamiltonian takes the same form as the usual string net Hamtilonian, with the addition of an edge term:
+%The Hamiltonian is a sum of commuting three terms,
 \begin{align}
 H = \lambda_p \sum_{p \in P} (1-B_p) + \lambda_e \sum_{e \in E} (1-D_{e}) + \lambda_v \sum_{v \in V} (1-A_v).
 \end{align}
+All terms are projectors, and commute with another. 
 They act on the plaquettes, edges and vertices respectively. 
 In Fig.~\ref{HoneycombLattice} we show the support of each term with dashed circles. 
 It is natural to require a hierarchy in the couplings, $\lambda_p \ll \lambda_e \ll \lambda_v$.
-The hierarchy comes from the fact that we want the low energy spectrum to be simple objects in $Z(\mathcal{C})$.
+The hierarchy is to ensure that the low energy spectrum can be characterized by simple objects in $Z(\mathcal{C})$.
 
 \subsection{The spin surface}
 \dave{Ethan, do mind correcting my almost certain abuse of terminology?}
-We take an orientable surface $\Sigma$ and denote a spin structure an equivalence class of spin structures on this surface by $\sigma$. 
+We take an orientable surface $\Sigma$ and denote the spin structure by $\sigma$.%an equivalence class of spin structures on this surface by $\sigma$. 
 It is a well known fact that isomorphism classes of spin structures on a surface are in one -- to -- one correspondence with the elements of $H_1(\Sigma, \mathbb{Z}_2)$.
 We specify the equivalence class by $\sigma \in H_1(\Sigma, \mathbb{Z}_2)$ and represent it with a set of closed curves $\alpha_1, \alpha_2, \cdots, \alpha_n \subset \Sigma$, and a map $q_\sigma : \alpha_i \rightarrow \mathbb{Z}_2$
 which specifies whether the loop is bounding $q_\sigma(\alpha) = 0$ or non-bounding $q_{\sigma}(\alpha) = 1$.
 The function $q_\sigma$ can be uniquely extended to any closed path in $\Sigma$. 
-One can also change homology basis by specifying $\beta_1, \beta_2, \cdots, \beta_n \subset \Sigma$, finding the $\beta_i$ as a function of $\alpha_i$ and making use of the quadratic form,
+One can also change homology basis by specifying another set of closed paths $\beta_1, \beta_2, \cdots, \beta_n \subset \Sigma$, and finding the $\beta_i$ as a function of $\alpha_i$ and making use of the quadratic form,
 \begin{align}
 q_{\sigma} (\alpha + \alpha') = q_{\sigma}(\alpha) q_{\sigma}(\alpha') (-1)^{\alpha \cap \alpha'}
 \end{align}
@@ -4106,8 +4109,24 @@ We now need to encode this spin structure data in to the graph embedding.
 \dave{Need to discuss gluing of polygons. }
 
 \subsection{The spin graph }
-Our goal is to define a graph, that embeds into $\Sigma$ along with some extra data inherited from the spin structure $\sigma$, which allows us to define a spin graph. 
+Here we define the lattice for the super pivotal Hamiltonian. 
+The point is to carefully decompose the manifold $\Sigma$, with spin structure $\sigma$ into a collection of discs and bands whose union is $\Sigma$, and a equip each disc and pants with spin structure data inherited from $\sigma$.
+%We wish to now decompose the surface $\Sigma$ into a disjoint union of cells which 
 
+%Our goal is to define a graph, that embeds into $\Sigma$ along with some extra data inherited from the spin structure $\sigma$, which allows us to define a spin graph. 
+
+Moving forward we begin by defining a cell decomposition of the surface $\Sigma$. 
+The simplest example of a cell decomposition is a triangulation.
+A generic cell decomposition is specified by a set of vertices $\mathcal{V}$, edges $\mathcal{E}$ and faces $\mathcal{F}$.
+ The vertices are just points in $\Sigma$. 
+While the edges are paths in $\Sigma$, and the faces are regions of $\Sigma$ homeomorphic to discs.
+The three sets are non-intersecting and their union is the $\Sigma$: $\mathcal{V} \cap \mathcal{E} = \mathcal{E}\cap \mathcal{F}  = \mathcal{V} \cap \mathcal{F}  = \text{empty}$, and $\mathcal{V} \cup \mathcal{E} \cup \mathcal{F} = \Sigma$.
+It is useful to define the combinatorial data associated to the graph, this is just an adjacency matrix $A_{uv}$ which is equal to $1$ is $u,v \in \mathcal{V}$ lie at the boundary of an edge $e \in \mathcal{E}$.
+$$
+$$
+\dave{Here}
+$$
+$$
 We define a graph $\mathcal{G}$ along with a planar embedding in the surface $\Sigma$.
 Recall that a graph $\mathcal{G}$ is a list of vertices $\mathcal{V}$ and edges $\mathcal{E}$. 
 The edges denote the connectivity of the graph and can be encoded by an adjacency matrix $A_{uv}$, which is equal to $1$ if vertex $u$ is connected to $v$ and zero otherwise. 
