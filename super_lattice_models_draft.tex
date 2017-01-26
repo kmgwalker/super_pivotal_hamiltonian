@@ -4121,38 +4121,85 @@ A generic cell decomposition is specified by a set of vertices $\mathcal{V}$, ed
  The vertices are just points in $\Sigma$. 
 While the edges are paths in $\Sigma$, and the faces are regions of $\Sigma$ homeomorphic to discs.
 The three sets are non-intersecting and their union is the $\Sigma$: $\mathcal{V} \cap \mathcal{E} = \mathcal{E}\cap \mathcal{F}  = \mathcal{V} \cap \mathcal{F}  = \text{empty}$, and $\mathcal{V} \cup \mathcal{E} \cup \mathcal{F} = \Sigma$.
-It is useful to define the combinatorial data associated to the graph, this is just an adjacency matrix $A_{uv}$ which is equal to $1$ is $u,v \in \mathcal{V}$ lie at the boundary of an edge $e \in \mathcal{E}$.
-$$
-$$
-\dave{Here}
-$$
-$$
-We define a graph $\mathcal{G}$ along with a planar embedding in the surface $\Sigma$.
-Recall that a graph $\mathcal{G}$ is a list of vertices $\mathcal{V}$ and edges $\mathcal{E}$. 
-The edges denote the connectivity of the graph and can be encoded by an adjacency matrix $A_{uv}$, which is equal to $1$ if vertex $u$ is connected to $v$ and zero otherwise. 
-An imbedding of the graph into $\Sigma$ is a map $\chi : \mathcal{G} \rightarrow \Sigma$. 
-That is $\chi$ takes vertices to points on $\Sigma$ and edges to lines.
-We require this imbedding to to be planar, i.e., the complement of the image is homeomorphic to the disjoint union of a collection of discs. 
-Each component of the complement is called a face, and the imbedding is said to be a cellular imbedding.
-Lets denote the collection of faces by $\mathcal{F}$. 
-In particular $\chi$ is injective, and so the image of $\chi$ describes a disjoint set of vertices, lines, and faces whose union is $\Sigma$.
-\dave{Should also probably require that the graph be 2-connected so that we don't have dangling edges or boundaries.}
+It is useful to define the combinatorial data associated to the graph, this is just an adjacency matrix $A_{uv}$ which is equal to $1$ if $u,v \in \mathcal{V}$ lie at the boundary of an edge $e \in \mathcal{E}$.
 
-We now need to assign some extra spin structure dependant data to the graph and the imbedding. 
-The extra data is assigned to the vertices and edges.
-Soon we will assign a vector space each vertex and edge of the graph. 
-Local relations in this vector space depend on the input category, and the spin structure.
-The Hamiltonian will impliment these local relations so that the ground state will be an equal super position of string nets weighted by there evaluation. 
-Due to the fermionic Hilbert space and the spin structure, we have to work very hard to keep track of all minus signs. 
-One path to overcome this is to define a standard Hilbert space in say the plane and record local relations implimented on the manifold by manipulations on the planar diagrams. 
-This allows us to constantly compare the manipulations on the surface $\Sigma$ with some ``standardized" manipulations we've worked out on the plane. 
-To do this precisely we need to define spin lifts from the ``standardized" manifolds and there Hilbert space into $\Sigma$ which properly account for fermionic signs.
 
-More explicitly, for each point $\chi(v) \in \Sigma$ we choose a neighbourhood $D_{f(v)} \subset \Sigma$ that is homeomorphic to a disc. 
-We then define our standard disc $D_v$ to have a trivial (i.e., flat) spin structure and the boundary to have $d_v = \sum_u A_{uv}$ marked points. 
-These marked points are ordered in a clockwise fashion. 
-We also order the edges terminating at the vertex $v$ to have the same ordering, which is induced by the orientation of $\Sigma$.
-We define a spin diffeomorphism $s_v: D_v \rightarrow D_{\chi(v)}$ from the unit disc with $d_v$ marked points into $\Sigma$:
+
+%We define a graph $\mathcal{G}$ along with a planar embedding in the surface $\Sigma$.
+%Recall that a graph $\mathcal{G}$ is a list of vertices $\mathcal{V}$ and edges $\mathcal{E}$. 
+%The edges denote the connectivity of the graph and can be encoded by an adjacency matrix $A_{uv}$, which is equal to $1$ if vertex $u$ is connected to $v$ and zero otherwise. 
+%An imbedding of the graph into $\Sigma$ is a map $\chi : \mathcal{G} \rightarrow \Sigma$. 
+%That is $\chi$ takes vertices to points on $\Sigma$ and edges to lines.
+%We require this imbedding to to be planar, i.e., the complement of the image is homeomorphic to the disjoint union of a collection of discs. 
+%Each component of the complement is called a face, and the imbedding is said to be a cellular imbedding.
+%Lets denote the collection of faces by $\mathcal{F}$. 
+%In particular $\chi$ is injective, and so the image of $\chi$ describes a disjoint set of vertices, lines, and faces whose union is $\Sigma$.
+%\dave{Should also probably require that the graph be 2-connected so that we don't have dangling edges or boundaries.}
+
+
+
+We now use the cell decomposition to define a handle decomposition, see Fig.~\ref{HandleDecomposition}
+\begin{figure}
+  \includegraphics{HandleDecomposition.pdf}
+  \caption{A possible handle decomposition induced by the cell decomposition to the left. 
+  First we have $0$ handles which describe neighbourhoods of the vertices. 
+  Next we have $1$-handles, which are neighbourhoods of the edges. 
+  Lastly we have $2$ handles which are neighbourhoods of the compliment of the $0$-- and $1$--handles.}
+  \label{HandleDecomposition}
+\end{figure}
+The handle decomposition can be found by by expanding each vertex into a neighbourhood homeomorphic to a disc, these are called $0$ handles. 
+We label each disc by $D_v \subset \Sigma$.
+Similarly, the edges are expanded into $1$-handles $h_{e}$, which are homeomorphic to $I \times I$, for $I = (0,1)$, the unit interval.
+Each $1$ handle $h_{e}$ has $4$ boundaries, two of these boundaries will reside in the discs $D_u$ and $D_v$, for $u$ and $v$ at the boundary of $e$.
+We will call these boundaries the ``ends" of this $1$handle.
+Lastly, we look at the compliment of the $0$ and $1$ handles, this is just a collection of disjoint discs. 
+We take a neighbourhood of each of those discs, these are the $2$-handles. 
+Each $2$-handle will contain exactly one edge from the neighbouring $1$ handles. 
+We also require that the $2$ handles are pairwise disjoint, as are the $1$ handles.
+
+
+We also define spin isomorphisms from the handle decomposition to standardized discs that live in the plane.
+These will be tremoundously useful when we wish to write down an explicit Hamiltonian with support on the graph described by the cell decomposition. 
+\begin{figure}\centering{
+  \includegraphics{SpinIsomorphisms.pdf}}
+  \caption{Cartoon of the spin isomorphisms $\varphi$ that map neighbourhoods of the vertices and edges into the plane. }
+  \label{SpinIsomorphisms}
+\end{figure}
+To that end define the spin isomorphism
+\begin{align}
+\xymatrix @!0 @M=1mm @R=14mm @C=35mm{
+ \varphi_v: \; \; D_v\ar[r]            & D(n) \\
+\;\;\;\;\;\;\; \Dv \ar@{|->}[r] & \Dfv
+	} 
+\end{align}
+\dave{Need to fix discs.}
+Where $n = \sum_{u} A_{uv}$ is the number of edges which terminate at vertex $v$. 
+And the standardized disc has $n$ components overwhich $1$ handles can be glued to it. 
+
+
+%The handle decomposition is found from the cell decomposition by fattening each edge into a band, and each vertex into a disc, while leaving the faces alone. 
+%The result is another decomposition of $\Sigma$, but now in terms of discs and bands. 
+%These will be tremoundously useful when specifying the vector space to assign to a particular cell decomposition of a surface $\Sigma$.
+The disc will have $n_v = \sum_u A_{uv}$ marked points, or collars living on it. 
+These collars are the places where the bands are glued to the discs.
+These marked points are ordered counterclockwise around each disc. 
+%Explicitly, for each vertex $v \in \mathcal{V}$ we choose a neighbourhood $D_v \subset \Sigma$ that is homeomorphic to a disc.
+%We now need to assign some extra spin structure dependant data to the graph and the imbedding. 
+%The extra data is assigned to the vertices and edges.
+%Soon we will assign a vector space each vertex and edge of the graph. 
+%Local relations in this vector space depend on the input category, and the spin structure.
+%The Hamiltonian will impliment these local relations so that the ground state will be an equal super position of string nets weighted by there evaluation. 
+%Due to the fermionic Hilbert space and the spin structure, we have to work very hard to keep track of all minus signs. 
+%One path to overcome this is to define a standard Hilbert space in say the plane and record local relations implimented on the manifold by manipulations on the planar diagrams. 
+%This allows us to constantly compare the manipulations on the surface $\Sigma$ with some ``standardized" manipulations we've worked out on the plane. 
+%To do this precisely we need to define spin lifts from the ``standardized" manifolds and there Hilbert space into $\Sigma$ which properly account for fermionic signs.
+%More explicitly, for each point $v \in \mathcal{V}$ we choose a neighbourhood $D_{v} \subset \Sigma$ that is homeomorphic to a disc. 
+%We then define our standard disc $D_v$ to have a trivial (i.e., flat) spin structure and the boundary to have $d_v = \sum_u A_{uv}$ marked points. 
+%These marked points are ordered in a clockwise fashion. 
+%We also order the edges terminating at the vertex $v$ to have the same ordering, which is induced by the orientation of $\Sigma$.
+We define the spin isomorphism $\chi_v: D_v \rightarrow \widehat{D}^{n_v}$ from the disc $D_v \subset \Sigma$ into the unit disk $D^{n_v}$ with $n_v$ marked points. 
+
+unit disc with $d_v$ marked points into $\Sigma$:
 \begin{align}
 \vcenter{\xymatrix @!0 @M=1mm @R=14mm @C=35mm{
  s_v: \; \; D_v\ar[r]            & D_{\chi(v)} \\
