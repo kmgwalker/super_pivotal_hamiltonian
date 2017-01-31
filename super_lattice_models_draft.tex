@@ -1912,7 +1912,7 @@ Therefore, in the idempotent basis,
 
 Collecting these results, we can now write down the complete modular $S$ and $T$ matrices in the $C_2$ theory, which act across all spin structures. 
 We will write them down in the quasiparticle basis $[(m_\unit,m_\psi,m_\sigma^+)_{AA},(m_\unit,m_\psi,m_\sigma^+)_{AP},(q_\unit,q_\psi,q_\sigma)_{PA},(q_\unit,q_\psi,q_\sigma)_{PP}]^T$, in which 
-\be 
+\be \label{modularS}
 S = \frac{1}{2}\begin{pmatrix} 1 & d & 1 &			&&&			&&&			&& \\ 
 					      d & 0 &-d &			&&&			&&&			&&\\
 					      1&-d&1 & 			&&&			&&&			&&\\
@@ -2128,24 +2128,42 @@ Computing the trace with the aid of Table \ref{Rtable}, we find
 Let us now take a closer look at $\mcs$. 
 The block of zeros in the bottom right warrants special attention, and means that braiding any two of the q-type particles around one another yields a state orthogonal to one in which they started. 
 This is physically reasonable, since braiding a q-type particle through a q-type loop changes the q-loop's fermion parity, preventing it from fusing back to the vacuum. 
-Indeed, the block of zeros in the bottom right of $\mcs$ occurs for the same reason why the matrix element $S_{\sigma\sigma}=0$ in the regular Ising theory. 
+Indeed, this is the same reason why the matrix element $S_{\sigma\sigma}$ vanishes in the regular Ising theory. 
 
-A more precise understanding for why the braiding between two q-type quasiparticles vanishes comes from considering the meaning of the trace in \eqref{Smattr}.
+A more precise understanding for why the braiding between two q-type quasiparticles vanishes comes from considering the precise meaning of the trace in \eqref{Smattr}.
 As described during our discussion of the ground states on the torus, the trace of an operator that acts on a collection of tubes (like the $\mcs$ matrix) is computed by identifying the top and bottom of the operator by ``closing up'' the tubes it contains along the time direction (see \eqref{TrO_def}).
 The braiding of two quasiparticles $a$ and $b$ is then found by computing the partition function for the picture given in Figure \ref{braided_tubes} (a). 
 In the figure, the two quasiparticles we are interested in braiding are hosted on the surface of the tori marked $a$ and $b$, which are contained inside a larger torus $c$, all of which are then embedded in $S^3$. 
-In order for the diagram in the figure to possess a self-consistent spin structure, we must place constraints on the spin structures of the tori $a,b,$ and $c$. 
 
-
-Furthermore, if Figure \ref{TrO_def} is to represent the trace of an operator, the torus $c$ must possess antiperiodic boundary conditions along it's (larger, timelike) longitudinal cycle. 
-In particular, fixing $c_l=A$ forces 
+In order for the diagram in the Figure \ref{braided_tubes} (a) to possess a self-consistent spin structure, we must place constraints on the spin structures of the tori $a,b,$ and $c$.
+Let $t_m\in\zz_2$ and $t_l\in\zz_2$ denote the boundary conditions along tube $t$'s meridional (shorter, spacelike) and longitudinal (larger, timelike) cycles respectively, with $t_m,t_l=0$ corresponding to anti-periodic boundary conditions and $t_m,t_l=1$ corresponding to periodic boundary conditions.  
+Then the existence of a consistent spin structure that may be extended into the ambient $S^3$ requires that 
+\be a_m+b_m=c_m,\quad b_l+c_l=a_m,\quad a_l+c_l=b_m\ee
+where all relations are understood to hold mod 2. 
+Furthermore, if Figure \ref{TrO_def} defining the trace of an operator is to represent the trace (and not the supertrace), the torus $c$ must possess antiperiodic boundary conditions along it's longitudinal cycle. 
+In particular, fixing $c_l=0$ (anti-periodic) forces 
 \be a_m = b_l,\quad a_l=b_m.\ee
-Therefore, if $a_m = b_m = P$ (as is the case if both $a$ and $b$ host q-type particles), then we must have $a_l = b_l = P$. 
+Therefore, if $a_m = b_m = 1$, which is the case if both $a$ and $b$ host q-type particles, then we must have $a_l = b_l = 1$. 
+This explains why $\mcs_{ab}=0$ if both $a$ and $b$ are q-type: to trace out the $R$-symbols we need the $a$ and $b$ tori in Figure \ref{braided_tubes} (a) to each have $(P,P)$ spin structures. 
+However, as we saw in the previous section on the modular $S$-matrix, non-zero string-net configurations on tori with $(P,P)$ spin structures must have {\it odd} fermion parity.
+In calculating the statistical $\mcs$-matrix we have assumed that each torus in Figure \ref{braided_tubes} has {\it even} fermion parity, and so $\mcs_{ab}$ must vanish if both $a$ and $b$ are q-type. 
 
-We are finally in a position to explain why $\mcs_{ab}=0$ if both $a$ and $b$ are q-type. 
+The $\mcs$ matrix in \eqref{statistical_S} carries almost the same amount of information as the modular $S$-matrix worked out previously: we can identify each of its four $3\times3$ blocks with a $3\times3$ block in the modular $S$-matrix \eqref{modularS}. 
+However, the bottom-right block in \eqref{modularS} proportional to $A^{-2}$ is missing: does this mean that the braiding statistics capture less information than the modular transformations? 
 
-The $\mcs$ matrix in \eqref{statistical_S} carries almost the same amount of information as the modular $S$-matrix worked out previously. 
+In fact it does not, because there is an additional braiding process between q-type particles that we need to consider, one in which the quasiparticles being braided exchange a fermion during braiding. 
+We will write the statistical matrix governing this braiding process as $\mcs^\psi$, and it is computed using the setup in Figure \ref{braided_tubes} (b).  
 
+Mathematically, this means that $\mcs^\psi$ can be computed by tracing out the $R$-symbols composed with the operator $f_1\tp f_2$, which inserts fermions onto the $a$ and $b$ tubes as shown in Figure \ref{braided_tubes} (b):
+\be [\mcs^\psi]_{ab} = \frac{1}{\mcd}\sum_cd_c{\rm Tr}[(f_1\tp f_2)R^{ab}_cR^{ba}_c]. \ee
+At the computational level, we can compute the above formula by taking the fermions $f_1$ and $f_2$ and using local relations to annihilate them into the vacuum, leaving a diagram which can be computed in the same way as the regular $\mcs$-matrix. 
+We find
+\be \mcs^\psi = \frac{A^{-2}}{\mcd}\begin{pmatrix} -1 & d & 1 \\ d & 0 & d \\ 1 & d & -1\end{pmatrix},\ee
+which matches the action of the modular $S$-matrix on tori with $(P,P)$ spin structures. 
+Thus, the {\it full} statistical braiding information---both the $\mcs$ and $\mcs^\psi$ matrices---capture the full information of the modular transformations on tori with every spin structure. 
+%Because of the $A^{-2}$ prefactor in front, 
+
+Finally, before ending this section we derive a final way of calculating the statistical $\mcs$-matrix. 
 Instead of tracing the $R$ matrices, we can appeal to a formula relating the $\mcs$ matrix to the topological twists. In bosonic theories, we have 
 \be \label{stwist_bosonic} \mcs^{bos}_{ab} = \frac{1}{\mcd} \sum_c d_c N^{ab}_c \frac{\theta_c}{\theta_a\theta_b}.\ee
 This relation does {\it not} hold in the superfusion case, and needs to be modified. 
