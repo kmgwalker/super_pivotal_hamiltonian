@@ -265,11 +265,13 @@
 \newcommand{\chieuv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{chieuv.pdf}}}}}
 
 \newcommand{\IdempotentMTCNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{IdempotentMTC.pdf}}}}}
-\newcommand{\IdempBraid}[3]{\mathrel{\ooalign{$\IdempotentMTCNoLabel$\cr
+\newcommand{\IdempBraid}[5]{\mathrel{\ooalign{$\IdempotentMTCNoLabel$\cr
   \hidewidth\raise-4.3ex\hbox{$\scriptstyle{#1}\mkern78mu$}\cr
     \hidewidth\raise-4.3ex\hbox{$\scriptstyle{#2}\mkern43mu$}\cr
-        \hidewidth\raise2ex\hbox{$\scriptstyle{#3}\mkern5mu$}\cr
-          \hidewidth\raise0ex\hbox{$\VerticalSpace$}\cr
+        \hidewidth\raise-6.3ex\hbox{$\scriptstyle{#3}\mkern61mu$}\cr
+        \hidewidth\raise4.1ex\hbox{$\scriptstyle{#4}\mkern25mu$}\cr
+                \hidewidth\raise0ex\hbox{$\scriptstyle{#5}\mkern60mu$}\cr
+          \hidewidth\raise0ex\hbox{$\scale{1.5}{\VerticalSpace}$}\cr
   }}}
 
 
@@ -2420,13 +2422,73 @@ m_2 \tp m_2  = \mathbb{C}^{1|0} m_0 \oplus \mathbb{C}^{1|1}m_2.
 Thus the theory is reminiscent of a the bosonic Fibonacci theory, except the vertices can be odd or even.
 
 \dave{Should we give the F-symbols?}
-We defer a complete list of the $F$ symbols for the condennsed theory for now and only list the primitive idempotents, and there equivalence classes in the Drinfeld center. 
+We defer a complete list of the $F$ symbols for the condennsed theory for now and only list the primitive idempotents in the center of the annular category.
+Each isomorphism class of idempotents can be written in the following way\dave{I know the normalization up to a factor of $2$ that I need to revist.}
 \begin{align}
-\IdempBraid{a}{b}{\Omega_0}
+\xymatrix{
+\underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{J}}
+&
+\text{
+{\tabulinesep=1.2mm
+\begin{tabu}{ c c | c }
+type& spin & isomorphism class \\ \hline
+$M_{ab}$ &$\theta$&$a \tp b $ \\
+\end{tabu}
+}}
+}
 \end{align}
+\dave{Is this notation clear? }
+Where $J$ denotes the spin structure with $J =0$ non-bounding, and $J=1$ bounding. 
+The $\Omega_0$ loop is a projector written as the direct sum of simple objects: $\Omega_0 = (m_0 \oplus d m_2)/(2+2d)$, with $d = 1 + \sqrt{2}$.
+The $a,b,$ and $c$ are labels of simple objects. 
+Sometimes the spin will be appended by a factor of $(-1)^{p^{ab}_c}$ which denotes that if $a$ and $b$ fuse oddly to $c$ then you pick up an extra minus sign.
+The basis is convenient, since the idempotents with differring labels are orthogonal.
 
-\kw{I think it would make sense to do the $SO(3)_6$ because $\psi$ is transparent and therefore the result is braided.
-To make things easier we could not do as much detail as we do in the $C_2$ and E6/2 examples.}
+
+We now write down the primitive idempotents of $SO(3)_6$ and there topological spins. 
+In the bounding sector $J = 1$, we have $4$ idempotents given by,
+\begin{align}
+\xymatrix{
+\underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{B}}
+&
+\text{
+{{\tabulinesep=1.2mm
+\begin{tabu}{ c c | c }
+type& spin & isomorphism class \\ \hline
+$M_{00}$ &$1$&$\mathbb{C}^{1|0}m_0$ \\
+$M_{20}$ & $\theta_2^* $&$ \mathbb{C}^{1|0} m_2$\\
+$M_{02}$ &$ \theta_2 $&$ \mathbb{C}^{1|0} m_2 $\\
+$M_{22}$ &$ (-1)^{p^{ab}_c} $& $ \mathbb{C}^{1|0} m_0 \oplus  \mathbb{C}^{1|1} m_2$\\
+\end{tabu}
+}}}
+}
+\end{align}
+Where we have used the short hand $M_{ab} \equiv M_{m_a m_b}$ and $\theta_a = e^{2 i \pi a(a+2)/32}$.
+Similarly in the non-bounding sector we have,
+\begin{align}
+\xymatrix{
+\underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{N}}
+&
+\text{
+{{\tabulinesep=1.2mm
+\begin{tabu}{ c c | c }
+type& spin & isomorphism class \\ \hline
+$M_{11}$ &$1$&$\mathbb{C}^{1|0}m_0 \oplus \mathbb{C}^{1|0}m_2$ \\
+$Q_{31}$ & $\theta_3^* \theta_1 $&$ \mathbb{C}^{1|1} m_2$\\
+$Q_{13}$ &$ \theta_1^* \theta_3 $&$ \mathbb{C}^{1|1} m_2 $\\
+$M_{33}$ &$ 1 $& $ \mathbb{C}^{1|0} m_0 \oplus  \mathbb{C}^{1|0} m_2$\\
+\end{tabu}
+}}}
+}
+\end{align}
+\dave{I need to convince myself of that last line again.}
+However, the objects $1$ and $3$ are particles in $SU(2)_6$, not $SO(3)_6$.
+To make sense of the expressions one has to resolve the crossings on the tubes using the parent theory $SU(2)_6$ and then condense the $\psi$ particles off the tube.
+In doing so, all of the particles from the parent theory disappear and one is left with tube idempotents in the condensed theory. 
+
+
+%\kw{I think it would make sense to do the $SO(3)_6$ because $\psi$ is transparent and therefore the result is braided.
+%To make things easier we could not do as much detail as we do in the $C_2$ and E6/2 examples.}
 
 
 \section{Fermion condensation in $\halfesix$} \label{e6}
