@@ -18,7 +18,6 @@
 \hypersetup{linkcolor={hanpurple}}
 
 
-
 \usetikzlibrary{positioning,arrows}
 \usetikzlibrary{decorations.pathmorphing}
 \usetikzlibrary{decorations.markings}
@@ -265,6 +264,15 @@
 \newcommand{\euv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{euv.pdf}}}}}
 \newcommand{\chieuv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{chieuv.pdf}}}}}
 
+\newcommand{\IdempotentMTCNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{IdempotentMTC.pdf}}}}}
+\newcommand{\IdempBraid}[5]{\mathrel{\ooalign{$\IdempotentMTCNoLabel$\cr
+  \hidewidth\raise-4.3ex\hbox{$\scriptstyle{#1}\mkern78mu$}\cr
+    \hidewidth\raise-4.3ex\hbox{$\scriptstyle{#2}\mkern43mu$}\cr
+        \hidewidth\raise-6.3ex\hbox{$\scriptstyle{#3}\mkern61mu$}\cr
+        \hidewidth\raise4.1ex\hbox{$\scriptstyle{#4}\mkern25mu$}\cr
+                \hidewidth\raise0ex\hbox{$\scriptstyle{#5}\mkern60mu$}\cr
+          \hidewidth\raise0ex\hbox{$\scale{1.5}{\VerticalSpace}$}\cr
+  }}}
 
 
 \newcommand{\TaddownTubeNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TaddownTube.pdf}}}}}
@@ -2375,14 +2383,105 @@ Thus there is no need to define $\Arf(Y)$ in this case.
 
 
 
-\section{$SO(3)_6$ and/or sFib?}
+\section{Fermion condensation $SO(3)_6$}
+Here we provide another example of back wall condensation by condensing a transparent fermion in $SO(3)_6$. 
+Since the fermion is transparent, the $S$-matrix is degenerate, and the theory is not modular. 
+As such, finding the idempotents is somewhat more tricky than it was for a modular theory detailed in [REF]. 
+Some progress can be made since $SO(3)_6$ is a sub category of $SU(2)_6$ -- which is modular, and knowing the idempotents of that theory allows one to find the idempotents of $SO(3)_6$ quite easily. 
+
+Lets review the connection between $SU(2)_6$ and $SO(3)_6$.
+Since these are well known theories we only list out some of their key properties and point the reader to some references for more details [Usual references] and also \cite{Bonderson2007}.
+The particles for $SU(2)_6$ are labeled by $0,1,2,\cdots, 6$.
+The principle graph for the theory is shown in the upper left of Fig.~\ref{SUSOsix}. 
+We note that the $0$ particle is the identity element, the $6$ is a fermion, and we have $6 \tp x = 6-x$. 
+Hence the particle $3$ is invariant under fusion with $6$, and so under condensation of $6$ particle $3$ becomes is $Q$ type. 
+We give the principle graph for $SU(2)_6/\psi$ in Fig.~\ref{SUSOsix} in the upper right.
+\begin{figure} 
+\centering
+\includegraphics{SU26SO36Dynkin.pdf}
+\caption{\label{SUSOsix} \dave{Place holder figure and some notation. Will fix it up later.}}
+\end{figure}
+The particles $0,2,4,$ and $6$ form a closed sub-category of $SU(2)_6$. 
+The principle graph of this theory is found by removing the particles $1,3,5$ in the principle graph of $SU(2)_6$, shown in the bottom left of Fig.~\ref{SUSOsix}. 
+This is the subcategory known as $SO(3)_6$, it is a braided theory, with braiding and fusion inherited from $SU(2)_6$, however, it is not modular.
+The $6$ particle braids trivially with with this sub-category.
+Performing back wall condensation in this theory results in one non-trivial particle. 
+The principle graph of this theory is shown in the bottom right of Fig.~\ref{SUSOsix}.
+The only non-trivial particle is $M$ type and we denote it $m_2$. 
+It has fusion rules\footnote{Note that although the $m_2 \tp m_2 \rightarrow m_2$ fusion rule has a $\mathbb{C}^{1|1}$ coefficient, it is not $Q$ type. },
+\begin{align}
+m_2 \tp m_2  = \mathbb{C}^{1|0} m_0 \oplus \mathbb{C}^{1|1}m_2.
+\end{align}
+Thus the theory is reminiscent of a the bosonic Fibonacci theory, except the vertices can be odd or even.
+
+\dave{Should we give the F-symbols?}
+We defer a complete list of the $F$ symbols for the condennsed theory for now and only list the primitive idempotents in the center of the annular category.
+Each isomorphism class of idempotents can be written in the following way\dave{I know the normalization up to a factor of $2$ that I need to revist.}
+\begin{align}
+\xymatrix{
+\underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{J}}
+&
+\text{
+{\tabulinesep=1.2mm
+\begin{tabu}{ c c | c }
+type& spin & isomorphism class \\ \hline
+$M_{ab}$ &$\theta$&$a \tp b $ \\
+\end{tabu}
+}}
+}
+\end{align}
+\dave{Is this notation clear? }
+Where $J$ denotes the spin structure with $J =0$ non-bounding, and $J=1$ bounding. 
+The $\Omega_0$ loop is a projector written as the direct sum of simple objects: $\Omega_0 = (m_0 \oplus d m_2)/(2+2d)$, with $d = 1 + \sqrt{2}$.
+The $a,b,$ and $c$ are labels of simple objects. 
+Sometimes the spin will be appended by a factor of $(-1)^{p^{ab}_c}$ which denotes that if $a$ and $b$ fuse oddly to $c$ then you pick up an extra minus sign.
+The basis is convenient, since the idempotents with differring labels are orthogonal.
 
 
-Super example with no $q$ type particles in condensed theory.
+We now write down the primitive idempotents of $SO(3)_6$ and there topological spins. 
+In the bounding sector $J = 1$, we have $4$ idempotents given by,
+\begin{align}
+\xymatrix{
+\underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{B}}
+&
+\text{
+{{\tabulinesep=1.2mm
+\begin{tabu}{ c c | c }
+type& spin & isomorphism class \\ \hline
+$M_{00}$ &$1$&$\mathbb{C}^{1|0}m_0$ \\
+$M_{20}$ & $\theta_2^* $&$ \mathbb{C}^{1|0} m_2$\\
+$M_{02}$ &$ \theta_2 $&$ \mathbb{C}^{1|0} m_2 $\\
+$M_{22}$ &$ (-1)^{p^{ab}_c} $& $ \mathbb{C}^{1|0} m_0 \oplus  \mathbb{C}^{1|1} m_2$\\
+\end{tabu}
+}}}
+}
+\end{align}
+Where we have used the short hand $M_{ab} \equiv M_{m_a m_b}$ and $\theta_a = e^{2 i \pi a(a+2)/32}$.
+Similarly in the non-bounding sector we have,
+\begin{align}
+\xymatrix{
+\underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{N}}
+&
+\text{
+{{\tabulinesep=1.2mm
+\begin{tabu}{ c c | c }
+type& spin & isomorphism class \\ \hline
+$M_{11}$ &$1$&$\mathbb{C}^{1|0}m_0 \oplus \mathbb{C}^{1|0}m_2$ \\
+$Q_{31}$ & $\theta_3^* \theta_1 $&$ \mathbb{C}^{1|1} m_2$\\
+$Q_{13}$ &$ \theta_1^* \theta_3 $&$ \mathbb{C}^{1|1} m_2 $\\
+$M_{33}$ &$ 1 $& $ \mathbb{C}^{1|0} m_0 \oplus  \mathbb{C}^{1|0} m_2$\\
+\end{tabu}
+}}}
+}
+\end{align}
+\dave{I need to convince myself of that last line again.}
+However, the objects $1$ and $3$ are particles in $SU(2)_6$, not $SO(3)_6$.
+To make sense of the expressions one has to resolve the crossings on the tubes using the parent theory $SU(2)_6$ and then condense the $\psi$ particles off the tube.
+In doing so, all of the particles from the parent theory disappear and one is left with tube idempotents in the condensed theory. 
 
 
-\kw{I think it would make sense to do the $SO(3)_6$ because $\psi$ is transparent and therefore the result is braided.
-To make things easier we could not do as much detail as we do in the $C_2$ and E6/2 examples.}
+%\kw{I think it would make sense to do the $SO(3)_6$ because $\psi$ is transparent and therefore the result is braided.
+%To make things easier we could not do as much detail as we do in the $C_2$ and E6/2 examples.}
 
 
 \section{Fermion condensation in $\halfesix$} \label{e6}
