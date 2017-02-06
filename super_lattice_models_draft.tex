@@ -1912,7 +1912,7 @@ Therefore, in the idempotent basis,
 \medskip
 
 Collecting these results, we can now write down the complete modular $S$ and $T$ matrices in the $C_2$ theory, which act across all spin structures. 
-We will write them down in the quasiparticle basis $[(m_\unit,m_\psi,m_\sigma^+)_{AA},(m_\unit,m_\psi,m_\sigma^+)_{AP},(q_\unit,q_\psi,q_\sigma)_{PA},(q_\unit,q_\psi,q_\sigma)_{PP}]^T$, in which 
+We will write them down in the quasiparticle basis $[(m_\unit,m_\sigma^+,m_\psi)_{AA},(m_\unit,m_\sigma^+,m_\psi)_{AP},(q_\unit,q_\sigma,q_\psi)_{PA},(q_\unit,q_\sigma,q_\psi)_{PP}]^T$, in which 
 \be \label{modularS}
 S = \frac{1}{2}\begin{pmatrix} 1 & d & 1 &			&&&			&&&			&& \\ 
 					      d & 0 &-d &			&&&			&&&			&&\\
@@ -2150,18 +2150,25 @@ However, as we saw in the previous section on the modular $S$-matrix, non-zero s
 In calculating the statistical $\mcs$-matrix we have assumed that each torus in Figure \ref{braided_tubes} has {\it even} fermion parity, and so $\mcs_{ab}$ must vanish if both $a$ and $b$ are q-type. 
 
 The $\mcs$ matrix in \eqref{statistical_S} carries almost the same amount of information as the modular $S$-matrix worked out previously: we can identify each of its four $3\times3$ blocks with a $3\times3$ block in the modular $S$-matrix \eqref{modularS}. 
-However, the bottom-right block in \eqref{modularS} proportional to $A^{-2}$ is missing: does this mean that the braiding statistics capture less information than the modular transformations? 
+However, the bottom-right block in \eqref{modularS} proportional to $A^{-2}$ is missing. Does this mean that the braiding statistics capture less information than the modular transformations? 
+In fact it does not, because there is an additional braiding process between q-type particles that we need to consider, one in which the quasiparticles being braided exchange a fermion (or an odd number of fermions) during braiding. 
+We will write the statistical matrix governing this braiding process as $\mcs^\psi$, and it is computed using the setup in Figure \ref{braided_tubes} (b), where the fermion exchanged between the two quasiparticles is indicated by the blue lines. 
 
-In fact it does not, because there is an additional braiding process between q-type particles that we need to consider, one in which the quasiparticles being braided exchange a fermion during braiding. 
-We will write the statistical matrix governing this braiding process as $\mcs^\psi$, and it is computed using the setup in Figure \ref{braided_tubes} (b).  
+We can account for the fermion exchange by adding additional dots to the tubes representing the quasiparticles being braided.
+Mathematically, this means that $\mcs^\psi$ can be computed by tracing out the $R$-symbols composed with the operator $f_1\tp f_2$, which inserts fermions ordered in the appropriate way onto the $a$ and $b$ tubes as in Figure \ref{braided_tubes} (b). 
+Thus, we have
+\be [\mcs^\psi]_{ab} = \frac{1}{\mcd_{q}}\sum_cd_c{\rm Tr}[(f_1\tp f_2)R^{ab}_cR^{ba}_c], \ee
+where 
+\be \mcd^2_q = \sum_{a \text{\ q-type}}\frac{d_a^2}{\dim\End(a)}\ee
+is the total quantum dimension of the q-type particles in the theory (we must use $\mcd_q$ instead of $\mcd$ to ensure that $\mcs^\psi$ is unitary). 
+For the present case of the $C_2$ theory, $\mcd_q = 2$. 
 
-Mathematically, this means that $\mcs^\psi$ can be computed by tracing out the $R$-symbols composed with the operator $f_1\tp f_2$, which inserts fermions onto the $a$ and $b$ tubes as shown in Figure \ref{braided_tubes} (b):
-\be [\mcs^\psi]_{ab} = \frac{1}{\mcd}\sum_cd_c{\rm Tr}[(f_1\tp f_2)R^{ab}_cR^{ba}_c]. \ee
-At the computational level, we can compute the above formula by taking the fermions $f_1$ and $f_2$ and using local relations to annihilate them into the vacuum, leaving a diagram which can be computed in the same way as the regular $\mcs$-matrix. 
-We find
-\be \mcs^\psi = \frac{A^{-2}}{\mcd}\begin{pmatrix} -1 & d & 1 \\ d & 0 & d \\ 1 & d & -1\end{pmatrix},\ee
-which matches the action of the modular $S$-matrix on tori with $(P,P)$ spin structures. 
-Thus, the {\it full} statistical braiding information---both the $\mcs$ and $\mcs^\psi$ matrices---capture the full information of the modular transformations on tori with every spin structure. 
+We can compute the above formula by drawing the diagrams with the fermions $f_1$ and $f_2$ in place and then immediately using local relations to annihilate them into the vacuum.
+For each fusion channel $c$ this leaves us with a diagram proportional to ${\rm Tr}(R^{ab}_cR^{ba}_c)$, which can be computed in the same way as the regular $\mcs$-matrix. 
+Proceeding in this way, we obtain 
+\be \mcs^\psi = \frac{A^{-2}}{2}\begin{pmatrix} -1 & d & 1 \\ d & 0 & d \\ 1 & d & -1\end{pmatrix},\ee
+which matches the action of the modular $S$-matrix on tori with $(P,P)$ spin structures and satisfies $(\mcs^\psi)^4=-\unit_{3\times3}$. 
+Thus, the {\it full} statistical braiding information---both the $\mcs$ and $\mcs^\psi$ matrices---provide the same amount of information as the modular transformations on the collection of tori with each spin structure. 
 %Because of the $A^{-2}$ prefactor in front, 
 
 Finally, before ending this section we derive a final way of calculating the statistical $\mcs$-matrix. 
@@ -4186,65 +4193,68 @@ We could add an appendix with some of the details, e.g., 6j symbols and particle
  \section{Super pivotal Hamiltonian}
 % \section{Hamiltonian} 
 
- \subsection{Details}
+In this section we will write down a commuting projector Hamiltonian for a generic fermionic topological phase. 
+Since our goal in this section is to be rather general, we will put a fair amount of effort into making our construction mathematically precise---readers who are only interested in the final result may skip to \ref{??}. 
+
  \begin{figure}
 % \includegraphics{Lattice.pdf}
   \includegraphics{Lattice2.pdf}
- \caption{An example lattice for the super pivotal Hamiltonian. 
- We keep every vertex in a standard orientation, that's why they are twisted on one sublattice (see vertex $v$ compared with $w$). 
- We have put circles wherever a term in the Hamiltonian acts. 
- There are vertex terms which measure whether the vertex is compatible with the edge labeling. 
-There are three kinds of edge terms, an $x$ type, $y$ type, and a $z$-type, corresponding to the three different orientation of edges in the lattice. 
-The edge term performs the tensor product over $\text{End}(a(e))$, i.e., if the edge label is Q type, it allows fermions to fluctuate across the bond.
-There is a single plaquette term, we have labeled one of them by $p$. 
-It involves the six spins coming into the plaquette and as well as all vertices and edges neighbouring the plaquette.
-This is just the usual string net term which projects onto the trivial idempotent at every plaquette. 
+ \caption{An illustration of the support of the operators appearing in a super pivotal Hamiltonian on the Honeycomb lattice. 
+ We find it convenient to keep every vertex in a standard orientation for spin structure reasons, which means that the vertices on one sublattice become ``twisted'' (see vertex $v$ compared with $w$). 
+ Dashed ellipses indicate the support of various terms in the Hamiltonian.
+The vertex terms (marked in green) project onto vertices compatible with the edge labeling. 
+There are three kinds of edge terms (marked in blue): an $x$ type, a $y$ type, and a $z$-type term, which slide fermions along the q-type edges of the lattice (i.e. they impliment the tensor product over $\text{End}(a(e))$ in the Hamiltonian). 
+The plaquette terms (marked in black) involves the six vertices and edges neighbouring the plaquette, and projects onto the trivial idempotent at every plaquette. 
 \dave{Need to add arrows. Need to make figure with example configuration + excitations. Need to make picture with punctures rather than lattice.}
 }
  \label{HoneycombLattice}
  \end{figure}
 Here we write down a fermionic string net Hamiltonian based on a super pivotal fusion category.
 
-We follow the same construction as \cite{levin2005} with with some differences. 
-See also [REF other fermionic commuting projectors].
-There are a few main differences between the super pivotal Hamiltonian and the bosonic string net Hamiltonian.
-First and foremost we need to fix a spin structure on the manifold which the lattice inherits.
-This is required for a fermionic lattice model.
-The result of having fermions around means that the Hilbert space for the local spin degrees of freedom is actually a super Hilbert space, and as such special care needs to be taken with respect to the ordering of the tensor product.
-The second biggest difference is a new term in the Hamiltonian with support on the edges and neighbouring vertices that allows fermions to fluctuate across Q type edges \ref{EdgeHamiltonianTerms}.
-Other than these two qualitatively different features, the Hamiltonian is exactly the same: it impliments local relations of the fusion category, and so the ground space will be an isotopy weighted super position of all allowed string nets.
-
-The input data to the model is:
+We will follow the same basic construction as in \cite{levin2005, others}, with modifications to take into account the fermionic nature of the phases under consideration. 
+The most important modifications are as follows:
+First and foremost, we need to fix a spin structure on the ambient manifold on which we are working---this spin structure will be inherited by the lattice we use to define the Hamiltonian and is a necessary feature of any putative fermionic lattice model.
+Secondly, the Hilbert spaces for the local spin degrees of freedom that form the basis for our lattice model are supervector spaces, rather than the regular vector spaces in bosonic models. 
+This will require us to take special care when forming tensor products of Hilbert spaces on different lattice sites. 
+Thirdly, we will need to add a new term in the Hamiltonian with support on the edges and pairs of neighboring vertices in the lattice that allows fermions to fluctuate across edges in the lattice that host q-type strings.% \ref{EdgeHamiltonianTerms}.
+Apart from these differences, the Hamiltonian is the same as in the bosonic case.
+%: it implements local relations of the fusion category, and so the ground space will be an isotopy weighted super position of all allowed string nets.
+To summarize, in order to define our super pivotal Hamiltonian we need three pieces of data:
 \begin{enumerate}
 \item a super pivotal fusion category ${\cal C}$
 \item an oriented surface $\Sigma$ with spin structure $\sigma$, denoted $(\Sigma,\sigma)$
 %\item a graph $\mathcal{G}$ defined by a collection of vertices and edges
 %\item a planar imbedding of the graph $\mathcal{G}$ into $\Sigma$
-\item a cell decomposition of $\Sigma$
+\item a cell decomposition of $\Sigma$ which inherits the spin structure $\sigma$
+\item a collection of supervector spaces that constitute the Hilbert space of the cell decomposition 
 %, and a ``spin" graph $(\mathcal{G}, s)$ with an imbedding into into the spin surface $(\Sigma, \sigma)$
 \end{enumerate}
 In the following sections we define the Hamiltonian explicitly in terms of the above data.
-
 %We will explicitly write out the Hamiltonian for the example of the honeycomb lattice shown in Fig.~\ref{HoneycombLattice}, although much of what we say holds more generally.
-The Hamiltonian takes the same form as the usual string net Hamtilonian, with the addition of an edge term:
-%The Hamiltonian is a sum of commuting three terms,
-\begin{align}
-H = \lambda_p \sum_{p \in P} (1-B_p) + \lambda_e \sum_{e \in E} (1-D_{e}) + \lambda_v \sum_{v \in V} (1-A_v).
+
+We will write the Hamiltonian as a sum of three mutually commuting projectors.
+Two of these projectors are the fermionic analogues of the plaquette and vertex terms from the usual string-net Hamiltonian, while the third is a new edge term which allows fermions to fluctuate across edges hosting q-type strings.
+The Hamiltonian is then
+\begin{align} \label{ham}
+H = \lambda_p \sum_{p \in P} (1-B_p) + \lambda_e \sum_{e \in E} (1-D_{e}) + \lambda_v \sum_{v \in V} (1-A_v),
 \end{align}
-All terms are projectors, and commute with another. 
-They act on the plaquettes, edges and vertices respectively. 
-In Fig.~\ref{HoneycombLattice} we show the support of each term with dashed circles. 
-It is natural to require a hierarchy in the couplings, $\lambda_p \ll \lambda_e \ll \lambda_v$.
-The hierarchy is to ensure that the low energy spectrum can be characterized by simple objects in $Z(\mathcal{C})$.
+where the sums are over the plaquettes $P$, edges $e$, and vertices $v$ of the lattice, respectively, and the $\lambda_p,\lambda_e,\lambda_v$ are constants.
+It is natural to require a hierarchy in the couplings, $\lambda_p \ll \lambda_e \ll \lambda_v$,
+which ensures that the low energy spectrum can be characterized by simple objects in $\mcz(\mathcal{C})$.
+In Fig.~\ref{HoneycombLattice} we illustrate the support of each operator appearing in the Hamiltonian with dashed circles, where we have drawn the Hamiltonian on the honeycomb lattice for concreteness. 
 
-To define the Hamiltonian, we will need to describe how the lattice, and the fermionic degrees of freedom living on the edges and vertices inherits the data from the spin surface $(\Sigma, \sigma)$.
-
-
+%%%%%%%%%%%%%%%%%%
 \subsection{The spin surface}
-\dave{Ethan, do mind correcting my almost certain abuse of terminology?}
-We take an orientable surface $\Sigma$ and denote the spin structure by $\sigma$.
+%%%%%%%%%%%%%%%%%%
+To derive the Hamiltonian \eqref{ham} and explain the nature of the $B_p$, $D_e$, and $A_v$ operators, we will first need to describe how the lattice inherits spin structure data from the ambient spin manifold on which it is defined. 
+
+We suppose our theory is defined on an orientable surface $\Sigma$ which comes equipped with a spin structure by $\sigma$.
 %an equivalence class of spin structures on this surface by $\sigma$. 
-It is a well known fact that isomorphism classes of spin structures on a surface are in one -- to -- one correspondence with the elements of $H_1(\Sigma, \mathbb{Z}_2)$.
+Since $\sigma$ can loosely be interpreted as a way of associating boundary conditions (periodic or anti-periodic) to each homotopy class of closed paths in $\Sigma$, $\sigma$ can be thought of as a function $H_1(\Sigma)\ra\zz_2$.
+Therefore, the set of inequivalent spin structures can be identified with elements of   $H_1(\Sigma, \mathbb{Z}_2)$ (see Appendix \ref{spin_strs} for more detail).
+This identification is non-canonical, in the sense that there is no natural association of an ``identity'' spin structure (although this will be of little importance for us). 
+
+\ethan{to be continued...}
 We specify the equivalence class by $\sigma \in H_1(\Sigma, \mathbb{Z}_2)$ and represent it with a set of closed curves $\alpha_1, \alpha_2, \cdots, \alpha_n \subset \Sigma$, and a map $q_\sigma : \alpha_i \rightarrow \mathbb{Z}_2$
 which specifies whether the loop is bounding $q_\sigma(\alpha) = 0$ or non-bounding $q_{\sigma}(\alpha) = 1$.
 The function $q_\sigma$ can be uniquely extended to any closed path in $\Sigma$. 
