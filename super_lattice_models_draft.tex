@@ -4209,7 +4209,6 @@ The plaquette terms (marked in black) involves the six vertices and edges neighb
 }
  \label{HoneycombLattice}
  \end{figure}
-Here we write down a fermionic string net Hamiltonian based on a super pivotal fusion category.
 
 We will follow the same basic construction as in \cite{levin2005, others}, with modifications to take into account the fermionic nature of the phases under consideration. 
 The most important modifications are as follows:
@@ -4225,15 +4224,14 @@ To summarize, in order to define our super pivotal Hamiltonian we need three pie
 \item an oriented surface $\Sigma$ with spin structure $\sigma$, denoted $(\Sigma,\sigma)$
 %\item a graph $\mathcal{G}$ defined by a collection of vertices and edges
 %\item a planar imbedding of the graph $\mathcal{G}$ into $\Sigma$
-\item a cell decomposition of $\Sigma$ which inherits the spin structure $\sigma$
-\item a collection of supervector spaces that constitute the Hilbert space of the cell decomposition 
-%, and a ``spin" graph $(\mathcal{G}, s)$ with an imbedding into into the spin surface $(\Sigma, \sigma)$
+\item a cell decomposition of $\Sigma$ (less precisely, a lattice on $\Sigma$) which inherits the spin structure $\sigma$
+\item a collection of supervector spaces that constitute the Hilbert space of the lattice %, and a ``spin" graph $(\mathcal{G}, s)$ with an imbedding into into the spin surface $(\Sigma, \sigma)$
 \end{enumerate}
 In the following sections we define the Hamiltonian explicitly in terms of the above data.
 %We will explicitly write out the Hamiltonian for the example of the honeycomb lattice shown in Fig.~\ref{HoneycombLattice}, although much of what we say holds more generally.
 
 We will write the Hamiltonian as a sum of three mutually commuting projectors.
-Two of these projectors are the fermionic analogues of the plaquette and vertex terms from the usual string-net Hamiltonian, while the third is a new edge term which allows fermions to fluctuate across edges hosting q-type strings.
+Two of these projectors are the fermionic analogues of the plaquette and vertex terms from the usual string-net Hamiltonian, while the third is an edge term which allows fermions to fluctuate across edges hosting q-type strings.
 The Hamiltonian is then
 \begin{align} \label{ham}
 H = \lambda_p \sum_{p \in P} (1-B_p) + \lambda_e \sum_{e \in E} (1-D_{e}) + \lambda_v \sum_{v \in V} (1-A_v),
@@ -4244,51 +4242,55 @@ which ensures that the low energy spectrum can be characterized by simple object
 In Fig.~\ref{HoneycombLattice} we illustrate the support of each operator appearing in the Hamiltonian with dashed circles, where we have drawn the Hamiltonian on the honeycomb lattice for concreteness. 
 
 %%%%%%%%%%%%%%%%%%
-\subsection{The spin surface}
+\subsection{Spin structure considerations and the lattice}
 %%%%%%%%%%%%%%%%%%
 To derive the Hamiltonian \eqref{ham} and explain the nature of the $B_p$, $D_e$, and $A_v$ operators, we will first need to describe how the lattice inherits spin structure data from the ambient spin manifold on which it is defined. 
 
 We suppose our theory is defined on an orientable surface $\Sigma$ which comes equipped with a spin structure by $\sigma$.
 %an equivalence class of spin structures on this surface by $\sigma$. 
 Since $\sigma$ can loosely be interpreted as a way of associating boundary conditions (periodic or anti-periodic) to each homotopy class of closed paths in $\Sigma$, $\sigma$ can be thought of as a function $H_1(\Sigma)\ra\zz_2$.
-Therefore, the set of inequivalent spin structures can be identified with elements of   $H_1(\Sigma, \mathbb{Z}_2)$ (see Appendix \ref{spin_strs} for more detail).
+Therefore, the set of inequivalent spin structures can be identified with elements of   $H^1(\Sigma, \mathbb{Z}_2)$ (see Appendix \ref{spin_strs} for more detail).
 This identification is non-canonical, in the sense that there is no natural association of an ``identity'' spin structure (although this will be of little importance for us). 
 
-\ethan{to be continued...}
-We specify the equivalence class by $\sigma \in H_1(\Sigma, \mathbb{Z}_2)$ and represent it with a set of closed curves $\alpha_1, \alpha_2, \cdots, \alpha_n \subset \Sigma$, and a map $q_\sigma : \alpha_i \rightarrow \mathbb{Z}_2$
-which specifies whether the loop is bounding $q_\sigma(\alpha) = 0$ or non-bounding $q_{\sigma}(\alpha) = 1$.
-The function $q_\sigma$ can be uniquely extended to any closed path in $\Sigma$. 
-One can also change homology basis by specifying another set of closed paths $\beta_1, \beta_2, \cdots, \beta_n \subset \Sigma$, and finding the $\beta_i$ as a function of $\alpha_i$ and making use of the quadratic form,
+In what follows we will fix some spin structure defined by a function $q_\sigma \in H^1(\Sigma, \mathbb{Z}_2),$ which takes homotopy classes of closed curves 
+$\alpha_1, \alpha_2, \cdots, \alpha_n \subset \Sigma$ to elements in $\zt$.
+The image of a loop $\alpha$ under $q_\sigma$ specifies whether $\alpha$ is bounding (anti-periodic boundary conditions) or non-bounding (periodic boundary conditions).
+Since contractible loops have anti-periodic boundary conditions, we will define 
+
+\be q_\sigma(\alpha) = \begin{cases} 0 \text{\ if $\alpha$ is bounding,}\\
+1 \text{\ if $\alpha$ is non-bounding.}\end{cases} \ee
+Thus, the phase picked up by transporting a fermion along a path $\alpha$ is $-(-1)^{q_{\sigma}(\alpha)}$.
+The failure of $q_\sigma$ to factor over the concatenation of two paths $\alpha,\alpha'$ is controlled by whether or not the paths intersect:
 \begin{align}
 q_{\sigma} (\alpha + \alpha') = q_{\sigma}(\alpha) q_{\sigma}(\alpha') (-1)^{\alpha \cap \alpha'}
 \end{align}
-The phase picked up by transporting a fermion along path $\gamma$ is just $-(-1)^{q_{\sigma}(\gamma)}$.
+where $\alpha+\alpha'$ is the concatenation of $\alpha$ and $\alpha'$. 
+This means that spin structures can be described as a refinement of the intersection pairing. 
 
-We also need to specify some details of cutting and glue spin manifolds together. 
-A spin manifold with boundary acquires a boundary conditions which the trivialization of the spin bundle along the boundary curve $\gamma_B$.
-For a disc, there are two trivializations of the spin bundle along the boundary which give equivalent spin structures. 
-These are related by ....
+%We also need to specify some details of cutting and glue spin manifolds together. 
+%A spin manifold with boundary acquires a boundary conditions which the trivialization of the spin bundle along the boundary curve $\gamma_B$.
+%For a disc, there are two trivializations of the spin bundle along the boundary which give equivalent spin structures. 
+%These are related by ....
 
-We now need to encode this spin structure data in to the graph embedding.
-\dave{Need to discuss gluing of polygons. }
+%We now need to encode this spin structure data in to the graph embedding.
+%\dave{Need to discuss gluing of polygons. }
 
-\subsection{The spin graph }
-Here we define the data required to write down a lattice model on a spin manifold which properly accounts for the spin structure. 
-This can be done in many ways, we choose the most natural one for the applications we have in mind, writing down the string net Hamiltonian, the wave functions, and more generally tensor networks with MPO symmetries.
-The point is to carefully decompose the manifold $\Sigma$, with spin structure $\sigma$ into a collection of discs and bands whose union is $\Sigma$, and a equip each disc and band with spin structure data inherited from $\sigma$.
-The prescription is to locally map each vertex to a standardized vertex living in the plane through spin isomorphism. 
+In order to define our super pivotal Hamiltonian we will need to construct a lattice on $\Sigma$ which contains information about the spin structure $\sigma$. 
+%This can be done in many ways, we choose the most natural one for the applications we have in mind, writing down the string net Hamiltonian, the wave functions, and more generally tensor networks with MPO symmetries.
+The basic idea is to decompose the manifold $\Sigma$ into a collection of discs and bands whose union is $\Sigma$, and a equip each disc and band with spin structure data inherited from $\sigma$ in a standardized way.
+%The prescription is to locally map each vertex to a standardized vertex living in the plane through spin isomorphism. 
+
 Then edges which connect vertices can only be connected in two ways, either either with a clockwise rotation in the spin framing, or a counter clockwise rotation. 
 %We wish to now decompose the surface $\Sigma$ into a disjoint union of cells which 
 
 %Our goal is to define a graph, that embeds into $\Sigma$ along with some extra data inherited from the spin structure $\sigma$, which allows us to define a spin graph. 
 
-We begin by defining a cell decomposition of the surface $\Sigma$. 
-Every cell decomposition naturally provides a graph imbedded in the surface $\Sigma$.
-The simplest example of a cell decomposition is a triangulation.
+More precisely, this is done by defining a cell decomposition of the surface $\Sigma$, which provides us with a lattice imbedded in the surface $\Sigma$ on which our Hamiltonian is defined.
 A generic cell decomposition is specified by a set of vertices $\mathcal{V}$, edges $\mathcal{E}$ and faces $\mathcal{F}$.
- The vertices are just points in $\Sigma$, the edges are paths in $\Sigma$, and the faces are regions of $\Sigma$ homeomorphic to discs.
+The simplest example of a cell decomposition is a triangulation.
+The vertices are points in $\Sigma$, the edges are paths in $\Sigma$, and the faces are regions of $\Sigma$ homeomorphic to discs.
 The three sets are non-intersecting and their union is $\Sigma$: $\mathcal{V} \cap \mathcal{E} = \mathcal{E}\cap \mathcal{F}  = \mathcal{V} \cap \mathcal{F}  = \text{empty}$, and $\mathcal{V} \cup \mathcal{E} \cup \mathcal{F} = \Sigma$.
-It is useful to define the combinatorial data associated to the graph, this is just an adjacency matrix $A_{uv}$ which is equal to $1$ if $u,v \in \mathcal{V}$ lie at the boundary of an edge $e \in \mathcal{E}$.
+In what follows it will be useful to define the function $A_{uv} : \mathcal{V} \ra \zt$, which is equal to $1$ if the vertices $u,v \in \mathcal{V}$ lie at boundaries of a shared edge $e \in \mathcal{E}$ so that $\partial e = v \cup u$, and is equal to $0$ otherwise.
 
 %We define a graph $\mathcal{G}$ along with a planar embedding in the surface $\Sigma$.
 %Recall that a graph $\mathcal{G}$ is a list of vertices $\mathcal{V}$ and edges $\mathcal{E}$. 
@@ -4301,50 +4303,54 @@ It is useful to define the combinatorial data associated to the graph, this is j
 %In particular $\chi$ is injective, and so the image of $\chi$ describes a disjoint set of vertices, lines, and faces whose union is $\Sigma$.
 %\dave{Should also probably require that the graph be 2-connected so that we don't have dangling edges or boundaries.}
 
-
-
-We now use the cell decomposition to define a handle decomposition, see Fig.~\ref{HandleDecomposition} for a geometric picture.
+In order to talk about the spin structure data at the vertices and edges of the lattice, we will use our cell decomposition of $\Sigma$ to define a handle decomposition of $\Sigma$.
+A handle decomposition is essentially a fattened version of a cell decomposition; see Fig.~\ref{HandleDecomposition} for a geometric picture.
 \begin{figure}
   \includegraphics{HandleDecomposition.pdf}
-  \caption{A possible handle decomposition induced by the cell decomposition to the left. 
-  First we have $0$ handles which describe neighbourhoods of the vertices. 
-  Next we have $1$-handles, which are neighbourhoods of the edges. 
-  Lastly we have $2$ handles which are neighbourhoods of the compliment of the $0$-- and $1$--handles.}
+  \caption{A handle decomposition obtained from the cell decomposition on the far right.
+  The $0$ handles (green discs) are neighborhoods of the vertices, the $1$-handles (purple strips) are neighborhoods of the edges, and the $2$ handles (orange polygons) which are the compliment of the union of the $0$- and $1$-handles.}
   \label{HandleDecomposition}
 \end{figure}
-The handle decomposition can be found by by expanding each vertex into a neighbourhood homeomorphic to a disc, these are called $0$ handles. 
-We label each disc by $D_v \subset \Sigma$.
-Similarly, the edges are expanded into $1$-handles $h_{e}$, which are homeomorphic to $I \times I$, for $I = (0,1)$, the unit interval.
-Each $1$ handle $h_{e}$ has $4$ boundaries, two of these boundaries will reside in the discs $D_u$ and $D_v$, for $u$ and $v$ at the boundary of $e$.
-We will call these boundaries the ``ends" of this $1$handle.
-The other two edges reside entirely in the neighbouring faces of the cell decomposition.
-The faces naturally provide $2$ handles, which are homeomorphic to discs and contain exactly one edge from each neighbouring $1$ handle.
-Each $2$-handle will contain exactly one edge from the neighbouring $1$ handles. 
-We also require that the $2$ handles are pairwise disjoint, as are the $1$ handles.
+More precisely, the handle decomposition can be found by by expanding each vertex into a disc ($0$-handle) and each edge into thickened strips (1-handles).
+%The boundary of each $1$ handle $h_{e}$ has $4$ boundaries, two of these boundaries will reside in the discs $D_u$ and $D_v$, for $u$ and $v$ at the boundary of $e$.
+%We will call these boundaries the ``ends" of this $1$handle.
+%The other two edges reside entirely in the neighbouring faces of the cell decomposition.
+The remaining faces constitute the $2$-handles, which are homeomorphic to discs and contain exactly one edge from each neighboring $1$ handle.
+%Each $2$-handle will contain exactly one edge from the neighbouring $1$ handles. 
+%We also require that the $2$ handles are pairwise disjoint, as are the $1$ handles.
 
-We also define spin isomorphisms from the handle decomposition to standardized discs that live in the plane.
-These will be tremoundously useful when we wish to write down an explicit Hamiltonian with support on the graph described by the cell decomposition. 
+As was done when we discussed the procedure of fermion condensation, we will need to define a spin framing at each of the vertices (0-handles) in our diagrams. 
+This construction is not unique, and in general will depend on the specific configuration of the 1-handles emanating from the vertex. 
+This makes constructing a Hamiltonian a rather cumbersome procedure, since separate terms must be added for each different vertex configuration. 
+
+In order to ease these difficulties, we will work in a ``gauge'' in which all the 0-handles are prepared in a standardized configuration with identical spin framings. 
+To do this, we define a spin isomorphism $\phi$ from a generic handle decomposition to a standardized one in which each of the 0-handles locally assume the same standardized form. 
+For concreteness, we will take our ``standardized 0-handles'' to be ones where the 1-handles emanating from it all point ``up'' in our diagrams (see Figure \ref{Spinisomorphisms}).
+We will also fix the spin framing on each 0-handle to be constant within the 0-handle and to point to the right. 
+%standardized discs that live in the plane.
+%These will be tremoundously useful when we wish to write down an explicit Hamiltonian with support on the graph described by the cell decomposition. 
 \begin{figure}\centering{
   \includegraphics{SpinIsomorphisms.pdf}}
-  \caption{Cartoon of the spin isomorphisms $\varphi$ that map neighbourhoods of the vertices and edges into the plane. }
+  \caption{The mapping $\varphi$ that maps a generic handle decomposition (top row) onto a ``standardized'' handle decomposition in which each 0-handle (green disc) has an identical configuration (bottom row).}
   \label{SpinIsomorphisms}
 \end{figure}
-Each isomorphism will carry the data of the local spin framing near the vertex and also a a set of marked points which determine precisely where the edges connect to the disc. 
-These marked points must be ordered since a general linear transformation acting on this space could be even or odd, and so one has to keep track of how it acts in the tensor product.
-It is natural to order the edges around a vertex in a clockwise orientation with respect to the orientation of $\Sigma$, and similarly with standardized discs on the plane.
-To that end define the spin isomorphism
+%We will define each isomorphism that takes generic handle decompositions into standardized ones 
+%will carry the data of the local spin framing near each vertex and also a a set of marked points which determine precisely where the edges connect to the disc. 
+%These marked points must be ordered since a general linear transformation acting on this space could be even or odd, and so one has to keep track of how it acts in the tensor product.
+%It is natural to order the edges around a vertex in a clockwise orientation with respect to the orientation of $\Sigma$, and similarly with standardized discs on the plane.
+We will define the local spin isomorphism $\varphi_v$ that maps a generic 0-cell $v$ to a standardized 0-cell abstractly by
 \begin{align}
 \xymatrix @!0 @M=1mm @R=14mm @C=35mm{
  \varphi_v: \; \; D_v\ar[r]            & D(n) \\
 \;\;\;\;\;\;\; \Dv \ar@{|->}[r] & \Dfv
 	} 
 \end{align}
-Where $n = \sum_{u} A_{uv}$ is the number of edges which terminate at vertex $v$. 
-And the standardized disc has $n$ components overwhich $1$ handles can be glued to it. 
-We have drawn the standardized disc with one flat boundary, and one possible image of the edges under the map $\varphi$. 
-Note that the edge where we start the counting from is arbitrary. 
-Different countings are related by rotations.
-Orientation reversing maps reflect the counting \dave{Could say more here.}.
+where $n = \sum_{u} A_{uv}$ is the number of edges which terminate at $v$. 
+%And the standardized disc has $n$ components overwhich $1$ handles can be glued to it. 
+%We have drawn the standardized disc with one flat boundary, and one possible image of the edges under the map $\varphi$. 
+%Note that the edge where we start the counting from is arbitrary. 
+%Different countings are related by rotations.
+%Orientation reversing maps reflect the counting \dave{Could say more here.}.
 
 %The handle decomposition is found from the cell decomposition by fattening each edge into a band, and each vertex into a disc, while leaving the faces alone. 
 %The result is another decomposition of $\Sigma$, but now in terms of discs and bands. 
@@ -4375,21 +4381,21 @@ Orientation reversing maps reflect the counting \dave{Could say more here.}.
 %In the second line we have shown an example of such a map. 
 %We added some lines which show one way the edges may terminate at the vertex inside each disc. 
 
-Similarly for each path $e \in \mathcal{E}$ we define a spin isomorphism $\varphi_e$ from $h_e$ to standardized 1-handles that live in the plane.
-These standardized $1$-handles connect the standardized discs. 
-Every spin connection from the standardized discs to themselves will either correspond to a half clockwise rotation, or a half clockwise rotation with a twist:
+Just as we do for the 0-handles, we define isomorphisms $\varphi_e$ that take each path $e \in \mathcal{E}$ to standardized 1-handles that connect the standardized 0-handles. 
+After standardizing our 0-cells paths will always enter / exit from a 0-cell ``vertically'', meaning that transporting a fermion along a 1-handle $e$ will either preserve the fermion framing or will rotate the fermion framing by $\pi$. 
+These two options are encapsulated by the two different standardized 1-handles
 \begin{align}
-\Horseshoe \quad \quad \quad \quad \HorseshoeTwist
+\Horseshoe\ , \quad \quad \quad \quad \HorseshoeTwist,
 \end{align}
-Hence we take the standardized $1$-handles to be the two above. 
-We define the spin isomorphisms
-\begin{align}
-\vcenter{\xymatrix @!0 @M=1mm @R=10mm @C=25mm{
+where the twist in the second standardized 1-handle indicates that it performs a $\pi$ twist on the framing of fermions which move along it from $u$ to $v$. 
+As we did for the $\phi_v$ isomorphisms, we define the isomorphisms taking generic 1-handles to standardized 1-handles by 
+\begin{align}\vcenter{\xymatrix @!0 @M=1mm @R=10mm @C=25mm{
 \varphi_e: \; \;h_e\ar[r]            & \Omega_e\\
 }}
 \end{align}
-where $\Omega_e$ is a horseshoe shaped $1$-handle.
+where $\Omega_e$ is a standardized $1$-handle.
 \dave{Do we already need to define orientations? I.e., not only the spin isomorphism, but also the direction $u$ to $v$ verse $v$ to $u$.}
+\ethan{I still think this data can be inherited by the ordering of the tensor factors in the vertex Hilbert space}
 
 % from the unit interval into $\Sigma$.
 %This is just the restriction of $\sigma$ to $\chi(e_{uv})$. 
@@ -4406,45 +4412,52 @@ where $\Omega_e$ is a horseshoe shaped $1$-handle.
 %Although a somewhat general definition of the ``spin graph" could be useful.
 %Especially for tensor networks.}
 
-Lastly we need to address how to glue together the intervals with the discs so that the imbedding of the spin graph in $\Sigma$ has a spin structure that is in the same equivalence class as $\sigma$. 
-There is an ambiguity for the gluing of each disc an edges since there is a $\mathbb{Z}_2$ action on each pair of marked points that leaves the spin structure invariant.
-\dave{I'm referring to interchanging the two 'Riemann' sheets. What's the name for this?}
-Hence we not only need to specify a spin diffemorphism from the standardized manifolds into $(\Sigma,\sigma)$, but also a set of gluing data which accounts for this $\mathbb{Z}_2$ ambiguity. 
-These are just $\pm1$ signs associated to the marked points and the gluing of an edge with a disc across said marked point.
-If the trivialization (\dave{Not sure what this is called, but if the fermions lie on different branches, or sheets? then there is an extra sign.}) of the fiber bundle differes across the marked point, we assign a minus sign to the gluing otherwise a plus sign.
-The fact that each disc is bounding means that the product of the gluing signs must be $+1$ around every disc, and the product of the gluing sings across each edge must also be $+1$. 
-To see this, take a disc with several marked points and consider a path that begins and ends at the same point but leaves through one of those marked points, and comes back though another. 
+Lastly we need to address how to glue together the 1-handles and 0-handles so that the lattice formed by the 1- and 0-handles possesses the same spin structure data as the ambient manifold $\Sigma$. 
+There is an ambiguity when we glue each 0-handle to an 1-handle, corresponding to a relative $2\pi$ difference in the spin framings of the 0- and 1-handles. 
+Since $2\pi$ fermion framing rotations act as multiplication by $-1$ on fermions, there is a 
+ $\mathbb{Z}_2$ action on each place where a 1-handle is glued to a 0-handle, which is generated by spin flips of the spin framing at the gluing points. 
+Viewing the spin structure on $\Sigma$ as a double-covering of the oriented frame bundle of $\Sigma$, this $\zt$ spin-flip action is realized by moving between the two sheets of the double-cover. 
+
+Hence we not only need to specify a map that embeds the 0- and 1-handles into $(\Sigma,\sigma)$, but we also need to specify a set of gluing data which accounts for this $\mathbb{Z}_2$ action. 
+%These are just $\pm1$ signs associated to the marked points and the gluing of an edge with a disc across said marked point.
+If the trivialization of the spin framing at the end of an edge is such that passing from the end of the edge to its boundary vertex results in changing between the two sheets of the double-cover, we assign a factor of $(-1)$ to the gluing map (and a factor of $+1$ otherwise). \ethan{still not sure about this factor of $(-1)$. Seems like it should only appear when when fermions are slid over the edge, not when we do the standardization procedures}
+The fact that each 0-handle locally carries a bounding spin structure means that the product of these gluing signs across all the edges emanating from the 0-handle must equal $+1$ around the disc of every 0-handle (since the trivialization of the spin framing at the boundary of each 0-handle must be ``untwisted'') and the product of the gluing sings across edges which form a closed path with bounding spin structure must be $+1$. 
+To see this, fix a 0-handle $v$ and consider a path that begins and ends at $v$.  
 If the path is bounding then a fermion transported along this path will pick up a minus sign. 
 Negating any of the gluing signs on that path results in a non-bounding spin structure. 
-This is just a manifestation of the fact that spin structures are allowed to differ by flat $\mathbb{Z}_2$ guage fields.
+This is just a manifestation of the fact that spin structures are classified by elements of $H^1(\Sigma;\zt)$: the coboundaries that are modded out in the definition of the equivalence classes in $H^1(\Sigma;\zt)$ are the flat $\mathbb{Z}_2$ gauge fields. 
+These gauge fields are gauge degrees of freedom since any two collections of glueing signs that differ by a flat $\zt$ gauge field are physically equivalent. 
 Indeed, an equivalent spin structure can be found by choosing any closed path along the graph $\mathcal{G}$ and flipping all gluing signs along this path. 
 Such gauge transformations are generated by the faces of of the graph\footnote{which by definition always bound a disc}.
 That is one chooses a face and flips all gluing signs which are at the boundary of that face.
-In practice it's easier to fix the spin structure on the discs, and associate the gluing signs with the boundary of the edges.  
+%In practice it's easier to fix the spin structure on the discs, and associate the gluing signs with the boundary of the edges.  
 
 \dave{Comment on non-bounding plaquettes.}
-
+\ethan{might need some pictures here}
 
 \dave{Add references to K-oritentations+spin structure e.g., Resheitkhin+..., Novak + Runkel, etc}
 
-\subsection{Hilbert space}
-Here we define the Hilbert space over which the Hamiltonian lives. 
-This is just the tensor product over all Hilbert spaces defined by the standardized discs and intervals.
-This is where all book keeping for the isotopy relations of the string nets on $\Sigma$ will be kept.
 
-Since the Hilbert space associated to each edge and disc is, in general a super vector space, we need a complete ordering on all edges and vertices.
-Although it is not necessary, lets define two index sets $\mathcal{I}_v$ and $\mathcal{I}_e$.
+%%%%%%%%%%%%%%%
+\subsection{Hilbert space}
+%%%%%%%%%%%%%%%
+
+In this section we turn to defining the Hilbert space on which the Hamiltonian operates. 
+This Hilbert space is just the tensor product over all the Hilbert spaces that live on the standardized vertices and standardized edges, but since these Hilbert spaces are anti-commuting supervector spaces, the order in which we tensor them together is important, and necessitates doing a bit of bookkeeping. 
+
+Because the Hilbert spaces associated to the vertices and edges are supervector spaces, we need a complete ordering on all edges and vertices.
+To this end, define two index sets $\mathcal{I}_v$ and $\mathcal{I}_e$.
 The first is a complete ordering on all vertices, and the second is a complete ordering on all edges. 
-For two integers $m_v \in \mathcal{I}_v$ and $n_e \in \mathcal{I}_e$ we define $n_e < m_v$.
-The total Hilbert space is then given by,
+%For two integers $m_v \in \mathcal{I}_v$ and $n_e \in \mathcal{I}_e$ we define $n_e < m_v$.
+The total Hilbert space on the lattice $\mcg$ is then given by the tensor product
 \begin{align}
-\mathcal{H}(\mathcal{G}) = \tp_{e \in E} \mathcal{A}(e_{uv}) \tp_{v \in V} \mathcal{A}(D_v)
+\mathcal{H}(\mathcal{G}) = \bigotimes_{e \in E} \mathcal{A}(e_{uv}) \bigotimes_{v \in V} \mathcal{A}(D_v)
 \label{GraphHilbertSpace}
 \end{align}
-Where the tensor product is ordered with respect to $\mathcal{I}_v$ and $\mathcal{I}_e$.
-I.e., the tensor product over the discs is organized as $\tp_{v \in V} \mathcal{A}(D_v) = \cdots \tp \mathcal{A}(D_{v_i}) \tp \mathcal{A}(D_{v_{i+1}}) \tp \cdots $, where $i< i+1 \in \mathcal{I}_v$.
+where the factors in the tensor products over the $e$s and $v$s are ordered with respect to $\mathcal{I}_e$ and $\mathcal{I}_v$, respectively.
+%I.e., the tensor product over the discs is organized as $\tp_{v \in V} \mathcal{A}(D_v) = \cdots \tp \mathcal{A}(D_{v_i}) \tp \mathcal{A}(D_{v_{i+1}}) \tp \cdots $, where $i< i+1 \in \mathcal{I}_v$.
 
-A vector basis vector of $\mathcal{H}$ is called a labeling.
+%A vector basis vector of $\mathcal{H}$ is called a labeling.
 
 This Hilbert space (\ref{GraphHilbertSpace}) is isomporhic to the Hilbert space assigned to the imbedded graph $\mathcal{H}(\chi(G))$, but not necessarily equal.
 It is important however to specify an isomorphism so that all local relations on the imbedding can be expressed in terms of our standardized Hilbert space (\ref{GraphHilbertSpace}).
