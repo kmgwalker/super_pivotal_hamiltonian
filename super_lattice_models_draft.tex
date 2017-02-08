@@ -273,6 +273,19 @@
                 \hidewidth\raise0ex\hbox{$\scriptstyle{#5}\mkern60mu$}\cr
           \hidewidth\raise0ex\hbox{$\scale{1.5}{\VerticalSpace}$}\cr
   }}}
+  
+\newcommand{\TorusBasisMTCNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusBasisMTC.pdf}}}}}
+\newcommand{\TorusBraidBasis}[6]{\mathrel{\ooalign{$\TorusBasisMTCNoLabel$\cr
+  \hidewidth\raise-4.3ex\hbox{$\scriptstyle{#1}\mkern78mu$}\cr
+    \hidewidth\raise-4.3ex\hbox{$\scriptstyle{#2}\mkern40mu$}\cr
+        \hidewidth\raise-6.3ex\hbox{$\scriptstyle{#3}\mkern61mu$}\cr
+        \hidewidth\raise4.1ex\hbox{$\scriptstyle{#4}\mkern25mu$}\cr
+                \hidewidth\raise0ex\hbox{$\scriptstyle{#5}\mkern58mu$}\cr
+                                \hidewidth\raise4.7ex\hbox{$\scriptstyle{#6}\mkern0mu$}\cr
+          \hidewidth\raise0ex\hbox{$\scale{1.5}{\VerticalSpace}$}\cr
+  }}}
+  
+  
 
 
 \newcommand{\TaddownTubeNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TaddownTube.pdf}}}}}
@@ -2391,6 +2404,7 @@ Thus there is no need to define $\Arf(Y)$ in this case.
 
 
 \section{Fermion condensation $SO(3)_6$}
+\dave{In progress.}
 Here we provide another example of back wall condensation by condensing a transparent fermion in $SO(3)_6$. 
 Since the fermion is transparent, the $S$-matrix is degenerate, and the theory is not modular. 
 As such, finding the idempotents is somewhat more tricky than it was for a modular theory detailed in [REF]. 
@@ -2422,7 +2436,8 @@ m_2 \tp m_2  = \mathbb{C}^{1|0} m_0 \oplus \mathbb{C}^{1|1}m_2.
 Thus the theory is reminiscent of a the bosonic Fibonacci theory, except the vertices can be odd or even.
 
 \dave{Should we give the F-symbols?}
-We defer a complete list of the $F$ symbols for the condennsed theory for now and only list the primitive idempotents in the center of the annular category.
+We defer a complete list of the $F$ symbols for the condensed theory for now and only list the primitive idempotents in the center of the annular category.
+\subsection{Idempotents}
 Each isomorphism class of idempotents can be written in the following way\dave{I know the normalization up to a factor of $2$ that I need to revist.}
 \begin{align}
 \xymatrix{
@@ -2456,8 +2471,8 @@ In the bounding sector $J = 1$, we have $4$ idempotents given by,
 \begin{tabu}{ c c | c }
 type& spin & isomorphism class \\ \hline
 $M_{00}$ &$1$&$\mathbb{C}^{1|0}m_0$ \\
-$M_{20}$ & $\theta_2^* $&$ \mathbb{C}^{1|0} m_2$\\
 $M_{02}$ &$ \theta_2 $&$ \mathbb{C}^{1|0} m_2 $\\
+$M_{20}$ & $\theta_2^* $&$ \mathbb{C}^{1|0} m_2$\\
 $M_{22}$ &$ (-1)^{p^{ab}_c} $& $ \mathbb{C}^{1|0} m_0 \oplus  \mathbb{C}^{1|1} m_2$\\
 \end{tabu}
 }}}
@@ -2474,8 +2489,8 @@ Similarly in the non-bounding sector we have,
 \begin{tabu}{ c c | c }
 type& spin & isomorphism class \\ \hline
 $M_{11}$ &$1$&$\mathbb{C}^{1|0}m_0 \oplus \mathbb{C}^{1|0}m_2$ \\
-$Q_{31}$ & $\theta_3^* \theta_1 $&$ \mathbb{C}^{1|1} m_2$\\
 $Q_{13}$ &$ \theta_1^* \theta_3 $&$ \mathbb{C}^{1|1} m_2 $\\
+$Q_{31}$ & $\theta_3^* \theta_1 $&$ \mathbb{C}^{1|1} m_2$\\
 $M_{33}$ &$ 1 $& $ \mathbb{C}^{1|0} m_0 \oplus  \mathbb{C}^{1|0} m_2$\\
 \end{tabu}
 }}}
@@ -2486,9 +2501,41 @@ However, the objects $1$ and $3$ are particles in $SU(2)_6$, not $SO(3)_6$.
 To make sense of the expressions one has to resolve the crossings on the tubes using the parent theory $SU(2)_6$ and then condense the $\psi$ particles off the tube.
 In doing so, all of the particles from the parent theory disappear and one is left with tube idempotents in the condensed theory. 
 
+\subsection{Topological spins}
 
-%\kw{I think it would make sense to do the $SO(3)_6$ because $\psi$ is transparent and therefore the result is braided.
-%To make things easier we could not do as much detail as we do in the $C_2$ and E6/2 examples.}
+\subsection{Modular transformations}
+The modular transformations can be computed by direct calculation. 
+We already have the topological spins, and so in the idempotent basis the modular T-transformation can be read off directly from those.
+The modular S-transformation requires a little more work, and so we discuss this in a little more detail.
+
+When gluing the idempotents along the boundary of the annulus we have to take linear combinations of idempotents in the same isomorphism class so that the glued up idempotent is invariant under local relations. 
+Using the basis above, one finds, 
+\begin{align}
+\TorusBraidBasis{a}{b\;}{}{\Omega_0}{J}{W}
+\end{align}
+where $a$ and $b$ label the idempotent as before, and $J$, $W$, denote the two spin structures. 
+
+The modular S-transformation simply interchanges the two cycles of the torus.
+Thus one can write the S-matrix as,
+\begin{align}
+{ \TorusBraidBasis{a}{b\;}{}{\Omega_0}{J}{W}} \stackrel{S}{\longrightarrow} \sum_{r,w} S^{{JW \rightarrow WJ}}_{(a,b),(r,w)} \;
+{\TorusBraidBasis{r}{w}{}{\Omega_0}{W}{J} }.
+\end{align}
+And the matrix elements can be computed explicitly using the $S$ matrix of $SU(2)_6$. 
+We find for the three bounding torri,
+\begin{align}
+S^{{JW \rightarrow WJ}}_{(a,b),(r,w)} = \frac{2^{n_a n_b -n_r n_w}}{2^{\frac{1}{2}(n_a + n_b+n_r+n_w)}} \sin{\left( \frac{\pi(a+1)(r+1) }{8} \right)} \sin{\left(\frac{\pi(b+1)(w+1)}{8} \right)}
+\end{align}
+where $n_x = 0$ if $x = 0,1,2$, and $n_x = 1$ if $x = 3$.
+The extra factors of $2$ and $\sqrt{2}$ come from the fact that two of the idempotents in the non-bounding sector are Q type.
+In Fig.~\ref{SMatrixBFC} we have sketched one method to compute these matrix elements.
+ \begin{figure}
+% \includegraphics{Lattice.pdf}
+  \includegraphics[scale=0.5]{SmatrixCalculationSketch.pdf}
+ \caption{A caption describing the figure.
+}
+ \label{SMatrixBFC}
+ \end{figure}
 
 
 \section{Fermion condensation in $\halfesix$} \label{e6}
