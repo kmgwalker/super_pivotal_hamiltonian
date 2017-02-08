@@ -4221,10 +4221,10 @@ Apart from these differences, the Hamiltonian is the same as in the bosonic case
 To summarize, in order to define our super pivotal Hamiltonian we need three pieces of data:
 \begin{enumerate}
 \item a super pivotal fusion category ${\cal C}$
-\item an oriented surface $\Sigma$ with spin structure $\sigma$, denoted $(\Sigma,\sigma)$
+\item an oriented surface $\Sigma$ with a spin structure $\sigma$
 %\item a graph $\mathcal{G}$ defined by a collection of vertices and edges
 %\item a planar imbedding of the graph $\mathcal{G}$ into $\Sigma$
-\item a cell decomposition of $\Sigma$ (less precisely, a lattice on $\Sigma$) which inherits the spin structure $\sigma$
+\item a cell decomposition of $\Sigma$ (i.e, a lattice on $\Sigma$) which inherits the spin structure $\sigma$
 \item a collection of supervector spaces that constitute the Hilbert space of the lattice %, and a ``spin" graph $(\mathcal{G}, s)$ with an imbedding into into the spin surface $(\Sigma, \sigma)$
 \end{enumerate}
 In the following sections we define the Hamiltonian explicitly in terms of the above data.
@@ -4250,7 +4250,7 @@ We suppose our theory is defined on an orientable surface $\Sigma$ which comes e
 %an equivalence class of spin structures on this surface by $\sigma$. 
 Since $\sigma$ can loosely be interpreted as a way of associating boundary conditions (periodic or anti-periodic) to each homotopy class of closed paths in $\Sigma$, $\sigma$ can be thought of as a function $H_1(\Sigma)\ra\zz_2$.
 Therefore, the set of inequivalent spin structures can be identified with elements of   $H^1(\Sigma, \mathbb{Z}_2)$ (see Appendix \ref{spin_strs} for more detail).
-This identification is non-canonical, in the sense that there is no natural association of an ``identity'' spin structure (although this will be of little importance for us). 
+This identification is generically non-canonical, in the sense that there is no natural association of an ``identity'' spin structure, although this will be of little importance for us. 
 
 In what follows we will fix some spin structure defined by a function $q_\sigma \in H^1(\Sigma, \mathbb{Z}_2),$ which takes homotopy classes of closed curves 
 $\alpha_1, \alpha_2, \cdots, \alpha_n \subset \Sigma$ to elements in $\zt$.
@@ -4324,8 +4324,8 @@ This construction is not unique, and in general will depend on the specific conf
 This makes constructing a Hamiltonian a rather cumbersome procedure, since separate terms must be added for each different vertex configuration. 
 
 In order to ease these difficulties, we will work in a ``gauge'' in which all the 0-handles are prepared in a standardized configuration with identical spin framings. 
-To do this, we define a spin isomorphism $\phi$ from a generic handle decomposition to a standardized one in which each of the 0-handles locally assume the same standardized form. 
-For concreteness, we will take our ``standardized 0-handles'' to be ones where the 1-handles emanating from it all point ``up'' in our diagrams (see Figure \ref{Spinisomorphisms}).
+To do this, we define a spin diffeomorphism $\varphi$ from a generic handle decomposition to a standardized one in which each of the 0-handles locally assume the same standardized form. 
+For concreteness, we will take a ``standardized 0-handle'' to be one where the 1-handles emanating from it all point ``up'' in our diagrams (see Figure \ref{Spinisomorphisms}).
 We will also fix the spin framing on each 0-handle to be constant within the 0-handle and to point to the right. 
 %standardized discs that live in the plane.
 %These will be tremoundously useful when we wish to write down an explicit Hamiltonian with support on the graph described by the cell decomposition. 
@@ -4338,8 +4338,8 @@ We will also fix the spin framing on each 0-handle to be constant within the 0-h
 %will carry the data of the local spin framing near each vertex and also a a set of marked points which determine precisely where the edges connect to the disc. 
 %These marked points must be ordered since a general linear transformation acting on this space could be even or odd, and so one has to keep track of how it acts in the tensor product.
 %It is natural to order the edges around a vertex in a clockwise orientation with respect to the orientation of $\Sigma$, and similarly with standardized discs on the plane.
-We will define the local spin isomorphism $\varphi_v$ that maps a generic 0-cell $v$ to a standardized 0-cell abstractly by
-\begin{align}
+The spin diffeomorphism $\varphi_v$ that maps a generic 0-cell $v$ to a standardized 0-cell is defined abstractly by \ethan{Don't think there's a reason to use $n$ legs instead of three---we use three everywhere else in the paper, and do so wolog}
+\begin{align} \label{std0handle}
 \xymatrix @!0 @M=1mm @R=14mm @C=35mm{
  \varphi_v: \; \; D_v\ar[r]            & D(n) \\
 \;\;\;\;\;\;\; \Dv \ar@{|->}[r] & \Dfv
@@ -4381,21 +4381,42 @@ where $n = \sum_{u} A_{uv}$ is the number of edges which terminate at $v$.
 %In the second line we have shown an example of such a map. 
 %We added some lines which show one way the edges may terminate at the vertex inside each disc. 
 
-Just as we do for the 0-handles, we define isomorphisms $\varphi_e$ that take each path $e \in \mathcal{E}$ to standardized 1-handles that connect the standardized 0-handles. 
-After standardizing our 0-cells paths will always enter / exit from a 0-cell ``vertically'', meaning that transporting a fermion along a 1-handle $e$ will either preserve the fermion framing or will rotate the fermion framing by $\pi$. 
-These two options are encapsulated by the two different standardized 1-handles
+Just as we do for the 0-handles, we will ``standardize'' the 1-handles so that they all assume the same form. 
+% define isomorphisms $\varphi_e$ that take each path $e \in \mathcal{E}$ to standardized 1-handles that connect the standardized 0-handles. 
+After standardizing our 0-cells, 1-handles will always enter / exit from a 0-handle ``vertically'' (see Figure \ref{Spinisomorphisms}), 
+and so our standardized 1-handles will look like 
 \begin{align}
+\Horseshoe\ 
+\end{align}
+
+
+For theories with q-type particles, our Hamiltonian will contain terms that allow fermions to hop along a standardized 1-handle from vertex to vertex. 
+Therefore, the spin framing on the 1-handles provides us with a way of parallel transporting fermions between vertices. 
+Since the spin framing is fixed in a constant direction at both ends of every 1-handle, as we move between the two ends of a 1-handle one of two things can happen: the fermion framing can be constant along the entire 1-handle, or it can rotate by $2\pi$. 
+In the latter case, 
+parallel-transporting a fermion along such a 1-handle $e$ will act on the state in question with an additional spin flip, i.e. an additional factor of $-1$. 
+%Since $2\pi$ fermion framing rotations act as multiplication by $-1$ on fermions, there is a 
+% $\mathbb{Z}_2$ action on each place where a 1-handle is glued to a 0-handle, which is generated by spin flips of the spin framing at the gluing points. 
+Viewing the spin structure on $\Sigma$ as a double-covering of the oriented frame bundle of $\Sigma$, a 1-handle along which the framing rotates by $2\pi$ means that a point on one sheet of the double-cover is moved to its counterpart on the other sheet of the double-cover upon traveling along the 1-handle. 
+Hence we need to both specify a map that embeds the 0- and 1-handles into the ambient spin manifold, as well as specify a set of data which determine where these spin flips take place. 
+\ethan{should make a picture for this last paragraph}
+
+In order to make such $2\pi$ rotations of the fermion framing explicit in our diagrams, we will draw standardized 1-handles across which the fermion framing undergoes a $2\pi$ rotation with a twist in their middles.
+This means that we actually have two inequivalent standardized 1-handles: 
+\begin{align}\label{std1handles}
 \Horseshoe\ , \quad \quad \quad \quad \HorseshoeTwist,
 \end{align}
-where the twist in the second standardized 1-handle indicates that it performs a $\pi$ twist on the framing of fermions which move along it from $u$ to $v$. 
-As we did for the $\phi_v$ isomorphisms, we define the isomorphisms taking generic 1-handles to standardized 1-handles by 
-\begin{align}\vcenter{\xymatrix @!0 @M=1mm @R=10mm @C=25mm{
-\varphi_e: \; \;h_e\ar[r]            & \Omega_e\\
-}}
-\end{align}
-where $\Omega_e$ is a standardized $1$-handle.
-\dave{Do we already need to define orientations? I.e., not only the spin isomorphism, but also the direction $u$ to $v$ verse $v$ to $u$.}
-\ethan{I still think this data can be inherited by the ordering of the tensor factors in the vertex Hilbert space}
+where the fermion framing rotates by $2\pi$ when proceeding along the second standardized 1-handle.
+Given an arbitrary handle decomposition, we can always act with spin diffeomorphisms to turn it into a standardized handle decomposition, where each 0-handle looks like \eqref{std0handle} and each 1-handle is one of the two appearing in \eqref{std1handles}. 
+In what follows we will assume that such a standardization procedure has taken place. 
+%As we did for the $\phi_v$ isomorphisms, we define the isomorphisms taking generic 1-handles to standardized 1-handles by 
+%\begin{align}\vcenter{\xymatrix @!0 @M=1mm @R=10mm @C=25mm{
+%\varphi_e: \; \;h_e\ar[r]            & \Omega_e\\
+%}}
+%\end{align}
+%where $\Omega_e$ is a standardized $1$-handle.
+%\dave{Do we already need to define orientations? I.e., not only the spin isomorphism, but also the direction $u$ to $v$ verse $v$ to $u$.}
+%\ethan{I still think this data can be inherited by the ordering of the tensor factors in the vertex Hilbert space}
 
 % from the unit interval into $\Sigma$.
 %This is just the restriction of $\sigma$ to $\chi(e_{uv})$. 
@@ -4412,24 +4433,31 @@ where $\Omega_e$ is a standardized $1$-handle.
 %Although a somewhat general definition of the ``spin graph" could be useful.
 %Especially for tensor networks.}
 
-Lastly we need to address how to glue together the 1-handles and 0-handles so that the lattice formed by the 1- and 0-handles possesses the same spin structure data as the ambient manifold $\Sigma$. 
-There is an ambiguity when we glue each 0-handle to an 1-handle, corresponding to a relative $2\pi$ difference in the spin framings of the 0- and 1-handles. 
-Since $2\pi$ fermion framing rotations act as multiplication by $-1$ on fermions, there is a 
- $\mathbb{Z}_2$ action on each place where a 1-handle is glued to a 0-handle, which is generated by spin flips of the spin framing at the gluing points. 
-Viewing the spin structure on $\Sigma$ as a double-covering of the oriented frame bundle of $\Sigma$, this $\zt$ spin-flip action is realized by moving between the two sheets of the double-cover. 
-
-Hence we not only need to specify a map that embeds the 0- and 1-handles into $(\Sigma,\sigma)$, but we also need to specify a set of gluing data which accounts for this $\mathbb{Z}_2$ action. 
+%Lastly we need to address how to glue together the 1-handles and 0-handles so that the lattice formed by the 1- and 0-handles possesses the same spin structure data as the ambient manifold $\Sigma$. 
+%There is an ambiguity when we glue each 0-handle to an 1-handle, corresponding to a relative $2\pi$ difference in the spin framings of the 0- and 1-handles. 
 %These are just $\pm1$ signs associated to the marked points and the gluing of an edge with a disc across said marked point.
-If the trivialization of the spin framing at the end of an edge is such that passing from the end of the edge to its boundary vertex results in changing between the two sheets of the double-cover, we assign a factor of $(-1)$ to the gluing map (and a factor of $+1$ otherwise). \ethan{still not sure about this factor of $(-1)$. Seems like it should only appear when when fermions are slid over the edge, not when we do the standardization procedures}
-The fact that each 0-handle locally carries a bounding spin structure means that the product of these gluing signs across all the edges emanating from the 0-handle must equal $+1$ around the disc of every 0-handle (since the trivialization of the spin framing at the boundary of each 0-handle must be ``untwisted'') and the product of the gluing sings across edges which form a closed path with bounding spin structure must be $+1$. 
-To see this, fix a 0-handle $v$ and consider a path that begins and ends at $v$.  
-If the path is bounding then a fermion transported along this path will pick up a minus sign. 
-Negating any of the gluing signs on that path results in a non-bounding spin structure. 
-This is just a manifestation of the fact that spin structures are classified by elements of $H^1(\Sigma;\zt)$: the coboundaries that are modded out in the definition of the equivalence classes in $H^1(\Sigma;\zt)$ are the flat $\mathbb{Z}_2$ gauge fields. 
-These gauge fields are gauge degrees of freedom since any two collections of glueing signs that differ by a flat $\zt$ gauge field are physically equivalent. 
-Indeed, an equivalent spin structure can be found by choosing any closed path along the graph $\mathcal{G}$ and flipping all gluing signs along this path. 
-Such gauge transformations are generated by the faces of of the graph\footnote{which by definition always bound a disc}.
-That is one chooses a face and flips all gluing signs which are at the boundary of that face.
+%The fact that each 0-handle locally carries a bounding spin structure means that the product of these gluing signs across all the edges emanating from the 0-handle must equal $+1$ around the disc of every 0-handle (since the trivialization of the spin framing at the boundary of each 0-handle must be ``untwisted'') and the product of the gluing sings across edges which form a closed path with bounding spin structure must be $+1$. 
+%To see this, fix a 0-handle $v$ and consider a path that begins and ends at $v$.  
+%If the path is bounding then a fermion transported along this path will pick up a minus sign. 
+%Negating any of the gluing signs on that path results in a non-bounding spin structure. 
+
+To talk about these twisted 1-handles more precisely, define the function 
+\be g_e = \begin{cases} 1 \text{\ if the fermion framing is fixed along $e$,}\\ 
+0 \text{\ if the fermion framing rotates by $2\pi$ along $e$.}\end{cases}\ee
+The collection of the glueing signs $\{g_e\}$ are not arbitrary and are constrained by the background spin structure. 
+To see this, we note that a fermion transported along a closed loop $\gamma$ will pick up a phase equal to $\prod_{e\in \gamma}(-1)^{g_e}$. \ethan{modulo some $\lambda$s---need to make this more precise}
+This phase is constrained since we must have 
+\be \prod_{e\in \gamma}(-1)^{g_e} = -(-1)^{q_\sigma(\gamma)},\ee 
+where as before $q_\sigma(\gamma) = 0$ $(1)$ if the loop $\gamma$ has anti-periodic (periodic) boundary conditions. 
+There is a large amount of gauge freedom in the choices of the $\{g_e\}$, however. 
+If we flip all of the $g_e$ glueing signs for all edges $e$ emanating from some given vertex, we obtain a physically equivalent state, since performing such a transformation does not affect the values of $\prod_{e\in \gamma}(-1)^{g_e}$ for any closed loop $\gamma$. 
+Mathematically, this means that we can perform the gauge transformations $g\mapsto g + \beta$, where $\beta \in B^1(\mcg^*;\zt)$ is a flat (both locally and topologically) $\zt$ gauge field on the dual lattice $\mcg^*$\footnote{On the dual lattice $\mcg^*$ these gauge transformations are generated flipping all the $g_e$ variables for edges lying along a closed loop; on the original lattice $\mcg$ they are generated by flipping all the $g_e$ variables for edges emanating from a single vertex.}. 
+The new set $g$ of glueing signs is still consistent with the constraint coming from the spin structure, since $\prod_{e\in \gamma}(-1)^{\beta_e} = 1$ for all $\beta \in B^1(\Sigma^*;\zt)$. 
+This is just a manifestation of the fact that spin structures are classified by elements of $H^1(\Sigma;\zt)$: the coboundaries that are modded out in the definition of the equivalence classes in $H^1(\Sigma;\zt)$ are the flat $\mathbb{Z}_2$ gauge fields $\beta$. 
+%These gauge fields are gauge degrees of freedom since any two collections %of glueing signs that differ by a flat $\zt$ gauge field are physically equivalent. 
+%Indeed, an equivalent spin structure can be found by choosing any closed path along the graph $\mathcal{G}$ and flipping all gluing signs along this path. 
+%Such gauge transformations are generated by the faces of of the graph\footnote{which by definition always bound a disc}.
+%That is one chooses a face and flips all gluing signs which are at the boundary of that face.
 %In practice it's easier to fix the spin structure on the discs, and associate the gluing signs with the boundary of the edges.  
 
 \dave{Comment on non-bounding plaquettes.}
@@ -4443,37 +4471,81 @@ That is one chooses a face and flips all gluing signs which are at the boundary 
 %%%%%%%%%%%%%%%
 
 In this section we turn to defining the Hilbert space on which the Hamiltonian operates. 
-This Hilbert space is just the tensor product over all the Hilbert spaces that live on the standardized vertices and standardized edges, but since these Hilbert spaces are anti-commuting supervector spaces, the order in which we tensor them together is important, and necessitates doing a bit of bookkeeping. 
+This Hilbert space is just the tensor product over all the Hilbert spaces that live on the standardized vertices and standardized edges, but since these Hilbert spaces are anti-commuting supervector spaces, the order in which we tensor them together is important, and requires us to a bit of bookkeeping. 
 
-Because the Hilbert spaces associated to the vertices and edges are supervector spaces, we need a complete ordering on all edges and vertices.
+Because the Hilbert spaces associated to the vertices and edges are supervector spaces, we need to define a complete ordering on all edges and vertices.
 To this end, define two index sets $\mathcal{I}_v$ and $\mathcal{I}_e$.
 The first is a complete ordering on all vertices, and the second is a complete ordering on all edges. 
 %For two integers $m_v \in \mathcal{I}_v$ and $n_e \in \mathcal{I}_e$ we define $n_e < m_v$.
-The total Hilbert space on the lattice $\mcg$ is then given by the tensor product
+The total Hilbert space on the lattice $\mcg$ is constructed as the tensor product
 \begin{align}
 \mathcal{H}(\mathcal{G}) = \bigotimes_{e \in E} \mathcal{A}(e_{uv}) \bigotimes_{v \in V} \mathcal{A}(D_v)
 \label{GraphHilbertSpace}
 \end{align}
 where the factors in the tensor products over the $e$s and $v$s are ordered with respect to $\mathcal{I}_e$ and $\mathcal{I}_v$, respectively.
+The vertex Hilbert spaces $\mca(D_v)$ contain odd vectors if a fermion is present on the vertex $v$, while the edge Hilbert spaces $\mca(e_{uv})$ contain odd vectors only when the string type appearing on $e_{uv}$ is q-type.
 %I.e., the tensor product over the discs is organized as $\tp_{v \in V} \mathcal{A}(D_v) = \cdots \tp \mathcal{A}(D_{v_i}) \tp \mathcal{A}(D_{v_{i+1}}) \tp \cdots $, where $i< i+1 \in \mathcal{I}_v$.
 
 %A vector basis vector of $\mathcal{H}$ is called a labeling.
 
-This Hilbert space (\ref{GraphHilbertSpace}) is isomporhic to the Hilbert space assigned to the imbedded graph $\mathcal{H}(\chi(G))$, but not necessarily equal.
-It is important however to specify an isomorphism so that all local relations on the imbedding can be expressed in terms of our standardized Hilbert space (\ref{GraphHilbertSpace}).
-As an example, note that the Hilbert space $\mathcal{A}(e_{uv})$ is bosonic for Q type particles, but could be fermionic or bosonic for M type particles. 
-Furthurmore the fermion parity of the Hilbert space may change under $\chi$, this happens when the labeling is an M type particle with imaginary Frobenius-Schur indicator.
+%This Hilbert space (\ref{GraphHilbertSpace}) is isomporhic to the Hilbert space assigned to the imbedded graph $\mathcal{H}(\chi(G))$, but not necessarily equal.
+%It is important however to specify an isomorphism so that all local relations on the imbedding can be expressed in terms of our standardized Hilbert space (\ref{GraphHilbertSpace}).
+%As an example, note that the Hilbert space $\mathcal{A}(e_{uv})$ is bosonic for Q type particles, but could be fermionic or bosonic for M type particles. 
+%Furthurmore the fermion parity of the Hilbert space may change under $\chi$, this happens when the labeling is an M type particle with imaginary Frobenius-Schur indicator.
 
 Specifying the isomorphism makes use of the pivotal structure of the fusion category. 
 We can always pivot each vertex so that locally it takes the form of $D_v$....
 
 
-\subsection{Hamiltonian}
-Here we present a high level writing of the Hamiltonian. 
-This is conceptually quite useful, but practically less useful. 
-Thus in the following subsections we will give an explicit writing of the Hamiltonian associated to the lattice in Fig.~\ref{HoneycombLattice}. 
+A state in the vector space is given by a labeling of all vertices and edges of the graph ${\mathcal G}$. 
+The basis states for the are taken to be simple objects in $\cal{C}$, i.e., each edge has a bosonic vector space given by $\mathcal{H}_e = \bigoplus_{x \in \mathcal{C}} \mathbb{C}_x$.
+The vertex degrees of freedom are given by basis vectors for the fusion space of three simple objects in $\cal C$, hence $\mathcal{H}_v = \bigoplus_{abc} V^{ab}_c$.
+We will denote the basis states for $\mathcal{H}_v$ by $\psi^{ab}_{c,\mu}(v)$. 
+Where the $a$, $b$, and $c$ are simple objects, and $\mu$ labels a set of orthogonal states in the fusion space $V^{ab}_c$.
+\dave{Need to mention ordering of simple objects around vertex.}
+The vertex Hilbert space is a super vector space of dimension $\sum_{abc} N_{ab}^c$.
 
-The Hamiltonian consists of three kinds of projections which all commute with one another. 
+In order to keep track of Koszul signs, associated with the vertex degrees of freedom we define a global ordering on all vertices.
+This is given by a map from an index set $\mathcal{I}$ to the vertices $\mathcal{V}$. 
+Explicitly, to each vertex we assign an integer $r(v) \in \mathcal{I}$ and to each integer $ r \in \mathcal{I}$ we assign a vertex $v(r) \in \mathcal{V}$. 
+The total vector space is just the tensor product over the local ones,
+\begin{align}
+\mathcal{H}= \tp_{e \in E } \mathcal{H}_e \tp_{v \in V} \mathcal{H}_{v}\quad \quad \mathcal{H}_e = \bigoplus_{x \in \cal{C}} \mathbb{C}_x,\quad   \mathcal{H}_v = \bigoplus_{abc \in \cal{C}} V^{ab}_{c}. 
+\label{HamiltonianVectorSpace}
+\end{align}
+%Where $\mathcal{H}_e$ is the vector space associated to each edge and of dimension equal to the number of simple objects.
+The tensor product over all the vertex vector spaces is actually a graded tensor product. 
+Meaning that if two odd vertices are interchanged you pick up a Koszul sign.
+The ordering we choose on the super tensor product is determined by the index set above so that $\tp_{v \in V} \mathcal{H}_v =\cdots \tp \mathcal{H}_{v_r} \tp \mathcal{H}_{v_{r+1}} \tp \cdots $.
+
+We will label a generic basis state in $\mathcal{H}$ by
+\begin{align}
+\ket{E} \tp \ket{V} = \tp_{e \in E} \ket{a(e)} \tp_{v\in V} \ket{\psi(v)}.
+\end{align}
+The label $a(e)$ is a simple object in $\mathcal{C}$. 
+The label $\psi(v)$ is a graded vector in $\mathcal{H}_v$. 
+It is really a short hand for the vector $\psi^{ab}_{c,\mu}(v)$ where $a,b$ and $c$ must be admissible by the fusion rule $N_{ab}^c$, and $\mu$ denotes the multiplicity index, which runs over the even and odd vectors.
+We denote the grading of $\ket{\psi(v)}$ by $p_v$. 
+
+Lets address the vertex super space in some more detail.
+We we define the canonical inner product on the graded vector space by
+\begin{align}
+h: &\mathcal{H}_v \tp \mathcal{H}_v \rightarrow \mathbb{C}^{1|0}\\
+     & \ket{\psi} \tp \ket{\eta} \mapsto \delta_{\psi, \eta}
+\end{align}
+\dave{Need to mention how odd operators act on tensor product space. }
+% run over values such that $N^{ab}_c$ is non-zero, and $\mu$ denotes the multiplicity index.
+%The ordering of the vertex terms is important since each $\ket{\psi(v)} \in \mathcal{H}_v$ could be fermionic.
+%Indeed lets choose a basis for each $\mathcal{H}_v$ as $\ket{\psi^{ab}_{c,\mu}(v)}$ where $\mu$ runs over all basis vectors of $V^{ab}_c$. 
+%We'll denote the parity of the vector by $p^{ab}_{c,\mu}$.
+
+
+
+\subsection{Hamiltonian}
+
+In this section we will finally write down the Hamiltonian, first providing a high-level way of writing it and then turning to an explicit presentation of the Hamiltonian associated to the lattice in Fig.~\ref{HoneycombLattice}. 
+
+As mentioned earlier, the Hamiltonian consists of three kinds of projections which all commute with one another. 
 Explicitly we have
 \begin{align}
 H = \lambda_p \sum_{p \in \mathcal{F}} (1-B_p)  + \lambda_e \sum_{e \in E} (1-D_e) + \lambda_v \sum_{v \in V} A_v
@@ -4518,59 +4590,8 @@ $$
 \dave{*****The rest is old*****}
 $$
 $$
-\subsection{Super vector space}
-\label{VectorSpace}
-The fermionic nature of the Hamiltonian necessitates a super vector space. 
-In fact we will require a super Hilbert space, i.e., a super vector space with star structure and a sesquilinear form subject to some conditions.
 
-
-
-
-In order to produce a Hermitian Hamiltonian, the super vector space must be equipped with a hermitian form 
-
-A state in the vector space is given by a labeling of all vertices and edges of the graph ${\mathcal G}$. 
-The basis states for the are taken to be simple objects in $\cal{C}$, i.e., each edge has a bosonic vector space given by $\mathcal{H}_e = \bigoplus_{x \in \mathcal{C}} \mathbb{C}_x$.
-The vertex degrees of freedom are given by basis vectors for the fusion space of three simple objects in $\cal C$, hence $\mathcal{H}_v = \bigoplus_{abc} V^{ab}_c$.
-We will denote the basis states for $\mathcal{H}_v$ by $\psi^{ab}_{c,\mu}(v)$. 
-Where the $a$, $b$, and $c$ are simple objects, and $\mu$ labels a set of orthogonal states in the fusion space $V^{ab}_c$.
-\dave{Need to mention ordering of simple objects around vertex.}
-The vertex Hilbert space is a super vector space of dimension $\sum_{abc} N_{ab}^c$.
-
-In order to keep track of Koszul signs, associated with the vertex degrees of freedom we define a global ordering on all vertices.
-This is given by a map from an index set $\mathcal{I}$ to the vertices $\mathcal{V}$. 
-Explicitly, to each vertex we assign an integer $r(v) \in \mathcal{I}$ and to each integer $ r \in \mathcal{I}$ we assign a vertex $v(r) \in \mathcal{V}$. 
-The total vector space is just the tensor product over the local ones,
-\begin{align}
-\mathcal{H}= \tp_{e \in E } \mathcal{H}_e \tp_{v \in V} \mathcal{H}_{v}\quad \quad \mathcal{H}_e = \bigoplus_{x \in \cal{C}} \mathbb{C}_x,\quad   \mathcal{H}_v = \bigoplus_{abc \in \cal{C}} V^{ab}_{c}. 
-\label{HamiltonianVectorSpace}
-\end{align}
-%Where $\mathcal{H}_e$ is the vector space associated to each edge and of dimension equal to the number of simple objects.
-The tensor product over all the vertex vector spaces is actually a graded tensor product. 
-Meaning that if two odd vertices are interchanged you pick up a Koszul sign.
-The ordering we choose on the super tensor product is determined by the index set above so that $\tp_{v \in V} \mathcal{H}_v =\cdots \tp \mathcal{H}_{v_r} \tp \mathcal{H}_{v_{r+1}} \tp \cdots $.
-
-We will label a generic basis state in $\mathcal{H}$ by
-\begin{align}
-\ket{E} \tp \ket{V} = \tp_{e \in E} \ket{a(e)} \tp_{v\in V} \ket{\psi(v)}.
-\end{align}
-The label $a(e)$ is a simple object in $\mathcal{C}$. 
-The label $\psi(v)$ is a graded vector in $\mathcal{H}_v$. 
-It is really a short hand for the vector $\psi^{ab}_{c,\mu}(v)$ where $a,b$ and $c$ must be admissible by the fusion rule $N_{ab}^c$, and $\mu$ denotes the multiplicity index, which runs over the even and odd vectors.
-We denote the grading of $\ket{\psi(v)}$ by $p_v$. 
-
-Lets address the vertex super space in some more detail.
-We we define the canonical inner product on the graded vector space by
-\begin{align}
-h: &\mathcal{H}_v \tp \mathcal{H}_v \rightarrow \mathbb{C}^{1|0}\\
-     & \ket{\psi} \tp \ket{\eta} \mapsto \delta_{\psi, \eta}
-\end{align}
-\dave{Need to mention how odd operators act on tensor product space. }
-% run over values such that $N^{ab}_c$ is non-zero, and $\mu$ denotes the multiplicity index.
-%The ordering of the vertex terms is important since each $\ket{\psi(v)} \in \mathcal{H}_v$ could be fermionic.
-%Indeed lets choose a basis for each $\mathcal{H}_v$ as $\ket{\psi^{ab}_{c,\mu}(v)}$ where $\mu$ runs over all basis vectors of $V^{ab}_c$. 
-%We'll denote the parity of the vector by $p^{ab}_{c,\mu}$.
-
-\subsection{Vertex}
+\subsubsection{Vertex terms}
 \label{VertexHamiltonian}
 The vertex term in the Hamiltonian is the same as the usual string net. 
 We will follow the same construction as in \cite{Kitaev2012}.
@@ -4765,7 +4786,7 @@ Hence if the label on edge $e$ is Q type we get,
   %              \end{array}
     %          \right.
 %\end{align}
-\subsection{Edge (\dave{Take two})}\label{EdgeHamiltonianTerms}
+\subsubsection{Edge term (\dave{Take two})}\label{EdgeHamiltonianTerms}
 The edge terms allow fermions to fluctuate across $Q$ type bonds, and act as the identity otherwise.
 Lets write this operator down explicitly by its action on the basis states, written in the text following (\ref{HamiltonianVectorSpace}). We will first demonstrate the action of the edge term on one picture, then provide the full details of how we write the term. 
 
@@ -4949,7 +4970,7 @@ The factor of $1/2$ comes from the fact that the dimension of the $\text{End}(x)
 
 %We need to define three terms
 
-\subsection{Plaquette}
+\subsubsection{Plaquette term}
 The plaquette term is a little more tedious to define that the edge term, but there is essentially nothing new. 
 For each plaquette $p$ of the graph $\mathcal{G}$ we define an operator,
 \begin{align}
