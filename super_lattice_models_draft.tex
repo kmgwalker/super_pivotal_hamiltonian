@@ -2856,7 +2856,7 @@ Diagrammatically we will denote this vector space by,
 V^{\rho \rho }_\rho \; \cong \; \mathbb{C} \left[ \VSeven , \quad \VSa \right] \quad \quad \quad a = 1, 2
 \end{align}
 We have the following local relations inherited on the trivalent vertices from the parent theory,
-\begin{align} \label{sliding_dots_through_relns}
+\begin{align} 
 \VSa = \sigma^z_{ab} \VSb \qquad \VSa = \sigma^y_{ab} \VSc \qquad \VSd = -i \sigma^x_{ab} \VSc
 \label{esixdotslide}
 \end{align}
@@ -4375,7 +4375,7 @@ which ensures that the low energy spectrum can be characterized by simple object
 In Fig.~\ref{HoneycombLattice} we illustrate the support of each operator appearing in the Hamiltonian with dashed circles, where we have drawn the Hamiltonian on the honeycomb lattice for concreteness. 
 
 %%%%%%%%%%%%%%%%%%
-\subsection{Spin structure considerations and the lattice}
+\subsection{Spin structure considerations and the lattice} \label{standardized_handles}
 %%%%%%%%%%%%%%%%%%
 To derive the Hamiltonian \eqref{ham} and explain the nature of the $B_p$, $D_e$, and $A_v$ operators, we will first need to describe how the lattice inherits spin structure data from the ambient spin manifold on which it is defined. 
 
@@ -4783,19 +4783,19 @@ Note that because $\Gamma^1_v$ creates a fermion on the edge $a$ (provided that 
 Also note that the fermion on the $a$ edge has order $n+1$; we define the $\Gamma$ operators to create fermions whose order is one greater than the order of the highest-ordered fermion on the graph. 
 The operators $\Gamma_v^2,\Gamma_v^3$ are defined analogously:
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma2def.pdf}}}},\qquad
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma3def.pdf}}}}.\ee
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma3def.pdf}}}}.\ee
 It is easy to check that the nonzero $\Gamma_v^i$ operators at each site obey the anti-commutation relations 
 \be \{ \Gamma^i_v , \Gamma^j_v \} = -2\lambda \delta_{ij},\ee
 which are the defining relations for the representations of Clifford algebras. 
 This means that the $\{\Gamma^i_v\}$ at a vertex $v$ with fusion space $V^{abc}$ where all of $a,b,c$ are q-type generate a representation of $\cl_3$, and if two of $a,b,c$ are q-type the $\{\Gamma^i_v\}$ generate a representation of $\cl_2$. 
 
 The existence of these operators actually place nontrivial constraints on the ways in which q-type particles can fuse with one another. 
-For example, we can use this to show that a ``q-type Fibbonacci'' theory which contains a single q-type particle $\Tau$ with the fusion space $V^{\Tau\Tau\Tau}\cong \cc^{1|1}$, cannot exist. 
-Indeed, if $V^{\Tau\Tau\Tau}$ is nontrivial and $\Tau$ is q-type, then we must be able to find a representation of $\cl_3$ on $V^{\Tau\Tau\Tau}$.
-This is impossible if $V^{\Tau\Tau\Tau}\cong \cc^{1|1}$, since $\cc^{1|1}$ is not large enough to represent $\cl_3$. 
-This means that theories which contain a q-type particle $\Tau$ with $V^{\Tau\Tau\Tau}\neq0$ must contain nontrivial fusion multiplicities, which provide us with fusion spaces that are large enough to admit a representation of $\cl_3$.
+For example, we can use this to show that a ``q-type Fibbonacci'' theory which contains a single q-type particle $\tau$ with the fusion space $V^{\tau\tau\tau}\cong \cc^{1|1}$, cannot exist. 
+Indeed, if $V^{\tau\tau\tau}$ is nontrivial and $\tau$ is q-type, then we must be able to find a representation of $\cl_3$ on $V^{\tau\tau\tau}$.
+This is impossible if $V^{\tau\tau\tau}\cong \cc^{1|1}$, since $\cc^{1|1}$ is not large enough to represent $\cl_3$. 
+This means that theories which contain a q-type particle $\tau$ with $V^{\tau\tau\tau}\neq0$ must contain nontrivial fusion multiplicities, which provide us with fusion spaces that are large enough to admit a representation of $\cl_3$.
 Indeed such a q-type particle exists in the $\halfesix$ theory considered earlier, which possesses nontrivial fusion multiplicities. 
-The $\Gamma$ matrices in the $\halfiesix$ case are essentially determined by the relations \eqref{sliding_dots_through_relns}. 
+The $\Gamma$ matrices in the $\halfesix$ case are essentially determined by the relations \eqref{esixdotslide}. 
 
 more philosophy
 
@@ -4803,21 +4803,24 @@ Now we have all the tools in hand required to write down the edge term.
 As mentioned earlier, the edge term is responsible for allowing fermions to fluctuate (``hop'') across q-type edges.
 Fermion hopping across q-type edges is implemented by the $\Gamma$ operators. 
 For example, if $\psi\in V_u$ and $\eta\in V_u$ and the edge $e$ hosts a q-type edge label which connects the vertices $u$ and $v$, we have
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_slide_gamma.pdf}}}},\ee
+\be \label{dot_slide_gamma} \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_slide_gamma.pdf}}}},\ee
 where we have defined tensor products of $\Gamma$ operators to act so that operators located further to the left in tensor products create fermions with higher order than the operators to their right.
 Since $\psi'$ and $\eta'$ have the opposite fermion parity of $\psi$ and $\eta$, this sequence of operations exchanges the fermion parity of the two vertices connected by the edge $e$. 
-Therefore, our edge 
-Since $\lambda^2=-1$, this allows us to write down the general edge term on an edge $e$ as 
-\be D_e = \frac{1}{\dim \End(e)}\left(\unit - q(e)(-1)^{g_e}\Gamma^\nu_{\p e_L} \tp \Gamma^\mu_{\p e_R} \right).\ee
+Therefore, an edge term which allows fermions to hop across q-type edges will be constructed out of terms like $\Gamma^i_u\tp \Gamma^j_v$. 
+Since $\lambda^2=-1$, we can use \eqref{dot_slide_gamma} to write down the general edge term on an edge $e$ as \ethan{do we really need the prefactor?}
+\be \label{edge_term} D_e = \frac{1}{\dim \End(e)}\left(\unit - q(e)(-1)^{g_e}\Gamma^\nu_{\p e_L} \tp \Gamma^\mu_{\p e_R} \right),\ee
+where $\p e_L$ ($\p e_R$) are the vertices at the left (right) end of the edge $e$. 
+Note that we have assumed the manifold we're working over is orientable, so after putting all of the 0-handles and 1-handles in the standardized form described in Section \ref{standardized_handles} the notions of ``left end'' and ``right end'' are well-defined. 
+Our final task is to explain the factor of $q(e)(-1)^{g_e}$ appearing in \eqref{edge_term}.
+The factor of $q(e)$, which is $1$ if the edge label $e$ is q-type and $0$ otherwise, merely accounts for the sanity condition that fermions can only fluctuate across q-type edges. 
+The factor of $(-1)^{g_e}$ keeps track of whether nor not the fermion framing rotates by $2\pi$ upon traversing the edge $e$, as explained in Section \ref{standardized_handles}. 
+It is straightforward to check that the relations in \eqref{dot_slide_gamma} are modified by a factor of $-1$ if the edge $e$ is twisted in such a way $(g_e=1)$ and is unmodified otherwise, giving rise to the factor of $(-1)^{g_e}$ appearing in the expression for $D_e$. 
 
-
-
-\begin{align}
-D_e =\sum_{a \in \mathcal{C} } \frac{1}{\text{dim} \; \text{End}(a)} \; \sum_{\mathcal{O}_e \in \text{End} \mathcal{A}(e,\partial e; a)} \mathcal{O}_e.
-\end{align}
-Where $\mathcal{O}_e$ is supported on $\mathcal{A}({\chi(e)}) \tp_{v \in \partial e} \mathcal{A}(D_{\chi(v)})$.
-Of course we need to do some extra work to write this as an action on the standardized Hilbert space. 
-
+%\begin{align}
+%D_e =\sum_{a \in \mathcal{C} } \frac{1}{\text{dim} \; \text{End}(a)} \; \sum_{\mathcal{O}_e %\in \text{End} \mathcal{A}(e,\partial e; a)} \mathcal{O}_e.
+%\end{align}
+%Where $\mathcal{O}_e$ is supported on $\mathcal{A}({\chi(e)}) \tp_{v \in \partial e} \mathcal{A}(D_{\chi(v)})$.
+%Of course we need to do some extra work to write this as an action on the standardized Hilbert space. 
 
 \begin{align}
 \Gamma^x\left(\Vx{a}{b}{c}{\psi}\right) = \VDotx{a}{b}{c}{\psi}{\DotX} \quad \quad \Gamma^y\left(\Vx{a}{b}{c}{\psi} \right) = \VDotx{a}{b}{c}{\psi}{\DotY} \quad \quad  \Gamma^z\left(\Vx{a}{b}{c}{\psi} \right) = \VDotx{a}{b}{c}{\psi}{\DotZ} 
