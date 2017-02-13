@@ -1593,16 +1593,16 @@ The quasiparticle associated with the two-dimensional module in the non-vortex s
 \subsubsection{Quantum dimensions}
 %%%%%%%%%%%%%%%%%%%%
 
-To do this, we will need to know the quantum dimensions of the quasiparticles. They are
+In what follows we will need to know the quantum dimensions of the quasiparticles in the theory.
+We can obtain them by examining the number of fusion channels each has when fused with its antiparticle. 
+We find
 \be d_{m_1} = d_{m_\psi} = 1,\quad d_{m_\sigma^+} = d_{q_1} = d_{q_\psi} = \sqrt{2},\quad d_{q_\sigma} = 2.\ee
-
-When we calculate the total quantum dimension $\mcd$ which... 
+We will also need to know how to calculate the total quantum dimension $\mcd$.
 In bosonic theories we have $\mcd^2 = \sum_a d_a^2$, where the sum runs over all simple objects $a$. 
 This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
-
+The correct formula is
 \be \mcd^2 = \sum_a \frac{d_a^2}{\dim \End(a)}.\ee
-
-For the $C_2$ theory, we have $\mcd = \sqrt{1^2+1^2+2^2+\sqrt{2}^2/2 + \sqrt{2}^2/2 + 2^2/2} = \sqrt{8}$. 
+For the $C_2$ theory, we have $\mcd = \sqrt{8}$. 
 
 
 
@@ -4359,8 +4359,8 @@ To summarize, in order to define our super pivotal Hamiltonian we need three pie
 %\item a graph $\mathcal{G}$ defined by a collection of vertices and edges
 %\item a planar imbedding of the graph $\mathcal{G}$ into $\Sigma$
 \item a cell decomposition $\mcg$ of $\Sigma$ (i.e, a lattice on $\Sigma$) which inherits the spin structure $\sigma$,
-\item a coloring of $\mcg$ where each edge of $\mcg$ is labelled by an object in $\mcc$,
-\item and a collection of supervector spaces that constitute the Hilbert space of the lattice. %, and a ``spin" graph $(\mathcal{G}, s)$ with an imbedding into into the spin surface $(\Sigma, \sigma)$
+\item a coloring of $\mcg$, where each edge of $\mcg$ is labelled by an object in $\mcc$,
+\item and a collection of supervector spaces that constitute the Hilbert space of $\mcg$. %, and a ``spin" graph $(\mathcal{G}, s)$ with an imbedding into into the spin surface $(\Sigma, \sigma)$
 \end{enumerate}
 In the following sections we define the Hamiltonian explicitly in terms of the above data.
 %We will explicitly write out the Hamiltonian for the example of the honeycomb lattice shown in Fig.~\ref{HoneycombLattice}, although much of what we say holds more generally.
@@ -4415,7 +4415,7 @@ In order to define our super pivotal Hamiltonian we will need to construct a lat
 The basic idea is to decompose the manifold $\Sigma$ into a collection of discs and bands whose union is $\Sigma$, and a equip each disc and band with spin structure data inherited from $\sigma$ in a standardized way.
 %The prescription is to locally map each vertex to a standardized vertex living in the plane through spin isomorphism. 
 
-Then edges which connect vertices can only be connected in two ways, either either with a clockwise rotation in the spin framing, or a counter clockwise rotation. 
+%Then edges which connect vertices can only be connected in two ways, either either with a clockwise rotation in the spin framing, or a counter clockwise rotation. 
 %We wish to now decompose the surface $\Sigma$ into a disjoint union of cells which 
 
 %Our goal is to define a graph, that embeds into $\Sigma$ along with some extra data inherited from the spin structure $\sigma$, which allows us to define a spin graph. 
@@ -4473,7 +4473,7 @@ We will also fix the spin framing on each 0-handle to be constant within the 0-h
 %will carry the data of the local spin framing near each vertex and also a a set of marked points which determine precisely where the edges connect to the disc. 
 %These marked points must be ordered since a general linear transformation acting on this space could be even or odd, and so one has to keep track of how it acts in the tensor product.
 %It is natural to order the edges around a vertex in a clockwise orientation with respect to the orientation of $\Sigma$, and similarly with standardized discs on the plane.
-The spin diffeomorphism $\varphi_v$ that maps a generic 0-cell $v$ to a standardized 0-cell is defined abstractly by \ethan{Don't think there's a reason to use $n$ legs instead of three---we use three everywhere else in the paper, and do so wolog}
+The spin diffeomorphism $\varphi_v$ that maps a generic 0-cell $v$ to a standardized 0-cell is defined abstractly by
 \begin{align} \label{std0handle}
 \xymatrix @!0 @M=1mm @R=14mm @C=35mm{
  \varphi_v: \; \; D_v\ar[r]            & D(n) \\
@@ -4481,6 +4481,7 @@ The spin diffeomorphism $\varphi_v$ that maps a generic 0-cell $v$ to a standard
 	} 
 \end{align}
 where $n = \sum_{u} A_{uv}$ is the number of edges which terminate at $v$. 
+When writing down the Hamiltonian we will always take $n=3$ without loss of generality, but when discussing tensor network constructions of these phases it is helpful to let $n$ be unspecified. 
 %And the standardized disc has $n$ components overwhich $1$ handles can be glued to it. 
 %We have drawn the standardized disc with one flat boundary, and one possible image of the edges under the map $\varphi$. 
 %Note that the edge where we start the counting from is arbitrary. 
@@ -4577,26 +4578,39 @@ In what follows we will assume that such a standardization procedure has taken p
 %Negating any of the gluing signs on that path results in a non-bounding spin structure. 
 
 To talk about these twisted 1-handles more precisely, define the function 
-\be g_e = \begin{cases} 1 \text{\ if the fermion framing is fixed along $e$,}\\ 
-0 \text{\ if the fermion framing rotates by $2\pi$ along $e$.}\end{cases}\ee
+\be g_e = \begin{cases} 0 \text{\ if the fermion framing is fixed along $e$,}\\ 
+1 \text{\ if the fermion framing rotates by $2\pi$ along $e$.}\end{cases}\ee
 The collection of the glueing signs $\{g_e\}$ are not arbitrary and are constrained by the background spin structure. 
-To see this, we note that a fermion transported along a closed loop $\gamma$ will pick up a phase equal to $\prod_{e\in \gamma}(-1)^{g_e}$. \ethan{modulo some $\lambda$s---need to make this more precise}
-This phase is constrained since we must have 
-\be \prod_{e\in \gamma}(-1)^{g_e} = -(-1)^{q_\sigma(\gamma)},\ee 
+To see this, we note that a fermion transported along a closed loop $\gamma$ will pick up a phase equal to $-\prod_{e\in \gamma}(-1)^{g_e}$, meaning that the fermion possesses anti-periodic boundary conditions around $\gamma$ when $\gamma$ contains an even number of $2\pi$-twisted edges, and periodic boundary conditions when $\gamma$ contains an odd umber. 
+Since the fermionic boundary conditions on $\gamma$ is determined by the ambient spin structure, this phase is constrained by the relation
+\be \prod_{e\in \gamma}(-1)^{g_e} = (-1)^{q_\sigma(\gamma)},\ee 
 where as before $q_\sigma(\gamma) = 0$ $(1)$ if the loop $\gamma$ has anti-periodic (periodic) boundary conditions. 
-There is a large amount of gauge freedom in the choices of the $\{g_e\}$, however. 
+
+This constraint does not uniquely determine the $\{g_e\}$, and indeed
+there is a large amount of gauge freedom in the choices of the $\{g_e\}$. 
 If we flip all of the $g_e$ glueing signs for all edges $e$ emanating from some given vertex, we obtain a physically equivalent state, since performing such a transformation does not affect the values of $\prod_{e\in \gamma}(-1)^{g_e}$ for any closed loop $\gamma$. 
-Mathematically, this means that we can perform the gauge transformations $g\mapsto g + \beta$, where $\beta \in B^1(\mcg^*;\zt)$ is a flat (both locally and topologically) $\zt$ gauge field on the dual lattice $\mcg^*$\footnote{On the dual lattice $\mcg^*$ these gauge transformations are generated flipping all the $g_e$ variables for edges lying along a closed loop; on the original lattice $\mcg$ they are generated by flipping all the $g_e$ variables for edges emanating from a single vertex.}. 
-The new set $g$ of glueing signs is still consistent with the constraint coming from the spin structure, since $\prod_{e\in \gamma}(-1)^{\beta_e} = 1$ for all $\beta \in B^1(\Sigma^*;\zt)$. 
-This is just a manifestation of the fact that spin structures are classified by elements of $H^1(\Sigma;\zt)$: the coboundaries that are modded out in the definition of the equivalence classes in $H^1(\Sigma;\zt)$ are the flat $\mathbb{Z}_2$ gauge fields $\beta$. 
+Mathematically, this means that we can perform the gauge transformations $g\mapsto g + \beta$, where $\beta \in B^1(\mcg;\zt)$ is a flat (both locally and topologically) $\zt$ gauge field on $\mcg^*$\footnote{On the dual lattice $\mcg$ these gauge transformations are generated flipping all the $g_e$ variables for edges lying along a closed loop.}. 
+The new set $g$ of glueing signs is still consistent with the constraint coming from the spin structure, since $\prod_{e\in \gamma}(-1)^{\beta_e} = 1$ for all $\beta \in B^1(\mcg;\zt)$ and every closed path $\gamma$. 
+This is just a manifestation of the fact that spin structures are classified by elements of $H^1(\Sigma;\zt)$: the coboundaries that are modded out in the definition of the equivalence classes in $H^1(\Sigma;\zt)$ are precisely the flat $\mathbb{Z}_2$ gauge fields $\beta$. 
 %These gauge fields are gauge degrees of freedom since any two collections %of glueing signs that differ by a flat $\zt$ gauge field are physically equivalent. 
 %Indeed, an equivalent spin structure can be found by choosing any closed path along the graph $\mathcal{G}$ and flipping all gluing signs along this path. 
 %Such gauge transformations are generated by the faces of of the graph\footnote{which by definition always bound a disc}.
 %That is one chooses a face and flips all gluing signs which are at the boundary of that face.
 %In practice it's easier to fix the spin structure on the discs, and associate the gluing signs with the boundary of the edges.  
 
-\dave{Comment on non-bounding plaquettes.}
-\ethan{might need some pictures here}
+In what follows it will be convenient to work with the most general form of the handle decomposition, where there is a puncture in the ambient manifold at the center of each plaquette. 
+Since quasiparticles are localized at the boundaries of punctures, these punctures are where the quasiparticles will be located. 
+In the ground state none of these punctures will host quasiparticles, but this does not mean that all the punctures can be closed up.
+This is because the punctures contain information about the spin structure of the manifold.
+If the fermionic boundary conditions along the edges of a plaquette containing a given puncture are bounding, then the spin structure can be consistently extending into the entire plaquette, and the puncture can be removed. 
+However, if the boundary conditions along the edges of a plaquette are non-bounding, then a spin structure vortex passes through the puncture, and the spin structure cannot be consistently extended into the plaquette's interior.
+The presence of such a puncture at a plaquette $p$ is diagnosed by the sign of $\prod_{e\in \p p}(-1)^{g_e}$. 
+The configurations of vortex punctures are not completely unconstrained, since such vortices can only ever appear in pairs. 
+This provides us with a simple way of constructing a valid set of glueing signs $\{g_e\}$ for a manifold with $2n$ vortex punctures: we connect the punctures pairwise through a set of paths $\alpha_i \in C_1(\mcg^*)$, $i=1,\dots,n$,
+assign a glueing sign $g_e=1$ for each edge $e \in \mcg$ that intersects one of the $\alpha_i$ paths transversely, and set $g_e=0$ for all other edges. 
+Any other valid configuration of glueing signs can be obtained from this one through gauge transformations (i.e. by acting with flat $\zt$ gauge fields). 
+
+\ethan{need pictures}
 
 \dave{Add references to K-oritentations+spin structure e.g., Resheitkhin+..., Novak + Runkel, etc}
 
@@ -4605,7 +4619,7 @@ This is just a manifestation of the fact that spin structures are classified by 
 \subsection{Hilbert space}
 %%%%%%%%%%%%%%%
 
-In this section we turn to defining the Hilbert space on which the Hamiltonian operates. 
+In this section we briefly define the Hilbert space on which the Hamiltonian operates. 
 This Hilbert space is just the tensor product over all the Hilbert spaces that live on the standardized vertices (0-handles), but since these Hilbert spaces are supervector spaces, the order in which we tensor them together is important.
 This requires us to a bit of bookkeeping, and forces us to define a global ordering of all the vertex Hilbert Spaces. 
 %For two integers $m_v \in \mathcal{I}_v$ and $n_e \in \mathcal{I}_e$ we define $n_e < m_v$.
@@ -4620,6 +4634,8 @@ The total Hilbert space on the lattice $\mcg$ is constructed as the tensor produ
 \label{GraphHilbertSpace}
 \end{align}
 where the lattice $\mcg$ has $N$ vertices which are ordered according to $v_N,\dots,v_1$. 
+Note that we have adopted the convention that supervector spaces with higher fermion ordering appear to the left in the tensor product. 
+
 
 %The vertex Hilbert spaces $\mca(D_v)$ contain odd vectors if a fermion is present on the vertex $v$, while the edge Hilbert spaces $\mca(e_{uv})$ contain odd vectors only when the string type appearing on $e_{uv}$ is q-type.
 %I.e., the tensor product over the discs is organized as $\tp_{v \in V} \mathcal{A}(D_v) = \cdots \tp \mathcal{A}(D_{v_i}) \tp \mathcal{A}(D_{v_{i+1}}) \tp \cdots $, where $i< i+1 \in \mathcal{I}_v$.
@@ -4757,32 +4773,21 @@ B_{p} = \Pi_{\unit \in \tube}.
 \subsubsection{Edge term} 
  
  The edge terms are the qualitatively new feature of this Hamiltonian, and are a necessary ingredient for the Hamiltonian of any theory possessing q-type particles. 
-The edge terms allow fermions to pair and tunnel across the edges that host q-type particles,
-and provide a way of energetically implementing the isotopy relations associated with sliding fermions along worldlines of q-type particles. 
-
-The edge terms allow fermions to fluctuate across $Q$ type bonds, and act as the identity otherwise.
-Lets write this operator down explicitly by its action on the basis states, written in the text following (\ref{HamiltonianVectorSpace}). We will first demonstrate the action of the edge term on one picture, then provide the full details of how we write the term. 
-
-The operator implements the isotopy relation [REF] of sliding fermions along Q type bonds.
-This is accomplished by creating a term which will coherently add and remove fermions at the end points of the Q type bonds, as well as tunnel them across\footnote{Heuristically we can think of the two vertices as islands which can hold a number of fermions and whose fermion parity is well defined. We can think of the Q type bond as a 1D superconductor which coherently couples the two islands together.}. 
-This term favours equal super positions of fermions at all vertices along paths of Q type bonds. 
-Note that a 1D Kitaev wire in the topological phase also exhibits this behaviour, but since the fusion category allows two Q type simple objects to fuse to a Q type simple object we can also have the analogous junctions. 
-Note that this cannot happen at the junction of three Kitaev wires since a zero mode would be left behind \dave{This is a place holder, I want to investigate this point further when I have time.}.
-
-This term favours equal super positions of fermions at all vertices along paths of Q type bonds. 
-\footnote{Heuristically we can think of the two vertices as islands which can hold a number of fermions and whose fermion parity is well defined. We can think of the Q type bond as a 1D superconductor which coherently couples the two islands together.}
-
-explain motivation
+The edge terms allow fermions to fluctuate across edges of the graph which are labelled by q-type particles,
+and provide a way of energetically implementing the isotopy relations associated with sliding fermions along the worldlines of q-type particles. 
+Implementing these isotopy relations is accomplished by 
+adding to the Hamiltonian a term which will coherently add and remove fermions at the end points of the q-type bonds, as well as tunnel them across\footnote{Heuristically we can think of two adjacent vertices as islands which can hold a number of fermions and whose fermion parity is well defined. 
+If these vertices are connected by a q-type edge, we can think of that edge as a 1D superconductor which coherently couples the two islands together.}. 
+This term favors equal super positions of fermions at all vertices along paths of q-type bonds. 
 
 In order to define the edge term, we need to introduce a collection of three operators $\Gamma^1_v,\Gamma^2_v,\Gamma^3_v$ for each vertex $v$. 
-They act as the identity on all edges and vertices in $\mcg$ except the vertex $v$ and the edges terminating on $v$. 
-
-define $\Gamma$ operators and talk about sign-ordering
-
+They act nontrivially only on $v$ and on the edges $a,b,c$ terminating on $v$. 
+The first operator $\Gamma^1_v$ creates a fermion on the leftmost edge $a$ terminating on $v$, while simultaneously changing the fermion parity of the vertex Hilbert space at $v$:
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma1def.pdf}}}},\ee
-where $\psi,\psi' \in V^{abc}_v$ and the factor of $q(a)$ simply means that $\Gamma_v^1$ is zero unless it makes sense to have a fermion to the leftmost leg, i.e. if $a$ is q-type. 
-Note that because $\Gamma^1_v$ creates a fermion on the edge $a$ (provided that $a$ is q-type) the final vector $\psi'$ must have opposite parity from $\psi$.
+where $\psi,\psi' \in V^{abc}_v$, and the factor of $q(a)$ simply means that $\Gamma_v^1$ is zero unless it makes sense to have a fermion to the leftmost leg, i.e. if $a$ is q-type. 
+Note that because $\Gamma^1_v$ creates a fermion on the edge $a$ (provided that $a$ is q-type) the final vector $\psi'$ will always have opposite parity from $\psi$.
 Also note that the fermion on the $a$ edge has order $n+1$; we define the $\Gamma$ operators to create fermions whose order is one greater than the order of the highest-ordered fermion on the graph. 
+
 The operators $\Gamma_v^2,\Gamma_v^3$ are defined analogously:
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma2def.pdf}}}},\qquad
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma3def.pdf}}}}.\ee
@@ -4790,33 +4795,37 @@ It is easy to check that the nonzero $\Gamma_v^i$ operators at each site obey th
 \be \{ \Gamma^i_v , \Gamma^j_v \} = -2\lambda \delta_{ij},\ee
 which are the defining relations for the representations of Clifford algebras. 
 This means that the $\{\Gamma^i_v\}$ at a vertex $v$ with fusion space $V^{abc}$ where all of $a,b,c$ are q-type generate a representation of $\cl_3$, and if two of $a,b,c$ are q-type the $\{\Gamma^i_v\}$ generate a representation of $\cl_2$. 
+This is to be expected, since if the three lines emanating from $v$ are all labeled with q-type objects, then the Hilbert space associated with the three lines is $\cl_1\tp\cl_1\tp\cl_1\cong\cl_3$, and likewise for the case of two q-type objects. 
 
-The existence of these operators actually place nontrivial constraints on the ways in which q-type particles can fuse with one another. 
+The existence of the representations of these operators actually place nontrivial constraints on the ways in which q-type particles can fuse with one another. 
 For example, we can use this to show that a ``q-type Fibbonacci'' theory which contains a single q-type particle $\tau$ with the fusion space $V^{\tau\tau\tau}\cong \cc^{1|1}$, cannot exist. 
 Indeed, if $V^{\tau\tau\tau}$ is nontrivial and $\tau$ is q-type, then we must be able to find a representation of $\cl_3$ on $V^{\tau\tau\tau}$.
 This is impossible if $V^{\tau\tau\tau}\cong \cc^{1|1}$, since $\cc^{1|1}$ is not large enough to represent $\cl_3$. 
 This means that theories which contain a q-type particle $\tau$ with $V^{\tau\tau\tau}\neq0$ must contain nontrivial fusion multiplicities, which provide us with fusion spaces that are large enough to admit a representation of $\cl_3$.
 Indeed such a q-type particle exists in the $\halfesix$ theory considered earlier, which possesses nontrivial fusion multiplicities. 
 The $\Gamma$ matrices in the $\halfesix$ case are essentially determined by the relations \eqref{esixdotslide}. 
-
-more philosophy
+\ethan{might have to think about this argument more carefully---is it $\cl_3$ or $\cl_2$? Can Morita equivalence say anything here?}
 
 Now we have all the tools in hand required to write down the edge term. 
-As mentioned earlier, the edge term is responsible for allowing fermions to fluctuate (``hop'') across q-type edges.
+As mentioned earlier, the edge term is responsible for allowing fermions to fluctuate (``hop'') across edges labeled by q-type objects, and will be absent in any theory with no q-type objects.
 Fermion hopping across q-type edges is implemented by the $\Gamma$ operators. 
 For example, if $\psi\in V_u$ and $\eta\in V_u$ and the edge $e$ hosts a q-type edge label which connects the vertices $u$ and $v$, we have
-\be \label{dot_slide_gamma} \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_slide_gamma.pdf}}}},\ee
+\be \label{dot_slide_gamma} \mathord{\vcenter{\hbox{\includegraphics[scale=1.2]{dot_slide_gamma.pdf}}}},\ee
 where we have defined tensor products of $\Gamma$ operators to act so that operators located further to the left in tensor products create fermions with higher order than the operators to their right.
 Since $\psi'$ and $\eta'$ have the opposite fermion parity of $\psi$ and $\eta$, this sequence of operations exchanges the fermion parity of the two vertices connected by the edge $e$. 
 Therefore, an edge term which allows fermions to hop across q-type edges will be constructed out of terms like $\Gamma^i_u\tp \Gamma^j_v$. 
-Since $\lambda^2=-1$, we can use \eqref{dot_slide_gamma} to write down the general edge term on an edge $e$ as \ethan{do we really need the prefactor?}
-\be \label{edge_term} D_e = \frac{1}{\dim \End(e)}\left(\unit - q(e)(-1)^{g_e}\Gamma^\nu_{\p e_L} \tp \Gamma^\mu_{\p e_R} \right),\ee
-where $\p e_L$ ($\p e_R$) are the vertices at the left (right) end of the edge $e$. 
-Note that we have assumed the manifold we're working over is orientable, so after putting all of the 0-handles and 1-handles in the standardized form described in Section \ref{standardized_handles} the notions of ``left end'' and ``right end'' are well-defined. 
-Our final task is to explain the factor of $q(e)(-1)^{g_e}$ appearing in \eqref{edge_term}.
-The factor of $q(e)$, which is $1$ if the edge label $e$ is q-type and $0$ otherwise, merely accounts for the sanity condition that fermions can only fluctuate across q-type edges. 
+
+Since $\lambda^2=-1$, we can use \eqref{dot_slide_gamma} to write down the general edge term on an edge $e$ as 
+\be \label{edge_term} D_e = - q(e)(-1)^{g_e}\Gamma^\nu_{\p e_L} \tp \Gamma^\mu_{\p e_R},\ee
+where $\p e_L$ ($\p e_R$) are the vertices at the left (right) end of the edge $e$\footnote{We have assumed the manifold $\Sigma$ we're working over has a spin structure (and as a consequence is orientable), so after putting all of the 0-handles and 1-handles in the standardized form described in Section \ref{standardized_handles} the notions of ``left end'' and ``right end'' are well-defined.}, $g_e$ is as defined in Section \ref{standardized_handles}, and $D_e$ is understood to act as the identity operator on the rest of the lattice. 
+
+The factor of $q(e)$, which is $1$ if the edge label $e$ is q-type and $0$ otherwise, merely accounts for the basic constraint that fermions are only allowed to fluctuate across q-type edges. 
 The factor of $(-1)^{g_e}$ keeps track of whether nor not the fermion framing rotates by $2\pi$ upon traversing the edge $e$, as explained in Section \ref{standardized_handles}. 
-It is straightforward to check that the relations in \eqref{dot_slide_gamma} are modified by a factor of $-1$ if the edge $e$ is twisted in such a way $(g_e=1)$ and is unmodified otherwise, giving rise to the factor of $(-1)^{g_e}$ appearing in the expression for $D_e$. 
+It is straightforward to check that the relations in \eqref{dot_slide_gamma} are modified by a factor of $-1$ if the edge $e$ is twisted in such a way $(g_e=1)$ and is unmodified otherwise, giving rise to the factor of $(-1)^{g_e}$ appearing in the expression for $D_e$.
+
+In summary, including $D_e$ in the Hamiltonian provides a way of energetically enforcing the conditions that the ground states of theories containing q-type particles are realized by superpositions of string-net configurations possessing all possible ways of arranging fermions on the q-type strings. 
+Note that a 1D Kitaev wire in the topological phase also exhibits the same behavior as the q-type strings in our theories, but since generic theories (like the $\halfesix$ example considered earlier) can have fusion rules in which two q-type simple objects to fuse to a third q-type simple object, our q-type strings are more general versions of Kitaev wires (since at the junction of three Kitaev wires since a zero mode would be left behind, which does not occur in the $\halfesix$ theory). \ethan{think about this more}
+ 
 
 %\begin{align}
 %D_e =\sum_{a \in \mathcal{C} } \frac{1}{\text{dim} \; \text{End}(a)} \; \sum_{\mathcal{O}_e %\in \text{End} \mathcal{A}(e,\partial e; a)} \mathcal{O}_e.
@@ -4824,9 +4833,9 @@ It is straightforward to check that the relations in \eqref{dot_slide_gamma} are
 %Where $\mathcal{O}_e$ is supported on $\mathcal{A}({\chi(e)}) \tp_{v \in \partial e} \mathcal{A}(D_{\chi(v)})$.
 %Of course we need to do some extra work to write this as an action on the standardized Hilbert space. 
 
-\begin{align}
-\Gamma^x\left(\Vx{a}{b}{c}{\psi}\right) = \VDotx{a}{b}{c}{\psi}{\DotX} \quad \quad \Gamma^y\left(\Vx{a}{b}{c}{\psi} \right) = \VDotx{a}{b}{c}{\psi}{\DotY} \quad \quad  \Gamma^z\left(\Vx{a}{b}{c}{\psi} \right) = \VDotx{a}{b}{c}{\psi}{\DotZ} 
-\end{align}
+%\begin{align}
+%\Gamma^x\left(\Vx{a}{b}{c}{\psi}\right) = \VDotx{a}{b}{c}{\psi}{\DotX} \quad \quad \Gamma^y\left(\Vx{a}{b}{c}{\psi} \right) = \VDotx{a}{b}{c}{\psi}{\DotY} \quad \quad  \Gamma^z\left(\Vx{a}{b}{c}{\psi} \right) = \VDotx{a}{b}{c}{\psi}{\DotZ} 
+%\end{align}
 
 
 %%%%%%%%%%%%%%%%%%
