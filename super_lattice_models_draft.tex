@@ -64,6 +64,12 @@
 \newcommand{\mcg}{\mathcal{G}}
 \newcommand{\mct}{\mathcal{T}}
 \newcommand{\mcs}{\mathcal{S}}
+\newcommand{\mch}{\mathcal{H}}
+\newcommand{\mcl}{\mathcal{L}}
+\newcommand{\mcc}{\mathcal{C}}
+\newcommand{\mco}{\mathcal{O}}
+\newcommand{\mcm}{\mathcal{M}}
+\newcommand{\mcv}{\mathcal{V}}
 \newcommand{\ul}{\underline}
 \newcommand{\Mod}{\text{Mod}}
 \newcommand{\Aut}{\text{Aut}}
@@ -77,10 +83,6 @@
 \newcommand{\mcf}{\mathcal{F}}
 \newcommand{\spinz}{\text{\sffamily{Z}}}
 \newcommand{\spinx}{\text{\sffamily{X}}}
-\newcommand{\mcl}{\mathcal{L}}
-\newcommand{\mcc}{\mathcal{C}}
-\newcommand{\mco}{\mathcal{O}}
-\newcommand{\mcm}{\mathcal{M}}
 \newcommand{\zc}{\mathcal{Z}(\mathcal{C})}
 \newcommand{\id}{\text{id}}
 \newcommand{\Hom}{\text{Hom}}
@@ -2842,7 +2844,7 @@ despite the fact the the fusion space $V^{\rho \rho}_\rho$ is $2|2$ dimensional 
 \begin{align}
 \rho \tp \rho = \mathbb{C}^{1|1} \mathds{1} \oplus \mathbb{C}^{1|1} \rho.
 \end{align}
-This is one subtle difference from the purely bosonic fusion theories, the dimensions of the fusion spaces are not the same as the fusion rules. We need to quotient by $\text{End}(x)$ when writing $V^{\rho \rho}_{\rho \rho} = \oplus_x V^{\rho \rho}_x \tp_x V^{x}_{\rho \rho}$, see Sec. \ref{fusion_spaces} for more details.
+This is one subtle difference from the purely bosonic fusion theories, the dimensions of the fusion spaces are not the same as the fusion rules. We need to quotient by $\text{End}(x)$ when writing $V^{\rho \rho}_{\rho \rho} = \oplus_x V^{\rho \rho}_x \tp_x V^{x}_{\rho \rho}$, see Sec. \ref{modified_tensor_product} for more details.
 
 
 Physically this theory is quite interesting. 
@@ -4609,7 +4611,7 @@ This is just a manifestation of the fact that spin structures are classified by 
 \begin{figure}
 \begin{center}
 \includegraphics{lattice_w_vortices.pdf}
-\caption{\label{lattice_w_vortices} A region of the lattice $\mcg$ containing two vortex plaquettes. 
+\caption{\label{lattice_w_vortices} \ethan{does this figure make any sense?} A region of the lattice $\mcg$ containing two vortex plaquettes. 
 The two punctures hosting the vortices are marked as circles, with the label $N$ denoting their non-bounding spin structure. 
 We have not drawn punctures on the other (non-vortex) plaquettes, since if they possess a bounding spin structure these punctures may be consistently filled in.
 The dashed blue line is the branch cut connecting the two punctures.
@@ -4630,8 +4632,11 @@ This provides us with a simple way of constructing a valid set of glueing signs 
 assign a glueing sign $g_e=1$ for each edge $e \in \mcg$ that intersects one of the $\alpha_i$ paths transversely, and set $g_e=0$ for all other edges. 
 Any other valid configuration of glueing signs can be obtained from this one through gauge transformations (i.e. by acting with flat $\zt$ gauge fields). 
 
-\ethan{need pictures}
+Figure \ref{lattice_w_vortices} shows a small part of a lattice $\mcg$ containing two vortex punctures. 
+The vortex punctures are indicated by the circles labeled by $N$ (for non-bounding), and are connected by the dashed blue branch cut. 
+At each place where the branch cut intersects an edge of $\mcg$, the fermion framing is twisted by $2\pi$, which acts as a spin flip. 
 
+\ethan{might need more pictures}
 \dave{Add references to K-oritentations+spin structure e.g., Resheitkhin+..., Novak + Runkel, etc}
 
 
@@ -4644,17 +4649,40 @@ This Hilbert space is just the tensor product over all the Hilbert spaces that l
 This requires us to a bit of bookkeeping, and forces us to define a global ordering of all the vertex Hilbert Spaces. 
 %For two integers $m_v \in \mathcal{I}_v$ and $n_e \in \mathcal{I}_e$ we define $n_e < m_v$.
 Let $V_{v}$ be the supervector space constituting the Hilbert space on the vertex $v$.
-$V_v$ will only contain odd vectors if the vertex $v$ is capable of supporting a fermion. 
-More precisely, if the labels of the edges terminating on $v$ are $a,b,c$, then the Hilbert space $V_v = V^{abc}_v$ is a supervector space of dimension 
+If the labels of the edges terminating on $v$ are $a,b,c$, then the Hilbert space $V_v = V^{abc}_v$ is a supervector space of dimension 
 \be \dim V^{abc}_v = \cc^{N^{abc}|N^{abc}_f},\ee
 where $N^{abc}$ ($N^{abc}_f$) is the number of even (odd) ways that $a,b,c$ can fuse to the vacuum.
-The total Hilbert space on the lattice $\mcg$ is constructed as the tensor product
+If any of $a,b,c$ are q-type then $N^{abc} = N_f^{abc}$, and $V^{abc}$ is mapped to itself under the odd isomorphism $V^{abc} \mapsto V^{abc} \tp \cc^{0|1}$, while in general $N^{abc}\neq N^{abc}_f$ if all of $a,b,c$ are m-type. 
+
+The total Hilbert space on a lattice $\mcg$ with $n$ vertices and $m$ edges is constructed as the tensor product of the fusion spaces at each vertex in the following way:
+\be \mch_\mcg = \mch_\mcv \tp \mch_\mce,\ee
+where the vertex Hilbert space $\mch_\mcv$ and the edge Hilbert space $\mch_\mce$ are 
 \begin{align}
-\mathcal{H}(\mathcal{G}) = V_{v_N} \tp V_{v_{N-1}} \tp \dots \tp V_{v_2} \tp V_{v_1},
+\mch_\mcv & = V_{v_n} \tp V_{v_{n-1}} \tp \dots \tp V_{v_2} \tp V_{v_1},\\
+\mch_\mce & = \End(e_{n+m})\tp \End(e_{n+m-1}) \tp \dots \tp \End(e_{n+2}) \tp \End(e_{n+1}),
 \label{GraphHilbertSpace}
 \end{align}
-where the lattice $\mcg$ has $N$ vertices which are ordered according to $v_N,\dots,v_1$. 
-Note that we have adopted the convention that supervector spaces with higher fermion ordering appear to the left in the tensor product. 
+where the $n$ vertices in $\mcg$ are ordered in some fixed way according to $v_n,\dots,v_1$, and likewise for the $m$ edges in $\mcg$, which are all assigned a higher ordering than the vertices.  
+Additionally, in the expression for $\mch_\mce$ we've abused notation by writing $\End(e_i)$ to denote the endomorphism algebra of the simple object that labels the edge $e_i \in \mcg$. 
+Note that we have adopted the convention that supervector spaces with higher fermion ordering always appear to the left in the tensor product. 
+The tensor product is supercommutative, in the sense that for $\psi\in V_{v_i},\eta\in V_{v_{i+1}}$,
+\be \psi \tp \eta = (-1)^{|\psi||\eta|}\eta\tp\psi \in V_{v_{i+1}} \tp V_{v_i},\ee
+and likewise for vectors in the edge Hilbert space $\mch_\mce$. 
+
+The edge Hilbert space is only non-trivial when the theory contains q-type particles, for if there are no q-type edge labels then we simply have $\mch_\mce= \cc^{\tp m} \cong \cc$. 
+If $k$ of the edge labels are q-type, then the edge Hilbert space is $\mch_\mce = \cl_1^{\tp k} \cong \cl_k$, and so we can realize all complex Clifford algebras as the edge Hilbert space of a particular lattice hosting a theory containing q-type objects. 
+
+However, when the theory contains q-type objects, the Hilbert spaces $\mch_\mcv$ and $\mch_\mce$ are actually much bigger than the {\it physical} edge and vertex Hilbert spaces of the theory, in a sense that will be made more precise in Section \ref{modified_tensor_product}. 
+To see an example of this, consider a diagram involving a single q-type edge $e$, with a Hilbert space equal to $\End(e) \cong \cl_1$. 
+Now consider decomposing the edge $e$ into many smaller edges $e_1,\dots,e_N$, such that $e_1\cup\dots\cup e_N = e$, where each junction of the edges $e_i,e_{i+1}$ can be thought of as a 2-valent vertex with fusion space $V_a^a \cong \cl_1$, where $a$ is the q-type object that labels the edge $e$. 
+This decomposition produces a vertex Hilbert space $\mch_\mcv \cong \cl_{N-1}$, which by tuning $N$ can be made arbitrarily large. 
+Clearly this is unphysical, and the redundant degrees of freedom created during the decomposition of $e$ into $e_1\cup\dots\cup e_N$ need to be modded out to obtain the physical Hilbert space of the theory. 
+Obtaining the physical Hilbert space can be done in one of two ways: by adding an edge term to the Hamiltonian which allows fermions to fluctuate along q-type edges and between vertices linked by a q-type edge, or by modifying the tensor products appearing in the definition of $\mch_\mcg$ to be tensor products whose tensor units are chosen from the endomorphism algebras of the edge labels. 
+We will describe the edge term approach in this section, and will address the latter method in Section \ref{modified_tensor_product}. 
+
+
+
+\ethan{I haven't said anything about inner products, since I actually don't think we need them in this section}
 
 
 %The vertex Hilbert spaces $\mca(D_v)$ contain odd vectors if a fermion is present on the vertex $v$, while the edge Hilbert spaces $\mca(e_{uv})$ contain odd vectors only when the string type appearing on $e_{uv}$ is q-type.
@@ -4698,9 +4726,6 @@ The label $a(e)$ is a simple object in $\mathcal{C}$.
 The label $\psi(v)$ is a graded vector in $\mathcal{H}_v$. 
 It is really a short hand for the vector $\psi^{ab}_{c,\mu}(v)$ where $a,b$ and $c$ must be admissible by the fusion rule $N_{ab}^c$, and $\mu$ denotes the multiplicity index, which runs over the even and odd vectors.
 We denote the grading of $\ket{\psi(v)}$ by $p_v$. 
-\end{comment}
-%%%%%%%%%%%%%%%
-
 Lets address the vertex super space in some more detail.
 We we define the canonical inner product on the graded vector space by
 \begin{align}
@@ -4712,10 +4737,13 @@ h: &\mathcal{H}_v \tp \mathcal{H}_v \rightarrow \mathbb{C}^{1|0}\\
 %The ordering of the vertex terms is important since each $\ket{\psi(v)} \in \mathcal{H}_v$ could be fermionic.
 %Indeed lets choose a basis for each $\mathcal{H}_v$ as $\ket{\psi^{ab}_{c,\mu}(v)}$ where $\mu$ runs over all basis vectors of $V^{ab}_c$. 
 %We'll denote the parity of the vector by $p^{ab}_{c,\mu}$.
+\end{comment}
+%%%%%%%%%%%%%%%
 
 
-
+%%%%%%%%%%%%%%%%%%%%%
 \subsection{Terms in the Hamiltonian}
+%%%%%%%%%%%%%%%%%%%%%
 
 In this section we will finally write down the Hamiltonian, first providing a high-level way of writing it and then turning to an explicit presentation of the Hamiltonian associated to the lattice in Fig.~\ref{HoneycombLattice}. 
 
@@ -6097,7 +6125,7 @@ If $M$ and $N$ are two manifolds and there exists a closed manifold $S$ such tha
 \be \label{gluing} V(M\cup_SN) \cong V(M)\tp_{V(S)} V(N).\ee
 %where we require the spin structure on $S$ induced by the spin structure on $M$ agree with the one induced by the spin structure on $N$. 
 
-In \eqref{gluing} the use of $\tp_{V(S)}$ rather than the usual $\tp_\cc$ is for the same reason as the use of $\tp_{\End(x)}$ when tensoring together superfusion spaces, which was discussed in detail back in Sec \ref{fusion_spaces}. This relation can be understood from a physical point of view by considering the entanglement created when we bipartition a cylinder. When we create the partition, we cut some field lines that connect the two cylinders. When we glue the cylinders back together, we need to make sure that we project onto...
+In \eqref{gluing} the use of $\tp_{V(S)}$ rather than the usual $\tp_\cc$ is for the same reason as the use of $\tp_{\End(x)}$ when tensoring together superfusion spaces, which was discussed in detail back in Sec \ref{modified_tensor_product}. This relation can be understood from a physical point of view by considering the entanglement created when we bipartition a cylinder. When we create the partition, we cut some field lines that connect the two cylinders. When we glue the cylinders back together, we need to make sure that we project onto...
 
 As an analogy, consider an infinite spin-1 AKLT chain in one dimension. Consider cutting the chain at a link, giving two chains possessing one spin-$1/2$ degree of freedom at their ends. We can then attempt to recover the chain by glueing the two chains back together, which we can do by tensoring the edge spins together. Since $\frac{1}{2}\tp \frac{1}{2} = 0\oplus 1$, this gives us a Hilbert space that is larger than what we started with: to recover the original AKLT chain Hilbert space, we need to mod out by some degrees of freedom and project onto the spin $1$ subspace. This projection is essentially the same as what is accomplished by our use of the modified tensor product $\tp_{V(S)}$. 
 
