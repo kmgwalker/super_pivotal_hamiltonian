@@ -287,7 +287,9 @@
           \hidewidth\raise0ex\hbox{$\scale{1.5}{\VerticalSpace}$}\cr
   }}}
   
-  
+  \newcommand{\tcca}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{tcca.pdf}}}}}
+    \newcommand{\tccb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{tccb.pdf}}}}}
+ 
 
 
 \newcommand{\TaddownTubeNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TaddownTube.pdf}}}}}
@@ -2565,8 +2567,13 @@ There is also a natural grading on all simple objects given by the phase picked 
 We define this by,
 \begin{align}
 (-1)^{\nu_x} = S_{a \psi}/S_{a0} \in \{+1, -1 \}
+\label{grading}
 \end{align}
 It is easy to check that this grading is preserved under fusion.
+Hence a second natural way to split the objects of $\mathcal{C}$ is according to the grading $\nu_x$,
+\begin{align}
+\text{obj}\; \mathcal{C}  = I_0 \cup I_1, \quad \quad I_a \tp I_b = I_{a+b\; \text{mod} \; 2}
+\end{align}
 Physically it is natural to call particles with $\nu_x = 1$ vortices, since when a fermion is dragged around them it will pick up a minus sign.
 We will avoid this nomenclature here to avoid confusion with non-bounding spin structures, which also satisfy this property for the physical fermions. 
 It can be shown that for an modular tensor category that $\nu_x = 1$ for all Q type particles\footnote{One can show this by considering the symmetries of the S-matrix on the punctured torus.}. 
@@ -2602,18 +2609,21 @@ SU(2)_6:&&m_0 & m_1 & m_2 & q_3 \\
 SO(3)_3:&&m_0 && m_2& 
 }
 \end{align}
+The particles have a natural grading given by (\ref{grading}) with the even set given by $I_0 = \{ m_0, m_2 \}$ and the odd one by $I_1 = \{m_1, q_3\}$.
+We have $I_a \tp I_b = I_{a+b \;  \text{mod} \; 2}$.
+The closed sub-fusion algebra given by $I_0$ is the content of $SO(3)_3/\psi$. 
 The non-trivial fusion rules of $SU(2)_6/\psi$ are given by
-\begin{align}
-\xymatrix{
-\text{
-{\tabulinesep=1.2mm
-\begin{tabu}{ c | c c c }
-$A \tp B$ & $m_1$&$m_2$ & $q_3$ \\ \hline
-$m_1$ & $m_0 \oplus m_2$& $m_1 \oplus q_3$ & $\mathbb{C}^{1|1} m_2$ \\
-$m_2$ &  &$m_0 \oplus \mathbb{C}^{1|1} m_2$& $\mathbb{C}^{1|1} m_1 \oplus \mathbb{C}^{1|1} q_3$\\
-$q_3$ &  && $\mathbb{C}^{1|1} m_0 \oplus \mathbb{C}^{1|1} m_2$\\
-\end{tabu}
-}}
+%\begin{align}
+%\xymatrix{
+%\text{
+%{\tabulinesep=1.2mm
+%\begin{tabu}{ c | c c c }
+%$A \tp B$ & $m_1$&$m_2$ & $q_3$ \\ \hline
+%$m_1$ & $m_0 \oplus m_2$& $m_1 \oplus q_3$ & $\mathbb{C}^{1|1} m_2$ \\
+%$m_2$ &  &$m_0 \oplus \mathbb{C}^{1|1} m_2$& $\mathbb{C}^{1|1} m_1 \oplus \mathbb{C}^{1|1} q_3$\\
+%$q_3$ &  && $\mathbb{C}^{1|1} m_0 \oplus \mathbb{C}^{1|1} m_2$\\
+%\end{tabu}
+%}}
 %\\
 %\text{
 %{\tabulinesep=1.2mm
@@ -2623,9 +2633,66 @@ $q_3$ &  && $\mathbb{C}^{1|1} m_0 \oplus \mathbb{C}^{1|1} m_2$\\
 %$q$ & $\mathbb{C}^{1|1} m_2$ & $\mathbb{C}^{1|1} m_0 \oplus \mathbb{C}^{1|1} m_2$\\
 %\end{tabu}
 %}}
+%}
+%\end{align}
+%older tables
+%\begin{align}
+%\xymatrix{
+%\text{
+%{\tabulinesep=1.2mm
+%\begin{tabu}{ c | c  }
+%$I_0 \tp I_0$ &$m_2$ \\ \hline 
+%$m_2$ & $m_0 \oplus \mathbb{C}^{1|1}m_2$\\
+%\end{tabu}
+%}}
+%&
+%\text{
+%{\tabulinesep=1.2mm
+%\begin{tabu}{ c | c  c }
+%$I_0 \tp I_1$&$m_1 $& $q_3$\\ \hline 
+%$m_2$ &$ m_0\oplus q_3 $ & $\mathbb{C}^{1|1} m_1 \oplus \mathbb{C}^{1|1} q_3$\\
+%\end{tabu}
+%}}\\
+%&
+%\text{
+%{\tabulinesep=1.2mm
+%\begin{tabu}{ c | c  c }
+%$I_1 \tp I_1$ &$m_1 $& $q_3$\\ \hline 
+%$m_1$ &$m_0 \oplus m_2$&$ \mathbb{C}^{1|1} m_2$ \\
+%$q_3$ &$\mathbb{C}^{1|1} q_3 $&$ \mathbb{C}^{1|1}m_0 \oplus \mathbb{C}^{1|1}q_3$\\
+%\end{tabu}
+%}}
+%}
+%\end{align}
+\begin{align}
+\xymatrix{
+\text{
+{\tabulinesep=1.2mm
+\begin{tabu}{ c | c c }
+$I_0 \tp I_0$&$m_0$ &$m_2$ \\ \hline 
+$m_0$&$m_0$ &$m_2$ \\ 
+$m_2$ & $m_2$ & $m_0 \oplus \mathbb{C}^{1|1}m_2$\\
+\end{tabu}
+}}
+&
+\text{
+{\tabulinesep=1.2mm
+\begin{tabu}{ c | c  c }
+$I_0 \tp I_1$&$m_1 $& $q_3$\\ \hline 
+$m_0$& $m_1 $& $q_3$\\  
+$m_2$ &$ m_0\oplus q_3 $ & $\mathbb{C}^{1|1} m_1 \oplus \mathbb{C}^{1|1} q_3$\\
+\multicolumn{1}{r}{}&&\\
+$I_1 \tp I_1$ &$m_1 $& $q_3$\\ \hline 
+$m_1$ &$m_0 \oplus m_2$&$ \mathbb{C}^{1|1} m_2$ \\
+$q_3$ &$\mathbb{C}^{1|1} q_3 $&$ \mathbb{C}^{1|1}m_0 \oplus \mathbb{C}^{1|1}q_3$\\
+\end{tabu}
+}}
 }
 \end{align}
-Of note is the closed sub-category given by $m_0$ and $m_2$ which corresponds to the image of $SO(3)_3$ under condensing $\psi$\footnote{Also note that although the $m_2 \tp m_2 \rightarrow m_2$ fusion rule has a $\mathbb{C}^{1|1}$ coefficient, it is not $Q$ type.}.
+There are two peculiarities that these examples highlight nicely. 
+First, note that $m_2$ is an M type particle despite that $\mathbb{C}^{1|1}m_2$ appears in the tensor product of $m_2$ with it'self.
+Second, notice that a Q-type particle appears in the tensor product of two M-type particles, specifically $m_2 \tp m_1$. 
+Furthermore notice that it only appears with the coefficient $\mathbb{C}^{1|0}$, despite the fact that $V^{m_2 m_1}_{q_3} \cong \mathbb{C}^{1|1}$.
 %It has fusion rules\footnote{Note that although the $m_2 \tp m_2 \rightarrow m_2$ fusion rule has a $\mathbb{C}^{1|1}$ coefficient, it is not $Q$ type. },
 %\begin{align}
 %m_2 \tp m_2  = \mathbb{C}^{1|0} m_0 \oplus \mathbb{C}^{1|1}m_2.
@@ -2668,7 +2735,10 @@ Any $c \in a \tp b$ provides a suitable representative for the isomorphism class
 Sometimes we will drop the $c$ when we are computed quantities which are independent of the representative of the isomorphism class.  
 
 One can compute the topological spin of the particle by performing a twist. 
-\dave{Add picture of twisting/figure of calculation.}
+For compatibility with the $S$ matrix defined later we choose to twist the inner circle counter-clockwise by $2 \pi$:
+\begin{align}
+t:\;\; \tcca \; \mapsto  \; \tccb
+\end{align}
 Under twisting the inner circle of the annulus counter-clockwise by $2 \pi$ one finds that the particle returns to it'self up to an overall phase, which is given by,
 \begin{align}
 t_{(a,b)} = \theta_a \theta_b^*
@@ -2701,65 +2771,66 @@ Indeed all the idempotents are of the form,
 {\tabulinesep=1.2mm
 \begin{tabu}{ c c | c }
 type& spin & isomorphism class \\ \hline
-$M_{ab}^x$ &$\frac{\theta_a}{\theta_b} (-1)^{(\nu_b +1)p_{ab}^c + x(\nu_a + \nu_b)}$&$a \tp b $ \\
+$M_{ab}^x$ &$\frac{\theta_a}{\theta_b} (-1)^{Jp_{ab}^c + x(\nu_a + \nu_b)}$&$a \tp b $ \\
 \end{tabu}
 }}
 }
 \end{align}
-Where $J = 0,1$ denotes a non-bounding (bounding) spin structure and $x = 0$ or $\psi$.
+Where $J = 0,1$ denotes a non-bounding (bounding) spin structure and $x = 0$ or $\psi$ and $p_{ab}^c$ is the parity of the vertex $V^{ab}_c$.
 We also define 
 \begin{align}
-\mathcal{D}_{\text{condensed}}^2 \Omega_x = \bigoplus_x \frac{d_x}{ \text{dim} \; \text{End} \; x} x
+\mathcal{D}_{\text{condensed}}^2 \Omega_x = \bigoplus_r \frac{d_r (-1)^{\nu_r x} }{2^{n_r}} r
 \end{align}
+Where $x = 0, \psi$ and $2^{n_r} = \text{dim} \; \text{End} \; r$. 
 Consistency requires that $-(-1)^{\nu_b + J} = +1$.
 If $a \in Q$ then the idempotent $M_{ab}^\psi$ is oddly isomorphic to $M_{ab}^0$.
 If $b \in Q$ then the idempotent only lives over the non-bounding spin structure, and is $Q$ type. 
 
 In the case of $SU(2)_6$ we have have 14 particles in the bounding sector, all $M$ type, and in the non-bounding sector we also have $14$ particles, and $7$ of them are $Q$ type. 
 In the bounding sector we have,
-\dave{fill in tomorrow.}
+\dave{Need to check this again carefully and do sum of squares..}
 \begin{align}
 &\text{
 \begin{tabu}{ c | c }
 type& spin \\ \hline
-$M_{00}^0$ &$\theta$ \\
-$M_{10}^0$ &$\theta$ \\
-$M_{20}^0$ &$\theta$ \\
+$M_{00}^0$ &$1$ \\
+$M_{10}^0$ &$e^{3 i \pi /16}$ \\
+$M_{20}^0$ &$i$ \\
 \end{tabu}
 }
 \quad \quad
 \text{
 \begin{tabu}{ c | c }
-type& spin \\ \hline
-$M_{00}^\psi$ &$\theta$ \\
-$M_{10}^\psi$ &$\theta$ \\
-$M_{20}^\psi$ &$\theta$ \\
+type& spin  \\ \hline
+$M_{00}^\psi$ &$1$ \\
+$M_{10}^\psi$ &$-e^{3 i \pi/16}$ \\
+$M_{20}^\psi$ &$i$ \\
 \end{tabu}
 }
 \quad \quad
 \text{
 \begin{tabu}{ c | c }
-type& spin \\ \hline
-$M_{30}^0$ &$\theta$ \\
-$M_{32}^0$ &$\theta$ \\
+type& spin $\times \; (-1)^{p_{ab}^c} $ \\ \hline
+$M_{30}^0$ &$ e^{15i \pi /16}$ \\
+$M_{32}^0$ &$-ie^{15i \pi /16}$ \\
 \end{tabu}
 }
 \\
 &\text{
 \begin{tabu}{ c | c }
-type& spin \\ \hline
-$M_{02}^0$ &$\theta$ \\
-$M_{12}^0$ &$\theta$ \\
-$M_{22}^0$ &$\theta$ \\
+type& spin $\times \; (-1)^{p_{ab}^c} $ \\ \hline
+$M_{02}^0$ &$-i $ \\
+$M_{12}^0$ &$-i e^{3 i \pi/16}$ \\
+$M_{22}^0$ &$1$ \\
 \end{tabu}
 }
 \quad \quad
 \text{
 \begin{tabu}{ c | c }
-type& spin \\ \hline
-$M_{02}^\psi$ &$\theta$ \\
-$M_{12}^\psi$ &$\theta$ \\
-$M_{22}^\psi$ &$\theta$ \\
+type&spin $\times \; (-1)^{p_{ab}^c} $ \\ \hline
+$M_{02}^\psi$ &$-i$ \\
+$M_{12}^\psi$ &$ie^{3 i \pi /16}$ \\
+$M_{22}^\psi$ &$1$ \\
 \end{tabu}
 }
 \end{align}
@@ -2769,54 +2840,59 @@ In the non-bounding sector we have,
 &\text{
 \begin{tabu}{ c | c }
 type& spin \\ \hline
-$M_{01}^0$ &$\theta$ \\
-$M_{11}^0$ &$\theta$ \\
-$M_{21}^0$ &$\theta$ \\
+$M_{01}^0$ &$-e^{-3i\pi/16}$ \\
+$M_{11}^0$ &$1$ \\
+$M_{21}^0$ &$-i e^{-3i \pi /16}$ \\
 \end{tabu}
 }
 \quad \quad
 \text{
 \begin{tabu}{ c | c }
 type& spin \\ \hline
-$M_{01}^\psi$ &$\theta$ \\
-$M_{11}^\psi$ &$\theta$ \\
-$M_{21}^\psi$ &$\theta$ \\
+$M_{01}^\psi$ &$-e^{-3 i \pi /16}$ \\
+$M_{11}^\psi$ &$1$ \\
+$M_{21}^\psi$ &$-i e^{-3 i \pi /16}$ \\
 \end{tabu}
 }
 \quad \quad
 \text{
 \begin{tabu}{ c | c }
 type& spin \\ \hline
-$M_{31}^0$ &$\theta$ \\
-$Q_{33}^0$ &$\theta$ \\
+$M_{31}^0$ &$e^{3 i \pi /4}$ \\
+$Q_{33}^0$ &$1$ \\
 \end{tabu}
 }
 \\
 &\text{
 \begin{tabu}{ c | c }
 type& spin \\ \hline
-$Q_{03}^0$ &$\theta$ \\
-$Q_{13}^0$ &$\theta$ \\
-$Q_{23}^0$ &$\theta$ \\
+$Q_{03}^0$ &$-e^{-15 i \pi /16}$ \\
+$Q_{13}^0$ &$e^{- 3 i \pi /4}$ \\
+$Q_{23}^0$ &$-i e^{-15 i \pi /16}$ \\
 \end{tabu}
 }
 \quad \quad
 \text{
 \begin{tabu}{ c | c }
 type& spin \\ \hline
-$Q_{03}^\psi$ &$\theta$ \\
-$Q_{13}^\psi$ &$\theta$ \\
-$Q_{23}^\psi$ &$\theta$ \\
+$Q_{03}^\psi$ &$-e^{-15 i \pi /16}$ \\
+$Q_{13}^\psi$ &$e^{- 3 i \pi /4}$ \\
+$Q_{23}^\psi$ &$- i e^{- 15i \pi /16}$ \\
 \end{tabu}
 }
 \end{align}
-
+\dave{Could add formula for modular S-matrix. Need to double check it though.}
 
 \subsubsection{Primitive idempotents of $SO(3)_3/\psi$}
-Each isomorphism class of idempotents can be written in the following way\dave{I know the normalization up to a factor of $2$ that I need to revist.}
+We now move on to $SO(3)_3/\psi$. 
+Finding the idempotents is a little more interesting, since the parent theory isn't modular.
+However, it only lacks modularity by a transparent fermion, and can be made modular by consistently introducing defects which braid non-trivially with $\psi$, see [REF WANG].
+We will simply use the fact that $SU(2)_6$ is a modular extension of $SO(3)_3$. 
+
+Again each isomorphism class of idempotents can be written in the following way
 \begin{align}
 \xymatrix{
-\underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{J}}
+\sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{J}}
 &
 \text{
 {\tabulinesep=1.2mm
@@ -2831,11 +2907,10 @@ $M_{ab}$ &$\theta$&$a \tp b $ \\
 Where $J$ denotes the spin structure with $J =0$ non-bounding, and $J=1$ bounding. 
 The $\Omega_0$ loop is a projector written as the direct sum of simple objects: $\Omega_0 = (m_0 \oplus d m_2)/(2+2d)$, with $d = 1 + \sqrt{2}$.
 The $a,b,$ and $c$ are labels of simple objects. 
-Sometimes the spin will be appended by a factor of $(-1)^{p^{ab}_c}$ which denotes that if $a$ and $b$ fuse oddly to $c$ then you pick up an extra minus sign.
-The basis is convenient, since the idempotents with differring labels are orthogonal.
+However, since the theory is not modular, we can't take $a,b \in \text{obj} SO(3)_3 /\psi$, but instead, we let them take values in $SU(2)_6/\psi$, such that there fusion product $a \tp b \in SO(3)_3/\psi$. 
+Such a treatment allows you to find all idempotents of $SO(3)_3$ as we will see.
 
-
-We now write down the primitive idempotents of $SO(3)_6$ and there topological spins. 
+We now write down the primitive idempotents of $SO(3)_3/\psi$ and there topological spins. 
 In the bounding sector $J = 1$, we have $4$ idempotents given by,
 \begin{align}
 \xymatrix{
@@ -2846,14 +2921,14 @@ In the bounding sector $J = 1$, we have $4$ idempotents given by,
 \begin{tabu}{ c c | c }
 type& spin & isomorphism class \\ \hline
 $M_{00}$ &$1$&$\mathbb{C}^{1|0}m_0$ \\
-$M_{02}$ &$ \theta_2 $&$ \mathbb{C}^{1|0} m_2 $\\
-$M_{20}$ & $\theta_2^* $&$ \mathbb{C}^{1|0} m_2$\\
+$M_{02}$ &$ -i $&$ \mathbb{C}^{1|0} m_2 $\\
+$M_{20}$ & $i$&$ \mathbb{C}^{1|0} m_2$\\
 $M_{22}$ &$ (-1)^{p^{ab}_c} $& $ \mathbb{C}^{1|0} m_0 \oplus  \mathbb{C}^{1|1} m_2$\\
 \end{tabu}
 }}}
 }
 \end{align}
-Where we have used the short hand $M_{ab} \equiv M_{m_a m_b}$ and $\theta_a = e^{2 i \pi a(a+2)/32}$, in particular $\theta_2  =i$ and $\theta_1^* \theta_3 =e^{3 i \pi /4} $.
+%Where we have used the short hand $M_{ab} \equiv M_{m_a m_b}$ and $\theta_a = e^{2 i \pi a(a+2)/32}$, in particular $\theta_2  =i$ and $\theta_1^* \theta_3 =e^{3 i \pi /4} $.
 Similarly in the non-bounding sector we have,
 \begin{align}
 \xymatrix{
@@ -2864,8 +2939,8 @@ Similarly in the non-bounding sector we have,
 \begin{tabu}{ c c | c }
 type& spin & isomorphism class \\ \hline
 $M_{11}$ &$1$&$\mathbb{C}^{1|0}m_0 \oplus \mathbb{C}^{1|0}m_2$ \\
-$Q_{13}$ &$ \theta_1^* \theta_3 $&$ \mathbb{C}^{1|1} m_2 $\\
-$Q_{31}$ & $\theta_3^* \theta_1 $&$ \mathbb{C}^{1|1} m_2$\\
+$Q_{13}$ &$ e^{-3 i \pi/4} $&$ \mathbb{C}^{1|1} m_2 $\\
+$Q_{31}$ & $e^{3 i \pi /4} $&$ \mathbb{C}^{1|1} m_2$\\
 $M_{33}$ &$ 1 $& $ \mathbb{C}^{1|0} m_0 \oplus  \mathbb{C}^{1|0} m_2$\\
 \end{tabu}
 }}}
@@ -2875,8 +2950,6 @@ $M_{33}$ &$ 1 $& $ \mathbb{C}^{1|0} m_0 \oplus  \mathbb{C}^{1|0} m_2$\\
 However, the objects $1$ and $3$ are particles in $SU(2)_6$, not $SO(3)_6$.
 To make sense of the expressions one has to resolve the crossings on the tubes using the parent theory $SU(2)_6$ and then condense the $\psi$ particles off the tube.
 In doing so, all of the particles from the parent theory disappear and one is left with tube idempotents in the condensed theory. 
-
-\subsection{Topological spins}
 
 \subsection{Modular transformations}
 The modular transformations can be computed by direct calculation. 
@@ -3021,7 +3094,7 @@ e^{- i \pi /4}\left( \begin{matrix}
 \stackrel{\bullet}{Q}_{31}\\
 \end{matrix} \right)_{NN}
 \end{align}
-One can easily check that the odd part of the $S$ matrix satisfies $S^4 = -1$, and $(ST)^3 = -1$.
+One can easily check that the odd part of the $S$ matrix satisfies $S^4 = -1$, and $(TS)^3 = -1$.
 As for the Dehn twists, we have,
 \begin{align}
 { \TorusBraidBasis{a}{b\;}{}{\Omega_0}{J}{W}} \stackrel{T}{\longrightarrow} \;
@@ -4714,9 +4787,9 @@ The fact that we have to use a half braid to define the condensation suggests th
 \dave{Also I think I have a good idea how to compute the center of $SU(2)_{2+4k}$ now. 
 We could add an appendix with some of the details, e.g., 6j symbols and particles/fusion rules of the parent theory, condensed theory and formula for the idempotents (there is a nice way to do this in terms of the idempotents of the parent theory), could also try to work out a formula for the S and T matrices of the center.}
 
-\section{3 fermion toric code example}
-\dave{We could do this example, or throw it in an appendix if we have time. It should be straightforward to compute. }
-
+%\section{3 fermion toric code example}
+%\dave{We could do this example, or throw it in an appendix if we have time. It should be straightforward to compute. }
+%\dave{I think we have plenty of examples. Although it would definitely be interesting to do a non-trivial example based on Vec_G.}
 
 %\section{Q-Fibonacci}
 %\dave{Does not exist.}
