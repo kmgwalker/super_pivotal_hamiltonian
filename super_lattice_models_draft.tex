@@ -2535,27 +2535,40 @@ Thus there is no need to define $\Arf(Y)$ in this case.
 \kw{only sketch; refer to paper in prep for full details.}
 
 
-\section{Fermion condensation in $SU(2)_6$ and $SO(3)_3$}
+\section{Fermion condensation in $SO(3)_3$} 
+%$SU(2)_6$ and $SO(3)_3$
 \dave{In progress. I have the general formulas for minimal idempotents, S and T in any MTC/psi. 
 As well as any UBCF that is only non-modular by a transparent fermion, like in $SO(3)_3$.
 Should we include those?}
 Here we provide two more, closely related examples of back wall condensation. 
 The parent theories are given by $SU(2)_6$ and $SO(3)_3$. 
 Each theory contains a fermion, in $SO(3)_3$ it is transparent, while in $SU(2)_6$ it is not. 
-Since the fermion in $SO(3)_3$ is transparent, the $S$-matrix is degenerate, and the theory is not modular. 
+The fermion in $SO(3)_3$ is transparent and so the $S$-matrix is degenerate hence the theory is not modular. 
 This lack of modularity is fairly benign since $SU(2)_6$ is a minimal modular extension of $SO(3)_3$, and the minimal idempotents of any modular theory can be found straightforwardly. 
 We can then bootstrap off these idempotents to infer the minimal idempotents of $SO(3)_3$. 
-The minimal idempotents of $SU(2)_6/\psi$ and $SO(3)_3/\psi$ follow. 
+The minimal idempotents of $SU(2)_6/\psi$ and $SO(3)_3/\psi$ are then inferred. 
 
-\subsection{Some remarks on fermion condensation in MTC's}
-\dave{Just laying out some notation. Will fix up later.}
-First we choose our isomorphism classes of simple objects in the condensed theory by writing 
+From the minimal idempotents one can compute the mapping class group action. 
+We will void this for the $SU(2)_6$ and just compute them for $SO(3)_3$.
+First we will establish some notation for UBFC's with fermions.
+
+\subsection{Notation for fermionic data in a UBFC}
+We take a unitary braided fusion category (UBFC) $\mathcal{C}$. 
+We denote the fermionic object by $\psi \in \text{Obj}\; \mathcal{C}$. 
+The fermion leads to two natural ways of dissecting the set of objects in $\mathcal{C}$, one is given by whether a given simple object is invariant under fusion with $\psi$, the other is given by whether or not $\psi$ is transparent with respect to a given object.
+Although the two dissections are related, they are not the same, both will be useful in the following discussions.
+
+
+The first distinction of elements is by whether they are M type or Q type. 
+We write
 \begin{align}
 \text{obj} \; \mathcal{C}  = M \cup \psi \tp M \cup Q
 \end{align}
-Note that $M$ is not unique, one could change any particle in $\psi \tp M$ with one in $M$ and obtain another isomorphism class of simple objects in the condensed theory. 
-The set of simple objects $Q$ are unique, they are the simple objects invariant under fusion with $\psi$: $\psi \tp q = q$.
-It is useful to define 
+where if $x \in M$ then $x \tp \psi \notin M$ and if $x \in Q$ then $x \tp \psi \in Q$.
+Note that $M$ is not unique, we could take any $x \in M$ and replace it by $x \tp \psi$.
+The resulting ismorphism class of this simple object changes, and every edge in the condensed theory labled by this object will pick up a pair of fermions at its nieghbouring 
+one could change any particle in $\psi \tp M$ with one in $M$ and obtain another isomorphism class of simple objects in the condensed theory. 
+It is useful to define the indicator
 \begin{align}
 n_x=
 \begin{cases}
@@ -2563,25 +2576,25 @@ n_x=
 1\quad \text{if $x \in Q$}\\
 \end{cases}
 \end{align}
-There is also a natural grading on all simple objects given by the phase picked up when a fermion line is dragged through a simple object.
-We define this by,
+
+The second natural way to distinguish the simple objects given a fermion is to use the $\mathbb{Z}_2$ grading inherited from the full braid with a fermion. 
+This can be defined by,
 \begin{align}
 (-1)^{\nu_x} = S_{a \psi}/S_{a0} \in \{+1, -1 \}
 \label{grading}
 \end{align}
 It is easy to check that this grading is preserved under fusion.
-Hence a second natural way to split the objects of $\mathcal{C}$ is according to the grading $\nu_x$,
+Hence we can define,
 \begin{align}
 \text{obj}\; \mathcal{C}  = I_0 \cup I_1, \quad \quad I_a \tp I_b = I_{a+b\; \text{mod} \; 2}
 \end{align}
-Physically it is natural to call particles with $\nu_x = 1$ vortices, since when a fermion is dragged around them it will pick up a minus sign.
+Physically it is natural to call particles with $\nu_x = 1$ vortices, since when a fermion is dragged around them the wavefunction picks up a minus sign.
 We will avoid this nomenclature here to avoid confusion with non-bounding spin structures, which also satisfy this property for the physical fermions. 
-It can be shown that for an modular tensor category that $\nu_x = 1$ for all Q type particles\footnote{One can show this by considering the symmetries of the S-matrix on the punctured torus.}. 
-
-
+It can be shown that for a modular tensor category that $\nu_x = 1$ for all Q type particles\footnote{One can show this by considering the symmetries of the S-matrix on the punctured torus.}. 
+\dave{Should we draw the picture?}
 
 \subsection{Fusion theory of $SU(2)_6/\psi$ and $SO(3)_3/\psi$}
-Lets breifly review $SU(2)_6$ and its connection with $SO(3)_6$.
+Lets breifly review $SU(2)_6$ and its connection with $SO(3)_3$.
 Since these are well known theories we only list out some of their key properties and point the reader to some references for more details [Reshitikhan + Kirrillov] and also \cite{Bonderson2007}.
 The particles for $SU(2)_6$ are labeled by $0,1,2,\cdots, 6$.
 The principle graph for the theory is shown in the upper left of Fig.~\ref{SUSOsix}. 
@@ -2664,6 +2677,32 @@ The non-trivial fusion rules of $SU(2)_6/\psi$ are given by
 %}}
 %}
 %\end{align}
+%\begin{align}
+%\xymatrix{
+%\text{
+%{\tabulinesep=1.2mm
+%\begin{tabu}{ c | c c }
+%$I_0 \tp I_0$&$m_0$ &$m_2$ \\ \hline 
+%$m_0$&$m_0$ &$m_2$ \\ 
+%$m_2$ & $m_2$ & $m_0 \oplus \mathbb{C}^{1|1}m_2$\\
+%\end{tabu}
+%}}
+%&
+%\text{
+%{\tabulinesep=1.2mm
+%\begin{tabu}{ c | c  c }
+%$I_0 \tp I_1$&$m_1 $& $q_3$\\ \hline 
+%$m_0$& $m_1 $& $q_3$\\  
+%$m_2$ &$ m_0\oplus q_3 $ & $\mathbb{C}^{1|1} m_1 \oplus \mathbb{C}^{1|1} q_3$\\
+%\multicolumn{1}{r}{}&&\\
+%$I_1 \tp I_1$ &$m_1 $& $q_3$\\ \hline 
+%$m_1$ &$m_0 \oplus m_2$&$ \mathbb{C}^{1|1} m_2$ \\
+%$q_3$ &$\mathbb{C}^{1|1} q_3 $&$ \mathbb{C}^{1|1}m_0 \oplus \mathbb{C}^{1|1}q_3$\\
+%\end{tabu}
+%}}
+%}
+%\end{align}
+
 \begin{align}
 \xymatrix{
 \text{
@@ -2672,6 +2711,10 @@ The non-trivial fusion rules of $SU(2)_6/\psi$ are given by
 $I_0 \tp I_0$&$m_0$ &$m_2$ \\ \hline 
 $m_0$&$m_0$ &$m_2$ \\ 
 $m_2$ & $m_2$ & $m_0 \oplus \mathbb{C}^{1|1}m_2$\\
+\multicolumn{1}{r}{}&&\\
+$I_1 \tp I_0$&$m_0 $& $m_2$\\ \hline 
+$m_1$& $m_1 $& $m_0\oplus q_3$\\  
+$q_3$ &$ q_3  $ & $\mathbb{C}^{1|1} m_1 \oplus \mathbb{C}^{1|1} q_3$\\
 \end{tabu}
 }}
 &
@@ -2684,11 +2727,36 @@ $m_2$ &$ m_0\oplus q_3 $ & $\mathbb{C}^{1|1} m_1 \oplus \mathbb{C}^{1|1} q_3$\\
 \multicolumn{1}{r}{}&&\\
 $I_1 \tp I_1$ &$m_1 $& $q_3$\\ \hline 
 $m_1$ &$m_0 \oplus m_2$&$ \mathbb{C}^{1|1} m_2$ \\
-$q_3$ &$\mathbb{C}^{1|1} q_3 $&$ \mathbb{C}^{1|1}m_0 \oplus \mathbb{C}^{1|1}q_3$\\
+$q_3$ &$\mathbb{C}^{1|1} m_2 $&$ \mathbb{C}^{1|1}m_0 \oplus \mathbb{C}^{1|1}m_2$\\
 \end{tabu}
 }}
 }
 \end{align}
+
+\begin{align}
+\xymatrix{
+\text{
+{\tabulinesep=1.2mm
+\begin{tabu}{ c | c c  c c |c  c   }
+$I_0 \tp I_0$&$m_0$ &$m_2$&$\quad\quad$&
+$I_0 \tp I_1$&$m_1 $& $q_3$\\  
+\cline{1-3}\cline{5-7}$m_0$&$m_0$ & $m_2$ &&
+$m_0$& $m_1 $& $q_3$\\   
+$m_2$ & $m_2$ & $m_0 \oplus \mathbb{C}^{1|1}m_2$&&
+$m_2$ &$ m_0\oplus q_3 $ & $\mathbb{C}^{1|1} m_1 \oplus \mathbb{C}^{1|1} q_3$\\
+\multicolumn{1}{r}{}&& &&\multicolumn{1}{r}{}&&\\
+$I_1 \tp I_0$&$m_0 $& $m_2$ &&
+$I_1 \tp I_1$ &$m_1 $& $q_3$\\  
+\cline{1-3}\cline{5-7} $m_1$& $m_1 $& $m_0\oplus q_3$ &&
+$m_1$ &$m_0 \oplus m_2$&$ \mathbb{C}^{1|1} m_2$ \\
+$q_3$ &$ q_3  $ & $\mathbb{C}^{1|1} m_1 \oplus \mathbb{C}^{1|1} q_3$ &&
+$q_3$ &$\mathbb{C}^{1|1} m_2 $&$ \mathbb{C}^{1|1}m_0 \oplus \mathbb{C}^{1|1}m_2$\\
+\end{tabu}
+}}
+}
+\end{align}
+
+
 There are two peculiarities that these examples highlight nicely. 
 First, note that $m_2$ is an M type particle despite that $\mathbb{C}^{1|1}m_2$ appears in the tensor product of $m_2$ with it'self.
 Second, notice that a Q-type particle appears in the tensor product of two M-type particles, specifically $m_2 \tp m_1$. 
@@ -2748,10 +2816,9 @@ Similarly, one can compute the modular S-matrix and find,
 \Pi_{(a,b)}  \xrightarrow{S} \sum_{rw}S_{ar}\kappa_r \kappa_w S_{wb} \Pi_{(r,w)}
 \end{align}
 where $\kappa_a$ is the Frobenius Schurr-indicator of $a$.
-\dave{Is this a problem? I didn't expect the FS indicators to show up like this.}
+\dave{Is this a problem? I didn't expect the FS indicators to show up like this.
+I feel like they should have cancelled, it's probably due to the definition I'm using for S.}
 One can then compute the fusion rules of the simple objects either by use of the Verlinde formula, and the S-matrix given above, or by direct calculation with the primitive idempotents.
-
-
 
 \subsubsection{Annular category of $SU(2)_6/\psi$}
 The primitive idempotents of $SU(2)_6$ can be computed directly from the primitive idempotents of the parent theory by ``condensing" the fermions off the tubes.
@@ -2882,6 +2949,7 @@ $Q_{23}^\psi$ &$- i e^{- 15i \pi /16}$ \\
 }
 \end{align}
 \dave{Could add formula for modular S-matrix. Need to double check it though.}
+The calculation of the above idempotents allows one to immediately read off the idempotents of $SO(3)_3$ as we do in the following subsection. 
 
 \subsubsection{Primitive idempotents of $SO(3)_3/\psi$}
 We now move on to $SO(3)_3/\psi$. 
@@ -2903,7 +2971,6 @@ $M_{ab}$ &$\theta$&$a \tp b $ \\
 }}
 }
 \end{align}
-\dave{Is this notation clear? }
 Where $J$ denotes the spin structure with $J =0$ non-bounding, and $J=1$ bounding. 
 The $\Omega_0$ loop is a projector written as the direct sum of simple objects: $\Omega_0 = (m_0 \oplus d m_2)/(2+2d)$, with $d = 1 + \sqrt{2}$.
 The $a,b,$ and $c$ are labels of simple objects. 
