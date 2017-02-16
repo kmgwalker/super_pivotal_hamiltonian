@@ -55,6 +55,7 @@
 \newcommand{\unit}{\mathds{1}}
 \newcommand{\zz}{\mathbb{Z}}
 \newcommand{\mce}{\mathcal{E}}
+\newcommand{\mcb}{\mathcal{B}}
 \newcommand{\cc}{\mathbb{C}}
 \newcommand{\rr}{\mathbb{R}}
 \newcommand{\mcr}{\mathcal{R}}
@@ -4356,19 +4357,20 @@ The plaquette terms (marked in black) involves the six vertices and edges neighb
 
 We will follow the same basic construction as in \cite{levin2005, others}, with modifications to take into account the fermionic nature of the phases under consideration. 
 The most important modifications are as follows:
-First and foremost, we need to fix a spin structure on the ambient manifold on which we are working---this spin structure will be inherited by the lattice we use to define the Hamiltonian and is a necessary feature of any putative fermionic lattice model.
-Secondly, the Hilbert spaces for the local spin degrees of freedom that form the basis for our lattice model are supervector spaces, rather than the regular vector spaces in bosonic models. 
-This will require us to take special care when forming tensor products of Hilbert spaces on different lattice sites. 
-Thirdly, we will need to add a new term in the Hamiltonian with support on the edges and pairs of neighboring vertices in the lattice that allows fermions to fluctuate across edges in the lattice that host q-type strings.% \ref{EdgeHamiltonianTerms}.
-Apart from these differences, the Hamiltonian is the same as in the bosonic case.
+First and foremost, we will need to fix a spin structure on the ambient manifold on which we are working---this spin structure will be inherited by the lattice we use to define the Hamiltonian, and is a necessary feature of any fermionic lattice model.
+Additionally, we will need to allow the local degrees of freedom that constitute the Hilbert space for our lattice model to be supervector spaces, rather than the regular vector spaces in bosonic models. 
+%This will require us to take special care when forming tensor products of Hilbert spaces on different lattice sites. 
+Finally, we will need to add a new term in the Hamiltonian with support on the edges and pairs of neighboring vertices in the lattice that allows fermions to fluctuate across edges in the lattice that host q-type strings.% \ref{EdgeHamiltonianTerms}.
+%Apart from these differences, the Hamiltonian is the same as in the bosonic case.
 %: it implements local relations of the fusion category, and so the ground space will be an isotopy weighted super position of all allowed string nets.
-To summarize, in order to define our super pivotal Hamiltonian we need three pieces of data:
+
+To begin the construction of the lattice model, we will thus need the following data:
 \begin{enumerate}
 \item a super pivotal fusion category ${\cal C}$,
 \item an oriented surface $\Sigma$ with a spin structure $\sigma$,
 %\item a graph $\mathcal{G}$ defined by a collection of vertices and edges
 %\item a planar imbedding of the graph $\mathcal{G}$ into $\Sigma$
-\item a cell decomposition $\mcg$ of $\Sigma$ (i.e, a lattice on $\Sigma$) which inherits the spin structure $\sigma$,
+\item a lattice $\mcg$ defined on $\Sigma$ (more precisely, a cell decomposition of $\Sigma$) which inherits the spin structure $\sigma$,
 \item a coloring of $\mcg$, where each edge of $\mcg$ is labelled by an object in $\mcc$,
 \item and a collection of supervector spaces that constitute the Hilbert space of $\mcg$. %, and a ``spin" graph $(\mathcal{G}, s)$ with an imbedding into into the spin surface $(\Sigma, \sigma)$
 \end{enumerate}
@@ -4377,31 +4379,32 @@ In the following sections we define the Hamiltonian explicitly in terms of the a
 
 We will write the Hamiltonian as a sum of three mutually commuting projectors.
 Two of these projectors are the fermionic analogues of the plaquette and vertex terms from the usual string-net Hamiltonian, while the third is an edge term which allows fermions to fluctuate across edges hosting q-type strings.
-The Hamiltonian is then
+The Hamiltonian turns out to take the form
 \begin{align} \label{ham}
-H = \lambda_p \sum_{p \in P} (1-B_p) + \lambda_e \sum_{e \in E} (1-D_{e}) + \lambda_v \sum_{v \in V} (1-A_v),
+H = \lambda_p \sum_{p \in P} (1-B_p) + \lambda_e \sum_{e \in E} (1-D_e) + \lambda_v \sum_{v \in V} (1-A_v),
 \end{align}
-where the sums are over the plaquettes $P$, edges $e$, and vertices $v$ of the lattice, respectively, and the $\lambda_p,\lambda_e,\lambda_v$ are constants.
+where the sums are over the plaquettes $P$, edges $E$, and vertices $V$ of the lattice, respectively, and the $\lambda_p,\lambda_e,\lambda_v$ are constants.
 It is natural to require a hierarchy in the couplings, $\lambda_p \ll \lambda_e \ll \lambda_v$,
 which ensures that the low energy spectrum can be characterized by simple objects in $\mcz(\mathcal{C})$.
 In Fig.~\ref{HoneycombLattice} we illustrate the support of each operator appearing in the Hamiltonian with dashed circles, where we have drawn the Hamiltonian on the honeycomb lattice for concreteness. 
 
+
 %%%%%%%%%%%%%%%%%%
 \subsection{Spin structure considerations and the lattice} \label{standardized_handles}
 %%%%%%%%%%%%%%%%%%
+
 To derive the Hamiltonian \eqref{ham} and explain the nature of the $B_p$, $D_e$, and $A_v$ operators, we will first need to describe how the lattice inherits spin structure data from the ambient spin manifold on which it is defined. 
 
-We suppose our theory is defined on an orientable surface $\Sigma$ which comes equipped with a spin structure by $\sigma$.
+As before, we will assume that our theory is defined on an orientable surface $\Sigma$ which comes equipped with a spin structure $\sigma$.
 %an equivalence class of spin structures on this surface by $\sigma$. 
-Since $\sigma$ can loosely be interpreted as a way of associating boundary conditions (periodic or anti-periodic) to each homotopy class of closed paths in $\Sigma$, $\sigma$ can be thought of as a function $H_1(\Sigma)\ra\zz_2$.
+For our purposes $\sigma$ can be thought of as a way of associating boundary conditions (periodic or anti-periodic) to each homotopy class of closed paths in $\Sigma$, and so $\sigma$ can be thought of as defining a function $H_1(\Sigma)\ra\zz_2$.
 Therefore, the set of inequivalent spin structures can be identified with elements of   $H^1(\Sigma, \mathbb{Z}_2)$ (see Appendix \ref{spin_strs} for more detail).
 This identification is generically non-canonical, in the sense that there is no natural association of an ``identity'' spin structure, although this will be of little importance for us. 
 
 In what follows we will fix some spin structure defined by a function $q_\sigma \in H^1(\Sigma, \mathbb{Z}_2),$ which takes homotopy classes of closed curves 
 $\alpha_1, \alpha_2, \cdots, \alpha_n \subset \Sigma$ to elements in $\zt$.
 The image of a loop $\alpha$ under $q_\sigma$ specifies whether $\alpha$ is bounding (anti-periodic boundary conditions) or non-bounding (periodic boundary conditions).
-Since contractible loops have anti-periodic boundary conditions, we will define 
-
+Since contractible loops have anti-periodic boundary conditions, we define 
 \be q_\sigma(\alpha) = \begin{cases} 0 \text{\ if $\alpha$ is bounding,}\\
 1 \text{\ if $\alpha$ is non-bounding.}\end{cases} \ee
 Thus, the phase picked up by transporting a fermion along a path $\alpha$ is $-(-1)^{q_{\sigma}(\alpha)}$.
@@ -4410,7 +4413,7 @@ The failure of $q_\sigma$ to factor over the concatenation of two paths $\alpha,
 q_{\sigma} (\alpha + \alpha') = q_{\sigma}(\alpha) q_{\sigma}(\alpha') (-1)^{\alpha \cap \alpha'}
 \end{align}
 where $\alpha+\alpha'$ is the concatenation of $\alpha$ and $\alpha'$. 
-This means that spin structures can be described as a refinement of the intersection pairing. 
+This means that spin structures can be described as a quadratic refinement of the intersection pairing. 
 
 %We also need to specify some details of cutting and glue spin manifolds together. 
 %A spin manifold with boundary acquires a boundary conditions which the trivialization of the spin bundle along the boundary curve $\gamma_B$.
@@ -4430,12 +4433,12 @@ The basic idea is to decompose the manifold $\Sigma$ into a collection of discs 
 
 %Our goal is to define a graph, that embeds into $\Sigma$ along with some extra data inherited from the spin structure $\sigma$, which allows us to define a spin graph. 
 
-More precisely, this is done by defining a cell decomposition of the surface $\Sigma$, which provides us with a lattice imbedded in the surface $\Sigma$ on which our Hamiltonian is defined.
-A generic cell decomposition is specified by a set of vertices $\mathcal{V}$, edges $\mathcal{E}$ and faces $\mathcal{F}$.
-The simplest example of a cell decomposition is a triangulation.
-The vertices are points in $\Sigma$, the edges are paths in $\Sigma$, and the faces are regions of $\Sigma$ homeomorphic to discs.
-The three sets are non-intersecting and their union is $\Sigma$: $\mathcal{V} \cap \mathcal{E} = \mathcal{E}\cap \mathcal{F}  = \mathcal{V} \cap \mathcal{F}  = \text{empty}$, and $\mathcal{V} \cup \mathcal{E} \cup \mathcal{F} = \Sigma$.
-In what follows it will be useful to define the function $A_{uv} : \mathcal{V} \ra \zt$, which is equal to $1$ if the vertices $u,v \in \mathcal{V}$ lie at boundaries of a shared edge $e \in \mathcal{E}$ so that $\partial e = v \cup u$, and is equal to $0$ otherwise.
+%More precisely, this is done by defining a cell decomposition of the surface $\Sigma$, which provides us with a lattice imbedded in the surface $\Sigma$ on which our Hamiltonian is defined.
+%A generic cell decomposition is specified by a set of vertices $\mathcal{V}$, edges $\mathcal{E}$ and faces $\mathcal{F}$.
+%The simplest example of a cell decomposition is a triangulation.
+%The vertices are points in $\Sigma$, the edges are paths in $\Sigma$, and the faces are regions of $\Sigma$ homeomorphic to discs.
+%The three sets are non-intersecting and their union is $\Sigma$: $\mathcal{V} \cap \mathcal{E} = \mathcal{E}\cap \mathcal{F}  = \mathcal{V} \cap \mathcal{F}  = \text{empty}$, and $\mathcal{V} \cup \mathcal{E} \cup \mathcal{F} = \Sigma$.
+%In what follows it will be useful to define the function $A_{uv} : \mathcal{V} \ra \zt$, which is equal to $1$ if the vertices $u,v \in \mathcal{V}$ lie at boundaries of a shared edge $e \in \mathcal{E}$ so that $\partial e = v \cup u$, and is equal to $0$ otherwise.
 
 %We define a graph $\mathcal{G}$ along with a planar embedding in the surface $\Sigma$.
 %Recall that a graph $\mathcal{G}$ is a list of vertices $\mathcal{V}$ and edges $\mathcal{E}$. 
@@ -4448,15 +4451,16 @@ In what follows it will be useful to define the function $A_{uv} : \mathcal{V} \
 %In particular $\chi$ is injective, and so the image of $\chi$ describes a disjoint set of vertices, lines, and faces whose union is $\Sigma$.
 %\dave{Should also probably require that the graph be 2-connected so that we don't have dangling edges or boundaries.}
 
-In order to talk about the spin structure data at the vertices and edges of the lattice, we will use our cell decomposition of $\Sigma$ to define a handle decomposition of $\Sigma$.
-A handle decomposition is essentially a fattened version of a cell decomposition; see Fig.~\ref{HandleDecomposition} for a geometric picture.
+To begin, we define a lattice $\mcg$ embedded in $\Sigma$. 
+In order to talk about the spin structure data at the vertices and edges of the lattice, we will thicken the lattice to define a handle decomposition of $\Sigma$.
+A handle decomposition is essentially a fattened version of a lattice; see Fig.~\ref{HandleDecomposition} for a geometric picture.
 \begin{figure}
   \includegraphics{HandleDecomposition.pdf}
-  \caption{A handle decomposition obtained from the cell decomposition on the far right.
+  \caption{A handle decomposition obtained from the lattice on the far left.
   The $0$ handles (green discs) are neighborhoods of the vertices, the $1$-handles (purple strips) are neighborhoods of the edges, and the $2$ handles (orange polygons) which are the compliment of the union of the $0$- and $1$-handles.}
   \label{HandleDecomposition}
 \end{figure}
-More precisely, the handle decomposition can be found by by expanding each vertex into a disc ($0$-handle) and each edge into thickened strips (1-handles).
+More precisely, the handle decomposition can be found by by expanding each vertex of the lattice into a disc ($0$-handle) and each edge into thickened strips (1-handles).
 %The boundary of each $1$ handle $h_{e}$ has $4$ boundaries, two of these boundaries will reside in the discs $D_u$ and $D_v$, for $u$ and $v$ at the boundary of $e$.
 %We will call these boundaries the ``ends" of this $1$handle.
 %The other two edges reside entirely in the neighbouring faces of the cell decomposition.
@@ -4489,8 +4493,8 @@ The spin diffeomorphism $\varphi_v$ that maps a generic 0-cell $v$ to a standard
  \varphi_v: \; \; D_v\ar[r]            & D(n) \\
 \;\;\;\;\;\;\; \Dv \ar@{|->}[r] & \Dfv
 	} 
-\end{align}
-where $n = \sum_{u} A_{uv}$ is the number of edges which terminate at $v$. 
+\end{align} 
+where $n$ is the number of edges which terminate at $v$. 
 When writing down the Hamiltonian we will always take $n=3$ without loss of generality, but when discussing tensor network constructions of these phases it is helpful to let $n$ be unspecified. 
 %And the standardized disc has $n$ components overwhich $1$ handles can be glued to it. 
 %We have drawn the standardized disc with one flat boundary, and one possible image of the edges under the map $\varphi$. 
@@ -4545,7 +4549,6 @@ parallel-transporting a fermion along such a 1-handle $e$ will act on the state 
 % $\mathbb{Z}_2$ action on each place where a 1-handle is glued to a 0-handle, which is generated by spin flips of the spin framing at the gluing points. 
 Viewing the spin structure on $\Sigma$ as a double-covering of the oriented frame bundle of $\Sigma$, a 1-handle along which the framing rotates by $2\pi$ means that a point on one sheet of the double-cover is moved to its counterpart on the other sheet of the double-cover upon traveling along the 1-handle. 
 Hence we need to both specify a map that embeds the 0- and 1-handles into the ambient spin manifold, as well as specify a set of data which determine where these spin flips take place. 
-\ethan{should make a picture for this last paragraph}
 
 In order to make such $2\pi$ rotations of the fermion framing explicit in our diagrams, we will draw standardized 1-handles across which the fermion framing undergoes a $2\pi$ rotation with a twist in their middles.
 This means that we actually have two inequivalent standardized 1-handles: 
@@ -4611,7 +4614,7 @@ This is just a manifestation of the fact that spin structures are classified by 
 \begin{figure}
 \begin{center}
 \includegraphics{lattice_w_vortices.pdf}
-\caption{\label{lattice_w_vortices} \ethan{does this figure make any sense?} A region of the lattice $\mcg$ containing two vortex plaquettes. 
+\caption{\label{lattice_w_vortices} A region of the lattice $\mcg$ containing two vortex plaquettes. 
 The two punctures hosting the vortices are marked as circles, with the label $N$ denoting their non-bounding spin structure. 
 We have not drawn punctures on the other (non-vortex) plaquettes, since if they possess a bounding spin structure these punctures may be consistently filled in.
 The dashed blue line is the branch cut connecting the two punctures.
@@ -4634,14 +4637,14 @@ Any other valid configuration of glueing signs can be obtained from this one thr
 
 Figure \ref{lattice_w_vortices} shows a small part of a lattice $\mcg$ containing two vortex punctures. 
 The vortex punctures are indicated by the circles labeled by $N$ (for non-bounding), and are connected by the dashed blue branch cut. 
-At each place where the branch cut intersects an edge of $\mcg$, the fermion framing is twisted by $2\pi$, which acts as a spin flip. 
+At each place where the branch cut intersects an edge of $\mcg$, the fermion framing is twisted by $2\pi$, which acts as a spin flip and sets $g_e=1$ at the appropriate edge. 
 
 \ethan{might need more pictures}
 \dave{Add references to K-oritentations+spin structure e.g., Resheitkhin+..., Novak + Runkel, etc}
 
 
 %%%%%%%%%%%%%%%
-\subsection{Hilbert space}
+\subsection{Hilbert space} \label{hilbert_space}
 %%%%%%%%%%%%%%%
 
 In this section we briefly define the Hilbert space on which the Hamiltonian operates. 
@@ -4679,10 +4682,6 @@ This decomposition produces a vertex Hilbert space $\mch_\mcv \cong \cl_{N-1}$, 
 Clearly this is unphysical, and the redundant degrees of freedom created during the decomposition of $e$ into $e_1\cup\dots\cup e_N$ need to be modded out to obtain the physical Hilbert space of the theory. 
 Obtaining the physical Hilbert space can be done in one of two ways: by adding an edge term to the Hamiltonian which allows fermions to fluctuate along q-type edges and between vertices linked by a q-type edge, or by modifying the tensor products appearing in the definition of $\mch_\mcg$ to be tensor products whose tensor units are chosen from the endomorphism algebras of the edge labels. 
 We will describe the edge term approach in this section, and will address the latter method in Section \ref{modified_tensor_product}. 
-
-
-
-\ethan{I haven't said anything about inner products, since I actually don't think we need them in this section}
 
 
 %The vertex Hilbert spaces $\mca(D_v)$ contain odd vectors if a fermion is present on the vertex $v$, while the edge Hilbert spaces $\mca(e_{uv})$ contain odd vectors only when the string type appearing on $e_{uv}$ is q-type.
@@ -4745,26 +4744,23 @@ h: &\mathcal{H}_v \tp \mathcal{H}_v \rightarrow \mathbb{C}^{1|0}\\
 \subsection{Terms in the Hamiltonian}
 %%%%%%%%%%%%%%%%%%%%%
 
-In this section we will finally write down the Hamiltonian, first providing a high-level way of writing it and then turning to an explicit presentation of the Hamiltonian associated to the lattice in Fig.~\ref{HoneycombLattice}. 
-
-As mentioned earlier, the Hamiltonian consists of three kinds of projections which all commute with one another. 
-Explicitly we have
+In this section we will finally write down the Hamiltonian, and then explain the terms appearing in it in detail. 
+As mentioned earlier, the Hamiltonian consists of three kinds of mutually commuting projections:
 \begin{align}
-H = \lambda_p \sum_{p \in \mathcal{F}} (1-B_p)  + \lambda_e \sum_{e \in E} (1-D_e) + \lambda_v \sum_{v \in V} A_v
+H = \lambda_p \sum_{p \in \mathcal{F}} (1-B_p)  + \lambda_e \sum_{\mce \in E} (1-D_e) + \lambda_v \sum_{\mcv \in V} A_v
 \end{align}
-where the sum over $p \in \mathcal{F}$ corresponds to all plaquettes -- or -- faces in the imbedding graph.
-The couplings are all real and positive, and if we want the ground state to be in correspondence with the primitive idempotents of the tube algebra, then we require $\lambda_v > \lambda_e > \lambda_p$. 
-The reasoning for this is because the plaquette terms don't make sense unless the edge terms are satisfied, which don't make sense unless the vertex terms are satisfied.
-
-We now explain each term in some detail. We'll start with the more familiar vertex and plaquette terms, and will then address the new edge term. 
+The couplings are all real and positive, and if we want the excitations to be in correspondence with the primitive idempotents of the tube algebra, then we take $\lambda_v \gg \lambda_e \gg \lambda_p$\footnote{ 
+The reasoning for this is because the operators appearing in the plaquette terms are not well-defined unless the edge term energies are minimized, and in turn the terms appearing in the edge operators are not well-defined unless the vertex term energies are minimized.}.
+In what follows we will explain each of the terms appearing in $H$ in detail. 
+We'll start with the more familiar vertex and plaquette terms, and will then address the new edge term. 
 
 %%%%%%%%%%%%%%%%
-\subsubsection{Vertex terms}
+\subsubsection{Vertex term}
 %%%%%%%%%%%%%%%%
 \label{VertexHamiltonian}
 The vertex term in the Hamiltonian is the same as in the usual string-net Hamiltonian \cite{Kitaev2012,etc}.
 The vertex term $A_v$ at a vertex $v$ enforces compatibility of the labelings of the three edges that meet at $v$. 
-For a vertex labelled by the vector $v\in V^{abc}$, $A_v$ acts as the identity if the unit object is contained in the fusion product $a\tp b\tp c$, and is zero otherwise:
+That is, for a vertex labelled by the vector $v\in V^{abc}$, $A_v$ acts as the identity if the unit object $\unit$ is contained in the fusion product $a\tp b\tp c$ (regardless of the parity of the fusion channel $V^{abc}_\unit$, and is zero otherwise:
 \begin{align}
 A_v = 
 \left\{
@@ -4782,28 +4778,30 @@ Thus, the term $\sum_v A_v$ in the Hamiltonian simply projects onto string-net c
 \subsubsection{Plaquette term}
 %%%%%%%%%%%%%%%%%
 
-As with the vertex term, the plaquette term is essentially the same as the plaquette term in the usual string-net Hamiltonian. 
-It is responsible for the dynamics in the string-net phase, blah blah blah  just performs the isotopy relations which enforce the faces of the graph to be vacuuous. 
-This isotopy relation just allows strings to freely pass over the face, and is implemented by the trivial idempotent of the tube algebra. 
-
-Hence we have,
-\begin{align}
-B_p =\frac{1}{\text{dim} \; \mathcal{C}} \sum_{a \in \mathcal{C}} \frac{\text{dim} \;a }{\text{dim} \; \text{End}(a)} \sum_{\mathcal{O}_p \in \text{End}(\mathcal{A}(p, \partial p; a) )}  \mathcal{O}_p
+As with the vertex term, the plaquette term is essentially the same as the plaquette term in the usual string-net Hamiltonian: it inserts loops labeled by different objects in $\mcc$ into each plaquette, and uses local isotopy relations to fuse these loops into the boundaries of the plaquettes. 
+It is responsible for the dynamics in the string-net phase, and allows us to perform time evolution on string-net states.  
+Explicitly, we have
+\begin{align} \label{plaquette_term_defn}
+B_p =\frac{1}{\mcd} \sum_{a \in \mcc} \frac{d_a}{\text{dim} \; \text{End}(a)} \mcb^a_p, % \sum_{\mathcal{O}_p \in \text{End}(\mathcal{A}(p, \partial p; a) )}  \mathcal{O}_p
 \end{align}
-The plaquette term is a little more tedious to define that the edge term, but there is essentially nothing new. 
-For each plaquette $p$ of the graph $\mathcal{G}$ we define an operator,
-\begin{align}
-B_p : \tp_{e \in p} \mathcal{H}_e \tp_{v \in p} \mathcal{H}_v \rightarrow \tp_{e \in p} \mathcal{H}_e \tp_{v \in p} \mathcal{H}_v
-\end{align}
-Where $\tp_{e \in p}$ means all edges which live at the boundary of the plaquette and the $\tp_{v \in p}$ means all vertices that live at the boundary of the plaquette\footnote{The plaquette term only has a nontrivial action when all edges and vertices neighbouring the plaquette are stable.}.
+where the operator $\mcb_p^a$ fuses in a loop labeled by $a$ into the plaquette $p$ using a collection of $F$-moves and pivoting moves \ref{someone} (note that the operator $\mcb_p^a$ only has a nontrivial action when all vertices neighboring the plaquette $p$ are stable).
+Additionally, when computing the matrix elements of $\mcb_p$, it is helpful to perform gauge transformations that ensure that $g_e=0$ for all $d\subset \p p$.
+This can always be done as long as $p$ contains no spin structure vortex in its interior. 
 
-Alternatively, we can realize that the Hamiltonian consists of a superposition of all closed loops labeled by objects in $\mcc$, normalized appropriately by their dimensions. 
-Thus, $B_p$ is precisely the action of the trivial idempotent in the tube algebra applied to the plaquette $p$. 
-Thus we may write the plaquette operator at the plaquette $p$ more concisely as 
+An explicit form for the matrix elements of the $\mco_p^a$ operators can be written down following the straightforward, if slightly tedious, standard procedure \ref{??}.
+However, there is a more general and high-level way of describing the plaquette term that we will find useful to employ in what follows. 
+From \eqref{plaquette_term_defn}, we see that the plaquette operator acts to insert a 
+weighted superposition of all closed loops labeled by objects in $\mcc$.
+This corresponds exactly to the trivial idempotent in the tube algebra for the theory, 
+which is a weighted superposition of all tubes that have zero charge (so that their boundaries have no marked points on them) and which have fluxes that run over the objects in $\mcc$.
+This means that $B_p$ implements the action of the trivial idempotent in the tube algebra applied to the plaquette $p$:
 \begin{align}
 B_{p} = \Pi_{\unit \in \tube}.
 \end{align}
-
+Therefore, $B_p$ projects onto plaquettes that host no quasiparticle excitations\footnote{Recall that in string-net models, we think of each plaquette as containing a puncture. Quasiparticles are localized at these punctures, and so acting with $\Pi_\unit$ on a puncture projects onto a state in which no quasiparticle is present on the puncture.}, 
+and so violations of the plaqauette term are the quasiparticle excitations of the theory. 
+Plaquettes that satisfy the plaquette term (those with an eigenvalue of $1$ under $B_p$) contain no quasiparticles in their interiors, and thus the punctures in their interiors can be smoothly filled in. 
+Therefore, we can also think of the plaquette term as energetically providing a way to allow strings to fluctuate freely across the interiors of plaquettes. 
 
 %\dave{Only here as a reference for calculation.}
 %\begin{align}
@@ -4834,8 +4832,7 @@ The first operator $\Gamma^1_v$ creates a fermion on the leftmost edge $a$ termi
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma1def.pdf}}}},\ee
 where $\psi,\psi' \in V^{abc}_v$, and the factor of $q(a)$ simply means that $\Gamma_v^1$ is zero unless it makes sense to have a fermion to the leftmost leg, i.e. if $a$ is q-type. 
 Note that because $\Gamma^1_v$ creates a fermion on the edge $a$ (provided that $a$ is q-type) the final vector $\psi'$ will always have opposite parity from $\psi$.
-Also note that the fermion on the $a$ edge has order $n+1$; we define the $\Gamma$ operators to create fermions whose order is one greater than the order of the highest-ordered fermion on the graph. 
-
+Also note that the fermion on the $a$ edge has order $n+1$; we define the $\Gamma$ operators to create fermions whose order is one greater than the order of the highest-ordered fermion on the graph\footnote{This is assuming that the other edges on the graph are all fermion-parity even: if this is not the case, then the ordering of the fermion is equal to $n+1$, where $n$ is the largest ordering of the fermions on the edges.}. 
 The operators $\Gamma_v^2,\Gamma_v^3$ are defined analogously:
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma2def.pdf}}}},\qquad
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma3def.pdf}}}}.\ee
@@ -4850,9 +4847,8 @@ For example, we can use this to show that a ``q-type Fibbonacci'' theory which c
 Indeed, if $V^{\tau\tau\tau}$ is nontrivial and $\tau$ is q-type, then we must be able to find a representation of $\cl_3$ on $V^{\tau\tau\tau}$.
 This is impossible if $V^{\tau\tau\tau}\cong \cc^{1|1}$, since $\cc^{1|1}$ is not large enough to represent $\cl_3$. 
 This means that theories which contain a q-type particle $\tau$ with $V^{\tau\tau\tau}\neq0$ must contain nontrivial fusion multiplicities, which provide us with fusion spaces that are large enough to admit a representation of $\cl_3$.
-Indeed such a q-type particle exists in the $\halfesix$ theory considered earlier, which possesses nontrivial fusion multiplicities. 
+Indeed such a q-type particle exists in the $\halfesix$ theory considered earlier, which possesses nontrivial fusion multiplicities that allow the relevant fusion spaces in the theory to be large enough to represent $\cl_3$. 
 The $\Gamma$ matrices in the $\halfesix$ case are essentially determined by the relations \eqref{esixdotslide}. 
-\ethan{might have to think about this argument more carefully---is it $\cl_3$ or $\cl_2$? Can Morita equivalence say anything here?}
 
 Now we have all the tools in hand required to write down the edge term. 
 As mentioned earlier, the edge term is responsible for allowing fermions to fluctuate (``hop'') across edges labeled by q-type objects, and will be absent in any theory with no q-type objects.
@@ -4872,9 +4868,14 @@ The factor of $(-1)^{g_e}$ keeps track of whether nor not the fermion framing ro
 It is straightforward to check that the relations in \eqref{dot_slide_gamma} are modified by a factor of $-1$ if the edge $e$ is twisted in such a way $(g_e=1)$ and is unmodified otherwise, giving rise to the factor of $(-1)^{g_e}$ appearing in the expression for $D_e$.
 
 In summary, including $D_e$ in the Hamiltonian provides a way of energetically enforcing the conditions that the ground states of theories containing q-type particles are realized by superpositions of string-net configurations possessing all possible ways of arranging fermions on the q-type strings. 
-Note that a 1D Kitaev wire in the topological phase also exhibits the same behavior as the q-type strings in our theories, but since generic theories (like the $\halfesix$ example considered earlier) can have fusion rules in which two q-type simple objects to fuse to a third q-type simple object, our q-type strings are more general versions of Kitaev wires (since at the junction of three Kitaev wires since a zero mode would be left behind, which does not occur in the $\halfesix$ theory). \ethan{think about this more}
- 
+Ensuring that ground states are superpositions of different fermion configurations is tantamount to projecting from the Hilbert space $\mch_\mcv \tp \mch_\mce$ to the physical Hilbert space $\mch_{\rm phys}$ in which redundant degrees of freedom created by different fermion configurations are modded out (see the discussion at the end of Section \ref{hilbert_space}). 
+%Since the ground states are all eigenstates of the $\Gamma$ operators at each vertex
+Including the edge term in the Hamiltonian mods out by these degrees of freedom energetically; for an alternate approach involving the re-definition of the tensor product see Section \ref{modified_tensor_product}. 
 
+Finally, we note that a 1D Kitaev wire in the topological phase also exhibits the same behavior as the q-type strings in our theories.
+However, since generic theories (like the $\halfesix$ example considered earlier) can have fusion rules in which two q-type simple objects to fuse to a third q-type simple object, our q-type strings are more general versions of Kitaev wires, since at the junction of three Kitaev wires a zero mode is left behind, which does not occur in the $\halfesix$ theory. 
+
+ 
 %\begin{align}
 %D_e =\sum_{a \in \mathcal{C} } \frac{1}{\text{dim} \; \text{End}(a)} \; \sum_{\mathcal{O}_e %\in \text{End} \mathcal{A}(e,\partial e; a)} \mathcal{O}_e.
 %\end{align}
