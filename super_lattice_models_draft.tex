@@ -1039,6 +1039,8 @@ where the orange line is a $\beta$ worldline.
 Thus, $\psi$ violates all three of the conditions that particles in a condensate must satisfy! 
 To condense $\psi$, we will clearly need some new tricks. 
 
+\medskip
+
 We will first examine how to address the non-transparency of $\psi$. As we saw above in \eqref{box_beta_nowall_braiding}, we can't allow world lines of $\psi$ to disappear at arbitrary points in the 3-dimensional spacetime.
 However, if we restrict the $\psi$ worldline endpoints to lie on a 2-dimensional subset of the boundary of the ambient 3-dimensional spacetime,
 we {\it can} obtain a consistent graphical calculus.
@@ -1124,8 +1126,8 @@ Our goal is to associate a Hilbert space to $Y$ based on string nets in $M = Y\t
 and some extra data on the back wall $B$.
 
 Consider the configuration space $\mcc(B)$ of all $\psi$ ribbon endpoints on $B$.
-Let $\mcc(B)_k$ denote the connected component of $\mcc(B)$ corresponding to $k$ endpoints.
-(For convenience, we assume $B$ is connected.)
+Let $\mcc(B)_k$ denote the subspace of $\mcc(B)$ corresponding corresponding to configurations with exactly $k$ endpoints.
+(If $B$ is connected, then these are the connected components of $\mcc(B)$.)
 We can think of the ribbon endpoint as a point $p$ of $B$ plus a tangent vector at $p$ which
 points in the direction of the ``front" of the ribbon.\footnote{Ribbons 
 have a distinguished front and back; if they did not, then we would have to assign
@@ -1222,9 +1224,51 @@ Therefore, although we are indeed identifying emergent fermions with the vacuum,
 However, we reiterate that the $\psi$ endpoints are not technically bosons, since they see the background spin structure: the emergent $\psi$ fermions do not see the spin structure, but the physical fermions attached to their endpoints do. 
 
 
+
 \subsection{Constructing the fermion line bundle}
 
-\kw{technical details go here}
+Recall our set-up:  We have a back wall $B$, which is a spin (and therefore oriented) 2-manifold.
+Associated to $B$ is the configuration space of $\psi$-ribbon endpoints, $\mcc(B)$.
+This configuration space is a disjoint union of pieces $\mcc(B)_k$, where $k$ is number of ribbon endpoints
+in a configuration.
+
+Our goal in this subsection is to construct a complex line-bundle-with-flat-connection $F(B)$ over $\mcc(B)$,
+satisfying the following six conditions:
+\begin{enumerate}
+\item $F$ is functorial with respect to spin diffeomorphisms.  
+If $f: B \to B'$ is spin diffeomorphism, then there is a corresponding bundle isomorphism $F(B) \to F(B')$ which
+preserves the flat connections and complex structure.
+\item $F$ is functorial with respect to orientation-reversing $\mbox{pin}_+$ diffeomorphisms. 
+If $f: B \to B'$ is an orientation-reversing $\mbox{pin}_+$ diffeomorphism, then there is a corresponding map
+$F(B) \to F(B')$ which preserves the flat connections and is complex antilinear on the fibers.
+(Recall that any spin manifold has an associated $\mbox{pin}_+$ structure.
+By ``orientation-reversing $\mbox{pin}_+$ diffeomorphism", we mean a $\mbox{pin}_+$ diffeomorphism
+of the associated $\mbox{pin}_+$ manifolds which reverses the orientations of the underlying oriented manifolds.)
+This condition is needed in order to define hermetian/unitary structures.
+\item The holonomy around a loop in $\mcc(B)$ corresponding to a $2\pi$ rotation of a ribbon endpoint is $-1$.
+This condition is needed to compensate for the twist-fermionocity of $\psi$.
+\item The holonomy around a loop in $\mcc(B)$ corresponding to an exchange of two ribbon endpoints 
+(inside a fixed disk) is $-1$.
+This condition is needed to compensate for the statistics-fermionocity of $\psi$.
+\item $F$ is local in the following sense.
+Given a decomposition $B = B'\cup B''$, there is an obvious map $u: \mcc(B')\times\mcc(B'')\to\mcc(B)$, 
+and a corresponding pull-back bundle $u^*(F(B))$ over $\mcc(B')\times\mcc(B'')$.
+We require an isomorphism $u^*(F(B)) \cong F(B')\otimes F(B'')$ which is natural with respect to spin diffeomorphisms.
+\kw{need to check dependency on ordering of $B'$ and $B''$}
+\item $F$ satisfies a cancellation property.
+Given a configuration $r \in \mcc(B)_k$ and a point $x\in B$ distinct from the ribbon endpoints of $c$,
+we can create a new configuration $c_+ \in \mcc(B)_{k+2}$ by inserting a pair of endpoints in a standard configuration
+near $x$.
+We require an isomorphism of fibers $F(B)_c \cong F(B)_{c_+}$ which is compatible with the flat connection as explained below.
+This condition is need to allow for well-defined creation and annihilation of pairs of $\psi$ endpoints.
+\end{enumerate}
+
+
+\kw{to be continued}
+
+
+
+
 
 
 \subsection{Older version (temporary)}
