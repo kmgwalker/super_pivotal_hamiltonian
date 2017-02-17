@@ -2607,16 +2607,18 @@ Thus there is no need to define $\Arf(Y)$ in this case.
 \dave{In progress. I have the general formulas for minimal idempotents, S and T in any MTC/psi. 
 As well as any UBCF that is only non-modular by a transparent fermion, like in $SO(3)_3$.
 Should we include those?}
-Here we provide two more, closely related examples of back wall condensation. 
-The parent theories are given by $SU(2)_6$ and $SO(3)_3$. 
-Each theory contains a fermion, in $SO(3)_3$ it is transparent, while in $SU(2)_6$ it is not. 
-The fermion in $SO(3)_3$ is transparent and so the $S$-matrix is degenerate hence the theory is not modular. 
-This lack of modularity is fairly benign since $SU(2)_6$ is a minimal modular extension of $SO(3)_3$, and the minimal idempotents of any modular theory can be found straightforwardly. 
-We can then bootstrap off these idempotents to infer the minimal idempotents of $SO(3)_3$. 
-The minimal idempotents of $SU(2)_6/\psi$ and $SO(3)_3/\psi$ are then inferred. 
-
-From the minimal idempotents one can compute the mapping class group action. 
-We will void this for the $SU(2)_6$ and just compute them for $SO(3)_3$.
+Here we provide more examples of fermion condensation in two different theories which are closely related to one another:
+the $SU(2)_6$ and $SO(3)_3$ theories. 
+Each theory contains a fermion $\psi$, which we will condense. 
+The main difference between these two theories is that in $SO(3)_3$ $\psi$ is transparent (i.e. it braids trivially with every other particle in the theory), while in $SU(2)_6$ it is not. 
+This means that when condensing $\psi$ in $SO(3)_3$, we do not need to use the ``back wall'' construction employed earlier. 
+However, the transparency of $\psi$ also means that the $S$-matrix in the $SO(3)_3$ theory is degenerate, and hence the theory is not modular. 
+This lack of modularity is fairly benign however, and the theory can easily be made modular by adding extra particles which braid non-trivially with $\psi$. 
+The modular theory which results from this process is called a modular extension of $SO(3)_3$, and the smallest modular extension of $SO(3)_3$ is precisely $SU(2)_6$.
+This fact will allow us to use techniques for computing idempotents in modular theories to first compute the quasiparticle content of $SU(2)_6$, which we will then use to infer the minimal idempotents of $SO(3)_3$. 
+After finding the quasiparticle content of $SO(3)_3$ and $SU(2)_6$ we will then perform fermion condensation to find the minimal idempotents of $SU(2)_6/\psi$ and $SO(3)_3/\psi$. 
+\ethan{should we discuss the commutativity of the center / condense diagram earlier?}
+From the minimal idempotents one can compute the mapping class group action, which we will work out for the $SO(3)_3$ example.
 First we will establish some notation for UBFC's with fermions.
 
 \subsection{Notation}
@@ -2643,6 +2645,7 @@ n_x=
 1\quad \text{if $x \in Q$}\\
 \end{cases}
 \end{align}
+\ethan{What about $q(x)$ as in Hamiltonian section? Sorry for being nitpicky}
 
 The second natural way to distinguish the simple objects given a fermion is to use the $\mathbb{Z}_2$ grading inherited from the full braid with a fermion. 
 This can be defined by,
@@ -5025,6 +5028,7 @@ Since our goal in this section is to be rather general, we will put a fair amoun
 
  \begin{figure}
 % \includegraphics{Lattice.pdf}
+\begin{center}
   \includegraphics{sample_lattice.pdf}
  \caption{An illustration of the support of the operators appearing in a super pivotal Hamiltonian on a section of a generic lattice. 
  The motivation for the bizarre-looking vertices is explained in Section \ref{standardized_handles}.
@@ -5035,6 +5039,7 @@ The plaquette terms $B_p$ (with the support of an example $B_p$ marked in pink) 
 They project onto graph configurations that contain no quasiparticles within the plaquette $p$.
 }
  \label{example_lattice}
+ \end{center}
  \end{figure}
 
 We will follow the same basic construction as in \cite{levin2005, others}, with modifications to take into account the fermionic nature of the phases under consideration. 
@@ -5052,16 +5057,18 @@ To begin the construction of the lattice model, we will thus need the following 
 \item an oriented surface $\Sigma$ with a spin structure $\sigma$,
 %\item a graph $\mathcal{G}$ defined by a collection of vertices and edges
 %\item a planar imbedding of the graph $\mathcal{G}$ into $\Sigma$
-\item a lattice $\mcg$ defined on $\Sigma$ (more precisely, a cell decomposition of $\Sigma$) which inherits the spin structure $\sigma$,
+\item a lattice $\mcg$ defined on $\Sigma$ (more precisely, a cell decomposition of $\Sigma$) which inherits information about the spin structure $\sigma$,
 \kw{one doesn't usual say that a cell decomposition (or lattice) has a spin structure}
-\item a coloring of $\mcg$, where each edge of $\mcg$ is labelled by an object in $\mcc$,
+\ethan{how about ``inherits information about the spin structure''? And as a general comment, feel free to precise-ify language whenever and wherever you see fit}
+\item and a coloring of $\mcg$, where each edge of $\mcg$ is labelled by an object in $\mcc$.
 \kw{should this be a set of colorings, or something like that; also, numbers 4 and 5 are not additional data -- they are determined
 by $\mcc$ and the cell decomposition}
-\item and a collection of supervector spaces that constitute the Hilbert space of $\mcg$. %, and a ``spin" graph $(\mathcal{G}, s)$ with an imbedding into into the spin surface $(\Sigma, \sigma)$
+%\item and a collection of supervector spaces that constitute the Hilbert space of $\mcg$. %, and a ``spin" graph $(\mathcal{G}, s)$ with an imbedding into into the spin surface $(\Sigma, \sigma)$
 \end{enumerate}
 In the following sections we define the Hamiltonian explicitly in terms of the above data.
 \kw{I think we should consider not using ``lattice", or at least being more careful with how we use it.
 For a mathematician, a lattice is a translationally-invariant structure on $\mathbb R^n$.}
+\ethan{Ah, good point. ``string-net graph''? ``Cell decomposition'' is also fine (I avoided this at first since most physicists won't have heard it before, but I don't think that matters too much).}
 %We will explicitly write out the Hamiltonian for the example of the honeycomb lattice shown in Fig.~\ref{example_lattice}, although much of what we say holds more generally.
 
 %We will write the Hamiltonian as a sum of three mutually commuting projectors.
@@ -5072,15 +5079,20 @@ The Hamiltonian takes the form
 \begin{align} \label{ham}
 H = \lambda_p \sum_{p \in P} (1-B_p) + \lambda_e \sum_{e \in E} (1-D_e) + \lambda_v \sum_{v \in V} (1-A_v),
 \end{align}
-where the sums are over the plaquettes $P$, edges $E$, and vertices $V$ of the lattice, respectively, and the $\lambda_p,\lambda_e,\lambda_v$ are constants.
-We require a hierarchy in the couplings, $\lambda_p \ll \lambda_e \ll \lambda_v$,
-which ensures that the low energy spectrum can be characterized by simple objects in $\mcz(\mathcal{C})$.
+where the sums are over the plaquettes $P$, edges $E$, and vertices $V$ of the lattice, respectively, and the $\lambda_p,\lambda_e,\lambda_v$ are positive constants.
+%We require a hierarchy in the couplings, $\lambda_p \ll \lambda_e \ll \lambda_v$,
+%which ensures that the low energy spectrum can be characterized by simple objects in $\mcz(\mathcal{C})$.
+If we want the excitations to be in correspondence with the primitive idempotents of the tube algebra, then we require a hierarchy in the couplings of $\lambda_v \gg \lambda_e \gg \lambda_p$.
+The reasoning for this is because the operators appearing in the plaquette terms are not well-defined unless the edge term energies are minimized, and in turn the terms appearing in the edge operators are not well-defined unless the vertex term energies are minimized.
+Thus, the projectors onto $k$-handles are only defined on the ground states of the projectors onto $l$-handles, for all $l<k$.  
 \kw{maybe insert a caveat about later projectors only being defined on the ground state of earlier projectors}
+\ethan{I had a comment along these lines at a later point; moved it here instead}
 In Fig.~\ref{example_lattice} we illustrate the support of each operator appearing in the Hamiltonian with dashed circles, where we have drawn the Hamiltonian on the honeycomb lattice for concreteness. 
 
 \kw{Need to be careful with what we say about mutually commuting projections.
 The hamiltonian has stages, and the projectors of later stages are only defined on the ground
 states of earlier stages.}
+
 
 %%%%%%%%%%%%%%%%%%
 \subsection{Spin structure considerations and the lattice} \label{standardized_handles}
@@ -5094,16 +5106,16 @@ For our purposes $\sigma$ can be thought of as a way of associating boundary con
 Therefore, the set of inequivalent spin structures can be identified with elements of   $H^1(\Sigma, \mathbb{Z}_2)$ (see Appendix \ref{spin_strs} for more detail).
 This identification is generically non-canonical, in the sense that there is no natural association of an ``identity'' spin structure, although this will be of little importance for us. 
 
-In what follows we will fix some spin structure defined by a function $q_\sigma \in H^1(\Sigma, \mathbb{Z}_2),$ which takes homotopy classes of closed curves 
+In what follows we will fix some spin structure defined by a function $\eta_\sigma \in H^1(\Sigma, \mathbb{Z}_2),$ which takes homotopy classes of closed curves 
 $\alpha_1, \alpha_2, \cdots, \alpha_n \subset \Sigma$ to elements in $\zt$.
-The image of a loop $\alpha$ under $q_\sigma$ specifies whether $\alpha$ is bounding (anti-periodic boundary conditions) or non-bounding (periodic boundary conditions).
-Since contractible loops have anti-periodic boundary conditions, we define 
-\be q_\sigma(\alpha) = \begin{cases} 0 \text{\ if $\alpha$ is bounding,}\\
+The image of a loop $\alpha$ under $\eta_\sigma$ specifies whether $\alpha$ is bounding (anti-periodic boundary conditions) or non-bounding (periodic boundary conditions).
+Since contractible loops have anti-periodic boundary conditions, we define the function
+\be \eta_\sigma(\alpha) = \begin{cases} 0 \text{\ if $\alpha$ is bounding,}\\
 1 \text{\ if $\alpha$ is non-bounding.}\end{cases} \ee
-Thus, the phase picked up by transporting a fermion along a path $\alpha$ is $-(-1)^{q_{\sigma}(\alpha)}$.
-The failure of $q_\sigma$ to factor over the concatenation of two paths $\alpha,\alpha'$ is controlled by whether or not the paths intersect:
+Thus, the phase picked up by transporting a fermion along a path $\alpha$ is $-(-1)^{\eta_{\sigma}(\alpha)}$.
+The failure of $\eta_\sigma$ to factor over the concatenation of two paths $\alpha,\alpha'$ is controlled by whether or not the paths intersect:
 \begin{align}
-q_{\sigma} (\alpha + \alpha') = q_{\sigma}(\alpha) q_{\sigma}(\alpha') (-1)^{\alpha \cap \alpha'}
+\eta_{\sigma} (\alpha + \alpha') = \eta_{\sigma}(\alpha) \eta_{\sigma}(\alpha') (-1)^{\alpha \cap \alpha'}
 \end{align}
 where $\alpha+\alpha'$ is the concatenation of $\alpha$ and $\alpha'$. 
 This means that spin structures can be described as a quadratic refinement of the intersection pairing. 
@@ -5289,8 +5301,8 @@ To talk about these twisted 1-handles more precisely, define the function
 The collection of the glueing signs $\{g_e\}$ are not arbitrary and are constrained by the background spin structure. 
 To see this, we note that a fermion transported along a closed loop $\gamma$ will pick up a phase equal to $-\prod_{e\in \gamma}(-1)^{g_e}$, meaning that the fermion possesses anti-periodic boundary conditions around $\gamma$ when $\gamma$ contains an even number of $2\pi$-twisted edges, and periodic boundary conditions when $\gamma$ contains an odd umber. 
 Since the fermionic boundary conditions on $\gamma$ is determined by the ambient spin structure, this phase is constrained by the relation
-\be \prod_{e\in \gamma}(-1)^{g_e} = (-1)^{q_\sigma(\gamma)},\ee 
-where as before $q_\sigma(\gamma) = 0$ $(1)$ if the loop $\gamma$ has anti-periodic (periodic) boundary conditions. 
+\be \prod_{e\in \gamma}(-1)^{g_e} = (-1)^{\eta_\sigma(\gamma)},\ee 
+where as before $\eta_\sigma(\gamma) = 0$ $(1)$ if the loop $\gamma$ has anti-periodic (periodic) boundary conditions. 
 
 This constraint does not uniquely determine the $\{g_e\}$, and indeed
 there is a large amount of gauge freedom in the choices of the $\{g_e\}$. 
@@ -5442,8 +5454,6 @@ As mentioned earlier, the Hamiltonian consists of three kinds of mutually commut
 \begin{align}
 H = \lambda_p \sum_{p \in \mathcal{F}} (1-B_p)  + \lambda_e \sum_{\mce \in E} (1-D_e) + \lambda_v \sum_{\mcv \in V} A_v
 \end{align}
-The couplings are all real and positive, and if we want the excitations to be in correspondence with the primitive idempotents of the tube algebra, then we take $\lambda_v \gg \lambda_e \gg \lambda_p$\footnote{ 
-The reasoning for this is because the operators appearing in the plaquette terms are not well-defined unless the edge term energies are minimized, and in turn the terms appearing in the edge operators are not well-defined unless the vertex term energies are minimized.}.
 In what follows we will explain each of the terms appearing in $H$ in detail. 
 We'll start with the more familiar vertex and plaquette terms, and will then address the new edge term. 
 
