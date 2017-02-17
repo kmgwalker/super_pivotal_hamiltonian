@@ -1254,7 +1254,6 @@ This condition is needed to compensate for the statistics-fermionocity of $\psi$
 Given a decomposition $B = B'\cup B''$, there is an obvious map $u: \mcr(B')\times\mcr(B'')\to\mcr(B)$, 
 and a corresponding pull-back bundle $u^*(F(B))$ over $\mcr(B')\times\mcr(B'')$.
 We require an isomorphism $u^*(F(B)) \cong F(B')\otimes F(B'')$ which is natural with respect to spin diffeomorphisms.
-\kw{need to check dependency on ordering of $B'$ and $B''$}
 \item $F$ satisfies a cancellation property.
 Given a configuration $r \in \mcr(B)_k$ and a point $x\in B$ distinct from the ribbon endpoints of $c$,
 we can create a new configuration $c_+ \in \mcr(B)_{k+2}$ by inserting a pair of endpoints in a standard configuration
@@ -1263,11 +1262,79 @@ We require an isomorphism of fibers $F(B)_c \cong F(B)_{c_+}$ which is compatibl
 This condition is need to allow for well-defined creation and annihilation of pairs of $\psi$ endpoints.
 \end{enumerate}
 
+\medskip
+
+Recall the group $Pin_+(1) \cong \zz/2 \times \zz/2$.
+We will call the non-zero elements of $Pin_+(1)$ the ``spin flip" (which lies in the kernel of the covering map
+$Pin_+(1) \to O(1)$), the ``reflection", and the ``other reflection".
+(The latter two map to the reflection in $O(1)$.)
+
+To construct $F(B)$, we will first construct a principal $Pin_+(1)$ bundle $P(B)$ over $\mcr(B)$.
+The construction of $P(B)$ will depend only on the underlying $Pin_+$ structure of $B$; it does not depend on the 
+orientation of $B$.
+
+$Pin_+(1)$ acts on $\cc$ as follows:
+the spin flip sends $z\in \cc$ to $-z$;
+the reflection sends $z$ to the complex conjugate $\bar z$;
+and the other reflection sends $z$ to $-\bar z$.
+Using this action, we can now define $F(B)$ to be
+\be
+	F(B) = P(B) \times_{Pin_+(1)} \cc ,
+\ee
+the associated $\cc$ bundle over $\mcr(B)$.
+(Recall that this means that elements of $F(B)$ are represented by pairs $(f, z) \in P(B) \times \cc$,
+and that for each element $a \in Pin_+(1)$, we identify $(f\cdot a, z)$ with $(f, a \cdot z)$.)
+
+Note that $F(B)$, as defined above, has two different complex-linear structures, one the conjugate of the other.
+We will se below that the orientation of $B$ picks out one of the two possible complex structures.
+
+\medskip
+
+We are now ready, finally, to construct $P(B)$.
+Let $r \in \mcr(B)_k$ be a configuration of $k$ ribbon endpoints.
+At each endpoint of $r$, there is a distinguished unit tangent vector $v \in TB$
+pointing in the direction of the ``front" of the ribbon.
+There are two unit tangent vectors $w_1$ and $w_2$ in $TB$ orthogonal to the distinguished vector.
+The orientation of $B$ allows us to designation one of these two orthogonal vectors as ``positive"
+and the other as ``negative".
+(We call $w_i$ positive if $(v, w_i)$ is a positively oriented frame with respect to the orientation of $B$.)
+We will call a collection of framings $(v, w_i)$ at each endpoint ``consistent" if they are all positive
+or all negative.
+Note that there are exactly two possible consistent collections of framings for each fixed configuration $r$.
+We will denote this set of two elements by $cf(r)$.
+Note that reversing the orientation of $B$ does not change $cf(r)$.
+
+(It is tempting to say that $cf(r)$ depends only on the underlying unoriented manifold of $B$, but that
+is not true if $B$ has more than one path component.
+Reversing the orientation of some but not all of the path components of $B$ would change $cf(r)$.)
+
+\newcommand{\tcf}{\widetilde{cf}}
+
+Now define $\tcf(r)$ to be the set of all collections of $Pin_+(2)$-framings (one at each endpoint)
+which cover an element of $cf(r)$.
+At each endpoint, there are two possible lifts of an $O(2)$ framing, 
+so $\tcf(r)$ is a set with $2^{k+1}$ elements.
+Again, $\tcf(r)$ does not change if we reverse the spin structure on $B$.
+\kw{should perhaps define ``reverse the spin structure".}
+
+Let $S(r)$ denote the set of all orderings of the endpoints of $r$.
+It is a set with $k!$ elements.
+%$S(r)$ affords an action of the symmetric group $S_k$.
+
+
+
+
+
 
 \kw{to be continued}
 
 
+\kwsep
 
+
+\kw{some things to mention: pin+ is only possibility because 1-dim'l; transition functions/spin/pin (?); ...}
+
+\kw{need to discuss dependency on ordering for tensor products}
 
 
 
@@ -5041,7 +5108,7 @@ The vertex terms $A_v$ (with the support of an example $A_v$ marked marked in gr
 The edge term $D_e$ (the support of an example $D_e$ marked in blue) are responsible for sliding fermions along q-type edges. 
 The plaquette terms $B_p$ (with the support of an example $B_p$ marked in pink) involve the six vertices and edges neighboring $p$.
 They project onto graph configurations that contain no quasiparticles within the plaquette $p$.
-}
+\dave{Should we draw this on the plane or in $\Sigma$?}}
  \label{example_lattice}
  \end{center}
  \end{figure}
@@ -5064,15 +5131,22 @@ To begin the construction of the lattice model, we will thus need the following 
 \item a lattice $\mcg$ defined on $\Sigma$ (more precisely, a cell decomposition of $\Sigma$) which inherits information about the spin structure $\sigma$,
 \kw{one doesn't usual say that a cell decomposition (or lattice) has a spin structure}
 \ethan{how about ``inherits information about the spin structure''? And as a general comment, feel free to precise-ify language whenever and wherever you see fit}
+\dave{what about ``a graph $\mcg$ inherited from a cell decomposition of $\Sigma$"}
 \item and a coloring of $\mcg$, where each edge of $\mcg$ is labelled by an object in $\mcc$.
 \kw{should this be a set of colorings, or something like that; also, numbers 4 and 5 are not additional data -- they are determined
 by $\mcc$ and the cell decomposition}
+\dave{what about ``and a set of $\mcc$ dependent colorings of $\mcg$ which constitute a basis for the Hamiltonian"}
 %\item and a collection of supervector spaces that constitute the Hilbert space of $\mcg$. %, and a ``spin" graph $(\mathcal{G}, s)$ with an imbedding into into the spin surface $(\Sigma, \sigma)$
 \end{enumerate}
 In the following sections we define the Hamiltonian explicitly in terms of the above data.
 \kw{I think we should consider not using ``lattice", or at least being more careful with how we use it.
 For a mathematician, a lattice is a translationally-invariant structure on $\mathbb R^n$.}
 \ethan{Ah, good point. ``string-net graph''? ``Cell decomposition'' is also fine (I avoided this at first since most physicists won't have heard it before, but I don't think that matters too much).}
+\dave{I'm fine with not using lattice.
+I like the sound of ``string-net graph" but this may be a little confusing since it mixes the vector space with the lattice (which of course are related).
+I would also be fine with saying ``spin-graph", or ``super-graph", or ``super-spin-graph".
+Probably just ``graph" would do fine.
+}
 %We will explicitly write out the Hamiltonian for the example of the honeycomb lattice shown in Fig.~\ref{example_lattice}, although much of what we say holds more generally.
 
 %We will write the Hamiltonian as a sum of three mutually commuting projectors.
@@ -5113,6 +5187,7 @@ This identification is generically non-canonical, in the sense that there is no 
 In what follows we will fix some spin structure defined by a function $\eta_\sigma \in H^1(\Sigma, \mathbb{Z}_2),$ which takes homotopy classes of closed curves 
 $\alpha_1, \alpha_2, \cdots, \alpha_n \subset \Sigma$ to elements in $\zt$.
 The image of a loop $\alpha$ under $\eta_\sigma$ specifies whether $\alpha$ is bounding (anti-periodic boundary conditions) or non-bounding (periodic boundary conditions).
+\dave{We could add a picture for this. }
 Since contractible loops have anti-periodic boundary conditions, we define the function
 \be \eta_\sigma(\alpha) = \begin{cases} 0 \text{\ if $\alpha$ is bounding,}\\
 1 \text{\ if $\alpha$ is non-bounding.}\end{cases} \ee
@@ -5132,7 +5207,7 @@ This means that spin structures can be described as a quadratic refinement of th
 %We now need to encode this spin structure data in to the graph embedding.
 %\dave{Need to discuss gluing of polygons. }
 
-In order to define our super pivotal Hamiltonian we will need to construct a lattice on $\Sigma$ which contains information about the spin structure $\sigma$. 
+In order to define the super pivotal Hamiltonian we will need to construct a lattice on $\Sigma$ which contains information about the spin structure $\sigma$. 
 %This can be done in many ways, we choose the most natural one for the applications we have in mind, writing down the string net Hamiltonian, the wave functions, and more generally tensor networks with MPO symmetries.
 The basic idea is to decompose the manifold $\Sigma$ into a collection of discs and bands whose union is $\Sigma$, and a equip each disc and band with spin structure data inherited from $\sigma$ in a standardized way.
 %The prescription is to locally map each vertex to a standardized vertex living in the plane through spin isomorphism. 
@@ -5249,15 +5324,16 @@ and so our standardized 1-handles will look like
 \end{align}
 
 
-For theories with q-type particles, our Hamiltonian will contain terms that allow fermions to hop along a standardized 1-handle from vertex to vertex. 
+For theories with q-type particles, the Hamiltonian will contain terms that allow fermions to fluctuate across a standardized 1-handle from vertex to vertex. 
 Therefore, the spin framing on the 1-handles provides us with a way of parallel transporting fermions between vertices. 
 Since the spin framing is fixed in a constant direction at both ends of every 1-handle, as we move between the two ends of a 1-handle one of two things can happen: the fermion framing can be constant along the entire 1-handle, or it can rotate by $2\pi$. 
 In the latter case, 
 parallel-transporting a fermion along such a 1-handle $e$ will act on the state in question with an additional spin flip, i.e. an additional factor of $-1$. 
 %Since $2\pi$ fermion framing rotations act as multiplication by $-1$ on fermions, there is a 
 % $\mathbb{Z}_2$ action on each place where a 1-handle is glued to a 0-handle, which is generated by spin flips of the spin framing at the gluing points. 
-Viewing the spin structure on $\Sigma$ as a double-covering of the oriented frame bundle of $\Sigma$, a 1-handle along which the framing rotates by $2\pi$ means that a point on one sheet of the double-cover is moved to its counterpart on the other sheet of the double-cover upon traveling along the 1-handle. 
+Viewing the spin structure on $\Sigma$ as a double-covering of the oriented frame bundle of $\Sigma$, a 1-handle along which the framing rotates by $2\pi$ means that a point on one sheet of the double-cover is moved to its counterpart on the other sheet of the double-cover when traversing the 1-handle. 
 Hence we need to both specify a map that embeds the 0- and 1-handles into the ambient spin manifold, as well as specify a set of data which determine where these spin flips take place. 
+\dave{Should we say ``embeds the standardized 0- and 1-handles into ..."}
 
 In order to make such $2\pi$ rotations of the fermion framing explicit in our diagrams, we will draw standardized 1-handles across which the fermion framing undergoes a $2\pi$ rotation with a twist in their middles.
 This means that we actually have two inequivalent standardized 1-handles: 
@@ -5265,7 +5341,9 @@ This means that we actually have two inequivalent standardized 1-handles:
 \Horseshoe\ , \quad \quad \quad \quad \HorseshoeTwist,
 \end{align}
 where the fermion framing rotates by $2\pi$ when proceeding along the second standardized 1-handle.
-Given an arbitrary handle decomposition, we can always act with spin diffeomorphisms to turn it into a standardized handle decomposition, where each 0-handle looks like \eqref{std0handle} and each 1-handle is one of the two appearing in \eqref{std1handles}. 
+Given an arbitrary handle decomposition, we can always act with spin diffeomorphisms to turn it into a standardized handle decomposition, where each 0-handle looks like \eqref{std0handle} and each 1-handle is one of the two appearing in \eqref{std1handles}.
+\dave{I'm wondering if it's better to keep the standardized handles seperate from the surface $\Sigma$ or to mix the two together like this.
+It may be less confusing to keep them seperate once we start appending vector spaces to the standardized handles.} 
 In what follows we will assume that such a standardization procedure has taken place. 
 %As we did for the $\phi_v$ isomorphisms, we define the isomorphisms taking generic 1-handles to standardized 1-handles by 
 %\begin{align}\vcenter{\xymatrix @!0 @M=1mm @R=10mm @C=25mm{
@@ -5302,8 +5380,8 @@ In what follows we will assume that such a standardization procedure has taken p
 To talk about these twisted 1-handles more precisely, define the function 
 \be g_e = \begin{cases} 0 \text{\ if the fermion framing is fixed along $e$,}\\ 
 1 \text{\ if the fermion framing rotates by $2\pi$ along $e$.}\end{cases}\ee
-The collection of the glueing signs $\{g_e\}$ are not arbitrary and are constrained by the background spin structure. 
-To see this, we note that a fermion transported along a closed loop $\gamma$ will pick up a phase equal to $-\prod_{e\in \gamma}(-1)^{g_e}$, meaning that the fermion possesses anti-periodic boundary conditions around $\gamma$ when $\gamma$ contains an even number of $2\pi$-twisted edges, and periodic boundary conditions when $\gamma$ contains an odd umber. 
+The collection of the glueing signs $\{g_e\}$ are not arbitrary, they are constrained by the background spin structure. 
+To see this, we note that a fermion transported along a closed loop $\gamma$ will pick up a phase equal to $-\prod_{e\in \gamma}(-1)^{g_e}$, meaning that the fermion possesses anti-periodic boundary conditions around $\gamma$ when $\gamma$ contains an even number of $2\pi$-twisted edges, and periodic boundary conditions when $\gamma$ contains an odd number. 
 Since the fermionic boundary conditions on $\gamma$ is determined by the ambient spin structure, this phase is constrained by the relation
 \be \prod_{e\in \gamma}(-1)^{g_e} = (-1)^{\eta_\sigma(\gamma)},\ee 
 where as before $\eta_\sigma(\gamma) = 0$ $(1)$ if the loop $\gamma$ has anti-periodic (periodic) boundary conditions. 
@@ -5314,6 +5392,7 @@ If we flip all of the $g_e$ glueing signs for all edges $e$ emanating from some 
 Mathematically, this means that we can perform the gauge transformations $g\mapsto g + \beta$, where $\beta \in B^1(\mcg;\zt)$ is a flat (both locally and topologically) $\zt$ gauge field on $\mcg^*$\footnote{On the dual lattice $\mcg$ these gauge transformations are generated flipping all the $g_e$ variables for edges lying along a closed loop.}. 
 The new set $g$ of glueing signs is still consistent with the constraint coming from the spin structure, since $\prod_{e\in \gamma}(-1)^{\beta_e} = 1$ for all $\beta \in B^1(\mcg;\zt)$ and every closed path $\gamma$. 
 This is just a manifestation of the fact that spin structures are classified by elements of $H^1(\Sigma;\zt)$: the coboundaries that are modded out in the definition of the equivalence classes in $H^1(\Sigma;\zt)$ are precisely the flat $\mathbb{Z}_2$ gauge fields $\beta$. 
+\dave{I'm not familiar with $B^1(\mcg,\zt)$. Ethan, want to add a footnote for other readers like me?}
 %These gauge fields are gauge degrees of freedom since any two collections %of glueing signs that differ by a flat $\zt$ gauge field are physically equivalent. 
 %Indeed, an equivalent spin structure can be found by choosing any closed path along the graph $\mathcal{G}$ and flipping all gluing signs along this path. 
 %Such gauge transformations are generated by the faces of of the graph\footnote{which by definition always bound a disc}.
@@ -5333,10 +5412,13 @@ Gauge transformations on the $\{g_e\}$ insert closed branch cut loops (which are
 \end{figure}
 
 In what follows it will be convenient to work with the most general form of the handle decomposition, where there is a puncture in the ambient manifold at the center of each plaquette. 
+\dave{Should we say a puncture at every plaquette, or say that we allow for spin structure defects? 
+This would avoid us having to define what a cell decomposition is on a manifold with boundary.}
 Since quasiparticles are localized at the boundaries of punctures, these punctures are where the quasiparticles will be located. 
+\dave{We probably don't want the reader thinking that the lattice needs punctures in it, rather we could say something like ``the low energy excitations live on the plaquettes...". }
 In the ground state none of these punctures will host quasiparticles, but this does not mean that all the punctures can be closed up.
 This is because the punctures contain information about the spin structure of the manifold.
-If the fermionic boundary conditions along the edges of a plaquette containing a given puncture are bounding, then the spin structure can be consistently extending into the entire plaquette, and the puncture can be removed. 
+If the fermionic boundary conditions along the edges of a plaquette containing a given puncture are bounding, then the spin structure can be consistently extended into the entire plaquette, and the puncture can be removed. 
 However, if the boundary conditions along the edges of a plaquette are non-bounding, then a spin structure vortex passes through the puncture, and the spin structure cannot be consistently extended into the plaquette's interior.
 The presence of such a puncture at a plaquette $p$ is diagnosed by the sign of $\prod_{e\in \p p}(-1)^{g_e}$. 
 The configurations of vortex punctures are not completely unconstrained, since such vortices can only ever appear in pairs. 
@@ -5355,16 +5437,20 @@ At each place where the branch cut intersects an edge of $\mcg$, the fermion fra
 %%%%%%%%%%%%%%%
 \subsection{Hilbert space} \label{hilbert_space}
 %%%%%%%%%%%%%%%
-
+\dave{Perhaps we should mention colorings here since we said it in the introduction to this section.}
 In this section we briefly define the Hilbert space on which the Hamiltonian operates. 
 This Hilbert space is just the tensor product over all the Hilbert spaces that live on the standardized vertices (0-handles), but since these Hilbert spaces are supervector spaces, the order in which we tensor them together is important.
-This requires us to a bit of bookkeeping, and forces us to define a global ordering of all the vertex Hilbert Spaces. 
+\dave{Why aren't the edges here?}
+This requires us to do a bit of bookkeeping, and forces us to define a global ordering of all the vertex Hilbert Spaces.
+\dave{Edges Hilbert spaces?} 
+\dave{Should also mention that we now restrict to trivalent vertices.}
 %For two integers $m_v \in \mathcal{I}_v$ and $n_e \in \mathcal{I}_e$ we define $n_e < m_v$.
 Let $V_{v}$ be the supervector space constituting the Hilbert space on the vertex $v$.
 If the labels of the edges terminating on $v$ are $a,b,c$, then the Hilbert space $V_v = V^{abc}_v$ is a supervector space of dimension 
 \be \dim V^{abc}_v = \cc^{N^{abc}|N^{abc}_f},\ee
 where $N^{abc}$ ($N^{abc}_f$) is the number of even (odd) ways that $a,b,c$ can fuse to the vacuum.
 If any of $a,b,c$ are q-type then $N^{abc} = N_f^{abc}$, and $V^{abc}$ is mapped to itself under the odd isomorphism $V^{abc} \mapsto V^{abc} \tp \cc^{0|1}$, while in general $N^{abc}\neq N^{abc}_f$ if all of $a,b,c$ are m-type. 
+\dave{Maybe we can say that the vertex Hilbert space is given by $V_v \cong \bigoplus_{abc \in \text{obj} \mcc } V^{abc}$}
 
 The total Hilbert space on a lattice $\mcg$ with $n$ vertices and $m$ edges is constructed as the tensor product of the fusion spaces at each vertex in the following way:
 \be \mch_\mcg = \mch_\mcv \tp \mch_\mce,\ee
@@ -5374,16 +5460,23 @@ where the vertex Hilbert space $\mch_\mcv$ and the edge Hilbert space $\mch_\mce
 \mch_\mce & = \End(e_{n+m})\tp \End(e_{n+m-1}) \tp \dots \tp \End(e_{n+2}) \tp \End(e_{n+1}),
 \label{GraphHilbertSpace}
 \end{align}
+\dave{Flip orderings? $V_{v_1} \tp V_{v_2} \tp \cdots $}
 where the $n$ vertices in $\mcg$ are ordered in some fixed way according to $v_n,\dots,v_1$, and likewise for the $m$ edges in $\mcg$, which are all assigned a higher ordering than the vertices.  
 Additionally, in the expression for $\mch_\mce$ we've abused notation by writing $\End(e_i)$ to denote the endomorphism algebra of the simple object that labels the edge $e_i \in \mcg$. 
+\dave{This Hilbert space is subtle. 
+As such we should proabably explain it more carefully. }
 Note that we have adopted the convention that supervector spaces with higher fermion ordering always appear to the left in the tensor product. 
 The tensor product is supercommutative, in the sense that for $\psi\in V_{v_i},\eta\in V_{v_{i+1}}$,
 \be \psi \tp \eta = (-1)^{|\psi||\eta|}\eta\tp\psi \in V_{v_{i+1}} \tp V_{v_i},\ee
 and likewise for vectors in the edge Hilbert space $\mch_\mce$. 
 
 The edge Hilbert space is only non-trivial when the theory contains q-type particles, for if there are no q-type edge labels then we simply have $\mch_\mce= \cc^{\tp m} \cong \cc$. 
+\dave{Doesn't the center of half-e-six give a counter example to this? $M_2 \tp M_2 \rightarrow \mathbb{C}^{0|1} M_0$.}
 If $k$ of the edge labels are q-type, then the edge Hilbert space is $\mch_\mce = \cl_1^{\tp k} \cong \cl_k$, and so we can realize all complex Clifford algebras as the edge Hilbert space of a particular lattice hosting a theory containing q-type objects. 
+\dave{It feels awkward to assign the Hilbert space to the edges in this way. 
+Don't we want bosonic 1d vector space for Q types, and 1d super vector space for M types which is either purely bosonic or fermionic depending on the FS indicator?}
 
+\dave{Maybe move this paragraph?}
 However, when the theory contains q-type objects, the Hilbert spaces $\mch_\mcv$ and $\mch_\mce$ are actually much bigger than the {\it physical} edge and vertex Hilbert spaces of the theory, in a sense that will be made more precise in Section \ref{modified_tensor_product}. 
 To see an example of this, consider a diagram involving a single q-type edge $e$, with a Hilbert space equal to $\End(e) \cong \cl_1$. 
 Now consider decomposing the edge $e$ into many smaller edges $e_1,\dots,e_N$, such that $e_1\cup\dots\cup e_N = e$, where each junction of the edges $e_i,e_{i+1}$ can be thought of as a 2-valent vertex with fusion space $V_a^a \cong \cl_1$, where $a$ is the q-type object that labels the edge $e$. 
@@ -5391,6 +5484,7 @@ This decomposition produces a vertex Hilbert space $\mch_\mcv \cong \cl_{N-1}$, 
 Clearly this is unphysical, and the redundant degrees of freedom created during the decomposition of $e$ into $e_1\cup\dots\cup e_N$ need to be modded out to obtain the physical Hilbert space of the theory. 
 Obtaining the physical Hilbert space can be done in one of two ways: by adding an edge term to the Hamiltonian which allows fermions to fluctuate along q-type edges and between vertices linked by a q-type edge, or by modifying the tensor products appearing in the definition of $\mch_\mcg$ to be tensor products whose tensor units are chosen from the endomorphism algebras of the edge labels. 
 We will describe the edge term approach in this section, and will address the latter method in Section \ref{modified_tensor_product}. 
+
 
 
 %The vertex Hilbert spaces $\mca(D_v)$ contain odd vectors if a fermion is present on the vertex $v$, while the edge Hilbert spaces $\mca(e_{uv})$ contain odd vectors only when the string type appearing on $e_{uv}$ is q-type.
@@ -5458,6 +5552,7 @@ As mentioned earlier, the Hamiltonian consists of three kinds of mutually commut
 \begin{align}
 H = \lambda_p \sum_{p \in \mathcal{F}} (1-B_p)  + \lambda_e \sum_{\mce \in E} (1-D_e) + \lambda_v \sum_{\mcv \in V} A_v
 \end{align}
+\dave{disagrees with above Hamiltonian on vertex term.}
 In what follows we will explain each of the terms appearing in $H$ in detail. 
 We'll start with the more familiar vertex and plaquette terms, and will then address the new edge term. 
 
