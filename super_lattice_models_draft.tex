@@ -5101,7 +5101,7 @@ The vertex terms $A_v$ (with the support of an example $A_v$ marked marked in gr
 The edge term $D_e$ (the support of an example $D_e$ marked in blue) are responsible for sliding fermions along q-type edges. 
 The plaquette terms $B_p$ (with the support of an example $B_p$ marked in pink) involve the six vertices and edges neighboring $p$.
 They project onto graph configurations that contain no quasiparticles within the plaquette $p$.
-}
+\dave{Should we draw this on the plane or in $\Sigma$?}}
  \label{example_lattice}
  \end{center}
  \end{figure}
@@ -5124,15 +5124,22 @@ To begin the construction of the lattice model, we will thus need the following 
 \item a lattice $\mcg$ defined on $\Sigma$ (more precisely, a cell decomposition of $\Sigma$) which inherits information about the spin structure $\sigma$,
 \kw{one doesn't usual say that a cell decomposition (or lattice) has a spin structure}
 \ethan{how about ``inherits information about the spin structure''? And as a general comment, feel free to precise-ify language whenever and wherever you see fit}
+\dave{what about ``a graph $\mcg$ inherited from a cell decomposition of $\Sigma$"}
 \item and a coloring of $\mcg$, where each edge of $\mcg$ is labelled by an object in $\mcc$.
 \kw{should this be a set of colorings, or something like that; also, numbers 4 and 5 are not additional data -- they are determined
 by $\mcc$ and the cell decomposition}
+\dave{what about ``and a set of $\mcc$ dependent colorings of $\mcg$ which constitute a basis for the Hamiltonian"}
 %\item and a collection of supervector spaces that constitute the Hilbert space of $\mcg$. %, and a ``spin" graph $(\mathcal{G}, s)$ with an imbedding into into the spin surface $(\Sigma, \sigma)$
 \end{enumerate}
 In the following sections we define the Hamiltonian explicitly in terms of the above data.
 \kw{I think we should consider not using ``lattice", or at least being more careful with how we use it.
 For a mathematician, a lattice is a translationally-invariant structure on $\mathbb R^n$.}
 \ethan{Ah, good point. ``string-net graph''? ``Cell decomposition'' is also fine (I avoided this at first since most physicists won't have heard it before, but I don't think that matters too much).}
+\dave{I'm fine with not using lattice.
+I like the sound of ``string-net graph" but this may be a little confusing since it mixes the vector space with the lattice (which of course are related).
+I would also be fine with saying ``spin-graph", or ``super-graph", or ``super-spin-graph".
+Probably just ``graph" would do fine.
+}
 %We will explicitly write out the Hamiltonian for the example of the honeycomb lattice shown in Fig.~\ref{example_lattice}, although much of what we say holds more generally.
 
 %We will write the Hamiltonian as a sum of three mutually commuting projectors.
@@ -5173,6 +5180,7 @@ This identification is generically non-canonical, in the sense that there is no 
 In what follows we will fix some spin structure defined by a function $\eta_\sigma \in H^1(\Sigma, \mathbb{Z}_2),$ which takes homotopy classes of closed curves 
 $\alpha_1, \alpha_2, \cdots, \alpha_n \subset \Sigma$ to elements in $\zt$.
 The image of a loop $\alpha$ under $\eta_\sigma$ specifies whether $\alpha$ is bounding (anti-periodic boundary conditions) or non-bounding (periodic boundary conditions).
+\dave{We could add a picture for this. }
 Since contractible loops have anti-periodic boundary conditions, we define the function
 \be \eta_\sigma(\alpha) = \begin{cases} 0 \text{\ if $\alpha$ is bounding,}\\
 1 \text{\ if $\alpha$ is non-bounding.}\end{cases} \ee
@@ -5192,7 +5200,7 @@ This means that spin structures can be described as a quadratic refinement of th
 %We now need to encode this spin structure data in to the graph embedding.
 %\dave{Need to discuss gluing of polygons. }
 
-In order to define our super pivotal Hamiltonian we will need to construct a lattice on $\Sigma$ which contains information about the spin structure $\sigma$. 
+In order to define the super pivotal Hamiltonian we will need to construct a lattice on $\Sigma$ which contains information about the spin structure $\sigma$. 
 %This can be done in many ways, we choose the most natural one for the applications we have in mind, writing down the string net Hamiltonian, the wave functions, and more generally tensor networks with MPO symmetries.
 The basic idea is to decompose the manifold $\Sigma$ into a collection of discs and bands whose union is $\Sigma$, and a equip each disc and band with spin structure data inherited from $\sigma$ in a standardized way.
 %The prescription is to locally map each vertex to a standardized vertex living in the plane through spin isomorphism. 
@@ -5309,15 +5317,16 @@ and so our standardized 1-handles will look like
 \end{align}
 
 
-For theories with q-type particles, our Hamiltonian will contain terms that allow fermions to hop along a standardized 1-handle from vertex to vertex. 
+For theories with q-type particles, the Hamiltonian will contain terms that allow fermions to fluctuate across a standardized 1-handle from vertex to vertex. 
 Therefore, the spin framing on the 1-handles provides us with a way of parallel transporting fermions between vertices. 
 Since the spin framing is fixed in a constant direction at both ends of every 1-handle, as we move between the two ends of a 1-handle one of two things can happen: the fermion framing can be constant along the entire 1-handle, or it can rotate by $2\pi$. 
 In the latter case, 
 parallel-transporting a fermion along such a 1-handle $e$ will act on the state in question with an additional spin flip, i.e. an additional factor of $-1$. 
 %Since $2\pi$ fermion framing rotations act as multiplication by $-1$ on fermions, there is a 
 % $\mathbb{Z}_2$ action on each place where a 1-handle is glued to a 0-handle, which is generated by spin flips of the spin framing at the gluing points. 
-Viewing the spin structure on $\Sigma$ as a double-covering of the oriented frame bundle of $\Sigma$, a 1-handle along which the framing rotates by $2\pi$ means that a point on one sheet of the double-cover is moved to its counterpart on the other sheet of the double-cover upon traveling along the 1-handle. 
+Viewing the spin structure on $\Sigma$ as a double-covering of the oriented frame bundle of $\Sigma$, a 1-handle along which the framing rotates by $2\pi$ means that a point on one sheet of the double-cover is moved to its counterpart on the other sheet of the double-cover when traversing the 1-handle. 
 Hence we need to both specify a map that embeds the 0- and 1-handles into the ambient spin manifold, as well as specify a set of data which determine where these spin flips take place. 
+\dave{Should we say ``embeds the standardized 0- and 1-handles into ..."}
 
 In order to make such $2\pi$ rotations of the fermion framing explicit in our diagrams, we will draw standardized 1-handles across which the fermion framing undergoes a $2\pi$ rotation with a twist in their middles.
 This means that we actually have two inequivalent standardized 1-handles: 
@@ -5325,7 +5334,9 @@ This means that we actually have two inequivalent standardized 1-handles:
 \Horseshoe\ , \quad \quad \quad \quad \HorseshoeTwist,
 \end{align}
 where the fermion framing rotates by $2\pi$ when proceeding along the second standardized 1-handle.
-Given an arbitrary handle decomposition, we can always act with spin diffeomorphisms to turn it into a standardized handle decomposition, where each 0-handle looks like \eqref{std0handle} and each 1-handle is one of the two appearing in \eqref{std1handles}. 
+Given an arbitrary handle decomposition, we can always act with spin diffeomorphisms to turn it into a standardized handle decomposition, where each 0-handle looks like \eqref{std0handle} and each 1-handle is one of the two appearing in \eqref{std1handles}.
+\dave{I'm wondering if it's better to keep the standardized handles seperate from the surface $\Sigma$ or to mix the two together like this.
+It may be less confusing to keep them seperate once we start appending vector spaces to the standardized handles.} 
 In what follows we will assume that such a standardization procedure has taken place. 
 %As we did for the $\phi_v$ isomorphisms, we define the isomorphisms taking generic 1-handles to standardized 1-handles by 
 %\begin{align}\vcenter{\xymatrix @!0 @M=1mm @R=10mm @C=25mm{
@@ -5362,8 +5373,8 @@ In what follows we will assume that such a standardization procedure has taken p
 To talk about these twisted 1-handles more precisely, define the function 
 \be g_e = \begin{cases} 0 \text{\ if the fermion framing is fixed along $e$,}\\ 
 1 \text{\ if the fermion framing rotates by $2\pi$ along $e$.}\end{cases}\ee
-The collection of the glueing signs $\{g_e\}$ are not arbitrary and are constrained by the background spin structure. 
-To see this, we note that a fermion transported along a closed loop $\gamma$ will pick up a phase equal to $-\prod_{e\in \gamma}(-1)^{g_e}$, meaning that the fermion possesses anti-periodic boundary conditions around $\gamma$ when $\gamma$ contains an even number of $2\pi$-twisted edges, and periodic boundary conditions when $\gamma$ contains an odd umber. 
+The collection of the glueing signs $\{g_e\}$ are not arbitrary, they are constrained by the background spin structure. 
+To see this, we note that a fermion transported along a closed loop $\gamma$ will pick up a phase equal to $-\prod_{e\in \gamma}(-1)^{g_e}$, meaning that the fermion possesses anti-periodic boundary conditions around $\gamma$ when $\gamma$ contains an even number of $2\pi$-twisted edges, and periodic boundary conditions when $\gamma$ contains an odd number. 
 Since the fermionic boundary conditions on $\gamma$ is determined by the ambient spin structure, this phase is constrained by the relation
 \be \prod_{e\in \gamma}(-1)^{g_e} = (-1)^{\eta_\sigma(\gamma)},\ee 
 where as before $\eta_\sigma(\gamma) = 0$ $(1)$ if the loop $\gamma$ has anti-periodic (periodic) boundary conditions. 
@@ -5374,6 +5385,7 @@ If we flip all of the $g_e$ glueing signs for all edges $e$ emanating from some 
 Mathematically, this means that we can perform the gauge transformations $g\mapsto g + \beta$, where $\beta \in B^1(\mcg;\zt)$ is a flat (both locally and topologically) $\zt$ gauge field on $\mcg^*$\footnote{On the dual lattice $\mcg$ these gauge transformations are generated flipping all the $g_e$ variables for edges lying along a closed loop.}. 
 The new set $g$ of glueing signs is still consistent with the constraint coming from the spin structure, since $\prod_{e\in \gamma}(-1)^{\beta_e} = 1$ for all $\beta \in B^1(\mcg;\zt)$ and every closed path $\gamma$. 
 This is just a manifestation of the fact that spin structures are classified by elements of $H^1(\Sigma;\zt)$: the coboundaries that are modded out in the definition of the equivalence classes in $H^1(\Sigma;\zt)$ are precisely the flat $\mathbb{Z}_2$ gauge fields $\beta$. 
+\dave{I'm not familiar with $B^1(\mcg,\zt)$. Ethan, want to add a footnote for other readers like me?}
 %These gauge fields are gauge degrees of freedom since any two collections %of glueing signs that differ by a flat $\zt$ gauge field are physically equivalent. 
 %Indeed, an equivalent spin structure can be found by choosing any closed path along the graph $\mathcal{G}$ and flipping all gluing signs along this path. 
 %Such gauge transformations are generated by the faces of of the graph\footnote{which by definition always bound a disc}.
@@ -5393,10 +5405,13 @@ Gauge transformations on the $\{g_e\}$ insert closed branch cut loops (which are
 \end{figure}
 
 In what follows it will be convenient to work with the most general form of the handle decomposition, where there is a puncture in the ambient manifold at the center of each plaquette. 
+\dave{Should we say a puncture at every plaquette, or say that we allow for spin structure defects? 
+This would avoid us having to define what a cell decomposition is on a manifold with boundary.}
 Since quasiparticles are localized at the boundaries of punctures, these punctures are where the quasiparticles will be located. 
+\dave{We probably don't want the reader thinking that the lattice needs punctures in it, rather we could say something like ``the low energy excitations live on the plaquettes...". }
 In the ground state none of these punctures will host quasiparticles, but this does not mean that all the punctures can be closed up.
 This is because the punctures contain information about the spin structure of the manifold.
-If the fermionic boundary conditions along the edges of a plaquette containing a given puncture are bounding, then the spin structure can be consistently extending into the entire plaquette, and the puncture can be removed. 
+If the fermionic boundary conditions along the edges of a plaquette containing a given puncture are bounding, then the spin structure can be consistently extended into the entire plaquette, and the puncture can be removed. 
 However, if the boundary conditions along the edges of a plaquette are non-bounding, then a spin structure vortex passes through the puncture, and the spin structure cannot be consistently extended into the plaquette's interior.
 The presence of such a puncture at a plaquette $p$ is diagnosed by the sign of $\prod_{e\in \p p}(-1)^{g_e}$. 
 The configurations of vortex punctures are not completely unconstrained, since such vortices can only ever appear in pairs. 
