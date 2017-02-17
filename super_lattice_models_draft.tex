@@ -5363,16 +5363,20 @@ At each place where the branch cut intersects an edge of $\mcg$, the fermion fra
 %%%%%%%%%%%%%%%
 \subsection{Hilbert space} \label{hilbert_space}
 %%%%%%%%%%%%%%%
-
+\dave{Perhaps we should mention colorings here since we said it in the introduction to this section.}
 In this section we briefly define the Hilbert space on which the Hamiltonian operates. 
 This Hilbert space is just the tensor product over all the Hilbert spaces that live on the standardized vertices (0-handles), but since these Hilbert spaces are supervector spaces, the order in which we tensor them together is important.
-This requires us to a bit of bookkeeping, and forces us to define a global ordering of all the vertex Hilbert Spaces. 
+\dave{Why aren't the edges here?}
+This requires us to do a bit of bookkeeping, and forces us to define a global ordering of all the vertex Hilbert Spaces.
+\dave{Edges Hilbert spaces?} 
+\dave{Should also mention that we now restrict to trivalent vertices.}
 %For two integers $m_v \in \mathcal{I}_v$ and $n_e \in \mathcal{I}_e$ we define $n_e < m_v$.
 Let $V_{v}$ be the supervector space constituting the Hilbert space on the vertex $v$.
 If the labels of the edges terminating on $v$ are $a,b,c$, then the Hilbert space $V_v = V^{abc}_v$ is a supervector space of dimension 
 \be \dim V^{abc}_v = \cc^{N^{abc}|N^{abc}_f},\ee
 where $N^{abc}$ ($N^{abc}_f$) is the number of even (odd) ways that $a,b,c$ can fuse to the vacuum.
 If any of $a,b,c$ are q-type then $N^{abc} = N_f^{abc}$, and $V^{abc}$ is mapped to itself under the odd isomorphism $V^{abc} \mapsto V^{abc} \tp \cc^{0|1}$, while in general $N^{abc}\neq N^{abc}_f$ if all of $a,b,c$ are m-type. 
+\dave{Maybe we can say that the vertex Hilbert space is given by $V_v \cong \bigoplus_{abc \in \text{obj} \mcc } V^{abc}$}
 
 The total Hilbert space on a lattice $\mcg$ with $n$ vertices and $m$ edges is constructed as the tensor product of the fusion spaces at each vertex in the following way:
 \be \mch_\mcg = \mch_\mcv \tp \mch_\mce,\ee
@@ -5382,16 +5386,23 @@ where the vertex Hilbert space $\mch_\mcv$ and the edge Hilbert space $\mch_\mce
 \mch_\mce & = \End(e_{n+m})\tp \End(e_{n+m-1}) \tp \dots \tp \End(e_{n+2}) \tp \End(e_{n+1}),
 \label{GraphHilbertSpace}
 \end{align}
+\dave{Flip orderings? $V_{v_1} \tp V_{v_2} \tp \cdots $}
 where the $n$ vertices in $\mcg$ are ordered in some fixed way according to $v_n,\dots,v_1$, and likewise for the $m$ edges in $\mcg$, which are all assigned a higher ordering than the vertices.  
 Additionally, in the expression for $\mch_\mce$ we've abused notation by writing $\End(e_i)$ to denote the endomorphism algebra of the simple object that labels the edge $e_i \in \mcg$. 
+\dave{This Hilbert space is subtle. 
+As such we should proabably explain it more carefully. }
 Note that we have adopted the convention that supervector spaces with higher fermion ordering always appear to the left in the tensor product. 
 The tensor product is supercommutative, in the sense that for $\psi\in V_{v_i},\eta\in V_{v_{i+1}}$,
 \be \psi \tp \eta = (-1)^{|\psi||\eta|}\eta\tp\psi \in V_{v_{i+1}} \tp V_{v_i},\ee
 and likewise for vectors in the edge Hilbert space $\mch_\mce$. 
 
 The edge Hilbert space is only non-trivial when the theory contains q-type particles, for if there are no q-type edge labels then we simply have $\mch_\mce= \cc^{\tp m} \cong \cc$. 
+\dave{Doesn't the center of half-e-six give a counter example to this? $M_2 \tp M_2 \rightarrow \mathbb{C}^{0|1} M_0$.}
 If $k$ of the edge labels are q-type, then the edge Hilbert space is $\mch_\mce = \cl_1^{\tp k} \cong \cl_k$, and so we can realize all complex Clifford algebras as the edge Hilbert space of a particular lattice hosting a theory containing q-type objects. 
+\dave{It feels awkward to assign the Hilbert space to the edges in this way. 
+Don't we want bosonic 1d vector space for Q types, and 1d super vector space for M types which is either purely bosonic or fermionic depending on the FS indicator?}
 
+\dave{Maybe move this paragraph?}
 However, when the theory contains q-type objects, the Hilbert spaces $\mch_\mcv$ and $\mch_\mce$ are actually much bigger than the {\it physical} edge and vertex Hilbert spaces of the theory, in a sense that will be made more precise in Section \ref{modified_tensor_product}. 
 To see an example of this, consider a diagram involving a single q-type edge $e$, with a Hilbert space equal to $\End(e) \cong \cl_1$. 
 Now consider decomposing the edge $e$ into many smaller edges $e_1,\dots,e_N$, such that $e_1\cup\dots\cup e_N = e$, where each junction of the edges $e_i,e_{i+1}$ can be thought of as a 2-valent vertex with fusion space $V_a^a \cong \cl_1$, where $a$ is the q-type object that labels the edge $e$. 
@@ -5399,6 +5410,7 @@ This decomposition produces a vertex Hilbert space $\mch_\mcv \cong \cl_{N-1}$, 
 Clearly this is unphysical, and the redundant degrees of freedom created during the decomposition of $e$ into $e_1\cup\dots\cup e_N$ need to be modded out to obtain the physical Hilbert space of the theory. 
 Obtaining the physical Hilbert space can be done in one of two ways: by adding an edge term to the Hamiltonian which allows fermions to fluctuate along q-type edges and between vertices linked by a q-type edge, or by modifying the tensor products appearing in the definition of $\mch_\mcg$ to be tensor products whose tensor units are chosen from the endomorphism algebras of the edge labels. 
 We will describe the edge term approach in this section, and will address the latter method in Section \ref{modified_tensor_product}. 
+
 
 
 %The vertex Hilbert spaces $\mca(D_v)$ contain odd vectors if a fermion is present on the vertex $v$, while the edge Hilbert spaces $\mca(e_{uv})$ contain odd vectors only when the string type appearing on $e_{uv}$ is q-type.
@@ -5466,6 +5478,7 @@ As mentioned earlier, the Hamiltonian consists of three kinds of mutually commut
 \begin{align}
 H = \lambda_p \sum_{p \in \mathcal{F}} (1-B_p)  + \lambda_e \sum_{\mce \in E} (1-D_e) + \lambda_v \sum_{\mcv \in V} A_v
 \end{align}
+\dave{disagrees with above Hamiltonian on vertex term.}
 In what follows we will explain each of the terms appearing in $H$ in detail. 
 We'll start with the more familiar vertex and plaquette terms, and will then address the new edge term. 
 
