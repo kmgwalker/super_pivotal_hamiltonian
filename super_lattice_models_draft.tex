@@ -2692,21 +2692,22 @@ After finding the quasiparticle content of $SO(3)_3$ and $SU(2)_6$ we will then 
 From the minimal idempotents one can compute the mapping class group action, which we will work out for the $SO(3)_3$ example.
 First we will establish some notation for UBFC's with fermions.
 
-\subsection{Notation}
-Throughout will will work with a unitary braided fusion category (UBFC) $\mathcal{C}$ which contains a fermion that we aim to condense. 
+\subsection{Preliminaries on notation}
+In what follows we will will work with a unitary braided fusion category (UBFC) $\mathcal{C}$ which contains a fermion that we aim to condense. 
 We denote this fermionic object by $\psi \in \text{Obj}\; \mathcal{C}$. 
-The fermion leads to two natural ways of dissecting the set of objects in $\mathcal{C}$, one is given by whether a given simple object is invariant under fusion with $\psi$, the other is given by whether or not $\psi$ is transparent with respect to a given object.
-Although the two dissections are related, they are not the same, and both will be useful in the following discussions.
+There are two decompositions of $\text{Obj}\; \mathcal{C}$ that will be relevant in what follows: one is a decomposition of $\text{Obj}\; \mathcal{C}$ into objects that are invariant under fusion with $\psi$ and those that are not, and the other is a decomposition into objects  that are transparent with respect to $\psi$ and those that are not. 
+These two decompositions are related \ethan{is this still true given that q-types don't have to have $-1$ braiding with $\psi$?} but not the same, and both will be useful in the following discussions.
 
-The first distinction of objects in $\mcc$ is by whether they are M type or Q type, i.e. whether or not they are mapped to themselves under fusion with $\psi$. 
+The first decomposition of objects in $\mcc$ is done according to whether or not they are mapped to themselves under fusion with $\psi$, i.e. whether they are m-type or q-type.
 We write
 \begin{align}
-\text{obj} \; \mathcal{C}  = M \cup \psi \tp M \cup Q,
+\text{obj} \; \mathcal{C}  = (M \cup \psi \tp M) \cup Q,
 \end{align}
-where if $x \in M$ then $x \tp \psi \notin M$ and if $x \in Q$ then $x \tp \psi \in Q$.
-Note that $M$ is not unique, we could take any $x \in M$ and replace it by $x \tp \psi$.
-The resulting ismorphism class of this simple object changes, and every edge in the condensed theory labled by this object will pick up a pair of fermions at its nieghbouring 
-one could change any particle in $\psi \tp M$ with one in $M$ and obtain another isomorphism class of simple objects in the condensed theory. 
+where if $x \in Q$ then $x \tp \psi \in Q$ (i.e. $x$ is q-type), while if $x \in M$ then $x \tp \psi \notin M$.
+The objects in both $M$ and $M\tp \psi$ are all m-type, and together they contain all m-type objects. 
+Our choice of $M$ is not unique, as the objects in $M$ are representative elements of orbits of $\text{Obj}\; \mcc$ under fusion with $\psi$, and as such we could just as well take any $x \in M$ and replace it by $x \tp \psi$.
+Our choice of the objects in $M$ is essentially a gauge choice, but we find it convenient to fix a gauge in this way from the outset, since it will aid us in doing computations. 
+In what follows, we will only be concerned with calculations performed with objects in $M$ or $Q$: analogous calculations for objects in $M\tp \psi$ can be obtained from the results for objects in $M$, so this is done without loss of generality. 
 It is useful to define the indicator
 \begin{align}
 n_x=
@@ -2715,25 +2716,25 @@ n_x=
 1\quad \text{if $x \in Q$}\\
 \end{cases}
 \end{align}
-\ethan{What about $q(x)$ as in Hamiltonian section? Sorry for being nitpicky}
 
 The second natural way to distinguish the simple objects given a fermion is to use the $\mathbb{Z}_2$ grading inherited from the full braid with a fermion. 
-This can be defined by,
+This can be defined by the indicator 
 \begin{align}
-(-1)^{\nu_x} = S_{a \psi}/S_{a0} \in \{+1, -1 \}
+(-1)^{\nu_x} := S_{a \psi}/S_{a0} \in \{+1, -1 \}
 \label{grading}
 \end{align}
 It is easy to check that this grading is preserved under fusion.
-Hence we can define,
+Hence we can partition the objects in $\mcc$ as 
 \begin{align}
-\text{obj}\; \mathcal{C}  = I_0 \cup I_1, \quad \quad I_a \tp I_b = I_{a+b\; \text{mod} \; 2}
+\text{Obj}\; \mathcal{C}  = I_0 \cup I_1, \quad \quad I_a \tp I_b = I_{a+b\; \text{mod} \; 2}
 \end{align}
-Physically it is natural to call particles with $\nu_x = 1$ vortices, since when a fermion is dragged around them the wavefunction picks up a minus sign.
-We will avoid this nomenclature here to avoid confusion with non-bounding spin structures, which also satisfy this property for the physical fermions. 
+Physically it is tempting to call particles with $\nu_x = 1$ vortices, since when a fermion is dragged around them the wavefunction picks up a minus sign.
+We will avoid this nomenclature here to avoid confusion with the spin structure vortices associated to non-bounding spin structures, which also satisfy this property for the physical fermions. 
 It can be shown that in any UMTC, $\nu_x = 1$ for all $x\in Q$\footnote{One can show this by considering the symmetries of the S-matrix on the punctured torus.}. 
-\dave{Should we draw the picture?}
+\dave{Should we draw the picture?} \ethan{was this true?}
 
 \subsection{Fusion theory of $SU(2)_6/\psi$ and $SO(3)_3/\psi$}
+\ethan{I think we should call it $SO(3)_6$. Also should decide if we want to use $A_7$ instead to kill the FS indicators and to allow us to write the condensed theory as $C_4$.} 
 Lets briefly review $SU(2)_6$ and its connection with $SO(3)_3$.
 Since these are well known theories we only list out some of their key properties and point the reader to some references for more details \cite{kirillow1989} and also \cite{Bonderson2007}.
 The particles for $SU(2)_6$ are labeled by $0,1,2,\cdots, 6$.
@@ -3395,7 +3396,7 @@ One can easily check that the odd part of the $S$ matrix satisfies $S^4 = -1$, a
 \section{Fermion condensation in $\halfesix$} \label{e6}
 \dave{Still in progress.}
 In this section we condense a fermion in the category $\halfesix$.
-This provides the first example of a super pivotal category with fusion multiplicity\dave{Have there been any other examples of super-pivotal-categories with fusion multiplicity discussed in the literature?}.
+This provides the first example of a super pivotal category with fusion multiplicity, and will constitute the final example we will work out in this paper\dave{Have there been any other examples of super-pivotal-categories with fusion multiplicity discussed in the literature?}.
 The resulting super pivotal fusion category after performing the condensation has one non-trivial q-type particle, which we denote $\rho$. $\rho$ obeys the fusion rule
 \begin{align}
 \rho \tp \rho = \mathbb{C}^{1|1} \mathds{1} \oplus \mathbb{C}^{1|1} \rho,
@@ -5101,7 +5102,7 @@ Since our goal in this section is to be rather general, we will put a fair amoun
 % \includegraphics{Lattice.pdf}
 \begin{center}
   \includegraphics{sample_lattice.pdf}
- \caption{An illustration of the support of the operators appearing in a super pivotal Hamiltonian on a section of a generic lattice. 
+ \caption{An illustration of the support of the operators appearing in a super pivotal Hamiltonian on a section of a generic graph. 
  The motivation for the bizarre-looking vertices is explained in Section \ref{standardized_handles}.
  Dashed ellipses indicate the support of various terms in the Hamiltonian.
 The vertex terms $A_v$ (with the support of an example $A_v$ marked marked in green) project onto stable vertices which are compatible with the edge labeling. 
@@ -5157,7 +5158,7 @@ The Hamiltonian takes the form
 \begin{align} \label{ham}
 H = \lambda_p \sum_{p \in P} (1-B_p) + \lambda_e \sum_{e \in E} (1-D_e) + \lambda_v \sum_{v \in V} (1-A_v),
 \end{align}
-where the sums are over the plaquettes $P$, edges $E$, and vertices $V$ of the lattice, respectively, and the $\lambda_p,\lambda_e,\lambda_v$ are positive constants.
+where the sums are over the plaquettes $P$, edges $E$, and vertices $V$ of the graph, respectively, and the $\lambda_p,\lambda_e,\lambda_v$ are positive constants.
 %We require a hierarchy in the couplings, $\lambda_p \ll \lambda_e \ll \lambda_v$,
 %which ensures that the low energy spectrum can be characterized by simple objects in $\mcz(\mathcal{C})$.
 If we want the excitations to be in correspondence with the primitive idempotents of the tube algebra, then we require a hierarchy in the couplings of $\lambda_v \gg \lambda_e \gg \lambda_p$.
@@ -5176,7 +5177,7 @@ states of earlier stages.}
 \subsection{Spin structure considerations and the lattice} \label{standardized_handles}
 %%%%%%%%%%%%%%%%%%
 
-To derive the Hamiltonian \eqref{ham} and explain the nature of the $B_p$, $D_e$, and $A_v$ operators, we will first need to describe how the lattice inherits spin structure data from the ambient spin manifold on which it is defined. 
+To derive the Hamiltonian \eqref{ham} and explain the nature of the $B_p$, $D_e$, and $A_v$ operators, we will first need to describe how the graph inherits spin structure data from the ambient spin manifold on which it is defined. 
 
 As before, we will assume that our theory is defined on an orientable surface $\Sigma$ which comes equipped with a spin structure $\sigma$.
 %an equivalence class of spin structures on this surface by $\sigma$. 
@@ -5207,7 +5208,7 @@ This means that spin structures can be described as a quadratic refinement of th
 %We now need to encode this spin structure data in to the graph embedding.
 %\dave{Need to discuss gluing of polygons. }
 
-In order to define the super pivotal Hamiltonian we will need to construct a lattice on $\Sigma$ which contains information about the spin structure $\sigma$. 
+In order to define the super pivotal Hamiltonian we will need to construct a graph on $\Sigma$ which contains information about the spin structure $\sigma$. 
 %This can be done in many ways, we choose the most natural one for the applications we have in mind, writing down the string net Hamiltonian, the wave functions, and more generally tensor networks with MPO symmetries.
 The basic idea is to decompose the manifold $\Sigma$ into a collection of discs and bands whose union is $\Sigma$, and a equip each disc and band with spin structure data inherited from $\sigma$ in a standardized way.
 %The prescription is to locally map each vertex to a standardized vertex living in the plane through spin isomorphism. 
@@ -5235,16 +5236,16 @@ The basic idea is to decompose the manifold $\Sigma$ into a collection of discs 
 %In particular $\chi$ is injective, and so the image of $\chi$ describes a disjoint set of vertices, lines, and faces whose union is $\Sigma$.
 %\dave{Should also probably require that the graph be 2-connected so that we don't have dangling edges or boundaries.}
 
-To begin, we define a lattice $\mcg$ embedded in $\Sigma$. 
-In order to talk about the spin structure data at the vertices and edges of the lattice, we will thicken the lattice to define a handle decomposition of $\Sigma$.
-A handle decomposition is essentially a fattened version of a lattice; see Fig.~\ref{HandleDecomposition} for a geometric picture.
+To begin, we define a graph $\mcg$ embedded in $\Sigma$. 
+In order to talk about the spin structure data at the vertices and edges of the graph, we will thicken the graph to define a handle decomposition of $\Sigma$.
+A handle decomposition is essentially a fattened version of a graph; see Fig.~\ref{HandleDecomposition} for a geometric picture.
 \begin{figure}
   \includegraphics{HandleDecomposition.pdf}
-  \caption{A handle decomposition obtained from the lattice on the far left.
+  \caption{A handle decomposition obtained from the graph on the far left.
   The $0$ handles (green discs) are neighborhoods of the vertices, the $1$-handles (purple strips) are neighborhoods of the edges, and the $2$ handles (orange polygons) which are the compliment of the union of the $0$- and $1$-handles.}
   \label{HandleDecomposition}
 \end{figure}
-More precisely, the handle decomposition can be found by by expanding each vertex of the lattice into a disc ($0$-handle) and each edge into thickened strips (1-handles).
+More precisely, the handle decomposition can be found by by expanding each vertex of the graph into a disc ($0$-handle) and each edge into thickened strips (1-handles).
 %The boundary of each $1$ handle $h_{e}$ has $4$ boundaries, two of these boundaries will reside in the discs $D_u$ and $D_v$, for $u$ and $v$ at the boundary of $e$.
 %We will call these boundaries the ``ends" of this $1$handle.
 %The other two edges reside entirely in the neighbouring faces of the cell decomposition.
@@ -5402,7 +5403,7 @@ This is just a manifestation of the fact that spin structures are classified by 
 \begin{figure}
 \begin{center}
 \includegraphics{lattice_w_vortices.pdf}
-\caption{\label{lattice_w_vortices} A region of the lattice $\mcg$ containing two vortex plaquettes. 
+\caption{\label{lattice_w_vortices} A region of the graph $\mcg$ containing two vortex plaquettes. 
 The two punctures hosting the vortices are marked as circles, with the label $N$ denoting their non-bounding spin structure. 
 We have not drawn punctures on the other (non-vortex) plaquettes, since if they possess a bounding spin structure these punctures may be consistently filled in.
 The dashed blue line is the branch cut connecting the two punctures.
@@ -5422,11 +5423,11 @@ If the fermionic boundary conditions along the edges of a plaquette containing a
 However, if the boundary conditions along the edges of a plaquette are non-bounding, then a spin structure vortex passes through the puncture, and the spin structure cannot be consistently extended into the plaquette's interior.
 The presence of such a puncture at a plaquette $p$ is diagnosed by the sign of $\prod_{e\in \p p}(-1)^{g_e}$. 
 The configurations of vortex punctures are not completely unconstrained, since such vortices can only ever appear in pairs. 
-This provides us with a simple way of constructing a valid set of glueing signs $\{g_e\}$ for a manifold with $2n$ vortex punctures: we connect the punctures pairwise through a set of paths $\alpha_i \in C_1(\mcg^*)$, $i=1,\dots,n$,
+This provides us with a simple way of constructing a valid set of glueing signs $\{g_e\}$ for a manifold with $2n$ vortex punctures: we connect the punctures pairwise through a set of paths $\alpha_i \in C_1(\mcg^*)$\footnote{$C_1(\mcg^*)$}, $i=1,\dots,n$,
 assign a glueing sign $g_e=1$ for each edge $e \in \mcg$ that intersects one of the $\alpha_i$ paths transversely, and set $g_e=0$ for all other edges. 
 Any other valid configuration of glueing signs can be obtained from this one through gauge transformations (i.e. by acting with flat $\zt$ gauge fields). 
 
-Figure \ref{lattice_w_vortices} shows a small part of a lattice $\mcg$ containing two vortex punctures. 
+Figure \ref{lattice_w_vortices} shows a small part of a graph $\mcg$ containing two vortex punctures. 
 The vortex punctures are indicated by the circles labeled by $N$ (for non-bounding), and are connected by the dashed blue branch cut. 
 At each place where the branch cut intersects an edge of $\mcg$, the fermion framing is twisted by $2\pi$, which acts as a spin flip and sets $g_e=1$ at the appropriate edge. 
 
@@ -5450,25 +5451,29 @@ If the labels of the edges terminating on $v$ are $a,b,c$, then the Hilbert spac
 \be \dim V^{abc}_v = \cc^{N^{abc}|N^{abc}_f},\ee
 where $N^{abc}$ ($N^{abc}_f$) is the number of even (odd) ways that $a,b,c$ can fuse to the vacuum.
 If any of $a,b,c$ are q-type then $N^{abc} = N_f^{abc}$, and $V^{abc}$ is mapped to itself under the odd isomorphism $V^{abc} \mapsto V^{abc} \tp \cc^{0|1}$, while in general $N^{abc}\neq N^{abc}_f$ if all of $a,b,c$ are m-type. 
-\dave{Maybe we can say that the vertex Hilbert space is given by $V_v \cong \bigoplus_{abc \in \text{obj} \mcc } V^{abc}$}
+The full Hilbert space at each vertex is the direct sum over all vertex Hilbert spaces with a definite edge labeling:
+\be V_v = \bigoplus_{a,b,c \in \mcc} V^{abc}_v.\ee
+%\dave{Maybe we can say that the vertex Hilbert space is given by $V_v \cong \bigoplus_{abc \in \text{obj} \mcc } V^{abc}$}
 
 The total Hilbert space on a lattice $\mcg$ with $n$ vertices and $m$ edges is constructed as the tensor product of the fusion spaces at each vertex in the following way:
 \be \mch_\mcg = \mch_\mcv \tp \mch_\mce,\ee
 where the vertex Hilbert space $\mch_\mcv$ and the edge Hilbert space $\mch_\mce$ are 
 \begin{align}
 \mch_\mcv & = V_{v_n} \tp V_{v_{n-1}} \tp \dots \tp V_{v_2} \tp V_{v_1},\\
-\mch_\mce & = \End(e_{n+m})\tp \End(e_{n+m-1}) \tp \dots \tp \End(e_{n+2}) \tp \End(e_{n+1}),
+\mch_\mce & = E_{n+m}\tp \dots \tp E_{n+1},
 \label{GraphHilbertSpace}
 \end{align}
-\dave{Flip orderings? $V_{v_1} \tp V_{v_2} \tp \cdots $}
+\dave{Flip orderings? $V_{v_1} \tp V_{v_2} \tp \cdots $} \ethan{right, I did it in this sorta weird way to that the $\Gamma$ operators play well with the ordering of the hilbert spaces. Since when we write $\Gamma_v \Gamma_u$ we have $\Gamma_u$ acting first, we want $\Gamma_v$ to create a fermion with a ordering than $\Gamma_u$, i.e. the fermion ordering of operators decreases from left to right in products of operators. It turned out to be a bit simpler to have the hilbert spaces tensored together in this same way, but it's not essential}
 where the $n$ vertices in $\mcg$ are ordered in some fixed way according to $v_n,\dots,v_1$, and likewise for the $m$ edges in $\mcg$, which are all assigned a higher ordering than the vertices.  
-Additionally, in the expression for $\mch_\mce$ we've abused notation by writing $\End(e_i)$ to denote the endomorphism algebra of the simple object that labels the edge $e_i \in \mcg$. 
+In the expression for $\mch_\mce$, the edge Hilbert spaces are defined by $E_i = \bigoplus_{a\in \mcc}\End(a)$, where we've taken the direct sum of the endomorphism algebras of each possible edge label on the edge $e_i$.
+% we've abused notation slightly by writing $\End(e_i)$ to denote the endomorphism algebra of the simple object that labels the edge $e_i \in \mcg$. 
 \dave{This Hilbert space is subtle. 
 As such we should proabably explain it more carefully. }
 Note that we have adopted the convention that supervector spaces with higher fermion ordering always appear to the left in the tensor product. 
 The tensor product is supercommutative, in the sense that for $\psi\in V_{v_i},\eta\in V_{v_{i+1}}$,
 \be \psi \tp \eta = (-1)^{|\psi||\eta|}\eta\tp\psi \in V_{v_{i+1}} \tp V_{v_i},\ee
-and likewise for vectors in the edge Hilbert space $\mch_\mce$. 
+and likewise for vectors in the edge Hilbert space $\mch_\mce$. \ethan{may want to refer to an appendix or sec 9 for an intro to superstuff}
+\ethan{Also, switched from the $\mch = \bigoplus_{\rm colorings} V^{abc}_{v_1} \tp \dots$ way of writing the total Hilbert space to the $\mch = V_{v_1} \tp V_{v_2}\tp \dots$ (where each $V_v$ is a direct sum over $V^{abc}_v$s) way at Dave's request---might need to make these changes in other parts.}
 
 The edge Hilbert space is only non-trivial when the theory contains q-type particles, for if there are no q-type edge labels then we simply have $\mch_\mce= \cc^{\tp m} \cong \cc$. 
 \dave{Doesn't the center of half-e-six give a counter example to this? $M_2 \tp M_2 \rightarrow \mathbb{C}^{0|1} M_0$.}
