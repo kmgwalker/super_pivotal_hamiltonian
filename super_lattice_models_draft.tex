@@ -5343,8 +5343,34 @@ When we arrive at the other 0-handle, our framing will not be standard, because 
 down rather than up.
 The translated framing, in the coordinates of the second 0-handle, differs from the standard framing by a spin rotation
 of $\pm\pi$.
+\kw{fig for this would be good}
+Call this element of $Spin(2)$ $\alpha(e)$
+
+\kw{not sure where this goes}
+Given a framed loop \kw{or maybe immersed curve} in $\Sigma$ 
+\kw{or amybe in the nbd of the 1-skeleton of $\Sigma$} (e.g.\ the boundary of a plaquette), 
+we want to use the $\alpha(e)$'s
+to determine the xxx (either 1 or the spin flip) that the spin structure assigns to the curve.
+Each time the curve goes over a 1-handle $e$, it picks up a factor of $\alpha(e)$
+or $\alpha(e)^{-1}$, depending on whether it traverses $e$ with or against the orientation of $e$.
+When the curve is inside a 0-handle, it also picks up a factor
+of $rot(\pm\pi)$, depending on the positions of the 1-handle attachment points (see fig).
+Multiplying all these factors together gives the answer.
+\kw{need to say this better}
+
+Now for the edge term.
+Recall that for each q-type particle $x$, we have chosen an odd endomorphism $s(x)$.
+We require that $s(x)^2 = 1$, but that only determines $s(x)$ up to sign.
+Note that sending $s(x)$ to $-s(x)$ extends to an automorphism of $End(x)$.
+If we rotate $s(x)$ along a cap as shown in figure xxx, we get an odd endomorphism of $x^*$,
+which must be $\pm i \cdot s(x^*)$.
+The edge term is then \kw{something like}
+\be
+	a\otimes b - s(x)\cdot a \otimes (\alpha(e)s(x)) \cdot b = a\otimes b - s(x)\cdot a \otimes (\pm i) s(x^*) \cdot b
+\ee
 
 
+\kw{out of time}
 
 
 
@@ -5437,6 +5463,7 @@ The remaining faces constitute the $2$-handles, which are homeomorphic to discs 
 As was done when we discussed the procedure of fermion condensation, we will need to define a spin framing at each of the vertices (0-handles) in our diagrams. 
 This construction is not unique, and in general will depend on the specific configuration of the 1-handles emanating from the vertex. 
 This makes constructing a Hamiltonian a rather cumbersome procedure, since separate terms must be added for each different vertex configuration. 
+\kw{not sure what's meant here}
 
 In order to ease these difficulties, we will work in a ``gauge'' in which all the 0-handles are prepared in a standardized configuration with identical spin framings. 
 To do this, we define a spin diffeomorphism $\varphi$ from a generic handle decomposition to a standardized one in which each of the 0-handles locally assume the same standardized form. 
@@ -5509,10 +5536,14 @@ and so our standardized 1-handles will look like
 \Horseshoe\ 
 \end{align}
 
+\kw{This doesn't sound quite right to me; see my discussion of 1-handles above.
+Or maybe you mean the oriented 1-handle and not (yet) the spin 1-handle?}
+
 
 For theories with q-type particles, the Hamiltonian will contain terms that allow fermions to fluctuate across a standardized 1-handle from vertex to vertex. 
 Therefore, the spin framing on the 1-handles provides us with a way of parallel transporting fermions between vertices. 
 Since the spin framing is fixed in a constant direction at both ends of every 1-handle, as we move between the two ends of a 1-handle one of two things can happen: the fermion framing can be constant along the entire 1-handle, or it can rotate by $2\pi$. 
+\kw{I would have said $rot(\pm \pi)$; see above}
 In the latter case, 
 parallel-transporting a fermion along such a 1-handle $e$ will act on the state in question with an additional spin flip, i.e. an additional factor of $-1$. 
 %Since $2\pi$ fermion framing rotations act as multiplication by $-1$ on fermions, there is a 
@@ -5602,6 +5633,10 @@ In what follows it will be convenient to work with the most general form of the 
 This would avoid us having to define what a cell decomposition is on a manifold with boundary.}
 Since quasiparticles are localized at the boundaries of punctures, these punctures are where the quasiparticles will be located. 
 \dave{We probably don't want the reader thinking that the lattice needs punctures in it, rather we could say something like ``the low energy excitations live on the plaquettes...". }
+\kw{I think it would better to stick with just one fixed spin structure, which extends over every 2-cell.
+If I'm not mistaken, vortex excitations correspond to violations of the edge terms;
+the excited eigenspace of the edge term coincides with the ground 
+state of the edge term for a different spin structure.}
 In the ground state none of these punctures will host quasiparticles, but this does not mean that all the punctures can be closed up.
 This is because the punctures contain information about the spin structure of the manifold.
 If the fermionic boundary conditions along the edges of a plaquette containing a given puncture are bounding, then the spin structure can be consistently extended into the entire plaquette, and the puncture can be removed. 
@@ -5811,6 +5846,9 @@ Therefore, we can also think of the plaquette term as energetically providing a 
 
 
 \subsubsection{Edge term} 
+
+\kw{I think we should put the discussion of the edge term before the plaquette term}
+
  \dave{I think we should probably reserve $e$ to denote an edge $e \in \mathcal{E}$ and specify a ``colored" edge by something like $a_e$ or $a(e)$.}
  The edge terms are the qualitatively new feature of this Hamiltonian, and are a necessary ingredient for the Hamiltonian of any theory possessing q-type particles. 
 The edge terms allow fermions to fluctuate across edges of the graph which are labelled by q-type particles,
@@ -5818,7 +5856,9 @@ and provide a way of energetically implementing the isotopy relations associated
 Implementing these isotopy relations is accomplished by 
 adding to the Hamiltonian a term which will coherently add and remove fermions at the end points of the q-type bonds, as well as tunnel them across\footnote{Heuristically we can think of two adjacent vertices as islands which can hold a number of fermions and whose fermion parity is well defined. 
 If these vertices are connected by a q-type edge, we can think of that edge as a 1D superconductor which coherently couples the two islands together.}. 
-This term favors equal \kw{??} super positions of fermions at all vertices along paths of q-type bonds. 
+This term favors equal 
+\kw{not really equal; factors of $\pm 1$ and/or $\pm i$} 
+super positions of fermions at all vertices along paths of q-type bonds. 
 
 In order to define the edge term, we need to introduce a collection of three operators $\Gamma^1_v,\Gamma^2_v,\Gamma^3_v$ for each vertex $v$. 
 They act nontrivially only on $v$ and on the edges $a,b,c$ terminating on $v$. 
