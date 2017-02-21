@@ -1930,7 +1930,7 @@ We will also need to know how to calculate the total quantum dimension $\mcd$.
 In bosonic theories we have $\mcd^2 = \sum_a d_a^2$, where the sum runs over all simple objects $a$. 
 This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
 The correct formula is
-\be \mcd^2 = \sum_a \frac{d_a^2}{\dim \End(a)}.\ee
+\be \label{total_qdim_defn} \mcd^2 = \sum_a \frac{d_a^2}{\dim \End(a)}.\ee
 For the $C_2$ theory, we have $\mcd = \sqrt{8}$. 
 
 
@@ -2265,26 +2265,26 @@ Therefore, in the idempotent basis,
 \medskip
 
 Collecting these results, we can now write down the complete modular $S$ and $T$ matrices in the $C_2$ theory, which act across all spin structures. 
-We will write them down in the quasiparticle basis $[(m_\unit,m_\sigma^+,m_\psi)_{AA},(m_\unit,m_\sigma^+,m_\psi)_{AP},(q_\unit,q_\sigma,q_\psi)_{PA},(q_\unit,q_\sigma,q_\psi)_{PP}]^T$, in which 
+We will write them down in the quasiparticle basis $[(m_\unit,m_\sigma^+,m_\psi)_{AA},(m_\unit,m_\sigma^+,m_\psi)_{AP},(q_\unit,q_\sigma,q_\psi)_{PA},(q_\unit,q_\sigma,q_\psi)_{PP}]^T$, in which we can write
 \be \label{modularS}
 S = \frac{1}{2}\begin{pmatrix} 1 & d & 1 &			&&&			&&&			&& \\ 
 					      d & 0 &-d &			&&&			&&&			&&\\
 					      1&-d&1 & 			&&&			&&&			&&\\
-						&&&				&&&			d&2&d&		&& \\
-						&&&				&&&			2&0&-2&		&&\\
-						&&&				&&&			-d&2&-d&		&&\\
-						&&&				d&2&-d&		&&&			&&\\
-						&&&				2&0&2&		&&&			&&\\
-						&&&				d&-2&-d&		&&&			&&\\
+						&&&				&&&			1&d&1&		&& \\
+						&&&				&&&			d&0&-d&		&&\\
+						&&&				&&&			-1&d&-1&		&&\\
+						&&&				1&d&-1&		&&&			&&\\
+						&&&				d&0&d&		&&&			&&\\
+						&&&				1&-d&-1&		&&&			&&\\
 						&&&				&&&			&&&			-A^{-2} & A^{-2}d & A^{-2}\\
 						&&&				&&&			&&&			A^{-2}d & 0 & A^{-2}d \\ 
 						&&&				&&&			&&&			A^{-2} & A^{-2}d & -A^{-2} \end{pmatrix}\ee		
-where we have only listed the non-zero entries. 
+where we have only listed the non-zero entries. \ethan{should elaborate on normalization}
 Note that we have $S = S_{even} \oplus S_{odd}$ where $S_{odd}$ is the $S$-matrix acting on ground states with odd fermion parity, and so the $S$-matrix preserves fermion parity (as it must). 
 Also note that $S^4 = \unit_{9\times9}\oplus(-\unit_{3\times3})$. 
 In the same quasiparticle basis, the $T$-matrix is
 \be 
-T = \frac{1}{2}\begin{pmatrix}    &&&				1&0&0&			&&&			&& \\ 
+T = \begin{pmatrix}    &&&				1&0&0&			&&&			&& \\ 
 					        &&&				0&A^3&0&			&&&			&&\\
 					        &&& 				0&0&1&			&&&			&&\\
 						1&0&0&				&&&			&&&			&& \\
@@ -2513,7 +2513,7 @@ Thus, we have
 \be [\mcs^\psi]_{ab} = \frac{1}{\mcd_{q}}\sum_cd_c{\rm Tr}[(f_1\tp f_2)R^{ab}_cR^{ba}_c], \ee
 where 
 \be \mcd^2_q = \sum_{a \text{\ q-type}}\frac{d_a^2}{\dim\End(a)}\ee
-is the total quantum dimension of the q-type particles in the theory (we must use $\mcd_q$ instead of $\mcd$ to ensure that $\mcs^\psi$ is unitary). 
+is the total quantum dimension of the q-type particles in the theory (this choice ensures that $\mcs^\psi$ is unitary). 
 For the present case of the $C_2$ theory, $\mcd_q = 2$. 
 
 We can compute the above formula by drawing the diagrams with the fermions $f_1$ and $f_2$ in place and then immediately using local relations to annihilate them into the vacuum.
@@ -2803,24 +2803,25 @@ Although for an MTC q-types always have a $-1$ braiding with the emergent fermio
 
 The first decomposition of objects in $\mcc$ is done according to whether or not they are mapped to themselves under fusion with $\psi$, i.e. whether they are m-type or q-type.
 We write
-\begin{align}
-\text{obj} \; \mathcal{C}  = (M \cup \psi \tp M) \cup Q,
+\begin{align} \label{MQ_partition}
+\text{obj} \; \mathcal{C}  = M \cup  (M \tp \psi) \cup Q,
 \end{align}
-where if $x \in Q$ then $x \tp \psi \in Q$ (i.e. $x$ is q-type), while if $x \in M$ then $x \tp \psi \notin M$.
-The objects in both $M$ and $M\tp \psi$ are all m-type, and together they contain all m-type objects. 
+where if $x \in Q$ then $x \tp \psi \cong x \in Q$, while if $x \in M$ then $x \tp \psi \in M \tp \psi $.
+The objects in $M \cup (M\tp \psi)$ will become the set of m-type objects after condensing $\psi$, and the objects in $Q$ will become the set of q-type objects.  
+Since m-type particles are not mapped to themselves under fusion with $\psi$, we have $M\cap (\psi\tp M) = \emptyset$. 
 Our choice of $M$ is not unique, as the objects in $M$ are representative elements of orbits of $\text{Obj}\; \mcc$ under fusion with $\psi$, and as such we could just as well take any $x \in M$ and replace it by $x \tp \psi$.
-Our choice of the objects in $M$ is essentially a gauge choice, but we find it convenient to fix a gauge in this way from the outset, since it will aid us in doing computations. 
-In what follows, we will only be concerned with calculations performed with objects in $M$ or $Q$: analogous calculations for objects in $M\tp \psi$ can be obtained from the results for objects in $M$, so this is done without loss of generality. 
+Our choice of the objects in $M$ is thus essentially a ``gauge choice'', but we find it convenient to fix the elements in $M$ from the outset, since it will aid us in doing computations. 
+This allows us to only be concerned with calculations performed with objects in $M$ or $Q$: analogous calculations for objects in $M\tp \psi$ can be obtained from the results for objects in $M$, so this is done without loss of generality. 
 It is useful to define the indicator
 \begin{align}
 n_x=
 \begin{cases}
-0\quad \text{if $x \in M$}\\
+0\quad \text{if $x \in M \cup (M\tp \psi)$}\\
 1\quad \text{if $x \in Q$}\\
 \end{cases}
 \end{align}
 
-The second natural way to distinguish the simple objects given a fermion is to use the $\mathbb{Z}_2$ grading inherited from the full braid with a fermion. 
+The second natural way to distinguish the simple objects in $\mcc$ to use the $\mathbb{Z}_2$ grading inherited from the full braid of objects with $\psi$. 
 This can be defined by the indicator 
 \begin{align}
 (-1)^{\nu_x} := S_{a \psi}/S_{a0} \in \{+1, -1 \}
@@ -2831,39 +2832,44 @@ Hence we can partition the objects in $\mcc$ as
 \begin{align}
 \text{Obj}\; \mathcal{C}  = I_0 \cup I_1, \quad \quad I_a \tp I_b = I_{a+b\; \text{mod} \; 2}
 \end{align}
-Physically it is tempting to call particles with $\nu_x = 1$ vortices, since when a fermion is dragged around them the wavefunction picks up a minus sign.
-We will avoid this nomenclature here to avoid confusion with the spin structure vortices associated to non-bounding spin structures, which also satisfy this property for the physical fermions. 
-It can be shown that in any UMTC, $\nu_x = 1$ for all $x\in Q$\footnote{One can show this by considering the symmetries of the S-matrix on the punctured torus.}. 
-\dave{Should we draw the picture?} \ethan{was this true?}
-\dave{Yes.}
+%Physically it is tempting to call particles with $\nu_x = 1$ vortices, since when a fermion is dragged around them the wavefunction picks up a minus sign.
+%We will avoid this nomenclature here to avoid confusion with the spin structure vortices associated to non-bounding spin structures, which also satisfy this property for the physical fermions. 
+It can be shown that in any UMTC, $\nu_x = 1$ for all $x\in Q$\footnote{One can show this by considering the symmetries of the S-matrix on the punctured torus. This does not necessarily hold for non-modular theories, however.}. 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Fusion theory of $SU(2)_6/\psi$ and $SO(3)_3/\psi$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \ethan{I think we should call it $SO(3)_6$. Also should decide if we want to use $A_7$ instead to kill the FS indicators and to allow us to write the condensed theory as $C_4$.}
 \dave{I'm not sure if it should be $SO(3)_3$ or $SO(3)_6$, I've seen both in the literature and have no preference.
 We could switch to $A_7$ if you want, I don't mind either way.
 } 
 Lets briefly review $SU(2)_6$ and its connection with $SO(3)_3$.
 Since these are well known theories we only list out some of their key properties and point the reader to some references for more details \cite{kirillow1989} and also \cite{Bonderson2007}.
-The particles for $SU(2)_6$ are labeled by $0,1,2,\cdots, 6$.
+There are seven objects in $SU(2)_6$, labeled by $0,1,2,\cdots, 6$.
 The principle graph for the theory is shown in the upper left of Fig.~\ref{SUSOsix}. 
-We note that the $0$ particle is the identity element, $6$ is a fermion, and we have $6 \tp x = 6-x$. 
-Hence the particle $3$ is invariant under fusion with $6$, and so under condensation of $6$ particle $3$ becomes a $Q$ type simple object in $SU(2)_6/\psi$ \ethan{isn't it already a q-type?}.
-\dave{I guess it's notational. 
-I think it's only Q-type once we ``condense" the fermions, it doesn't have an odd endomorphism in the parent theory.}
-We give the principle graph for $SU(2)_6/\psi$ in Fig.~\ref{SUSOsix} in the upper right.
+The $0$ particle is the identity element, $6$ is a fermion, and we have $6 \tp x = (6-x)$. 
+Hence the particle $3$ is invariant under fusion with $6$, and so under condensation of $6$ particle $3$ becomes a $Q$ type simple object in $SU(2)_6/\psi$.
+For the decomposition \eqref{MQ_partition}, we must take $Q=\{6\}$. 
+One possible choice for $M$ would be $M=\{0,1,2\}$, with $M\tp \psi = \{4,5,6\}$. 
+
+We give the principle graph for $SU(2)_6/\psi$ in Fig.~\ref{SUSOsix} in the upper right, where $q_3$ is the q-type image of $3$ under condensation.
 \begin{figure} 
 \centering
 \includegraphics{SU26SO36Dynkin.pdf}
 \caption{\label{SUSOsix} The upper left diagram is the principle graph of $SU(2)_6$. The lower left diagram is the principle graph for $SO(3)_3$. 
 On the right we give the principle graphs of the condensed theories. 
-The naming convention of the condensed theories has been inherited from the parent theories, along with an $m$ or $q$ denoting whether the particle is M type or Q type.}
+The naming convention of the condensed theories has been inherited from the parent theories, along with an $m$ or $q$ denoting whether the particle is m-type or q-type.}
 \end{figure}
 The particles $0,2,4,$ and $6$ form a closed sub-category of $SU(2)_6$. 
 The principle graph of this theory is found by removing the particles $1,3,5$ in the principle graph of $SU(2)_6$, shown in the bottom left of Fig.~\ref{SUSOsix}. 
 This is the subcategory known as $SO(3)_3$, it is a braided theory, with braiding and fusion inherited from $SU(2)_6$, however, it is not modular.
-The $6$ particle braids trivially within this sub-category.
+The $6$ particle braids trivially within this sub-category, and is therefore transparent.
 
 We now perform fermion condensation in $SU(2)_6$ and $SO(3)_3$ to obtain two super pivotal categories $SU(2)_6/\psi$ and $SO(3)_3/\psi$. 
+Since $\psi$ is not transparent in $SU(2)_6$, we must perform the back-wall condensation process described earlier. 
+However, since $\psi$ {\it is} transparent in $SO(3)_3$, condensation of $\psi$ is possible without employing a back-wall (although a spin structure is still needed). 
 The principle graphs of the condensed theories are shown on the right of Fig.~\ref{SUSOsix}.
 The simple objects of the two theories are given as follows:
 \begin{align}
@@ -2872,10 +2878,11 @@ SU(2)_6/\psi:&&m_0 & m_1 & m_2 & q_3 \\
 SO(3)_3\psi:&&m_0 && m_2& 
 }
 \end{align}
-Note that there are no q-type objects in 
-The particles have a natural grading given by (\ref{grading}) with the even set given by $I_0 = \{ m_0, m_2 \}$ and the odd one by $I_1 = \{m_1, q_3\}$.
-We have $I_a \tp I_b = I_{a+b \;  \text{mod} \; 2}$.
-The closed sub-fusion algebra given by $I_0$ is the content of $SO(3)_3/\psi$. 
+Note that there are no q-type objects in $SO(3)_3/\psi$. 
+The particles have a natural grading given by (\ref{grading}) with the even set given by $I_0 = \{ m_0, m_2 \}$ and the odd set given by $I_1 = \{m_1, q_3\}$, with $I_a \tp I_b = I_{a+b \;  \text{mod} \; 2}$.
+The closed sub-fusion algebra given by $I_0$ contains all of the objects in $SO(3)_3/\psi$, 
+which occurs since $\psi$ is transparent in $SO(3)_3$. 
+
 The non-trivial fusion rules of $SU(2)_6/\psi$ are given by
 %\begin{align}
 %\xymatrix{
@@ -2979,9 +2986,13 @@ $q_3$ &$\mathbb{C}^{1|1} m_2 $&$ \mathbb{C}^{1|1}m_0 \oplus \mathbb{C}^{1|1}m_2$
 
 
 There are two peculiarities that these examples highlight nicely. 
-First, note that $m_2$ is an M type particle despite that $\mathbb{C}^{1|1}m_2$ appears in the tensor product of $m_2$ with it'self.
-Second, notice that a Q-type particle appears in the tensor product of two M-type particles, specifically $m_2 \tp m_1$. 
-Furthermore notice that it only appears with the coefficient $\mathbb{C}^{1|0}$, despite the fact that $V^{m_2 m_1}_{q_3} \cong \mathbb{C}^{1|1}$.
+First, we observe that $m_2$ is an m-type particle, despite the fact that $\mathbb{C}^{1|1}m_2$ appears in the tensor product of $m_2$ with itself.
+Since $m_2\in SO(3)_3/\psi$, $SO(3)_3/\psi$ provides us with an example of a theory which has no q-type objects, but which is still intrinsically ``fermionic'', in the sense that its fusion spaces contain odd elements. 
+
+Second, we note that the q-type particle $q_3$ appears in the tensor product of two m-type particles, namely $m_2 \tp m_1$. 
+Therefore, it is perfectly consistent to have two m-type particles fuse to a q-type particle, meaning that the fusion rules do not respect the $\zt$ grading of objects according to their type. 
+This example therefore lies beyond the framework of previous classifications of fermion topological phases, which assume that this $\zt$ grading is preserved under fusion \ref{kapustin} \ethan{should double check to make sure this is indeed what Kapustin assumed}.
+Interestingly, $q_3$ appears in $m_2 \tp m_1$ with coefficient $\mathbb{C}^{1|0}$, despite the fact that $V^{m_2 m_1}_{q_3} \cong \mathbb{C}^{1|1}$. \ethan{this is because we can put a fermion on the $q_3$ line, right? If so, should mention exactly how we're distinguishing between edge and vertex degrees of freedom}
 %It has fusion rules\footnote{Note that although the $m_2 \tp m_2 \rightarrow m_2$ fusion rule has a $\mathbb{C}^{1|1}$ coefficient, it is not $Q$ type. },
 %\begin{align}
 %m_2 \tp m_2  = \mathbb{C}^{1|0} m_0 \oplus \mathbb{C}^{1|1}m_2.
@@ -2989,20 +3000,19 @@ Furthermore notice that it only appears with the coefficient $\mathbb{C}^{1|0}$,
 %Thus the theory is reminiscent of the bosonic Fibonacci theory, except the vertices can be odd or even.
 
 %\dave{Should we give the F-symbols?}
-
-The $F$-symbols of the condensed theories can be inferred from the parent theories.
+The $F$-symbols of the condensed theories can be inferred from the parent theories, so we will not list them here.
 %We defer a complete list of the $F$ symbols for the condensed theory for now and only list the primitive idempotents in the center of the annular category.
-We now compute the primitive idempotents of the condensed theories.
+We now compute the quasiparticle excitations (i.e., the primitive idempotents of the tube algebra) in the condensed theories.
 
 \subsection{Primitive idempotents}
-The primitive idempotents for a modular tensor category can be written in many different ways. 
-We will use these to compute the primititive idempotents of $SU(2)_6/\psi$. 
-We will then use the close relation between $SU(2)_6$ and $SO(3)_3$ to compute the minimal idempotents of $SO(3)_3/\psi$.
+The primitive idempotents of the tube algebra for a modular tensor category can be written in many different ways. 
+Our strategy is therefore to compute the primitive idempotents in the tube algebra of $SU(2)_6$, and then condense $\psi$ to obtain the quasiparticle excitations in the condensed theory. 
+We will then exploit the close relation between $SU(2)_6$ and $SO(3)_3$ to compute the quasiparticle excitations in $SO(3)_3/\psi$.
 
-One particularly useful way to write the primitive idempotents is given by,
-\begin{align}
-\Pi_{(a,b)}^c = \sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{}}
-\end{align}
+One particularly useful way to write the primitive idempotents in the tube algebra is given by
+%\begin{align}
+%\Pi_{(a,b)}^c = \sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{}}
+%\end{align}
 \begin{align}
 \xymatrix{
 \Pi_{(a,b)}^c = \sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{J}}
@@ -3017,18 +3027,18 @@ $\Pi_{ab}$ &$\theta_a \theta_b^*$&$a \tp b $ \\
 }
 \label{MTCIdemp}
 \end{align}
-where $\Omega_0 = \oplus_x d_x x/\mathcal{D}^2$, where $\mathcal{D}^2 = \sum_x d_x^2$.
-One can check that, due to the $\Omega_0$ loop that any two idempotents with differing labels are orthogonal. 
-This fact relies on modularity, had there been transparent particles not all idempotents listed above need be orthogonal.
+where $\Omega_0 = \oplus_x d_x x/\mathcal{D}^2$ and $\mcd$ is the total quantum dimension as defined in \eqref{total_qdim_defn}.
+One can check that, due to the $\Omega_0$ loop, any two idempotents with differing labels are orthogonal. 
+This fact relies on modularity; had there been transparent particles not all idempotents listed above would neccessarilly be orthogonal.
 Any $c \in a \tp b$ provides a suitable representative for the isomorphism class of the minimal idempotent labeled $(a,b)$.
-Sometimes we will drop the $c$ when we are computed quantities which are independent of the representative of the isomorphism class.  
+Sometimes we will drop the $c$ when we compute quantities which are independent of the representative of the isomorphism class.  
 
 One can compute the topological spin of the particle by performing a twist. 
 For compatibility with the $S$ matrix defined later we choose to twist the inner circle counter-clockwise by $2 \pi$:
 \begin{align}
 t:\;\; \tcca \; \mapsto  \; \tccb
 \end{align}
-Under twisting the inner circle of the annulus counter-clockwise by $2 \pi$ one finds that the particle returns to it'self up to an overall phase, which is given by,
+Under twisting the inner circle of the annulus counter-clockwise by $2 \pi$ one finds that the particle returns to itself up to an overall phase, which is given by
 \begin{align}
 t_{(a,b)} = \theta_a \theta_b^*
 \end{align}
@@ -3036,21 +3046,27 @@ Similarly, one can compute the modular S-matrix and find,
 \begin{align}
 \Pi_{(a,b)}  \xrightarrow{S} \sum_{rw}S_{ar}\kappa_r \kappa_w S_{wb} \Pi_{(r,w)}
 \end{align}
-where $\kappa_a$ is the Frobenius Schurr-indicator of $a$.
+where $\kappa_a$ is the Frobenius-Schur indicator of $a$.
 \dave{Is this a problem? I didn't expect the FS indicators to show up like this.
 I feel like they should have cancelled, it's probably due to the definition I'm using for S.}
 One can then compute the fusion rules of the simple objects either by use of the Verlinde formula, and the S-matrix given above, or by direct calculation with the primitive idempotents.
 
-\subsubsection{Annular category of $SU(2)_6/\psi$}
-The primitive idempotents of $SU(2)_6$ can be computed directly from the primitive idempotents of the parent theory by ``condensing" the fermions off the tubes.
-It's easy to convince yourself that this procedure always results in an idempotent of the condensed theory. 
-Naively one may expect chaos to ensue: some idempotents could project to zero, others may become identified, and iso-morphism classes may be increased.
-Indeed, checking exactly when each of these outcomes ocurr requires some work.
-Here we only present the results of the calculations. 
 
-For $SU(2)_6$ we have taken $M = \{ 0, 1, 2 \}$, $\psi \tp M = \{ 6, 5, 4\}$ and $Q = 3$.  
-It can be shown that if the input theory is modular, then the bounding idempotents are always $M$ type, while the non-bounding idempotents are always $Q$-type, and they take a very similar form to (\ref{MTCIdemp}).
-Indeed all the idempotents are of the form,
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Primitive idempotents of $SU(2)_6/\psi$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The primitive idempotents of $SU(2)_6/\psi$ can be computed directly from the primitive idempotents of the parent theory $SU(2)_6$ by ``condensing" the fermions off of the elements in $\mcz(SU(2)_6)$. 
+This procedure always reproduces the idempotents in $\mcz(SU(2)_6/\psi)$, 
+although the process is rarely straightforward: condensing $\psi$ in $\mcz(SU(2)_6)$ may send some of the idempotents to zero, it may identify some idempotents with others, etc.
+%Naively one may expect chaos to ensue: some idempotents could project to zero, others may become identified, and iso-morphism classes may be increased.
+%Indeed, checking exactly when each of these outcomes ocurr requires some work.
+For brevity's sake, we will only present the results of the calculations in what follows. 
+
+For $SU(2)_6$, we will take $M = \{ 0, 1, 2 \}$, $\psi \tp M = \{ 6,5,4\}$, and $Q = 3$.  
+It can be shown that if the input theory is an MTC (like $SU(2)_6$), then the idempotents with bounding spin structure are always m-type, the idempotents with non-bounding spin structure are always q-type, and they take a very similar form to (\ref{MTCIdemp}).
+
+In the condensed theory $SU(2)_6/\psi$, we find that the idempotents are of the form
 \begin{align}
 \xymatrix{
 \sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_x}{J}}
@@ -3064,18 +3080,18 @@ $M_{ab}^x$ &$\frac{\theta_a}{\theta_b} (-1)^{Jp_{ab}^c + x(\nu_a + \nu_b)}$&$a \
 }}
 }
 \end{align}
-Where $J = 0,1$ denotes a non-bounding (bounding) spin structure and $x = 0$ or $\psi$ and $p_{ab}^c$ is the parity of the vertex $V^{ab}_c$.
+Where $J = 0,1$ denotes a non-bounding (bounding) spin structure, $x\in \{0,\psi\}$, and $p_{ab}^c$ is the parity of the vertex $V^{ab}_c$.
 We also define 
 \begin{align}
 \mathcal{D}_{\text{condensed}}^2 \Omega_x = \bigoplus_r \frac{d_r (-1)^{\nu_r x} }{2^{n_r}} r
 \end{align}
-Where $x = 0, \psi$ and $2^{n_r} = \text{dim} \; \text{End} \; r$. 
+where $2^{n_r} = \text{dim} \; \text{End} \; r$. 
 Consistency requires that $-(-1)^{\nu_b + J} = +1$.
 If $a \in Q$ then the idempotent $M_{ab}^\psi$ is oddly isomorphic to $M_{ab}^0$.
 If $b \in Q$ then the idempotent only lives over the non-bounding spin structure, and is $Q$ type. 
 
-In the case of $SU(2)_6$ we have have 14 particles in the bounding sector, all $M$ type, and in the non-bounding sector we also have $14$ particles, and $7$ of them are $Q$ type. 
-In the bounding sector we have,
+In the case of $SU(2)_6$ we find 14 m-type particles in the bounding spin structure sector, and $14$ q-type particles in the non-bounding sector. 
+In the bounding sector, the particles are
 \dave{Need to check this again carefully and do sum of squares..}
 \begin{align}
 &\text{
@@ -3122,8 +3138,7 @@ $M_{22}^\psi$ &$1$ \\
 \end{tabu}
 }
 \end{align}
-
-In the non-bounding sector we have,
+while in the non-bounding spin structure sector we find
 \begin{align}
 &\text{
 \begin{tabu}{ c | c }
@@ -3169,14 +3184,20 @@ $Q_{23}^\psi$ &$- i e^{- 15i \pi /16}$ \\
 \end{tabu}
 }
 \end{align}
-\dave{Could add formula for modular S-matrix. Need to double check it though. I'm confused by the FS indicators.}We now move on to computing the idempotents in $SO(3)_3$.
+\dave{Could add formula for modular S-matrix. Need to double check it though. I'm confused by the FS indicators.}
+We now turn our attention to the $SO(3)_3$ theory. 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Primitive idempotents of $SO(3)_3/\psi$}
-Finding the idempotents for the annular category associated to $SO(3)_3/\psi$ since the parent theory isn't modular.
-However, it only lacks modularity by a transparent fermion, and can be made modular by consistently introducing defects which braid non-trivially with $\psi$, see \cite{bruillard2016} for more details.
-We will make great use of the fact that $SU(2)_6$ is a modular extension of $SO(3)_3$. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Again each isomorphism class of idempotents can be written as:
+Finding the idempotents in the $SO(3)_3/\psi$ theory is more difficult, since the parent theory  $SO(3)_3$ isn't modular.
+However, the sole cause of its non-modularity is the transparent fermion $\psi$, and it can be made modular by performing a ``modular extension'' and introducing defects which braid non-trivially with $\psi$, see \cite{bruillard2016} for more details.
+Since $SO(3)_3$ is obtained from $SU(2)_6$ by discarding the elements in $SU(2)_6$ that braid nontrivially with $\psi$, $SU(2)_6$ is a modular extension of $SO(3)_3$ (in fact, it is the minimal modular extension). 
+This fact will allow us to compute the idempotents in the $SO(3)_3/\psi$ theory using our knowledge of the $SU(2)_6$ theory. 
+
+As before, each isomorphism class of idempotents can be written as:
 \begin{align}
 \xymatrix{
 \sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{J}}
