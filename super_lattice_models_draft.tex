@@ -5329,26 +5329,62 @@ We will denote the direction of the edge connecting vertices $u$ and $v$ by a ma
 The vertices, edges, and the directed paths define a directed planar graph $\mcg$ embedded in $\Sigma$.
 For our purposes it is enough to consider only trivalent graphs. 
 
-Lets now define the vertex Hilbert space.
-This is simply given by
+We are now in a position to define the vertex Hilbert space.
+Each edge in $\mcg$ is oriented, and so the edges terminating on $v$ will either be pointing into $v$ or out of $v$. 
+If the adjacent edges all point away from $v$, then a coloring of $v$ is given by a choice of three simple objects say $a,b,c \in \mcc$, and a basis vector of $V^{abc}$.
+And the total Hilbert space is given by the collection of all such colorings,
 \begin{align}
-V_v = \bigoplus_{a,b,c \in \text{Obj} \; \mcc} V^{abc}
+\mathcal{H}_v = \bigoplus_{a,b,c \in \; \mcc} V^{abc} \quad \quad \text{(\dave{picture})}
 \end{align}
-For the purpose of the Hamil
-
-
-The Hilbert space given to each edge is given by,
+However, if the edge labeled by $a$ points into $v$, then the dual object $a^*$ appears in the associated vertex fusion space instead of $a$, and we instead choose a basis vector of $V^{a^*bc}$, and correspondingly,
 \begin{align}
-\mathcal{H}_e = \bigoplus_{a \in \text{Obj} \; \mcc} \mathbb{C}_a. 
+\mathcal{H}_v = \bigoplus_{a,b,c \in \; \mcc} V^{a^*bc} \quad \quad \text{(\dave{picture})}
+\end{align}
+If the simple object $a$ were oddly self dual, then the vector space $V^{a^*bc}$ is oddly isomorphic to $V^{abc}$.
+\dave{It may be useful to write down a standard vertex Hilbert space $W = \bigoplus_{a,b,c \in \; \mcc}V^{abc}$, as well as a basis, and then specify, either abstractly or explicitly the isomorphisms between $W$ and $\bigoplus_{abc} V^{a^{*}bc}$ etc. 
+What do you guys think?
+It would probably be useful for anyone who is trying to put this into a computer.}
+In general, edges that are oriented out of $v$ have their edge labels appear in the fusion space, while edges that are oriented into $v$ have the duals of their edge labels appearing in the fusion space. \ethan{example picture}
+
+
+\dave{Should we footnote this?}
+A given fusion space $V^{abc}_v$ is a supervector space of dimension 
+\be \dim V^{abc}_v = \cc^{N^{abc}|N^{abc}_f},\ee
+where $N^{abc}$ ($N^{abc}_f$) is the number of even (odd) ways that $a,b,c$ can fuse to the vacuum.
+If any of $a,b,c$ are q-type then $N^{abc} = N_f^{abc}$, and $V^{abc}$ is mapped to itself under the odd isomorphism $V^{abc} \mapsto V^{abc} \tp \cc^{0|1}$, while in general $N^{abc}\neq N^{abc}_f$ if all of $a,b,c$ are m-type. 
+
+
+Similarly, the Hilbert space assigned to each edge is given by
+\begin{align}
+\mathcal{H}_e = \bigoplus_{a \in \mcc} \mathbb{C}_a. 
 \end{align}
 The dimension of $\mathcal{H}_e$ is given by the number of simple objects in $\mcc$. 
-We will denote a basis for this Hilbert space by $\ket{a}$. 
+Crucially, this Hilbert space is a standard bosonic vector space. 
+As with the vertices we choose an explicit basis for this space and denote those vectors $\ket{a}$.
 
 
-The collection of edges and vertices defines a planar graph $\mcg$ with respect to $\Sigma$ overwhich we build our Hilbert space. 
+The total Hilbert space assigned to the graph $\mcg$ with $n$ vertices and $m$ edges is constructed as the tensor product of the vertex Hilbert spaces and the edge Hilbert spaces:
+\be \mch_\mcg = \mch_\mcv \tp \mch_\mce,\ee
+where the vertex Hilbert space $\mch_\mcv$ and the edge Hilbert space $\mch_\mce$ are 
+\begin{align}
+\mch_\mcv & = \bigotimes_{v \in \mcv} \mch_v  = \mch_{v_n} \tp \mch_{v_{n-1}} \tp \dots \tp \mch_{v_2} \tp \mch_{v_1},\\
+\mch_\mce & = \bigotimes_{e \in \mce} \mch_e
+\label{GraphHilbertSpace}
+\end{align}
+%\dave{Flip orderings? $V_{v_1} \tp V_{v_2} \tp \cdots $} \ethan{right, I did it in this sorta weird way to that the $\Gamma$ operators play well with the ordering of the hilbert spaces. Since when we write $\Gamma_v \Gamma_u$ we have $\Gamma_u$ acting first, we want $\Gamma_v$ to create a fermion with a ordering than $\Gamma_u$, i.e. the fermion ordering of operators decreases from left to right in products of operators. It turned out to be a bit simpler to have the hilbert spaces tensored together in this same way, but it's not essential}
+where the $n$ vertices in $\mcg$ are ordered in some fixed way according to the assignment $v_n,\dots,v_1$. 
+The tensor product is supercommutative, in the sense that for $\psi\in V_{v_i},\eta\in V_{v_{i+1}}$,
+\be \psi \tp \eta = (-1)^{|\psi||\eta|}\eta\tp\psi \in V_{v_{i+1}} \tp V_{v_i},\ee
+and likewise for vectors in the edge Hilbert space $\mch_\mce$. \ethan{may want to refer to an appendix or sec 9 for an intro to superstuff}
+Since the edge Hilbert spaces are purely bosonic no ordering is necessary.
 
-We are now in a position to assign Hilbert spaces to each of the edges and the vertices. 
-The tensor product over these Hilbert spaces defines the total Hilbert space over which the Hamiltonian operates.
+%In the expression for $\mch_\mce$, the edge Hilbert spaces are defined by 
+%\be E_i = \bigoplus_{a\in \mcc}\End(a),\ee
+%which is the direct sum of the endomorphism algebras of each possible edge label on the edge $e_i$.
+% we've abused notation slightly by writing $\End(e_i)$ to denote the endomorphism algebra of the simple object that labels the edge $e_i \in \mcg$. 
+%\dave{This Hilbert space is subtle. 
+%As such we should proabably explain it more carefully. }
+%Note that we have adopted the convention that supervector spaces with higher fermion ordering always appear to the left in the tensor product, which will be a helpful convention to set in what follows. 
 
 
 %%%%%%%%%%%%%%%
