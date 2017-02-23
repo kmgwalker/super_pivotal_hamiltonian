@@ -5305,12 +5305,12 @@ In Fig.~\ref{example_lattice} we illustrate the support of each operator appeari
 %%%%%%%%%%%%%%%
 \subsubsection{Hilbert space}
 %%%%%%%%%%%%%%%
-Before we can explain the Hamiltonian \eqref{ham}, we need to define the lattice, and Hilbert space on which the Hamiltonian operates. 
-The lattice is given by the collection of vertices and edges of a fixed cell decomposition of $\Sigma$. 
-We then color the edges and vertices with data from $\mcc$.
+Before we can explain the Hamiltonian \eqref{ham}, we need to define the graph which hosts the Hilbert space on which the Hamiltonian operates. 
+The graph is given by the collection of vertices and edges of a fixed cell decomposition of $\Sigma$.
 The edges are labeled by simple objects in $\mcc$ and the vertices by a basis of the fusion space of $r$ simple objects for an $r$-valent vertex.
-Each coloring denotes an orthogonal basis state in the the Hilbert space, and the collection of all such colorings is the total Hilbert space.
-As expected, the fermionocity nature of $\mcc$ will make this a Hilbert space a super vector space.
+Each coloring determines an orthogonal basis state in the the Hilbert space, and the collection of all such colorings forms the total Hilbert space.
+As expected, the fermionic nature of $\mcc$ means that this a Hilbert space is a supervector space, rather than a regular vector space.
+
 A less expected nuance comes from simple objects in $\mcc$ that are oddly self-dual, i.e., a simple object satisfying $a \tp a \cong \mathbb{C}^{0|1} \mathds{1} \oplus \cdots$, and so some of the vectors in the edge Hilbert space are purely odd.
 We found that the least irritating way to incorporate this is to push odd fermionic vector off to a neighbouring vertex. 
 The choice of which vertex to put the fermionic odd vector onto constitutes determines an orientation for each edge, hence the associated graph to the cell decomposition must be directed.
@@ -5318,14 +5318,13 @@ The choice of which vertex to put the fermionic odd vector onto constitutes dete
 %A coloring of the lattice then defines unit vectors in the Hilbert space, and the collection of all colorings is the Hilbert space.
 %Roughly, a coloring of the lattice is given by assigning an orientation to each edge along with a simple object from $\mcc$, as well as a basis vector for the fusion space $n$ simple objects from $\mcc$ at an n-valent vertex.
 
-The cell decomposition is given by a collection of vertices $\mcv$, edges $\mce$, and faces $\mcf$, subject to the constraint that they are non-intersecting $\mcv \cap \mce = \mce \cap \mcf = \mcv \cap \mcf = \text{empty}$, and there union is $\Sigma$.
-The vertices are points in $\Sigma$, the edges are paths on $\Sigma$, and the faces are regions of $\Sigma$ homeomorphic to a disc.
-An standard example of a cell decomposition is given by a triangulation. 
-For us it is sufficient to only consider cell decompositions which are dual to a triangulation, hence each vertex is trivalent.
-In addition to the cell decomposition, as mentioned above, we also require direction on each edge.
+The cell decomposition is given by a collection of vertices $\mcv$, edges $\mce$, and faces $\mcf$, subject to the constraint that they are non-intersecting $\mcv \cap \mce = \mce \cap \mcf = \mcv \cap \mcf =\emptyset$, and $\mcf \cup \mcv \cup \mce = \Sigma$.
+The vertices are points in $\Sigma$, the edges are paths on $\Sigma$, and the faces are regions of $\Sigma$ homeomorphic to discs.
+A standard example of a cell decomposition is a triangulation. 
+In what follows we will (without loss of generality) only consider cell decompositions which are dual to a triangulation, meaning that all the vertices in the cell decomposition are trivalent.
+In addition to the cell decomposition, we also define an orientation on each edge. 
 %We will denote the direction of the edge connecting vertices $u$ and $v$ by a matrix $A_{uv} = +1$ if $u$ points to $v$, and $A_{uv} = -1$ if $v$ points to $u$. 
 The vertices and directed edges define a directed planar graph $\mcg$ embedded in $\Sigma$.
-For our purposes it is enough to consider only trivalent graphs. 
 
 We are now in a position to define the vertex Hilbert space.
 Each edge in $\mcg$ is oriented, and so the edges terminating on $v$ will either be pointing into $v$ or out of $v$. 
@@ -5336,13 +5335,13 @@ where $N^{abc}$ ($N^{abc}_f$) is the number of even (odd) ways that $a,b,c$ can 
 If any of $a,b,c$ are q-type then $N^{abc} = N_f^{abc}$, and $V^{abc}$ is mapped to itself under the odd isomorphism $V^{abc} \mapsto V^{abc} \tp \cc^{0|1}$, while in general $N^{abc}\neq N^{abc}_f$ if all of $a,b,c$ are m-type. 
 The total total vertex Hilbert space is given by the collection of all such colorings,
 \begin{align}
-\mathcal{H}_v = \bigoplus_{a,b,c \in \; \mcc} V^{abc} \quad \quad \text{(\dave{picture})}
+\mathcal{H}_v = \bigoplus_{a,b,c \in \; \mcc} V_v^{abc} \quad \quad \text{(\dave{picture})}
 \end{align}
 However, if the edge labeled by $a$ points into $v$, then the dual object $a^*$ appears in the associated vertex fusion space instead of $a$, and we instead choose a basis vector of $V^{a^*bc}$, and correspondingly,
 \begin{align}
-\mathcal{H}_v = \bigoplus_{a,b,c \in \; \mcc} V^{a^*bc} \quad \quad \text{(\dave{picture})}
+\mathcal{H}_v = \bigoplus_{a,b,c \in \; \mcc} V_v^{a^*bc} \quad \quad \text{(\dave{picture})}
 \end{align}
-If the simple object $a$ were oddly self dual, then the vector space $V^{a^*bc}$ is oddly isomorphic to $V^{abc}$.
+If the simple object $a$ is oddly self dual, then the vector space $V^{a^*bc}$ is oddly isomorphic to $V^{abc}$.
 \dave{It may be useful to write down a standard vertex Hilbert space $W = \bigoplus_{a,b,c \in \; \mcc}V^{abc}$, as well as a basis, and then specify, either abstractly or explicitly the isomorphisms between $W$ and $\bigoplus_{abc} V^{a^{*}bc}$ etc. 
 What do you guys think?
 It would probably be useful for anyone who is trying to put this into a computer.}
@@ -5353,6 +5352,7 @@ Similarly, the Hilbert space assigned to each edge is given by
 \begin{align}
 \mathcal{H}_e = \bigoplus_{a \in \mcc} \mathbb{C}_a. 
 \end{align}
+\ethan{wait why not a sum over $\End(a)$?}
 The dimension of $\mathcal{H}_e$ is given by the number of simple objects in $\mcc$. 
 Crucially, this Hilbert space is a standard bosonic vector space\footnote{If we relax the condition that every edge carries a fixed orientation, this is no longer true in general. For example, suppose we did away with the edge orientations, and required the edges terminating at all trivalent vertices to be outgoing. This would create edges in which an $a$ line meets an $a^*$ line at the apex of a cap or a cup. Even if both $a$ and $a^*$ are m-type, the point at which they meet can carry nontrivial odd degrees of freedom---an example of this is provided by the $\halfesix$ theory. Complications like this are the reason why we fix orientations on each edge from the outset.}.
 As with the vertices we choose an explicit basis for this space and denote those vectors $\ket{a}$.
@@ -5875,8 +5875,8 @@ If the fermionic boundary conditions along the edges of a plaquette containing a
 However, if the boundary conditions along the edges of a plaquette are non-bounding, then a spin structure vortex passes through the puncture, and the spin structure cannot be consistently extended into the plaquette's interior.
 The presence of such a puncture at a plaquette $p$ is diagnosed by the sign of $\prod_{e\in \p p}(-1)^{g_e}$. 
 The configurations of vortex punctures are not completely unconstrained, since such vortices can only ever appear in pairs. 
-This provides us with a simple way of constructing a valid set of glueing signs $\{g_e\}$ for a manifold with $2n$ vortex punctures: we connect the punctures pairwise through a set of paths $\alpha_i \in C_1(\mcg^*)$\footnote{Recall that $C_1(\mcg^*)$ is the set of paths in $
-\mcg^*$}, $i=1,\dots,n$,
+This provides us with a simple way of constructing a valid set of glueing signs $\{g_e\}$ for a manifold with $2n$ vortex punctures: we connect the punctures pairwise through a set of paths $\alpha_i \in C_1(\mcg^*)$%\footnote{Recall that $C_1(\mcg^*)$ is the set of paths in $\mcg^*$}
+, $i=1,\dots,n$,
 assign a glueing sign $g_e=1$ for each edge $e \in \mcg$ that intersects one of the $\alpha_i$ paths transversely, and set $g_e=0$ for all other edges. 
 Any other valid configuration of glueing signs can be obtained from this one through gauge transformations (i.e. by acting with flat $\zt$ gauge fields). 
 
