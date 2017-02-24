@@ -5353,7 +5353,9 @@ In the following sections we define the Hamiltonian explicitly in terms of the a
 %We will explicitly write out the Hamiltonian for the example of the honeycomb lattice shown in Fig.~\ref{example_lattice}, although much of what we say holds more generally.
 
 %We will write the Hamiltonian as a sum of three mutually commuting projectors.
-We will write the Hamiltonian as a sum of local, mutually commuting projectors, which fall into
+%We will write the Hamiltonian as a sum of local, mutually commuting projectors, which fall into
+%three classes.
+We will write a frustration free Hamiltonian as a sum of local projectors, which fall into
 three classes.
 Two of these classes of projector are the fermionic analogues of the plaquette and vertex terms from the usual string-net Hamiltonian, while the third is an edge term which allows fermions to fluctuate across edges hosting q-type strings.
 The Hamiltonian takes the form
@@ -5368,10 +5370,28 @@ The reasoning for this is because the operators appearing in the plaquette terms
 Thus, the projectors onto $k$-handles are only defined on the ground states of the projectors onto $l$-handles, for all $l<k$.  
 \kw{maybe insert a caveat about later projectors only being defined on the ground state of earlier projectors}
 \ethan{I had a comment along these lines at a later point; moved it here instead}
+\dave{I changed ``commuting projector" to ``frustration free" above. 
+We should elaborate that when the vertex end edge terms the Hamiltonian is a commuting projector model.}
 In Fig.~\ref{example_lattice} we illustrate the support of each operator appearing in the Hamiltonian with dashed circles, where we have drawn the Hamiltonian on the honeycomb lattice for concreteness. 
 
+Before going into explicit details of the Hamiltonian lets discuss the spectrum.
+Each of the terms in the Hamiltonian is enforcing one of the local relations of the vector space assigned to $\Sigma$ by $\mcc$. 
+As such, the zero energy ground space is just a basis for the vector space assigned to $\Sigma$ by $\mcc$.
+The deconfined anyonic excitations in the model correspond to violating the plaquette terms.
+By design, these are in one-to-one correspondence with the bounding idempotents of the tube algebra. 
+There fusion rules and braiding properties can be computed with the methods of sections \ref{XXX}.
+The specific string operators which create these excitations can also be computed with similar methods, see \ref{APPXXX?}.
+One could also consider violations of the edge terms.
+Violating a single edge term results in a pair of vortex (non-bounding) excitations living on the neighbouring plaquettes. 
+These excitations are in one-to-one correspondence with the non-bounding idempotents of the tube algebra.
+Continually violating edge terms along a path of neighbouring plaquettes results in two well seperated vortex excitations at the expense of a linear increase in energy. 
+Thus in this Hamiltonian the vortex excitations are confined. 
+Alternatively, one could insert these defects by hand by choosing a non-bounding spin structure at the respective plaquettes. 
+%A close paralel can be made with vortices in a $p+ip$ superconductor. 
+%Vortices are not intrinsic excitations to a $p+ip$ super conductor, they are defects pinned to a spin structure defect 
+
 %%%%%%%%%%%%%%%
-\subsubsection{Hilbert space}
+\subsection{Hilbert space}
 %%%%%%%%%%%%%%%
 Before we can explain the Hamiltonian \eqref{ham}, we need to define the graph which hosts the Hilbert space on which the Hamiltonian operates. 
 The graph is given by the collection of vertices and edges of a fixed cell decomposition of $\Sigma$.
@@ -5400,8 +5420,8 @@ If the adjacent edges all point away from $v$, then a coloring of $v$ is given b
 A given fusion space $V^{abc}$ is a supervector space of super dimension 
 %\be \dim V^{abc}_v = \cc^{N^{abc}|N^{abc}_f},\ee
 \be \dim V^{abc} = N^{abc} \quad \quad \text{where} \quad \quad  N^{abc} = N^{abc}_B|N^{abc}_F,\ee
-\kw{I would prefer $N^{abc}_b|N^{abc}_f$, with the full super dimension being $N^{abc} = N^{abc}_b|N^{abc}_f$.}
-\dave{done.}
+%\kw{I would prefer $N^{abc}_b|N^{abc}_f$, with the full super dimension being $N^{abc} = N^{abc}_b|N^{abc}_f$.}
+%\dave{done.}
 with $N^{abc}_B$ ($N^{abc}_F$) being the number of even (odd) ways that $a,b,c$ can fuse to the vacuum.
 If any of $a,b,c$ are q-type then $N^{abc}_B = N_F^{abc}$, and $V^{abc}$ is mapped to itself under the odd isomorphism $V^{abc} \mapsto V^{abc} \tp \cc^{0|1}$, while in general $N^{abc}_B\neq N^{abc}_F$ if all of $a,b,c$ are m-type. 
 The total total vertex Hilbert space is given by the collection of all such colorings,
