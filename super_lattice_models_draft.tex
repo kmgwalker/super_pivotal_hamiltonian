@@ -5395,11 +5395,13 @@ Alternatively, one could insert these defects by hand by choosing a non-bounding
 %%%%%%%%%%%%%%%
 Before we can explain the Hamiltonian \eqref{ham}, we need to define the graph which hosts the Hilbert space on which the Hamiltonian operates. 
 The graph is given by the collection of vertices and edges of a fixed cell decomposition of $\Sigma$.
-The edges are colored by simple objects in $\mcc$ and the vertices by a basis vector in the fusion space of $r$ simple objects for an $r$-valent vertex.
+The vertices are colored by a basis vector in the fusion space of $r$ simple objects for an $r$-valent vertex\footnote{Genericallly, one could color both the vertices and the edges but this holds redundant information}.
+%The edges are colored by simple objects in $\mcc$ and the vertices by a basis vector in the fusion space of $r$ simple objects for an $r$-valent vertex.
 Each coloring determines an orthogonal basis state in the the Hilbert space, and the collection of all such colorings forms the total Hilbert space.
 As expected, the fermionic nature of $\mcc$ means that this Hilbert space is a supervector space, rather than a regular vector space.
 
-A less expected nuance comes from simple objects in $\mcc$ that are oddly self-dual, i.e., a simple object satisfying $a \tp a \cong \mathbb{C}^{0|1} \mathds{1} \oplus \cdots$, and so some of the vectors in the edge Hilbert space are purely odd.
+A less expected nuance comes from simple objects in $\mcc$ that are oddly self-dual, i.e., a simple object satisfying $a \tp a \cong \mathbb{C}^{0|1} \mathds{1} \oplus \cdots$.
+This indicates that an assignment of a fusion space to every vertex is not enough to keep track of all degrees of freedom, one should also keep track of an edge Hilbert space accounting for these objects.
 We found that the least irritating way to incorporate this is to push the odd part of this fermionic vector off to a neighbouring vertex. 
 The choice of which vertex to put the odd vector determines an orientation for each edge, hence the associated graph to the cell decomposition must be directed.
 
@@ -5423,7 +5425,6 @@ A given fusion space $V^{abc}$ is a supervector space of super dimension
 %\kw{I would prefer $N^{abc}_b|N^{abc}_f$, with the full super dimension being $N^{abc} = N^{abc}_b|N^{abc}_f$.}
 %\dave{done.}
 with $N^{abc}_B$ ($N^{abc}_F$) being the number of even (odd) ways that $a,b,c$ can fuse to the vacuum.
-If any of $a,b,c$ are q-type then $N^{abc}_B = N_F^{abc}$, and $V^{abc}$ is mapped to itself under the odd isomorphism $V^{abc} \mapsto V^{abc} \tp \cc^{0|1}$, while in general $N^{abc}_B\neq N^{abc}_F$ if all of $a,b,c$ are m-type. 
 The total total vertex Hilbert space is given by the collection of all such colorings,
 \begin{align}
 \mathcal{H}_v = \bigoplus_{a,b,c \in \; \mcc} V_v^{abc} \quad \quad \quad  \text{with basis}  \quad \quad \quad \PitchFork{a}{b}{c}{\psi}
@@ -5439,37 +5440,27 @@ See section \ref{XXX} for more details.
 %It would probably be useful for anyone who is trying to put this into a computer.}
 In general, edges that are oriented out of $v$ have their edge labels appear in the fusion space, while edges that are oriented into $v$ have the duals of their edge labels appearing in the fusion space.
 
-\dave{Did we come to a consensus on removing this Hilbert space?}
-Similarly, the Hilbert space assigned to each edge is given by
-\begin{align}
-\mathcal{H}_e = \bigoplus_{a \in \mcc} \mathbb{C}_a. \quad \quad \quad \text{with basis} \quad \quad \quad \EdgeVec{a^*}{a}
-\end{align}
-%\ethan{wait why not a sum over $\End(a)$?}
-%\kw{Because we can assume that all fermionic dots have been pushed to the vertices.
-%If we used all of $\End(a)$ (i.e.\ if we allowed dots to live on edges), 
-%then we would need to replace our current vertex-to-vertex edge term with two separate
-%vertex-to-edge terms (one for each end of the edge).}
-%\ethan{Right, and I think pushing dots to vertices is good---I asked about this in the last Skype call and must have misunderstood what we agreed on}
-The dimension of $\mathcal{H}_e$ is given by the number of simple objects in $\mcc$. 
-Crucially, this Hilbert space is a standard bosonic vector space\footnote{If we relax the condition that every edge carries a fixed orientation, this is no longer true in general. For example, suppose we did away with the edge orientations, and required the edges terminating at all trivalent vertices to be outgoing. This would create edges in which an $a$ line meets an $a^*$ line at the apex of a cap or a cup. Even if both $a$ and $a^*$ are m-type, the point at which they meet can carry nontrivial odd degrees of freedom---an example of this is provided by the $\halfesix$ theory. Complications like this are the reason why we fix orientations on each edge from the outset.}.
-As with the vertices we choose an explicit basis for this space and denote those vectors $\ket{a}$.
 
-
-The total Hilbert space assigned to the graph $\mcg$ with $n$ vertices and $m$ edges is constructed as the tensor product of the vertex Hilbert spaces and the edge Hilbert spaces:
-\be \mch_\mcg = \mch_\mcv \tp \mch_\mce,\ee
-where the vertex Hilbert space $\mch_\mcv$ and the edge Hilbert space $\mch_\mce$ are 
+The total Hilbert space assigned to the graph $\mcg$ with $n$ vertices is constructed as the tensor product over all the vertex Hilbert spaces:
 \begin{align}
-\mch_\mcv & = \bigotimes_{v \in \mcv} \mch_v  = \mch_{v_n} \tp \mch_{v_{n-1}} \tp \dots \tp \mch_{v_2} \tp \mch_{v_1},\\
-\mch_\mce & = \bigotimes_{e \in \mce} \mch_e
+ \mch_\mcg =\bigotimes_{v \in \mcv} \mch_v  = \mch_{v_n} \tp \mch_{v_{n-1}} \tp \dots \tp \mch_{v_2}
+% \mch_\mcv \tp \mch_\mce,
 \label{GraphHilbertSpace}
 \end{align}
+%where the vertex Hilbert space $\mch_\mcv$ is given by
+%\begin{align}
+%\mch_\mcv & = \bigotimes_{v \in \mcv} \mch_v  = \mch_{v_n} \tp \mch_{v_{n-1}} \tp \dots \tp \mch_{v_2} \tp \mch_{v_1}
+%\label{GraphHilbertSpace}
+%\end{align}
 %\dave{Flip orderings? $V_{v_1} \tp V_{v_2} \tp \cdots $} \ethan{right, I did it in this sorta weird way to that the $\Gamma$ operators play well with the ordering of the hilbert spaces. Since when we write $\Gamma_v \Gamma_u$ we have $\Gamma_u$ acting first, we want $\Gamma_v$ to create a fermion with a ordering than $\Gamma_u$, i.e. the fermion ordering of operators decreases from left to right in products of operators. It turned out to be a bit simpler to have the hilbert spaces tensored together in this same way, but it's not essential}
 where the $n$ vertices in $\mcg$ are ordered in some fixed way according to the assignment $v_n,\dots,v_1$. 
 The tensor product is supercommutative, in the sense that for $\psi\in V_{v_i},\eta\in V_{v_{i+1}}$,
 \be \psi \tp \eta = (-1)^{|\psi||\eta|}\eta\tp\psi \in V_{v_{i+1}} \tp V_{v_i},\ee
 \ethan{may want to refer to an appendix or sec 9 for an intro to superstuff}
-\dave{yes.}
-Since the edge Hilbert spaces are purely bosonic no ordering is necessary.
+\dave{yes. }
+
+Next we discuss how fermions are transported along the edges of the lattice. 
+This will be crucial to defining the edge terms.
 
 %In the expression for $\mch_\mce$, the edge Hilbert spaces are defined by 
 %\be E_i = \bigoplus_{a\in \mcc}\End(a),\ee
@@ -5479,14 +5470,7 @@ Since the edge Hilbert spaces are purely bosonic no ordering is necessary.
 %As such we should proabably explain it more carefully. }
 %Note that we have adopted the convention that supervector spaces with higher fermion ordering always appear to the left in the tensor product, which will be a helpful convention to set in what follows. 
 
-\dave{Maybe this discussion should be in section 9, or $C_2$.}
-However, when the theory contains q-type objects, the Hilbert spaces $\mch_\mcv$ and $\mch_\mce$ are actually much bigger than the {\it physical} edge and vertex Hilbert spaces of the theory, in a sense that will be made more precise in Section \ref{modified_tensor_product}. 
-To see an example of this, consider a diagram involving a single q-type edge $e$, with a Hilbert space equal to $\End(e) \cong \cl_1$. 
-Now consider decomposing the edge $e$ into many smaller edges $e_1,\dots,e_N$, such that $e_1\cup\dots\cup e_N = e$, where each junction of the edges $e_i,e_{i+1}$ can be thought of as a 2-valent vertex with fusion space $V_a^a \cong \cl_1$, where $a$ is the q-type object that labels the edge $e$. 
-This decomposition produces a vertex Hilbert space $\mch_\mcv \cong \cl_{N-1}$, which by tuning $N$ can be made arbitrarily large. 
-Clearly this is unphysical, and the redundant degrees of freedom created during the decomposition of $e$ into $e_1\cup\dots\cup e_N$ need to be modded out to obtain the physical Hilbert space of the theory. 
-Obtaining the physical Hilbert space can be done in one of two ways: by adding an edge term to the Hamiltonian which allows fermions to fluctuate along q-type edges and between vertices linked by a q-type edge, or by modifying the tensor products appearing in the definition of $\mch_\mcg$ to be tensor products whose tensor units are chosen from the endomorphism algebras of the edge labels. 
-We will describe the edge term approach in this section, and will address the latter method in Section \ref{modified_tensor_product}. 
+
 
 
 \begin{comment}
@@ -5804,7 +5788,7 @@ Just as we do for the 0-handles, we will ``standardize'' the 1-handles so that t
 After standardizing our 0-cells, 1-handles will always enter / exit from a 0-handle ``vertically'' (see Figure \ref{Spinisomorphisms}), 
 and so our standardized 1-handles will look like \ethan{should probably add orientation}
 \begin{align}
-\Horseshoe\ 
+\Horseshoe
 \end{align}
 For theories with q-type particles, the Hamiltonian will contain terms that allow fermions to fluctuate across a standardized 1-handle from vertex to vertex. 
 Therefore, the spin framing on the 1-handles provides us with a way of parallel transporting fermions between vertices. 
@@ -6224,27 +6208,56 @@ We'll start with the more familiar vertex and plaquette terms, and will then add
 %%%%%%%%%%%%%%%%
 \label{VertexHamiltonian}
 The vertex term in the Hamiltonian is the same as in the usual string-net Hamiltonian \cite{Kitaev2012,etc}.
-The vertex term $A_v$ at a vertex $v$ enforces compatibility of the labelings of the three edges that meet at $v$. 
-That is, for a vertex labelled by the vector $v\in V^{abc}$, $A_v$ acts as the identity if the unit object $\unit$ is contained in the fusion product $a\tp b\tp c$ (regardless of the parity of the fusion channel $V^{abc}_\unit$, and is zero otherwise:
+The vertex term $A_v$ at a vertex $v$ enforces compatibility of the labelings of the three edges meeting at vertex $v$. 
+That is, for a vertex labeled by a vector $v \in $, $A_v$ acts as the identity if the neighbouring vertices have labels $a^*$, $b^*$, $c^*$, and is zero otherwise.
+Following the notation of  \cite{Kitaev2012}, a vertex satisfying this property is called {\it stable}, and we define the action of the operator on the basis vectors of $\ket{\psi} \in \mch$ by:
+%That is, for a vertex labelled by the vector $v\in V^{abc}$, $A_v$ acts as the identity if the unit object $\unit$ is contained in the fusion product $a\tp b\tp c$ (regardless of the parity of the fusion channel $V^{abc}_\unit$, and is zero otherwise:
 \begin{align}
-A_v = 
+A_v \ket{\psi} = 
 \left\{
                 \begin{array}{ll}
-                   \unit & \text{if $\unit \in a\tp b \tp c$} \\
+                   \ket{\psi} & \text{if $v$ is stable} \\
                   0 & \text{otherwise}
                 \end{array}
               \right.
 \end{align}
-\dave{Maybe we should be more explicit by defining the action of the operator on the basis states $A_v \ket{\psi} = \cdots$}
-A vertex $v$ for which $A_v = \unit$ is called {\it stable} \cite{Kitaev2012}.
-Thus, the term $\sum_v A_v$ in the Hamiltonian simply projects onto states in the Hilbert space that possess only stable vertices. 
-\dave{Do we define a string net to be any state in the Hilbert space, or a state which satisfies the vertex constraint?}
+%A vertex $v$ for which $A_v = \unit$ is called {\it stable} \cite{Kitaev2012}.
+Thus, the term $\sum_v (1-A_v)$ in the Hamiltonian simply projects onto states in the Hilbert space that possess only stable vertices. 
 
-
+In the usual string-net models the subspace of states with stable vertices would correspond to the Hilbert space assigned $\Sigma$ with one puncture on every plaquette.
+Allowing for $Q$ type particles means that the Hilbert space of consisting of only stable vertices is over complete -- some of the vectors gain linear relations due to shutteling fermions across $Q$ type edges.
+We will implement these equivalence relations by an edge term in the Hamiltonian, discussed in the next section.
 
 %%%%%%%%%%%%%%%%%%%%
 \subsubsection{Edge term} 
 %%%%%%%%%%%%%%%%%%%%
+ \dave{Didn't want to delete this stuff, but didn't seem like it should be in the Hilbert space section anymore.}
+\begin{itemize}
+\item
+Similarly, the Hilbert space assigned to each edge is given by
+\begin{align}
+\mathcal{H}_e = \bigoplus_{a \in \mcc} \mathbb{C}_a. \quad \quad \quad \text{with basis} \quad \quad \quad \EdgeVec{a^*}{a}
+\end{align}
+%\ethan{wait why not a sum over $\End(a)$?}
+%\kw{Because we can assume that all fermionic dots have been pushed to the vertices.
+%If we used all of $\End(a)$ (i.e.\ if we allowed dots to live on edges), 
+%then we would need to replace our current vertex-to-vertex edge term with two separate
+%vertex-to-edge terms (one for each end of the edge).}
+%\ethan{Right, and I think pushing dots to vertices is good---I asked about this in the last Skype call and must have misunderstood what we agreed on}
+The dimension of $\mathcal{H}_e$ is given by the number of simple objects in $\mcc$. 
+Crucially, this Hilbert space is a standard bosonic vector space
+\footnote{If we relax the condition that every edge carries a fixed orientation, this is no longer true in general. For example, suppose we did away with the edge orientations, and required the edges terminating at all trivalent vertices to be outgoing. This would create edges in which an $a$ line meets an $a^*$ line at the apex of a cap or a cup. Even if both $a$ and $a^*$ are m-type, the point at which they meet can carry nontrivial odd degrees of freedom---an example of this is provided by the $\halfesix$ theory. Complications like this are the reason why we fix orientations on each edge from the outset.}.
+As with the vertices we choose an explicit basis for this space and denote those vectors $\ket{a}$.
+\item However, when the theory contains q-type objects, the Hilbert spaces $\mch_\mcv$ and $\mch_\mce$ are actually much bigger than the {\it physical} edge and vertex Hilbert spaces of the theory, in a sense that will be made more precise in Section \ref{modified_tensor_product}. 
+To see an example of this, consider a diagram involving a single q-type edge $e$, with a Hilbert space equal to $\End(e) \cong \cl_1$. 
+Now consider decomposing the edge $e$ into many smaller edges $e_1,\dots,e_N$, such that $e_1\cup\dots\cup e_N = e$, where each junction of the edges $e_i,e_{i+1}$ can be thought of as a 2-valent vertex with fusion space $V_a^a \cong \cl_1$, where $a$ is the q-type object that labels the edge $e$. 
+This decomposition produces a vertex Hilbert space $\mch_\mcv \cong \cl_{N-1}$, which by tuning $N$ can be made arbitrarily large. 
+Clearly this is unphysical, and the redundant degrees of freedom created during the decomposition of $e$ into $e_1\cup\dots\cup e_N$ need to be modded out to obtain the physical Hilbert space of the theory. 
+Obtaining the physical Hilbert space can be done in one of two ways: by adding an edge term to the Hamiltonian which allows fermions to fluctuate along q-type edges and between vertices linked by a q-type edge, or by modifying the tensor products appearing in the definition of $\mch_\mcg$ to be tensor products whose tensor units are chosen from the endomorphism algebras of the edge labels. 
+We will describe the edge term approach in this section, and will address the latter method in Section \ref{modified_tensor_product}. 
+\end{itemize}
+
+
 
  The edge terms are the qualitatively new feature of this Hamiltonian, and are a necessary ingredient for the Hamiltonian of any theory possessing q-type particles. 
 The edge terms allow fermions to fluctuate across edges of the graph which are labelled by q-type particles,
@@ -6893,6 +6906,9 @@ By rescaling the dot we can make $\lambda$ any non-zero number.}
 
 
 \subsection{Fusion spaces} \label{fusion_spaces}
+\dave{Moved this sentence out of Hamiltoinan section}
+If any of $a,b,c$ are q-type then $N^{abc}_B = N_F^{abc}$, and $V^{abc}$ is mapped to itself under the odd isomorphism $V^{abc} \mapsto V^{abc} \tp \cc^{0|1}$, while in general $N^{abc}_B\neq N^{abc}_F$ if all of $a,b,c$ are m-type. 
+
 
 The input data for a super pivotal category includes a list of simple objects and their types (q or m), as well as a fusion space $V^{ab}_c$ for each triple $a,b,c$ of minimal idempotents
 of $\mcc$.
