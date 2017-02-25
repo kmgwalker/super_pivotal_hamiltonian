@@ -1777,45 +1777,75 @@ and talk about folding the $A_3$ principal graph to obtain $C_2$.
 
 In this section, we identify the quasiparticle excitations in the $C_2$ theory. 
 As was first shown in the mathematical literature by Occneanu [ref] and later demonstrated in 
-the physics community by [lan wen, nick, yuting], the quasiparticle excitations in bosonic theories 
-derived from a category $\mcc$ are given by the elements of the Drinfeld center $\mcz(\mcc)$, 
-which can be obtained by finding the simple modules of an algebra known as the {\it tube algebra}. 
+the physics community by [lan wen, nick, yuting], 
+\kw{are we sure about these references?}
+the quasiparticle excitations in bosonic theories 
+based on a category $\mcc$ are given by 
+representations of the tube algebra of $\mcc$.
 With appropriate modifications accounting for spin structure issues, this same construction holds 
 in the more general fermionic setting considered here. 
 
-Briefly, the tube algebra is the algebra of ``scale transformations'' 
+(The tube algebra is also known as the annular category of $\mcc$
+or the categorified Hochschild homology of $\mcc$.
+It is closely related to the Drinfeld center:
+If $\mcc$ is pivotal then there is a natural isomorphism
+$Rep(Ann(\mcc)) \cong \mcz(Rep(\mcc))$, and if $\mcc$ is semisimple then we can drop
+the $Rep$s and obtain $Ann(\mcc) \cong \mcz(\mcc)$.)
+\kw{need to double-check this claim; also need to choose a notion for annular category/tube alg;
+maybe $\mct(\mcc)$; also, do we want to say tube category instead of tube algebra?}
 
+%the quasiparticle excitations in bosonic theories 
+%based on a category $\mcc$ are given by objects of the Drinfeld center $\mcz(\mcc)$, 
+%which can be obtained by finding the simple modules of an algebra known as the {\it tube algebra}. 
+%With appropriate modifications accounting for spin structure issues, this same construction holds 
+%in the more general fermionic setting considered here. 
+
+Briefly, the tube algebra is the algebra of ``scale transformations'' 
+\kw{I have not heard this term before; where else is it used?  let's discuss on skype}
 on topological quasiparticles, which are localized around circular punctures on the ambient manifold. 
 These ``scale transformations'' consist of gluing in annuli with different field configurations to the 
 punctures associated with each quasiparticle. 
-At an operational level, the elements in the tube algebra are tubes decorated with different field 
+At an operational level, 
+\kw{huh?}
+the elements in the tube algebra are tubes decorated with different field 
 configurations with multiplication given by stacking tubes on top of one another. 
 Since the quasiparticle excitations are topological they must be invariant under these scale transformations, 
 and thus finding the quasiparticle excitations in the theory reduces to finding the (simple) 
 modules of the tube algebra. 
 For a review and a more detailed discussion of how the tube algebra works in the fermionic setting, 
 we refer readers to Appendix \ref{tube_alg}. 
+\kw{What will be in the appendix that we won't also be saying in the main text?}
 
-After applying local relations, an arbitrary string-net diagram on any tube can be reduced to a linear 
+After applying local relations (F-moves, dot-cancellations, removing trivial loops), 
+it is easy to see that an arbitrary string-net diagram on any tube can be reduced to a linear 
 combination of the following diagrams:\begin{align}
 \FubeXXX \quad \FubesXs    \quad \FubeXss \quad \FubessX   \quad \FubesdXs \quad  \FubeXsds \quad \FubessdX
 \end{align}
+However, depending on the spin structure on the annulus, some of the above diagrams might be zero.
 
-The above tubes form a complete basis for the tube algebra in the bosonic case. 
-In the fermionic case however, each tube also comes equipped with a spin structure, given by an element 
-$\eta \in H^1(C,\zt) \cong \zt$, where $C$ is the cylinder.\footnote{On manifolds $M$ like the cylinder or the torus, 
-there is a canonical identification of spin structures with elements of $H^1(M,\zt)$; 
-in more general cases spin structures on $M$ are merely an $H^1(M,\zt)$-torsor.} 
-$\eta$ simply determines the nature of the boundary conditions for fermions traveling around the 
-non-contractible cycle of the cylinder. 
-We have to be a little careful about making this identification, though: contractible fermionic 
-loops that twist fermion ribbons by $2\pi$ are associated with a $-1$ sign, and so the identity 
-element in $H^1(C,\zt)$ corresponds to {\it anti-periodic} (or non-vorex) boundary conditions, 
-with the nontrivial element corresponding to periodic (or vortex) boundary conditions.
+There are two spin structures on the annulus: bounding (anti-periodic boundary conditions) and 
+non-bounding (periodic boundary conditions).
+With anti-periodic boundary conditions, a fermionic dot picks of a factor of $-1$ if it moves around the annulus.
+One way to think of this is that we have a reference framing of the annulus, inherited from the standard framing of
+the blackboard via our identification of the annulus with a rectangle in the blackboard (with left and right sides identified).
+This framing picks out the non-bounding spin structure.
+To describe the bounding spin structure, we add a ``branch cut" on the left/right sides of the rectangle,
+and fermions pick up a minus sign if they cross that branch cut.
+
+%In the fermionic case however, each tube also comes equipped with a spin structure, given by an element 
+%$\eta \in H^1(C,\zt) \cong \zt$, where $C$ is the cylinder.\footnote{On manifolds $M$ like the cylinder or the torus, 
+%there is a canonical identification of spin structures with elements of $H^1(M,\zt)$; 
+%in more general cases spin structures on $M$ are merely an $H^1(M,\zt)$-torsor.} 
+%$\eta$ simply determines the nature of the boundary conditions for fermions traveling around the 
+%non-contractible cycle of the cylinder. 
+%We have to be a little careful about making this identification, though: contractible fermionic 
+%loops that twist fermion ribbons by $2\pi$ are associated with a $-1$ sign, and so the identity 
+%element in $H^1(C,\zt)$ corresponds to {\it anti-periodic} (or non-vorex) boundary conditions, 
+%with the nontrivial element corresponding to periodic (or vortex) boundary conditions.
 
 We will denote the spin structure of a given tube with a subscript, using $A$ for 
 anti-periodic/non-vortex spin structure and $P$ for periodic/vortex spin structures. 
-Interestingly, not every tube is consistent with each spin structure.
+As we said above, not every string diagram in the annulus is consistent with a given spin structure.
 For example,
 \begin{align}
 \FubesdXs_A\;  = - \; \FubesdXs_A \implies \FubesdXs_A = 0,
@@ -1850,7 +1880,7 @@ Also, note that since the spin structures on two tubes being fused must agree on
 at which they are being fused, periodic tubes can only be stacked on top of periodic tubes, 
 and similarly for anti-periodic tubes.
 
-Relations like the ones above allow us to find the primitive central idempotents of the tube 
+Relations like the ones above allow us to find the minimal idempotents of the tube 
 algebra, which carry the same information as the simple modules of the tube algebra, which in 
 turn correspond to the irreducible vector spaces left invariant under the action of tube stacking. 
 The simple modules are identified with quasiparticles, and so to find the quasiparticle spectrum 
