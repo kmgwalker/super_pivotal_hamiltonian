@@ -1827,6 +1827,9 @@ For a review and a more detailed discussion of how the tube algebra works in the
 we refer readers to Appendix \ref{tube_alg}. 
 \kw{What will be in the appendix that we won't also be saying in the main text?}
 
+\kw{It doesn't really make sense to talk about linear combinations of diagrams with different boundary conditions
+(different charge sectors), so in the following paragraphs I think we should segregate the diagrams by boundary condition (charge).}
+
 After applying local relations (F-moves, dot-cancellations, removing trivial loops), 
 it is easy to see that an arbitrary string-net diagram on any tube can be reduced to a linear 
 combination of the following diagrams:\begin{align}
@@ -1834,8 +1837,8 @@ combination of the following diagrams:\begin{align}
 \end{align}
 However, depending on the spin structure on the annulus, some of the above diagrams might be zero.
 
-There are two spin structures on the annulus: bounding (anti-periodic boundary conditions) and 
-non-bounding (periodic boundary conditions).
+There are two spin structures on the annulus: bounding (anti-periodic boundary conditions; non-vortex) and 
+non-bounding (periodic boundary conditions; vortex).
 With anti-periodic boundary conditions, a fermionic dot picks of a factor of $-1$ if it moves around the annulus.
 One way to think of this is that we have a reference framing of the annulus, inherited from the standard framing of
 the blackboard via our identification of the annulus with a rectangle in the blackboard (with left and right sides identified).
@@ -1864,9 +1867,9 @@ For example,
 where we have simply pulled the fermion around the non-contractible loop on the tube. 
 A vortex tube with a horizontal $\beta$ line is also zero, since
 \begin{align}
-\FubesXs_P \; = \; (A^4)^*\; \FubesXsa_P \; = (A^4)^* \; \FubesXsb_P =\;  (A^4)^* \FubesXsc_P \; = - \FubesXs_P.
+\FubesXs_P \; = \; A^{-4}\; \FubesXsa_P \; = A^{-4} \; \FubesXsb_P =\;  A^{-4} \FubesXsc_P \; = - \FubesXs_P.
 \end{align}
-All other tubes are nonzero for both spin structures, and so a complete basis for tubes in the non-vortex sector is given by
+All other tubes are nonzero for both spin structures, and so a complete basis for tubes in the antiperiodic sector is given by
 \begin{align} \label{atubes}
 \FubeXXX_A \quad \FubesXs_A \quad \FubeXss_A \quad \FubessX_A    \quad  \FubeXsds_A \quad \FubessdX_A
 \end{align}
@@ -1874,6 +1877,7 @@ while a basis for the periodic sector is given by
 \begin{align} \label{ptubes}
 \FubeXXX_P\quad \FubeXss_P \quad \FubessX_P   \quad \FubesdXs_P \quad  \FubeXsds_P \quad \FubessdX_P.
 \end{align}
+\kw{Should break above up according to charge/b.c.}
 
 The multiplication law in the tube algebra is given by stacking tubes on top of one another 
 and simplifying the resulting tube using local relations.  
@@ -1882,17 +1886,18 @@ For example, in the periodic sector we have
 \FubesdXs_P \; \times \; \FubesdXs_P \; = \; \RDotTwoa_P \; = \; \frac{1}{d} \left(\RDotTwob_P + \RDotTwoc_P \right) = 2 \; \FubeXXX_P
 \end{align}
 
-Note that when we annihilate fermions into the vacuum to derive relations like this, 
-we have to be careful about the order in which we do it, which is why we can never create 
-two fermions side-by-side at the same time slice. 
-For example, if we create fermion 2 above fermion 1 in a diagram, we must annihilate them 
-along a $\beta$ string where fermion 2 is above fermion 1.
-Also, note that since the spin structures on two tubes being fused must agree on the boundary 
+%%% KW: Does this (below) say anything that is not already covered in the local relations for C2?  Not sure what "time slice" means here.
+%Note that when we annihilate fermions into the vacuum to derive relations like this, 
+%we have to be careful about the order in which we do it, which is why we can never create 
+%two fermions side-by-side at the same time slice. 
+%For example, if we create fermion 2 above fermion 1 in a diagram, we must annihilate them 
+%along a $\beta$ string where fermion 2 is above fermion 1.
+Note that since the spin structures on two tubes being fused must agree on the boundary 
 at which they are being fused, periodic tubes can only be stacked on top of periodic tubes, 
 and similarly for anti-periodic tubes.
 
-Relations like the ones above allow us to find the minimal idempotents of the tube 
-algebra, which carry the same information as the simple modules of the tube algebra, which in 
+Relations like the ones above allow us to find the (equivalence classes of) minimal idempotents of the tube 
+algebra, which are in natural bijection with the simple modules of the tube algebra, which in 
 turn correspond to the irreducible vector spaces left invariant under the action of tube stacking. 
 The simple modules are identified with quasiparticles, and so to find the quasiparticle spectrum 
 of the theory, we simply need to find the irreducible spaces left invariant under action of the tube algebra. 
@@ -1900,6 +1905,9 @@ Since the tube algebra splits into a direct sum of tubes with different spin str
 its simple modules will split in a similar way. First, we turn to an analysis of tubes with non-vortex spin structure. 
 
 \subsubsection{Non-vortex spin structure}
+
+\kw{Should probably go back through this section and convert the tube algebra to a tube category.  
+I think that's the language we're using elsewhere in the paper.}
 
 Let us first examine the subalgebra of tubes with no charge: that is, cylinders 
 with empty boundary conditions on both their top and bottom. Writing this subalgebra 
@@ -5936,7 +5944,8 @@ The $\alpha(e)$ aren't the only things we need to keep track of when sliding dot
 Keeping track of additional elements of $Spin(2)$ is necessary when dots pass through vertices. 
 This is because sliding a dot from one leg of a vertex to another leg will rotate the fermion framing of the dot by $\pm \pi$.
 We will write the action of sliding a dot through a vertex $v$ as $\Gamma_v$, so that schematically we have 
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{passing_dot_through_v.pdf}}}}. \ee
+%\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{passing_dot_through_v.pdf}}}}. \ee
+\be \mbox{passing\_dot\_through\_v.pdf is missing} \ee
 Note that the $\Gamma_v$ appearing in the above equation only makes sense if the leftmost and rightmost legs of $v$ are labeled by q-type objects. 
 $\Gamma_v$ acts on the fermion framing of the dot by a $\pm \pi$ rotation in $Spin(2)$, and for theories with nontrivial fusion multiplicity, it will also act on the vertex Hilbert spaces $\mch_v$ as multiplication by some matrix (as in the $\halfesix$ theory). \ethan{elaborate}
 
