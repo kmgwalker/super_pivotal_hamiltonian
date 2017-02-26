@@ -5820,10 +5820,6 @@ The edge term is then \kw{something like}
 \subsection{Spin structure considerations and the standardization of the graph} \label{standardized_handles}
 %%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%
-\subsubsection{new attempt}
-%%%%%%%%%%%%%%%
-
 To derive the Hamiltonian \eqref{ham} and explain the nature of the $B_p$, $D_e$, and $A_v$ operators, we will first need to describe how the graph inherits spin structure data from the ambient spin manifold on which it is defined. 
 
 As before, we will assume that our theory is defined on a graph $\mcg$ embedded in an orientable surface $\Sigma$ which comes equipped with a spin structure $\sigma$.
@@ -5897,7 +5893,7 @@ Therefore, the spin framing on the 1-handles provides us with a way of parallel 
 \end{center}
 \caption{\label{framing_rot} Parallel-transporting a fermion along a q-type edge, which is oriented as shown. 
 The red arrow keeps track of the fermion framing, which rotates by $\pi$ when proceeding along the direction of the edge's orientation.
-The blue arrows at the ends of the edge indicate the fixed framing at each 0-handle. }
+The blue arrows at the ends of the edge indicate the fixed framing at each 0-handle at the endpoints of the edge. }
 \end{figure}
 
 Once we have chosen coordinates at each vertex, we can associate a spin rotation of $+\pi$ or
@@ -5952,7 +5948,7 @@ where $\eta_\sigma(\gamma) = 0$ ($\eta_\sigma(\gamma) = 1$) if $\gamma$ is bound
 
 In what follows, we will only consider graphs $\mcg$ where the spin structure can be consistently extended from the 1-handles into the full interior of every 2-handle. 
 That is, we will restrict ourselves to scenarios in which no plaquettes host spin structure vortices in their interiors. 
-In particular, this means that the phase acquired from transporting a fermion around any single plaquette will be $-1$ (since the plaquette will have bounding spin structure). 
+In particular, this means that the phase acquired from transporting a fermion around any single plaquette will be $-1$. 
 Of course, this does not mean that spin structure considerations drop out in any way, and if $\mcg$ is defined on manifolds with nontrivial topology, we still allow for non-contractible topologically nontrivial framed paths to have non-bounding spin structures. 
 Relaxing this requirement allows us to deal with non-bounding quasiparticle excitations on better footing, which we will comment on in Section \ref{excitations_of_H}. 
 
@@ -6327,9 +6323,9 @@ A_v \ket{\psi} =
 %A vertex $v$ for which $A_v = \unit$ is called {\it stable} \cite{Kitaev2012}.
 Thus, the term $\sum_v (1-A_v)$ in the Hamiltonian simply projects onto states in the Hilbert space that possess only stable vertices. 
 
-In the usual string-net models the subspace of states with stable vertices would correspond to the Hilbert space assigned $\Sigma$ with one puncture on every plaquette.
-Allowing for $Q$ type particles means that the Hilbert space of consisting of only stable vertices is over complete -- some of the vectors gain linear relations due to shutteling fermions across $Q$ type edges.
-We will implement these equivalence relations by an edge term in the Hamiltonian, discussed in the next section.
+%In the usual string-net models the subspace of states with stable vertices would correspond to the Hilbert space assigned $\Sigma$ with one puncture on every plaquette.
+The presence of q-type particles means that the Hilbert space of consisting of only stable vertices is over complete---some of the vectors are related to under sliding fermions across q-type edges.
+We will implement these equivalence relations by an edge term in the Hamiltonian, which is discussed in the next section.
 
 %%%%%%%%%%%%%%%%%%%%
 \subsubsection{Edge term} 
@@ -6349,7 +6345,10 @@ As with the vertices we choose an explicit basis for this space and denote those
 
 
 
+
  The edge terms are the qualitatively new feature of this Hamiltonian, and are a necessary ingredient for the Hamiltonian of any theory possessing q-type particles. 
+ They are only well-defined on ground states of the vertex term. 
+ 
 The edge terms allow fermions to fluctuate across edges of the graph which are labelled by q-type particles,
 and provide a way of energetically implementing the isotopy relations associated with sliding fermions along the worldlines of q-type particles. 
 Implementing these isotopy relations can actually be done in two ways. 
@@ -6377,6 +6376,7 @@ superpositions (i.e, equal up to a phase factor) of states with fermions at all 
 
 To construct the edge term, recall that for each q-type particle $x$, we can define an odd endomorphism $s(x)$.
 Graphically, this odd endomorphism is simply a straight $x$ worldline with a fermionic dot (see Figure \ref{sxdefn}).
+If $x$ is not q-type, we set $s(x)=0$.
 We require that $s(x)^2 = 1$, but that only determines $s(x)$ up to sign.
 Note that sending $s(x)$ to $-s(x)$ extends to an automorphism of $End(x)$.
 We will choose a convention in which the fermions created by $s(x)$ operators have an ordering that is greater than the ordering of every vertex Hilbert space. 
@@ -6384,18 +6384,22 @@ Additionally, we will define the operator $s(x)s(y)$ so that if the ordering of 
 
 Suppose that we have a stable fusion space $V_v^{x_1x_2x_3}$.
 If both $x_i$ and $x_j$ are q-type, then the odd endomorphisms $s(x_i)$ obey the anti-commutation relations 
-\be \{ s(x_i) , s(x_j) \} = 2 \delta_{ij},\ee
-which are the defining relations for the representations of Clifford algebras. 
+\be \{ s(x_i) , s(x_j) \}_+ = 2 \delta_{ij},\ee
+which are the defining relations for the representations of complex Clifford algebras. 
 This means that the $\{s(x_i)\}$ acting at a vertex where all three $x_i$ are q-type generate a representation of $\cl_3$, and if two of the $x_i$ are q-type, the $\{s(x_i)\}$ generate a representation of $\cl_2$. 
-This is to be expected, since if the three lines emanating from $v$ are all labeled with q-type objects, then the Hilbert space associated with the three lines is $\cl_1\tp\cl_1\tp\cl_1\cong\cl_3$, and likewise for the case of two q-type objects. 
+This is to be expected, since if the three lines emanating from $v$ are all labeled with q-type objects, then the Hilbert space associated with the three lines is $\cl_1\tp\cl_1\tp\cl_1\cong\cl_3$, and likewise the Hilbert space is $\cl_2$ for the case of two q-type objects. 
 Requiring that the Hilbert space at a given vertex represents either $\cl_3$ or $\cl_2$ places constraints on the types of fermionic theories one can write down; see Section \ref{fusion_spaces} for details. 
 
 As stated earlier, the edge term allows fermions to ``hop'' across q-type edges. 
 Therefore, if two vertices $v_1,v_2$ are linked by a q-type edge, the edge term will 
 change the fermion parity of the states on both $v_1$ and $v_2$. 
-If $e$ is oriented from $v_1$ to $v_2$, then $D_e$ is \ethan{we don't need a term like $v_1\tp v_2$ term since we've written $1-D_e$ in $H$}
+To do this for an edge $e$, we can create a pair of fermions near the vertex at the beginning of $e$ (recall that all edges possess an orientation), slide one of the fermions along $e$ to the vertex and the end of $e$, and then use the $s(x)$ endomorphism to ``absorb'' each fermion into their respective vertices. 
+If $e$ is oriented from $v_1$ to $v_2$, this prescription gives the following action of $D_e$ on vectors in the vertex Hilbert space: \ethan{I don't think we need an identity term like $v_1\tp v_2$ since we've written $1-D_e$ in $H$}
 \be D_e(|\psi_1\rangle\tp |\psi_2\rangle) = s(x)|\psi_1\rangle \tp (\alpha(e)s(x))|\psi_2\rangle,\quad |\psi_i\rangle \in \mch_{v_i}\ee
-where the two tensor factors in $D_e$ act on the vertex Hilbert spaces $\mch_{v_1}$ and $\mch_{v_2}$, respectively, and we've implicitly assumed that $D_e$ acts as the identity on all vectors in $\mch_{\mcv \setminus \{v_1,v_2\}}$. 
+where the two tensor factors in $D_e$ act on the vertex Hilbert spaces $\mch_{v_1}$ and $\mch_{v_2}$, respectively, and $x\in\mcc$ denotes the label of the edge $e$. 
+Note that if $x$ is not q-type, then $s(x)=0$ and so  $D_e=0$.
+Also, we've implicitly assumed that $D_e$ acts as the identity on all vectors in $\mch_{\mcg \setminus \{v_1,v_2\}}$. 
+
 
 
 
@@ -6790,13 +6794,47 @@ This is simply because as discussed earlier, the $B_p$ operator in the plaquette
 The fusion rules and braiding properties of the excitations can be computed with the methods of sections \ref{XXX}.
 The specific string operators which create these excitations can also be computed with similar methods, see \ref{APPXXX?}.
 
+\begin{figure}
+\begin{center}
+\includegraphics{graph_with_edge_excitation.pdf}
+\caption{\label{lattice_w_vortices} A region of the graph $\mcg$ containing two vortex excitations. 
+The two punctures hosting the vortex excitations are marked as circles, with the label $N$ denoting their non-bounding spin structure. 
+The dashed blue line is the spin structure defect connecting the two punctures.
+The edge colored red intersects the spin structure defect and is excited, violating the edge term $D_e$ in the Hamiltonian. 
+%Each edge in $\mcg$ that intersects the branch cut transversely experiences a $2\pi$ twist in its fermion framing and thus has $g_e=1$, as indicated by the twisted edges.
+%Gauge transformations on the $\{g_e\}$ insert closed branch cut loops (which are closed loops in $C_1(\mcg^*)$) and deform the paths of existing branch cuts to homotopically-equivalent paths.
+}
+\end{center}
+\end{figure}
 
-This constraint does not uniquely determine the $\{g_e\}$, and indeed
-there is a large amount of gauge freedom in the choices of the $\{g_e\}$. 
-If we flip all of the $g_e$ glueing signs for all edges $e$ emanating from some given vertex, we obtain a physically equivalent state, since performing such a transformation does not affect the values of $\prod_{e\in \gamma}(-1)^{g_e}$ for any closed loop $\gamma$. 
-Mathematically, this means that we can perform the gauge transformations $g\mapsto g + \beta$, where $\beta \in B^1(\mcg;\zt)$\footnote{Recall that $B^1(\mcg;\zt)$ is the set of 1-coboundaries on $\mcg$ taking values in $\zt$. That is, $B^1(\mcg;\zt)$ is the set of all functions from the edges of $\mcg$ to $\zt$ that can be written as $\delta \beta$, where $\beta$ is a $\zt$-valued function on the vertices of $\mcg$ and $\delta$ is the coboundary operator. Colloquially, $B^1(\mcg;\zt)$ is the set of $\zt$ gauge fields that are ``total derivatives'' and are flat both locally and topologically. The cohomology groups $H^k(\mcg;\zt)$ are defined by taking all functions from the $k$-handles of $\mcg$ to $\zt$ such that $\delta \beta=0$ (written $Z^k(\mcg;\zt)$) and modding out by the coboundaries: $H^k(\mcg;\zt) := Z^k(\mcg;\zt) / B^k(\mcg;\zt)$.} is a flat (both locally and topologically) $\zt$ gauge field on $\mcg^*$\footnote{On the dual lattice $\mcg$, these gauge transformations are generated flipping all the $g_e$ variables for edges lying along a closed loop.}. 
-The new set $g$ of glueing signs is still consistent with the constraint coming from the spin structure, since $\prod_{e\in \gamma}(-1)^{\beta_e} = 1$ for all $\beta \in B^1(\mcg;\zt)$ and every closed path $\gamma$. 
-This is just a manifestation of the fact that spin structures are classified by elements of $H^1(\Sigma;\zt)$: the coboundaries that are modded out in the definition of the equivalence classes in $H^1(\Sigma;\zt)$ are precisely the flat $\mathbb{Z}_2$ gauge fields $\beta$. 
+One can also consider violations of the edge terms.
+If a given state has a $-1$ eigenvalue under an edge term $D_e$, then fermions traveling across $e$ pick up an additional minus sign not taken into account by the spin structure data that comes with our handle decomposition.
+This implies that violating a single edge term $D_e$ creates a pair of vortex (non-bounding) excitations (the set of which are in one-to-one correspondence with the non-bounding idempotents of the tube algebra) on the plaquettes sharing the edge $e$. 
+These two vortex excitations are linked by a spin structure defect line, which crosses $e$ transversely. 
+The extra minus sign picked up by fermions when they travel along $e$ is simply the extra minus sign that fermions encounter when they pass over a spin structure defect line. 
+This is illustrated in Figure \ref{lattice_w_vortices}, where the violated edge $e$ is shown in red, and the two circles marked $N$ denote the vortex excitations created on either side of $e$. 
+The dashed blue line connecting the two vortex excitations is the spin structure defect line. 
+
+Continually violating edge terms along a path of neighboring plaquettes results in two well separated vortex excitations.
+These excitations are linked by a spin structure defect line, which excites each edge that it crosses. 
+This means that the vortex excitations can only be separated
+at the expense of a linear increase in energy, and so the vortex excitations are linearly confined. 
+
+However, this does not mean that the non-bounding excitations are always necessarily linearly confined.
+One way to remove the linear confining energy is to choose the Hamiltonian to be defined on a graph with punctures at the locations of the vortex particles, and to incorporate their effect on the spin structure into the $\alpha(e)$ factors appearing in the expression for $D_e$. 
+Doing this gives the spin structure defect lines zero energy, and they are free to fluctuate under the action of flat $\zt$ gauge transformations acting on $C^1(\mcg^*)$. 
+Incorporating the spin structure of the non-bounding excitations into the model by hand thus removes the confining energy. 
+However, in this case the vortex excitations themselves are still immobile. 
+Another way to deconfine the vortex quasiparticles and allow them to move freely is to make the spin structure dynamical; we leave the study of this possibility to future work. \ethan{filler sentence for now}
+
+
+
+%This constraint does not uniquely determine the $\{g_e\}$, and indeed
+%there is a large amount of gauge freedom in the choices of the $\{g_e\}$. 
+%If we flip all of the $g_e$ glueing signs for all edges $e$ emanating from some given vertex, we obtain a physically equivalent state, since performing such a transformation does not affect the values of $\prod_{e\in \gamma}(-1)^{g_e}$ for any closed loop $\gamma$. 
+%Mathematically, this means that we can perform the gauge transformations $g\mapsto g + \beta$, where $\beta \in B^1(\mcg;\zt)$\footnote{Recall that $B^1(\mcg;\zt)$ is the set of 1-coboundaries on $\mcg$ taking values in $\zt$. That is, $B^1(\mcg;\zt)$ is the set of all functions from the edges of $\mcg$ to $\zt$ that can be written as $\delta \beta$, where $\beta$ is a $\zt$-valued function on the vertices of $\mcg$ and $\delta$ is the coboundary operator. Colloquially, $B^1(\mcg;\zt)$ is the set of $\zt$ gauge fields that are ``total derivatives'' and are flat both locally and topologically. The cohomology groups $H^k(\mcg;\zt)$ are defined by taking all functions from the $k$-handles of $\mcg$ to $\zt$ such that $\delta \beta=0$ (written $Z^k(\mcg;\zt)$) and modding out by the coboundaries: $H^k(\mcg;\zt) := Z^k(\mcg;\zt) / B^k(\mcg;\zt)$.} is a flat (both locally and topologically) $\zt$ gauge field on $\mcg^*$\footnote{On the dual lattice $\mcg$, these gauge transformations are generated flipping all the $g_e$ variables for edges lying along a closed loop.}. 
+%The new set $g$ of glueing signs is still consistent with the constraint coming from the spin structure, since $\prod_{e\in \gamma}(-1)^{\beta_e} = 1$ for all $\beta \in B^1(\mcg;\zt)$ and every closed path $\gamma$. 
+%This is just a manifestation of the fact that spin structures are classified by elements of $H^1(\Sigma;\zt)$: the coboundaries that are modded out in the definition of the equivalence classes in $H^1(\Sigma;\zt)$ are precisely the flat $\mathbb{Z}_2$ gauge fields $\beta$. 
 %\dave{I'm not familiar with $B^1(\mcg,\zt)$. Ethan, want to add a footnote for other readers like me?}
 %\ethan{Yes of course, thanks}
 %These gauge fields are gauge degrees of freedom since any two collections %of glueing signs that differ by a flat $\zt$ gauge field are physically equivalent. 
@@ -6805,27 +6843,6 @@ This is just a manifestation of the fact that spin structures are classified by 
 %That is one chooses a face and flips all gluing signs which are at the boundary of that face.
 %In practice it's easier to fix the spin structure on the discs, and associate the gluing signs with the boundary of the edges.  
 
-\begin{figure}
-\begin{center}
-\includegraphics{graph_with_edge_excitation.pdf}
-\caption{\label{lattice_w_vortices} A region of the graph $\mcg$ containing two vortex excitations. 
-The two punctures hosting the vortex excitations are marked as circles, with the label $N$ denoting their non-bounding spin structure. 
-The dashed blue line is the branch cut connecting the two punctures.
-The edge colored red intersects a branch cut is excited, and violates the edge term $D_e$ in the Hamiltonian. 
-%Each edge in $\mcg$ that intersects the branch cut transversely experiences a $2\pi$ twist in its fermion framing and thus has $g_e=1$, as indicated by the twisted edges.
-%Gauge transformations on the $\{g_e\}$ insert closed branch cut loops (which are closed loops in $C_1(\mcg^*)$) and deform the paths of existing branch cuts to homotopically-equivalent paths.
-}
-\end{center}
-\end{figure}
-
-
-One can also consider violations of the edge terms.
-If a given state has a $-1$ eigenvalue under an edge term $D_e$, then fermions traveling across $e$ pick up an additional minus sign not taken into account by the spin structure data.
-We will see that violating a single edge term $D_e$ creates a pair of vortex (non-bounding) excitations on the plaquettes sharing the edge $e$. 
-These excitations are in one-to-one correspondence with the non-bounding idempotents of the tube algebra.
-Continually violating edge terms along a path of neighboring plaquettes results in two well separated vortex excitations at the expense of a linear increase in energy, and so the vortex excitations are linearly confined. 
-However, this does not mean that the non-bounding excitations are always linearly confined---to remove the linear confining energy one can either make the spin structure dynamical, or choose the Hamiltonian to be defined on a graph with two vortex punctures with non-bounding spin structure. 
-Incorporating the spin structure of the non-bounding excitations into the model by hand thus removes the confining energy. 
 
 
 %A close paralel can be made with vortices in a $p+ip$ superconductor. 
