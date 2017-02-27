@@ -6332,8 +6332,9 @@ As mentioned earlier, the Hamiltonian consists of three kinds of mutually commut
 H = \lambda_p \sum_{p \in \mathcal{F}} (1-B_p)  + \lambda_e \sum_{\mce \in E} (1-D_e) + \lambda_v \sum_{\mcv \in V} (1-A_v)
 \end{align}
 In what follows we will explain each of the terms appearing in $H$ in detail. 
-We'll start with the more familiar vertex and plaquette terms, and will then address the new edge term. 
-
+%We'll start with the more familiar vertex and plaquette terms, and will then address the new edge term. 
+We'll start with the familiar vertex term and then address the new edge term, 
+and end with the modifications needed for the plaquette term.
 %%%%%%%%%%%%%%%%
 \subsubsection{Vertex term}
 %%%%%%%%%%%%%%%%
@@ -6342,7 +6343,8 @@ The vertex term in the Hamiltonian is the same as in the usual string-net Hamilt
 The vertex term $A_v$ at a vertex $v$ enforces compatibility of the labelings of the three edges meeting at the vertex $v$. 
 That is, for a vertex labeled by a vector in the fusion space $V^{abc}$ at vertex $v$, $A_v$ acts as the identity if the neighbouring vertices have labels $a^*$, $b^*$, $c^*$, and is zero otherwise.
 Following the notation of  \cite{Kitaev2012}, a vertex satisfying this property is called {\it stable}.
-Explicitly we define the action of the operator on the basis vectors of $\ket{\psi} \in \mch_v$ by:
+%Explicitly we define the action of the operator on the basis vectors of $\ket{\psi} \in \mch_v$ by:
+Explicitly we define the action of the operator on the basis vectors of $\ket{\psi} \in \mch$ by:
 %That is, for a vertex labelled by the vector $v\in V^{abc}$, $A_v$ acts as the identity if the unit object $\unit$ is contained in the fusion product $a\tp b\tp c$ (regardless of the parity of the fusion channel $V^{abc}_\unit$, and is zero otherwise:
 \begin{align}
 A_v \ket{\psi} = 
@@ -6357,7 +6359,7 @@ A_v \ket{\psi} =
 Thus, the term $\sum_v (1-A_v)$ in the Hamiltonian simply projects onto states in the Hilbert space that possess only stable vertices. 
 
 %In the usual string-net models the subspace of states with stable vertices would correspond to the Hilbert space assigned $\Sigma$ with one puncture on every plaquette.
-The presence of q-type particles means that the Hilbert space of consisting of only stable vertices is over complete---some of the vectors are related to under sliding fermions across q-type edges.
+The presence of q-type particles means that the Hilbert space consisting of only stable vertices is over complete---some of the vectors are related by sliding fermions across q-type edges.
 We will implement these equivalence relations by an edge term in the Hamiltonian, which is discussed in the next section.
 
 %%%%%%%%%%%%%%%%%%%%
@@ -6385,7 +6387,7 @@ As with the vertices we choose an explicit basis for this space and denote those
 The edge terms allow fermions to fluctuate across edges of the graph which are labelled by q-type particles,
 and provide a way of energetically implementing the isotopy relations associated with sliding fermions along the worldlines of q-type particles. 
 Implementing these isotopy relations can actually be done in two ways. 
-One is to add an edge term to the Hamiltonian which allows fermions to fluctuate along q-type edges and between vertices linked by a q-type edge, while another is to modify the tensor products appearing in the definition of $\mch_\mcg$ to be tensor products whose tensor units are chosen from the endomorphism algebras of the edge labels. 
+One is to add an edge term to the Hamiltonian which allows fermions between vertices connected by a q-type edge, while another is to modify the tensor products appearing in the definition of $\mch_\mcg$ to be tensor products whose tensor units are chosen from the endomorphism algebras of the edge labels. 
 We will describe the edge term approach in this section, and will address the latter method in Section \ref{modified_tensor_product}. 
 
 The edge term will coherently add and remove fermions at the end points of the q-type bonds, as well as tunnel them across\footnote{Heuristically we can think of two adjacent vertices as islands which can hold a number of fermions and whose fermion parity is well defined. 
