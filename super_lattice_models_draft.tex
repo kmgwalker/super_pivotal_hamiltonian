@@ -6057,7 +6057,11 @@ Therefore, the spin framing on the 1-handles provides us with a way of parallel 
 \end{center}
 \caption{\label{framing_rot} Parallel-transporting a fermion along a q-type edge, which is oriented as shown. 
 The red arrow keeps track of the fermion framing, which rotates by $\pi$ when proceeding along the direction of the edge's orientation.
-The blue arrows at the ends of the edge indicate the fixed framing at each 0-handle at the endpoints of the edge. }
+The blue arrows at the ends of the edge indicate the fixed framing at each 0-handle at the endpoints of the edge. 
+\dave{Maybe we could leave the blue dot at a fixed position, and just pull the box over the cap?
+Should also say where in the text we describe how to put the box back into its standard position, 
+i.e., with the $\psi$ line exiting to the left.}
+}
 \end{figure}
 
 Once we have chosen coordinates at each vertex, we can associate a spin rotation of $+\pi$ or
@@ -6465,8 +6469,9 @@ As mentioned earlier, the Hamiltonian consists of three kinds of mutually commut
 H = \lambda_p \sum_{p \in \mathcal{F}} (1-B_p)  + \lambda_e \sum_{\mce \in E} (1-D_e) + \lambda_v \sum_{\mcv \in V} (1-A_v)
 \end{align}
 In what follows we will explain each of the terms appearing in $H$ in detail. 
-We'll start with the more familiar vertex and plaquette terms, and will then address the new edge term. 
-
+%We'll start with the more familiar vertex and plaquette terms, and will then address the new edge term. 
+We'll start with the familiar vertex term and then address the new edge term, 
+and end with the modifications needed for the plaquette term.
 %%%%%%%%%%%%%%%%
 \subsubsection{Vertex term}
 %%%%%%%%%%%%%%%%
@@ -6475,7 +6480,8 @@ The vertex term in the Hamiltonian is the same as in the usual string-net Hamilt
 The vertex term $A_v$ at a vertex $v$ enforces compatibility of the labelings of the three edges meeting at the vertex $v$. 
 That is, for a vertex labeled by a vector in the fusion space $V^{abc}$ at vertex $v$, $A_v$ acts as the identity if the neighbouring vertices have labels $a^*$, $b^*$, $c^*$, and is zero otherwise.
 Following the notation of  \cite{Kitaev2012}, a vertex satisfying this property is called {\it stable}.
-Explicitly we define the action of the operator on the basis vectors of $\ket{\psi} \in \mch_v$ by:
+%Explicitly we define the action of the operator on the basis vectors of $\ket{\psi} \in \mch_v$ by:
+Explicitly we define the action of the operator on the basis vectors of $\ket{\psi} \in \mch$ by:
 %That is, for a vertex labelled by the vector $v\in V^{abc}$, $A_v$ acts as the identity if the unit object $\unit$ is contained in the fusion product $a\tp b\tp c$ (regardless of the parity of the fusion channel $V^{abc}_\unit$, and is zero otherwise:
 \begin{align}
 A_v \ket{\psi} = 
@@ -6490,7 +6496,7 @@ A_v \ket{\psi} =
 Thus, the term $\sum_v (1-A_v)$ in the Hamiltonian simply projects onto states in the Hilbert space that possess only stable vertices. 
 
 %In the usual string-net models the subspace of states with stable vertices would correspond to the Hilbert space assigned $\Sigma$ with one puncture on every plaquette.
-The presence of q-type particles means that the Hilbert space of consisting of only stable vertices is over complete---some of the vectors are related to under sliding fermions across q-type edges.
+The presence of q-type particles means that the Hilbert space consisting of only stable vertices is over complete---some of the vectors are related by sliding fermions across q-type edges.
 We will implement these equivalence relations by an edge term in the Hamiltonian, which is discussed in the next section.
 
 %%%%%%%%%%%%%%%%%%%%
@@ -6517,21 +6523,25 @@ As with the vertices we choose an explicit basis for this space and denote those
  
 The edge terms allow fermions to fluctuate across edges of the graph which are labelled by q-type particles,
 and provide a way of energetically implementing the isotopy relations associated with sliding fermions along the worldlines of q-type particles. 
-Implementing these isotopy relations can actually be done in two ways. 
-One is to add an edge term to the Hamiltonian which allows fermions to fluctuate along q-type edges and between vertices linked by a q-type edge, while another is to modify the tensor products appearing in the definition of $\mch_\mcg$ to be tensor products whose tensor units are chosen from the endomorphism algebras of the edge labels. 
+Implementing these isotopy relations can be done in two ways. 
+One is to add an edge term to the Hamiltonian which allows fermions fluctuate between vertices connected by a q-type edge, while another is to modify the tensor products appearing in the definition of $\mch_\mcg$ to be tensor products whose tensor units are chosen from the endomorphism algebras of the edge labels. 
 We will describe the edge term approach in this section, and will address the latter method in Section \ref{modified_tensor_product}. 
 
 The edge term will coherently add and remove fermions at the end points of the q-type bonds, as well as tunnel them across\footnote{Heuristically we can think of two adjacent vertices as islands which can hold a number of fermions and whose fermion parity is well defined. 
 If these vertices are connected by a q-type edge, we can think of that edge as a 1D superconductor which coherently couples the two islands together.}. 
-This term favors equal-weight 
-superpositions (i.e, equal up to a phase factor) of states with fermions at all vertices and along all edges hosting q-type objects. 
+This term favors an equal-weight (i.e, equal up to a phase factor) 
+superposition of fermions across all vertices connected by 
+q-type simple objects with a fixed fermion parity.
+%This term favors equal-weight 
+%superpositions (i.e, equal up to a phase factor) of states with fermions at all vertices and along all edges hosting q-type objects. 
 
 \begin{figure}
 \begin{center}
 \includegraphics{odd_endo_defn.pdf}
 \end{center}
 \caption{ \label{sxdefn} The graphical representation of the odd endomorphism $s(x)$, for some q-type object $x$. 
-}
+\dave{This should probably be directed. 
+Also should we write $s(x)  = \text{line with dot}$ instead.}}
 \end{figure}
 
 %However, when the theory contains q-type objects, the Hilbert spaces $\mch_\mcv$ and $\mch_\mce$ are actually much bigger than the {\it physical} edge and vertex Hilbert spaces of the theory, in a sense that will be made more precise in Section \ref{modified_tensor_product}. 
@@ -6544,6 +6554,7 @@ To construct the edge term, recall that for each q-type particle $x$, we can def
 Graphically, this odd endomorphism is simply a straight $x$ worldline with a fermionic dot (see Figure \ref{sxdefn}).
 If $x$ is not q-type, we set $s(x)=0$.
 We require that $s(x)^2 = 1$, but that only determines $s(x)$ up to sign.
+\dave{If we want a reflection innerproduct should we take $s(x)^2 = \pm i$?}
 Note that sending $s(x)$ to $-s(x)$ extends to an automorphism of $End(x)$.
 We will choose a convention in which the fermions created by $s(x)$ operators have an ordering that is greater than the ordering of every vertex Hilbert space. 
 Additionally, we will define the operator $s(x)s(y)$ so that if the ordering of the fermion on $y$ is $n$, the ordering of the fermion on $x$ is $n+1$. 
@@ -6559,13 +6570,16 @@ Requiring that the Hilbert space at a given vertex represents either $\cl_3$ or 
 As stated earlier, the edge term allows fermions to ``hop'' across q-type edges. 
 Therefore, if two vertices $v_1,v_2$ are linked by a q-type edge, the edge term will 
 change the fermion parity of the states on both $v_1$ and $v_2$. 
-To do this for an edge $e$, we can create a pair of fermions near the vertex at the beginning of $e$ (recall that all edges possess an orientation), slide one of the fermions along $e$ to the vertex and the end of $e$, and then use the $s(x)$ endomorphism to ``absorb'' each fermion into their respective vertices. 
+To do this for an edge $e$, we can create a pair of fermions near the vertex at the beginning of $e$ (recall that all edges possess an orientation), slide one of the fermions along $e$ to the vertex at the end of $e$, and then use the $s(x)$ endomorphism to ``absorb'' each fermion into their respective vertices. 
 If $e$ is oriented from $v_1$ to $v_2$, this prescription gives the following action of $D_e$ on vectors in the vertex Hilbert space: \ethan{I don't think we need an identity term like $v_1\tp v_2$ since we've written $1-D_e$ in $H$}
+\dave{You're correct that it's not necessary -- it's just a consetant, 
+but in the spirt of the rest of the Hamiltonian it probably makes sense to include. 
+That way $D_e^2 = D_e$. }
 \be D_e(|\psi_1\rangle\tp |\psi_2\rangle) = s(x)|\psi_1\rangle \tp (\alpha(e)s(x))|\psi_2\rangle,\quad |\psi_i\rangle \in \mch_{v_i}\ee
 where the two tensor factors in $D_e$ act on the vertex Hilbert spaces $\mch_{v_1}$ and $\mch_{v_2}$, respectively, and $x\in\mcc$ denotes the label of the edge $e$. 
 Note that if $x$ is not q-type, then $s(x)=0$ and so  $D_e=0$.
 Also, we've implicitly assumed that $D_e$ acts as the identity on all vectors in $\mch_{\mcg \setminus \{v_1,v_2\}}$. 
-
+\dave{If we keep $\alpha(e)$ to be independent of the coloring of $e$, then shouldn't there be an additional phase factor in the edge term (a $\pm1$) corresponding to the additional half-braid after transporting the fermion through the handle?}
 
 
 
@@ -6950,6 +6964,7 @@ Therefore, we can also think of the plaquette term as energetically providing a 
 %%%%%%%%%%%%%%%%%%%
 \subsection{Excitation spectrum} \label{excitations_of_H}
 %%%%%%%%%%%%%%%%%%%
+\dave{Should mention somewhere that pure flux excitations only violate plaquettes, while flux and charge violate both the plaquette and a vertex.}
 
 Finally, we briefly comment on the spectrum of $H$ and the types of excitations our model supports. 
 Each of the terms in the Hamiltonian enforces one of the local relations of the vector space assigned to $\Sigma$ by $\mcc$. 
