@@ -5462,10 +5462,11 @@ Since our goal in this section is to be rather general, we will put a fair amoun
 % \includegraphics{Lattice.pdf}
 \begin{center}
   \includegraphics{sample_lattice.pdf}
- \caption{An cartoon of the support of the operators appearing in a super pivotal Hamiltonian on a section of a generic graph. 
- The motivation for the bizarre-looking vertices is explained in Section \ref{standardized_handles}.
- Dashed ellipses indicate the support of various terms in the Hamiltonian.
+ \caption{A cartoon of the support of the operators appearing in a super pivotal Hamiltonian on a section of a generic graph. 
+The motivation for the bizarre-looking vertices is explained in Section \ref{standardized_handles}.
+Dashed ellipses indicate the support of various terms in the Hamiltonian.
 The vertex terms $A_v$ (with the support of an example $A_v$ marked marked in green) project onto stable vertices which are compatible with the edge labeling. 
+\kw{This is no longer the support of the ``vertex" terms (and in hindsight never was)}
 The edge term $D_e$ (the support of an example $D_e$ marked in blue) are responsible for sliding fermions along q-type edges. 
 The plaquette terms $B_p$ (with the support of an example $B_p$ marked in pink) involve the six vertices and edges neighboring $p$.
 They project onto graph configurations that contain no quasiparticles within the plaquette $p$.
@@ -5536,6 +5537,9 @@ Thus, the projectors associated with $k$-handles are only defined on the ground 
 We should elaborate that when the vertex end edge terms the Hamiltonian is a commuting projector model.}
 In Fig.~\ref{example_lattice} we illustrate the support of each operator appearing in the Hamiltonian with dashed circles, where we have drawn a section of the graph $\mcg$ embedded in the plane for the sake of visualization. 
 
+\kw{NOTE: One consequence of our putting all degrees of freedom at vertices is that the support of a ``vertex" projector is actually two adjacent vertices, 
+which is the same support as the the edge term.}
+
 %\ethan{moved discussion of excitations to its own subsection at the end, since I think we have a good bit of stuff to say. Feel free to undo}
 %\dave{No problem, I probably put too much detail anyway. Maybe we should refer to that paragram somewhere in this introductory section so that the reader can learn the physics of the Hamiltonian without slogging through the details.}
 \dave{Maybe we should refer to that paragram somewhere in this introductory section so that the reader can learn the physics of the Hamiltonian without slogging through the details.}
@@ -5545,12 +5549,114 @@ In Fig.~\ref{example_lattice} we illustrate the support of each operator appeari
 \subsection{Hilbert space}
 %%%%%%%%%%%%%%%
 
+\kw{Below I have tried to remove inessential material and add in some important points.
+The exposition could stand some improvement, so feel free to edit.
+Also, the explanations in the second half could be moved to an appendix (though I lean slightly toward keeping them here).}
+
+We will locate all all degrees of freedom (spins) at the vertices of the graph $\mcg$, so
+the big Hilbert space on which the hamiltonian is defined is
+\begin{align}	\label{GraphHilbertSpace}
+ \mch_\mcg =\bigotimes_{v \in \mcv} \mch_v  = \mch_{v_n} \tp \mch_{v_{n-1}} \tp \dots \tp \mch_{v_1} .
+\end{align}
+The vertex Hilbert spaces $\mch_{v_n}$ will depend on three sets of choices.
+First, we must choose an orientation of each edge of $\mcg$.
+(This is because of the possibility of non-trivial Frobenius-Schur indicators; see below.)
+Second, we must choose an ordering of the edges incident to each vertex, consistent with with the intrinsic cyclic ordering of those edges
+coming from the embedding of $\mcg$ in the oriented surface.
+(So if the vertex is $r$-valent, there are $r$ possible orderings.)
+This choice of ordering is the same thing as a ``pitchforkization" of each vertex (see Figure xxx).
+Finally, we must choose a spin framing at each vertex, consistent with the pitchforkization.
+The pitchforkization and spin framing are needed in order to define an unambiguous
+isomorphism between string nets near $v$ is standard vector spaces $V^{abc}$.
+\kw{maybe refer to def section}
+Without this standardization, the local Hilbert spaces would be ambiguous up to automorphisms.
+
+The choices in the previous paragraph are analogous to choosing a gauge.
+\kw{true?}
+
+For simplicity, we will now assume that all vertices are trivalent.
+(Any surface possesses a cell decomposition with trivalent vertices.
+Such cell decompositions are Poincar\'e dual to triangulations.)
+
+If all of the edges incident to $v$ point out,
+then we define
+\be
+	\mch_v = \bigoplus_{a,b,c} V^{abc}  \quad\quad\quad\quad\quad\quad \PitchFork{a}{b}{c}{}
+\ee
+where the sum is over our favorite complete set of simple objects of $\mcc$
+(i.e.\ we choose a complete set at the outset and keep it fixed throughout).
+If the first edge points in and the other two point out, then we define
+\be
+	\mch_v = \bigoplus_{a,b,c} V^{a^*bc}  \quad\quad\quad\quad\quad\quad \PitchForkas{a}{b}{c}{} =  \PitchFork{a^*}{b}{c}{}.
+\ee
+And so on for all eight possible patterns of in/out of the three adjacent edges.
+
+\medskip
+
+This completes the definition on the big Hilbert space for the hamiltonian.
+Impatient readers should now skip to the next subsection, but readers who are puzzled by some of the choices we made above 
+are encouraged to read on.
+
+\medskip
+
+Why are there no spins on edges, as in the original Levin-Wen hamiltonian?
+Levin and Wen explicitly assume that $V^{abc}$ is at most 1-dimensional.
+This is true for theories based on Temperley-Lieb or $Rep_q(sl_2)$, but it is not true in general,
+so we need to add spins on vertices.
+But each basis vector in $\bigoplus_{a,b,c} V^{abc}$ ``knows" the labels on the adjacent edges, so once we have these vertex degrees of
+freedom the edge degrees of freedom become redundant and can be eliminated.
+
+(An argument in favor of edge degrees of freedom is that they can lead to smaller local Hilbert spaces, at least for simple theories.
+For example, one can write a hamiltonian for the $C_2$ theory which has a $(2|0)$-dimensional Hilbert space at each edge
+and a $(1|1)$-dimensional Hilbert space at each vertex.
+The general hamiltonian we are now discussing, specialized to the $C_2$ theory, 
+would assign a $(4|3)$-dimensional Hilbert space to each vertex (but no Hilbert spaces for edges).)
+
+Why must we choose an orientation of each edge?
+The short answer: because of the possibility of non-trivial Frobenius-Schur indicators.
+Now for the longer answer.
+If the edges are not oriented, then we would assign vertex Hilbert spaces as above, but with all edges point out at each vertex.
+%(Or we could choose the opposite convention of all edges pointing in at every vertex.)
+This means that each edge sees two inward pointing edges.
+\kw{Figure?}
+If the two labels coming from the two adjacent vertices are $a$ and $b$, then the
+associated vector space for the edge is $V^{ab}$, which is 0-dimensional unless $a \cong b^*$.
+If $a$ is not self-dual, or if $a$ is evenly self-dual with FS indicator 1, then there is a canonical identification of the even part of $V^{ab}$ with 
+$\cc = \cc^{1|0}$ and we can ignore it.
+
+But if $a$ is evenly self-dual with FS indicator $-1$, then there is a sign ambiguity in identifying $V^{aa}$ with $\cc$, and we will have to
+keep careful track of this sign when defining the hamiltonian.
+Even worse, if $a$ is {\it oddly} self-dual, with FS indicator $\pm i$ (see xxx-E6), then $V^{aa}$ is an odd vector space, 
+non-canonically isomorphic to $\cc^{0|1}$.
+The extra bookkeeping this entails is even more annoying.
+
+Overall, we think the least annoying solution to the above problems is to orient each edge of the graph.
+This allows us to treat $a$ and $a^*$ as distinct objects, even when they happen to be isomorphic.
+Now, instead of $V^{aa}$, we have $V^{aa^*} = \End(a)$, which has a canonical even element $id: a\to a$.
+
+\kw{should maybe do a better job of acknowledging q-type objects above.  or maybe not, since q-type objects are not really important to the point.}
+
+Why the pitchforks?
+Because rotations by $2\pi/3$ can act non-trivially on $V^{aaa}$.
+This is true even in the bosonic case.
+
+Why the spin framings?
+Because $V^{abc}$ has a spin-flip automorphism, and also because we need to 
+enhance the graph $\mcg$ with information related to the spin structure of the ambient manifold 
+in order to write the edge terms; see below.
+
+\kwsep
+
+\kw{I think most of this older version can be discarded.}
+
+
 Before we can explain the Hamiltonian \eqref{ham}, we need to define the graph which hosts the Hilbert space on which the Hamiltonian operates. 
 The graph is given by the collection of vertices and edges of a fixed cell decomposition of $\Sigma$.
 The vertices are colored by a basis vector in the fusion space of $r$ simple objects for an $r$-valent vertex\footnote{Generically, one could color both the vertices and the edges, but this holds redundant information.}.
 %The edges are colored by simple objects in $\mcc$ and the vertices by a basis vector in the fusion space of $r$ simple objects for an $r$-valent vertex.
 Each coloring determines an orthogonal basis state in the the Hilbert space, and the collection of all such colorings forms the total Hilbert space.
-As expected, the fermionic nature of $\mcc$ means that this Hilbert space is a supervector space, rather than a regular vector space.
+%As expected, the fermionic nature of $\mcc$ means that this Hilbert space is a supervector space, rather than a regular vector space.
+\kw{I would emphasize the tensor products and deemphasize colorings.}
 
 A less expected nuance comes from m-type simple objects in $\mcc$ that are oddly self-dual, i.e., m-type objects which satisfy $a \tp a \cong \mathbb{C}^{0|1} \mathds{1} \oplus \cdots$ (this occurs in the $\halfesix$ theory considered earlier).
 This indicates that an assignment of a fusion space to every vertex is not enough to keep track of all degrees of freedom, and that one should also keep track of an edge Hilbert space accounting for these objects.
@@ -5561,6 +5667,7 @@ The choice of which vertex to put the odd vector determines an orientation for e
 %A coloring of the lattice then defines unit vectors in the Hilbert space, and the collection of all colorings is the Hilbert space.
 %Roughly, a coloring of the lattice is given by assigning an orientation to each edge along with a simple object from $\mcc$, as well as a basis vector for the fusion space $n$ simple objects from $\mcc$ at an n-valent vertex.
 
+\kw{I don't think we need to explain cell decompositions in much detail at all.}
 A cell decomposition (which we will use to define the graph on which $H$ acts) is given by a collection of vertices $\mcv$, edges $\mce$, and faces $\mcf$, subject to the constraint that they are non-intersecting $\mcv \cap \mce = \mce \cap \mcf = \mcv \cap \mcf =\emptyset$, and $\mcf \cup \mcv \cup \mce = \Sigma$.
 The vertices are points in $\Sigma$, the edges are paths on $\Sigma$, and the faces are regions of $\Sigma$ homeomorphic to discs.
 A standard example of a cell decomposition is a triangulation. 
@@ -5573,15 +5680,15 @@ We are now in a position to define the vertex Hilbert space.
 Each edge in $\mcg$ is oriented, and so the edges terminating on a given vertex $v$ will either be pointing into $v$ or out of $v$. 
 If the adjacent edges all point away from $v$, then a coloring of $v$ is given by a choice of three simple objects say $a,b,c \in \mcc$, and a basis vector of $V^{abc}$.
 A given fusion space $V^{abc}$ is a supervector space of super dimension 
+\kw{I don't think we need to mention the dimension, but if you disagree this can be inserted above.}
 %\be \dim V^{abc}_v = \cc^{N^{abc}|N^{abc}_f},\ee
 \be \dim V^{abc} = N^{abc} \quad \quad \text{where} \quad \quad  N^{abc} = N^{abc}_B|N^{abc}_F,\ee
-%\kw{I would prefer $N^{abc}_b|N^{abc}_f$, with the full super dimension being $N^{abc} = N^{abc}_b|N^{abc}_f$.}
-%\dave{done.}
 with $N^{abc}_B$ ($N^{abc}_F$) being the number of even (odd) ways that $a,b,c$ can fuse to the vacuum.
 The total total vertex Hilbert space is given by the collection of all such colorings,
 \begin{align}
 \mathcal{H}_v = \bigoplus_{a,b,c \in \; \mcc} V_v^{abc} \quad \quad \quad  \text{with basis}  \quad \quad \quad \PitchFork{a}{b}{c}{\psi}
 \end{align}
+\kw{I think we can postpone mentioning a basis.}
 However, if the edge labeled by $a$ points into $v$, then the dual object $a^*$ appears in the associated vertex fusion space instead of $a$, and we instead choose a basis vector of $V^{a^*bc}$, and correspondingly,
 \begin{align}
 \mathcal{H}_v = \bigoplus_{a,b,c \in \; \mcc} V_v^{a^*bc} \quad \quad \quad \text{with basis} \quad \quad \quad\PitchForkas{a^*}{b}{c\;\;}{\psi}
@@ -5611,6 +5718,7 @@ The tensor product is supercommutative, in the sense that for $\psi\in V_{v_i},\
 \be \psi \tp \eta = (-1)^{|\psi||\eta|}\eta\tp\psi \in \mch_{v_{i+1}} \tp \mch_{v_i},\ee
 \ethan{may want to refer to an appendix or sec 9 for an intro to superstuff}
 \dave{yes. }
+\kw{Yes, supercommutative discussion should go elsewhere.}
 
 Next we discuss how fermions are transported along the edges of the lattice. 
 This will be crucial to defining the edge terms.
@@ -5622,6 +5730,28 @@ This will be crucial to defining the edge terms.
 %\dave{This Hilbert space is subtle. 
 %As such we should proabably explain it more carefully. }
 %Note that we have adopted the convention that supervector spaces with higher fermion ordering always appear to the left in the tensor product, which will be a helpful convention to set in what follows. 
+
+
+
+\begin{comment}		% don't delete this yet
+
+\subsection{The vertex term}
+
+\kw{Rough outline:}
+
+The job of the vertex term is to make sure that the edge labels on adjacent vertices agree.
+
+Support is a pair of adjacent vertices.
+(So the support looks more like an edge, but we call it a vertex term since it does the 
+work of the vertex terms in the original LW hamiltonian.)
+
+The ground state of the vertex terms can be interpreted as (linear combinations of) sting nets in $\Sigma$,
+or better $\Sigma \setminus \{ \mbox{plaquettes}\}$.
+
+
+\kw{oops -- just noticed that there are already separate vertex term, edge term subsections}
+
+\end{comment}
 
 
 
@@ -5749,7 +5879,7 @@ h: &\mathcal{H}_v \tp \mathcal{H}_v \rightarrow \mathbb{C}^{1|0}\\
 
 
 
-\kwsep
+\subsection{temporary notes}
 
 \kw{misc notes:}
 
@@ -5846,6 +5976,9 @@ The edge term is then \kw{something like}
 %%%%%%%%%%%%%%%%%%
 \subsection{Spin structure considerations and the standardization of the graph} \label{standardized_handles}
 %%%%%%%%%%%%%%%%%%
+
+\kw{possibly we could put the vertex term first, then fold this section into the edge term section}
+
 
 To derive the Hamiltonian \eqref{ham} and explain the nature of the $B_p$, $D_e$, and $A_v$ operators, we will first need to describe how the graph inherits spin structure data from the ambient spin manifold on which it is defined. 
 
