@@ -1874,7 +1874,7 @@ combination of the following diagrams:
 %\end{align}
 \begin{align}
 \xymatrix @!0 @M=1mm @R=6mm @C=20mm {
-\overset{\mathds{1}}{\TubeBC} &   &    &  &\\
+\overset{\mathds{1}}{\TubeBC} &&   &    &  &\\
 & \FubeXXX  &  \FubesXs  & \FubesdXs &\\
 \underset{\mathds{1}}{\TubeBC}\ar[uu] &   &    &  &\\
  &   &    &  &\\
@@ -1888,7 +1888,8 @@ combination of the following diagrams:
 %\end{align}
 In the first row we have listed all possible tubes which take the trivial boundary condition back to itself, 
 and in the second row the tubes which take the $\beta$ marked point back to itself.
-However, depending on the spin structure on the annulus, some of the above diagrams may be zero.
+Notice that all tubes have the same label at the two marked points, in general this won't happen. 
+Depending on the spin structure on the annulus, some of the above diagrams may be zero.
 
 There are two spin structures on the annulus: bounding (anti-periodic boundary conditions; non-vortex) and 
 non-bounding (periodic boundary conditions; vortex).
@@ -1922,8 +1923,9 @@ A non-bounding tube with a horizontal $\beta$ line is also zero, since
 \begin{align}
 \FubesXs_N \; = \; A^{-4}\; \FubesXsa_N \; = A^{-4} \; \FubesXsb_N =\;  A^{-4} \FubesXsc_N \; = - \FubesXs_N.
 \end{align}
-All other tubes are nonzero for both spin structures, and so a complete basis for tubes in the antiperiodic sector is given by
+All other tubes are nonzero for both spin structures, and so a complete basis for tubes in the bounding sector is given by
 \begin{align}
+ \label{atubes}
 \xymatrix @!0 @M=1mm @R=6mm @C=20mm {
 \overset{\mathds{1}}{\TubeBC} &   &    &  &\\
 & \FubeXXX_B  &  \FubesXs_B  &  &\\
@@ -1939,6 +1941,7 @@ All other tubes are nonzero for both spin structures, and so a complete basis fo
 %\end{align}
 while a basis for the periodic sector is given by
 \begin{align}
+\label{ptubes}
 \xymatrix @!0 @M=1mm @R=6mm @C=20mm {
 \overset{\mathds{1}}{\TubeBC} &   &    &  &\\
 & \FubeXXX_N  &    & \FubesdXs_N &\\
@@ -1949,17 +1952,17 @@ while a basis for the periodic sector is given by
 \underset{\beta}{\TubeBC}\ar[uu] &   &    &  &
  }
 \end{align}
-\dave{HERE}
+\dave{Need to think if there is a better way to present these tables.}
 %\begin{align} \label{ptubes}
 %\FubeXXX_P\quad \FubeXss_P \quad \FubessX_P   \quad \FubesdXs_P \quad  \FubeXsds_P \quad \FubessdX_P.
 %\end{align}
-\kw{Should break above up according to charge/b.c.}
+%\kw{Should break above up according to charge/b.c.}
 
 The multiplication law in the tube algebra is given by stacking tubes on top of one another 
 and simplifying the resulting tube using local relations.  
-For example, in the periodic sector we have
+For example, in the non-bounding sector we have
 \begin{align}
-\FubesdXs_P \; \times \; \FubesdXs_P \; = \; \RDotTwoa_P \; = \; \frac{1}{d} \left(\RDotTwob_P + \RDotTwoc_P \right) = 2 \; \FubeXXX_P
+\FubesdXs_N \; \times \; \FubesdXs_N \; = \; \RDotTwoa_N \; = \; \frac{1}{d} \left(\RDotTwob_N + \RDotTwoc_N \right) = 2 \; \FubeXXX_N
 \end{align}
 
 %%% KW: Does this (below) say anything that is not already covered in the local relations for C2?  Not sure what "time slice" means here.
@@ -1969,38 +1972,58 @@ For example, in the periodic sector we have
 %For example, if we create fermion 2 above fermion 1 in a diagram, we must annihilate them 
 %along a $\beta$ string where fermion 2 is above fermion 1.
 Note that since the spin structures on two tubes being fused must agree on the boundary 
-at which they are being fused, periodic tubes can only be stacked on top of periodic tubes, 
-and similarly for anti-periodic tubes.
+at which they are being fused, non-bounding tubes can only be stacked on top of non-bounding tubes, 
+and similarly for bounding tubes.
 
-Relations like the ones above allow us to find the (equivalence classes of) minimal idempotents of the tube 
-algebra, which are in natural bijection with the simple modules of the tube algebra, which in 
-turn correspond to the irreducible vector spaces left invariant under the action of tube stacking. 
-The simple modules are identified with quasiparticles, and so to find the quasiparticle spectrum 
-of the theory, we simply need to find the irreducible spaces left invariant under action of the tube algebra. 
+
+\dave{I'm going to re-phrase a bit, feel free to undo it.}
+Relations like the ones above allow us to find the (isomorphism classes of) minimal idempotents of the tube category. 
+Each isomorphism class of minimal idempotents defines a subspace which is left invariant under the action of tube stacking. 
+It is natural to interpret the action of stacking as a local operation, 
+and thus we find that the equivalence class of states related by local operators are 
+labeled by an isomorphism class of minimal idempotents, 
+see section XXX for more details. 
 Since the tube algebra splits into a direct sum of tubes with different spin structures, 
-its simple modules will split in a similar way. First, we turn to an analysis of tubes with non-vortex spin structure. 
+its minimal idempotents will split in a similar way. 
+First, we turn to an analysis of tubes with non-vortex spin structure. 
+
+
+
+%Viewing the tubes as local operators in a physical system means that these irreducible vector spaces biject with types of anyonic excitations.
+%Relations like the ones above allow us to find the (equivalence classes of) minimal idempotents of the tube 
+%category, which are in natural bijection with the simple modules of the tube algebra, which in 
+%turn correspond to the irreducible vector spaces left invariant under the action of tube stacking. 
+%The simple modules are identified with quasiparticles, and so to find the quasiparticle spectrum 
+%of the theory, we simply need to find the irreducible spaces left invariant under action of the tube algebra. 
+%Since the tube algebra splits into a direct sum of tubes with different spin structures, 
+%its simple modules will split in a similar way. 
+%First, we turn to an analysis of tubes with non-vortex spin structure. 
 
 \subsubsection{Non-vortex spin structure}
 
 \kw{Should probably go back through this section and convert the tube algebra to a tube category.  
 I think that's the language we're using elsewhere in the paper.}
 
-Let us first examine the subalgebra of tubes with no charge: that is, cylinders 
-with empty boundary conditions on both their top and bottom. Writing this subalgebra 
+Let us first examine the tubes with no charge: that is, cylinders 
+with empty boundary conditions on both their top and bottom. 
+Writing this subalgebra
 as $\tube_0^A$, we see that it has two even generators:
-\be \tube_0^A = \left\langle\; \FubeXXX_A,\; \FubesXs_A\;\right\rangle.\ee
+\be \tube_0^B = \left\langle\; \FubeXXX_B,\; \FubesXs_B\;\right\rangle.\ee
 Since $\tube_0^A$ has two even generators, as an algebra it must be isomorphic to $\cc^{2|0}$. 
 The idempotents associated with this sector are easy to compute: $\cc^{2|0} = \cc \oplus \cc$ 
 has two simple modules and hence we obtain a pair of zero-charge quasiparticles, which we 
 label by $m_\unit$ and $m_\psi$. Explicitly, they are 
-\be m_\unit = \frac{1}{2}\left( \FubeXXX_A +\;\; \frac{1}{d}\FubesXs_A\right),\qquad m_\psi = \frac{1}{2} \left( \FubeXXX_A -\;\; \frac{1}{d} \FubesXs_A\right).\ee
-One can check that the action of the full tube algebra on both $m_\unit$ and $m_\psi$ is simply scalar multiplication. 
+\be m_\unit = \frac{1}{2}\left( \FubeXXX_B +\;\; \frac{1}{d}\FubesXs_B\right),\qquad m_\psi = \frac{1}{2} \left( \FubeXXX_B -\;\; \frac{1}{d} \FubesXs_B\right).\ee
+One can check that the action of any element from $\tube_0^B$
+on both $m_\unit$ and $m_\psi$ is simply scalar multiplication. 
+%the full tube algebra on both $m_\unit$ and $m_\psi$ is simply scalar multiplication. 
 
-Now we turn to the subalgebra $\tube^A_\beta$ of charged tubes: those whose top and bottom 
+Now we turn to the subalgebra $\tube^B_\beta$ of charged tubes: those whose top and bottom 
 boundary conditions consist of a single marked $\beta$ point. 
 There are two non-zero even tubes and two non-zero odd tubes,
-\be \tube^A_\beta = \left\langle\; \FubeXss_A,\;\FubeXsds_A,\; \FubessX_A,\; \FubessdX_A\right\rangle,\ee
-meaning that $\tube^A_\beta \cong \cc^{2|2}$. This means that as an algebra $\tube^A_\beta$ is either 
+\be \tube^B_\beta = \left\langle\; \FubeXss_B,\;\FubeXsds_B,\; \FubessX_B,\; \FubessdX_B\right\rangle,\ee
+meaning that $\tube^B_\beta \cong \cc^{2|2}$. 
+This means that as an algebra $\tube^B_\beta$ is either 
 $\cl_2$ or $\cl_1\oplus \cl_1$, and so we know that this sector will contribute either one 
 (if $\cl_2$, since $\cl_2$ is Morita equivalent to $\cc$ which has one simple module) 
 or two (if $\cl_1 \oplus \cl_1$) quasiparticle excitations. 
@@ -2010,13 +2033,13 @@ By using the local relations in the $C_2$ theory we can work out the multiplicat
 which is presented in the following table. 
 In the table, $A\times B$ means ``stack $A$ on top of $B$''. 
 For multiplications involving odd tubes, we always take fermions in the $A$ tube to have a 
-higher normal order than fermions in the $B$ tube. 
+higher ordering than the fermions in the $B$ tube. 
 
 \be
 \renewcommand{\arraystretch}{3}
 \centering
 \begin{tabular}{c | c c c c r}
-$\times$ in $\tube^A_{\beta} $          & $\FubeXss $ & $\FubeXsds $ & $\FubessX $&$ \FubessdX$  \\
+$\times$ in $\tube^B_{\beta} $          & $\FubeXss $ & $\FubeXsds $ & $\FubessX $&$ \FubessdX$  \\
 \hline
 $\FubeXss$ & $\FubeXss$ & $\ \FubeXsds$  & $\FubessX$ & $\FubessdX$  \\
 
@@ -2029,7 +2052,7 @@ $\FubessdX    $&$ \FubessdX $&$ -A^{4}\ \FubessX $&$ A^{6}\ \FubeXsds $&$ -A^{-6
 %\caption{ \label{aptube_multtable} The multiplication table for the subalgebra $\tube_\beta^A$. \ethan{need to come back and write $A$s explicitly}}
 \ee
 
-Since the multiplication table for $\tube_\beta^A$ is non-abelian, 
+Since the multiplication table for $\tube_\beta^B$ is non-abelian, 
 as an algebra it must be $\cl_2$, as the other possibility (namely 
 $\cl_1\oplus\cl_1$) is abelian. 
 In order to show that the previous table is indeed the multiplication table of $\cl_2$, 
@@ -2040,7 +2063,7 @@ With this, the re-scaled multiplication table becomes
 \be
 \renewcommand{\arraystretch}{3}
 \begin{tabular}{c | c c c c r}
-$\times$ in $\tube^A_{\beta} $          & $\FubeXss $ & $\FubeXsds $ & $\FubessX $&$ \FubessdX$  \\
+$\times$ in $\tube^B_{\beta} $          & $\FubeXss $ & $\FubeXsds $ & $\FubessX $&$ \FubessdX$  \\
 \hline
 $\FubeXss$ & $\FubeXss$ & $\FubeXsds$  & $\FubessX$ & $\FubessdX$  \\
 $\FubeXsds$           & $\FubeXsds $& $\FubeXss$ & $\FubessdX $& $\FubessX  $\\
@@ -2054,17 +2077,19 @@ and two even generators, namely $1$ and $\gamma_1\gamma_2$. Therefore, we are le
 identifications
 \be 1 =\FubeXss,\quad \gamma_1 =  \FubeXsds,\quad \gamma_2 = \FubessdX,\quad i\gamma_1\gamma_2 =  \FubessX.\ee
 We have the required anticommutation relations $\{\gamma_i,\gamma_j\} = 2\delta_{ij}$ and so 
-indeed, $\tube^A_\beta \cong \cl_2$. 
+indeed, $\tube^B_\beta \cong \cl_2$. 
 We also note that the chirality operator in this setting is $\bar\gamma=i\gamma_1\gamma_2$, 
 which is just the two-dimensional analogue of the familiar four-dimensional chirality 
 operator $\gamma_5=i\gamma_0\gamma_1\gamma_2\gamma_3$. 
 Such an identification for $\bar\gamma$ makes perfect sense from the TQFT standpoint, 
 since the operator $\bar\gamma=i\gamma_1\gamma_2$ implements the topological twist.  
+\dave{Why does it correspond to a chirality operator?
+Need to think about this point.}
 
 We now turn to the task of identifying the quasiparticles (simple modules) of this subalgebra. 
 At a high level, we can appeal to the Morita equivalence between $\cl_2$ and $\cc$ which states 
 that $\cl_2$ and $\cc$ must have the same simple modules, implying that the subalgebra 
-$\tube^A_\beta$ must correspond to only one type of quasiparticle\footnote{More generally, 
+$\tube^B_\beta$ must correspond to only one type of quasiparticle\footnote{More generally, 
 if $n$ is odd $\cl_n$ has a single irreducible representation (giving a single quasiparticle), 
 while if $n$ is even $\cl_n$ always has a pair of oddly isomorphic irreducible representations 
 differing by the sign of the representation of the chirality operator (also giving a single quasiparticle). }.
@@ -2082,7 +2107,7 @@ and right-handed opposite-chirality pair.
 Since simple modules are associated with quasiparticles, this naively produces a pair of quasiparticles. 
 Since the two representations differ in the sign of the representation matrix of the chirality 
 operator $\bar\gamma$, we may write them explicitly as 
-\be \label{msig_defn} m_\sigma^\pm = \frac{1}{2} \left(\FubeXss_A \pm A^{-3}\ \FubessX_A\right).\ee
+\be \label{msig_defn} m_\sigma^\pm = \frac{1}{2} \left(\FubeXss_B \pm A^{-3}\ \FubessX_B\right).\ee
 %Note that we're letting each fube in the above expression represent its isomorphism class, which is why we haven't added any fubes in $\fld(C)^1$ with odd fermion parity to the expression for $m_\sigma^\pm$ (as they are isomorphic to the even-parity fubes in the expression for $m^\pm$) . 
 The idempotents associated with the $m_\sigma^\pm$ quasiparticles thus play the role of the projectors 
 $P_{L/R} = (1 \mp \bar\gamma)/2$ which project onto left- and right-handed components of 
@@ -2090,6 +2115,8 @@ spinors in standard quantum field theory.
 We can thus think of $m_\sigma^+,m_\sigma^-$ as forming an equivalence class of a multi-component 
 ``spinor'' (quasiparticle), in the same vein as the decomposition $\Psi = (\psi_L,\psi_R)^T$.
 The two chiralities are mixed by odd endomorphisms, and we identify them as a single quasiparticle. 
+\dave{Do we want to keep this multi-component spinor interpretation?
+I think in the context of the rest of the paper it may make more sense to just use iso-morphism class.}
 
 This looks to give us two quasiparticles, which seems to be in contradiction to our 
 argument involving Morita equivalence. 
@@ -2099,7 +2126,8 @@ Indeed, creating a fermion on the top of the $\gamma_2$ tube (which corresponds 
 isomorphism given by left multiplication by $\gamma_1$), dragging it around the $\gamma_2$ 
 tube to the bottom, and then annihilating it (through the isomorphism given by right 
 multiplication by $\gamma_1$) acts on the matrix representations as $\rho^\pm(\gamma_2) \mapsto \rho^\mp(\gamma_2)$, 
-and thus establishes an isomorphism $m^+_\sigma\cong m^-_\sigma$.%\footnote{This odd isomorphism follows from the exact sequence $0\ra \spin(n) \ra \pin^\pm(n) \ra \zt \ra 0$, which gives an automorphism on $\spin(n)$ that sends $v \mapsto \gamma_i v \gamma_i$ for $\gamma_i \in \pin^\pm(n)$.}. 
+and thus establishes an isomorphism $m^+_\sigma\cong m^-_\sigma$.
+%\footnote{This odd isomorphism follows from the exact sequence $0\ra \spin(n) \ra \pin^\pm(n) \ra \zt \ra 0$, which gives an automorphism on $\spin(n)$ that sends $v \mapsto \gamma_i v \gamma_i$ for $\gamma_i \in \pin^\pm(n)$.}. 
 As an equation, this reads 
 \be \gamma_1 m_\sigma^\pm \gamma_1 = m_\sigma^\mp.\ee
 
@@ -2110,8 +2138,9 @@ isomorphism class, which we will choose to be $m_\sigma^+$.
 
 We will examine the fusion rules and braiding properties of the three quasiparticles identified so 
 far later in Sections \ref{fusion} and \ref{braiding}. 
-For now, we repeat our quasiparticle identification procedure for quasiparticles in the vortex sector, 
-which possess spin structures with periodic boundary conditions around the cylinder. 
+For now, we repeat our quasiparticle identification procedure for the non-bounding spin structure.
+%For now, we repeat our quasiparticle identification procedure for quasiparticles in the vortex sector, 
+%which possess spin structures with periodic boundary conditions around the cylinder. 
 
 \begin{comment}
 \ethan{I'm a bit confused about why $[m^+_\sigma]$ (the equivalence class of $m^+_\sigma$ and 
@@ -2142,7 +2171,7 @@ Similar arguments like this go through for the $Q_1,M_3$, and $M_6$ particles in
 
 \subsubsection{Vortex spin structure} 
 
-As in the last section, we first examine the subalgebra $\tube^P_0$, consisting of tubes with no charge and with periodic boundary conditions.
+As in the last section, we first examine the subalgebra $\tube^N_0$, consisting of tubes with no charge and with non-bounding spin structure.
  This algebra is two dimensional, generated by a single even vector and a single odd vector: 
 \be \tube^P_0 = \left\langle \FubeXXX_P,\; \FubesdXs_P\right\rangle.\ee
 As an algebra then, it must be isomorphic to $\cl_1$. 
