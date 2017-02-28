@@ -5532,8 +5532,9 @@ where the sums are over the plaquettes $P$, edges $E$, and vertices $V$ of the g
 As in the bosonic case, we require a hierarchy in the couplings of $\lambda_v \gg \lambda_e \gg \lambda_p$.
 \dave{This makes the low energy spectrum purely ``flux" excitations. 
 The ``charged" idempotents always violate both the plaquette and vertex term, which with this hiearchy costs a lot of energy. 
-We could mention in a footnote that if this bothers the reader then the the plaquette term can be modified by $B_p \rightarrow B_p \prod_{v \in p} A_v$ or make the model an actual commuting projector Hamiltonian by taking $B_p \rightarrow B_p \prod_{e \in p} D_e \prod_{v \in p} A_v$, and $D_e \rightarrow D_e \prod_{v \in e} A_v$. 
-}
+We could mention in a footnote that if this bothers the reader then the the plaquette term can be modified by $B_p \rightarrow B_p \prod_{v \in p} A_v$ or make the model an actual commuting projector Hamiltonian by taking $B_p \rightarrow B_p \prod_{e \in p} D_e \prod_{v \in p} A_v$, and $D_e \rightarrow D_e \prod_{v \in e} A_v$. }
+\kw{This is an issue for the usual bosonic LW hamiltonian too.
+Is there anything we can refer to for the bosonic case?}
 This is because the operators appearing in the plaquette terms are not well-defined unless the edge term energies are minimized, and in turn the terms appearing in the edge operators are not well-defined unless the vertex term energies are minimized.
 Thus, the projectors associated with $k$-handles are only defined on the ground states of the projectors associated with $l$-handles, for all $l<k$.  
 %\kw{maybe insert a caveat about later projectors only being defined on the ground state of earlier projectors}
@@ -5551,7 +5552,7 @@ which is the same support as the the edge term.}
 
 
 %%%%%%%%%%%%%%%
-\subsection{Hilbert space}
+\subsection{Hilbert space} \label{hilbertspacesect}
 %%%%%%%%%%%%%%%
 
 \kw{Below I have tried to remove inessential material and add in some important points.
@@ -5649,7 +5650,8 @@ Because $V^{abc}$ has a spin-flip automorphism, and also because we need to
 enhance the graph $\mcg$ with information related to the spin structure of the ambient manifold 
 in order to write the edge terms, as explained below.
 
-\kwsep
+
+\subsection{(older version)}
 
 \kw{I think most of this older version can be discarded.}
 
@@ -5999,6 +6001,7 @@ The edge term is then \kw{something like}
 To derive the Hamiltonian \eqref{ham} and explain the nature of the $B_p$, $D_e$, and $A_v$ operators, we will first need to describe how the graph inherits spin structure data from the ambient spin manifold on which it is defined. 
 
 Recall that we have a graph $\mcg$ embedded in an orientable surface $\Sigma$ which comes equipped with a spin structure $\sigma$.
+\kw{Might want to just say that $\Sigma$ is a spin surface and drop mention of $\sigma$; possible to-do for later.}
 %an equivalence class of spin structures on this surface by $\sigma$. 
 %$\sigma$ provides us a way of associating boundary conditions (periodic or anti-periodic) to homotopy classes of framed closed paths  
 %in $\Sigma$ (which are the same as ordinary closed paths in the frame bundle of $\Sigma$).
@@ -6012,23 +6015,30 @@ A handle decomposition is essentially a fattened version of a graph; see Fig.~\r
   The $0$ handles (green discs) are neighborhoods of the vertices, the $1$-handles (purple strips) are neighborhoods of the edges, and the $2$ handles (orange polygons) which are the compliment of the union of the $0$- and $1$-handles.}
   \label{HandleDecomposition}
 \end{figure}
-The handle decomposition can be found by by expanding each vertex of the graph into a disc ($0$-handle) and each edge into thickened strips (1-handles).
+The handle decomposition can be found by by expanding each vertex of the graph into a disc ($0$-handle) and each edge into
+a thickened strip (1-handle).
 %The boundary of each $1$ handle $h_{e}$ has $4$ boundaries, two of these boundaries will reside in the discs $D_u$ and $D_v$, for $u$ and $v$ at the boundary of $e$.
 %We will call these boundaries the ``ends" of this $1$handle.
 %The other two edges reside entirely in the neighbouring faces of the cell decomposition.
-The remaining faces constitute the $2$-handles, which are homeomorphic to discs and contain exactly one edge from each neighboring 1-handle.
+The remaining faces constitute the $2$-handles, which are homeomorphic to discs.
+%%% KW: the usual convention is that the 2-handles also meet the 0-handles along an interval.
+% and contain exactly one edge from each neighboring 1-handle.
 %Each $2$-handle will contain exactly one edge from the neighbouring $1$ handles. 
 %We also require that the $2$ handles are pairwise disjoint, as are the $1$ handles.
-We will fix an orientation of every edge (1-handle) in the cell decomposition.
+
+Recall from Subsection \ref{hilbertspacesect} that 
+in order to define the local vertex degrees of freedom we choose an orientation for each edge, a ``pitchforkization" for each vertex, and a spin framing at each vertex.
 \dave{Should we use use a different terminology for orientation of edges, than ``orientation".
 Maybe ``directed" edges?}
-This is done only to aid in the construction of the edge term that appears in the Hamiltonian, and the exact choice of how we assign orientations to each edge does not matter.
+\kw{I think ``directed edge" is better, but we can't replace ``choose an orientation of the edge" with ``choose a direction of the edge", so ???}
+These choices are analogous to choosing a gauge -- different choices lead to isomorphic hamiltonians and ground states.
 
+%Because condensing fermions requires the existence of a spin structure, 
+%we will need to define a spin framing at each of the vertices (0-handles) in our diagrams, on which fermions can live. 
+%In order to make the Hamiltonian as simple as possible, we will fix a choice of spin framing on each of the 0-handles.
 
-
-Because condensing fermions requires the existence of a spin structure, we will need to define a spin framing at each of the vertices (0-handles) in our diagrams, on which fermions can live. 
-In order to make the Hamiltonian as simple as possible, we will fix a choice of spin framing on each of the 0-handles.
-To do this, we define a spin diffeomorphism $\varphi_v$ from a generic 0-handle $v$ to a disk in $\rr^2$ with its standard spin structure, so that the attaching regions for the 1-handles terminating on $v$ are all located on the top part of the disk\footnote{Note that there is a large degree of gauge freedom in this construction, realized by performing $2\pi$ rotations of the fermion framing (spin flips) on the spin diffeomorphisms $\varphi_v$.}. 
+The choices of pitchforkization and spin framing are equivalent to choosing a spin diffeomorphism from a 0-handle to a standard model for a 0-handle.
+We define a spin diffeomorphism $\varphi_v$ from a generic 0-handle $v$ to a disk in $\rr^2$ with its standard spin structure, so that the attaching regions for the 1-handles terminating on $v$ are all located on the top part of the disk\footnote{Note that there is a large degree of gauge freedom in this construction, realized by performing $2\pi$ rotations of the fermion framing (spin flips) on the spin diffeomorphisms $\varphi_v$.}. 
 That is, we use the spin diffeomorphisms to turn each 0-handle into a ``standardized 0-handle'', where the configuration of the 1-handles terminating on each 0-handle means that that each 0-handle looks like a pitchfork.
 %We will also fix the spin framing on each 0-handle to be constant throughout the 0-handle.
 %These will be tremoundously useful when we wish to write down an explicit Hamiltonian with support on the graph described by the cell decomposition. 
@@ -6041,8 +6051,9 @@ The spin diffeomorphism $\varphi_v$ that maps a generic 0-cell $v$ to a standard
 \end{align} 
 where $n$ is the number of edges which terminate at $v$ and the black arrow in the picture on the right hand side denotes the fermion framing of the 0-handle, which is constant throughout the 0-handle.  
 When writing down the Hamiltonian we always take $n=3$ without loss of generality, but when discussing tensor network constructions of these phases it is helpful to let $n$ be unspecified. 
-Importantly, the pitchforkization map $\varphi_v$ maps 0-handles with generic spin framings to 0-handles for which the spin framing is {\it constant} throughout the 0-handle. 
-for concreteness, we will take the direction of the spin framing to be parallel to the outgoing edges at the top of the 0-handle. 
+Using the pitchforkization map $\varphi_v$ 
+we can pull back the standard spin framing of $\rr^2$ to the 0-handle.
+This results in a spin framing which is parallel to the outgoing edges at the top of the 0-handle. 
 
 \begin{figure}\centering{
   \includegraphics{SpinIsomorphisms.pdf}}
@@ -6057,8 +6068,9 @@ for concreteness, we will take the direction of the spin framing to be parallel 
 \end{figure}
 
 Just as we do for the 0-handles, we will ``standardize'' the 1-handles so that they all assume the same form. 
-After standardizing our 0-cells, 1-handles will always enter / exit from a 0-handle ``vertically'' (see Figure \ref{Spinisomorphisms}), 
+After standardizing our 0-handles, 1-handles will always enter/exit from a 0-handle ``vertically'' (see Figure \ref{Spinisomorphisms}), 
 and so our standardized 1-handles will look like \ethan{should probably add orientation}
+\kw{yes}
 \begin{align}
 \Horseshoe
 \end{align}
@@ -6082,7 +6094,9 @@ Once we have chosen coordinates at each vertex, we can associate a spin rotation
 $-\pi$ to each 1-handle.
 First, we choose a standard spin framing at the incoming side (remember that each 1-handle carries an orientation) of the 1-handle.
 A standard choice exists because we have chosen a standard spin framing for the 0-handle at the incoming end of the 1-handle. 
-We then parallel transport the spin framing along the 1-handle, keeping the first basis vector of the spin framing tangent to the 1-handle during the transporting process.
+We then parallel transport the spin framing along the 1-handle, keeping the first basis vector of the spin framing tangent to 
+the core of
+the 1-handle during the transporting process.
 This procedure is illustrated in Figure \ref{framing_rotation}, where the red arrow denotes the first basis vector of the spin framing. 
 When we arrive at the end of the 1-handle, the spin framing we have transported will not agree with the standardized spin framing at the second 0-handle. 
 We can see this from Figure \ref{framing_rotation}; we have chosen the spin framing to point upwards at each 0-handle, but the red arrow points downward when it reaches the end of the 1-handle, which disagrees with the framing at the 0-handle. 
