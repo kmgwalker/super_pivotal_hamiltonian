@@ -156,6 +156,7 @@
 \newcommand{\FubeXss}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OneLine.pdf}}}}}
 \newcommand{\FubeXsds}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OneLineDot.pdf}}}}}
 
+\newcommand{\TubeBC}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeBC.pdf}}}}}
 
 
 \newcommand{\AnnulusBare}{\mathord{\vcenter{\hbox{\includegraphics[scale=.6]{AnnulusBare.pdf}}}}}
@@ -1817,6 +1818,9 @@ $Rep(Ann(\mcc)) \cong \mcz(Rep(\mcc))$, and if $\mcc$ is semisimple then we can 
 the $Rep$s and obtain $Ann(\mcc) \cong \mcz(\mcc)$.)
 \kw{need to double-check this claim; also need to choose a notion for annular category/tube alg;
 maybe $\mct(\mcc)$; also, do we want to say tube category instead of tube algebra?}
+\dave{How about we go with tube category, and then mention how it relates to the tube algebra. 
+}
+
 
 %the quasiparticle excitations in bosonic theories 
 %based on a category $\mcc$ are given by objects of the Drinfeld center $\mcz(\mcc)$, 
@@ -1824,6 +1828,7 @@ maybe $\mct(\mcc)$; also, do we want to say tube category instead of tube algebr
 %With appropriate modifications accounting for spin structure issues, this same construction holds 
 %in the more general fermionic setting considered here. 
 
+\dave{Will come back to this paragraph.}
 Briefly, the tube algebra is the algebra of ``scale transformations'' 
 \kw{I have not heard this term before; where else is it used?  let's discuss on skype}
 \dave{I think Lan and Wen's paper uses this term. 
@@ -1852,12 +1857,38 @@ we refer readers to Appendix \ref{tube_alg}.
 \dave{Sounds good.
 I think this section was written based on our old understanding of the tube algebra.}
 
+Lets study the tube category for $C_2$ in a little more detail. 
+We will take the boundary of the tubes to have one marked point.
+There are only two possible simple objects which can terminate at this marked point, the trivial object $\mathds{1}$ or $\beta$,
+\begin{align}
+\underset{\mathds{1}}{\TubeBC} \quad \quad \quad \underset{\beta}{\TubeBC}.
+\end{align}
 After applying local relations (F-moves, dot-cancellations, removing trivial loops), 
 it is easy to see that an arbitrary string-net diagram on any tube can be reduced to a linear 
-combination of the following diagrams:\begin{align}
-\FubeXXX \quad \FubesXs    \quad \FubeXss \quad \FubessX   \quad \FubesdXs \quad  \FubeXsds \quad \FubessdX
+combination of the following diagrams:
+%\begin{align}
+%\xymatrix{
+%\FubeXXX \quad \FubesXs   \quad \quad \quad & \FubesdXs \\
+% \FubeXss \quad \FubessX    \quad \quad \quad    &\FubeXsds \quad \FubessdX
+ %}
+%\end{align}
+\begin{align}
+\xymatrix @!0 @M=1mm @R=6mm @C=20mm {
+\overset{\mathds{1}}{\TubeBC} &   &    &  &\\
+& \FubeXXX  &  \FubesXs  & \FubesdXs &\\
+\underset{\mathds{1}}{\TubeBC}\ar[uu] &   &    &  &\\
+ &   &    &  &\\
+\overset{\beta}{\TubeBC} &   &    &  &\\
+&  \FubeXss  &  \FubessX   & \FubeXsds & \FubessdX \\
+\underset{\beta}{\TubeBC}\ar[uu] &   &    &  &
+ }
 \end{align}
-However, depending on the spin structure on the annulus, some of the above diagrams might be zero.
+%\begin{align}
+%\FubeXXX \quad \FubesXs    \quad \FubeXss \quad \FubessX   \quad \FubesdXs \quad  \FubeXsds \quad \FubessdX
+%\end{align}
+In the first row we have listed all possible tubes which take the trivial boundary condition back to itself, 
+and in the second row the tubes which take the $\beta$ marked point back to itself.
+However, depending on the spin structure on the annulus, some of the above diagrams may be zero.
 
 There are two spin structures on the annulus: bounding (anti-periodic boundary conditions; non-vortex) and 
 non-bounding (periodic boundary conditions; vortex).
@@ -1879,26 +1910,49 @@ and fermions pick up a minus sign if they cross that branch cut.
 %element in $H^1(C,\zt)$ corresponds to {\it anti-periodic} (or non-vorex) boundary conditions, 
 %with the nontrivial element corresponding to periodic (or vortex) boundary conditions.
 
-We will denote the spin structure of a given tube with a subscript, using $A$ for 
-anti-periodic/non-vortex spin structure and $P$ for periodic/vortex spin structures. 
+We will denote the spin structure of a given tube with a subscript, using $B$ for bounding 
+spin structure and $N$ for non-bounding spin structures. 
 As we said above, not every string diagram in the annulus is consistent with a given spin structure.
 For example,
 \begin{align}
-\FubesdXs_A\;  = - \; \FubesdXs_A \implies \FubesdXs_A = 0,
+\FubesdXs_B\;  = - \; \FubesdXs_B \implies \FubesdXs_B = 0,
 \end{align}
 where we have simply pulled the fermion around the non-contractible loop on the tube. 
-A vortex tube with a horizontal $\beta$ line is also zero, since
+A non-bounding tube with a horizontal $\beta$ line is also zero, since
 \begin{align}
-\FubesXs_P \; = \; A^{-4}\; \FubesXsa_P \; = A^{-4} \; \FubesXsb_P =\;  A^{-4} \FubesXsc_P \; = - \FubesXs_P.
+\FubesXs_N \; = \; A^{-4}\; \FubesXsa_N \; = A^{-4} \; \FubesXsb_N =\;  A^{-4} \FubesXsc_N \; = - \FubesXs_N.
 \end{align}
 All other tubes are nonzero for both spin structures, and so a complete basis for tubes in the antiperiodic sector is given by
-\begin{align} \label{atubes}
-\FubeXXX_A \quad \FubesXs_A \quad \FubeXss_A \quad \FubessX_A    \quad  \FubeXsds_A \quad \FubessdX_A
+\begin{align}
+\xymatrix @!0 @M=1mm @R=6mm @C=20mm {
+\overset{\mathds{1}}{\TubeBC} &   &    &  &\\
+& \FubeXXX_B  &  \FubesXs_B  &  &\\
+\underset{\mathds{1}}{\TubeBC}\ar[uu] &   &    &  &\\
+ &   &    &  &\\
+\overset{\beta}{\TubeBC} &   &    &  &\\
+&  \FubeXss_B  &  \FubessX_B   & \FubeXsds_B & \FubessdX_B \\
+\underset{\beta}{\TubeBC}\ar[uu] &   &    &  &
+ }
 \end{align}
+%\begin{align} \label{atubes}
+%\FubeXXX_A \quad \FubesXs_A \quad \FubeXss_A \quad \FubessX_A    \quad  \FubeXsds_A \quad \FubessdX_A
+%\end{align}
 while a basis for the periodic sector is given by
-\begin{align} \label{ptubes}
-\FubeXXX_P\quad \FubeXss_P \quad \FubessX_P   \quad \FubesdXs_P \quad  \FubeXsds_P \quad \FubessdX_P.
+\begin{align}
+\xymatrix @!0 @M=1mm @R=6mm @C=20mm {
+\overset{\mathds{1}}{\TubeBC} &   &    &  &\\
+& \FubeXXX_N  &    & \FubesdXs_N &\\
+\underset{\mathds{1}}{\TubeBC}\ar[uu] &   &    &  &\\
+ &   &    &  &\\
+\overset{\beta}{\TubeBC} &   &    &  &\\
+&  \FubeXss_N  &  \FubessX_N   & \FubeXsds_N & \FubessdX_N \\
+\underset{\beta}{\TubeBC}\ar[uu] &   &    &  &
+ }
 \end{align}
+\dave{HERE}
+%\begin{align} \label{ptubes}
+%\FubeXXX_P\quad \FubeXss_P \quad \FubessX_P   \quad \FubesdXs_P \quad  \FubeXsds_P \quad \FubessdX_P.
+%\end{align}
 \kw{Should break above up according to charge/b.c.}
 
 The multiplication law in the tube algebra is given by stacking tubes on top of one another 
