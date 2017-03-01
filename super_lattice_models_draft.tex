@@ -6211,6 +6211,7 @@ The spin structure on a 1-handle (relative to the two attaching intervals) will 
 The red arrow keeps track of the fermion framing, which rotates by $\pi$ when proceeding along the direction of the edge's orientation.
 The blue arrows at the ends of the edge indicate the fixed framing at each 0-handle at the endpoints of the edge. 
 \dave{Maybe we could leave the blue dot at a fixed position, and just pull the box over the cap?
+\kw{I don't understand this comment (above).}
 Should also say where in the text we describe how to put the box back into its standard position, 
 i.e., with the $\psi$ line exiting to the left.}
 }
@@ -6234,7 +6235,8 @@ These two framings are related by either a $+\pi$ or $-\pi$ spin rotation in $Sp
 \begin{center}
 \includegraphics{alphae_defn.pdf}
 \caption{\label{alphae_defn} The action of sliding a fermion across an edge $e$ is captured by $\alpha(e)\in Spin(2)$. 
-The spin framings of the 0-handles on either end of $e$ are denoted by the blue arrows, and  the spin framing of the fermion on the right hand side is taken to match that of the left 0-handle. }
+The spin framings of the 0-handles on either end of $e$ are denoted by the blue arrows, 
+and  the spin framing of the fermion on the right hand side is taken to match that of the left 0-handle. }
 \end{center}
 \end{figure}
 We will denote this element of $Spin(2)$ by $\alpha(e)$, where $e$ is the edge corresponding to the 1-handle.
@@ -6245,27 +6247,75 @@ Conversely, any collection $\{\alpha(e)\}$ determines a spin structure on $\Sigm
 In order for this spin structure to extend to all of $\Sigma$, $\{\alpha(e)\}$ must satisfy the constraint that the 
 boundary of each 2-handle has a bounding spin structure; see below.
 
+Let $b$ be a q-type simple object.
+We want to analyze the effect of sliding a fermionic dot over the edge $e$ when $e$ is labeled by $b$.
+\kw{Could possibly move following discussion to the definition section.}
+At the outset, we will choose an odd element $\gamma_b\in\End(b)$ such that $\gamma_b^2 = \id_b$, and also
+$\gamma_{b^*}\in\End(b^*)$ such that $\gamma_{b^*}^2 = \id_{b^*}$.
+The requirement that $\gamma_b^2 = \id_b$ determines $\gamma_b$ up to sign.
+Let $r(b)\in\cc$ be such that $R_\pi\cdot\gamma_b = r(b)\gamma_{b^*}$, where
+\be
+	R_\pi : \End(b) \to \End(b^*)
+\ee
+denotes the spin rotation by $\pi$.
+It is easy to see that $r(b) = \pm i$.
+The exact value will depend on the choices of standard generators $\gamma_b$ and $\gamma_{b^*}$.
+If $b$ is not isomorphic to $b^*$, then we can always choose $\gamma_b$ and $\gamma_{b^*}$ so that $r(b) = i$.
+But if $b = b^*$ (as happens in the $C_2$ theory, for example), then $\gamma_b = \gamma_{b^*}$ and the value of $r(b)$
+is forced upon us, independent of the choice of $\gamma_b$.\footnote{
+The condition that $b$ is equal to, rather than merely isomorphic to, $b^*$ is in some sense pathological.
+But for theories build out of unoriented strands, like $C_2$, it is convenient to allow this pathology.}
+
+We can now, finally, describe the effect of sliding a standard fermionic endomorphism (dot) over an edge $e$ labeled by 
+a q-type particle $b$.
+Let $\gamma_b * e$ denote the edge with the standard generator $\gamma_b$ placed at the incoming end.
+Let $e* \gamma_{b^*}$ denote the edge with the standard generator $\gamma_{b^*}$ placed at the outgoing end.
+\kw{refer to fig here; perhaps we can think of better notation}
+Then
+\be
+	\gamma_b * e = \alpha(e, b) \cdot e* \gamma_{b^*} ,
+\ee
+where
+\be
+	\alpha(e, b) =  \left\{   \begin{array}{ll}  
+		r(b) & \mbox{if $\alpha(e) = R_\pi$} \\
+		-r(b) & \mbox{if $\alpha(e) = R_{-\pi}$} \\
+	\end{array}  \right. .
+\ee
+
 %For each edge $e$, the final spin framing and the standard spin framing are therefore related by an element of $Spin(2)$, which performs a $\pm\pi$ rotation of the spin framing.
 %In what follows, we will denote this element of $Spin(2)$ by $\alpha(e)$, 
 %so that $\alpha(e)$ determines the result of sliding a fermion along the edge $e$ in a way that agrees with $e$'s orientation, as shown in Figure \ref{alphae_defn}. 
 %In the figure, the spin framing of the fermion on the right hand side agrees with the spin framing of the 0-handle at the end of $e$. 
 
-\kw{I think we should leave $\alpha(e)$ as an element of $Spin(2)$, and define $\alpha(e, q) = \pi i$, where $q$ is  a q-type particle.
-I'll make these edits later.}
 
-For an edge $e$ hosting a given q-type particle, $\alpha(e)$ will act as multiplication by $\pm i$, since $\alpha^2(e)$ performs a rotation by $2\pi$, which acts as multiplication by $-1$. 
-In what follows we will abuse notation somewhat and write $\alpha(e)$ to denote the action of $\alpha(e)$ on the Hilbert space.
-Since only q-type particles can host fermion endpoints (dots), we can take the action of $\alpha(e)$ to be zero unless $e$ is colored by a q-type object. 
-\dave{I thought $\alpha(e)$ was independent of the the edge label. 
-Is that true?}
-If one proceeds $e$ in the {\it opposite} direction to orientation on $e$, the final and initial spin framings are instead related by $\alpha^{-1}(e)$. 
-Since the difference between $\alpha(e)$ and $\alpha^{-1}(e)$ is a $2\pi$ rotation, we see that $\alpha^{-1}(e) = -\alpha(e)$. 
+%For an edge $e$ hosting a given q-type particle, $\alpha(e)$ will act as multiplication by $\pm i$, since $\alpha^2(e)$ performs a rotation by $2\pi$, which acts as multiplication by $-1$. 
+%In what follows we will abuse notation somewhat and write $\alpha(e)$ to denote the action of $\alpha(e)$ on the Hilbert space.
+%Since only q-type particles can host fermion endpoints (dots), we can take the action of $\alpha(e)$ to be zero unless $e$ is colored by a q-type object. 
+%\dave{I thought $\alpha(e)$ was independent of the the edge label. 
+%Is that true?}
+%If one proceeds $e$ in the {\it opposite} direction to orientation on $e$, the final and initial spin framings are instead related by $\alpha^{-1}(e)$. 
+%Since the difference between $\alpha(e)$ and $\alpha^{-1}(e)$ is a $2\pi$ rotation, we see that $\alpha^{-1}(e) = -\alpha(e)$. 
+
+\kw{very rough sketch of replacement for following paragraph:}
+Fermionic dots can also be absorbed into vertices.
+Define
+\be
+	\mbox{pitchfork with dot on $i$-th strand} = \Gamma_i \mbox{pitchfork without dot}
+\ee
+where $\Gamma_i$ is an odd matrix.
+\kw{need to work label $b$ into the notation; if summing over all $b$, and to mention m-type labels}
+
+\kw{I think the next few paragraphs mix up purely spin structure considerations with stuff that depends on the choice of $\mcc$.
+I think it would be better to keep them separate.
+Also, I think there's no avoiding a choice of odd generator for q-type objects.}
 
 The $\alpha(e)$ aren't the only things we need to keep track of when sliding dots around, though. 
 Keeping track of additional elements of $Spin(2)$ is necessary when dots pass through vertices. 
 This is because sliding a dot from one leg of a vertex to another leg will rotate the fermion framing of the dot by $\pm \pi$.
 We will write the action of sliding a dot through a vertex $v$ along a path $\gamma$ as $\Gamma_\gamma(v)$, so that schematically we have 
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{passing_dot_through_v.pdf}}}}. \ee
+\kw{I think we should make $\Gamma$ an odd matrix (no dot on RHS), and discuss sliding dots around large loops separately.}
 %\be \mbox{passing\_dot\_through\_v.pdf is missing} \ee
 In the figure above, the path $\gamma$ is taken to run from the leftmost edge of $v$ through the rightmost edge. 
 Note that the $\Gamma_v$ appearing in the above equation only makes sense if the leftmost and rightmost legs of $v$ are labeled by q-type objects. 
@@ -6646,9 +6696,11 @@ and end with the modifications needed for the plaquette term.
 %%%%%%%%%%%%%%%%
 \label{VertexHamiltonian}
 The vertex term in the Hamiltonian is the same as in the usual string-net Hamiltonian \cite{Kitaev2012,etc}.
+\kw{but not really the same since we put all spins on vertices.}
 The vertex term $A_v$ at a vertex $v$ enforces compatibility of the labelings of the three edges meeting at the vertex $v$. 
 That is, for a vertex labeled by a vector in the fusion space $V^{abc}$ at vertex $v$, $A_v$ acts as the identity if the neighbouring vertices have labels $a^*$, $b^*$, $c^*$, and is zero otherwise.
 Following the notation of  \cite{Kitaev2012}, a vertex satisfying this property is called {\it stable}.
+\kw{configuration of vertices is ``stabile"?  I think maybe we can't use Kitaev's terminology because we put the spins on vertices only.}
 %Explicitly we define the action of the operator on the basis vectors of $\ket{\psi} \in \mch_v$ by:
 Explicitly we define the action of the operator on the basis vectors of $\ket{\psi} \in \mch$ by:
 %That is, for a vertex labelled by the vector $v\in V^{abc}$, $A_v$ acts as the identity if the unit object $\unit$ is contained in the fusion product $a\tp b\tp c$ (regardless of the parity of the fusion channel $V^{abc}_\unit$, and is zero otherwise:
