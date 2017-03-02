@@ -7353,6 +7353,56 @@ Note that the meaning of ``simple" is inconsistent in these two contexts: any $M
 $M(1,0) \cong M(0,1) \cong \cc$ or $Q(1) \cong \cl_1$ 
 (because all of the larger $M(p,q)$ or $Q(n)$ contain non-invertible elements).
 
+\subsubsection{Tensor products of fusion rules}
+\dave{Just wanted to add some notes on a confusing point that we should try to straighten out.}
+Fusion rules are subtle in a super-pivotal category. 
+Recall from a bosonic theory we define the fusion rules by $a \tp b =\bigoplus_c N_{ab}^c c$. 
+The $N_{ab}^c$ are non-negative integers denoting the number of ways $a$ and $b$ can fuse to $c$. 
+Equivalently, we have $N_{ab}^c = \text{dim} V^{ab}_c$, 
+which is the dimension of the fusion space taking $a \tp b$ to $c$. 
+In the fermionic setting these two are not always equal. 
+
+Lets define the super-vector spaces, 
+\begin{align}
+\Delta_{ab}^c = \mathbb{C}^{{\delta_{ab;B}^c} | {\delta_{ab;F}^c}} \\
+N_{ab}^{c} = \mathbb{C}^{{n_{ab; B}^c} | {n_{ab;F}^c}}
+\end{align}
+so that,
+\begin{align}
+a \tp b &= \bigoplus_c \Delta_{ab}^c \; c\\
+V^{ab}_c & \cong N_{ab}^c \quad \quad \text{\dave{this looks awkward.}}
+\end{align}
+Here we wish to find a constraint between $N_{ab}^c$ and $\Delta_{ab}^c$.
+A necessary constraint is that the endomorphism algebra on the left and right hand side of the above equation must agree, 
+\begin{align}
+\text{End} (a \tp b) = \bigoplus_c \text{End}(\Delta_{ab}^c \;c) =  \bigoplus_c \text{End}{(\Delta_{ab}^c)} \tp \text{End}(c)
+\end{align}
+We have a basis for $\text{End}(a \tp b)$ given by the fusion spaces,
+\begin{align}
+\text{End}(a \tp b)  = V^{ab}_{ab} = \bigoplus_c V^{ab}_c \tp_{\text{End}(c)} V^c_{ab}
+\end{align}
+Lets look at each $V^{ab}_c \tp_{\text{End}(c)} V^c_{ab}$. 
+If $c$ is m-type, then we have $V^{ab}_c \tp_{\text{End}(c)} V^c_{ab} \cong \text{End}(V^{ab}_c) \tp \text{End}(c)$, and so it is natural to take $N_{ab}^c = \Delta_{ab}^c$. 
+Now suppose $c$ is q-type.
+Then $V^{ab}_c \cong \mathbb{C}^{x|x}$ for some $x$, and $V^{ab}_c \tp_{\mathbb{C}} V^{c}_{ab} \cong \mathbb{C}^{2x^2 | 2x^2}$ so that,
+\begin{align}
+V^{ab}_c \tp_{\text{End}(c)} V^{c}_{ab} \cong \mathbb{C}^{x^2 |x^2}
+\end{align}
+Similarly let $\Delta_{ab}^c = \mathbb{C}^{p|w}$, then we have,
+\dave{This is probably where the error is. 
+Is it wrong to treat $\text{End}(c)$ as a vector space in this calculation?}
+\begin{align}
+\text{End}(\Delta_{ab}^c \; c) \cong \mathbb{C}^{p^2 + w^2 | 2pw} \tp \mathbb{C}^{1|1} \cong \mathbb{C}^{(p+w)^2 | (p+w)^2}
+\end{align}
+as vector spaces.
+If the calculation is correct then we find $x = p+w$. 
+\dave{There is now an ambiguity in $p$ and $w$.}
+
+One can find an additional constraint given by $(a\tp b) \tp c = a \tp(b \tp c)$, which gives,
+\begin{align}
+\bigoplus_{xy} \Delta_{ab}^x \tp \Delta_{xc}^y \; y  = \bigoplus_{yz} \Delta_{az}^y \tp \Delta_{bc}^z \; y
+\end{align}
+
 \kwsep
 
 \ethan{Old simple objects section:}
