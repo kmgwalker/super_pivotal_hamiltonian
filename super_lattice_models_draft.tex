@@ -6308,11 +6308,17 @@ where
 
 \kw{very rough sketch of replacement for following paragraph:}
 Fermionic dots can also be absorbed into vertices.
-Define
+We can do this with operators $\Gamma_i$, $i\in \{1,2,3\}$, which absorb a pitchfork with a dot on the $i$-th outgoing pitchfork edge to a pitchfork without a fermion dot on a leg. 
+Graphically, $\Gamma_1$ is defined by 
 \be
-	\mbox{pitchfork with dot on $i$-th strand} = \Gamma_i \mbox{pitchfork without dot}
-\ee
-where $\Gamma_i$ is an odd matrix.
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma1def.pdf}}}},\ee
+where $\psi,\eta$ are vectors in the fusion space of the pitchfork for a fixed coloring of the pitchfork's outgoing legs. 
+$\Gamma_2$ and $\Gamma_3$ are defined similarly,
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma2def.pdf}}}},\quad
+\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma3def.pdf}}}},\quad
+	\ee
+The $\Gamma_i$ are all odd matrices, meaning that they act as $\sigma^x$ on the fermion parity grading.
+Since only q-type particles can host fermionic dots, we set $\Gamma_i=0$ unless the $i$th leg is colored by a q-type object. 
 \kw{need to work label $b$ into the notation; if summing over all $b$, and to mention m-type labels}
 
 \kw{I think the next few paragraphs mix up purely spin structure considerations with stuff that depends on the choice of $\mcc$.
@@ -6765,14 +6771,15 @@ q-type simple objects with a fixed fermion parity.
 %This term favors equal-weight 
 %superpositions (i.e, equal up to a phase factor) of states with fermions at all vertices and along all edges hosting q-type objects. 
 
-\begin{figure}
-\begin{center}
-\includegraphics{odd_endo_defn.pdf}
-\end{center}
-\caption{ \label{sxdefn} The graphical representation of the odd endomorphism $s(x)$, for some q-type object $x$. 
-\dave{This should probably be directed. 
-Also should we write $s(x)  = \text{line with dot}$ instead.}}
-\end{figure}
+%this is a figure giving the defn of the odd endo---probably not needed anymore
+%\begin{figure}
+%\begin{center}
+%\includegraphics{odd_endo_defn.pdf}
+%\end{center}
+%\caption{ \label{sxdefn} The graphical representation of the odd endomorphism $s(x)$, for some q-type object $x$. 
+%\dave{This should probably be directed. 
+%Also should we write $s(x)  = \text{line with dot}$ instead.}}
+%\end{figure}
 
 %However, when the theory contains q-type objects, the Hilbert spaces $\mch_\mcv$ and $\mch_\mce$ are actually much bigger than the {\it physical} edge and vertex Hilbert spaces of the theory, in a sense that will be made more precise in Section \ref{modified_tensor_product}. 
 %To see an example of this, consider a diagram involving a single q-type edge $e$, with a Hilbert space equal to $\End(e) \cong \cl_1$. 
@@ -6780,37 +6787,59 @@ Also should we write $s(x)  = \text{line with dot}$ instead.}}
 %This decomposition produces a vertex Hilbert space $\mch_\mcv \cong \cl_{N-1}$, which by tuning $N$ can be made arbitrarily large. 
 %Clearly this is unphysical, and the redundant degrees of freedom created during the decomposition of $e$ into $e_1\cup\dots\cup e_N$ need to be modded out to obtain the physical Hilbert space of the theory. 
 
-To construct the edge term, recall that for each q-type particle $x$, we can define an odd endomorphism $s(x)$.
-Graphically, this odd endomorphism is simply a straight $x$ worldline with a fermionic dot (see Figure \ref{sxdefn}).
-If $x$ is not q-type, we set $s(x)=0$.
-We require that $s(x)^2 = 1$, but that only determines $s(x)$ up to sign.
-\dave{If we want a reflection innerproduct should we take $s(x)^2 = \pm i$?}
-Note that sending $s(x)$ to $-s(x)$ extends to an automorphism of $End(x)$.
-We will choose a convention in which the fermions created by $s(x)$ operators have an ordering that is greater than the ordering of every vertex Hilbert space. 
-Additionally, we will define the operator $s(x)s(y)$ so that if the ordering of the fermion on $y$ is $n$, the ordering of the fermion on $x$ is $n+1$. 
+%%approach using s(x) odd endos rather than \Gamma_i operators
+%To construct the edge term, recall that for each q-type particle $x$, we can define an odd endomorphism $s(x)$.
+%Graphically, this odd endomorphism is simply a straight $x$ worldline with a fermionic dot (see Figure \ref{sxdefn}).
+%If $x$ is not q-type, we set $s(x)=0$.
+%We require that $s(x)^2 = 1$, but that only determines $s(x)$ up to sign.
+%\dave{If we want a reflection innerproduct should we take $s(x)^2 = \pm i$?}
+%Note that sending $s(x)$ to $-s(x)$ extends to an automorphism of $End(x)$.
+%We will choose a convention in which the fermions created by $s(x)$ operators have an ordering that is greater than the ordering of every vertex Hilbert space. 
+%Additionally, we will define the operator $s(x)s(y)$ so that if the ordering of the fermion on $y$ is $n$, the ordering of the fermion on $x$ is $n+1$. 
 
-Suppose that we have a stable fusion space $V_v^{x_1x_2x_3}$.
-If both $x_i$ and $x_j$ are q-type, then the odd endomorphisms $s(x_i)$ obey the anti-commutation relations 
-\be \{ s(x_i) , s(x_j) \}_+ = 2 \delta_{ij},\ee
+It is easy to check that when they are non-zero (i.e. when they act on q-type edges), the $\Gamma_i$ operators obey the anti-commutation relations 
+\be \{ \Gamma_i , \Gamma^j_v \} = -2\lambda \delta_{ij},\ee
 which are the defining relations for the representations of complex Clifford algebras. 
-This means that the $\{s(x_i)\}$ acting at a vertex where all three $x_i$ are q-type generate a representation of $\cl_3$, and if two of the $x_i$ are q-type, the $\{s(x_i)\}$ generate a representation of $\cl_2$. 
-This is to be expected, since if the three lines emanating from $v$ are all labeled with q-type objects, then the Hilbert space associated with the three lines is $\cl_1\tp\cl_1\tp\cl_1\cong\cl_3$, and likewise the Hilbert space is $\cl_2$ for the case of two q-type objects. 
+This means that the $\{\Gamma_i\}$ at a vertex $v$ with fusion space $V^{abc}$ where all of $a,b,c$ are q-type generate a representation of $\cl_3$, and if two of $a,b,c$ are q-type the $\{\Gamma_i\}$ generate a representation of $\cl_2$. 
+This is to be expected, since if the three lines emanating from $v$ are all labeled with q-type objects, then the Hilbert space associated with the three lines is $\cl_1\tp\cl_1\tp\cl_1\cong\cl_3$, and likewise for the case of two q-type objects. 
 Requiring that the Hilbert space at a given vertex represents either $\cl_3$ or $\cl_2$ places constraints on the types of fermionic theories one can write down; see Section \ref{fusion_spaces} for details. 
+
 
 As stated earlier, the edge term allows fermions to ``hop'' across q-type edges. 
 Therefore, if two vertices $v_1,v_2$ are linked by a q-type edge, the edge term will 
 change the fermion parity of the states on both $v_1$ and $v_2$. 
-To do this for an edge $e$, we can create a pair of fermions near the vertex at the beginning of $e$ (recall that all edges possess an orientation), slide one of the fermions along $e$ to the vertex at the end of $e$, and then use the $s(x)$ endomorphism to ``absorb'' each fermion into their respective vertices. 
-If $e$ is oriented from $v_1$ to $v_2$, this prescription gives the following action of $D_e$ on vectors in the vertex Hilbert space: \ethan{I don't think we need an identity term like $v_1\tp v_2$ since we've written $1-D_e$ in $H$}
-\dave{You're correct that it's not necessary -- it's just a consetant, 
-but in the spirt of the rest of the Hamiltonian it probably makes sense to include. 
-That way $D_e^2 = D_e$. }
-\be D_e(|\psi_1\rangle\tp |\psi_2\rangle) = |\psi_1\rangle \tp |\psi_2\rangle - \alpha(e)\left(\Gamma^i_1 |\psi_1\rangle \tp \Gamma^j_2|\psi_2\rangle\right),\quad |\psi_i\rangle \in \mch_{v_i}\ee
-where the two tensor factors in $D_e$ act on the vertex Hilbert spaces $\mch_{v_1}$ and $\mch_{v_2}$, respectively.%, and $x\in\mcc$ denotes the label of the edge $e$. 
-Note that if label of the edge $e$ is not q-type, then the $\Gamma$ operators vanish and so  $D_e=0$.
-Also, we've implicitly assumed that $D_e$ acts as the identity on all vectors in $\mch_{\mcg \setminus \{v_1,v_2\}}$. 
-\dave{If we keep $\alpha(e)$ to be independent of the coloring of $e$, then shouldn't there be an additional phase factor in the edge term (a $\pm1$) corresponding to the additional half-braid after transporting the fermion through the handle?}
 
+
+Now we have all the tools in hand required to write down the edge term. 
+As mentioned earlier, the edge term is responsible for allowing fermions to fluctuate (``hop'') across edges labeled by q-type objects, and will be absent in any theory with no q-type objects.
+Fermion hopping across q-type edges is implemented by the $\Gamma$ operators. 
+For example, if $\psi\in V_u$ and $\eta\in V_u$ and the edge $e$ hosts a q-type edge label which connects the vertices $u$ and $v$, we have
+\be \label{dot_slide_gamma} \mathord{\vcenter{\hbox{\includegraphics[scale=1.2]{dot_slide_gamma.pdf}}}},\ee
+where we have defined tensor products of $\Gamma$ operators to act so that operators located further to the left in tensor products create fermions with higher order than the operators to their right.
+Since $\psi'$ and $\eta'$ have the opposite fermion parity of $\psi$ and $\eta$, this sequence of operations exchanges the fermion parity of the two vertices connected by the edge $e$. 
+Therefore, an edge term which allows fermions to hop across q-type edges will be constructed out of terms like $\Gamma^i_u\tp \Gamma^j_v$. 
+
+
+
+
+
+To do this for an edge $e$, we can create a pair of fermions near the vertex at the beginning of $e$ (recall that all edges possess an orientation), slide one of the fermions along $e$ to the vertex at the end of $e$, and then use the $s(x)$ endomorphism to ``absorb'' each fermion into their respective vertices. 
+If $e$ is oriented from $v_1$ to $v_2$, this prescription gives the following action of $D_e$ on vectors in the vertex Hilbert space: \ethan{I didn't write the part proportional to the identity, since we have $(1-D_e)$ in the Hamiltonian and want $(1-D_e)$ to be a projector. 
+If we want to write the edge term with the part proportional to the identity, we should write $D_e$ in $H$ instead}
+\be D_e(|\psi_1\rangle\tp |\psi_2\rangle) =  \lambda\alpha(e)\left(\Gamma_i |\psi_1\rangle \tp \Gamma_j|\psi_2\rangle\right),\quad |\psi_i\rangle \in \mch_{v_i}\ee
+where the two tensor factors in $D_e$ act on the vertex Hilbert spaces $\mch_{v_1}$ and $\mch_{v_2}$, respectively. %, and $x\in\mcc$ denotes the label of the edge $e$. 
+Note that if label of the edge $e$ is not q-type, then the $\Gamma$ operators vanish and so  $D_e=0$.
+
+In summary, including $D_e$ in the Hamiltonian provides a way of energetically enforcing the conditions that the ground states of theories containing q-type particles are realized by superpositions of string-net configurations possessing all possible ways of arranging fermions on the q-type strings. 
+Ensuring that ground states are superpositions of different fermion configurations is tantamount to projecting from the Hilbert space $\mch_\mcv \tp \mch_\mce$ to the physical Hilbert space $\mch_{\rm phys}$ in which redundant degrees of freedom created by different fermion configurations are modded out (see the discussion at the end of Section \ref{hilbert_space}). 
+%Since the ground states are all eigenstates of the $\Gamma$ operators at each vertex
+Including the edge term in the Hamiltonian mods out by these degrees of freedom energetically; for an alternate approach involving the re-definition of the tensor product see Section \ref{modified_tensor_product}. 
+
+
+Finally, we note that a 1D Kitaev wire in the topological phase also exhibits the same behavior as the q-type strings in our theories.
+However, since generic theories (like the $\halfesix$ example considered earlier) can have fusion rules in which two q-type simple objects to fuse to a third q-type simple object, our q-type strings are more general versions of Kitaev wires, since at the junction of three Kitaev wires a zero mode is left behind, which does not occur in the $\halfesix$ theory. 
+\dave{I think we should be careful in saying that they are more general Kitaev wires.
+But lets Skype about this sometime.}
 
 
 
@@ -6821,78 +6850,7 @@ Also, we've implicitly assumed that $D_e$ acts as the identity on all vectors in
 %%%%%%%%%%%%%%%%%%%%%%
 %OLD VERSION 
 
-%\begin{comment}
- The edge terms are the qualitatively new feature of this Hamiltonian, and are a necessary ingredient for the Hamiltonian of any theory possessing q-type particles. 
-The edge terms allow fermions to fluctuate across edges of the graph which are labelled by q-type particles,
-and provide a way of energetically implementing the isotopy relations associated with sliding fermions along the worldlines of q-type particles. 
-Implementing these isotopy relations is accomplished by 
-adding to the Hamiltonian a term which will coherently add and remove fermions at the end points of the q-type bonds, as well as tunnel them across\footnote{Heuristically we can think of two adjacent vertices as islands which can hold a number of fermions and whose fermion parity is well defined. 
-If these vertices are connected by a q-type edge, we can think of that edge as a 1D superconductor which coherently couples the two islands together.}. 
-This term favors equal 
-\kw{not really equal; factors of $\pm 1$ and/or $\pm i$} 
-super positions of fermions at all vertices along paths of q-type bonds. 
 
-In order to define the edge term, we need to introduce a collection of three operators $\Gamma^1_v,\Gamma^2_v,\Gamma^3_v$ for each vertex $v$. 
-They act nontrivially only on $v$ and on the edges $a,b,c$ terminating on $v$. 
-The first operator $\Gamma^1_v$ creates a fermion on the leftmost edge $a$ terminating on $v$, while simultaneously changing the fermion parity of the vertex Hilbert space at $v$:
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma1def.pdf}}}},\ee
-where $\psi,\psi' \in V^{abc}_v$, and the factor of $q(a)$ simply means that $\Gamma_v^1$ is zero unless it makes sense to have a fermion to the leftmost leg, i.e. if $a$ is q-type. 
-\dave{Should the $\psi'$ actually be a $\psi$? }
-Note that because $\Gamma^1_v$ creates a fermion on the edge $a$ (provided that $a$ is q-type) the final vector $\psi'$ will always have opposite parity from $\psi$.
-Also note that the fermion on the $a$ edge has order $n+1$; we define the $\Gamma$ operators to create fermions whose order is one greater than the order of the highest-ordered fermion on the graph\footnote{This is assuming that the other edges on the graph are all fermion-parity even: if this is not the case, then the ordering of the fermion is equal to $n+1$, where $n$ is the largest ordering of the fermions on the edges.}. 
-\dave{I don't think the ordering above is necessary. You could just specify the matrix elements of the operator like I had previously.}
-The operators $\Gamma_v^2,\Gamma_v^3$ are defined analogously:
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma2def.pdf}}}},\qquad
-\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma3def.pdf}}}}.\ee
-It is easy to check that the nonzero $\Gamma_v^i$ operators at each site obey the anti-commutation relations 
-\be \{ \Gamma^i_v , \Gamma^j_v \} = -2\lambda \delta_{ij},\ee
-which are the defining relations for the representations of Clifford algebras. 
-This means that the $\{\Gamma^i_v\}$ at a vertex $v$ with fusion space $V^{abc}$ where all of $a,b,c$ are q-type generate a representation of $\cl_3$, and if two of $a,b,c$ are q-type the $\{\Gamma^i_v\}$ generate a representation of $\cl_2$. 
-This is to be expected, since if the three lines emanating from $v$ are all labeled with q-type objects, then the Hilbert space associated with the three lines is $\cl_1\tp\cl_1\tp\cl_1\cong\cl_3$, and likewise for the case of two q-type objects. 
-
-\dave{I think we should move this to the discussion on super-pivotal fusion theories.}
-The existence of the representations of these operators actually place nontrivial constraints on the ways in which q-type particles can fuse with one another. 
-For example, we can use this to show that a ``q-type Fibbonacci'' theory which contains a single q-type particle $\tau$ with the fusion space $V^{\tau\tau\tau}\cong \cc^{1|1}$, cannot exist. 
-Indeed, if $V^{\tau\tau\tau}$ is nontrivial and $\tau$ is q-type, then we must be able to find a representation of $\cl_3$ on $V^{\tau\tau\tau}$.
-This is impossible if $V^{\tau\tau\tau}\cong \cc^{1|1}$, since $\cc^{1|1}$ is not large enough to represent $\cl_3$. 
-This means that theories which contain a q-type particle $\tau$ with $V^{\tau\tau\tau}\neq0$ must contain nontrivial fusion multiplicities, which provide us with fusion spaces that are large enough to admit a representation of $\cl_3$.
-Indeed such a q-type particle exists in the $\halfesix$ theory considered earlier, which possesses nontrivial fusion multiplicities that allow the relevant fusion spaces in the theory to be large enough to represent $\cl_3$. 
-The $\Gamma$ matrices in the $\halfesix$ case are essentially determined by the relations \eqref{esixdotslide}. 
-
-Now we have all the tools in hand required to write down the edge term. 
-As mentioned earlier, the edge term is responsible for allowing fermions to fluctuate (``hop'') across edges labeled by q-type objects, and will be absent in any theory with no q-type objects.
-Fermion hopping across q-type edges is implemented by the $\Gamma$ operators. 
-For example, if $\psi\in V_u$ and $\eta\in V_u$ and the edge $e$ hosts a q-type edge label which connects the vertices $u$ and $v$, we have
-\be \label{dot_slide_gamma} \mathord{\vcenter{\hbox{\includegraphics[scale=1.2]{dot_slide_gamma.pdf}}}},\ee
-where we have defined tensor products of $\Gamma$ operators to act so that operators located further to the left in tensor products create fermions with higher order than the operators to their right.
-\dave{confused by the primes.} \ethan{pulling a fermion out of the vertex can act nontrivally on the multiplicity degrees of freedom, right?}
-\dave{I didn't realize that's what you were doing.
-I originally had it the other way, with the $\Gamma$'s being odd operators only acting on the vertex Hilbert space.
-}
-Since $\psi'$ and $\eta'$ have the opposite fermion parity of $\psi$ and $\eta$, this sequence of operations exchanges the fermion parity of the two vertices connected by the edge $e$. 
-Therefore, an edge term which allows fermions to hop across q-type edges will be constructed out of terms like $\Gamma^i_u\tp \Gamma^j_v$. 
-
-Since $\lambda^2=-1$, we can use \eqref{dot_slide_gamma} to write down the general edge term on an edge $e$ as 
-\be \label{edge_term} D_e = - q(e)(-1)^{g_e}\Gamma^\nu_{\p e_L} \tp \Gamma^\mu_{\p e_R},\ee
-\dave{$e$ has two meanings in this equation.} 
-where $\p e_L$ ($\p e_R$) are the vertices at the left (right) end of the edge $e$\footnote{We have assumed the manifold $\Sigma$ we're working over has a spin structure (and as a consequence is orientable), so after putting all of the 0-handles and 1-handles in the standardized form described in Section \ref{standardized_handles} the notions of ``left end'' and ``right end'' are well-defined.}, $g_e$ is as defined in Section \ref{standardized_handles}, and $D_e$ is understood to act as the identity operator on the rest of the lattice. 
-\dave{I think we need to say this a little more explicitly/carefully. 
-Doesn't specifying which is the left side and which is the right require more than orientiation, i.e., a direction from the ``left vertex" to the ``right vertex".
-}
-
-The factor of $q(e)$, which is $1$ if the edge label $e$ is q-type and $0$ otherwise, merely accounts for the basic constraint that fermions are only allowed to fluctuate across q-type edges. 
-The factor of $(-1)^{g_e}$ keeps track of whether or not the fermion framing rotates by $2\pi$ upon traversing the edge $e$, as explained in Section \ref{standardized_handles}. 
-It is straightforward to check that the relations in \eqref{dot_slide_gamma} are modified by a factor of $-1$ if the edge $e$ is twisted in such a way $(g_e=1)$ and is unmodified otherwise, giving rise to the factor of $(-1)^{g_e}$ appearing in the expression for $D_e$.
-
-In summary, including $D_e$ in the Hamiltonian provides a way of energetically enforcing the conditions that the ground states of theories containing q-type particles are realized by superpositions of string-net configurations possessing all possible ways of arranging fermions on the q-type strings. 
-Ensuring that ground states are superpositions of different fermion configurations is tantamount to projecting from the Hilbert space $\mch_\mcv \tp \mch_\mce$ to the physical Hilbert space $\mch_{\rm phys}$ in which redundant degrees of freedom created by different fermion configurations are modded out (see the discussion at the end of Section \ref{hilbert_space}). 
-%Since the ground states are all eigenstates of the $\Gamma$ operators at each vertex
-Including the edge term in the Hamiltonian mods out by these degrees of freedom energetically; for an alternate approach involving the re-definition of the tensor product see Section \ref{modified_tensor_product}. 
-
-Finally, we note that a 1D Kitaev wire in the topological phase also exhibits the same behavior as the q-type strings in our theories.
-However, since generic theories (like the $\halfesix$ example considered earlier) can have fusion rules in which two q-type simple objects to fuse to a third q-type simple object, our q-type strings are more general versions of Kitaev wires, since at the junction of three Kitaev wires a zero mode is left behind, which does not occur in the $\halfesix$ theory. 
-\dave{I think we should be careful in saying that they are more general Kitaev wires.
-But lets Skype about this sometime.}
  
 %\begin{align}
 %D_e =\sum_{a \in \mathcal{C} } \frac{1}{\text{dim} \; \text{End}(a)} \; \sum_{\mathcal{O}_e %\in \text{End} \mathcal{A}(e,\partial e; a)} \mathcal{O}_e.
