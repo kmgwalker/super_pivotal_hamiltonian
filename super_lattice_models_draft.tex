@@ -87,6 +87,7 @@
 \newcommand{\zc}{\mathcal{Z}(\mathcal{C})}
 \newcommand{\id}{\text{id}}
 \newcommand{\Hom}{\text{Hom}}
+\newcommand{\mor}{\text{mor}}
 \newcommand{\End}{\text{End}}
 \newcommand{\Tor}{\text{Tor}}
 \newcommand{\Ext}{\text{Ext}}
@@ -7401,6 +7402,72 @@ One can find an additional constraint given by $(a\tp b) \tp c = a \tp(b \tp c)$
 \end{align}
 
 \kwsep
+
+\kw{Dave, I didn't follow exactly what you were trying to do at the very end.
+Most of what you write looks correct to me.
+Here's how I would say it.}
+
+We assume that our categories are additively complete \kw{right term?}, which means that it makes sense to
+multiply object by vector spaces and take formal direct sums.
+(All vector spaces are super.)
+This should be thought of as a categorification of multiplying vectors by scalars, and adding vectors together.
+Another way to think of this is that we form the ``additive envelope" \kw{right term?} of our category.
+We add new objects
+\be
+	\bigoplus_a W_a\cdot a
+\ee
+(the sum is over any finite collection of (not necessarily simple) objects $a$), and define
+\be
+	\mor(\bigoplus_a W_a\cdot a \to \oplus_b W'_b\cdot b) = \bigoplus_{a,b} \hom(W_a \to W'_b)\otimes_\cc \mor(a\to b) .
+\ee
+The RHS should be thought of as a block matrix, and composition of morphisms is given by combining matrix multiplication with the obvious map
+\be \label{amordef}
+	\hom(W_a \to W'_b)\otimes_\cc \mor(a\to b) \;\otimes\; \hom(W'_b \to W''_c)\otimes_\cc \mor(b\to c)
+			\;\to \;   \hom(W_a \to W''_c)\otimes_\cc \mor(a\to c)  .
+\ee
+Because our category is semisimple, there exists a finite collection $\mcl$ of mutually non-isomorphic simple objects $x$ such
+that any object $a$ is isomorphic to one of the form
+\be \label{asumx}
+	a \cong \bigoplus_{x\in \mcl} W_x\cdot x .
+\ee
+If we want the isomorphism to be canonical, we can take $W_x = \mor(x\to a)$ (if $x$ is m-type) or $W_x = \mor(x\to a)_e$
+(even morphisms from $x$ to $a$) if $x$ is q-type.
+\kw{I'm not sure I have this part right; it seems a little ugly to me.}
+
+Combining \eqref{asumx} and \eqref{amordef}, we have
+\be
+	\End(a) \cong \bigoplus_x \End(W_x) \otimes_\cc \End(x) ,
+\ee
+which we have used many times above.
+
+For any $a$ and $b$, define $\Delta_{ab}^x$ (up to isomorphism) by
+\be
+	a \otimes b \cong \bigoplus_x \Delta_{ab}^c \cdot x .
+\ee
+Also define
+\be
+	V_{ab}^x = \mor(a\times b \to x) = \Delta_{ab}^x \otimes_\cc \End(x).
+\ee
+Note that $V_{ab}^x$ is symmetric (up to isomorphism) in $a,b,x$ (if $a$ and $b$ are simple), while
+$\Delta_{ab}^x$ is not.
+Also, $V_{ab}^x$ has an action of $\End(a)\otimes\End(b)\otimes\End(x)$, while $\Delta_{ab}^x$
+only has an action of $\End(a)\otimes\End(b)$.
+
+Looking at associativity $(a\otimes b)\otimes c \cong a\otimes (b\otimes c)$, we see that
+\be
+	\bigoplus_x V_{ab}^x \otimes_{\End(x)} V_{xc}^d \cong \bigoplus_y V_{ay}^d \otimes_{\End(y)} V_{bc}^y
+\ee
+and
+\be
+	\bigoplus_x \Delta_{ab}^x \otimes_\cc \Delta_{xc}^d \cong \bigoplus_y \Delta_{ay}^d \otimes_\cc \Delta_{bc}^y .
+\ee
+(We assume $d$ is simple for the second one.)
+
+\kw{Dave, does the above address your questions?  What else do we need to say?}
+
+
+\kwsep
+
 
 \ethan{Old simple objects section:}
 
