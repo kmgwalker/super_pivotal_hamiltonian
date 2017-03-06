@@ -5629,13 +5629,11 @@ Since our goal in this section is to be rather general, we will put a fair amoun
   \includegraphics{sample_lattice.pdf}
  \caption{A cartoon of the support of the operators appearing in a super pivotal Hamiltonian on a section of a generic graph. 
 The motivation for the bizarre-looking vertices is explained in Section \ref{standardized_handles}.
-Dashed ellipses indicate the support of various terms in the Hamiltonian.
-The vertex terms $A_v$ (with the support of an example $A_v$ marked marked in green) project onto stable vertices which are compatible with the edge labeling. 
-\kw{This is no longer the support of the ``vertex" terms (and in hindsight never was)}
-The edge term $D_e$ (the support of an example $D_e$ marked in blue) are responsible for sliding fermions along q-type edges. 
-The plaquette terms $B_p$ (with the support of an example $B_p$ marked in pink) involve the six vertices and edges neighboring $p$.
-They project onto graph configurations that contain no quasiparticles within the plaquette $p$.
-\dave{Should we draw this on the plane or in $\Sigma$?}}
+Dashed ellipses indicate the support of various terms in the Hamiltonian, on edges $e,e'$ and a plaquette $p$.
+The vertex terms $A_e$ act on edges and project onto states with edge colorings that are consistent between adjacent vertices. 
+The edge terms $D_e$ are responsible for sliding fermions along q-type edges. 
+The plaquette terms $B_p$ involve all of the vertices and edges neighboring $p$.
+They project onto graph configurations that contain no quasiparticles within the plaquette $p$.}
  \label{example_lattice}
  \end{center}
  \end{figure}
@@ -6374,14 +6372,6 @@ some unitary matrix (e.g. equation \ref{esixdotslide} for the $\halfesix$ theory
 It is easy to check that when they are non-zero (i.e. when they act on q-type edges), the $\Gamma_i$ operators obey the anti-commutation relations 
 \be \{ \Gamma_i , \Gamma_j \} = 2\lambda \delta_{ij},\ee
 which are the defining relations for the representations of complex Clifford algebras, and where as before, $\lambda=\pm i$ is the phase picked up when removing a pair of dots from a q-type object worldline. 
-\kw{Elsewhere (above) I chose a $\lambda = 1$ normalization.
-We need to decide which value of $\lambda$ we prefer and make things consistent.}
-\ethan{I might vote for $\lambda = \pm i$, just so that it matches what we did for the examples. No super strong preference though.}
-\kw{We need to decide which value of $\lambda$ we prefer and make things consistent.
-Perhaps $\lambda = \pm i$ is necessary in order for the projectors to be self-adjoint.}
-\ethan{Right. And if we want the ``remove bubbles for quantum dimensions'' rule to hold, we need $\lambda$ to be purely imaginary as proved in the appendix.}
-
-
 
 %\ethan{can move / delete this discussion as you wish}
 %\kw{I don't think the dot-slide interpreation works for general qqm vertices.  Does it work for the E6 quotient?}
@@ -6396,7 +6386,7 @@ Perhaps $\lambda = \pm i$ is necessary in order for the projectors to be self-ad
 \begin{center}
 \includegraphics{spin_rot_through_0handle.pdf}
 \caption{ \label{spin_rot_through_0handle} An illustration of a $+\pi$ spin framing rotation picked up as the path $\gamma$ (drawn in dashed purple) passes through a 0-handle. 
-If we were to proceed along $\gamma$ in the opposite direction, we would pick up a $-\pi$ spin framing rotation instead. 
+If we were to proceed along $\gamma$ in the opposite direction, we would pick up a $-\pi$ spin framing rotation instead. \ethan{may want to thicken to handle-ify this figure}
   }
 \end{center}
 \end{figure}
@@ -6423,11 +6413,6 @@ More generally, $\gamma$ will always get a rotation by $2\pi$ if it is trivial i
 \medskip
 
 
-\kw{I think it would be better to convert this to a purely spin structure discussion (no category, no simple object, 
-$\alpha(e)$ instead of $\alpha(e,b)$, spin rotations instead of phases).
-I've done so above.
-Sliding a dot through a 0-handle does not really make sense if the 0-handle is occupied by a general 3-valent vertex.}
-\ethan{commented out the following paragraph---figured that we didn't really need to write an equation down and that the above discussion was sufficient}
 \begin{comment} %writing down an equation relating spin structure to alpha's and Gamma's
 Additionally, if we are given an oriented framed loop $\gamma\subset\mcg$, 
 we can also use the $\alpha(e,b)$'s and the $\Gamma_i$'s
@@ -6821,9 +6806,7 @@ Why do we call these ``vertex terms" when they are indexed by edges, and the sup
 \kw{We should consider not calling it a vertex term, though I lean the other way.}
 Because it does the same work as the vertex term of the usual bosonic LW Hamiltonian.
 If our fermionic category happens to be bosonic (i.e.\ it lacks fermions), then the ground state of our ``vertex" term is isomorphic to the ground state
-of the vertex term in the usual LW Hamiltonian. 
-\ethan{What about the condition that $\unit\in a\tp b \tp c$ for a stable vertex vector in $V^{abc}$?}
-\kw{Our local Hilbert spaces at the vertices already have than condition built in.}
+of the vertex term in the usual LW Hamiltonian\footnote{Note that the ``admissibility'' condition that requires $V^{abc}$ to be in the ground state vector space only if $\unit\in a\tp b \tp c$ is already satisfied for us, since our local Hilbert spaces at the vertices already have this condition built in.}
 If we had chosen to put spins on edges as well as vertices, then we could write a vertex term that was actually indexed by vertices.
 But its ground state would be isomorphic to the above edge-like vertex term.
 
@@ -6832,16 +6815,13 @@ If $K$ is the ground state of the vertex term, we have maps
 \be
 	K \to H(\Sigma \setminus \mbox{2-cells}) \to H(\Sigma) .
 \ee
+where $H(\Sigma \setminus \mbox{2-cells})$ and $H(\Sigma)$ are the ground-state Hilbert spaces of $\Sigma \setminus \mbox{2-cells}$ and $\Sigma$, respecitvely.
 The job of the edge term (below) will be to pick out a subspace of $K$ on which the first map is an isomorphism. 
-\ethan{If $H$ means Hilbert space, doesn't the edge term reduce $ H(\Sigma \setminus \mbox{2-cells})$, which is bigger than $K$? Let's skype about this}
-\kw{I tried to clarify what I meant.}
 The job of the plaquette term will be to further reduce to a subspace such that the composite map to $H(\Sigma)$ is an isomorphism.
 
 
-\kwsep
-
-\kw{Given our choice to put all degrees of freedom at vertices, I think we need a very different description of the ``vertex" term (which will now look more like
-and edge term).  Let's discuss on skype.}
+%the following comment is form when I (Ethan) was adopting a vertex-centric approach to the vertex terms
+\begin{comment}
 The vertex term in the Hamiltonian is essentially the same as in the usual string-net Hamiltonian \cite{Kitaev2012,etc}, with the only difference being that here the ``spins'' (the Hilbert spaces) are located only on the vertices of the graph.
 \kw{but not really the same since we put all spins on vertices.}
 The vertex term $A_v$ at a vertex $v$ enforces compatibility of the labelings of the three edges meeting at the vertex $v$. 
@@ -6869,6 +6849,9 @@ Thus, the term $\sum_v (1-A_v)$ in the Hamiltonian simply projects onto states i
 %In the usual string-net models the subspace of states with stable vertices would correspond to the Hilbert space assigned $\Sigma$ with one puncture on every plaquette.
 The presence of q-type particles means that the Hilbert space consisting of only admissible vertices is over complete---some of the vectors are related by sliding fermions across q-type edges.
 We will implement these equivalence relations by an edge term in the Hamiltonian, which is discussed in the next section.
+\end{comment}
+
+
 
 %%%%%%%%%%%%%%%%%%%%
 \subsubsection{Edge term} 
@@ -6895,9 +6878,8 @@ They are only well-defined on ground states of the vertex term.
 They allow fermions to fluctuate across edges of the graph which are labelled by q-type particles,
 and provide a way of energetically implementing the isotopy relations associated with sliding fermions along the worldlines of q-type particles. 
 Implementing these isotopy relations can be done in two ways. 
-One is to add the edge term to the Hamiltonian which allows fermions fluctuate between vertices connected by a q-type edge, while another is to modify the tensor products appearing in the definition of $\mch_\mcg$ to be tensor products whose tensor units 
-\kw{what are tensor units?} \ethan{What the tensor product is taken over. So for $\tp_\cc$, I'd say that ``$\cc$ is the tensor unit'', since $\tp_\cc$'ing anything with $\cc$ acts as the identity. Might not be standard language}
-are chosen from the endomorphism algebras of the edge labels. 
+One is to add the edge term to the Hamiltonian which allows fermions fluctuate between vertices connected by a q-type edge, while another is to modify the tensor products appearing in the definition of $\mch_\mcg$ to be tensor products in which the algebra we're tensoring over is
+chosen from the endomorphism algebras of the edge labels. 
 We will describe the edge term approach in this section, and will address the latter method in Section \ref{modified_tensor_product}. 
 
 %This term favors equal-weight 
@@ -6940,10 +6922,7 @@ it will be absent in any theory with no q-type objects.
 
 Fermion hopping across q-type edges is implemented by the $\Gamma$ operators. 
 To do this for an edge $e$, we can create a pair of fermions near the vertex at the beginning of $e$, slide one of the fermions along $e$ to the vertex at the end of $e$, and then use the $\Gamma$ operators to ``absorb'' each fermion into their respective vertices. 
-For example, if $e$ hosts a q-type edge label $b$, then we have \ethan{let me know if I can make this figure suck less}
-\kw{I like the figure.  In some places in the text we have assumed $\lambda=1$.  
-We need to make the text consistent and then possibly
-drop $\lambda^{-1}$ from the figure if $\lambda = 1$.}
+For example, if $e$ hosts a q-type edge label $b$, then we have 
 \be \label{dot_slide_gamma} \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_slide_gamma.pdf}}}},\ee
 where we have defined tensor products of $\Gamma$ operators to act so that operators located further to the left in tensor products absorb fermions with higher order than the operators to their right.
 Note that although the first and last steps in the above sequence look the same, they are not: the fermion parity of the vectors in the two vertex Hilbert spaces has been switched. 
