@@ -6354,7 +6354,7 @@ Fermionic dots can also be ``absorbed'' into vertices.
 We can do this with operators $\Gamma_i$, $i\in \{1,2,3\}$, which absorb a pitchfork with a standard dot ($\gamma_b$)
 on the $i$-th outgoing pitchfork edge to a pitchfork without a fermion dot on a leg. 
 Graphically, $\Gamma_1$ is defined by 
-\be
+\be \label{gamma1_defn}
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma1def.pdf}}}},\ee
 where $\psi,\eta$ are basis vectors in the fusion space of the pitchfork for a fixed coloring of the pitchfork's outgoing legs. 
 $\Gamma_2$ and $\Gamma_3$ are defined similarly,
@@ -6371,18 +6371,13 @@ It is easy to check that when they are non-zero (i.e. when they act on q-type ed
 \be \{ \Gamma_i , \Gamma_j \} = 2\lambda \delta_{ij},\ee
 which are the defining relations for the representations of complex Clifford algebras, and where as before, $\lambda=\pm i$ is the phase picked up when removing a pair of dots from a q-type object worldline. 
 \kw{Elsewhere (above) I chose a $\lambda = 1$ normalization.
-<<<<<<< HEAD
 We need to decide which value of $\lambda$ we prefer and make things consistent.}
 \ethan{I might vote for $\lambda = \pm i$, just so that it matches what we did for the examples. No super strong preference though.}
-
-=======
-We need to decide which value of $\lambda$ we prefer and make things consistent.
+\kw{We need to decide which value of $\lambda$ we prefer and make things consistent.
 Perhaps $\lambda = \pm i$ is necessary in order for the projectors to be self-adjoint.}
-\kw{The remainder of this paragraph should be moved to the definition section.}
-This means that the $\{\Gamma_i\}$ at a vertex $v$ with fusion space $V^{abc}$ where all of $a,b,c$ are q-type generate a representation of $\cl_3$, and if two of $a,b,c$ are q-type the $\{\Gamma_i\}$ generate a representation of $\cl_2$. 
-This is to be expected, since if the three lines emanating from $v$ are all labeled with q-type objects, then the Hilbert space associated with the three lines is $\cl_1\tp\cl_1\tp\cl_1\cong\cl_3$ (although this is actually over-complete \kw{what does ``over-complete" mean here?}), and likewise for the case of two q-type objects. 
-Requiring that the Hilbert space at a given vertex admits a representation either $\cl_3$ or $\cl_2$ places constraints on the types of fermionic theories one can write down; see Section \ref{fusion_spaces} for details. 
->>>>>>> a5c0772ebd19f5a8690c3bbbf00aeef1beb2c29f
+
+
+
 
 %\ethan{can move / delete this discussion as you wish}
 %\kw{I don't think the dot-slide interpreation works for general qqm vertices.  Does it work for the E6 quotient?}
@@ -6392,6 +6387,15 @@ Requiring that the Hilbert space at a given vertex admits a representation eithe
 %This means that in this scenario, we require the even operator $\Gamma_2^{-1}\Gamma_1$ to act as multiplication by $\pm i$. 
 
 \medskip
+
+\begin{figure}
+\begin{center}
+\includegraphics{spin_rot_through_0handle.pdf}
+\caption{ \label{spin_rot_through_0handle} An illustration of a $+\pi$ spin framing rotation picked up a the path $\gamma$ (drawn in dashed purple) passes through a 0-handle. 
+If we were to proceeding along $\gamma$ in the opposite direction, we would pick up a $-\pi$ spin framing rotation instead. 
+  }
+\end{center}
+\end{figure}
 
 We mentioned above that the collection of $\{\alpha(e)\}$ must satisfy some constraints if it is 
 to extend over the 2-cells and give a specified spin structure.
@@ -6403,12 +6407,12 @@ We want to compute the spin rotation, either 0 or $2\pi$, which $\gamma$ picks u
 When $\gamma$ goes over a 1-handle $e$, it picks up a rotation of $\alpha(e)$ or $-\alpha(e)$, depending on whether it goes over $e$
 with or against the orientation of $e$.
 Each time $\gamma$ passes though a 0-handle, it also picks up a rotation of $\pm\pi$.
-Suppose $\gamma$ enters the 0-handle at the $i$-th 1-handle and exits the 0-handle at the $j$-th 1-handle.
-(Note that $i$ and $j$ refer to the ordering of 1-handle attachments local to the 0-handle, not to some global ordering.)
-The we get a rotation of $+\pi$ if $i<j$ and a rotation of $-\pi$ if $i > j$ (see Figure xxxx).
+Suppose $\gamma$ enters the 0-handle at the $i$-th 1-handle and exits the 0-handle at the $j$-th 1-handle\footnote{Note that $i$ and $j$ refer to the ordering of 1-handle attachments local to the 0-handle, not to some global ordering. The $i$ and $j$ are assigned in the same way as the $\Gamma_i$ and $\Gamma_j$ in \eqref{gamma1_defn} and\eqref{gamma2gamma3_defn}}.
+The we get a rotation of $+\pi$ if $i<j$ and a rotation of $-\pi$ if $i > j$ (see Figure \ref{spin_rot_through_0handle}).
 Combining all of these $\pm\pi$ rotations results in a rotation of 0 or $2\pi$.
-A bounding spin structure on $\gamma$ corresponds to $2\pi$.
-In particular, if $\gamma$ is the boundary of a 2-cell/plaquette, then it must get a rotation of $2\pi$.
+A bounding spin structure on $\gamma$ yields a $2\pi$ rotation, and a non-bounding one to no rotation.
+In particular, if $\gamma$ is the boundary of a single 2-cell/plaquette, then it must get a rotation of $2\pi$, since we assume that the spin structure around each 2-cell is bounding (which allows the spin structure on the 0- and 1-handles extends to a spin structure on all of $\Sigma$). 
+More generally, $\gamma$ will always get a rotation by $2\pi$ if it is trivial in $H_1(\Sigma)$.
 
 
 
@@ -6419,6 +6423,8 @@ In particular, if $\gamma$ is the boundary of a 2-cell/plaquette, then it must g
 $\alpha(e)$ instead of $\alpha(e,b)$, spin rotations instead of phases).
 I've done so above.
 Sliding a dot through a 0-handle does not really make sense if the 0-handle is occupied by a general 3-valent vertex.}
+\ethan{commented out the following paragraph---figured that we didn't really need to write an equation down and that the above discussion was sufficient}
+\begin{comment} %writing down an equation relating spin structure to alpha's and Gamma's
 Additionally, if we are given an oriented framed loop $\gamma\subset\mcg$, 
 we can also use the $\alpha(e,b)$'s and the $\Gamma_i$'s
 to determine how fermions behave when they are transported along $\gamma$. 
@@ -6433,7 +6439,7 @@ where $\eta_\sigma(\gamma) = 0$ ($\eta_\sigma(\gamma) = 1$) if $\gamma$ is bound
 Since we restrict ourselves to scenarios in which the spin structure on $\Sigma \setminus \{{\rm 2-handles}\}$ extends to one over all of $\Sigma$, the above phase will always be $-1$ for any path $\gamma$ that is trivial in $H_1(\Sigma)$. 
 %Of course, this does not mean that spin structure considerations drop out in any way, and if $\mcg$ is defined on manifolds with nontrivial topology, we still allow for non-contractible topologically nontrivial framed paths to have non-bounding spin structures. 
 %Relaxing this requirement allows us to deal with non-bounding quasiparticle excitations on better footing, which we will comment on in Section \ref{excitations_of_H}. 
-
+\end{comment}
 
 %Viewing the spin structure on $\Sigma$ as a double-covering of the oriented frame bundle of $\Sigma$, a 1-handle along which the framing rotates by $2\pi$ means that a point on one sheet of the double-cover is moved to its counterpart on the other sheet of the double-cover when traversing the 1-handle. 
 %Hence we need to both specify a map that embeds the standardized 0- and 1-handles into the ambient spin manifold, as well as specify a set of data which determine where these spin flips take place. 
@@ -6811,7 +6817,7 @@ Why do we call these ``vertex terms" when they are indexed by edges, and the sup
 \kw{We should consider not calling it a vertex term, though I lean the other way.}
 Because it does the same work as the vertex term of the usual bosonic LW Hamiltonian.
 If our fermionic category happens to be bosonic (i.e.\ it lacks fermions), then the ground state of our ``vertex" term is isomorphic to the ground state
-of the vertex term in the usual LW Hamiltonian.
+of the vertex term in the usual LW Hamiltonian. \ethan{What about the condition that $\unit\in a\tp b \tp c$ for a stable vertex vector in $V^{abc}$?}
 If we had chosen to put spins on edges as well as vertices, then we could write a vertex term that was actually indexed by vertices.
 But its ground state would be isomorphic to the above edge-like vertex term.
 
