@@ -6775,10 +6775,48 @@ H = \lambda_p \sum_{p \in \mathcal{F}} (1-B_p)  + \lambda_e \sum_{\mce \in E} (1
 %We'll start with the more familiar vertex and plaquette terms, and will then address the new edge term. 
 We'll start with the familiar vertex term and then address the new edge term, 
 and end with the modifications needed for the plaquette term.
+
+
+
+
 %%%%%%%%%%%%%%%%
-\subsubsection{Vertex term}
+\subsubsection{Vertex term}   \label{VertexHamiltonian}
 %%%%%%%%%%%%%%%%
-\label{VertexHamiltonian}
+
+\kw{Alternate approach to vertex term; we can discuss on skype.}
+
+Let $v_1$ and $v_2$ be two vertices joined by an edge $e$.
+We define
+\begin{align}
+A_e(\ket{\psi_1} \otimes \ket{\psi_2}) = 
+\left\{
+                \begin{array}{ll}
+                   \ket{\psi_1} \otimes \ket{\psi_2} & \text{if $\psi_1$ and $\psi_2$ assign the same label to $e$} \\
+                  0 & \text{otherwise}
+                \end{array}
+              \right.
+\end{align}
+In other words, $A_e$ forces the labels on each end of an edge to agree.
+
+Why do we call these ``vertex terms" when they are indexed by edges, and the support is a pair of adjacent vertices, joined by an edge?
+\kw{We should consider not calling it a vertex term, though I lean the other way.}
+Because it does the same work as the vertex term of the usual bosonic LW Hamiltonian.
+If our fermionic category happens to be bosonic (i.e.\ it lacks fermions), then the ground state of our ``vertex" term is isomorphic to the ground state
+of the vertex term in the usual LW Hamiltonian.
+If we had chosen to put spins on edges as well as vertices, then we could write a vertex term that was actually indexed by vertices.
+But its ground state would be isomorphic to the above edge-like vertex term.
+
+Note that vectors in the ground state of the vertex term can be interpreted as string nets.
+If $K$ is the ground state, we have maps
+\be
+	K \to H(\Sigma \setminus \mbox{2-cells}) \to H(\Sigma) .
+\ee
+The job of the edge term (below) will be to reduce to a subspace of $K$ such that the first map is an isomorphism.
+The job of the plaquette term will be to further reduce to a subspace such that the composite map to $H(\Sigma)$ is an isomorphism.
+
+
+\kwsep
+
 \kw{Given our choice to put all degrees of freedom at vertices, I think we need a very different description of the ``vertex" term (which will now look more like
 and edge term).  Let's discuss on skype.}
 The vertex term in the Hamiltonian is essentially the same as in the usual string-net Hamiltonian \cite{Kitaev2012,etc}, with the only difference being that here the ``spins'' (the Hilbert spaces) are located only on the vertices of the graph.
@@ -6812,18 +6850,19 @@ We will implement these equivalence relations by an edge term in the Hamiltonian
 %%%%%%%%%%%%%%%%%%%%
 \subsubsection{Edge term} 
 %%%%%%%%%%%%%%%%%%%%
- \dave{Didn't want to delete this stuff, but didn't seem like it should be in the Hilbert space section anymore.}
-\begin{itemize}
-\item
-Similarly, the Hilbert space assigned to each edge is given by
-\begin{align}
-\mathcal{H}_e = \bigoplus_{a \in \mcc} \mathbb{C}_a. \quad \quad \quad \text{with basis} \quad \quad \quad \EdgeVec{a^*}{a}
-\end{align}
-The dimension of $\mathcal{H}_e$ is given by the number of simple objects in $\mcc$. 
-Crucially, this Hilbert space is a standard bosonic vector space
-\footnote{If we relax the condition that every edge carries a fixed orientation, this is no longer true in general. For example, suppose we did away with the edge orientations, and required the edges terminating at all trivalent vertices to be outgoing. This would create edges in which an $a$ line meets an $a^*$ line at the apex of a cap or a cup. Even if both $a$ and $a^*$ are m-type, the point at which they meet can carry nontrivial odd degrees of freedom---an example of this is provided by the $\halfesix$ theory. Complications like this are the reason why we fix orientations on each edge from the outset.}.
-As with the vertices we choose an explicit basis for this space and denote those vectors $\ket{a}$.
-\end{itemize}
+ 
+%\dave{Didn't want to delete this stuff, but didn't seem like it should be in the Hilbert space section anymore.}
+%\begin{itemize}
+%\item
+%Similarly, the Hilbert space assigned to each edge is given by
+%\begin{align}
+%\mathcal{H}_e = \bigoplus_{a \in \mcc} \mathbb{C}_a. \quad \quad \quad \text{with basis} \quad \quad \quad \EdgeVec{a^*}{a}
+%\end{align}
+%The dimension of $\mathcal{H}_e$ is given by the number of simple objects in $\mcc$. 
+%Crucially, this Hilbert space is a standard bosonic vector space
+%\footnote{If we relax the condition that every edge carries a fixed orientation, this is no longer true in general. For example, suppose we did away with the edge orientations, and required the edges terminating at all trivalent vertices to be outgoing. This would create edges in which an $a$ line meets an $a^*$ line at the apex of a cap or a cup. Even if both $a$ and $a^*$ are m-type, the point at which they meet can carry nontrivial odd degrees of freedom---an example of this is provided by the $\halfesix$ theory. Complications like this are the reason why we fix orientations on each edge from the outset.}.
+%As with the vertices we choose an explicit basis for this space and denote those vectors $\ket{a}$.
+%\end{itemize}
 
 
 
@@ -6870,10 +6909,11 @@ We will describe the edge term approach in this section, and will address the la
 
 The edge term will coherently add and remove fermions at the end points of the q-type bonds, as well as tunnel them across\footnote{Heuristically we can think of two adjacent vertices as islands which can hold a number of fermions and whose fermion parity is well defined. 
 If these vertices are connected by a q-type edge, we can think of that edge as a 1D superconductor which coherently couples the two islands together.}. 
-This term favors an equal-weight (i.e, equal up to a phase factor) 
+This term favors an equal-weight (meaning equal up to a phase factor) 
 superposition of fermions across all vertices connected by 
 q-type simple objects with a fixed fermion parity.
-Since the edge term is responsible for allowing fermions to fluctuate (``hop'') across edges labeled by q-type objects, and will be absent in any theory with no q-type objects.
+Since the edge term is responsible for allowing fermions to fluctuate (``hop'') across edges labeled by q-type objects, 
+it will be absent in any theory with no q-type objects.
 
 Fermion hopping across q-type edges is implemented by the $\Gamma$ operators. 
 To do this for an edge $e$, we can create a pair of fermions near the vertex at the beginning of $e$, slide one of the fermions along $e$ to the vertex at the end of $e$, and then use the $\Gamma$ operators to ``absorb'' each fermion into their respective vertices. 
@@ -6887,6 +6927,8 @@ Note that although the first and last steps in the above sequence look the same,
 
 In general, if $e$ is oriented from $v_1$ to $v_2$ and $|\psi_1\rangle \tp |\psi_2\rangle$ is a vector in $\mch_{v_1}\tp \mch_{v_2}$ with a fixed edge coloring, the edge term $D_e$ acts as \ethan{I didn't write the part proportional to the identity, since we have $(1-D_e)$ in the Hamiltonian and want $(1-D_e)$ to be a projector. 
 If we want to write the edge term with the part proportional to the identity, I think we should just write $D_e$ in $H$ instead}
+\kw{I don't follow this.  Shouldn't $D_e$ leave the m-type summands alone?  (i.e. leave them int he ground state), 
+and if so should $D_e$ be the identity on those summands?  Did you mean $(1-D_e)$ is zero if $b$ is not q-type (below)?}
 \be D_e(|\psi_1\rangle\tp |\psi_2\rangle) =  -\lambda\alpha(e,b)\sum_{\eta_1,\eta_2}[\Gamma_i]_{\psi_1\eta_1} |\eta_1\rangle \tp [\Gamma_j]_{\psi_2\eta_2}|\eta_2\rangle,\quad |\eta_1\rangle \tp |\eta_2\rangle \in \mch_{v_1} \tp \mch_{v_2}\ee
 where $e$ is the $i$th leg of the pitchfork at $v_1$ and the $j$th leg at $v_2$. %, and $x\in\mcc$ denotes the label of the edge $e$. 
 Note that if $b$ is not q-type, then the $\Gamma$ operators vanish and so  $D_e=0$.
@@ -7186,6 +7228,8 @@ and so violations of the plaqauette term are the quasiparticle excitations of th
 Plaquettes that satisfy the plaquette term (those with an eigenvalue of $1$ under $B_p$) contain no quasiparticles in their interiors, and thus the punctures in their interiors can be smoothly filled in. 
 Therefore, we can also think of the plaquette term as energetically providing a way to allow strings to fluctuate freely across the interiors of plaquettes. 
 
+\kw{Maybe we should say more about how to write the loop operators in terms of F-moves and rotations/pivots.}
+
 %\dave{Only here as a reference for calculation.}
 %\begin{align}
 %&\Bpa \xrightarrow{A} \Bpb \xrightarrow{B} \Bpc \\
@@ -7240,6 +7284,7 @@ This means that the vortex excitations can only be separated
 at the expense of a linear increase in energy, and so the vortex excitations are linearly confined. 
 
 However, this does not mean that the non-bounding excitations are always necessarily linearly confined.
+\kw{Maybe say: We can modify the Hamiltonian so that the vortex excitations are not confined.}
 One way to remove the linear confining energy is to choose the Hamiltonian to be defined on a graph with punctures at the locations of the vortex particles, and to incorporate their effect on the spin structure into the $\alpha(e)$ factors appearing in the expression for $D_e$. 
 Doing this gives the spin structure defect lines zero energy, and they are free to fluctuate under the action of flat $\zt$ gauge transformations acting on $C^1(\mcg^*)$. 
 Incorporating the spin structure of the non-bounding excitations into the model by hand thus removes the confining energy. 
@@ -7272,6 +7317,9 @@ Another way to deconfine the vortex quasiparticles and allow them to move freely
  %%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Tensor network wave function}
 %%%%%%%%%%%%%%%%%%%%%%%
+
+\kw{Maybe this should be a separate section (rather than subsection.}
+
 - Usual story for string nets
 
 - Also show how to do it when taking the center commutes with condensing fermions. 
