@@ -903,7 +903,7 @@ where $A$ is a primitive 16th root of unity. Graphically, this means that
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{psi_qdim.pdf}}}} \qquad \qquad 
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_qdim.pdf}}}},\ee
 where the blue (orange) circle denotes a circular $\psi$ ($\sigma$) worldline.
-\dave{we should probably label the circles so that it makes sense with no color.} $\unit$ worldlines, being identified with the vaccuum, are not drawn in diagrams. 
+$\unit$ worldlines, being identified with the vaccuum, are not drawn in diagrams. 
 
 Out of the eight possible choices for $A$, the four different choices $A = ie^{\pm i\pi/8}, -ie^{\pm i\pi/8}$ all give a positive quantum dimension for the $\sigma$ particle of $d = \sqrt{2}$. 
 %%%% removing the FS remark until/unless we can find a definitive reference
@@ -1542,6 +1542,10 @@ In order to avoid over-weighting states containing pairs of boxes
 of the form in \eqref{semicircular_boxes} and in order to ensure that the 
 $F$-symbols in the condensed theory are unitary matrices, we must set 
 $|\lambda|=1$, so that $\lambda = \pm i$. 
+Finally, note that in \eqref{semicircular_boxes} we have defined the upper $\psi$ endpoint
+to have a ordering one greater than the lower $\psi$ endpoint. 
+When employing \eqref{semicircular_boxes} in manipulations, we must be careful to ensure 
+that we always use it on pairs of boxes with such an ordering. 
 
 
 
@@ -1603,18 +1607,17 @@ The process of removing two fermions can be done at the cost of a phase factor:
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_curvy_boxbox.pdf}}}} \quad =\quad  
 \lambda\; \mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta.pdf}}}}\;,
 \end{align}
-\kw{maybe add a step to the fig where we remove the bubble, and reference \eqref{Ising_bubble_rels}}
 where we've performed an $F$-move on the $\psi$ worldlines to get the second equality, we have used \eqref{semicircular_boxes} 
-in the last step, and where the labels $1$ and $2$ denote the ordering of the fermions in question. 
+in the last step to remove the semicircular $\psi$ line and \eqref{Ising_bubble_relns} to remove the $\psi$ line attached to the $\sigma$ line, and where the labels $1$ and $2$ denote the ordering of the fermions in question. 
 As mentioned earlier we must have $\lambda=\pm i$, and since $A^4=\pm i$ in the Ising theory, 
-we may choose either $\lambda = A^4$ or $\lambda = -A^{4}$.  
-\kw{We should be more explicit here.  For fixed $A$, do we have a choice of $\lambda$?}
+we may choose either $\lambda = A^4$ or $\lambda = -A^{4}$ (the choice of $A$ does not constrain the choice of $\lambda$).  
+\kw{We should be more explicit here.  For fixed $A$, do we have a choice of $\lambda$?} 
+\ethan{don't think so}
 The choice of $\lambda = \pm A^4$ affects the $F$-symbols in the condensed theory, 
 but does not affect observable quantities like the twists or mutual statistics of the 
-quasiparticles in the theory. \ethan{This is because the choice of $\lambda=\pm A^4$ doesn't 
-change the tube algebra multiplication table}
-\kw{Maybe say that the choice of $lambda$ (subject to some constraints) amounts to a choice of scaling
-of the box in the figures (if that's true)}
+quasiparticles in the theory\footnote{This is because the choice of $\lambda=\pm A^4$ doesn't 
+change the ``multiplication table'' of the tube category, which we will discuss below. 
+Essentially, changing $\lambda$ just performs a scaling on the $\psi$ endpoints in the figures.}.
 Therefore without loss of generality we may choose a gauge in which $\lambda=A^4$, and so 
 \begin{align}  \label{removing_fermions}
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{beta_dotdot.pdf}}}} \quad = A^4\; \mathord{\vcenter{\hbox{\includegraphics[scale=1]{straight_beta.pdf}}}}\;,
@@ -1629,7 +1632,7 @@ Since $\psi$ is statistically fermionic, exchanging two fermions on a $\beta$ li
 \end{align}
 In order to account for all statistical signs like this correctly, 
 when we annihilate a pair of dots using \eqref{removing_fermions}, 
-we must be careful to only annihilate pairs that have the same ordering as they did when they were created.
+we must be careful to only annihilate pairs that have the same ordering as they did when they were created, so that their orders are adjacent to one another.
 For example, if we create a pair of dots using \eqref{removing_fermions} in a 
 configuration where the upper fermion has order $m$ and the lower fermion has order $n$, 
 we must be careful to only annihilate them when they are in this configuration. 
@@ -1733,8 +1736,6 @@ This means that $\End(\beta)$ must be a division algebra, and the only division 
 Nevertheless, $\beta$ {\it is} a simple object\footnote{Indeed, if we tried to decompose $\beta$ 
 into two idempotents, they would each be linear combinations of the two pictures in \eqref{betaendos}, 
 which have different fermion parity.
-\kw{No, both idempotents would have mixed parity.}
-\ethan{Right, duh. Fixed}
 Since diagrams with different fermion parities are in different superselection sectors, 
 we are not allowed to add them together to form linear combinations, which is a contradiction.}.
 %Even if we were to overcome our abhorrence of inhomogeneous linear combinations,
@@ -1883,7 +1884,8 @@ It follows that $\alpha \not\cong \beta$ in $\mcc$, and hence $\alpha$ descends 
 
 \kw{Perhaps we can briefly discuss this construction in this subsection.}
 
-In this section, we briefly comment on possible another way to condense non-transparent fermions, which doesn't make use of the back wall construction and allows the condensed theory to remain braided. 
+In this section, we briefly comment on possible another way to condense non-transparent fermions, which doesn't make use of the back wall construction and allows the condensed theory to remain braided (for a braided input cateogry). 
+We won't make use of this in what follows, and just mention it for posterity's sake.
 
 The construction proceeds as follows: we allow the $\psi$ worldlines to be absorbed into the vacuum at any point.
 In this picture the $\psi$ lines literally end, they do not run down to some back wall. 
@@ -2226,7 +2228,7 @@ operator $\gamma_5=i\gamma_0\gamma_1\gamma_2\gamma_3$.
 Such an identification for $\bar\gamma$ makes perfect sense from the TQFT standpoint, 
 since the operator $\bar\gamma=i\gamma_1\gamma_2$ implements the topological twist.  
 \dave{Why does it correspond to a chirality operator?
-Need to think about this point.}
+Need to think about this point.} \ethan{Chirality operators (sometimes aka parity operators) are given by products of all the Clifford generators}
 
 We now turn to the task of identifying the quasiparticles (simple modules) of this subalgebra. 
 At a high level, we can appeal to the Morita equivalence between $\cl_2$ and $\cc$ which states 
@@ -2376,25 +2378,6 @@ This immediately tells us that the non-bounding sector must contain three quasip
 However, since $\tube^B$ is non-abelian the former possibility is ruled out, and thus we have determined that the $C_2$ theory must contain six quasiparticles, with three associated to each spin structure. 
 %The quasiparticle associated with the two-dimensional module in the non-vortex sector is $m_\sigma^\pm$, whose two-dimensionality comes from the fact that it is a ``composite'' of two oddly-isomorphic simple modules. 
 
-
-
-
-%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Quantum dimensions}
-%%%%%%%%%%%%%%%%%%%%
-\dave{Should we describe the trace formula?
-We could just say something to the effect "It is a well known fact \cite{someone} that..."}
-In what follows we will need to know the quantum dimensions of the quasiparticles in the theory.
-\dave{At this point we haven't computed the fusion rules.}
-We can obtain them by examining the number of fusion channels each has when fused with its antiparticle. 
-We find
-\be d_{m_1} = d_{m_\psi} = 1,\quad d_{m_\sigma^+} = d_{q_1} = d_{q_\psi} = \sqrt{2},\quad d_{q_\sigma} = 2.\ee
-We will also need to know how to calculate the total quantum dimension $\mcd$.
-In bosonic theories we have $\mcd^2 = \sum_a d_a^2$, where the sum runs over all simple objects $a$. 
-This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
-The correct formula is
-\be \label{total_qdim_defn} \mcd^2 = \sum_a \frac{d_a^2}{\dim \End(a)}.\ee
-For the $C_2$ theory, we have $\mcd = \sqrt{8}$. 
 
 
 
@@ -2556,8 +2539,28 @@ For example, the $m_\sigma^+ \tp m_\sigma^+$ entry indicates that the fusion spa
 \end{table}
 
 
+%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Quantum dimensions}
+%%%%%%%%%%%%%%%%%%%%
+\dave{Should we describe the trace formula?
+We could just say something to the effect "It is a well known fact \cite{someone} that..."}
+In what follows we will need to know the quantum dimensions of the quasiparticles in the theory.
+\dave{At this point we haven't computed the fusion rules.}
+We can obtain them by examining the number of fusion channels each has when fused with its antiparticle. 
+We find
+\be d_{m_1} = d_{m_\psi} = 1,\quad d_{m_\sigma^+} = d_{q_1} = d_{q_\psi} = \sqrt{2},\quad d_{q_\sigma} = 2.\ee
+We will also need to know how to calculate the total quantum dimension $\mcd$.
+In bosonic theories we have $\mcd^2 = \sum_a d_a^2$, where the sum runs over all simple objects $a$. 
+This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
+The correct formula is
+\be \label{total_qdim_defn} \mcd^2 = \sum_a \frac{d_a^2}{\dim \End(a)}.\ee
+For the $C_2$ theory, we have $\mcd = \sqrt{8}$. 
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Modular transformations and ground states on the torus} \label{modulartforms}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Ground states}
 \dave{Will go through this section in the near future. 
@@ -2644,8 +2647,7 @@ In bosonic theories, the $T$-matrix is diagonalized in the quasiparticle basis, 
 Importantly, the $S$ and $T$ modular transformations do {\it not} always preserve the spin structure of the torus they act on. 
 Figure \ref{spin_str_mapping_class_group} shows how the different possible spin structures are permuted under $S$ and $T$. 
 Since $T$ does not preserve the spin structures, it cannot generically have well-defined eigenstates with a definite spin structure. 
-This precludes an ability to associate a definite topological twist ($T$-matrix eigenvalue) to every quasiparticle in the theory: the spins of quasiparticles excitations in super fusion categories are in general not well defined. 
-\dave{'are only defined up to a $\pm$ sign, see (reference to details)'}
+This precludes an ability to associate a definite topological twist ($T$-matrix eigenvalue) to every quasiparticle in the theory: the spins of quasiparticles excitations in super fusion categories are in general only defined up to a $\pm$ sign, see \cite{???} for details.
 However, the action of $T^2$ preserves spin structures, and so we are still able to associate definite $T^2$ eigenvalues to the quasiparticles in the theory.
 This means that the twists of the particles whose associated spin structures are not preserved by $T$ (i.e., the particles associated with a bounding spin structure, $m_\unit,m_\psi,$ and $m_\sigma^+$ in the present example) are ambiguous up to a factor of $\pm1$.  
 
@@ -2810,6 +2812,7 @@ However, we will see that the presence of spin structures means that this corres
 While the modular $S$ and $T$ matrices are still intimately related to the statistical $S$ and $T$ matrices, we will have to work a bit harder to establish this relationship. 
 \dave{Ethan do you have a reference to something that uses 'statistical S-matrix'?
 I'm not familiar with it, but the name is self-explanatory which is nice.}
+\ethan{nope, I just made it up}
 
 \subsubsection{$R$-matrices}
 To begin, we will construct a table of the $R$ symbols in the theory. 
@@ -2947,7 +2950,7 @@ I.e., the same ambiguous parity of the torri in the bounding sector, or is it a 
 The vortex particles have no such ambiguity, since moving a physical fermion around a tube with periodic boundary conditions picks up no $-1$ signs.   
 
 We now briefly comment on the issue of the chiral central charge of this theory. Since we have realized this theory as a lattice model, we expect that it possesses chiral central charge $c_- = 0$. 
-If we believe that the chiral central charge of these theories can be computed in the same way as in bosonic theories \dave{(do we have a good reason to expect the formula to apply?)}, then we see that we indeed have $c_- =0$ for the vortex sector, which is a nontrivial consistency check. We do not have $c_-=0$ in the non-vortex sector if we use the twists as written, but we have to keep in mind that the non-vortex twists possess a $\pm$ phase ambiguity. We then expect that in the expression for $c_-$ in the non-vortex sector, the sum over twists ``averages out'' and becomes zero. 
+If we believe that the chiral central charge of these theories can be computed in the same way as in bosonic theories \cite{meng} \dave{(do we have a good reason to expect the formula to apply?)}, then we see that we indeed have $c_- =0$ for the vortex sector, which is a nontrivial consistency check. We do not have $c_-=0$ in the non-vortex sector if we use the twists as written, but we have to keep in mind that the non-vortex twists possess a $\pm$ phase ambiguity. We then expect that in the expression for $c_-$ in the non-vortex sector, the sum over twists ``averages out'' and becomes zero. 
 
 \subsubsection{Mutual statistics}
 
@@ -6355,7 +6358,7 @@ Graphically, $\Gamma_1$ is defined by
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma1def.pdf}}}},\ee
 where $\psi,\eta$ are basis vectors in the fusion space of the pitchfork for a fixed coloring of the pitchfork's outgoing legs. 
 $\Gamma_2$ and $\Gamma_3$ are defined similarly,
-\be
+\be \label{gamma2gamma3_defn}
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma2def.pdf}}}},\quad
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma3def.pdf}}}},\quad
 	\ee
@@ -6369,10 +6372,8 @@ It is easy to check that when they are non-zero (i.e. when they act on q-type ed
 which are the defining relations for the representations of complex Clifford algebras, and where as before, $\lambda=\pm i$ is the phase picked up when removing a pair of dots from a q-type object worldline. 
 \kw{Elsewhere (above) I chose a $\lambda = 1$ normalization.
 We need to decide which value of $\lambda$ we prefer and make things consistent.}
-\kw{The remainder of this paragraph should be moved to the definition section.}
-This means that the $\{\Gamma_i\}$ at a vertex $v$ with fusion space $V^{abc}$ where all of $a,b,c$ are q-type generate a representation of $\cl_3$, and if two of $a,b,c$ are q-type the $\{\Gamma_i\}$ generate a representation of $\cl_2$. 
-This is to be expected, since if the three lines emanating from $v$ are all labeled with q-type objects, then the Hilbert space associated with the three lines is $\cl_1\tp\cl_1\tp\cl_1\cong\cl_3$ (although this is actually over-complete \kw{what does ``over-complete" mean here?}), and likewise for the case of two q-type objects. 
-Requiring that the Hilbert space at a given vertex admits a representation either $\cl_3$ or $\cl_2$ places constraints on the types of fermionic theories one can write down; see Section \ref{fusion_spaces} for details. 
+\ethan{I might vote for $\lambda = \pm i$, just so that it matches what we did for the examples. No super strong preference though.}
+
 
 %\ethan{can move / delete this discussion as you wish}
 %\kw{I don't think the dot-slide interpreation works for general qqm vertices.  Does it work for the E6 quotient?}
@@ -7641,7 +7642,12 @@ Therefore, in superfusion categories, the pivotal structure relation $P^3=\unit$
 where $(-1)^F$ is the fermion parity operator, which acts on any $v\in V^{abc}$ as $(-1)^F v = (-1)^{|v|}v$.
 
 \ethan{recapitulate odd endo operators and reps of clifford algebras}
-The existence of the representations of these operators actually place nontrivial constraints on the ways in which q-type particles can fuse with one another. 
+Finally, we mention that the $\Gamma_i$ operators defined in \eqref{gamma2gamma3_defn} can be used to constrain the structure of fusion spaces involving q-type particles.  
+Recall that the non-zero $\{\Gamma_i\}$ satisfy $\{\Gamma_i,\Gamma_j\} = 2\lambda\delta_{ij}$, the defining anti-commutation relation for complex Clifford algebras. 
+This means that the $\{\Gamma_i\}$ at a vertex $v$ with fusion space $V^{abc}$ where $n$ of$a,b,c$ are q-type generate a representation of $\cl_n$. 
+This is to be expected, since if $n$ lines emanating from $v$ are labeled with q-type objects, then the Hilbert space associated with the three lines is $\cl_1^{\tp n}\cong\cl_n$ (although this is actually over-complete, in the sense that the physical Hilbert space is smaller, see Sec \ref{modified_tensor_product}). 
+
+Requiring that the Hilbert space at a given vertex admits a representation of $\cl_n$ places constraints on the types of fermionic theories one can write down. 
 For example, we can use this to show that a ``q-type Fibbonacci'' theory which contains a single q-type particle $\tau$ with the fusion space $V^{\tau\tau\tau}\cong \cc^{1|1}$, cannot exist. 
 Indeed, if $V^{\tau\tau\tau}$ is nontrivial and $\tau$ is q-type, then we must be able to find a representation of $\cl_3$ on $V^{\tau\tau\tau}$.
 This is impossible if $V^{\tau\tau\tau}\cong \cc^{1|1}$, since $\cc^{1|1}$ is not large enough to represent $\cl_3$. 
@@ -7680,7 +7686,11 @@ Graphically, this is simply reflected in our ability to ``displace'' dots from t
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_displacement.pdf}}}}. \ee
 Mathematically, this is nothing more than the mapping $V^{ab}_{x,1} \mapsto V^{ab}_x \tp V^{x\unit}_{x,1}$, where $V^{ab}_x$ is a regular (``bosonic'') vector space.  
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Modified tensor product} \label{modified_tensor_product}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 There is an important subtlety involved when we tensor together fusion spaces which involve q-type particles, which stems from the non-triviality of the fusion space $V^{x\unit}_x$ if $x$ is q-type.
 To see where this comes from, suppose $x$ is a q-type particle, and consider the resolution of the identity 
 \begin{align} \label{resid}
