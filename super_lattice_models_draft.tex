@@ -161,6 +161,19 @@
 \newcommand{\FubeXssA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OneLineA.pdf}}}}}
 \newcommand{\FubeXsdsA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OneLineDotA.pdf}}}}}
 
+\newcommand{\FubesddXsA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesddXsA.pdf}}}}}
+
+\newcommand{\RDotTwobA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{RDotTwobA.pdf}}}}}\newcommand{\RDotTwocA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{RDotTwocA.pdf}}}}}
+
+
+
+ 
+ 
+ 
+\newcommand{\Fubex}[2]{{\mathord{\ooalign{ \vphantom{$\Big|^2$}\cr\hidewidth\ensuremath{\scriptstyle{#2}}\hidewidth\cr$\vcenter{\hbox{$#1$}}$\cr
+  \hidewidth\raise0ex\hbox{$\scale{1.2}{\VerticalSpace}$}\cr
+  }}}}	
+
 
 
 
@@ -435,6 +448,13 @@
 \newcommand{\FubesXsa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesXsa.pdf}}}}}
 \newcommand{\FubesXsb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesXsb.pdf}}}}}
 \newcommand{\FubesXsc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesXsc.pdf}}}}}
+
+
+\newcommand{\FubesXscA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubeXscA.pdf}}}}}
+\newcommand{\FubesXsbA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubeXsbA.pdf}}}}}
+\newcommand{\FubesXsaA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubeXsaA.pdf}}}}}
+
+
 
 
 
@@ -1820,7 +1840,8 @@ and talk about folding the $A_3$ principal graph to obtain $C_2$.
 \subsection{Finding the quasiparticle excitations}
 In this section, we identify the quasiparticle excitations 
 in the in the string-net model based on the $C_2$ theory.
-For an explicit Hamiltonian see section \ref{XXXHamiltonian}
+Instead of explicitly writing the Hamiltonian (as we do in Section \ref{Super_pivotal_Hamiltonian}),
+we will discuss some of its physical properties.
 The quasiparticle excitations in a bosonic string-net model 
 based on a category $\mcc$ are given by the simple objects in the Drinfeld center $\mcz(\mcc)$ \cite{levin2005}.
 These excitations are also naturally described by representations of the tube category of $\mcc$ [\cite{Lan2014}, yuting]\dave{Ethan, correct references?}.
@@ -1831,7 +1852,7 @@ If $\mcc$ is pivotal then there is a natural isomorphism
 $\text{Rep}(\text{Ann}(\mcc)) \cong \mcz(\text{Rep}(\mcc))$, and if $\mcc$ is semisimple then we can drop
 the $\text{Rep}$s and obtain $\text{Ann}(\mcc) \cong \mcz(\mcc)$.
 \kw{need to double-check this claim; also need to choose a notion for annular category/tube alg;
-maybe $\mct(\mcc)$; also, do we want to say tube category instead of tube algebra?}
+maybe $\mct(\mcc)$ \dave{We use $\tube(\mcc)$ below, will stick with that for now.}; also, do we want to say tube category instead of tube algebra?}
 With appropriate modifications accounting for spin structure issues, this same construction holds 
 in the more general fermionic setting considered here. 
 
@@ -1913,14 +1934,18 @@ we refer readers to Appendix \ref{tube_alg}.
 %I think this section was written based on our old understanding of the tube algebra.}
 
 Lets study the tube category for $C_2$ in a little more detail. 
-The objects of $\text{T}(C_2)$ are circles with marked points labeled by simple objects of $C_2$, and a fixed spin structure.
+The objects of $\tube(C_2)$ are given by circles with marked points 
+labeled by simple objects of $C_2$.
+There are two spin structures on the circle: bounding (anti-periodic boundary conditions; non-vortex) and 
+non-bounding (periodic boundary conditions; vortex).
+Hence each object needs an additional label determining its spin structure. 
 It is sufficient for our purposes to take circles with one marked point.
 For a fixed spin structure there are only two possible labels that can be assigned to a marked point,
 \begin{align}
 \underset{\mathds{1}}{\TubeBC}\scriptstyle{B} \quad \quad \quad \underset{\beta}{\TubeBC}\scriptstyle{B} \quad \quad \quad\underset{\mathds{1}}{\TubeBC}\scriptstyle{N} \quad \quad \quad \underset{\beta}{\TubeBC}\scriptstyle{N}
 \end{align}
 where $B$, $N$ denote bounding and non-bounding spin structures respectively. 
-Morphisms of  $\text{T}(C_2)$ are 
+Morphisms of  $\tube(C_2)$ are 
 given by all possible diagrams $C_2$ can assign to the annulus with 
 fixed boundary conditions and spin structure. 
 After applying local relations (F-moves, dot-cancellations, removing trivial loops), 
@@ -1932,11 +1957,9 @@ combination of the following diagrams:
 % \FubeXss \quad \FubessX    \quad \quad \quad    &\FubeXsds \quad \FubessdX
  %}
 %\end{align}
-\dave{Will begin here tomorrow.
-Will add spin structure subscripts as well.}
+\dave{Could also replace $\text{mor}(.. \rightarrow ..)$ by $\tube_{\unit \rightarrow \unit}$, or $\;_\unit {\bf T}_\unit$, and $\;_\unit {\bf T}(B)_\unit$.}
 \begin{align}
 \text{mor}(\underset{\mathds{1}}{\TubeBC} \rightarrow \underset{\mathds{1}}{\TubeBC}) &= \mathbb{C}\left[ \FubeXXXA ,  \FubesXsA, \FubesdXsA \right] \\
-\\
 \text{mor}(\underset{\beta}{\TubeBC} \rightarrow \underset{\beta}{\TubeBC}) &= \mathbb{C}\left[   \FubeXssA ,  \FubessXA, \FubeXsdsA , \FubessdXA \right] \\
 \\
 \text{mor}(\underset{\mathds{1}}{\TubeBC} \rightarrow \underset{\beta}{\TubeBC}) &= \emptyset \quad \quad \quad \quad \text{mor}(\underset{\beta}{\TubeBC} \rightarrow \underset{\mathds{1}}{\TubeBC}) = \emptyset
@@ -1949,6 +1972,73 @@ In the first row we have listed all possible tubes which take the trivial bounda
 and in the second row the tubes which take the $\beta$ marked point back to itself.
 Notice that all non-zero tubes have the same label at the two marked points, in general this won't happen. 
 Depending on the spin structure on the annulus, some of the above diagrams may be zero.
+
+The tubes share the same spin structure as the circles which at their boundaries.
+Since there are only two spin structures on the cylinder, bounding and non-bounding, there are no tubes which take a bounding circle to a non-bounding circle, or vice versa.
+We will denote the spin structure of a given tube with a subscript, 
+using $B$ for bounding spin structure and $N$ for non-bounding spin structures.
+With a bounding spin structure, a fermionic dot picks up a factor of $-1$ if it moves around the annulus.
+To describe the non-bounding spin structure, we add a ``branch cut" from the center of the annulus to the exterior, and fermions pick up an additional minus sign if they cross that branch cut.
+
+As we said above, not every string diagram in the annulus is consistent with a given spin structure.
+For example,
+\begin{align}
+\Fubex{\FubesdXsA}{B}\;  = - \; \Fubex{\FubesdXsA}{B} \implies \Fubex{\FubesdXsA}{B} = 0,
+\end{align}
+where we have simply pulled the fermion around the non-contractible loop on the tube. 
+A non-bounding tube with a horizontal $\beta$ line is also zero, since
+\begin{align}
+\Fubex{\FubesXsA}{N}\; =\; A^{-4} \Fubex{\FubesXsaA}{N} \; = A^{-4} \Fubex{\FubesXscA}{N} \; = \; -\Fubex{\FubesXsA}{N}
+\end{align}
+Where in the second step we have dragged the fermion around the annulus.
+All other tubes are nonzero for both spin structures, and so a complete basis for tubes in the bounding sector is given by
+\begin{align}
+ \label{atubes}
+\tube^B_{\unit \rightarrow \unit} &= \mathbb{C} \left[\Fubex{\FubeXXXA}{B}  ,\Fubex{\FubesXsA}{B}\right]\\
+\tube^B_{\beta \rightarrow \beta}  &=  \mathbb{C} \left[\Fubex{\FubeXssA}{B}  ,\Fubex{\FubessXA}{B},\Fubex{\FubeXsdsA}{B},\Fubex{\FubessdXA}{B}\right]
+\end{align}
+\dave{Changed notation from $\tube_\unit^B$ to $\tube_{\unit \rightarrow \unit}^B$.
+Other notation I thought that could be useful was $\;_\unit {\bf T}(B)_\unit$.
+Let me know if you prefer the old, new or un-used.}
+while a basis for the non-bounding sector is given by
+\begin{align}
+\label{ptubes}
+\tube_{\unit \rightarrow \unit}^N &= \mathbb{C}\left[ \Fubex{\FubeXXXA}{N}  ,\Fubex{\FubesdXsA}{N} \right]\\
+\tube_{\beta \rightarrow \beta}^N &= \mathbb{C}\left[ \Fubex{\FubeXssA}{N}  ,\Fubex{\FubessXA}{N} ,\Fubex{\FubeXsdsA}{N} ,\Fubex{\FubessdXA}{N}  \right]
+\end{align}
+We have denoted the label at the marked points on the boundary by the subscript, and the spin structure by a super script. 
+
+The multiplication law in the tube algebra is given by stacking tubes on top of one another 
+and simplifying the resulting tube using local relations.  
+For example, in the non-bounding sector we have
+\begin{align}
+\FubesdXs_N \; \times \; \FubesdXs_N \; = \; \RDotTwoa_N \; = \; \frac{1}{d} \left(\RDotTwob_N + \RDotTwoc_N \right) = 2 \; \FubeXXX_N
+\end{align}
+\begin{align}
+\Fubex{\FubesdXsA}{N} \;  \times \; \Fubex{\FubesdXsA}{N}  \;=\; \Fubex{\FubesddXsA}{N} \;=\; \frac{1}{d} \left(
+\Fubex{\RDotTwobA}{N}
++ A^{-4} \Fubex{\RDotTwocA}{N}  \right) \; = \; 2 \Fubex{\FubeXXXA}{N}
+\end{align}
+Note that since the spin structures on two tubes being fused must agree on the boundary 
+at which they are being fused, non-bounding tubes can only be stacked on top of non-bounding tubes, 
+and similarly for bounding tubes.
+
+%%% KW: Does this (below) say anything that is not already covered in the local relations for C2?  Not sure what "time slice" means here.
+%Note that when we annihilate fermions into the vacuum to derive relations like this, 
+%we have to be careful about the order in which we do it, which is why we can never create 
+%two fermions side-by-side at the same time slice. 
+%For example, if we create fermion 2 above fermion 1 in a diagram, we must annihilate them 
+%along a $\beta$ string where fermion 2 is above fermion 1.
+
+Relations like the ones above allow us to find the (isomorphism classes of) minimal idempotents of the tube category. 
+Each isomorphism class of minimal idempotents defines a subspace which is left invariant under the action of tube stacking. 
+It is natural to interpret the action of stacking as a local operation, 
+thus the equivalence class of states related by local operators are 
+labeled by an isomorphism class of minimal idempotents, 
+see section XXX for more details. 
+%Since the tubes split into a direct sum of tubes with different spin structures, 
+%its minimal idempotents will split in a similar way. 
+First, we turn to an analysis of tubes with bounding spin structure. 
 
 \begin{comment}
 Lets study the tube category for $C_2$ in a little more detail. 
@@ -1984,23 +2074,7 @@ In the first row we have listed all possible tubes which take the trivial bounda
 and in the second row the tubes which take the $\beta$ marked point back to itself.
 Notice that all tubes have the same label at the two marked points, in general this won't happen. 
 Depending on the spin structure on the annulus, some of the above diagrams may be zero.
-\end{comment}
 
-
-There are two spin structures on the annulus: bounding (anti-periodic boundary conditions; non-vortex) and 
-non-bounding (periodic boundary conditions; vortex).
-With a bounding spin structure, a fermionic dot picks up a factor of $-1$ if it moves around the annulus.
-%One way to think of this is that we have a reference framing of the annulus, 
-%inherited from the standard framing of
-%the blackboard via our identification of the annulus with a rectangle in the blackboard (with left and right sides identified).
-%This framing picks out the non-bounding spin structure.
-To describe the non-bounding spin structure, we add a ``branch cut" from the center of the annulus to the exterior, and fermions pick up an additional minus sign if they cross that branch cut.
-%on the left/right sides of the rectangle,
-%and fermions pick up a minus sign if they cross that branch cut.
-%To describe the non-bounding spin structure, we add a ``branch cut" on the left/right sides of the rectangle,
-%and fermions pick up a minus sign if they cross that branch cut.
-
-\begin{comment}
 There are two spin structures on the annulus: bounding (anti-periodic boundary conditions; non-vortex) and 
 non-bounding (periodic boundary conditions; vortex).
 With anti-periodic boundary conditions, a fermionic dot picks of a factor of $-1$ if it moves around the annulus.
@@ -2009,7 +2083,7 @@ the blackboard via our identification of the annulus with a rectangle in the bla
 This framing picks out the non-bounding spin structure.
 To describe the bounding spin structure, we add a ``branch cut" on the left/right sides of the rectangle,
 and fermions pick up a minus sign if they cross that branch cut.
-\end{comment}
+
 
 %In the fermionic case however, each tube also comes equipped with a spin structure, given by an element 
 %$\eta \in H^1(C,\zt) \cong \zt$, where $C$ is the cylinder.\footnote{On manifolds $M$ like the cylinder or the torus, 
@@ -2064,11 +2138,15 @@ while a basis for the periodic sector is given by
  }
 \end{align}
 \dave{Need to think if there is a better way to present these tables.}
+
+\end{comment}
 %\begin{align} \label{ptubes}
 %\FubeXXX_P\quad \FubeXss_P \quad \FubessX_P   \quad \FubesdXs_P \quad  \FubeXsds_P \quad \FubessdX_P.
 %\end{align}
 %\kw{Should break above up according to charge/b.c.}
 
+\kwsep
+\begin{comment}
 The multiplication law in the tube algebra is given by stacking tubes on top of one another 
 and simplifying the resulting tube using local relations.  
 For example, in the non-bounding sector we have
@@ -2097,7 +2175,7 @@ see section XXX for more details.
 Since the tube algebra splits into a direct sum of tubes with different spin structures, 
 its minimal idempotents will split in a similar way. 
 First, we turn to an analysis of tubes with non-vortex spin structure. 
-
+\end{comment}
 
 
 %Viewing the tubes as local operators in a physical system means that these irreducible vector spaces biject with types of anyonic excitations.
@@ -5702,6 +5780,7 @@ We could add an appendix with some of the details, e.g., 6j symbols and particle
 %Hence a theory with Fibonacci like fusion rules of Q-type particles must have fusion multiplicity.
 %}
  \section{Super pivotal Hamiltonian}
+ \label{Super_pivotal_Hamiltonian}
 % \section{Hamiltonian} 
 
 In this section we will write down a commuting projector Hamiltonian 
