@@ -157,6 +157,13 @@
 \newcommand{\FubeXss}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OneLine.pdf}}}}}
 \newcommand{\FubeXsds}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OneLineDot.pdf}}}}}
 
+\newcommand{\FubeXXXA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EmptyTubeA.pdf}}}}}
+\newcommand{\FubeXssA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OneLineA.pdf}}}}}
+\newcommand{\FubeXsdsA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OneLineDotA.pdf}}}}}
+
+
+
+
 \newcommand{\TubeBC}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeBC.pdf}}}}}
 
 
@@ -419,9 +426,17 @@
 \newcommand{\FubessX}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubessX.pdf}}}}}
 \newcommand{\FubessdX}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubessdX.pdf}}}}}
 
+\newcommand{\FubesdXsA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesdXsA.pdf}}}}}
+\newcommand{\FubessXA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubessXA.pdf}}}}}
+\newcommand{\FubessdXA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubessdXA.pdf}}}}}
+
+
+\newcommand{\FubesXsA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesXshA.pdf}}}}}
 \newcommand{\FubesXsa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesXsa.pdf}}}}}
 \newcommand{\FubesXsb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesXsb.pdf}}}}}
 \newcommand{\FubesXsc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesXsc.pdf}}}}}
+
+
 
 
 \newcommand{\qqo}{\mathord{\vcenter{\hbox{\includegraphics[scale=.4]{qq1.pdf}}}}}
@@ -1940,7 +1955,28 @@ We should remove overlapping discussions from each section, and perhaps change I
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Finding the quasiparticle excitations}
+In this section, we identify the quasiparticle excitations 
+in the in the string-net model based on the $C_2$ theory.
+For specifics of the model see Section \ref{Hamiltonian}, 
+here we discuss some of its key physical features in the rather tame $C_2$ theory. 
+The quasiparticle excitation sin a bosonic string-net model 
+based on a category $\mcc$ are given by the simple objects in the Drinfeld center $\mcz(\mcc)$ \cite{levin2005}.
+These excitations are also naturally described by representations of the tube category of $\mcc$ [\cite{Lan2014}, yuting]\dave{Ethan, correct references?}.
+The tube category was first introduced by Ocneanu \cite{ocneanu1994} and has since been dubbed `Ocneanu's tube algebra', it is also referred to as the annular category $Ann(\mcc)$, 
+or the categorified Hochschild homology of $\mcc$.
+It is closely related to the Drinfeld center:
+If $\mcc$ is pivotal then there is a natural isomorphism
+$Rep(Ann(\mcc)) \cong \mcz(Rep(\mcc))$, and if $\mcc$ is semisimple then we can drop
+the $Rep$s and obtain $Ann(\mcc) \cong \mcz(\mcc)$.
+\kw{need to double-check this claim; also need to choose a notion for annular category/tube alg;
+maybe $\mct(\mcc)$; also, do we want to say tube category instead of tube algebra?}
+With appropriate modifications accounting for spin structure issues, this same construction holds 
+in the more general fermionic setting considered here. 
 
+\dave{Orthers who could be natural to cite above if we want more history are\cite{ocneanu2001,evans1995,Izumi2000,muger2003b,Bultinck2017}}
+
+\begin{comment}
+%old paragraph
 In this section, we identify the quasiparticle excitations in the $C_2$ theory. 
 As was first shown in the mathematical literature by Occneanu [ref] and later demonstrated in 
 the physics community by [lan wen, nick, yuting], 
@@ -1964,6 +2000,8 @@ Is there an analogous story line in the TV state-sum literature?
 With appropriate modifications accounting for spin structure issues, this same construction holds 
 in the more general fermionic setting considered here. 
 
+
+
 (The tube algebra is also known as the annular category of $\mcc$
 or the categorified Hochschild homology of $\mcc$.
 It is closely related to the Drinfeld center:
@@ -1974,7 +2012,7 @@ the $Rep$s and obtain $Ann(\mcc) \cong \mcz(\mcc)$.)
 maybe $\mct(\mcc)$; also, do we want to say tube category instead of tube algebra?}
 \dave{How about we go with tube category, and then mention how it relates to the tube algebra. 
 }
-
+\end{comment}
 
 %the quasiparticle excitations in bosonic theories 
 %based on a category $\mcc$ are given by objects of the Drinfeld center $\mcz(\mcc)$, 
@@ -2005,12 +2043,54 @@ modules of the tube algebra.
 For a review and a more detailed discussion of how the tube algebra works in the fermionic setting, 
 we refer readers to Appendix \ref{tube_alg}. 
 \kw{What will be in the appendix that we won't also be saying in the main text?}
+\dave{Will assume we described enough about the tube category in the above paragraph so that the following makes sense.}
 
-\kw{It doesn't really make sense to talk about linear combinations of diagrams with different boundary conditions
-(different charge sectors), so in the following paragraphs I think we should segregate the diagrams by boundary condition (charge).}
-\dave{Sounds good.
-I think this section was written based on our old understanding of the tube algebra.}
+%\kw{It doesn't really make sense to talk about linear combinations of diagrams with different boundary conditions
+%(different charge sectors), so in the following paragraphs I think we should segregate the diagrams by boundary condition (charge).}
+%\dave{Sounds good.
+%I think this section was written based on our old understanding of the tube algebra.}
 
+Lets study the tube category for $C_2$ in a little more detail. 
+We will take the boundary of the tubes to have one marked point.
+There are only two possible simple objects which can terminate at this marked point, the trivial object $\mathds{1}$ or $\beta$,
+\begin{align}
+\underset{\mathds{1}}{\TubeBC} \quad \quad \quad \underset{\beta}{\TubeBC}.
+\end{align}
+Not only do we need to specify a simple object at the marked point, but we also need to assign a spin structure to the non-trivial cycle given by traversing the boundary. 
+There are only two spin structures available, either bounding or non-bounding. 
+These will be specified by a subscript $B$ or $N$ respectively.
+
+Morphisms of the tube category (resp. elements of the tube algebra) are 
+given by all possible diagrams $C_2$ can assign to the annulus with 
+fixed boundary conditions and spin structure. 
+After applying local relations (F-moves, dot-cancellations, removing trivial loops), 
+it is easy to see that an arbitrary string-net diagram on any tube can be reduced to a linear 
+combination of the following diagrams:
+%\begin{align}
+%\xymatrix{
+%\FubeXXX \quad \FubesXs   \quad \quad \quad & \FubesdXs \\
+% \FubeXss \quad \FubessX    \quad \quad \quad    &\FubeXsds \quad \FubessdX
+ %}
+%\end{align}
+\dave{Will begin here tomorrow.
+Will add spin structure subscripts as well.}
+\begin{align}
+\text{mor}(\underset{\mathds{1}}{\TubeBC} \rightarrow \underset{\mathds{1}}{\TubeBC}) &= \mathbb{C}\left[ \FubeXXXA ,  \FubesXsA, \FubesdXsA \right] \\
+\\
+\text{mor}(\underset{\beta}{\TubeBC} \rightarrow \underset{\beta}{\TubeBC}) &= \mathbb{C}\left[   \FubeXssA ,  \FubessXA, \FubeXsdsA , \FubessdXA \right] \\
+\\
+\text{mor}(\underset{\mathds{1}}{\TubeBC} \rightarrow \underset{\beta}{\TubeBC}) &= \emptyset \quad \quad \quad \quad \text{mor}(\underset{\beta}{\TubeBC} \rightarrow \underset{\mathds{1}}{\TubeBC}) = \emptyset
+\end{align}
+
+%\begin{align}
+%\FubeXXX \quad \FubesXs    \quad \FubeXss \quad \FubessX   \quad \FubesdXs \quad  \FubeXsds \quad \FubessdX
+%\end{align}
+In the first row we have listed all possible tubes which take the trivial boundary condition back to itself, 
+and in the second row the tubes which take the $\beta$ marked point back to itself.
+Notice that all tubes have the same label at the two marked points, in general this won't happen. 
+Depending on the spin structure on the annulus, some of the above diagrams may be zero.
+
+\begin{comment}
 Lets study the tube category for $C_2$ in a little more detail. 
 We will take the boundary of the tubes to have one marked point.
 There are only two possible simple objects which can terminate at this marked point, the trivial object $\mathds{1}$ or $\beta$,
@@ -2044,6 +2124,7 @@ In the first row we have listed all possible tubes which take the trivial bounda
 and in the second row the tubes which take the $\beta$ marked point back to itself.
 Notice that all tubes have the same label at the two marked points, in general this won't happen. 
 Depending on the spin structure on the annulus, some of the above diagrams may be zero.
+\end{comment}
 
 There are two spin structures on the annulus: bounding (anti-periodic boundary conditions; non-vortex) and 
 non-bounding (periodic boundary conditions; vortex).
