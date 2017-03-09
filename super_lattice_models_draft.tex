@@ -6356,8 +6356,6 @@ We will assume that our category $\mcc$ is {\it idempotent complete} --
 every idempotent is the identity morphism of an associated object.
 We also assume that $\mcc$ is {\it additive} -- we can take direct sums of objects.
 
-\kw{need to say somewhere near the start that we assume our category is enriched in super vector spaces} \ethan{added a short statement about this at the end of the previous section}
-
 A object $a$ of $\mcc$ is called {\it simple} if any homogeneous non-zero endomorphism of $a$ is an isomorphism.
 Equivalently, $a$ is simple if it has no quotient objects.
 (We also stipulate that the zero object is not a simple object.)
@@ -6366,16 +6364,15 @@ In the usual bosonic, non-super case, the only possible endomorphism algebra for
 is the trivial algebra $\cc$ (scalars)\footnote{The 
 proof is as follows: by Schur's lemma every element in $\End(x)$ is invertible if $x$ is simple, and so $\End(x)$ must be a division algebra. 
 The only ungraded division algebra is $\cc$, and so $\End(x) = \cc$ for all simple $x$ in a regular fusion category.}
-\kw{be sure to avoid white space before \textbackslash footnote}
 In the fermionic/super case, there is a second possibility: the complex Clifford algebra $\cl_1$, which is the only nontrivial $\zt$-graded division algebra other than $\cc$.
 $\cl_1$ is generated over $\cc$ by the identity (which is even) and an odd element $\gamma$ such that $\gamma^2 = \lambda \cdot \id$
-(or $\gamma^2 = \lambda$ for short) for some non-zero complex number $\lambda$. \ethan{changed $x$ to $\gamma$, since $\gamma$ is standard in the physics literature and we use $x$ for simple objects at several points.}
-\kw{Is it also standard to allow $\gamma^2 \ne \pm1$?}
+(or $\gamma^2 = \lambda$ for short) for some non-zero complex number $\lambda$. 
 Note that by rescaling the odd generator $\gamma$ we can make $\lambda$ in the definition of $\cl_1$ any nonzero complex number. 
 
 If follows that simple objects in a super pivotal category fall into two classes, according to whether their endomorphism algebras are $\cc$ or $\cl_1$. 
-We will call a simple object {\it m-type} if its endomorphism algebra
-is $\cc$, and {\it q-type} if its endomorphism algebra is $\cl_1$:
+These are the q-type and m-type objects discussed earlier. 
+A simple object is {m-type} if its endomorphism algebra
+is $\cc$, and {q-type} if its endomorphism algebra is $\cl_1$:
 \begin{align}
 \vcenter{\xymatrix @!0 @M=1mm @C=25mm{
 & \text{End}(x) = \mathbb{C} \ar@{<->}[rr] &   &\text{$x$ is a simple m-type object}&  \\
@@ -6388,6 +6385,111 @@ Note that the meaning of ``simple" is inconsistent in these two contexts: any $M
 (because it has no non-trivial ideals), but the endomorphism algebra of a simple object must be either
 $M(1,0) \cong M(0,1) \cong \cc$ or $Q(1) \cong \cl_1$ 
 (because all of the larger $M(p,q)$ or $Q(n)$ contain non-invertible elements).
+
+\dave{I need to double check this.}
+\kw{probably this should be moved to the subsection where we discuss pivotal structure}
+Now lets look at some consistency equations on $Q$ type particles.
+\kw{maybe should say that the dot is a odd endomorphism whose square is $\lambda$}
+Define 
+\begin{align}
+\TwodotCap =  \lambda_{\text{cap}} \; \Qcap \quad \quad
+\TwodotCup =  \lambda_{\text{cup}}\; \Qcup \quad \quad
+\Qdotdot =  \lambda \; \QIdentity
+\end{align}
+With these definitions one can show that
+\begin{align}
+\QCapDotL =(-\lambda_{\text{cap}}^{-1} \lambda )\; \QCapDotR \qquad \qquad \QCapDotR  = (\lambda_{\text{cap}}^{-1} \lambda ) \; \QCapDotL\\ 
+\\
+\QCupDotR= (-\lambda_{\text{cup}}^{-1} \lambda )\; \QCupDotL \qquad \qquad \QCupDotL  = (\lambda_{\text{cup}}^{-1} \lambda) \; \QCupDotR
+\end{align}
+\kw{I think it would be more straightforward to make $(-\lambda_{\text{cap}}^{-1} \lambda ) = \pm i$ the fundamental constant,
+since it does not change if we rescale the fermionic dot.}
+\dave{I agree.}
+Applying the relation twice must be equivalent to doing nothing, so that we have $\lambda^2 = -\lambda_{\text{cap}}^2$ and $\lambda^2 = -\lambda_{\text{cup}}^2$.
+The spin structure guarantees that when a fermion goes around a loop which bounds a disk it must pick up a minus sign. 
+Therefore we also have, $\lambda^2 = -\lambda_{\text{cap}} \lambda_{\text{cup}}$.
+Altogether, these relations imply that $\lambda_{\text{cup}} = \lambda_{\text{cap}}$, and also $(-\lambda_{\text{cap}} \lambda)^2 = -1$.
+And we conclude that a dot slide must be purely imaginary. It is convenient to define clockwise dot slides as
+\begin{align}
+&\QCapDotL =\Omega \; \QCapDotR \quad \quad \QCupDotR= \Omega \; \QCupDotL \quad \quad \Omega^* = -\Omega, \quad \lambda^4 >0
+\end{align}
+\dave{It would be good if we could show $\lambda^4>0$, but not sure how.} \ethan{$\lambda^4=1$ means that we can remove eight fermions for free, which we expect from the whole $\zz_8$ fermion classification thing.}
+\kw{If I'm understanding you correctly, then there are no restrictions on $\lambda$ until we consider orientation-reversing maps (reflections).
+By rescaling the dot we can make $\lambda$ any non-zero number.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Fusion spaces} \label{fusion_spaces}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ethan{Do we want to define the $\Gamma$ operators in this section? If so, it might require first discussing pitchforkization. More broadly, what do we want to move here from the Hamiltonian section?}
+\dave{Moved this sentence out of Hamiltoinan section}
+If any of $a,b,c$ are q-type then $N^{abc}_B = N_F^{abc}$, and $V^{abc}$ is mapped to itself under the odd isomorphism $V^{abc} \mapsto V^{abc} \tp \cc^{0|1}$, while in general $N^{abc}_B\neq N^{abc}_F$ if all of $a,b,c$ are m-type. 
+
+
+The input data for a super pivotal category includes a list of simple objects and their types (q or m), as well as a fusion space $V^{ab}_c$ for each triple $a,b,c$ of minimal idempotents
+of $\mcc$.
+This is, of course, a supervector space of super-dimension \kw{is this the std term?} 
+denoted $N^{ab}_c = p|q$, where $p$ is the dimension of the even part
+of $V^{ab}_c$ and $q$ is the dimension of the odd part of $V^{ab}_c$.
+
+It is very important to note that $V^{ab}_c$ is not merely a super vector space -- it also comes equipped with an action
+of (i.e.\ module structure for) the endomorphism algebras of $a$, $b$ and $c$.
+It is impossible to construct the full super pivotal category without knowing this module structure (see XXX below), 
+so the module
+structure is part of the input data.
+
+Note that the module structure implies that $N^{ab}_c = n|n$ if any of $a$, $b$ or $c$ is q-type.
+This is because any representation of $\cl_1$ has equal even and odd dimensions.
+Acting with the odd (and invertible) element of $\cl_1$ gives an isomorphism between the even and odd parts of $V^{ab}_c$, and hence they must have the same dimension.
+
+Here we remark on the pivotal structure of fusion spaces in superfusion categories. First, we have the Frobenius Schur indicator, which is given by
+\begin{align}
+&\kappa_a: \;\; V^{a \bar{a}} \tp_{\text{End}(\bar{a})} V_{\bar{a}a} \rightarrow V^a_a% \\
+%&\tilde{\kappa}_a: \;\; V_{a \bar{a}} \tp_{\text{End}(\bar{a})} V^{\bar{a}a} \rightarrow V^a_a
+\end{align}
+Or diagrammatically, 
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{FS_defn.pdf}}}}
+ \ee
+The Frobenius-Schur move is a special case of the pivot: 
+%\dave{Could either do this (and also specify the dual spaces)}
+%\begin{align}
+%A^{ab}_c:&\;\; V^{\bar{a}a} \tp_{\text{End}({a})}  V^{ab}_c \rightarrow V_{\bar{a} c}^b \\
+%B^{ab}_c:&\;\; V^{ab}_c \tp_{\text{End}(b)}  V^{b\bar{b}} \rightarrow V^{a}_{c\bar{b}}
+%\end{align}
+%--OR--
+\begin{align}
+&P^{ab}_c: \; \; V^{\bar{c} c} \tp_{c} V^{ab}_c \tp_{b} V_{b \bar{b}} \rightarrow V^{\bar{c} a}_{\bar{b}} %\\
+%&\tilde{R}^{ab}_c: \; \; V^{\bar{a} a} \tp_a V^{ab}_c \tp_c V_{c \bar{c}} \rightarrow V^{b \bar{c}}_{\bar{a}}
+\end{align}
+Diagrammatically, this looks like 
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{pivot_defn.pdf}}}}
+\ee
+In terms of the pivot, we see that $\kappa_a = [P^{0\bar a}_{\bar a}]_{00}$. From the diagrammatics, we see that the pivot implements a $2\pi/3$ rotation of the fusion space. When we discuss the $F$-symbols in Sec \ref{Fsymbols}, we will be able to derive an expression for $P^{ab}_c$ in terms of the $F$-symbols and quantum dimensions. 
+
+Acting with $P$ three times performs a $2\pi$ rotation of a fusion vertex:
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{pivot_cubed.pdf}}}}\ee
+In bosonic theories, we must always have $P^3=\unit$: rotating a fusion vertex by $2\pi$ is equivalent to doing nothing.
+In the superfusion setting there is a more interesting posibility, because acting with $P^3$ on some vector $v\in V^{ab}_c$ performs a $2\pi$ rotation on the fermion framing of $v$.
+Rotating the fermion framing is equivalent to multiplication by $-1$ if $v$ has odd fermion parity. 
+
+Therefore, in superfusion categories, the pivotal structure relation $P^3=\unit$ is realized {\it projectively}, in the sense that 
+\be P^3 = (-1)^F,\ee
+where $(-1)^F$ is the fermion parity operator, which acts on any $v\in V^{abc}$ as $(-1)^F v = (-1)^{|v|}v$.
+
+\ethan{recapitulate odd endo operators and reps of clifford algebras}
+Finally, we mention that the $\Gamma_i$ operators defined in \eqref{gamma2gamma3_defn} can be used to constrain the structure of fusion spaces involving q-type particles.  
+Recall that the non-zero $\{\Gamma_i\}$ satisfy $\{\Gamma_i,\Gamma_j\} = 2\lambda\delta_{ij}$, the defining anti-commutation relation for complex Clifford algebras. 
+This means that the $\{\Gamma_i\}$ at a vertex $v$ with fusion space $V^{abc}$ where $n$ of$a,b,c$ are q-type generate a representation of $\cl_n$. 
+This is to be expected, since if $n$ lines emanating from $v$ are labeled with q-type objects, then the Hilbert space associated with the three lines is $\cl_1^{\tp n}\cong\cl_n$ (although this is actually over-complete, in the sense that the physical Hilbert space is smaller, see Sec \ref{modified_tensor_product}). 
+
+Requiring that the Hilbert space at a given vertex admits a representation of $\cl_n$ places constraints on the types of fermionic theories one can write down. 
+For example, we can use this to show that a ``q-type Fibbonacci'' theory which contains a single q-type particle $\tau$ with the fusion space $V^{\tau\tau\tau}\cong \cc^{1|1}$, cannot exist. 
+Indeed, if $V^{\tau\tau\tau}$ is nontrivial and $\tau$ is q-type, then we must be able to find a representation of $\cl_3$ on $V^{\tau\tau\tau}$.
+This is impossible if $V^{\tau\tau\tau}\cong \cc^{1|1}$, since $\cc^{1|1}$ is not large enough to represent $\cl_3$. 
+This means that theories which contain a q-type particle $\tau$ with $V^{\tau\tau\tau}\neq0$ must contain nontrivial fusion multiplicities, which provide us with fusion spaces that are large enough to admit a representation of $\cl_3$.
+Indeed such a q-type particle exists in the $\halfesix$ theory considered earlier, which possesses nontrivial fusion multiplicities that allow the relevant fusion spaces in the theory to be large enough to represent $\cl_3$. 
+The $\Gamma$ matrices in the $\halfesix$ case are essentially determined by the relations \eqref{esixdotslide}. 
+
 
 \subsubsection{Tensor products of fusion rules}
 \dave{Just wanted to add some notes on a confusing point that we should try to straighten out.}
@@ -6525,167 +6627,11 @@ isomorphic to $c$ and objects oddly isomorphic to $c$, and similar things are tr
 We should keep thinking about this.}
 
 
-\kwsep
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Kozul sign rule} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\ethan{Old simple objects section:}
-
-\medskip
-
-
-Simple objects correspond to minimal idempotents.
-%In an ordinary fusion category simple objects have the defining feature that there endomorphisms are given by $\mathbb{C}$.
-%This is because any simple algebra over $\mathbb{C}$ is Morita equivalent to $\mathbb{C}$. \ethan{true, 
-In ordinary fusion categories, the endomorphism ring of any simple object is the trivial algebra $\cc$. 
-This is due to Schur's lemma: if an object $x$ is simple, then any morphism in $\End(x)$ 
-must be an isomorphism, and hence $\End(x) = \cc$. 
-Objects with $\End(x) = \cc$ are still possible in the more general fermionic setting we consider here, 
-and we will refer to them as {\it m-type} objects.
-
-\kw{If we are going to use the [mq]-type terminology, then it probably we should have already introduced
-the classification of simple super algebras $M(p,q)$, $Q(n)$ and the Morita equivalences between them.
-Could possibly go in an appendix.}
-
-As we saw in the Ising example, the endomorphisms of simple objects in fermionic theories aren't always $\mathbb{C}$, and may instead be a simple super algebra over $\mathbb{C}$. 
-By Schur's lemma every element in $\End(x)$ is invertible if $x$ is simple, and so $\End(x)$ must be a division algebra. 
-The only $\zz_2$-graded division algebra is the first complex Clifford algebra $\cl_1$, 
-%As was the case for the image of $\sigma$ under condensation.
-%All simple super algebras are Morita equivalent to the clifford algebra with one odd generator $\mathbb{C} \ell_1$\cite{wall1964}.
-which is generated by two elements: $1$ and an odd generator $\Gamma$ satisfying $\Gamma^2 = \lambda$. 
-(If we change basis by replacing $\Gamma$ with $a \Gamma$ (for any non-zero $a\in \cc$), then this relation becomes
-$\Gamma^2 = a^2\lambda$.
-So we may assume $\lambda$ is any non-zero complex number.)
-\kw{added above to be consistent with the discussion below.}
-Generic elements in $\cl_1$ are complex linear combinations of $1$ and $\Gamma$.
-The simplest vector space representing $\cl_1$ is the super vector space $\mathbb{C}^{1|1}$.
-We will refer to simple objects whose endomorphism algebra is $\cl_1$ as {\it q-type} objects.
-In summary, our terminology is 
-\begin{align}
-\vcenter{\xymatrix @!0 @M=1mm @C=25mm{
-& \text{End}(x) = \mathbb{C} \ar@{<->}[rr] &   &\text{$x$ is a simple m-type object}&  \\
-&\text{End}(x) = \mathbb{C} \ell_1 \ar@{<->}[rr]  &  &\text{$x$ is a simple q-type object}&
-	}}
-\end{align}
-
-$$
-$$
-- review irreducible representations of super algebra's via \cite{jozefiak1988}??
-
-- Duality axiom?
-$$
-$$
-
-
-
-A defining feature of a simple object is the quantum dimension
-\begin{align}
-d_x = \text{Tr} \; x = \text{picture}
-\end{align}
-
-\dave{I need to double check this.}
-\kw{probably this should be moved to the subsection where we discuss pivotal structure}
-Now lets look at some consistency equations on $Q$ type particles.
-\kw{maybe should say that the dot is a odd endomorphism whose square is $\lambda$}
-Define 
-\begin{align}
-\TwodotCap =  \lambda_{\text{cap}} \; \Qcap \quad \quad
-\TwodotCup =  \lambda_{\text{cup}}\; \Qcup \quad \quad
-\Qdotdot =  \lambda \; \QIdentity
-\end{align}
-With these definitions one can show that
-\begin{align}
-\QCapDotL =(-\lambda_{\text{cap}}^{-1} \lambda )\; \QCapDotR \qquad \qquad \QCapDotR  = (\lambda_{\text{cap}}^{-1} \lambda ) \; \QCapDotL\\ 
-\\
-\QCupDotR= (-\lambda_{\text{cup}}^{-1} \lambda )\; \QCupDotL \qquad \qquad \QCupDotL  = (\lambda_{\text{cup}}^{-1} \lambda) \; \QCupDotR
-\end{align}
-\kw{I think it would be more straightforward to make $(-\lambda_{\text{cap}}^{-1} \lambda ) = \pm i$ the fundamental constant,
-since it does not change if we rescale the fermionic dot.}
-\dave{I agree.}
-Applying the relation twice must be equivalent to doing nothing, so that we have $\lambda^2 = -\lambda_{\text{cap}}^2$ and $\lambda^2 = -\lambda_{\text{cup}}^2$.
-The spin structure guarantees that when a fermion goes around a loop which bounds a disk it must pick up a minus sign. 
-Therefore we also have, $\lambda^2 = -\lambda_{\text{cap}} \lambda_{\text{cup}}$.
-Altogether, these relations imply that $\lambda_{\text{cup}} = \lambda_{\text{cap}}$, and also $(-\lambda_{\text{cap}} \lambda)^2 = -1$.
-And we conclude that a dot slide must be purely imaginary. It is convenient to define clockwise dot slides as
-\begin{align}
-&\QCapDotL =\Omega \; \QCapDotR \quad \quad \QCupDotR= \Omega \; \QCupDotL \quad \quad \Omega^* = -\Omega, \quad \lambda^4 >0
-\end{align}
-\dave{It would be good if we could show $\lambda^4>0$, but not sure how.} \ethan{$\lambda^4=1$ means that we can remove eight fermions for free, which we expect from the whole $\zz_8$ fermion classification thing.}
-\kw{If I'm understanding you correctly, then there are no restrictions on $\lambda$ until we consider orientation-reversing maps (reflections).
-By rescaling the dot we can make $\lambda$ any non-zero number.}
-
-
-\subsection{Fusion spaces} \label{fusion_spaces}
-\dave{Moved this sentence out of Hamiltoinan section}
-If any of $a,b,c$ are q-type then $N^{abc}_B = N_F^{abc}$, and $V^{abc}$ is mapped to itself under the odd isomorphism $V^{abc} \mapsto V^{abc} \tp \cc^{0|1}$, while in general $N^{abc}_B\neq N^{abc}_F$ if all of $a,b,c$ are m-type. 
-
-
-The input data for a super pivotal category includes a list of simple objects and their types (q or m), as well as a fusion space $V^{ab}_c$ for each triple $a,b,c$ of minimal idempotents
-of $\mcc$.
-This is, of course, a supervector space of super-dimension \kw{is this the std term?} 
-denoted $N^{ab}_c = p|q$, where $p$ is the dimension of the even part
-of $V^{ab}_c$ and $q$ is the dimension of the odd part of $V^{ab}_c$.
-
-It is very important to note that $V^{ab}_c$ is not merely a super vector space -- it also comes equipped with an action
-of (i.e.\ module structure for) the endomorphism algebras of $a$, $b$ and $c$.
-It is impossible to construct the full super pivotal category without knowing this module structure (see XXX below), 
-so the module
-structure is part of the input data.
-
-Note that the module structure implies that $N^{ab}_c = n|n$ if any of $a$, $b$ or $c$ is q-type.
-This is because any representation of $\cl_1$ has equal even and odd dimensions.
-Acting with the odd (and invertible) element of $\cl_1$ gives an isomorphism between the even and odd parts of $V^{ab}_c$, and hence they must have the same dimension.
-
-Here we remark on the pivotal structure of fusion spaces in superfusion categories. First, we have the Frobenius Schur indicator, which is given by
-\begin{align}
-&\kappa_a: \;\; V^{a \bar{a}} \tp_{\text{End}(\bar{a})} V_{\bar{a}a} \rightarrow V^a_a% \\
-%&\tilde{\kappa}_a: \;\; V_{a \bar{a}} \tp_{\text{End}(\bar{a})} V^{\bar{a}a} \rightarrow V^a_a
-\end{align}
-Or diagrammatically, 
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{FS_defn.pdf}}}}
- \ee
-The Frobenius-Schur move is a special case of the pivot: 
-%\dave{Could either do this (and also specify the dual spaces)}
-%\begin{align}
-%A^{ab}_c:&\;\; V^{\bar{a}a} \tp_{\text{End}({a})}  V^{ab}_c \rightarrow V_{\bar{a} c}^b \\
-%B^{ab}_c:&\;\; V^{ab}_c \tp_{\text{End}(b)}  V^{b\bar{b}} \rightarrow V^{a}_{c\bar{b}}
-%\end{align}
-%--OR--
-\begin{align}
-&P^{ab}_c: \; \; V^{\bar{c} c} \tp_{c} V^{ab}_c \tp_{b} V_{b \bar{b}} \rightarrow V^{\bar{c} a}_{\bar{b}} %\\
-%&\tilde{R}^{ab}_c: \; \; V^{\bar{a} a} \tp_a V^{ab}_c \tp_c V_{c \bar{c}} \rightarrow V^{b \bar{c}}_{\bar{a}}
-\end{align}
-Diagrammatically, this looks like 
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{pivot_defn.pdf}}}}
-\ee
-In terms of the pivot, we see that $\kappa_a = [P^{0\bar a}_{\bar a}]_{00}$. From the diagrammatics, we see that the pivot implements a $2\pi/3$ rotation of the fusion space. When we discuss the $F$-symbols in Sec \ref{Fsymbols}, we will be able to derive an expression for $P^{ab}_c$ in terms of the $F$-symbols and quantum dimensions. 
-
-Acting with $P$ three times performs a $2\pi$ rotation of a fusion vertex:
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{pivot_cubed.pdf}}}}\ee
-In bosonic theories, we must always have $P^3=\unit$: rotating a fusion vertex by $2\pi$ is equivalent to doing nothing.
-In the superfusion setting there is a more interesting posibility, because acting with $P^3$ on some vector $v\in V^{ab}_c$ performs a $2\pi$ rotation on the fermion framing of $v$.
-Rotating the fermion framing is equivalent to multiplication by $-1$ if $v$ has odd fermion parity. 
-
-Therefore, in superfusion categories, the pivotal structure relation $P^3=\unit$ is realized {\it projectively}, in the sense that 
-\be P^3 = (-1)^F,\ee
-where $(-1)^F$ is the fermion parity operator, which acts on any $v\in V^{abc}$ as $(-1)^F v = (-1)^{|v|}v$.
-
-\ethan{recapitulate odd endo operators and reps of clifford algebras}
-Finally, we mention that the $\Gamma_i$ operators defined in \eqref{gamma2gamma3_defn} can be used to constrain the structure of fusion spaces involving q-type particles.  
-Recall that the non-zero $\{\Gamma_i\}$ satisfy $\{\Gamma_i,\Gamma_j\} = 2\lambda\delta_{ij}$, the defining anti-commutation relation for complex Clifford algebras. 
-This means that the $\{\Gamma_i\}$ at a vertex $v$ with fusion space $V^{abc}$ where $n$ of$a,b,c$ are q-type generate a representation of $\cl_n$. 
-This is to be expected, since if $n$ lines emanating from $v$ are labeled with q-type objects, then the Hilbert space associated with the three lines is $\cl_1^{\tp n}\cong\cl_n$ (although this is actually over-complete, in the sense that the physical Hilbert space is smaller, see Sec \ref{modified_tensor_product}). 
-
-Requiring that the Hilbert space at a given vertex admits a representation of $\cl_n$ places constraints on the types of fermionic theories one can write down. 
-For example, we can use this to show that a ``q-type Fibbonacci'' theory which contains a single q-type particle $\tau$ with the fusion space $V^{\tau\tau\tau}\cong \cc^{1|1}$, cannot exist. 
-Indeed, if $V^{\tau\tau\tau}$ is nontrivial and $\tau$ is q-type, then we must be able to find a representation of $\cl_3$ on $V^{\tau\tau\tau}$.
-This is impossible if $V^{\tau\tau\tau}\cong \cc^{1|1}$, since $\cc^{1|1}$ is not large enough to represent $\cl_3$. 
-This means that theories which contain a q-type particle $\tau$ with $V^{\tau\tau\tau}\neq0$ must contain nontrivial fusion multiplicities, which provide us with fusion spaces that are large enough to admit a representation of $\cl_3$.
-Indeed such a q-type particle exists in the $\halfesix$ theory considered earlier, which possesses nontrivial fusion multiplicities that allow the relevant fusion spaces in the theory to be large enough to represent $\cl_3$. 
-The $\Gamma$ matrices in the $\halfesix$ case are essentially determined by the relations \eqref{esixdotslide}. 
-
-\subsubsection{Kozul sign rule} Because of the anti-commuting nature of fusion spaces (i.e., because they can have odd fermion number), taking tensor products of fusion spaces necessitates defining a normal ordering 
-\kw{doesn't ``normal ordering" mean putting creation operators before annihilation operators?;
-probably this should be just plain ``ordering" or maybe ``sign-ordering" (an ordering modulo even permutations)} \ethan{Yeah, I like ``sign-ordering''! Let's use that.}
+Because of the anti-commuting nature of fusion spaces (i.e., because they can have odd fermion number), taking tensor products of fusion spaces necessitates defining an ordering 
 of the fusion spaces. 
 We will write $V^{ab}_{c,n}$ to designate that the vector space $V^{ab}_c$ appears as the $n$th factor in a given tensor product (although when we are only talking about one fusion vertex we will omit the subscript).\footnote{One 
 possibility would be to assign a normal-ordering based on the order in which the fusion spaces appear in the tensor product. 
@@ -6771,6 +6717,7 @@ where $\sim$ is the equivalence relation
 (V^{ab}_{x,1} f_3) \tp_{\mathbb{C}}V^{xc}_{d,2} \sim V^{ab}_{x,1} \tp_{\mathbb{C}} (f_3 V^{xc}_{d,2})
 \end{align}
 for all $f \in \text{End}(x)$. 
+Analogous relations hold for fusion spaces connected in different ways. 
 %Likewise, we have $V^{ax}_d \tp_{\End(x)} V^{bc}_x = V^{ax}_d \tp_\cc V^{bc}_x / \sim$, where $\sim$ is the equivalence relation $(V^{ax}_{d,1} f_3) \tp_{\mathbb{C}}V^{bc}_{x,2} \sim V^{ax}_{d,1} \tp_{\mathbb{C}} (f_3 V^{bc}_{x,2})$ for all $f\in \End(x)$. 
 
 Using the modified tensor product allows us to easily write down the correct version of \eqref{resid}, which is 
@@ -6797,6 +6744,22 @@ There are two types of fusion diagrams we need to consider, depending how the fu
 	\end{align}
 We note that both $L_f$ and $R_f$ are always {\it even} maps, regardless of the parity of $f$. 
 
+Tensoring over endomorphisms in a fusion space is equivalent to requiring the fusion space to be invariant under the action of $L_f$ and $R_f$. 
+Said another way, any vectors related by application of $L_f$ or $R_f$ are considered equivalent, which makes it natural to think of $L_f$ and $R_f$ as gauge transformations, since they encode redundancy in physical vector spaces.
+
+It is often useful to do calculations %in the ``extended" vector space, i.e., where we compute with 
+by working with explicit choices of representatives of vectors in each isomorphism class, imposing the requirement that any diagrammatic manipulation commutes with all endomorphisms generated by $L_f$ and $R_f$. 
+After doing calculations, we can project back onto the physical subspace by modding out by the equivalence relation \eqref{equivreln}. 
+This can be done provided that $L_f$ and $R_f$ commute on any fusion diagram. For example, for a fusion diagram built from three fusion vertices, we require that
+\begin{align}
+L_{f, 32}L_{g,21} V^{ab}_{x,3} \tp_{\mathbb{C}} V^{xc}_{y,2} \tp_{\mathbb{C}} V^{yd}_{w,1} = L_{g,21} L_{f, 32} V^{ab}_{x,3} \tp_{\mathbb{C}} V^{xc}_{y,2} \tp_{\mathbb{C}} V^{yd}_{w,1} 
+\end{align}
+for all $f \in \text{End}(x)$ and $g \in \text{End}(y)$. 
+%In fact this is always the case, since as mentioned earlier both $L_f$ and $R_f$ are even maps. 
+%Although they may have a nontrivial action on the fusion spaces.
+From now, when we write $\tp$ we will always mean $\tp_\cc$, unless specified otherwise.
+
+
 %Tensoring over endomorphisms in a fusion space is equivalent to requiring the fusion space to be invariant under the action of $L_f$ and $R_f$. 
 %Said another way, any vectors related by application of $L_f$ or $R_f$ are considered equivalent, which makes it natural to think of $L_f$ and $R_f$ as gauge transformations, since they encode redundancy in physical vector spaces.
 
@@ -6815,152 +6778,6 @@ We note that both $L_f$ and $R_f$ are always {\it even} maps, regardless of the 
 Quotienting by the local relations in (\ref{FusionSpaceRelation}) is reminiscent of the condensation of electron pairs in superconductors: these relations say that pairs of fermions can be freely added or removed from the condensate, and that fermions lines terminating on q-type objects (which are the Majorana spin structure defects in this analogy) are able to move around freely. 
 Indeed, a fermionic phase of matter will generate such terms at second order in perturbation theory when proximity coupled to a superconductor.
 Thus, heuristically, we can think of q-type particles as the result of proximity induced superconductivity on a fusion category with only m-type particles.
-
-
-\kwsep
-
-\ethan{Old modified tensor product section:}
-
-The set of input data for a super fusion category will not only constitute a list of simple objects and their types (Q or M), but also their fusion rules. 
-The fusion rules can be encapsulated by integers $N_c^{ab} = p+q$ 
-%taking values in $\zz_{p+q}$, 
-\kw{I'm confused by this $\zz_{p+q}$ notation.}
-\dave{fixed.}
-%\begin{align}
-%N_{c}^{ab} = 0, 1, \cdots p, p+1, \cdots p+q+1
-%\end{align}
-where $p$ ($q$) is the number of even (odd) ways that $a$ and $b$ can fuse to $c$.
-Therefore, the graded vector space assigned to the fusion space of $a$ and $b$ into $c$ is $\mathbb{C}^{p|q}$:
-\begin{align}
-V^{ab}_c \cong \mathbb{C}^{p|q}
-\end{align}
-For any homogeneous vector $\ket{\psi} \in V^{ab}_c$ 
-we will denote its grading by $|\psi| \in \{ 0, 1\}$, where $0$ is even parity and $1$ is odd.
-If any of the particles $a,b,c$ involved in the fusion are q-type, then there are always as many even fusion channels as odd ones, and the space is of the form $\mathbb{C}^{p|p}$.
-This follows from the fact that $Q$ type particles always possess odd isomorphisms, which imply that the even and odd parts of the fusion space in question are isomorphic, and hence have the same dimension. 
-\dave{Can we show $m \tp m \rightarrow q$ is not allowed? This seems plausible.}
-\kw{No.  In the $C_{2n}$ examples ($A_{4n-1}$ modulo a fermion), the tensor generator is m-type if $n > 1$.
-But eventually it tensor-generates a q-type object.}
-\dave{Right. That's interesting. Thanks. I'll add a comment on this at some point.}
-\dave{Contrast an $m \tp m \rightarrow m$ fusion space of super dimension $(p|p)$ with a $q \tp q \rightarrow m$ fusion space of super dimension $(p|p)$.}
-
-Because of the anti-commuting nature of super vector spaces, taking tensor products in super vector spaces requires defining an ordering of the vectors in the tensor product.
-\kw{perhaps should remark somewhere that it is not convenient to do the usual thing
-and inherit an ordering from the order of the symbols in the equation.
-This is because our $V^{ab}_c$'s are associated to points in a 2- (or perhaps 3-) manifold.
-It's less error-prone to explicitly put the ordering-number beside each (potential) fermion.
-Perhaps this is already discussed above in the examples?}
-\dave{I agree. I don't think we've included such a discussion yet, but we definitely should.}
-We will write $V^{ab}_{c,n}$ to designate that the vector space $V^{ab}_c$ appears as the $n$th term in a tensor product (although when we are only talking about one fusion vertex we may omit the subscript).
-Depending on the parity of the vectors involved, interchanging two indices may result in the interchange of two fermions, for which we pick up a minus sign. 
-% [KW: "braiding structure" is not the right term here -- nothing is moving around in a manifold, we're just changing the sign-ordering]  Thus, superfusion categories possess a canonical braiding structure given by the Koszul sign rule:
-%\dave{Need to think about tensoring over endmorphisms, how these play together, and also when we 'extend' the vector space so that local moves implement tensoring over endomorphisms.}
-%\begin{align}
-%P_{12}: \; \; &V^{ab}_{c,1} \tp_{\mathbb{C}} V^{xy}_{z,2} \rightarrow V^{ab}_{c,2} \tp_{\mathbb{C}} V^{xy}_{z,1} \\
-%		  & \ket{\psi}\tp_\mathbb{C} \ket{\eta}  \mapsto (-1)^{|\psi| |\eta|} \ket{\psi} \tp_{\mathbb{C}} \ket{\eta}
-%\end{align}
-\begin{align}
-\vcenter{\xymatrix @!0 @M=1mm @C=42mm{
- &P_{12}: \; \;V^{ab}_{c,1} \tp_{\mathbb{C}} V^{xy}_{z,2} \ar[r]            & V^{ab}_{c,2} \tp_{\mathbb{C}} V^{xy}_{z,1} \\
-		  &\;\;\;\;\;\;\; \ket{\psi}\tp_\mathbb{C} \ket{\eta}  \ar@{|->}[r] & (-1)^{|\psi| |\eta|} \ket{\psi} \tp_{\mathbb{C}} \ket{\eta}
-	}} \quad \quad \ket{\psi} \in V^{ab}_{c} \;\; \text{and} \;\;  \ket{\eta} \in V^{xy}_{z}
-\end{align}
-This just says that if both $\ket{\psi}$ and $\ket{\eta}$ are odd vectors, then we pick up a factor of $-1$ when we interchange them in a tensor product. 
-
-There is an important subtlety involved when we tensor together fusion spaces involving q-type particles to form fusion diagrams. To see where this comes from, suppose $x$ is a q-type particle, and consider the resolution of the identity 
-\begin{align} \label{resid}
-\Hom(x,x) \cong \bigoplus_y \Hom(x,y) \tp_\cc \Hom(y,x),
-\end{align}
-where $x$ is any object and the sum runs over simple objects $y$. 
-The above relation is actually {\it incorrect}, since if $x$ is simple then this reads $\Hom(x,x) = \Hom(x,x) \tp_\cc \Hom(x,x)$, which since $\End(x) = \cl_1$ implies $\cl_1 \cong \cl_1\tp \cl_1 \cong \cl_2$, a contradiction. In order to fix this, we need to mod out by ``internal'' degrees of freedom carried by q-type particles. 
-
-Graphically, modding out by these internal degrees of freedom is equivalent to modding out by local relations involving q-type particles. 
-These relations are given by locally creating pairs of fermions and by sliding fermions from one fusion vertex to another:
- \begin{align}
-\LocalRelationUp \sim \LocalRelationDown \quad \quad  \LocalRelationLeft \sim \LocalRelationRight \lambda^{-1} .
-\label{FusionSpaceRelation}
- \end{align}
-%\kw{I think you need to use $-\lambda^{-1}$ or change the ordering}
-%\dave{Agreed. Changed ordering to be consistent with other diagrams.}
-Since the first equivalence relation can be derived from the second, and vice versa, both relations define the same equivalence class on the fusion space.
-A tensor product taken over a q-type particle must be quotiented by isomorphisms like this. Explicitly, 
-\be \ba
- &V^{ab}_{x,1} \tp_{\mathbb{C}} V^{xc}_{d,2}\quad  \text{is replaced by} \quad V^{ab}_{x,1} \tp_{\text{End}(x)} V^{xc}_{d,2}, \text{ and} \\ 
-  &V^{ax}_{c,1} \tp_{\mathbb{C}} V^{bc}_{x,2}\quad  \text{is replaced by} \quad V^{ax}_{b,1} \tp_{\text{End}(x)} V^{bc}_{x,2},
-\ea 
-\ee
-where $\tp_{\End(x)}$ means that $\End(x)$ is taken to be the tensor unit. Explicitly, 
-%\begin{align}
-%V^{ab}_{x,1} \tp_{\text{End}(x)} V^{xc}_{d,1} \equiv V^{ab}_{x,2} \tp_{\mathbb{C}}V^{xc}_{d,1}/\langle (V^{ab}_{x,2} \circ f_3) \tp_{\mathbb{C}}V^{xc}_{d,1} \sim V^{ab}_{x,2} \tp_{\mathbb{C}} (f_3\circ V^{xc}_{d,1}) \rangle
-%\label{qtensor}
-%\end{align}
-\begin{align}
-V^{ab}_{x,1} \tp_{\text{End}(x)} V^{xc}_{d,2} = V^{ab}_{x,1} \tp_{\mathbb{C}}V^{xc}_{d,2}/ \sim,
-\label{qtensor}
-\end{align}
-where $\sim$ is the equivalence relation 
-\begin{align} \label{equivreln}
-(V^{ab}_{x,1} f_3) \tp_{\mathbb{C}}V^{xc}_{d,2} \sim V^{ab}_{x,1} \tp_{\mathbb{C}} (f_3 V^{xc}_{d,2})
-\end{align}
-for all $f \in \text{End}(x)$.
-Likewise, we have $V^{ax}_d \tp_{\End(x)} V^{bc}_x = V^{ax}_d \tp_\cc V^{bc}_x / \sim$, where $\sim$ is the equivalence relation $(V^{ax}_{d,1} f_3) \tp_{\mathbb{C}}V^{bc}_{x,2} \sim V^{ax}_{d,1} \tp_{\mathbb{C}} (f_3 V^{bc}_{x,2})$ for all $f\in \End(x)$. 
-
-\dave{Maybe we should be more careful about the defintion of $f$? Perhaps we should have 3 versions. One for upper left leg, one for upper right, and one for bottom leg. It's almost the same issue as adding and removing identity lines in normal fusion categories.}
-
-
-Using the modified tensor product allows us write down the correct version of \eqref{resid}, which is 
-\begin{align}
-\Hom(x,x) \cong \bigoplus_y \Hom(x,y) \tp_{\End(y)} \Hom(y,x).
-\end{align}
-In particular, if $x$ is a simple q-type object, then we (correctly) have $\cl_1 \cong \Hom(x,x) \cong \Hom(x,x)\tp_{\End(x)} \Hom(x,x) \cong \cl_1\tp_{\cl_1}\cl_1 \cong \cl_1$.  
-
-Quotienting by the local relations in (\ref{FusionSpaceRelation}) is reminiscent of superconductivity. 
-Indeed the relation says that pairs of fermions can be freely created and removed as well as hopped along Q-type edges. 
-A fermionic phase of matter will generate such terms at second order in perturbation theory when proximity coupled to an  ordinary superconductor.
-Thus, heuristically, we can think of Q-type particles as the result of proximity induced superconductivity on a super fusion category with only M-type particles.
-
-%This is idea is very important in the general theory of superfusion categories, and so we devote the next section to examining its consequences in more detail. 
-
-%\subsection{Tensor product}
-%In this section we elaborate on taking tensor products in superfusion categories. 
-%For m-type particles, the tensor product is taken over $\mathbb{C}$, as usual. 
-
-%As mentioned above, this is not the case for tensor products involving q-type particles. In general, we need to quotient out by endomorphism rings when taking tensor products, as in \eqref{qtensor}.
-
-To take the quotient in \eqref{qtensor} explicitly (which we must do when performing calculations numerically), we impose the condition that physical vectors in the space $V^{ab}_x \tp_{\mathbb{C}} V^{xc}_d$ be left invariant under the action of $\text{End}(x)$. 
-%For a q-type particle $x$, we have $\End(x) \cong \cl_1$. Each of the two generators of $\cl_1$ results in an isomorphism of the fusion spaces defined by
-There are two types of fusion diagrams we need to consider, depending how the fusion vertices that they are formed from are connected. This leads to two isomorphisms of fusion diagrams:
-\begin{align}
-&\vcenter{\xymatrix @!0 @M=1mm @C=42mm{
- &L_f: \; \;V^{ab}_{x,2} \tp_{\mathbb{C}} V^{xc}_{d,1} \ar[r]            & V^{ab}_{x,2} \tp_{\mathbb{C}} V^{xc}_{d,1}  \\
-		  &\;\;\;\;\;\;\; \ket{\psi}\tp_\mathbb{C} \ket{\eta}  \ar@{|->}[r] & (f\ket{\psi}) \tp_{\mathbb{C}} (f^{-1} \ket{\eta})  
-		  }} \quad \quad f \in \text{End}(x)\\
-		  \\		  
-&		  \vcenter{\xymatrix @!0 @M=1mm @C=42mm{
-		  &R_f: \; \;V^{ay}_{d,1} \tp_{\mathbb{C}} V^{bc}_{y,2} \ar[r]            & V^{ay}_{d,1} \tp_{\mathbb{C}} V^{bc}_{y,2} \\
-		  &\;\;\;\;\;\;\; \ket{\psi}\tp_\mathbb{C} \ket{\eta}  \ar@{|->}[r] & (f\ket{\psi}) \tp_{\mathbb{C}} (f^{-1} \ket{\eta})
-	}}	\quad \quad f \in \text{End}(y)
-	\end{align}
-Importantly, we note that both $L_f$ and $R_f$ are always {\it even} maps, regardless of the parity of $f$. 
-
-Tensoring over endomorphisms in a fusion space is equivalent to requiring the fusion space to be invariant under the action of $L_f$ and $R_f$. 
-Said another way, any vectors related by application of $L_f$ or $R_f$ are considered equivalent, which makes it natural to think of $L_f$ and $R_f$ as gauge transformations, since they encode redundancy in physical vector spaces.
-
-It is often useful to do calculations %in the ``extended" vector space, i.e., where we compute with 
-by working with explicit choices of representatives of vectors in each isomorphism class, imposing the requirement that any diagrammatic manipulation commutes with all endomorphisms generated by $L_f$ and $R_f$. 
-After doing calculations, we can project back onto the physical subspace by modding out by the equivalence relation \eqref{equivreln}. 
-This can be done provided that $L_f$ and $R_f$ commute on any fusion diagram. For example, for a fusion diagram built from three fusion vertices, we require that
-\begin{align}
-L_{f, 32}L_{g,21} V^{ab}_{x,3} \tp_{\mathbb{C}} V^{xc}_{y,2} \tp_{\mathbb{C}} V^{yd}_{w,1} = L_{g,21} L_{f, 32} V^{ab}_{x,3} \tp_{\mathbb{C}} V^{xc}_{y,2} \tp_{\mathbb{C}} V^{yd}_{w,1} 
-\end{align}
-for all $f \in \text{End}(x)$ and $g \in \text{End}(y)$. 
-\dave{Need to show this.}
-%In fact this is always the case, since as mentioned earlier both $L_f$ and $R_f$ are even maps. 
-%Although they may have a nontrivial action on the fusion spaces.
-From now, when we write $\tp$ we will always mean $\tp_\cc$, unless specified otherwise.
-
-\dave{Let $V^{ab}_x$ be a fusion vertex of $3$ Q type particles. Then if $U_L$ is the action of sliding a dot up past the vertex to the left and similarly $U_R$ for sliding a dot up to the right. Then you can show that $U_L = U_L^{-1}$ and $U_R = U_R^{-1}$ and $U_L U_R = - U_R U_L$.}
-
 
 
 %%%%%%%%%%%%%%%%%%
@@ -7156,18 +6973,6 @@ can show
 
 
 \subsection{Comments on the general construction of super pivotal categories}
-\begin{figure}
-\includegraphics{folding_A3.pdf}
-\caption{Performing the condensation from the Ising theory to the $C_2$ theory. The Dynkin diagram for $A_3$ folds about the node labeled by $\sigma$, producing the Dynkin diagram 
-for $C_2$. The first node in the $C_2$ Dynkin diagram is the (fermionic) vacuum, and the second node is $\beta$, the image of $\sigma$ under condensation.
-\kw{Scott and I use the convention that q-type particles in the principal graph get a double circle, and lines connecting
-m-type and q-type particles are doubled, with arrow pointing to the m-type particle.}
-\kw{let's put this figure later in this section}
-} 
-\end{figure}
-
-
-
 
 
 
@@ -7293,7 +7098,9 @@ the big Hilbert space on which the Hamiltonian is defined is
 \begin{align}	\label{GraphHilbertSpace}
  \mch_\mcg =\bigotimes_{v \in \mcv} \mch_v  = \mch_{v_1} \tp \mch_{v_{2}} \tp \dots \tp \mch_{v_n} .
 \end{align}
-\kw{Do we really want reverse ordering here?} \ethan{I used to want to, but that was back when I was worried about being super careful with all the fermion ordering stuff. Changed the ordering back to the natural one.}
+The tensor products above are supercommutative, in the sense that for $\psi\in \mch_{v_i},\eta\in \mch_{v_{i+1}}$, $\psi \tp \eta = (-1)^{|\psi||\eta|}\eta\tp\psi \in \mch_{v_{i+1}} \tp \mch_{v_i}$. 
+For details on this, see Appendix \ref{??}
+
 The vertex Hilbert spaces $\mch_{v_n}$ will depend on three sets of choices.
 First, we must choose an orientation of each edge of $\mcg$.
 (This is because of the possibility of non-trivial Frobenius-Schur indicators; see below.)
@@ -7376,92 +7183,13 @@ This allows us to treat $a$ and $a^*$ as distinct objects, even when they happen
 Now, instead of $V^{aa}$, we have $V^{aa^*} = \End(a)$, which has a canonical element $id: a\to a$.
 
 Why the pitchforks?
-Because rotations by $2\pi/3$ can act non-trivially on $V^{aaa}$.
+Because rotations by $2\pi/3$ can act non-trivially on $V^{aaa}$, and so it is helpful to choose a vertex configuration where every outgoing edge is on the same footing. 
 This is true even in the bosonic case.
 
 Why the spin framings?
 Because $V^{abc}$ has a spin-flip automorphism, and also because we need to 
 enhance the graph $\mcg$ with information related to the spin structure of the ambient manifold 
 in order to write the edge terms, as explained below.
-
-
-\subsection{(older version)}
-
-\kw{I think most of this older version can be discarded.}
-
-
-Before we can explain the Hamiltonian \eqref{ham}, we need to define the graph which hosts the Hilbert space on which the Hamiltonian operates. 
-The graph is given by the collection of vertices and edges of a fixed cell decomposition of $\Sigma$.
-The vertices are colored by a basis vector in the fusion space of $r$ simple objects for an $r$-valent vertex\footnote{Generically, one could color both the vertices and the edges, but this holds redundant information.}.
-%The edges are colored by simple objects in $\mcc$ and the vertices by a basis vector in the fusion space of $r$ simple objects for an $r$-valent vertex.
-Each coloring determines an orthogonal basis state in the the Hilbert space, and the collection of all such colorings forms the total Hilbert space.
-%As expected, the fermionic nature of $\mcc$ means that this Hilbert space is a supervector space, rather than a regular vector space.
-\kw{I would emphasize the tensor products and deemphasize colorings.}
-
-A less expected nuance comes from m-type simple objects in $\mcc$ that are oddly self-dual, i.e., m-type objects which satisfy $a \tp a \cong \mathbb{C}^{0|1} \mathds{1} \oplus \cdots$ (this occurs in the $\halfesix$ theory considered earlier).
-This indicates that an assignment of a fusion space to every vertex is not enough to keep track of all degrees of freedom, and that one should also keep track of an edge Hilbert space accounting for these objects.
-%However, this sublety can be circumvented by fixing an orientation for each edge, so that there are no 2-valent vertices with 
-We found that the least irritating way to incorporate this is to push the odd part of this fermionic vector off to a neighboring vertex. 
-The choice of which vertex to put the odd vector determines an orientation for each edge, and is the reason for why we choose to work on graphs with oriented edges. 
-
-%A coloring of the lattice then defines unit vectors in the Hilbert space, and the collection of all colorings is the Hilbert space.
-%Roughly, a coloring of the lattice is given by assigning an orientation to each edge along with a simple object from $\mcc$, as well as a basis vector for the fusion space $n$ simple objects from $\mcc$ at an n-valent vertex.
-
-\kw{I don't think we need to explain cell decompositions in much detail at all.}
-A cell decomposition (which we will use to define the graph on which $H$ acts) is given by a collection of vertices $\mcv$, edges $\mce$, and faces $\mcf$, subject to the constraint that they are non-intersecting $\mcv \cap \mce = \mce \cap \mcf = \mcv \cap \mcf =\emptyset$, and $\mcf \cup \mcv \cup \mce = \Sigma$.
-The vertices are points in $\Sigma$, the edges are paths on $\Sigma$, and the faces are regions of $\Sigma$ homeomorphic to disks.
-A standard example of a cell decomposition is a triangulation. 
-In what follows we will (without loss of generality) only consider cell decompositions which are dual to a triangulation, meaning that all the vertices in the cell decomposition are trivalent.
-In addition to the cell decomposition, we also define an orientation on each edge. 
-%We will denote the direction of the edge connecting vertices $u$ and $v$ by a matrix $A_{uv} = +1$ if $u$ points to $v$, and $A_{uv} = -1$ if $v$ points to $u$. 
-The vertices and directed edges define a directed planar graph $\mcg$ embedded in $\Sigma$.
-
-We are now in a position to define the vertex Hilbert space.
-Each edge in $\mcg$ is oriented, and so the edges terminating on a given vertex $v$ will either be pointing into $v$ or out of $v$. 
-If the adjacent edges all point away from $v$, then a coloring of $v$ is given by a choice of three simple objects say $a,b,c \in \mcc$, and a basis vector of $V^{abc}$.
-A given fusion space $V^{abc}$ is a supervector space of super dimension 
-\kw{I don't think we need to mention the dimension, but if you disagree this can be inserted above.}
-%\be \dim V^{abc}_v = \cc^{N^{abc}|N^{abc}_f},\ee
-\be \dim V^{abc} = N^{abc} \quad \quad \text{where} \quad \quad  N^{abc} = N^{abc}_B|N^{abc}_F,\ee
-with $N^{abc}_B$ ($N^{abc}_F$) being the number of even (odd) ways that $a,b,c$ can fuse to the vacuum.
-The total total vertex Hilbert space is given by the collection of all such colorings,
-\begin{align}
-\mathcal{H}_v = \bigoplus_{a,b,c \in \; \mcc} V_v^{abc} \quad \quad \quad  \text{with basis}  \quad \quad \quad \PitchFork{a}{b}{c}{\psi}
-\end{align}
-\kw{I think we can postpone mentioning a basis.}
-However, if the edge labeled by $a$ points into $v$, then the dual object $a^*$ appears in the associated vertex fusion space instead of $a$, and we instead choose a basis vector of $V^{a^*bc}$, and correspondingly,
-\begin{align}
-\mathcal{H}_v = \bigoplus_{a,b,c \in \; \mcc} V_v^{a^*bc} \quad \quad \quad \text{with basis} \quad \quad \quad\PitchForkas{a^*}{b}{c\;\;}{\psi}
-\end{align}
-If the simple object $a$ is oddly self dual, then the vector space $V^{a^*bc}$ is oddly isomorphic to $V^{abc}$.
-See section \ref{XXX} for more details.
-%\dave{It may be useful to write down a standard vertex Hilbert space $W = \bigoplus_{a,b,c \in \; \mcc}V^{abc}$, as well as a basis, and then specify, either abstractly or explicitly the isomorphisms between $W$ and $\bigoplus_{abc} V^{a^{*}bc}$ etc. 
-%What do you guys think?
-%It would probably be useful for anyone who is trying to put this into a computer.}
-In general, edges that are oriented out of $v$ have their edge labels appear in the fusion space, while edges that are oriented into $v$ have the duals of their edge labels appearing in the fusion space.
-
-
-The total Hilbert space assigned to the graph $\mcg$ with $n$ vertices is constructed as the tensor product over all the vertex Hilbert spaces:
-\begin{align}
- \mch_\mcg =\bigotimes_{v \in \mcv} \mch_v  = \mch_{v_n} \tp \mch_{v_{n-1}} \tp \dots \tp \mch_{v_1}
-% \mch_\mcv \tp \mch_\mce,
-\label{GraphHilbertSpace}
-\end{align}
-%where the vertex Hilbert space $\mch_\mcv$ is given by
-%\begin{align}
-%\mch_\mcv & = \bigotimes_{v \in \mcv} \mch_v  = \mch_{v_n} \tp \mch_{v_{n-1}} \tp \dots \tp \mch_{v_2} \tp \mch_{v_1}
-%\label{GraphHilbertSpace}
-%\end{align}
-%\dave{Flip orderings? $V_{v_1} \tp V_{v_2} \tp \cdots $} \ethan{right, I did it in this sorta weird way to that the $\Gamma$ operators play well with the ordering of the hilbert spaces. Since when we write $\Gamma_v \Gamma_u$ we have $\Gamma_u$ acting first, we want $\Gamma_v$ to create a fermion with a ordering than $\Gamma_u$, i.e. the fermion ordering of operators decreases from left to right in products of operators. It turned out to be a bit simpler to have the hilbert spaces tensored together in this same way, but it's not essential}
-where the $n$ vertices in $\mcg$ are ordered in some fixed way according to the assignment $v_n,\dots,v_1$. 
-The tensor product is supercommutative, in the sense that for $\psi\in V_{v_i},\eta\in V_{v_{i+1}}$,
-\be \psi \tp \eta = (-1)^{|\psi||\eta|}\eta\tp\psi \in \mch_{v_{i+1}} \tp \mch_{v_i},\ee
-\ethan{may want to refer to an appendix or sec 9 for an intro to superstuff}
-\dave{yes.}
-\kw{Yes, supercommutative discussion should go elsewhere.}
-
-Next we discuss how fermions are transported along the edges of the lattice. 
-This will be crucial to defining the edge terms.
 
 %In the expression for $\mch_\mce$, the edge Hilbert spaces are defined by 
 %\be E_i = \bigoplus_{a\in \mcc}\End(a),\ee
@@ -7470,12 +7198,6 @@ This will be crucial to defining the edge terms.
 %\dave{This Hilbert space is subtle. 
 %As such we should proabably explain it more carefully. }
 %Note that we have adopted the convention that supervector spaces with higher fermion ordering always appear to the left in the tensor product, which will be a helpful convention to set in what follows. 
-
-
-
-
-
-
 
 
 
@@ -8350,8 +8072,6 @@ and end with the modifications needed for the plaquette term.
 \subsubsection{Vertex term}   \label{VertexHamiltonian}
 %%%%%%%%%%%%%%%%
 
-\kw{Alternate approach to vertex term; we can discuss on skype.}
-
 Let $v_1$ and $v_2$ be two vertices joined by an edge $e$.
 We define
 \begin{align}
@@ -8366,7 +8086,6 @@ A_e(\ket{\psi_1} \otimes \ket{\psi_2}) =
 In other words, $A_e$ forces the labels on each end of an edge to agree.
 
 Why do we call these ``vertex terms" when they are indexed by edges, and the support is a pair of adjacent vertices, joined by an edge?
-\kw{We should consider not calling it a vertex term, though I lean the other way.}
 Because it does the same work as the vertex term of the usual bosonic LW Hamiltonian.
 If our fermionic category happens to be bosonic (i.e.\ it lacks fermions), then the ground state of our ``vertex" term is isomorphic to the ground state
 of the vertex term in the usual LW Hamiltonian\footnote{Note that the ``admissibility'' condition that requires $V^{abc}$ to be in the ground state vector space only if $\unit\in a\tp b \tp c$ is already satisfied for us, since our local Hilbert spaces at the vertices already have this condition built in.}
