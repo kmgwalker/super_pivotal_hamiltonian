@@ -3161,6 +3161,112 @@ The remaining six ground sates coming from the tori with $(A,P)$ and $(P,P)$ spi
 Therefore, the six ground states on tori with anti-periodic boundary conditions along their longitudinal cycles correspond directly to quasiparticles, while the six ground states on tori with periodic boundary conditions along their longitudinal cycle do not (they map to quasiparticles that have been ``twisted'' along the timelike direction). 
 %These arguments make the case for using anti-periodic boundary conditions on the timelike $S^1$ when calculating the twists and braids of the idempotents through the $R$-symbols. All that's left is to decide whether this means we should use the trace or supertrace. At this moment in time, all signs seem to point to the trace being associated with antiperiodic boundary conditions. This is for two reasons. First, we can observe that the using the supertrace to calculate the $S$ matrix in the $qq$ braiding sector gives us something (almost) proportional to $\zeta^2$ (the fact that $S_{q_\sigma q_\sigma}$ isn't may not be a problem), while using the trace gives us a $qq$ $S$-matrix of $0$. We know that we should have $S^4 = -1$ when acting on the ground states of a $(P,P)$ torus, which suggests that the supertrace is what we want to use to compute $S$ for the $(P,P)$ torus. Thus, the supertrace should be associated with periodic boundary conditions along the timelike $S^1$, leaving the trace to be associated with anti-periodic boundary conditions along the timelike $S^1$. 
 
+
+
+
+\begin{comment}
+\dave{Will go through this section in the near future. 
+Just made some comments.}
+
+In this section, we enumerate the ground states of the $C_2$ theory when placed on a torus, and derive the modular $S$-matrix that serves as a linear transformation between them. 
+The modular $S$-matrix is related to, but distinct from, the statistical $S$-matrix which gives the mutual statistics of the quasiparticles in the theory; this $S$-matrix is discussed in Sec.\ref{mutual_statistics}. 
+\dave{I thought these were supposed to agree?}
+\dave{Also is this a standard term 'statistical' S-matrix?}
+\ethan{They agree in bosonic theories, but not in fermionic theories. They are still intimately related to one another, but I think it's a bit misleading to say that they're the same. I'll try to update the discussion to make this more clear; let's Skype about it}
+
+Because the $C_2$ theory is dependent on the existence of a spin structure, in order to talk about ground states on a torus we must first equip the torus with a spin structure. 
+There are $|H^1(T^2;\zt)|=4$ different spin structures on the torus, obtained by choosing either periodic or anti-periodic fermionic boundary conditions around each of the torus' non-contractible cycles. 
+We will label the different spin structures on the torus by $(X,Y)$, where $X \in \{A,P\}$ specifies the fermionic boundary conditions along the meridional cycle (the shorter, spatial cycle), and $Y \in \{A,P\}$ denotes the fermionic boundary conditions along the longitudinal cycle (the longer, temporal cycle). 
+The ground states on the torus with $(P,P)$ spin structure have been studied before in \cite{ware2016}, and our results agree with theirs in this case. 
+
+If there was no interplay between a chosen spin structure and the string-net pictures drawn on the torus, and if the fermion parity of a ground state is fixed by the spin structure, we would expect $|H_1(T^2;\zt)|=4$ degenerate ground states 
+for each choice of spin structure, since the $\beta$ lines obey $\zt$ fusion rules. \ethan{may want to rephrase}
+We will see that naive guess is actually incorrect: instead, for each spin structure, one of the four putative ground states turns out to actually have a higher energy 
+than the other three, meaning that there are only three degenerate ground states for each choice of spin structure. 
+\dave{Need to think about this. 
+I would have said the states are not higher energy, but just equal to zero. \ethan{I'm pretty sure they are not equal to zero (the pulling-fermions-around-cycles thing doesn't show they're zero), and this jives with the Majorana dimers paper.}
+\dave{Ah I see, miscommunication, I thought the `4 states' you were referring to were the diagrams $e,v,h$ and $t$ in e.g., the bounding sector.
+But yes, there is an additional non-zero state on each torus which we didn't write down yet, which has the oppisote parity of the other three. 
+Perhaps we should clump everything into a table?}
+A probably naive question. 
+Is it just the relative parity between the torri that is well defined, or is the actual global parity a well defined quantum number. \ethan{the actual parity is well defined, and is computed with the Arf invariant.
+\dave{Physically I don't think the global parity is well defined. 
+For example: if you write down a microscopic model for a $p+ip$ superconductor you find that 
+the ground state parity depends on the number of lattice sites you use.
+And so in the infinite volume limit the parity of the ground state is ambiguous.
+I would say it's more natural to define one state as having a given parity (which is a choice) and define the parity of all other states relative to this one.
+Or perhaps it's better to say that we can read off the parity of the states by looking at $(ST)^3 = (-1)^FC$.
+Did they have a discussion along this line in Everett and Meng's paper? I'll check and think about this a little more at some point.
+}}
+****Older Comment: i.e.,  always equal to $+1$ on these bounding torri, and $-1$ on the non-bounding torri.
+I can probably explain this question better on Skype, or can think about it and answer to myself.****}
+\kw{I'm not sure what "relative parity between tori" means here.}
+\dave{I explained a little more about what I meant with the $p+ip$ example.}
+\kw{Perhaps we should not be saying ``ground state" here; instead say "Hilbert space" or ``string nets mod local relations".
+We won't discuss the Hamiltonian until near the end of the paper.
+Also, the TQFT point of view is easier and more powerful than the ground-state-of-hamiltonian point of view.}
+
+\dave{I more or less resolved my confusion. Let me write it breifly here, and then we can delete it. 
+Given a set of creation operators $c_j$, we define the Fock vacuum as the state $\ket{\phi}$ satisfying $c_j \ket{\phi} = 0$.
+And the parity operator as $P = \prod_j (1-2 c_j^\dagger c_j)$. 
+By definition the Fock vacuum always has even parity, $P \ket{\phi} = \ket{\phi}$.
+Similarly, we can change basis to another set of creation operators  $\tilde{c}_j$ (e.g., the eigenmodes of a $p+ip$ SC), and define a new Fock vacuum $\ket{\tilde \phi}$. 
+Now the confusing point is that both Fock vacua are defined to have ``even'' parity, with respect to $P$ and $\tilde{P}$.
+The meaningful parity related question is: what's the relative parity between the two states, i.e., what is $P \ket{\tilde{\phi}}$.
+This is what I meant by the relative parity between two Torri, if the bounding torus has even parity, then we know the non-bounding torus has odd parity.
+}
+
+For a torus with a given spin structure, we can enumerate degenerate ground states it admits by writing down a maximal independent set of string-net pictures that can be drawn on it. 
+For the torus possessing an $(A,A)$ spin structure, we find the three states 
+\be GS_{(A,A)} = \left\{\FubeXXX,\ \FubeXss,\ \FubesXs\right\},\ee
+where in our diagrams we are now identifying the tops and bottoms of the squares (in this case with an anti-periodic boundary condition), as well as their right and left sides. 
+Notice that the fourth linearly independent even string-net configuration we could have drawn (namely the one with a single $\beta$ line wrapping around both cycles of the torus) is zero, which can be seen by nucleating a pair of fermions on the $\beta$ line and dragging one of them around both cycles of the torus. 
+A similar effect happens for the remaining spin structures. 
+
+For periodic boundary conditions around the meridional cycle (horizontal in our pictures), we have 
+\be GS_{(P,A)} = \left\{\FubeXXX,\ \FubeXss,\ \FubessX\right\}.\ee
+For periodic boundary conditions around the longitudinal cycle (vertical in our pictures), we find
+\be GS_{(A,P)} = \left\{\FubeXXX,\ \FubesXs,\ \FubessX\right\},\ee
+and for periodic boundary conditions around both cycles, we have 
+\be \label{pp_gss} GS_{(P,P)} = \left\{\FubesdXs,\ \FubeXsds,\ \FubessdX\right\}.\ee 
+Importantly, we wee that all of the ground states on the torus with $(P,P)$ spin structure have {\it odd} fermion parity. 
+This substantiates the evidence for the presence of a background topological superconductor, since a $p\pm ip$ superconductor always has odd fermion parity when placed on a $(P,P)$ torus \cite{ware2016,you2015}\footnote{In general, the fermion parity of $p\pm ip$ superconductors on a manifold $\Sigma$ with spin structure $\sigma$ is computed by the Arf invariant $Arf(\Sigma,\sigma)$. \cite{Ryan, Anton, Zitao I think}}.
+% [cite meng and brayden]. 
+We also note that while in this example the fermion parity of a ground state is determined by the choice of spin structure, this is not true in more general theories. 
+
+%Also note that on every torus, there is one additional non-zero picture which lies at higher energy, which can be obtained by drawing the configuration of $\Sigma$ lines not present in the given collection of three pictures, adding on a dot, and creating a massive fermionic excitation somewhere in the background\dave{Not higher energy, but the state is equal to zero.}. For the $(P,P)$ torus, this high-energy state is the empty picture with a massive fermionic excitation (will elaborate later). 
+
+Having three ground states for each spin structure means that we have 12 ground states across all spin structures. 
+However, we only have six quasiparticles, and so the equality between the number of degenerate ground states on the torus and the number of quasiparticles which is familiar from bosonic theories does not hold in the most naive sense. 
+To understand this, we will examine the trace of the identity operator in the tube category, which computes the number of quasiparticle types. 
+
+\ethan{What follows is a discussion of how to compute traces by appealing to TV stuff. Could either be rephrased, expanded on (to explain TV stuff), of just removed. I for one wouldn't really mind just writing ``Tr'' in what follows without going into detail about what it really means}
+\dave{Found this part confusing.
+Ethan, want to Skype?}
+Before we look at this, we should mention how the trace of a generic operator $\mco$ which acts on the tube algebra is defined. 
+We write ${\rm Tr}(\mco)$ diagrammatically by 
+writing $\mco$ as a collection of tubes, compactifying $\mco$ by joining up the top and bottom of the tubes in $\mco$ along the time direction to form a torus, and summing over the independent string-net configurations that can be drawn on the part of the torus not occupied by $\mco$. 
+This procedure results in a linear combination of string-net configurations drawn on the torus, which may then be evaluated to give the trace of $\mco$. 
+On a technical level, the evaluation is done by embedding the torus inside of $S^3$, filling in the complement of the torus with a Turaev-Viro state-sum whose boundary conditions are given by the field configurations on the torus, and computing the resulting state-sum.  
+Graphically, the trace of $\mco$ according to this definition looks like \ethan{does this picture make sense?}
+\be \label{TrO_def} {\rm Tr}(\mco) = \sum_X\mathord{\vcenter{\hbox{\includegraphics[scale=1]{trace_O.pdf}}}}, \ee
+where the sum is over all linearly independent field configurations $X$. 
+To define the trace this way, we need to specify a spin structure appearing on the torus in \eqref{TrO_def}. 
+The fermionic boundary conditions around the meridional cycle of the torus are fixed by the spin structure possessed by the tubes appearing in $\mco$.
+For example, if $\mco$ is a projector onto the space spanned by a quasiparticle associated with a vortex spin structure, the boundary conditions around the torus' meridional cycle will be periodic. 
+However, the boundary conditions around the longitudinal (timelike) cycle of the torus are fixed to be {\it anti-periodic}. 
+This is because in order to evaluate the right-hand side of \eqref{TrO_def}, we need embed the torus into the three-sphere and fill in the exterior of the torus with a Turaev-Viro state-sum. 
+Periodic boundary conditions along the longitudinal cycle of the torus would require a spin structure defect to pass through the hole in the torus \ethan{better term?}, which would prevent the exterior of the torus from being filled in during the evaluation of the trace, as it would be impossible to smoothly extend the spin structure on the torus to a spin structure in the $S^3$ bulk. 
+
+Now we return to the problem of computing the trace of the identity operator on the tube algebra. 
+We can write the identity operator as $\unit = \oplus_a\Pi_a$, where $a$ runs over the simple quasiparticles in the theory and where as before $\Pi_a$ is a projector onto the simple module associated with $a$.  
+With the help of \eqref{TrO_def}, we see that there are six nonzero contributions to ${\rm Tr}(\unit)$, corresponding to the sum of the three ground states on the $(A,A)$ torus and the three on the $(P,A)$ torus. 
+The remaining six ground sates coming from the tori with $(A,P)$ and $(P,P)$ spin structures do not contribute to ${\rm Tr}(\unit)$, since they have periodic boundary conditions along the torus' longitudinal cycle. 
+Therefore, the six ground states on tori with anti-periodic boundary conditions along their longitudinal cycles correspond directly to quasiparticles, while the six ground states on tori with periodic boundary conditions along their longitudinal cycle do not (they map to quasiparticles that have been ``twisted'' along the timelike direction). 
+%These arguments make the case for using anti-periodic boundary conditions on the timelike $S^1$ when calculating the twists and braids of the idempotents through the $R$-symbols. All that's left is to decide whether this means we should use the trace or supertrace. At this moment in time, all signs seem to point to the trace being associated with antiperiodic boundary conditions. This is for two reasons. First, we can observe that the using the supertrace to calculate the $S$ matrix in the $qq$ braiding sector gives us something (almost) proportional to $\zeta^2$ (the fact that $S_{q_\sigma q_\sigma}$ isn't may not be a problem), while using the trace gives us a $qq$ $S$-matrix of $0$. We know that we should have $S^4 = -1$ when acting on the ground states of a $(P,P)$ torus, which suggests that the supertrace is what we want to use to compute $S$ for the $(P,P)$ torus. Thus, the supertrace should be associated with periodic boundary conditions along the timelike $S^1$, leaving the trace to be associated with anti-periodic boundary conditions along the timelike $S^1$. 
+
+\end{comment}
+
 \subsubsection{The modular $S$ and $T$ matrices}
 
 In this section, we will compute the modular $S$ and $T$ matrices on the torus, which generate the modular group. 
