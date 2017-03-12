@@ -1969,6 +1969,7 @@ To describe the non-bounding spin structure, we add a ``branch cut" from the cen
 As we said above, not every string diagram in the annulus is consistent with a given spin structure.
 For example,
 \begin{align}
+\label{BoundingNullVector}
 \Fubex{\FubesdXsA}{B}\;  = - \; \Fubex{\FubesdXsA}{B} \implies \Fubex{\FubesdXsA}{B} = 0,
 \end{align}
 where we have simply pulled the fermion around the non-contractible loop on the tube. 
@@ -3060,57 +3061,90 @@ For the $C_2$ theory, we have $\mcd = \sqrt{8}$.
 \subsection{Modular transformations and ground states on the torus} \label{modulartforms}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Ground states}
-\dave{Will go through this section in the near future. 
-Just made some comments.}
-
-In this section, we enumerate the ground states of the $C_2$ theory when placed on a torus, and derive the modular $S$-matrix that serves as a linear transformation between them. 
+\subsubsection{$C_2$ string-nets on the torus}
+In this section, we compute a basis for $C_2$ string-nets on the torus modulo local relations as well as the action of the mapping class group.
+\dave{Will come back to this after going through the whole section.}
 The modular $S$-matrix is related to, but distinct from, the statistical $S$-matrix which gives the mutual statistics of the quasiparticles in the theory; this $S$-matrix is discussed in Sec.\ref{mutual_statistics}. 
 \dave{I thought these were supposed to agree?}
 \dave{Also is this a standard term 'statistical' S-matrix?}
 \ethan{They agree in bosonic theories, but not in fermionic theories. They are still intimately related to one another, but I think it's a bit misleading to say that they're the same. I'll try to update the discussion to make this more clear; let's Skype about it}
 
 Because the $C_2$ theory is dependent on the existence of a spin structure, in order to talk about ground states on a torus we must first equip the torus with a spin structure. 
-There are $|H^1(T^2;\zt)|=4$ different spin structures on the torus, obtained by choosing either periodic or anti-periodic fermionic boundary conditions around each of the torus' non-contractible cycles. 
-We will label the different spin structures on the torus by $(X,Y)$, where $X \in \{A,P\}$ specifies the fermionic boundary conditions along the meridional cycle (the shorter, spatial cycle), and $Y \in \{A,P\}$ denotes the fermionic boundary conditions along the longitudinal cycle (the longer, temporal cycle). 
-The ground states on the torus with $(P,P)$ spin structure have been studied before in \cite{ware2016}, and our results agree with theirs in this case. 
+There are $|H^1(T^2;\zt)|=4$ different spin structures on the torus, obtained by choosing either bounding or non-bounding spin structures for each of the torus' non-contractible cycles. 
+To go from the annulus to the torus we identify the inner and outer circles, and label the different spin structures by 
+\begin{align}
+\AddDatTorus{\FubeXXXA}{X}{Y}\quad \quad \quad X,Y \in\{ B, N \}
+\end{align}
+ where $X$ and $Y$ specify the spin structure along the azimuthal and radial cycles.
+\dave{Will move the following sentence.}
+The ground states on the torus with $(N,N)$ spin structure have been studied before in \cite{ware2016}, and our results agree with theirs in this case. 
+
+
+
 
 If there was no interplay between a chosen spin structure and the string-net pictures drawn on the torus, and if the fermion parity of a ground state is fixed by the spin structure, we would expect $|H_1(T^2;\zt)|=4$ degenerate ground states 
 for each choice of spin structure, since the $\beta$ lines obey $\zt$ fusion rules. \ethan{may want to rephrase}
-We will see that naive guess is actually incorrect: instead, for each spin structure, one of the four putative ground states turns out to actually have a higher energy 
-than the other three, meaning that there are only three degenerate ground states for each choice of spin structure. 
-\dave{Need to think about this. 
-I would have said the states are not higher energy, but just equal to zero. \ethan{I'm pretty sure they are not equal to zero (the pulling-fermions-around-cycles thing doesn't show they're zero), and this jives with the Majorana dimers paper.}
-\dave{Ah I see, miscommunication, I thought the `4 states' you were referring to were the diagrams $e,v,h$ and $t$ in e.g., the bounding sector.
-But yes, there is an additional non-zero state on each torus which we didn't write down yet, which has the oppisote parity of the other three. 
-Perhaps we should clump everything into a table?}
-A probably naive question. 
-Is it just the relative parity between the torri that is well defined, or is the actual global parity a well defined quantum number. \ethan{the actual parity is well defined, and is computed with the Arf invariant.
-\dave{Physically I don't think the global parity is well defined. 
-For example: if you write down a microscopic model for a $p+ip$ superconductor you find that 
-the ground state parity depends on the number of lattice sites you use.
-And so in the infinite volume limit the parity of the ground state is ambiguous.
-I would say it's more natural to define one state as having a given parity (which is a choice) and define the parity of all other states relative to this one.
-Or perhaps it's better to say that we can read off the parity of the states by looking at $(ST)^3 = (-1)^FC$.
-Did they have a discussion along this line in Everett and Meng's paper? I'll check and think about this a little more at some point.
-}}
-****Older Comment: i.e.,  always equal to $+1$ on these bounding torri, and $-1$ on the non-bounding torri.
-I can probably explain this question better on Skype, or can think about it and answer to myself.****}
-\kw{I'm not sure what "relative parity between tori" means here.}
-\dave{I explained a little more about what I meant with the $p+ip$ example.}
-\kw{Perhaps we should not be saying ``ground state" here; instead say "Hilbert space" or ``string nets mod local relations".
-We won't discuss the Hamiltonian until near the end of the paper.
-Also, the TQFT point of view is easier and more powerful than the ground-state-of-hamiltonian point of view.}
+We will see that naive guess is actually incorrect: instead, for each spin structure, one of the four putative states is a null vector, meaning that there are only three degenerate ground states for each choice spin structure.
 
-\dave{I more or less resolved my confusion. Let me write it breifly here, and then we can delete it. 
-Given a set of creation operators $c_j$, we define the Fock vacuum as the state $\ket{\phi}$ satisfying $c_j \ket{\phi} = 0$.
-And the parity operator as $P = \prod_j (1-2 c_j^\dagger c_j)$. 
-By definition the Fock vacuum always has even parity, $P \ket{\phi} = \ket{\phi}$.
-Similarly, we can change basis to another set of creation operators  $\tilde{c}_j$ (e.g., the eigenmodes of a $p+ip$ SC), and define a new Fock vacuum $\ket{\tilde \phi}$. 
-Now the confusing point is that both Fock vacua are defined to have ``even'' parity, with respect to $P$ and $\tilde{P}$.
-The meaningful parity related question is: what's the relative parity between the two states, i.e., what is $P \ket{\tilde{\phi}}$.
-This is what I meant by the relative parity between two Torri, if the bounding torus has even parity, then we know the non-bounding torus has odd parity.
-}
+Lets investigate the torus with bounding spin structure along both cycles. 
+We find the torus by identifying the inner and outer circles of the annulus.
+A complete list of states on the annulus is given in \eqref{atubes}.
+Not all states in \eqref{atubes} survive this identification, indeed there are local relations which trivially send some of the states to zero just as in \eqref{BoundingNullVector}.
+Hence the four putative vectors for the bounding torus are,
+\begin{align}
+\AddDatTorus{\FubeXXXA}{B}{B} , \quad \AddDatTorus{\FubesXsA}{B}{B}, \quad  \AddDatTorus{\FubeXssA}{B}{B}, \quad \text{and}, \quad  \AddDatTorus{\FubessdXA}{B}{B}.
+\end{align}
+The fourth vector is suspicous. 
+It remains invariant under relations like \eqref{BoundingNullVector}. 
+However, if we translate the odd string around the torus along either cycle, the bounding spin structure forces the vector to come back to itself with a minus sign, hence the state is identically zero\footnote{
+\dave{The only other possible conclusion I can come up with is the following:
+``Hence the Hilbert space given by string nets modulo local relations on the torus with bounding spin structures along both cycles is given by,
+\begin{align}
+\mch^{T^2}_{(B,B)} = \mathbb{C}\left[ \AddDatTorus{\FubeXXXA}{B}{B} , \; \AddDatTorus{\FubesXsA}{B}{B}, \;  \AddDatTorus{\FubeXssA}{B}{B} \; \right ] \bigoplus \mathbb{C}^{0|1} \left[ \AddDatTorus{\FubessdXA}{B}{B} \right].
+\end{align}
+The $\mathbb{C}^{0|1}$ above denotes the odd parity Fock vacuum overwhich the state lives. 
+Under the translations discussed above the Fock vacuum picks up an additional minus sign. "
+Need to think why we discard this state, or if something stranger is happenning like,
+$$
+\mathbb{C}^{0|1} \left[ \AddDatTorus{\FubessdXA}{B}{B} \right]  \sim \mathbb{C}^{1|0} \left[ \AddDatTorus{\FubessdXA}{N}{N} \right] 
+$$ is happenning.}}.
+Hence the Hilbert space given by string nets modulo local relations on the torus with bounding spin structures along both cycles is given by,
+\begin{align}
+\mch^{T^2}_{(B,B)} = \mathbb{C}\left[ \AddDatTorus{\FubeXXXA}{B}{B} , \; \AddDatTorus{\FubesXsA}{B}{B}, \;  \AddDatTorus{\FubeXssA}{B}{B} \; \right ].
+\end{align}
+We can apply the same techniques find a basis for each of the spin torri, the results are given in Figure \ref{TorusBasisC2}
+\begin{figure}
+\label{TorusBasisC2}
+  \centering
+    \begin{align}
+\nonumber
+\begin{array}{l l l}
+\multicolumn{1}{c}{\mch^{T^2}_{(X,Y)}} &{\quad \quad \quad}& \multicolumn{1}{c}{\text{explicit basis}} \\
+\cline{1-1}\cline{3-3}&\qquad&\\
+\mch^{T^2}_{(B,B)} \cong \mathbb{C}^{3|0}& & 
+\AddDatTorus{\FubeXXXA}{B}{B} , \; \AddDatTorus{\FubesXsA}{B}{B}, \;  \AddDatTorus{\FubeXssA}{B}{B} \\
+&&\\
+\mch^{T^2}_{(N,B)} \cong \mathbb{C}^{3|0} & & 
+\AddDatTorus{\FubeXXXA}{N}{B} , \; \AddDatTorus{\FubeXssA}{N}{B}, \;  \AddDatTorus{\FubessXA}{N}{B} \\
+&&\\
+\mch^{T^2}_{(B,N)} \cong \mathbb{C}^{3|0} & & 
+\AddDatTorus{\FubeXXXA}{B}{N} , \; \AddDatTorus{\FubesXsA}{B}{N}, \;  \AddDatTorus{\FubessXA}{B}{N} \\
+&&\\
+\mch^{T^2}_{(N,N)} \cong \mathbb{C}^{0|3} & & 
+\AddDatTorus{\FubesdXsA}{N}{N} , \; \AddDatTorus{\FubeXsdsA}{N}{N}, \;  \AddDatTorus{\FubessdXA}{N}{N} \\
+&&\\
+\end{array}
+\end{align}
+\caption{\dave{Will add caption.} Notice that the non-bounding torus has only odd parity states.}
+\end{figure}
+
+
+
+%\dave{In the string net picture we could find the last state by creating two $m_{\sigma}^+$ particles out of the vacuum, translating one of them around both cycles, and then trying to annhiliate the two particles. 
+%If they try to annhiliate to vacuum in an even way, the state is equal to zero.
+%Hence we know that they have to annhiliate in an odd way. 
+%And so we end up with an $m_\psi$ left over and an odd vacuum.}
+\dave{Made it here.}
 
 For a torus with a given spin structure, we can enumerate degenerate ground states it admits by writing down a maximal independent set of string-net pictures that can be drawn on it. 
 For the torus possessing an $(A,A)$ spin structure, we find the three states 
@@ -3163,7 +3197,40 @@ Therefore, the six ground states on tori with anti-periodic boundary conditions 
 
 
 
+\dave{Moved this discussion here. We could Skype about it if we want.}
+\dave{Need to think about this. 
+I would have said the states are not higher energy, but just equal to zero. \ethan{I'm pretty sure they are not equal to zero (the pulling-fermions-around-cycles thing doesn't show they're zero), and this jives with the Majorana dimers paper.}
+\dave{Ah I see, miscommunication, I thought the `4 states' you were referring to were the diagrams $e,v,h$ and $t$ in e.g., the bounding sector.
+But yes, there is an additional non-zero state on each torus which we didn't write down yet, which has the oppisote parity of the other three. 
+Perhaps we should clump everything into a table?}
+\dave{I think the extra state is actually zero. We can slide the odd string along the bounding spin structure and find the state coming back to minus itself.}
+A probably naive question. 
+Is it just the relative parity between the torri that is well defined, or is the actual global parity a well defined quantum number. \ethan{the actual parity is well defined, and is computed with the Arf invariant.
+\dave{Physically I don't think the global parity is well defined. 
+For example: if you write down a microscopic model for a $p+ip$ superconductor you find that 
+the ground state parity depends on the number of lattice sites you use.
+And so in the infinite volume limit the parity of the ground state is ambiguous.
+I would say it's more natural to define one state as having a given parity (which is a choice) and define the parity of all other states relative to this one.
+Or perhaps it's better to say that we can read off the parity of the states by looking at $(ST)^3 = (-1)^FC$.
+Did they have a discussion along this line in Everett and Meng's paper? I'll check and think about this a little more at some point.
+}}
+****Older Comment: i.e.,  always equal to $+1$ on these bounding torri, and $-1$ on the non-bounding torri.
+I can probably explain this question better on Skype, or can think about it and answer to myself.****}
+\kw{I'm not sure what "relative parity between tori" means here.}
+\dave{I explained a little more about what I meant with the $p+ip$ example.}
+\kw{Perhaps we should not be saying ``ground state" here; instead say "Hilbert space" or ``string nets mod local relations".
+We won't discuss the Hamiltonian until near the end of the paper.
+Also, the TQFT point of view is easier and more powerful than the ground-state-of-hamiltonian point of view.}
 
+\dave{I more or less resolved my confusion. Let me write it breifly here, and then we can delete it. 
+Given a set of creation operators $c_j$, we define the Fock vacuum as the state $\ket{\phi}$ satisfying $c_j \ket{\phi} = 0$.
+And the parity operator as $P = \prod_j (1-2 c_j^\dagger c_j)$. 
+By definition the Fock vacuum always has even parity, $P \ket{\phi} = \ket{\phi}$.
+Similarly, we can change basis to another set of creation operators  $\tilde{c}_j$ (e.g., the eigenmodes of a $p+ip$ SC), and define a new Fock vacuum $\ket{\tilde \phi}$. 
+Now the confusing point is that both Fock vacua are defined to have ``even'' parity, with respect to $P$ and $\tilde{P}$.
+The meaningful parity related question is: what's the relative parity between the two states, i.e., what is $P \ket{\tilde{\phi}}$.
+This is what I meant by the relative parity between two Torri, if the bounding torus has even parity, then we know the non-bounding torus has odd parity.
+}
 \begin{comment}
 \dave{Will go through this section in the near future. 
 Just made some comments.}
