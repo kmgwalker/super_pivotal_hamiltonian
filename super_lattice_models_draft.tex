@@ -1959,10 +1959,11 @@ combination of the following diagrams:
 %\end{align}
 \dave{Could also replace $\text{mor}(.. \rightarrow ..)$ by $\tube_{\unit \rightarrow \unit}$, or $\;_\unit {\bf T}_\unit$, and $\;_\unit {\bf T}(B)_\unit$.} \ethan{I vote for the last one}
 \begin{align}
+\label{mortube}
 \text{mor}(\underset{\mathds{1}}{\TubeBCx{J}} \rightarrow \underset{\mathds{1}}{\TubeBCx{J}}) &= \mathbb{C}\left[ \Fubex{\FubeXXXA}{J} ,  \Fubex{\FubesXsA}{J}, \Fubex{\FubesdXsA}{J} \right] \\
 \text{mor}(\underset{\beta}{\TubeBCx{J}} \rightarrow \underset{\beta}{\TubeBCx{J}}) &= \mathbb{C}\left[   \Fubex{\FubeXssA}{J} ,  \Fubex{\FubessXA}{J}, \Fubex{\FubeXsdsA}{J} , \Fubex{\FubessdXA}{J} \right] \\
 \\
-\text{mor}(\underset{\mathds{1}}{\TubeBCx{J}} \rightarrow \underset{\beta}{\TubeBCx{J}}) &= \emptyset \quad \quad \quad \quad \text{mor}(\underset{\beta}{\TubeBCx{J}} \rightarrow \underset{\mathds{1}}{\TubeBCx{J}}) = \emptyset
+\text{mor}(\underset{\mathds{1}}{\TubeBCx{B}} \rightarrow \underset{\beta}{\TubeBCx{N}}) &= \emptyset \quad \quad \quad \quad \text{mor}(\underset{\beta}{\TubeBCx{N}} \rightarrow \underset{\mathds{1}}{\TubeBCx{B}}) = \emptyset
 \end{align}
 %\begin{align}
 %\text{mor}(\underset{\mathds{1}}{\TubeBC} \rightarrow \underset{\mathds{1}}{\TubeBC}) &= \mathbb{C}\left[ \FubeXXXA ,  \FubesXsA, \FubesdXsA \right] \\
@@ -2759,7 +2760,61 @@ However, since $\tube^B$ is non-abelian the former possibility is ruled out, and
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Obtaining the quasiparticle fusion rules} \label{C2_fusion_rules}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\dave{Somewhere need to mention the constraint on spin structures in fusion rules. }
+To each primitive idempotent, and puncture on a given surface, corresponds a subspace which is invariant under applying the idempotent. 
+This subspace describes a single quasi-particle living at that puncture.
+Fusion is the process by which neighbouring quasiparticles can be fused together.
+As with \eqref{mortube}, the vector space mapping two punctures to one is spanned by,
+\begin{align}
+\label{morpants}
+\text{mor}( \underset{x}{\TubeBCx{J}} \tp \underset{y}{\TubeBCx{W}}  \rightarrow \underset{\;\; \;\; \quad z \in x\tp y}{\TubeBCx{J+W}} ), %= \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right]
+\end{align}
+where $J, W \in \{ B,N \}$ denote the spin structures of the two punctures you are fusing which determines the third with the addition rule,
+\begin{align}
+B+B = B \quad \quad B+N = N \quad \quad N+N  = B.
+\end{align}
+The two labels $x$ and $y$ denote the boundary condition of the punctures which are being fused, and the third must always be in the fusion product of $x$ and $y$ given by $\mcc$.
+A basis for this fusion space is given by pairs of ``pants" with net configurations modulo local relations,
+for example if we fix the marked points on the inner punctures to be $\beta$ and $\unit$, then the label of the outer puncture must be $\beta$, and so,
+\begin{align}
+\text{mor}(\underset{\beta}{\TubeBCx{B}} \tp \underset{\mathds{1}}{\TubeBCx{B}} \rightarrow \underset{\beta}{\TubeBCx{B}}  ) \cong \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right].
+\end{align}
+Note that the spin structure on the inner two punctures determines the spin structure on the outer one, 
+and so we omit the labeling.
+
+The primitive idempotents -- or quasiparticles -- displayed in Figure \ref{CTwoParticles} naturally parse the fusion space in \eqref{morpants}.
+Let $\Pi_a$ be the idempotent (projector) corresponding to the representative of the isomorphism class of quasiparticle $a$, i.e., one of those listed in Figure \ref{CTwoParticles}.
+The choice of representative affects the explicit representation of the fusion space, none of the guage invariant quantities which you compute. 
+For example, the idempotent given by $\Pi_{m_\sigma^+}$ constitutes a choice of representative, we could have just as easily chosen $\Pi_{m_\sigma^-}$.
+All resulting guage invariant quantities are the same for each choice, but explicit representations of, for example the fusion spaces, may change.
+In order for $V^{ab}_c$ to be a bona fide fusion space, the vector space $V^{ab}_c$ must be invariant under the action of $\Pi_a$ and $\Pi_b$ on in inner punctures acting from above, and $\Pi_c$ acting on the outer puncture from below.
+Therefore, determining the fusion space $V^{ab}_c$ is tantamount to finding a vector space supported on the pair of pants invariant under the application of $\Pi_a\tp \Pi_b$ on the ``top'' of the pants, and invariant under $\Pi_c$ on the ``bottom'' of the pants, see Fig. \ref{Makefigure}.
+The (super)dimension of this vector space is the fusion multiplicity $N^{ab}_c = \dim V^{ab}_c$. 
+
+
+
+%Recall from Figure \ref{FIG??} quasiparticles are supported on punctures of the underlying manifold, a fusion space like $V^{ab}_c$ will be given by a vector space whose vectors are string-net configurations on pairs of pants, 
+%with $a$ and $b$ supported on the ``incoming'' legs of the pants and $c$ supported on the ``outgoing'' leg. 
+%\dave{Will come back to this sentence once figures made.}
+
+%Let $\Pi_a$ be a projector that projects onto the simple module corresponding to the isomorphism class of quasiparticle $a$.
+%Let $\Pi_a$ be a projector that projects onto the simple module corresponding to the quasiparticle $a$.
+%In the $C_2$ theory each $\Pi_a$ is given by one of the idempotents specified in Table \ref{CTwoParticles}.
+
+% given precisely by the tube algebra representation of the simple module corresponding to $a$: 
+%for example, $\Pi_{m_\sigma^\pm}$ is simply given by the vector \eqref{msig_defn}. 
+%However, one should specify a representative of the isomorphism class to keep track of through out the calculations, for example, in the following we will choose $\Pi_{m_{\sigma}^+}$ as a representatiive for the isomorphism class given by $m_{\sigma}^+$ and $m_{\sigma}^-$.
+
+%\dave{Or make some diagram like}
+%\begin{align}
+%\xymatrix @!0 @M=1mm @R=10mm @C=20mm{
+%&V^{ab}_c&\\
+%V^{ab}_c \ar[ru]^{\Pi_a \tp \Pi_b} \ar[rd]_{\Pi_c}&&V^{ab}_c\\
+%&V^{ab}_c&\\
+%}
+%\end{align}
+
+%old paragraph
+\begin{comment}
 With all quasiparticles in hand, we are ready to compute their fusion rules. Recall from Figure \ref{FIG??} quasiparticles are supported on punctures of the underlying manifold, a fusion space like $V^{ab}_c$ will be given by a vector space whose vectors are string-net configurations on pairs of pants, 
 with $a$ and $b$ supported on the ``incoming'' legs of the pants and $c$ supported on the ``outgoing'' leg. 
 \dave{Will come back to this sentence once figures made.}
@@ -2781,13 +2836,14 @@ In order for $V^{ab}_c$ to be a bona fide fusion space, the vector space $V^{ab}
 %}
 %\end{align}
 The (super)dimension of this vector space is the fusion multiplicity $N^{ab}_c = \dim V^{ab}_c$. 
+\end{comment}
 
-\dave{In analogy with previous section it could be worth writing something like}
-\begin{align}
-\text{mor}(\underset{\beta}{\TubeBC}\rightarrow  \underset{\beta}{\TubeBC} \tp \underset{\mathds{1}}{\TubeBC} ) = \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right]
-\end{align}
+%\dave{In analogy with previous section it could be worth writing something like}
+%\begin{align}
+%\text{mor}(\underset{\beta}{\TubeBC}\rightarrow  \underset{\beta}{\TubeBC} \tp \underset{\mathds{1}}{\TubeBC} ) = \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right]
+%\end{align}
 
-We will now illustrate this idea with a simple example. 
+We will now illustrate this with a simple example. 
 Suppose we want to find the fusion rule for $q_\sigma \otimes m_\unit$.
 We first note that spin structure considerations on the pair of pants require that any quasiparticle appearing in $q_\sigma \tp m_\unit$ be a vortex-type quasiparticle (one with a non-bounding spin structure). Furthermore, since both $m_\unit$ and $q_\sigma$ have no charge (no $\beta$ lines fixed to the boundaries of their tubes), we know that their fusion products cannot have any charge.
 Since $q_\sigma$ is the only vortex-type quasi particle with no charge we know that it is the only particle which can appear in the tensor product of $q_\sigma$ and $m_\unit$.
@@ -3997,6 +4053,48 @@ The loop gas of spin structure defects confine free $\psi$ endpoints, forcing al
 
 
 
+\begin{comment} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\subsection{General remarks on fermion condensation} \label{general_condensation}
+
+\kw{This has been relocated from the definition section.
+Are there any parts we want to work into the current ``condensation in general" section?}
+
+In this section, we briefly comment on the general procedure of fermion condensation in braided categories. 
+Suppose we want to condense a particle $\psi$, which is a simple object of the braided category $\mcc$. 
+Constructing the quotient theory $\mcc /\psi$ can be done in the same way as in Sec \ref{condensing_psi}. 
+If $\psi$ is fermionic in spin and statistics (we work with unitary theories in which the spin-statistics theorem holds, so these conditions are not independent), the theory must come equipped with a spin structure in order for $\psi$ to be condensed. 
+Additionally, if $\psi$ is not transparent, we must perform the ``back wall condensation'' described in Sec \ref{condensing_psi}. 
+One technical detail here is that when we use a spin structure %(technically a pin$^+$ structure, see Appendix \ref{pins_and_reflection}) 
+to perform the condensation, we are tacitly assuming that the physical fermions which provide the spin structure are {\it uncharged} (i.e. that they couple only to gravity). 
+If the physical realization we have in mind for these fermions carries a $U(1)$ charge, we would need to generalize this to a spin$_c$ structure instead. 
+However, if we are obtaining the physical fermions from a phase without $U(1)$ symmetry like a topological superconductor (which is what happens in our examples), then a spin structure is sufficient. 
+
+As remarked earlier in Sec \ref{condensing_psi}, adding a spin structure to the back wall which couples to the endpoints of the emergent fermion we aim to condense is equivalent to ``stacking'' the parent bosonic TQFT with with a phase of physical fermions (which provide the spin structure). 
+In order to condense the emergent fermion, we couple the bosonic phase and the physical fermions together by condensing bound states of physical and emergent fermions. 
+At the formal level, the phase of physical fermions is represented by sVec, the category of supervector spaces.
+As a TQFT, sVec is rather trivial: in keeping with the fact that it is built out of physical fermions, it possesses no quasiparticle excitations. 
+Many authors write sVec as a topological phase possessing two objects, $\unit$ and $f$, but this is a bit misleading, since $f$ is not a topological quasiparticle like other nontrivial objects in braided categories: it is a {\it local} (or physical) excitation. 
+Forming a stack of the physical fermions and the bosonic phase represented by the fusion category $\mcc$ results in the category $\mcc \boxtimes {\rm sVec}$, and performing the condensation procedure results in a superfusion category that is nontrivially enriched by sVec. 
+The result of the condensation procedure is a {\it fermionic topological phase}: one that has fermionic underlying degrees of freedom and which possesses a Hilbert space structure which is not realizable in bosonic theories. 
+
+A natural question to ask at this stage is: what kind of fermionic topologically ordered phases can exist? At this point, is seems like there are essentially two broad classes of fermionic phases, both of which can be obtained from bosonic theories. Suppose we have some bosonic theory $\mcc$. One way to obtain a fermionic theory is to simply stack $\mcc$ with a phase of physical fermions:
+\be \label{fermion_phase_prod} \mcc_f = \mcc \boxtimes {\rm sVec}, \ee
+where sVec is the category of supervector spaces, a categorical representation of a phase of physical fermions. $\mcc_f$ is indeed fermionic, but in a rather trivial sense, since its ``fermionic-ness'' is contained entirely within the sVec part of the product. The other (more interesting) way to obtain a fermion phase is to perform ``fermion'' condensation on $\mcc_f$:
+\be \label{fermion_phase_cond} \mcc_f' = (\mcc \boxtimes {\rm sVec}) / (\psi \boxtimes f),\ee
+where $\psi \in \mcc$ is an emergent fermion. 
+Another natural question to ask is whether all fermionic topological phases can be written in the form of \eqref{fermion_phase_prod} or \eqref{fermion_phase_cond}. 
+\ethan{talk about if we do the condensation without transparentizing with the back wall, we confine $\sigma$, and get sVec. Reverse of this is modular extension.}
+
+The reverse process to condensation is related to the modular extensions discussed in Ref [Kong and Wen]. 
+
+\ethan{talk about $\mcc \boxtimes ({\rm sVec})^{\boxtimes n}$ as adding on a bunch of superconductors, and chiral charge stuff ($c_-$ for invertible fermionic orders is quantized as $n/2$ from cobordism argument)} 
+\ethan{and spinlessness of fermions in p+ip SCs}
+\ethan{mention difference between our approach and ``double the objects'' approach of wen in 1507.04673}
+\ethan{inverse of condensation is modular extension, and there are 16 modular extensions of sVec: eight Ising ones and eight TC-like ones (arXiv:0906.0620)}
+
+\end{comment} %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 \section{Dimension formula}
@@ -5110,7 +5208,7 @@ It is somewhat cumbersome to continually label all indices in the tube, so we sh
 \end{align}
 %where the $\tp_{\text{End}(x)}$ is allowing fermions to slide around the annulus. \ethan{we haven't introduced this yet---and I don't think we really need to mod out by local relns explicitly in any of these calculations (we didn't for Ising or $SO(3)_6$ stuff}
 %When tensoring over endomorphisms one has to be mindful of the spin structure.
-where the $1,2$ subscripts in the fusion spaces denote the order in which they appear in the tensor product. \ethan{can we just define the ordering by how they're written down?}
+where the $1,2$ subscripts in the fusion spaces denote the order in which they appear in the tensor product. \ethan{can we just define the ordering by how they're written down? \dave{I think there are no tubes in this section that have two fermions on them, so there shouldn't be any ambiguity.}}
 We also need to keep in mind that these pictures are drawn modulo local relations involving sliding fermions around q-type worldlines. 
 Indeed, sliding fermions around will allow us to show that many of the tubes will be identified with zero, and many will become identified with each other; we discuss this at length below [REF secXXX].
 %Explicitly we choose 
@@ -5126,6 +5224,9 @@ Multiplication in the algebra is defined by stacking
 \mapsto \; \AnnulusTubeTubex{\AnnulusTubeTube}{a}{\gamma}{\psi}{\eta}{X}
 \end{align}
 \ethan{Took out the $\tp_{A(S^1)}$ since we haven't explained tensoring over stuff yet. Instead I think we can just stick with emphasizing that the pictures are drawn modulo local relns and keep the fermion sliding implicit. Feel free to undo if you can figure out a good way of introducing the modified $\tp$}
+\dave{Since the tube category appears in three sections, maybe we should make a table somewhere that summarizes it.
+We could include simple objects, tubes, tube multiplication, fusion.
+Perhaps in the section on the Annular category.}
 If the string labels of the two tubes don't agree on the boundary on which they are being glued, or if the spin structures of the two tubes disagree, the two tubes multiply to zero. 
 Otherwise, we can use a series of $F$ moves to reduce the two multiplied tubes to a linear combination of tubes in the algebra:
 \begin{align}
@@ -6548,26 +6649,20 @@ We could add an appendix with some of the details, e.g., 6j symbols and particle
 \section{Super pivotal categories}  \label{def_sect}
 %%%%%%%%%%%%%%%%%%%%%%
 
-\kw{I've added some suggestions below for reorganizing this section.
-I have not deleted anything.
-Most of the existing discussion should be worked in to the new outline, but probably some stuff should be dropped.}
-
-\kw{I think the title should be ``super pivotal categories" -- the pivotal structure is essential for what we do.}
-
-\kw{(Another option: don't give a complete formal definition (refer elsewhere for that).  
-Instead, concentrate on constructing examples from ``basic data" or ``input data" (3-valent fusion spaces, F-symbols, pentagon, 
-diagrammatic computation techniques, etc.).)}
-
 In this section we give a formal definition of super pivotal categories.
 The definition differs from the usual bosonic case in the following ways:
+\kw{should add forward refs to items below}
 \begin{enumerate}
 	\item There are two distinct types of simple object, ``m-type" and ``q-type".
-	For q-type simple objects, the endomorphism algebra contains odd elements in addition to scalars.
-	\item Fusion spaces are not merely (super) vector spaces; they come equipped with an action of the (possibly non-trivial)
+	For q-type simple objects, the endomorphism algebra is isomorphic to $\cl_1$; in particular, it contains odd elements in addition to scalars.
+	(Subsection \ref{def_sob_ss}.)
+	\item Fusion spaces $V^{abc}$, $V^{ab}_c$, $V_{abcd}$, etc.\ are not merely super vector spaces; they come equipped with an action of the (possibly non-trivial)
 	endomorphism algebras of the objects being fused.
-	\item When combining basic, 3-valent fusion spaces $V_{abc}$ to form fusion spaces of higher valence, we must take
+	(Subsection \ref{def_vabc_ss}.)
+	\item When combining basic, 3-valent fusion spaces $V^{abc}$ to form fusion spaces of higher valence, we must take
 	tensor products over the endomorphism algebra of the relevant simple object.
 	(In the bosonic case, all tensor products are over the trivial endomorphism algebra $\cc$.)
+	(Subsection \ref{def_tensorendo_ss}.)
 	\item In order to keep track of Koszul signs arising from exchanging odd morphisms, 
 	we must keep track of a sign-ordering of individual morphism spaces.
 	In particular, the interchange identity for the tensor category structure picks up a Koszul sign (see XXXX below),
@@ -6576,55 +6671,18 @@ The definition differs from the usual bosonic case in the following ways:
 	\kw{need a better name for this}, we must keep track of a spin-framing of each (potentially) odd morphism.
 	Consequently, the square of the pivotal anti-automorphism is 
 	the spin flip $(-1)^F$ rather than the identity (see XXX below).
-	\item \kw{should also discuss inner products and reflection structure}
+	\item \kw{should also discuss inner products and reflection structure; mention both pin+ and pin- ?}
 	\item \kw{maybe mention here that coherence equations (e.g.\ pentagon) have incorporate permutations of the 
 	3-valent fusion spaces in order to keep track of Koszul signs}
 	\item \kw{what else?}
 	
 \end{enumerate}
 
-\kw{should add ``see XXX below" wherever possible in the above outline}
 
-\kwsep 
- 
-\subsection{General remarks on fermion condensation} \label{general_condensation}
-
-In this section, we briefly comment on the general procedure of fermion condensation in braided categories. 
-Suppose we want to condense a particle $\psi$, which is a simple object of the braided category $\mcc$. 
-Constructing the quotient theory $\mcc /\psi$ can be done in the same way as in Sec \ref{condensing_psi}. 
-If $\psi$ is fermionic in spin and statistics (we work with unitary theories in which the spin-statistics theorem holds, so these conditions are not independent), the theory must come equipped with a spin structure in order for $\psi$ to be condensed. 
-Additionally, if $\psi$ is not transparent, we must perform the ``back wall condensation'' described in Sec \ref{condensing_psi}. 
-One technical detail here is that when we use a spin structure %(technically a pin$^+$ structure, see Appendix \ref{pins_and_reflection}) 
-to perform the condensation, we are tacitly assuming that the physical fermions which provide the spin structure are {\it uncharged} (i.e. that they couple only to gravity). 
-If the physical realization we have in mind for these fermions carries a $U(1)$ charge, we would need to generalize this to a spin$_c$ structure instead. 
-However, if we are obtaining the physical fermions from a phase without $U(1)$ symmetry like a topological superconductor (which is what happens in our examples), then a spin structure is sufficient. 
-
-As remarked earlier in Sec \ref{condensing_psi}, adding a spin structure to the back wall which couples to the endpoints of the emergent fermion we aim to condense is equivalent to ``stacking'' the parent bosonic TQFT with with a phase of physical fermions (which provide the spin structure). 
-In order to condense the emergent fermion, we couple the bosonic phase and the physical fermions together by condensing bound states of physical and emergent fermions. 
-At the formal level, the phase of physical fermions is represented by sVec, the category of supervector spaces.
-As a TQFT, sVec is rather trivial: in keeping with the fact that it is built out of physical fermions, it possesses no quasiparticle excitations. 
-Many authors write sVec as a topological phase possessing two objects, $\unit$ and $f$, but this is a bit misleading, since $f$ is not a topological quasiparticle like other nontrivial objects in braided categories: it is a {\it local} (or physical) excitation. 
-Forming a stack of the physical fermions and the bosonic phase represented by the fusion category $\mcc$ results in the category $\mcc \boxtimes {\rm sVec}$, and performing the condensation procedure results in a superfusion category that is nontrivially enriched by sVec. 
-The result of the condensation procedure is a {\it fermionic topological phase}: one that has fermionic underlying degrees of freedom and which possesses a Hilbert space structure which is not realizable in bosonic theories. 
-
-A natural question to ask at this stage is: what kind of fermionic topologically ordered phases can exist? At this point, is seems like there are essentially two broad classes of fermionic phases, both of which can be obtained from bosonic theories. Suppose we have some bosonic theory $\mcc$. One way to obtain a fermionic theory is to simply stack $\mcc$ with a phase of physical fermions:
-\be \label{fermion_phase_prod} \mcc_f = \mcc \boxtimes {\rm sVec}, \ee
-where sVec is the category of supervector spaces, a categorical representation of a phase of physical fermions. $\mcc_f$ is indeed fermionic, but in a rather trivial sense, since its ``fermionic-ness'' is contained entirely within the sVec part of the product. The other (more interesting) way to obtain a fermion phase is to perform ``fermion'' condensation on $\mcc_f$:
-\be \label{fermion_phase_cond} \mcc_f' = (\mcc \boxtimes {\rm sVec}) / (\psi \boxtimes f),\ee
-where $\psi \in \mcc$ is an emergent fermion. 
-Another natural question to ask is whether all fermionic topological phases can be written in the form of \eqref{fermion_phase_prod} or \eqref{fermion_phase_cond}. 
-\ethan{talk about if we do the condensation without transparentizing with the back wall, we confine $\sigma$, and get sVec. Reverse of this is modular extension.}
-
-The reverse process to condensation is related to the modular extensions discussed in Ref [Kong and Wen]. 
-
-\ethan{talk about $\mcc \boxtimes ({\rm sVec})^{\boxtimes n}$ as adding on a bunch of superconductors, and chiral charge stuff ($c_-$ for invertible fermionic orders is quantized as $n/2$ from cobordism argument)} 
-\ethan{and spinlessness of fermions in p+ip SCs}
-\ethan{mention difference between our approach and ``double the objects'' approach of wen in 1507.04673}
-\ethan{inverse of condensation is modular extension, and there are 16 modular extensions of sVec: eight Ising ones and eight TC-like ones (arXiv:0906.0620)}
 
 
 %%%%%%%%%%%%%%%
-\subsection{Simple objects}
+\subsection{Simple objects}  \label{def_sob_ss}
 %%%%%%%%%%%%%%%
 
 We will assume that our category $\mcc$ is {\it idempotent complete} -- 
