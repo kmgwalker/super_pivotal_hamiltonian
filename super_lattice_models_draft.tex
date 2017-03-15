@@ -1958,6 +1958,7 @@ combination of the following diagrams:
 %\end{align}
 \dave{Could also replace $\text{mor}(.. \rightarrow ..)$ by $\tube_{\unit \rightarrow \unit}$, or $\;_\unit {\bf T}_\unit$, and $\;_\unit {\bf T}(B)_\unit$.} \ethan{I vote for the last one}
 \begin{align}
+\label{mortube}
 \text{mor}(\underset{\mathds{1}}{\TubeBCx{J}} \rightarrow \underset{\mathds{1}}{\TubeBCx{J}}) &= \mathbb{C}\left[ \Fubex{\FubeXXXA}{J} ,  \Fubex{\FubesXsA}{J}, \Fubex{\FubesdXsA}{J} \right] \\
 \text{mor}(\underset{\beta}{\TubeBCx{J}} \rightarrow \underset{\beta}{\TubeBCx{J}}) &= \mathbb{C}\left[   \Fubex{\FubeXssA}{J} ,  \Fubex{\FubessXA}{J}, \Fubex{\FubeXsdsA}{J} , \Fubex{\FubessdXA}{J} \right] \\
 \\
@@ -2758,7 +2759,61 @@ However, since $\tube^B$ is non-abelian the former possibility is ruled out, and
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Obtaining the quasiparticle fusion rules} \label{C2_fusion_rules}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\dave{Somewhere need to mention the constraint on spin structures in fusion rules. }
+To each primitive idempotent, and puncture on a given surface, corresponds a subspace which is invariant under applying the idempotent. 
+This subspace describes a single quasi-particle living at that puncture.
+Fusion is the process by which neighbouring quasiparticles can be fused together.
+As with \eqref{mortube}, the vector space mapping two punctures to one is spanned by,
+\begin{align}
+\label{morpants}
+\text{mor}( \underset{x}{\TubeBCx{J}} \tp \underset{y}{\TubeBCx{W}}  \rightarrow \underset{\;\; \;\; \quad z \in x\tp y}{\TubeBCx{J+W}} ), %= \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right]
+\end{align}
+where $J, W \in \{ B,N \}$ denote the spin structures of the two punctures you are fusing which determines the third with the addition rule,
+\begin{align}
+B+B = B \quad \quad B+N = N \quad \quad N+N  = B.
+\end{align}
+The two labels $x$ and $y$ denote the boundary condition of the punctures which are being fused, and the third must always be in the fusion product of $x$ and $y$ given by $\mcc$.
+A basis for this fusion space is given by pairs of ``pants" with net configurations modulo local relations,
+for example if we fix the marked points on the inner punctures to be $\beta$ and $\unit$, then the label of the outer puncture must be $\beta$, and so,
+\begin{align}
+\text{mor}(\underset{\beta}{\TubeBCx{B}} \tp \underset{\mathds{1}}{\TubeBCx{B}} \rightarrow \underset{\beta}{\TubeBCx{B}}  ) \cong \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right].
+\end{align}
+Note that the spin structure on the inner two punctures determines the spin structure on the outer one, 
+and so we omit the labeling.
+
+The primitive idempotents -- or quasiparticles -- displayed in Figure \ref{CTwoParticles} naturally parse the fusion space in \eqref{morpants}.
+Let $\Pi_a$ be the idempotent (projector) corresponding to the representative of the isomorphism class of quasiparticle $a$, i.e., one of those listed in Figure \ref{CTwoParticles}.
+The choice of representative affects the explicit representation of the fusion space, none of the guage invariant quantities which you compute. 
+For example, the idempotent given by $\Pi_{m_\sigma^+}$ constitutes a choice of representative, we could have just as easily chosen $\Pi_{m_\sigma^-}$.
+All resulting guage invariant quantities are the same for each choice, but explicit representations of, for example the fusion spaces, may change.
+In order for $V^{ab}_c$ to be a bona fide fusion space, the vector space $V^{ab}_c$ must be invariant under the action of $\Pi_a$ and $\Pi_b$ on in inner punctures acting from above, and $\Pi_c$ acting on the outer puncture from below.
+Therefore, determining the fusion space $V^{ab}_c$ is tantamount to finding a vector space supported on the pair of pants invariant under the application of $\Pi_a\tp \Pi_b$ on the ``top'' of the pants, and invariant under $\Pi_c$ on the ``bottom'' of the pants, see Fig. \ref{Makefigure}.
+The (super)dimension of this vector space is the fusion multiplicity $N^{ab}_c = \dim V^{ab}_c$. 
+
+
+
+%Recall from Figure \ref{FIG??} quasiparticles are supported on punctures of the underlying manifold, a fusion space like $V^{ab}_c$ will be given by a vector space whose vectors are string-net configurations on pairs of pants, 
+%with $a$ and $b$ supported on the ``incoming'' legs of the pants and $c$ supported on the ``outgoing'' leg. 
+%\dave{Will come back to this sentence once figures made.}
+
+%Let $\Pi_a$ be a projector that projects onto the simple module corresponding to the isomorphism class of quasiparticle $a$.
+%Let $\Pi_a$ be a projector that projects onto the simple module corresponding to the quasiparticle $a$.
+%In the $C_2$ theory each $\Pi_a$ is given by one of the idempotents specified in Table \ref{CTwoParticles}.
+
+% given precisely by the tube algebra representation of the simple module corresponding to $a$: 
+%for example, $\Pi_{m_\sigma^\pm}$ is simply given by the vector \eqref{msig_defn}. 
+%However, one should specify a representative of the isomorphism class to keep track of through out the calculations, for example, in the following we will choose $\Pi_{m_{\sigma}^+}$ as a representatiive for the isomorphism class given by $m_{\sigma}^+$ and $m_{\sigma}^-$.
+
+%\dave{Or make some diagram like}
+%\begin{align}
+%\xymatrix @!0 @M=1mm @R=10mm @C=20mm{
+%&V^{ab}_c&\\
+%V^{ab}_c \ar[ru]^{\Pi_a \tp \Pi_b} \ar[rd]_{\Pi_c}&&V^{ab}_c\\
+%&V^{ab}_c&\\
+%}
+%\end{align}
+
+%old paragraph
+\begin{comment}
 With all quasiparticles in hand, we are ready to compute their fusion rules. Recall from Figure \ref{FIG??} quasiparticles are supported on punctures of the underlying manifold, a fusion space like $V^{ab}_c$ will be given by a vector space whose vectors are string-net configurations on pairs of pants, 
 with $a$ and $b$ supported on the ``incoming'' legs of the pants and $c$ supported on the ``outgoing'' leg. 
 \dave{Will come back to this sentence once figures made.}
@@ -2780,13 +2835,14 @@ In order for $V^{ab}_c$ to be a bona fide fusion space, the vector space $V^{ab}
 %}
 %\end{align}
 The (super)dimension of this vector space is the fusion multiplicity $N^{ab}_c = \dim V^{ab}_c$. 
+\end{comment}
 
-\dave{In analogy with previous section it could be worth writing something like}
-\begin{align}
-\text{mor}(\underset{\beta}{\TubeBC}\rightarrow  \underset{\beta}{\TubeBC} \tp \underset{\mathds{1}}{\TubeBC} ) = \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right]
-\end{align}
+%\dave{In analogy with previous section it could be worth writing something like}
+%\begin{align}
+%\text{mor}(\underset{\beta}{\TubeBC}\rightarrow  \underset{\beta}{\TubeBC} \tp \underset{\mathds{1}}{\TubeBC} ) = \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right]
+%\end{align}
 
-We will now illustrate this idea with a simple example. 
+We will now illustrate this with a simple example. 
 Suppose we want to find the fusion rule for $q_\sigma \otimes m_\unit$.
 We first note that spin structure considerations on the pair of pants require that any quasiparticle appearing in $q_\sigma \tp m_\unit$ be a vortex-type quasiparticle (one with a non-bounding spin structure). Furthermore, since both $m_\unit$ and $q_\sigma$ have no charge (no $\beta$ lines fixed to the boundaries of their tubes), we know that their fusion products cannot have any charge.
 Since $q_\sigma$ is the only vortex-type quasi particle with no charge we know that it is the only particle which can appear in the tensor product of $q_\sigma$ and $m_\unit$.
