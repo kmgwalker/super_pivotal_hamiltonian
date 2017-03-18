@@ -3648,6 +3648,174 @@ T = \begin{pmatrix}    &&&				1&0&0&			&&&			&& \\
 The $T$-matrix is not completely diagonalized, since it acts nontrivially on the spin structures. 
 This leads to subtleties involved with identifying the topological twists of the quasiparticles, which we elaborate on in the next section. 
 
+\begin{comment}
+In this section, we will compute the modular $S$ and $T$ matrices on the torus, which generate the modular group. 
+To explain what the modular $S$-matrix does, we note that there are two ways of representing a given string-net configuration on a torus embedded in $S^3$ in terms of Turaev-Viro state-sums: one way is to fill the exterior of the torus with a Turaev-Viro state-sum with boundary conditions specified by the given string-net configuration, as discussed in the previous section. 
+The other is to fill the {\it interior} of the torus with a Turaev-Viro state-sum possessing the same boundary conditions. 
+The modular $S$-matrix performs the change of basis between these two choices. 
+Operationally, such a change of basis corresponds to interchanging the meridional and longitudinal cycles of the torus. 
+The modular $T$ matrix represents the action of the Dehn twist on the torus, which corresponds to cutting the torus along a meridional cycle, twisting the boundary conditions at the cut by $2\pi$ relative to one another, and glueing the torus back together.
+In bosonic theories, the $T$-matrix is diagonalized in the quasiparticle basis, with entries corresponding to the topological twists of the quasiparticles in the theory. 
+
+Importantly, the $S$ and $T$ modular transformations do {\it not} always preserve the spin structure of the torus they act on. 
+Figure \ref{spin_str_mapping_class_group} shows how the different possible spin structures are permuted under $S$ and $T$. 
+Since $T$ does not preserve the spin structures, it cannot generically have well-defined eigenstates with a definite spin structure. 
+This precludes an ability to associate a definite topological twist ($T$-matrix eigenvalue) to every quasiparticle in the theory: the spins of quasiparticles excitations in super fusion categories are in general only defined up to a $\pm$ sign, see \cite{???} for details.
+However, the action of $T^2$ preserves spin structures, and so we are still able to associate definite $T^2$ eigenvalues to the quasiparticles in the theory.
+This means that the twists of the particles whose associated spin structures are not preserved by $T$ (i.e., the particles associated with a bounding spin structure, $m_\unit,m_\psi,$ and $m_\sigma^+$ in the present example) are ambiguous up to a factor of $\pm1$.  
+
+\begin{figure} \label{spin_str_mapping_class_group}
+\newcommand{\Space}{\; \; \; \; \; \; }
+\newcommand{\Spacep}{ \; \; \; \mathop{\vphantom{\int}} \; \; \;    } %\mathop{\vphantom{\int}}
+%R controls where the arrows start from the box. 
+\begin{align}
+\xymatrix @!0 @M=1mm @R=6mm @C=25mm{
+&&&\\
+\Space   & \Space  \ar@/^1pc/[r]^{S} \Space  \ar@/^3pc/[rr]^{T} &\Space &\Space   \\
+\raisebox{0.2ex}{$\scriptstyle{N}\;$}\underset{N}{\FubeXXX} \ar @`{(3,15),(28,-12)}^{S,T}  &
+\raisebox{0.2ex}{$\scriptstyle{N}\;$}\underset{B}{\FubeXXX} & 
+\raisebox{0.2ex}{$\scriptstyle{B}\;$}\underset{N}{\FubeXXX}  \ar @`{(52,15),(77,-12)}_{T} & 
+\raisebox{0.2ex}{$\scriptstyle{B}\;$}\underset{B}{\FubeXXX}  \ar @`{(80,18),(105,-12)}^{S}  \\
+{\Spacep} &\Spacep &\Spacep \ar@/^1pc/[l]^{S} &\Spacep  \ar@/^3pc/[ll]^{T} \\
+&&&\\
+&&&\\
+&&&\\
+&&&\\
+\raisebox{0.2ex}{$\scriptstyle{P}\;$}\underset{P}{\FubeXXX} &
+\raisebox{0.2ex}{$\scriptstyle{A}\;$}\underset{P}{\FubeXXX} & 
+\raisebox{0.2ex}{$\scriptstyle{P}\;$}\underset{A}{\FubeXXX} & 
+\raisebox{0.2ex}{$\scriptstyle{A}\;$}\underset{A}{\FubeXXX} 
+}
+\end{align} \nonumber
+\caption{Top: The action of the mapping class group on the four spin tori. The notation is such that the disk which bounds the cycle of the torus labeled by $B$ or $N$ has either a bounding ($B$) or non-bounding ($N$) spin structure. Bottom: the boundary conditions ($P$ for periodic and $A$ for anti-periodic) associated with each spin structure.}
+\end{figure}
+
+For simplicity of notation, we will define 
+\be \label{tube_shorthands} e := \FubeXXX,\quad h := \FubesXs,\quad v := \FubeXss,\quad t:= \FubessX.\ee
+We now proceed to examine the action of the $S$ and $T$ modular transformations on the twelve ground states, going in groups of three for each of the four different spin structures. 
+
+\medskip
+
+\underline{$\mathbf{(A,A)}$:} We'll start with the $(A,A)$ spin structure, which is preserved under the action of $S$. 
+In the ground state basis $(e,v,h)^T$, we see that
+\be S^{gs}_{AA} = \begin{pmatrix} 1 & 0 &0 \\ 0 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}. \ee
+To transform $S$ into the quasiparticle basis, we take $S_{AA}= V_{AA}^{-1}S^{gs}_{AA}V_{AA}$, where $V_{AA}$ is the matrix mapping the quasiparticle basis $(m_\unit,m_\sigma^+,m_\psi)^T$ to the ground state basis $(e,v,h)^T$. Explicitly, 
+\be V_{AA}= \frac{1}{2}\begin{pmatrix}1&0&1 \\ 0 & 1 & 0\\ 1/d & 0 & -1/d \end{pmatrix},\ee
+which can be verified from \eqref{nonvortex_qps}.
+Note that the basis consists only of $m$-type particles associated with a non-vortex spin structure, this is due to the anti-periodic boundary conditions chosen along the meridional cycle of the torus. 
+Conjugating $S^{gs}_{AA}$ by $V_{AA}$, we obtain
+\be S_{AA} = \frac{1}{2}\begin{pmatrix} 1 & d & 1 \\ d & 0 & -d \\ 1 & -d & 1 \end{pmatrix} = S_{Ising}.\ee
+
+The $T$-matrix does not preserve the spin structure, as we can see from Figure \ref{spin_str_mapping_class_group}. As a map between the ground state bases $(e,v,h)^T_{AA}$ and $(e,t,h)_{AP}^T$, we find
+\be T_{AA\mapsto AP}^{gs} = \unit_{3\times 3}.\ee
+The matrix mapping the idempotent basis $(m_\unit,m_\sigma^+,m_\psi)^T_{AP}$ onto the ground state basis $(e,t,h)_{AP}^T$  is
+\be V_{AP} = \frac{1}{2} \begin{pmatrix} 1 & 0 & 1 \\ 0 & A^{-3} & 0 \\ 1/d & 0 & -1/d \end{pmatrix},\ee
+which tells us that 
+\be T_{AA\mapsto AP} = V_{AP}^{-1} T_{AA\mapsto AP}^{gs} V_{AA} =  \begin{pmatrix}
+1 &0&0 \\ 0&A^3&0\\0&0&1
+\end{pmatrix}.\ee
+
+\underline{$\mathbf{(P,P)}$:} More interesting is the $(P,P)$ torus, whose spin structure is preserved under both $S$ and $T$. According to \eqref{pp_gss}, the three vectors in the basis of ground states are $v_\bullet,h_\bullet,$ and $t_\bullet$,
+where the $\bullet$s in labels mean that their associated tubes have odd fermion parity.
+In the ground state basis $(v_\bullet,h_\bullet,t_\bullet)^T$, we obtain
+\be S^{gs}_{PP} = \begin{pmatrix}0 & 1 & 0 \\ A^4 & 0 & 0 \\ 0 & 0 & A^{-6} \end{pmatrix},\quad T^{gs}_{PP} = \begin{pmatrix} 0 & 0 & A^{-6} \\ 0 & 1 & 0 \\ 1 & 0 & 0 \end{pmatrix}\ee
+One can check that we have the modular relations
+\be (S_{PP}T_{PP})^3 = S_{PP}^4= A^{-8}\unit_{3\times3} = -\unit_{3\times 3}.\ee 
+The minus sign, which can never appear in bosonic theories, comes from the fact that the action of $S^4$ on a $(P,P)$ torus performs a $2\pi$ rotation of the fermion framing, resulting in a phase of $-1$, since the $(P,P)$ torus has odd fermion parity. 
+These relations easily generalize to $(ST)^3=S^4=(-1)^F\unit$, where $(-1)^F$ denotes the fermion parity of the tori being acted upon.
+This also means that in the fermionic setting, the $S$ matrix is not self-dual as it is for bosonic theories. %Also, as a sanity check we see that the eigenvalues of $T$ are $1,\pm A^{-3}$ (if $A^4=i$, then $A^{-3} = e^{i\pi/8}$).
+
+Now we need to transform $S_{PP}$ and $T_{PP}$ into the quasiparticle basis. 
+Note that none of $q_{\unit\bullet},q_{\sigma\bullet},q_{\psi\bullet}$ are idempotents in the strict sense of the word, since they multiply together to give even tubes. 
+To ensure they are normalized correctly, we will require that they square to their associated even idempotents:
+\be q_{\unit\bullet}^2 = q_\unit,\quad q_{\psi\bullet}^2 = q_\psi,\quad q_{\sigma\bullet}^2 = q_\sigma.\ee
+In order for this to hold, we %see that we need to take
+%\be q_{\unit\bullet} = \frac{A^{-2}}{2}(v_\bullet + A^3 t_\bullet),\quad q_{\psi\bullet} = \frac{A^{-2}}{2}(v_\bullet - A^3t_\bullet),\quad q_{\sigma\bullet} = \frac{1}{d}h_\bullet.\ee
+%Therefore, 
+take the matrix that maps the basis $(q_{\unit\bullet},q_{\sigma\bullet},q_{\psi\bullet})^T$ to the ground state basis $(v_\bullet,h_\bullet,t_\bullet)^T$ to be 
+\be V_{PP} = \begin{pmatrix} A^{-2}/2 & 0 & A^{-2}/2 \\ 0 & 1/d & 0 \\ A/2 & 0 & -A/2 \end{pmatrix},\ee
+which gives 
+\be S_{PP} = \frac{A^{-2}}{2} \begin{pmatrix} -1 & d & 1 \\ d & 0 & d \\ 1 & d & -1 \end{pmatrix},\quad T_{PP} = \begin{pmatrix} A^{-3} & 0 & 0 \\ 0 & 1 & 0 \\ 0& 0& -A^{-3}.\end{pmatrix}.\ee
+%The prefactor of $A^2$ in $S_{PP}$ takes care of the $S^4=-\unit$ constraint for us. 
+
+\underline{$\mathbf{(P,A)}$:} Now for the $(P,A)$ spin structure, which is preserved by $T$ (as the q-type quasiparticles have well-defined self-statistics). First for the $S$-matrix, which maps the $PA$ spin structure to the $AP$ spin structure. As a map between the ground state basis $(e,v,t)_{PA}^T$ and the ground state basis $(e,t,h)_{AP}^T$, the $S$ matrix is
+\be S^{gs}_{PA\mapsto AP} = \begin{pmatrix}
+1 & 0& 0 \\ 0 & 0 & A^{-6} \\ 0&1& 0
+\end{pmatrix}.\ee
+The matrix that maps the idempotent basis $(q_\unit,q_\sigma,q_\psi)^T$ onto the ground state basis $(e,v,t)_{PA}^T$ is 
+\be V_{PA} = \begin{pmatrix}
+0 & 1 & 0 \\ 1/2 & 0 & 1/2 \\ A^3/2 & 0 & -A^3/2
+\end{pmatrix},\ee
+This means that in the idempotent basis, the $S$ matrix is 
+\be S_{PA \mapsto AP} = V_{AP}^{-1} S^{top}_{PA \mapsto AP} V_{PA} = \begin{pmatrix}
+d/2 & 1 & d/2 \\ 1 & 0 & -1 \\ -d/2 & 1 & -d/2
+\end{pmatrix}.\ee
+
+Now for $T$, which preserves the spin structure. In the ground state basis basis $(e,v,t)^T$, $T$ takes the form 
+\be T^{gs}_{PA} = \begin{pmatrix}
+1 & 0 & 0\\ 0 & 0 & A^{-6} \\ 0&1&0 
+\end{pmatrix},\ee
+which in the idempotent basis becomes 
+\be T_{PA}  = \begin{pmatrix}
+A^{-3} & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -A^{-3}
+\end{pmatrix}.\ee
+
+\underline{$\mathbf{(A,P)}$:} Finally, we turn to the $(A,P)$ spin structure. 
+Since the $S$-matrix must be symmetric, we can immediately write 
+\be S_{AP \mapsto PA} =  S_{AP \mapsto PA}^T = \begin{pmatrix}
+d/2 & 1 & -d/2 \\ 1 & 0 & 1 \\ d/2 & -1 & -d/2
+\end{pmatrix}.\ee
+As a map between the ground state bases $(e,t,h)^T_{AP}$ and $(e,v,h)^T_{AA}$, $T$ is 
+\be T^{gs}_{AP \mapsto AA} = \begin{pmatrix}
+1 &0&0 \\ 0&A^6 &0\\0&0&1
+\end{pmatrix}.\ee
+Therefore, in the idempotent basis, 
+\be T_{AP\mapsto AA} = V_{AA}^{-1} T^{gs}_{AP\mapsto AA} V_{AP} = \begin{pmatrix}
+1 &0&0 \\ 0&A^3&0\\0&0&1
+\end{pmatrix}.\ee
+
+\medskip
+
+Collecting these results, we can now write down the complete modular $S$ and $T$ matrices in the $C_2$ theory, which act across all spin structures. 
+We will write them down in the quasiparticle basis $[(m_\unit,m_\sigma^+,m_\psi)_{AA},(m_\unit,m_\sigma^+,m_\psi)_{AP},(q_\unit,q_\sigma,q_\psi)_{PA},(q_\unit,q_\sigma,q_\psi)_{PP}]^T$, in which we can write
+\be \label{modularS}
+S = \frac{1}{2}\begin{pmatrix} 1 & d & 1 &			&&&			&&&			&& \\ 
+					      d & 0 &-d &			&&&			&&&			&&\\
+					      1&-d&1 & 			&&&			&&&			&&\\
+						&&&				&&&			1&d&1&		&& \\
+						&&&				&&&			d&0&-d&		&&\\
+						&&&				&&&			-1&d&-1&		&&\\
+						&&&				1&d&-1&		&&&			&&\\
+						&&&				d&0&d&		&&&			&&\\
+						&&&				1&-d&-1&		&&&			&&\\
+						&&&				&&&			&&&			-A^{-2} & A^{-2}d & A^{-2}\\
+						&&&				&&&			&&&			A^{-2}d & 0 & A^{-2}d \\ 
+						&&&				&&&			&&&			A^{-2} & A^{-2}d & -A^{-2} \end{pmatrix}\ee		
+where we have only listed the non-zero entries. 
+$S$ has two different direct-sum decompositions. First, essentially by construction, it splits into a direct sum over blocks according to equivalence classes of spin structures under the $S$ modular transformation. 
+Additionally, we have $S = S_{even} \oplus S_{odd}$, where $S_{odd}$ is the $S$-matrix acting on ground states with odd fermion parity, and so the $S$-matrix preserves fermion parity.
+This decomposition is always possible, but it will not always match a decomposition based on spin structures. 
+That is, while $S_{odd} = S_{NN}$ in this theory, spin structure blocks of $S$ will not have a definite fermion parity in general. 
+Also note that $S^4 = \unit_{9\times9}\oplus(-\unit_{3\times3})$ in accordance with $S = S_{even} \oplus S_{odd}$. 
+
+Now for the $T$-matrix. 
+In the same quasiparticle basis as before, the $T$-matrix is
+\be 
+T = \begin{pmatrix}    &&&				1&0&0&			&&&			&& \\ 
+					        &&&				0&A^3&0&			&&&			&&\\
+					        &&& 				0&0&1&			&&&			&&\\
+						1&0&0&				&&&			&&&			&& \\
+						0&A^3&0&				&&&			&&&			&&\\
+						0&0&1&				&&&			&&&			&&\\
+						&&&				&&&			A^{-3}&0&0&			&&\\
+						&&&				&&&			0&1&0&			&&\\
+						&&&				&&&			0&0&-A^{-3}&			&&\\
+						&&&				&&&			&&&			A^{-3}&0&0\\
+						&&&				&&&			&&&			0&1&0 \\ 
+						&&&				&&&			&&&			0&0&-A^{-3} \end{pmatrix}\ee	
+The $T$-matrix is not completely diagonalized, since it acts nontrivially on the spin structures. 
+This leads to subtleties involved with identifying the topological twists of the quasiparticles, which we elaborate on in the next section. 
+\end{comment}
 
 
 %%%%%%%%%%%%%%%%%%%%%%% 
