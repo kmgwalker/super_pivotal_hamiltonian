@@ -145,6 +145,10 @@
 \newcommand{\CupCap}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{CupCap.pdf}}}}}
 \newcommand{\CupCapDots}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{CupCapDots.pdf}}}}}
 
+\newcommand{\dbeta}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{dbeta.pdf}}}}}
+\newcommand{\dpsi}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{dpsi.pdf}}}}}
+
+
 
 
 \newcommand{\SigmaDotDot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{SigmaDotDot.pdf}}}}}
@@ -968,9 +972,12 @@ The quantum dimensions of the particles are
 d_\unit = 1 \quad d:=d_\sigma = -A^2 - A^{-2} \quad d_\psi =1,
 \ee
 where $A$ is a primitive 16th root of unity. Graphically, this means that
-\be 
-\mathord{\vcenter{\hbox{\includegraphics[scale=1]{psi_qdim.pdf}}}} \qquad \qquad 
-\mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_qdim.pdf}}}},\ee
+%\be 
+%\mathord{\vcenter{\hbox{\includegraphics[scale=1]{psi_qdim.pdf}}}} \qquad \qquad 
+%\mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_qdim.pdf}}}},\ee
+\begin{align}
+\underset{\psi}{\dpsi} = \text{(vaccuum)} \qquad \qquad \underset{\beta}{\dbeta} = d \times \text{(vaccuum)}
+\end{align}
 where the blue (orange) circle denotes a circular $\psi$ ($\sigma$) worldline.
 $\unit$ worldlines, being identified with the vaccuum, are not drawn in diagrams. 
 
@@ -1855,33 +1862,34 @@ and talk about folding the $A_3$ principal graph to obtain $C_2$.
 
 \dave{Collecting figures for summary table of $C_2$ data. I'll format it nicely later.}
 \begin{align}
-&\text{Simple objects: $\mathds{1}, \beta$ } \quad \text{End}(\beta) = \mathbb{C}\left[\FubeXss, \FubeXsds \right] \quad d_\beta = d = \sqrt{2} =  -A^2 - A^{-2} \text{$A = ...$}
+\text{Simple objects:} \quad & \mathds{1}, \beta  \quad \quad \text{Fusion rules:}\quad \beta \tp \beta \cong \mathbb{C}^{1|1} \cdot \unit \\
+\text{dimensions:}\quad &\dbeta_\beta =  d_\beta = d =  -A^2 - A^{-2},\quad \quad \text{$A^2 = - e^{\pm i \pi/4}$}\\
+\text{F-symbols:} \quad &d\;  \TwoLine =  \CupCap  +A^{12}   \CupCapDots 
+\quad \quad \quad 
+d\; \CupCap =\TwoLine + \TwoLineDots
 \\
-&\SigmaDotDot = A^4\FubeXss  \quad \quad \SigmaDotDot = - \SigmaDotDotExchange
-\\
-&\CapDotLeft =  A^4 \CapDotRight \\ 
-&\CupDotLeft  = -A^{4}\CupDotRight
-\\
-&\TwoLine = \frac{1}{d} \left( \CupCap  -A^{4}   \CupCapDots \right)
-\\
-&\CupCap = \frac{1}{d} \left( \TwoLine + \TwoLineDots \right)
+\text{fermionic data:}\quad&\quad
+ \SigmaDotDot = - \SigmaDotDotExchange  \quad \quad \SigmaDotDot = A^4\; \FubeXss \\
+ &\quad \CapDotLeft =  A^4 \CapDotRight \quad \quad \quad \CupDotLeft  = -A^{4}\CupDotRight
+%\text{End}(\beta) = \mathbb{C}\left[\; \FubeXss\; ,\;  \FubeXsds \; \right] 
 \end{align}
 \dave{Missing anything?}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Quasiparticle excitations and the center of $C_2$} \label{C2_quasiparticles}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 In this section, we identify the quasiparticle excitations 
 in the in the string-net model based on the $C_2$ theory.
-Instead of explicitly writing the Hamiltonian (as we do in Section \ref{Super_pivotal_Hamiltonian}),
-we will discuss some of its physical properties, the excitations, their fusion rules, statistics, and the modular transformations on the torus..
+We will discuss the quasiparticles in the theory, their fusion rules, their statistics, and the modular transformations of the ground states on the torus.
+We will defer a discussion of the Hamiltonian to \ref{Super_pivotal_Hamiltonian}),
 
-\subsection{Finding the quasiparticle excitations}
 The quasiparticle excitations in a bosonic string-net model 
 based on a category $\mcc$ are given by the simple objects in the Drinfeld center $\mcz(\mcc)$ \cite{levin2005}.
-These excitations are also naturally described by representations of the tube category of $\mcc$ [\cite{Lan2014}, yuting]\dave{Ethan, correct references?} \ethan{yup}.
-The tube category was first introduced by Ocneanu \cite{ocneanu1994} and has since been dubbed `Ocneanu's tube algebra', it is also referred to as the annular category $\text{Ann}(\mcc)$, 
+These excitations are also naturally described by primitive idempotents of a category called the {\t tube category of} $\mcc$ [\cite{Lan2014}, yuting].
+The tube category was first introduced by Ocneanu \cite{ocneanu1994} and has since been dubbed `Ocneanu's tube algebra'; it is also referred to as the annular category $\text{Ann}(\mcc)$, 
 or the categorified Hochschild homology of $\mcc$.
 It is closely related to the Drinfeld center:
 If $\mcc$ is pivotal then there is a natural isomorphism
@@ -1889,7 +1897,7 @@ $\text{Rep}(\text{Ann}(\mcc)) \cong \mcz(\text{Rep}(\mcc))$, and if $\mcc$ is se
 the $\text{Rep}$s and obtain $\text{Ann}(\mcc) \cong \mcz(\mcc)$.
 \kw{need to double-check this claim; also need to choose a notion for annular category/tube alg;
 maybe $\mct(\mcc)$ \dave{We use $\tube(\mcc)$ below, will stick with that for now.}; also, do we want to say tube category instead of tube algebra?}
-With appropriate modifications accounting for spin structure issues, this same construction holds 
+With appropriate modifications accounting for spin structure issues, a similar construction holds 
 in the more general fermionic setting considered here. 
 
 \dave{Others who could be natural to cite above if we want more history are\cite{ocneanu2001,evans1995,Izumi2000,muger2003b,Bultinck2017}}
@@ -1902,53 +1910,52 @@ in the more general fermionic setting considered here.
 %With appropriate modifications accounting for spin structure issues, this same construction holds 
 %in the more general fermionic setting considered here. 
 
-\dave{Will come back to this paragraph.}
-Briefly, the tube algebra is the algebra of ``scale transformations'' 
-\kw{I have not heard this term before; where else is it used?  let's discuss on skype}
-\dave{I think Lan and Wen's paper uses this term. 
-It's probably more appropriate for us to say that elements (objects) of the tube algebra (category) represent local operators. 
-This is probably a point we should emphasize somewhere, and draw the appropriate figure
-i.e., how the following statement 'anyons are local excitations that cannot be made locally' connects to the tube algebra (category).
-Maybe in the Hamiltonian section? 
-Or even introduction?
-}
-on topological quasiparticles, which are localized around circular punctures on the ambient manifold. 
+Local operators on these punctures correspond to glueing on tubes to the punctures; 
+these operators are provided by the tube category... 
+
+That the modules of the tube category (which allow us to assign excitations to circular punctures on our base manifold) reproduce $\mcz(\mcc)$ makes intuitive sense, as the category $\mcz(\mcc)$ is what a (fully-extended) TQFT assigns to an $S^1$.  
+For a review and a more detailed discussion of how the tube algebra works in the fermionic setting, 
+we refer readers to Appendix \ref{tube_alg}. \ethan{or not}
+
+A potentially helpful physical picture is to think of the tube category as performing ``scale transformations'' 
+on topological quasiparticles, which are localized around circular punctures on the ambient manifold \cite{lan wen}. 
 These ``scale transformations'' consist of gluing in annuli with different field configurations to the 
 punctures associated with each quasiparticle. 
-At an operational level, 
-\kw{huh?}
-the elements in the tube algebra are tubes decorated with different field 
-configurations with multiplication given by stacking tubes on top of one another. 
 Since the quasiparticle excitations are topological they must be invariant under these scale transformations, 
 and thus finding the quasiparticle excitations in the theory reduces to finding the (simple) 
-modules of the tube algebra. 
-For a review and a more detailed discussion of how the tube algebra works in the fermionic setting, 
-we refer readers to Appendix \ref{tube_alg}. 
-\kw{What will be in the appendix that we won't also be saying in the main text?}
-\dave{Will assume we described enough about the tube category in the above paragraph so that the following makes sense.}
+modules of the tube category. 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Finding the quasiparticle excitations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\kw{It doesn't really make sense to talk about linear combinations of diagrams with different boundary conditions
 %(different charge sectors), so in the following paragraphs I think we should segregate the diagrams by boundary condition (charge).}
 %\dave{Sounds good.
 %I think this section was written based on our old understanding of the tube algebra.}
 
-Lets study the tube category for $C_2$ in a little more detail. 
+We now turn to a detailed study of the tube category for $C_2$. 
 The objects of $\tube(C_2)$ are given by circles with marked points 
 labeled by simple objects of $C_2$.
 There are two spin structures on the circle: bounding (anti-periodic boundary conditions; non-vortex) and 
 non-bounding (periodic boundary conditions; vortex).
-Hence each object needs an additional label determining its spin structure. 
-It is sufficient for our purposes to take circles with one marked point.
-For a fixed spin structure there are only two possible labels that can be assigned to a marked point,
+Each object in $\tube(C_2)$ thus possesses an additional label determining its spin structure. 
+It is sufficient for our purposes to take circles with one marked point: circles with more than one point can be reduced to those with one point through local relations.
+Since there are two objects in $C_2$, for a fixed spin structure there are only two possible labels that can be assigned to a marked point,
 \begin{align}
-\underset{\mathds{1}}{\TubeBCx{B}} \quad \quad \quad \underset{\beta}{\TubeBCx{B}} \quad \quad \quad\underset{\mathds{1}}{\TubeBCx{N}} \quad \quad \quad \underset{\beta}{\TubeBCx{N}}
+\underset{\mathds{1}}{\TubeBCx{B}} \quad \quad \quad \underset{\beta}{\TubeBCx{B}} \quad \quad \quad \quad \quad \quad \underset{\mathds{1}}{\TubeBCx{N}} \quad \quad \quad \underset{\beta}{\TubeBCx{N}}
 \end{align}
 where $B$, $N$ denote bounding and non-bounding spin structures respectively. 
-Morphisms of  $\tube(C_2)$ are 
-given by all possible diagrams $C_2$ can assign to the annulus with 
-fixed boundary conditions and spin structure. 
+
+Morphisms of $\tube(C_2)$ are 
+maps between marked circles, which are cylinders (which we will draw as annuli) colored with $C_2$ string-nets.
+A given morphism $a\ra b$ is thus an annulus whose outer (inner) boundary conditions are determined by the object $a$ ($b$). 
+Note that a morphism $a \ra b$ is only nonzero if it preserves spin structure, i.e. if both $a$ and $b$ have the same spin structure. 
 After applying local relations (F-moves, dot-cancellations, removing trivial loops), 
-it is easy to see that an arbitrary string-net diagram on any tube can be reduced to a linear 
+an arbitrary string-net diagram on any tube can be reduced to a linear 
 combination of the following diagrams:
 %\begin{align}
 %\xymatrix{
@@ -1976,15 +1983,15 @@ with $J =B$ for bounding spin structure, and $J =N$ for non-bounding spin struct
 %\end{align}
 In the first row we have listed all possible tubes which take the trivial boundary condition back to itself, 
 and in the second row the tubes which take the $\beta$ marked point back to itself.
-Notice that all non-zero tubes for $C_2$ have the same label at the two marked points; for general input categories this won't happen. 
+Notice that all non-zero tubes for $C_2$ have the same label at the two marked points; for general input categories this won't happen, sections \ref{halfesix} and \ref{so36} are of this sort.
 Depending on the spin structure on the annulus, some of the above diagrams may be zero.
 
-The tubes share the same spin structure as the circles which at their boundaries.
-Since there are only two spin structures on the cylinder, bounding and non-bounding, there are no tubes which take a bounding circle to a non-bounding circle, or vice versa.
-We will denote the spin structure of a given tube with a subscript, 
-using $B$ for bounding spin structure and $N$ for non-bounding spin structures.
+%The tubes share the same spin structure as the circles which bound them.
+%Since there are only two spin structures on the cylinder, bounding and non-bounding, there are no tubes which take a bounding circle to a non-bounding circle, or vice versa.
+%We will denote the spin structure of a given tube with $B$ for bounding, and $N$ for non-bounding spin structures.
+
 With a bounding spin structure, a fermionic dot picks up a factor of $-1$ if it moves around the annulus.
-To describe the non-bounding spin structure, we add a ``branch cut" from the center of the annulus to the exterior, and fermions pick up an additional minus sign if they cross that branch cut.
+To describe the non-bounding spin structure, we find it helpful to add a ``branch cut" extending from the center of the annulus to the exterior, such that fermions pick up an extra minus sign when they cross the branch cut.
 
 As we said above, not every string diagram in the annulus is consistent with a given spin structure.
 For example,
@@ -2014,9 +2021,9 @@ while a basis for the non-bounding sector is given by
 \tube_{\unit \rightarrow \unit}^N &= \mathbb{C}\left[ \Fubex{\FubeXXXA}{N}  ,\Fubex{\FubesdXsA}{N} \right]\\
 \tube_{\beta \rightarrow \beta}^N &= \mathbb{C}\left[ \Fubex{\FubeXssA}{N}  ,\Fubex{\FubessXA}{N} ,\Fubex{\FubeXsdsA}{N} ,\Fubex{\FubessdXA}{N}  \right]
 \end{align}
-We have denoted the label at the marked points on the boundary by the subscript, and the spin structure by a super script. 
+%We have denoted the label at the marked points on the boundary by the subscript, and the spin structure by a super script. 
 
-The multiplication law in the tube algebra is given by stacking tubes on top of one another 
+The multiplication operation in the tube category is given by stacking tubes on top of one another 
 and simplifying the resulting tube using local relations.  
 For example, in the non-bounding sector we have
 \begin{align}
@@ -2026,7 +2033,7 @@ For example, in the non-bounding sector we have
 + A^{-4} \Fubex{\RDotTwocA}{N}  \right) \; = \; 2 \Fubex{\FubeXXXA}{N}
 \end{align}
 Note that since the spin structures on two tubes being fused must agree on the boundary 
-at which they are being fused, non-bounding tubes can only be stacked on top of non-bounding tubes, 
+at which they are fused, non-bounding tubes can only be stacked on top of non-bounding tubes, 
 and similarly for bounding tubes.
 
 %%% KW: Does this (below) say anything that is not already covered in the local relations for C2?  Not sure what "time slice" means here.
@@ -2038,7 +2045,7 @@ and similarly for bounding tubes.
 
 Relations like the ones above allow us to find the (isomorphism classes of) minimal idempotents of the tube category. 
 Each isomorphism class of minimal idempotents defines a subspace which is left invariant under the action of tube stacking. 
-It is natural to interpret the action of stacking as a local operation, 
+It is natural \ethan{elaborate on natural} to interpret the action of stacking as a local operation, 
 thus the equivalence class of states related by local operators are 
 labeled by an isomorphism class of minimal idempotents, 
 see section XXX for more details. 
@@ -2343,14 +2350,15 @@ and check that the odd generators $\gamma_1$ and $\gamma_2$ satisfy $\gamma_1^2 
 These are precisely the defining relations of $\cl_2 \cong \langle 1, \gamma_1,\gamma_2 \rangle$, and so we have $\tube_{\beta \rightarrow \beta}^B \cong \cl_2$.
 
 
-We also note that the chirality operator in this setting is $\bar\gamma=i\gamma_1\gamma_2$, 
+We also point out the amusing fact that the chirality operator in this setting is $\bar\gamma=i\gamma_1\gamma_2$, 
 which is just the two-dimensional analogue of the familiar four-dimensional chirality 
 operator $\gamma_5=i\gamma_0\gamma_1\gamma_2\gamma_3$. 
 Such an identification for $\bar\gamma$ makes perfect sense from the TQFT standpoint, 
 since the operator $\bar\gamma=i\gamma_1\gamma_2$ implements the topological twist.  
 \dave{Why does it correspond to a chirality operator?
 Need to think about this point.} \ethan{Chirality operators (sometimes aka parity operators) are given by products of all the Clifford generators}
-\dave{To me it seems like it could be a coincidence, but there could be a deep physical connection I don't understand.} \ethan{Right. I lean towards the deeper physical reason, but don't understand it completely yet}
+\dave{To me it seems like it could be a coincidence, but there could be a deep physical connection I don't understand.} \ethan{Right. I lean towards the deeper physical reason, but don't understand it completely yet.}
+\dave{OK, lets figure that out then.}
 
 We now turn to the task of identifying the quasiparticles (simple modules) of this subalgebra. 
 At a high level, we can appeal to the Morita equivalence between $\cl_2$ and $\cc$ which states 
@@ -2669,8 +2677,8 @@ We have chosen $m_\sigma^+$ as the representative of the isomorphism class given
 
 \dave{We could adhere this to the tube category -- i.e., analyze $\tube_{x\rightarrow x}^Y$ for $x = \unit, \beta$ and $Y = B,N$ -- or leave it as is. 
 What do you guys prefer?}
-Before moving on, we note that we could have obtained a large amount of information about the quasiparticle content of the theory without actually finding the explicit representations of the simple modules of the tube category.
-We could insetead treat the set of tubes as an algebra (with the obvious multiplication) and apply standard techniques to find the simple modules.
+Before moving on, we note that we could have obtained a large amount of information about the quasiparticle content of the theory without actually finding the explicit representations of the primitive idempotents of the tube category.
+To do this, we treat the tube category as an algebra (with the obvious multiplication) and apply standard techniques to find the simple modules of the algebra.
 The idea is to exploit the sum-of-squares formula, relating the dimension of an algebra to the dimensions of its simple modules. 
 In the bosonic case, the formula is as follows: if $\{M_a\}$ is a list of the simple modules of the tube algebra, then 
 \be \dim \tube = \sum_{M_a} (\dim M_a)^2.\ee
@@ -2679,8 +2687,9 @@ In the fermionic case, this is modified slightly to account for the fact that th
 where the factor of 2 comes from the fact that if $a$ is q-type the even and odd parts of $M_a$ have equal dimensions (as they are oddly isomorphic). 
 
 This formula actually allows us to exactly reproduce the quasiparticle content of the $C_2$ theory starting with equations \eqref{atubes} and \eqref{ptubes} enumerating the elements of the tube algebra. 
-Since \eqref{sumofsqs} holds for any algebra, it holds for the subalgebras $\tube^N$ and $\tube^B$. 
-Since taking fermions around tubes with non-bounding spin structures acts as the identity,%\footnote{This is true in the $C_2$ theory, but not in general; see Sec \ref{e6} for a counterexample.}
+Since \eqref{sumofsqs} holds for any algebra, it holds for the subalgebras $\tube^N$ and $\tube^B$ (since the tube algebra does not mix states of different spin structures, 
+$\tube \cong \tube^B \oplus \tube^A$). 
+Since taking fermions around tubes with non-bounding spin structures acts as the identity (in the $C_2$ theory under consideration),%\footnote{This is true in the $C_2$ theory, but not in general; see Sec \ref{e6} for a counterexample.}
 all of the quasiparticles associated with periodic spin structures will have $\cl_1$ endomorphism algebras (that is, they will all be q-type). Furthermore, since $\dim \tube^B = \dim \tube^N = 6$, for the $C_2$ theory we have 
 \be 6 = \sum_{a \in \mcz^B(C_2)} (\dim M_a)^2,\qquad 6 = 2 \sum_{a\in \mcz^N(C_2)} (\dim M_a)^2,\ee
 where $\mcz^B(C_2)$ are all the quasiparticles associated with bounding spin structures and $\mcz^N(C_2)$ are those associated with the non-bounding spin structures. 
@@ -2767,7 +2776,9 @@ As with \eqref{mortube}, the vector space mapping two punctures to one is spanne
 \label{morpants}
 \text{mor}( \underset{x}{\TubeBCx{J}} \tp \underset{y}{\TubeBCx{W}}  \rightarrow \underset{\;\; \;\; \quad z \in x\tp y}{\TubeBCx{J+W}} ), %= \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right]
 \end{align}
-where $J, W \in \{ B,N \}$ denote the spin structures of the two punctures you are fusing which determines the third with the addition rule,
+where $J, W \in \{ B,N \}$ denote the spin structures of the two punctures being fused. 
+Since contractible loops are assigned anti-periodic boundary conditions, $B$ acts as $0$ and $N$ acts as $1$ when calculating $J+W$ (where addition is carried out in $\zt$). 
+Thus the addition rule is 
 \begin{align}
 B+B = B \quad \quad B+N = N \quad \quad N+N  = B.
 \end{align}
@@ -2781,8 +2792,9 @@ Note that the spin structure on the inner two punctures determines the spin stru
 and so we omit the labeling.
 
 The primitive idempotents -- or quasiparticles -- displayed in Figure \ref{CTwoParticles} naturally parse the fusion space in \eqref{morpants}.
-Let $\Pi_a$ be the idempotent (projector) corresponding to the representative of the isomorphism class of quasiparticle $a$, i.e., one of those listed in Figure \ref{CTwoParticles}.
-The choice of representative affects the explicit representation of the fusion space, none of the guage invariant quantities which you compute. 
+We search for the subspaces which describe quasiparticles living at the punctures, i.e., a subspace which is invariant under application of the primitive idempotents. 
+More specifically, let $\Pi_a$ be the idempotent (projector) corresponding to the representative of the isomorphism class of quasiparticle $a$, i.e., one of those listed in Figure \ref{CTwoParticles}.
+The choice of representative affects the explicit representation of the fusion space, but none of the guage invariant quantities which can be computed. 
 For example, the idempotent given by $\Pi_{m_\sigma^+}$ constitutes a choice of representative, we could have just as easily chosen $\Pi_{m_\sigma^-}$.
 All resulting guage invariant quantities are the same for each choice, but explicit representations of, for example the fusion spaces, may change.
 In order for $V^{ab}_c$ to be a bona fide fusion space, the vector space $V^{ab}_c$ must be invariant under the action of $\Pi_a$ and $\Pi_b$ on in inner punctures acting from above, and $\Pi_c$ acting on the outer puncture from below.
@@ -2950,11 +2962,11 @@ $q_\sigma$&$\bullet q_\sigma$&$\bullet (q_\unit \oplus q_\psi)$&$\bullet q_\sigm
 $q_\psi $&$\bullet q_\psi$&$\bullet q_\sigma$&$\bullet q_\unit$&$\bullet m_\psi$&$\bullet m_\sigma^+$&$\bullet m_\unit$
 \end{tabular}
 %}
-\caption{ \label{fusiontable} The quasiparticle fusion rules in $\mcz(C_2)$. 
+\caption{ \label{fusiontable} The quasiparticle fusion spaces in $\mcz(C_2)$. 
 We have defined $\bullet = \mathbb{C}^{1|1}$ to denote that the associated fusion space is isomorphic to $\cc^{1|1}$.
 %Bullets in front of terms indicate that the associated fusion space is isomorphic to $\cc^{1|1}$. 
 Entries with $\cc^{0|1}$ indicate that the fusion channel is purely odd. 
-For example, the $m_\sigma^+ \tp m_\sigma^+$ entry indicates that the fusion space is $\cc^{1|0}$ if the fusion product is $m_1$, and $\cc^{0|1}$ if the fusion product is $m_\psi$. }
+For example, the $m_\sigma^+ \tp m_\sigma^+$ entry indicates that the fusion space is $\cc^{1|0}$ if the fusion product is $m_1$, and $\cc^{0|1}$ if the fusion product is $m_\psi$. \ethan{differentiate between the $V$s and the $N$s } }
 \end{table}
 
 
@@ -3124,6 +3136,7 @@ and the odd ones are given by putting a single dot on the upper left leg.
 %%%%%%%%%%%%%%%%%%%%
 \dave{Should we describe the trace formula?
 We could just say something to the effect "It is a well known fact \cite{someone} that..."}
+\dave{Can just cite \cite{ghosh2016}, using formula on p. 7, and \cite{das2014}}
 In what follows we will need to know the quantum dimensions of the quasiparticles in the theory.
 We can obtain them by examining the number of fusion channels each has when fused with its antiparticle. 
 We find
@@ -3143,11 +3156,7 @@ For the $C_2$ theory, we have $\mcd = \sqrt{8}$.
 
 \subsubsection{$C_2$ string-nets on the torus}
 In this section, we compute a basis for $C_2$ string-nets on the torus modulo local relations as well as the action of the mapping class group.
-\dave{Will come back to this after going through the whole section.}
-The modular $S$-matrix is related to, but distinct from, the statistical $S$-matrix which gives the mutual statistics of the quasiparticles in the theory; this $S$-matrix is discussed in Sec.\ref{mutual_statistics}. 
-\dave{I thought these were supposed to agree?}
-\dave{Also is this a standard term 'statistical' S-matrix?}
-\ethan{They agree in bosonic theories, but not in fermionic theories. They are still intimately related to one another, but I think it's a bit misleading to say that they're the same. I'll try to update the discussion to make this more clear; let's Skype about it}
+The modular $S$-matrix is related to, but distinct from, the ``statistical $S$-matrix'' which captures the braiding data of the quasiparticles in the theory; this $S$-matrix is discussed in Sec.\ref{mutual_statistics}. 
 
 Because the $C_2$ theory is dependent on the existence of a spin structure, in order to talk about ground states on a torus we must first equip the torus with a spin structure. 
 There are $|H^1(T^2;\zt)|=4$ different spin structures on the torus, obtained by choosing either bounding or non-bounding spin structures for each of the torus' non-contractible cycles. 
@@ -3166,8 +3175,6 @@ If there was no interplay between a chosen spin structure and the string-net pic
 for each choice of spin structure, since the $\beta$ lines obey $\zt$ fusion rules. \ethan{may want to rephrase}
 We will see that naive guess is actually incorrect: instead, for each spin structure, one of the four putative states is a null vector, meaning that there are only three degenerate ground states for each choice spin structure.
 
-\dave{Maybe give a slightly more general argument why if there is atleast one bounding cycle the parity is even.}
-
 Lets investigate the torus with bounding spin structure along both cycles. 
 We find the torus by identifying the inner and outer circles of the annulus.
 A complete list of states on the annulus is given in \eqref{atubes}.
@@ -3179,6 +3186,7 @@ Hence the four putative vectors for the bounding torus are,
 The fourth vector is suspicous. 
 It remains invariant under relations like \eqref{BoundingNullVector}. 
 However, if we translate the odd string around the torus along either cycle, the bounding spin structure forces the vector to come back to itself with a minus sign, hence the state is identically zero.
+More generally, the argument says any odd parity state on a torus with atleast one cycle having a bounding spin structure is identically zero. 
 %\footnote{
 %\dave{The only other possible conclusion I can come up with is the following:
 %``Hence the Hilbert space given by string nets modulo local relations on the torus with bounding spin structures along both cycles is given by,
@@ -3224,7 +3232,6 @@ We can apply the same techniques to find a basis for each of the spin torri, the
 \end{comment}
 
 
-
 \begin{figure}
 \label{TorusBasisC2}
   \centering
@@ -3268,8 +3275,8 @@ We can apply the same techniques to find a basis for each of the spin torri, the
 %\be GS_{(P,A)} = \left\{\FubeXXX,\ \FubeXss,\ \FubessX\right\}.\ee
 %For periodic boundary conditions around the longitudinal cycle (vertical in our pictures), we find
 %\be GS_{(A,P)} = \left\{\FubeXXX,\ \FubesXs,\ \FubessX\right\},\ee
-The non-bounding torus is more exotic: it only has odd parity states. 
-Lets first show that the non-bounding spin structure forces the three even parity torri with a $\beta$ line to be zero.
+The torus with non-bounding spin structure along both cycles is more exotic: it only has odd parity states.
+First, let's show that the non-bounding spin structure forces the three even parity tori with a $\beta$ line to be zero.
 Indeed, the argument is the same as in \eqref{non-boundingNullVector}, we nucleate two fermions and traverse one of them across the $\beta$ line, which results in the same state but with the fermion ordering interchanged. 
 Hence those three states are null. 
 Now consider the empty non-bounding torus.
@@ -3279,11 +3286,97 @@ This state differs from the initial state only by the ordering of the fermions, 
 \dave{Could draw a picture for the above.}
 One can check that the only states left over are the ones which have a $\beta$ line with a fermion on them. 
 A basis for this torus is given in the last line of Figure \ref{TorusBasisC2}.
+This reflects the fact that we have three q-type non-bounding idempotents.
+Generically, a q-type idempotent can only be glued up into a torus in an odd way, and an m-type idempotent in an even way.
 
-\dave{Move this to concluding remarks of the section?}
+For future reference we also tabulate the change of basis between the torri in Figure \ref{TorusBasisC2} and the idempotents in Figure \ref{CTwoParticles}.
+This is given by identifying the inner puncture of the idempotent with the outer puncture, 
+as well as specifying a spin structure along the newly made cycle. 
+We then express the result as a linear combination of the torri in Figure \ref{TorusBasisC2}.
+For simplicity of notation, we will define 
+\begin{align}
+e=\; {\FubeXXXA} \quad h = \;{\FubesXsA}  \quad v =\; {\FubeXssA} \quad t = \; {\FubessXA}
+\end{align}
+and append subscripts to denote a particular spin structure, and an overscript if the torus is closed with an odd endomorphism, for example,
+\begin{align}
+h_{NB}= \; \AddDatTorus{\FubesXsA}{N}{B} \quad \quad \text{and} \quad \quad \overset{\bullet}{t}_{NN} = \FubessdXA.
+\end{align}
+We can then compute the change of basis,
+\dave{Need to double check these.}
+\begin{align}
+\left( \begin{matrix}
+m_\unit \\
+m_\sigma^+\\
+m_\psi \\
+\end{matrix} \right)_{BB} 
+= \frac{1}{2}\left( \begin{matrix}
+1&1/d&0\\
+0&0&1\\
+1&-1/d&0\\
+\end{matrix} \right)
+\left( \begin{matrix}
+e\\
+v\\
+h\\
+\end{matrix} \right)_{BB}
+\quad \quad \quad
+\left( \begin{matrix}
+m_\unit \\
+m_\sigma^+\\
+m_\psi \\
+\end{matrix} \right)_{BN} 
+= \frac{1}{2}\left( \begin{matrix}
+1&1/d&0\\
+0&1&A^3\\
+1&-1/d&0\\
+\end{matrix} \right)
+\left( \begin{matrix}
+e\\
+v\\
+h\\
+\end{matrix} \right)_{BN}\\
+\left( \begin{matrix}
+q_\unit \\
+q_\sigma\\
+q_\psi \\
+\end{matrix} \right)_{NB} 
+= \frac{1}{2}\left( \begin{matrix}
+0&1&A^5\\
+1&0&0\\
+0&1&-A^5\\
+\end{matrix} \right)
+\left( \begin{matrix}
+e\\
+v\\
+h\\
+\end{matrix} \right)_{NB}
+\quad \quad \quad
+\left( \begin{matrix}
+\overset{\bullet}{q}_\unit \\
+\overset{\bullet}{q}_\sigma\\
+\overset{\bullet}{q}_\psi \\
+\end{matrix} \right)_{NN} 
+= \frac{1}{2}\left( \begin{matrix}
+0&A^6&-A^{3}\\
+\sqrt{2}&0&0\\
+0&A^6&A^{3}\\
+\end{matrix} \right)
+\left( \begin{matrix}
+\overset{\bullet}{e}\\
+\overset{\bullet}{v}\\
+\overset{\bullet}{h}\\
+\end{matrix} \right)_{NB}
+\end{align}
+
+
+
+\dave{Move this paragraph to conclusions of this section?}
 This substantiates the evidence for the presence of a background topological superconductor, since a $p\pm ip$ superconductor always has odd fermion parity when placed on a $(P,P)$ torus \cite{ware2016,you2015}\footnote{In general, the fermion parity of $p\pm ip$ superconductors on a manifold $\Sigma$ with spin structure $\sigma$ is computed by the Arf invariant $Arf(\Sigma,\sigma)$. \cite{Ryan, Anton, Zitao I think}}.
 % [cite meng and brayden]. 
 We also note that while in this example the fermion parity of a ground state is determined by the choice of spin structure, this is not true in more general theories -- as we will see for the $SO(3)_6$ and $\halfesix$ theories discussed in sections \ref{so36} and \ref{halfesix}.
+\dave{When does Arf determine parity?}
+\ethan{I think it works only for topological SCs, but I don't really understand it very well. Will have to look into that more}
+\dave{I think it's just for free fermions.}
 
 %and for periodic boundary conditions around both cycles, we have 
 %\be \label{pp_gss} GS_{(P,P)} = \left\{\FubesdXs,\ \FubeXsds,\ \FubessdX\right\}.\ee 
@@ -3294,16 +3387,23 @@ We also note that while in this example the fermion parity of a ground state is 
 
 %Also note that on every torus, there is one additional non-zero picture which lies at higher energy, which can be obtained by drawing the configuration of $\Sigma$ lines not present in the given collection of three pictures, adding on a dot, and creating a massive fermionic excitation somewhere in the background\dave{Not higher energy, but the state is equal to zero.}. For the $(P,P)$ torus, this high-energy state is the empty picture with a massive fermionic excitation (will elaborate later). 
 
+\dave{Will come back.}
 Having three ground states for each spin structure means that we have 12 ground states across all spin structures. 
 However, we only have six quasiparticles, and so the equality between the number of degenerate ground states on the torus and the number of quasiparticles which is familiar from bosonic theories does not hold in the most naive sense. 
-To understand this, we will examine the trace of the identity operator in the tube category, which computes the number of quasiparticle types. 
+To understand this, we will examine the trace of the identity operator in the tube category, which computes the number of quasiparticle types.
 
-\dave{I think we should define the trace on the primitive idempotents in the quantum dimensions section. 
-Then we can use that here to compute the trace.}
+To compute the trace of a generic operator $\mco$ in the tube category, we expand 
+$\mco = \sum_a c_a \Pi_a$ as a $\cc$-linear combination of the primitive idempotents 
+of the tube category. 
+This reduces the computation of ${\rm Tr} \mco$ to the computation of ${\rm Tr} \Pi_a$ for each $a$. 
+However, the traces of the primitive idempotents are already known---by definition, 
+these are the quantum dimensions of the quasiparticles associated to each idempotent\footnote{We can write ${\rm Tr}\mco$ diagrammatically by 
+writing $\mco$ as a linear combination of tubes, joining up the top and bottom of the tubes in $\mco$ to form a torus (with $B$ spin structure along the newly created cycle), and summing over the independent string-net configurations that can be drawn on the part of the torus not occupied by $\mco$. 
+The evaluation is then done by embedding the torus inside of $S^3$, filling in the complement of the torus with a Turaev-Viro state-sum whose boundary conditions are given by the field configurations on the torus, and computing the resulting state-sum.}. 
 
-\ethan{What follows is a discussion of how to compute traces by appealing to TV stuff. Could either be rephrased, expanded on (to explain TV stuff), of just removed. I for one wouldn't really mind just writing ``Tr'' in what follows without going into detail about what it really means}
-\dave{Found this part confusing.
-Ethan, want to Skype?}
+
+%\ethan{what's commented is an explanation of the trace in terms of TV stuff}
+\begin{comment} 
 Before we look at this, we should mention how the trace of a generic operator $\mco$ which acts on the tube algebra is defined. 
 We write ${\rm Tr}(\mco)$ diagrammatically by 
 writing $\mco$ as a collection of tubes, compactifying $\mco$ by joining up the top and bottom of the tubes in $\mco$ along the time direction to form a torus, and summing over the independent string-net configurations that can be drawn on the part of the torus not occupied by $\mco$. 
@@ -3318,6 +3418,8 @@ For example, if $\mco$ is a projector onto the space spanned by a quasiparticle 
 However, the boundary conditions around the longitudinal (timelike) cycle of the torus are fixed to be {\it anti-periodic}. 
 This is because in order to evaluate the right-hand side of \eqref{TrO_def}, we need embed the torus into the three-sphere and fill in the exterior of the torus with a Turaev-Viro state-sum. 
 Periodic boundary conditions along the longitudinal cycle of the torus would require a spin structure defect to pass through the hole in the torus \ethan{better term?}, which would prevent the exterior of the torus from being filled in during the evaluation of the trace, as it would be impossible to smoothly extend the spin structure on the torus to a spin structure in the $S^3$ bulk. 
+\end{comment}
+%%%%%%%%%%%%%%%%%%%
 
 Now we return to the problem of computing the trace of the identity operator on the tube algebra. 
 We can write the identity operator as $\unit = \oplus_a\Pi_a$, where $a$ runs over the simple quasiparticles in the theory and where as before $\Pi_a$ is a projector onto the simple module associated with $a$.  
@@ -3466,8 +3568,219 @@ Therefore, the six ground states on tori with anti-periodic boundary conditions 
 
 \end{comment}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{The modular $S$ and $T$ matrices}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\dave{Will come back to these two paragraphs.}
+In this section, we will compute the modular $S$ and $T$ matrices on the torus, which generate the modular group. 
+The modular $S$ matrix acts on states on the torus by interchanging the meridional and longitudinal cycles of the torus\footnote{An alternate picture of the modular $S$ matrix in terms of Turaev-Viro state sums is as follows: we note that there are two ways of representing a given string-net configuration on a torus embedded in $S^3$ in terms of Turaev-Viro state-sums: one way is to fill the exterior of the torus with a Turaev-Viro state-sum with boundary conditions specified by the given string-net configuration, as discussed in the previous section. 
+The other is to fill the {\it interior} of the torus with a Turaev-Viro state-sum possessing the same boundary conditions. 
+The modular $S$-matrix performs the change of basis between these two choices.
+We will avoid using this in what follows because it is difficult to perform explicit calculations along these lines}. 
+If we draw the torus as a square with opposing sides identified, then $S$ acts by rotating the square by $\pi/2$. 
+The modular $T$ matrix represents the action of the Dehn twist on the torus, which corresponds to cutting the torus along a meridional cycle, twisting the boundary conditions at the cut by $2\pi$ relative to one another, and glueing the torus back together.
+In bosonic theories, the $T$-matrix is diagonalized in the quasiparticle basis, with entries corresponding to the topological twists of the quasiparticles in the theory. 
 
+Importantly, the $S$ and $T$ modular transformations do {\it not} always preserve the spin structure of the torus they act on. 
+Figure \ref{spin_str_mapping_class_group} shows how the different possible spin structures are permuted under $S$ and $T$. 
+Since $T$ does not preserve the spin structures, it cannot generically have well-defined eigenstates with a definite spin structure. 
+This precludes an ability to associate a definite topological twist ($T$-matrix eigenvalue) to every quasiparticle in the theory: the spins of quasiparticles excitations in super fusion categories are in general only defined up to a $\pm$ sign, see \cite{???} for details.
+However, the action of $T^2$ preserves spin structures, and so we are still able to associate definite $T^2$ eigenvalues to the quasiparticles in the theory.
+This means that the twists of the particles whose associated spin structures are not preserved by $T$ (i.e., the particles associated with a bounding spin structure, $m_\unit,m_\psi,$ and $m_\sigma^+$ in the present example) are ambiguous up to a factor of $\pm1$.  
+
+\begin{figure} \label{spin_str_mapping_class_group}
+\newcommand{\Space}{\; \; \; \; \; \; }
+\newcommand{\Spacep}{ \; \; \; \mathop{\vphantom{\int}} \; \; \;    } %\mathop{\vphantom{\int}}
+%R controls where the arrows start from the box. 
+\begin{align}
+\xymatrix @!0 @M=1mm @R=7mm @C=25mm{
+&&&\\
+\Space   & \Space  \ar@/^1pc/[r]^{S} \Space  \ar@/^3pc/[rr]^{T} &\Space &\Space   \\
+\SmallTorus{\AnnulusBare}{N}{N} \ar @`{p+(7.07,28.28),p+(28.28,7.07)}|{S,T }  &
+\SmallTorus{\AnnulusBare}{B}{N}& 
+\SmallTorus{\AnnulusBare}{N}{B}\ar @`{p+(7.07,28.28),p+(28.28,7.07)}|{T} & 
+\SmallTorus{\AnnulusBare}{B}{B} \ar @`{p+(7.07,28.28),p+(28.28,7.07)}|{ S }  \\
+{\Space} &\Space &\Space \ar@/^1pc/[l]^{S} &\Space  \ar@/^3pc/[ll]^{T} \\
+}
+%\xymatrix @!0 @M=1mm @R=6mm @C=25mm{
+%&&&\\
+%\Space   & \Space  \ar@/^1pc/[r]^{S} \Space  \ar@/^3pc/[rr]^{T} &\Space &\Space   \\
+%\raisebox{0.2ex}{$\scriptstyle{N}\;$}\underset{N}{\FubeXXX} \ar @`{(3,15),(28,-12)}^{S,T}  &
+%\raisebox{0.2ex}{$\scriptstyle{N}\;$}\underset{B}{\FubeXXX} & 
+%\raisebox{0.2ex}{$\scriptstyle{B}\;$}\underset{N}{\FubeXXX}  \ar @`{(52,15),(77,-12)}_{T} & 
+%\raisebox{0.2ex}{$\scriptstyle{B}\;$}\underset{B}{\FubeXXX}  \ar @`{(80,18),(105,-12)}^{S}  \\
+%{\Spacep} &\Spacep &\Spacep \ar@/^1pc/[l]^{S} &\Spacep  \ar@/^3pc/[ll]^{T} \\
+%&&&\\
+%&&&\\
+%&&&\\
+%&&&\\
+%\raisebox{0.2ex}{$\scriptstyle{P}\;$}\underset{P}{\FubeXXX} &
+%\raisebox{0.2ex}{$\scriptstyle{A}\;$}\underset{P}{\FubeXXX} & 
+%\raisebox{0.2ex}{$\scriptstyle{P}\;$}\underset{A}{\FubeXXX} & 
+%\raisebox{0.2ex}{$\scriptstyle{A}\;$}\underset{A}{\FubeXXX} 
+%}
+\end{align} \nonumber
+\caption{Top: The action of the mapping class group on the four spin tori. The notation is such that the disk which bounds the cycle of the torus labeled by $B$ or $N$ has either a bounding ($B$) or non-bounding ($N$) spin structure. Bottom: the boundary conditions ($P$ for periodic and $A$ for anti-periodic) associated with each spin structure.}
+\end{figure}
+
+For simplicity of notation, we will define 
+\begin{align}
+e_{XY} =\; \AddDatTorus{\FubeXXXA}{X}{Y}&\quad\quad\quad
+h_{XY} = \;\AddDatTorus{\FubesXsA}{X}{Y} \\
+v_{XY} =\; \AddDatTorus{\FubeXssA}{X}{Y} &\quad\quad\quad
+t_{XY} = \; \AddDatTorus{\FubessXA}{X}{Y}
+\end{align}
+\dave{Old eq.}
+\be \label{tube_shorthands} e := \FubeXXX,\quad h := \FubesXs,\quad v := \FubeXss,\quad t:= \FubessX.\ee
+We now proceed to examine the action of the $S$ and $T$ modular transformations on the twelve ground states, going in groups of three for each of the four different spin structures. 
+\dave{Are we going to refer to another section where we define the modular transformations?
+Will wait to edit the following until we decide.}
+
+\medskip
+
+\underline{$\mathbf{(B,B)}$:} We'll start with the $(B,B)$ spin structure, which is preserved under the action of $S$. 
+In the ground state basis $(e,v,h)^T$, we see that
+\begin{align}
+\left( \begin{matrix}
+e\\
+v\\
+h\\
+\end{matrix} \right)_{BB} 
+%= \left( \begin{matrix}
+%\frac{1}{d \sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
+%\frac{d}{2 \sqrt{3}} & \frac{1}{2 \sqrt{3}} & - \frac{1}{2 \sqrt{3}} \\ 
+%0 & \frac{1}{2 \sqrt{3}} & 0
+%\end{matrix} \right)
+\xrightarrow{S^{BB \rightarrow BB}} & \left( \begin{matrix}
+1&0&0\\
+0&0&1\\
+0&1&0\\
+\end{matrix} \right)
+\left( \begin{matrix}
+e\\
+v\\
+h\\
+\end{matrix} \right)_{BB}
+\end{align}
+%\be S^{gs}_{AA} = \begin{pmatrix} 1 & 0 &0 \\ 0 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}. \ee
+To transform $S$ into the quasiparticle basis, we take $S_{AA}= V_{AA}^{-1}S^{gs}_{AA}V_{AA}$, where $V_{AA}$ is the matrix mapping the quasiparticle basis $(m_\unit,m_\sigma^+,m_\psi)^T$ to the ground state basis $(e,v,h)^T$. Explicitly, 
+\be V_{AA}= \frac{1}{2}\begin{pmatrix}1&0&1 \\ 0 & 1 & 0\\ 1/d & 0 & -1/d \end{pmatrix},\ee
+which can be verified from \eqref{nonvortex_qps}.
+Note that the basis consists only of $m$-type particles associated with a non-vortex spin structure, this is due to the anti-periodic boundary conditions chosen along the meridional cycle of the torus. 
+Conjugating $S^{gs}_{AA}$ by $V_{AA}$, we obtain
+\be S_{AA} = \frac{1}{2}\begin{pmatrix} 1 & d & 1 \\ d & 0 & -d \\ 1 & -d & 1 \end{pmatrix} = S_{Ising}.\ee
+
+The $T$-matrix does not preserve the spin structure, as we can see from Figure \ref{spin_str_mapping_class_group}. As a map between the ground state bases $(e,v,h)^T_{AA}$ and $(e,t,h)_{AP}^T$, we find
+\be T_{AA\mapsto AP}^{gs} = \unit_{3\times 3}.\ee
+The matrix mapping the idempotent basis $(m_\unit,m_\sigma^+,m_\psi)^T_{AP}$ onto the ground state basis $(e,t,h)_{AP}^T$  is
+\be V_{AP} = \frac{1}{2} \begin{pmatrix} 1 & 0 & 1 \\ 0 & A^{-3} & 0 \\ 1/d & 0 & -1/d \end{pmatrix},\ee
+which tells us that 
+\be T_{AA\mapsto AP} = V_{AP}^{-1} T_{AA\mapsto AP}^{gs} V_{AA} =  \begin{pmatrix}
+1 &0&0 \\ 0&A^3&0\\0&0&1
+\end{pmatrix}.\ee
+
+\underline{$\mathbf{(P,P)}$:} More interesting is the $(P,P)$ torus, whose spin structure is preserved under both $S$ and $T$. According to \eqref{pp_gss}, the three vectors in the basis of ground states are $v_\bullet,h_\bullet,$ and $t_\bullet$,
+where the $\bullet$s in labels mean that their associated tubes have odd fermion parity.
+In the ground state basis $(v_\bullet,h_\bullet,t_\bullet)^T$, we obtain
+\be S^{gs}_{PP} = \begin{pmatrix}0 & 1 & 0 \\ A^4 & 0 & 0 \\ 0 & 0 & A^{-6} \end{pmatrix},\quad T^{gs}_{PP} = \begin{pmatrix} 0 & 0 & A^{-6} \\ 0 & 1 & 0 \\ 1 & 0 & 0 \end{pmatrix}\ee
+One can check that we have the modular relations
+\be (S_{PP}T_{PP})^3 = S_{PP}^4= A^{-8}\unit_{3\times3} = -\unit_{3\times 3}.\ee 
+The minus sign, which can never appear in bosonic theories, comes from the fact that the action of $S^4$ on a $(P,P)$ torus performs a $2\pi$ rotation of the fermion framing, resulting in a phase of $-1$, since the $(P,P)$ torus has odd fermion parity. 
+These relations easily generalize to $(ST)^3=S^4=(-1)^F\unit$, where $(-1)^F$ denotes the fermion parity of the tori being acted upon.
+This also means that in the fermionic setting, the $S$ matrix is not self-dual as it is for bosonic theories. %Also, as a sanity check we see that the eigenvalues of $T$ are $1,\pm A^{-3}$ (if $A^4=i$, then $A^{-3} = e^{i\pi/8}$).
+
+Now we need to transform $S_{PP}$ and $T_{PP}$ into the quasiparticle basis. 
+Note that none of $q_{\unit\bullet},q_{\sigma\bullet},q_{\psi\bullet}$ are idempotents in the strict sense of the word, since they multiply together to give even tubes. 
+To ensure they are normalized correctly, we will require that they square to their associated even idempotents:
+\be q_{\unit\bullet}^2 = q_\unit,\quad q_{\psi\bullet}^2 = q_\psi,\quad q_{\sigma\bullet}^2 = q_\sigma.\ee
+In order for this to hold, we %see that we need to take
+%\be q_{\unit\bullet} = \frac{A^{-2}}{2}(v_\bullet + A^3 t_\bullet),\quad q_{\psi\bullet} = \frac{A^{-2}}{2}(v_\bullet - A^3t_\bullet),\quad q_{\sigma\bullet} = \frac{1}{d}h_\bullet.\ee
+%Therefore, 
+take the matrix that maps the basis $(q_{\unit\bullet},q_{\sigma\bullet},q_{\psi\bullet})^T$ to the ground state basis $(v_\bullet,h_\bullet,t_\bullet)^T$ to be 
+\be V_{PP} = \begin{pmatrix} A^{-2}/2 & 0 & A^{-2}/2 \\ 0 & 1/d & 0 \\ A/2 & 0 & -A/2 \end{pmatrix},\ee
+which gives 
+\be S_{PP} = \frac{A^{-2}}{2} \begin{pmatrix} -1 & d & 1 \\ d & 0 & d \\ 1 & d & -1 \end{pmatrix},\quad T_{PP} = \begin{pmatrix} A^{-3} & 0 & 0 \\ 0 & 1 & 0 \\ 0& 0& -A^{-3}.\end{pmatrix}.\ee
+%The prefactor of $A^2$ in $S_{PP}$ takes care of the $S^4=-\unit$ constraint for us. 
+
+\underline{$\mathbf{(P,A)}$:} Now for the $(P,A)$ spin structure, which is preserved by $T$ (as the q-type quasiparticles have well-defined self-statistics). First for the $S$-matrix, which maps the $PA$ spin structure to the $AP$ spin structure. As a map between the ground state basis $(e,v,t)_{PA}^T$ and the ground state basis $(e,t,h)_{AP}^T$, the $S$ matrix is
+\be S^{gs}_{PA\mapsto AP} = \begin{pmatrix}
+1 & 0& 0 \\ 0 & 0 & A^{-6} \\ 0&1& 0
+\end{pmatrix}.\ee
+The matrix that maps the idempotent basis $(q_\unit,q_\sigma,q_\psi)^T$ onto the ground state basis $(e,v,t)_{PA}^T$ is 
+\be V_{PA} = \begin{pmatrix}
+0 & 1 & 0 \\ 1/2 & 0 & 1/2 \\ A^3/2 & 0 & -A^3/2
+\end{pmatrix},\ee
+This means that in the idempotent basis, the $S$ matrix is 
+\be S_{PA \mapsto AP} = V_{AP}^{-1} S^{top}_{PA \mapsto AP} V_{PA} = \begin{pmatrix}
+d/2 & 1 & d/2 \\ 1 & 0 & -1 \\ -d/2 & 1 & -d/2
+\end{pmatrix}.\ee
+
+Now for $T$, which preserves the spin structure. In the ground state basis basis $(e,v,t)^T$, $T$ takes the form 
+\be T^{gs}_{PA} = \begin{pmatrix}
+1 & 0 & 0\\ 0 & 0 & A^{-6} \\ 0&1&0 
+\end{pmatrix},\ee
+which in the idempotent basis becomes 
+\be T_{PA}  = \begin{pmatrix}
+A^{-3} & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -A^{-3}
+\end{pmatrix}.\ee
+
+\underline{$\mathbf{(A,P)}$:} Finally, we turn to the $(A,P)$ spin structure. 
+Since the $S$-matrix must be symmetric, we can immediately write 
+\be S_{AP \mapsto PA} =  S_{AP \mapsto PA}^T = \begin{pmatrix}
+d/2 & 1 & -d/2 \\ 1 & 0 & 1 \\ d/2 & -1 & -d/2
+\end{pmatrix}.\ee
+As a map between the ground state bases $(e,t,h)^T_{AP}$ and $(e,v,h)^T_{AA}$, $T$ is 
+\be T^{gs}_{AP \mapsto AA} = \begin{pmatrix}
+1 &0&0 \\ 0&A^6 &0\\0&0&1
+\end{pmatrix}.\ee
+Therefore, in the idempotent basis, 
+\be T_{AP\mapsto AA} = V_{AA}^{-1} T^{gs}_{AP\mapsto AA} V_{AP} = \begin{pmatrix}
+1 &0&0 \\ 0&A^3&0\\0&0&1
+\end{pmatrix}.\ee
+
+\medskip
+
+Collecting these results, we can now write down the complete modular $S$ and $T$ matrices in the $C_2$ theory, which act across all spin structures. 
+We will write them down in the quasiparticle basis $[(m_\unit,m_\sigma^+,m_\psi)_{AA},(m_\unit,m_\sigma^+,m_\psi)_{AP},(q_\unit,q_\sigma,q_\psi)_{PA},(q_\unit,q_\sigma,q_\psi)_{PP}]^T$, in which we can write
+\be \label{modularS}
+S = \frac{1}{2}\begin{pmatrix} 1 & d & 1 &			&&&			&&&			&& \\ 
+					      d & 0 &-d &			&&&			&&&			&&\\
+					      1&-d&1 & 			&&&			&&&			&&\\
+						&&&				&&&			1&d&1&		&& \\
+						&&&				&&&			d&0&-d&		&&\\
+						&&&				&&&			-1&d&-1&		&&\\
+						&&&				1&d&-1&		&&&			&&\\
+						&&&				d&0&d&		&&&			&&\\
+						&&&				1&-d&-1&		&&&			&&\\
+						&&&				&&&			&&&			-A^{-2} & A^{-2}d & A^{-2}\\
+						&&&				&&&			&&&			A^{-2}d & 0 & A^{-2}d \\ 
+						&&&				&&&			&&&			A^{-2} & A^{-2}d & -A^{-2} \end{pmatrix}\ee		
+where we have only listed the non-zero entries. 
+$S$ has two different direct-sum decompositions. First, essentially by construction, it splits into a direct sum over blocks according to equivalence classes of spin structures under the $S$ modular transformation. 
+Additionally, we have $S = S_{even} \oplus S_{odd}$, where $S_{odd}$ is the $S$-matrix acting on ground states with odd fermion parity, and so the $S$-matrix preserves fermion parity.
+This decomposition is always possible, but it will not always match a decomposition based on spin structures. 
+That is, while $S_{odd} = S_{NN}$ in this theory, spin structure blocks of $S$ will not have a definite fermion parity in general. 
+Also note that $S^4 = \unit_{9\times9}\oplus(-\unit_{3\times3})$ in accordance with $S = S_{even} \oplus S_{odd}$. 
+
+Now for the $T$-matrix. 
+In the same quasiparticle basis as before, the $T$-matrix is
+\be 
+T = \begin{pmatrix}    &&&				1&0&0&			&&&			&& \\ 
+					        &&&				0&A^3&0&			&&&			&&\\
+					        &&& 				0&0&1&			&&&			&&\\
+						1&0&0&				&&&			&&&			&& \\
+						0&A^3&0&				&&&			&&&			&&\\
+						0&0&1&				&&&			&&&			&&\\
+						&&&				&&&			A^{-3}&0&0&			&&\\
+						&&&				&&&			0&1&0&			&&\\
+						&&&				&&&			0&0&-A^{-3}&			&&\\
+						&&&				&&&			&&&			A^{-3}&0&0\\
+						&&&				&&&			&&&			0&1&0 \\ 
+						&&&				&&&			&&&			0&0&-A^{-3} \end{pmatrix}\ee	
+The $T$-matrix is not completely diagonalized, since it acts nontrivially on the spin structures. 
+This leads to subtleties involved with identifying the topological twists of the quasiparticles, which we elaborate on in the next section. 
+
+\begin{comment}
 In this section, we will compute the modular $S$ and $T$ matrices on the torus, which generate the modular group. 
 To explain what the modular $S$-matrix does, we note that there are two ways of representing a given string-net configuration on a torus embedded in $S^3$ in terms of Turaev-Viro state-sums: one way is to fill the exterior of the torus with a Turaev-Viro state-sum with boundary conditions specified by the given string-net configuration, as discussed in the previous section. 
 The other is to fill the {\it interior} of the torus with a Turaev-Viro state-sum possessing the same boundary conditions. 
@@ -3634,7 +3947,7 @@ T = \begin{pmatrix}    &&&				1&0&0&			&&&			&& \\
 						&&&				&&&			&&&			0&0&-A^{-3} \end{pmatrix}\ee	
 The $T$-matrix is not completely diagonalized, since it acts nontrivially on the spin structures. 
 This leads to subtleties involved with identifying the topological twists of the quasiparticles, which we elaborate on in the next section. 
-
+\end{comment}
 
 
 %%%%%%%%%%%%%%%%%%%%%%% 
@@ -5513,14 +5826,16 @@ A(T^2, NN)  &\cong \mathbb{C}^{1|2} = \mathbb{C} \left[ \AddDatTorusDot{\hTube}{
 %%%%%%%%%%%%%%
 
 
- \subsection{Center of condensed $\halfesix$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \subsection{The quasiparticle excitations of $\halfesix / \psi$}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \dave{Kevin, what's the proper nomenclature here. Drinfeld center, Drinfeld trace, quantum double? I've seen all three show in somewhat related literature.}
  \dave{Subsection still in progress.}
  In this subsection we compute we compute the center of $\halfesix$. 
  We do so in the same fashion as we did with Ising. 
 The Drinfeld center is somewhat exotic, and so provides a nice example, as well as highlights many of the non-trivial features which arise when studying annular categotries.....
 
-In App. \ref{IdempotentsHalfESix} we compute the Drinfeld center of the annular category associated to the un-condensed $\halfesix$. 
+In App. \ref{IdempotentsHalfESix} we compute the Drinfeld center of the annular category associated to the parent (un-condensed) $\halfesix$ theory. 
 We will describe some of the connections between taking the center then condensing fermions rather than condensing the fermions and taking the center. 
  
  
@@ -9184,11 +9499,15 @@ This implies that $\lambda = - \lambda^*$, and so $\lambda$ must be purely imagi
 
 \ethan{currently a regurgitation of superfacts---obviously still under construction} 
 
+In this appendix we briefly recall some of the key mathematical facts about superalgebras and their modules. 
+Our notation and presentation is largely borrowed from \cite{Jozefiak}.
+
 \be M(r|s)_0 = \text{matrices of the form\ } \begin{pmatrix} A & 0 \\ 0 & B \end{pmatrix},\qquad M(r|s)_1 = \text{matrices of the form\ } \begin{pmatrix} 0 & C \\ D & 0 \end{pmatrix},\ee
 where $A$ is an $r\times r$ matrix, $B$ an $s\times s$ matrix, $C$ an $r\times s$ matrix, and $D$ an $s\times r$ matrix. 
 
 \be Q(n)_0 = \text{matrices of the form\ } \begin{pmatrix} A & 0 \\ 0 & A \end{pmatrix},\qquad Q(n)_1 = \text{matrices of the form\ } \begin{pmatrix} 0 & B \\ B & 0 \end{pmatrix},\ee
 where both $A$ and $B$ are $n\times n$ matrices. 
+This is our reason for calling simple objects in super fusion categories m-type (q-type) if their endomorphism algebra is $\cc$ ($\cl_1$). 
 
 The form of a general simple superalgebra $A$ can be diagnosed by computing its center: if $Z(A)_1 = 0$ then $A \cong M(r|s)$ for some $r,s$, while if $Z(A)_1 \neq 0$ then $A\cong Q(n)$ for some $n$. 
 
