@@ -2696,7 +2696,8 @@ q_\sigma&&2&& 1 \\
 q_\psi &&\sqrt{2}&& A^3 \\
 \end{array}
 \end{align}
-\caption{$C_2$ data. The total quantum dimension is $\mcd = ...$.}
+\caption{$C_2$ data. The total quantum dimension is $\mcd = ...$.
+The topological spin defined here is the eigenvalue under $t$ when the tube has a $\beta$ line at the boundary.}
 \label{C2Data}
 \end{figure}
 
@@ -4272,9 +4273,11 @@ This leads to subtleties involved with identifying the topological twists of the
 %%%%%%%%%%%%%%%%%%%%%%% 
 \subsection{Braiding data} \label{C2_braiding}
 %%%%%%%%%%%%%%%%%%%%%%%
-
-In this section we compute the braiding data of the quasiparticles in the $C_2$ theory, namely their mutual- and self-statistics. 
-We will do this by computing the $R$-matrices, which we will trace out to obtain the braiding data. 
+\dave{Will come back to this paragraph.}
+In this section we compute the braiding data of the quasiparticles in the $C_2$ theory.
+%, namely their mutual- and self-statistics. 
+%We will do this by computing the $R$-matrices, which we will trace out to obtain the braiding data. 
+This in turn allows us to define {\it statistical} $S$ and $T$ matrices \ethan{or the braiding $S$ and $T$ matrices?}, which measure the mutual- and self-statistics of the quasiparticles in the theory, respectively. 
 This in turn allows us to define {\it statistical} $S$ and $T$ matrices \ethan{or the braiding $S$ and $T$ matrices?}, which measure the mutual- and self-statistics of the quasiparticles in the theory, respectively. 
 In conventional bosonic topological phases, the statistical $S$ and $T$ matrices are identical to the modular $S$ and $T$ matrices, which we computed in the previous section.
 However, we will see that the presence of spin structures means that this correspondence does {\it not} hold in the $C_2$ theory (as well as in more general fermionic theories). 
@@ -4282,6 +4285,7 @@ While the modular $S$ and $T$ matrices are still intimately related to the stati
 \dave{Ethan do you have a reference to something that uses 'statistical S-matrix'?
 I'm not familiar with it, but the name is self-explanatory which is nice.}
 \ethan{nope, I just made it up}
+\dave{Ok.}
 
 \subsubsection{$R$-matrices}
 To begin, we will construct a table of the $R$ symbols in the theory. 
@@ -4384,6 +4388,113 @@ $q_\psi $&$(1+1\bullet)q_\psi$&$-A^3(1-A^4\bullet)q_\sigma$&$(1+1 \bullet)q_\uni
 %If we switched the choice for $A^4$ (e.g. from $i$ to $-i$), we could obtain the switched $R$-symbols by sending $\zeta \mapsto \zeta^*$. 
 
 %\subsection{Exchange statistics}
+
+
+\begin{comment}
+To begin, we will construct a table of the $R$ symbols in the theory. 
+First, we need to set some conventions on our fusion spaces in this section. 
+We will work on the three-punctured sphere rather than drawing out pairs of pants, as it is much easier to perform calculations using the three-punctured sphere picture. 
+
+We will write a generic even fusion space, which is an even vector in the fusion space $V^{ab}_c$, as 
+\be \label{pants_braiding_basis} \includegraphics{pants_braiding_basis.pdf},\ee
+where $a,b,c\in \mcz(C_2)$ and $u,v,w\in \zt$ are variables indicating whether or not a $\beta$ line is present on the given link. The idempotent labels represent a collection of pictures, one for each tube in their definition. For example, 
+\be \includegraphics{msig_def.pdf} \ee
+
+We will calculate the braiding in the fusion space $V^{ab}_c$ by moving the $a$ and $b$ punctures around one other and re-expressing the result in terms of the basis vectors in $V^{ba}_c$. 
+When braiding q-type particles, we enforce their periodic boundary conditions graphically by introducing branch cuts ending on each q-type puncture, with the rule that dots sliding past a branch cut pick up a phase of $-1$. 
+\dave{We could do branch cuts extending vertically off to $+\infty$. 
+}
+For concreteness, we will draw our branch cuts to always meet near the center of the three punctures. 
+For example, to calculate $R^{q_\psi q_{1/\psi}}_{m_{\psi/1}}$, we write
+\be \includegraphics{qpsiq1psi_braiding} \ee
+where the dashed blue lines are the branch cuts, and we have taken advantage of our knowledge of the eigenvalue of $q_\psi$ under the twisted tube (i.e. the spin of $q_\psi$). 
+
+We define odd vectors in $V^{a,b}_c$ by placing dots on the top left leg of the pants, on the leg marked $u$ in \eqref{pants_braiding_basis}. 
+If this is impossible (e.g. if the top left leg is an $m_\psi$ idempotent), we put the dot on the top right leg of the pants, marked $v$ in \eqref{pants_braiding_basis}. 
+For example, we can calculate the $R$-symbol $R^{m_\psi m_\sigma^+}_{m_\sigma^+} = -1$ by
+\be \includegraphics{mpsimsig_braiding.pdf}.\ee
+A slightly more complicated example is the odd fusion channel in $R^{q_\psi q_{1/\psi}}_{m_{\psi/1}}$:
+\be \includegraphics{qpsiq1psidot_braiding.pdf} \ee
+Note that we have assumed we can ``pivot'' branch cuts around the punctures on which they are located, provided that we pick up a factor of $-1$ each time the branch cut crosses a fermion. 
+
+We have to remember to always move the dots back to the left side of the pants after the braid takes place, if possible. 
+As an example, we can calculate the braiding of the odd fusion channel in $R^{q_\sigma q_{1/\psi}}_{m_\sigma^+}$:
+\be \includegraphics{qsigq1psidot_braiding.pdf} \ee
+
+
+Manipulations like these can be used to work out the full table of $R$-symbols, which we present in Table \ref{Rtable}. 
+The $\bullet$ symbol is used to denote odd fusion channels, i.e. the action of the braiding operation on an odd vector in the fusion space $V^{ab}_c$.  
+\begin{table}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{c||c|c|c||c|c|c}
+$     R^{ab}_{c \in a\otimes b} $&$m_\unit $&$m_\sigma^+$&$m_\psi$&$q_\unit$&$q_\sigma$&$q_\psi $\\
+     \hline
+     \hline
+     
+$m_\unit $&$m_\unit$&$ m_\sigma^+$&$m_\psi$&    $(1+1\bullet)q_\unit$&$(1+1\bullet)q_\sigma$&$(1+1\bullet)q_\psi$ \\ %yup
+
+     \hline
+$m_\sigma^+ $&$m_\sigma^+$&$A^{-3}(m_\unit-A^4\bullet m_\psi) $&$ \bullet m_\sigma^+ $&$      A^{-3}(1+A^4\bullet)q_\sigma $&$ (1-A^6/d\bullet ) q_\unit$&$ A^{-3}(1+A^4\bullet)q_\sigma$ \\
+
+ $$&$$&$$&$$&$$&$+(1+A^6/d\bullet) q_\psi$&$$\\
+     \hline
+     
+$m_\psi $&$m_\psi$&$(-1\bullet) m_\sigma^+$&$m_\unit$&      $-(1+ 1\bullet)q_\psi$&$(1+1\bullet )q_\sigma$&$-(1+1\bullet)q_\unit $\\
+
+     \hline
+     \hline
+     
+$q_\unit $&$(1+1\bullet)q_\unit$&$A^3(1-A^4 \bullet)q_\sigma $&$(1+1\bullet)q_\psi$&$A^3(1+A^4 \bullet)m_\unit$&$(1+ A^{-6}/d \bullet )m_\sigma^+$&$A^3(1+A^4 \bullet)m_\psi$\\
+
+\hline
+$q_\sigma $&$(1+1\bullet)q_\sigma$&$(A^{-6}- d A^4 \bullet)q_\unit$&$(1+1\bullet)q_\sigma$&$(A^6+A^4 d \bullet )m_\sigma^+$&$(1+A^4\bullet) m_\unit$&$(-A^6+A^4 d \bullet)m_\sigma^+$ \\
+
+$                $&$$&$(-A^{-6}- d A^4 \bullet)q_\psi$&$$&$$&$+(1-A^4\bullet)m_\psi$&$$ \\
+
+\hline
+$q_\psi $&$(1+1\bullet)q_\psi$&$-A^3(1-A^4\bullet)q_\sigma$&$(1+1 \bullet)q_\unit$&$-A^3(1+A^4\bullet)m_\psi$&$(1-A^{-6}/d \bullet )m_\sigma^+$&$-A^3(1+A^4 \bullet)m_\unit$
+\end{tabular}
+}
+\caption{\label{Rtable} The R-symbols for the $C_2$ theory. The particle labels in each entry denote fusion channels, with the bullets signifying which fusion channels are odd. For example, the bottom right entry tells us that $R^{q_\psi q_\psi}_{m_\unit} = -A^3$ when acting on the even vector in $V^{q_\psi q_\psi}_{m_\unit}$ and $R^{q_\psi q_\psi}_{m_\unit} = -A^7 = A^{-1}$ when acting on the odd vector. }
+\end{table}
+\\ \ \\
+%\ethan{below is the table where we took A^4 = i, in case I messed up converting to the general case
+%\begin{table}
+%\resizebox{\linewidth}{!}{%
+%\begin{tabular}{c||c|c|c||c|c|c}
+%$     R^{ab}_{c \in a\otimes b} $&$m_\unit $&$m_\sigma^+$&$m_\psi$&$q_\unit$&$q_\sigma$&$q_\psi $\\
+%     \hline
+%     \hline
+%$m_\unit $&$m_\unit$&$ m_\sigma^+$&$m_\psi$&    $(1+1\bullet)q_\unit$&$(1+1\bullet)q_\sigma$&$(1+1\bullet)q_\psi$ \\ %yup
+%     \hline
+%$m_\sigma^+ $&$m_\sigma^+$&$\zeta^{-1}(m_\unit-i\bullet m_\psi) $&$ \bullet m_\sigma^+ $&$      \zeta^{-1}(1+i \bullet)q_\sigma $&$ (1-\zeta^2/d\bullet ) q_\unit$&$ \zeta^{-1}(1+i\bullet)q_\sigma$ \\
+% $$&$$&$$&$$&$$&$+(1+\zeta^2/d\bullet) q_\psi$&$$\\
+%     \hline
+%$m_\psi $&$m_\psi$&$(-1\bullet) m_\sigma^+$&$m_\unit$&      $-(1+ 1\bullet)q_\psi$&$(1+1\bullet )q_\sigma$&$-(1+1\bullet)q_\unit $\\
+%     \hline
+%     \hline
+%$q_\unit $&$(1+1\bullet)q_\unit$&$\zeta(1-i \bullet)q_\sigma $&$(1+1\bullet)q_\psi$&$\zeta(1+i \bullet)m_\unit$&$(1+ \zeta^{-2}/d \bullet )m_\sigma^+$&$\zeta(1+i \bullet)m_\psi$\\
+%\hline
+%$q_\sigma $&$(1+1\bullet)q_\sigma$&$(\zeta^{-2}- d i \bullet)q_\unit$&$(1+1\bullet)q_\sigma$&$(\zeta^2+i d \bullet )m_\sigma^+$&$(1+i\bullet) m_\unit$&$(-\zeta^2+i d \bullet)m_\sigma^+$ \\
+%
+%$                $&$$&$(-\zeta^{-2}- d i \bullet)q_\psi$&$$&$$&$+(1-i\bullet)m_\psi$&$$ \\
+%
+%\hline
+%$q_\psi $&$(1+1\bullet)q_\psi$&$-\zeta(1-i\bullet)q_\sigma$&$(1+1 \bullet)q_\unit$&$-\zeta(1+i\bullet)m_\psi$&$(1-\zeta^{-2}/d \bullet )m_\sigma^+$&$-\zeta(1+i \bullet)m_\unit$
+%\end{tabular}
+%}
+%\caption{\label{Rtable} The R-symbols for the $C_2$ theory. The particle labels in each entry denote fusion channels, with the bullets signifying which fusion channels are odd. For example, the bottom right entry tells us that $R^{q_\psi q_\psi}_{m_\unit} = -\zeta$ when acting on the even vector in $V^{q_\psi q_\psi}_{m_\unit}$ and $R^{q_\psi q_\psi}_{m_\unit} = -i\zeta$ when acting on the odd vector. \ethan{will convert to $A$s later} }
+%\end{table}
+%
+%For convenience, we have defined 
+%\be \zeta := e^{-i\pi/8} = \theta_{m_\sigma^+}.\ee
+%If we switched the choice for $A^4$ (e.g. from $i$ to $-i$), we could obtain the switched $R$-symbols by sending $\zeta \mapsto \zeta^*$. 
+
+%\subsection{Exchange statistics}
+
+
+\end{comment}
+
 
 \subsubsection{Twists and self-statistics}
 There are three ways to compute the topological twist $\theta_a$ (self-statistics) of a quasiparticle $a$: by statistics (braiding two identical $a$ quasiparticles around one another), by spin (applying Dehn twists on the tubes associated with $a$), and by modular transformations (by acting with the modular $T$-matrix on the ground states on the tori associated with $a$). 
