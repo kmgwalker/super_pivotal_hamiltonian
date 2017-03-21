@@ -2697,6 +2697,7 @@ q_\psi &&\sqrt{2}&& A^3 \\
 \end{array}
 \end{align}
 \caption{$C_2$ data. The total quantum dimension is $\mcd = ...$.}
+\label{C2Data}
 \end{figure}
 
 \dave{We could adhere this to the tube category -- i.e., analyze $\tube_{x\rightarrow x}^Y$ for $x = \unit, \beta$ and $Y = B,N$ -- or leave it as is. 
@@ -3656,7 +3657,7 @@ This means that the twists of the particles whose associated spin structures are
 %\raisebox{0.2ex}{$\scriptstyle{A}\;$}\underset{A}{\FubeXXX} 
 %}
 \end{align} \nonumber
-\caption{Top: The action of the mapping class group on the four spin tori. The notation is such that the disk which bounds the cycle of the torus labeled by $B$ or $N$ has either a bounding ($B$) or non-bounding ($N$) spin structure. %Bottom: the boundary conditions ($P$ for periodic and $A$ for anti-periodic) associated with each spin structure.
+\caption{The action of the mapping class group on the four spin tori. The notation is such that the disk which bounds the cycle of the torus labeled by $B$ or $N$ has either a bounding ($B$) or non-bounding ($N$) spin structure. %Bottom: the boundary conditions ($P$ for periodic and $A$ for anti-periodic) associated with each spin structure.
 }
 \label{spin_str_mapping_class_group}
 \end{figure}
@@ -3802,9 +3803,9 @@ m_\psi\\
 \end{matrix} \right)_{NB}
 \quad \text{and} \quad 
 \left( \begin{matrix}
-m_\unit\\
-m_\sigma^+\\
-m_\psi\\
+\hat{q}_\unit\\
+\hat{q}_\sigma^+\\
+\hat{q}_\psi\\
 \end{matrix} \right)_{NB} 
 %= \left( \begin{matrix}
 %\frac{1}{d \sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
@@ -3817,12 +3818,68 @@ d&0&d\\
 1&d&-1\\
 \end{matrix} \right)
 \left( \begin{matrix}
-\hat{q}_\unit\\
-\hat{q}_\sigma^+\\
-\hat{q}_\psi\\
+m_\unit\\
+m_\sigma^+\\
+m_\psi\\
 \end{matrix} \right)_{BN}.
 \end{align}
 In order to make the matrix unitary, we have defined $\hat{q} = q/\sqrt{2}$ so that each $\hat{q}$ idempotent has unit norm.
+
+We can collect all the results into one matrix. 
+Lets define,
+\begin{align}
+{\bf M} = [ m_\unit \;  m_\sigma^+\;  m_\psi]^T \qquad \widehat{{\bf Q} }= [\hat{q}_\unit \; \hat{q}_\sigma \; \hat{q}_\psi ]^T
+\end{align}
+Then we have,
+\begin{align}
+\left( \begin{matrix}
+{\bf M}_{BN}\\
+\widehat{{\bf Q} }_{NB}\\
+{\bf M}_{BB}\\
+\end{matrix} \right)
+\xrightarrow{\;\; S \; \; } & \left( \begin{matrix}
+&S^{BN \rightarrow NB}&\\
+S^{NB \rightarrow BN}&&\\
+&&S^{BB \rightarrow BB}\\
+\end{matrix} \right)
+\left( \begin{matrix}
+{\bf M}_{BN}\\
+\widehat{{\bf Q} }_{NB}\\
+{\bf M}_{BB}\\
+\end{matrix} \right).
+\end{align}
+
+
+Similarly we can compute the modular T-matrix. 
+The eigenvalues of the modular T-matrix, are given by $1$ if there is no charge line, otherwise it is the eigenvalue under $t^\dagger$.
+It is diagonal in the idempotent basis, with eigenvalues given by the topological spins appearing in Figure \ref{C2Data}. 
+We can read off the structure of the T matrix via Figure \ref{spin_str_mapping_class_group} to find,
+\begin{align}
+\left( \begin{matrix}
+{\bf M}_{BN}\\
+\widehat{{\bf Q} }_{NB}\\
+{\bf M}_{BB}\\
+\end{matrix} \right)
+\xrightarrow{\;\; T \; \; } & \left( \begin{matrix}
+&&T^{BN \rightarrow BB}\\
+&T^{NB \rightarrow NB}&\\
+T^{BB \rightarrow BN}&&\\
+\end{matrix} \right)
+\left( \begin{matrix}
+{\bf M}_{BN}\\
+\widehat{{\bf Q} }_{NB}\\
+{\bf M}_{BB}\\
+\end{matrix} \right).
+\end{align}
+With 
+\begin{align}
+\begin{matrix}
+\text{diag}\; T^{BN \rightarrow BB} &=& [ &1 &A^3 &1 &] \\
+\text{diag}\; T^{NB \rightarrow NB} &=& [ &A^{5}  &1 &-A^{5}&] \\
+\text{diag}\; T^{BB \rightarrow BN} &=& [  &1 &A^3  &1 &]\\ 
+\end{matrix}
+\end{align}
+One can check that $(ST)^3 = \unit$ as expected. 
 
 %Now for the $(P,A)$ spin structure, which is preserved by $T$ (as the q-type quasiparticles have well-defined self-statistics). 
 %First for the $S$-matrix, which maps the $PA$ spin structure to the $AP$ spin structure. As a map between the ground state basis $(e,v,t)_{PA}^T$ and the ground state basis $(e,t,h)_{AP}^T$, the $S$ matrix is
@@ -3874,11 +3931,6 @@ In the idempotent basis, this becomes,
 \overset{\bullet}{q}_\sigma\\
 \overset{\bullet}{q}_\psi\\
 \end{matrix} \right)_{NN} 
-%= \left( \begin{matrix}
-%\frac{1}{d \sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
-%\frac{d}{2 \sqrt{3}} & \frac{1}{2 \sqrt{3}} & - \frac{1}{2 \sqrt{3}} \\ 
-%0 & \frac{1}{2 \sqrt{3}} & 0
-%\end{matrix} \right)
 \xrightarrow{S^{NN \rightarrow NN}} &\frac{-A^2}{2} \left( \begin{matrix}
 1&\pm d&-1\\
 d&0&d\\
@@ -3890,7 +3942,24 @@ d&0&d\\
 \overset{\bullet}{q}_\psi\\
 \end{matrix} \right)_{NN}
 \end{align}
-
+Similarly, we can compute the modular T-matrix, 
+\begin{align}
+\left( \begin{matrix}
+\overset{\bullet}{q}_\unit\\
+\overset{\bullet}{q}_\sigma\\
+\overset{\bullet}{q}_\psi\\
+\end{matrix} \right)_{NN} 
+\xrightarrow{T^{NN \rightarrow NN}} &\left( \begin{matrix}
+A^5& &\\
+&1&\\
+&&-A^5\\
+\end{matrix} \right)
+\left( \begin{matrix}
+\overset{\bullet}{q}_\unit\\
+\overset{\bullet}{q}_\sigma\\
+\overset{\bullet}{q}_\psi\\
+\end{matrix} \right)_{NN}
+\end{align}
 $$
 $$
 \dave{Will return here.}
