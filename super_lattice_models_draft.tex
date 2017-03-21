@@ -3837,6 +3837,86 @@ In order to make the matrix unitary, we have defined $\hat{q} = q/\sqrt{2}$ so t
 %\be S_{PA \mapsto AP} = V_{AP}^{-1} S^{top}_{PA \mapsto AP} V_{PA} = \begin{pmatrix}
 %d/2 & 1 & d/2 \\ 1 & 0 & -1 \\ -d/2 & 1 & -d/2
 %\end{pmatrix}.\ee
+
+More interesting is the $(N,N)$ torus, whose spin structure is preserved under both $S$ and $T$. According to Figure \ref{TorusBasisC2}, the Hilbert space is given by $\overset{\bullet}{h}$, $\overset{\bullet}{v}$, and $\overset{\bullet}{t}$
+% three vectors in the basis of ground states are $v_\bullet,h_\bullet,$ and $t_\bullet$,
+where the $\bullet$'s mean that the associated tubes have odd fermion parity.
+In the topological basis, we obtain
+\dave{I find a $\pm$ ambiguity here.
+It comes from the fact that there are two ways to slide the dot back into its standard position after the $S$ transformation. One way crosses the ``branch cut" while the other does not.}
+\begin{align}
+\left( \begin{matrix}
+\overset{\bullet}{h}\\
+\overset{\bullet}{v}\\
+\overset{\bullet}{t}\\
+\end{matrix} \right)_{NN} 
+%= \left( \begin{matrix}
+%\frac{1}{d \sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
+%\frac{d}{2 \sqrt{3}} & \frac{1}{2 \sqrt{3}} & - \frac{1}{2 \sqrt{3}} \\ 
+%0 & \frac{1}{2 \sqrt{3}} & 0
+%\end{matrix} \right)
+\xrightarrow{S^{NN \rightarrow NN}} & \left( \begin{matrix}
+0&1&0\\
+\pm A^4&0&0\\
+0&0&A^{10}\\
+\end{matrix} \right)
+\left( \begin{matrix}
+\overset{\bullet}{h}\\
+\overset{\bullet}{v}\\
+\overset{\bullet}{t}\\
+\end{matrix} \right)_{NN}
+\end{align}
+In the idempotent basis, this becomes, 
+\dave{That same $-$ sign results in a non-symmetric S-matrix.}
+\begin{align}
+\left( \begin{matrix}
+\overset{\bullet}{q}_\unit\\
+\overset{\bullet}{q}_\sigma\\
+\overset{\bullet}{q}_\psi\\
+\end{matrix} \right)_{NN} 
+%= \left( \begin{matrix}
+%\frac{1}{d \sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
+%\frac{d}{2 \sqrt{3}} & \frac{1}{2 \sqrt{3}} & - \frac{1}{2 \sqrt{3}} \\ 
+%0 & \frac{1}{2 \sqrt{3}} & 0
+%\end{matrix} \right)
+\xrightarrow{S^{NN \rightarrow NN}} &\frac{-A^2}{2} \left( \begin{matrix}
+1&\pm d&-1\\
+d&0&d\\
+-1&\pm d&1\\
+\end{matrix} \right)
+\left( \begin{matrix}
+\overset{\bullet}{q}_\unit\\
+\overset{\bullet}{q}_\sigma\\
+\overset{\bullet}{q}_\psi\\
+\end{matrix} \right)_{NN}
+\end{align}
+
+$$
+$$
+\dave{Will return here.}
+$$
+$$
+\be S^{gs}_{PP} = \begin{pmatrix}0 & 1 & 0 \\ A^4 & 0 & 0 \\ 0 & 0 & A^{-6} \end{pmatrix},\quad T^{gs}_{PP} = \begin{pmatrix} 0 & 0 & A^{-6} \\ 0 & 1 & 0 \\ 1 & 0 & 0 \end{pmatrix}\ee
+One can check that we have the modular relations
+\be (S_{PP}T_{PP})^3 = S_{PP}^4= A^{-8}\unit_{3\times3} = -\unit_{3\times 3}.\ee 
+The minus sign, which can never appear in bosonic theories, comes from the fact that the action of $S^4$ on a $(P,P)$ torus performs a $2\pi$ rotation of the fermion framing, resulting in a phase of $-1$, since the $(P,P)$ torus has odd fermion parity. 
+These relations easily generalize to $(ST)^3=S^4=(-1)^F\unit$, where $(-1)^F$ denotes the fermion parity of the tori being acted upon.
+This also means that in the fermionic setting, the $S$ matrix is not self-dual as it is for bosonic theories. %Also, as a sanity check we see that the eigenvalues of $T$ are $1,\pm A^{-3}$ (if $A^4=i$, then $A^{-3} = e^{i\pi/8}$).
+
+Now we need to transform $S_{PP}$ and $T_{PP}$ into the quasiparticle basis. 
+Note that none of $q_{\unit\bullet},q_{\sigma\bullet},q_{\psi\bullet}$ are idempotents in the strict sense of the word, since they multiply together to give even tubes. 
+To ensure they are normalized correctly, we will require that they square to their associated even idempotents:
+\be q_{\unit\bullet}^2 = q_\unit,\quad q_{\psi\bullet}^2 = q_\psi,\quad q_{\sigma\bullet}^2 = q_\sigma.\ee
+In order for this to hold, we %see that we need to take
+%\be q_{\unit\bullet} = \frac{A^{-2}}{2}(v_\bullet + A^3 t_\bullet),\quad q_{\psi\bullet} = \frac{A^{-2}}{2}(v_\bullet - A^3t_\bullet),\quad q_{\sigma\bullet} = \frac{1}{d}h_\bullet.\ee
+%Therefore, 
+take the matrix that maps the basis $(q_{\unit\bullet},q_{\sigma\bullet},q_{\psi\bullet})^T$ to the ground state basis $(v_\bullet,h_\bullet,t_\bullet)^T$ to be 
+\be V_{PP} = \begin{pmatrix} A^{-2}/2 & 0 & A^{-2}/2 \\ 0 & 1/d & 0 \\ A/2 & 0 & -A/2 \end{pmatrix},\ee
+which gives 
+\be S_{PP} = \frac{A^{-2}}{2} \begin{pmatrix} -1 & d & 1 \\ d & 0 & d \\ 1 & d & -1 \end{pmatrix},\quad T_{PP} = \begin{pmatrix} A^{-3} & 0 & 0 \\ 0 & 1 & 0 \\ 0& 0& -A^{-3}.\end{pmatrix}.\ee
+%The prefactor of $A^2$ in $S_{PP}$ takes care of the $S^4=-\unit$ constraint for us. 
+
+
 $$
 $$
 \dave{Will do modular T-next. 
@@ -3887,28 +3967,6 @@ which tells us that
 1 &0&0 \\ 0&A^3&0\\0&0&1
 \end{pmatrix}.\ee
 
-\underline{$\mathbf{(P,P)}$:} More interesting is the $(P,P)$ torus, whose spin structure is preserved under both $S$ and $T$. According to \eqref{pp_gss}, the three vectors in the basis of ground states are $v_\bullet,h_\bullet,$ and $t_\bullet$,
-where the $\bullet$s in labels mean that their associated tubes have odd fermion parity.
-In the ground state basis $(v_\bullet,h_\bullet,t_\bullet)^T$, we obtain
-\be S^{gs}_{PP} = \begin{pmatrix}0 & 1 & 0 \\ A^4 & 0 & 0 \\ 0 & 0 & A^{-6} \end{pmatrix},\quad T^{gs}_{PP} = \begin{pmatrix} 0 & 0 & A^{-6} \\ 0 & 1 & 0 \\ 1 & 0 & 0 \end{pmatrix}\ee
-One can check that we have the modular relations
-\be (S_{PP}T_{PP})^3 = S_{PP}^4= A^{-8}\unit_{3\times3} = -\unit_{3\times 3}.\ee 
-The minus sign, which can never appear in bosonic theories, comes from the fact that the action of $S^4$ on a $(P,P)$ torus performs a $2\pi$ rotation of the fermion framing, resulting in a phase of $-1$, since the $(P,P)$ torus has odd fermion parity. 
-These relations easily generalize to $(ST)^3=S^4=(-1)^F\unit$, where $(-1)^F$ denotes the fermion parity of the tori being acted upon.
-This also means that in the fermionic setting, the $S$ matrix is not self-dual as it is for bosonic theories. %Also, as a sanity check we see that the eigenvalues of $T$ are $1,\pm A^{-3}$ (if $A^4=i$, then $A^{-3} = e^{i\pi/8}$).
-
-Now we need to transform $S_{PP}$ and $T_{PP}$ into the quasiparticle basis. 
-Note that none of $q_{\unit\bullet},q_{\sigma\bullet},q_{\psi\bullet}$ are idempotents in the strict sense of the word, since they multiply together to give even tubes. 
-To ensure they are normalized correctly, we will require that they square to their associated even idempotents:
-\be q_{\unit\bullet}^2 = q_\unit,\quad q_{\psi\bullet}^2 = q_\psi,\quad q_{\sigma\bullet}^2 = q_\sigma.\ee
-In order for this to hold, we %see that we need to take
-%\be q_{\unit\bullet} = \frac{A^{-2}}{2}(v_\bullet + A^3 t_\bullet),\quad q_{\psi\bullet} = \frac{A^{-2}}{2}(v_\bullet - A^3t_\bullet),\quad q_{\sigma\bullet} = \frac{1}{d}h_\bullet.\ee
-%Therefore, 
-take the matrix that maps the basis $(q_{\unit\bullet},q_{\sigma\bullet},q_{\psi\bullet})^T$ to the ground state basis $(v_\bullet,h_\bullet,t_\bullet)^T$ to be 
-\be V_{PP} = \begin{pmatrix} A^{-2}/2 & 0 & A^{-2}/2 \\ 0 & 1/d & 0 \\ A/2 & 0 & -A/2 \end{pmatrix},\ee
-which gives 
-\be S_{PP} = \frac{A^{-2}}{2} \begin{pmatrix} -1 & d & 1 \\ d & 0 & d \\ 1 & d & -1 \end{pmatrix},\quad T_{PP} = \begin{pmatrix} A^{-3} & 0 & 0 \\ 0 & 1 & 0 \\ 0& 0& -A^{-3}.\end{pmatrix}.\ee
-%The prefactor of $A^2$ in $S_{PP}$ takes care of the $S^4=-\unit$ constraint for us. 
 
 \medskip
 
