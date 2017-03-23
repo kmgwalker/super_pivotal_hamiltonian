@@ -1930,7 +1930,6 @@ and talk about folding the $A_3$ principal graph to obtain $C_2$.
 		\\[4ex]
 			\begin{tabular}{c}Fermion\\ pairing\end{tabular}
 			&	\;\;  \SigmaDotDot = A^4\; \FubeXss \quad  \eqref{removing_fermions} & \; \begin{tabular}{l}$\CapDotLeft =  A^4 \CapDotRight$ \\ \\$ \CupDotRight = A^{4} \CupDotLeft $ \end{tabular}
-				%= \delta_{x_{n-1} x_{n+1}} \sqrt{\dfrac{d_{x_n} d_{x'_n}}{d_{x_{n-1}} d_{x_{n+1}}}}
 				&	\eqref{cap_slide_back}
 			\end{array} & \end{flalign*}
 			 $A^2 = - e^{\pm i \pi /4}$ \quad \quad $d  = -A^2 - A^{-2}$ \quad  \eqref{QuantumDimensions}
@@ -5014,6 +5013,7 @@ We can now state the dimension formula.
 We have
 \be
 	p + q = \sum_{x\;  \mathrm{bounding}} {S_{1x}}^{\chi(Y)} {\textstyle \prod_i} S'_{a_i x} .
+	\label{PplusQ}
 \ee
 If any of the $a_i$ are q-type, then we know that $p=q$ and we are done.
 So now assume that none of the $a_i$ are q-type.
@@ -5021,6 +5021,7 @@ In this case we have
 \be
 	p - q = \sum_{x\;  \mathrm{n.b.\ m-type}} {S_{1x}}^{\chi(Y)} {\textstyle \prod_i} S'_{a_i x}
 			\;\;+\;\; (-1)^{\Arf(Y)} \sum_{x\;  \mathrm{n.b.\ q-type}} {S_{1x}}^{\chi(Y)} {\textstyle \prod_i} S'_{a_i x} .
+			\label{PminusQ}
 \ee
 
 We must explain what we mean by $\Arf(Y)$.
@@ -6495,6 +6496,46 @@ $\Pi(\text{M}_6)$&$e^{5i \pi/6}$&$ \frac{1}{2+d} $&$ \frac{e^{-5i\pi/6}}{2+d} $ 
 $\alpha = \frac{1}{2} \left( 1+ 1/\sqrt{2d+1} \right)$, and $\beta = \frac{1}{2} \left( 1- 1/\sqrt{2d+1} \right)$. \dave{Note: old notation for odd isomorphism is $X(.)$}}}
 \end{table}
 
+\begin{table}
+\begin{flalign*} & \begin{array}{r@{ \quad \quad \quad}  c @{\quad \quad} c @{\quad \quad} c @{\quad \quad \quad \quad } c  @{\quad \quad} c @{\quad \quad} c  }
+			\text{particle}				&M_1		&M_2		&M_3	&Q_1	&Q_2	&M_6 \\[.5ex] \hline \\ [-2ex]
+			\text{quantum dimension}		&1			&1+d		&d		&2+d	&d		&d\\ [.5ex]
+			\text{topological spin}		&1			&1		&e^{- i \pi/3}	&1	&i	&e^{-5 i \pi /6} \\
+						\end{array} & \end{flalign*}
+	\caption{$\halfesix$ quantum dimensions and topological spins (eigenvalue under $t^\dagger$. }
+	\label{halfesixFusionRules}
+\end{table}
+
+
+The fusion rules can be calculated using \ref{PplusQ} and \ref{PminusQ}. We summarize the fusion rules in Table \ref{halfesixFusionRules}. 
+They are organized into two sets, $\mca = \{ M_1, M_2, M_3\}$ and $\mcv = \{ Q_1, Q_2, M_6 \}$.
+
+			\begin{table}
+\begin{flalign*} & \begin{array}{c@{ \quad}  | @{\quad \quad} l @{\quad \quad} l @{\quad \quad} l}
+			\mca \tp \mca 		&M_1		&M_2		&M_3		\\[.5ex] \hline \\ [-2ex]
+			M_1		 		&M_1		&M_2		&M_3		\\
+			M_2		 		&M_2		&M_1\oplus \cc^{1|1}M_2	\oplus \cc^{1|1}M_3	&\cc^{1|1} \oplus M_2 \oplus \cc^{0|1}M_3		\\
+			M_3		 		&M_3		&\cc^{1|1} M_2 \oplus \cc^{0|1}M_3		&M_1 \oplus \cc^{0|1}M_2 \oplus M_3		\\
+			\end{array} & \end{flalign*}
+	
+\begin{flalign*} & \begin{array}{c@{ \quad}  | @{\quad \quad} l @{\quad \quad} l @{\quad \quad} l}
+			\mcv \tp \mca 		&M_1		&M_2		&M_3		\\[.5ex] \hline \\ [-2ex]
+			Q_1		 		&Q_1		&\cc^{2|2}Q_1 \oplus \cc^{1|1}Q_2 \oplus \cc^{1|1}M_6		&\cc^{1|1}Q_1 \oplus \cc^{1|1}Q_2 \oplus \cc^{1|1}M_6		\\
+			Q_2		 		&Q_2		&\cc^{1|1}Q_1 \oplus \cc^{1|1} M_6		& \cc^{1|1}Q_1 \oplus \cc^{1|1} Q_2		\\
+			M_6		 		&M_6		&\cc^{1|1}Q_1 \oplus \cc^{1|1}Q_2 \oplus \cc^{0|1}M_6		&\cc^{1|1}Q_1 \oplus M_6		\\
+			\end{array} & \end{flalign*}		
+
+\begin{flalign*} & \begin{array}{c@{ \quad}  | @{\quad \quad} l @{\quad \quad} l @{\quad \quad} l}
+			\mcv \tp \mcv 		&Q_1		&Q_2		&M_6		\\[.5ex] \hline \\ [-2ex]
+			Q_1		 		&\cc^{1|1}M_1\oplus \cc^{2|2} M_2 \oplus \cc^{1|1}M_3		&\cc^{1|1}M_2 \oplus \cc^{1|1}M_3		&\cc^{1|1}M_2 \oplus \cc^{1|1}M_3		\\
+			Q_2		 		&\cc^{1|1}M_2 \oplus \cc^{1|1}M_3		&\cc^{1|1}M_1 \oplus M_3		&\cc^{1|1}M_2		\\
+			M_6		 		&\cc^{1|1}M_2 \oplus \cc^{1|1}M_3 		&\cc^{1|1}M_2 		&\cc^{0|1}M_1 \oplus M_2 \oplus M_3		\\
+			\end{array} & \end{flalign*}
+	\caption{$\halfesix$ fusion rules. We define $\mca = \{ M_1, M_2, M_3\}$ and $\mcv = \{ Q_1, Q_2, M_6 \}$. 
+	The $\cc^{p|q}$ denote the vector space associated with $V^{ab}_c$ }
+	\label{halfesixFusionRules}
+\end{table}
+			
 \dave{These are in progress. I need to double check and finish the calculations.}
 \begin{align}
 \xymatrix @!0 @M=2mm @R=22mm @C=19mm{
