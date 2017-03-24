@@ -147,6 +147,8 @@
 
 \newcommand{\dbeta}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{dbeta.pdf}}}}}
 \newcommand{\dpsi}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{dpsi.pdf}}}}}
+\newcommand{\dblank}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{dblank.pdf}}}}}
+
 
 
 
@@ -2771,6 +2773,7 @@ We have chosen $m_\sigma^+$ as the representative of the isomorphism class given
 			\text{topological spin}		&1			&A^3		&1	&A^5	&1	&-A^5 \\
 						\end{array} & \end{flalign*}
 	\caption{$C_2$ data. The total quantum dimension is $\mcd = \sqrt{8}$.
+	The quantum dimensions above have been normalized with respect to the trivial idempotent $m_\unit$.
 The topological spin defined here is the eigenvalue under $t^\dagger$ when the tube has a $\beta$ line at the boundary. }
 	\label{C2Data}
 \end{table}
@@ -3302,19 +3305,39 @@ and the odd ones are given by putting a single dot on the upper left leg.
 %%%%%%%%%%%%%%%%%%%%
 \subsubsection{Quantum dimensions}
 %%%%%%%%%%%%%%%%%%%%
-\dave{Should we describe the trace formula?
-We could just say something to the effect "It is a well known fact \cite{someone} that..."}
-\dave{Can just cite \cite{ghosh2016}, using formula on p. 7, and \cite{das2014}}
+\dave{I think we should have a summary table of the tube category, put this there, and refer to it.
+I'm not overly satisfied with how this is written so will come back to it.}
 In what follows we will need to know the quantum dimensions of the quasiparticles in the theory.
-We can obtain them by examining the number of fusion channels each has when fused with its antiparticle. 
-We find
-\be d_{m_1} = d_{m_\psi} = 1,\quad d_{m_\sigma^+} = d_{q_1} = d_{q_\psi} = \sqrt{2},\quad d_{q_\sigma} = 2.\ee
+The quantum dimension is defined by the trace of the idempotent. 
+For the fusion category this is just,
+\begin{align}
+\text{Tr} (x) = {\dblank}_x  = d_x.
+\end{align}
+We could also view this as the trace of one of the quasi-particles (idemopotents) in Table~\ref{CTwoParticles}.
+That is the $x$-strand could be blown up into a cylinder, with boundary condition given by one of the idempotents in Table~\ref{CTwoParticles}.
+We then evaluate this using $\mcz(\mcc)$ \dave{Could add words TV state sum here if we want.}.
+For more details see \cite{Walker2006}, and also \cite{ghosh2016,das2014} \dave{others? This is what I found from googling.}.
+Let $\Pi_x$ denote an idempotent and define, 
+\begin{align}
+d_{\Pi_x} &= \text{Tr}_{\text{TV}} \; \Pi_x = Z((S^1 \times I) \times I )(\Pi_x \cup \text{id}_\mcc) = Z(S^1 \times D^2 )(\Pi_x) \\
+& = \text{Tr}\; \{ R_{\pi/2}(\Pi_x): Z(D^2) \rightarrow Z(D^2) \}.
+\end{align}
+Where the first trace, is the one assigned by evaluation in the Turaev-Viro state sum. 
+While the last trace, is the usual trace, viewing the rotated idempotent as a map from the disc back to it'self.
+\dave{Draw picture.}
+
+Using the above, one can compute the quantum dimensions, which are displayed in Table~\ref{C2Data}.
 We will also need to know how to calculate the total quantum dimension $\mcd$.
 In bosonic theories we have $\mcd^2 = \sum_a d_a^2$, where the sum runs over all simple objects $a$. 
 This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
 The correct formula is
 \be \label{total_qdim_defn} \mcd^2 = \sum_a \frac{d_a^2}{\dim \End(a)}.\ee
 For the $C_2$ theory, we have $\mcd = \sqrt{8}$. 
+
+%We can obtain them by examining the number of fusion channels each has when fused with its antiparticle. 
+%We find
+%\be d_{m_1} = d_{m_\psi} = 1,\quad d_{m_\sigma^+} = d_{q_1} = d_{q_\psi} = \sqrt{2},\quad d_{q_\sigma} = 2.\ee
+
 
 
 
@@ -4136,22 +4159,19 @@ One can check that we have the modular relations
 The minus sign comes from the fact that the action of $S^4$ on performs a $2\pi$ rotation of the fermion framing, resulting in a phase of $-1$, since the $(N,N)$ torus has odd fermion parity. 
 These relations easily generalize to $(ST)^3=S^4=(-1)^F\unit$, where $(-1)^F$ denotes the fermion parity of the tori being acted upon.
 \dave{Ethan, what does this last sentence mean?}This also means that in the fermionic setting, the $S$ matrix is not self-dual as it is for bosonic theories.
-$$
-$$
-\dave{Will return here.}
-$$
-$$
-\be S^{gs}_{PP} = \begin{pmatrix}0 & 1 & 0 \\ A^4 & 0 & 0 \\ 0 & 0 & A^{-6} \end{pmatrix},\quad T^{gs}_{PP} = \begin{pmatrix} 0 & 0 & A^{-6} \\ 0 & 1 & 0 \\ 1 & 0 & 0 \end{pmatrix}\ee
+
+
+%\be S^{gs}_{PP} = \begin{pmatrix}0 & 1 & 0 \\ A^4 & 0 & 0 \\ 0 & 0 & A^{-6} \end{pmatrix},\quad T^{gs}_{PP} = \begin{pmatrix} 0 & 0 & A^{-6} \\ 0 & 1 & 0 \\ 1 & 0 & 0 \end{pmatrix}\ee
  %Also, as a sanity check we see that the eigenvalues of $T$ are $1,\pm A^{-3}$ (if $A^4=i$, then $A^{-3} = e^{i\pi/8}$).
 
 
-In order for this to hold, we %see that we need to take
+%In order for this to hold, we %see that we need to take
 %\be q_{\unit\bullet} = \frac{A^{-2}}{2}(v_\bullet + A^3 t_\bullet),\quad q_{\psi\bullet} = \frac{A^{-2}}{2}(v_\bullet - A^3t_\bullet),\quad q_{\sigma\bullet} = \frac{1}{d}h_\bullet.\ee
 %Therefore, 
-take the matrix that maps the basis $(q_{\unit\bullet},q_{\sigma\bullet},q_{\psi\bullet})^T$ to the ground state basis $(v_\bullet,h_\bullet,t_\bullet)^T$ to be 
-\be V_{PP} = \begin{pmatrix} A^{-2}/2 & 0 & A^{-2}/2 \\ 0 & 1/d & 0 \\ A/2 & 0 & -A/2 \end{pmatrix},\ee
-which gives 
-\be S_{PP} = \frac{A^{-2}}{2} \begin{pmatrix} -1 & d & 1 \\ d & 0 & d \\ 1 & d & -1 \end{pmatrix},\quad T_{PP} = \begin{pmatrix} A^{-3} & 0 & 0 \\ 0 & 1 & 0 \\ 0& 0& -A^{-3}.\end{pmatrix}.\ee
+%take the matrix that maps the basis $(q_{\unit\bullet},q_{\sigma\bullet},q_{\psi\bullet})^T$ to the ground state basis $(v_\bullet,h_\bullet,t_\bullet)^T$ to be 
+%\be V_{PP} = \begin{pmatrix} A^{-2}/2 & 0 & A^{-2}/2 \\ 0 & 1/d & 0 \\ A/2 & 0 & -A/2 \end{pmatrix},\ee
+%which gives 
+%\be S_{PP} = \frac{A^{-2}}{2} \begin{pmatrix} -1 & d & 1 \\ d & 0 & d \\ 1 & d & -1 \end{pmatrix},\quad T_{PP} = \begin{pmatrix} A^{-3} & 0 & 0 \\ 0 & 1 & 0 \\ 0& 0& -A^{-3}.\end{pmatrix}.\ee
 %The prefactor of $A^2$ in $S_{PP}$ takes care of the $S^4=-\unit$ constraint for us. 
 
 
