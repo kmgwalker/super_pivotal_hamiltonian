@@ -1355,7 +1355,7 @@ an antilinear bundle map $F(B) \to F(B')$ for all orientation-reversing maps $B 
 \medskip
 
 Our spin-structure-equipped back wall construction admits a simple physical interpretation: coupling the theory to the bundle $F(B)$ is equivalent to adding a phase of {\it physical} (not emergent) fermions to the theory, and binding single physical fermions to each $\psi$ endpoint.
-The physical fermion attached to each $\psi$ endpoint compensates for the fermionic nature of the $\psi$ particle in the condensate: the factors of $-1$ that relate two different orderings of the $\psi$ endpoints are the Kozul signs associated with the physical fermions, and the factors of $-1$ that we pick up when rotating the $\psi$ endpoint framing by $2\pi$ come from the spin $1/2$ of the physical fermions. 
+The physical fermion attached to each $\psi$ endpoint compensates for the fermionic nature of the $\psi$ particle in the condensate: the factors of $-1$ that relate two different orderings of the $\psi$ endpoints are the Koszul signs associated with the physical fermions, and the factors of $-1$ that we pick up when rotating the $\psi$ endpoint framing by $2\pi$ come from the spin $1/2$ of the physical fermions. 
 Thus, attaching physical fermions to the $\psi$ endpoints transforms them into bosonic objects, which are then allowed to undergo normal boson condensation. 
 Therefore, although we are indeed identifying emergent fermions with the vacuum, the term ``fermion condensation'' is a bit misleading, as what we are actually doing is closer to {\it boson} condensation of bound states of $\psi$ and a physical fermion. 
 However, we reiterate that the $\psi$ endpoints are not technically bosons, since they see the background spin structure: the emergent $\psi$ fermions do not see the spin structure, but the physical fermions attached to their endpoints do. 
@@ -1925,7 +1925,7 @@ and talk about folding the $A_3$ principal graph to obtain $C_2$.
 		
 		\textbf{Basic data:}\\[-4ex]
 \begin{flalign*} & \begin{array}{c @{\quad \quad  } c @{\quad \quad } c @{\quad \quad } c}
-			\text{simple objects}	&	\text{fusion rules} &   \text{dimensions} & \text{Kozul signs}
+			\text{simple objects}	&	\text{fusion rules} &   \text{dimensions} & \text{Koszul signs}
 		\\[.5ex]
 			\text{$\unit$ and $\beta$}
 			&	 \beta \tp \beta \cong \mathbb{C}^{1|1}\cdot \mathds{1}  & \dbeta_\beta  = d &  \SigmaDotDot = - \SigmaDotDotExchange
@@ -7759,25 +7759,24 @@ The definition differs from the usual bosonic case in the following ways:
 	\item There are two distinct types of simple object, ``m-type" and ``q-type".
 	For q-type simple objects, the endomorphism algebra is isomorphic to $\cl_1$; in particular, it contains odd elements in addition to scalars.
 	(Subsection \ref{def_sob_ss}.)
-	\item Fusion spaces $V^{abc}$, $V^{ab}_c$, $V_{abcd}$, etc.\ are not merely super vector spaces; they come equipped with an action of the (possibly non-trivial)
-	endomorphism algebras of the objects being fused.
+	\item Fusion spaces $V^{abc}$, $V^{ab}_c$, $V_{abcd}$, etc.\ are not merely super vector spaces; they come equipped with an action of the
+	endomorphism algebras of the objects being fused. 
+	For example, $V^{abc}$ possess an action of $\End(a)\tp \End(b)\tp \End(c)$.
 	(Subsection \ref{def_vabc_ss}.)
 	\item When combining basic, 3-valent fusion spaces $V^{abc}$ to form fusion spaces of higher valence, we must take
 	tensor products over the endomorphism algebra of the relevant simple object.
-	(In the bosonic case, all tensor products are over the trivial endomorphism algebra $\cc$.)
+	In the bosonic case, all tensor products are over the trivial endomorphism algebra $\cc$, but in the fermionic setting we will often need to take tensor products over $\cl_1$. 
 	(Subsection \ref{def_tensorendo_ss}.)
 	\item In order to keep track of Koszul signs arising from exchanging odd morphisms, 
 	we must keep track of a sign-ordering of individual morphism spaces.
-	In particular, the interchange identity for the tensor category structure picks up a Koszul sign (see XXXX below),
-	and also the definition of anti-automorphism (for the pivotal structure) picks up a Koszul sign (see YYY below).
-	\item In order to keep track of $2\pi$-rotation signs
-	\kw{need a better name for this}, we must keep track of a spin-framing of each (potentially) odd morphism.
+	In particular, the interchange identity for the tensor category structure picks up a Koszul sign (see \ref{koszul_signs} below).
+	\item In order to keep track of minus signs that result from rotating fermions by $2\pi$, we must keep track of a spin-framing at each fusion space. 
 	Consequently, the square of the pivotal anti-automorphism is 
-	the spin flip $(-1)^F$ rather than the identity (see XXX below).
+	the spin flip $(-1)^F$, rather than the identity (see \ref{pivotal_structure} below).
+	\item The coherence equations for the basic data of the theory (e.g.\ the pentagon relations) are modified to incorporate  
+	 Koszul signs resulting from moving around various fusion spaces. 
+	 They are also modified to incorporate tensor products over endomorphism algebras. 
 	\item \kw{should also discuss inner products and reflection structure; mention both pin+ and pin- ?}
-	\item \kw{maybe mention here that coherence equations (e.g.\ pentagon) have incorporate permutations of the 
-	3-valent fusion spaces in order to keep track of Koszul signs}
-	\item \kw{what else?}
 \end{enumerate}
 
 
@@ -7786,6 +7785,7 @@ The definition differs from the usual bosonic case in the following ways:
 There are various ways of axiomatizing string nets, including Kuperberg spiders \cite{kup_spider}, 
 planar algebras \cite{jones_pa},
 disk-like 2-categories \cite{blob_paper}, and pivotal tensor categories.
+\ethan{I think we can reference some papers for the bosonic case, and rely on our discussion in this section to fill in the rest of the differences}
 
 %%% maybe should just cite a bosonic def and then describe differences
 
@@ -7875,74 +7875,37 @@ By rescaling the dot we can make $\lambda$ any non-zero number.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Fusion spaces} \label{fusion_spaces}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ethan{Do we want to define the $\Gamma$ operators in this section? If so, it might require first discussing pitchforkization. More broadly, what do we want to move here from the Hamiltonian section?}
-\dave{Moved this sentence out of Hamiltoinan section}
-If any of $a,b,c$ are q-type then $N^{abc}_B = N_F^{abc}$, and $V^{abc}$ is mapped to itself under the odd isomorphism $V^{abc} \mapsto V^{abc} \tp \cc^{0|1}$, while in general $N^{abc}_B\neq N^{abc}_F$ if all of $a,b,c$ are m-type. 
-
 
 The input data for a super pivotal category includes a list of simple objects and their types (q or m), as well as a fusion space $V^{ab}_c$ for each triple $a,b,c$ of minimal idempotents
 of $\mcc$.
-This is, of course, a supervector space of super-dimension \kw{is this the std term?} 
-denoted $N^{ab}_c = p|q$, where $p$ is the dimension of the even part
+This is a supervector space of dimension
+$N^{ab}_c = \dim V^{ab}_c = p|q$, where $p$ is the dimension of the even part
 of $V^{ab}_c$ and $q$ is the dimension of the odd part of $V^{ab}_c$.
 
-It is very important to note that $V^{ab}_c$ is not merely a super vector space -- it also comes equipped with an action
-of (i.e.\ module structure for) the endomorphism algebras of $a$, $b$ and $c$.
+It is very important to note that $V^{ab}_c$ is not merely a super vector space---it also comes equipped with an action
+of (i.e.\ module structure for) the endomorphism algebras of $a$, $b$ and $c$, and hence admits an action of $\End(a)\tp \End(b)\tp \End(c)$. 
 It is impossible to construct the full super pivotal category without knowing this module structure (see XXX below), 
 so the module
 structure is part of the input data.
-
 Note that the module structure implies that $N^{ab}_c = n|n$ if any of $a$, $b$ or $c$ is q-type.
 This is because any representation of $\cl_1$ has equal even and odd dimensions.
 Acting with the odd (and invertible) element of $\cl_1$ gives an isomorphism between the even and odd parts of $V^{ab}_c$, and hence they must have the same dimension.
 
-Here we remark on the pivotal structure of fusion spaces in superfusion categories. First, we have the Frobenius Schur indicator, which is given by
-\begin{align}
-&\kappa_a: \;\; V^{a \bar{a}} \tp_{\text{End}(\bar{a})} V_{\bar{a}a} \rightarrow V^a_a% \\
-%&\tilde{\kappa}_a: \;\; V_{a \bar{a}} \tp_{\text{End}(\bar{a})} V^{\bar{a}a} \rightarrow V^a_a
-\end{align}
-Or diagrammatically, 
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{FS_defn.pdf}}}}
- \ee
-The Frobenius-Schur move is a special case of the pivot: 
-%\dave{Could either do this (and also specify the dual spaces)}
-%\begin{align}
-%A^{ab}_c:&\;\; V^{\bar{a}a} \tp_{\text{End}({a})}  V^{ab}_c \rightarrow V_{\bar{a} c}^b \\
-%B^{ab}_c:&\;\; V^{ab}_c \tp_{\text{End}(b)}  V^{b\bar{b}} \rightarrow V^{a}_{c\bar{b}}
-%\end{align}
-%--OR--
-\begin{align}
-&P^{ab}_c: \; \; V^{\bar{c} c} \tp_{c} V^{ab}_c \tp_{b} V_{b \bar{b}} \rightarrow V^{\bar{c} a}_{\bar{b}} %\\
-%&\tilde{R}^{ab}_c: \; \; V^{\bar{a} a} \tp_a V^{ab}_c \tp_c V_{c \bar{c}} \rightarrow V^{b \bar{c}}_{\bar{a}}
-\end{align}
-Diagrammatically, this looks like 
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{pivot_defn.pdf}}}}
-\ee
-In terms of the pivot, we see that $\kappa_a = [P^{0\bar a}_{\bar a}]_{00}$. From the diagrammatics, we see that the pivot implements a $2\pi/3$ rotation of the fusion space. When we discuss the $F$-symbols in Sec \ref{Fsymbols}, we will be able to derive an expression for $P^{ab}_c$ in terms of the $F$-symbols and quantum dimensions. 
-
-Acting with $P$ three times performs a $2\pi$ rotation of a fusion vertex:
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{pivot_cubed.pdf}}}}\ee
-In bosonic theories, we must always have $P^3=\unit$: rotating a fusion vertex by $2\pi$ is equivalent to doing nothing.
-In the superfusion setting there is a more interesting posibility, because acting with $P^3$ on some vector $v\in V^{ab}_c$ performs a $2\pi$ rotation on the fermion framing of $v$.
-Rotating the fermion framing is equivalent to multiplication by $-1$ if $v$ has odd fermion parity. 
-
-Therefore, in superfusion categories, the pivotal structure relation $P^3=\unit$ is realized {\it projectively}, in the sense that 
-\be P^3 = (-1)^F,\ee
-where $(-1)^F$ is the fermion parity operator, which acts on any $v\in V^{abc}$ as $(-1)^F v = (-1)^{|v|}v$.
-
-\ethan{recapitulate odd endo operators and reps of clifford algebras}
-Finally, we mention that the $\Gamma_i$ operators defined in \eqref{gamma2gamma3_defn} can be used to constrain the structure of fusion spaces involving q-type particles.  
-Recall that the non-zero $\{\Gamma_i\}$ satisfy $\{\Gamma_i,\Gamma_j\} = 2\lambda\delta_{ij}$, the defining anti-commutation relation for complex Clifford algebras. 
-This means that the $\{\Gamma_i\}$ at a vertex $v$ with fusion space $V^{abc}$ where $n$ of $a,b,c$ are q-type generate a representation of $\cl_n$. 
-This is to be expected, since if $n$ lines emanating from $v$ are labeled with q-type objects, then the Hilbert space associated with the three lines is $\cl_1^{\tp n}\cong\cl_n$ (although this is actually over-complete, in the sense that the physical Hilbert space is smaller, see Sec \ref{modified_tensor_product}). 
-
-Requiring that the Hilbert space at a given vertex admits a representation of $\cl_n$ places constraints on the types of fermionic theories one can write down. 
-For example, we can use this to show that a ``q-type Fibbonacci'' theory which contains a single q-type particle $\tau$ with the fusion space $V^{\tau\tau\tau}\cong \cc^{1|1}$, cannot exist. 
-Indeed, if $V^{\tau\tau\tau}$ is nontrivial and $\tau$ is q-type, then we must be able to find a representation of $\cl_3$ on $V^{\tau\tau\tau}$.
-This is impossible if $V^{\tau\tau\tau}\cong \cc^{1|1}$, since $\cc^{1|1}$ is not large enough to represent $\cl_3$. 
-This means that theories which contain a q-type particle $\tau$ with $V^{\tau\tau\tau}\neq0$ must contain nontrivial fusion multiplicities, which provide us with fusion spaces that are large enough to admit a representation of $\cl_3$.
+Requiring that the Hilbert space at a given vertex admit a representation of $\End(a)\tp \End(b)\tp \End(c)$ places constraints on the types of fermionic theories one can write down. 
+For example, we can use this to show that a ``q-type Fibbonacci'' theory which contains a single q-type particle $\tau$ with the fusion space $V^{\tau\tau}_{\tau}\cong \cc^{1|1}$, cannot exist. 
+Indeed, if $V^{\tau\tau}_{\tau}$ is nontrivial and $\tau$ is q-type, then we must be able to find a representation of $\End(\tau)^{\tp 3} = \cl_1^{\tp 3} \cong \cl_3$ on $V^{\tau\tau}_{\tau}$.
+This is impossible if $V^{\tau\tau}_{\tau}\cong \cc^{1|1}$, since $\cc^{1|1}$ is not large enough to represent $\cl_3$. 
+This means that theories which contain a q-type particle $\tau$ with $V^{\tau\tau}_{\tau}\neq0$ must contain nontrivial fusion multiplicities, which provide us with fusion spaces that are large enough to admit a representation of $\cl_3$.
 Indeed such a q-type particle exists in the $\halfesix$ theory considered earlier, which possesses nontrivial fusion multiplicities that allow the relevant fusion spaces in the theory to be large enough to represent $\cl_3$. 
-The $\Gamma$ matrices in the $\halfesix$ case are essentially determined by the relations \eqref{esixdotslide}. 
+%The $\Gamma$ matrices in the $\halfesix$ case are essentially determined by the relations \eqref{esixdotslide}. 
+
+%\ethan{recapitulate odd endo operators and reps of clifford algebras}
+%Finally, we mention that the $\Gamma_i$ operators defined in \eqref{gamma2gamma3_defn} can be used to constrain the structure of fusion spaces involving q-type particles.  
+%Recall that the non-zero $\{\Gamma_i\}$ satisfy $\{\Gamma_i,\Gamma_j\} = 2\lambda\delta_{ij}$, the defining anti-commutation relation for complex Clifford algebras. 
+%This means that the $\{\Gamma_i\}$ at a vertex $v$ with fusion space $V^{abc}$ where $n$ of $a,b,c$ are q-type generate a representation of $\cl_n$. 
+%This is to be expected, since if $n$ lines emanating from $v$ are labeled with q-type objects, then the Hilbert space associated with the three lines is $\cl_1^{\tp n}\cong\cl_n$ (although this is actually over-complete, in the sense that the physical Hilbert space is smaller, see Sec \ref{modified_tensor_product}). 
+
+
 
 
 
@@ -7950,6 +7913,8 @@ The $\Gamma$ matrices in the $\halfesix$ case are essentially determined by the 
 \subsubsection{Fusion rules and fusion spaces} \label{fusion_rules_and_fusion_spaces}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\ethan{Dave and Kevin's old discussions are still here, just commented-out}
+\begin{comment}
 \dave{Just wanted to add some notes on a confusing point that we should try to straighten out.}
 Fusion rules are subtle in a super-pivotal category. 
 Recall from a bosonic theory we define the fusion rules by $a \tp b =\bigoplus_c N_{ab}^c c$. 
@@ -8083,21 +8048,19 @@ At the moment, I don't see any reason to prefer $2|0$ to $1|1$ when $c$ is q-typ
 Since $c$ has an odd endomorphism, it doesn't really make sense to distinguish between objects evenly
 isomorphic to $c$ and objects oddly isomorphic to $c$, and similar things are true for $W\cdot c$.
 We should keep thinking about this.}
+\end{comment}
 
-\kwsep 
 
 In this section we elaborate on the differences arising in fermionic theories between fusion spaces and the supervector spaces appearing the fusion rules. 
 
 We assume that our categories are additively complete, which means that it makes sense to
 multiply objects by supervector spaces. 
 This is simply a categorified version of multiplying vectors (objects) by scalars (vector spaces).
-
-For any collection of supervector spaces $\{W_a\}$ indexed by objects in the category, we add new objects 
-\be \bigoplus_a W_a a\ee
-to our category. 
-Morphisms between these more general objects split as 
+For any collection of supervector spaces $\{W_a\}$ indexed by objects in our category, can therefore add to our category new objects of the form
+\be \bigoplus_a W_a \cdot a.\ee
+Morphisms between these more general objects are calculated as  
 \be
-	\mor(\bigoplus_a W_a\cdot a \to \bigoplus_b W'_b\cdot b) = \bigoplus_{a,b} \hom(W_a \to W'_b)\otimes_\cc \mor(a\to b) .
+	\mor(\bigoplus_a W_a\cdot a \to \bigoplus_b W'_b\cdot b) = \bigoplus_{a,b} \Hom(W_a \to W'_b)\otimes_\cc \mor(a\to b) .
 \ee
 
 Because our category is semisimple, there exists a finite collection $\mcx$ of mutually non-isomorphic simple objects $x$ such
@@ -8116,7 +8079,7 @@ Combining \eqref{asumx} and \eqref{amordef}, we can compute endomorphisms of obj
 We are now ready to talk about the fusion rules. 
 For any $a$ and $b$, define the vector spaces $\Delta^{ab}_c$ by
 \be
-	a \otimes b \cong \bigoplus_c \Delta^{ab}_c c ,
+	a \otimes b \cong \bigoplus_c \Delta^{ab}_c \cdot c ,
 \ee
 where the direct sum runs over all simple objects $c$. 
 The $\Delta^{ab}_c$ are the fusion rule coefficients. 
@@ -8134,35 +8097,48 @@ As examples, in the $C_2$ theory studied earlier, we have
 while 
 \be V^{q_\sigma q_\sigma}_{m_\psi} = V^{q_\sigma m_\unit}_{q_\sigma} = \cc^{1|1}.\ee
 
-Note that $V_{ab}^x$ is symmetric (up to isomorphism) in $a,b,x$ (if $a$ and $b$ are simple).
+$V_{ab}^x$ is symmetric (up to isomorphism) in $a,b,x$ (if $a$ and $b$ are simple).
 %The isomorphism in the qualifier ``up to isomorphism'' is the isomorphism that sends a simple object $a$ to its dual $a^*$. 
-Because 
-\be \mor(a\tp b \ra c) \cong \mor(a\tp b \tp c^* \ra \unit) \cong \mor(a\tp c^* \ra b^*)\ee, 
-we are allowed to freely permute the indices of $V$, so long as we take the duals of any objects that move from subscripts to superscripts, and vice versa. 
+Explicitly, this is because 
+\be \mor(a\tp b \ra c) \cong \mor(a\tp b \tp c^* \ra \unit) \cong \mor(a\tp c^* \ra b^*),\ee 
+which allows us to freely permute the indices of $V$, so long as we take the duals of any objects that move from subscripts to superscripts, and vice versa. 
 For example, we have $V^{ab}_c \cong V^{ba}_c \cong V^{ac^*}_{b^*}$. 
-However, we stress that $\Delta^{ab}_c$ is {\it not} symmetric in $a,b,c$.  
-Additionally, while $V^{ab}_c$ has an action of $\End(a)\otimes\End(b)\otimes\End(c)$, $\Delta^{ab}_c$
+On the other hand, $\Delta^{ab}_c$ is {\it not} symmetric in $a,b,c$, as the $C_2$ theory example shows. 
+Additionally, while $V^{ab}_c$ has an action of $\End(a)\otimes\End(b)\otimes\End(c)$ (as mentioned earlier), $\Delta^{ab}_c$
 only has an action of $\End(a)\otimes\End(b)$.
+
+This definition of $V^{ab}_c$ gives us another wa to show that $V^{ab}_c$ will always be a supervector space of the form $\cc^{n|n}$ for some integer $n$ if any of $a,b,c$ is q-type. 
+Indeed, suppose $c$ were q-type, and $\Delta^{ab}_c \cong \cc^{r|s}$. 
+Then $V^{ab}_c \cong \cc^{r|s} \tp \cc^{1|1} \cong \cc^{r+s|r+s}$. 
+The result then follows by the symmetry of $V^{ab}_c$. 
 
 Constraints on associativity allow us to derive relations between the fusion rule coefficients and fusion spaces. 
 Looking at associativity $(a\otimes b)\otimes c \cong a\otimes (b\otimes c)$, we see that
 \be
-	\bigoplus_x \Delta^{ab}_x \otimes_\cc \Delta_{xc}^d \cong \bigoplus_y \Delta_{ay}^d \otimes_\cc \Delta_{bc}^y.
+	\bigoplus_x \Delta^{ab}_x \otimes_\cc \Delta^{xc}_d \cong \bigoplus_y \Delta^{ay}_d \otimes_\cc \Delta^{bc}_y.
 \ee
 Applying \eqref{defn_of_V_by_Delta}, we obtain
 \be
-	\bigoplus_x V_{ab}^x \otimes_{\End(x)} V_{xc}^d \cong \bigoplus_y V_{ay}^d \otimes_{\End(y)} V_{bc}^y. 
+	\bigoplus_x V^{ab}_x \otimes_{\End(x)} V^{xc}_d \cong \bigoplus_y V^{ay}_d \otimes_{\End(y)} V^{bc}_y,
 \ee
+where $\tp_{\End(x)}$ denotes a tensor product over the ring $\End(x)$. 
 
-
-
+If at least one of $a,b,c$ is q-type, we can simplify the construction of $V^{ab}_c$ slightly, which we have done when working out the examples considered earlier.  
+Since in this case $V^{ab}_c \cong \cc^{r|r}$ for some $r$, there are just as many even basis vectors in $V^{ab}_c$ as odd ones. 
+Suppose $c$ is q-type, and that $\{|\psi_i\rangle\} \in [V^{ab}_c]_0, i =1,\dots, r$ are the even basis vectors in $V^{ab}_c$. 
+Then we can define a complete set of odd basis vectors $\{ |\eta_i\rangle \}$ for $[V^{ab}_c]_1$ by $|\eta_i\rangle = f|\psi_i\rangle$, where $f$ is the odd element of $\End(c) \cong \cc^{1|1}$ (or any odd element in $\End(c)$ if $c$ is not simple).
+When we write $|\eta_i\rangle$ graphically, we will write it as $f |\psi_\rangle$, which allows us to  ``shift the oddness out of the vertex onto the edge'' by transferring the fermion residing on the fusion space to the q-type particle $c$. 
+Graphically, this means that we are allowed to ``displace'' dots from trivalent vertices onto q-type worldlines:
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_displacement.pdf}}}}, \ee
+where the picture on the left is $|\eta_i\rangle$ and the one on the right is $f|\psi_i\rangle$, and $c$ is assumed to be q-type. 
+Mathematically, this is nothing more than the mapping $V^{ab}_c \mapsto [V^{ab}_c]_0 \tp V^{c\unit}_{c} \cong [V^{ab}_c]_0 \tp \End(c)$ where $[V^{ab}_c]_0$ is a purely even vector space, and although simple it proves to be helpful when doing graphical manipulations. 
 
 
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Kozul sign rule} 
+\subsubsection{Koszul sign rule} \label{koszul_signs}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Because of the anti-commuting nature of fusion spaces (i.e., because they can have odd fermion number), taking tensor products of fusion spaces necessitates defining an ordering 
@@ -8174,29 +8150,17 @@ Therefore, we find that it is less error-prone to list the normal ordering of ea
 
 Interchanging the normal ordering of two fusion spaces will generate a minus sign if both spaces have odd fermion parity, since doing this is equivalent to exchanging two fermions. 
 We write $P_{ij}$ for the map that exchanges the normal ordering of the fusion spaces with normal order $i$ and $j$. 
-The action of $P_{12}$ is encapsulated by the Kozul sign rule:
+The action of $P_{12}$ is encapsulated by the Koszul sign rule:
 \begin{align}
 \vcenter{\xymatrix @!0 @M=1mm @C=42mm{
- &P_{12}: \; \;V^{ab}_{c,1} \tp_{\mathbb{C}} V^{xy}_{z,2} \ar[r]            & V^{ab}_{c,2} \tp_{\mathbb{C}} V^{xy}_{z,1} \\
-		  &\;\;\;\;\;\;\; \ket{\psi}\tp_\mathbb{C} \ket{\eta}  \ar@{|->}[r] & (-1)^{|\psi| |\eta|} \ket{\psi} \tp_{\mathbb{C}} \ket{\eta}
+ &P_{12}: \; \;V^{ab}_{c,1} \tp V^{xy}_{z,2} \ar[r]            & V^{ab}_{c,2} \tp V^{xy}_{z,1} \\
+		  &\;\;\;\;\;\;\; \ket{\psi}\tp\ket{\eta}  \ar@{|->}[r] & (-1)^{|\psi| |\eta|} \ket{\psi} \tp \ket{\eta}
 	}} \quad \quad \ket{\psi} \in V^{ab}_{c} \;\; \text{and} \;\;  \ket{\eta} \in V^{xy}_{z}
 \end{align}
-\ethan{I think the following paragraph is important since we do this all the time when doing calculations. Could go as a footnote though.}
-\kw{I would say that in calculations, once we have a graphical notation for an even element
-of $V^{ab}_c$, we can denote an odd element by putting a dot on one of the three edges.
-But I think it is not wise to adopt the convention that $V^{ab}_c$ is purely even.}
-We have defined the fusion spaces $V^{ab}_c$ for all $a,b,c$ as supervector spaces, which is a general formulation and works in all theories. 
-However, there is a slight simplification available in the examples we study in this paper: without loss of generality we can take the fusion spaces $V^{x\unit}_x,V^{\unit x}_x,$ and $V^{xx}_\unit$ for q-type $x$ to all be supervector spaces, while allowing {\it all other fusion spaces} to be regular ``bosonic'' vector spaces. 
-We are allowed to do this because in the examples we consider, a fusion space $V^{ab}_c$ will only ever contain odd vectors if at least one of $a,b,$ or $c$ is q-type (although this is not true in general). 
-\kw{I don't think this is true in general} \ethan{Correct} 
-We can then ``shift the oddness out of the fusion space'' by transferring the fermion residing on the fusion space to the q-type particle. 
-Graphically, this is simply reflected in our ability to ``displace'' dots from trivalent vertices onto q-type worldlines:
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_displacement.pdf}}}}. \ee
-Mathematically, this is nothing more than the mapping $V^{ab}_{x,1} \mapsto V^{ab}_x \tp V^{x\unit}_{x,1}$, where $V^{ab}_x$ is a regular (``bosonic'') vector space.  
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Modified tensor product} \label{modified_tensor_product}
+\subsection{Modified tensor product} \label{modified_tensor_product}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 There is an important subtlety involved when we tensor together fusion spaces which involve q-type particles, which stems from the non-triviality of the fusion space $V^{x\unit}_x$ if $x$ is q-type.
@@ -8228,7 +8192,7 @@ where $x$ is assumed to be q-type. A tensor product between fusion spaces taken 
 To do this, we examine the left equivalence relation in \eqref{FusionSpaceRelation}. 
 Explicitly, it reads
 \be (V^{ab}_x f_1) \tp_\cc V^{xc}_d \sim V^{ab}_x \tp_\cc (f_1 V^{xc}_d),\ee
-where $f_1$ is an odd endomorphism of $x$.\footnote{Here we are explicitly transferring all odd degrees of freedom onto fusion spaces of the form $V^{x\unit}_{x,1} = f_1$. See the discussion at the end of Sec \ref{kozul_sign_rule} for details.}
+where $f_1$ is an odd endomorphism of $x$.\footnote{Here we are explicitly transferring all odd degrees of freedom onto fusion spaces of the form $V^{x\unit}_{x,1} = f_1$. See the discussion at the end of Sec \ref{Koszul_sign_rule} for details.}
 This equivalence relation is saying we need to be able to freely move {\it odd} elements between factors in a tensor product involving q-type particles. 
 Since $\cl_1 = \langle1,f\rangle$ and $\End(x) = \cl_1$ if $x$ is q-type, this can be accomplished by using $\End(x)$ as the tensor unit, {\it instead} of $\cc$. 
 This means that in order to achieve a self-consistent fermionic theory, we need to replace the tensor product of two fusion spaces linked by the simple object $x$ with a tensor product over $\End(x)$. 
@@ -8315,30 +8279,22 @@ Thus, heuristically, we can think of q-type particles as the result of proximity
 
 
 %%%%%%%%%%%%%%%%%%
-\subsubsection{F-symbols}
+\subsection{F-symbols}
 %%%%%%%%%%%%%%%%%%
-
-Outline:
-\begin{itemize}
-\item move discussion of tensoring over $\End(x)$ to this subsection. 
-\ethan{We seemed to have a lot to say for the tensoring over endos thing, so I kept it as its own subsubsection for now.}
-\item Defining the domain and range diagrams for the standard $F$ symbol involves some arbitrary choices.
-\item The different possible conventions for defining $F$ are related by the rotation $R$.
-\item $F^2 = $ ...
-\item pentagon (note explicit permutation op)
-\end{itemize}
 
 The $F$-symbols are defined as basis transformations between different fusion spaces. 
 There are two additional considerations when defining the $F$-symbols in the fermionic setting: they must account for the normal-ordering of the fusion spaces that are transformed during the $F$-move, and they must incorporate the modified tensor product introduced in Sec \ref{modified_tensor_product}. 
 
-There is some arbitrariness involved in our definition of the $F$-moves. They must be linear transformations between two different fusion graphs with four outgoing anyon worldlines, although the details of the structure of the graphs they provide a relation between (e.g. how many of their outgoing legs point up or down) is arbitrary, with the different choices being related by the pivotal matrices $P^{ab}_c$. Additionally, we must choose how they act on the relative sign-ordering of the fusion spaces involved in the $F$-move. We will choose the following convention, in which the $F$-symbols are basis transformations between two fusion spaces of the form $V^{ab}_c$, and such that the vertical sign-ordering of the fusion spaces in any diagram is preserved under $F$-moves: 
+There is some arbitrariness involved in our definition of the $F$-moves. They must be linear transformations between two different fusion graphs with four outgoing anyon worldlines, although the details of the structure of the graphs they provide a relation between (e.g. how many of their outgoing legs point up or down) is arbitrary, with the different choices being related by pivotal matrices $P^{ab}_c$ which will be defined in the following section. 
+Additionally, we must choose how they act on the relative sign-ordering of the fusion spaces involved in the $F$-move. We will choose the following convention, in which the $F$-symbols are basis transformations between two fusion spaces of the form $V^{ab}_c$, and such that the vertical sign-ordering of the fusion spaces in any diagram is preserved under $F$-moves: 
 \begin{align} \label{Fdef}
 F^{abc}_d: \; \; \bigoplus_x V^{ab}_{x,2} \tp_{\text{End}(x)} V^{xc}_{d,1} \rightarrow \bigoplus_y V^{ay}_{d,1} \tp_{\text{End}(y)} V^{bc}_{y,2}
 \end{align}
 Graphically, this is written in terms of the matrix elements of $F$ as
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{Fsymbol_defn.pdf}}}}.\ee
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{Fsymbol_defn.pdf}}}},\ee
+where the greek indices label particular fusion space basis vectors (so that e.g. $\mu$ is a basis vector of $V^{ab}_x$).
 When we take tensor products of fusion spaces, the fusion spaces appear in the tensor product in the same left-to-right order that they appear in the fusion diagram, while the normal ordering of the fusion spaces to increase as we go ``up'' the diagram. 
-This means that the $F$-move permutes the normal ordering of the fusion spaces appearing in the fusion diagram, which we will see leads to Kozul-sign modifications of the pentagon relation. 
+This means that the $F$-move permutes the normal ordering of the fusion spaces appearing in the fusion diagram, which we will see leads to Koszul-sign modifications of the pentagon relation. 
 
 To implement the modified tensor products $\tp_{\End(x)}$ and $\tp_{\End(y)}$ in \eqref{Fdef}, we impose the condition that the F-symbols commute with the gauge transformations $L,R$ that implement the modified tensor product. 
 Imposing this condition means that the following diagram must commute:
@@ -8385,101 +8341,16 @@ The pentagon relation in the superfusion case is defined as an equivalence betwe
 	}} 
 	\label{endoPentagon}
 \end{align}
-where we have used the notation $\tp_x \equiv \tp_{\text{End}(x)}$. Note that this is actually a hexagon, not a pentagon: the extra arrow is the one marked $P_{23}$, which is the Kozul sign originating from switching the normal-ordering of the $V^{yt}_s$ and $V^{z2}_t$ fusion spaces. 
-The use of the modified tensor products $\tp_x$ is how (\ref{endoPentagon}) differs from the ``super-pentagon" equation which has already appeared in the literature REFXXX and which is only applicable to theories that possess no q-type objects 
+where we have used the notation $\tp_x \equiv \tp_{\text{End}(x)}$. Note that this is actually a hexagon, not a pentagon: the extra arrow is the one marked $P_{23}$, which is the Koszul sign originating from switching the fermion ordering of the $V^{yt}_s$ and $V^{z2}_t$ fusion spaces. 
+The use of the modified tensor products $\tp_x$ is how (\ref{endoPentagon}) differs from the ``super-pentagon" equation which has already appeared in the literature \cite{wen, kapustin, usher} and which is only applicable to theories that possess no q-type objects 
 (note that if our theory has no q-type objects we can set $\tp_x = \tp_\cc$ for all $x$, and so \eqref{endoPentagon} reduces to the super-pentagon equation in the case with no q-type particles).
 In practice, it is often easiest to first solve the pentagon equation in the ``extended space'' by replacing all $\tp_x$ tensor products with $\tp_\cc$ (yielding the super pentagon equation), and then requiring the resulting $F$-symbols to satisfy the constraint (\ref{Fcommute}), which is tantamount to implementing the modified tensor products.
 
-Before ending this section, we discuss the relationship between the $F$-symbols and the pivotal structure. We find
-\be [P^{ab}_c]_{\mu\nu} = \sum_\lambda d_b [F^{ab\bar b}_a]_{(c;\mu\lambda)(0;00)} [F^{\bar c c \bar b}_{\bar b}]_{(0;00)(a;\lambda\nu)}.\ee
-Additionally, consistency between the pivotal structure and $F$-moves requires that the following diagram commute: 
-\begin{align}
-\newcommand{\A}{\bigoplus_x V^{ab}_{x,2} \tp_x V^{xc}_{d,1}}
-\newcommand{\B}{\bigoplus_y V^{ay}_{d,1} \tp_y V^{bc}_{y,2} }
-%\newcommand{\C}{V^{d\bar{d}} \tp_{\bar{d} } V^{ay}_{d,2} \tp_y V^{y \bar{y}} \tp_y V_{\bar{y} y} \tp_y V^{bc}_{y,1} \tp_c V^{c\bar{c}} \tp_c V_{\bar{c}c}}
-\newcommand{\C}{\bigoplus_y V^{d\bar{d}} \tp_{\bar{d}} V^{\bar{d} a}_{y,1} \tp_y V^{yb}_{\bar{c},2}  \tp_{\bar{c}} V_{\bar{c}c}  }
-\newcommand{\D}{\bigoplus_x V^{d\bar{d}} \tp_{\bar{d}} V^{\bar{d}x}_{\bar{c},2} \tp_x V^{ab}_{x,1}  \tp_{\bar{c}} V_{\bar{c}c} }
-\newcommand{\E}{\bigoplus_x V^{ab}_{x,1} \tp_x V^{xc}_{d,2}}
-\vcenter{\xymatrix @!0 @M=4mm @R=25mm @C=30mm{
-&\A \ar[ld]^{F^{abc}_d}\ar[rr]^{P_{12}} &&\E&\\
-\B \ar[rd]^{P^{ay}_{d,1} \tp P^{bc}_{y,2} \circ (\kappa_d  \kappa_y \kappa_c)^{-1}}&&&&\D \ar[ul]^{\kappa_d \kappa_c \circ (P^{\bar{d}x}_{\bar{c},2})^{-1}} \\
-&&\C &\ar[ru]^{F^{\bar{d}ab}_{\bar{c}}}&
-	}} 
-	\label{pivotconsistent}
-\end{align}
-
-\kwsep
-
-\ethan{Old F-symbol section:}
-
-\kw{Probably there should be some figures to accompany the definition of $F$ and the pentagon eqn.
-Also, $F$ depends on a choice of ordering of the trivalent vertices on either side of the ``I = H" relation.}
-\dave{Definitely agree. It was just faster to type it out on the first run through this section. I'll add figures to most or all of the equations as I go through it again.}
-
-As usual the $F$-symbols are defined as basis transformations between different fusion spaces, although in our case we must account for our quotienting procedure in their definition. Therefore, we define the $F$-symbols as
-\begin{align}
-F^{abc}_d: \; \; \bigoplus_x V^{ab}_{x,2} \tp_{\text{End}(x)} V^{xc}_{d,1} \rightarrow \bigoplus_y V^{ay}_{d,1} \tp_{\text{End}(y)} V^{bc}_{y,2}
-\end{align}
-We require that the F-symbols commute with the gauge transformations $L,R$ that implement the tensor product over $\End(x)$, and so the following diagram must commute:
-\begin{align}
-	\vcenter{\xymatrix @!0 @M=1mm @R=30mm @C=42mm{
-		 \bigoplus_x V^{ab}_{x,2} \otimes V^{xc}_{d,1} \ar[d]^{L_{f}}\ar[r]^{F^{abc}_d}& \bigoplus_y V^{ay}_{d,1} \otimes V^{bc}_{y,2} \ar[d]^{R_{g}} \\
-		\bigoplus_x V^{ab}_{x,2} \otimes V^{xc}_{d,1}  \ar[r]^{F^{abc}_d}  & \bigoplus_y V^{ay}_{d,1} \otimes V^{bc}_{y,2}	
-	}} 
-	{ \quad\quad \forall f \in \oplus_x \text{End}(x), \; \; g \in \oplus_y \text{End}(y)}
-	\label{Fcommute}
-\end{align}
-In matrix form, this means that we require 
-\be
-F^{abc}_d  L_f=   R_g F^{abc}_d.
-\ee
-
-In the superfusion case, the pentagon relation is equivalent to the commutativity of the following diagram: 
-%\begin{align}
-%\newcommand{\A}{\bigoplus_{p,q}V^{xy}_{p,3}\tp_p V^{pz}_{q,2}  \tp_q V^{qw}_{u,1}}
-%\newcommand{\B}{\bigoplus_{p,t} V^{xy}_{p,2} \tp_p V^{pt}_{u,1} \tp_t V^{zw}_{t,2}}
-%\newcommand{\C}{\bigoplus_{t,s} V^{xs}_{u,1} \tp_s V^{yt}_{s,3} \tp_t V^{zw}_{t,2}}
-%\newcommand{\D}{\bigoplus_{r,q}V^{xr}_{q,2}\tp_r V^{yz}_{r,3}  \tp_q V^{qw}_{u,1}}
-%\newcommand{\E}{\bigoplus_{s,r}V^{xs}_{u,1}\tp_s V^{yz}_{r,3}  \tp_r V^{rw}_{s,2}}
-%\newcommand{\F}{\bigoplus_{t,s} V^{xs}_{u,1} \tp_s V^{yt}_{s,2} \tp_t V^{zw}_{t,3}}
-%\vcenter{\xymatrix @!0 @M=4mm @R=20mm @C=62mm{
-%&\B \ar[r]^{F^{xyz}_t}& \C \ar[dd]^{P_{23}}&\\
-%\A \ar[ru]^{F^{pzw}_u} \ar[rd]^{F^{xyz}_q}&&&\\
-%&\D\ar[r]^{F^{xrw}_u}&\E&
-%	}}
-%\end{align}
-\begin{align}
-\newcommand{\A}{\bigoplus_{p,q}V^{xy}_{p,3}\tp_p V^{pz}_{q,2}  \tp_q V^{qw}_{u,1}}
-\newcommand{\AB}{\ar[rru]^{F^{pzw}_u} \ar[rrd]^{F^{xyz}_q}}
-\newcommand{\B}{\bigoplus_{p,t} V^{xy}_{p,2} \tp_p V^{pt}_{u,1} \tp_t V^{zw}_{t,2}}
-\newcommand{\BC}{\ar[rrr]^{F^{xyz}_t}}
-\newcommand{\C}{\bigoplus_{t,s} V^{xs}_{u,1} \tp_s V^{yt}_{s,3} \tp_t V^{zw}_{t,2}}
-\newcommand{\CF}{\ar[rrd]^{P_{23}}}
-\newcommand{\D}{\bigoplus_{r,q}V^{xr}_{q,2}\tp_r V^{yz}_{r,3}  \tp_q V^{qw}_{u,1}}
-\newcommand{\DE}{\ar[rrr]^{F^{xrw}_u} }
-\newcommand{\E}{\bigoplus_{s,r}V^{xs}_{u,1}\tp_s V^{yz}_{r,3}  \tp_r V^{rw}_{s,2}}
-\newcommand{\EF}{\ar[rru]^{F^{yzw}_s}} 
-\newcommand{\F}{\bigoplus_{t,s} V^{xs}_{u,1} \tp_s V^{yt}_{s,2} \tp_t V^{zw}_{t,3}}
-\vcenter{\xymatrix @!0 @M=2mm @R=22mm @C=19mm{
-&&\B \BC &&&\C \CF &&\\
-\A \AB &&&&&&&\F \\
-&&\D \DE&&&\E \EF&&
-	}} 
-	\label{endoPentagon}
-\end{align}
-where we have used the notation $\tp_x \equiv \tp_{\text{End}(x)}$. Note that this is actually a hexagon, not a pentagon: the extra arrow is the one marked $P_{23}$, which is the Kozul sign originating from switching the normal-ordering of the $V^{yt}_s$ and $V^{z2}_t$ fusion spaces. 
-The use of the modified tensor products $\tp_x$ is how (\ref{endoPentagon}) differs from the ``super pentagon" equation which, has already appeared in the literature REFXXX.
-
-In practice, it is often easier to first solve the pentagon equation in the ``extended space'' by replacing all $\tp_x$ tensor products with $\tp$ (yielding the super pentagon equation), and then requiring the resulting $F$-symbols to satisfy the constraint (\ref{Fcommute}).
-
+\begin{comment}
 \dave{We should think about to what extent all super fusion categories can be realized by fermion condensation}
-
 \dave{We should also ask when this process is reversible, i.e., can we ``guage" fermion parity and get back to a bosonic fusion category}
-
 \dave{Is there an underlying bosonic fusion category associated with every super fusion category? Usher answered this in the case with no q-type particles, and it was yes.} 
-
 \kw{are we sure that Usher did not consider q-type objects?}
-
 \dave{From what I recall, he mentions them but didn't do much beyond that. I'll go back and check. I'll also ask Ethan, he's more familiar with Usher's paper than me.} \ethan{He did (he called them ``Majorana objects''), but I don't think I was ever convinced that he handled them completely correctly: he essentially worked with a ``gauge choice'' in which the worldlines of Majorana objects appearing in F-symbols and the like were always even, so that he could avoid the tensoring over endos issue.} \dave{Note to self: Usher mentions $C_2$ in example 6.8.}
 
 \dave{(*not sure if something like this is needed. Maybe to properly define the $L_f$ and $L_g$. But since in the Hamiltonian we will have odd vertices with identity lines coming out of them, it may be useful to comment on this. Also it may be useful to have a way to add a fermion to the termination of a line*)
@@ -8488,12 +8359,67 @@ For a simple q-type object we have
 \alpha_a: \; \; \mathbb{C} \ell_1 \rightarrow V^{a 0 }_a \quad \quad \beta_a: \; \; \mathbb{C} \ell_1 \rightarrow V^{0a }_a.
 \end{align}
 }
+\end{comment}
 
 
+%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Pivotal structure} \label{pivotal_structure} 
+%%%%%%%%%%%%%%%%%%%%
 
+Finally, we remark on the pivotal structure of fusion spaces in superfusion categories. First, we have the Frobenius-Schur indicator, which is given by
+\begin{align}
+&\kappa_a: \;\; V^{a a^*} \tp_{\text{End}(a^*)} V_{a^*a} \rightarrow V^a_a% \\
+%&\tilde{\kappa}_a: \;\; V_{a a^*} \tp_{\text{End}(a^*)} V^{a^*a} \rightarrow V^a_a
+\end{align}
+Or diagrammatically, 
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{FS_defn.pdf}}}}
+ \ee
+The Frobenius-Schur move is a special case of the pivot: 
+%\dave{Could either do this (and also specify the dual spaces)}
+%\begin{align}
+%A^{ab}_c:&\;\; V^{a^*a} \tp_{\text{End}({a})}  V^{ab}_c \rightarrow V_{a^* c}^b \\
+%B^{ab}_c:&\;\; V^{ab}_c \tp_{\text{End}(b)}  V^{bb^*} \rightarrow V^{a}_{cb^*}
+%\end{align}
+%--OR--
+\begin{align}
+&P^{ab}_c: \; \; V^{c^* c} \tp_{\End(c)} V^{ab}_c \tp_{\End(b)} V_{b b^*} \rightarrow V^{c^* a}_{b^*} %\\
+%&\tilde{R}^{ab}_c: \; \; V^{a^* a} \tp_a V^{ab}_c \tp_c V_{c c^*} \rightarrow V^{b c^*}_{a^*}
+\end{align}
+Diagrammatically, this looks like 
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{pivot_defn.pdf}}}}
+\ee
+In terms of the pivot, we see that $\kappa_a = [P^{0a^*}_{a^*}]_{00}$. From the diagrammatics, we see that the pivot implements a $2\pi/3$ rotation of the fusion space. 
+Acting with $P$ three times thus performs a $2\pi$ rotation of a fusion vertex:
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{pivot_cubed.pdf}}}}\ee
+In bosonic theories, we must always have $P^3=\unit$: rotating a fusion vertex by $2\pi$ is equivalent to doing nothing.
+In the superfusion setting there is a more interesting posibility, because acting with $P^3$ on some vector $v\in V^{ab}_c$ performs a $2\pi$ rotation on the fermion framing of $v$.
+Rotating the fermion framing is equivalent to multiplication by $-1$ if $v$ has odd fermion parity. 
 
+Therefore, in superfusion categories, the pivotal structure relation $P^3=\unit$ is realized {\it projectively}, in the sense that 
+\be P^3 = (-1)^F,\ee
+where $(-1)^F$ is the fermion parity operator, which acts on any $v\in V^{abc}$ as $(-1)^F v = (-1)^{|v|}v$.
+
+We now discuss the relationship between the $F$-symbols and the pivotal structure. 
+The pivots can be obtained from the quantum dimensions and the $F$-symbols through 
+\be [P^{ab}_c]_{\mu\nu} = \sum_\lambda d_b [F^{abb^*}_a]_{(c;\mu\lambda)(0;00)} [F^{c^* c b^*}_{b^*}]_{(0;00)(a;\lambda\nu)}.\ee
+Additionally, consistency between the pivotal structure and $F$-moves requires that the following diagram commute: 
+\begin{align}
+\newcommand{\A}{\bigoplus_x V^{ab}_{x,2} \tp_x V^{xc}_{d,1}}
+\newcommand{\B}{\bigoplus_y V^{ay}_{d,1} \tp_y V^{bc}_{y,2} }
+%\newcommand{\C}{V^{dd^*} \tp_{d^* } V^{ay}_{d,2} \tp_y V^{y y^*} \tp_y V_{y^* y} \tp_y V^{bc}_{y,1} \tp_c V^{cc^*} \tp_c V_{c^*c}}
+\newcommand{\C}{\bigoplus_y V^{dd^*} \tp_{d^*} V^{d^* a}_{y,1} \tp_y V^{yb}_{c^*,2}  \tp_{c^*} V_{c^*c}  }
+\newcommand{\D}{\bigoplus_x V^{dd^*} \tp_{d^*} V^{d^*x}_{c^*,2} \tp_x V^{ab}_{x,1}  \tp_{c^*} V_{c^*c} }
+\newcommand{\E}{\bigoplus_x V^{ab}_{x,1} \tp_x V^{xc}_{d,2}}
+\vcenter{\xymatrix @!0 @M=4mm @R=25mm @C=30mm{
+&\A \ar[ld]^{F^{abc}_d}\ar[rr]^{P_{12}} &&\E&\\
+\B \ar[rd]^{P^{ay}_{d,1} \tp P^{bc}_{y,2} \circ (\kappa_d  \kappa_y \kappa_c)^{-1}}&&&&\D \ar[ul]^{\kappa_d \kappa_c \circ (P^{d^*x}_{c^*,2})^{-1}} \\
+&&\C &\ar[ru]^{F^{d^*ab}_{c^*}}&
+	}} 
+	\label{pivotconsistent}
+\end{align} 
+
+\begin{comment}
 \subsection{useful identities}
-
 \dave{Need to think carefully about tensoring over endomorphisms here.}
 \begin{align}
 V^a_a \tp_{\mathbb{C}} V^b_b = \bigoplus_x \frac{d_x}{\theta(a,b,x)} V^{a \bar{a}} \tp_{\bar{a}}V^{\bar{a}x}_{b,1} \tp_x V^{ab}_{x,2}
@@ -8502,21 +8428,16 @@ can show
 \begin{align}
 \theta(a,b,x) = \frac{d_x}{\kappa_a^{-1} F^{\bar{a} a b}_b}
 \end{align}
-
 \dave{May define a kind of tetrahedral symbol depending on its utility in Hamiltonian.}
-
-
 \subsection{Comments on the general construction of super pivotal categories}
+\end{comment}
 
 
 
-
-
-
-
-
+%%%%%%%%%%%%%%%%%%%%%
  \section{Super pivotal Hamiltonian}
  \label{Super_pivotal_Hamiltonian}
+ %%%%%%%%%%%%%%%%%%%%
 % \section{Hamiltonian} 
 
 In this section we will write down a commuting projector Hamiltonian 
