@@ -71,6 +71,7 @@
 \newcommand{\mco}{\mathcal{O}}
 \newcommand{\mcm}{\mathcal{M}}
 \newcommand{\mcv}{\mathcal{V}}
+\newcommand{\mcx}{\mathcal{X}}
 \newcommand{\ul}{\underline}
 \newcommand{\Mod}{\text{Mod}}
 \newcommand{\Aut}{\text{Aut}}
@@ -2321,11 +2322,16 @@ First, we turn to an analysis of tubes with non-vortex spin structure.
 %its simple modules will split in a similar way. 
 %First, we turn to an analysis of tubes with non-vortex spin structure. 
 
-\subsubsection{Non-vortex spin structure}
 
-Let us first examine the tubes with no charge: that is, cylinders 
-with empty boundary conditions on both their top and bottom: $\tube^B_{\unit \rightarrow \unit}$. 
-We see that this subalgeba \eqref{atubes} has two even generators and so
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Non-vortex spin structure}
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+Let us first examine the tubes with no charge,\footnote{We define the ``charge'' of a tube to be the label of the marked point of the upper boundary of the tube, so that tubes in $\tube_{a \rightarrow b}$ have charge $b$. 
+This is slightly misleading however, because charge is not a good quantum number: in more general theories, $\tube_{a \ra b}$ will be nonzero even when $a\neq b$. We will also see examples of theories in which certain excitations will consist of linear combinations of tubes of different charge (a non-fermionic version of this is the doubled Fibonacci theory).}that is, cylinders 
+with bounding spin structures and empty boundary conditions on both their top and bottom, which are the cylinders in $\tube^B_{\unit \rightarrow \unit}$. 
+We see that this subalgeba \eqref{atubes} has two even generators, and so
 \begin{align}
 \tube^B_{\unit \rightarrow \unit} \cong \mathbb{C}^{2|0}
 \end{align}
@@ -2334,13 +2340,15 @@ We see that this subalgeba \eqref{atubes} has two even generators and so
 %\ee
 %Since $\tube^B_{\unit \rightarrow \unit}$ has two even generators, as an algebra it must be isomorphic to $\cc^{2|0}$. 
 The idempotents associated with this sector are easy to compute: $\cc^{2|0} = \cc \oplus \cc$ 
-has two simple modules 
+has two minimal idempotents (or equivalently, two simple modules) 
 \kw{maybe we should say idempotents rather than simple modules, since what we write down are idempotents (elements of
 the annular category, rather than representations/modules of the annular category)}
+\ethan{yeah, that's fair, the tube notation definitely lends itself to thinking about idempotents as fundamental. Will un-module-ize modules when I see them.}
 and hence we obtain a pair of zero-charge 
 \kw{need to make sure that we remark somewhere that charge is not really an intrinsic property of
 an equivalence class of idempotents; we are using ``charge" informally, to describe the object of the annular category which
 hosts a particular representative of an idempotent equivalence class (right?)}
+\ethan{yep! charge is indeed not a good quantum number---I added a footnote about this where we discuss non-vortex anyons in Ising, which looked to be the first time we used the charge terminology.}
 quasiparticles, which we 
 label by $m_\unit$ and $m_\psi$. Explicitly, they are 
 \be
@@ -2795,10 +2803,7 @@ We have chosen $m_\sigma^+$ as the representative of the isomorphism class given
 			\text{topological spin}		&1			&A^3		&1	&A^5	&1	&-A^5 \\
 						\end{array} & \end{flalign*}
 	\caption{$C_2$ data. The total quantum dimension is $\mcd = \sqrt{8}$.
-<<<<<<< HEAD
-=======
 	The quantum dimensions above have been normalized with respect to the trivial idempotent $m_\unit$.
->>>>>>> 6dacd4b18825528158a9712fbb7dcfcd8692a2aa
 The topological spin defined here is the eigenvalue under $t^\dagger$ when the tube has a $\beta$ line at the boundary. }
 	\label{C2Data}
 \end{table}
@@ -2929,7 +2934,15 @@ In order for $V^{ab}_c$ to be a bona fide fusion space, the vector space $V^{ab}
 Therefore, determining the fusion space $V^{ab}_c$ is tantamount to finding a vector space supported on the pair of pants invariant under the application of $\Pi_a\tp \Pi_b$ on the ``top'' of the pants, and invariant under $\Pi_c$ on the ``bottom'' of the pants, see Fig. \ref{Makefigure}.
 The (super)dimension of this vector space is the fusion multiplicity $N^{ab}_c = \dim V^{ab}_c$. 
 
+There is a subtle point regarding fusion spaces and fusion rules that we will need to address in what follows. 
+We define the fusion rule coefficients $\Delta^{ab}_c$ as the vector spaces which appear in the direct sum decomposition of $a\tp b$\footnote{The $\Delta^{ab}_c$ are complex supervector spaces, not numbers, and so ``fusion rule coefficients'' is a bit misleading. However, vector spaces are the categorified version of scalars, and so we will continue to adopt this slightly imprecise terminology.}:
+\be \label{fusion_coeffs_defn} a \tp b \cong \bigoplus_c \Delta^{ab}_ c c.\ee
 
+In bosonic theories, the fusion spaces can be read off directly from direct sum decompositions like this: they are precisely $V^{ab}_c = \Delta^{ab}_c$. 
+However, this is not true in fermionic theories. 
+The general relation is in fact that the fusion spaces are larger than the $\Delta^{ab}_c$s:
+\be V^{ab}_c \cong \Delta^{ab}_c \tp \End(c).\ee
+We demonstrate and elaborate on this in Section \ref{fusion_rules_and_fusion_spaces}. 
 
 %Recall from Figure \ref{FIG??} quasiparticles are supported on punctures of the underlying manifold, a fusion space like $V^{ab}_c$ will be given by a vector space whose vectors are string-net configurations on pairs of pants, 
 %with $a$ and $b$ supported on the ``incoming'' legs of the pants and $c$ supported on the ``outgoing'' leg. 
@@ -3056,7 +3069,8 @@ V^{m_\sigma^+ m_\psi}_{m_\sigma^+} = \left\langle \PantssvXsvdA -\frac{A^3}{\sqr
 \end{align}
 
 
-By following the approach outlined in these examples, it is straightforward to write down the table of fusion rules in the theory, which we present in Table \ref{fusiontable}. In the table, the bullets ($\bullet$) represent vector spaces isomorphic to $\cc^{1|1}$, while the appearance of $\cc^{0|1}$ indicates a purely odd fusion channel. 
+By following the approach outlined in these examples, it is straightforward to write down the table of fusion rules in the theory, which we present in Table \ref{fusiontable}. In the table, we list the fusion rule coefficients from \eqref{fusion_coeffs_defn}, with the bullets ($\bullet$) representing cases where $\Delta^{ab}_c \cong \cc^{1|1}$, and the appearance of $\cc^{0|1}$ indicating a purely odd fusion channel. 
+The fusion spaces $V^{ab}_c$ can then be obtained through the use of $V^{ab}_c \cong \Delta^{ab}_c \tp \text{End}(c)$. 
 
 \begin{comment}
 \begin{table}
@@ -3153,15 +3167,14 @@ For example, the $m_\sigma^+ \tp m_\sigma^+$ entry indicates that the fusion spa
  \end{flalign*}
  
  
-\caption{ \label{fusiontable} The quasiparticle fusion rules in $\text{Ann}(C_2) \cong \mcz(C_2)$. 
-	We have defined $\mca = \{ m_\unit, m_\sigma^+, m_\psi \} $ and $\mcv = \{ q_\unit, q_\sigma, q_\psi \}$.
-	The coefficients in the table above (given by $\cc$ unless specified otherwise) the $\Delta_{ab}^c$ defined via $a \tp b = \bigoplus_c \Delta_{ab}^c c$.
-	The fusion rules above determine the fusion space via $V^{ab}_c \cong \Delta_{ab}^c \tp \text{End}(c)$.
-	So that for example, $V^{m_\psi q_\sigma}_{q_\sigma} \cong \cc \tp \cc^{1|1} = \cc^{1|1}$.
-	We have defined $\bullet = \mathbb{C}^{1|1}$ to denote that the associated fusion space is isomorphic to $\cc^{1|1}$.
+\caption{ \label{fusiontable} The fusion rules in $\text{Ann}(C_2) \cong \mcz(C_2)$. 
+	We have defined $\mca = \{ m_\unit, m_\sigma^+, m_\psi \} $ and $\mcv = \{ q_\unit, q_\sigma, q_\psi \}$ as the set of anyons and set of vortices, respectively.
+	The $a$-$b$th entry in each table is the sum $\oplus_c \Delta_c^{ab} c$, where we have committed any $\Delta^{ab}_c$ that is equal to $\cc$ and used $\bullet = \mathbb{C}^{1|1}$ to signify that the associated $\Delta^{ab}_c$ is isomorphic to $\cc^{1|1}$.
+		Entries with $\cc^{0|1}$ indicate that the fusion channel is purely odd. 
+	The fusion spaces can be obtained from this table according to $V^{ab}_c \cong \Delta^{ab}_c \tp \text{End}(c)$.
+	For example, $V^{m_\psi q_\sigma}_{q_\sigma} \cong \cc \tp \cc^{1|1} = \cc^{1|1}$.
 %Bullets in front of terms indicate that the associated fusion space is isomorphic to $\cc^{1|1}$. 
-	Entries with $\cc^{0|1}$ indicate that the fusion channel is purely odd. 
-	For example, the $m_\sigma^+ \tp m_\sigma^+$ entry indicates that the fusion space is $\cc^{1|0}$ if the fusion product is $m_\unit$, and $\cc^{0|1}$ if the fusion product is $m_\psi$. 
+	%For example, the $m_\sigma^+ \tp m_\sigma^+$ entry indicates that the fusion space is $\cc^{1|0}$ if the fusion product is $m_\unit$, and $\cc^{0|1}$ if the fusion product is $m_\psi$. 
 }
 	\label{halfesixFusionRules}
 \end{table}
@@ -7918,7 +7931,11 @@ Indeed such a q-type particle exists in the $\halfesix$ theory considered earlie
 The $\Gamma$ matrices in the $\halfesix$ case are essentially determined by the relations \eqref{esixdotslide}. 
 
 
-\subsubsection{Tensor products of fusion rules}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Fusion rules and fusion spaces} \label{fusion_rules_and_fusion_spaces}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \dave{Just wanted to add some notes on a confusing point that we should try to straighten out.}
 Fusion rules are subtle in a super-pivotal category. 
 Recall from a bosonic theory we define the fusion rules by $a \tp b =\bigoplus_c N_{ab}^c c$. 
@@ -7929,35 +7946,35 @@ In the fermionic setting these two are not always equal.
 
 Lets define the super-vector spaces, 
 \begin{align}
-\Delta_{ab}^c = \mathbb{C}^{{\delta_{ab;B}^c} | {\delta_{ab;F}^c}} \\
+\Delta^{ab}_c = \mathbb{C}^{{\delta_{ab;B}^c} | {\delta_{ab;F}^c}} \\
 N_{ab}^{c} = \mathbb{C}^{{n_{ab; B}^c} | {n_{ab;F}^c}}
 \end{align}
 so that,
 \begin{align}
-a \tp b &= \bigoplus_c \Delta_{ab}^c \; c\\
+a \tp b &= \bigoplus_c \Delta^{ab}_c \; c\\
 V^{ab}_c & \cong N_{ab}^c \quad \quad \text{\dave{this looks awkward.}}
 \end{align}
-Here we wish to find a constraint between $N_{ab}^c$ and $\Delta_{ab}^c$.
+Here we wish to find a constraint between $N_{ab}^c$ and $\Delta^{ab}_c$.
 A necessary constraint is that the endomorphism algebra on the left and right hand side of the above equation must agree, 
 \begin{align}
-\text{End} (a \tp b) = \bigoplus_c \text{End}(\Delta_{ab}^c \;c) =  \bigoplus_c \text{End}{(\Delta_{ab}^c)} \tp \text{End}(c)
+\text{End} (a \tp b) = \bigoplus_c \text{End}(\Delta^{ab}_c \;c) =  \bigoplus_c \text{End}{(\Delta^{ab}_c)} \tp \text{End}(c)
 \end{align}
 We have a basis for $\text{End}(a \tp b)$ given by the fusion spaces,
 \begin{align}
 \text{End}(a \tp b)  = V^{ab}_{ab} = \bigoplus_c V^{ab}_c \tp_{\text{End}(c)} V^c_{ab}
 \end{align}
 Lets look at each $V^{ab}_c \tp_{\text{End}(c)} V^c_{ab}$. 
-If $c$ is m-type, then we have $V^{ab}_c \tp_{\text{End}(c)} V^c_{ab} \cong \text{End}(V^{ab}_c) \tp \text{End}(c)$, and so it is natural to take $N_{ab}^c = \Delta_{ab}^c$. 
+If $c$ is m-type, then we have $V^{ab}_c \tp_{\text{End}(c)} V^c_{ab} \cong \text{End}(V^{ab}_c) \tp \text{End}(c)$, and so it is natural to take $N_{ab}^c = \Delta^{ab}_c$. 
 Now suppose $c$ is q-type.
 Then $V^{ab}_c \cong \mathbb{C}^{x|x}$ for some $x$, and $V^{ab}_c \tp_{\mathbb{C}} V^{c}_{ab} \cong \mathbb{C}^{2x^2 | 2x^2}$ so that,
 \begin{align}
 V^{ab}_c \tp_{\text{End}(c)} V^{c}_{ab} \cong \mathbb{C}^{x^2 |x^2}
 \end{align}
-Similarly let $\Delta_{ab}^c = \mathbb{C}^{p|w}$, then we have,
+Similarly let $\Delta^{ab}_c = \mathbb{C}^{p|w}$, then we have,
 \dave{This is probably where the error is. 
 Is it wrong to treat $\text{End}(c)$ as a vector space in this calculation?}
 \begin{align}
-\text{End}(\Delta_{ab}^c \; c) \cong \mathbb{C}^{p^2 + w^2 | 2pw} \tp \mathbb{C}^{1|1} \cong \mathbb{C}^{(p+w)^2 | (p+w)^2}
+\text{End}(\Delta^{ab}_c \; c) \cong \mathbb{C}^{p^2 + w^2 | 2pw} \tp \mathbb{C}^{1|1} \cong \mathbb{C}^{(p+w)^2 | (p+w)^2}
 \end{align}
 as vector spaces.
 If the calculation is correct then we find $x = p+w$. 
@@ -7965,7 +7982,7 @@ If the calculation is correct then we find $x = p+w$.
 
 One can find an additional constraint given by $(a\tp b) \tp c = a \tp(b \tp c)$, which gives,
 \begin{align}
-\bigoplus_{xy} \Delta_{ab}^x \tp \Delta_{xc}^y \; y  = \bigoplus_{yz} \Delta_{az}^y \tp \Delta_{bc}^z \; y
+\bigoplus_{xy} \Delta^{ab}_x \tp \Delta_{xc}^y \; y  = \bigoplus_{yz} \Delta_{az}^y \tp \Delta_{bc}^z \; y
 \end{align}
 
 \kwsep
@@ -8015,19 +8032,19 @@ Combining \eqref{asumx} and \eqref{amordef}, we have
 \ee
 which we have used many times above.
 
-For any $a$ and $b$, define $\Delta_{ab}^x$ (up to isomorphism) by
+For any $a$ and $b$, define $\Delta^{ab}_x$ (up to isomorphism) by
 \be
-	a \otimes b \cong \bigoplus_x \Delta_{ab}^c \cdot x .
+	a \otimes b \cong \bigoplus_x \Delta^{ab}_c \cdot x .
 \ee
 Also define
 \be
-	V_{ab}^x = \mor(a\times b \to x) = \Delta_{ab}^x \otimes_\cc \End(x).
+	V_{ab}^x = \mor(a\times b \to x) = \Delta^{ab}_x \otimes_\cc \End(x).
 \ee
 Note that $V_{ab}^x$ is symmetric (up to isomorphism) in $a,b,x$ (if $a$ and $b$ are simple) \dave{Is there a simple way to see this?}, while
-$\Delta_{ab}^x$ is not.
+$\Delta^{ab}_x$ is not.
 \kw{$V_{ab}^x \cong V_{abx^*} = \mor(a\otimes b\otimes x^*)$, which is clearly symmetric in $a$, $b$, $x^*$.
 So the symmetry I claimed is a little funky in that it requires shuffling stars around.}
-Also, $V_{ab}^x$ has an action of $\End(a)\otimes\End(b)\otimes\End(x)$, while $\Delta_{ab}^x$
+Also, $V_{ab}^x$ has an action of $\End(a)\otimes\End(b)\otimes\End(x)$, while $\Delta^{ab}_x$
 only has an action of $\End(a)\otimes\End(b)$.
 
 Looking at associativity $(a\otimes b)\otimes c \cong a\otimes (b\otimes c)$, we see that
@@ -8036,22 +8053,98 @@ Looking at associativity $(a\otimes b)\otimes c \cong a\otimes (b\otimes c)$, we
 \ee
 and
 \be
-	\bigoplus_x \Delta_{ab}^x \otimes_\cc \Delta_{xc}^d \cong \bigoplus_y \Delta_{ay}^d \otimes_\cc \Delta_{bc}^y .
+	\bigoplus_x \Delta^{ab}_x \otimes_\cc \Delta_{xc}^d \cong \bigoplus_y \Delta_{ay}^d \otimes_\cc \Delta_{bc}^y .
 \ee
 (We assume $d$ is simple for the second one.)
 
 \kw{Dave, does the above address your questions?
 \dave{It does. And clears up some other confusions as well.
  But I still have one point that's bothering me.
-I originally thought that $V_{ab}^c$ determine $\Delta_{ab}^c$ uniquely.
+I originally thought that $V_{ab}^c$ determine $\Delta^{ab}_c$ uniquely.
 Is that not true?
 (For example if c is q-type then $\mathbb{C}^{2|0} \tp \text{End}(q) \cong \mathbb{C}^{1|1} \tp \text{End}(q)$.)
-Is there any significance to the different choices of $\Delta_{ab}^c$ which yield the same $V_{ab}^c$?}}
+Is there any significance to the different choices of $\Delta^{ab}_c$ which yield the same $V_{ab}^c$?}}
 \kw{Good point.
 At the moment, I don't see any reason to prefer $2|0$ to $1|1$ when $c$ is q-type.
 Since $c$ has an odd endomorphism, it doesn't really make sense to distinguish between objects evenly
 isomorphic to $c$ and objects oddly isomorphic to $c$, and similar things are true for $W\cdot c$.
 We should keep thinking about this.}
+
+\kwsep 
+
+In this section we elaborate on the differences arising in fermionic theories between fusion spaces and the supervector spaces appearing the fusion rules. 
+
+We assume that our categories are additively complete, which means that it makes sense to
+multiply objects by supervector spaces. 
+This is simply a categorified version of multiplying vectors (objects) by scalars (vector spaces).
+
+For any collection of supervector spaces $\{W_a\}$ indexed by objects in the category, we add new objects 
+\be \bigoplus_a W_a a\ee
+to our category. 
+Morphisms between these more general objects split as 
+\be
+	\mor(\bigoplus_a W_a\cdot a \to \bigoplus_b W'_b\cdot b) = \bigoplus_{a,b} \hom(W_a \to W'_b)\otimes_\cc \mor(a\to b) .
+\ee
+
+Because our category is semisimple, there exists a finite collection $\mcx$ of mutually non-isomorphic simple objects $x$ such
+that any object $a$ is isomorphic to one of the form
+\be \label{asumx}
+	a \cong \bigoplus_{x\in \mcx} W_x\cdot x .
+\ee
+If we want the isomorphism to be canonical, we can take $W_x = \mor(x\to a)$ if $x$ is m-type, or $W_x$ to be the even morphisms in $\mor(x\to a)$
+if $x$ is q-type.
+
+Combining \eqref{asumx} and \eqref{amordef}, we can compute endomorphisms of objects by
+\be
+	\End(a) \cong \bigoplus_x \End(W_x) \otimes_\cc \End(x).
+\ee
+
+We are now ready to talk about the fusion rules. 
+For any $a$ and $b$, define the vector spaces $\Delta^{ab}_c$ by
+\be
+	a \otimes b \cong \bigoplus_c \Delta^{ab}_c c ,
+\ee
+where the direct sum runs over all simple objects $c$. 
+The $\Delta^{ab}_c$ are the fusion rule coefficients. 
+
+The fusion spaces $V^{ab}_c$ are defined as the vector space of morphisms from $a\tp b$ to $c$:
+\be \label{defn_of_V_by_Delta}
+	V^{ab}_c \def \mor(a\tp b \to c),
+\ee
+where $a,b,c$ are simple objects. 
+Decomposing the tensor product and using the simplicity of $c$, we see that 
+\be V^{ab}_c \cong \bigoplus_c \Delta^{ab}_c \tp \rm{mor}(c\ra c) \cong \bigoplus_c \Delta^{ab}_c \otimes \End(c).\ee
+Thus, the fusion spaces are generically larger than the vector spaces appearing in the fusion rules (in bosonic theories, the fusion spaces and fusion rule coefficients are equal).
+As examples, in the $C_2$ theory studied earlier, we have 
+\be \Delta^{q_\sigma q_\sigma}_{m_\psi} = \cc^{1|1},\quad\Delta^{q_\sigma m_\unit}_{q_\sigma} = \cc,\ee
+while 
+\be V^{q_\sigma q_\sigma}_{m_\psi} = V^{q_\sigma m_\unit}_{q_\sigma} = \cc^{1|1}.\ee
+
+Note that $V_{ab}^x$ is symmetric (up to isomorphism) in $a,b,x$ (if $a$ and $b$ are simple).
+%The isomorphism in the qualifier ``up to isomorphism'' is the isomorphism that sends a simple object $a$ to its dual $a^*$. 
+Because 
+\be \mor(a\times b \ra c) \cong \mor(a\times b \times c^* \ra \unit) \cong \mor(a\times c^* \ra b^*)\ee, 
+we are allowed to freely permute the indices of $V$, so long as we take the duals of any objects that move from subscripts to superscripts, and vice versa. 
+For example, we have $V^{ab}_c \cong V^{ba}_c \cong V^{ac^*}_{b^*}$. 
+However, we stress that $\Delta^{ab}_c$ is {\it not} symmetric in $a,b,c$.  
+Additionally, while $V^{ab}_c$ has an action of $\End(a)\otimes\End(b)\otimes\End(c)$, $\Delta^{ab}_c$
+only has an action of $\End(a)\otimes\End(b)$.
+
+Constraints on associativity allow us to derive relations between the fusion rule coefficients and fusion spaces. 
+Looking at associativity $(a\otimes b)\otimes c \cong a\otimes (b\otimes c)$, we see that
+\be
+	\bigoplus_x \Delta^{ab}_x \otimes_\cc \Delta_{xc}^d \cong \bigoplus_y \Delta_{ay}^d \otimes_\cc \Delta_{bc}^y.
+\ee
+Applying \eqref{defn_of_V_by_Delta}, we obtain
+\be
+	\bigoplus_x V_{ab}^x \otimes_{\End(x)} V_{xc}^d \cong \bigoplus_y V_{ay}^d \otimes_{\End(y)} V_{bc}^y. 
+\ee
+
+
+
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
