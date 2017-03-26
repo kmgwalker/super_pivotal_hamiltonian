@@ -1964,13 +1964,24 @@ and talk about folding the $A_3$ principal graph to obtain $C_2$.
 In this section, we identify the quasiparticle excitations 
 in the $C_2$ theory.
 We will discuss the quasiparticles in the theory, their fusion rules, their statistics, and the modular transformations of the ground states on the torus.
-In Section \ref{Super_pivotal_Hamiltonian} we will describe a Hamiltonian whose ground state is isomorphic to the Hilbert space of this string net model.
+We will identify the excitations using a fermionic generalization of a device known as the {\it tube category}. 
+We will briefly review the tube category as applied to the $C_2$ theory below; for a more detailed overview and for an explanation of why the fermionic version of the tube category computes the excitations, we refer the reader to Section \ref{}, where we discuss the construction in full generality. 
+%In Section \ref{Super_pivotal_Hamiltonian} we will describe a Hamiltonian whose ground state is isomorphic to the Hilbert space of this string net model.
 \kw{We need to decide what ``string net model" refers to.
 Is it a TQFT?  A Hamiltonian?  A package which includes both?
 I tend to think of the Hamiltonian as something extra, not part of the essential structure.}
 
+The setting for examining a collection of $n$ excitations in a given topological phase is a manifold with $n$ circular punctures, with an excitation localized at the location of each puncture. 
+The tube category $\tube(C_2)$ contains all spin tubes with $C_2$ string-nets drawn on their surfaces modulo local relations, and $\tube(C_2)$ acts on the punctures by gluing in tubes to each puncture (see Figure XXX). 
+Two tubes $a$ and $b$ can be composed by stacking $a$ on top of $b$, with the stacking operation playing the role of a multiplication law in an algebra. 
+Determining the spectrum of excitations in the $C_2$ theory can thus be done by writing down a collection of independent spin-structure-equipped tubes with string nets drawn on their surfaces, finding their algebraic behavior under stacking, and computing the minimal idempotents of the resulting algebra. 
+
+
+%Ethan: what follows is a more general discussion of tubing that I moved to the more general section
+\begin{comment}
 The quasiparticle excitations in a bosonic topological phase obtained from a category $\mcc$ are given by the simple objects in the Drinfeld center $\mcz(\mcc)$ \cite{levin2005}.
-These excitations are also naturally described by primitive idempotents of a category called the {\t tube category of} $\mcc$ (see \cite{ocneanu2001,evans1995,Izumi2000,muger2003b,Bultinck2017}, \cite{Lan2014, Hu2015}, where the tube category is referred to variously as the tube algebra and the Q-algebra), which we will write as $\tube(\mcc)$.
+These excitations are also naturally described by primitive idempotents of a category called the tube category of $\mcc$ (see \cite{ocneanu2001,evans1995,Izumi2000,muger2003b,Bultinck2017}, \cite{Lan2014, Hu2015}, where the tube category is referred to variously as the tube algebra and the Q-algebra), which we will write as $\tube(\mcc)$.
+
 The tube category was first introduced by Ocneanu \cite{ocneanu1994} and has since been dubbed `Ocneanu's tube algebra'; it is also referred to as the annular category $\text{Ann}(\mcc)$, 
 or the categorified Hochschild homology of $\mcc$.
 It is closely related to the Drinfeld center:
@@ -1986,7 +1997,6 @@ in the more general fermionic setting considered here.
 %With appropriate modifications accounting for spin structure issues, this same construction holds 
 %in the more general fermionic setting considered here. 
 
-\ethan{The following can be moved to a section on generalities if we decide to do that}
 The basic idea behind the tube category for bosonic theories is as follows. 
 The setting for examining a collection of $n$ excitations in a given topological phase is a manifold with $n$ circular punctures, with an excitation localized at the location of each puncture. 
 The distinct types of excitations constitute the objects of the tube category. 
@@ -2013,7 +2023,7 @@ punctures associated with each quasiparticle.
 Since the quasiparticle excitations are topological they must be invariant under these scale transformations, 
 and thus finding the quasiparticle excitations in the theory is equivalent to finding the simple 
 modules of the tube category. 
-
+\end{comment}
 
 
 
@@ -4960,29 +4970,6 @@ Thus, the {\it full} statistical braiding information---both the $\mcs$ and $\mc
 Instead of saying that we have two different S-matrices, we can say we have two independent ways of computing S. }
 %Because of the $A^{-2}$ prefactor in front, 
 
-\dave{This applies more generally. 
-Maybe it would sit better somewhere else in the paper?}
-Finally, before ending this section we derive a final way of calculating the statistical $\mcs$-matrix. 
-Instead of tracing the $R$ matrices, we can appeal to a formula relating the $\mcs$ matrix to the topological twists. In bosonic theories, we have 
-\be \label{stwist_bosonic} \mcs^{bos}_{ab} = \frac{1}{\mcd} \sum_c d_c N^{ab}_c \frac{\theta_c}{\theta_a\theta_b}.\ee
-This relation does {\it not} hold in the superfusion case, and needs to be modified. 
-The derivation of the correct version of \eqref{stwist_bosonic} relies on the fact that
-\be \label{stwist_fermionic} \theta_c = (-1)^{|v|(|c|+1)} \theta_a\theta_b [R^{ab}_c]_{vv} [R^{ba}_c]_{vv},\ee
-where $v\in V^{ab}_c$ is any vector in the fusion space $V^{ab}_c$ and $|v| \in \{0,1\}$ is the parity of $v$, and where $|c| = 1$ $(|c|=0)$ if $c$ is a quasiparticle with a vortex (non-vortex) spin structure. 
-In the $C_2$ theory, the factor of $(-1)^{|v||c|}$ will only contribute for braids between m-type and q-type particles. 
-
-To derive \eqref{stwist_fermionic}, we use the following manipulations:
-\be\label{stwist_proof} \includegraphics{stwist_proof.pdf}, \ee
-where $a$ and $b$ are such that $N^{ab}_c\neq0$, $v$ is any vector in the fusion space $V^{ab}_c$, and for clarity we have used the orange lines to represent collections of tubes hosting the quasiparticles $a,b,c$. 
-These steps relate something proportional to $\theta_c$ (the leftmost diagram) to something proportional to $\theta_a\theta_b [R^{ab}_c]_{vv}[R^{ba}_c]_{vv}$. 
-In the bosonic case this relation is an exact equality, but this is not true in the fermionic setting. 
-Firstly, we see that the first step in \eqref{stwist_proof} involves passing the vertex $v$ under a $c$ tube. 
-When the braiding process is embedded in $S^3$, the branch cuts associated with vortex-type quasiparticles become branch sheets, which we will define to always be pointing out of the page. 
-This means that passing an odd vector in $V^{ab}_c$ over a vortex-type quasiparticle gives a phase factor of $-1$.
- Additionally, we notice that vectors in $V^{ab}_c$ are transported in a loop during steps 1 and 2, which contributes a sign of $-1$ if the vector $v$ is odd. 
- These two effects are responsible for the factor of $(-1)^{|v|(|c|+1)}$ in \eqref{stwist_fermionic}, meaning that the correct expression for $\mcs$ in the fermionic setting is 
-\be \mcs_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in V^{ab}_c} d_c (-1)^{|v| (|c|+1)}   \frac{\theta_c}{\theta_a\theta_b}.\ee
-
 
 %\ethan{commented-out section below is old discussion of why qq braids vanish}
 \begin{comment}
@@ -5014,9 +5001,52 @@ When we compute this partition function, we thicken the two tori so that their b
 It should be obvious that the techniques used in Section \ref{C2_condense_sect} work more generally.
 In this section we discuss the general case and some variants thereof.
 
+%%%%%%%%%%%%%%%%%%%%
+\subsection{Preliminaries on notation}
+%%%%%%%%%%%%%%%%%%%%
+In what follows we will will work with a unitary braided fusion category (UBFC) $\mathcal{C}$ which contains a fermion that we aim to condense. 
+We denote this fermionic object by $\psi \in \text{Obj}\; \mathcal{C}$. 
+There are two decompositions of $\text{Obj}\; \mathcal{C}$ that will be relevant in what follows: one is a decomposition of $\text{Obj}\; \mathcal{C}$ into objects that are invariant under fusion with $\psi$ and those that are not, and the other is a decomposition into objects  that are transparent with respect to $\psi$ and those that are not. 
 
+The first decomposition of objects in $\mcc$ is done according to whether or not they are mapped to themselves under fusion with $\psi$, i.e.\ whether they are m-type or q-type.
+We write
+\begin{align} \label{MQ_partition}
+\text{obj} \; \mathcal{C}  = M \cup  (M \tp \psi) \cup Q,
+\end{align}
+where if $x \in Q$ then $x \tp \psi \cong x \in Q$, while if $x \in M$ then $x \tp \psi \in M \tp \psi $.
+The objects in $M \cup (M\tp \psi)$ will become the set of m-type objects after condensing $\psi$, and the objects in $Q$ will become the set of q-type objects.  
+Since m-type particles are not mapped to themselves under fusion with $\psi$, we have $M\cap (\psi\tp M) = \emptyset$. 
+Our choice of $M$ is not unique, as the objects in $M$ are representative elements of orbits of $\text{Obj}\; \mcc$ under fusion with $\psi$, and as such we could just as well take any $x \in M$ and replace it by $x \tp \psi$.
+Our choice of the objects in $M$ is thus essentially a ``gauge choice'', but we find it convenient to fix the elements in $M$ from the outset, since it will aid us in doing computations. 
+This allows us to only be concerned with calculations performed with objects in $M$ or $Q$: analogous calculations for objects in $M\tp \psi$ can be obtained from the results for objects in $M$, so this is done without loss of generality. 
+It is useful to define the indicator
+\begin{align}
+n_x=
+\begin{cases}
+0\quad \text{if $x \in M \cup (M\tp \psi)$}\\
+1\quad \text{if $x \in Q$}\\
+\end{cases}
+\end{align}
+
+The second natural way to distinguish the simple objects in $\mcc$ to use the $\mathbb{Z}_2$ grading inherited from the full braid of objects with $\psi$. 
+This can be defined by the indicator 
+\begin{align}
+(-1)^{\nu_x} := S_{a \psi}/S_{a0} \in \{+1, -1 \}
+\label{grading}
+\end{align}
+It is easy to check that this grading is preserved under fusion.
+Hence we can partition the objects in $\mcc$ as 
+\begin{align}
+\text{Obj}\; \mathcal{C}  = I_0 \cup I_1, \quad \quad I_a \tp I_b = I_{a+b\; \text{mod} \; 2}
+\end{align}
+%Physically it is tempting to call particles with $\nu_x = 1$ vortices, since when a fermion is dragged around them the wavefunction picks up a minus sign.
+%We will avoid this nomenclature here to avoid confusion with the spin structure vortices associated to non-bounding spin structures, which also satisfy this property for the physical fermions. 
+It can be shown that in any UMTC, $\nu_x = 1$ for all $x\in Q$\footnote{One can show this by considering the symmetries of the S-matrix on the punctured torus. This does not necessarily hold for non-modular theories, however.}. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Condensing non-transparent fermions in a braided category}  \label{gntf_condense}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Let $\mcc$ be a braided pivotal category.
 \kw{need to add more adjectives?}
 Let $\psi$ be a simple object of $\mcc$ such that
@@ -5078,7 +5108,7 @@ It can be shown that if the input theory is an MTC (like $SU(2)_6$), then the id
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{The annular category of $\mcc/\psi$ and string nets}
+\subsection{The tube category of $\mcc/\psi$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 To do:
 \begin{itemize}
@@ -5087,6 +5117,196 @@ To do:
 (half of the familiar $Z(\mcc) \cong \mcc \ot \overline\mcc$ when $\mcc$ is modular)
 \item non-vortices are all m-type
 \end{itemize}
+
+The quasiparticle excitations in a bosonic topological phase obtained from a category $\mcc$ are given by the simple objects in the Drinfeld center $\mcz(\mcc)$ \cite{levin2005}.
+These excitations are also naturally described by primitive idempotents of a category called the tube category of $\mcc$ (see \cite{ocneanu2001,evans1995,Izumi2000,muger2003b,Bultinck2017}, \cite{Lan2014, Hu2015}, where the tube category is referred to variously as the tube algebra and the Q-algebra), which we will write as $\tube(\mcc)$.
+
+The tube category was first introduced by Ocneanu \cite{ocneanu1994} and has since been dubbed `Ocneanu's tube algebra'; it is also referred to as the annular category $\text{Ann}(\mcc)$, 
+or the categorified Hochschild homology of $\mcc$.
+It is closely related to the Drinfeld center:
+If $\mcc$ is pivotal then there is a natural isomorphism
+$\text{Rep}(\text{Ann}(\mcc)) \cong \mcz(\text{Rep}(\mcc))$, and if $\mcc$ is semisimple then we can drop
+the $\text{Rep}$s and obtain $\text{Ann}(\mcc) \cong \mcz(\mcc)$.
+With appropriate modifications accounting for spin structure issues, a similar construction holds 
+in the more general fermionic setting considered here. 
+
+%the quasiparticle excitations in bosonic theories 
+%based on a category $\mcc$ are given by objects of the Drinfeld center $\mcz(\mcc)$, 
+%which can be obtained by finding the simple modules of an algebra known as the {\it tube algebra}. 
+%With appropriate modifications accounting for spin structure issues, this same construction holds 
+%in the more general fermionic setting considered here. 
+
+The basic idea behind the tube category for bosonic theories is as follows. 
+The setting for examining a collection of $n$ excitations in a given topological phase is a manifold with $n$ circular punctures, with an excitation localized at the location of each puncture. 
+The distinct types of excitations constitute the objects of the tube category. 
+Local operators on excited states correspond to operators which take cylindrical tubes (or annuli, hence the association with $\text{Ann}(\mcc)$) and fuse them into the punctures on the manifold, by gluing the bottom end of a tube into a puncture.
+The tubes are decorated with different string-net configurations, and can be viewed as linear maps between circles with different boundary conditions. 
+The collection of excitations constitute the objects of the tube category, while the collection of all tubes (modulo local relations) form the morphisms of the tube category, where composition of two morphisms $f,g$ is given by stacking the tubes of $f$ on top of the tubes of $g$. 
+%Since the quasiparticles in the phases we are studying are topological, our way of describing them should be invariant under ``zooming in'' or ``zooming out'' of the region around the puncture. That is, our way of describing a quasiparticle should be unchanged if we perform a scale transformation by adding in extra space around the puncture on which the quasiparticle is localized. These scale transformations are implemented by stacking tubes onto the location of each puncture. The condition that our quasiparticles be ``topological'' is equivalent to demanding that the quasiparticle at a given puncture remains invariant under such scale transformations. \ethan{make figure to show this}
+
+%The set of all tubes modulo local relations on the tubes forms an algebra called the {\it tube algebra}, where the multiplication of two tubes is given by stacking one tube on top of the other. The statement that a quasiparticle located at a puncture is invariant under scale transformations is equivalent to saying that the vector space corresponding to the quasiparticle remains invariant under the action of the tube algebra. Mathematically, such invariant vector spaces are the modules of the tube algebra. If a module is semisimple, it corresponds to a collection of quasiparticles, while if it is simple it is associated with an irreducible quasiparticle. 
+
+The distinct excitations (objects of the tube category) are given by vector spaces which are preserved under the action of the morphisms in $\tube(\mcc)$\footnote{That vector spaces on circular punctures reproduce $\mcz(\mcc)$ makes sense from a formal perspective, as the category $\mcz(\mcc)$ is what a (fully-extended) TQFT assigns to an $S^1$.}. 
+If we view $\tube(\mcc)$ as an algebra, then the irreducible excitations correspond precisely to the simple modules of $\tube(\mcc)$.
+Since every simple module $M_a$ of an algebra algebra can be dually represented by a primitive idempotent $\Pi_a : \tube(\mcc) \ra M_a$ that projects onto the vector space $M_a$, we can equivalently classify excitations by the primitive idempotents of $\tube(\mcc)$\footnote{Since the excitations are invariant under morphisms of $\tube(\mcc)$, we require the action of $\Pi_a$ to commute with the action of morphisms $\tube(\mcc)$ and so the $\Pi_a$ must be central.}. 
+Therefore, classifying the quasiparticles that a given theory supports can be done by enumerating a set of minimal central idempotents of the tube algebra. 
+To employ this formalism for fermionic theories, the punctured manifold on which our excitations are defined, as well as the objects and morphisms of the tube category, must come equipped with spin structures. 
+We will discuss this in much more detail in what follows. 
+For a review and a more detailed discussion of how the tube algebra works in the fermionic setting, 
+we refer readers to Appendix \ref{tube_alg}. \ethan{or not, this discussion is probably enough}
+
+A potentially helpful physical picture is to think of the tube category as performing ``scale transformations'' 
+on topological quasiparticles, which are localized around circular punctures on the ambient manifold \cite{lan wen}. 
+These ``scale transformations'' consist of gluing in annuli with different string-net configurations to the 
+punctures associated with each quasiparticle. 
+Since the quasiparticle excitations are topological they must be invariant under these scale transformations, 
+and thus finding the quasiparticle excitations in the theory is equivalent to finding the simple 
+modules of the tube category. 
+
+Now we will make these ideas a bit more concrete. 
+Morphisms in the tube category can be written concisely as the collection of all $\cc$-linear combinations of marked tubes with the following string-net configuration: 
+\begin{align}
+{\rm mor}(\tube({\cal C}))\; =\; \mathbb{C} \left[\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{} \right] 
+% \Annulus{\AnnularTube}{X} \right] \\%\AnnulusP{\AnnularTube}{B}{} \right] 
+\end{align}
+where $a,b,c,d$ are simple objects in $\cal{C}$. The multiplicity indices $\mu$, and $\nu$ are collective indices that denote the vector in the fusion space $V^{db}_a$ and $V^{c \bar{d}}_b$, as well as the ordering in the tensor product $V^{d b}_a \tp V^{c d^*}_b$ which forms the Hilbert space of the tube (keeping track of this ordering is important because of the Koszul signs incurred when interchanging two odd vectors in a tensor product). 
+$X$ denotes the spin structure of the annulus, and is either $B$ for bounding, or $N$ for non-bounding.
+
+It is somewhat cumbersome to continually label all indices in the tube, so we shift to a compact notation introduced in [REF]\dave{I've seen Oceanu papers (around 1990,91, though not actually written by him) with this notation, is that the first place it showed up?},
+\begin{align}
+ \AnnularTubex{\AnnularTubeNoIndex}{a}{c}{\psi}{X}{}= \sum_{abcd \mu \nu} \; \psi_{abcd; \mu \nu} ^{X} \;\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{}%\Annulus{\AnnularTube}{X} 
+ \quad \quad \quad \psi \in \bigoplus_{xy} V^{xy}_{a,1} \tp V^{c\bar{x}}_{y,2},
+\end{align}
+%where the $\tp_{\text{End}(x)}$ is allowing fermions to slide around the annulus. \ethan{we haven't introduced this yet---and I don't think we really need to mod out by local relns explicitly in any of these calculations (we didn't for Ising or $SO(3)_6$ stuff}
+%When tensoring over endomorphisms one has to be mindful of the spin structure.
+\ethan{what's the left side? summing over $a$ and $c$?}
+where the $1,2$ subscripts in the fusion spaces denote the order in which they appear in the tensor product. 
+We also need to keep in mind that these pictures are drawn modulo local relations involving sliding fermions along q-type worldlines. 
+%Explicitly we choose 
+%\begin{align}
+% t_{abcd;\mu \nu }\equiv \SphereTube
+%\end{align}
+\dave{Could do more graphical indices. $ \tubex{\psi}{a}{b}{c}{d}{\mu}{\nu}{X}$}
+
+Composition of morphisms in $\tube(\mcc)$ is defined by stacking tubes together.
+We will write the stacking operation as $\tp$, since it plays the role of multiplication in $\tube(\mcc)$ when $\tube(\mcc)$ is viewed as an algebra. 
+The stacking operation is defined by 
+\begin{align}
+\AnnularTubex{\AnnularTubeNoIndex}{a}{b}{\eta}{X}{} \tp
+\AnnularTubex{\AnnularTubeNoIndex}{c}{d}{\psi}{Y}{} \;
+=\; \delta_{X,Y} \delta_{b,c}\AnnulusTubeTubex{\AnnulusTubeTube}{a}{d}{\psi}{\eta}{X}
+\end{align}
+The $\delta$ functions ensure that if the string labels of the two tubes don't agree on the boundary on which they are being glued (i.e. if $b\neq c$), or if the spin structures of the two tubes disagree, the two tubes compose (or multiply) to zero. 
+If the right hand side is nonzero, we can use a series of $F$ moves to reduce the two stacked tubes to a linear combination of tubes in the category:
+\begin{align}
+\AnnulusTubeTubex{\AnnulusTubeTube}{a}{d}{\psi}{\eta}{X} = \delta_{c\alpha} \sum_\lambda C_{\eta \psi}^{\lambda}  \; \AnnularTubex{\AnnularTubeNoIndex}{a}{d}{\lambda}{X}{}
+\end{align}
+%\begin{align}
+%\SphereTubeTube \;= \;\sum_{t} C_{t_1 t_2 }^{t_3} \; \SphereTube
+%\end{align}
+%\dave{There are many ways to compute the coefficients $ C_{t_1 t_2 }^{t_3}$. My personal favourite is given by (will add indices later)}
+for structure factors $C^\lambda_{\eta\psi}$. \ethan{Depends on $d,a$?}
+These structure factors are given by
+%\begin{align}
+%\AnnulusTubeTubex{\AnnulusTubeTube}{a}{\gamma}{\psi}{\eta}{X}  =
+%\sum_{\lambda \mu \nu}  \frac{1}{\sqrt{d_a d_\gamma}} 
+%\frac{\text{\raisebox{1.7ex}{$\TubeProductCoefficientbx{\mu^*}{\nu^*}$}}}{\ThetaSymbolx{\mu} \;\; \ThetaSymbolx{\nu}}
+%\TubeProductCoefficientax{\psi}{\eta}{\lambda^*}{\mu}{\nu} \; \times \;
+%\AnnularTubex{\AnnularTubeNoIndex}{a}{\gamma}{\lambda}{X}{}
+%\end{align}
+%\begin{align}
+%C^{\lambda}_{ \eta \psi} =  \sum_{\mu, \nu} \frac{1}{\sqrt{d_a d_\gamma}} 
+%\frac{\text{\raisebox{1.7ex}{$\TubeProductCoefficientbx{\mu^*}{\nu^*}$}}}{\ThetaSymbolx{\mu} \;\; \ThetaSymbolx{\nu}}
+%\TubeProductCoefficientax{\psi}{\eta}{\lambda^*}{\mu}{\nu}
+%\end{align}
+%\begin{align}
+%\AnnulusTubeTubex{\AnnulusTubeTube}{a}{\gamma}{\psi}{\eta}{X}  =
+%\sum_{\lambda st}  \frac{1}{\sqrt{d_a d_\gamma}} 
+%\frac{\text{\raisebox{1.7ex}{$\TubeProductCoefficientbx{s^*}{t^*}$}}}{\ThetaSymbolx{s} \;\; %\ThetaSymbolx{t}}
+%\TubeProductCoefficientax{\psi}{\eta}{\lambda^*}{s}{t} \; \times \;
+%\AnnularTubex{\AnnularTubeNoIndex}{a}{\gamma}{\lambda}{X}{}
+%\end{align}
+\begin{align}
+C^{\lambda}_{ \eta \psi} =  \sum_{s, t} \frac{1}{\sqrt{d_a d_\gamma}} 
+\frac{\text{\raisebox{1.7ex}{$\TubeProductCoefficientbx{s^*}{t^*}$}}}{\ThetaSymbolx{s} \;\; \ThetaSymbolx{t}}
+\TubeProductCoefficientax{\psi}{\eta}{\lambda^*}{s}{t},
+\end{align}
+where $s,t \in \bigoplus_{abc} V^{ab}_c$ and the pictures are drawn on an $S^2$ can be evaluated using the local data (e.g. the $F$-moves, quantum dimensions, and pivotal structure) of the theory. 
+
+
+We will now give a presentation of the primitive idempotents of the tube category for a modular tensor $\mcc$. 
+This will be useful for us because we will always perform computations of idempotents in modular theories: even in the non-modular $\halfesix$ example we discuss later, we will first lift it to a modular theory before computing the idempotents. 
+%As mentioned before, our strategy will be to compute the primitive idempotents in the tube %algebra of $SU(2)_6$, and then condense $\psi$ to obtain the quasiparticle excitations in the condensed theory. 
+%We will then exploit the close relation between $SU(2)_6$ and $SO(3)_6$ to compute the quasiparticle excitations in $SO(3)_6/\psi$.
+We will write the primitive idempotents in $\tube(\mcc)$ as 
+%\begin{align}
+%\Pi_{(a,b)}^c = \sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{}}
+%\end{align}
+\begin{align}
+\xymatrix{
+\Pi_{(a,b)}^c = \sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{X}}
+&
+\text{
+{\tabulinesep=1.2mm
+\begin{tabu}{ c c | c }
+type& spin & isomorphism class \\ \hline
+$\Pi_{ab}$ &$\theta_a \theta_b^*$&$a \tp b $ \\
+\end{tabu}
+}}
+}
+\label{MTCIdemp}
+\end{align}
+where $\Omega_0 = \bigoplus_x d_x x/\mathcal{D}^2$ and $\mcd$ is the total quantum dimension as defined in \eqref{total_qdim_defn}.
+One can check that, due to the $\Omega_0$ loop, any two idempotents with differing labels are orthogonal. 
+This fact relies on modularity; had there been transparent particles not all idempotents listed above would neccessarilly be orthogonal.
+Any $c \in a \tp b$ provides a suitable representative for the isomorphism class of the minimal idempotent labeled $(a,b)$.
+Sometimes we will drop the $c$ when we compute quantities which are independent of the representative of the isomorphism class.  
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Modular and braiding data in super pivotal categories}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+One can compute the topological spin of the particle by performing a twist. 
+For compatibility with the $S$ matrix defined later we choose to twist the inner circle counter-clockwise by $2 \pi$:
+\begin{align}
+t:\;\; \tcca \; \mapsto  \; \tccb
+\end{align}
+Under twisting the inner circle of the annulus counter-clockwise by $2 \pi$ one finds that the particle returns to itself up to an overall phase, which is given by
+\begin{align}
+t_{(a,b)} = \theta_a \theta_b^*
+\end{align}
+Similarly, one can compute the modular S-matrix and find,
+\begin{align}
+\Pi_{(a,b)}  \xrightarrow{S} \sum_{rw}S_{ar}\kappa_r \kappa_w S_{wb} \Pi_{(r,w)}
+\end{align}
+where $\kappa_a$ is the Frobenius-Schur indicator of $a$.
+\dave{Is this a problem? I didn't expect the FS indicators to show up like this.
+I feel like they should have cancelled, it's probably due to the definition I'm using for S.}
+One can then compute the fusion rules of the simple objects either by use of the Verlinde formula and the S-matrix given above, or by direct calculation with the primitive idempotents.
+
+
+Finally, before ending this section we derive a final way of calculating the statistical $\mcs$-matrix. 
+Instead of tracing the $R$ matrices, we can appeal to a formula relating the $\mcs$ matrix to the topological twists. In bosonic theories, we have 
+\be \label{stwist_bosonic} \mcs^{bos}_{ab} = \frac{1}{\mcd} \sum_c d_c N^{ab}_c \frac{\theta_c}{\theta_a\theta_b}.\ee
+This relation does {\it not} hold in the superfusion case, and needs to be modified. 
+The derivation of the correct version of \eqref{stwist_bosonic} relies on the fact that
+\be \label{stwist_fermionic} \theta_c = (-1)^{|v|(|c|+1)} \theta_a\theta_b [R^{ab}_c]_{vv} [R^{ba}_c]_{vv},\ee
+where $v\in V^{ab}_c$ is any vector in the fusion space $V^{ab}_c$ and $|v| \in \{0,1\}$ is the parity of $v$, and where $|c| = 1$ $(|c|=0)$ if $c$ is a quasiparticle with a vortex (non-vortex) spin structure. 
+In the $C_2$ theory, the factor of $(-1)^{|v||c|}$ will only contribute for braids between m-type and q-type particles. 
+
+To derive \eqref{stwist_fermionic}, we use the following manipulations:
+\be\label{stwist_proof} \includegraphics{stwist_proof.pdf}, \ee
+where $a$ and $b$ are such that $N^{ab}_c\neq0$, $v$ is any vector in the fusion space $V^{ab}_c$, and for clarity we have used the orange lines to represent collections of tubes hosting the quasiparticles $a,b,c$. 
+These steps relate something proportional to $\theta_c$ (the leftmost diagram) to something proportional to $\theta_a\theta_b [R^{ab}_c]_{vv}[R^{ba}_c]_{vv}$. 
+In the bosonic case this relation is an exact equality, but this is not true in the fermionic setting. 
+Firstly, we see that the first step in \eqref{stwist_proof} involves passing the vertex $v$ under a $c$ tube. 
+When the braiding process is embedded in $S^3$, the branch cuts associated with vortex-type quasiparticles become branch sheets, which we will define to always be pointing out of the page. 
+This means that passing an odd vector in $V^{ab}_c$ over a vortex-type quasiparticle gives a phase factor of $-1$.
+ Additionally, we notice that vectors in $V^{ab}_c$ are transported in a loop during steps 1 and 2, which contributes a sign of $-1$ if the vector $v$ is odd. 
+ These two effects are responsible for the factor of $(-1)^{|v|(|c|+1)}$ in \eqref{stwist_fermionic}, meaning that the correct expression for $\mcs$ in the fermionic setting is 
+\be \mcs_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in V^{ab}_c} d_c (-1)^{|v| (|c|+1)}   \frac{\theta_c}{\theta_a\theta_b}.\ee
+
 
 
 \subsection{Condensing transparent fermions in a braided category}
@@ -5283,6 +5503,8 @@ From the minimal idempotents one can also compute the mapping class group action
 First we will establish some notation for UBFC's with fermions.
 
 
+%Ethan: following has been commented-out and moved to the section on generalities. 
+\begin{comment}
 %%%%%%%%%%%%%%%%%%%%
 \subsection{Preliminaries on notation}
 %%%%%%%%%%%%%%%%%%%%
@@ -5325,13 +5547,13 @@ Hence we can partition the objects in $\mcc$ as
 %Physically it is tempting to call particles with $\nu_x = 1$ vortices, since when a fermion is dragged around them the wavefunction picks up a minus sign.
 %We will avoid this nomenclature here to avoid confusion with the spin structure vortices associated to non-bounding spin structures, which also satisfy this property for the physical fermions. 
 It can be shown that in any UMTC, $\nu_x = 1$ for all $x\in Q$\footnote{One can show this by considering the symmetries of the S-matrix on the punctured torus. This does not necessarily hold for non-modular theories, however.}. 
-
+\end{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Fusion theory of $SU(2)_6/\psi$ and $SO(3)_6/\psi$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Lets briefly review $SU(2)_6$ and its connection with $SO(3)_6$.
+We will now briefly review $SU(2)_6$ and its connection with $SO(3)_6$.
 Since these are well known theories we only list out some of their key properties and point the reader to some references for more details \cite{kirillow1989} and also \cite{Bonderson2007}.
 There are seven objects in $SU(2)_6$, labeled by $0,1,2,\cdots, 6$.
 The principle graph for the theory is shown in the upper left of Fig.~\ref{SUSOsix}. 
@@ -5490,6 +5712,8 @@ The $F$-symbols of the condensed theories can be inferred from the parent theori
 %We defer a complete list of the $F$ symbols for the condensed theory for now and only list the primitive idempotents in the center of the annular category.
 We now compute the quasiparticle excitations (i.e., the primitive idempotents of the tube algebra) in the condensed theories.
 
+%Ethan: this has been moved to the section on general stuff
+\begin{comment}
 \subsection{Primitive idempotents}
 The primitive idempotents of the tube algebra for a modular tensor category can be written in many different ways. 
 As mentioned before, our strategy will be to compute the primitive idempotents in the tube algebra of $SU(2)_6$, and then condense $\psi$ to obtain the quasiparticle excitations in the condensed theory. 
@@ -5536,6 +5760,8 @@ where $\kappa_a$ is the Frobenius-Schur indicator of $a$.
 \dave{Is this a problem? I didn't expect the FS indicators to show up like this.
 I feel like they should have cancelled, it's probably due to the definition I'm using for S.}
 One can then compute the fusion rules of the simple objects either by use of the Verlinde formula and the S-matrix given above, or by direct calculation with the primitive idempotents.
+\end{comment}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -5563,14 +5789,14 @@ $M_{ab}^x$ &$\frac{\theta_a}{\theta_b} (-1)^{Jp_{ab}^c + x(\nu_a + \nu_b)}$&$a \
 \end{tabu}
 }}
 }
-\end{align}
-Where $J = 0,1$ denotes a non-bounding (bounding) spin structure, $x\in \{0,\psi\}$, and $p_{ab}^c$ is the parity of the vertex $V^{ab}_c$.
+\end{align} 
+Where $X = 0$ ($X=1$) for a non-bounding (bounding) spin structure, $x\in \{0,\psi\}$, and $p_{ab}^c$ is the parity of the vertex $V^{ab}_c$.
 We also define 
 \begin{align}
  \Omega_x = \frac{1}{\mathcal{D}_{\text{condensed}}^2} \bigoplus_r \frac{d_r (-1)^{\nu_r x} }{ \text{dim} \; \text{End} \; r} r
 \end{align}
 where $\mcd_{\text{condensed}}$ is the total quantum dimension of the condensed theory in the sense of \eqref{total_qdim_defn}. 
-Consistency requires that $-(-1)^{\nu_b + J} = +1$.
+Consistency requires that $-(-1)^{\nu_b + X} = +1$.
 If $a \in Q$ then the idempotent $M_{ab}^\psi$ is oddly isomorphic to $M_{ab}^0$.
 If $b \in Q$ then the idempotent only lives over the non-bounding spin structure, and is q-type. 
 
@@ -5684,7 +5910,7 @@ This fact will allow us to compute the idempotents in the $SO(3)_6/\psi$ theory 
 As before, each isomorphism class of idempotents can be written as:
 \begin{align}
 \xymatrix{
-\sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{J}}
+\sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{X}}
 %&
 %\text{
 %{\tabulinesep=1.2mm
@@ -5698,7 +5924,7 @@ a,b \in \text{obj} \; SU(2)_6/\psi \quad \text{such that} \quad a \tp b \in \tex
 }
 \label{SO3idempotent}
 \end{align}
-Where $J$ denotes the spin structure with $J =0$ non-bounding and $J=1$ bounding as before. 
+Where $X$ denotes the spin structure with $X =0$ non-bounding and $X=1$ bounding as before. 
 The $\Omega_0$ loop is a projector written as the direct sum of simple objects: $\Omega_0 = (m_0 \oplus d m_2)/(2+2d)$, with $d = 1 + \sqrt{2}$.
 The $a,b,$ and $c$ are labels of simple objects. 
 If we take $a,b \in \text{Obj} \; SO(3)_6/\psi$ then we will miss several idempotents. 
@@ -5708,7 +5934,7 @@ One can show that the procedure creates orthogonal idempotents by direct calcula
 Additionally, the tube resulting from fusing the strands in (\ref{SO3idempotent}) into the annulus only contains linear combinations of tubes in the annular category of $SO(3)_6/\psi$.
 
 We now write down the primitive idempotents of $SO(3)_6/\psi$ and their topological spins. 
-In the bounding sector $J = 1$, we have $4$ idempotents given by
+In the bounding sector $X = 1$, we have $4$ idempotents given by
 \begin{align}
 \xymatrix{
 \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{B}}
@@ -5755,15 +5981,15 @@ The modular S-transformation requires a little more work, and so we discuss this
 When gluing the idempotents along the boundary of the annulus we have to take linear combinations of idempotents in the same isomorphism class so that the glued up idempotent is invariant under local relations. 
 Using the basis above, one finds
 \begin{align}
-\TorusBraidBasis{a}{b\;}{}{\Omega_0}{J}{W}
+\TorusBraidBasis{a}{b\;}{}{\Omega_0}{X}{Y}
 \end{align}
-where $a$ and $b$ label the idempotent as before, and $J$, $W$, denote the two spin structures. 
+where $a$ and $b$ label the idempotent as before, and $X$, $Y$, denote the two spin structures. 
 
 The modular S-transformation simply interchanges the two cycles of the torus.
 Thus one can write the S-matrix as,
 \begin{align}
-{ \TorusBraidBasis{a}{b\;}{}{\Omega_0}{J}{W}} \stackrel{S}{\longrightarrow} \sum_{r,w} S^{{JW \rightarrow WJ}}_{(a,b),(r,w)} \;
-{\TorusBraidBasis{r}{w}{}{\Omega_0}{W}{J} }.
+{ \TorusBraidBasis{a}{b\;}{}{\Omega_0}{X}{Y}} \stackrel{S}{\longrightarrow} \sum_{r,w} S^{{XY \rightarrow YX}}_{(a,b),(r,w)} \;
+{\TorusBraidBasis{r}{w}{}{\Omega_0}{Y}{X} }.
 \end{align}
 The matrix elements can be computed explicitly using the $S$ matrix of $SU(2)_6$. 
 In Fig.~\ref{SMatrixBFC} we have sketched one method to compute these matrix elements.
@@ -5779,9 +6005,9 @@ For the tori with one of the three spin structures possessing a bounding cycle (
 %S^{{JW \rightarrow WJ}}_{(a,b),(r,w)} = \frac{2^{n_a n_b -n_r n_w}}{2^{\frac{1}{2}(n_a + n_b+n_r+n_w)}} \sin{\left( \frac{\pi(a+1)(r+1) }{8} \right)} \sin{\left(\frac{\pi(b+1)(w+1)}{8} \right)}
 %\end{align}
 \begin{align}
-S^{{JK \rightarrow KJ}}_{(a,b),(r,w)} = \frac{1}{(\sqrt{2})^{(n_a + n_b+n_r+n_w)}} \sin{\left( \frac{\pi(a+1)(r+1) }{8} \right)} \sin{\left(\frac{\pi(b+1)(w+1)}{8} \right)}
+S^{{XY \rightarrow YX}}_{(a,b),(r,w)} = \frac{1}{(\sqrt{2})^{(n_a + n_b+n_r+n_w)}} \sin{\left( \frac{\pi(a+1)(r+1) }{8} \right)} \sin{\left(\frac{\pi(b+1)(w+1)}{8} \right)}
 \end{align}
-where $n_x = 0$ if $x = 0,1,2$, $n_x = 1$ if $x = 3$, and $J,K \in \{N,B\}$.
+where $n_x = 0$ if $x = 0,1,2$, and $n_x = 1$ if $x = 3$.
 The extra factors of $2$ and $\sqrt{2}$ come from the fact that two of the idempotents in the non-bounding sector are q-type.
 Explicitly, the $S$-matrix acts on each of three spin tori with at least one bounding cycle as 
 \begin{align}
@@ -6282,10 +6508,12 @@ Y_{ab} \Vrhorhorhoodd \quad \quad Y =  \frac{e^{7 i \pi/12}}{\sqrt{2}}\left( \be
 \subsection{The tube category, local relations, and the torus}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%Ethan commented out and moved to section on generalities 
+\begin{comment}
 %%%%%%%%%%%%%%%%%%
 \subsubsection{The tube category}
 %%%%%%%%%%%%%%%%%%
-
 Since the $\halfesix$ example is more involved than the ones we have considered previously, we will find it helpful to write the tube category more concisely as 
 \begin{align}
 \text{Tube}({\cal C})\; =\; \mathbb{C} \left[\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{} \right] 
@@ -6365,7 +6593,7 @@ and $s,t \in \bigoplus_{abc} V^{ab}_c$.
 %\dave{Add some discussion about computing tube multiplications in the condensed theory by lifting them to the parent theory, multiplying the tubes and condensing the fermions away. Discuss limitations of this techinique.}
 
 It is important to mod out by local relations in the algebra. In the basis we have chosen, the only local relations are given by creating fermions out of the vacuum and dragging them around different cycles.
-
+\end{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Local relations on the annulus}
@@ -6810,6 +7038,7 @@ t_{\bullet}  = e^{-i \pi/4} \sqrt{\frac{d}{6}} \AddDatTorusDot{\TaddownTube{1}}{
 %\dave{We should put this figure (or an analogous figure) in the Ising section when we describe the action of the mapping class group.}}
 %\end{figure}
 
+\begin{comment}
 \begin{figure}
 \label{MappingClassGroupTorus}
 \newcommand{\Space}{\;}
@@ -6831,6 +7060,8 @@ We define the torus by gluing together the boundary of the annulus.
 The spin structure corresponding to the annulus before gluinng is written in the center of the diagram. 
 The notation $B$ is for a bounding spint structures, and $N$ is for a non-bounding spin structure.}
 \end{figure}
+\end{comment}
+
 
 \dave{Group or groupoid?}
 In this subsection we compute the action of the mapping class group on the four spin tori. 
