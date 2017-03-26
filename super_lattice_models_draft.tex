@@ -961,6 +961,28 @@ Wang, Juven
 Yau, Shing-Tung)}.
 }
 
+The structure of this paper is as follows. 
+\begin{itemize}
+\item Condensing transparent bosons
+\item Ising TQFT review
+\item condensing $\psi$ in Ising
+\item construction of the fermion line bundle \ethan{this is more general, should it go in its own place? Maybe put it after condensing transparent bosons so that the local rules in Ising TQFT could go next to the condensing $\psi$ in Ising?}
+\item local rules in the condensed theory 
+\item tube category for $C_2$
+\item modular data and braiding data for $C_2$
+\item generalities on fermion condensation 
+\item how to do traces, quantum dimensions
+\item generalities on tubing 
+\item generalities on modular stuff and braiding 
+\item differences between transparent and non-transparent fermions, condensing by binding to spin str defects, etc
+\item dimension formula
+\item SO(3) example
+\item $\halfesix$ example
+\item definition section 
+\item Hamiltonian 
+\item done 
+\end{itemize}
+
 \section{Fermion condensation in the Ising TQFT}  \label{C2_condense_sect}
 
 Before discussing super pivotal categories in the abstract and general techniques for constructing examples thereof,
@@ -972,25 +994,6 @@ This section is organized as follows: in \ref{Ising_review} we briefly review th
 In \ref{general_condensation} we comment on the general procedure of anyon condensation, and in \ref{condensing_psi} we show how to condense $\psi$ in the Ising theory, obtaining the $C_2$ super pivotal theory. 
 \ref{C2_local_relns} details the diagrammatic properties of the $C_2$ theory, and in \ref{C2_quasiparticles} we compute the quasiparticle excitations of the theory. 
 In \ref{C2_fusion_rules} we determine the fusion rules of these quasiparticles, and in \ref{C2_braiding} we compute their statistical and braiding data and analyze the modular $S$ and $T$ matrices in detail. 
-
-\kwsep
-
-Older outline:
-
-\begin{itemize}
-\item Here we explain how to quotient by the fermion in the Ising TQFT. 
-\item condense fermions
-\item explain inconsistencies that necessitate spin structure, give physical interpretation of $p+ip$ SC.
-\item define spin structure and show why it's a phase of fermions. Mention that condensing $\psi$ couples the fermions and the Ising theory together 
-\item graphical calculus of condensed theory --- the constraint on $A^4$, how boxes work, moving dots around is $A^4$ from unitarity, etc
-\item give explicit example of why it's important to tensor over endomorphisms (e.g.\ getting endo space right)
-\item Drinfeld center of condensed theory: can briefly mention physical picture for why tubing (fubing?) works, talk about how this gets enlarged with spin stuff. Work through the identifications of each sector with the Clifford algebras 
-\item oddly isomorphic particles
-\item Fusion of quasi-particles --- include some (one or two?) examples of fusion spaces and how we do the calculation. 
-\item braiding of quasi-particles 
-\item modular transformations/relation to braiding data, filling in $S^3$, getting S matrix for all spin structures, philosophy about well-definedness of $S$ and $T$. 
-\item state sum???
-\end{itemize}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -2778,6 +2781,8 @@ We will denote these two quasiparticles as $q_\unit$ and $q_\psi$.
 
 To summarize, we have found six types of quasiparticles in the theory: three non-vortex quasiparticles associated with tubes possessing bounding spin structures, and three vortex quasiparticles associated with tubes possessing non-bounding spin structures. 
 They are displayed in Table \ref{CTwoParticles}.
+The quantum dimension of these excitations can be computed by studying the fusion rules, or by tracing out the idempotents associated with each excitation, which we elaborate on in Section \ref{qdims_and_traces}. 
+The quantum dimensions are displayed in Table \ref{C2Data}. 
 \begin{table}
   \centering
     \begin{align}
@@ -2832,16 +2837,16 @@ We have chosen $m_\sigma^+$ as the representative of the isomorphism class given
 \begin{flalign*} & \begin{array}{r@{ \quad \quad \quad}  c @{\quad \quad} c @{\quad \quad} c @{\quad \quad \quad \quad } c  @{\quad \quad} c @{\quad \quad} c  }
 			\text{particle}				&m_\unit		&m_\sigma^+		&m_\psi	&q_\unit	&q_\sigma	&q_\psi \\[.5ex] \hline \\ [-2ex]
 			\text{quantum dimension}		&1			&\sqrt{2}		&1		&\sqrt{2}	&2		&\sqrt{2} \\ [.5ex]
-			\text{topological spin}		&1			&A^3		&1	&A^5	&1	&-A^5 \\
+%			\text{topological spin}		&1			&A^3		&1	&A^5	&1	&-A^5 \\
 						\end{array} & \end{flalign*}
-	\caption{$C_2$ data. The total quantum dimension is $\mcd = \sqrt{8}$.
-	The quantum dimensions above have been normalized with respect to the trivial idempotent $m_\unit$.
-The topological spin defined here is the eigenvalue under $t^\dagger$ when the tube has a $\beta$ line at the boundary. }
+	\caption{$\tube(C_2)$ quantum dimensions. The total quantum dimension is $\mcd = \sqrt{8}$.
+	The quantum dimensions above have been normalized so that the trivial idempotent $m_\unit$ has unit quantum dimension.
+%The topological spin defined here is the eigenvalue under $t^\dagger$ when the tube has a $\beta$ line at the boundary. }
+}
+%Ethan: commented out topological spins and moved them to where we talk about modular data
 	\label{C2Data}
 \end{table}
 
-\dave{We could adhere this to the tube category -- i.e., analyze $\tube_{x\rightarrow x}^Y$ for $x = \unit, \beta$ and $Y = B,N$ -- or leave it as is. 
-What do you guys prefer?}
 Before moving on, we note that we could have obtained a large amount of information about the quasiparticle content of the theory without actually finding the explicit representations of the primitive idempotents of the tube category.
 To do this, we treat the tube category as an algebra (with the obvious multiplication) and apply standard techniques to find the simple modules of the algebra.
 The idea is to exploit the sum-of-squares formula, relating the dimension of an algebra to the dimensions of its simple modules. 
@@ -3373,68 +3378,6 @@ and the odd ones are given by putting a single dot on the upper left leg.
 %%%%%%%%%%%%%%%%%%
 
 
-%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Quantum dimensions}
-%%%%%%%%%%%%%%%%%%%%
-\dave{I think we should have a summary table of the tube category, put this there, and refer to it.
-I'm not overly satisfied with how this is written so will come back to it.}
-In what follows we will need to know the quantum dimensions of the excitations in the theory.
-The quantum dimension $d_x$ of an excitation $x$ is defined by the trace of the idempotent $\Pi_x$. 
-Graphically, 
-\begin{align}
-\text{Tr} (\Pi_x) = {\dblank}_x  = d_x.
-\end{align}
-We could also view this as the trace of one of the quasi-particles (idemopotents) in Table~\ref{CTwoParticles}.
-That is the $x$-strand could be blown up into a cylinder, with boundary condition given by one of the idempotents in Table~\ref{CTwoParticles}.
-We then evaluate this using $\mcz(\mcc)$ \dave{Could add words TV state sum here if we want.}.
-For more details see \cite{Walker2006}, and also \cite{ghosh2016,das2014} \dave{others? This is what I found from googling.}.
-Let $\Pi_x$ denote an idempotent and define, 
-\begin{align}
-d_{\Pi_x} &= \text{Tr}_{\text{TV}} \; \Pi_x = Z((S^1 \times I) \times I )(\Pi_x \cup \text{id}_\mcc) = Z(S^1 \times D^2 )(\Pi_x) \\
-& = \text{Tr}\; \{ R_{\pi/2}(\Pi_x): Z(D^2) \rightarrow Z(D^2) \}.
-\end{align}
-Where the first trace, is the one assigned by evaluation in the Turaev-Viro state sum. 
-While the last trace, is the usual trace, viewing the rotated idempotent as a map from the disc back to it'self.
-\begin{figure}
-\begin{center}
-\begin{align}
-\xymatrix @!0 @M=1mm @R=7mm @C=30mm {
-\AnnulusGeneric \ar[r]^{\text{cut}}& \AnnulusCut \ar[r]^{\text{id}} & \AnnulusFlat \ar[r]^{\text{glue}}& \RotatedTube}
-\end{align}
-%\includegraphics{TraceFormula.pdf}
-\caption{Defining the trace of the tube by taking the inner product with the identity tube.
-The first step is to cut open the annulus along the azimuthal cycle. 
-then glue the inner and outer intervals together to get a rotated tube, shown at the far right.
-We then view this rotated tube as a linear map from $D^2$ to $D^2$, and the trace of this map is the trace of the tube.
-}
-\end{center}
-\end{figure}
-
-\dave{Need to add labels and think about notation.}
-\begin{align}
-\text{Tr}_{TV}\; \AnnulusGeneric = \text{Tr}\;  \{ \RotatedTube : \Disc \ra \Disc \}
-\end{align}
-
-Using the above, one can compute the quantum dimensions, which are displayed in Table~\ref{C2Data}.
-We will also need to know how to calculate the total quantum dimension $\mcd$.
-In bosonic theories we have $\mcd^2 = \sum_a d_a^2$, where the sum runs over all simple objects $a$. 
-This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
-The correct formula is
-\be \label{total_qdim_defn} \mcd^2 = \sum_a \frac{d_a^2}{\dim \End(a)}.\ee
-For the $C_2$ theory, we have $\mcd = \sqrt{8}$. 
-
-\ethan{Note that $\dim(C_2)^2 \neq \dim(\mcz(C_2)),$ and in fact $\dim(C_2)^2 = \dim(\mcz(C_2)) / \dim(\cl_1)$. Hmm...}
-
-\ethan{where should we (briefly) talk about modular extensions? Definition section? Section 4?}
-In general, the quantum dimension of a theory derived from a fusion category $\mcc$ is related to $\dim(\mcc)$ as 
-\be \dim(\mcc / \psi) = \frac{\dim(\mcc)}{\dim({\rm sVec})} = \frac{1}{\sqrt{2}} \dim(\mcc),\ee
-where we have viewed the category of supervector spaces, sVec, as consisting of two objects ${\rm sVec} = \{\unit,f\}$, with $f$ a transparent physical) fermion. 
-%We can obtain them by examining the number of fusion channels each has when fused with its antiparticle. 
-%We find
-%\be d_{m_1} = d_{m_\psi} = 1,\quad d_{m_\sigma^+} = d_{q_1} = d_{q_\psi} = \sqrt{2},\quad d_{q_\sigma} = 2.\ee
-
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Modular transformations and ground states on the torus} \label{modulartforms}
@@ -3674,39 +3617,8 @@ We also note that while in this example the fermion parity of a ground state is 
 
 %Also note that on every torus, there is one additional non-zero picture which lies at higher energy, which can be obtained by drawing the configuration of $\Sigma$ lines not present in the given collection of three pictures, adding on a dot, and creating a massive fermionic excitation somewhere in the background\dave{Not higher energy, but the state is equal to zero.}. For the $(P,P)$ torus, this high-energy state is the empty picture with a massive fermionic excitation (will elaborate later). 
 
-\dave{Will come back.}
-Having three ground states for each spin structure means that we have 12 ground states across all spin structures. 
-However, we only have six quasiparticles, and so the equality between the number of degenerate ground states on the torus and the number of quasiparticles which is familiar from bosonic theories does not hold in the most naive sense. 
-To understand this, we will examine the trace of the identity operator in the tube category, which computes the number of quasiparticle types.
-
-To compute the trace of a generic operator $\mco$ in the tube category, we expand 
-$\mco = \sum_a c_a \Pi_a$ as a $\cc$-linear combination of the primitive idempotents 
-of the tube category. 
-This reduces the computation of ${\rm Tr} \mco$ to the computation of ${\rm Tr} \Pi_a$ for each $a$. 
-However, the traces of the primitive idempotents are already known---by definition, 
-these are the quantum dimensions of the quasiparticles associated to each idempotent\footnote{We can write ${\rm Tr}\mco$ diagrammatically by 
-writing $\mco$ as a linear combination of tubes, joining up the top and bottom of the tubes in $\mco$ to form a torus (with $B$ spin structure along the newly created cycle), and summing over the independent string-net configurations that can be drawn on the part of the torus not occupied by $\mco$. 
-The evaluation is then done by embedding the torus inside of $S^3$, filling in the complement of the torus with a Turaev-Viro state-sum whose boundary conditions are given by the field configurations on the torus, and computing the resulting state-sum.}. 
 
 
-%\ethan{what's commented is an explanation of the trace in terms of TV stuff}
-\begin{comment} 
-Before we look at this, we should mention how the trace of a generic operator $\mco$ which acts on the tube algebra is defined. 
-We write ${\rm Tr}(\mco)$ diagrammatically by 
-writing $\mco$ as a collection of tubes, compactifying $\mco$ by joining up the top and bottom of the tubes in $\mco$ along the time direction to form a torus, and summing over the independent string-net configurations that can be drawn on the part of the torus not occupied by $\mco$. 
-This procedure results in a linear combination of string-net configurations drawn on the torus, which may then be evaluated to give the trace of $\mco$. 
-On a technical level, the evaluation is done by embedding the torus inside of $S^3$, filling in the complement of the torus with a Turaev-Viro state-sum whose boundary conditions are given by the field configurations on the torus, and computing the resulting state-sum.  
-Graphically, the trace of $\mco$ according to this definition looks like \ethan{does this picture make sense?}
-\be \label{TrO_def} {\rm Tr}(\mco) = \sum_X\mathord{\vcenter{\hbox{\includegraphics[scale=1]{trace_O.pdf}}}}, \ee
-where the sum is over all linearly independent field configurations $X$. 
-To define the trace this way, we need to specify a spin structure appearing on the torus in \eqref{TrO_def}. 
-The fermionic boundary conditions around the meridional cycle of the torus are fixed by the spin structure possessed by the tubes appearing in $\mco$.
-For example, if $\mco$ is a projector onto the space spanned by a quasiparticle associated with a vortex spin structure, the boundary conditions around the torus' meridional cycle will be periodic. 
-However, the boundary conditions around the longitudinal (timelike) cycle of the torus are fixed to be {\it anti-periodic}. 
-This is because in order to evaluate the right-hand side of \eqref{TrO_def}, we need embed the torus into the three-sphere and fill in the exterior of the torus with a Turaev-Viro state-sum. 
-Periodic boundary conditions along the longitudinal cycle of the torus would require a spin structure defect to pass through the hole in the torus \ethan{better term?}, which would prevent the exterior of the torus from being filled in during the evaluation of the trace, as it would be impossible to smoothly extend the spin structure on the torus to a spin structure in the $S^3$ bulk. 
-\end{comment}
-%%%%%%%%%%%%%%%%%%%
 
 Now we return to the problem of computing the trace of the identity operator on the tube algebra. 
 We can write the identity operator as $\unit = \oplus_a\Pi_a$, where $a$ runs over the simple quasiparticles in the theory and where as before $\Pi_a$ is a projector onto the simple module associated with $a$.  
@@ -3883,46 +3795,6 @@ I thought the ambiguity comes in when we glue things together.}
 However, the action of $T^2$ preserves spin structures, and so we are still able to associate definite $T^2$ eigenvalues to the quasiparticles in the theory.
 This means that the twists of the particles whose associated spin structures are not preserved by $T$ (i.e., the particles associated with a bounding spin structure, $m_\unit,m_\psi,$ and $m_\sigma^+$ in the present example) are ambiguous up to a factor of $\pm1$.  
 
-\begin{figure} 
-\newcommand{\Space}{\; \; \; \; \; \; }
-\newcommand{\Spacep}{ \; \; \; \mathop{\vphantom{\int}} \; \; \;    } %\mathop{\vphantom{\int}}
-%R controls where the arrows start from the box. 
-\begin{align}
-\nonumber
-%\xymatrix @!0 @M=1mm @R=7mm @C=25mm{
-%&&&\\
-%\Space   & \Space  \ar@/^1pc/[r]^{S} \Space  \ar@/^3pc/[rr]^{T} &\Space &\Space   \\
-%\SmallTorus{\AnnulusBare}{N}{N} \ar @`{p+(7.07,28.28),p+(28.28,7.07)}|{S,T }  &
-%\SmallTorus{\AnnulusBare}{B}{N}& 
-%\SmallTorus{\AnnulusBare}{N}{B}\ar @`{p+(7.07,28.28),p+(28.28,7.07)}|{T} & 
-%\SmallTorus{\AnnulusBare}{B}{B} \ar @`{p+(7.07,28.28),p+(28.28,7.07)}|{ S }  \\
-%{\Space} &\Space &\Space \ar@/^1pc/[l]^{S} &\Space  \ar@/^3pc/[ll]^{T} \\
-%}
-\xymatrix@!0 @M=1mm @R=7mm @C=30mm{
-\AddDatTorus{\FubeXXXA}{B}{B}\ar @`{p+(-28.28,7.07),p+(-7.07,28.28)}^{S}  \ar@<1ex>[r]^T  & \AddDatTorus{\FubeXXXA}{B}{N} \ar@<1ex>[l]^T   \ar@<1ex>[r]^S&  \AddDatTorus{\FubeXXXA}{N}{B}  \ar@<1ex>[l]^S  \ar @`{p+(7.07,28.28),p+(28.28,7.07)}^{T } &\AddDatTorus{\FubeXXXA}{N}{N}  \ar @`{p+(7.07,28.28),p+(28.28,7.07)}^{S,T } 
-}
-%\xymatrix @!0 @M=1mm @R=6mm @C=25mm{
-%&&&\\
-%\Space   & \Space  \ar@/^1pc/[r]^{S} \Space  \ar@/^3pc/[rr]^{T} &\Space &\Space   \\
-%\raisebox{0.2ex}{$\scriptstyle{N}\;$}\underset{N}{\FubeXXX} \ar @`{(3,15),(28,-12)}^{S,T}  &
-%\raisebox{0.2ex}{$\scriptstyle{N}\;$}\underset{B}{\FubeXXX} & 
-%\raisebox{0.2ex}{$\scriptstyle{B}\;$}\underset{N}{\FubeXXX}  \ar @`{(52,15),(77,-12)}_{T} & 
-%\raisebox{0.2ex}{$\scriptstyle{B}\;$}\underset{B}{\FubeXXX}  \ar @`{(80,18),(105,-12)}^{S}  \\
-%{\Spacep} &\Spacep &\Spacep \ar@/^1pc/[l]^{S} &\Spacep  \ar@/^3pc/[ll]^{T} \\
-%&&&\\
-%&&&\\
-%&&&\\
-%&&&\\
-%\raisebox{0.2ex}{$\scriptstyle{P}\;$}\underset{P}{\FubeXXX} &
-%\raisebox{0.2ex}{$\scriptstyle{A}\;$}\underset{P}{\FubeXXX} & 
-%\raisebox{0.2ex}{$\scriptstyle{P}\;$}\underset{A}{\FubeXXX} & 
-%\raisebox{0.2ex}{$\scriptstyle{A}\;$}\underset{A}{\FubeXXX} 
-%}
-\end{align} \nonumber
-\caption{The action of the mapping class group on the four spin tori. The notation is such that the disk which bounds the cycle of the torus labeled by $B$ or $N$ has either a bounding ($B$) or non-bounding ($N$) spin structure. %Bottom: the boundary conditions ($P$ for periodic and $A$ for anti-periodic) associated with each spin structure.
-}
-\label{spin_str_mapping_class_group}
-\end{figure}
 %For simplicity of notation, we will define 
 %\begin{align}
 %e_{XY} =\; \AddDatTorus{\FubeXXXA}{X}{Y}&\quad\quad\quad
@@ -4372,32 +4244,6 @@ Since $T$ does not preserve the spin structures, it cannot generically have well
 This precludes an ability to associate a definite topological twist ($T$-matrix eigenvalue) to every quasiparticle in the theory: the spins of quasiparticles excitations in super fusion categories are in general only defined up to a $\pm$ sign, see \cite{???} for details.
 However, the action of $T^2$ preserves spin structures, and so we are still able to associate definite $T^2$ eigenvalues to the quasiparticles in the theory.
 This means that the twists of the particles whose associated spin structures are not preserved by $T$ (i.e., the particles associated with a bounding spin structure, $m_\unit,m_\psi,$ and $m_\sigma^+$ in the present example) are ambiguous up to a factor of $\pm1$.  
-
-\begin{figure} \label{spin_str_mapping_class_group}
-\newcommand{\Space}{\; \; \; \; \; \; }
-\newcommand{\Spacep}{ \; \; \; \mathop{\vphantom{\int}} \; \; \;    } %\mathop{\vphantom{\int}}
-%R controls where the arrows start from the box. 
-\begin{align}
-\xymatrix @!0 @M=1mm @R=6mm @C=25mm{
-&&&\\
-\Space   & \Space  \ar@/^1pc/[r]^{S} \Space  \ar@/^3pc/[rr]^{T} &\Space &\Space   \\
-\raisebox{0.2ex}{$\scriptstyle{N}\;$}\underset{N}{\FubeXXX} \ar @`{(3,15),(28,-12)}^{S,T}  &
-\raisebox{0.2ex}{$\scriptstyle{N}\;$}\underset{B}{\FubeXXX} & 
-\raisebox{0.2ex}{$\scriptstyle{B}\;$}\underset{N}{\FubeXXX}  \ar @`{(52,15),(77,-12)}_{T} & 
-\raisebox{0.2ex}{$\scriptstyle{B}\;$}\underset{B}{\FubeXXX}  \ar @`{(80,18),(105,-12)}^{S}  \\
-{\Spacep} &\Spacep &\Spacep \ar@/^1pc/[l]^{S} &\Spacep  \ar@/^3pc/[ll]^{T} \\
-&&&\\
-&&&\\
-&&&\\
-&&&\\
-\raisebox{0.2ex}{$\scriptstyle{P}\;$}\underset{P}{\FubeXXX} &
-\raisebox{0.2ex}{$\scriptstyle{A}\;$}\underset{P}{\FubeXXX} & 
-\raisebox{0.2ex}{$\scriptstyle{P}\;$}\underset{A}{\FubeXXX} & 
-\raisebox{0.2ex}{$\scriptstyle{A}\;$}\underset{A}{\FubeXXX} 
-}
-\end{align} \nonumber
-\caption{Top: The action of the mapping class group on the four spin tori. The notation is such that the disk which bounds the cycle of the torus labeled by $B$ or $N$ has either a bounding ($B$) or non-bounding ($N$) spin structure. Bottom: the boundary conditions ($P$ for periodic and $A$ for anti-periodic) associated with each spin structure.}
-\end{figure}
 
 For simplicity of notation, we will define 
 \be \label{tube_shorthands} e := \FubeXXX,\quad h := \FubesXs,\quad v := \FubeXss,\quad t:= \FubessX.\ee
@@ -5174,12 +5020,11 @@ $X$ denotes the spin structure of the annulus, and is either $B$ for bounding, o
 
 It is somewhat cumbersome to continually label all indices in the tube, so we shift to a compact notation introduced in [REF]\dave{I've seen Oceanu papers (around 1990,91, though not actually written by him) with this notation, is that the first place it showed up?},
 \begin{align}
- \AnnularTubex{\AnnularTubeNoIndex}{a}{c}{\psi}{X}{}= \sum_{abcd \mu \nu} \; \psi_{abcd; \mu \nu} ^{X} \;\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{}%\Annulus{\AnnularTube}{X} 
- \quad \quad \quad \psi \in \bigoplus_{xy} V^{xy}_{a,1} \tp V^{c\bar{x}}_{y,2},
+ \AnnularTubex{\AnnularTubeNoIndex}{a}{c}{\psi}{X}{}\; = \;\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{}%\Annulus{\AnnularTube}{X} 
+ \quad \quad \quad \psi \in  V^{xy}_{a,1} \tp V^{cx^*}_{y,2},
 \end{align}
 %where the $\tp_{\text{End}(x)}$ is allowing fermions to slide around the annulus. \ethan{we haven't introduced this yet---and I don't think we really need to mod out by local relns explicitly in any of these calculations (we didn't for Ising or $SO(3)_6$ stuff}
 %When tensoring over endomorphisms one has to be mindful of the spin structure.
-\ethan{what's the left side? summing over $a$ and $c$?}
 where the $1,2$ subscripts in the fusion spaces denote the order in which they appear in the tensor product. 
 We also need to keep in mind that these pictures are drawn modulo local relations involving sliding fermions along q-type worldlines. 
 %Explicitly we choose 
@@ -5205,7 +5050,7 @@ If the right hand side is nonzero, we can use a series of $F$ moves to reduce th
 %\SphereTubeTube \;= \;\sum_{t} C_{t_1 t_2 }^{t_3} \; \SphereTube
 %\end{align}
 %\dave{There are many ways to compute the coefficients $ C_{t_1 t_2 }^{t_3}$. My personal favourite is given by (will add indices later)}
-for structure factors $C^\lambda_{\eta\psi}$. \ethan{Depends on $d,a$?}
+for structure factors $C^\lambda_{\eta\psi}$. 
 These structure factors are given by
 %\begin{align}
 %\AnnulusTubeTubex{\AnnulusTubeTube}{a}{\gamma}{\psi}{\eta}{X}  =
@@ -5231,7 +5076,7 @@ C^{\lambda}_{ \eta \psi} =  \sum_{s, t} \frac{1}{\sqrt{d_a d_\gamma}}
 \frac{\text{\raisebox{1.7ex}{$\TubeProductCoefficientbx{s^*}{t^*}$}}}{\ThetaSymbolx{s} \;\; \ThetaSymbolx{t}}
 \TubeProductCoefficientax{\psi}{\eta}{\lambda^*}{s}{t},
 \end{align}
-where $s,t \in \bigoplus_{abc} V^{ab}_c$ and the pictures are drawn on an $S^2$ can be evaluated using the local data (e.g. the $F$-moves, quantum dimensions, and pivotal structure) of the theory. 
+where $s,t \in \bigoplus_{efg} V^{ef}_g$ and the pictures are drawn on an $S^2$ and can be evaluated using the local data (e.g. the $F$-moves, quantum dimensions, and pivotal structure) of the theory. 
 
 
 We will now give a presentation of the primitive idempotents of the tube category for a modular tensor $\mcc$. 
@@ -5263,9 +5108,145 @@ Any $c \in a \tp b$ provides a suitable representative for the isomorphism class
 Sometimes we will drop the $c$ when we compute quantities which are independent of the representative of the isomorphism class.  
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Computing traces in the tube category and quantum dimensions} \label{qdims_and_traces}
+%%%%%%%%%%%%%%%%%%%%
+
+In what follows we will need to compute the traces of a generic operator $\mco$ in the tube category. 
+We will do the computations following the procedure outlined in \cite{Walker2006}, for more details see \cite{ghosh2016,das2014}.
+
+The path integral on a manifold $M$ is a linear function
+\be Z(M) : A(\p M) \ra \cc,\ee
+where $A(\p M)$ is the set of all string-net configurations on $\p M$. 
+
+
+Let $\Pi_x$ denote an idempotent and define, 
+\begin{align}
+\text{Tr}_{\text{TV}} \; \mco &= Z((S^1 \times I) \times I )(\mco \cup \text{id}_\mcc) = Z(S^1 \times D^2 )(\mco) \\
+& = \text{Tr}\; \left( R_{\pi/2}(\mco): Z(D^2) \rightarrow Z(D^2) \right).
+\end{align}
+Where the first trace, is the one assigned by evaluation in the Turaev-Viro state sum. 
+While the last trace, is the usual trace, viewing the rotated idempotent as a map from the disc back to it'self.
+\begin{figure}
+\begin{center}
+\begin{align}
+\xymatrix @!0 @M=1mm @R=7mm @C=30mm {
+\AnnulusGeneric \ar[r]^{\text{cut}}& \AnnulusCut \ar[r]^{\text{id}} & \AnnulusFlat \ar[r]^{\text{glue}}& \RotatedTube}
+\end{align}
+%\includegraphics{TraceFormula.pdf}
+\caption{Defining the trace of the tube by taking the inner product with the identity tube.
+The first step is to cut open the annulus along the azimuthal cycle. 
+then glue the inner and outer intervals together to get a rotated tube, shown at the far right.
+We then view this rotated tube as a linear map from $D^2$ to $D^2$, and the trace of this map is the trace of the tube.
+}
+\end{center}
+\end{figure}
+
+\dave{Need to add labels and think about notation.}
+\begin{align}
+\text{Tr}_{TV}\; \AnnulusGeneric = \text{Tr}\;  \{ \RotatedTube : \Disc \ra \Disc \}
+\end{align}
+
+
+The quantum dimension $d_x$ of an excitation $x$ in $\tube(\mcc)$ is defined by the trace of the associated idempotent $\Pi_x$: 
+Graphically, 
+\begin{align}
+d_x = \text{Tr} (\Pi_x) = {\dblank}_x.
+\end{align}
+Here, we can either view the line marked by $x$ as a single line carrying the label $x$, or as a cylinder with a string net on its surface determined by the idempotents of $\tube(\mcc)$.
+
+Returning to the $C_2$ example, we see that this approach gives us $d_{m_{\unit / \psi}} = 1/2, d_{m_\sigma^+} = q_{\unit/\psi} = d/2, q_\sigma = 1$. 
+Normalizing so that $d_{m_\unit} = 1$, we obtain the quantum dimensions listed in Table \ref{C2Data}. 
+
+We will also need to know how to calculate the total quantum dimension $\mcd$.
+In bosonic theories we have $\mcd^2 = \sum_a d_a^2$, where the sum runs over all simple objects $a$. 
+This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
+The correct formula is
+\be \label{total_qdim_defn} \mcd^2 = \sum_a \frac{d_a^2}{\dim \End(a)}.\ee
+For the $C_2$ theory, we have $\mcd = \sqrt{8}$. 
+
+\ethan{Note that $\dim(C_2)^2 \neq \dim(\mcz(C_2)),$ and in fact $\dim(C_2)^2 = \dim(\mcz(C_2)) / \dim(\cl_1)$. Hmm...}
+
+\ethan{where should we (briefly) talk about modular extensions? Definition section? Section 4?}
+In general, the quantum dimension of a theory derived from a fusion category $\mcc$ is related to $\dim(\mcc)$ as 
+\be \dim(\mcc / \psi) = \frac{\dim(\mcc)}{\dim({\rm sVec})} = \frac{1}{\sqrt{2}} \dim(\mcc),\ee
+where we have viewed the category of supervector spaces, sVec, as consisting of two objects ${\rm sVec} = \{\unit,f\}$, with $f$ a transparent (physical) fermion. 
+%We can obtain them by examining the number of fusion channels each has when fused with its antiparticle. 
+%We find
+%\be d_{m_1} = d_{m_\psi} = 1,\quad d_{m_\sigma^+} = d_{q_1} = d_{q_\psi} = \sqrt{2},\quad d_{q_\sigma} = 2.\ee
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Modular and braiding data in super pivotal categories}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure} 
+\newcommand{\Space}{\; \; \; \; \; \; }
+\newcommand{\Spacep}{ \; \; \; \mathop{\vphantom{\int}} \; \; \;    } %\mathop{\vphantom{\int}}
+%R controls where the arrows start from the box. 
+\begin{align}
+\nonumber
+%\xymatrix @!0 @M=1mm @R=7mm @C=25mm{
+%&&&\\
+%\Space   & \Space  \ar@/^1pc/[r]^{S} \Space  \ar@/^3pc/[rr]^{T} &\Space &\Space   \\
+%\SmallTorus{\AnnulusBare}{N}{N} \ar @`{p+(7.07,28.28),p+(28.28,7.07)}|{S,T }  &
+%\SmallTorus{\AnnulusBare}{B}{N}& 
+%\SmallTorus{\AnnulusBare}{N}{B}\ar @`{p+(7.07,28.28),p+(28.28,7.07)}|{T} & 
+%\SmallTorus{\AnnulusBare}{B}{B} \ar @`{p+(7.07,28.28),p+(28.28,7.07)}|{ S }  \\
+%{\Space} &\Space &\Space \ar@/^1pc/[l]^{S} &\Space  \ar@/^3pc/[ll]^{T} \\
+%}
+\xymatrix@!0 @M=1mm @R=7mm @C=30mm{
+\AddDatTorus{\FubeXXXA}{B}{B}\ar @`{p+(-28.28,7.07),p+(-7.07,28.28)}^{S}  \ar@<1ex>[r]^T  & \AddDatTorus{\FubeXXXA}{B}{N} \ar@<1ex>[l]^T   \ar@<1ex>[r]^S&  \AddDatTorus{\FubeXXXA}{N}{B}  \ar@<1ex>[l]^S  \ar @`{p+(7.07,28.28),p+(28.28,7.07)}^{T } &\AddDatTorus{\FubeXXXA}{N}{N}  \ar @`{p+(7.07,28.28),p+(28.28,7.07)}^{S,T } 
+}
+%\xymatrix @!0 @M=1mm @R=6mm @C=25mm{
+%&&&\\
+%\Space   & \Space  \ar@/^1pc/[r]^{S} \Space  \ar@/^3pc/[rr]^{T} &\Space &\Space   \\
+%\raisebox{0.2ex}{$\scriptstyle{N}\;$}\underset{N}{\FubeXXX} \ar @`{(3,15),(28,-12)}^{S,T}  &
+%\raisebox{0.2ex}{$\scriptstyle{N}\;$}\underset{B}{\FubeXXX} & 
+%\raisebox{0.2ex}{$\scriptstyle{B}\;$}\underset{N}{\FubeXXX}  \ar @`{(52,15),(77,-12)}_{T} & 
+%\raisebox{0.2ex}{$\scriptstyle{B}\;$}\underset{B}{\FubeXXX}  \ar @`{(80,18),(105,-12)}^{S}  \\
+%{\Spacep} &\Spacep &\Spacep \ar@/^1pc/[l]^{S} &\Spacep  \ar@/^3pc/[ll]^{T} \\
+%&&&\\
+%&&&\\
+%&&&\\
+%&&&\\
+%\raisebox{0.2ex}{$\scriptstyle{P}\;$}\underset{P}{\FubeXXX} &
+%\raisebox{0.2ex}{$\scriptstyle{A}\;$}\underset{P}{\FubeXXX} & 
+%\raisebox{0.2ex}{$\scriptstyle{P}\;$}\underset{A}{\FubeXXX} & 
+%\raisebox{0.2ex}{$\scriptstyle{A}\;$}\underset{A}{\FubeXXX} 
+%}
+\end{align} \nonumber
+\caption{The action of the mapping class group on the four spin tori. The notation is such that the disk which bounds the cycle of the torus labeled by $B$ or $N$ has either a bounding ($B$) or non-bounding ($N$) spin structure. %Bottom: the boundary conditions ($P$ for periodic and $A$ for anti-periodic) associated with each spin structure.
+}
+\label{spin_str_mapping_class_group}
+\end{figure}
+
+\begin{comment} %old figure showing how different spin strs get permuted 
+\begin{figure} \label{spin_str_mapping_class_group}
+\newcommand{\Space}{\; \; \; \; \; \; }
+\newcommand{\Spacep}{ \; \; \; \mathop{\vphantom{\int}} \; \; \;    } %\mathop{\vphantom{\int}}
+%R controls where the arrows start from the box. 
+\begin{align}
+\xymatrix @!0 @M=1mm @R=6mm @C=25mm{
+&&&\\
+\Space   & \Space  \ar@/^1pc/[r]^{S} \Space  \ar@/^3pc/[rr]^{T} &\Space &\Space   \\
+\raisebox{0.2ex}{$\scriptstyle{N}\;$}\underset{N}{\FubeXXX} \ar @`{(3,15),(28,-12)}^{S,T}  &
+\raisebox{0.2ex}{$\scriptstyle{N}\;$}\underset{B}{\FubeXXX} & 
+\raisebox{0.2ex}{$\scriptstyle{B}\;$}\underset{N}{\FubeXXX}  \ar @`{(52,15),(77,-12)}_{T} & 
+\raisebox{0.2ex}{$\scriptstyle{B}\;$}\underset{B}{\FubeXXX}  \ar @`{(80,18),(105,-12)}^{S}  \\
+{\Spacep} &\Spacep &\Spacep \ar@/^1pc/[l]^{S} &\Spacep  \ar@/^3pc/[ll]^{T} \\
+&&&\\
+&&&\\
+&&&\\
+&&&\\
+\raisebox{0.2ex}{$\scriptstyle{P}\;$}\underset{P}{\FubeXXX} &
+\raisebox{0.2ex}{$\scriptstyle{A}\;$}\underset{P}{\FubeXXX} & 
+\raisebox{0.2ex}{$\scriptstyle{P}\;$}\underset{A}{\FubeXXX} & 
+\raisebox{0.2ex}{$\scriptstyle{A}\;$}\underset{A}{\FubeXXX} 
+}
+\end{align} \nonumber
+\caption{Top: The action of the mapping class group on the four spin tori. The notation is such that the disk which bounds the cycle of the torus labeled by $B$ or $N$ has either a bounding ($B$) or non-bounding ($N$) spin structure. Bottom: the boundary conditions ($P$ for periodic and $A$ for anti-periodic) associated with each spin structure.}
+\end{figure}
+\end{comment}
 
 One can compute the topological spin of the particle by performing a twist. 
 For compatibility with the $S$ matrix defined later we choose to twist the inner circle counter-clockwise by $2 \pi$:
@@ -6524,7 +6505,7 @@ where $a,b,c,d$ are simple objects in $\cal{C}$. The multiplicity indices $\mu$,
 It is somewhat cumbersome to continually label all indices in the tube, so we shift to a compact notation introduced in [REF]\dave{I've seen Oceanu papers (around 1990,91, though not actually written by him) with this notation, is that the first place it showed up?},
 \begin{align}
  \AnnularTubex{\AnnularTubeNoIndex}{a}{c}{\psi}{X}{}= \sum_{abcd \mu \nu} \; \psi_{abcd; \mu \nu} ^{X} \;\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{}%\Annulus{\AnnularTube}{X} 
- \quad \quad \quad \psi \in \bigoplus_{xy} V^{xy}_{a,1} \tp V^{c\bar{x}}_{y,2},
+ \quad \quad \quad \psi \in \bigoplus_{xy} V^{xy}_{a,1} \tp V^{cx^*}_{y,2},
 \end{align}
 %where the $\tp_{\text{End}(x)}$ is allowing fermions to slide around the annulus. \ethan{we haven't introduced this yet---and I don't think we really need to mod out by local relns explicitly in any of these calculations (we didn't for Ising or $SO(3)_6$ stuff}
 %When tensoring over endomorphisms one has to be mindful of the spin structure.
