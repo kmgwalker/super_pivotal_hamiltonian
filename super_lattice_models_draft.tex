@@ -1188,7 +1188,8 @@ Our goal in what follows is to describe how to condense the $\psi$ particle in t
 To put this in context, we will first make a few remarks on the more familiar bosonic condensation. 
 
 \dave{We could just summarize this whole section in one table. 
-I started putting one together on the plane, but was too tired to complete it.}
+I started putting one together on the plane, but was too tired to complete it.
+}
 \begin{table}
 	\fbox{\begin{minipage}{\textwidth}
 	\vspace{3mm}\begin{center}{\begin{minipage}{158mm}
@@ -2226,6 +2227,12 @@ We will briefly review the tube category as applied to the $C_2$ theory below; f
 \kw{We need to decide what ``string net model" refers to.
 Is it a TQFT?  A Hamiltonian?  A package which includes both?
 I tend to think of the Hamiltonian as something extra, not part of the essential structure.}
+\dave{I think of it as a Hamiltonian that computes a TQFT.
+With sufficient effort one can put the Hamiltonian into a computer and ``discover" the the system is topologically ordered, and extract the TQFT data.
+I found this perspective useful when I was learning about the string-net Hamiltonians, before I learnt about why the whole construction works (I was confused about why excitations in the string-net models were given by $Z(C)$ for a long time). 
+When we say string net-Hamiltonian, the picture I have in mind is either a lattice of punctures on some surface, with the Hamiltonian being a sum of trivial idempotents acting on those punctures. 
+Or I think of this picture being resolved on some lattice (i.e., the 0 and 1-handles).
+}
 
 The setting for examining a collection of $n$ excitations in a given topological phase is a manifold with $n$ circular punctures, with an excitation localized at the location of each puncture. 
 The tube category $\tube(C_2)$ contains all spin tubes with $C_2$ string-nets drawn on their surfaces modulo local relations, and $\tube(C_2)$ acts on the punctures by gluing in tubes to each puncture (see Figure XXX). 
@@ -2329,12 +2336,13 @@ combination of the following diagrams:
 \kw{I think the left-subscripts can sometimes be awkward.  $\mor(a, b)$ is well-established notation, and $\mor(a\to b)$ is similar.
 Scott and I mainly use $\mor(a\to b)$.
 That being said, it's nice to have notational options.}
+\dave{OK. I think I like $\text{mor}(a \ra b)$ more than $\text{mor}(a,b)$.}
 \begin{align}
 \label{mortube}
 \text{mor}(\underset{\mathds{1}}{\TubeBCx{J}} \rightarrow \underset{\mathds{1}}{\TubeBCx{J}}) &= \mathbb{C}\left[ \Fubex{\FubeXXXA}{J} ,  \Fubex{\FubesXsA}{J}, \Fubex{\FubesdXsA}{J} \right] \\
 \text{mor}(\underset{\beta}{\TubeBCx{J}} \rightarrow \underset{\beta}{\TubeBCx{J}}) &= \mathbb{C}\left[   \Fubex{\FubeXssA}{J} ,  \Fubex{\FubessXA}{J}, \Fubex{\FubeXsdsA}{J} , \Fubex{\FubessdXA}{J} \right] \\
 \\
-\text{mor}(\underset{\mathds{1}}{\TubeBCx{B}} \rightarrow \underset{\beta}{\TubeBCx{N}}) &= \emptyset \quad \quad \quad \quad \text{mor}(\underset{\beta}{\TubeBCx{N}} \rightarrow \underset{\mathds{1}}{\TubeBCx{B}}) = \emptyset
+\text{mor}(\underset{\mathds{1}}{\TubeBCx{B}} \rightarrow \underset{\beta}{\TubeBCx{N}}) &= \cc^0 \quad \quad \quad \quad \text{mor}(\underset{\beta}{\TubeBCx{N}} \rightarrow \underset{\mathds{1}}{\TubeBCx{B}}) = \cc^0
 \end{align}
 %\begin{align}
 %\text{mor}(\underset{\mathds{1}}{\TubeBC} \rightarrow \underset{\mathds{1}}{\TubeBC}) &= \mathbb{C}\left[ \FubeXXXA ,  \FubesXsA, \FubesdXsA \right] \\
@@ -2344,6 +2352,8 @@ That being said, it's nice to have notational options.}
 %\end{align}
 \kw{If we are being precise, the last two should be 0 (0-dimensional vector space), not the empty set.
 I'm happy to lie a little bit and write empty set if you think it's less confusing to the typical reader.}
+\dave{I don't think it's more confusing, and it's better to be correct.
+Is there a standard notation for a 0-dimensional vector space?}
 with $J =B$ for bounding spin structure, and $J =N$ for non-bounding spin structure. 
 %\begin{align}
 %\FubeXXX \quad \FubesXs    \quad \FubeXss \quad \FubessX   \quad \FubesdXs \quad  \FubeXsds \quad \FubessdX
@@ -2364,6 +2374,7 @@ To describe the non-bounding spin structure, we find it helpful to add a ``branc
 The branch cut records the difference between the spin structure inherited from the plane of the figure (the ``blackboard") and the
 spin structure we want to depict.
 \kw{I don't see branch cuts in the figures -- did we change our minds about branch cuts?}
+\dave{We should move this paragraph to the section where we compute the braids, that's where we have to choose a ``gauge" and make a choice for the branch cut. Nothing in this section depends on this choice, so I didn't include it.}
 
 As we said above, not every string diagram in the annulus is consistent with a given spin structure.
 For example,
@@ -3141,11 +3152,17 @@ We have chosen $m_\sigma^+$ as the representative of the isomorphism class given
 	\label{C2Data}
 \end{table}
 
+<<<<<<< HEAD
+\kw{Is this very different from what we have already done above?}
+\dave{Not really. We can put a condensed version of the discussion in the generalities section if we want. 
+Or mention the sum of squares formula in the appendix on semi-simple super algebras.}
+=======
 
 
 \begin{comment}
 
 \kw{Is this very different from what we have already done above?  It seems to me it is basically the same technique}
+>>>>>>> 37d70118c396fb5b246145b945fcaf78ca90a881
 Before moving on, we note that we could have obtained a large amount of information about the quasiparticle content of the theory without actually finding the explicit representations of the primitive idempotents of the tube category.
 To do this, we treat the tube category as an algebra (with the obvious multiplication) and apply standard techniques to find the simple modules of the algebra.
 The idea is to exploit the sum-of-squares formula, relating the dimension of an algebra to the dimensions of its simple modules. 
@@ -3685,6 +3702,7 @@ and the odd ones are given by putting a single dot on the upper left leg.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Modular transformations and ground states on the torus} \label{modulartforms}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\dave{Note to self: Need to draw a picture which shows how the torus is cut and glued back together/explain the convention for the ``branch" cut.}
 
 \subsubsection{$C_2$ string-nets on the torus}
 In this section, we compute a basis for $C_2$ string-nets on the torus modulo local relations as well as the action of the mapping class group.
