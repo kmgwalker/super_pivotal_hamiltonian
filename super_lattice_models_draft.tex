@@ -8408,16 +8408,19 @@ Equivalently, $a$ is simple if it has no quotient objects.
 (We also stipulate that the zero object is not a simple object.)
 
 In the usual bosonic, non-super case, the only possible endomorphism algebra for a simple object
-is the trivial algebra $\cc$ (scalars)\footnote{The 
-proof is as follows: by Schur's lemma every element in $\End(x)$ is invertible if $x$ is simple, and so $\End(x)$ must be a division algebra. 
-The only ungraded division algebra is $\cc$, and so $\End(x) = \cc$ for all simple $x$ in a regular fusion category.}
-In the fermionic/super case, there is a second possibility: the complex Clifford algebra $\cl_1$, which is the only nontrivial $\zt$-graded division algebra other than $\cc$.
+is the trivial algebra $\cc$ (scalars).
+%%% KW: this is a very well known fact, so I don't think the footnote is necessary
+%\footnote{The 
+%proof is as follows: by Schur's lemma every element in $\End(x)$ is invertible if $x$ is simple, and so $\End(x)$ must be a division algebra. 
+%The only ungraded division algebra is $\cc$, and so $\End(x) = \cc$ for all simple $x$ in a regular fusion category.}
+In the fermionic/super case, there is a second possibility: the complex Clifford algebra $\cl_1$, 
+which is the only nontrivial $\zt$-graded division algebra other than $\cc$.
 $\cl_1$ is generated over $\cc$ by the identity (which is even) and an odd element $f$ such that $f^2 = \lambda \cdot \id$
 (or $f^2 = \lambda$ for short) for some non-zero complex number $\lambda$. 
 Note that by rescaling the odd generator $f$ we can make $\lambda$ in the definition of $\cl_1$ any nonzero complex number. 
 
 It follows that simple objects in a super pivotal category fall into two classes, according to whether their endomorphism algebras are $\cc$ or $\cl_1$. 
-These are the q-type and m-type objects discussed earlier. 
+These are the m-type and q-type objects discussed earlier. 
 A simple object is {m-type} if its endomorphism algebra
 is $\cc$, and {q-type} if its endomorphism algebra is $\cl_1$:
 \begin{align}
@@ -8428,13 +8431,16 @@ is $\cc$, and {q-type} if its endomorphism algebra is $\cl_1$:
 \end{align}
 This terminology comes from the notation of [cite Jos], which classifies simple super algebras over $\cc$ as either
 $M(p,q) = \End(\cc^{p|q})$ or $Q(n)$ (see appendix \ref{superstuff}).
-The use of ``simple" here is rather misleading: any $M(p,q)$ or $Q(n)$ is a simple super algebra
+Note that we are using ``simple" here in two different (and well-established) senses: 
+any $M(p,q)$ or $Q(n)$ is a simple super algebra
 (because it has no non-trivial ideals), but the endomorphism algebra of a simple object must be either
 $M(1,0) \cong M(0,1) \cong \cc$ or $Q(1) \cong \cl_1$,
-because all of the larger $M(p,q)$ or $Q(n)$ contain non-invertible elements (i.e. because $\cc$ and $\cl_1$ are the only non-trivial $\zt$-graded division algebras).
+because all of the larger $M(p,q)$ or $Q(n)$ contain non-invertible elements.
+%(i.e. because $\cc$ and $\cl_1$ are the only non-trivial $\zt$-graded division algebras).
 
-The existence of q-type particles is responsible for the majority of the novel physics present after performing fermion condensation in a bosonic theory. 
+The existence of q-type particles is responsible for the majority of the novel physics present after performing fermion condensation. 
 q-type objects were also discussed in \ref{wen, usher, kapustin and Gaiotto}, where they were referred to as ``Majorana objects''. 
+\kw{did all of those sources call them ``Majorana objects"?  I thought only Usher did.}
 
 
 
@@ -8442,13 +8448,14 @@ q-type objects were also discussed in \ref{wen, usher, kapustin and Gaiotto}, wh
 \subsection{Fusion spaces} \label{fusion_spaces}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The input data for a super pivotal category includes a list of simple objects and their types (q or m), as well as a fusion space $V^{ab}_c$ for each triple $a,b,c$ of minimal idempotents
+The input data for a super pivotal category includes a list of simple objects and their types (q or m), 
+as well as a fusion space $V^{ab}_c = \mor(a\tp b \to c)$ for each triple $a,b,c$ of objects (equivalently, of minimal idempotents)
 of $\mcc$.
 This is a supervector space of dimension
 $N^{ab}_c = \dim V^{ab}_c = p|q$, where $p$ is the dimension of the even part
 of $V^{ab}_c$ and $q$ is the dimension of the odd part of $V^{ab}_c$.
 
-It is very important to note that $V^{ab}_c$ is not merely a super vector space---it also comes equipped with an action
+It is very important to note that $V^{ab}_c$ is not merely a super vector space -- it also comes equipped with an action
 of (i.e.\ module structure for) the endomorphism algebras of $a$, $b$ and $c$, and hence admits an action of $\End(a)\tp \End(b)\tp \End(c)$. 
 It is impossible to construct the full super pivotal category without knowing this module structure (see XXX below), 
 so the module
@@ -8457,12 +8464,18 @@ Note that the module structure implies that $N^{ab}_c = n|n$ if any of $a$, $b$ 
 This is because any representation of $\cl_1$ has equal even and odd dimensions.
 Acting with the odd (and invertible) element of $\cl_1$ gives an isomorphism between the even and odd parts of $V^{ab}_c$, and hence they must have the same dimension.
 
-Requiring that the Hilbert space at a given vertex admit a representation of $\End(a)\tp \End(b)\tp \End(c)$ places constraints on the types of fermionic theories one can write down. 
-For example, we can use this to show that a ``q-type Fibbonacci'' theory which contains a single q-type particle $\tau$ with the fusion space $V^{\tau\tau}_{\tau}\cong \cc^{1|1}$, cannot exist. 
-Indeed, if $V^{\tau\tau}_{\tau}$ is nontrivial and $\tau$ is q-type, then we must be able to find a representation of $\End(\tau)^{\tp 3} = \cl_1^{\tp 3} \cong \cl_3$ on $V^{\tau\tau}_{\tau}$.
+Requiring that the Hilbert space at a given vertex admit a 
+representation of $\End(a)\tp \End(b)\tp \End(c)$ places constraints on the types 
+of fermionic theories one can write down. 
+For example, we can use this to show that a ``q-type Fibbonacci'' theory 
+which contains a single q-type particle $\tau$ with the fusion space $V^{\tau\tau}_{\tau}\cong \cc^{1|1}$, cannot exist. 
+Indeed, if $V^{\tau\tau}_{\tau}$ is nontrivial and $\tau$ is q-type, 
+then we must be able to find a representation of $\End(\tau)^{\tp 3} = \cl_1^{\tp 3} \cong \cl_3$ on $V^{\tau\tau}_{\tau}$.
 This is impossible if $V^{\tau\tau}_{\tau}\cong \cc^{1|1}$, since $\cc^{1|1}$ is not large enough to represent $\cl_3$. 
-This means that theories which contain a q-type particle $\tau$ with $V^{\tau\tau}_{\tau}\neq0$ must contain nontrivial fusion multiplicities, which provide us with fusion spaces that are large enough to admit a representation of $\cl_3$.
-Indeed such a q-type particle exists in the $\halfesix$ theory considered earlier, which possesses nontrivial fusion multiplicities that allow the relevant fusion spaces in the theory to be large enough to represent $\cl_3$. 
+This means that theories which contain a q-type particle $\tau$ with $V^{\tau\tau}_{\tau}\neq0$ must contain nontrivial 
+fusion multiplicities, which provide us with fusion spaces that are large enough to admit a representation of $\cl_3$.
+Indeed such a q-type particle exists in the $\halfesix$ theory considered earlier (see \ref{halfe6}), 
+which possesses nontrivial fusion multiplicities that allow the relevant fusion spaces in the theory to be large enough to represent $\cl_3$. 
 %The $\Gamma$ matrices in the $\halfesix$ case are essentially determined by the relations \eqref{esixdotslide}. 
 
 %\ethan{recapitulate odd endo operators and reps of clifford algebras}
@@ -8480,6 +8493,7 @@ Indeed such a q-type particle exists in the $\halfesix$ theory considered earlie
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ethan{Dave and Kevin's old discussions are still here, just commented-out}
+\kw{Your rewrite looks good to me.}
 \begin{comment}
 \dave{Just wanted to add some notes on a confusing point that we should try to straighten out.}
 Fusion rules are subtle in a super-pivotal category. 
@@ -8647,7 +8661,7 @@ For any $a$ and $b$, define the vector spaces $\Delta^{ab}_c$ by
 \be
 	a \otimes b \cong \bigoplus_c \Delta^{ab}_c \cdot c ,
 \ee
-where the direct sum runs over all simple objects $c$. 
+where the direct sum runs over all simple objects $c$ in $\mcx$. 
 The $\Delta^{ab}_c$ are the fusion rule coefficients. 
 
 The fusion spaces $V^{ab}_c$ are defined as the vector space of morphisms from $a\tp b$ to $c$:
@@ -8673,7 +8687,7 @@ On the other hand, $\Delta^{ab}_c$ is {\it not} symmetric in $a,b,c$, as the $C_
 Additionally, while $V^{ab}_c$ has an action of $\End(a)\otimes\End(b)\otimes\End(c)$ (as mentioned earlier), $\Delta^{ab}_c$
 only has an action of $\End(a)\otimes\End(b)$.
 
-This definition of $V^{ab}_c$ gives us another wa to show that $V^{ab}_c$ will always be a supervector space of the form $\cc^{n|n}$ for some integer $n$ if any of $a,b,c$ is q-type. 
+This definition of $V^{ab}_c$ gives us another way to show that $V^{ab}_c$ will always be a supervector space of the form $\cc^{n|n}$ for some integer $n$ if any of $a,b,c$ is q-type. 
 Indeed, suppose $c$ were q-type, and $\Delta^{ab}_c \cong \cc^{r|s}$. 
 Then $V^{ab}_c \cong \cc^{r|s} \tp \cc^{1|1} \cong \cc^{r+s|r+s}$. 
 The result then follows by the symmetry of $V^{ab}_c$. 
@@ -8693,11 +8707,13 @@ If at least one of $a,b,c$ is q-type, we can simplify the construction of $V^{ab
 Since in this case $V^{ab}_c \cong \cc^{r|r}$ for some $r$, there are just as many even basis vectors in $V^{ab}_c$ as odd ones. 
 Suppose $c$ is q-type, and that $\{|\psi_i\rangle\} \in [V^{ab}_c]^0, i =1,\dots, r$ are the even basis vectors in $V^{ab}_c$. 
 Then we can define a complete set of odd basis vectors $\{ |\eta_i\rangle \}$ for $[V^{ab}_c]^1$ by $|\eta_i\rangle = f|\psi_i\rangle$, where $f$ is the odd element of $\End(c) \cong \cc^{1|1}$ (or any odd element in $\End(c)$ if $c$ is not simple).
-When we write $|\eta_i\rangle$ graphically, we will write it as $f |\psi_\rangle$, which allows us to  ``shift the oddness out of the vertex onto the edge'' by transferring the fermion residing on the fusion space to the q-type particle $c$. 
+When we write $|\eta_i\rangle$ graphically, we will write it as $f |\psi \rangle$, which allows us to  ``shift the oddness out of the vertex onto the edge'' by transferring the fermion residing on the fusion space to the q-type particle $c$. 
 Graphically, this means that we are allowed to ``displace'' dots from trivalent vertices onto q-type worldlines:
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_displacement.pdf}}}}, \ee
 where the picture on the left is $|\eta_i\rangle$ and the one on the right is $f|\psi_i\rangle$, and $c$ is assumed to be q-type. 
-Mathematically, this is nothing more than the mapping $V^{ab}_c \mapsto [V^{ab}_c]^0 \tp V^{c\unit}_{c} \cong [V^{ab}_c]^0 \tp \End(c)$ where $[V^{ab}_c]^0$ is a purely even vector space, and although simple it proves to be helpful when doing graphical manipulations. 
+Mathematically, this is nothing more than the mapping $V^{ab}_c \mapsto [V^{ab}_c]^0 \tp V^{c\unit}_{c} \cong [V^{ab}_c]^0 \tp \End(c)$ 
+where $[V^{ab}_c]^0$ is a purely even vector space.
+Although this is not a deep fact, it proves to be helpful when doing graphical manipulations. 
 
 
 
