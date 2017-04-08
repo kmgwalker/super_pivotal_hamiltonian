@@ -1153,6 +1153,11 @@ The twist and braiding (self-statistics) of the $\sigma$ particle are
 %\be
 %\mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_twist.pdf}}}}, \qquad  \qquad
 %\mathord{\vcenter{\hbox{\includegraphics[scale=1]{sigsig_recoupling.pdf}}}}. \ee
+\dave{The following two equations are inconsistent.
+We need to take $A \ra A^{-1}$ in one of them, probably the second one.
+All other braid data seems to be consistent. 
+Still need to check that the normalizations above are consistent. 
+}
 \begin{align}
 \underset{\;\;\; \; \;\;\;  \sigma }{\overset{\;\;\; \; \;\;\;  \sigma }{\Twists} } = -A^3\; \underset{\sigma}{\overset{\sigma}{\idsigmashort}}  \qquad \qquad 
 \IsingDat{\Braidss}{\sigma}{\sigma}{\sigma}{\sigma} = A \IsingDat{\VssI}{\sigma}{\sigma}{\sigma}{\sigma}  +A^{-1}  \IsingDat{\HssI}{\sigma}{\sigma}{\sigma}{\sigma} 
@@ -1187,8 +1192,10 @@ Our goal in what follows is to describe how to condense the $\psi$ particle in t
 %KW: condensing general anyons (as opposed to just bosons) is more complicated than what we are doing below.
 To put this in context, we will first make a few remarks on the more familiar bosonic condensation. 
 
+\begin{comment}
 \dave{We could just summarize this whole section in one table. 
-I started putting one together on the plane, but was too tired to complete it.}
+I started putting one together on the plane, but was too tired to complete it.
+}
 \begin{table}
 	\fbox{\begin{minipage}{\textwidth}
 	\vspace{3mm}\begin{center}{\begin{minipage}{158mm}
@@ -1225,6 +1232,7 @@ d \times \IsingDat{\ScriptOverSymbol{\Vssp}{\;\; \;\; \psi }}{\sigma}{\sigma}{\s
 	\caption{Summary of $A_3$ data}
 \end{table}
 
+\end{comment}
 
 \begin{comment}
 %all the figures, and some arrays of data that I was putting together for a table.
@@ -2226,6 +2234,12 @@ We will briefly review the tube category as applied to the $C_2$ theory below; f
 \kw{We need to decide what ``string net model" refers to.
 Is it a TQFT?  A Hamiltonian?  A package which includes both?
 I tend to think of the Hamiltonian as something extra, not part of the essential structure.}
+\dave{I think of it as a Hamiltonian that computes a TQFT.
+With sufficient effort one can put the Hamiltonian into a computer and ``discover" the the system is topologically ordered, and extract the TQFT data.
+I found this perspective useful when I was learning about the string-net Hamiltonians, before I learnt about why the whole construction works (I was confused about why excitations in the string-net models were given by $Z(C)$ for a long time). 
+When we say string net-Hamiltonian, the picture I have in mind is either a lattice of punctures on some surface, with the Hamiltonian being a sum of trivial idempotents acting on those punctures. 
+Or I think of this picture being resolved on some lattice (i.e., the 0 and 1-handles).
+}
 
 The setting for examining a collection of $n$ excitations in a given topological phase is a manifold with $n$ circular punctures, with an excitation localized at the location of each puncture. 
 The tube category $\tube(C_2)$ contains all spin tubes with $C_2$ string-nets drawn on their surfaces modulo local relations, and $\tube(C_2)$ acts on the punctures by gluing in tubes to each puncture (see Figure XXX). 
@@ -2325,16 +2339,17 @@ combination of the following diagrams:
 % \FubeXss \quad \FubessX    \quad \quad \quad    &\FubeXsds \quad \FubessdX
  %}
 %\end{align}
-\dave{Could also replace $\text{mor}(.. \rightarrow ..)$ by $\tube_{\unit \rightarrow \unit}$, or $\;_\unit {\bf T}_\unit$, and $\;_\unit {\bf T}(B)_\unit$.} \ethan{I vote for the last one}
-\kw{I think the left-subscripts can sometimes be awkward.  $\mor(a, b)$ is well-established notation, and $\mor(a\to b)$ is similar.
-Scott and I mainly use $\mor(a\to b)$.
-That being said, it's nice to have notational options.}
+%\dave{Could also replace $\text{mor}(.. \rightarrow ..)$ by $\tube_{\unit \rightarrow \unit}$, or $\;_\unit {\bf T}_\unit$, and $\;_\unit {\bf T}(B)_\unit$.} \ethan{I vote for the last one}
+%\kw{I think the left-subscripts can sometimes be awkward.  $\mor(a, b)$ is well-established notation, and $\mor(a\to b)$ is similar.
+%Scott and I mainly use $\mor(a\to b)$.
+%That being said, it's nice to have notational options.}
+%\dave{OK. I think I like $\text{mor}(a \ra b)$ more than $\text{mor}(a,b)$.}
 \begin{align}
 \label{mortube}
 \text{mor}(\underset{\mathds{1}}{\TubeBCx{J}} \rightarrow \underset{\mathds{1}}{\TubeBCx{J}}) &= \mathbb{C}\left[ \Fubex{\FubeXXXA}{J} ,  \Fubex{\FubesXsA}{J}, \Fubex{\FubesdXsA}{J} \right] \\
 \text{mor}(\underset{\beta}{\TubeBCx{J}} \rightarrow \underset{\beta}{\TubeBCx{J}}) &= \mathbb{C}\left[   \Fubex{\FubeXssA}{J} ,  \Fubex{\FubessXA}{J}, \Fubex{\FubeXsdsA}{J} , \Fubex{\FubessdXA}{J} \right] \\
 \\
-\text{mor}(\underset{\mathds{1}}{\TubeBCx{B}} \rightarrow \underset{\beta}{\TubeBCx{N}}) &= \emptyset \quad \quad \quad \quad \text{mor}(\underset{\beta}{\TubeBCx{N}} \rightarrow \underset{\mathds{1}}{\TubeBCx{B}}) = \emptyset
+\text{mor}(\underset{\mathds{1}}{\TubeBCx{B}} \rightarrow \underset{\beta}{\TubeBCx{N}}) &= \cc^0 \quad \quad \quad \quad \text{mor}(\underset{\beta}{\TubeBCx{N}} \rightarrow \underset{\mathds{1}}{\TubeBCx{B}}) = \cc^0
 \end{align}
 %\begin{align}
 %\text{mor}(\underset{\mathds{1}}{\TubeBC} \rightarrow \underset{\mathds{1}}{\TubeBC}) &= \mathbb{C}\left[ \FubeXXXA ,  \FubesXsA, \FubesdXsA \right] \\
@@ -2344,6 +2359,8 @@ That being said, it's nice to have notational options.}
 %\end{align}
 \kw{If we are being precise, the last two should be 0 (0-dimensional vector space), not the empty set.
 I'm happy to lie a little bit and write empty set if you think it's less confusing to the typical reader.}
+\dave{I don't think it's more confusing, and it's better to be correct.
+Is there a standard notation for a 0-dimensional vector space?}
 with $J =B$ for bounding spin structure, and $J =N$ for non-bounding spin structure. 
 %\begin{align}
 %\FubeXXX \quad \FubesXs    \quad \FubeXss \quad \FubessX   \quad \FubesdXs \quad  \FubeXsds \quad \FubessdX
@@ -2351,19 +2368,21 @@ with $J =B$ for bounding spin structure, and $J =N$ for non-bounding spin struct
 In the first row we have listed all possible tubes which take the trivial boundary condition back to itself, 
 and in the second row the tubes which take the $\beta$ marked point back to itself.
 Notice that all non-zero tubes for $C_2$ have the same label at the two marked points.
-For general input categories this won't happen; see Sections \ref{halfesix} and \ref{so36} for examples.
+For general input categories this won't happen; see Sections \ref{so36} and \ref{halfesix} for examples.
 
 %The tubes share the same spin structure as the circles which bound them.
 %Since there are only two spin structures on the cylinder, bounding and non-bounding, there are no tubes which take a bounding circle to a non-bounding circle, or vice versa.
 %We will denote the spin structure of a given tube with $B$ for bounding, and $N$ for non-bounding spin structures.
 
 Depending on the spin structure on the annulus, some of the above diagrams may be zero.
-
 With a bounding spin structure, a fermionic dot picks up a factor of $-1$ if it moves around the annulus.
-To describe the non-bounding spin structure, we find it helpful to add a ``branch cut" extending from the center of the annulus to the exterior, such that fermions pick up an extra minus sign when they cross the branch cut.
-The branch cut records the difference between the spin structure inherited from the plane of the figure (the ``blackboard") and the
-spin structure we want to depict.
-\kw{I don't see branch cuts in the figures -- did we change our minds about branch cuts?}
+On the other hand a fermionic dot picks up a factor of $+1$ if it moves around the annulus with non-bounding spin structure.
+
+%To describe the non-bounding spin structure, we find it helpful to add a ``branch cut" extending from the center of the annulus to the exterior, such that fermions pick up an extra minus sign when they cross the branch cut.
+%The branch cut records the difference between the spin structure inherited from the plane of the figure (the ``blackboard") and the
+%spin structure we want to depict.
+%\kw{I don't see branch cuts in the figures -- did we change our minds about branch cuts?}
+%\dave{We should move this paragraph to the section where we compute the braids, that's where we have to choose a ``gauge" and make a choice for the branch cut. Nothing in this section depends on this choice, so I didn't include it.}
 
 As we said above, not every string diagram in the annulus is consistent with a given spin structure.
 For example,
@@ -2384,9 +2403,9 @@ All other tubes are nonzero for both spin structures, and so a complete basis fo
 \tube^B_{\unit \rightarrow \unit} &= \mathbb{C} \left[\Fubex{\FubeXXXA}{B}  ,\Fubex{\FubesXsA}{B}\right]\\
 \tube^B_{\beta \rightarrow \beta}  &=  \mathbb{C} \left[\Fubex{\FubeXssA}{B}  ,\Fubex{\FubessXA}{B},\Fubex{\FubeXsdsA}{B},\Fubex{\FubessdXA}{B}\right]
 \end{align}
-\dave{Changed notation from $\tube_\unit^B$ to $\tube_{\unit \rightarrow \unit}^B$.
-Other notation I thought that could be useful was $\;_\unit {\bf T}(B)_\unit$.
-Let me know if you prefer the old, new or un-used.} \ethan{unused for bialgebra reasons}
+%\dave{Changed notation from $\tube_\unit^B$ to $\tube_{\unit \rightarrow \unit}^B$.
+%Other notation I thought that could be useful was $\;_\unit {\bf T}(B)_\unit$.
+%Let me know if you prefer the old, new or un-used.} \ethan{unused for bialgebra reasons}
 while a basis for the non-bounding sector is given by
 \begin{align}
 \label{ptubes}
@@ -3066,8 +3085,9 @@ If we then re-write the multiplication table for $\tube_{\beta \rightarrow \beta
 we see that it is indeed isomorphic to $\langle \unit^+ ,\gamma^+\rangle \oplus \langle \unit^- , \gamma^-\rangle =\cl_1\oplus\cl_1$, with $(\gamma^\pm)^2 = \unit^\pm$. 
 We therefore have two (non-isomorphic) idempotents, $q_\unit = \unit^+$ and $q_\psi = \unit^-$.
 Thus, the $\tube_{\beta \rightarrow \beta}^N$ 
-endomorphism algebra gives rise to two $\cl_1$-type quasiparticles.
+endomorphism algebra gives rise to two q-type quasiparticles.
 \kw{are we calling these $\cl_1$-type or q-type?}
+\dave{q-type. }
 %corresponding to the even simple modules $\unit^\pm$. 
 %We will denote these two quasiparticles as $q_\unit$ and $q_\psi$.
 
@@ -3142,10 +3162,12 @@ We have chosen $m_\sigma^+$ as the representative of the isomorphism class given
 \end{table}
 
 
-
 \begin{comment}
 
-\kw{Is this very different from what we have already done above?  It seems to me it is basically the same technique}
+\kw{Is this very different from what we have already done above?  It seems to me it is basically the same technique.}
+\dave{Not really. We can put a condensed version of the discussion in the generalities section if we want. 
+Or mention the sum of squares formula in the appendix on semi-simple super algebras.}
+
 Before moving on, we note that we could have obtained a large amount of information about the quasiparticle content of the theory without actually finding the explicit representations of the primitive idempotents of the tube category.
 To do this, we treat the tube category as an algebra (with the obvious multiplication) and apply standard techniques to find the simple modules of the algebra.
 The idea is to exploit the sum-of-squares formula, relating the dimension of an algebra to the dimensions of its simple modules. 
@@ -3158,7 +3180,7 @@ where the factor of 2 comes from the fact that if $a$ is q-type the even and odd
 This formula actually allows us to exactly reproduce the quasiparticle content of the $C_2$ theory starting with equations \eqref{atubes} and \eqref{ptubes} enumerating the elements of the tube algebra. 
 Since \eqref{sumofsqs} holds for any algebra, it holds for the subalgebras $\tube^N$ and $\tube^B$ (since the tube algebra does not mix states of different spin structures, 
 $\tube \cong \tube^B \oplus \tube^A$). 
-Since taking fermions around tubes with non-bounding spin structures acts as the identity (in the $C_2$ theory under consideration),%\footnote{This is true in the $C_2$ theory, but not in general; see Sec \ref{e6} for a counterexample.}
+Since taking fermions around tubes with non-bounding spin structures acts as the identity (in the $C_2$ theory under consideration),%\footnote{This is true in the $C_2$ theory, but not in general; see Sec \ref{halfesix} for a counterexample.}
 all of the quasiparticles associated with periodic spin structures will have $\cl_1$ endomorphism algebras (that is, they will all be q-type). Furthermore, since $\dim \tube^B = \dim \tube^N = 6$, for the $C_2$ theory we have 
 \be 6 = \sum_{a \in \mcz^B(C_2)} (\dim M_a)^2,\qquad 6 = 2 \sum_{a\in \mcz^N(C_2)} (\dim M_a)^2,\ee
 where $\mcz^B(C_2)$ are all the quasiparticles associated with bounding spin structures and $\mcz^N(C_2)$ are those associated with the non-bounding spin structures. 
@@ -3224,7 +3246,7 @@ where the factor of 2 comes from the fact that if $a$ is q-type the even and odd
 
 This formula actually allows us to exactly reproduce the quasiparticle content of the $C_2$ theory starting with equations \eqref{atubes} and \eqref{ptubes} enumerating the elements of the tube algebra. 
 Since \eqref{sumofsqs} holds for any algebra, it holds for the subalgebras $\tube^N$ and $\tube^B$. 
-Since taking fermions around tubes with non-bounding spin structures acts as the identity,%\footnote{This is true in the $C_2$ theory, but not in general; see Sec \ref{e6} for a counterexample.}
+Since taking fermions around tubes with non-bounding spin structures acts as the identity,%\footnote{This is true in the $C_2$ theory, but not in general; see Sec \ref{halfesix} for a counterexample.}
 all of the quasiparticles associated with periodic spin structures will have $\cl_1$ endomorphism algebras (that is, they will all be q-type). Furthermore, since $\dim \tube^B = \dim \tube^N = 6$, for the $C_2$ theory we have 
 \be 6 = \sum_{a \in \mcz^B(C_2)} (\dim M_a)^2,\qquad 6 = 2 \sum_{a\in \mcz^N(C_2)} (\dim M_a)^2,\ee
 where $\mcz^B(C_2)$ are all the quasiparticles associated with bounding spin structures and $\mcz^N(C_2)$ are those associated with the non-bounding spin structures. 
@@ -3236,9 +3258,13 @@ However, since $\tube^B$ is non-abelian the former possibility is ruled out, and
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Obtaining the quasiparticle fusion rules} \label{C2_fusion_rules}
+\subsection{Quasiparticle fusion rules} \label{C2_fusion_rules}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-To each primitive idempotent, and puncture on a given surface, corresponds a subspace which is invariant under applying the idempotent. 
+To each primitive idempotent, 
+\kw{Minimal idempotents and primitive idempotents are the same thing, but we should probably pick one term and stick with it.
+I've always used minimal.}
+\dave{I am fine with either one.}
+and puncture on a given surface, corresponds a subspace which is invariant under applying the idempotent. 
 This subspace describes a single quasi-particle living at that puncture.
 Fusion is the process by which neighbouring quasiparticles can be fused together.
 As with \eqref{mortube}, the vector space mapping two punctures to one is spanned by,
@@ -3261,14 +3287,26 @@ for example if we fix the marked points on the inner punctures to be $\beta$ and
 Note that the spin structure on the inner two punctures determines the spin structure on the outer one, 
 and so we omit the labeling.
 
-The primitive idempotents -- or quasiparticles -- displayed in Figure \ref{CTwoParticles} naturally parse the fusion space in \eqref{morpants}.
-We search for the subspaces which describe quasiparticles living at the punctures, i.e., a subspace which is invariant under application of the primitive idempotents. 
-More specifically, let $\Pi_a$ be the idempotent (projector) corresponding to the representative of the isomorphism class of quasiparticle $a$, i.e., one of those listed in Figure \ref{CTwoParticles}.
+\kw{I think the above paragraph needs some work.  Let's discuss on skype.}
+\dave{Sounds good. We can either set up a time, 
+or you can just find me on Skype usually in the evenings (Europeon).
+I'm usually around from 11:00am - 4:00pm Utah = 7:00pm - 12:00am Europe.}
+
+The primitive idempotents -- or quasiparticles -- displayed in Figure \ref{CTwoParticles} naturally decompose 
+the fusion space in \eqref{morpants} into simple modules.
+\kw{what does ``parse" mean here? \dave{``parse" = decomposes \eqref{morpants} into modules or super-selection sectors.}}
+\kw{I haven't seen ``parse" used in this sense before.  Is it well-established terminology?  ``Decompose" sounds more normal to me.}
+\dave{It is not established terminology, just what came to me that day. I changed the sentence.}
+The simple modules are given by the invariant subspace under application of the primitive idempotents. 
+More specifically, let $a$ be the idempotent representing the iso-morphism class of a given quasiparticle, i.e., one of those listed in Figure \ref{CTwoParticles}.
+%More specifically, let $a$ be the idempotent
+%\kw{$a$ is already an idempotent, so I don't think we need the $\Pi_a$ notation.}
+%(projector) corresponding to the representative of the isomorphism class of quasiparticle $a$, i.e., one of those listed in Figure \ref{CTwoParticles}.
 The choice of representative affects the explicit representation of the fusion space, but none of the guage invariant quantities which can be computed. 
-For example, the idempotent given by $\Pi_{m_\sigma^+}$ constitutes a choice of representative, we could have just as easily chosen $\Pi_{m_\sigma^-}$.
+For example, the idempotent given by ${m_\sigma^+}$ constitutes a choice of representative, we could have just as easily chosen ${m_\sigma^-}$.
 All resulting guage invariant quantities are the same for each choice, but explicit representations of, for example the fusion spaces, may change.
-In order for $V^{ab}_c$ to be a bona fide fusion space, the vector space $V^{ab}_c$ must be invariant under the action of $\Pi_a$ and $\Pi_b$ on in inner punctures acting from above, and $\Pi_c$ acting on the outer puncture from below.
-Therefore, determining the fusion space $V^{ab}_c$ is tantamount to finding a vector space supported on the pair of pants invariant under the application of $\Pi_a\tp \Pi_b$ on the ``top'' of the pants, and invariant under $\Pi_c$ on the ``bottom'' of the pants, see Fig. \ref{Makefigure}.
+In order for $V^{ab}_c$ to be a bona fide fusion space, the vector space $V^{ab}_c$ must be invariant under the action of $a$ and $b$ on the inner punctures acting from above, and $c$ acting on the outer puncture from below.
+Therefore, determining the fusion space $V^{ab}_c$ is tantamount to finding a vector space supported on the pair of pants invariant under the application of $a\tp b$ on the ``top'' of the pants, and invariant under $c$ on the ``bottom'' of the pants, see Fig. \ref{Makefigure}.
 The (super)dimension of this vector space is the fusion multiplicity $N^{ab}_c = \dim V^{ab}_c$. 
 
 There is a subtle point regarding fusion spaces and fusion rules that we will need to address in what follows. 
@@ -3514,7 +3552,6 @@ For example, the $m_\sigma^+ \tp m_\sigma^+$ entry indicates that the fusion spa
 %Bullets in front of terms indicate that the associated fusion space is isomorphic to $\cc^{1|1}$. 
 	%For example, the $m_\sigma^+ \tp m_\sigma^+$ entry indicates that the fusion space is $\cc^{1|0}$ if the fusion product is $m_\unit$, and $\cc^{0|1}$ if the fusion product is $m_\psi$. 
 }
-	\label{halfesixFusionRules}
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3682,13 +3719,18 @@ and the odd ones are given by putting a single dot on the upper left leg.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Modular transformations and ground states on the torus} \label{modulartforms}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\dave{Note to self: Need to draw a picture which shows how the torus is cut and glued back together/explain the convention for the ``branch" cut.}
 
 \subsubsection{$C_2$ string-nets on the torus}
 In this section, we compute a basis for $C_2$ string-nets on the torus modulo local relations as well as the action of the mapping class group.
 The modular $S$-matrix is related to, but distinct from, the ``statistical $S$-matrix'' which captures the braiding data of the quasiparticles in the theory; this $S$-matrix is discussed in Sec.\ref{mutual_statistics}. 
 
 Because the $C_2$ theory is dependent on the existence of a spin structure, in order to talk about ground states on a torus we must first equip the torus with a spin structure. 
+\kw{we say things like this in multiple places.  I think it would be better to declare once and for all that every
+2-manifold we consider is a spin 2-manifold.
+Then we say ``There are four spin tori..." \dave{I agree.}}
 There are $|H^1(T^2;\zt)|=4$ different spin structures on the torus, obtained by choosing either bounding or non-bounding spin structures for each of the torus' non-contractible cycles. 
+\kw{there are three non-contractible cycles}
 To go from the annulus to the torus we identify the inner and outer circles, and label the different spin structures by 
 \begin{align}
 \AddDatTorus{\FubeXXXA}{X}{Y}\quad \quad \quad X,Y \in\{ B, N \}
@@ -3764,20 +3806,23 @@ We can apply the same techniques to find a basis for each of the spin tori, the 
 \multicolumn{1}{c}{\mch^{T^2}_{(X,Y)}} &{\quad \quad \quad}& \multicolumn{1}{c}{\text{explicit basis}} &{\quad \quad \quad}& \multicolumn{1}{c}{\text{parity}}\\
 \cline{1-1}\cline{3-3} \cline{5-5} && &&\\
 \mch^{T^2}_{(B,B)} \cong \mathbb{C}^{3|0}& & 
-\AddDatTorus{\FubeXXXA}{B}{B} , \; \AddDatTorus{\FubesXsA}{B}{B}, \;  \AddDatTorus{\FubeXssA}{B}{B} &&\multicolumn{1}{c}{+}\\
+\AddDatTorus{\FubeXXXA}{B}{B} , \; \AddDatTorus{\FubesXsA}{B}{B}, \;  \AddDatTorus{\FubeXssA}{B}{B} &&\multicolumn{1}{c}{0}\\
 &&&&\\
 \mch^{T^2}_{(B,N)} \cong \mathbb{C}^{3|0} & & 
-\AddDatTorus{\FubeXXXA}{B}{N} , \; \AddDatTorus{\FubesXsA}{B}{N}, \;  \AddDatTorus{\FubessXA}{B}{N} && \multicolumn{1}{c}{+} \\
+\AddDatTorus{\FubeXXXA}{B}{N} , \; \AddDatTorus{\FubesXsA}{B}{N}, \;  \AddDatTorus{\FubessXA}{B}{N} && \multicolumn{1}{c}{0} \\
 &&&&\\
 \mch^{T^2}_{(N,B)} \cong \mathbb{C}^{3|0} & & 
-\AddDatTorus{\FubeXXXA}{N}{B} , \; \AddDatTorus{\FubeXssA}{N}{B}, \;  \AddDatTorus{\FubessXA}{N}{B} &&\multicolumn{1}{c}{+}\\
+\AddDatTorus{\FubeXXXA}{N}{B} , \; \AddDatTorus{\FubeXssA}{N}{B}, \;  \AddDatTorus{\FubessXA}{N}{B} &&\multicolumn{1}{c}{0}\\
 &&&&\\
 \mch^{T^2}_{(N,N)} \cong \mathbb{C}^{0|3} & & 
-\AddDatTorus{\FubesdXsA}{N}{N} , \; \AddDatTorus{\FubeXsdsA}{N}{N}, \;  \AddDatTorus{\FubessdXA}{N}{N} && \multicolumn{1}{c}{-} \\
+\AddDatTorus{\FubesdXsA}{N}{N} , \; \AddDatTorus{\FubeXsdsA}{N}{N}, \;  \AddDatTorus{\FubessdXA}{N}{N} && \multicolumn{1}{c}{1} \\
 &&&&\\
 \end{array}
 \end{align}
-\caption{\dave{Will add caption.} Notice that the non-bounding torus has only odd parity states.}
+\caption{\dave{Will add caption.} Notice that the non-bounding torus has only odd parity states.
+\kw{since in general parity can be mixed, perhaps we should drop the parity column.
+\dave{Sure. But lets mention the parity of the spin torri in the caption.}}
+}
 \label{TorusBasisC2}
 \end{figure}
 
@@ -4712,6 +4757,9 @@ The termination of a $\beta$ line at the bottom of a line corresponds to a punct
 
 We will calculate the braiding in the fusion space $V^{ab}_c$ by moving the $a$ and $b$ punctures around one other and re-expressing the result in terms of the basis vectors in $V^{ba}_c$. 
 When braiding q-type particles, we enforce their periodic boundary conditions graphically by introducing branch cuts ending on each q-type puncture, with the rule that dots sliding past a branch cut pick up a phase of $-1$. 
+%To describe the non-bounding spin structure, we find it helpful to add a ``branch cut" extending from the center of the annulus to the exterior, such that fermions pick up an extra minus sign when they cross the branch cut.
+The branch cut records the difference between the spin structure inherited from the plane of the figure (the ``blackboard") and the
+spin structure we want to depict.
 For concreteness, we will draw our branch cuts to always extend from the puncture vertically to the point at $\infty$.
 % meet near the center of the three punctures. 
 For example, to calculate $R^{q_\psi q_{1/\psi}}_{m_{\psi/1}}$, we write
@@ -5768,7 +5816,7 @@ Thus there is no need to define $\Arf(Y)$ in this case.
 \kw{only sketch; refer to paper in prep for full details.}
 
 
-\section{Fermion condensation in $SO(3)_6$} 
+\section{Fermion condensation in $SO(3)_6$} \label{so36}
 %$SU(2)_6$ and $SO(3)_6$
 \dave{In progress. I have the general formulas for minimal idempotents, S and T in any MTC/psi. 
 As well as any UBCF that is only non-modular by a transparent fermion, like in $SO(3)_6$.
@@ -6518,7 +6566,7 @@ As required, the odd part of the $S$ matrix satisfies $S^4 = -\unit$ and $(TS)^3
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Fermion condensation in $\halfesix$} \label{e6}
+\section{Fermion condensation in $\halfesix$} \label{halfesix}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In this section we perform fermion condensation in the category $\halfesix$.
@@ -8328,23 +8376,47 @@ The definition differs from the usual bosonic case in the following ways:
 
 There are various ways of axiomatizing string nets, including Kuperberg spiders \cite{kup_spider}, 
 planar algebras \cite{jones_pa},
-disk-like 2-categories \cite{blob_paper}, and pivotal tensor categories.
-\ethan{I think we can reference some papers for the bosonic case, and rely on our discussion in this section to fill in the rest of the differences}
+disk-like 2-categories \cite{blob_paper}, and pivotal tensor categories \cite{our fav bosonic reference}.
 
-%%% maybe should just cite a bosonic def and then describe differences
+The first three are better suited to our applications, but the last one is likely the most familiar to a majority or our readers,
+so we will describe a fermionic/super version of pivotal tensor categories.
 
-%The first three are better suited to our applications, but the last one is likely the most familiar to a majority or our readers,
-%so we will describe a fermionic/super version of pivotal tensor categories.
-%
-%A super pivotal category consists of:
-%\begin{itemize}
-%\item A set of objects $\mcc^1$.
-%\item A binary operation $\otimes$ on objects.
-%\item 
-%\end{itemize}
+Recall from 
+\cite{our fav bosonic reference}
+that the data of a pivotal category includes:
+\begin{itemize}
+\item A set of objects $\mcc^1$.
+\item A set of morphisms $\mcc^2$.
+\item A binary operation $\otimes$ (horizontal composition) on objects and morphisms.
+\item A binary operation $\circ$ on morphisms.
+\item A pivotal structure $*$ defined on both objects and morphisms.
+\end{itemize}
 
+The definition of a fermionic/super pivotal category differs from the more familiar bosonic case in the following ways.
+\begin{itemize}
+\item The space of morphisms between two objects has the structure of a super vector space.
+\item The interchange identity \kw{need to confirm that's what it's called \dave{Usher called it the {\em super interchange law} \cite{usher2016}}} picks up a Koszul sign
+\begin{align}
+	(f_1\tp f_2) \circ (g_1\tp g_2) = (-1)^{|f_2| |g_1|} (f_1\circ g_1)\tp (f_2\circ g_2)
+\end{align}
+\item The square of the pivotal operator is $(-1)^F$ rather than the identity functor
+\begin{align}
+	f^{**} = (-1)^{|f|} f
+\end{align}
+\end{itemize}
 
+\kw{figs for above? \dave{Definitely. I will try to draw those soon.}}
 
+\kw{I think we also need to mention Koszul signs in coherence relations (e.g.\ pentagon, anything else?)
+\dave{Double F-move + pivoting identity?}}
+
+\dave{I guess we have all had enough time to think about pitch-forks vs non-pitchforks. 
+Should we vote on which to use?}
+
+\kw{I think we should have the conventions of this section match those of the Hamiltonian 
+section (which is currently pitchforks, unless I missed a recent change)}
+
+\dave{Great. I agree.}
 
 %%%%%%%%%%%%%%%
 \subsection{Simple objects}  \label{def_sob_ss}
@@ -8359,16 +8431,19 @@ Equivalently, $a$ is simple if it has no quotient objects.
 (We also stipulate that the zero object is not a simple object.)
 
 In the usual bosonic, non-super case, the only possible endomorphism algebra for a simple object
-is the trivial algebra $\cc$ (scalars)\footnote{The 
-proof is as follows: by Schur's lemma every element in $\End(x)$ is invertible if $x$ is simple, and so $\End(x)$ must be a division algebra. 
-The only ungraded division algebra is $\cc$, and so $\End(x) = \cc$ for all simple $x$ in a regular fusion category.}
-In the fermionic/super case, there is a second possibility: the complex Clifford algebra $\cl_1$, which is the only nontrivial $\zt$-graded division algebra other than $\cc$.
+is the trivial algebra $\cc$ (scalars).
+%%% KW: this is a very well known fact, so I don't think the footnote is necessary
+%\footnote{The 
+%proof is as follows: by Schur's lemma every element in $\End(x)$ is invertible if $x$ is simple, and so $\End(x)$ must be a division algebra. 
+%The only ungraded division algebra is $\cc$, and so $\End(x) = \cc$ for all simple $x$ in a regular fusion category.}
+In the fermionic/super case, there is a second possibility: the complex Clifford algebra $\cl_1$, 
+which is the only nontrivial $\zt$-graded division algebra other than $\cc$.
 $\cl_1$ is generated over $\cc$ by the identity (which is even) and an odd element $f$ such that $f^2 = \lambda \cdot \id$
 (or $f^2 = \lambda$ for short) for some non-zero complex number $\lambda$. 
 Note that by rescaling the odd generator $f$ we can make $\lambda$ in the definition of $\cl_1$ any nonzero complex number. 
 
 It follows that simple objects in a super pivotal category fall into two classes, according to whether their endomorphism algebras are $\cc$ or $\cl_1$. 
-These are the q-type and m-type objects discussed earlier. 
+These are the m-type and q-type objects discussed earlier. 
 A simple object is {m-type} if its endomorphism algebra
 is $\cc$, and {q-type} if its endomorphism algebra is $\cl_1$:
 \begin{align}
@@ -8379,13 +8454,16 @@ is $\cc$, and {q-type} if its endomorphism algebra is $\cl_1$:
 \end{align}
 This terminology comes from the notation of [cite Jos], which classifies simple super algebras over $\cc$ as either
 $M(p,q) = \End(\cc^{p|q})$ or $Q(n)$ (see appendix \ref{superstuff}).
-The use of ``simple" here is rather misleading: any $M(p,q)$ or $Q(n)$ is a simple super algebra
+Note that we are using ``simple" here in two different (and well-established) senses: 
+any $M(p,q)$ or $Q(n)$ is a simple super algebra
 (because it has no non-trivial ideals), but the endomorphism algebra of a simple object must be either
 $M(1,0) \cong M(0,1) \cong \cc$ or $Q(1) \cong \cl_1$,
-because all of the larger $M(p,q)$ or $Q(n)$ contain non-invertible elements (i.e. because $\cc$ and $\cl_1$ are the only non-trivial $\zt$-graded division algebras).
+because all of the larger $M(p,q)$ or $Q(n)$ contain non-invertible elements.
+%(i.e. because $\cc$ and $\cl_1$ are the only non-trivial $\zt$-graded division algebras).
 
-The existence of q-type particles is responsible for the majority of the novel physics present after performing fermion condensation in a bosonic theory. 
+The existence of q-type particles is responsible for the majority of the novel physics present after performing fermion condensation. 
 q-type objects were also discussed in \ref{wen, usher, kapustin and Gaiotto}, where they were referred to as ``Majorana objects''. 
+\kw{did all of those sources call them ``Majorana objects"?  I thought only Usher did.}
 
 
 
@@ -8393,13 +8471,14 @@ q-type objects were also discussed in \ref{wen, usher, kapustin and Gaiotto}, wh
 \subsection{Fusion spaces} \label{fusion_spaces}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The input data for a super pivotal category includes a list of simple objects and their types (q or m), as well as a fusion space $V^{ab}_c$ for each triple $a,b,c$ of minimal idempotents
+The input data for a super pivotal category includes a list of simple objects and their types (q or m), 
+as well as a fusion space $V^{ab}_c = \mor(a\tp b \to c)$ for each triple $a,b,c$ of objects (equivalently, of minimal idempotents)
 of $\mcc$.
 This is a supervector space of dimension
 $N^{ab}_c = \dim V^{ab}_c = p|q$, where $p$ is the dimension of the even part
 of $V^{ab}_c$ and $q$ is the dimension of the odd part of $V^{ab}_c$.
 
-It is very important to note that $V^{ab}_c$ is not merely a super vector space---it also comes equipped with an action
+It is very important to note that $V^{ab}_c$ is not merely a super vector space -- it also comes equipped with an action
 of (i.e.\ module structure for) the endomorphism algebras of $a$, $b$ and $c$, and hence admits an action of $\End(a)\tp \End(b)\tp \End(c)$. 
 It is impossible to construct the full super pivotal category without knowing this module structure (see XXX below), 
 so the module
@@ -8408,12 +8487,18 @@ Note that the module structure implies that $N^{ab}_c = n|n$ if any of $a$, $b$ 
 This is because any representation of $\cl_1$ has equal even and odd dimensions.
 Acting with the odd (and invertible) element of $\cl_1$ gives an isomorphism between the even and odd parts of $V^{ab}_c$, and hence they must have the same dimension.
 
-Requiring that the Hilbert space at a given vertex admit a representation of $\End(a)\tp \End(b)\tp \End(c)$ places constraints on the types of fermionic theories one can write down. 
-For example, we can use this to show that a ``q-type Fibbonacci'' theory which contains a single q-type particle $\tau$ with the fusion space $V^{\tau\tau}_{\tau}\cong \cc^{1|1}$, cannot exist. 
-Indeed, if $V^{\tau\tau}_{\tau}$ is nontrivial and $\tau$ is q-type, then we must be able to find a representation of $\End(\tau)^{\tp 3} = \cl_1^{\tp 3} \cong \cl_3$ on $V^{\tau\tau}_{\tau}$.
+Requiring that the Hilbert space at a given vertex admit a 
+representation of $\End(a)\tp \End(b)\tp \End(c)$ places constraints on the types 
+of fermionic theories one can write down. 
+For example, we can use this to show that a ``q-type Fibbonacci'' theory 
+which contains a single q-type particle $\tau$ with the fusion space $V^{\tau\tau}_{\tau}\cong \cc^{1|1}$, cannot exist. 
+Indeed, if $V^{\tau\tau}_{\tau}$ is nontrivial and $\tau$ is q-type, 
+then we must be able to find a representation of $\End(\tau)^{\tp 3} = \cl_1^{\tp 3} \cong \cl_3$ on $V^{\tau\tau}_{\tau}$.
 This is impossible if $V^{\tau\tau}_{\tau}\cong \cc^{1|1}$, since $\cc^{1|1}$ is not large enough to represent $\cl_3$. 
-This means that theories which contain a q-type particle $\tau$ with $V^{\tau\tau}_{\tau}\neq0$ must contain nontrivial fusion multiplicities, which provide us with fusion spaces that are large enough to admit a representation of $\cl_3$.
-Indeed such a q-type particle exists in the $\halfesix$ theory considered earlier, which possesses nontrivial fusion multiplicities that allow the relevant fusion spaces in the theory to be large enough to represent $\cl_3$. 
+This means that theories which contain a q-type particle $\tau$ with $V^{\tau\tau}_{\tau}\neq0$ must contain nontrivial 
+fusion multiplicities, which provide us with fusion spaces that are large enough to admit a representation of $\cl_3$.
+Indeed such a q-type particle exists in the $\halfesix$ theory considered earlier (see \ref{halfe6}), 
+which possesses nontrivial fusion multiplicities that allow the relevant fusion spaces in the theory to be large enough to represent $\cl_3$. 
 %The $\Gamma$ matrices in the $\halfesix$ case are essentially determined by the relations \eqref{esixdotslide}. 
 
 %\ethan{recapitulate odd endo operators and reps of clifford algebras}
@@ -8431,6 +8516,7 @@ Indeed such a q-type particle exists in the $\halfesix$ theory considered earlie
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ethan{Dave and Kevin's old discussions are still here, just commented-out}
+\kw{Your rewrite looks good to me.}
 \begin{comment}
 \dave{Just wanted to add some notes on a confusing point that we should try to straighten out.}
 Fusion rules are subtle in a super-pivotal category. 
@@ -8598,7 +8684,7 @@ For any $a$ and $b$, define the vector spaces $\Delta^{ab}_c$ by
 \be
 	a \otimes b \cong \bigoplus_c \Delta^{ab}_c \cdot c ,
 \ee
-where the direct sum runs over all simple objects $c$. 
+where the direct sum runs over all simple objects $c$ in $\mcx$. 
 The $\Delta^{ab}_c$ are the fusion rule coefficients. 
 
 The fusion spaces $V^{ab}_c$ are defined as the vector space of morphisms from $a\tp b$ to $c$:
@@ -8624,7 +8710,7 @@ On the other hand, $\Delta^{ab}_c$ is {\it not} symmetric in $a,b,c$, as the $C_
 Additionally, while $V^{ab}_c$ has an action of $\End(a)\otimes\End(b)\otimes\End(c)$ (as mentioned earlier), $\Delta^{ab}_c$
 only has an action of $\End(a)\otimes\End(b)$.
 
-This definition of $V^{ab}_c$ gives us another wa to show that $V^{ab}_c$ will always be a supervector space of the form $\cc^{n|n}$ for some integer $n$ if any of $a,b,c$ is q-type. 
+This definition of $V^{ab}_c$ gives us another way to show that $V^{ab}_c$ will always be a supervector space of the form $\cc^{n|n}$ for some integer $n$ if any of $a,b,c$ is q-type. 
 Indeed, suppose $c$ were q-type, and $\Delta^{ab}_c \cong \cc^{r|s}$. 
 Then $V^{ab}_c \cong \cc^{r|s} \tp \cc^{1|1} \cong \cc^{r+s|r+s}$. 
 The result then follows by the symmetry of $V^{ab}_c$. 
@@ -8644,11 +8730,13 @@ If at least one of $a,b,c$ is q-type, we can simplify the construction of $V^{ab
 Since in this case $V^{ab}_c \cong \cc^{r|r}$ for some $r$, there are just as many even basis vectors in $V^{ab}_c$ as odd ones. 
 Suppose $c$ is q-type, and that $\{|\psi_i\rangle\} \in [V^{ab}_c]^0, i =1,\dots, r$ are the even basis vectors in $V^{ab}_c$. 
 Then we can define a complete set of odd basis vectors $\{ |\eta_i\rangle \}$ for $[V^{ab}_c]^1$ by $|\eta_i\rangle = f|\psi_i\rangle$, where $f$ is the odd element of $\End(c) \cong \cc^{1|1}$ (or any odd element in $\End(c)$ if $c$ is not simple).
-When we write $|\eta_i\rangle$ graphically, we will write it as $f |\psi_\rangle$, which allows us to  ``shift the oddness out of the vertex onto the edge'' by transferring the fermion residing on the fusion space to the q-type particle $c$. 
+When we write $|\eta_i\rangle$ graphically, we will write it as $f |\psi \rangle$, which allows us to  ``shift the oddness out of the vertex onto the edge'' by transferring the fermion residing on the fusion space to the q-type particle $c$. 
 Graphically, this means that we are allowed to ``displace'' dots from trivalent vertices onto q-type worldlines:
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_displacement.pdf}}}}, \ee
 where the picture on the left is $|\eta_i\rangle$ and the one on the right is $f|\psi_i\rangle$, and $c$ is assumed to be q-type. 
-Mathematically, this is nothing more than the mapping $V^{ab}_c \mapsto [V^{ab}_c]^0 \tp V^{c\unit}_{c} \cong [V^{ab}_c]^0 \tp \End(c)$ where $[V^{ab}_c]^0$ is a purely even vector space, and although simple it proves to be helpful when doing graphical manipulations. 
+Mathematically, this is nothing more than the mapping $V^{ab}_c \mapsto [V^{ab}_c]^0 \tp V^{c\unit}_{c} \cong [V^{ab}_c]^0 \tp \End(c)$ 
+where $[V^{ab}_c]^0$ is a purely even vector space.
+Although this is not a deep fact, it proves to be helpful when doing graphical manipulations. 
 
 
 
@@ -8657,6 +8745,11 @@ Mathematically, this is nothing more than the mapping $V^{ab}_c \mapsto [V^{ab}_
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Koszul sign rule} \label{koszul_signs}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\kw{have not reviewed this subsection; maybe it should be relocated; 
+probably we want to use the equivariant/unordered version of the super tensor product; 
+need to see it there's a reference for that (have sent an email inquiry about references.}
+\dave{Right. Did you hear back about any references?}
 
 Because of the anti-commuting nature of fusion spaces (i.e., because they can have odd fermion number), taking tensor products of fusion spaces necessitates defining an ordering 
 of the fusion spaces. 
@@ -10784,7 +10877,7 @@ This perspective allows us to easily calculate the number of spin structures tha
 %This agrees with our interpretation of a spin structure in terms of the ``codimension-1 back wall'' picture, since Poincare duality allows us to associate any element in $H^1(M,\zt)$ with a codimension-1 submanifold of $M$.
 
 To think about inner products of diagrams, we need to have the ability to reflect them in a given spacetime plane. Incorporating reflections into our arsenal means replacing $SO(n)$ with $O(n)$ in \eqref{spin_gp_seq}. This allows us to define the groups $Pin_\pm(n)$, which are the ``reflection-enhanced'' versions of $Spin(n)$ defined by the exact sequence 
- The $\pm$ sign in $Pin_\pm(n)$ distungiishes between the two different allowed extensions in \eqref{pin_gp_seq}. Physically, they differ by the way in which reflection symmetry is ``fractionalized'': reflection squares to $-1$ on fermions in $Pin_-(n)$, and to $+1$ in $Pin_+(n)$. 
+ The $\pm$ sign in $Pin_\pm(n)$ distingiishes between the two different allowed extensions in \eqref{pin_gp_seq}. Physically, they differ by the way in which reflection symmetry is ``fractionalized'': reflection squares to $-1$ on fermions in $Pin_-(n)$, and to $+1$ in $Pin_+(n)$. 
 
 
 In what follows we will need to deal with the action of orientation-reversing reflections, which means that we will actually need the more general construction of a $Pin_\pm(n)$ structure. Colloquially, a pin structure is to a spin structure what $O(n)$ is to $SO(n)$. They are therefore defined by replacing $SO(n)$ with $O(n)$ in \eqref{spin_gp_seq}:
@@ -10794,11 +10887,17 @@ Alternatively, they can be described as $\zt$ central extensions of $Spin(n)$:
 \be \label{pinseq} 1\ra Spin(n) \ra Pin_\pm(n) \ra \zt \ra 1,\ee 
 where second-to-last map $p : Pin_\pm(n) \ra \zt$ sends orientation-reversing (orientation-preserving) elements to $-1$ ($+1$). Geometrically, a pin structure is a $\zt$ extension of the unoriented frame bundle on $M$ (the frame bundle on $M$ with structure group $O(n)$), defined in an analogous way to \eqref{spinbundleseq}.
 
-<<<<<<< HEAD
-The difference between $Pin_+(n)$ and $Pin_-(n)$ is the way in which reflection acts: reflection squares to $1$ in $Pin_+(n)$ (i.e. carries a trivial reflection quantum number) and to $-1$ in $Pin_-(n)$ (i.e. carries a nontrivial reflection quantum number). This in turn corresponds to whether \eqref{pinseq} splits: if it splits we have a $Pin_+(n)$ structure, with $Pin_+(n) \cong Spin(n) \rtimes \zt$. If it does not split we have a $Pin_-(n)$ structure, with $Pin_-(n) \cong (Spin(n) \rtimes \zz_4)/\zt$. In what follows, we will fix a $Pin_+(n)$ structure for concreteness (which is always possible as long as $M$ is orientable). The relation $Pin_+(n) \cong Spin(n) \rtimes \zt$ gives an automorphism of $Spin(n)$ by conjugation, $\phi \mapsto \gamma \phi \gamma$, for $\phi \in Spin(n)$ and $\gamma \in Pin_+(n)$. This is exactly the isomorphism that establishes the equivalence between $m_\sigma^+$ and $m_\sigma^-$ in the main text. 
-=======
-The difference between $pin^+(n)$ and $pin^-(n)$ is the way in which reflection acts: reflection squares to $1$ in $pin^+(n)$ (i.e.\ carries a trivial reflection quantum number) and to $-1$ in $pin^-(n)$ (i.e.\ carries a nontrivial reflection quantum number). This in turn corresponds to whether \eqref{pinseq} splits: if it splits we have a $pin^+(n)$ structure, with $pin^+(n) \cong Spin(n) \rtimes \zt$. If it does not split we have a $pin^-(n)$ structure, with $pin^-(n) \cong (Spin(n) \rtimes \zz_4)/\zt$. In what follows, we will fix a $pin^+(n)$ structure for concreteness (which is always possible as long as $M$ is orientable). The relation $pin^+(n) \cong Spin(n) \rtimes \zt$ gives an automorphism of $Spin(n)$ by conjugation, $\phi \mapsto \gamma \phi \gamma$, for $\phi \in Spin(n)$ and $\gamma \in pin^+(n)$. This is exactly the isomorphism that establishes the equivalence between $m_\sigma^+$ and $m_\sigma^-$ in the main text. 
->>>>>>> 6969e7c338a5739b58b8084416418acac42a52da
+The difference between $Pin_+(n)$ and $Pin_-(n)$ is the way in which reflection acts: 
+reflection squares to $1$ in $Pin_+(n)$ (i.e.\ carries a trivial reflection quantum number) 
+and to $-1$ in $Pin_-(n)$ (i.e.\ carries a nontrivial reflection quantum number). 
+This in turn corresponds to whether \eqref{pinseq} splits: if it splits we have a $Pin_+(n)$ structure, 
+with $Pin_+(n) \cong Spin(n) \rtimes \zt$. If it does not split we have a $Pin_-(n)$ structure, 
+with $Pin_-(n) \cong (Spin(n) \rtimes \zz_4)/\zt$. In what follows, we will fix a $Pin_+(n)$ 
+structure for concreteness (which is always possible as long as $M$ is orientable). 
+The relation $Pin_+(n) \cong Spin(n) \rtimes \zt$ gives an automorphism of $Spin(n)$ by 
+conjugation, $\phi \mapsto \gamma \phi \gamma$, for $\phi \in Spin(n)$ and $\gamma \in Pin_+(n)$. 
+This is exactly the isomorphism that establishes the equivalence between $m_\sigma^+$ 
+and $m_\sigma^-$ in the main text. 
 
 %\ethan{(the following paragraph might not be needed)}
 %So far we have discussed (s)pin structures from a rather geometric point of view, but there is a more algebraic approach that is also useful for us. Consider the real clifford algebra $C\ell_n$, generated by $n$ odd generators $\gamma_1,\dots,\gamma_n$ subject to the anticommutation relations $\{\gamma_i,\gamma_j\} = 2\delta_{ij}$\footnote{Unlike in the complex case, we cannot set the quadratic form $Q_{ij}$ in the more general $\{\gamma_i,\gamma_j\} = 2Q_{ij}$ to be $\delta_{ij}$ without loss of generality, since the signature of the quadratic form is physically meaningful in the real case. Our choice of $Q_{ij} = \delta_{ij}$ is because we are working in Euclidean signature.}. Geometrically, each $\gamma_i$ can be realized as a reflection about the plane normal to $v_i$, where $v_i$ is a basis vector of $\mathbb{R}^n$. Taking all the invertible elements of unit norm in $C\ell_n$ gives us $Pin_+(n)$\footnote{Not $Pin_-(n)$, since we have taken the quadratic form $Q_{ij} = \delta_{ij}$ to be positive-definite.}. Taking the even-parity elements (those containing an even number of different $\gamma_i$s) gives us the spin groups:
