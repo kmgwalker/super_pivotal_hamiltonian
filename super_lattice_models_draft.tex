@@ -3322,65 +3322,9 @@ a 3-punctured sphere with $e_1$ an d $e_2$ fixed on boundary components 1 and 2,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Quasiparticle fusion rules} \label{C2_fusion_rules}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\ethan{I think this more general discussion should be moved to the section where we talk about the tube algebra in full generality}
 With all quasiparticles in hand, we are ready to compute their fusion rules. 
-We will first outline how the fusion rules are computed abstractly, and will then compute them for $C_2$ theory. 
-
-To begin, let $X$ be a spin surface with $k$ punctures, and label the boundary components as$S_1,\ldots,S_k$.
-Let $T_i$ denote the tube category corresponding to the circle $S_i$\footnote{Here we mean the restriction of the full tube category $\tube$ to the sector with spin structure given by the spin structure on $S_i$. That is, $T_i = \tube^B$ ($=\tube^N$) is $S_i$ is bounding (non-bounding).}.
-Given objects $c_i$ of $T_i$, for $1\le i \le k$, we have a super vector space $V(X; c_1,\ldots,c_k)$ consisting on string nets
-on $X$, modulo local relations, with boundary conditions $c_i$ at $S_i$.
-
-We can then glue morphisms of $T_i$ (tubes) onto $S_i$ to obtain a new string net with (possibly) different boundary condition.
-A concise way to describe this algebraic structure is to say that the collection of super vector spaces $\{V(Y; c_1,\ldots,c_k)\}$
-(for all possible values of $c_1,\ldots,c_k$)
-affords a representation of the category $T_1\times\cdots\times T_k$.
-We will denote this representation by $T(X)$.
-If excitations (a.k.a minimal idempotents) $a_1,\dots,a_k$ are localized on the punctures $S_1,\dots,S_k$, then $V(Y; c_1,\ldots,c_k)$ must be invariant under the action of
-${a_1}\times \dots \times {a_k}$. 
-
-To examine the fusion rules of the excitations, we can take $X$ to be the pair of pants (a.k.a three-punctured sphere), which we will denote as $Y$. 
-
-There are four spin structures on the pair of pants. 
-In one of them, all three boundary components have a bounding spin structure, while in 
-n the remaining three, two out of the three boundary components have a non-bounding spin structure.
-We will choose a standard representative for each of these pairs of pants, so that each boundary component is equipped with a spin diffeomorphism to a 
-standard copy of $S^1_B$ or $S^1_N$.
-
-Let $T_a$, $T_b$ and $T_c$ denote the three associated copies of the tube category on $Y$.
-Given representations $\rho_a$ and $\rho_b$ of $T_a$ and $T_b$, we can define a new representation of $T_c$,
-denoted $\rho_a\tp\rho_b$, via
-\be  \label{tctpdef}
-	\rho_a\tp\rho_b = (\rho_a \boxtimes \rho_b) \tp_{T_a\times T_b} A(P) .
-\ee
-Here $\rho_a \boxtimes \rho_b$ denotes the ``outer" tensor product, a representation of $T_a\times T_b$.
-
-This construction gives us a trimodule for the tube category, since $Y$ has three disconnected boundary components. 
-For fixed representations $\rho_a,\rho_b,\rho_c$ of $T_a,T_b,T_c$,
-we will define the fusion space $V^{abc}$ to be the vector space of string-nets on $Y$ modulo local relations.
-The fusion space $V^{abc}$ is given by the collection of maps from the two boundaries of $Y$ with $\rho_a,\rho_b$ boundary conditions to the boundary of $Y$ with $\rho_c$ boundary conditions, and so we can also write $V^{abc}$ as
-\begin{align}
-\label{morpants}
-V^{abc} \cong \text{mor}( \underset{a}{\TubeBCx{J}} \tp \underset{b}{\TubeBCx{W}}  \rightarrow \underset{\;\; \;\; \quad c \in a\tp b}{\TubeBCx{J+W}} ), %= \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right]
-\end{align}
-where $J, W \in \{ B,N \}$ denote the spin structures of the two punctures being fused. 
-Since contractible loops are assigned anti-periodic boundary conditions, $B$ acts as $0$ and $N$ acts as $1$ when calculating $J+W$ (where addition is carried out in $\zt$), and 
-so the addition rule is 
-\begin{align}
-B+B = B \quad \quad B+N = N \quad \quad N+N  = B.
-\end{align}
-
-If $\rho_a$ is a representation corresponding to a minimal idempotent $\Pi_a$, then it defines an irreducible quasiparticle excitation.
-In what follows, we will abuse notation slightly, and write $\rho_a$ as $a$. 
-Fusion of excitations is given simply by the tensor product of representations, which allows us to define the fusion rules.
-We define the fusion rule coefficients $\Delta^{ab}_c$ as the vector spaces which appear in the direct sum decomposition of $a\tp b$\footnote{The $\Delta^{ab}_c$ are complex supervector spaces, not numbers, and so ``fusion rule coefficients'' is a bit misleading. However, vector spaces are the categorified version of scalars, and so we will continue to adopt this slightly imprecise terminology.}:
-\be \label{fusion_coeffs_defn} a \tp b \cong \bigoplus_c \Delta^{ab}_ c c,\ee
-where the sum runs over all representations whose associated idempotents are minimal. 
-In bosonic theories, the fusion spaces can be read off directly from direct sum decompositions like this: they are precisely $V^{ab}_c = \Delta^{ab}_c$. 
-However, this is not true in fermionic theories. 
-The general relation is in fact that the fusion spaces are larger than the $\Delta^{ab}_c$s:
-\be V^{ab}_c \cong \Delta^{ab}_c \tp \End(c).\ee
-We demonstrate and elaborate on this in Section \ref{fusion_rules_and_fusion_spaces}. 
+We postpone a more general discussion of how to compute fusion rules to Sec \ref{fusion_rules}, and in this section restrict ourselves to working out examples for the $C_2$ theory. 
 
 
 %The idempotent given by $\Pi_{m_\sigma^+}$ constitutes a choice of representative, we could have just as easily chosen $\Pi_{m_\sigma^-}$ and all guage invariant quantities that we compute with either would be the same, but explicit representations of, for example the fusion spaces, may change.
@@ -3407,22 +3351,23 @@ We demonstrate and elaborate on this in Section \ref{fusion_rules_and_fusion_spa
 %Note that the spin structure on the inner two punctures determines the spin structure on the outer one, 
 %and so we omit the labeling.
 
-The primitive idempotents -- or quasiparticles -- displayed in Figure \ref{CTwoParticles} naturally decompose 
-the fusion space in \eqref{morpants} into simple modules.
-\kw{what does ``parse" mean here? \dave{``parse" = decomposes \eqref{morpants} into modules or super-selection sectors.}}
-\kw{I haven't seen ``parse" used in this sense before.  Is it well-established terminology?  ``Decompose" sounds more normal to me.}
-\dave{It is not established terminology, just what came to me that day. I changed the sentence.}
-The simple modules are given by the invariant subspace under application of the primitive idempotents. 
-More specifically, let $a$ be the idempotent representing the iso-morphism class of a given quasiparticle, i.e., one of those listed in Figure \ref{CTwoParticles}.
+The quasiparticles -- or primitive idempotents -- displayed in Figure \ref{CTwoParticles} naturally define simple modules of the tube category (through the vector spaces which the primitive idempotents project onto).
+These simple modules give irreducible representations of the tube category, and so to each quasiparticle $a$ we can construct an irreducible representation, which we will also denote as $a$. 
+
+In some cases, the irreducible representation associated with a particular quasiparticle will not be 1-dimensional.
+If this is the case, the quasiparticle will be isomorphic to other quasiparticles in the excitation spectrum, and in order to perform computations we must choose a representative of the isomorphism class. 
 %More specifically, let $a$ be the idempotent
 %\kw{$a$ is already an idempotent, so I don't think we need the $\Pi_a$ notation.}
 %(projector) corresponding to the representative of the isomorphism class of quasiparticle $a$, i.e., one of those listed in Figure \ref{CTwoParticles}.
 The choice of representative affects the explicit representation of the fusion space, but none of the guage invariant quantities which can be computed. 
 For example, the idempotent given by ${m_\sigma^+}$ constitutes a choice of representative, we could have just as easily chosen ${m_\sigma^-}$.
-All resulting guage invariant quantities are the same for each choice, but explicit representations of, for example the fusion spaces, may change.
-In order for $V^{ab}_c$ to be a bona fide fusion space, the vector space $V^{ab}_c$ must be invariant under the action of $a$ and $b$ on the inner punctures acting from above, and $c$ acting on the outer puncture from below.
-Therefore, determining the fusion space $V^{ab}_c$ is tantamount to finding a vector space supported on the pair of pants invariant under the application of $a\tp b$ on the ``top'' of the pants, and invariant under $c$ on the ``bottom'' of the pants, see Fig. \ref{Makefigure}.
-The (super)dimension of this vector space is the fusion multiplicity $N^{ab}_c = \dim V^{ab}_c$. 
+All resulting gauge invariant quantities are the same for each choice, but explicit representations of, for example the fusion spaces, may change.
+
+Given two irreps $a$ and $b$, we can form the tensor product representation $a\tp b$, which need not be irreducible.
+Physically, forming $a\tp b$ amounts to fusing the quasiparticles $a$ and $b$ together. 
+We define the fusion space $V^{ab}_c$ as the space
+\be V^{ab}_c \def {\rm mor}(a\tp b \ra c).\ee
+Geometrically, $V^{ab}_c$ corresponds to the space of all string-net configurations (modulo local relations) on a pair of pants whose top legs are labeled by the quasiparticles $a$ and $b$, and whose bottom leg is labelled by $c$. 
 
 %Recall from Figure \ref{FIG??} quasiparticles are supported on punctures of the underlying manifold, a fusion space like $V^{ab}_c$ will be given by a vector space whose vectors are string-net configurations on pairs of pants, 
 %with $a$ and $b$ supported on the ``incoming'' legs of the pants and $c$ supported on the ``outgoing'' leg. 
@@ -5290,7 +5235,7 @@ When we compute this partition function, we thicken the two tori so that their b
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Generalities on fermion condensation}
+\section{Generalities on fermion condensation and tube categories}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 It should be obvious that the techniques used in Section \ref{C2_condense_sect} work more generally.
@@ -5627,6 +5572,73 @@ where we have viewed the category of supervector spaces, sVec, as consisting of 
 %We can obtain them by examining the number of fusion channels each has when fused with its antiparticle. 
 %We find
 %\be d_{m_1} = d_{m_\psi} = 1,\quad d_{m_\sigma^+} = d_{q_1} = d_{q_\psi} = \sqrt{2},\quad d_{q_\sigma} = 2.\ee
+
+
+%%%%%%%%%%%%%%%%%%%
+\subsection{Fusion rules} \label{fusion_rules}
+%%%%%%%%%%%%%%%%%%%
+
+To begin, let $X$ be a spin surface with $k$ punctures, and label the boundary components as$S_1,\ldots,S_k$.
+Let $T_i$ denote the tube category corresponding to the circle $S_i$\footnote{Here we mean the restriction of the full tube category $\tube$ to the sector with spin structure given by the spin structure on $S_i$. That is, $T_i = \tube^B$ ($=\tube^N$) is $S_i$ is bounding (non-bounding).}.
+Given objects $c_i$ of $T_i$, for $1\le i \le k$, we have a super vector space $V(X; c_1,\ldots,c_k)$ consisting on string nets
+on $X$, modulo local relations, with boundary conditions $c_i$ at $S_i$.
+
+We can then glue morphisms of $T_i$ (tubes) onto $S_i$ to obtain a new string net with (possibly) different boundary condition.
+A concise way to describe this algebraic structure is to say that the collection of super vector spaces $\{V(Y; c_1,\ldots,c_k)\}$
+(for all possible values of $c_1,\ldots,c_k$)
+affords a representation of the category $T_1\times\cdots\times T_k$.
+We will denote this representation by $T(X)$.
+If excitations (a.k.a minimal idempotents) $a_1,\dots,a_k$ are localized on the punctures $S_1,\dots,S_k$, then $V(Y; c_1,\ldots,c_k)$ must be invariant under the action of
+${a_1}\times \dots \times {a_k}$. 
+
+To examine the fusion rules of the excitations, we can take $X$ to be the pair of pants (a.k.a three-punctured sphere), which we will denote as $Y$. 
+
+There are four spin structures on the pair of pants. 
+In one of them, all three boundary components have a bounding spin structure, while in 
+n the remaining three, two out of the three boundary components have a non-bounding spin structure.
+We will choose a standard representative for each of these pairs of pants, so that each boundary component is equipped with a spin diffeomorphism to a 
+standard copy of $S^1_B$ or $S^1_N$.
+
+Let $T_a$, $T_b$ and $T_c$ denote the three associated copies of the tube category on $Y$.
+Given representations $\rho_a$ and $\rho_b$ of $T_a$ and $T_b$, we can define a new representation of $T_c$,
+denoted $\rho_a\tp\rho_b$, via
+\be  \label{tctpdef}
+	\rho_a\tp\rho_b = (\rho_a \boxtimes \rho_b) \tp_{T_a\times T_b} A(P) .
+\ee
+Here $\rho_a \boxtimes \rho_b$ denotes the ``outer" tensor product, a representation of $T_a\times T_b$.
+
+This construction gives us a trimodule for the tube category, since $Y$ has three disconnected boundary components. 
+For fixed representations $\rho_a,\rho_b,\rho_c$ of $T_a,T_b,T_c$,
+we will define the fusion space $V^{abc}$ to be the vector space of string-nets on $Y$ modulo local relations.
+The fusion space $V^{abc}$ is given by the collection of maps from the two boundaries of $Y$ with $\rho_a,\rho_b$ boundary conditions to the boundary of $Y$ with $\rho_c$ boundary conditions, and so we can also write $V^{abc}$ as
+\begin{align}
+\label{morpants}
+V^{abc} \cong \text{mor}( \underset{a}{\TubeBCx{J}} \tp \underset{b}{\TubeBCx{W}}  \rightarrow \underset{\;\; \;\; \quad c \in a\tp b}{\TubeBCx{J+W}} ), %= \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right]
+\end{align}
+where $J, W \in \{ B,N \}$ denote the spin structures of the two punctures being fused. 
+Since contractible loops are assigned anti-periodic boundary conditions, $B$ acts as $0$ and $N$ acts as $1$ when calculating $J+W$ (where addition is carried out in $\zt$), and 
+so the addition rule is 
+\begin{align}
+B+B = B \quad \quad B+N = N \quad \quad N+N  = B.
+\end{align}
+
+If $\rho_a$ is a representation corresponding to a minimal idempotent $a$, then it defines an irreducible quasiparticle excitation.
+In what follows, we will abuse notation slightly, and write $\rho_a$ as $a$. 
+Fusion of excitations is given simply by the tensor product of representations, which allows us to define the fusion rules.
+We define the fusion rule coefficients $\Delta^{ab}_c$ as the vector spaces which appear in the direct sum decomposition of $a\tp b$\footnote{The $\Delta^{ab}_c$ are complex supervector spaces, not numbers, and so ``fusion rule coefficients'' is a bit misleading. However, vector spaces are the categorified version of scalars, and so we will continue to adopt this slightly imprecise terminology.}:
+\be \label{fusion_coeffs_defn} a \tp b \cong \bigoplus_c \Delta^{ab}_ c c,\ee
+where the sum runs over all representations whose associated idempotents are minimal. 
+In bosonic theories, the fusion spaces can be read off directly from direct sum decompositions like this: they are precisely $V^{ab}_c = \Delta^{ab}_c$. 
+However, this is not true in fermionic theories. 
+The general relation is in fact that the fusion spaces are larger than the $\Delta^{ab}_c$s:
+\be V^{ab}_c \cong \Delta^{ab}_c \tp \End(c).\ee
+We demonstrate and elaborate on this in Section \ref{fusion_rules_and_fusion_spaces}. 
+
+
+
+
+
+
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Modular and braiding data in super pivotal categories}
