@@ -1082,7 +1082,7 @@ where $A$ is a primitive 16th root of unity. Graphically, this means that
 where the blue (orange) circle denotes a circular $\psi$ ($\sigma$) worldline.
 $\unit$ worldlines, being identified with the vaccuum, are not drawn in diagrams. 
 
-Out of the eight possible choices for $A$, the four different choices $A = ie^{\pm i\pi/8}, -ie^{\pm i\pi/8}$ all give a positive quantum dimension for the $\sigma$ particle of $d = \sqrt{2}$. 
+Out of the eight possible choices for $A$, the four different choices $A = ie^{\pm i\pi/8}, -ie^{\pm i\pi/8}$ all give a positive quantum dimension for the $\sigma$ particle of $d = \sqrt{2}$. $A$ is related to the filling fraction $\nu$ defined in \cite{symmetry_defects_gauging} by $\nu = -24i\ln(-A)/\pi$. 
 %%%% removing the FS remark until/unless we can find a definitive reference
 %The remaining four choices $A=e^{\pm i\pi/8},-e^{\pm i\pi/8}$ with $d = -\sqrt{2}$ are equivalent to unitary theories with $d=\sqrt{2}$ and a nontrivial Frobenius-Schur indicator $\kappa_\sigma = -1$.
 %\kw{Equivalent in what sense?  As pivotal categories?
@@ -1129,13 +1129,14 @@ where again, we are marking $\psi$ worldlines in dark blue and $\sigma$ worldlin
 %\end{align}
 
 The non-trivial $F$-moves in the theory are as follows:
-\begin{align}  
-&\mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_psi_Fmove.pdf}}}},  \qquad\qquad\mathord{\vcenter{\hbox{\includegraphics[scale=1]{psi_Fmove.pdf}}}},  \\
-&\doublecups = \frac{1}{d} \left(\doublebeta +  \mathord{\vcenter{\hbox{\includegraphics[scale=1]{sigsig_psi.pdf}}}} \right),\qquad\qquad
-\doublebeta = \frac{1}{d} \left(\doublecups + \doublecuppsi\right). 
-\end{align}
+%old weirdly-normalized convention:
+%\begin{align}  
+%&\mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_psi_Fmove.pdf}}}},  \qquad\qquad\mathord{\vcenter{\hbox{\includegraphics[scale=1]{psi_Fmove.pdf}}}},  \\
+%&\doublecups = \frac{1}{d} \left(\doublebeta +  \mathord{\vcenter{\hbox{\includegraphics[scale=1]{sigsig_psi.pdf}}}} \right),\qquad\qquad
+%\doublebeta = \frac{1}{d} \left(\doublecups + \doublecuppsi\right). 
+%\end{align}
 %\begin{flalign} & 
-\dave{I thought we were using the conventions below since it's the one that is more common in the physics literature.}
+%\dave{I thought we were using the conventions below since it's the one that is more common in the physics literature.}
 \begin{align}	
 & \IsingDat{\VssI}{\sigma}{\sigma}{\sigma}{\sigma}  =\frac{1}{d} \left(   \IsingDat{\HssI}{\sigma}{\sigma}{\sigma}{\sigma} + \IsingDat{\ScriptOverSymbol{\Hssp}{\substack{\; \\ \; \\ \psi }}}{\sigma}{\sigma}{\sigma}{\sigma} \right) \qquad \qquad
 \IsingDat{\HspI}{\sigma}{\psi}{\sigma}{\psi} = 
@@ -1158,9 +1159,10 @@ We need to take $A \ra A^{-1}$ in one of them, probably the second one.
 All other braid data seems to be consistent. 
 Still need to check that the normalizations above are consistent. 
 }
+\ethan{just checked this, and think we should have the following (here I'm taking $A = i e^{\pm i\pi/8}, - i e^{\pm i \pi/8}$ to have positive FS indicator and the others to have negative FS. If it's the other way around, I think both terms need an extra $-1$ sign):}
 \begin{align}
 \underset{\;\;\; \; \;\;\;  \sigma }{\overset{\;\;\; \; \;\;\;  \sigma }{\Twists} } = -A^3\; \underset{\sigma}{\overset{\sigma}{\idsigmashort}}  \qquad \qquad 
-\IsingDat{\Braidss}{\sigma}{\sigma}{\sigma}{\sigma} = A \IsingDat{\VssI}{\sigma}{\sigma}{\sigma}{\sigma}  +A^{-1}  \IsingDat{\HssI}{\sigma}{\sigma}{\sigma}{\sigma} 
+\IsingDat{\Braidss}{\sigma}{\sigma}{\sigma}{\sigma} = A^{-1} \IsingDat{\VssI}{\sigma}{\sigma}{\sigma}{\sigma}  + \alpha_\sigma A  \IsingDat{\HssI}{\sigma}{\sigma}{\sigma}{\sigma} 
 \end{align}
 \kw{The term ``self-statistics" seems to be rarely used, according to Google.
 Are we sure we want to use it?}
@@ -2329,7 +2331,12 @@ where $B$, $N$ denote bounding and non-bounding spin structures respectively.
 Morphisms of $\tube(C_2)$ are 
 defined to be cylinders (which we will draw as annuli) colored with $C_2$ string-nets.
 A given morphism $a\ra b$ is thus an annulus whose outer (inner) boundary conditions are determined by the object $a$ ($b$). 
-Note that a non-zero morphism $a\ra b$ is only possible if $a$ and $b$ have the same spin structure.
+Note that a non-zero morphism $a\ra b$ is only possible if $a$ and $b$ have the same spin structure. 
+This means that any tube category $\tube$ admits the decomposition 
+\be \tube \cong \tube^B \oplus \tube^N\ee
+into bounding- and non-bounding components. 
+Occasionally it can be helpful to think of both $\tube^B$ and $\tube^N$ as separate categories, although we will adopt the view where there is only one tube category $\tube$ in what follows. 
+
 After applying local relations (F-moves, dot-cancellations, removing trivial loops), 
 an arbitrary string-net diagram on any tube can be reduced to a linear 
 combination of the following diagrams:
@@ -2361,6 +2368,7 @@ combination of the following diagrams:
 I'm happy to lie a little bit and write empty set if you think it's less confusing to the typical reader.}
 \dave{I don't think it's more confusing, and it's better to be correct.
 Is there a standard notation for a 0-dimensional vector space?}
+\ethan{I think just $0$ works}
 with $J =B$ for bounding spin structure, and $J =N$ for non-bounding spin structure. 
 %\begin{align}
 %\FubeXXX \quad \FubesXs    \quad \FubeXss \quad \FubessX   \quad \FubesdXs \quad  \FubeXsds \quad \FubessdX
@@ -2638,8 +2646,8 @@ First, we turn to an analysis of tubes with non-vortex spin structure.
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 Let us first examine the tubes with no charge\footnote{We define the ``charge'' of a tube to be the label of the marked point of the upper boundary of the tube, so that tubes in $\tube_{a \rightarrow b}$ have charge $b$. 
-This is slightly misleading however, because charge is not a good quantum number: in more general theories, $\tube_{a \ra b}$ will be nonzero even when $a\neq b$. We will also see examples of theories in which certain excitations will consist of linear combinations of tubes of different charge (a non-fermionic version of this is the doubled Fibonacci theory).
-\kw{I don't agree with the last remark; one never takes linear combinations unless all boundary conditions agree.}
+This is slightly misleading however, because charge is not a good quantum number: in more general theories, $\tube_{a \ra b}$ will be nonzero even when $a\neq b$. We will also see examples of theories in which certain equivalence classes of excitations contain tubes of different charge (a non-fermionic version of this is the doubled Fibonacci theory).
+\kw{I don't agree with the last remark; one never takes linear combinations unless all boundary conditions agree.} \ethan{is the new language better?}
 }, that is, cylinders 
 with bounding spin structures and empty boundary conditions on both their top and bottom, which are the cylinders in $\tube^B_{\unit \rightarrow \unit}$. 
 We see that this algeba \eqref{atubes} has two even generators, and so as a vector space
@@ -2703,9 +2711,9 @@ $\times$ in $\tube^B_{\beta\rightarrow \beta} \vphantom{\scale{1.3}{\VerticalSpa
 \hline
 $\FubeXssA$ & $\FubeXssA$ & $\ \FubeXsdsA$  & $\FubessXA$ & $\FubessdXA$  \\
 
-$\FubeXsdsA$ & $\FubeXsdsA $& $A^{4}\FubeXssA$ & $-\FubessdXA $& $A^{12}\FubessXA  $\\
+$\FubeXsdsA$ & $\FubeXsdsA $& $A^{4}\FubeXssA$ & $-\FubessdXA $& $-A^{4}\FubessXA  $\\
 
-$\FubessXA$   & $\FubessXA $&$ \FubessdXA  $&$A^{10}\FubeXssA $&$A^{10}\FubeXsdsA $\\
+$\FubessXA$   & $\FubessXA $&$ \FubessdXA  $&$A^{10}\FubeXssA $&$-A^{2}\FubeXsdsA $\\
 
 $\FubessdXA    $&$ \FubessdXA $&$ A^{4}\FubessXA $&$ A^2 \FubeXsdsA $&$ A^6\FubeXssA$   \\
 \end{tabular}
@@ -3262,6 +3270,8 @@ However, since $\tube^B$ is non-abelian the former possibility is ruled out, and
 \kw{Here's an outline of how I would discuss fusion.
 Perhaps the two versions of this section can be fused into some sort of consensus version.}
 
+\ethan{I'll work on the fusion by adding some of this discussion to the old section that Dave and I wrote. I think your version is nice and precise, but that the ``fusion is taking $\tp$ of representations'' view is easier for physics people to understand. I also think the ``one tube category'' rather than ``two tube categories'' point of view is more useful here.}
+
 Let $Y$ be a spin surface with boundary components $S_1,\ldots,S_k$.
 Let $A(S_i)$ denote the tube category corresponding to the circle $S_i$.
 (Here we mean the ``small" tube category, with fixed spin structure on the circle; see xxxx above.)
@@ -3312,34 +3322,90 @@ a 3-punctured sphere with $e_1$ an d $e_2$ fixed on boundary components 1 and 2,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Quasiparticle fusion rules} \label{C2_fusion_rules}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-To each minimal idempotent, 
-and puncture on a given surface, corresponds a subspace which is invariant under applying the idempotent. 
-This subspace describes a single quasi-particle living at that puncture.
-Fusion is the process by which neighbouring quasiparticles can be fused together.
-As with \eqref{mortube}, the vector space mapping two punctures to one is spanned by,
+
+With all quasiparticles in hand, we are ready to compute their fusion rules. 
+We will first outline how the fusion rules are computed abstractly, and will then compute them for $C_2$ theory. 
+
+To begin, let $X$ be a spin surface with $k$ punctures, and label the boundary components as$S_1,\ldots,S_k$.
+Let $T_i$ denote the tube category corresponding to the circle $S_i$\footnote{Here we mean the restriction of the full tube category $\tube$ to the sector with spin structure given by the spin structure on $S_i$. That is, $T_i = \tube^B$ ($=\tube^N$) is $S_i$ is bounding (non-bounding).}.
+Given objects $c_i$ of $T_i$, for $1\le i \le k$, we have a super vector space $V(X; c_1,\ldots,c_k)$ consisting on string nets
+on $X$, modulo local relations, with boundary conditions $c_i$ at $S_i$.
+
+We can then glue morphisms of $T_i$ (tubes) onto $S_i$ to obtain a new string net with (possibly) different boundary condition.
+A concise way to describe this algebraic structure is to say that the collection of super vector spaces $\{V(Y; c_1,\ldots,c_k)\}$
+(for all possible values of $c_1,\ldots,c_k$)
+affords a representation of the category $T_1\times\cdots\times T_k$.
+We will denote this representation by $T(X)$.
+If excitations (a.k.a minimal idempotents) $a_1,\dots,a_k$ are localized on the punctures $S_1,\dots,S_k$, then $V(Y; c_1,\ldots,c_k)$ must be invariant under the action of
+${a_1}\times \dots \times {a_k}$. 
+
+To examine the fusion rules of the excitations, we can take $X$ to be the pair of pants (a.k.a three-punctured sphere), which we will denote as $Y$. 
+
+There are four spin structures on the pair of pants. 
+In one of them, all three boundary components have a bounding spin structure, while in 
+n the remaining three, two out of the three boundary components have a non-bounding spin structure.
+We will choose a standard representative for each of these pairs of pants, so that each boundary component is equipped with a spin diffeomorphism to a 
+standard copy of $S^1_B$ or $S^1_N$.
+
+Let $T_a$, $T_b$ and $T_c$ denote the three associated copies of the tube category on $Y$.
+Given representations $\rho_a$ and $\rho_b$ of $T_a$ and $T_b$, we can define a new representation of $T_c$,
+denoted $\rho_a\tp\rho_b$, via
+\be  \label{tctpdef}
+	\rho_a\tp\rho_b = (\rho_a \boxtimes \rho_b) \tp_{T_a\times T_b} A(P) .
+\ee
+Here $\rho_a \boxtimes \rho_b$ denotes the ``outer" tensor product, a representation of $T_a\times T_b$.
+
+This construction gives us a trimodule for the tube category, since $Y$ has three disconnected boundary components. 
+For fixed representations $\rho_a,\rho_b,\rho_c$ of $T_a,T_b,T_c$,
+we will define the fusion space $V^{abc}$ to be the vector space of string-nets on $Y$ modulo local relations.
+The fusion space $V^{abc}$ is given by the collection of maps from the two boundaries of $Y$ with $\rho_a,\rho_b$ boundary conditions to the boundary of $Y$ with $\rho_c$ boundary conditions, and so we can also write $V^{abc}$ as
 \begin{align}
 \label{morpants}
-\text{mor}( \underset{x}{\TubeBCx{J}} \tp \underset{y}{\TubeBCx{W}}  \rightarrow \underset{\;\; \;\; \quad z \in x\tp y}{\TubeBCx{J+W}} ), %= \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right]
+V^{abc} \cong \text{mor}( \underset{a}{\TubeBCx{J}} \tp \underset{b}{\TubeBCx{W}}  \rightarrow \underset{\;\; \;\; \quad c \in a\tp b}{\TubeBCx{J+W}} ), %= \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right]
 \end{align}
 where $J, W \in \{ B,N \}$ denote the spin structures of the two punctures being fused. 
-Since contractible loops are assigned anti-periodic boundary conditions, $B$ acts as $0$ and $N$ acts as $1$ when calculating $J+W$ (where addition is carried out in $\zt$). 
-Thus the addition rule is 
+Since contractible loops are assigned anti-periodic boundary conditions, $B$ acts as $0$ and $N$ acts as $1$ when calculating $J+W$ (where addition is carried out in $\zt$), and 
+so the addition rule is 
 \begin{align}
 B+B = B \quad \quad B+N = N \quad \quad N+N  = B.
 \end{align}
-The two labels $x$ and $y$ denote the boundary condition of the punctures which are being fused, and the third must always be in the fusion product of $x$ and $y$ given by $\mcc$.
-A basis for this fusion space is given by pairs of ``pants" with net configurations modulo local relations,
-for example if we fix the marked points on the inner punctures to be $\beta$ and $\unit$, then the label of the outer puncture must be $\beta$, and so,
-\begin{align}
-\text{mor}(\underset{\beta}{\TubeBCx{B}} \tp \underset{\mathds{1}}{\TubeBCx{B}} \rightarrow \underset{\beta}{\TubeBCx{B}}  ) \cong \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right].
-\end{align}
-Note that the spin structure on the inner two punctures determines the spin structure on the outer one, 
-and so we omit the labeling.
 
-\kw{I think the above paragraph needs some work.  Let's discuss on skype.}
-\dave{Sounds good. We can either set up a time, 
-or you can just find me on Skype usually in the evenings (Europeon).
-I'm usually around from 11:00am - 4:00pm Utah = 7:00pm - 12:00am Europe.}
+If $\rho_a$ is a representation corresponding to a minimal idempotent $\Pi_a$, then it defines an irreducible quasiparticle excitation.
+In what follows, we will abuse notation slightly, and write $\rho_a$ as $a$. 
+Fusion of excitations is given simply by the tensor product of representations, which allows us to define the fusion rules.
+We define the fusion rule coefficients $\Delta^{ab}_c$ as the vector spaces which appear in the direct sum decomposition of $a\tp b$\footnote{The $\Delta^{ab}_c$ are complex supervector spaces, not numbers, and so ``fusion rule coefficients'' is a bit misleading. However, vector spaces are the categorified version of scalars, and so we will continue to adopt this slightly imprecise terminology.}:
+\be \label{fusion_coeffs_defn} a \tp b \cong \bigoplus_c \Delta^{ab}_ c c,\ee
+where the sum runs over all representations whose associated idempotents are minimal. 
+In bosonic theories, the fusion spaces can be read off directly from direct sum decompositions like this: they are precisely $V^{ab}_c = \Delta^{ab}_c$. 
+However, this is not true in fermionic theories. 
+The general relation is in fact that the fusion spaces are larger than the $\Delta^{ab}_c$s:
+\be V^{ab}_c \cong \Delta^{ab}_c \tp \End(c).\ee
+We demonstrate and elaborate on this in Section \ref{fusion_rules_and_fusion_spaces}. 
+
+
+%The idempotent given by $\Pi_{m_\sigma^+}$ constitutes a choice of representative, we could have just as easily chosen $\Pi_{m_\sigma^-}$ and all guage invariant quantities that we compute with either would be the same, but explicit representations of, for example the fusion spaces, may change.
+% given precisely by the tube algebra representation of the simple module corresponding to $a$: 
+%for example, $\Pi_{m_\sigma^\pm}$ is simply given by the vector \eqref{msig_defn}. 
+%However, one should specify a representative of the isomorphism class to keep track of through out the calculations, for example, in the following we will choose $\Pi_{m_{\sigma}^+}$ as a representatiive for the isomorphism class given by $m_{\sigma}^+$ and $m_{\sigma}^-$.
+%In order for $V^{ab}_c$ to be a bona fide fusion space, the vector space $V^{ab}_c$ must be invariant under the action of $\Pi_a$ on the leg of the pants supporting the $a$ quasiparticle, and likewise for the $b$ and $c$ legs. Therefore, determining the fusion space $V^{ab}_c$ is tantamount to finding a vector space supported on the pair of pants invariant under the application of $\Pi_a\tp \Pi_b$ on the ``top'' of the pants, and invariant under $\Pi_c$ on the ``bottom'' of the pants, see Fig. \ref{Makefigure}.
+%\dave{Or make some diagram like}
+%\begin{align}
+%\xymatrix @!0 @M=1mm @R=10mm @C=20mm{
+%&V^{ab}_c&\\
+%V^{ab}_c \ar[ru]^{\Pi_a \tp \Pi_b} \ar[rd]_{\Pi_c}&&V^{ab}_c\\
+%&V^{ab}_c&\\
+%}
+%\end{align}
+%The (super)dimension of this vector space is the fusion multiplicity $N^{ab}_c = \dim V^{ab}_c$. 
+
+%The two labels $x$ and $y$ denote the boundary condition of the punctures which are being fused, and the third must always be in the fusion product of $x$ and $y$ given by $\mcc$.
+%A basis for this fusion space is given by pairs of ``pants" with net configurations modulo local relations,
+%for example if we fix the marked points on the inner punctures to be $\beta$ and $\unit$, then the label of the outer puncture must be $\beta$, and so,
+%\begin{align}
+%\text{mor}(\underset{\beta}{\TubeBCx{B}} \tp \underset{\mathds{1}}{\TubeBCx{B}} \rightarrow \underset{\beta}{\TubeBCx{B}}  ) \cong \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right].
+%\end{align}3
+%Note that the spin structure on the inner two punctures determines the spin structure on the outer one, 
+%and so we omit the labeling.
 
 The primitive idempotents -- or quasiparticles -- displayed in Figure \ref{CTwoParticles} naturally decompose 
 the fusion space in \eqref{morpants} into simple modules.
@@ -3357,16 +3423,6 @@ All resulting guage invariant quantities are the same for each choice, but expli
 In order for $V^{ab}_c$ to be a bona fide fusion space, the vector space $V^{ab}_c$ must be invariant under the action of $a$ and $b$ on the inner punctures acting from above, and $c$ acting on the outer puncture from below.
 Therefore, determining the fusion space $V^{ab}_c$ is tantamount to finding a vector space supported on the pair of pants invariant under the application of $a\tp b$ on the ``top'' of the pants, and invariant under $c$ on the ``bottom'' of the pants, see Fig. \ref{Makefigure}.
 The (super)dimension of this vector space is the fusion multiplicity $N^{ab}_c = \dim V^{ab}_c$. 
-
-There is a subtle point regarding fusion spaces and fusion rules that we will need to address in what follows. 
-We define the fusion rule coefficients $\Delta^{ab}_c$ as the vector spaces which appear in the direct sum decomposition of $a\tp b$\footnote{The $\Delta^{ab}_c$ are complex supervector spaces, not numbers, and so ``fusion rule coefficients'' is a bit misleading. However, vector spaces are the categorified version of scalars, and so we will continue to adopt this slightly imprecise terminology.}:
-\be \label{fusion_coeffs_defn} a \tp b \cong \bigoplus_c \Delta^{ab}_ c c.\ee
-
-In bosonic theories, the fusion spaces can be read off directly from direct sum decompositions like this: they are precisely $V^{ab}_c = \Delta^{ab}_c$. 
-However, this is not true in fermionic theories. 
-The general relation is in fact that the fusion spaces are larger than the $\Delta^{ab}_c$s:
-\be V^{ab}_c \cong \Delta^{ab}_c \tp \End(c).\ee
-We demonstrate and elaborate on this in Section \ref{fusion_rules_and_fusion_spaces}. 
 
 %Recall from Figure \ref{FIG??} quasiparticles are supported on punctures of the underlying manifold, a fusion space like $V^{ab}_c$ will be given by a vector space whose vectors are string-net configurations on pairs of pants, 
 %with $a$ and $b$ supported on the ``incoming'' legs of the pants and $c$ supported on the ``outgoing'' leg. 
@@ -3419,11 +3475,11 @@ The (super)dimension of this vector space is the fusion multiplicity $N^{ab}_c =
 %\text{mor}(\underset{\beta}{\TubeBC}\rightarrow  \underset{\beta}{\TubeBC} \tp \underset{\mathds{1}}{\TubeBC} ) = \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right]
 %\end{align}
 
-We will now illustrate this with a simple example. 
+We will now illustrate this general procedure with a simple example in the $C_2$ theory. 
 Suppose we want to find the fusion rule for $q_\sigma \otimes m_\unit$.
 We first note that spin structure considerations on the pair of pants require that any quasiparticle appearing in $q_\sigma \tp m_\unit$ be a vortex-type quasiparticle (one with a non-bounding spin structure). Furthermore, since both $m_\unit$ and $q_\sigma$ have no charge (no $\beta$ lines fixed to the boundaries of their tubes), we know that their fusion products cannot have any charge.
 Since $q_\sigma$ is the only vortex-type quasi particle with no charge we know that it is the only particle which can appear in the tensor product of $q_\sigma$ and $m_\unit$.
-By searching for pants invariant under the applications of the appropreate idempotents, we see that the supervector space $V^{q_\sigma m_\unit}_{q_\sigma}$ is isomorphic to $\cc^{1|1}$, with the even subspace generated by the vector 
+By searching for pants invariant under the applications of the appropriate idempotents, we see that the supervector space $V^{q_\sigma m_\unit}_{q_\sigma}$ is isomorphic to $\cc^{1|1}$, with the even subspace generated by the vector 
 \dave{Should we normalize these vector spaces? 
 Also have we defined the angle brackets anywhere? Do we need to?}
 %\begin{align}
@@ -3774,12 +3830,8 @@ and the odd ones are given by putting a single dot on the upper left leg.
 In this section, we compute a basis for $C_2$ string-nets on the torus modulo local relations as well as the action of the mapping class group.
 The modular $S$-matrix is related to, but distinct from, the ``statistical $S$-matrix'' which captures the braiding data of the quasiparticles in the theory; this $S$-matrix is discussed in Sec.\ref{mutual_statistics}. 
 
-Because the $C_2$ theory is dependent on the existence of a spin structure, in order to talk about ground states on a torus we must first equip the torus with a spin structure. 
-\kw{we say things like this in multiple places.  I think it would be better to declare once and for all that every
-2-manifold we consider is a spin 2-manifold.
-Then we say ``There are four spin tori..." \dave{I agree.}}
-There are $|H^1(T^2;\zt)|=4$ different spin structures on the torus, obtained by choosing either bounding or non-bounding spin structures for each of the torus' non-contractible cycles. 
-\kw{there are three non-contractible cycles}
+Because the $C_2$ theory is dependent on the existence of a spin structure, in order to talk about ground states on a torus we must first specify the spin structure on the torus.
+There are $|H^1(T^2;\zt)|=4$ different spin tori, obtained by choosing either bounding or non-bounding spin structures for two of the torus' three non-contractible cycles (with the boundary conditions along the third non-contractible cycle determined by those of the other two). 
 To go from the annulus to the torus we identify the inner and outer circles, and label the different spin structures by 
 \begin{align}
 \AddDatTorus{\FubeXXXA}{X}{Y}\quad \quad \quad X,Y \in\{ B, N \}
@@ -8311,7 +8363,7 @@ The fact that we have to use a half braid to define the condensation suggests th
 %\begin{align}
 %A(T^2_{PP}) = \mathbb{C} \left [ \hOdd, \quad \vOdd,\quad \TubeXa \right ] 
 %\end{align}
-%We also define,
+%We also define, 
 %\begin{align}
 %\stackrel{\bullet}{h} \equiv  \hOdd, \quad \stackrel{\bullet}{v} \equiv \vOdd,\quad {X} \equiv \TubeXa
 %\end{align}
