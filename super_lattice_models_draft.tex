@@ -2331,11 +2331,6 @@ where $B$, $N$ denote bounding and non-bounding spin structures respectively.
 Morphisms of $\tube(C_2)$ are 
 defined to be cylinders (which we will draw as annuli) colored with $C_2$ string-nets.
 A given morphism $a\ra b$ is thus an annulus whose outer (inner) boundary conditions are determined by the object $a$ ($b$). 
-Note that a non-zero morphism $a\ra b$ is only possible if $a$ and $b$ have the same spin structure. 
-This means that any tube category $\tube$ admits the decomposition 
-\be \tube \cong \tube^B \oplus \tube^N\ee
-into bounding- and non-bounding components. 
-Occasionally it can be helpful to think of both $\tube^B$ and $\tube^N$ as separate categories, although we will adopt the view where there is only one tube category $\tube$ in what follows. 
 
 After applying local relations (F-moves, dot-cancellations, removing trivial loops), 
 an arbitrary string-net diagram on any tube can be reduced to a linear 
@@ -3366,8 +3361,16 @@ All resulting gauge invariant quantities are the same for each choice, but expli
 Given two irreps $a$ and $b$, we can form the tensor product representation $a\tp b$, which need not be irreducible.
 Physically, forming $a\tp b$ amounts to fusing the quasiparticles $a$ and $b$ together. 
 We define the fusion space $V^{ab}_c$ as the space
-\be V^{ab}_c \def {\rm mor}(a\tp b \ra c).\ee
+\be V^{ab}_c \equiv {\rm mor}(a\tp b \ra c).\ee
 Geometrically, $V^{ab}_c$ corresponds to the space of all string-net configurations (modulo local relations) on a pair of pants whose top legs are labeled by the quasiparticles $a$ and $b$, and whose bottom leg is labelled by $c$. 
+
+One subtle property of fermion theories is that the vector space $V^{ab}_c$ are {\it not} the vector spaces which appear in the direct sum decomposition of $a\tp b$. 
+Instead, we define the fusion rule coefficients $\Delta^{ab}_c$ through\footnote{The $\Delta^{ab}_c$ are complex supervector spaces, not numbers, and so ``fusion rule coefficients'' is a bit misleading. However, vector spaces are the categorified version of scalars, and so we will continue to adopt this slightly imprecise terminology.}
+\be \label{fusion_coeffs_defn} a \tp b \cong \bigoplus_c \Delta^{ab}_ c c,\ee
+where the sum runs over all representations whose associated idempotents are minimal. 
+In bosonic theories $V^{ab}_c = \Delta^{ab}_c$, but in fermionic theories the fusion spaces are larger than the $\Delta^{ab}_c$s:
+\be V^{ab}_c \cong \Delta^{ab}_c \tp \End(c).\ee
+We demonstrate and elaborate on this in Section \ref{fusion_rules_and_fusion_spaces}. 
 
 %Recall from Figure \ref{FIG??} quasiparticles are supported on punctures of the underlying manifold, a fusion space like $V^{ab}_c$ will be given by a vector space whose vectors are string-net configurations on pairs of pants, 
 %with $a$ and $b$ supported on the ``incoming'' legs of the pants and $c$ supported on the ``outgoing'' leg. 
@@ -3420,7 +3423,7 @@ The (super)dimension of this vector space is the fusion multiplicity $N^{ab}_c =
 %\text{mor}(\underset{\beta}{\TubeBC}\rightarrow  \underset{\beta}{\TubeBC} \tp \underset{\mathds{1}}{\TubeBC} ) = \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right]
 %\end{align}
 
-We will now illustrate this general procedure with a simple example in the $C_2$ theory. 
+We will now illustrate how to compute the fusion spaces with simple examples in the $C_2$ theory. 
 Suppose we want to find the fusion rule for $q_\sigma \otimes m_\unit$.
 We first note that spin structure considerations on the pair of pants require that any quasiparticle appearing in $q_\sigma \tp m_\unit$ be a vortex-type quasiparticle (one with a non-bounding spin structure). Furthermore, since both $m_\unit$ and $q_\sigma$ have no charge (no $\beta$ lines fixed to the boundaries of their tubes), we know that their fusion products cannot have any charge.
 Since $q_\sigma$ is the only vortex-type quasi particle with no charge we know that it is the only particle which can appear in the tensor product of $q_\sigma$ and $m_\unit$.
@@ -5284,8 +5287,13 @@ Hence we can partition the objects in $\mcc$ as
 It can be shown that in any UMTC, $\nu_x = 1$ for all $x\in Q$\footnote{One can show this by considering the symmetries of the S-matrix on the punctured torus. This does not necessarily hold for non-modular theories, however.}. 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{General comments on fermion condensation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Condensing non-transparent fermions in a braided category}  \label{gntf_condense}
+\subsubsection{Condensing non-transparent fermions in a braided category}  \label{gntf_condense}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Let $\mcc$ be a braided pivotal category.
 \kw{need to add more adjectives?}
@@ -5336,15 +5344,72 @@ There are two cases:
 
 \medskip
 
-While $\mcc/\psi$ is not a braided category, it does have the structure of a front-braiding by $\mcc$.
+$\mcc/\psi$ is not a braided category, since the back wall prevents us from braiding particles completely around one another. 
+However, it does have the structure of a front-braiding by $\mcc$, since we are allowed to pass $\psi$ worldlines between other particle worldlines and the back wall. 
 \kw{say a little more about this}
 
 \medskip
 
 \kw{probably should mention some examples; at least the $A_n/\psi$ family}
 
-\ethan{talk about q-type and m-type decomp, and mention that:}
-It can be shown that if the input theory is an MTC (like $SU(2)_6$), then the idempotents with bounding spin structure are always m-type, the idempotents with non-bounding spin structure are always q-type, and they take a very similar form to (\ref{MTCIdemp}).
+It can be shown that if the input theory is an MTC (like $SU(2)_6$), then the anyons (idempotents with bounding spin structure) are always m-type, while the vortices (idempotents with non-bounding spin structure) are always q-type, and that they take a very similar form to (\ref{MTCIdemp}).
+If the input theory is not modular, then m-type excitations can appear in the vortex (non-bounding) sector.
+However, the excitations in the non-vortex sector will always be m-type, regardless of the modularity of the input theory. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Condensing transparent fermions in a braided category}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this subsection we make the same assumptions about $\psi$ and $\mcc$ as in \ref{gntf_condense}, but we add the assumption that $\psi$ is transparent in $\mcc$, meaning that it braids trivially with every other particle in $\mcc$.
+
+Since $\psi$ is transparent, we do not need the back wall when performing the condensation.
+We still need a spin structure, however (since $\theta_\psi = -1$), and we also need to keep track of Koszul signs (since $\psi$ has fermionic statistics).
+
+The resulting category $\mcc/\psi$ is a fermionic braided pivotal category (as long as $\psi$ is the only transparent object in $\mcc$).
+The absence of the back wall is what allows for $\mcc / \psi$ to possess a full braiding (rather than the ``half-braiding'' forced on condensed theories where back walls are needed). 
+ We will construct an example of such a theory in Sec. \ref{so36}, where we condense a transparent fermion in the $SO(3)_6$ theory (which is a non-braided theory obtained from $SU(2)_6$ by removing half of the nontrivial simple objects).
+
+We note that q-type particles can never arise in the condensed theory if $\psi$ is transparent.
+To see this, we note that if $\alpha\ot\psi = \beta$ for $\alpha,\beta\in\mcc$, it follows that 
+$\theta_\beta = \theta_\alpha \theta_\psi = -\theta_\alpha,$
+where the first equality is because $\psi$ is transparent.
+It follows that $\alpha \not\cong \beta$ in $\mcc$, and hence $\alpha$ descends to an m-type simple object in $\mcc/\psi$, since if $\alpha$ were q-type we would have $\alpha \tp \psi \cong \alpha$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Condensing transparent fermions in the center of a pivotal tensor category}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Condensing non-transparent fermions using spin defects instead of a back wall} \label{spin_defects_condensation}
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this section, we briefly comment on possible another way to condense non-transparent fermions, which doesn't make use of the back wall construction and allows the condensed theory to remain braided (for a braided input cateogry). 
+We won't make use of this in what follows, and just mention it for posterity's sake.
+
+The construction proceeds as follows: we allow the $\psi$ worldlines to be absorbed into the vacuum at any point.
+In this picture the $\psi$ lines literally end, they do not run down to some back wall. 
+In order to resolve problems with the twist and self-statistics of $\psi$, we must couple the $\psi$ endpoints to a spin structure, as before.
+However, this yields an inconsistent theory if $\psi$ is not transparent (see \eqref{transparency_inconsistency}).
+
+If the only non-trivial braiding phase $\psi$ has with any other particle in $\mcc$ is $-1$, which we will assume in what follows, this issue can be solved straightforwardly. 
+Indeed, we observe that the problem in \eqref{transparency_inconsistency} would be surmounted if the ``box'' (the physical fermion attached to the $\psi$ endpoint) had a $-1$ braiding phase when taken around any anyon with which $\psi$ braids nontrivially. 
+This extra $-1$ braiding phase cannot be due to the presence of any additional anyonic degrees of freedom, since the physical fermions braid trivially with any emergent anyon. 
+However, there's actually a very natural way to do this: bind spin structure defects to the worldlines of anyons $\beta$ with which $\theta_{\beta,\psi} =-1$. 
+If the $\beta$ worldlines get bound to spin structure defects during the condensation process, then a box will pick up a factor of $-1$ when traveling around a $\beta$ line (when it passes through the branch cut), which cancels the $-1$ sign from the braiding of $\beta$ and $\psi$, and solves the transparency inconsistency. 
+This allows the condensation to go through without the use of the back wall construction, which allows us to perform fermion condensation without sacrificing the existence of a braided structure. 
+
+This picture also gives us a clear interpretation of how to invert the condensation procedure. 
+To go the other way and un-condense $\psi$, we just decouple the $\beta$ lines from the spin structure defects.
+This gives us a phase consisting of the MTC $\mcc$ together with a loop gas of spin structure defects.
+The loop gas of spin structure defects confine free $\psi$ endpoints, forcing all $\psi$ worldlines to be closed and restoring the original phase. 
+
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -5352,10 +5417,8 @@ It can be shown that if the input theory is an MTC (like $SU(2)_6$), then the id
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 To do:
 \begin{itemize}
-\item vortices and non-vortices
 \item front-braiding leads to grading 
 (half of the familiar $Z(\mcc) \cong \mcc \ot \overline\mcc$ when $\mcc$ is modular)
-\item non-vortices are all m-type
 \end{itemize}
 
 The quasiparticle excitations in a bosonic topological phase obtained from a category $\mcc$ are given by the simple objects in the Drinfeld center $\mcz(\mcc)$ \cite{levin2005}.
@@ -5410,7 +5473,16 @@ Morphisms in the tube category can be written concisely as the collection of all
 % \Annulus{\AnnularTube}{X} \right] \\%\AnnulusP{\AnnularTube}{B}{} \right] 
 \end{align}
 where $a,b,c,d$ are simple objects in $\cal{C}$. The multiplicity indices $\mu$, and $\nu$ are collective indices that denote the vector in the fusion space $V^{db}_a$ and $V^{c \bar{d}}_b$, as well as the ordering in the tensor product $V^{d b}_a \tp V^{c d^*}_b$ which forms the Hilbert space of the tube (keeping track of this ordering is important because of the Koszul signs incurred when interchanging two odd vectors in a tensor product). 
-$X$ denotes the spin structure of the annulus, and is either $B$ for bounding, or $N$ for non-bounding.
+$X$ denotes the spin structure of the annulus, and is either $B$ for bounding, or $N$ for non-bounding. Note that a non-zero morphism $a\ra b$ is only possible if $a$ and $b$ have the same spin structure (i.e, the tubes in $\tube(\mcc)$ have a well-defined spin structure). 
+This means that any tube category admits the decomposition 
+\be \tube(\mcc) \cong \tube^B(\mcc) \oplus \tube^N(\mcc)\ee
+into bounding- and non-bounding components. 
+Occasionally it can be helpful to think of both $\tube^B(\mcc)$ and $\tube^N(\mcc)$ as separate categories, although we will adopt the view where there is only one tube category $\tube(\mcc)$ in what follows. 
+
+Thus there are two types of objects in the tube category: anyons (objects with bounding spin structure) and ``vortices'' (objects with non-bounding spin structure).
+As for the original category $\mcc$, $\tube(\mcc)$ can contain both m-type and q-type objects, with q-type objects distinguished by their non-trivial endomorphism algebras as before. 
+A given object $a$ in $\tube(\mcc)$ will admit a non-trivial odd endomorphism only if the tubes that constitute $a$ have non-bounding spin structure, and so every anyon in $\tube(\mcc)$ (that is, every object in $\tube(\mcc)$ with bounding spin structure) must be m-type. 
+The converse is not true, however---in what follows we will see examples of theories with m-type vortices. 
 
 It is somewhat cumbersome to continually label all indices in the tube, so we shift to a compact notation introduced in [REF]\dave{I've seen Oceanu papers (around 1990,91, though not actually written by him) with this notation, is that the first place it showed up?},
 \begin{align}
@@ -5542,7 +5614,7 @@ We then view this rotated tube as a linear map from $D^2$ to $D^2$, and the trac
 
 \dave{Need to add labels and think about notation.}
 \begin{align}
-\text{Tr}_{TV}\; \AnnulusGeneric = \text{Tr}\;  \{ \RotatedTube : \Disc \ra \Disc \}
+\text{Tr}_{TV}\; \AnnulusGeneric = \text{Tr}\;  \left( \RotatedTube : \Disc \ra \Disc \right)
 \end{align}
 
 
@@ -5579,7 +5651,7 @@ where we have viewed the category of supervector spaces, sVec, as consisting of 
 %%%%%%%%%%%%%%%%%%%
 
 To begin, let $X$ be a spin surface with $k$ punctures, and label the boundary components as$S_1,\ldots,S_k$.
-Let $T_i$ denote the tube category corresponding to the circle $S_i$\footnote{Here we mean the restriction of the full tube category $\tube$ to the sector with spin structure given by the spin structure on $S_i$. That is, $T_i = \tube^B$ ($=\tube^N$) is $S_i$ is bounding (non-bounding).}.
+Let $T_i$ denote the tube category corresponding to the circle $S_i$\footnote{Here we mean the restriction of the full tube category $\tube \cong \tube^B \oplus \tube^N$ to the sector with spin structure given by the spin structure on $S_i$. That is, $T_i = \tube^B$ ($=\tube^N$) is $S_i$ is bounding (non-bounding).}.
 Given objects $c_i$ of $T_i$, for $1\le i \le k$, we have a super vector space $V(X; c_1,\ldots,c_k)$ consisting on string nets
 on $X$, modulo local relations, with boundary conditions $c_i$ at $S_i$.
 
@@ -5587,7 +5659,7 @@ We can then glue morphisms of $T_i$ (tubes) onto $S_i$ to obtain a new string ne
 A concise way to describe this algebraic structure is to say that the collection of super vector spaces $\{V(Y; c_1,\ldots,c_k)\}$
 (for all possible values of $c_1,\ldots,c_k$)
 affords a representation of the category $T_1\times\cdots\times T_k$.
-We will denote this representation by $T(X)$.
+%We will denote this representation by $T(X)$.
 If excitations (a.k.a minimal idempotents) $a_1,\dots,a_k$ are localized on the punctures $S_1,\dots,S_k$, then $V(Y; c_1,\ldots,c_k)$ must be invariant under the action of
 ${a_1}\times \dots \times {a_k}$. 
 
@@ -5603,25 +5675,33 @@ Let $T_a$, $T_b$ and $T_c$ denote the three associated copies of the tube catego
 Given representations $\rho_a$ and $\rho_b$ of $T_a$ and $T_b$, we can define a new representation of $T_c$,
 denoted $\rho_a\tp\rho_b$, via
 \be  \label{tctpdef}
-	\rho_a\tp\rho_b = (\rho_a \boxtimes \rho_b) \tp_{T_a\times T_b} A(P) .
+	\rho_a\tp\rho_b = (\rho_a \boxtimes \rho_b) \tp_{T_a\times T_b} V(Y) .
 \ee
-Here $\rho_a \boxtimes \rho_b$ denotes the ``outer" tensor product, a representation of $T_a\times T_b$.
+Here $\rho_a \boxtimes \rho_b$ denotes the ``outer" tensor product (so that $\rho_a \boxtimes \rho_b$ forms a representation of $T_a\times T_b$), and $V(Y)$ is the vector space of string-net configurations (modulo local relations) on $Y$. 
+Informally, $\rho_a\tp \rho_b$ is found by taking a horizontal superposition of tubes carrying $\rho_a$ and $\rho_b$ (which is the outer product $\rho_a\boxtimes\rho_b$) and glueing them onto a pair of pants (given by $V(Y)$). 
+The glueing procedure is implemented through the tensor product $\tp_{T_a\times T_b}$. 
 
 This construction gives us a trimodule for the tube category, since $Y$ has three disconnected boundary components. 
-For fixed representations $\rho_a,\rho_b,\rho_c$ of $T_a,T_b,T_c$,
-we will define the fusion space $V^{abc}$ to be the vector space of string-nets on $Y$ modulo local relations.
-The fusion space $V^{abc}$ is given by the collection of maps from the two boundaries of $Y$ with $\rho_a,\rho_b$ boundary conditions to the boundary of $Y$ with $\rho_c$ boundary conditions, and so we can also write $V^{abc}$ as
+For fixed representations $\rho_a,\rho_b,\rho_c$ of $T_a,T_b,T_c$ on the three boundary components of $Y$,
+we will define the fusion space $V^{ab}_{c}$ to be the vector space of string-nets on $Y$ modulo local relations.
+$V^{ab}_{c}$ is thus given by the collection of maps from the two boundaries of $Y$ with $\rho_a,\rho_b$ boundary conditions to the boundary of $Y$ with $\rho_c$ boundary conditions, and so we can also write $V^{ab}_{c}$ as
 \begin{align}
 \label{morpants}
-V^{abc} \cong \text{mor}( \underset{a}{\TubeBCx{J}} \tp \underset{b}{\TubeBCx{W}}  \rightarrow \underset{\;\; \;\; \quad c \in a\tp b}{\TubeBCx{J+W}} ), %= \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right]
+V^{ab}_{c} \cong \text{mor}( \underset{a}{\TubeBCx{Q}} \tp \underset{b}{\TubeBCx{R}}  \rightarrow \underset{\;\; \;\; \quad c \in a\tp b}{\TubeBCx{Q+R}} ), %= \mathbb{C}\left[\PantsAsAshAsvtA, \cdots  \right]
 \end{align}
-where $J, W \in \{ B,N \}$ denote the spin structures of the two punctures being fused. 
-Since contractible loops are assigned anti-periodic boundary conditions, $B$ acts as $0$ and $N$ acts as $1$ when calculating $J+W$ (where addition is carried out in $\zt$), and 
+where $Q, R \in \{ B,N \}$ denote the spin structures of the two punctures being fused. 
+This means that $V^{ab}_c$ is the vector space of string-nets modulo local relations on the following pair of pants:
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{fusion_space_pants.pdf}}}}.\ee
+
+Finally, we comment on the expression $Q+R$ for the spin structure of $T_c$. 
+Since contractible loops are assigned anti-periodic boundary conditions, $B$ acts as $0$ and $N$ acts as $1$ when calculating $Q+R$ (where addition is carried out in $\zt$), and 
 so the addition rule is 
 \begin{align}
 B+B = B \quad \quad B+N = N \quad \quad N+N  = B.
 \end{align}
 
+%already sorta said this in ising section
+\begin{comment}
 If $\rho_a$ is a representation corresponding to a minimal idempotent $a$, then it defines an irreducible quasiparticle excitation.
 In what follows, we will abuse notation slightly, and write $\rho_a$ as $a$. 
 Fusion of excitations is given simply by the tensor product of representations, which allows us to define the fusion rules.
@@ -5633,7 +5713,7 @@ However, this is not true in fermionic theories.
 The general relation is in fact that the fusion spaces are larger than the $\Delta^{ab}_c$s:
 \be V^{ab}_c \cong \Delta^{ab}_c \tp \End(c).\ee
 We demonstrate and elaborate on this in Section \ref{fusion_rules_and_fusion_spaces}. 
-
+\end{comment}
 
 
 
@@ -5752,59 +5832,6 @@ This means that passing an odd vector in $V^{ab}_c$ over a vortex-type quasipart
  Additionally, we notice that vectors in $V^{ab}_c$ are transported in a loop during steps 1 and 2, which contributes a sign of $-1$ if the vector $v$ is odd. 
  These two effects are responsible for the factor of $(-1)^{|v|(|c|+1)}$ in \eqref{stwist_fermionic}, meaning that the correct expression for $\mcs$ in the fermionic setting is 
 \be \mcs_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in V^{ab}_c} d_c (-1)^{|v| (|c|+1)}   \frac{\theta_c}{\theta_a\theta_b}.\ee
-
-
-
-\subsection{Condensing transparent fermions in a braided category}
-
-In this subsection we make the same assumptions about $\psi$ and $\mcc$ as in \ref{gntf_condense}, and we add the assumption that $\psi$ is transparent in $\mcc$.
-
-Since $\psi$ is transparent, we can do ordinary condensation rather than back wall condensation.
-We still need a spin structure (since $\theta_\psi = -1$) and Koszul signs (since $\psi$ has fermionic statistics).
-
-The resulting category $\mcc/\psi$ is a fermionic braided pivotal.
-
-\kw{Give some $A_n$ examples, or at least refer to the $SO(3)_6$ example.}
-
-\medskip
-
-We note that q-type particles can never arise in the condensed theory if $\psi$ is transparent.
-To see this, we note that if $\alpha\ot\psi = \beta$ for $\alpha,\beta\in\mcc$, it follows that 
-$\theta_\beta = \theta_\alpha \theta_\psi = -\theta_\alpha,$
-where the first equality is because $\psi$ is transparent; see Figure xxx.
-It follows that $\alpha \not\cong \beta$ in $\mcc$, and hence $\alpha$ descends to an m-type simple object in $\mcc/\psi$.
-
-
-
-\subsection{Condensing transparent fermions in the center of a pivotal tensor category}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Condensing non-transparent fermions using spin defects instead of a back wall} \label{spin_defects_condensation}
-%%%%%%%%%%%%%%%%%%%%%%%%
-
-In this section, we briefly comment on possible another way to condense non-transparent fermions, which doesn't make use of the back wall construction and allows the condensed theory to remain braided (for a braided input cateogry). 
-We won't make use of this in what follows, and just mention it for posterity's sake.
-
-The construction proceeds as follows: we allow the $\psi$ worldlines to be absorbed into the vacuum at any point.
-In this picture the $\psi$ lines literally end, they do not run down to some back wall. 
-In order to resolve problems with the twist and self-statistics of $\psi$, we must couple the $\psi$ endpoints to a spin structure, as before.
-However, this yields an inconsistent theory if $\psi$ is not transparent (see \eqref{transparency_inconsistency}).
-
-If the only non-trivial braiding phase $\psi$ has with any other particle in $\mcc$ is $-1$, which we will assume in what follows, this issue can be solved straightforwardly. 
-Indeed, we observe that the problem in \eqref{transparency_inconsistency} would be surmounted if the ``box'' (the physical fermion attached to the $\psi$ endpoint) had a $-1$ braiding phase when taken around any anyon with which $\psi$ braids nontrivially. 
-This extra $-1$ braiding phase cannot be due to the presence of any additional anyonic degrees of freedom, since the physical fermions braid trivially with any emergent anyon. 
-However, there's actually a very natural way to do this: bind spin structure defects to the worldlines of anyons $\beta$ with which $\theta_{\beta,\psi} =-1$. 
-If the $\beta$ worldlines get bound to spin structure defects during the condensation process, then a box will pick up a factor of $-1$ when traveling around a $\beta$ line (when it passes through the branch cut), which cancels the $-1$ sign from the braiding of $\beta$ and $\psi$, and solves the transparency inconsistency. 
-This allows the condensation to go through without the use of the back wall construction, which allows us to perform fermion condensation without sacrificing the existence of a braided structure. 
-
-This picture also gives us a clear interpretation of how to invert the condensation procedure. 
-To go the other way and un-condense $\psi$, we just decouple the $\beta$ lines from the spin structure defects.
-This gives us a phase consisting of the MTC $\mcc$ together with a loop gas of spin structure defects.
-The loop gas of spin structure defects confine free $\psi$ endpoints, forcing all $\psi$ worldlines to be closed and restoring the original phase. 
-\ethan{maybe make a picture}
-
 
 
 \begin{comment} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -5928,8 +5955,9 @@ Thus there is no need to define $\Arf(Y)$ in this case.
 
 \kw{only sketch; refer to paper in prep for full details.}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fermion condensation in $SO(3)_6$} \label{so36}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %$SU(2)_6$ and $SO(3)_6$
 \dave{In progress. I have the general formulas for minimal idempotents, S and T in any MTC/psi. 
 As well as any UBCF that is only non-modular by a transparent fermion, like in $SO(3)_6$.
@@ -8530,6 +8558,7 @@ Should we vote on which to use?}
 section (which is currently pitchforks, unless I missed a recent change)}
 
 \dave{Great. I agree.}
+\ethan{Personally I don't think it'd be unforgivable to use the standard conventions in this section (fusion spaces defined by mor$(a\tp b \ra c)$), and then change to mor$(a\tp b \tp c \ra \unit)$ for Hamiltonian section, as long as we explain why we're doing it. This is mostly because the pentagon and other coherence relations are rather awkward with the pitchforks. Up to you guys, though.}
 
 %%%%%%%%%%%%%%%
 \subsection{Simple objects}  \label{def_sob_ss}
@@ -8577,6 +8606,7 @@ because all of the larger $M(p,q)$ or $Q(n)$ contain non-invertible elements.
 The existence of q-type particles is responsible for the majority of the novel physics present after performing fermion condensation. 
 q-type objects were also discussed in \ref{wen, usher, kapustin and Gaiotto}, where they were referred to as ``Majorana objects''. 
 \kw{did all of those sources call them ``Majorana objects"?  I thought only Usher did.}
+\ethan{yeah---I think Usher borrowed it from Kapustin and Gaiotto. ``Majorana'' object is pretty natural from the physics point of view}
 
 
 
@@ -8628,8 +8658,6 @@ which possesses nontrivial fusion multiplicities that allow the relevant fusion 
 \subsubsection{Fusion rules and fusion spaces} \label{fusion_rules_and_fusion_spaces}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ethan{Dave and Kevin's old discussions are still here, just commented-out}
-\kw{Your rewrite looks good to me.}
 \begin{comment}
 \dave{Just wanted to add some notes on a confusing point that we should try to straighten out.}
 Fusion rules are subtle in a super-pivotal category. 
