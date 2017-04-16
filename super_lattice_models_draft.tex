@@ -5455,8 +5455,6 @@ Since every simple module $M_a$ of an algebra algebra can be dually represented 
 Therefore, classifying the quasiparticles that a given theory supports can be done by enumerating a set of minimal central idempotents of the tube algebra. 
 To employ this formalism for fermionic theories, the punctured manifold on which our excitations are defined, as well as the objects and morphisms of the tube category, must come equipped with spin structures. 
 We will discuss this in much more detail in what follows. 
-For a review and a more detailed discussion of how the tube algebra works in the fermionic setting, 
-we refer readers to Appendix \ref{tube_alg}. \ethan{or not, this discussion is probably enough}
 
 A potentially helpful physical picture is to think of the tube category as performing ``scale transformations'' 
 on topological quasiparticles, which are localized around circular punctures on the ambient manifold \cite{lan wen}. 
@@ -5585,18 +5583,35 @@ Sometimes we will drop the $c$ when we compute quantities which are independent 
 In what follows we will need to compute the traces of a generic operator $\mco$ in the tube category. 
 We will do the computations following the procedure outlined in \cite{Walker2006}, for more details see \cite{ghosh2016,das2014}.
 
-The path integral on a manifold $M$ is a linear function
-\be Z(M) : A(\p M) \ra \cc,\ee
-where $A(\p M)$ is the set of all string-net configurations on $\p M$. 
+To compute the trace of an operator in $\mcc$, we identify the incoming string-nets on the operator with the outgoing string-nets, and evaluate the resulting diagram (see e.g. \ref{bonderson thesis?}).
+For an operator $\mco$ in $\tube(\mcc)$, we follow the same procedure by identifying the top of the tube on which $\mco$ is defined with the bottom of the tube, forming a torus. 
+To compute ${\rm Tr}\ \mco$, we need to evaluate this torus.  
 
+To do this, we will use the path integral formalism. Recall that the path integral on a manifold $X$ is a linear function
+\be Z(X) : V(\p X) \ra \cc,\ee
+where $V(\p M)$ is the set of all string-net configurations on $\p V$ modulo local relations.
+The trace of an operator supported on a manifold $Y$ is equal to the partition function on a manifold $X$ such that $\p X = Y$ evaluated on the string-net configuration specified by that operator. 
+For our application to the tube category, we thus have 
+\be {\rm Tr}\ \mco = Z(S^1 \times D^2)(\mco),\ee
+where $S^1\times D^2$ is the solid torus. 
 
-Let $\Pi_x$ denote an idempotent and define, 
+To compute this partition function, we make use of a cutting trick. 
+We use the relation 
+\be {\rm Tr}_Y\ (Z(X_{cut})) = Z(X_{glue}).\ee
+In the above formula, $X_{cut}$ is a manifold which becomes $X_{glue}$ after gluing $X_{cut}$ by pasting in $Y$ along the boundary components of $X_{cut}$, and the ${\rm Tr}_Y$ instructs us to sum over all such $Y$.
+This is illustrated in Figure \ref{cutting_trick}. The leftmost figure is a solid torus, on which an operator $\mco$ is supported. 
+We then cut the torus as shown in the second step, and glue it together again as shown in the last step. 
+We see that at the end of these steps, we have rotated the string-net configuration of the operator $\mco$ by $\pi/2$.
+Therefore, we find
 \begin{align}
-\text{Tr}_{\text{TV}} \; \mco &= Z((S^1 \times I) \times I )(\mco \cup \text{id}_\mcc) = Z(S^1 \times D^2 )(\mco) \\
-& = \text{Tr}\; \left( R_{\pi/2}(\mco): Z(D^2) \rightarrow Z(D^2) \right).
+\text{Tr} \; \mco &= {\rm Tr}\ (R_{\pi/2}(\mco)),
 \end{align}
-Where the first trace, is the one assigned by evaluation in the Turaev-Viro state sum. 
-While the last trace, is the usual trace, viewing the rotated idempotent as a map from the disc back to it'self.
+where $R_{\pi/2}(\mco)$ is the operator $\mco$ after having its string-net configurations have been rotated counterclockwise by $\pi/2$.
+Schematically, this can be written as
+\begin{align}
+\text{Tr}\ \AnnulusGeneric = \text{Tr}\;  \left( \RotatedTube : \Disc \ra \Disc \right)
+\end{align}
+Despite the abstract nature of this discussion, the calculation of traces is easy in practice: to compute the trace of a tube, we rotate the string-net configuration on the tube by $\pi/2$ counterclockwise, identify the top and bottom of the tube, and simplify the resulting diagram. The trace is then found by taking the coefficient of the final diagram. 
 \begin{figure}
 \begin{center}
 \begin{align}
@@ -5604,7 +5619,7 @@ While the last trace, is the usual trace, viewing the rotated idempotent as a ma
 \AnnulusGeneric \ar[r]^{\text{cut}}& \AnnulusCut \ar[r]^{\text{id}} & \AnnulusFlat \ar[r]^{\text{glue}}& \RotatedTube}
 \end{align}
 %\includegraphics{TraceFormula.pdf}
-\caption{Defining the trace of the tube by taking the inner product with the identity tube.
+\caption{ \label{cutting_trick} Defining the trace of the tube by taking the inner product with the identity tube.
 The first step is to cut open the annulus along the azimuthal cycle. 
 then glue the inner and outer intervals together to get a rotated tube, shown at the far right.
 We then view this rotated tube as a linear map from $D^2$ to $D^2$, and the trace of this map is the trace of the tube.
@@ -5612,35 +5627,33 @@ We then view this rotated tube as a linear map from $D^2$ to $D^2$, and the trac
 \end{center}
 \end{figure}
 
-\dave{Need to add labels and think about notation.}
-\begin{align}
-\text{Tr}_{TV}\; \AnnulusGeneric = \text{Tr}\;  \left( \RotatedTube : \Disc \ra \Disc \right)
-\end{align}
-
-
 The quantum dimension $d_x$ of an excitation $x$ in $\tube(\mcc)$ is defined by the trace of the associated idempotent $\Pi_x$: 
-Graphically, 
 \begin{align}
-d_x = \text{Tr} (\Pi_x) = {\dblank}_x.
+d_x \equiv \text{Tr} (\Pi_x).% = {\dblank}_x.
 \end{align}
-Here, we can either view the line marked by $x$ as a single line carrying the label $x$, or as a cylinder with a string net on its surface determined by the idempotents of $\tube(\mcc)$.
-
-Returning to the $C_2$ example, we see that this approach gives us $d_{m_{\unit / \psi}} = 1/2, d_{m_\sigma^+} = q_{\unit/\psi} = d/2, q_\sigma = 1$. 
+%Here, we can either view the line marked by $x$ as a single line carrying the label $x$, or as a cylinder with a string net on its surface determined by the idempotents of $\tube(\mcc)$.
+For example, in the $C_2$ theory, we can use this approach to obtain $d_{m_{\unit / \psi}} = 1/2, d_{m_\sigma^+} = q_{\unit/\psi} = d/2, q_\sigma = 1$. 
 Normalizing so that $d_{m_\unit} = 1$, we obtain the quantum dimensions listed in Table \ref{C2Data}. 
 
-We will also need to know how to calculate the total quantum dimension $\mcd$.
-In bosonic theories we have $\mcd^2 = \sum_a d_a^2$, where the sum runs over all simple objects $a$. 
+We will also need to know how to calculate the total quantum dimension $\mcd_\mcc = \dim(\mcc)$.
+In bosonic theories we have $\mcd_\mcc^2 = \sum_a d_a^2$, where the sum runs over all simple objects $a\in\mcc$. 
 This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
 The correct formula is
 \be \label{total_qdim_defn} \mcd^2 = \sum_a \frac{d_a^2}{\dim \End(a)}.\ee
-For the $C_2$ theory, we have $\mcd = \sqrt{8}$. 
+This ensures that $\dim(\mcc)$ is related to $\dim(\mcc / \psi)$ as 
+\be \label{DC_and_DCpsi} \mcd_{\mcc / \psi} = \frac{\mcd_\mcc}{\mcd_{\rm sVec}} = \frac{1}{\sqrt{2}} \mcd_\mcc,\ee
+where we have viewed the category of supervector spaces, sVec, as consisting of two objects ${\rm sVec} = \{\unit,f\}$, with $f$ a transparent (physical) fermion with $f\tp f \cong \unit$. 
+This can be derived by making use of the theory of modular extensions, see for example \cite{wen lan kong}. For the $C_2$ theory, this works out as 
+\be \mcd_{C_2} = \sqrt{2} = \mcd_{\rm Ising} / \sqrt{2}.\ee 
 
-\ethan{Note that $\dim(C_2)^2 \neq \dim(\mcz(C_2)),$ and in fact $\dim(C_2)^2 = \dim(\mcz(C_2)) / \dim(\cl_1)$. Hmm...}
+It is a result of ??? that for any modular tensor category $\mcc$, the dimension of the center is related to $\mcd_\mcc$ by 
+\be \mcd_{\mcz(\mcc)} =\mcd^2_\mcc.\ee
+We can then use \eqref{DC_and_DCpsi} to obtain 
+\be \mcd_{\mcz(\mcc)} = 2\mcd^2_{\mcc/\psi}.\ee
+Using \eqref{DC_and_DCpsi} again and using that we can perform condensation either before or after constructing the tube category so that $\mcz(\mcc) / \psi = \mcz(\mcc / \psi)$ \ethan{If we can't prove this (for modular theories), can leave as a conjecture or delete}, we obtain 
+\be \mcd_{\mcz(\mcc/\psi)} = \sqrt{2}\mcd^2_{\mcc/\psi}.\ee
+For the $C_2$ theory, this is verified by $\mcd_{\mcz(C_2)} = \sqrt{8} = \sqrt{2} (\sqrt{2})^2 = \sqrt{2} \mcd^2_{C_2}.\ee
 
-\ethan{where should we (briefly) talk about modular extensions? Definition section? Section 4?}
-In general, the quantum dimension of a theory derived from a fusion category $\mcc$ is related to $\dim(\mcc)$ as 
-\be \dim(\mcc / \psi) = \frac{\dim(\mcc)}{\dim({\rm sVec})} = \frac{1}{\sqrt{2}} \dim(\mcc),\ee
-where we have viewed the category of supervector spaces, sVec, as consisting of two objects ${\rm sVec} = \{\unit,f\}$, with $f$ a transparent (physical) fermion. 
 %We can obtain them by examining the number of fusion channels each has when fused with its antiparticle. 
 %We find
 %\be d_{m_1} = d_{m_\psi} = 1,\quad d_{m_\sigma^+} = d_{q_1} = d_{q_\psi} = \sqrt{2},\quad d_{q_\sigma} = 2.\ee
@@ -11107,6 +11120,7 @@ which is helpful when computing fusion rules.
 
 
 
+\begin{comment}
 %%%%%%%%%%%%%%%%%%%%
 \section{The tube algebra} \label{tube_alg}
 %%%%%%%%%%%%%%%%%%%%
@@ -11195,6 +11209,7 @@ Therefore, we {\it define} the fusion space $V^{abc}$ as the smallest nonzero ve
 In practice, the best way to identify $V^{abc}$ is to directly search for the smallest (nonzero) collection of independent field configurations on the thrice-punctured sphere that are mapped to themselves under stacking $\Pi_a$ tubes onto one puncture, $\Pi_b$ tubes onto another puncture, and $\Pi_c$ tubes onto the third puncture. $V^{abc}$ is a supervector space, and so it admits a decomposition into fermion-parity even and fermion-parity odd sectors. This opens up the possibility of having richer fusion space structure as compared to the bosonic case: in bosonic theories, a generic fusion space is of the form $\cc^n$, whereas in fermionic theories it is $\cc^{n|m}$, depending on the number of even and odd basis vectors that generate $V^{abc}$.
 
 \ethan{add something about idempotents with both charge boundary conditions that have ambiguous charge, off-diagonal guys in the tube algebra rep, and fib / (1/2)E6 example.}
+\end{comment}
 
 %Forming the vector space $V^{ab}$ is only half the battle, since we would like to express the fusion product $a\tp b$ in terms of other quasiparticles in the theory. This can be done by resolving the idempotent $\Pi_{a\tp b}$ as a collection of primitive idempotents. To illustrate why this is the correct strategy, we exploit the following decomposition of $\fld_{a\tp b}(Y)$ into a direct sum 
 %\be \fld_{a\tp b}(Y) = \bigoplus_{c_i} \fld_{c_i}(C),\ee
