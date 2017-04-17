@@ -3347,39 +3347,30 @@ We postpone a more general discussion of how to compute fusion rules to Sec \ref
 %Note that the spin structure on the inner two punctures determines the spin structure on the outer one, 
 %and so we omit the labeling.
 
-The quasiparticles -- or primitive idempotents -- displayed in Figure \ref{CTwoParticles} naturally define simple modules of the tube category (through the vector spaces which the primitive idempotents project onto).
+The quasiparticles -- or primitive idempotents -- displayed in Figure \ref{CTwoParticles} naturally define simple modules of the tube category, which are the images of the primitive idempotents.
 \kw{I'm leery of this ``project onto" language.
 I think it's better to say that if $e$ is an idempotent, then $eT$ is the corrssponding
 representation/module (where $T$ is the tube cat and $T$ acts on the right side of $eT$).}
-These simple modules give irreducible representations 
-\kw{``simple module" and ``irreducible representation" mean the same thing (assuming semisimplicity)}
+These simple modules are irreducible representations 
 of the tube category, and so to each quasiparticle $a$ we can construct an irreducible representation, which we will also denote as $a$. 
 
-In some cases, the irreducible representation associated with a particular quasiparticle will not be 1-dimensional.
-\kw{I don't think it makes sense to talk about the ``dimension" of a representation of a category.
-There's what some authors call the ``dimension vector", which assigns to each object the dimension of the representation vector space at that object.
-But I don't think that's what's meant here.}
-If this is the case, the quasiparticle will be isomorphic to other quasiparticles in the excitation spectrum, 
-\kw{not sure what's meant by this}
-and in order to perform computations we must choose a representative of the isomorphism class. 
-\kw{I think now I see what you are driving at here.
-But the ambiguity of choosing an particular idempotent in the equivalence class is always there, regardless of the ``dimension" issues discussed above.}
+Even after modding out by local relations, there will often exist several irreducible representations which are isomorphic to one another, the collection of which form a single isomorphism class, 
 %More specifically, let $a$ be the idempotent
 %\kw{$a$ is already an idempotent, so I don't think we need the $\Pi_a$ notation.}
 %(projector) corresponding to the representative of the isomorphism class of quasiparticle $a$, i.e., one of those listed in Figure \ref{CTwoParticles}.
-The choice of representative affects the explicit representation of the fusion space, but none of the guage invariant quantities which can be computed. 
-For example, the idempotent given by ${m_\sigma^+}$ constitutes a choice of representative, we could have just as easily chosen ${m_\sigma^-}$.
-All resulting gauge invariant quantities are the same for each choice, but explicit representations of, for example the fusion spaces, may change.
+The choice of representative affects the explicit representation of the fusion space, but does not affect the values of any gauge invariant quantities. 
+For example, the idempotent given by ${m_\sigma^+}$ constitutes a choice of representative of the isomorphism class formed by $m_\sigma^+$ and $m_\sigma^-$, but we could have just as easily chosen ${m_\sigma^-}$ as a representative.
 
 Given two irreps $a$ and $b$, we can form the tensor product representation $a\tp b$, which need not be irreducible.
-\kw{In order to define $a \tp b$, one must discuss pairs of pants etc. (as in my notes for this section).
-I don't think there is any simpler shortcut for defining $a \tp b$.
-Perhaps one could say something like ``intuitively/physically, the tensor product is defined by bringing $a$ and $b$ close together.
-In more precise language ... (see xxxx) ..."}
-Physically, forming $a\tp b$ amounts to fusing the quasiparticles $a$ and $b$ together. 
-We define the fusion space $V^{ab}_c$ as the space
-\be V^{ab}_c \equiv {\rm mor}(a\tp b \ra c).\ee
-Geometrically, $V^{ab}_c$ corresponds to the space of all string-net configurations (modulo local relations) on a pair of pants whose top legs are labeled by the quasiparticles $a$ and $b$, and whose bottom leg is labelled by $c$. 
+Intuitively, forming $a\tp b$ amounts to fusing the quasiparticles $a$ and $b$ together by bringing them close to one another, and ``zooming out'' to view $a$ and $b$ as a single composite quasiparticle. 
+The $\tp$ operation is the usual tensor product of representations when the tube category, viewed as an algebra, comes equipped with a natural tensor product operation. 
+However, to precisely define the $\tp$ operation in general, we need to examine vector spaces on the pair of pants: the tensor product $a \tp b$ is constructed by constructing a pair of pants with 
+boundary conditions on the two ``incoming'' legs determined by $a$ and $b$.
+We will defer a more precise discussion of this to Sec. \ref{fusion_rules}. 
+
+ We define the fusion space $V^{ab}_c$ as the space
+\be V^{ab}_c \equiv {\rm mor}(c \ra a \tp b).\ee
+Geometrically, $V^{ab}_c$ corresponds to the space of all string-net configurations (modulo local relations) on a pair of pants whose outgoing legs are labeled by the quasiparticles $a$ and $b$, and whose incoming leg is labelled by $c$. 
 
 One subtle property of fermion theories is that the vector space $V^{ab}_c$ are {\it not} the vector spaces which appear in the direct sum decomposition of $a\tp b$. 
 Instead, we define the fusion rule coefficients $\Delta^{ab}_c$ through\footnote{The $\Delta^{ab}_c$ are complex supervector spaces, not numbers, and so ``fusion rule coefficients'' is a bit misleading. However, vector spaces are the categorified version of scalars, and so we will continue to adopt this slightly imprecise terminology.}
@@ -5657,19 +5648,20 @@ In bosonic theories we have $\mcd_\mcc^2 = \sum_a d_a^2$, where the sum runs ove
 This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
 The correct formula is
 \be \label{total_qdim_defn} \mcd^2 = \sum_a \frac{d_a^2}{\dim \End(a)}.\ee
-This ensures that $\dim(\mcc)$ is related to $\dim(\mcc / \psi)$ as 
+This ensures that $\dim(\mcc)$ is related to $\dim(\mcc / \psi)$ as \ethan{Haven't been able to prove this yet}
 \be \label{DC_and_DCpsi} \mcd_{\mcc / \psi} = \frac{\mcd_\mcc}{\mcd_{\rm sVec}} = \frac{1}{\sqrt{2}} \mcd_\mcc,\ee
 where we have viewed the category of supervector spaces, sVec, as consisting of two objects ${\rm sVec} = \{\unit,f\}$, with $f$ a transparent (physical) fermion with $f\tp f \cong \unit$. 
-This can be derived by making use of the theory of modular extensions, see for example \cite{wen lan kong}. For the $C_2$ theory, this works out as 
-\be \mcd_{C_2} = \sqrt{2} = \mcd_{\rm Ising} / \sqrt{2}.\ee 
+This can be motivated by making use of the theory of modular extensions, see for example \cite{wen lan kong}. For the $C_2$ theory, this works out as 
+\be \mcd_{C_2} = \sqrt{2} = \mcd_{\rm Ising} / \sqrt{2},\ee
+and is easily checked to hold for the $A_n / \psi$ series.  
 
 It is a result of ??? that for any modular tensor category $\mcc$, the dimension of the center is related to $\mcd_\mcc$ by 
 \be \mcd_{\mcz(\mcc)} =\mcd^2_\mcc.\ee
 We can then use \eqref{DC_and_DCpsi} to obtain 
 \be \mcd_{\mcz(\mcc)} = 2\mcd^2_{\mcc/\psi}.\ee
-Using \eqref{DC_and_DCpsi} again and using that we can perform condensation either before or after constructing the tube category so that $\mcz(\mcc) / \psi = \mcz(\mcc / \psi)$ \ethan{If we can't prove this (for modular theories), can leave as a conjecture or delete}, we obtain 
+Using \eqref{DC_and_DCpsi} again and assuming that we can perform condensation either before or after constructing the tube category so that $\mcz(\mcc) / \psi = \mcz(\mcc / \psi)$ \ethan{This is dubious}, we obtain 
 \be \mcd_{\mcz(\mcc/\psi)} = \sqrt{2}\mcd^2_{\mcc/\psi}.\ee
-For the $C_2$ theory, this is verified by $\mcd_{\mcz(C_2)} = \sqrt{8} = \sqrt{2} (\sqrt{2})^2 = \sqrt{2} \mcd^2_{C_2}.$
+For example, in the $C_2$ theory this is verified by $\mcd_{\mcz(C_2)} = \sqrt{8} = \sqrt{2} (\sqrt{2})^2 = \sqrt{2} \mcd^2_{C_2}.$
 
 %We can obtain them by examining the number of fusion channels each has when fused with its antiparticle. 
 %We find
@@ -5692,9 +5684,9 @@ A concise way to describe this algebraic structure is to say that the collection
 (for all possible values of $c_1,\ldots,c_k$)
 affords a representation of the category $T_1\times\cdots\times T_k$.
 We will denote this representation by $V(Y)$.
-If excitations (a.k.a minimal idempotents) $a_1,\dots,a_k$ are localized on the punctures $S_1,\dots,S_k$, then $V(Y; c_1,\ldots,c_k)$ must be invariant under the action of
-${a_1}\times \dots \times {a_k}$.
-\kw{Not sure what's meant by this.  Do we need this remark?}
+%If excitations (a.k.a minimal idempotents) $a_1,\dots,a_k$ are localized on the punctures $S_1,\dots,S_k$, then $V(Y; c_1,\ldots,c_k)$ must be invariant under the action of
+%${a_1}\times \dots \times {a_k}$.
+%\kw{Not sure what's meant by this.  Do we need this remark?}
 
 To examine the fusion rules of the excitations, we can take $Y$ to be the pair of pants (a.k.a three-punctured sphere), which we will denote as $P$. 
 
@@ -5719,8 +5711,6 @@ Informally, $\rho_a\tp \rho_b$ is found by taking a horizontal superposition of 
 (which is the outer product $\rho_a\boxtimes\rho_b$) and gluing them onto a pair of pants (given by $V(P)$). 
 The algebraic implementation of gluing is the tensor product $\tp_{T_a\times T_b}$. 
 
-\kw{??}
-This construction gives us a trimodule for the tube category, since $P$ has three disconnected boundary components. 
 For fixed representations $\rho_a,\rho_b,\rho_c$ of $T_a,T_b,T_c$ on the three boundary components of $P$,
 we will define the fusion space $V^{ab}_{c}$ to be the vector space of string-nets on $P$ modulo local relations.
 $V^{ab}_{c}$ is thus given by the collection of maps from the two boundaries of $P$ with $\rho_a,\rho_b$ boundary conditions to the boundary of $P$ with $\rho_c$ boundary conditions, and so we can also write $V^{ab}_{c}$ as
