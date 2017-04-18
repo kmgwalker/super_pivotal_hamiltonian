@@ -2352,7 +2352,7 @@ combination of the following diagrams:
 \text{mor}(\underset{\mathds{1}}{\TubeBCx{J}} \rightarrow \underset{\mathds{1}}{\TubeBCx{J}}) &= \mathbb{C}\left[ \Fubex{\FubeXXXA}{J} ,  \Fubex{\FubesXsA}{J}, \Fubex{\FubesdXsA}{J} \right] \\
 \text{mor}(\underset{\beta}{\TubeBCx{J}} \rightarrow \underset{\beta}{\TubeBCx{J}}) &= \mathbb{C}\left[   \Fubex{\FubeXssA}{J} ,  \Fubex{\FubessXA}{J}, \Fubex{\FubeXsdsA}{J} , \Fubex{\FubessdXA}{J} \right] \\
 \\
-\text{mor}(\underset{\mathds{1}}{\TubeBCx{B}} \rightarrow \underset{\beta}{\TubeBCx{N}}) &= \cc^0 \quad \quad \quad \quad \text{mor}(\underset{\beta}{\TubeBCx{N}} \rightarrow \underset{\mathds{1}}{\TubeBCx{B}}) = \cc^0
+\text{mor}(\underset{\mathds{1}}{\TubeBCx{B}} \rightarrow \underset{\beta}{\TubeBCx{N}}) &= 0 \quad \quad \quad \quad \text{mor}(\underset{\beta}{\TubeBCx{N}} \rightarrow \underset{\mathds{1}}{\TubeBCx{B}}) = 0
 \end{align}
 %\begin{align}
 %\text{mor}(\underset{\mathds{1}}{\TubeBC} \rightarrow \underset{\mathds{1}}{\TubeBC}) &= \mathbb{C}\left[ \FubeXXXA ,  \FubesXsA, \FubesdXsA \right] \\
@@ -5481,7 +5481,7 @@ Morphisms in the tube category can be written concisely as the collection of all
 where $a,b,c,d$ are simple objects in $\cal{C}$. The multiplicity indices $\mu$, and $\nu$ are collective indices that denote the vector in the fusion space $V^{db}_a$ and $V^{c \bar{d}}_b$, as well as the ordering in the tensor product $V^{d b}_a \tp V^{c d^*}_b$ which forms the Hilbert space of the tube (keeping track of this ordering is important because of the Koszul signs incurred when interchanging two odd vectors in a tensor product). 
 $X$ denotes the spin structure of the annulus, and is either $B$ for bounding, or $N$ for non-bounding. Note that a non-zero morphism $a\ra b$ is only possible if $a$ and $b$ have the same spin structure (i.e, the tubes in $\tube(\mcc)$ have a well-defined spin structure). 
 This means that any tube category admits the decomposition 
-\be \tube(\mcc) \cong \tube^B(\mcc) \oplus \tube^N(\mcc)\ee
+\be \label{tube_spin_decomp} \tube(\mcc) \cong \tube^B(\mcc) \oplus \tube^N(\mcc)\ee
 into bounding- and non-bounding components. 
 Occasionally it can be helpful to think of both $\tube^B(\mcc)$ and $\tube^N(\mcc)$ as separate categories, although we will adopt the view where there is only one tube category $\tube(\mcc)$ in what follows. 
 
@@ -5921,9 +5921,8 @@ Each $U_i$ inherits either a bounding (a.k.a.\ antiperiodic or non-vortex) or no
 (a.k.a.\ periodic or vortex) spin structure.
 
 Let $a_i,\ldots, a_k$ be a set of labels for $\bd Y$.
-Each $a_i$ is a minimal idempotent in the annular category $A(U_i)$; either a non-vortex anyon or a vortex anyon.
-
-The predual Hilbert space $A(Y; a_1,\ldots, a_k)$ is isomorphic to the super vector space $\cc^{p|q}$.
+Each $a_i$ is a minimal idempotent in the tube category $\tube(U_i)$; either a non-vortex anyon or a vortex anyon.
+The predual Hilbert space of string-net configurations on $Y$ with boundary conditions determined by the $a_i$ is $V(Y; a_1,\ldots, a_k) \cong \cc^{p|q}$ for some integers $p,q$.
 Our goal is to compute $p$ and $q$.
 
 \medskip
@@ -5931,41 +5930,41 @@ Our goal is to compute $p$ and $q$.
 Let $S_{ab}$ denote the normalized, unitary $S$ matrix.
 The indices $a$ and $b$ are closed-up idempotents on a spin torus.
 They are specified by giving an idempotent (either bounding or nonbounding) together with
-the way the annulus was glued to obtain the torus (again either bounding or nonbounding,
+the way the annulus was glued along the longitudinal direction to obtain the torus (again either bounding or nonbounding,
 independent of the bounding/nonbounding status of the idempotent).
-The idempotent $a$ is glued up in a [non]bounding way according to whether $b$ is [non]bounding, and vice versa.
-If the idempotent is q-type, it is rescaled by $1/\sqrt 2$ to obtain a unit vector in $A(T^2)$.
-See xxx or yyy.
+The idempotent $a$ is glued up in a (non)bounding way according to whether $b$ is (non)bounding, and vice versa (see the discussion around Figure \ref{braided_tubes}).
+If the idempotent is q-type, it is rescaled by $1/\sqrt 2$ to obtain a unit vector in $V(T^2)$, the vector space of string-net configurations modulo local relations on the torus.
 
 Let $S'_{ab}$ be $S_{ab}$ if $a$ is m-type and $\sqrt 2 \cdot S_{ab}$ if $a$ is q-type.
 Note that this is asymmetric in $a$ and $b$;
 we're undoing the normalization for $a$ but not for $b$.
-
-Recall (from xxx) that bounding idempotents are always m-type.
+Recall (from the discussion after \eqref{tube_spin_decomp}) that bounding idempotents are always m-type.
 
 \medskip
 
 We can now state the dimension formula.
 We have
 \be
-	p + q = \sum_{x\;  \mathrm{bounding}} {S_{1x}}^{\chi(Y)} {\textstyle \prod_i} S'_{a_i x} .
+	p + q = \sum_{x\;  \mathrm{bounding}} {S_{1x}}^{\chi(Y)} {\textstyle \prod_i} S'_{a_i x} 
 	\label{PplusQ}
 \ee
-If any of the $a_i$ are q-type, then we know that $p=q$ and we are done.
-So now assume that none of the $a_i$ are q-type.
+where $\chi(Y)$ is the Euler characteristic of $Y$.
+If any of the $a_i$ are q-type, then we know that $p=q$ and we are done, since in that case 
+$\cc^{p|q}$ must be invariant under the odd isomorphism realized by tensoring with $\cc^{0|1}$.
+
+Now assume that none of the $a_i$ are q-type.
 In this case we have
 \be
 	p - q = \sum_{x\;  \mathrm{n.b.\ m-type}} {S_{1x}}^{\chi(Y)} {\textstyle \prod_i} S'_{a_i x}
 			\;\;+\;\; (-1)^{\Arf(Y)} \sum_{x\;  \mathrm{n.b.\ q-type}} {S_{1x}}^{\chi(Y)} {\textstyle \prod_i} S'_{a_i x} .
 			\label{PminusQ}
 \ee
-
-We must explain what we mean by $\Arf(Y)$.
-If $Y$ is closed then $\Arf(Y) = 0$ if $Y$ has a bounding spin structure and 
+Where $\Arf(Y)$ is the Arf invariant of $Y$.
+If $Y$ is closed, then $\Arf(Y) = 0$ if $Y$ has a bounding spin structure and 
 $\Arf(Y) = 1$ if $Y$ has a nonbounding spin structure.
-For a torus, the $AA$, $AP$ and $PA$ spin structures are bounding and the $PP$ spin structure is nonbounding.
-A higher genus spin surface can be written as a connect sum of spin tori,
-and $Arf(Y)$ is additive under connected sums.
+For a torus, the $BB$, $BN$ and $NB$ spin structures are defined to be bounding and the $NN$ spin structure is defined to be nonbounding.
+$\Arf(Y)$ for a higher genus spin surface can be determined by writing $Y$ as a connected sum of spin tori,
+and using that $Arf(Y)$ is additive under connected sums.
 
 If $Y$ has non-empty boundary for each boundary component has a bounding spin structure, 
 we define $\Arf(Y)$ to be the Arf invariant of the closed 
@@ -5973,8 +5972,8 @@ surface obtained by capping each boundary component off with a disk.
 
 If $Y$ has a nonbounding boundary component, say $U_1$, then by assumption
 the label $a_1$ is m-type.
-It follows that $S'_{a_1 x} = 0$ if $x$ is q-type.
-Thus there is no need to define $\Arf(Y)$ in this case.
+It follows that $S'_{a_1 x} = 0$ if $x$ is q-type, \ethan{elaborate} 
+and so there is no need to define $\Arf(Y)$ in this case.
 
 
 
@@ -8562,7 +8561,7 @@ that the data of a pivotal category includes:
 \item A pivotal structure $*$ defined on both objects and morphisms.
 \end{itemize}
 
-The definition of a fermionic/super pivotal category differs from the more familiar bosonic case in the following ways.
+The definition of a fermionic/super pivotal category differs from the more familiar bosonic case in the following ways. \ethan{Do we want to merge this list with the one right before this section (which I think we should keep)?}
 \begin{itemize}
 \item The space of morphisms between two objects has the structure of a super vector space.
 \item The interchange identity \kw{need to confirm that's what it's called \dave{Usher called it the {\em super interchange law} \cite{usher2016}}} picks up a Koszul sign
@@ -8937,8 +8936,8 @@ We write $P_{ij}$ for the map that exchanges the normal ordering of the fusion s
 The action of $P_{12}$ is encapsulated by the Koszul sign rule:
 \begin{align}
 \vcenter{\xymatrix @!0 @M=1mm @C=42mm{
- &P_{12}: \; \;V^{ab}_{c,1} \tp V^{xy}_{z,2} \ar[r]            & V^{ab}_{c,2} \tp V^{xy}_{z,1} \\
-		  &\;\;\;\;\;\;\; \ket{\psi}\tp\ket{\eta}  \ar@{|->}[r] & (-1)^{|\psi| |\eta|} \ket{\psi} \tp \ket{\eta}
+ &P_{12}: \; \;V^{ab}_{c,1} \tp V^{xy}_{z,2} \ar[r]            &  V^{xy}_{z,1} \tp V^{ab}_{c,2} \\
+		  &\;\;\;\;\;\;\; \ket{\psi}\tp\ket{\eta}  \ar@{|->}[r] & (-1)^{|\psi| |\eta|} \ket{\eta} \tp \ket{\psi}
 	}} \quad \quad \ket{\psi} \in V^{ab}_{c} \;\; \text{and} \;\;  \ket{\eta} \in V^{xy}_{z}
 \end{align}
 
