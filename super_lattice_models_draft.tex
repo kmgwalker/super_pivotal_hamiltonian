@@ -3507,7 +3507,7 @@ To facilitate the calculation we observe that the $m_\sigma$ idempotent can be s
 \begin{align}
 \PantsAstAAsA  = \frac{1}{\sqrt{2}} \;  \PantsAsAshAsvtA
 \end{align}
-One can check that $m_\psi$ is an eigenstate of the closed sigma loop with eigenvalue $-\sqrt{2}$ and $m_1$ is an eigenstate with eigenvalue $+\sqrt{2}$. Hence one finds $m_\sigma^{+} \tp m_\psi  = m_\sigma^{-}$. 
+One can check that $m_\psi$ is an eigenstate of the closed sigma loop with eigenvalue $-\sqrt{2}$ and $m_1$ is an eigenstate with eigenvalue $+\sqrt{2}$. Hence one finds $m_\sigma^{+} \tp m_\psi  \cong m_\sigma^{-}$. 
 \kw{I would say ``evenly isomorphic to $m_\sigma^{-}$" (not ``equal").}
 Since $m^{-}_\sigma$ is oddly isomorphic to $m_\sigma^+$, we find  $V^{m_\sigma^+ m_\psi}_{m_\sigma^+} \cong \cc^{0|1}$.
 %Hence we can write, for example,
@@ -5541,35 +5541,42 @@ It can be shown that in any UMTC, $\nu_x = 1$ for all $x\in Q$\footnote{One can 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Condensing non-transparent fermions in a braided category}  \label{gntf_condense}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Let $\mcc$ be a braided pivotal category.
-\kw{need to add more adjectives?}
-Let $\psi$ be a simple object of $\mcc$ such that
+It should be clear that the techniques applied in the previous section 
+can be used in more general scenarios. 
+In this section we will let $\mcc$ be a braided pivotal category, with
+$\psi$ a simple object of $\mcc$ such that
 \begin{itemize}
 	\item $\psi\ot\psi\cong\unit$
-	\item frob-schur of $\psi$ is 1
-	\item twist of $\psi$ is -1
-	\item braiding = -1 time id
-	\item qdim of $\psi$ is 1
+	\item The Frobenius-Schur indicator of $\psi$ is $\alpha_\psi =1$
+	\item The topological twist of $\psi$ is fermionic, i.e. $\theta_\psi =-1$
+	\item The braiding of $\psi$ with itself (see \eqref{statistics_inconsistency}) is equal to $(-1)$ times the identity
+	\item The quantum dimension of $\psi$ is $d_\psi=1$
+	\item $\psi$ is non-transparent, meaning that it braids non-trivially with at least one non-trivial object (besides itself) in $\mcc$
 \end{itemize}
-\kw{comment on redundancy in above list}
-Then we can proceed as in Section \ref{C2_condense_sect} and define a super pivotal category $\mcc/\psi$ as follows.
+(note that there is some redundancy in this list---in unitary theories we have the spin-statistics relation, and $d_\psi=1$ can be inferred from $\psi^{\tp 2}\cong \unit$)
+When these assumptions are met, we can proceed as in Section \ref{C2_condense_sect} and define a super pivotal category $\mcc/\psi$. 
+Since $\psi$ is fermionic in spin and statistics, and since it braids non-trivially with 
+at least one other non-trivial object in $\mcc$ (from its assumed non-transparency), we
+must utilize both spin structures and the back wall construction in the condensation 
+procedure. 
 
 The objects of $\mcc/\psi$ are the same as the objects of $\mcc$.
-
 The morphism space assigned to a disk with a boundary condition is the space of all back wall diagrams
-modulo the relations of xxx.
+modulo local relations.
 In order for these relations to make sense, the disk must be equipped with a spin structure.
-This morphism space is a super vector space, with the grading given by the number of $\psi$ endpoints in the diagram.
-
+This morphism space is a super vector space, with the $\zt$-grading given by the number of $\psi$ endpoints in the diagram modulo 2.
 Composition of morphisms is given by gluing diagrams together.
-In order for this to be well-defined, we have to specify an ordering of the two morphisms to be composed.
+Because of Kozsul signs, in order for this to be well-defined, we have to specify an ordering of the two morphisms to be composed.
 
 \medskip
 
 \begin{figure}
 \begin{center}
 \includegraphics{mvsqtype.pdf}
-\caption{ \label{mvsqtype} (a) An m-type particle $\alpha$. The fermion $\psi$ (blue dot) is an odd map from $\alpha$ to $\alpha\tp \psi$, with $\alpha\not\cong\alpha\tp\psi$. (b) A q-type particle $\alpha$ with $\alpha\cong\alpha\tp\psi$, where $\psi$ now acts as an odd endomorphism.}
+\caption{ \label{mvsqtype} (a) An m-type particle $\alpha$. The fermion $\psi$ (blue dot) is 
+an odd map from $\alpha$ to $\alpha\tp \psi$, with $\alpha\not\cong\alpha\tp\psi$. (b) A q-
+type particle $\alpha$ with $\alpha\cong\alpha\tp\psi$, where $\psi$ now acts as an odd 
+endomorphism.}
 \end{center}
 \end{figure} 
 
@@ -5590,24 +5597,29 @@ There are two cases:
 
 \medskip
 
-$\mcc/\psi$ is not a braided category, since the back wall prevents us from braiding particles completely around one another. 
-However, it does have the structure of a front-braiding by $\mcc$, since we are allowed to pass $\psi$ worldlines between other particle worldlines and the back wall. 
-\kw{say a little more about this}
+$\mcc/\psi$ is not a braided category, since the back wall used in the condensation procedure prevents us from braiding particles completely around one another. 
+However, it does have the structure of a front-braiding by $\mcc$, since we are allowed to 
+pass $\psi$ worldlines between other particle worldlines and the back wall. 
 
 \medskip
 
-\kw{probably should mention some examples; at least the $A_n/\psi$ family}
-
-It can be shown that if the input theory is an MTC (like $SU(2)_6$), then the anyons (idempotents with bounding spin structure) are always m-type, while the vortices (idempotents with non-bounding spin structure) are always q-type, and that they take a very similar form to (\ref{MTCIdemp}).
+It can be shown that if the input theory is an MTC (like $SU(2)_6$, which will be studied later on), then the anyons (idempotents with bounding spin structure) are always m-type, while the vortices 
+(idempotents with non-bounding spin structure) are always q-type, and that they take a very similar form to (\ref{MTCIdemp}).
 If the input theory is not modular, then m-type excitations can appear in the vortex (non-bounding) sector.
 However, the excitations in the non-vortex sector will always be m-type, regardless of the modularity of the input theory. 
+
+A particularly simple class of condensed theories obtained from condensing a non-
+transparent fermion in a braided theory are provided by the $C_{2(n+1)} = A_{3+4n} / \psi$ series, 
+where $A_k$ is the Lie algebra $\mathfrak{sl}_{k+1}$, with the choice $n=0$ 
+corresponding to the Ising example considered in the previous section. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Condensing transparent fermions in a braided category}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this subsection we make the same assumptions about $\psi$ and $\mcc$ as in \ref{gntf_condense}, but we add the assumption that $\psi$ is transparent in $\mcc$, meaning that it braids trivially with every other particle in $\mcc$.
+In this subsection we make the same assumptions about $\psi$ and $\mcc$ as in \ref{gntf_condense}, but we replace the assumption of non-transparency of $\psi$ with the 
+assumption that $\psi$ is transparent in $\mcc$, meaning that it braids trivially with every other particle in $\mcc$.
 
 Since $\psi$ is transparent, we do not need the back wall when performing the condensation.
 We still need a spin structure, however (since $\theta_\psi = -1$), and we also need to keep track of Koszul signs (since $\psi$ has fermionic statistics).
@@ -5620,13 +5632,14 @@ We note that q-type particles can never arise in the condensed theory if $\psi$ 
 To see this, we note that if $\alpha\ot\psi = \beta$ for $\alpha,\beta\in\mcc$, it follows that 
 $\theta_\beta = \theta_\alpha \theta_\psi = -\theta_\alpha,$
 where the first equality is because $\psi$ is transparent.
-It follows that $\alpha \not\cong \beta$ in $\mcc$, and hence $\alpha$ descends to an m-type simple object in $\mcc/\psi$, since if $\alpha$ were q-type we would have $\alpha \tp \psi \cong \alpha$.
+It follows that $\alpha \not\cong \beta$ in $\mcc$, and hence $\alpha$ descends to an m-
+type simple object in $\mcc/\psi$, since if $\alpha$ were q-type we would have $\alpha \tp \psi \cong \alpha$.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Condensing transparent fermions in the center of a pivotal tensor category}
+%\subsubsection{Condensing transparent fermions in the center of a pivotal tensor category}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%\ethan{is this needed? I think the relevant technology we need is discussed in the examples section}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -5642,20 +5655,26 @@ In order to resolve problems with the twist and self-statistics of $\psi$, we mu
 However, this yields an inconsistent theory if $\psi$ is not transparent (see \eqref{transparency_inconsistency}).
 
 If the only non-trivial braiding phase $\psi$ has with any other particle in $\mcc$ is $-1$, which we will assume in what follows, this issue can be solved straightforwardly. 
-Indeed, we observe that the problem in \eqref{transparency_inconsistency} would be surmounted if the ``box'' (the physical fermion attached to the $\psi$ endpoint) had a $-1$ braiding phase when taken around any anyon with which $\psi$ braids nontrivially. 
-This extra $-1$ braiding phase cannot be due to the presence of any additional anyonic degrees of freedom, since the physical fermions braid trivially with any emergent anyon. 
-However, there's actually a very natural way to do this: bind spin structure defects to the worldlines of anyons $\beta$ with which $\theta_{\beta,\psi} =-1$. 
-If the $\beta$ worldlines get bound to spin structure defects during the condensation process, then a box will pick up a factor of $-1$ when traveling around a $\beta$ line (when it passes through the branch cut), which cancels the $-1$ sign from the braiding of $\beta$ and $\psi$, and solves the transparency inconsistency. 
-This allows the condensation to go through without the use of the back wall construction, which allows us to perform fermion condensation without sacrificing the existence of a braided structure. 
+Indeed, we observe that the problem in \eqref{transparency_inconsistency} would be 
+surmounted if the ``box'' (the physical fermion attached to the $\psi$ endpoint) had a $-1$ 
+braiding phase when taken around any anyon with which $\psi$ braids nontrivially. 
+This extra $-1$ braiding phase cannot be due to the presence of any additional anyonic 
+degrees of freedom, since the physical fermions braid trivially with any emergent anyon. 
+However, there's actually a very natural way to do this: bind spin structure defects to the 
+worldlines of anyons $\beta$ with which $\theta_{\beta,\psi} =-1$. 
+If the $\beta$ worldlines get bound to spin structure defects during the condensation 
+process, then a box will pick up a factor of $-1$ when traveling around a $\beta$ line 
+(when it passes through the branch cut), which cancels the $-1$ sign from the braiding of 
+$\beta$ and $\psi$, and solves the transparency inconsistency. 
+This allows the condensation to go through without the use of the back wall construction, 
+which allows us to perform fermion condensation without sacrificing the existence of a 
+braided structure. 
 
-This picture also gives us a clear interpretation of how to invert the condensation procedure. 
+This picture also gives us a clear interpretation of how to invert the condensation 
+procedure. 
 To go the other way and un-condense $\psi$, we just decouple the $\beta$ lines from the spin structure defects.
 This gives us a phase consisting of the MTC $\mcc$ together with a loop gas of spin structure defects.
 The loop gas of spin structure defects confine free $\psi$ endpoints, forcing all $\psi$ worldlines to be closed and restoring the original phase. 
-
-
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -7202,7 +7221,7 @@ The fusion rule coefficients $\Delta^{\rho\rho}_\rho = \Delta^{\rho\rho}_\unit \
 %This is one subtle difference from the purely bosonic fusion theories: the dimensions of the fusion spaces are not the same as the fusion rules. 
 %We need to quotient by $\text{End}(x)$ when writing $V^{\rho \rho}_{\rho \rho} = \oplus_x V^{\rho \rho}_x \tp_x V^{x}_{\rho \rho}$, see Sec. \ref{modified_tensor_product} for more details.
 %Physically this theory is quite interesting. 
-Heuristically, one can think of the $\rho$ lines as carrying a p-wave superconductor. \ethan{?? Can you elaborate?}
+Heuristically, one can think of the $\rho$ lines as carrying a p-wave superconductor.
 In this scenario the junction of three of these has four different ways to fuse together, two even and two odd. 
 
 %In fact, one may wonder if there exists a super fusion category, with only one q-type simple object, and no fusion multiplicity. 
@@ -7435,10 +7454,10 @@ d_\rho \AddDatTorus{\eTube}{X}{Y} \; = \;
 \AddDatTorus{\TorusLocalRelationa}{X}{Y} \;=\;
 \AddDatTorus{\TorusLocalRelationb}{X}{Y} \;=\; 
 \AddDatTorus{\TorusLocalRelationc}{X}{Y} \;=\; 
-\sum_\lambda \; m_\lambda \AddDatTorus{\TorusNoLabelsx{\lambda}}{X}{Y}.
+\sum_\lambda \; m_\lambda \AddDatTorus{\TorusNoLabelsx{\lambda}}{X}{Y},
 \label{rhoLoopRelation}
 \end{align}
-Where $m_\lambda$ are coefficients that depend on the F-symbols.
+where $m_\lambda$ are coefficients that depend on the F-symbols.
 The string of equalities gives an additional local relation, in particular, it allows us solve for the tubes in (\ref{XLocalRelation}) above in terms of the other non-zero tubes.
 Explicitly in the three sectors $(B,B), (B,N)$, and $(N,B)$ we have,
 \begin{align}
@@ -8757,6 +8776,8 @@ The definition differs from the usual bosonic case in the following ways:
 	\item There are two distinct types of simple object, ``m-type" and ``q-type".
 	m-type simple objects have the same properties as objects in conventional (bosonic) fusion categories, and have trivial endomorphism algebras $\cc$.  
 	q-type simple objects have endomorphism algebras isomorphic to $\cl_1$, and so their endomorphism algebras contain odd elements in addition to scalars.
+	Additionally, the space of morphisms between two objects has the structure of 
+	a super vector space.
 	(See \ref{def_sob_ss}.)
 	\item Fusion spaces $V^{abc}$, $V^{ab}_c$, $V_{abcd}$, etc.\ are not merely supervector spaces; they come equipped with an action of the
 	endomorphism algebras of the objects being fused. 
@@ -8768,11 +8789,12 @@ The definition differs from the usual bosonic case in the following ways:
 	In the bosonic case, all tensor products are over the trivial endomorphism algebra $\cc$, but in the fermionic setting we will often need to take tensor products over $\cl_1$. 
 	(See \ref{modified_tensor_product}.)
 	\item In order to keep track of Koszul signs arising from exchanging fermions, 
-	we must keep track of a sign-ordering of individual fusion spaces.
-	In particular, the interchange identity for the tensor category structure picks up a Koszul sign (See \ref{koszul_signs}).
+	we must keep track of a sign-ordering of individual fusion spaces, and in particular, 	the interchange identity for morphisms in the tensor category 	picks up a Koszul sign (See \ref{koszul_signs}).
 	\item In order to keep track of minus signs that result from rotating fermions by $2\pi$, we must keep track of a spin-framing at each fusion space. 
 	Consequently, the square of the pivotal anti-automorphism is 
-	the fermion parity $(-1)^F$, rather than the identity (see \ref{pivotal_structure}).
+	the fermion parity $(-1)^F$, rather than the identity functor (see \ref{pivotal_structure}). If $*$ is the pivotal anti-automorphism, then 
+	\be f^{**} = (-1)^{|f|}f,\ee
+	where $|f|$ is the parity of the morphism $f$. 
 	\item The coherence equations for the basic data of the theory (e.g.\ the pentagon relations) are modified to incorporate  
 	 Koszul signs resulting from moving around various fusion spaces. 
 	 They are also modified to incorporate the tensor products over endomorphism algebras mentioned above. (see \ref{Fsymbols})
@@ -9620,10 +9642,8 @@ Finally, we must choose a spin framing at each vertex, consistent with the pitch
 The pitchforkization and spin framing are needed in order to define an unambiguous
 isomorphism between string nets near $v$ is standard vector spaces $V^{abc}$.
 \kw{maybe refer to def section}
-Without this standardization, the local Hilbert spaces would be ambiguous up to automorphisms.
-
-The choices in the previous paragraph are analogous to choosing a gauge.
-\kw{true?}
+Without this standardization, the local Hilbert spaces would be ambiguous up to automorphisms. 
+The standardization procedure is nothing more than fixing a convenient choice of gauge in the way we present our fusion diagrams. 
 
 For simplicity, we will now assume that all vertices are trivalent.
 (Any surface possesses a cell decomposition with trivalent vertices.
