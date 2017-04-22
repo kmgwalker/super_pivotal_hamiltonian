@@ -3831,7 +3831,8 @@ labels the drawn circle (boundary of annulus) and the other labels the radial lo
 \kwsep
 
 \kw{Here's how I would proceed.
-It uses mostly the same ideas as the older version, but I think it's more concise and explicit.}
+It uses mostly the same ideas as the older version, but I think it's more concise and explicit.
+It's still a bit rough, and I have not yet proof-read it.}
 
 \kw{But reading the older version more carefully, I'm less critical of it than I was originally.}
 
@@ -3871,7 +3872,112 @@ Figure \ref{TorusBasisC2} shows the remaining non-zero diagrams.
 It is easy to see that these diagrams are linearly independent if they are non-zero, but we have not yet proved that they are in fact non-zero.
 To do this, we will employ a fancier argument relating a basis of the torus Hilbert space to minimal idempotents of the tube category.
 
-\kw{to be continued}
+\medskip
+
+Let $\mct_B$ denote the bounding tube category and $\mct_N$ denote the non-bounding tube category.
+\kw{do we already have other notation for this?}
+Our goal is to prove the following result (valid for any super pivotal category, not just $C_2$):
+
+(Thm? Prop? neither?) Let $X$ equal $B$ or $N$.
+The Hilbert space of $T_{XB}$ is purely even, with an orthogonal basis given by closed-up idempotents $\{cl(e_i)\}$,
+where $e_i$ runs through a set of representatives of the minimal idempotents of $\mct_X$.
+The Hilbert space of $T_{XN}$ is isomorphic to $\cc^{p|q}$, where $p$ is the number of m-type idempotents of $\mct_X$
+and $q$ is the number of q-type idempotents of $\mct_X$.
+An orthogonal basis is given by $\{cl(e_i)\}$, where $e_i$ runs through a set of representatives of the minimal m-type idempotents of $\mct_X$,
+union $\{cl(\gamma_j)\}$,
+where $\gamma_j$ runs through a set of representatives of odd endomorphisms of the minimal q-type idempotents of $\mct_X$.
+
+\kw{the closure map $cl$ should have a better notation; maybe just add mathoperator}
+
+Since $T_{BN}$ is spin diffeomorphic to $T_{NB}$, we can compute the Hilbert space for these spin surfaces in two different ways, one using
+idempotents of $\mct_B$ and the other using idempotents of $\mct_N$.
+It follows that the idempotents of $\mct_B$ must all be m-type.
+\kw{refer also to Dave's different proof of this fact, if it's in the paper}
+
+\kw{might want to stick proof in the general section; not sure what's best}
+
+The proof of the above claim consists of a sequence of fairly simple observations:
+\begin{enumerate}
+
+\item Let $c$ be an object of $\mct_X$ and let $f\in\End(c)$.
+Recall that $f$ is a linear combination of string nets on the annulus (with spin structure $X$), with boundary conditions
+$c$ on both boundary components of the annulus.
+We can therefore glue up $f$ to obtain a new string net $cl(f)$ (the closure of $f$) on either $T_{XB}$ or $T_{XN}$.
+This map is clearly linear, so we have a linear map $cl_c : \End(c) \to H(T_{XY})$, where $Y$ is either $B$ or $N$.
+(For future reference, we will call the image of the boundary of the annulus in the torus $K$.)
+
+\item Taking (finite) sums over different boundary conditions, we have a linear map
+\be
+	cl : \bigoplus_c \End(c) \to H(T_{XY}) ,
+\ee
+where $c$ ranges over all possible boundary conditions.
+(Note that even though $c$ ranges over an uncountable set, the direct sum consists only of finite linear combinations; 
+there are no convergence issues.)
+
+\item The map $cl$ is surjective.
+This is because any string net on the torus is, after a small isotopy, 
+transverse to the gluing locus $K$.
+But $cl$ is very far from being injective, so our next task is to characterize the kernel of $cl$.
+
+\item One way of constructing elements in the kernel of $cl$ is as follows.
+Let $c$ and $d$ be two objects of $\mct_X$.
+Let $g: c\to d$ and $h: d\to c$.
+Then $gh \in \End(c)$ and $hg \in \End(d)$.
+We have
+\be
+	cl(gh) = (-1)^{|g| |h|} s(Y)^{|h|} cl(hg) ,
+\ee
+where $s(B) = -1$ (antiperiodic) and $s(N) = 1$ (periodic).
+This follows from the fact that the two string nets $cl(gh)$ and $cl(hg)$ are isotopic
+via a ``shift" isotopy which pushes $h$ past the gluing locus $K$.
+The factor of $(-1)^{|g| |h|}$ is the usual Koszul sign.
+The factor of $s(Y)^{|h|}$ comes from sliding $h$ past the spin structure branch cut at $K$.
+\kw{probably should have figure for this}
+It follows that elements of the form
+\be \label{cl_ker}
+	gh - (-1)^{|g| |h|} s(Y)^{|h|} hg \in \bigoplus_x \End(x)
+\ee
+are in the kernel of $cl$.
+
+\item In fact, elements of the form \eqref{cl_ker} generate all of the kernel of $cl$.
+In the bosonic case, this is a standard fact (see KW-2006-notes).
+The proof for the fermionic case is exactly the same, except that we have to keep track of
+Koszul signs and signs coming from the spin structure.
+The key idea of the proof is that any isotopy of the torus can be decomposed into (a) isotopies which
+are fixed near $K$, and therefore can be lifted to isotopies of the annulus, and (b) a ``shift" isotopy
+as described above.
+In summary,
+\be \label{torus_thm}
+	H(T_{XY}) \cong \left( \bigoplus_x \End(x) \right) / \left\langle gh - (-1)^{|g| |h|} s(Y)^{|h|} hg \right\rangle .
+\ee
+
+\item In the semisimple case, the expression \eqref{torus_thm} can be greatly simplified.
+Let $\{e_i\}$ be a complete set of minimal idempotents for $\mct_X$.
+Any endomorphism $f$ can be written as a sum of endomorphisms of the form $f' e_i f''$.
+Using \eqref{cl_ker}, we see that the subspace (of the big direct sum)
+\be
+	\bigoplus_i \End(e_i)
+\ee
+maps surjectively to $H(T_{XY})$.
+Furthermore, because the minimal idempotents are orthogonal (in the sense that $e_i f e_j$ is zero for any $f$ unless $i=j$),
+the only relations we have to consider are of the form
+\be \label{t2_idem_rels}
+	gh - (-1)^{|g| |h|} s(Y)^{|h|} hg
+\ee
+where both $g$ and $h$ are endomorphisms of $e_i$.
+The theorem now follows.
+If $e_i$ is m-type, then \eqref{t2_idem_rels} is always zero and we get a summand of $\cc^{1|0}$ in $H(T_{XY})$.
+If $e_i$ is q-type and $Y$ is $B$, then any odd endomorphism is of the form $\eqref{t2_idem_rels}$
+and we get a summand of $\cc^{1|0}$.
+If $e_i$ is q-type and $Y$ is $N$, then any even endomorphism is of the form $\eqref{t2_idem_rels}$
+and we get a summand of $\cc^{0|1}$.
+
+\end{enumerate}
+
+For the $C_2$ theory, $\mct_B$ has three m-type minimal idempotents, and $\mct_N$ has three q-type minimal idempotents.
+It follows that $H(T_{BB}) \cong H(T_{NB}) \cong H(T_{BN}) \cong \cc^{3|0}$ and
+$H(T_{NN}) \cong \cc^{0|3}$.
+Therefore the diagrams of Figure xxx must all be non-zero.
 
 
 \kwsep
