@@ -4,6 +4,8 @@
 %\usepackage{jheppub}
 \usepackage{amsmath,amsfonts,amssymb,latexsym,dsfont}
 \usepackage{hhline}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
 \usepackage{graphicx}
 %\usepackage[arrow,matrix]{xy}
 \usepackage[all]{xy}
@@ -994,13 +996,23 @@
 
 %\tableofcontents
 \begin{abstract}
-- fermion condensation/ Ising example
-
-- modular transformations
-
-- super-pivotal category
-
-- exactly solvable Hamiltonian
+We study fermionic topological phases through the lens of fermion condensation. 
+We give a prescription for performing fermion condensation in generic 
+bosonic topological phases which contain a fermion. 
+Our approach to fermion condensation can roughly be understood 
+as coupling the parent bosonic topological phase to a phase of physical fermions, and condensing 
+pairs of physical and emergent fermions. 
+There are two distinct types of objects in fermionic theories, which we dub ``m-type particles'' and ``q-type particles''. 
+q-type particles have endomorphism algebras equal to complex Clifford algebras, and 
+have no bosonic analogue. 
+We construct a fermionic generalization of the tube category, which allows us to compute
+the quasiparticle excitations in fermionic topological phases. 
+We also study how modular transformations, fusion rules, and coherence relations 
+are modified in the fermionic setting, and construct 
+a commuting projector lattice Hamiltonian for fermionic theories. 
+Spin structures play a prominent role throughout our analysis. 
+A large portion of this work is devoted to three detailed examples of performing fermion condensation to produce fermionic topological phases: we condense fermions 
+in the Ising theory, the $SO(3)_6$ theory, and the $\halfesix$ theory. 
 \end{abstract}
 
 \tableofcontents
@@ -1111,8 +1123,11 @@ where the blue (orange) circle denotes a circular $\psi$ ($\sigma$) worldline.
 $\unit$ worldlines, being identified with the vaccuum, are not drawn in diagrams. 
 
 Out of the eight possible choices for $A$, the four different choices $A = ie^{\pm i\pi/8}, -ie^{\pm i\pi/8}$ 
-all give a positive quantum dimension for the $\sigma$ particle of $d = \sqrt{2}$. 
-Instead of $A$, we can specify the filling fraction $\nu$ defined in e.g. \cite{barkeshli2014} by $A^3 = -e^{ i\pi \nu/8}$. 
+all give a positive quantum dimension for the $\sigma$ particle of $d = \sqrt{2}$.
+The other four choices of $A$ give $d=-\sqrt{2}$, which can alternatively be defined
+with $d=\sqrt{2}$ but with a negative Frobenius-Schur indicator of $\kappa_\sigma=-1$. 
+In what follows, we will specify to $A = ie^{\pm i\pi/8}, -ie^{\pm i\pi/8}$ so that $d_\sigma = \sqrt{2},\kappa_\sigma=1$. 
+Instead of $A$, we can also specify the filling fraction $\nu$ common in the physics literature (see e.g. \cite{barkeshli2014}), which are related by $A^3 = -e^{ i\pi \nu/8}$. 
 %%%% removing the FS remark until/unless we can find a definitive reference
 %The remaining four choices $A=e^{\pm i\pi/8},-e^{\pm i\pi/8}$ with $d = -\sqrt{2}$ are equivalent to unitary theories with $d=\sqrt{2}$ and a nontrivial Frobenius-Schur indicator $\kappa_\sigma = -1$.
 %\kw{Equivalent in what sense?  As pivotal categories?
@@ -1184,18 +1199,9 @@ The twist and braiding (self-statistics) of the $\sigma$ particle are
 %\be
 %\mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_twist.pdf}}}}, \qquad  \qquad
 %\mathord{\vcenter{\hbox{\includegraphics[scale=1]{sigsig_recoupling.pdf}}}}. \ee
-\dave{The following two equations are inconsistent.
-We need to take $A \ra A^{-1}$ in one of them, probably the second one.
-All other braid data seems to be consistent. 
-Still need to check that the normalizations above are consistent. 
-}
-\ethan{just checked this, and think we should have the following (here I'm taking $A = i e^{\pm i\pi/8}, - i e^{\pm i \pi/8}$ to have positive FS indicator and the others to have negative FS. If it's the other way around, I think both terms need an extra $-1$ sign):}
-\dave{I think the two equations are still inconsistent.}
-\ethan{In what way? Using the second to evaluate the first works at least}
-\dave{I used the second to evaluate the first -- but was on a train and could have messed up.}
 \begin{align}
 \underset{\;\;\; \; \;\;\;  \sigma }{\overset{\;\;\; \; \;\;\;  \sigma }{\Twists} } = -A^3\; \underset{\sigma}{\overset{\sigma}{\idsigmashort}}  \qquad \qquad 
-\IsingDat{\Braidss}{\sigma}{\sigma}{\sigma}{\sigma} = A^{-1} \IsingDat{\VssI}{\sigma}{\sigma}{\sigma}{\sigma}  + \alpha_\sigma A  \IsingDat{\HssI}{\sigma}{\sigma}{\sigma}{\sigma} 
+\IsingDat{\Braidss}{\sigma}{\sigma}{\sigma}{\sigma} = A^{-1} \IsingDat{\VssI}{\sigma}{\sigma}{\sigma}{\sigma} + A  \IsingDat{\HssI}{\sigma}{\sigma}{\sigma}{\sigma} 
 \end{align}
 \kw{The term ``self-statistics" seems to be rarely used, according to Google.
 Are we sure we want to use it?}
@@ -2167,21 +2173,6 @@ This means that simple objects in the fermionic setting can have endomorphism al
 Later on, we will see that the existence of simple objects with $\cl_1$ endomorphism 
 algebras is responsible for a large part of the novel physics that occurs as a result of fermion condensation. 
 
-\kw{I would say this differently, and maybe also say it later in this subsection.
-Non-simple m-type objects can ``absorb" fermions, so we have to be careful how we say this.
-I would be inclined to say something like: Observe that $\beta$ has an endomorphism that is not a multiple
-of the identity.
-In bosonic theories, this would imply that $\beta$ is not a simple object.
-But in fermionic/super theories, there are two possible simple super algebras, and hence two possible
-endomorphism algebras for a simple object.}
-\kw{I think it would also be worthwhile to note that if we did try to decompose
-$\beta$ as the sum of two idempotents, those idempotents would be $(1\pm A^{-2}\mbox{dot})/2$.
-Even if we were to overcome our abhorrence of inhomogeneous linear combinations,
-rotating these idempotents through $\pi$ leads to $(1\pm A^{2}\mbox{dot})/2$, which is not an idempotent.}
-\ethan{Yeah, sounds good. I tried my hand at implementing this, but I might have to fuss with it a bit more later.}
-
-\kw{It would be nice to put all of the important $C_2$ relations in one figure.}
-
 \kwsep
 
 \kw{here are some ideas for reorganizing this section and the next one}
@@ -2675,7 +2666,6 @@ First, we turn to an analysis of tubes with non-vortex spin structure.
 
 Let us first examine the tubes with no charge\footnote{We define the ``charge'' of a tube to be the label of the marked point of the upper boundary of the tube, so that tubes in $\tube_{a \rightarrow b}$ have charge $b$. 
 This is slightly misleading however, because charge is not a good quantum number: in more general theories, $\tube_{a \ra b}$ will be nonzero even when $a\neq b$. We will also see examples of theories in which certain equivalence classes of excitations contain tubes of different charge (a non-fermionic version of this is the doubled Fibonacci theory).
-\kw{I don't agree with the last remark; one never takes linear combinations unless all boundary conditions agree.} \ethan{is the new language better?}
 }, that is, cylinders 
 with bounding spin structures and empty boundary conditions on both their top and bottom, which are the cylinders in $\tube^B_{\unit \rightarrow \unit}$. 
 We see that this algeba \eqref{atubes} has two even generators, and so as a vector space
@@ -3873,9 +3863,8 @@ Using \eqref{Fmove} \kw{and trivial loop removal}, we can transform the $\beta$ 
 $\zz/2$ homology class.
 The resulting loop will be decorated by some number of fermionic dots; using dot cancellation we can assume that the
 loop will contain either 0 or 1 dot.
-The seven diagrams of Figure xxxx are the only possibilities.
 
-But for a given spin structure, some of the diagrams of Figure xxxx will be zero:
+But for a given spin structure, some of the diagrams in Figure xxx will be zero:
 \begin{enumerate}
 	\item If one of the non-trivial cycles of the torus has an antiperiodic spin structure, then any odd diagram is zero.
 	This is because we can translate the entire string net in the direction of the antiperiodic cycle.
@@ -3901,7 +3890,7 @@ To do this, we will employ a fancier argument relating a basis of the torus Hilb
 
 \medskip
 
-Let $\mct_B$ denote the bounding tube category and $\mct_N$ denote the non-bounding tube category.
+Let $\tube_B$ denote the bounding tube category and $\tube_N$ denote the non-bounding tube category.
 \kw{do we already have other notation for this?}
 Our goal is to prove the following result (valid for any super pivotal category, not just $C_2$):
 
@@ -3917,12 +3906,12 @@ where $\gamma_j$ runs through a set of representatives of odd endomorphisms of t
 \kw{the closure map $cl$ should have a better notation; maybe just add mathoperator}
 
 Since $T_{BN}$ is spin diffeomorphic to $T_{NB}$, we can compute the Hilbert space for these spin surfaces in two different ways, one using
-idempotents of $\mct_B$ and the other using idempotents of $\mct_N$.
+idempotents of $\tube_B$ and the other using idempotents of $\tube_N$.
 \ethan{I was a little confused by this. I might have been more verbose, e.g.}
-This result allows us to prove that all the idempotents of $\mct_B$ must be m-type.
+This result allows us to prove that all the idempotents of $\tube_B$ must be m-type.
 Indeed, since $T_{BN}$ is spin diffeomorphic to $T_{NB}$ and $T_{NB}$ is even, $T_{BN}$ must also be even.
-Using the $T_{XN}\cong\cc^{p|q}$ identification with $X=B$, this means that $q=0$, and so $\mct_B$ cannot contain any q-type idempotents. 
-It follows that the idempotents of $\mct_B$ must all be m-type.
+Using the $T_{XN}\cong\cc^{p|q}$ identification with $X=B$, this means that $q=0$, and so $\tube_B$ cannot contain any q-type idempotents. 
+It follows that the idempotents of $\tube_B$ must all be m-type.
 \kw{refer also to Dave's different proof of this fact, if it's in the paper}
 
 \kw{might want to stick proof in the general section; not sure what's best}
@@ -4005,7 +3994,7 @@ and we get a summand of $\cc^{0|1}$.
 
 \end{enumerate}
 
-For the $C_2$ theory, $\mct_B$ has three m-type minimal idempotents, and $\mct_N$ has three q-type minimal idempotents.
+For the $C_2$ theory, $\tube_B$ has three m-type minimal idempotents, and $\tube_N$ has three q-type minimal idempotents.
 It follows that $H(T_{BB}) \cong H(T_{NB}) \cong H(T_{BN}) \cong \cc^{3|0}$ and
 $H(T_{NN}) \cong \cc^{0|3}$.
 Therefore the diagrams of Figure xxx must all be non-zero.
@@ -4021,6 +4010,65 @@ for each choice of spin structure, since the $\beta$ lines obey $\zt$ fusion rul
 We will see that naive guess is actually incorrect: instead, for each spin structure, 
 one of the four putative states is a null vector, meaning that there are only three degenerate 
 ground states for each choice spin structure.
+
+We will first use elementary arguments to find a spanning set for each of the four spin tori.
+Later, using more sophisticated techniques, we will prove that these spanning sets are in fact bases.
+
+Since $\beta$ lines obey $\zz/2$ fusion rules (see \eqref{Fmove} above \kw{maybe should refer to table 1 instead;
+also need to remove trivial loops}), it is easy to see that any string net on a spin torus
+is a linear combination of the seven diagrams shown in Figure xxxx.
+Using \eqref{Fmove} \kw{and trivial loop removal}, we can transform the $\beta$ loops into a standard representative of their
+$\zz/2$ homology class.
+The resulting loop will be decorated by some number of fermionic dots; using dot cancellation we can assume that the
+loop will contain either 0 or 1 dot.
+The following seven diagrams are the only possibilities:
+\be \label{seven_tubes} \Fubex{\FubeXXXA}{},\;  \Fubex{\FubesXsA}{},\;     \Fubex{\FubesdXsA}{},\; 
+\Fubex{\FubeXssA}{},\; \Fubex{\FubeXsdsA}{},\; \Fubex{\FubessXA}{}, \; \Fubex{\FubessdXA}{}.
+\ee
+
+However, for a given spin structure, some of the diagrams in \eqref{seven_tubes} will be zero:
+\begin{enumerate}
+	\item If one of the non-trivial cycles of the torus has an antiperiodic spin structure, then any odd diagram is zero.
+	This is because we can translate the entire string net in the direction of the antiperiodic cycle.
+	When we arrive back at our starting point, we have picked up a factor of $-1$ from the antiperiodicity.
+	Thus odd diagrams are equal to $-1$ times themselves and are therefore zero.
+	In particular, the three odd diagrams of Figure xxxx are zero in the $BB$, $BN$ and $NB$ spin structures.
+	\item If a diagram contains a $\beta$ loop without a dot (even/bosonic), and if that loop inherits the periodic spin structure,
+	then the diagram is zero.
+	To see this, we create two dots, slide one around the cycle, and then cancel the dots again (see Figure xxxx).
+	Because of the Koszul sign, we see that the diagram is equal to $-1$ times itself.
+	(If the spin structure along the cycle were antiperiodic, there would be an additional sign to cancel the Koszul sign.)
+	In particular, in the $NN$ spin structure all three of the even $\beta$ loops are zero.
+	For the $BB$, $BN$ and $NB$ spin structures, exactly one of the three even $\beta$ loops fails this test and is zero.
+	\item Finally, Figure xxxx shows that the empty diagram is zero in the $NN$ spin structure.
+	\kw{create trivial beta loop; fuse to get sum of two diagrams with parallel non-trivial beta loops; the diagram without dots
+	is zero by \#2 above; the diagram with two odd loops is zero by an argument similar to \#2: slide one of the loops in the direction
+	orthogonal to itself and pick up a Koszul sign}
+\end{enumerate}
+
+Figure \ref{TorusBasisC2} shows the remaining non-zero diagrams.
+It is easy to see that these diagrams are linearly independent if they are non-zero, but we have not yet proved that they are in fact non-zero.
+To do this, we will employ a fancier argument relating a basis of the torus Hilbert space to minimal idempotents of the tube category.
+
+\medskip
+
+Let $\tube_B$ denote the bounding tube category and $\tube_N$ denote the non-bounding tube category.
+\kw{do we already have other notation for this?}
+Our goal is to prove the following result (valid for any super pivotal category, not just $C_2$):
+
+We can make use of the following result, which we prove in a more general context in Sec \ref{torus_basis_theorem}. 
+The Hilbert spaces of $T_{BB}, T_{NB}, T_{BN}$ are purely even, with an orthogonal basis given by closed-up minimal idempotents of $\tube_B$.
+Additionally, the Hilbert space of $T_{NN}$ is isomorphic to $\cc^{p|q}$, where $p$ is the number of m-type idempotents of $\tube_N$
+and $q$ is the number of q-type idempotents of $\tube_N$.
+An orthogonal basis is given by (representatives of) the minimal m-type idempotents of $\tube_N$,
+union $\{cl(\gamma_j)\}$,
+where $\gamma_j$ runs through a set of representatives of odd endomorphisms of the minimal q-type idempotents of $\tube_N$.
+
+For the $C_2$ theory, $\tube_B$ has three m-type minimal idempotents, and $\tube_N$ has three q-type minimal idempotents.
+It follows that $H(T_{BB}) \cong H(T_{NB}) \cong H(T_{BN}) \cong \cc^{3|0}$ and
+$H(T_{NN}) \cong \cc^{0|3}$.
+Therefore the diagrams of Figure xxx must all be non-zero.
+
 
 Lets investigate the torus with bounding spin structure along both cycles. 
 We find the torus by identifying the inner and outer circles of the annulus.
@@ -4240,22 +4288,6 @@ This ambiguity can lead to different $S$ matrices, see \eqref{NNSmatrix} and sur
 \label{C2Change_of_Basis}
 \end{figure}
 
-\dave{Move this paragraph to conclusions of this section?}
-This substantiates the evidence for the presence of a background topological superconductor, 
-since a $p\pm ip$ superconductor always has odd fermion parity when placed 
-on a $(P,P)$ torus \cite{ware2016,you2015}.
-\dave{Maybe the connection to $p\pm ip$ SC's is from how we treat the spin structure. 
-i.e., it's a free fermion state where amplitudes of the wavefunction that differ by pairs of 
-fermions are related by a a phase. 
-}
-%\footnote{In general, the fermion parity of $p\pm ip$ superconductors on a manifold $\Sigma$ with spin structure $\sigma$ is computed by the Arf invariant $Arf(\Sigma,\sigma)$. \cite{Ryan, Anton, Zitao I think}}.
-% [cite meng and brayden]. 
-We also note that while in this example the fermion parity of a ground state is determined by 
-the choice of spin structure, this is not true in more general theories -- as we will see 
-for the $SO(3)_6$ and $\halfesix$ theories discussed in sections \ref{so36} and \ref{halfesix}.
-\dave{When does Arf determine parity?}
-\ethan{I think it works only for topological SCs, but I don't really understand it very well. Will have to look into that more}
-\dave{I think it's just for free fermions.}
 
 %and for periodic boundary conditions around both cycles, we have 
 %\be \label{pp_gss} GS_{(P,P)} = \left\{\FubesdXs,\ \FubeXsds,\ \FubessdX\right\}.\ee 
@@ -6067,6 +6099,116 @@ For example, in the $C_2$ theory this is verified by $\mcd_{\mcz(C_2)} = \sqrt{8
 %\be d_{m_1} = d_{m_\psi} = 1,\quad d_{m_\sigma^+} = d_{q_1} = d_{q_\psi} = \sqrt{2},\quad d_{q_\sigma} = 2.\ee
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ground states on the torus} \label{ground_states_on_torus}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Let $\tube_B$ denote the bounding tube category and $\tube_N$ denote the non-bounding tube category. \ethan{If we don't like the notation, go and change the $\backslash$ tube command in the preamble}
+Then we have the following theorem, valid for any super pivotal category, which allows us to determine the ground states on a torus from the tube category:
+
+\begin{theorem} \label{torus_basis_theorem}
+Let $X$ equal $B$ or $N$.
+The Hilbert space of $T_{XB}$ is purely even, with an orthogonal basis given by closed-up idempotents $\{cl(e_i)\}$,
+where $e_i$ runs through a set of representatives of the minimal idempotents of $\mct_X$.
+The Hilbert space of $T_{XN}$ is isomorphic to $\cc^{p|q}$, where $p$ is the number of m-type idempotents of $\mct_X$
+and $q$ is the number of q-type idempotents of $\mct_X$.
+An orthogonal basis is given by $\{cl(e_i)\}$, where $e_i$ runs through a set of representatives of the minimal m-type idempotents of $\mct_X$,
+union $\{cl(\gamma_j)\}$,
+where $\gamma_j$ runs through a set of representatives of odd endomorphisms of the minimal q-type idempotents of $\mct_X$.
+\end{theorem}
+
+The proof of the above claim consists of a sequence of fairly simple observations:
+\begin{enumerate}
+
+\item Let $c$ be an object of $\mct_X$ and let $f\in\End(c)$.
+Recall that $f$ is a linear combination of string nets on the annulus (with spin structure $X$), with boundary conditions
+$c$ on both boundary components of the annulus.
+We can therefore glue up $f$ to obtain a new string net $cl(f)$ (the closure of $f$) on either $T_{XB}$ or $T_{XN}$.
+This map is clearly linear, so we have a linear map $cl_c : \End(c) \to H(T_{XY})$, where $Y$ is either $B$ or $N$.
+(For future reference, we will call the image of the boundary of the annulus in the torus $K$.)
+
+\item Taking (finite) sums over different boundary conditions, we have a linear map
+\be
+	cl : \bigoplus_c \End(c) \to H(T_{XY}) ,
+\ee
+where $c$ ranges over all possible boundary conditions.
+(Note that even though $c$ ranges over an uncountable set, the direct sum consists only of finite linear combinations; 
+there are no convergence issues.)
+
+\item The map $cl$ is surjective.
+This is because any string net on the torus is, after a small isotopy, 
+transverse to the gluing locus $K$.
+But $cl$ is very far from being injective, so our next task is to characterize the kernel of $cl$.
+
+\item One way of constructing elements in the kernel of $cl$ is as follows.
+Let $c$ and $d$ be two objects of $\mct_X$.
+Let $g: c\to d$ and $h: d\to c$.
+Then $gh \in \End(c)$ and $hg \in \End(d)$.
+We have
+\be
+	cl(gh) = (-1)^{|g| |h|} s(Y)^{|h|} cl(hg) ,
+\ee
+where $s(B) = -1$ (antiperiodic) and $s(N) = 1$ (periodic).
+This follows from the fact that the two string nets $cl(gh)$ and $cl(hg)$ are isotopic
+via a ``shift" isotopy which pushes $h$ past the gluing locus $K$.
+The factor of $(-1)^{|g| |h|}$ is the usual Koszul sign.
+The factor of $s(Y)^{|h|}$ comes from sliding $h$ past the spin structure branch cut at $K$.
+\kw{probably should have figure for this}
+It follows that elements of the form
+\be \label{cl_ker}
+	gh - (-1)^{|g| |h|} s(Y)^{|h|} hg \in \bigoplus_x \End(x)
+\ee
+are in the kernel of $cl$.
+
+\item In fact, elements of the form \eqref{cl_ker} generate all of the kernel of $cl$.
+In the bosonic case, this is a standard fact (see \cite{walker2006}).
+The proof for the fermionic case is exactly the same, except that we have to keep track of
+Koszul signs and signs coming from the spin structure.
+The key idea of the proof is that any isotopy of the torus can be decomposed into (a) isotopies which
+are fixed near $K$, and therefore can be lifted to isotopies of the annulus, and (b) a ``shift" isotopy
+as described above.
+In summary,
+\be \label{torus_thm}
+	H(T_{XY}) \cong \left( \bigoplus_x \End(x) \right) / \left\langle gh - (-1)^{|g| |h|} s(Y)^{|h|} hg \right\rangle .
+\ee
+
+\item In the semisimple case, the expression \eqref{torus_thm} can be greatly simplified.
+Let $\{e_i\}$ be a complete set of minimal idempotents for $\mct_X$.
+Any endomorphism $f$ can be written as a sum of endomorphisms of the form $f' e_i f''$.
+Using \eqref{cl_ker}, we see that the subspace (of the big direct sum)
+\be
+	\bigoplus_i \End(e_i)
+\ee
+maps surjectively to $H(T_{XY})$.
+Furthermore, because the minimal idempotents are orthogonal (in the sense that $e_i f e_j$ is zero for any $f$ unless $i=j$),
+the only relations we have to consider are of the form
+\be \label{t2_idem_rels}
+	gh - (-1)^{|g| |h|} s(Y)^{|h|} hg
+\ee
+where both $g$ and $h$ are endomorphisms of $e_i$.
+The theorem now follows.
+\end{enumerate}
+
+If $e_i$ is m-type, then \eqref{t2_idem_rels} is always zero and we get a summand of $\cc^{1|0}$ in $H(T_{XY})$.
+If $e_i$ is q-type and $Y$ is $B$, then any odd endomorphism is of the form $\eqref{t2_idem_rels}$
+and we get a summand of $\cc^{1|0}$.
+If $e_i$ is q-type and $Y$ is $N$, then any even endomorphism is of the form $\eqref{t2_idem_rels}$
+and we get a summand of $\cc^{0|1}$.
+
+A useful corollary of theorem \ref{torus_basis_theorem} is that all the idempotents of 
+$\tube_B$ must be m-type.
+Since $T_{BN}$ is spin diffeomorphic to $T_{NB}$, we can compute the Hilbert space for these spin surfaces in two different ways, one using
+idempotents of $\tube_B$ and the other using idempotents of $\tube_N$.
+This result allows us to prove that all the idempotents of $\tube_B$ must be m-type.
+Indeed, since $T_{BN}$ is spin diffeomorphic to $T_{NB}$ and $T_{NB}$ is even, $T_{BN}$ must also be even.
+Using the $T_{XN}\cong\cc^{p|q}$ identification with $X=B$, this means that $q=0$, and so $\tube_B$ cannot contain any q-type idempotents. 
+It follows that the idempotents of $\tube_B$ must all be m-type.
+
+
+
+
+
 %%%%%%%%%%%%%%%%%%%
 \subsection{Fusion rules} \label{fusion_rules}
 %%%%%%%%%%%%%%%%%%%
@@ -6342,7 +6484,7 @@ Recall (from the discussion after \eqref{tube_spin_decomp}) that bounding idempo
 
 \medskip
 
-We can now state the dimension formula.
+We can now state the dimension formula:
 We have
 \be
 	p + q = \sum_{x\;  \mathrm{bounding}} {S_{1x}}^{\chi(Y)} {\textstyle \prod_i} S'_{a_i x} 
@@ -8912,40 +9054,9 @@ We could add an appendix with some of the details, e.g., 6j symbols and particle
 %%%%%%%%%%%%%%%%%%%%%%
 
 In this section we give a formal definition of super pivotal categories.
-The definition differs from the usual bosonic case in the following ways:
-
-\begin{enumerate}
-	\item There are two distinct types of simple object, ``m-type" and ``q-type".
-	m-type simple objects have the same properties as objects in conventional (bosonic) fusion categories, and have trivial endomorphism algebras $\cc$.  
-	q-type simple objects have endomorphism algebras isomorphic to $\cl_1$, and so their endomorphism algebras contain odd elements in addition to scalars.
-	Additionally, the space of morphisms between two objects has the structure of 
-	a super vector space.
-	(See \ref{def_sob_ss}.)
-	\item Fusion spaces $V^{abc}$, $V^{ab}_c$, $V_{abcd}$, etc.\ are not merely supervector spaces; they come equipped with an action of the
-	endomorphism algebras of the objects being fused. 
-	For example, $V^{abc}$ possess an action of $\End(a)\tp \End(b)\tp \End(c)$.
-	(See \ref{fusion_spaces}.)
-	\item When combining basic 3-valent fusion spaces $V^{ab}_c$ to form fusion spaces of higher valence, we must take
-	tensor products over the endomorphism algebras of the simple objects which connect two fusion spaces. 
-	For example, we form the fusion space $V^{ab}_{cd}$ as $V^{ab}_{cd} \cong \bigoplus_e V^{ab}_c \tp_{\End(e)} V^e_{cd}$.
-	In the bosonic case, all tensor products are over the trivial endomorphism algebra $\cc$, but in the fermionic setting we will often need to take tensor products over $\cl_1$. 
-	(See \ref{modified_tensor_product}.)
-	\item In order to keep track of Koszul signs arising from exchanging fermions, 
-	we must keep track of a sign-ordering of individual fusion spaces, and in particular, 	the interchange identity for morphisms in the tensor category 	picks up a Koszul sign (See \ref{koszul_signs}).
-	\item In order to keep track of minus signs that result from rotating fermions by $2\pi$, we must keep track of a spin-framing at each fusion space. 
-	Consequently, the square of the pivotal anti-automorphism is 
-	the fermion parity $(-1)^F$, rather than the identity functor (see \ref{pivotal_structure}). If $*$ is the pivotal anti-automorphism, then 
-	\be f^{**} = (-1)^{|f|}f,\ee
-	where $|f|$ is the parity of the morphism $f$. 
-	\item The coherence equations for the basic data of the theory (e.g.\ the pentagon relations) are modified to incorporate  
-	 Koszul signs resulting from moving around various fusion spaces. 
-	 They are also modified to incorporate the tensor products over endomorphism algebras mentioned above. (see \ref{Fsymbols})
-	\item In order to define an inner product, we need to equip the manifold on which our string-nets are defined with a $Pin_\pm$ structure\footnote{For two vectors $|\psi\rangle,|\eta\rangle$, the inner product $\langle \psi | \eta \rangle$ is computed as usual by reflecting the picture represented by $|\psi\rangle$ about the horizontal axis, stacking the resulting picture on top of the picture represented by $|\eta\rangle$, and evaluating the resulting diagram.}, which was discussed back in Sec. \ref{fermion_line_bundle}.
-	  
-\end{enumerate}
-
-\subsection{Definition}
-
+%%%%%%%%%%%%%%%%%%%
+%\subsection{Definitions and summary}
+%%%%%%%%%%%%%%%%%%%
 There are various ways of axiomatizing string nets, including Kuperberg spiders \cite{kup_spider}, 
 planar algebras \cite{jones_pa},
 disk-like 2-categories \cite{blob_paper}, and pivotal tensor categories \cite{kitaev2006}.
@@ -8964,32 +9075,55 @@ that the data of a pivotal category includes:
 \item A pivotal structure $*$ defined on both objects and morphisms.
 \end{itemize}
 
-The definition of a fermionic/super pivotal category differs from the more familiar bosonic case in the following ways. \ethan{Do we want to merge this list with the one right before this section (which I think we should keep)?}
-\begin{itemize}
-\item The space of morphisms between two objects has the structure of a super vector space.
-\item The interchange identity \kw{need to confirm that's what it's called \dave{Usher called it the {\em super interchange law} \cite{usher2016}}} picks up a Koszul sign
-\begin{align}
+%The definition of a fermionic/super pivotal category differs from the more familiar bosonic case in the following ways. \ethan{Do we want to merge this list with the one right before this section (which I think we should keep)?}
+%\begin{itemize}
+%\item The space of morphisms between two objects has the structure of a super vector space.
+%\item The interchange identity \kw{need to confirm that's what it's called \dave{Usher called it the {\em super interchange law} \cite{usher2016}}} picks up a Koszul sign
+%\begin{align}
+%	(f_1\tp f_2) \circ (g_1\tp g_2) = (-1)^{|f_2| |g_1|} (f_1\circ g_1)\tp (f_2\circ g_2)
+%\end{align}
+%\item The square of the pivotal operator is $(-1)^F$ rather than the identity functor
+%\begin{align}
+%	f^{**} = (-1)^{|f|} f
+%\end{align}
+%\end{itemize}
+
+The definition of a super pivotal category differs from the usual bosonic case in the following ways:
+
+\begin{enumerate}
+	\item The space of morphisms between two objects has the structure of 
+	a super vector space.
+	Morphisms also satisfy the {\em super interchange law} \cite{usher2016}:
+	\begin{align}
 	(f_1\tp f_2) \circ (g_1\tp g_2) = (-1)^{|f_2| |g_1|} (f_1\circ g_1)\tp (f_2\circ g_2)
-\end{align}
-\item The square of the pivotal operator is $(-1)^F$ rather than the identity functor
-\begin{align}
-	f^{**} = (-1)^{|f|} f
-\end{align}
-\end{itemize}
+	\end{align}
+	where $|f|$ is the parity of the morphism $f$. 
+	\item There are two distinct types of simple object, ``m-type" and ``q-type".
+	m-type simple objects have the same properties as objects in conventional (bosonic) fusion categories, and have trivial endomorphism algebras $\cc$.  
+	q-type simple objects have endomorphism algebras isomorphic to $\cl_1$, and so their endomorphism algebras contain odd elements in addition to scalars. (See sec \ref{def_sob_ss}.)
+		\item In order to keep track of Koszul signs arising from exchanging fermions, 
+	we must keep track of a sign-ordering of individual fusion spaces (See \ref{koszul_signs}).
+	\item Fusion spaces $V^{abc}$, $V^{ab}_c$, $V_{abcd}$, etc.\ are not merely supervector spaces; they come equipped with an action of the
+	endomorphism algebras of the objects being fused. 
+	For example, $V^{abc}$ possess an action of $\End(a)\tp \End(b)\tp \End(c)$.
+	(See \ref{fusion_spaces}.)
+	\item When combining basic 3-valent fusion spaces $V^{ab}_c$ to form fusion spaces of higher valence, we must take
+	tensor products over the endomorphism algebras of the simple objects which connect two fusion spaces. 
+	For example, we form the fusion space $V^{ab}_{cd}$ as $V^{ab}_{cd} \cong \bigoplus_e V^{ab}_c \tp_{\End(e)} V^e_{cd}$.
+	In the bosonic case, all tensor products are over the trivial endomorphism algebra $\cc$, but in the fermionic setting we will often need to take tensor products over $\cl_1$. 
+	(See \ref{modified_tensor_product}.)
+	\item In order to keep track of minus signs that result from rotating fermions by $2\pi$, we must keep track of a spin-framing at each fusion space. 
+	Consequently, the square of the pivotal anti-automorphism is 
+	the fermion parity $(-1)^F$, rather than the identity functor (see \ref{pivotal_structure}). If $*$ is the pivotal anti-automorphism, then 
+	\be f^{**} = (-1)^{|f|}f.\ee
+	\item The coherence equations for the basic data of the theory (e.g.\ the pentagon relations) are modified to incorporate  
+	 Koszul signs resulting from moving around various fusion spaces. 
+	 They are also modified to incorporate the tensor products over endomorphism algebras mentioned above. (see \ref{Fsymbols})
+	\item In order to define an inner product, we need to equip the manifold on which our string-nets are defined with a $Pin_\pm$ structure\footnote{For two vectors $|\psi\rangle,|\eta\rangle$, the inner product $\langle \psi | \eta \rangle$ is computed as usual by reflecting the picture represented by $|\psi\rangle$ about the horizontal axis, stacking the resulting picture on top of the picture represented by $|\eta\rangle$, and evaluating the resulting diagram.}, which was discussed back in Sec. \ref{fermion_line_bundle}.
+\end{enumerate}
 
 \kw{figs for above? \dave{Definitely. I will try to draw those soon.}}
 
-\kw{I think we also need to mention Koszul signs in coherence relations (e.g.\ pentagon, anything else?)
-\dave{Double F-move + pivoting identity?}}
-
-\dave{I guess we have all had enough time to think about pitch-forks vs non-pitchforks. 
-Should we vote on which to use?}
-
-\kw{I think we should have the conventions of this section match those of the Hamiltonian 
-section (which is currently pitchforks, unless I missed a recent change)}
-
-\dave{Great. I agree.}
-\ethan{Personally I don't think it'd be unforgivable to use the standard conventions in this section (fusion spaces defined by mor$(a\tp b \ra c)$), and then change to mor$(a\tp b \tp c \ra \unit)$ for Hamiltonian section, as long as we explain why we're doing it. This is mostly because the pentagon and other coherence relations are rather awkward with the pitchforks. Up to you guys, though.}
 
 %%%%%%%%%%%%%%%
 \subsection{Simple objects}  \label{def_sob_ss}
@@ -11285,7 +11419,27 @@ Another way to deconfine the vortex quasiparticles and allow them to move freely
 %%%%%%%%%%%%%%%%%% 
 \section{Discussion} \label{discussion}
 %%%%%%%%%%%%%%%%%%
-\dave{Something that may be worth mentioning or investigating}
+
+It would be interesting to see how our approach to classifying fermionic topological phases fits in 
+with the others discussed in the literature. 
+blah blah modular extensions, Wen's yucky tables
+
+Blah blah recall ising example and chiral central charge issue, etc. 
+This substantiates the evidence for the presence of a background topological superconductor, 
+since a $p\pm ip$ superconductor always has odd fermion parity when placed 
+on a $(P,P)$ torus \cite{ware2016,you2015}.
+\dave{Maybe the connection to $p\pm ip$ SC's is from how we treat the spin structure. 
+i.e., it's a free fermion state where amplitudes of the wavefunction that differ by pairs of 
+fermions are related by a a phase. 
+}
+%\footnote{In general, the fermion parity of $p\pm ip$ superconductors on a manifold $\Sigma$ with spin structure $\sigma$ is computed by the Arf invariant $Arf(\Sigma,\sigma)$. \cite{Ryan, Anton, Zitao I think}}.
+% [cite meng and brayden]. 
+We also note that while in this example the fermion parity of a ground state is determined by 
+the choice of spin structure, this is not true in more general theories -- as we will see 
+for the $SO(3)_6$ and $\halfesix$ theories discussed in sections \ref{so36} and \ref{halfesix}.
+\dave{When does Arf determine parity?}
+\ethan{I think it works only for topological SCs, but I don't really understand it very well. Will have to look into that more}
+\dave{I think it's just for free fermions.}
 
 One can ask if the topological orders we have discussed in this paper have any useful applications?
 For example, we could consider a hybrid system with defects and deconfined anyonic excitations.
