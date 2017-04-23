@@ -1007,20 +1007,18 @@
 
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%
 
 Blah blah blah topological phases. 
 
 Blah blah blah fermionic topological phases \cite{gu2015,gu2014}. 
+Blah blah lattice models \cite{ware2016,tarantino2016}.
 Blah blah fermion condensation. 
 Field theory approachs \cite{gaiotto2016, bhardwaj2016, kapustin2017}, 
 and an algebraic approach \cite{wan2016}. 
 Also blah blah math community \cite{usher2016,brundan2016}.
-
-In this work, we study fermion condensation in more generality and explore
-its connections with fermionic topological phases. 
-
 
 \dave{Should probably collect references to other papers that talk about fermion condensation and cite them appropriately. E.g., \cite{wan2016}.
 {(Putrov, Pavel
@@ -1028,52 +1026,54 @@ Wang, Juven
 Yau, Shing-Tung)}.
 }
 
-The structure of this paper is as follows.
+In this work, we perform a systematic study of fermionic topological phases. 
+Our strategy is to start with a bosonic phase containing a fermion and to condense that fermion.
+We give a prescription for performing fermion condensation in generic topological 
+phases that contain a fermion, and construct a fermionic version of 
+the tube category to obtain their spectra of quasiparticle excitations. 
+We also discuss modular transformations in fermionic phases, and write down 
+a fermionic generalization of the Verlinde formula. 
+Finally, we show how to construct a commuting projector lattice Hamiltonian 
+for fermionic phases.
+A large portion of this paper is devoted to an in-depth study of three different examples of fermion condensation. 
+A more mathematical presentation of this work will appear in \cite{???}. 
 
-
+Due to the length of this paper, we will now give a summary of the rest of its contents.
 Sections \ref{C2_condense_sect} and \ref{C2_quasiparticles} are devoted to a detailed study of 
 fermion condensation in the Ising TQFT, which is a simple case study that allows us to build intuition for the condensation procedure.
 In Sec \ref{C2_condense_sect} we review the Ising TQFT, describe how to perform the 
 fermion condensation, and write down the local string-net rules in the condensed theory, 
 which we dub the $C_2$ theory. 
-In Sec \ref{C2_quasiparticles} we use a fermionic generalization of the tube category construction to study the excitation spectrum of this model, compute its ground state degeneracy on the torus, and discuss the modular transformations and braiding data of the theory. 
+In Sec \ref{C2_quasiparticles} we use a fermionic generalization of the tube category 
+construction to study the excitation spectrum of this model, compute its ground state 
+degeneracy on the torus, and discuss the modular transformations and braiding data of 
+the theory. 
 
-In Sec \ref{generalities}, we study fermion condensation and the tube category in more general settings, discuss how to compute quantum dimensions, and prove a dimension formula.
+In Sec \ref{generalities}, we study fermion condensation and the tube category in more 
+general settings, discuss how to compute quantum dimensions and fusion rules, and prove a Verlinde-type 
+dimension formula for fermionic theories.
 
-Sec \ref{so36} is devoted to the example of performing condensation in the $SO(3)_6$ and $SU(2)_6$ theories, while Sec \ref{halfesix} discusses fermion condensation in the $\halfesix$ theory. 
+Sec \ref{so36} is devoted to the example of performing condensation in the $SO(3)_6$ 
+and $SU(2)_6$ theories, while Sec \ref{halfesix} discusses fermion condensation in the $
+\halfesix$ theory. 
 Both of these examples are more involved than the $C_2$ theory, 
 and illustrate some of the more interesting features of generic fermionic topological phases. 
 
-In Sec \ref{def_sect} we define and discuss super pivotal categories from a more mathematical point of view. 
-We show how fermionic fusion spaces are constructed and tensored together, how coherence relations like the pentagon identity are modified in the fermionic case, 
-and how the fermionic nature of the vector spaces used in the construction of super pivotal categories affects their other properties. 
+In Sec \ref{def_sect} we define and discuss super pivotal categories from a more formal point of view. 
+We show how fermionic fusion spaces are constructed and tensored together, how 
+coherence relations like the pentagon identity are modified in the fermionic case, 
+and how the fermionic nature of the vector spaces used in the construction of super 
+pivotal categories affects their construction. 
 
-Sec \ref{Super_pivotal_Hamiltonian} is devoted to a discussion of a lattice Hamiltonian for fermionic theories. 
+Sec \ref{Super_pivotal_Hamiltonian} is devoted to a discussion of a lattice Hamiltonian for fermionic theories, which is a generalization of the Levin-Wen Hamiltonian. 
 Finally, we end with a conclusion and discussion in Sec \ref{discussion}. 
 Several appendices contain miscellaneous results. 
 
-\begin{itemize}
-\item Condensing transparent bosons
-\item Ising TQFT review
-\item condensing $\psi$ in Ising
-\item construction of the fermion line bundle \ethan{this is more general, should it go in its own place? Maybe put it after condensing transparent bosons so that the local rules in Ising TQFT could go next to the condensing $\psi$ in Ising?}
-\item local rules in the condensed theory 
-\item tube category for $C_2$
-\item modular data and braiding data for $C_2$
-\item generalities on fermion condensation 
-\item how to do traces, quantum dimensions
-\item generalities on tubing 
-\item generalities on modular stuff and braiding 
-\item differences between transparent and non-transparent fermions, condensing by binding to spin str defects, etc
-\item dimension formula
-\item SO(3) example
-\item $\halfesix$ example
-\item definition section 
-\item Hamiltonian 
-\item done 
-\end{itemize}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fermion condensation in the Ising TQFT}  \label{C2_condense_sect}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Before discussing super pivotal categories in the abstract and general techniques for constructing examples thereof,
 we will give a detailed account of one of the simplest examples:
@@ -1110,9 +1110,9 @@ where $A$ is a primitive 16th root of unity. Graphically, this means that
 where the blue (orange) circle denotes a circular $\psi$ ($\sigma$) worldline.
 $\unit$ worldlines, being identified with the vaccuum, are not drawn in diagrams. 
 
-Out of the eight possible choices for $A$, the four different choices $A = ie^{\pm i\pi/8}, -ie^{\pm i\pi/8}$ all give a positive quantum dimension for the $\sigma$ particle of $d = \sqrt{2}$. $A$ is related to the filling fraction $\nu$ defined in \cite{barkeshli2014} by $\nu = -24i\ln(-A)/\pi$. 
-\dave{Is that the right reference? Also should we actually make identification with the filling fraction? -- we could just say how $A$ relates to the $\nu$'s that Kitaev lists in his paper. 
-Also it would probably be nicer to just explicitly write out the four values of $\nu$ in the same order as the previous sentence, rather than as a log.}
+Out of the eight possible choices for $A$, the four different choices $A = ie^{\pm i\pi/8}, -ie^{\pm i\pi/8}$ 
+all give a positive quantum dimension for the $\sigma$ particle of $d = \sqrt{2}$. 
+Instead of $A$, we can specify the filling fraction $\nu$ defined in e.g. \cite{barkeshli2014} by $A^3 = -e^{ i\pi \nu/8}$. 
 %%%% removing the FS remark until/unless we can find a definitive reference
 %The remaining four choices $A=e^{\pm i\pi/8},-e^{\pm i\pi/8}$ with $d = -\sqrt{2}$ are equivalent to unitary theories with $d=\sqrt{2}$ and a nontrivial Frobenius-Schur indicator $\kappa_\sigma = -1$.
 %\kw{Equivalent in what sense?  As pivotal categories?
@@ -5472,8 +5472,10 @@ $q_\psi $&$(1+1\bullet)q_\psi$&$-A^3(1-A^4\bullet)q_\sigma$&$(1+1 \bullet)q_\uni
 
 \end{comment}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Twists and self-statistics}
+%%%%%%%%%%%%%%%%%%%%%%%%
+
 There are three ways to compute the topological twist $\theta_a$ (self-statistics) of a quasiparticle $a$: by statistics (braiding two identical $a$ quasiparticles around one another), by spin (applying Dehn twists on the tubes associated with $a$), and by modular transformations (by acting with the modular $T$-matrix on the ground states on the tori associated with $a$). 
 We'll examine the first two methods below, and will comment on the relation between these and the third method at the end of the section. 
 
