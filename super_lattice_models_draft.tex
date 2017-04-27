@@ -985,7 +985,7 @@
 \begin{document}
 
 
-\title{Fermion condensation and super lattices models}
+\title{Fermion condensation and super lattice models} %since the Hamiltonian isn't a huge part of the paper, I'd be inclined to say ``fermion condensation and super tensor categories'' or ``fermionic topological phases from fermion condensation'' or something. 
 \author{David Aasen, Ethan Lake, and Kevin Walker}
 %\affiliation{Department of Physics and Astronomy, University of Utah, Salt Lake City, UT 84112, USA}
 %\emailAdd{lake@physics.utah.edu}
@@ -1028,7 +1028,7 @@ Blah blah blah topological phases.
 Blah blah blah fermionic topological phases \cite{gu2015,gu2014}. 
 Blah blah lattice models \cite{ware2016,tarantino2016}.
 Blah blah fermion condensation. 
-Field theory approachs \cite{gaiotto2016, bhardwaj2016, kapustin2017}, 
+Field theory approaches \cite{gaiotto2016, bhardwaj2016, kapustin2017}, 
 and an algebraic approach \cite{wan2016}. 
 Also blah blah math community \cite{usher2016,brundan2016}.
 
@@ -1038,8 +1038,39 @@ Wang, Juven
 Yau, Shing-Tung)}.
 }
 
-In this work, we perform a systematic study of fermionic topological phases. 
-Our strategy is to start with a bosonic phase containing a fermion and to condense that fermion.
+In this work, we perform a systematic study of fermionic topological phases from a category-theoretic
+point of view. 
+Our approach towards the study of fermionic topological phases is based on 
+the by now well-developed understanding of bosonic topological phases in terms of category theory. 
+The strategy we will use to construct examples of fermionic topological phases will be to start with 
+a bosonic phase described by a tensor category $\mcc$
+which contains a fermion $\psi$.
+To obtain a fermionic theory, we will condense ``$\psi$''.
+The resulting fermionic topological phase is described by a ``super tensor category'' which we denote
+as $\mcc / \psi$.
+
+Of course, condensing fermions is not a straightforward business. 
+In order to perform the condensation at a formal level, we will need to define a spin bundle on the manifold over 
+which the parent bosonic theory is defined. 
+Physically, this construction amount to attaching a phase of physical (not emergent) fermions 
+to the parent bosonic theory. 
+Fermion condensation then schematically proceeds by coupling the $\psi$ fermions to 
+the physical fermions, and condensing bound states of $\psi$s and physical fermions. 
+In most cases (when $\psi$ is not transparent in $\mcc$), we will also need to perform 
+the condensation with a device we dub the ``back wall'', which is a codimension-1 surface 
+on which $\psi$ worldlines are allowed to end. 
+
+A central difference between fermionic topological phases and their bosonic counterparts is that 
+the former possesses two distinct classes of simple objects (or anyons). 
+One class of simple objects, which we refer to as ``m-type'' objects, are identical in character
+to the simple objects found in bosonic theories. 
+The other class of objects, dubbed ``q-type'' objects, have no bosonic analogues. 
+From a formal perspective, they are distinguished by their nontrivial endomorphism algebras---
+if $a$ is a q-type simple object, then $\End(a) \cong \cl_1$, the first complex Clifford algebra. 
+From a physical point of view, these can be thought of as ``Majorana objects'', which have the ability 
+to ``absorb'' fermions. 
+
+
 We give a prescription for performing fermion condensation in generic topological 
 phases that contain a fermion, and construct a fermionic version of 
 the tube category to obtain their spectra of quasiparticle excitations. 
@@ -1048,9 +1079,11 @@ a fermionic generalization of the Verlinde formula.
 Finally, we show how to construct a commuting projector lattice Hamiltonian 
 for fermionic phases.
 A large portion of this paper is devoted to an in-depth study of three different examples of fermion condensation. 
-A more mathematical presentation of this work will appear in \cite{???}. 
+A more mathematical presentation of this work will appear in \cite{Kevin and scott's paper?}. 
 
-Due to the length of this paper, we will now give a summary of the rest of its contents.
+
+
+Due to the length of this paper, we will now give a summary of the remainder of its contents.
 Sections \ref{C2_condense_sect} and \ref{C2_quasiparticles} are devoted to a detailed study of 
 fermion condensation in the Ising TQFT, which is a simple case study that allows us to build intuition for the condensation procedure.
 In Sec \ref{C2_condense_sect} we review the Ising TQFT, describe how to perform the 
@@ -1079,7 +1112,7 @@ pivotal categories affects their construction.
 
 Sec \ref{Super_pivotal_Hamiltonian} is devoted to a discussion of a lattice Hamiltonian for fermionic theories, which is a generalization of the Levin-Wen Hamiltonian. 
 Finally, we end with a conclusion and discussion in Sec \ref{discussion}. 
-Several appendices contain miscellaneous results. 
+Several appendices contain miscellaneous results and background information. 
 
 
 
@@ -1406,7 +1439,8 @@ isomorphic to the trivial particle $\unit$ (or, more generally, to a direct sum 
 We can think of this as a categorical quotient, with result denoted $\mcc/\langle \alpha \cong \unit \rangle$ or
 more simply $\mcc/\alpha$.
 
-In our graphical calculus, condensing $\alpha$ means that $\alpha$ worldlines are allowed to have endpoints at locations where they are ``absorbed'' into the condensate.
+In our graphical calculus, condensing $\alpha$ means that $\alpha$ worldlines are allowed to 
+have endpoints at locations where they are ``absorbed'' into the condensate.
 We can also think of these boxes as morphisms from $\alpha$ to the trivial particle.
 We will mark the locations where $\alpha$ particles are absorbed into the condensate with boxes
 \begin{align}
@@ -1442,7 +1476,11 @@ This is because
 where $\theta_{\alpha,\alpha}$ is the self-statistics of $\alpha$. 
 (By our assumption that $\alpha\otimes\alpha \cong \unit$, the last equality
 must hold with $\theta_{\alpha,\alpha} = \pm 1$.)
-By the spin-statistics relation this condition is not independent of the previous one, but it will be useful to regard them as separate constraints for the purpose of the fermion condensation procedure described in the next section\footnote{If we drop positivity requirements, we can violate the spin-statistics theorem and have particles which are fermionic in spin but not statistics or vice-versa; see [Scott and Kevin's paper] for a discussion of this.}. 
+By the spin-statistics relation this condition is not independent of the previous one, but it will be 
+useful to regard them as separate constraints for the purpose of the fermion condensation 
+procedure described in the next section\footnote{If we drop positivity requirements, we can 
+violate the spin-statistics theorem and have particles which are fermionic in spin but not statistics 
+or vice-versa; see [Scott and Kevin's paper] for a discussion of this.}. 
 
 \item Finally, 
 $\alpha$ must braid trivially with every particle in $\mcc$. In category-theoretic language, this means that $\alpha$ must lie in the transparent subcategory of $\mcc$.
@@ -6171,10 +6209,10 @@ In bosonic theories we have $\mcd_\mcc^2 = \sum_a d_a^2$, where the sum runs ove
 This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
 The correct formula is
 \be \label{total_qdim_defn} \mcd^2 = \sum_a \frac{d_a^2}{\dim \End(a)}.\ee
-This ensures that $\dim(\mcc)$ is related to $\dim(\mcc / \psi)$ as \ethan{Haven't been able to prove this yet}
+This ensures that $\dim(\mcc)$ is related to $\dim(\mcc / \psi)$ as \ethan{Haven't been able to prove this yet, it might be wrong}
 \be \label{DC_and_DCpsi} \mcd_{\mcc / \psi} = \frac{\mcd_\mcc}{\mcd_{\rm sVec}} = \frac{1}{\sqrt{2}} \mcd_\mcc,\ee
 where we have viewed the category of supervector spaces, sVec, as consisting of two objects ${\rm sVec} = \{\unit,f\}$, with $f$ a transparent (physical) fermion with $f\tp f \cong \unit$. 
-This can be motivated by making use of the theory of modular extensions, see for example \cite{lan2016}. For the $C_2$ theory, this works out as 
+This can be motivated by making use of the theory of modular extensions, see for example \cite{lan2016}. \ethan{should elaborate} For the $C_2$ theory, this works out as 
 \be \mcd_{C_2} = \sqrt{2} = \mcd_{\rm Ising} / \sqrt{2},\ee
 and is easily checked to hold for the $A_n / \psi$ series.  
 
@@ -6182,7 +6220,7 @@ It is a result of Muger \cite{muger2003a} that for any modular tensor category $
 \be \mcd_{\mcz(\mcc)} =\mcd^2_\mcc.\ee
 We can then use \eqref{DC_and_DCpsi} to obtain 
 \be \mcd_{\mcz(\mcc)} = 2\mcd^2_{\mcc/\psi}.\ee
-Using \eqref{DC_and_DCpsi} again and assuming that we can perform condensation either before or after constructing the tube category so that $\mcz(\mcc) / \psi = \mcz(\mcc / \psi)$ \ethan{This is dubious}, we obtain 
+Using \eqref{DC_and_DCpsi} again and assuming that we can perform condensation either before or after constructing the tube category so that $\mcz(\mcc) / \psi = \mcz(\mcc / \psi)$ \ethan{This is highly dubious}, we obtain 
 \be \mcd_{\mcz(\mcc/\psi)} = \sqrt{2}\mcd^2_{\mcc/\psi}.\ee
 For example, in the $C_2$ theory this is verified by $\mcd_{\mcz(C_2)} = \sqrt{8} = \sqrt{2} (\sqrt{2})^2 = \sqrt{2} \mcd^2_{C_2}.$
 
