@@ -1073,36 +1073,42 @@ From a physical point of view, these can be thought of as ``Majorana objects'', 
 to ``absorb'' fermions. 
 
 A categorical description of the condensed phase $\mcc / \psi$ cannot be obtained within the framework 
-of regular tensor categories. 
-Instead, the fermionic nature of $\mcc / \psi$ means that the fusion spaces become supervector spaces 
+of regular tensor categories, and one needs to instead adopt the framework of ``super'' tensor categories. 
+The fermionic nature of $\mcc / \psi$ means that the fusion spaces of the theory become supervector spaces 
 (as opposed to normal vector spaces),
-the tensor product of morphisms is modified to become supercommutative, 
+the tensor product of morphisms is modified to become supercommutative rather than commutative, 
 coherence relations like the pentagon identity are modified to incorporate Kozsul signs, and so on.
 
 
 In order to examine the quasiparticle excitation spectrum of fermionic phases, 
 we use the tube category construction \cite{}.
 The construction of the tube category is modified for fermionic theories, and produces a theory
-equivalent to a fermionic Drinfeld center of the input category.
+equivalent to a fermionic version of Drinfeld center of the input category.
 Because quasiparticle excitations are supported on circular boundary components of the ambient 
 manifold on which the theory is defined, there are two distinct classes of quasiparticles in 
 fermionic theories: those with anti-periodic fermion boundary conditions around the circle, and 
 those with periodic boundary conditions. 
-The former are bona fide deconfined quasiparticles, while the latter are better thought of as spin defects. 
-The analysis of both modular transformations and the computation of ground state degeneracies 
+Thus, the tubes in the tube category come equipped with spin structures, which gives the tube category a $\zt$ grading. 
+The excitations associated with anti-periodic boundary conditions are bona fide deconfined quasiparticles, 
+while those associated with periodic boundary conditions are better thought of as spin defects and are linearly confined. 
+
+The analysis of modular transformations, braiding statistics, and the computation of ground state degeneracies on various spin surfaces
 is also modified in the fermionic setting.  
-%a fermionic generalization of the Verlinde formula. 
+The behavior of the $S$ and $T$ modular transformations on the torus depends on the spin structure of the torus in question, and 
+certain relations like $(ST)^3 = \unit$ are realized projectively in the fermionic setting, becoming 
+$(ST)^3=(-1)^F\unit$ where $(-1)^F$ is the fermion parity operator. 
 
 Finally, we show how to construct a commuting projector lattice Hamiltonian 
 for fermionic phases. It is similar in character to the Levin-Wen Hamiltonian of \cite{}, 
 except that it includes an extra edge term which is responsible for moving fermions along
 q-type worldlines. 
+Spin structure defect excitations (those for which fermions transported around them have periodic 
+boundary conditions) create violations of this edge term, and as such are linearly confined. 
 
 We illustrate all of the above points in a series of several in-depth examples, which occupy a large portion 
 of this paper. 
 A more mathematical presentation of this work will appear in \cite{Kevin and scott's paper?}. 
 
-shoenberg has something that might help the commutativity of center and condensation 
 
 
 Due to the length of this paper, we will quickly give a summary of the remainder of its contents.
@@ -5904,6 +5910,8 @@ and that they take a very similar form to (\ref{MTCIdemp}).
 \dave{I don't think it's true, although it is possible I made a mistake in my calculations -- will have to double check it.
 E.g., in $SU(2)_6/\psi$ some of the non-bounding idempotents are m-type.}
 \kw{Ethan, why do you think it is true?}
+\ethan{I don't know; I heard it from Dave a while ago, and thought Dave knew the proof. 
+Maybe it got lost in translation, or was one of many things that we thought were true initially and then realized were not true}
 If the input theory is not modular, then m-type excitations can appear in the vortex (non-bounding) sector.
 However, the excitations in the non-vortex sector will always be m-type, regardless of the modularity of the input theory. 
 
@@ -5945,7 +5953,7 @@ in the $SO(3)_6$ theory.
 
 We note that q-type particles can never arise in the condensed theory if $\psi$ is transparent.
 To see this, we note that if $\alpha\ot\psi = \beta$ for $\alpha,\beta\in\mcc$, it follows that 
-$\theta_\beta = \theta_\alpha \theta_\psi = -\theta_\alpha,$
+\be\theta_\beta = \theta_\alpha \theta_\psi = -\theta_\alpha,\ee
 where the first equality is because $\psi$ is transparent.
 It follows that $\alpha \not\cong \beta$ in $\mcc$, and hence $\alpha$ descends to an m-
 type simple object in $\mcc/\psi$, since if $\alpha$ were q-type we would have $\alpha \tp \psi \cong \alpha$.
@@ -5953,9 +5961,9 @@ type simple object in $\mcc/\psi$, since if $\alpha$ were q-type we would have $
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsubsection{Condensing transparent fermions in the center of a pivotal tensor category}
+\subsubsection{Condensing objects that lift to fermions in the Drinfeld Center}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\ethan{is this needed? I think the relevant technology we need is discussed in the examples section}
+\ethan{consider importing half-braiding stuff from $\halfesix$ section}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -5974,11 +5982,11 @@ In order to resolve problems with the twist and self-statistics of $\psi$,
 we must couple the $\psi$ endpoints to a spin structure and introduce Koszul signs, as before.
 However, this yields an inconsistent theory if $\psi$ is not transparent (see \eqref{transparency_inconsistency}).
 
-If the only non-trivial braiding phase $\psi$ has with any other particle in $\mcc$ is $-1$, 
-which we will assume in what follows, 
-\kw{I think this follows from our earlier $\psi$ assumptions -- no need for additional assumptions}
-this issue can be solved straightforwardly. 
-Indeed, we observe that the problem in \eqref{transparency_inconsistency} would be 
+%If the only non-trivial braiding phase $\psi$ has with any other particle in $\mcc$ is $-1$, 
+%which we will assume in what follows, 
+%\kw{I think this follows from our earlier $\psi$ assumptions -- no need for additional assumptions}
+%this issue can be solved straightforwardly. 
+However, we observe that the problem in \eqref{transparency_inconsistency} would be 
 surmounted if the ``box'' (the physical fermion attached to the $\psi$ endpoint) had a $-1$ 
 braiding phase when taken around any anyon with which $\psi$ braids nontrivially. 
 This extra $-1$ braiding phase cannot be due to the presence of any additional anyonic 
@@ -6208,39 +6216,8 @@ C^{\lambda}_{ \eta \psi} =  \sum_{s, t} \frac{1}{\sqrt{d_a d_\gamma}}
 \end{align}
 where $s,t \in \bigoplus_{efg} V^{ef}_g$ and the pictures are drawn on an $S^2$ and can be 
 evaluated using the local data (e.g. the $F$-moves, quantum dimensions, and pivotal structure) of the theory. 
+\ethan{moved the presentation for the idempotents in the modular case to the so3-6 section}
 
-
-\kw{I think we only use this in the SO3-6 section, so perhaps it should be moved there.
-Specializing to modular cats seems out of place here.}
-We will now give a presentation of the primitive idempotents of the tube category for a modular tensor $\mcc$. 
-This will be useful for us because we will always perform computations of idempotents in modular theories: 
-even in the non-modular $\halfesix$ example we discuss later, we will first lift it to a 
-modular theory before computing the idempotents. 
-%As mentioned before, our strategy will be to compute the primitive idempotents in the tube %algebra of $SU(2)_6$, and then condense $\psi$ to obtain the quasiparticle excitations in the condensed theory. 
-%We will then exploit the close relation between $SU(2)_6$ and $SO(3)_6$ to compute the quasiparticle excitations in $SO(3)_6/\psi$.
-We will write the primitive idempotents in $\tube(\mcc)$ as 
-%\begin{align}
-%\Pi_{(a,b)}^c = \sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{}}
-%\end{align}
-\begin{align}
-\xymatrix{
-\Pi_{(a,b)}^c = \sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{X}}
-&
-\text{
-{\tabulinesep=1.2mm
-\begin{tabu}{ c c | c }
-type& spin & isomorphism class \\ \hline
-$\Pi_{ab}$ &$\theta_a \theta_b^*$&$a \tp b $ \\
-\end{tabu}
-}}
-}
-\label{MTCIdemp}
-\end{align}
-where $\Omega_0 = \bigoplus_x d_x x/\mathcal{D}^2$ and $\mcd$ is the total quantum dimension as defined in \eqref{total_qdim_defn}.
-One can check that, due to the $\Omega_0$ loop, any two idempotents with differing labels are orthogonal. 
-This fact relies on modularity; had there been transparent particles not all idempotents listed above would neccessarilly be orthogonal.
-Any $c \in a \tp b$ provides a suitable representative for the isomorphism class of the minimal idempotent labeled $(a,b)$.
-Sometimes we will drop the $c$ when we compute quantities which are independent of the representative of the isomorphism class.  
 
 
 %%%%%%%%%%%%%%%%%%%%
@@ -7090,9 +7067,44 @@ One can then compute the fusion rules of the simple objects either by use of the
 \end{comment}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Idempotents of the tube category for modular theories}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We will now give a presentation of the primitive idempotents of the tube category for a modular tensor category $\mcc$,
+which will help us work out the $SU(2)_6$ and $SO(3)_6$ examples. 
+%This will be useful for us because we will always perform computations of idempotents in modular theories: 
+%even in the non-modular $\halfesix$ example we discuss later, we will first lift it to a 
+%modular theory before computing the idempotents. 
+%As mentioned before, our strategy will be to compute the primitive idempotents in the tube %algebra of $SU(2)_6$, and then condense $\psi$ to obtain the quasiparticle excitations in the condensed theory. 
+%We will then exploit the close relation between $SU(2)_6$ and $SO(3)_6$ to compute the quasiparticle excitations in $SO(3)_6/\psi$.
+We write the primitive idempotents in $\tube(\mcc)$ as 
+%\begin{align}
+%\Pi_{(a,b)}^c = \sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{}}
+%\end{align}
+\begin{align}
+\xymatrix{
+\Pi_{(a,b)}^c = \sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{X}}
+&
+\text{
+{\tabulinesep=1.2mm
+\begin{tabu}{ c c | c }
+type& spin & isomorphism class \\ \hline
+$\Pi_{ab}$ &$\theta_a \theta_b^*$&$a \tp b $ \\
+\end{tabu}
+}}
+}
+\label{MTCIdemp}
+\end{align}
+where $\Omega_0 = \bigoplus_x d_x x/\mathcal{D}^2$ and $\mcd$ is the total quantum dimension as defined in \eqref{total_qdim_defn}.
+One can check that, due to the $\Omega_0$ loop, any two idempotents with differing labels are orthogonal. 
+This fact relies on modularity; had there been transparent particles not all idempotents listed above would necessarily be orthogonal.
+Any $c \in a \tp b$ provides a suitable representative for the isomorphism class of the minimal idempotent labeled $(a,b)$.
+Sometimes we will drop the $c$ when we compute quantities which are independent of the representative of the isomorphism class.  
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Primitive idempotents of $SU(2)_6/\psi$}
+\subsection{Primitive idempotents of $SU(2)_6/\psi$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The primitive idempotents of $SU(2)_6/\psi$ can be computed directly from the primitive idempotents of the parent theory $SU(2)_6$ by ``condensing" the fermions off of the elements in $\mcz(SU(2)_6)$. 
@@ -7226,7 +7238,7 @@ We now turn our attention to the $SO(3)_6$ theory.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Primitive idempotents of $SO(3)_6/\psi$}
+\subsection{Primitive idempotents of $SO(3)_6/\psi$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Finding the idempotents in the $SO(3)_6/\psi$ theory is more difficult, since the parent theory  $SO(3)_6$ isn't modular.
