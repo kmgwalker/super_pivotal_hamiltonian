@@ -1162,6 +1162,9 @@ In \ref{C2_fusion_rules} we determine the fusion rules of these quasiparticles, 
 %%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Ising TQFT}  \label{Ising_review}
 %%%%%%%%%%%%%%%%%%%%%%%
+\dave{One option:
+We could drop the braiding data of $\sigma$ with $\sigma$ and only specify a braiding on $\psi$.
+We could also condense all the necessary Ising data into a table and drop this subsection.}
 
 Here we provide a brief review the the Ising TQFT \cite{Lins1994}. 
 There are three particles in the theory, which we label as $\unit$ (the identity), $\sigma$ (the non-abelian Ising anyon), and $\psi$ (the emergent fermion).
@@ -1188,7 +1191,9 @@ all give a positive quantum dimension for the $\sigma$ particle of $d = \sqrt{2}
 The other four choices of $A$ give $d=-\sqrt{2}$, which can alternatively be defined
 with $d=\sqrt{2}$ but with a negative Frobenius-Schur indicator of $\kappa_\sigma=-1$. 
 In what follows, we will specify to $A = ie^{\pm i\pi/8}, -ie^{\pm i\pi/8}$ so that $d_\sigma = \sqrt{2},\kappa_\sigma=1$. 
-Instead of $A$, we can also specify the filling fraction $\nu$ common in the physics literature (see e.g. \cite{barkeshli2014}), which are related by $A^3 = -e^{ i\pi \nu/8}$. 
+%Instead of $A$, we can also specify the filling fraction $\nu$ common in the physics literature (see e.g. \cite{barkeshli2014}), which are related by $A^3 = -e^{ i\pi \nu/8}$. 
+%\dave{I removed this sentence for now}
+
 %%%% removing the FS remark until/unless we can find a definitive reference
 %The remaining four choices $A=e^{\pm i\pi/8},-e^{\pm i\pi/8}$ with $d = -\sqrt{2}$ are equivalent to unitary theories with $d=\sqrt{2}$ and a nontrivial Frobenius-Schur indicator $\kappa_\sigma = -1$.
 %\kw{Equivalent in what sense?  As pivotal categories?
@@ -1206,8 +1211,8 @@ Instead of $A$, we can also specify the filling fraction $\nu$ common in the phy
 %The Frobenius-Schur indicator of $\sigma$ will play essentially no role in what follows, and 
 
 We now turn our attention to the graphical calculus of the Ising TQFT. 
-Bubbles in diagrams can be eliminated by using the rule
-
+We pick a normalization more common in the physics literature,
+bubbles in diagrams can be eliminated by using the rule
 \be% \mathord{\vcenter{\hbox{\includegraphics[scale=1]{bubble_defn.pdf}}}}\;. 
 \overset{\;c'}{\underset{c}{{\scriptstyle{a}}\Bubbleabc {\scriptstyle{b}}}} = \delta_{c c'} \sqrt{\frac{d_a d_b}{d_c}}\times \overset{c}{\underset{c}{\idblack}}\ee
 In particular, we have 
@@ -1285,7 +1290,7 @@ Additionally, $\psi$ is not transparent, as it braids nontrivially with $\sigma$
 %\mathord{\vcenter{\hbox{\includegraphics[scale=1]{sig_psi_braid.pdf}}}}.\ee
 \begin{align}
  \overset{\sigma \quad \; \; \; \; \psi }{\underset{\sigma}{\Rpss}}
- =A^4 \;  \overset{\sigma \quad \; \; \; \; \psi }{\underset{\sigma}{\Vsigmapsisigma}}, \qquad \qquad \IsingDat{\Braidsp}{\sigma}{\psi}{\psi}{\sigma}  = - \IsingDat{\Braidpsconj}{\sigma}{\psi}{\psi}{\sigma}. 
+ =A^4 \;  \overset{\sigma \quad \; \; \; \; \psi }{\underset{\sigma}{\Vsigmapsisigma}}, \qquad \qquad \IsingDat{\Braidsp}{\psi}{\sigma}{\sigma}{\psi}  = - \IsingDat{\Braidpsconj}{\psi}{\sigma}{\sigma}{\psi}. 
   \label{sig_psi_Rsymbol}
 \end{align}
 
@@ -5589,6 +5594,8 @@ Using Table \ref{Rtable}, we obtain
 for the non-vortex particles, and 
 \be \theta_{q_\unit} = A^{-3},\ \theta_{q_\psi} = -A^{-3},\ \theta_{q_\sigma} = 1\ee
 for the vortex particles. 
+\dave{Should comment that there are only two innequivalent $C_2$ fusion categories (only two possible braidings of $\psi$ with $\sigma$), 
+but seemingly $4$ appearing above.}
 
 The twists can also be obtained by computing their spins, which is done by directly Dehn-twisting the tubes in question. 
 This amounts to computing the eigenvalue of each quasiparticle under $t$, where $t$ is the twisted tube defined in \eqref{tube_shorthands}.
