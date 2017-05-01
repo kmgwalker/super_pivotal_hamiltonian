@@ -5939,6 +5939,7 @@ which makes sense since fermions + time reversal gives you symplectic / quaterni
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Condensing transparent fermions in a braided category}
+\label{condense_transparent_fermion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In this subsection we make the same assumptions about $\psi$ and $\mcc$ as in \ref{gntf_condense}, 
@@ -5971,7 +5972,47 @@ type simple object in $\mcc/\psi$, since if $\alpha$ were q-type we would have $
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Condensing objects that lift to fermions in the Drinfeld Center}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ethan{consider importing half-braiding stuff from $\halfesix$ section}
+%\ethan{consider importing half-braiding stuff from $\halfesix$ section}
+%%%%%%%%%%%%%%%
+%\subsubsection{Lifting $y$ to the center}
+%%%%%%%%%%%%%%%
+Here we assume that we have a unitary fusion category $\mcc$ and describe how one can condense an object $y \in \mcc$ whose lift to the Drinfeld center is a fermion.
+To do this we need to find a half braid on the fermionic object $y$. 
+For a formal definition of half braid see \cite{muger2003a} and \cite{muger2003b} definition 3.1 see also Lemma 3.3 of the same reference.
+A braid on an object $y \in \mcc $ is an isomorphism from $y \tp r \rightarrow r \tp y$ for each $r \in \mcc$.
+The isomorphism is the braiding of $y$ with $r$. 
+We will denote these isomorphisms as $e_y(r)$, and write them diagrammatically as
+\begin{align} 
+e_y(r)  = \halfbraid{\ebox}{y}{r}{}{}.
+\label{halfbraid}
+\end{align}
+One should think of the box braiding $y$ under $r$. 
+We could equally well think of this as braiding $y$ over $r$, but since we will use ``back wall condensation" it is natural to choose $y$ braiding under $r$. 
+Using the semisimplicity of $\mcc$ we can write $e_y(r)$ as
+\begin{align}
+e_y(r)  = \halfbraid{\ebox}{y}{r}{} = \sum_{w \in V^{ry}_{yr}} \left[ e_y(r)  \right]_{w} \halfbraid{\egeneral}{y}{r}{w},
+\label{halfbraid_resolution}
+\end{align}
+
+Not any isomorphism $e_y(r)$ is allowed; $e_y(r)$ must satisfy some consistency conditions.
+For example, braiding with the identity object should be trivial:
+\begin{align}
+\halfbraid{\ebox}{y}{\mathds{1}}{} = \text{id}_y.
+\label{identityBraid}
+\end{align} 
+A quintessential property of a braiding, is that it can freely slide past the fusion spaces $V^{ab}_c$,
+\begin{align}
+\halfbraidHex{\HalfBraidHexa}{y}{a}{b}{c} = \halfbraidHex{\HalfBraidHexb}{y}{a}{b}{c}.
+\label{junctionBraid}
+\end{align}
+Taking \eqref{halfbraid_resolution} and inserting it into \ref{identityBraid} and \ref{junctionBraid} allows one to find the $\left[ e_y(r)  \right]_{w}$ defined in \eqref{halfbraid_resolution}
+
+In order to do fermion condensation we additionally we require $y$ to be fermionic so that
+\begin{align}
+e_y(y) =  - \text{id}_y \tp \text{id}_y.
+\end{align}
+Once a fermion has been defined one can proceed with the techniques of sections \ref{gntf_condense} and \ref{condense_transparent_fermion}. 
+We will provide an example of such a condensation in section \ref{halfesix}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -7630,6 +7671,7 @@ Following this, we will compute the quasiparticle excitations in the condensed t
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Fusion theory of $\halfesix$}
+\label{halfesixFusionTheory}
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 The $E_6$ fusion category is the fusion category whose principle graph is given by the $\text{E}_6$ Dynkin diagram, shown to the left in Fig. \ref{EsixDynkin}.
@@ -7737,62 +7779,16 @@ The only data left to specify is the associators for the $V^{xxx}_x$ fusion spac
 In this subsection we will describe the procedure for condensing the $y$ particle in $\halfesix$. 
 %The technique is identical to fermion condensation in the Ising theory, with one technical difference, $\halfesix$ does not admit a consistent braiding [REF Ostrik?].
 As mentioned earlier, $\halfesix$ is not braided, and so when we say condense $y$, we actually mean that we lift $y$ to the Drinfeld center (where it is an emergent fermion), and condense the lift of $y$. 
-Since the center of $\halfesix$ has been computed in several places [REF] we will not provide all details. 
+Since the center of $\halfesix$ has been computed in several places [Wang,...] we will not provide all details. 
 %We first describe the lift, then we condense that particle and write down all the topological data of the $\halfesix/y$. 
 
-
-%%%%%%%%%%%%%%%
-\subsubsection{Lifting $y$ to the center}
-%%%%%%%%%%%%%%%
-
-
-The only natural particle that could lift to a fermion in the sense of statistics, spin, and fusion rules is $y$.
-Hence we only need to check that the half braid corresponding to $y$ is fermionic.
-For a formal definition of half braid see \cite{muger2003a} and \cite{muger2003b} definition 3.1\dave{I put Muger here. Is there a canonical reference for half braid?}, see also Lemma 3.3 of the same reference.
-To define a braid on an object $y \in {\cal C}$ we need to specify an isomorphism from $y \tp r \rightarrow r \tp y$ for each $r \in {\cal C}$.
-The isomorphism is the braiding of $y$ with $r$. 
-We will denote these isomorphisms as $e_y(r)$, and write them diagrammatically as
-\begin{align} 
-e_y(r)  = \halfbraid{\ebox}{y}{r}{}{}.
-\end{align}
-One should think of the box braiding $r$ over $y$. 
-One could equally well think of this as braiding $y$ over $r$, but since we will use ``back wall condensation" it is natural to choose $r$ braiding over $y$. 
-
-Not any isomorphism $e_y(r)$ is allowed; $e_y(r)$ must satisfy some consistency conditions.
-For example, braiding with the identity object should be trivial:
-\begin{align}
-\halfbraid{\ebox}{y}{\mathds{1}}{} = \text{id}_y.
-\label{identityBraid}
-\end{align} 
-We also require that the braids can slide past the fusion spaces $V^{ab}_c$,
-\begin{align}
-\halfbraidHex{\HalfBraidHexa}{y}{a}{b}{c} = \halfbraidHex{\HalfBraidHexb}{y}{a}{b}{c}.
-\label{junctionBraid}
-\end{align}
-
-To solve these relations, we can re-write $e_y(r)$ as
-\begin{align}
-e_y(r)  = \halfbraid{\ebox}{y}{r}{} = \sum_{w \in V^{ry}_{yr}} \left[ e_y(r)  \right]_{w} \halfbraid{\egeneral}{y}{r}{w},
-\end{align}
-which we then plug into \ref{identityBraid} and \ref{junctionBraid}. 
-Since we will only require a half braid on $y$, there are only a few equations to solve and one can readily do this by hand to find
+The lift of $y$ to $\mcz(\halfesix)$ can be found by taking \ref{halfbraid_resolution} subject to the constraints \eqref{identityBraid} and \eqref{junctionBraid}.
+Using the fusion theory of $\halfesix$ defined above in Sec.~\ref{halfesixFusionTheory} one readily finds the unique solution,
 \begin{align}
 \halfbraid{\ebox}{y}{\unit +x+y}{} = \halfbraid{\eone}{y}{\mathds{1}}{} - \; i   \halfbraid{\ex}{y}{x}{x} -   \halfbraid{\ey}{y}{y}{\mathds{1}}.
 \label{yhalfbraid}
 \end{align}
 The all important negative sign on the last term makes the statistics and spin of $y$ fermionic. 
-
-
-%A generic element in the Drinfeld center is given by an object $A$ from the fusion category and a collection of isomorphisms $e_A$ that define the half braid of $A$ with any object from the fusion category $e_A(x): A \tp x \rightarrow x \tp A$ for all $x$ in the fusion category.
-%In the center there are two particles with fermionic spin, one of which has $y$ as the object from the fusion category and the half braids are given by,
-%\begin{align}
-%\overset{1+x+y}{\underset{1+x+y}{\ebox}} = \ey - i  \ex -   \eone.
-%\label{yhalfbraid}
-%\end{align}
-%We have used a box to depict the isomorphism $e_y( \; \;)$. 
-%One can check that this braid is fermionic in both spin and statistics. 
-%\dave{Should probably demonstrate at least the braiding of the $y$ particle. }
-%We can now condense the $y$ particle by using this braiding from the center \ref{yhalfbraid}.
 
 We are now in a position to condense $y$.
 Since $x$ is invariant under fusion with $y$ after condensation it becomes a q-type simple object, which we will denote by $\rho$:
@@ -7823,6 +7819,19 @@ However, unlike a p-wave superconductor the junction does not leave behind a vor
 %Hence, this is the ``simplest" non-abelian purely q-type theory.
 
 %\dave{Note to self: Write down minimal set of associators for $V^{\rho \rho \rho}_\rho$.}
+
+
+
+%A generic element in the Drinfeld center is given by an object $A$ from the fusion category and a collection of isomorphisms $e_A$ that define the half braid of $A$ with any object from the fusion category $e_A(x): A \tp x \rightarrow x \tp A$ for all $x$ in the fusion category.
+%In the center there are two particles with fermionic spin, one of which has $y$ as the object from the fusion category and the half braids are given by,
+%\begin{align}
+%\overset{1+x+y}{\underset{1+x+y}{\ebox}} = \ey - i  \ex -   \eone.
+%\label{yhalfbraid}
+%\end{align}
+%We have used a box to depict the isomorphism $e_y( \; \;)$. 
+%One can check that this braid is fermionic in both spin and statistics. 
+%\dave{Should probably demonstrate at least the braiding of the $y$ particle. }
+%We can now condense the $y$ particle by using this braiding from the center \ref{yhalfbraid}.
 
 
 %%%%%%%%%%%%%%%%%%%%
