@@ -5998,18 +5998,25 @@ type simple object in $\mcc/\psi$, since if $\alpha$ were q-type we would have $
 %%%%%%%%%%%%%%%
 %\subsubsection{Lifting $y$ to the center}
 %%%%%%%%%%%%%%%
-Here we assume that we have a unitary fusion category $\mcc$ and describe how one can condense an object $y \in \mcc$ whose lift to the Drinfeld center is a fermion.
-To do this we need to find a half braid on the fermionic object $y$. 
-For a formal definition of half braid see \cite{muger2003a} and \cite{muger2003b} definition 3.1 see also Lemma 3.3 of the same reference.
-A braid on an object $y \in \mcc $ is an isomorphism from $y \tp r \rightarrow r \tp y$ for each $r \in \mcc$.
-The isomorphism is the braiding of $y$ with $r$. 
+
+In this section we reduce our assumptions about the object we aim to condense (which we will now refer to as $y$) further. 
+We will not assume that $y\in\mcc$ (for $\mcc$ a UFC) is a fermion, only that it lifts to a fermion in the Drinfeld center 
+$\mcz(\mcc)$. 
+This sort of scenario will occur in the $\halfesix$ theory we study in Sec. \ref{halfesix}.
+
+To condense $y$, we need to find a half braid on the ``fermionic'' object $y$. 
+For a formal definition of half braid see \cite{muger2003a} and \cite{muger2003b} (definition 3.1 and Lemma 3.3 of the same reference).
+A braid on an object $y \in \mcc $ is an isomorphism from $y \tp r \rightarrow r \tp y$ for each $r \in \mcc$,
+the isomorphism being the braiding of $y$ with $r$. 
 We will denote these isomorphisms as $e_y(r)$, and write them diagrammatically as
 \begin{align} 
 e_y(r)  = \halfbraid{\ebox}{y}{r}{}{}.
 \label{halfbraid}
 \end{align}
 One should think of the box braiding $y$ under $r$. 
-We could equally well think of this as braiding $y$ over $r$, but since we will use ``back wall condensation" it is natural to choose $y$ braiding under $r$. 
+We could equally well think of this as braiding $y$ over $r$, but since we will use the ``back wall condensation" procedure to condense $y$, 
+it is natural to choose $y$ braiding under $r$. 
+
 Using the semisimplicity of $\mcc$ we can write $e_y(r)$ as
 \begin{align}
 e_y(r)  = \halfbraid{\ebox}{y}{r}{} = \sum_{w \in V^{ry}_{yr}} \left[ e_y(r)  \right]_{w} \halfbraid{\egeneral}{y}{r}{w},
@@ -6022,14 +6029,14 @@ For example, braiding with the identity object should be trivial:
 \halfbraid{\ebox}{y}{\mathds{1}}{} = \text{id}_y.
 \label{identityBraid}
 \end{align} 
-A quintessential property of a braiding, is that it can freely slide past the fusion spaces $V^{ab}_c$,
+The most important property of the braiding isomorphisms is that they commute with fusion, meaning that they can freely slide past the fusion spaces $V^{ab}_c$:
 \begin{align}
 \halfbraidHex{\HalfBraidHexa}{y}{a}{b}{c} = \halfbraidHex{\HalfBraidHexb}{y}{a}{b}{c}.
 \label{junctionBraid}
 \end{align}
-Taking \eqref{halfbraid_resolution} and inserting it into \ref{identityBraid} and \ref{junctionBraid} allows one to find the $\left[ e_y(r)  \right]_{w}$ defined in \eqref{halfbraid_resolution}
+Taking \eqref{halfbraid_resolution} and inserting it into \ref{identityBraid} and \ref{junctionBraid} allows one to find the $\left[ e_y(r)  \right]_{w}$ defined in \eqref{halfbraid_resolution}. 
 
-In order to do fermion condensation we additionally we require $y$ to be fermionic so that
+In order to do fermion condensation we require $y$ to lift to a fermionic object, so that
 \begin{align}
 e_y(y) =  -\; \text{id}_y \tp \text{id}_y.
 \end{align}
@@ -6190,8 +6197,12 @@ and thus finding the quasiparticle excitations in the theory is equivalent to fi
 modules of the tube category. 
 
 Now we will make these ideas a bit more concrete. 
-Morphisms in the tube category can be written concisely as the collection of all $\cc$-linear 
-combinations of marked tubes with the following string-net configuration: \ethan{should introduce general tube first, then mention that everything can be reduced to the following:}
+Morphisms in the tube category are represented by $\cc$-linear combinations of tubes decorated 
+with different string-nets. 
+We can use local relations on the tubes to reduce any string-net configuration to a $\cc$-linear combination of string-net configurations 
+of the form of a string-net with one marked point at each of the tube's boundary $S^1$s
+and one string wrapping around the tube's diameter. 
+This allows us to present the morphisms in $\tube(\mcc)$ concisely as  
 \begin{align}
 {\rm mor}(\tube({\cal C}))\; =\; \mathbb{C} \left[\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{} \right] 
 % \Annulus{\AnnularTube}{X} \right] \\%\AnnulusP{\AnnularTube}{B}{} \right] 
@@ -6371,23 +6382,33 @@ For example, in the $C_2$ theory, we can use this approach to obtain $d_{m_{\uni
 Normalizing so that $d_{m_\unit} = 1$, we obtain the quantum dimensions listed in Table \ref{C2Data}. 
 
 We will also need to know how to calculate the total quantum dimension $\mcd_\mcc = \dim(\mcc)$.
-In bosonic theories we have $\mcd_\mcc^2 = \sum_a d_a^2$, where the sum runs over all simple objects $a\in\mcc$. 
+In bosonic theories we have $\mcd_\mcc^2 = \sum_{x\in \mcc} d_x^2$, where the sum runs over all simple objects $a\in\mcc$. 
 This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
 The correct formula is
-\be \label{total_qdim_defn} \mcd^2 = \sum_a \frac{d_a^2}{\dim \End(a)}.\ee
-This ensures that $\dim(\mcc)$ is related to $\dim(\mcc / \psi)$ as \ethan{Haven't been able to prove this yet, it might be wrong}
+\be \label{total_qdim_defn} \mcd_{\mcc/\psi}^2 = \sum_{x\in \mcc/\psi} \frac{d_x^2}{\dim \End(x)}.\ee
+This ensures that $\dim(\mcc)$ is related to $\dim(\mcc / \psi)$ by 
 \be \label{DC_and_DCpsi} \mcd_{\mcc / \psi} = \frac{\mcd_\mcc}{\mcd_{\rm sVec}} = \frac{1}{\sqrt{2}} \mcd_\mcc,\ee
-\dave{I think it's correct, maybe this is what you want:
-$$ 
-\mcd_\mcc^2 = \text{Tr} \bigoplus_x d_x x = \text{Tr} \left( \bigoplus_{x \in M} d_x (\mathds{1} \oplus \psi) \tp x \right )+ \text{Tr} \bigoplus_{x  \in Q} \left(\frac{d_x}{2}(\mathds{1} + \psi) \tp x \right)  
-= \text{Tr}(\unit \oplus \psi) \cdot \text{Tr} \left( \bigoplus_{x \in \mcc/\psi} \frac{d_x}{2^{n_x}} x \right) = 2 \mcd_{\mcc/\psi}^2
-$$}
 where we have viewed the category of supervector spaces, sVec, as consisting of two objects 
-${\rm sVec} = \{\unit,f\}$, with $f$ a transparent (physical) fermion with $f\tp f \cong \unit$. 
-This can be motivated by making use of the theory of modular extensions, see for example \cite{lan2016}. 
-\ethan{should elaborate} For the $C_2$ theory, this works out as 
+${\rm sVec} = \{\unit,\psi\}$, so that $\mcd_{\rm sVec} = \sqrt{2}$. 
+To prove \eqref{DC_and_DCpsi}, we write 
+\be
+\mcd_\mcc^2 = \text{Tr} \left(\bigoplus_{x\in \mcc/\psi} d_x x\right) = \text{Tr} \left( \bigoplus_{x \in M} d_x (\mathds{1} \oplus \psi) \tp x \right ) + \text{Tr} \left(\bigoplus_{x  \in Q} {d_x} x \right),\ee
+where $Q$ is the set of all q-type objects in $\mcc$ (those that are invariant under fusion with $\psi$), 
+and $M$ is a collection of representatives of the orbits of m-type objects under fusion with $\psi$, so that 
+the collection of all m-type simple objects is $M\cup M\tp \psi$.   
+Since $x\tp \psi \cong x$ if $x\in Q$, we can write
+\be \begin{align}
+\mcd_\mcc^2 & = \text{Tr} \left( \bigoplus_{x \in M} d_x (\mathds{1} \oplus \psi) \tp x \right ) + 
+\text{Tr}  \left(\bigoplus_{x  \in Q}\frac{d_x}{2}(\unit \oplus \psi) x \right) = \text{Tr}(\unit \oplus \psi) 
+\cdot \text{Tr} \left( \bigoplus_{x \in \mcc/\psi} \frac{d_x}{2^{n_x}} x \right) \\ & = \mcd^2_{\rm sVec} 
+\mcd_{\mcc/\psi}^2 = 2 \mcd_{\mcc/\psi}^2,
+\end{align} 
+\ee
+proving \eqref{DC_and_DCpsi}. 
+This result can also be motivated by making use of the theory of modular extensions, see for example \cite{lan2016}. 
+For the $C_2$ theory, this works out as 
 \be \mcd_{C_2} = \sqrt{2} = \mcd_{\rm Ising} / \sqrt{2},\ee
-and is easily checked to hold for the $A_n / \psi$ series.  
+and is easily checked to hold for the other examples in the $A_n / \psi$ series.  
 
 It is a result of Muger \cite{muger2003a} that for any modular tensor category $\mcc$\dave{(I thought this was true for any UFC satisfying the usual assumptions? e.g., \cite{muger2003b})}, 
 the dimension of the center is related to $\mcd_\mcc$ by 
@@ -6946,12 +6967,15 @@ We give the principle graph for $SU(2)_6/\psi$ in Fig.~\ref{SUSOsix} in the uppe
 \begin{figure} 
 \centering
 \includegraphics{SU26SO36Dynkin.pdf}
-\caption{\label{SUSOsix} The upper left diagram is the principle graph of $SU(2)_6$. The lower left diagram is the principle graph for $SO(3)_6$. 
-On the right we give the principle graphs of the condensed theories. 
-The naming convention of the condensed theories has been inherited from the parent theories, along with an $m$ or $q$ denoting whether the particle is m-type or q-type.
-\kw{Let's make the edges corresponding to odd fusion channels a different color (maybe red) (SO3/psi pgraph).
-Also, that PG should have two edges (one black, one red).
-Also, in SU/psi graph, let's make it a fat/double edge, not two parallel single edges.}}
+\caption{\label{SUSOsix} The upper left diagram is the principle graph of $SU(2)_6$, and the 
+lower left diagram is the principle graph for $SO(3)_6$. 
+On the right we give the principle graphs of the condensed theories $SU(2)_6/\psi$ (top right) and 
+$SO(3)_6/\psi$ (bottom right), both with the identification $\psi=6$. 
+The naming convention of the condensed theories has been inherited from the parent theories, 
+along with an $m$ or $q$ denoting whether the particle is m-type or q-type.
+Black links denote even fusion channels, and the red link connecting $m_2$ to itself 
+denotes an odd fusion channel in accordance with the rule $m_2\tp m_2 \cong m_0 \oplus \cc^{1|1}m_2$. 
+}
 \end{figure}
 The particles $0,2,4,$ and $6$ form a closed sub-category of $SU(2)_6$. 
 The principle graph of this theory is found by removing the particles $1,3,5$ in the principle graph of $SU(2)_6$, shown in the bottom left of Fig.~\ref{SUSOsix}. 
@@ -7077,17 +7101,20 @@ $q_3$ &$\mathbb{C}^{1|1} m_2 $&$ \mathbb{C}^{1|1}m_0 \oplus \mathbb{C}^{1|1}m_2$
 
 
 There are two peculiarities that these examples highlight nicely. 
-First, we observe that $m_2$ is an m-type particle, despite the fact that $\mathbb{C}^{1|1}m_2$ appears in the tensor product of $m_2$ with itself.
-Since $m_2\in SO(3)_6/\psi$, $SO(3)_6/\psi$ provides us with an example of a theory which has no q-type objects, but which is still intrinsically ``fermionic'', in the sense that its fusion spaces contain odd elements. 
+First, we observe that $m_2$ is an m-type particle, despite the fact that $\mathbb{C}^{1|1}m_2$ 
+appears in the tensor product of $m_2$ with itself.
+Since $m_2\in SO(3)_6/\psi$, $SO(3)_6/\psi$ provides us with an example of a theory which has 
+no q-type objects, but which is still intrinsically ``fermionic'', in the sense that its fusion spaces contain odd elements. 
 
-Second, we note that the q-type particle $q_3$ appears in the tensor product of two m-type particles, namely $m_2 \tp m_1$. 
-Therefore, it is perfectly consistent to have two m-type particles fuse to a q-type particle, meaning that the fusion rules do not respect the $\zt$ grading of objects according to their type. 
-\kw{and meaning that we should never refer to the m/q classification as a grading; should find any places elsewhere in the paper where we have done that}
-This example therefore lies beyond the framework of previous classifications of fermion topological phases, which assume that this $\zt$ 
-grading is preserved under fusion \ref{bhardwaj2016}. %see e.g. page 36
+Second, we note that the q-type particle $q_3$ appears in the tensor product of two m-type 
+particles, namely $m_2 \tp m_1$. 
+Therefore, it is perfectly consistent to have two m-type particles fuse to a q-type particle, meaning 
+that the fusion rules do not respect the $\zst$ decomposition of objects according to their type. 
+This example therefore lies beyond the framework of previous classifications of fermion 
+topological phases, which assume that the type decomposition forms a $\zt$ grading\ref{bhardwaj2016}. %see e.g. page 36
 \kw{Did Kapustin really assume this??  If so, presumably he was confusing the $\tp$ of simple super-algebras with the $\tp$ of anyons; same notation,
 but very different things}
-\ethan{Yes, he assumes that q-type guys are determined by a homomorphism $\pi : G \ra \zt$ (he only considers $G$-graded Ising-type theories) which I think is actually a natural guess from a physical point of view. }
+\ethan{Yes, he assumes that q-type guys are determined by a homomorphism $\pi : G \ra \zt$ (he only considers $G$-graded Ising-type theories) which I think is actually a natural guess from a physical point of view. Should quadruple check, though. Relevant stuff to look for is the Ising pull-backs in the big paper and the $\pi_1$ in the paper with just Gaiotto}
 Interestingly, $q_3$ appears in $m_2 \tp m_1$ with coefficient $\mathbb{C}^{1|0}$, despite the fact that $V^{m_2 m_1}_{q_3} \cong \mathbb{C}^{1|1}$.
 %It has fusion rules\footnote{Note that although the $m_2 \tp m_2 \rightarrow m_2$ fusion rule has a $\mathbb{C}^{1|1}$ coefficient, it is not q-type. },
 %\begin{align}
