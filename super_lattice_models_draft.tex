@@ -6364,63 +6364,82 @@ For example, in the $C_2$ theory this is verified by $\mcd_{\tube(C_2)} = \sqrt{
 \subsubsection{The sum-of-squares formula}
 %%%%%%%%%%%%%%%%%
 
-\ethan{will come back and fix up later, figured we should talk about this somewhere}
+In this section, we briefly review the sum-of-squares formula, the fermionic version of which is useful for relating the dimension
+of the tube category to the dimensions of its simple modules (quasiparticles). 
+In many cases, this allows us to obtain a large amount of information about the quasiparticle 
+content of the theory without actually finding the explicit representations of the primitive 
+idempotents of the tube category.
 
-Before moving on, we note that we could have obtained a large amount of information about the quasiparticle content of the theory without actually finding the explicit representations of the primitive idempotents of the tube category.
-To do this, we treat the tube category as an algebra (with the obvious multiplication) and apply standard techniques to find the simple modules of the algebra.
-The idea is to exploit the sum-of-squares formula, relating the dimension of an algebra to the dimensions of its simple modules. 
-In the bosonic case, the formula is as follows: if $\{M_a\}$ is a list of the simple modules of the tube algebra, then 
-\be \dim \tube = \sum_{M_a} (\dim M_a)^2.\ee
-In the fermionic case, this is modified slightly to account for the fact that the endomorphism algebras of these modules may be $\cl_1$ instead of $\cc$. The correct modification is
+If $\{M_a\}$ is a list of the simple modules of the tube category 
+(recall that these are in one-to-one correspondence with quasiparticles, otherwise known as isomorphism class of minimal idempotents of the tube category), then 
+the sum-of-squares formula is
+%\be \dim \tube = \sum_{M_a} (\dim M_a)^2.\ee
+%In the fermionic case, this is modified slightly to account for the fact that the endomorphism algebras of these modules may be $\cl_1$ instead of $\cc$. The correct modification is
 \be \label{sumofsqs} \dim \tube = \sum_{a | \End(a) \cong \cc} (\dim M_a)^2 + 2\sum_{a|\End(a) \cong \cl_1} (\dim M_a)^2,\ee
-where the factor of 2 comes from the fact that if $a$ is q-type the even and odd parts of $M_a$ have equal dimensions (as they are oddly isomorphic). 
+where the factor of 2 in front of the second sum comes from the fact that if $a$ is q-type, 
+the even and odd parts of $M_a$ have equal dimensions (as they are oddly isomorphic). 
+The left hand side of the above formula is simply the number of non-zero linearly independent tubes in $\tube$. 
+If there are no q-type particles in $\tube$ then there are no terms in the second sum on the right hand side, 
+and we reproduce the bosonic sum-of-squares formula (see e.g. \cite{Lan2014}). 
 
-This formula actually allows us to exactly reproduce the quasiparticle content of the $C_2$ theory starting with equations \eqref{atubes} and \eqref{ptubes} enumerating the elements of the tube algebra. 
-Since \eqref{sumofsqs} holds for any algebra, it holds for the subalgebras $\tube^N$ and $\tube^B$ (since the tube algebra does not mix states of different spin structures, 
-$\tube \cong \tube^B \oplus \tube^A$). 
-Since taking fermions around tubes with non-bounding spin structures acts as the identity (in the $C_2$ theory under consideration),%\footnote{This is true in the $C_2$ theory, but not in general; see Sec \ref{halfesix} for a counterexample.}
-all of the quasiparticles associated with periodic spin structures will have $\cl_1$ endomorphism algebras (that is, they will all be q-type). Furthermore, since $\dim \tube^B = \dim \tube^N = 6$, for the $C_2$ theory we have 
+As an example, we can consider the $C_2$ theory. 
+There are three q-type simple modules (all in the $\tube_N$ sector) and three m-types. 
+All of the simple modules are one-dimensional with the exception of $m_\sigma$, 
+which is the two-dimensional isomorphism class of $m_\sigma^+$ and $m_\sigma^-$. 
+Since there are 12 linearly independent tubes in $\tube(C_2)$ (see \eqref{atubes} and \eqref{ptubes}), 
+the sum-of-squares formula reads
+\be 12 = 1^2+2^2+1^2+2(1^2+1^2+1^2).\ee
+
+%%%%% tried to condense-ify this
+\begin{comment}
+As an example of the power of \eqref{sumofsqs}, we will reproduce the quasiparticle content of the $C_2$ theory starting with equations \eqref{atubes} and \eqref{ptubes} enumerating the elements of the tube algebra, without having to actually compute the minimal idempotents. 
+Since $\tube \cong \tube_B \oplus \tube_N$, we can apply \eqref{sumofsqs} to each of $\tube_B$ and $\tube_N$. 
+Since $\dim \tube^B = \dim \tube^N = 6$ from the list of tubes in \eqref{atubes} and \eqref{ptubes}, and since all the minimal idempotents in $\tube_N(C_2)$ are q-type (although this doesn't hold in more general examples)
+for the $C_2$ theory we must have 
 \be 6 = \sum_{a \in \mcz^B(C_2)} (\dim M_a)^2,\qquad 6 = 2 \sum_{a\in \mcz^N(C_2)} (\dim M_a)^2,\ee
 where $\mcz^B(C_2)$ are all the quasiparticles associated with bounding spin structures and $\mcz^N(C_2)$ are those associated with the non-bounding spin structures. 
 This immediately tells us that the non-bounding sector must contain three quasiparticles, while the bounding sector must contain either six $(6 = 6\cdot 1^2)$ or three $(6=2\cdot 1^2 + 2^2)$ quasiparticles. 
 However, since $\tube^B$ is non-abelian the former possibility is ruled out, and thus we have determined that the $C_2$ theory must contain six quasiparticles, with three associated to each spin structure. 
 %The quasiparticle associated with the two-dimensional module in the non-vortex sector is $m_\sigma^\pm$, whose two-dimensionality comes from the fact that it is a ``composite'' of two oddly-isomorphic simple modules. 
-
+%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Ground states on the torus} \label{ground_states_on_torus}
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
-Let $\tube_B$ denote the bounding tube category and $\tube_N$ denote the non-bounding tube category. 
-\ethan{If we don't like the notation, go and change the $\backslash$ tube command in the preamble}
-Then we have the following theorem, valid for any super pivotal category, which allows us to determine 
+In what follows, we will let $T_{XY}$ with $X,Y\in\{B,N\}$ denote the torus with spin structure $XY$
+(with spin structure $X$ along the meridional cycle and $Y$ along the longitudinal cycle),
+and $\mch(T_{XY})$ the Hilbert space of ground-state string-net configurations on $T_{XY}$.  
+As before, we will also let $\tube_B$ denote the bounding tube category and $\tube_N$ denote the non-bounding tube category. 
+
+We have the following theorem, valid for any super pivotal category, which allows us to determine 
 the ground states on a torus from the tube category:
 
 \begin{theorem} \label{torus_basis_theorem}
 Let $X$ equal $B$ or $N$.
-The Hilbert space of $T_{XB}$ is purely even, with an orthogonal basis given by closed-up idempotents $\{cl(e_i)\}$,
-where $e_i$ runs through a set of representatives of the minimal idempotents of $\mct_X$.
-The Hilbert space of $T_{XN}$ is isomorphic to $\cc^{p|q}$, where $p$ is the number of m-type idempotents of $\mct_X$
-and $q$ is the number of q-type idempotents of $\mct_X$.
+The Hilbert space $\mch(T_{XB})$ is purely even, with an orthogonal basis given by closed-up idempotents $\{cl(e_i)\}$,
+where $e_i$ runs through a set of representatives of the minimal idempotents of $\tube_X$.
+The Hilbert space of $T_{XN}$ is isomorphic to $\cc^{p|q}$, where $p$ is the number of m-type idempotents of $\tube_X$
+and $q$ is the number of q-type idempotents of $\tube_X$.
 An orthogonal basis is given by $\{cl(e_i)\}$, where $e_i$ runs through a set of 
-representatives of the minimal m-type idempotents of $\mct_X$,
+representatives of the minimal m-type idempotents of $\tube_X$,
 union $\{cl(\gamma_j)\}$,
-where $\gamma_j$ runs through a set of representatives of odd endomorphisms of the minimal q-type idempotents of $\mct_X$.
+where $\gamma_j$ runs through a set of representatives of odd endomorphisms of the minimal q-type idempotents of $\tube_X$.
 \end{theorem}
 
 The proof of the above claim consists of a sequence of fairly simple observations:
 \begin{enumerate}
 
-\item Let $c$ be an object of $\mct_X$ and let $f\in\End(c)$.
+\item Let $c$ be an object of $\tube_X$ and let $f\in\End(c)$.
 Recall that $f$ is a linear combination of string nets on the annulus (with spin structure $X$), with boundary conditions
 $c$ on both boundary components of the annulus.
 We can therefore glue up $f$ to obtain a new string net $cl(f)$ (the closure of $f$) on either $T_{XB}$ or $T_{XN}$.
-This map is clearly linear, so we have a linear map $cl_c : \End(c) \to H(T_{XY})$, where $Y$ is either $B$ or $N$.
+This map is clearly linear, so we have a linear map $cl_c : \End(c) \to \mch(T_{XY})$, where $Y$ is either $B$ or $N$.
 (For future reference, we will call the image of the boundary of the annulus in the torus $K$.)
 
 \item Taking (finite) sums over different boundary conditions, we have a linear map
 \be
-	cl : \bigoplus_c \End(c) \to H(T_{XY}) ,
+	cl : \bigoplus_c \End(c) \to \mch(T_{XY}) ,
 \ee
 where $c$ ranges over all possible boundary conditions.
 (Note that even though $c$ ranges over an uncountable set, the direct sum consists only of finite linear combinations; 
@@ -6432,7 +6451,7 @@ transverse to the gluing locus $K$.
 But $cl$ is very far from being injective, so our next task is to characterize the kernel of $cl$.
 
 \item One way of constructing elements in the kernel of $cl$ is as follows.
-Let $c$ and $d$ be two objects of $\mct_X$.
+Let $c$ and $d$ be two objects of $\tube_X$.
 Let $g: c\to d$ and $h: d\to c$.
 Then $gh \in \End(c)$ and $hg \in \End(d)$.
 We have
@@ -6444,7 +6463,6 @@ This follows from the fact that the two string nets $cl(gh)$ and $cl(hg)$ are is
 via a ``shift" isotopy which pushes $h$ past the gluing locus $K$.
 The factor of $(-1)^{|g| |h|}$ is the usual Koszul sign.
 The factor of $s(Y)^{|h|}$ comes from sliding $h$ past the spin structure branch cut at $K$, see figure~\ref{KernalCl}.
-%\kw{probably should have figure for this} 
 It follows that elements of the form
 \be \label{cl_ker}
 	gh - (-1)^{|g| |h|} s(Y)^{|h|} hg \in \bigoplus_x \End(x)
@@ -6470,17 +6488,17 @@ are fixed near $K$, and therefore can be lifted to isotopies of the annulus, and
 as described above.
 In summary,
 \be \label{torus_thm}
-	H(T_{XY}) \cong \left( \bigoplus_x \End(x) \right) / \left\langle gh - (-1)^{|g| |h|} s(Y)^{|h|} hg \right\rangle .
+	\mch(T_{XY}) \cong \left( \bigoplus_x \End(x) \right) / \left\langle gh - (-1)^{|g| |h|} s(Y)^{|h|} hg \right\rangle .
 \ee
 
 \item In the semisimple case, the expression \eqref{torus_thm} can be greatly simplified.
-Let $\{e_i\}$ be a complete set of minimal idempotents for $\mct_X$.
+Let $\{e_i\}$ be a complete set of minimal idempotents for $\tube_X$.
 Any endomorphism $f$ can be written as a sum of endomorphisms of the form $f' e_i f''$.
 Using \eqref{cl_ker}, we see that the subspace (of the big direct sum)
 \be
 	\bigoplus_i \End(e_i)
 \ee
-maps surjectively to $H(T_{XY})$.
+maps surjectively to $\mch(T_{XY})$.
 Furthermore, because the minimal idempotents are orthogonal (in the sense that $e_i f e_j$ is zero for any $f$ unless $i=j$),
 the only relations we have to consider are of the form
 \be \label{t2_idem_rels}
@@ -6490,7 +6508,7 @@ where both $g$ and $h$ are endomorphisms of $e_i$.
 The theorem now follows.
 \end{enumerate}
 
-If $e_i$ is m-type, then \eqref{t2_idem_rels} is always zero and we get a summand of $\cc^{1|0}$ in $H(T_{XY})$.
+If $e_i$ is m-type, then \eqref{t2_idem_rels} is always zero and we get a summand of $\cc^{1|0}$ in $\mch(T_{XY})$.
 If $e_i$ is q-type and $Y$ is $B$, then any odd endomorphism is of the form $\eqref{t2_idem_rels}$
 and we get a summand of $\cc^{1|0}$.
 If $e_i$ is q-type and $Y$ is $N$, then any even endomorphism is of the form $\eqref{t2_idem_rels}$
@@ -7103,9 +7121,9 @@ Second, we note that the q-type particle $q_3$ appears in the tensor product of 
 particles, namely $m_2 \tp m_1$. 
 Therefore, it is perfectly consistent to have two m-type particles fuse to a q-type particle, meaning 
 that the fusion rules do not respect the $\zt$ 
-decomposition of objects according to their type. 
-This example therefore lies beyond the framework of previous classifications of fermion 
-topological phases, which assume that the type decomposition forms a $\zt$ grading\ref{bhardwaj2016}. 
+decomposition of objects according to their type, 
+unlike in Refs \ref{bhardwaj2016,kapustin2017} where the type of objects is determined 
+from a homomorphism $\sigma : \mcc \ra \zt$. \ethan{$\mcc$ is always a finite group for these guys}
 %see e.g. page 36
 \kw{Did Kapustin really assume this??  If so, presumably he was confusing the $\tp$ of simple super-algebras with the $\tp$ of anyons; same notation,
 but very different things}
