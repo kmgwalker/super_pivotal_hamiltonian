@@ -1063,9 +1063,13 @@ q-type particles have endomorphism algebras equal to complex Clifford algebras, 
 have no bosonic analogue. 
 We construct a fermionic generalization of the tube category, which allows us to compute
 the quasiparticle excitations in fermionic topological phases. 
+We prove a series of results relating data in condensed theories to data in their parent theories, 
+namely that if $\mcc$ is a tensor category containing a fermion, then the tube category 
+of the condensed theory satisfies 
+$\tube(\mcc/\psi) \cong \mcc \times (\mcc/\psi)$.  
 We also study how modular transformations, fusion rules, and coherence relations 
 are modified in the fermionic setting, and construct 
-a commuting projector lattice Hamiltonian for fermionic theories. 
+a commuting projector lattice Hamiltonian for fermionic theories.  
 Spin structures play a prominent role throughout our analysis. 
 A large portion of this work is devoted to three detailed examples of performing fermion condensation to produce fermionic topological phases: we condense fermions 
 in the Ising theory, the $SO(3)_6$ theory, and the $\halfesix$ theory. 
@@ -1100,14 +1104,21 @@ In this work, we perform a systematic study of fermionic topological phases from
 point of view. 
 Our approach towards the study of fermionic topological phases is based on 
 the by now well-developed understanding of bosonic topological phases in terms of category theory. 
+
 The strategy we will use to construct examples of fermionic topological phases will be to start with 
 a bosonic phase described by a tensor category $\mcc$
 which contains a fermion $\psi$.
-To obtain a fermionic theory, we will condense ``$\psi$''.
+To obtain a fermionic theory, we will condense $\psi$.
+That is, we will show how to introduce a phase transition in the bosonic phase 
+described by $\mcc$ to a phase where $\psi$ are {\it local} (as opposed to anyonic) excitations.
 The resulting fermionic topological phase is described by a super tensor category, which we denote
 as $\mcc / \psi$.
+$\mcc/\psi$ is a fermionic phase because in order for a phase to support local fermionic excitations, 
+its underlying degrees of freedom must be fermionic. 
 
 Of course, condensing fermions is not a straightforward business. 
+It has been discussed before from a category-theoretic perspective in \cite{wan2016}
+and a field theory perspective in \cite{bhardwaj2016, kapustin2017,bhardwaj2016b}.
 In order to perform the condensation, it is necessary to equip the configuration 
 space of $\psi$ worldline endpoints with a certain complex line bundle. 
 Physically, the construction of this bundle amounts to attaching a phase of physical (not emergent) fermions 
@@ -1127,6 +1138,7 @@ From a formal perspective, they are distinguished by their nontrivial endomorphi
 if $a$ is a q-type simple object, then $\End(a) \cong \cl_1$, the first complex Clifford algebra. 
 From a physical point of view, these can be thought of as ``Majorana objects'', which have the ability 
 to ``absorb'' fermions. 
+\ethan{talk about stacking and primitive vs non-primitive}
 
 A categorical description of the condensed phase $\mcc / \psi$ cannot be obtained within the framework 
 of regular tensor categories, and one needs to instead adopt the framework of ``super'' tensor categories. 
@@ -1162,9 +1174,14 @@ Spin structure defect excitations (those for which fermions transported around t
 boundary conditions) create violations of this edge term, and as such are linearly confined. 
 
 We illustrate all of the above points in a series of several in-depth examples, which occupy a large portion 
-of this paper. 
-A more mathematical presentation of this work will appear in \cite{Kevin and scott's paper?}. 
-
+of this paper.
+Our presentation is characterized by an emphasis on examples, 
+and we often save formal definitions and more general statements 
+for later sections after relevant examples have been presented.  
+Many general observations are mixed in with the example sections,
+and we stress that the more general sections are intended as a supplement
+the example sections; they are not stand-alone.
+We also note that a more mathematical presentation of this work will appear in \cite{Kevin and scott's paper?}. 
 
 
 Due to the length of this paper, we will quickly give a summary of the remainder of its contents.
@@ -1175,12 +1192,20 @@ fermion condensation, and write down the local string-net rules in the condensed
 which we dub the $C_2$ theory. 
 In Sec \ref{C2_quasiparticles} we use a fermionic generalization of the tube category 
 construction to study the excitation spectrum of this model, compute its ground state 
-degeneracy on the torus, and discuss the modular transformations and braiding data of 
+degeneracy on the torus, and study the modular transformations and braiding data of 
 the theory. 
 
-In Sec \ref{generalities}, we study fermion condensation and the tube category in more 
-general settings, discuss how to compute quantum dimensions and fusion rules, and prove a Verlinde-type 
-dimension formula for fermionic theories.
+In Sec \ref{generalities}, we present a collection of more general results. 
+We show how to perfrom fermion condensation in more general settings
+and discuss our fermionic generalization 
+of the tube category construction in more generality.
+We also discuss how to compute quantum dimensions and fusion rules
+and we prove some general
+relations between the total quantum dimensions of condensed theories, their 
+tube parent theories, and their tube categories.
+Additionally, we present Verlinde-type 
+dimension formula for fermionic theories,
+
 
 Sec \ref{so36} is devoted to the example of performing condensation in the $SO(3)_6$ 
 and $SU(2)_6$ theories, while Sec \ref{halfesix} discusses fermion condensation in the $
@@ -1202,10 +1227,7 @@ Several appendices contain miscellaneous results and background information.
 
 (KW) Introduction (maybe)-to-do list:
 \begin{itemize}
-\item We are emphasizing examples and putting formal definitions and the more general statements later
-\item Many general observations are mixed in with the example sections; the general sections are meant to supplement
-the example sections; they are not stand-alone
-\item
+\item \ethan{took care of the previous suggestions}
 \end{itemize}
 
 
@@ -3390,8 +3412,9 @@ However, since $\tube^B$ is non-abelian the former possibility is ruled out, and
 \end{comment}
 
 
-
-
+%commented out Kevin's alternate outline of the fusion rules section. What Kevin wrote is now split between here and the section on generalities
+\begin{comment} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Quasiparticle fusion rules (alternate outline)}
 
 \kw{Here's an outline of how I would discuss fusion.
@@ -3442,6 +3465,8 @@ a 3-punctured sphere with $e_1$ an d $e_2$ fixed on boundary components 1 and 2,
 \kw{figure}
 
 \kw{that's all for now}
+\end{comment}
+%%%%%%%%%%%%%%%%%%
 
 
 
@@ -6087,13 +6112,6 @@ worldlines to be closed and restoring the original phase.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The tube category of $\mcc/\psi$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-To do:
-\begin{itemize}
-\item front-braiding leads to grading 
-(half of the familiar $Z(\mcc) \cong \mcc \ot \overline\mcc$ when $\mcc$ is modular)
-\end{itemize}
-
-\kwsep
 
 The quasiparticle excitations in a bosonic topological phase obtained from a category $\mcc$ 
 are given by the simple objects in the Drinfeld center $\mcz(\mcc)$ \cite{levin2005}.
@@ -6149,13 +6167,13 @@ Parts of this outline are similar to what's already written below.
 
 The basic idea behind the tube category for bosonic theories is as follows. 
 The setting for examining a collection of $n$ excitations in a given topological phase is a 
-manifold with $n$ circular punctures, with an excitation localized at the location of each puncture. 
+manifold with $n$ circular punctures, with an excitation localized at the location of each puncture (strictly speaking the notion of an excitation is not well-defined until we construct a Hamiltonian for the theory, which we will do in Sec \ref{Super_pivotal_Hamiltonian}). 
 The distinct types of excitations constitute the objects of the tube category. 
-Local operators on excited states correspond to operators which take cylindrical tubes (or annuli, 
-hence the association with $\text{Ann}(\mcc)$) and fuse them into the punctures on the manifold, 
-by gluing the bottom end of a tube into a puncture.
-The tubes are decorated with different string-net configurations, and can be viewed as linear 
-maps between circles with different boundary conditions. 
+%Local operators on excited states correspond to operators which take cylindrical tubes (or annuli, 
+%hence the association with $\text{Ann}(\mcc)$) and fuse them into the punctures on the manifold, 
+%by gluing the bottom end of a tube into a puncture.
+%The tubes are decorated with different string-net configurations, and can be viewed as linear 
+%maps between circles with different boundary conditions. 
 The collection of excitations constitute the objects of the tube category, while the collection of all 
 tubes (modulo local relations) form the morphisms of the tube category, where composition of two morphisms 
 $f,g$ is given by stacking the tubes of $f$ on top of the tubes of $g$. 
@@ -6253,6 +6271,9 @@ Graphically, tubes are stacked as
 The $\delta$ functions ensure that if the string labels of the two tubes don't agree on the 
 boundary on which they are being glued (i.e. if $b\neq c$), or if the spin structures of the 
 two tubes disagree, the two tubes compose (or multiply) to zero. 
+
+%%%next little bit is details on the multiplication rules that we never used
+\begin{comment}
 If the right hand side is nonzero, we can use a series of $F$ moves to reduce the two stacked 
 tubes to a linear combination of tubes in the category:
 \begin{align}
@@ -6290,8 +6311,7 @@ C^{\lambda}_{ \eta \psi} =  \sum_{s, t} \frac{1}{\sqrt{d_a d_\gamma}}
 \end{align}
 where $s,t \in \bigoplus_{efg} V^{ef}_g$ and the pictures are drawn on an $S^2$ and can be 
 evaluated using the local data (e.g. the $F$-moves, quantum dimensions, and pivotal structure) of the theory. 
-\ethan{moved the presentation for the idempotents in the modular case to the so3-6 section}
-
+\end{comment}
 
 
 %%%%%%%%%%%%%%%%%%%%
@@ -6382,7 +6402,9 @@ The correct formula is
 This ensures that $\dim(\mcc)$ is related to $\dim(\mcc / \psi)$ by 
 \be \label{DC_and_DCpsi} \mcd_{\mcc / \psi} = \frac{\mcd_\mcc}{\mcd_{\rm sVec}} = \frac{1}{\sqrt{2}} \mcd_\mcc,\ee
 where we have viewed the category of supervector spaces, sVec, as consisting of two objects 
-${\rm sVec} = \{\unit,\psi\}$, so that $\mcd_{\rm sVec} = \sqrt{2}$. 
+${\rm sVec} = \{\unit,\psi\}$ with $d_\unit=d_\psi=1$, so that $\mcd_{\rm sVec} = \sqrt{2}$. 
+This result was also obtained in \cite{wan2016}. 
+
 To prove \eqref{DC_and_DCpsi}, we write 
 \be
 \mcd_\mcc^2 = \text{Tr} \left(\bigoplus_{x\in \mcc/\psi} d_x x\right) = \text{Tr} \left( \bigoplus_{x \in M} d_x (\mathds{1} \oplus \psi) \tp x \right ) + \text{Tr} \left(\bigoplus_{x  \in Q} {d_x} x \right),\ee
@@ -6420,7 +6442,7 @@ For example, in the $C_2$ theory this is verified by $\mcd_{\tube(C_2)} = \sqrt{
 \subsubsection{The sum-of-squares formula}
 %%%%%%%%%%%%%%%%%
 
-In this section, we briefly review the sum-of-squares formula, the fermionic version of which is useful for relating the dimension
+In this section, we briefly present a fermionic version of the sum-of-squares formula, which is useful for relating the dimension
 of the tube category to the dimensions of its simple modules (quasiparticles). 
 In many cases, this allows us to obtain a large amount of information about the quasiparticle 
 content of the theory without actually finding the explicit representations of the primitive 
@@ -6458,6 +6480,7 @@ This immediately tells us that the non-bounding sector must contain three quasip
 However, since $\tube^B$ is non-abelian the former possibility is ruled out, and thus we have determined that the $C_2$ theory must contain six quasiparticles, with three associated to each spin structure. 
 %The quasiparticle associated with the two-dimensional module in the non-vortex sector is $m_\sigma^\pm$, whose two-dimensionality comes from the fact that it is a ``composite'' of two oddly-isomorphic simple modules. 
 %%%%%%%%%%%
+\end{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Ground states on the torus} \label{ground_states_on_torus}
@@ -6930,18 +6953,25 @@ and so there is no need to define $\Arf(Y)$ in this case.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fermion condensation in modular tensor categories and quantum doubles (Drinfeld center?)}
 In this section we investigate fermion condensation in modular tensor categories (MTC) \dave{Should we say UMTC?}. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ethan{I think we should either put this in sec 4 along side our more general discussion of the tube category, or move that discussion to this section. We also use the theorem in this section to prove some quantum dimension relations presented in sec 4.}
+
+In this section we investigate fermion condensation in modular tensor categories. 
 We prove an analogue of the theorem $\mcd(\mcc) \cong \mcc \times \bar{\mcc}$ for $\mcc$ and modular tensor category \ref{REFERENCE}. 
 To begin with we remind the reader of this known result for bosonic categories.
 We then turn our attention to the super pivotal categories and make the necessary modifications...
 
 An essential tool will be the the $\omega_0$ loop \cite{Lins1994}.
-We take $\mcc$ to be a modular tensor category and $\text{sob}(\mcc)$ be the set of simple objects. 
+We take $\mcc$ to be a modular tensor category and $\text{sobj}(\mcc)$ be the set of simple objects. 
 We define $\omega_0$ loop
 \begin{align}
 \omega_0  = \bigoplus_x \frac{d_x}{\mathcal{D}^2} \text{cl}(x)
 \end{align}
 \dave{Is it more appropriate to use $\sum$ here?}
 where the $\text{cl}(x)$ denotes the simple object $x$ closed up into a loop whose neighbourhood is diffeomorphic to a solid torus \dave{not super satisfied with this.}.
+\kw{yes; vector spaces use $\oplus$, vectors use $+$}
+where the $\text{cl}(x)$ denotes that the simple object has been closed up into a loop whose neighbourhood is diffeomorphic to a solid torus \dave{not super satisfied with this.}.
 Digrammatically we denote the $\omega_0$ loop embedded in a 3-manifold by,
 \begin{align}
 \OmegaLoopx{\omega_0} = \frac{1}{\mcd^2}\bigoplus_{x\in \text{sob}(\mcc)} d_x\; \OmegaLoopx{x}
@@ -6990,7 +7020,7 @@ A basis for the annular category is given by,
 \begin{theorem}
 Let $\widetilde{\mcc}$ be a modular tensor category and let $\psi$ be a fermion in $\widetilde{\mcc}$ as in \ref{psi_defintion}.
 Let $\mcc = \widetilde{\mcc}/\langle \unit \cong \psi \rangle$ be the super pivotal category resulting from the fermionic quotient.
-Let 
+Let \ethan{can we just use $\tube(\mcc)$ instead of $\mcd(\mcc)$ to match notation with the rest of the paper?}
 $
 \mcd(\mcc) = \mcc(S^1_B) \cup \mcc(S^1_N)
 $
@@ -6999,8 +7029,8 @@ Then as tensor categories,
 \begin{align}
 \mcd(\mcc) \cong \widetilde{\mcc} \times \bar{\mcc}
 \end{align}
-In particular $\text{sob}(\mcd(\mcc)) \cong \text{sob}(\widetilde{\mcc}) \times \text{sob}(\bar{\mcc})$. 
-Let $a \in \text{sob}(\mcc)$ and $\tilde{a} \in \text{sob}(\widetilde{\mcc})$ be a lift.
+In particular $\text{sobj}(\mcd(\mcc)) \cong \text{sobj}(\widetilde{\mcc}) \times \text{sobj}(\bar{\mcc})$. 
+Let $a \in \text{sobj}(\mcc)$ and $\tilde{a} \in \text{sobj}(\widetilde{\mcc})$ be a lift.
 If $\tilde{a}$ is transpartent with respect to $\psi$, then $(\tilde{x},a)$ is in the bounding ($S^1_B$) sector.
 Otherwise $(\tilde{x},a)$ is in the non-bounding ($S^1_N$) sector.
 \end{theorem}
