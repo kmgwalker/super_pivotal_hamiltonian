@@ -335,6 +335,17 @@
     \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern-22mu$}\cr
   }}}
   
+  \newcommand{\OmegaLoopDefectx}[2]{\mathrel{\ooalign{$\OmegaLoopDefect$\cr
+  \hidewidth\raise0ex\hbox{$\scriptstyle{#1}\mkern8mu$}\cr
+    \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern-22mu$}\cr
+  }}}
+  
+  \newcommand{\OmegaLoopDefect}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OmegaLoopDefect.pdf}}}}}
+    \newcommand{\DiscGray}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DiscGray.pdf}}}}}
+  
+
+
+  
   
   
 %\newcommand{\SMatrix}[2]{\mathrel{\ooalign{$\OmegaSLoop$
@@ -6955,7 +6966,11 @@ and so there is no need to define $\Arf(Y)$ in this case.
 In this section we investigate fermion condensation in modular tensor categories (MTC) \dave{Should we say UMTC?}. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ethan{I think we should either put this in sec 4 along side our more general discussion of the tube category, or move that discussion to this section. We also use the theorem in this section to prove some quantum dimension relations presented in sec 4.}
+\ethan{I think we should either put this in sec 4 along side our more general discussion of the tube category, or move that discussion to this section.
+\dave{What if we made the tube category section in the generalities bit more general, and less specific. 
+And keep this as its own section.}
+ We also use the theorem in this section to prove some quantum dimension relations presented in sec 4.
+ \dave{Maybe we can show that $\text{dim}(Z(\mcc/\psi)) = \text{dim}Z(\mcc)/2$ without using modularity.}}
 
 In this section we investigate fermion condensation in modular tensor categories. 
 We prove an analogue of the theorem $\mcd(\mcc) \cong \mcc \times \bar{\mcc}$ for $\mcc$ and modular tensor category \ref{REFERENCE}. 
@@ -6966,41 +6981,44 @@ An essential tool will be the the $\omega_0$ loop \cite{Lins1994}.
 We take $\mcc$ to be a modular tensor category and $\text{sobj}(\mcc)$ be the set of simple objects. 
 We define $\omega_0$ loop
 \begin{align}
-\omega_0  = \bigoplus_x \frac{d_x}{\mathcal{D}^2} \text{cl}(x)
+\omega_0  = \sum_{x\in \text{sob}(\mcc)} \frac{d_x}{\mathcal{D}^2} \text{cl}(x)
+\label{omega_loop}
 \end{align}
-\dave{Is it more appropriate to use $\sum$ here?}
-where the $\text{cl}(x)$ denotes the simple object $x$ closed up into a loop whose neighbourhood is diffeomorphic to a solid torus \dave{not super satisfied with this.}.
-\kw{yes; vector spaces use $\oplus$, vectors use $+$}
-where the $\text{cl}(x)$ denotes that the simple object has been closed up into a loop whose neighbourhood is diffeomorphic to a solid torus \dave{not super satisfied with this.}.
+%where the $\text{cl}(x)$ denotes the simple object $x$ closed up into a loop whose neighbourhood is diffeomorphic to a solid torus \dave{not super satisfied with this.}.
+%\kw{yes; vector spaces use $\oplus$, vectors use $+$}\dave{In hindsight, I should have known this.}
+where the $\text{cl}(x)$ denotes that the simple object has been closed up into a loop whose neighbourhood is diffeomorphic to a solid torus.
 Digrammatically we denote the $\omega_0$ loop embedded in a 3-manifold by,
 \begin{align}
-\OmegaLoopx{\omega_0} = \frac{1}{\mcd^2}\bigoplus_{x\in \text{sob}(\mcc)} d_x\; \OmegaLoopx{x}
+\OmegaLoopx{\omega_0} = \frac{1}{\mcd^2}\sum_{x\in \text{sob}(\mcc)} d_x\; \OmegaLoopx{x}
 \end{align}
-Where the gray dot in the center represents cycle that the $\omega_0$ loop wraps around. 
+Where the gray disc in the center represents a cycle that the $\omega_0$ loop wraps around. 
 If the gray region is empty, then the $\omega_0$ loop can be evaluated using the MTC and since $1 = \sum_x d_x^2/\mcd^2$, the $\omega_0$ loop can be removed with impunity.
-We summarize all the properties which we will make use of in Table[Under construction]
+We summarize all the properties which we will make use of in Table~\ref{omega_loop_properties}.
+For a modular theory, we can easily use part (a) of Table\ref{omega_loop_properties} to see that,
 \begin{align}
-\underset{x}{ \LoopOverId}{\scriptstyle{\omega_0}} = \delta_{x,\unit} \underset{x}{\Ida}
-\end{align}
-\begin{align}
-\frac{1}{\mcd^2} = \OmegaSLoop
+\OmegaLoopDefectx{\omega_0}{\omega_0} \quad \; =  \frac{1}{\mcd^2} \; \DiscGray
 \label{Omega_in_SLoop}
 \end{align}
-\begin{align}
-\scriptstyle{x}\;\IdxOmegaLoopa \;= \;\IdxOmegaLoopb\;\scriptstyle{x}
-\end{align}
-
-\begin{align}
-\HandleSlidea = \HandleSlideb
-\end{align}
-
-The $\omega_0$ loop satisfies a few nice properties,
-\begin{itemize}
-\item projector onto the trivial particle (due to modularity)
-\item freely pulled in and out of the vacuum without changing anything, tells you that interior of loop is vacuuos. 
-\item freely combined with neighbouring $\omega_0$ loops
-\item strands are transported across it.
-\end{itemize}
+which is true, independent of what is inside the gray disc.
+We will shortly see that this allows us to re-write elements in the tube algebra in a particularly nice basis.
+\begin{table}
+\begin{center}{
+\begin{flalign*} & \begin{array}{c @{\quad \quad  \quad  } c @{\quad \quad \quad } c }
+			\text{(a)}	&	\text{(b)} &   \text{(c)}
+		\\[1.0ex]
+			\underset{x}{ \LoopOverId}{\scriptstyle{\omega_0}} = \delta_{x,\unit} \underset{x}{\Ida}
+			&\scriptstyle{x}\;\IdxOmegaLoopa \;= \;\IdxOmegaLoopb\;\scriptstyle{x} 
+			&	\HandleSlidea = \HandleSlideb
+		\end{array} & \end{flalign*}
+		}\end{center}
+		\caption{
+		All unlabeled lines in the above are $\omega_0$ loops as defined in \eqref{omega_loop}.
+For a modular theory, the $\omega_0$ loop projects onto the vacuum as shown in part (a).
+Part (b) shows that lines can be isotopied across any $\omega_0$ loop. 
+Part(c) shows the same isotopy as part (b) but with an $\omega_0$ loop, 
+rather than a single simple object $x$.  }
+		\label{omega_loop_properties}
+		\end{table}
 
 \subsection{Double of a modular tensor category}
 A basis for the annular category is given by,
