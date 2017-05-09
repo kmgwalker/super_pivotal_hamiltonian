@@ -335,7 +335,8 @@
 \newcommand{\TubeBasisd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeBasisd.pdf}}}}}
 
 \newcommand{\TubeIdempotentTwoStrand}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeIdempotentTwoStrand.pdf}}}}}
-
+\newcommand{\fTubeCf}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{fTubeCf.pdf}}}}}
+\newcommand{\fTubefOdd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{fTubefOdd.pdf}}}}}
 
 
 \newcommand{\TubeTwotoOneStrand}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeTwotoOneStrand.pdf}}}}}
@@ -7080,36 +7081,89 @@ These tubes have two marked points at the boundary, and a complete list of isomo
 \end{align}
 In this basis, the minimal idempotents of $\text{Ann}(\mcc)$ are simply given by,
 \begin{align}
-\TubeIdempotentTwoStrand.
+e_{xy}  = \TubeIdempotentTwoStrand \in \tube(\mcc)
+\label{minimal_idempotent_C}
 \end{align}
-Notice that the isomorphism class is still labeled by pairs of simple objects, but there is no additional choice of for the fusion space.
-
-
+Notice that the isomorphism class is still labeled by pairs of simple objects, but there is no additional choice of for the fusion space required.
+The idempotents above can be used to show that $\tube(\mcc) \cong \mcc \times \bar{\mcc}$ \cite{Who was the first to show this?}.
+In the following subsection we state, and prove the analogous theorem for in the fermionic setting.
 
 \subsection{Double of the fermionic quotient}
+\dave{Very much still in progress.}
+In this subsection we prove that $\tube(\mcc/\psi) \cong \mcc \times \bar{\mcc}/\psi$ when $\psi$ is  fermion and $\mcc$ is a modular tensor category.
+This theorem allows us to easily compute, for example the modular transformations of $\tube(\mcc/\psi)$ without going through the brute force methods used in Section~\ref{C2_quasiparticles}.
 
+A key insight will be to find the minimal idempotents of the condensed theory.
+These can be found by taking the minimal idempotents of the parent theory and quotienting by the fermion.
+The details of the quotient are important.
+For example, the image of some of the idempotents may simply be zero, 
+others may be identified or fall in the same isomorphism class. 
+These details, as well as minimality and completeness of the idempotents will have to be addressed carefully,
+once doing so we arrive at the following theorem:
+
+\dave{Define lift somewhere.}
 \begin{theorem}
-Let $\widetilde{\mcc}$ be a modular tensor category and let $\psi$ be a fermion in $\widetilde{\mcc}$ as in \ref{psi_defintion}.
-Let $\mcc = \widetilde{\mcc}/\langle \unit \cong \psi \rangle$ be the super pivotal category resulting from the fermionic quotient.
-Let \ethan{can we just use $\tube(\mcc)$ instead of $\mcd(\mcc)$ to match notation with the rest of the paper?
-\dave{Yes, will do that.}}
+Let ${\mcc}$ be a unitary modular tensor category and let $\psi$ be a fermion in ${\mcc}$ as in \ref{psi_defintion}.
+Let $\mcc/\psi$ be the super pivotal category resulting from the fermionic quotient.
+Let
 $
-\mcd(\mcc) = \mcc(S^1_B) \cup \mcc(S^1_N)
+\tube(\mcc/\psi) = \tube_B(\mcc/\psi) \cup \tube_N(\mcc/\psi)
 $
-be the annular category of $\mcc$. 
+be the annular category of $\mcc/\psi$. 
 Then as tensor categories,
 \begin{align}
-\mcd(\mcc) \cong \widetilde{\mcc} \times \bar{\mcc}
+\tube(\mcc/\psi) \cong \mcc \times \bar{\mcc}/\psi
 \end{align}
-In particular $\text{sobj}(\mcd(\mcc)) \cong \text{sobj}(\widetilde{\mcc}) \times \text{sobj}(\bar{\mcc})$. 
-Let $a \in \text{sobj}(\mcc)$ and $\tilde{a} \in \text{sobj}(\widetilde{\mcc})$ be a lift.
-If $\tilde{a}$ is transpartent with respect to $\psi$, then $(\tilde{x},a)$ is in the bounding ($S^1_B$) sector.
-Otherwise $(\tilde{x},a)$ is in the non-bounding ($S^1_N$) sector.
+In particular $\text{sob}(\tube(\mcc/\psi)) \cong \text{sob}({\mcc}) \times \text{sob}(\bar{\mcc}/\psi)$. 
+Let $a \in \text{sob}(\mcc/\psi)$ and $\tilde{a} \in \text{sob}({\mcc})$ be a lift.
+If ${a}$ is transparent with respect to $\psi$, then $(\tilde{a},a)$ is in the bounding sector.
+Otherwise $(\tilde{a},a)$ is in the non-bounding sector.
 \end{theorem}
 
-the proof splits into several parts: 
+The proof of the theorem splits into several parts. 
+We first compute the image of \eqref{minimal_idempotent_C} in $\tube(\mcc/\psi)$, 
+and show that they remain idempotent, minimal, orthogonal, and complete. 
+When finding the image we must pick a spin structure for the circle, 
+let $J = B$ or $N$ for bounding or non-bounding respectively,
+and denote $f_{xy}^J$ the image of $e_{xy}$ under condensation. 
+\dave{Should describe what the image is.
+i.e., hold boundaries fixed and condense fermions off bulk lines.}
+
+\dave{May add here that idempotent can only condense to non-zero idempotent if $\nu_y = J$.}
+ 
+{\bf orthogonal}
+
+{\bf minimal}
+We first show that if $f_{xy}^J$ is non-zero, then it is minimal.
+We need to show that $f_{xy}^J \tube(\mcc/\psi) f_{xy}^J$ is one dimensional \dave{Or a simple algebra?}.
+First note that $\tube_J(\mcc/\psi)$ is in the image of $\tube(\mcc)$ under condensation.
+Assuming that $f_{xy}^J$ is nonzero, by the spin lemma\cite{REF}, 
+a generic element of $f_{xy}^J \tube(\mcc/\psi) f_{xy}^J$ is given by
+\begin{align}
+\fTubefOdd, \quad \quad \delta \in V^{x}_{xc}(\mcc), \; \rho \in V^{y\tp \alpha}_{c' y}(\mcc), \; \sigma \in \bigoplus_{r,w} V^{cc'}_r(\mcc) \tp V^{rw}_w(\mcc)
+\end{align}
+where we have suppressed the spin structure index, the notation $V^{xy}_z(\mcc)$ is to denote that we have lifted the fusion spaces to the pre-condensed theory, $\mcc$, and $\alpha$ is either $\unit$ or $\psi$ denoting whether the tube is even or odd.
+Because we took $f^J_{xy}$ to be in the image of $e_{xy}$ under condensation, 
+we can trivially lift the $\omega_0$ loop of the condensed theory, to the pre-condensed theory. 
+Now we can use property (c) of Table \ref{omega_loop_properties} to slide the lower $\omega_0$ loop around the the $\sigma$ junction in the center of the diagram. 
+This can be done in two ways, either so that the $\omega_0$ loop is above the trivalent junction (closer to the readers face), or below the trivalent junction (further from the readers face).
+Then using property (a) of \ref{omega_loop_properties} we see that both $c \cong c' \cong \unit$, and hence also $r \cong \unit$ (equivalently, $r \cong \unit$ by the no tadpole theorem \ref{REF}).
+Lastly, the loop traversing the annulus can be absorbed into the $\omega_0$ loop at the expense of multiplying by $d_w$.
+If $\alpha \cong \psi$ then we require $y \tp \psi \cong y$.
+Hence,
+\begin{align}
+f_{xy}^J \tube(\mcc/\psi) f_{x' y'}^J \cong
+\begin{cases}
+\cc^{1|0}&x \cong x' \; \text{and}\; y \cong y' \\
+\cc^{0|1}&x \cong x' \; \text{and}\; y \cong \psi \tp y'  \\
+\cc^{1|1} &x\cong x' \; \text{and}\; y \cong y',\; y \cong y \tp \psi \\
+0 & \text{otherwise}
+\end{cases}
+\end{align}
+
 \begin{enumerate}
-\item minimality of idempotents, 
+\item minimality
+\item orthogonality
 \item completeness, 
 \item idempotents are non-zero, 
 \item isomorphisms between idempotents, 
