@@ -5,7 +5,9 @@
 \usepackage{amsmath,amsfonts,amssymb,latexsym,dsfont}
 \usepackage{hhline}
 \usepackage{amsthm}
-\newtheorem{theorem}{Theorem}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{lemma}[theorem]{Lemma}
 \usepackage{graphicx}
 %\usepackage[arrow,matrix]{xy}
 \usepackage[all]{xy}
@@ -110,6 +112,11 @@
 \newcommand{\ot}{\otimes}
 \newcommand{\bd}{\partial}
 \DeclareMathOperator{\Arf}{Arf}
+\definecolor{kwcolor}{rgb}{0.2, 0.5, 0.85}
+\newcommand{\kw}[1]{{\color{kwcolor}\footnotesize{(KW) #1}}}
+\newcommand{\kwsep}{\bigskip\hrule\medskip\hrule\medskip\hrule\bigskip}
+% \nn is for compatibility with stuff copied from my other papers; can be deleted eventually
+\newcommand{\nn}[1]{{\color{kwcolor}[#1]}}
 
 \newcommand{\bra}[1]{\ensuremath{\left\langle#1\right|}}
 \newcommand{\ket}[1]{\ensuremath{\left|#1\right\rangle}}
@@ -124,10 +131,6 @@
 %a purple that looks different from red. EL: nice! I like the name
 \definecolor{amethyst}{rgb}{0.6, 0.4, 0.8}
 \newcommand{\ethan}[1]{{\color{amethyst}\footnotesize{(EL) #1}}}
-
-\definecolor{kwcolor}{rgb}{0.2, 0.5, 0.85}
-\newcommand{\kw}[1]{{\color{kwcolor}\footnotesize{(KW) #1}}}
-\newcommand{\kwsep}{\bigskip\hrule\medskip\hrule\medskip\hrule\bigskip}
 
 \newcommand{\abullet}{{\color{amethyst} \bullet}}
 
@@ -10026,6 +10029,7 @@ so we will describe a fermionic/super version of pivotal tensor categories.
 
 Recall from 
 \cite{kitaev2006}
+\kw{Should probably find an earlier citation}
 that the data of a pivotal category includes:
 \begin{itemize}
 \item A set of objects $\mcc^1$.
@@ -10082,7 +10086,89 @@ The definition of a super pivotal category differs from the usual bosonic case i
 	\item In order to define an inner product, we need to equip the manifold on which our string-nets are defined with a $Pin_\pm$ structure\footnote{For two vectors $|\psi\rangle,|\eta\rangle$, the inner product $\langle \psi | \eta \rangle$ is computed as usual by reflecting the picture represented by $|\psi\rangle$ about the horizontal axis, stacking the resulting picture on top of the picture represented by $|\eta\rangle$, and evaluating the resulting diagram.}, which was discussed back in Sec. \ref{fermion_line_bundle}.
 \end{enumerate}
 
-\kw{figs for above? \dave{Definitely. I will try to draw those soon.}}
+\kw{We should include some figs, either here or later in this section when we go into more detail.}
+
+\kw{Should remark (either here or earlier in this section) that the earliest definition was given in the blob paper.}
+
+
+
+\subsection{Formal definition}
+
+In this subsection we outline the formal, mathematical definition of a super pivotal tensor category.
+We will give a complete list of the data required, but we will only include some representative
+examples of the many coherence relations these data must satisfy.
+(See \cite{MW-in-prep} for full details.  See also \cite{xxxx} for a compatible definition in the non-pivotal case.)
+
+
+
+\kw{This list of axioms was copied from the paper with Scott, which does the more general
+2-category case.
+Eventually I will fill in the blanks and adapt it to the tensor category case.}
+
+\begin{axiom}[Morphisms]
+For $k=0,1,2$, we have a set of $k$-morphisms $C^k$.
+(To make our job easier, we are assuming a small 2-category.)
+\end{axiom}
+
+\begin{axiom}[Domain and range]
+We have domain and range maps $d$ and $r$ from $C^k$ to $C^{k-1}$.
+We require that $d(d(x)) = d(r(x))$ and $r(d(x)) = r(r(x))$ for all $x\in C^2$.
+For $k=1,2$, we denote $(d \times r)^{-1}(x, y)$ as $C^k_{xy}$ or $C^k(x \to y)$, and call these
+the $k$-morphisms from $x$ to $y$.
+\end{axiom}
+
+\begin{axiom}[Composition of 1-morphisms]
+There are composition maps $C^1_{xy}\times C^1_{yz}\to C^1_{xz}$.
+(These maps are weakly associative; see below.)
+\end{axiom}
+
+\begin{axiom}[Enrichment]
+For fixed $e$ and $f$, the 2-morphism sets $C^2{ef}$ have the structure of an object of Super-Vec.
+\end{axiom}
+
+\begin{axiom}[Vertical composition of 2-morphisms]
+We have vertical composition maps $C^2_{ef} \ot C^2_{fg} \to C^2_{eg}$.
+These maps are strictly associative.
+They are linear maps of super vector spaces.
+\end{axiom}
+
+\begin{axiom}[Horizontal composition of 2-morphisms]
+Fix $x,y,z \in C^0$ and $e, f \in C^1_{xy}$ and $e',f'\in C^1_{yz}$.
+Then we have a horizontal composition map $C^2_{ef} \ot C^2_{e'f'} \to C^2(ee' \to ff')$
+(These maps are weakly associative; see below.)
+\end{axiom}
+
+\begin{axiom}[Interchange identity]
+\nn{...}
+\nn{Note that we have added a Koszul sign to the usual interchange identity.}
+\nn{...}
+\end{axiom}
+
+\begin{axiom}[Associators]
+Composition of 1-morphisms is not strictly associative.
+\nn{instead, we have associators which satisfy coherence relations (pentagon)}
+\nn{...}\end{axiom}
+
+\begin{axiom}[Unitors]
+Identity (a.k.a.\ unit) 1-morphisms are not strict;
+\nn{instead, we have unitors which satisfy some coherence relations}
+\end{axiom}
+
+\begin{axiom}[Pivotal structure for 1-morphisms]
+There is a map $*:C^1_{xy} \to C^1_{yx}$.
+\nn{...}
+\nn{DL - rotation by $\pi$}
+\nn{order 2 or order 4?  also non-trivial * for 0-morphisms??}
+\end{axiom}
+
+\begin{axiom}[Pivotal structure for 2-morphisms]
+There is a map $*:C^2_{ef} \to C^2_{f^*e^*}$.
+** is equal to the spin-flip on super vector spaces.
+\nn{need to say more about coherence relations and how * interacts with associators etc.}
+\end{axiom}
+
+
+
 
 
 %%%%%%%%%%%%%%%
