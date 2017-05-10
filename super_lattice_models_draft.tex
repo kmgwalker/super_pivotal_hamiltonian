@@ -334,6 +334,19 @@
 \newcommand{\TubeBasisc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeBasisc.pdf}}}}}
 \newcommand{\TubeBasisd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeBasisd.pdf}}}}}
 
+\newcommand{\SpinStructureProjector}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{SpinStructureProjector.pdf}}}}}
+
+
+\newcommand{\EmptyTubeW}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EmptyTubeW.pdf}}}}}
+
+\newcommand{\TubeProject}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeProject.pdf}}}}}
+
+
+
+\newcommand{\exyomegaa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{exyomegaa.pdf}}}}}
+\newcommand{\exyomegab}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{exyomegab.pdf}}}}}
+\newcommand{\exyomegac}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{exyomegac.pdf}}}}}
+
 \newcommand{\TubeIdempotentTwoStrand}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeIdempotentTwoStrand.pdf}}}}}
 \newcommand{\fTubeCf}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{fTubeCf.pdf}}}}}
 \newcommand{\fTubefOdd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{fTubefOdd.pdf}}}}}
@@ -7010,7 +7023,7 @@ An essential tool will be the the $\omega_0$ loop \cite{Lins1994}.
 We take $\mcc$ to be a modular tensor category and $\text{sobj}(\mcc)$ be the set of simple objects. 
 We define $\omega_0$ loop
 \begin{align}
-\omega_0  = \sum_{x\in \text{sob}(\mcc)} \frac{d_x}{\mathcal{D}^2} \text{cl}(x)
+\omega_0  = \frac{1}{\mathcal{D}^2}\sum_{x\in \text{sob}(\mcc)} d_x \text{cl}(x)
 \label{omega_loop}
 \end{align}
 %where the $\text{cl}(x)$ denotes the simple object $x$ closed up into a loop whose neighbourhood is diffeomorphic to a solid torus \dave{not super satisfied with this.}.
@@ -7092,6 +7105,7 @@ e_{xy}  = \TubeIdempotentTwoStrand \in \tube(\mcc)
 \label{minimal_idempotent_C}
 \end{align}
 Notice that the isomorphism class is still labeled by pairs of simple objects, but there is no additional choice of for the fusion space required.
+Also notice that orthogonality of the idempotents is obvious given that $\omega_0 \tp \omega_0 = \omega_0$.
 The idempotents above can be used to show that $\tube(\mcc) \cong \mcc \times \bar{\mcc}$ \cite{Who was the first to show this?}.
 In the following subsection we state, and prove the analogous theorem for in the fermionic setting.
 
@@ -7127,69 +7141,112 @@ If ${a}$ is transparent with respect to $\psi$, then $(\tilde{a},a)$ is in the b
 Otherwise $(\tilde{a},a)$ is in the non-bounding sector.
 \end{theorem}
 
-The proof of the theorem splits into several parts. 
+The proof of the theorem splits into two parts. 
 We first compute the image of \eqref{minimal_idempotent_C} in $\tube(\mcc/\psi)$, 
-and show that they remain idempotent, minimal, orthogonal, and complete. 
-When finding the image we must pick a spin structure for the circle, 
-let $J = B$ or $N$ for bounding or non-bounding respectively,
-and denote $f_{xy}^J$ the image of $e_{xy}$ under condensation. 
-\dave{Should describe what the image is.
-i.e., hold boundaries fixed and condense fermions off bulk lines.}
+and show that we have a complete set of minimal idempotents.
+Next we find a tensor functor $\mcc \times \bar{\mcc}/\psi $ and the minimal idempotents thus showing that $\tube(\mcc/\psi) \cong \mcc \times \bar{\mcc}/\psi$.
 
-\dave{May add here that idempotent can only condense to non-zero idempotent if $\nu_y = J$.}
- 
-{\bf orthogonal}
 
-Consider $f_{xy}^J \cdot f_{x'y'}^W$. 
-Let $a_{B/N} = \frac{1}{2}(\text{cl}(\unit) \pm \text{cl}(\psi))$, so that
+The image of $\tube(\mcc)$ under condensation can be found with the help of two projectors which sum to the identity. 
+We first decompose $\tube(\mcc)$ into two orthogonal sets of tubes.
+To do so we define the two projectors
 \begin{align}
-f_{xy}^J = \fxyaJ
+a_{B/N} = \frac{1}{2}(\text{cl}(\unit) \pm \text{cl}(\psi)).
 \end{align}
-where we have suppressed the spin structure label in the diagram.
-We also have that $\omega_0 \tp \omega_0 = \omega_0$ (which is true in both the condensed theory and the parent theory), as well as $a_J \tp a_W = \delta_{JW} \; a_J$, we see that 
+Which satisfy $a_J \tp a_W = \delta_{JW} a_J$ and $a_B + a_N = \text{cl}(\unit)$.
+These projectors are like the $\omega_0$ loop defined in \eqref{omega_loop}, but only involve $\unit$ and $\psi$, the objects we are quotienting by. 
+Importantly, an $a_J$ loop on a tube with spin structure $J$ is the identity, while an $a_J$ loop on a tube with spin structure $W \neq J$ projects the tube to zero, i.e., 
 \begin{align}
-f_{xy}^J \cdot f_{x'y'}^W = \delta_{xx'} \delta_{yy'} \delta_{JW} f_{xy}^J
+\SpinStructureProjector = \delta_{JW}\; \EmptyTubeW \in \tube_W(\mcc/\psi).
 \end{align}
+We next define the two projectors on $\tube(\mcc)$ by defining how they act on the basis elements,
+\begin{align}
+\hat{a}_J \cdot \TubeBasisa = \TubeProject
+\label{aJ_projector}
+\end{align}
+\dave{better notation?}
+so that the image $\hat{a}_J$ in $\tube(\mcc)$ condenses to even tubes in $\tube_J(\mcc/\psi)$.
+The kernal of $\hat{a}_J$ are all tubes whose image under condensation is zero in $\tube_J(\mcc/\psi)$.
+Obviously we have $\hat{a}_B + \hat{a}_N = \text{id}$. 
+Thus we have computed the image of $\tube(\mcc)$ in $\tube(\mcc/\psi)$. 
 
+Lets now apply these projectors to the idempotents in \eqref{minimal_idempotent_C}.
+Define the image of $e_{xy}$ under condensation to be $f^J_{xy}$. 
+Using that $\omega_0 \tp a_J = \delta_{JB} \omega_0$, we can simply replace $\omega_0$ in $e_{xy}$ with $a_B \tp \omega_0$. 
+We can next commute the $a_B$ through the $y$ strand sitting between the $\omega_0$ loop and the back wall. 
+Doing so, permutes $a_B$ to $a_N$ if $\nu_y = 1$, otherwise $a_B$ remains unchanged, 
+i.e.,
+\begin{align}
+e_{xy} =  \TubeIdempotentTwoStrand= \exyomegaa = \begin{cases}
+\exyomegac& \text{if}\; \nu_y = 0 \\
+\\
+\exyomegab& \text{if}\; \nu_y =1
+\end{cases}
+\end{align}
+and so each $e_{xy}$ has an image in $\tube(\mcc/\psi)$ given by
+\begin{align}
+e_{xy} \xrightarrow{\text{condense $\psi$}}f_{xy}^{J(y)} \quad \quad \text{with $J(y) = B$ if $\nu_y = 0$ and $J(y) = N$ otherwise}
+\label{image_of_exy}
+\end{align}
+In the following we will sometimes write just $J$ instead of $J(y)$. 
+The $f_{xy}^J$ also remain orthogonal $f_{xy}^J f_{x' y'}^W = \delta_{xx'} \delta_{yy'}\delta_{JW} f_{xy}^J$, which follows from the fact that $\omega_0 \tp \omega_0 = \omega_0$ and $a_J \tp a_W = \delta_{JW} a_J$.
+It remains to show that the idempotents $f_{xy}^J$ are minimal, and complete. 
 
-{\bf minimal}
+%Consider $f_{xy}^J \cdot f_{x'y'}^W$. 
+%Let $a_{B/N} = \frac{1}{2}(\text{cl}(\unit) \pm \text{cl}(\psi))$, so that
+%\begin{align}
+%f_{xy}^J = \fxyaJ
+%\end{align}
+%where we have suppressed the spin structure label in the diagram.
+%We also have that $\omega_0 \tp \omega_0 = \omega_0$ (which is true in both the condensed theory and the parent theory), as well as $a_J \tp a_W = \delta_{JW} \; a_J$, we see that 
+%\begin{align}
+%f_{xy}^J \cdot f_{x'y'}^W = \delta_{xx'} \delta_{yy'} \delta_{JW} f_{xy}^J
+%\end{align}
 
-Assume that $f_{xy}^J$ is non-zero, then we claim it is minimal.
-We need to show that $f_{xy}^J \tube(\mcc/\psi) f_{xy}^J$ is one dimensional \dave{Or a simple algebra?}.
-First note that $\tube_J(\mcc/\psi)$ is in the image of $\tube(\mcc)$ under condensation.
-Assuming that $f_{xy}^J$ is nonzero, by the spine lemma\cite{REF}, 
+Lets begin by showing that the idempotents $f_{xy}^J$ are minimal.
+We need to show that $f_{xy}^J \tube(\mcc/\psi) f_{xy}^J$ is one dimensional.
+By the spine lemma\cite{REF}, 
 a generic element of $f_{xy}^J \tube(\mcc/\psi) f_{xy}^J$ can be written as
 \begin{align}
 \fTubefOdd, \quad \quad \delta \in V^{x}_{xc}, \; \rho \in V^{y\tp \alpha}_{c' y}, \; \sigma \in \bigoplus_{r,w} V^{cc'}_r \tp V^{rw}_w
 \end{align}
-where we have suppressed the spin structure index, with all vector spaces appearing being written in terms of the parent theory, $\mcc$, and $\alpha$ is either $\unit$ or $\psi$ denoting whether the tube is even or odd.
-Because we took $f^J_{xy}$ to be in the image of $e_{xy}$ under condensation, 
-we can trivially lift the $\omega_0$ loop of the condensed theory, to the pre-condensed theory. 
-Now we can use property (c) of Table \ref{omega_loop_properties} to slide the lower $\omega_0$ loop around the the $\sigma$ junction in the center of the diagram. 
-This can be done in two ways, either so that the $\omega_0$ loop is above the trivalent junction (closer to the readers face), or below the trivalent junction (further from the readers face).
-Then using property (a) of \ref{omega_loop_properties} we see that both $c \cong c' \cong \unit$, and hence also $r \cong \unit$ (equivalently, $r \cong \unit$ by the no tadpole theorem \ref{REF}).
-Lastly, the loop traversing the annulus can be absorbed into the $\omega_0$ loop at the expense of multiplying by $d_w$.
+where we have suppressed the spin structure index (the spin structure is determined by $y$; recall \eqref{image_of_exy}), with all vector spaces appearing being written in terms of the parent theory, $\mcc$, and $\alpha$ is either $\unit$ or $\psi$ denoting whether the tube is even or odd.
+%Because we took $f^J_{xy}$ to be in the image of $e_{xy}$ under condensation, 
+%we can trivially lift the $\omega_0$ loop of the condensed theory, to the pre-condensed theory. 
+The no tadpole theorem guarenties that $r \cong \unit$ and consequently that $c \cong c'$, and that the loop traversing annulus paralell to $\omega_0$ can be removed at the expense of multiplying by its quantum dimension.
+Lastly, we can use property (c) of Table \ref{omega_loop_properties} to slide the lower $\omega_0$ loop around the line connecting $x$ and $y$.
+%This can be done in two ways, either so that the $\omega_0$ loop is above the trivalent junction (closer to the readers face), or below the trivalent junction (further from the readers face).
+Using property (a) of \ref{omega_loop_properties} we see that both $c \cong c' \cong \unit$.
+%Lastly, the loop traversing the annulus can be absorbed into the $\omega_0$ loop at the expense of multiplying by $d_w$.
 If $\alpha \cong \psi$ then we require $y \tp \psi \cong y$.
-Hence,
+Using this, along with the orthogonality of the idempotents we have,
 \begin{align}
 f_{xy}^J \tube(\mcc/\psi) f_{x' y'}^J \cong
 \begin{cases}
-\cc^{1|0}&x \cong x' \; \text{and}\; y \cong y' \\
-\cc^{0|1}&x \cong x' \; \text{and}\; y \cong \psi \tp y'  \\
-\cc^{1|1} &x\cong x' \; \text{and}\; y \cong y',\; y \cong y \tp \psi \\
+\cc^{1|0}& \text{if}\; x \cong x' \; \text{and}\; y \cong y' \\
+\cc^{0|1}& \text{if}\; x \cong x' \; \text{and}\; y \cong \psi \tp y'  \\
+\cc^{1|1}& \text{if}\; x\cong x' \; \text{and}\; y \cong y',\; y \cong y \tp \psi \\
 0 & \text{otherwise}
 \end{cases}
 \end{align}
 Hence, the $f^{J}_{xy}$ are minimal. 
 This also shows that $f_{xy}^J$ and $f_{x(y\tp \psi)}^J$ are oddly isomorphic.
 
-{\bf completeness}
 We now need to show that the idempotents are complete.
-\dave{Will properly annotate later.}
+In the parent theory we have,
 \begin{align}
 \mcd^2 \TubeCompletea =  \TubeCompleteb = \sum_{xy\mu \tilde{\mu}}\; \TubeCompletec
+\label{completeness}
 \end{align}
-for some $\mu$ and $\tilde{\mu}$ in $V^{xy}_a$ and $V^a_{xy}$. 
+for $\mu \in V^{xy}_a$ and $\tilde{\mu} \in V^a_{xy}$ normalized so that $\mu \circ \tilde{\mu} = \text{id}_a$ and $\tilde{\mu} \circ \mu = \text{id}_x \tp \text{id}_y$.
+Now we apply $\hat{a}_B +\hat{a}_N = \unit \in \tube(\mcc/\psi)$ from \eqref{aJ_projector} to the right hand side of \eqref{completeness}. 
+Hence, allowing us to identify a resolution of the $a$ strand for either spin structure in the condensed theory.
+\dave{Does this require more details?}
+
+
+{\bf nonzero}
+Using the inner product defined in \ref{generalities_section} we can check which idempotents are zero and which are not. 
+\dave{Need to add this.}
 
 \begin{enumerate}
 \item minimality
