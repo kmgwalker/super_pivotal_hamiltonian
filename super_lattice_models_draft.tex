@@ -7039,24 +7039,35 @@ and so there is no need to define $\Arf(Y)$ in this case.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fermion condensation in modular tensor categories and quantum doubles (Drinfeld center?)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \dave{Note to self: look at \cite{Koenig2010}, they also have the same idempotents.}
 
-In this section we investigate fermion condensation in modular tensor categories (MTC) \dave{Should we say UMTC?}. 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In this section we investigate fermion condensation in modular tensor categories (MTC).
+\dave{Should we say UMTC?}
+\kw{I don't think the result depends on the U, so probably MTC is best.}
 
 \ethan{I think we should either put this in sec 4 along side our more general discussion of the tube category, or move that discussion to this section.
 \dave{What if we made the tube category section in the generalities bit more general, and less specific. 
 And keep this as its own section.}
- We also use the theorem in this section to prove some quantum dimension relations presented in sec 4.
- \dave{Maybe we can show that $\text{dim}(Z(\mcc/\psi)) = \text{dim}Z(\mcc)/2$ without using modularity.}}
+We also use the theorem in this section to prove some quantum dimension relations presented in sec 4.
+\dave{Maybe we can show that $\text{dim}(Z(\mcc/\psi)) = \text{dim}Z(\mcc)/2$ without using modularity.}}
+\kw{I think it might make sense to move the tube/center stuff in Section 4 to this section.}
+\kw{But on second thought, the discussion in the torus subsection of Section 4 depends on some of the things we say
+in the tube subsection, so now I lean toward leaving things organized as they are now.}{
 
 In this section we investigate fermion condensation in modular tensor categories. 
 We prove an analogue of the theorem $\mcd(\mcc) \cong \mcc \times \bar{\mcc}$ for $\mcc$ and modular tensor category \ref{REFERENCE}. 
 To begin with we remind the reader of this known result for bosonic categories.
 We then turn our attention to the super pivotal categories and make the necessary modifications...
+\kw{I think probably the bosonic version of our theorem is in the literature.
+We should confirm this and cite as appropriate.}
 
 An essential tool will be the the $\omega_0$ loop \cite{Lins1994}.
-We take $\mcc$ to be a modular tensor category and $\text{sobj}(\mcc)$ be the set of simple objects. 
+We take $\mcc$ to be a modular tensor category and $\text{sob}(\mcc)$ 
+\kw{I know I used this notation, but I think we should come up with something better.
+Maybe define a macro and use it consistently throughout the paper.}
+be the set of simple objects. 
 We define $\omega_0$ loop
 \begin{align}
 \omega_0  = \frac{1}{\mathcal{D}^2}\sum_{x\in \text{sob}(\mcc)} d_x \text{cl}(x)
@@ -7064,12 +7075,14 @@ We define $\omega_0$ loop
 \end{align}
 %where the $\text{cl}(x)$ denotes the simple object $x$ closed up into a loop whose neighbourhood is diffeomorphic to a solid torus \dave{not super satisfied with this.}.
 %\kw{yes; vector spaces use $\oplus$, vectors use $+$}\dave{In hindsight, I should have known this.}
-where the $\text{cl}(x)$ denotes that the simple object has been closed up into a loop whose neighbourhood is diffeomorphic to a solid torus.
-Digrammatically we denote the $\omega_0$ loop embedded in a 3-manifold by,
+where the $\text{cl}(x)$ denotes that the simple object has been closed up into a loop whose neighborhood is diffeomorphic to a solid torus.
+\kw{need to rephrase this; also comment on ring idempotents}
+Digrammatically we denote the $\omega_0$ loop embedded in a 3-manifold by
 \begin{align}
-\OmegaLoopx{\omega_0} = \frac{1}{\mcd^2}\sum_{x\in \text{sob}(\mcc)} d_x\; \OmegaLoopx{x}
+\OmegaLoopx{\omega_0} = \frac{1}{\mcd^2}\sum_{x\in \text{sob}(\mcc)} d_x\; \OmegaLoopx{x} ,
 \end{align}
-Where the gray disc in the center represents a cycle that the $\omega_0$ loop wraps around. 
+where the gray disc in the center represents a cycle that the $\omega_0$ loop wraps around. 
+\kw{maybe we should drop the arrow on the $\omega$ loop?}
 If the gray region is empty, then the $\omega_0$ loop can be evaluated using the MTC and since $1 = \sum_x d_x^2/\mcd^2$, the $\omega_0$ loop can be removed with impunity.
 We summarize all the properties which we will make use of in Table~\ref{omega_loop_properties}.
 For a modular theory, we can easily use part (a) of Table\ref{omega_loop_properties} to see that,
@@ -7099,9 +7112,13 @@ rather than a single simple object $x$.  }
 		\end{table}
 
 \subsection{Double of a modular tensor category}
+\kw{I used to use ``double" as a synonym for annular/tube, but I've been told that is probably incompatible
+with related uses of ``double" (e.g.\ for Hopf algebras.}
 We now recall some well known facts about the annular category $\tube(\mcc)$ \cite{ocneanu1994}.
 In particular we provide two formulae for the minimal idempotents of $\tube(\mcc)$.
-A basis for the annular category $\tube(\mcc)$ is given by,
+A basis for 
+\kw{the morphism space from $a$ to $b$ in}
+the annular category $\tube(\mcc)$ is given by,
 \begin{align}
 \TubeElementx{t}{a}{b}\quad \quad \text{with} \quad \quad t \in \bigoplus_r V^{rb r^*}_a
 \end{align}
@@ -7112,6 +7129,7 @@ By using \eqref{Omega_in_SLoop} we can change to a much more convenient basis vi
 \TubeBasisc  = \sum_{\substack{\nu \in V_{xy}^b, \\  \mu \in V^{xy}_a }}C_{t; \mu\nu} \times 
 \TubeBasisd
 \end{align}
+\kw{strictly speaking we need to sum over another index here}
 where for convenience we have written the annulus as a square with the left and right (blank) edges identified. 
 The constants $C_{t,\mu \nu}$ can be determined by fusing the $\omega_0$ loop into the strand labeled $b$ in the second to last diagram, 
 and then using a series of $F$ and $R$ moves to reduce the diagram to the form of the final diagram. 
@@ -7122,16 +7140,20 @@ above are invertible we have shown that
 \label{AnnCatMTC}
 \end{align}
 \dave{Note to self: Did we define $\text{Ann}(\mcc)$ to be the annular category and $\tube(\mcc)$ to be the annular category along with a pair of pants somewhere?}
+\kw{I thought Ann and Tube were synonyms/}
 This basis for $\text{Ann}(\mcc)$ is rather special, the diagonal elements of it can be shown to be the minimal idempotents \dave{Need to check this is true given multiplicities.}. 
+\kw{It's true with multiplicities, but one needs to say more about scaling}
 To verify this one stacks the tubes on top of one another, and uses property (c) and (a) of Table \ref{omega_loop_properties}.
 The isomorphism class is labeled by elements in $\text{sob}(\mcc) \times \text{sob}(\mcc)$.
 For a particular isomorphism class $(x,y)$, the isomorphisms are given by the possible $(\mu,\nu) \in \bigoplus_{a,b \in \text{sob}(\mcc)}(V^{xy}_a,V_{xy}^b)$, and the tube by \eqref{AnnCatMTC}.
 \dave{add words about minimality, orthogonality, non-zero, completeness.}
 
-Although such a formula exists for the fermionic case, 
-which will be discussed in the next section, 
+Although such a formula exists for $\mcc/\psi$, 
+which will be discussed in the next subsection, 
 there is another set of minimal idempotents which generalizes more easily. 
-These tubes have two marked points at the boundary, and a complete list of isomorphisms from tubes of one marked point to tubes of two marked points are given by
+These tubes have two marked points at the boundary, and a complete list of isomorphisms from tubes of one marked point to tubes of two marked points 
+\kw{huh?}
+are given by
 \begin{align}
  \TubeTwotoOneStrand \cong V^{xy}_b\quad \quad \quad \TubeOnetoTwoStrand \cong V_{xy}^a
 \end{align}
@@ -7141,13 +7163,20 @@ e_{xy}  = \TubeIdempotentTwoStrand \in \tube(\mcc)
 \label{minimal_idempotent_C}
 \end{align}
 Notice that the isomorphism class is still labeled by pairs of simple objects, but there is no additional choice of for the fusion space required.
-Also notice that orthogonality of the idempotents is obvious given that $\omega_0 \tp \omega_0 = \omega_0$.
+Also notice that orthogonality of the idempotents is obvious given that $\omega_0 \cdot \omega_0 = \omega_0$.
 The idempotents above can be used to show that $\tube(\mcc) \cong \mcc \times \bar{\mcc}$ \cite{Who was the first to show this?}.
 In the following subsection we state, and prove the analogous theorem for in the fermionic setting.
+\kw{should probably say $\mcc/\psi$ instead of fermionic}
+
+\kw{I can some some rewrites for the above subsection}
 
 \subsection{Double of the fermionic quotient}
 \dave{Very much still in progress.}
-In this subsection we prove that $\tube(\mcc/\psi) \cong \mcc \times \bar{\mcc}/\psi$ when $\psi$ is  fermion and $\mcc$ is a modular tensor category.
+In this subsection we prove that $\tube(\mcc/\psi) \cong \mcc \times \bar{\mcc}/\psi$ 
+(as tensor categories)
+when $\psi$ is  fermion 
+(satisfying conditions of xxxxx above)
+and $\mcc$ is a modular tensor category.
 This theorem allows us to easily compute, for example the modular transformations of $\tube(\mcc/\psi)$ without going through the brute force methods used in Section~\ref{C2_quasiparticles}.
 
 A key insight will be to find the minimal idempotents of the condensed theory.
@@ -7206,7 +7235,7 @@ The kernal of $\hat{a}_J$ are all tubes whose image under condensation is zero i
 Obviously we have $\hat{a}_B + \hat{a}_N = \text{id}$. 
 Thus we have computed the image of $\tube(\mcc)$ in $\tube(\mcc/\psi)$. 
 
-Lets now apply these projectors to the idempotents in \eqref{minimal_idempotent_C}.
+Let's now apply these projectors to the idempotents in \eqref{minimal_idempotent_C}.
 Define the image of $e_{xy}$ under condensation to be $f^J_{xy}$. 
 Using that $\omega_0 \tp a_J = \delta_{JB} \omega_0$, we can simply replace $\omega_0$ in $e_{xy}$ with $a_B \tp \omega_0$. 
 We can next commute the $a_B$ through the $y$ strand sitting between the $\omega_0$ loop and the back wall. 
