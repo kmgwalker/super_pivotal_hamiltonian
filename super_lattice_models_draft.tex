@@ -366,6 +366,10 @@
 \newcommand{\fTubeCf}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{fTubeCf.pdf}}}}}
 \newcommand{\fTubefOdd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{fTubefOdd.pdf}}}}}
 
+
+\newcommand{\FusionIsomorphism}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FusionIsomorphism.pdf}}}}}
+
+
 \newcommand{\TubeCompletea}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeCompletea.pdf}}}}}
 \newcommand{\TubeCompleteb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeCompleteb.pdf}}}}}
 \newcommand{\TubeCompletec}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeCompletec.pdf}}}}}
@@ -7312,6 +7316,7 @@ By the spine lemma\cite{REF},
 a generic element of $f_{xy}^J \tube(\mcc/\psi) f_{xy}^J$ can be written as
 \begin{align}
 \fTubefOdd, \quad \quad \delta \in V^{x}_{xc}, \; \rho \in V^{y\tp \alpha}_{c' y}, \; \sigma \in \bigoplus_{r,w} V^{cc'}_r \tp V^{rw}_w
+\label{MinimalProof}
 \end{align}
 where we have suppressed the spin structure index (the spin structure is determined by $y$; recall \eqref{image_of_exy}), with all vector spaces appearing being written in terms of the parent theory, $\mcc$, and $\alpha$ is either $\unit$ or $\psi$ denoting whether the tube is even or odd.
 %Because we took $f^J_{xy}$ to be in the image of $e_{xy}$ under condensation, 
@@ -7359,18 +7364,50 @@ E\;: &\;\mcc \times \bar{\mcc}/\psi \ra \tube(\mcc/\psi)\\
 &E\left(\;  \EFunctora
 \;,\;\EFunctorb \; \right)\; \mapsto \;\EFunctorc_{\;\;\; \substack{\text{bounding if $\nu_y = 0$\;\;\;\;\;\;}\\ \text{nonbounding if $\nu_y =1$}}}
 \end{align}
-This is clearly a functor (preserves the identity map, and morphisms). 
-We claim that
-\dave{will continue later.}
 \begin{align}
-U_{X,Y}: \; E(X) \tp E(Y) \ra E(X \tp Y)
+\xymatrix @!0 @M=2mm @R=15mm @C=48mm{
+ &E: \; \; \mcc \times \bar{\mcc}/\psi \ar[r]            & \tube(\mcc/\psi) & \\
+		  &\;\;\;\;\; \left(\;  \EFunctora
+\;,\;\EFunctorb \; \right)\;  \ar@{|->}[r] &\EFunctorc&
+%_{\;\;\; \substack{\text{bounding if $\nu_y = 0$\;\;\;\;\;\;}\\ \text{nonbounding if $\nu_y =1$}}}
+		  }
 \end{align}
-\dave{Take $U$ to be $V(P)$. 
-Or can define $U_{XY}(E(X) \tp E(Y)) =$ Same picture but with the inner and outer punctures adjoined}
-\dave{Or should we define:}
+
+This is clearly a functor, it preserves the identity and morphisms in an obvious way. 
+We claim that it is also a tensor functor.
+\dave{This is copied from KW's notes:}
+The tensor structure on $\tube(\mcc)$ is initially defined on $\text{Rep}(\tube(\mcc))$ and then transferred to $\tube(\mcc)$ using semisimplicity ($\tube(\mcc) \cong \text{Rep}(\tube(\mcc))$). 
+Consequently, we only need to show that $E$ is a tensor functor on $\text{Rep}(\tube(\mcc))$.
+We next show that
 \begin{align}
-\Ufghk
+V^{E(a,x),E(b,y)}_{E(c,z)} \cong V^{ab}_c(\mcc) \tp V^{xy}_z(\mcc/\psi)
 \end{align}
+Where $V(\mcc)$ denotes the fusion space for $\mcc$ and $V(\mcc/\psi)$ denotes the fusion space for $\mcc/\psi$.
+\dave{Now we add words about why this implies that $E$ is a tensor functor. 
+}
+This isomorphism is established by the following figure:
+\begin{align}
+\FusionIsomorphism
+\end{align}
+with $\alpha = \unit$ for the even fusion space and $\alpha = \psi$ for the odd fusion space.
+By the spine lemma, the internal lines, labeled $r,s,t,u,v$ span the entire space of 
+net configurations for $V(P)$ with marked points, $(a,x)$, $(b,y)$, 
+and $(c,z)$ living at the boundary circles. 
+Near each boundary circle we have applied the corresponding minimal idempotent to each boundary condition. 
+Using the exact same arguments following \eqref{MinimalProof} we can simplify the diagram using the relations of Table ~\ref{omega_loop_properties}. One finds that $r \cong s \cong t \cong u \cong v \cong \unit$, and and $p$ and the left over $p$ and $q$ loops can be removed with multiplying the picture by there quantum dimensions. 
+The left over picture is isomorphic to $V^{ab}_c(\mcc) \tp V^{xy}_z(\mcc/\psi)$.
+
+
+
+%\begin{align}
+%U_{X,Y}: \; E(X) \tp E(Y) \ra E(X \tp Y)
+%\end{align}
+%\dave{Take $U$ to be $V(P)$. 
+%Or can define $U_{XY}(E(X) \tp E(Y)) =$ Same picture but with the inner and outer punctures adjoined}
+%\dave{Or should we define:}
+%\begin{align}
+%\Ufghk
+%\end{align}
 
 \begin{enumerate}
 \item minimality
