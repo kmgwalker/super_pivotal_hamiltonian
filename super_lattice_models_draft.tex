@@ -324,7 +324,7 @@
 
 
 \newcommand{\TubeElement}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeElement.pdf}}}}}
-\newcommand{\OmegaLoop}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OmegaLoop.pdf}}}}}
+
 
 \newcommand{\LoopOverId}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{LoopOverId.pdf}}}}}
 \newcommand{\Ida}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Ida.pdf}}}}}
@@ -408,15 +408,15 @@
   %              \hidewidth\raise-0.3ex\hbox{$\scriptstyle{#3}\mkern60mu$}\cr
 %          \hidewidth\raise0ex\hbox{$\scale{1.5}{\VerticalSpace}$}\cr
  %}}}
+ 
+ 
+\newcommand{\LoopArrow}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{LoopArrow.pdf}}}}}  
+\newcommand{\LoopArrowx}[1]{\mathrel{\ooalign{$\LoopArrow_{\mathrel{\raisebox{4pt}{$\scriptstyle{#1}$}}}$
+  }}}
   
+  
+\newcommand{\OmegaLoop}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OmegaLoop.pdf}}}}}  
 \newcommand{\OmegaLoopx}[1]{\mathrel{\ooalign{$\OmegaLoop_{\mathrel{\raisebox{4pt}{$\scriptstyle{#1}$}}}$
-%\mathrel{\raisebox{#1}{$\oldsqsubset$}}
-%  \hidewidth\raise-.5ex\hbox{$\scriptstyle{#1}\mkern-20mu$}\cr
-%    \hidewidth\raise-4.3ex\hbox{$\scriptstyle{#2}\mkern43mu$}\cr
-%        \hidewidth\raise-6.3ex\hbox{$\scriptstyle{#2}\mkern61mu$}\cr
-%        \hidewidth\raise4.1ex\hbox{$\scriptstyle{#4}\mkern25mu$}\cr
-  %              \hidewidth\raise-0.3ex\hbox{$\scriptstyle{#3}\mkern60mu$}\cr
-%          \hidewidth\raise0ex\hbox{$\scale{1.5}{\VerticalSpace}$}\cr
   }}}
 
 
@@ -7049,6 +7049,9 @@ and so there is no need to define $\Arf(Y)$ in this case.
 
 \dave{Note to self: look at \cite{Koenig2010}, they also have the same idempotents.}
 
+\dave{Should give a table of the conventions we use for an MTC somewhere
+e.g., normalizations on vertices, F-symbols, R-symobls and $\bar{\mcc}$}
+
 In this section we investigate fermion condensation in modular tensor categories (MTC).
 %\ethan{I think we should either put this in sec 4 along side our more general discussion of the tube category, or move that discussion to this section.
 %\dave{What if we made the tube category section in the generalities bit more general, and less specific. 
@@ -7090,15 +7093,16 @@ where the $\text{cl}(x)$ denotes that the simple object has been closed up into 
 \kw{need to rephrase this; also comment on ring idempotents}
 Digrammatically we denote the $\omega$ loop embedded in a 3-manifold by
 \begin{align}
-\OmegaLoopx{\omega} = \frac{1}{\mcd^2}\sum_{x\in \text{sob}(\mcc)} d_x\; \OmegaLoopx{x} ,
+\OmegaLoopx{\omega} = \frac{1}{\mcd^2}\sum_{x\in \text{sob}(\mcc)} d_x\; \LoopArrowx{x} ,
 \end{align}
 where the gray disc in the center represents a cycle that the $\omega$ loop wraps around. 
 \kw{maybe we should drop the arrow on the $\omega$ loop?}
+\dave{Sounds good.}
 If the gray region is empty, then the $\omega$ loop can be evaluated using the MTC and since $1 = \sum_x d_x^2/\mcd^2$, the $\omega$ loop can be removed with impunity.
 We summarize all the properties which we will make use of in Table~\ref{omega_loop_properties}.
 For a modular theory, we can easily use part (a) of Table\ref{omega_loop_properties} to see that,
 \begin{align}
-\OmegaLoopDefectx{\omega}{\omega} \quad \; =  \frac{1}{\mcd^2} \; \DiscGray
+\OmegaLoopDefectx{\omega\;\;}{\omega\;\;} \quad \; =  \frac{1}{\mcd^2} \; \DiscGray
 \label{Omega_in_SLoop}
 \end{align}
 which is true, independent of what is inside the gray disc.
@@ -7122,13 +7126,16 @@ rather than a single simple object $x$.  }
 		\label{omega_loop_properties}
 		\end{table}
 
-\subsection{Double of a modular tensor category}
-\kw{I used to use ``double" as a synonym for annular/tube, but I've been told that is probably incompatible
-with related uses of ``double" (e.g.\ for Hopf algebras.}
+\subsection{The center of a modular tensor category}
+\dave{Title needs some work.}
+%\kw{I used to use ``double" as a synonym for annular/tube, but I've been told that is probably incompatible
+%with related uses of ``double" (e.g.\ for Hopf algebras).}
+%\dave{Good to know, lets stick with annular or tube.}
 We now recall some well known facts about the annular category $\tube(\mcc)$ \cite{ocneanu1994}.
 In particular we provide two formulae for the minimal idempotents of $\tube(\mcc)$.
 A basis for 
-\kw{the morphism space from $a$ to $b$ in}
+%\kw{the morphism space from $a$ to $b$ in}
+the morphism space from $a$ to $b$ in 
 the annular category $\tube(\mcc)$ is given by,
 \begin{align}
 \TubeElementx{t}{a}{b}\quad \quad \text{with} \quad \quad t \in \bigoplus_r V^{rb r^*}_a
@@ -7137,37 +7144,55 @@ By using \eqref{Omega_in_SLoop} we can change to a much more convenient basis vi
 \begin{align}
 \TubeBasisa \times \mcd^2 =  
 \TubeBasisb   =
-\TubeBasisc  = \sum_{\substack{\nu \in V_{xy}^b, \\  \mu \in V^{xy}_a }}C_{t; \mu\nu} \times 
+\TubeBasisc  = \sum_{\substack{x,y \in \sob(\mcc) \\
+\mu =1,\cdots, N_{xy}^a \\
+\nu =1,\cdots, N_{xy}^b}
+}C_{t; xy\mu\nu} \times 
 \TubeBasisd
 \end{align}
 \kw{strictly speaking we need to sum over another index here}
+\dave{It should be fixed now.}
 where for convenience we have written the annulus as a square with the left and right (blank) edges identified. 
-The constants $C_{t,\mu \nu}$ can be determined by fusing the $\omega$ loop into the strand labeled $b$ in the second to last diagram, 
-and then using a series of $F$ and $R$ moves to reduce the diagram to the form of the final diagram. 
+The indices $\mu$ and $\nu$ run over a complete orthogonal basis of $V^{xy}_a$ and $V_{xy}^b$ respectively.
+The constants $C_{t,xy\mu \nu}$ can be determined by fusing the $\omega$ loop into the strand labeled $b$ in the second to last diagram, 
+and then using a series of $F$ and $R$ moves to reduce the diagram to the form of the final diagram on the right. 
 Since $\mcc$ is assumed to be modular, and all transformations shown 
 above are invertible we have shown that
 \begin{align}
-\text{Ann}(\mcc) \cong \cc\left[ \TubeBasisd \right] 
+\tube(\mcc) \cong \cc\left[ \TubeBasisd \right] 
 \label{AnnCatMTC}
 \end{align}
-\dave{Note to self: Did we define $\text{Ann}(\mcc)$ to be the annular category and $\tube(\mcc)$ to be the annular category along with a pair of pants somewhere?}
-\kw{I thought Ann and Tube were synonyms/}
-This basis for $\text{Ann}(\mcc)$ is rather special, the diagonal elements of it can be shown to be the minimal idempotents \dave{Need to check this is true given multiplicities.}. 
+%\dave{Note to self: Did we define $\text{Ann}(\mcc)$ to be the annular category and $\tube(\mcc)$ to be the annular category along with a pair of pants somewhere?}
+%\kw{I thought Ann and Tube were synonyms/}
+%\dave{Indeed.}
+This basis for $\tube(\mcc)$ is rather special, the diagonal elements of it can be shown to be proportional to the minimal idempotents.
+% \dave{Need to check this is true given multiplicities.}. 
 \kw{It's true with multiplicities, but one needs to say more about scaling}
+\dave{Could say something like: ``Letting $\nu \in V^{a}_{xy}$ and $\mu \in V_a^{xy}$ such that $\nu \circ \mu = \sqrt{\frac{d_x d_y}{d_a}} \text{id}_a$ then the above tubes become idempotents if we normalize them by $\sqrt{\frac{d_x d_y}{d_a}}$.
+The choice of $\mu$ and $\nu$ is not unique.''}
 To verify this one stacks the tubes on top of one another, and uses property (c) and (a) of Table \ref{omega_loop_properties}.
-The isomorphism class is labeled by elements in $\text{sob}(\mcc) \times \text{sob}(\mcc)$.
+The isomorphism class is labeled by elements in $\sob(\mcc) \times \sob(\mcc)$.
 For a particular isomorphism class $(x,y)$, the isomorphisms are given by the possible $(\mu,\nu) \in \bigoplus_{a,b \in \text{sob}(\mcc)}(V^{xy}_a,V_{xy}^b)$, and the tube by \eqref{AnnCatMTC}.
 \dave{add words about minimality, orthogonality, non-zero, completeness.}
 
-Although such a formula exists for $\mcc/\psi$, 
-which will be discussed in the next subsection, 
-there is another set of minimal idempotents which generalizes more easily. 
-These tubes have two marked points at the boundary, and a complete list of isomorphisms from tubes of one marked point to tubes of two marked points 
+%Although such a formula exists for $\mcc/\psi$, 
+%which will be discussed in the next subsection, 
+There is another set of minimal idempotents which extends to the fermionic case more easily.
+These are the minimal idempotents that live in the annular category with two marked points on each of the circles bounding the annulus.
+A basis for the morphism space of $\tube(\mcc)$ with two marked points can be found by taking the basis in \eqref{AnnCatMTC} and multiplying by the morphisms
+%These tubes have two marked points at the boundary, and a complete list of isomorphisms from tubes of one marked point to tubes of two marked points 
 \kw{huh?}
-are given by
+\dave{Agreed. That was sloppy. 
+Let me re-word it a bit, and come back to it later. }
 \begin{align}
- \TubeTwotoOneStrand \cong V^{xy}_b\quad \quad \quad \TubeOnetoTwoStrand \cong V_{xy}^a
+ \TubeTwotoOneStrand \cong V^{xy}_b\quad \quad \text{and} \quad \quad \TubeOnetoTwoStrand \cong V_{xy}^a
 \end{align}
+Where the multiplication is done in the only way compatible.
+\dave{Could add ``The basis of morphisms above from boundaries of two marked points
+to one and vice versa isn't complete; 
+we need to include pictures which involve strands traversing the entire annulus.
+However, it is enough to establish an isomorphism between the tube category 
+of annulai with two marked points and the tube category of annulai with one marked point on each boundary."}
 In this basis, the minimal idempotents of $\text{Ann}(\mcc)$ are simply given by,
 \begin{align}
 e_{xy}  = \TubeIdempotentTwoStrand \in \tube(\mcc)
@@ -7176,10 +7201,11 @@ e_{xy}  = \TubeIdempotentTwoStrand \in \tube(\mcc)
 Notice that the isomorphism class is still labeled by pairs of simple objects, but there is no additional choice of for the fusion space required.
 Also notice that orthogonality of the idempotents is obvious given that $\omega \cdot \omega = \omega$.
 The idempotents above can be used to show that $\tube(\mcc) \cong \mcc \times \bar{\mcc}$ \cite{Who was the first to show this?}.
-In the following subsection we state, and prove the analogous theorem for in the fermionic setting.
-\kw{should probably say $\mcc/\psi$ instead of fermionic}
+In the following subsection we state, and prove the analogous theorem for $\tube(\mcc/\psi)$..
+%\kw{should probably say $\mcc/\psi$ instead of fermionic}
 
 \kw{I can some some rewrites for the above subsection}
+\dave{Sounds good. I just fixed some of the things we discussed yesterday.}
 
 \subsection{Double of the fermionic quotient}
 \dave{Very much still in progress.}
