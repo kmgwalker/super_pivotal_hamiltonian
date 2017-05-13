@@ -351,6 +351,15 @@
 \newcommand{\TubeProject}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeProject.pdf}}}}}
 
 
+\newcommand{\TuberraJ}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TuberraJ.pdf}}}}}
+\newcommand{\Tubeidr}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tubeidr.pdf}}}}}
+\newcommand{\Tuberr}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tuberr.pdf}}}}}
+
+
+\newcommand{\TuberrTraceCe}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TuberrTraceCe.pdf}}}}}
+\newcommand{\TuberrTraceCo}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TuberrTraceCo.pdf}}}}}
+
+
 
 \newcommand{\exyomegaa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{exyomegaa.pdf}}}}}
 \newcommand{\exyomegab}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{exyomegab.pdf}}}}}
@@ -7227,27 +7236,69 @@ Next we find a tensor functor $\mcc \times \bar{\mcc}/\psi $ and the minimal ide
 
 
 The image of $\tube(\mcc)$ under condensation can be found with the help of two projectors which sum to the identity. 
-We first decompose $\tube(\mcc)$ into two orthogonal sets of tubes.
 To do so we define the two projectors
 \begin{align}
 a_{B/N} = \frac{1}{2}(\text{cl}(\unit) \pm \text{cl}(\psi)).
+\label{aJloop}
 \end{align}
-Which satisfy $a_J \tp a_W = \delta_{JW} a_J$ and $a_B + a_N = \text{cl}(\unit)$.
-These projectors are like the $\omega$ loop defined in \eqref{omega_loop}, but only involve $\unit$ and $\psi$, the objects we are quotienting by. 
-Importantly, an $a_J$ loop on a tube with spin structure $J$ is the identity, while an $a_J$ loop on a tube with spin structure $W \neq J$ projects the tube to zero, i.e., 
+Where $\text{cl}(x)$ denotes the closed up $x$ strand along a circle.
+Importantly, they satisfy $a_J \tp a_W = \delta_{JW} a_J$ and $a_B + a_N = \text{cl}(\unit)$.
+%These projectors are like the $\omega$ loop defined in \eqref{omega_loop}, but only involve $\unit$ and $\psi$, the objects we are quotienting by. 
+%We first decompose $\tube(\mcc)$ into two orthogonal sets of tubes.
+Notice that an $a_J$ loop on a tube with spin structure $J$ is the identity, while an $a_J$ loop on a tube with spin structure $W \neq J$ projects the tube to zero, i.e., 
 \begin{align}
 \SpinStructureProjector = \delta_{JW}\; \EmptyTubeW \in \tube_W(\mcc/\psi).
 \end{align}
+The $W$ on the interior of the gray disc denotes the spin structure for the disc it bounds.
 We next define the two projectors on $\tube(\mcc)$ by defining how they act on the basis elements,
 \begin{align}
-\hat{a}_J \cdot \TubeBasisa = \TubeProject
+\hat{a}_J \cdot \TubeBasisa = \TubeProject.
 \label{aJ_projector}
 \end{align}
 \dave{better notation?}
-so that the image $\hat{a}_J$ in $\tube(\mcc)$ condenses to even tubes in $\tube_J(\mcc/\psi)$.
+The image of $\hat{a}_J$ in $\tube(\mcc)$ condenses to even tubes in $\tube_J(\mcc/\psi)$.
 The kernal of $\hat{a}_J$ are all tubes whose image under condensation is zero in $\tube_J(\mcc/\psi)$.
-Obviously we have $\hat{a}_B + \hat{a}_N = \text{id}$. 
-Thus we have computed the image of $\tube(\mcc)$ in $\tube(\mcc/\psi)$. 
+Even more so, a non-zero tube in $\tube(\mcc)$ in the image of $a_J$ remains non-zero under condensation as a tube in $\tube_J(\mcc/\psi)$, we make this precise with the following lemma,
+%Obviously we have $\hat{a}_B + \hat{a}_N = \text{id}$. 
+%Thus we have computed the image of $\tube(\mcc)$ in $\tube(\mcc/\psi)$. 
+
+\dave{I found the following useful (provided it's correct). 
+We may want to move it to the inner product section?}
+\begin{lemma}
+\label{image_aJ}
+Let $\mcc$ be a unitary fusion category and $\psi$ a fermion in $\mcz(\mcc)$ as defined in \ref{xxxxx}.
+Let $\hat{a}_J$ be as defined in \eqref{aJ_projector}.
+Then 
+\[\begin{tikzcd}        
+    \tube(\mcc)\arrow{r}{\hat{a}_J} &\tube(\mcc) \arrow[hook]{r} &  \tube_J(\mcc/\psi)
+\end{tikzcd}\]
+is injective.
+In particular, a non-zero element of $\tube(\mcc)$ in the image of $a_J$ is non-zero in $\tube_J(\mcc/\psi)$.
+\end{lemma}
+
+\begin{proof}
+The proof follows from a simple observation.
+Let $t \in \tube(\mcc)$ be in the image of $\hat{a}_J$ so that, 
+\begin{align}
+\left \langle\; \Tubeidr,\Tuberr \; \right \rangle_{\tube(\mcc)} &=\left \langle\; \Tubeidr,\TuberraJ \; \right \rangle_{\tube(\mcc)}  \\
+&= \frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^J \TuberrTraceCo  \right \rangle_{\mcc}
+\end{align}
+Where the angle brackets with subscript $\mcc$ means we evaluate the picture on the two-sphere using $\mcc$.
+And we have defined $(-1)^J = 1$ if $J$ is bounding and $-1$ otherwise.
+Since any net configuration in $\mcc$ evaluated on $S^2$ agrees with the evaluation in $\mcc/\psi$ we have,
+\begin{align}
+\frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^J \TuberrTraceCo  \right \rangle_{\mcc} &=\frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^J \TuberrTraceCo  \right \rangle_{\mcc/\psi} \\
+&= \frac{1}{2} \left \langle\; \Tubeidr,\Tuberr \; \right \rangle_{\tube_J(\mcc/\psi)}.
+\end{align}
+Where we have used the definition of the trace in section \ref{xxxxx}.
+Hence, for if $X,Y \in \tube(\mcc)$ are in the image of $\hat{a}_J$, then $\langle X, Y \rangle = \langle \unit, X^* Y\rangle$. 
+Using that $\tube(\mcc)$ is semi-simple, and that the $t \in \tube(\mcc)$ above span all morphisms of $\tube(\mcc)$, we can always find an isomorphism such that $t \cong X^*Y$.
+
+Hence we also have that $\langle X, Y \rangle_{\tube(\mcc)} = \frac{1}{2} \langle X, Y \rangle_{\tube_J(\mcc/\psi)}$.
+Since the the inner-product is non-degenerate, the inclusion of the image of $\hat{a}_J$ into $\tube_J(\mcc/\psi)$ is injective.
+\end{proof}
+
+
 
 Let's now apply these projectors to the idempotents in \eqref{minimal_idempotent_C}.
 Define the image of $e_{xy}$ under condensation to be $f^J_{xy}$. 
@@ -7263,14 +7314,19 @@ e_{xy} =  \TubeIdempotentTwoStrand= \exyomegaa = \begin{cases}
 \end{cases}
 \end{align}
 and so each $e_{xy}$ has an image in $\tube(\mcc/\psi)$ given by
-\dave{Is this enough to say that the $f_{xy}^{J(y)}$ are non-zero?}
 \begin{align}
 e_{xy} \xrightarrow{\text{condense $\psi$}}f_{xy}^{J(y)} \quad \quad \text{with $J(y) = B$ if $\nu_y = 0$ and $J(y) = N$ otherwise}
 \label{image_of_exy}
 \end{align}
 In the following we will sometimes write just $J$ instead of $J(y)$. 
-The $f_{xy}^J$ also remain orthogonal $f_{xy}^J f_{x' y'}^W = \delta_{xx'} \delta_{yy'}\delta_{JW} f_{xy}^J$, which follows from the fact that $\omega \tp \omega = \omega$ and $a_J \tp a_W = \delta_{JW} a_J$.
-It remains to show that the idempotents $f_{xy}^J$ are minimal, and complete. 
+Since the $e_{xy}$ are complete, orthogonal and non-zero then by using the lemma  \ref{image_aJ}
+we also have that the $f^J_{xy}$ are complete, orthogonal and non-zero.
+%By the lemma \ref{image_aJ} we also have that teh $f^J_{xy}$ are nonzero
+%The $f_{xy}^J$ also remain orthogonal $f_{xy}^J f_{x' y'}^W = \delta_{xx'} \delta_{yy'}\delta_{JW} f_{xy}^J$, which follows from the fact that $\omega \tp \omega = \omega$ and $a_J \tp a_W = \delta_{JW} a_J$.
+Since the inclusion of the image of $\hat{a}_J$ into $\tube_J(\mcc/\psi)$ is not surjective, 
+we still need to show that the idempotents remain minimal.
+\dave{The tubes we are missing are the ones with q-type strands and a fermion hanging off them.}
+%It remains to show that the idempotents $f_{xy}^J$ are minimal, and complete. 
 
 %Consider $f_{xy}^J \cdot f_{x'y'}^W$. 
 %Let $a_{B/N} = \frac{1}{2}(\text{cl}(\unit) \pm \text{cl}(\psi))$, so that
@@ -7283,7 +7339,7 @@ It remains to show that the idempotents $f_{xy}^J$ are minimal, and complete.
 %f_{xy}^J \cdot f_{x'y'}^W = \delta_{xx'} \delta_{yy'} \delta_{JW} f_{xy}^J
 %\end{align}
 
-Lets begin by showing that the idempotents $f_{xy}^J$ are minimal.
+Lets show that the idempotents $f_{xy}^J$ are indeed minimal.
 We need to show that $f_{xy}^J \tube(\mcc/\psi) f_{xy}^J$ is one dimensional.
 By the spine lemma\cite{REF}, 
 a generic element of $f_{xy}^J \tube(\mcc/\psi) f_{xy}^J$ can be written as
