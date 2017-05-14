@@ -7124,9 +7124,10 @@ A basis for
 the morphism space from $a$ to $b$ in 
 the annular category $\tube(\mcc)$ is given by,
 \begin{align}
-\TubeElementx{t}{a}{b}\quad \quad \text{with} \quad \quad t \in \bigoplus_r V^{rb r^*}_a
+\text{mor}(\underset{a}{\TubeBCx{}} \rightarrow \underset{b}{\TubeBCx{}})=
+\; \cc\left[ \TubeElementx{t}{a}{b} \right]\quad \quad \text{with} \quad \quad t \in \bigoplus_r V^{rb r^*}_a
 \end{align}
-By using \eqref{Omega_in_SLoop} we can change to a much more convenient basis via,
+With the help of \eqref{Omega_in_SLoop} we can change to a much more convenient basis via,
 \begin{align}
 \TubeBasisa \times \mcd^2 =  
 \TubeBasisb   =
@@ -7145,20 +7146,33 @@ and then using a series of $F$ and $R$ moves to reduce the diagram to the form o
 Since $\mcc$ is assumed to be modular, and all transformations shown 
 above are invertible we have shown that
 \begin{align}
-\tube(\mcc) \cong \cc\left[ \TubeBasisd \right] 
+%\tube(\mcc) 
+\text{mor}(\underset{a}{\TubeBCx{}} \rightarrow \underset{b}{\TubeBCx{}})\cong \cc\left[ \TubeBasisd \right] 
 \label{AnnCatMTC}
 \end{align}
 %\dave{Note to self: Did we define $\text{Ann}(\mcc)$ to be the annular category and $\tube(\mcc)$ to be the annular category along with a pair of pants somewhere?}
 %\kw{I thought Ann and Tube were synonyms/}
 %\dave{Indeed.}
-This basis for $\tube(\mcc)$ is rather special, the diagonal elements of it can be shown to be proportional to the minimal idempotents.
+This basis for the morphism space of $\tube(\mcc)$ is rather special, the diagonal elements of it can be shown to be proportional to the minimal idempotents.
 % \dave{Need to check this is true given multiplicities.}. 
 \kw{It's true with multiplicities, but one needs to say more about scaling}
-\dave{Could say something like: ``Letting $\nu \in V^{a}_{xy}$ and $\mu \in V_a^{xy}$ such that $\nu \circ \mu = \sqrt{\frac{d_x d_y}{d_a}} \text{id}_a$ then the above tubes become idempotents if we normalize them by $\sqrt{\frac{d_x d_y}{d_a}}$.
+\dave{Could say something like: ``Letting $\nu \in V^{a}_{xy}$ and $\mu \in V_a^{xy}$ such that $\nu \circ \mu = \sqrt{\frac{d_x d_y}{d_a}} \text{id}_a$ then the above tubes become minimal idempotents if we normalize them by $\sqrt{\frac{d_x d_y}{d_a}}$.
 The choice of $\mu$ and $\nu$ is not unique.''}
 To verify this one stacks the tubes on top of one another, and uses property (c) and (a) of Table \ref{omega_loop_properties}.
 The isomorphism class is labeled by elements in $\sob(\mcc) \times \sob(\mcc)$.
 For a particular isomorphism class $(x,y)$, the isomorphisms are given by the possible $(\mu,\nu) \in \bigoplus_{a,b \in \text{sob}(\mcc)}(V^{xy}_a,V_{xy}^b)$, and the tube by \eqref{AnnCatMTC}.
+\dave{A less transparent, but maybe more algebraic way to say this could be 
+``The isomorphism class is labeled by elements in $\sob(\mcc) \times \sob(\mcc)$.
+As a matrix algebra it is given by $\text{Mat}(x,y)\cong \bigoplus_{a,b} V^{b}_{xy} \tp V^{xy}_a$, 
+with multiplication given by $(\lambda^a_{xy} \tp \lambda_b^{xy} )\cdot( \rho^b_{xy} \tp \rho^{xy}_c) = (\lambda^a_{xy}\tp \rho^{xy}_c) \text{tr}\frac{\lambda^{xy}_b \circ \rho^b_{xy}}{d_x d_y}$, 
+where $\lambda_{xy}^a \in V_{xy}^a$ etc.
+Choosing $\nu \in V^a_{xy}$, $\mu \in V^{xy}_a$ such that $\text{tr}\frac{\mu \circ \nu}{d_x d_y}
+=1$ results in an idempotent.
+Resolving the tensor product $\text{id}_x \tp \text{id}_y = \oplus_a \text{(coeff)} \mu \circ \nu$ we can find a complete set of idempotents.
+Checking that $(\nu \tp \mu) \cdot \text{Mat}(x,y) \cdot (\nu \tp \mu)$ is one dimensional shows that they are also minimal."
+This was a sketch of something we could say, don't know if it's helpful, and I haven't refined it.
+}
+
 \dave{add words about minimality, orthogonality, non-zero, completeness.}
 
 %Although such a formula exists for $\mcc/\psi$, 
@@ -7179,13 +7193,13 @@ to one and vice versa isn't complete;
 we need to include pictures which involve strands traversing the entire annulus.
 However, it is enough to establish an isomorphism between the tube category 
 of annulai with two marked points and the tube category of annulai with one marked point on each boundary."}
-In this basis, the minimal idempotents of $\text{Ann}(\mcc)$ are simply given by,
+In this basis, the minimal idempotents of $\tube(\mcc)$ are simply given by,
 \begin{align}
 e_{xy}  = \TubeIdempotentTwoStrand \in \tube(\mcc)
 \label{minimal_idempotent_C}
 \end{align}
 Notice that the isomorphism class is still labeled by pairs of simple objects, but there is no additional choice of for the fusion space required.
-Also notice that orthogonality of the idempotents is obvious given that $\omega \cdot \omega = \omega$.
+Also notice that orthogonality of the idempotents is obvious given that $\omega \tp \omega = \omega$.
 The idempotents above can be used to show that $\tube(\mcc) \cong \mcc \times \bar{\mcc}$ \cite{Who was the first to show this?}.
 In the following subsection we state, and prove the analogous theorem for $\tube(\mcc/\psi)$..
 %\kw{should probably say $\mcc/\psi$ instead of fermionic}
@@ -7262,7 +7276,8 @@ Even more so, a non-zero tube in $\tube(\mcc)$ in the image of $a_J$ remains non
 %Obviously we have $\hat{a}_B + \hat{a}_N = \text{id}$. 
 %Thus we have computed the image of $\tube(\mcc)$ in $\tube(\mcc/\psi)$. 
 
-\dave{I found the following useful (provided it's correct). 
+\dave{I found the following useful (provided it's correct).
+Stated it as a lemma since I was using it for the proof -- am certainly not adverse to reverting it to a calculation.
 We may want to move it to the inner product section?}
 \begin{lemma}
 \label{image_aJ}
@@ -7274,6 +7289,9 @@ Then
 \end{tikzcd}\]
 is injective.
 In particular, a non-zero element of $\tube(\mcc)$ in the image of $a_J$ is non-zero in $\tube_J(\mcc/\psi)$.
+\dave{This may also be a tensor functor.
+Will need to think about it.
+I was thinking it may have some use for `guaging' the fermion and getting back to the parent theory. }
 \end{lemma}
 
 \begin{proof}
@@ -7369,6 +7387,7 @@ f_{xy}^J \tube(\mcc/\psi) f_{x' y'}^J \cong
 Hence, the $f^{J}_{xy}$ are minimal. 
 This also shows that $f_{xy}^J$ and $f_{x(y\tp \psi)}^J$ are oddly isomorphic.
 
+\dave{Will move this to the bosonic subsection.}
 We now need to show that the idempotents are complete.
 In the parent theory we have,
 \begin{align}
