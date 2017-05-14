@@ -6420,6 +6420,10 @@ but TQFT considerations pick out a preferred map from torus string nets to $\cc$
 
 \kw{Note to self: be sure to introduce inner product (more general than trace)}
 
+\dave{Do the two agree at the level of the tube category?
+(i.e., I thought $\langle X, Y \rangle  = \langle \unit ,X^*Y\rangle = \text{tr} X^*Y$.
+I used this fact later in \ref{image_aJ} but can also do the same calculation without it.)}
+
 Recall that the path integral on a manifold $X$ is a linear function
 \be Z(X) : V(\p X) \ra \cc,\ee
 where $V(\p X)$ is the set of all string-net configurations on $\p X$ modulo local relations.
@@ -7212,21 +7216,27 @@ In the following subsection we state, and prove the analogous theorem for $\tube
 In this subsection we prove that $\tube(\mcc/\psi) \cong \mcc \times \bar{\mcc}/\psi$ 
 (as tensor categories)
 when $\psi$ is  fermion 
-(satisfying conditions of xxxxx above)
+(satisfying conditions of \ref{gntf_condense} above)
 and $\mcc$ is a modular tensor category.
 \dave{Will need to think about the following sentence.}This theorem allows us to easily compute, for example the modular transformations of $\tube(\mcc/\psi)$ without going through the brute force methods used in Section~\ref{C2_quasiparticles}.
+We also hypothesize about the analogous theorem for a braided tensor functor, 
+but the proof is beyond the scope of this paper.
 
 A key insight will be to find the minimal idempotents of the condensed theory.
-These can be found by taking the minimal idempotents of the parent theory and quotienting by the fermion.
+These follow from a few observations. 
+%These can be found by taking the minimal idempotents of the parent theory and quotienting by the fermion.
+Any net configuration of the parent theory is a net configuration of the condensed theory. 
+In particular we can always use the inclusion map from $\tube(\mcc)$ to $\tube(\mcc/\psi)$.
+Similarly, every even morphism of $\mcc/\psi$ has a lift to $\mcc$.
+These two facts allow us to find the minimal idempotents of the quotient, using the minimal idempotents of the parent theory.
 The details of the quotient are important.
 For example, the image of some of the idempotents may simply be zero, 
 others may be identified or fall in the same isomorphism class. 
 These details, as well as minimality and completeness of the idempotents will have to be addressed carefully,
 once doing so we arrive at the following theorem:
 
-\dave{Define lift somewhere.}
 \begin{theorem}
-Let ${\mcc}$ be a unitary modular tensor category and let $\psi$ be a fermion in ${\mcc}$ as in \ref{psi_defintion}.
+Let ${\mcc}$ be a unitary modular tensor category and let $\psi$ be a fermion in ${\mcc}$ as in \ref{gntf_condense}.
 Let $\mcc/\psi$ be the super pivotal category resulting from the fermionic quotient.
 Let
 $
@@ -7248,7 +7258,7 @@ We first compute the image of \eqref{minimal_idempotent_C} in $\tube(\mcc/\psi)$
 and show that we have a complete set of minimal idempotents.
 Next we find a tensor functor $\mcc \times \bar{\mcc}/\psi $ and the minimal idempotents thus showing that $\tube(\mcc/\psi) \cong \mcc \times \bar{\mcc}/\psi$.
 
-
+\dave{We should probably consider moving this discussion to the tube category generalities section, and take $\psi \in \mcz(\mcc)$. }
 The image of $\tube(\mcc)$ under condensation can be found with the help of two projectors which sum to the identity. 
 To do so we define the two projectors
 \begin{align}
@@ -7271,17 +7281,18 @@ We next define the two projectors on $\tube(\mcc)$ by defining how they act on t
 \end{align}
 \dave{better notation?}
 The image of $\hat{a}_J$ in $\tube(\mcc)$ condenses to even tubes in $\tube_J(\mcc/\psi)$.
-The kernal of $\hat{a}_J$ are all tubes whose image under condensation is zero in $\tube_J(\mcc/\psi)$.
+%The kernal of $\hat{a}_J$ are all tubes whose image under condensation is zero in $\tube_J(\mcc/\psi)$.
 Even more so, a non-zero tube in $\tube(\mcc)$ in the image of $a_J$ remains non-zero under condensation as a tube in $\tube_J(\mcc/\psi)$, we make this precise with the following lemma,
 %Obviously we have $\hat{a}_B + \hat{a}_N = \text{id}$. 
 %Thus we have computed the image of $\tube(\mcc)$ in $\tube(\mcc/\psi)$. 
 
-\dave{I found the following useful (provided it's correct).
-Stated it as a lemma since I was using it for the proof -- am certainly not adverse to reverting it to a calculation.
-We may want to move it to the inner product section?}
+\dave{I found the following both conceptually and computationally useful, although it is kind of obvious (but some one should double check with skepticism).
+I also stated it as a lemma since I was using it for the proof -- I am certainly not adverse to reverting it to a calculation.
+We may want to move it to the inner product section?
+Or the tube algebra section?}
 \begin{lemma}
 \label{image_aJ}
-Let $\mcc$ be a unitary fusion category and $\psi$ a fermion in $\mcz(\mcc)$ as defined in \ref{xxxxx}.
+Let $\mcc$ be a unitary fusion category and $\psi$ a fermion in $\mcz(\mcc)$ as defined in \ref{lift_and_condense}.
 Let $\hat{a}_J$ be as defined in \eqref{aJ_projector}.
 Then 
 \[\begin{tikzcd}        
@@ -7301,17 +7312,17 @@ Let $t \in \tube(\mcc)$ be in the image of $\hat{a}_J$ so that,
 \left \langle\; \Tubeidr,\Tuberr \; \right \rangle_{\tube(\mcc)} &=\left \langle\; \Tubeidr,\TuberraJ \; \right \rangle_{\tube(\mcc)}  \\
 &= \frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^J \TuberrTraceCo  \right \rangle_{\mcc}
 \end{align}
-Where the angle brackets with subscript $\mcc$ means we evaluate the picture on the two-sphere using $\mcc$.
+The first step follows from the definition of being in the image of the projector $\hat{a}_J$, while the second step follows from the defintion of the inner product, see xx-Bosonic-trace-xx.
+The angle brackets with subscript $\mcc$ means we evaluate the picture on the two-sphere using $\mcc$.
 And we have defined $(-1)^J = 1$ if $J$ is bounding and $-1$ otherwise.
 Since any net configuration in $\mcc$ evaluated on $S^2$ agrees with the evaluation in $\mcc/\psi$ we have,
 \begin{align}
 \frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^J \TuberrTraceCo  \right \rangle_{\mcc} &=\frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^J \TuberrTraceCo  \right \rangle_{\mcc/\psi} \\
 &= \frac{1}{2} \left \langle\; \Tubeidr,\Tuberr \; \right \rangle_{\tube_J(\mcc/\psi)}.
 \end{align}
-Where we have used the definition of the trace in section \ref{xxxxx}.
-Hence, for if $X,Y \in \tube(\mcc)$ are in the image of $\hat{a}_J$, then $\langle X, Y \rangle = \langle \unit, X^* Y\rangle$. 
+Where we have again used the definition of the trace, but this time for the super pivotal category, see xx-Fermionic-trace-xx.
+Hence, if $X,Y \in \tube(\mcc)$ are in the image of $\hat{a}_J$, then $\langle X, Y \rangle = \langle \unit, X^* Y\rangle$. 
 Using that $\tube(\mcc)$ is semi-simple, and that the $t \in \tube(\mcc)$ above span all morphisms of $\tube(\mcc)$, we can always find an isomorphism such that $t \cong X^*Y$.
-
 Hence we also have that $\langle X, Y \rangle_{\tube(\mcc)} = \frac{1}{2} \langle X, Y \rangle_{\tube_J(\mcc/\psi)}$.
 Since the the inner-product is non-degenerate, the inclusion of the image of $\hat{a}_J$ into $\tube_J(\mcc/\psi)$ is injective.
 \end{proof}
@@ -7369,7 +7380,7 @@ where we have suppressed the spin structure index (the spin structure is determi
 %Because we took $f^J_{xy}$ to be in the image of $e_{xy}$ under condensation, 
 %we can trivially lift the $\omega_0$ loop of the condensed theory, to the pre-condensed theory. 
 The no tadpole theorem guarenties that $r \cong \unit$ and consequently that $c \cong c'$, and that the loop traversing annulus paralell to $\omega$ can be removed at the expense of multiplying by its quantum dimension.
-Lastly, we can use property (c) of Table \ref{omega_loop_properties} to slide the lower $\omega_0$ loop around the line connecting $x$ and $y$.
+Lastly, we can use property (c) of Table \ref{omega_loop_properties} to slide the lower $\omega$ loop around the line connecting $x$ and $y$.
 %This can be done in two ways, either so that the $\omega_0$ loop is above the trivalent junction (closer to the readers face), or below the trivalent junction (further from the readers face).
 Using property (a) of \ref{omega_loop_properties} we see that both $c \cong c' \cong \unit$.
 %Lastly, the loop traversing the annulus can be absorbed into the $\omega_0$ loop at the expense of multiplying by $d_w$.
@@ -7387,7 +7398,7 @@ f_{xy}^J \tube(\mcc/\psi) f_{x' y'}^J \cong
 Hence, the $f^{J}_{xy}$ are minimal. 
 This also shows that $f_{xy}^J$ and $f_{x(y\tp \psi)}^J$ are oddly isomorphic.
 
-\dave{Will move this to the bosonic subsection.}
+\dave{Should we use this somewhere, it's really just a simplified version of \eqref{completeness}.}
 We now need to show that the idempotents are complete.
 In the parent theory we have,
 \begin{align}
@@ -7400,9 +7411,10 @@ Hence, allowing us to identify a resolution of the $a$ strand for either spin st
 \dave{Does this require more details?}
 
 
-{\bf nonzero}
-Using the inner product defined in \ref{generalities_section} we can check which idempotents are zero and which are not. 
-\dave{Need to add this.}
+%follows from lemma.
+%{\bf nonzero}
+%Using the inner product defined in \ref{generalities_section} we can check which idempotents are zero and which are not. 
+%\dave{Need to add this.}
 
 We now write down an \dave{invertible? Super?} tensor functor from $\mcc \times \bar{\mcc}/\psi$ to $\tube(\mcc/\psi)$.
 We now define the tensor functor\footnote{\dave{Should we footnote a definition of tensor functor for physicists?}}
@@ -7444,6 +7456,8 @@ and $(c,z)$ living at the boundary circles.
 Near each boundary circle we have applied the corresponding minimal idempotent to each boundary condition. 
 Using the exact same arguments following \eqref{MinimalProof} we can simplify the diagram using the relations of Table ~\ref{omega_loop_properties}. One finds that $r \cong s \cong t \cong u \cong v \cong \unit$, and and $p$ and the left over $p$ and $q$ loops can be removed with multiplying the picture by there quantum dimensions. 
 The left over picture is isomorphic to $V^{ab}_c(\mcc) \tp V^{xy}_z(\mcc/\psi)$.
+
+
 
 \begin{align}
 U_{X,Y}: \; E(X) \tp E(Y) \ra E(X \tp Y)
