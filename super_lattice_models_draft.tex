@@ -107,6 +107,7 @@
 \newcommand{\fube}{\textbf{Tube}}
 \newcommand{\tube}{\textbf{Tube}}
 \newcommand{\fld}{\mathcal{F}} %fld was for field config
+\newcommand{\Tr}{\text{Tr}}
 
 %%
 \newcommand{\sob}{\text{sob}_r}
@@ -1160,26 +1161,27 @@ in the Ising theory, the $SO(3)_6$ theory, and the $\halfesix$ theory.
 I think it needs to be tweaked in various ways, but it's a great starting point.
 A few comments below, more later.}
 
-Blah blah blah topological phases. 
+Blah blah blah bosonic topological phases. 
+These phases are ``bosonic'' because the topological excitations emerge from bosonic 
+local degrees of freedom (like the spins in Kitaev's toric code). 
 
-Blah blah blah fermionic topological phases \cite{gu2015,gu2014}. 
-Blah blah lattice models \cite{ware2016,tarantino2016}.
-Blah blah fermion condensation. 
-Field theory approaches \cite{gaiotto2016, bhardwaj2016, kapustin2017}, 
-and an algebraic approach \cite{wan2016}. 
-Also blah blah math community \cite{usher2016,brundan2016}.
+By contrast, much less is known about {\it fermionic} topological phases, in which fermions constitute 
+the underlying degrees of freedom. 
+Progress on understanding the coherence relations used to classify fermionic topological phases was made in \cite{gu2015,gu2014,Lan2016b}, and several recent works have enumerated a class of examples of fermionic topological phases. 
+Very recently, Majorana dimer lattice models have appeared \cite{ware2016,tarantino2016}, 
+which give an explicit Hamiltonian construction of a simple fermionic phase derived from the Ising theory. 
+There has also been some recent work in the math community \cite{usher2016,brundan2016,bruillard2017} 
+devoted to studying the formal category-theoretic description of fermionic topological phases. 
 
-\dave{Should probably collect references to other papers that talk about fermion condensation and cite them appropriately. E.g., \cite{wan2016},\cite{bhardwaj2016b}.
-{(Putrov, Pavel
-Wang, Juven
-Yau, Shing-Tung)}.
-}
+Intimately related to the description of fermionic topological phases is the concept of fermion condensation, 
+whereby emergent (anyonic) fermions are driven through a topological phase transition to become 
+local particles. 
+There have been several recent approaches related to understanding 
+fermionic topological phases with field-theory methods, fermion condensation, and bosonization \cite{gaiotto2016, bhardwaj2016, bhardwaj2016b,kapustin2017,putrov2016}, 
+with a more algebraic take on fermion condensation given in \cite{wan2016}. 
 
-In this work, we perform a systematic study of fermionic topological phases from a category-theoretic
+In this work, we perform a systematic study of fermionic topological phases and fermion condensation from a category-theoretic
 point of view. 
-Our approach towards the study of fermionic topological phases is based on 
-the by now well-developed understanding of bosonic topological phases in terms of category theory. 
-
 The strategy we will use to construct examples of fermionic topological phases will be to start with 
 a bosonic phase described by a tensor category $\mcc$
 which contains an emergent fermion $\psi$.
@@ -1192,14 +1194,12 @@ $\mcc/\psi$ is a fermionic phase because in order for a phase to support local f
 its underlying degrees of freedom must be fermionic. 
 
 Of course, condensing fermions is not a straightforward business. 
-It has been discussed before from a category-theoretic perspective in \cite{wan2016}
-and a field theory perspective in \cite{bhardwaj2016, kapustin2017,bhardwaj2016b}.
 In order to perform the condensation, it is necessary to equip the configuration 
 space of $\psi$ worldline endpoints with a certain complex line bundle. 
-Physically, the construction of this bundle amounts to attaching a phase of physical (not emergent) fermions 
+Physically, the construction of this bundle amounts to attaching a phase of physical (not emergent) fermions $f$ 
 to the parent bosonic theory: 
-fermion condensation then (schematically) proceeds by coupling the $\psi$ fermions to 
-the physical fermions, and condensing bound states of $\psi$s and physical fermions. 
+fermion condensation then schematically proceeds by coupling the $\psi$ fermions to 
+the $f$ fermions, and condensing $\psi f$ bound states. 
 In most cases (when $\psi$ is not transparent in $\mcc$), we will also need to perform 
 the condensation with a device we dub the ``back wall'', which is a codimension-1 surface 
 on which $\psi$ worldlines are allowed to end. 
@@ -1217,19 +1217,34 @@ From a formal perspective, they are distinguished by their nontrivial endomorphi
 if $a$ is a q-type simple object, then $\End(a) \cong \cl_1$, the first complex Clifford algebra. 
 From a physical point of view, these can be thought of as ``Majorana objects'', which have the ability 
 to ``absorb'' fermions. 
-\ethan{talk about stacking and primitive vs non-primitive}
+One rather trivial way to produce a fermionic phase is to simply form a non-interacting stack of a phase of physical fermions 
+and a known bosonic topological phase. 
+To obtain examples of fermionic phases that do not arise in this way (which are called ``primitive'' in \cite{Lan2016b}),
+it is essential to examine theories that contain q-type objects, which are fundamentally fermionic in nature. 
 
 A categorical description of the condensed phase $\mcc / \psi$ cannot be obtained within the framework 
 of regular tensor categories, and one needs to instead adopt the framework of ``super pivotal tensor categories''. 
-\kw{should probably throw in ``pivotal" every now and then.  Non-pivotal tensor categories won't work.}
 The fermionic nature of $\mcc / \psi$ means that the fusion spaces of the theory become supervector spaces 
 (as opposed to normal vector spaces),
 the tensor product of morphisms is modified to become supercommutative rather than commutative, 
 coherence relations like the pentagon identity are modified to incorporate Kozsul signs, and so on.
 
+We should stress that all of the constructions we employ in this paper are mathematically well-defined and 
+self-contained, independent of their physical interpretations. 
+Most of the paper uses techniques from category theory, TQFTs and string nets to construct what one
+might call fermionic Turaev-Viro theory, and this paper is mostly about fermionic TQFTs from this perspective, 
+rather than studying the ground states of Hamiltonians. 
+Indeed, not until near the end of the paper do we define a fermionic Levin-Wen style Hamiltonian whose ground states coincide with 
+the Hilbert spaces of this TQFT.
+Foreshadowing the introduction of this Hamiltonian, we will, throughout the paper, talk about physical notions like ``excitations", "ground state degeneracies", 
+etc, even though
+strictly speaking this point of view does not make sense until after we have introduced the Hamiltonian.
+We emphasize that the Hamiltonian point of view is optional; most of the paper can be viewed as taking place
+in the self-contained world of (fermionic) string-net TQFTs.
 
 In order to examine the quasiparticle excitation spectrum of fermionic phases, 
-we use the tube category construction \cite{}.
+we use the tube category construction \cite{} (again, it is imprecise to call the objects 
+of the tube category ``excitations'' until after we have carefully defined a Hamiltonian).
 The construction of the tube category is modified for fermionic theories, and produces a theory
 equivalent to a fermionic version of Drinfeld center of the input category.
 Because quasiparticle excitations are supported on circular boundary components of the ambient 
@@ -1238,10 +1253,10 @@ fermionic theories: those with anti-periodic fermion boundary conditions around 
 those with periodic boundary conditions. 
 Thus, the tubes in the tube category come equipped with spin structures, which gives the tube category a $\zt$ grading. 
 The excitations associated with anti-periodic boundary conditions are bona fide deconfined quasiparticles, 
-while those associated with periodic boundary conditions are better thought of as spin defects and are linearly confined. 
-\kw{Doesn't that depend on the choice of Hamiltonian?
-At one point we talked about mentioning another type of Hamiltonian (with spin structure a dynamic variable)
-in which the spin defects would not be confined.}
+while, depending on the precise definition of the Hamiltonian, those associated with periodic boundary conditions may be better thought of as spin defects, and are linearly confined. 
+\ethan{should debate rephrasing this}
+
+
 
 \kw{More generally, most of the paper is about fermionic TQFTs, not ground states of Hamiltonians.
 I think we should make it clear to readers that the category-theory/TQFT/string-net constructions that occupy most of the paper
@@ -1261,8 +1276,9 @@ We emphasize that the Hamiltonian point of view is optional; most of the paper c
 in the self-contained world of (fermionic) string-net TQFTs."}
 \kw{Put yet another way, I think this paper should be readable by my mathematician friends, many of whom
 have only a vague idea what a Hamiltonian is.}
+\ethan{Agreed that it's good to emphasize this. I liked the last option the best and incorporated it into the intro}
 
-The analysis of modular transformations, braiding statistics, and the computation of ground state degeneracies on various spin surfaces
+The analysis of things related to the tube category like modular transformations, braiding statistics, and the computation of ground state degeneracies on various spin surfaces
 is also modified in the fermionic setting.  
 The behavior of the $S$ and $T$ modular transformations on the torus depends on the spin structure of the torus in question, and 
 certain relations like $(ST)^3 = \unit$ are realized projectively in the fermionic setting, becoming 
@@ -2528,19 +2544,32 @@ in the $C_2$ theory.
 We will discuss the quasiparticles in the theory, their fusion rules, their statistics, and the modular transformations of the ground states on the torus.
 We will identify the excitations using a fermionic generalization of a device known as the {\it tube category}. 
 We will briefly review the tube category as applied to the $C_2$ theory below; for a more detailed overview and for an explanation of why the fermionic version of the tube category computes the excitations, we refer the reader to Section \ref{}, where we discuss the construction in full generality. 
-%In Section \ref{Super_pivotal_Hamiltonian} we will describe a Hamiltonian whose ground state is isomorphic to the Hilbert space of this string net model.
-\kw{We need to decide what ``string net model" refers to.
-Is it a TQFT?  A Hamiltonian?  A package which includes both?
-I tend to think of the Hamiltonian as something extra, not part of the essential structure.}
-\dave{I think of it as a Hamiltonian that computes a TQFT.
-With sufficient effort one can put the Hamiltonian into a computer and ``discover" the the system is topologically ordered, and extract the TQFT data.
-I found this perspective useful when I was learning about the string-net Hamiltonians, before I learnt about why the whole construction works (I was confused about why excitations in the string-net models were given by $Z(C)$ for a long time). 
-When we say string net-Hamiltonian, the picture I have in mind is either a lattice of punctures on some surface, with the Hamiltonian being a sum of trivial idempotents acting on those punctures. 
-Or I think of this picture being resolved on some lattice (i.e., the 0 and 1-handles).
-}
+
+As mentioned in the introduction, it is impresice to call the objects in the tube category ``excitations'' until 
+we have defined a Hamiltonian that produces the ground states of the fermionic string-net TQFTs 
+we are studying and shown that that the excitation spectrum of this Hamiltonian is reproduced by the 
+objects of the tube category, However, we should reiterate that what we're about to say makes sense without the Hamiltonian point of view (indeed, the paper would make perfectly good sense if we ignored Hamiltonians altogether), and 
+exists as a legitimate mathematical construction in its own right 
+within the self-contained world of fermionic TQFTs. 
+For the benefit of more physicall-inclined readers 
+we will use the ``Hamiltonian/ground-state/excitation'' terminology 
+in this section, although not until Section \ref{Super_pivotal_Hamiltonian} will we describe a Hamiltonian whose ground state is isomorphic 
+to the Hilbert space of this string net model.
+
+%\kw{We need to decide what ``string net model" refers to.
+%Is it a TQFT?  A Hamiltonian?  A package which includes both?
+%I tend to think of the Hamiltonian as something extra, not part of the essential structure.}
+%\dave{I think of it as a Hamiltonian that computes a TQFT.
+%With sufficient effort one can put the Hamiltonian into a computer and ``discover" the the system is topologically ordered, and extract the TQFT data.
+%I found this perspective useful when I was learning about the string-net Hamiltonians, before I learnt about why the whole construction works (I was confused about why excitations in the string-net models were given by $Z(C)$ for a long time). 
+%When we say string net-Hamiltonian, the picture I have in mind is either a lattice of punctures on some surface, with the Hamiltonian being a sum of trivial idempotents acting on those punctures. 
+%Or I think of this picture being resolved on some lattice (i.e., the 0 and 1-handles).
+%}
+
+
 
 The setting for examining a collection of $n$ excitations in a given topological phase is a manifold with $n$ circular punctures, with an excitation localized at the location of each puncture. 
-The tube category $\tube(C_2)$ contains all spin tubes with $C_2$ string-nets drawn on their surfaces modulo local relations, and $\tube(C_2)$ acts on the punctures by gluing in tubes to each puncture (see Figure XXX). 
+The tube category $\tube(C_2)$ contains all spin tubes with $C_2$ string-nets drawn on their surfaces modulo local relations, and $\tube(C_2)$ acts on the punctures by gluing in tubes to each puncture. 
 Two tubes $a$ and $b$ can be composed by stacking $a$ on top of $b$, with the stacking operation playing the role of a multiplication law in an algebra. 
 Determining the spectrum of excitations in the $C_2$ theory can thus be done by writing down a collection of independent spin-structure-equipped tubes with string nets drawn on their surfaces, finding their algebraic behavior under stacking, and computing the minimal idempotents of the resulting algebra. 
 
@@ -2655,11 +2684,6 @@ combination of the following diagrams:
 %\\
 %\text{mor}(\underset{\mathds{1}}{\TubeBC} \rightarrow \underset{\beta}{\TubeBC}) &= \emptyset \quad \quad \quad \quad \text{mor}(\underset{\beta}{\TubeBC} \rightarrow \underset{\mathds{1}}{\TubeBC}) = \emptyset
 %\end{align}
-\kw{If we are being precise, the last two should be 0 (0-dimensional vector space), not the empty set.
-I'm happy to lie a little bit and write empty set if you think it's less confusing to the typical reader.}
-\dave{I don't think it's more confusing, and it's better to be correct.
-Is there a standard notation for a 0-dimensional vector space?}
-\ethan{I think just $0$ works}
 with $J =B$ for bounding spin structure, and $J =N$ for non-bounding spin structure. 
 %\begin{align}
 %\FubeXXX \quad \FubesXs    \quad \FubeXss \quad \FubessX   \quad \FubesdXs \quad  \FubeXsds \quad \FubessdX
@@ -3077,17 +3101,22 @@ Explicitly,
 m_\sigma^{\pm} = \frac{1}{2}\left( \Fubex{\FubeXssA}{B} \pm  A^{3}\Fubex{\FubessXA}{B} \right) .
 \end{align}
 These two idempotents are isomorphic, in the sense that there exist endomorphisms (tubes) $u$ and $v$ such that $uv = m_\sigma^+$
-and $vu = m_\sigma^-$.
+and $vu = m_\sigma^-$\footnote{Indeed this must be the case, since $\cl_2$ is Morita equivalent to $\cc$, which has only one minimal idempotent.}.
+This isomoprhism is realized by creating a fermion on the top of the $\gamma_2$ tube (through the 
+isomorphism given by left multiplication by $\gamma_1$), dragging it around the $\gamma_2$ 
+tube to the bottom, and then annihilating it (through the isomorphism given by right 
+multiplication by $\gamma_1$)
 The existence of this isomorphism means that $m_\sigma^+$ and $m_\sigma^-$ correspond to isomorphic simple modules and so represent the same
 quasiparticle type.
+%\footnote{An amusing sidenote: the $m_\sigma^\pm$ idempotents are projectors onto the left- and right-handed sectors 
+%of $\cl_2$, which we see by writing $m_\sigma^\pm = \frac{1}{2}(1\pm \gamma_5)$, where $\gamma_5 = i\gamma_1\gamma_2$.}.
 Note that in this case $u$ and $v$ are necessarily odd; we say that $m_\sigma^+$ and $m_\sigma^-$ are {\it oddly} isomorphic.
-
 %When doing calculations, we will choose $m_\sigma^+$ and the standard representative of its equivalence class.
 When doing calculations we fix a particular representative of the $m_\sigma^\pm$ 
 isomorphism class, which we will choose to be $m_\sigma^+$. 
 
-\kw{Should be extract more material from the old version, or keep things concise?}
 
+%%\ethan{older more verbose stuff I wrote}
 \begin{comment}
 
 We now turn to the task of identifying the idempotents (up to equivalence) of this endomorphism algebra.
@@ -3150,10 +3179,6 @@ far later in Sections \ref{fusion} and \ref{braiding}.
 For now, we repeat our quasiparticle identification procedure for the non-bounding spin structure.
 %For now, we repeat our quasiparticle identification procedure for quasiparticles in the vortex sector, 
 %which possess spin structures with periodic boundary conditions around the cylinder. 
-
-\end{comment}
-
-\begin{comment}
 
 \kw{Should probably go back through this section and convert the tube algebra to a tube category.  
 I think that's the language we're using elsewhere in the paper.}
@@ -4065,13 +4090,18 @@ and the odd ones are given by putting a single dot on the upper left leg.
 \dave{Note to self: Need to draw a picture which shows how the torus is cut and glued back 
 together/explain the convention for the ``branch" cut.}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{$C_2$ string-nets on the torus}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 In this section, we compute a basis for $C_2$ string-nets-modulo-local-relations on spin tori as well 
-as the action of the mapping class groupoid.
-The modular $S$-matrix is related to, but distinct from, the ``statistical $S$-matrix'' which 
-captures the braiding data of the quasiparticles in the theory; this $S$-matrix is discussed in Sec.\ref{mutual_statistics}. 
-\kw{I still prefer the viewpoint which leads to the two matrices being the same.}
-\ethan{expound on this kind of stuff}
+as the action of the mapping class groupoid and the forms of the modular $S$ and $T$ matricies.
+The modular $S$-matrix is related to, but distinct from, the matrix of mutual (braiding) statistics between particles, which 
+captures the braiding data of the quasiparticles in the theory.
+This is distinct from ordinary bosonic topological phases, where the modular $S$-matrix is identical to the matrix of 
+braiding statistics between the quasiparticles in the theory. 
+A discussion of braiding statistics is deferred until Sec.\ref{mutual_statistics}. 
 
 Because the $C_2$ theory is dependent on the existence of a spin structure, 
 in order to talk about ground states on a torus we must first specify the spin structure on the torus.
@@ -5069,19 +5099,21 @@ T^{BB \rightarrow BN}=  & \left( \begin{matrix}
 \end{align}
 One can check that $(ST)^3 = \unit$ as expected. 
 
-%Now for the $(P,A)$ spin structure, which is preserved by $T$ (as the q-type quasiparticles have well-defined self-statistics). 
-%First for the $S$-matrix, which maps the $PA$ spin structure to the $AP$ spin structure. As a map between the ground state basis $(e,v,t)_{PA}^T$ and the ground state basis $(e,t,h)_{AP}^T$, the $S$ matrix is
-%\be S^{gs}_{PA\mapsto AP} = \begin{pmatrix}
-%1 & 0& 0 \\ 0 & 0 & A^{-6} \\ 0&1& 0
-%\end{pmatrix}.\ee
-%The matrix that maps the idempotent basis $(q_\unit,q_\sigma,q_\psi)^T$ onto the ground state basis $(e,v,t)_{PA}^T$ is 
-%\be V_{PA} = \begin{pmatrix}
-%0 & 1 & 0 \\ 1/2 & 0 & 1/2 \\ A^3/2 & 0 & -A^3/2
-%\end{pmatrix},\ee
-%This means that in the idempotent basis, the $S$ matrix is 
-%\be S_{PA \mapsto AP} = V_{AP}^{-1} S^{top}_{PA \mapsto AP} V_{PA} = \begin{pmatrix}
-%d/2 & 1 & d/2 \\ 1 & 0 & -1 \\ -d/2 & 1 & -d/2
-%\end{pmatrix}.\ee
+\ethan{
+Now for the $(P,A)$ spin structure, which is preserved by $T$ (as the q-type quasiparticles have well-defined self-statistics). 
+First for the $S$-matrix, which maps the $PA$ spin structure to the $AP$ spin structure. As a map between the ground state basis $(e,v,t)_{PA}^T$ and the ground state basis $(e,t,h)_{AP}^T$, the $S$ matrix is
+\be S^{gs}_{PA\mapsto AP} = \begin{pmatrix}
+1 & 0& 0 \\ 0 & 0 & A^{-6} \\ 0&1& 0
+\end{pmatrix}.\ee
+The matrix that maps the idempotent basis $(q_\unit,q_\sigma,q_\psi)^T$ onto the ground state basis $e,v,t)_{PA}^T$ is 
+\be V_{PA} = \begin{pmatrix}
+0 & 1 & 0 \\ 1/2 & 0 & 1/2 \\ A^3/2 & 0 & -A^3/2
+\end{pmatrix},\ee
+This means that in the idempotent basis, the $S$ matrix is 
+\be S_{PA \mapsto AP} = V_{AP}^{-1} S^{top}_{PA \mapsto AP} V_{PA} = \begin{pmatrix}
+d/2 & 1 & d/2 \\ 1 & 0 & -1 \\ -d/2 & 1 & -d/2
+\end{pmatrix}.\ee
+}
 
 More interesting is the $(N,N)$ torus, whose spin structure is preserved under both $S$ and $T$. 
 This has been investigated before in \cite{ware2016}, and our results agree with theirs in this case. 
@@ -5273,11 +5305,13 @@ T = \begin{pmatrix}   			&&&				1&0&0&		&&&			&& \\
 						&&&				&&&			&&&			A^{5}&0&0\\
 						&&&				&&&			&&&			0&1&0 \\ 
 						&&&				&&&			&&&			0&0&-A^{5} \end{pmatrix}\ee	
-The $T$-matrix is not completely diagonalized, since it acts nontrivially on the spin structures. 
+The $T$-matrix is not completely diagonalized in the quasiparticle basis, since it acts nontrivially on the spin structures. 
 This leads to subtleties involved with identifying the topological twists of the quasiparticles, 
 which we elaborate on in the next section. 
 
-\begin{comment}
+
+
+\ethan{
 In this section, we will compute the modular $S$ and $T$ matrices on the torus, which generate the modular group. 
 To explain what the modular $S$-matrix does, we note that there are two ways of representing a given string-net configuration on a torus embedded in $S^3$ in terms of Turaev-Viro state-sums: one way is to fill the exterior of the torus with a Turaev-Viro state-sum with boundary conditions specified by the given string-net configuration, as discussed in the previous section. 
 The other is to fill the {\it interior} of the torus with a Turaev-Viro state-sum possessing the same boundary conditions. 
@@ -5418,32 +5452,31 @@ T = \begin{pmatrix}    &&&				1&0&0&			&&&			&& \\
 						&&&				&&&			&&&			0&0&-A^{-3} \end{pmatrix}\ee	
 The $T$-matrix is not completely diagonalized, since it acts nontrivially on the spin structures. 
 This leads to subtleties involved with identifying the topological twists of the quasiparticles, which we elaborate on in the next section. 
-\end{comment}
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%% 
 \subsection{Braiding data} \label{C2_braiding}
 %%%%%%%%%%%%%%%%%%%%%%%
-\dave{Will come back to this paragraph.}
+
 In this section we compute the braiding data of the quasiparticles in the $C_2$ theory.
 %, namely their mutual- and self-statistics. 
 %We will do this by computing the $R$-matrices, which we will trace out to obtain the braiding data. 
-This in turn allows us to define {\it statistical} $S$ and $T$ matrices \ethan{or the braiding $S$ and $T$ matrices?}, 
+This in turn allows us to compute the mutual- and self-statistics of the quasiparticles in the theory.
+In conventional (bosonic) topological phases, the matrix of double-braids (mutual statistics) 
+is identical to the modular $S$-matrix and the matrix of topological twists (self-statistics) is identical to the 
+modular $T$-matrix, which together form a representation of the modular group.  
 which measure the mutual- and self-statistics of the quasiparticles in the theory, respectively. 
-This in turn allows us to define {\it statistical} $S$ and $T$ matrices \ethan{or the braiding $S$ and $T$ matrices?}, 
-which measure the mutual- and self-statistics of the quasiparticles in the theory, respectively. 
-In conventional bosonic topological phases, the statistical $S$ and $T$ matrices are identical to the 
-modular $S$ and $T$ matrices, which we computed in the previous section.
-However, we will see that the presence of spin structures means that this correspondence does {\it not} 
-hold in the $C_2$ theory (as well as in more general fermionic theories). 
-While the modular $S$ and $T$ matrices are still intimately related to the statistical $S$ and $T$ matrices, 
-we will have to work a bit harder to establish this relationship. 
-\dave{Ethan do you have a reference to something that uses 'statistical S-matrix'?
-I'm not familiar with it, but the name is self-explanatory which is nice.}
-\ethan{nope, I just made it up}
-\dave{Ok.}
 
+The presence of spin structure considerations means that this correspondence does {\it not} 
+hold in fermionic theories (indeed it cannot possibly hold in the $C_2$ theory because there are 6 quasiparticle excitations but 12 total ground states across all spin structures, meaning that the braiding matrices and the modular matrices must be of different dimension). 
+However, the modular $S$ and $T$ matrices are still intimately related to the braiding data of the theory, and
+can in fact be completely recovered from a complete knowledge of the braiding data, 
+
+
+%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{$R$-matrices}
+%%%%%%%%%%%%%%%%%%%%%
 To begin, we will construct a table of the $R$ symbols in the theory. 
 First, we need to set some conventions on our fusion spaces in this section, this is akin to picking a gauge for each fusion space. 
 We will work on the pair of pants as described in section \ref{C2_fusion_rules}.
@@ -5743,18 +5776,18 @@ Using Table \ref{Rtable}, we obtain
 for the non-vortex particles, and 
 \be \theta_{q_\unit} = A^{-3},\ \theta_{q_\psi} = -A^{-3},\ \theta_{q_\sigma} = 1\ee
 for the vortex particles. 
-\dave{Should comment that there are only two innequivalent $C_2$ fusion categories (only two possible braidings of $\psi$ with $\sigma$), 
-but seemingly $4$ appearing above.}
+%\dave{Should comment that there are only two innequivalent $C_2$ fusion categories (only two possible braidings of $\psi$ with $\sigma$), 
+%but seemingly $4$ appearing above.}
 
 The twists can also be obtained by computing their spins, which is done by directly Dehn-twisting the tubes in question. 
 This amounts to computing the eigenvalue of each quasiparticle under $t$, where $t$ is the twisted tube defined in \eqref{tube_shorthands}.
-We can then use the tube algebra multiplication tables to read off the eigenvalues, and in the basis $(m_\unit,m^\pm_\sigma,m_\psi,q_\unit,q_\sigma,q_\psi)^T$ we find the $\mct$-matrix to be
-\be \mct = {\rm diag}[1,\pm A^3,1,A^{-3},1,-A^{-3}].\ee
-This yields the same result as we obtained by tracing out the $R$-symbols, confirming that the spin-statistics relation holds in this theory.
+We can then use the tube algebra multiplication tables to read off the eigenvalues, and in the basis $(m_\unit,m^\pm_\sigma,m_\psi,q_\unit,q_\sigma,q_\psi)^T$ we find the matrix of self-statistics (which we will write as $\Tr R$ to distinguish it from the modular $T$-matrix, which is a $12\times 12$ non-diagonal matrix) to be
+\be \Tr R = {\rm diag}[1,\pm A^3,1,A^{-3},1,-A^{-3}].\ee
+This yields the same result as we obtained by tracing out the $R$-symbols (hence the notation), confirming that the spin-statistics relation holds in this theory.
 
-Making an explicit choice for $A$ can help to shed some light on these results. If we choose $A = ie^{\pm i \pi/8}$ (giving $d=+\sqrt{2}$ and $A^4 = \pm i$), then the $\mct$-matrix in the vortex sector decomposes as the tensor product
-\be \mct_P = \mct_{p\pm ip} \tp \mct_{\text{Ising}_{\nu =\mp1}},\ee
-where $\mct_{p\pm ip} = e^{\pm i\pi/8}$ is the $\mct$-matrix of a $p\pm ip$ superconductor. %Other allowed choices for $A$ correspond to $\nu = 3,5$ and...
+Making an explicit choice for $A$ can help to shed some light on these results. If we choose $A = ie^{\pm i \pi/8}$ (giving $d=+\sqrt{2}$ and $A^4 = \pm i$), then the $\Tr R$-matrix in the vortex sector decomposes as the tensor product
+\be \Tr R = T_{p\pm ip} \tp T_{\text{Ising}_{\nu =\mp1}},\ee
+where $T_{p\pm ip} = e^{\pm i\pi/8}$ is the modular $T$-matrix of a $p\pm ip$ superconductor. %Other allowed choices for $A$ correspond to $\nu = 3,5$ and...
 \ethan{discuss}
 
 In the expressions above, the twists of every non-vortex particle are ambiguous up to a factor of $\pm1$, corresponding to an ambiguity in the parity of physical fermions attached to the tubes at the time of twisting.
@@ -5773,35 +5806,34 @@ expression for $c_-$ in the non-vortex sector, the sum over twists ``averages ou
 
 \subsubsection{Mutual statistics}
 
-Having obtained the $R$ symbols, we can also calculate the mutual statistics of the quasiparticles, which is encapsulated by the braiding $S$-matrix. 
-As with the statistical $\mct$-matrix, unlike in bosonic theories, the braiding $S$-matrix that contains information about the mutual statistics of quasiparticles is {\it distinct} from the modular $S$-matrix governing how the ground states on the torus transform under the $S$ modular transformation. 
-To distinguish these two matrices, we will write the $S$-matrix pertaining to the mutual statistics of the quasiparticles in the theory as $\mcs$. 
+Having obtained the $R$ symbols, we can also calculate the braiding data of the quasiparticles by calculating 
+the double braids (mutual statistics) of the quasiparticles. 
+As already mentioned, the matrix of double braids that contains information about the mutual statistics of quasiparticles is {\it distinct} from the modular $S$-matrix governing how the ground states on the torus transform under the $S$ modular transformation (indeed, they are not even of the same dimension!). 
+To distinguish these two matrices, we will write the matrix of double braids between the 
+quasiparticles in the theory as $\mcb^2$ (for the square of the braiding operator). 
 %This distinction is because of the need to choose a spin structure on the torus: we will return to this issue in Section \ref{modulartforms}. For now, we will restrict ourselves to calculating the $S$-matrix measuring the mutual statistics of the quasiparticles in the theory. 
 When we calculate the mutual statistics, we should keep in mind that although there are some $\pm1$ ambiguities in the statistical $\mct$-matrix, there should be no similar ambiguities present in $\mcs$, since physical fermions have trivial double-braiding with one another. 
 That is, mapping $m_a \mapsto fm_a$ where $a\in \{\unit,\psi,\sigma\}$ and $f$ is a physical fermion should not affect the matrix elements of $\mcs$. 
-\dave{Do we discuss physical fermions that aren't bound to $\psi$ terminations anywhere?}
-Also, we should mention that the action of $\mcs$, which performs double braids of quasiparticles, does not act on any spin structure data.
-We were unable to find a complete set of eigenvectors of the modular $S$-matrix with well-defined spin structures, but this issue does not arise when considering the statistical $\mcs$ matrix.  
 
 \begin{figure}
 \begin{center}
 \includegraphics{both_braided_tubes.pdf}
 \caption{\label{braided_tubes} 
-(a): How the tracing out of the $R$-symbols is performed when calculating the elements $\mcs_{ab}$ of the statistical $\mcs$-matrix. 
+(a): How the tracing out of the $R$-symbols is performed when calculating the elements $\mcb^2_{ab}$ of the double braid matrix. 
 Here, the $a$ and $b$ label tori hosting different quasiparticles, and are contained within a larger torus marked $c$. 
 The entire network of tubes is embedded with the three-sphere, where it can then be evaluated to give a number (the partition function). 
-(b): The setup for calculating the matrix $\mcs^\psi$, which encapsulates odd braiding processes during which a fermion is exchanged (represented by the two connected blue dots) between the two particles being braided. }
+(b): The setup for calculating the matrix $[\mcb^2_\psi]_{ab}$, which encapsulates odd braiding processes during which a fermion is exchanged (represented by the two connected blue dots) between the two particles being braided. }
 \end{center}
 \end{figure}
 
-As with the $\mct$ matrix, there are 
-several ways to calculate $\mcs$. 
-First, we will calculate $\mcs$ by tracing out the square of the $R$-symbols, using the formula [Ref someone]
-\be \label{Smattr} \mcs_{ab} = \frac{1}{\mcd}\sum_{c}d_c{\rm Tr}[R^{ab}_cR^{ba}_c].\ee
+There are 
+several ways to calculate $\mcb^2$. 
+First, we will calculate $\mcb^2$ by tracing out the square of the $R$-symbols, using the formula \cite{Bonderson2007}
+\be \label{Smattr} [\mcb^2]_{ab} = \frac{1}{\mcd}\sum_{c}d_c{\rm Tr}[R^{ab}_cR^{ba}_c],\ee
 which continues to hold in the fermionic setting. 
 Computing the trace with the aid of Table \ref{Rtable}, we find
 \be \label{statistical_S}
- \mcs= \frac{1}{\mcd} \begin{pmatrix} 
+ \mcb^2= \frac{1}{\mcd} \begin{pmatrix} 
 1&\sqrt{2}&1&2\sqrt{2}&4&2\sqrt{2} \\
  \sqrt{2}&0&-\sqrt{2}&4&0&-4 \\ 
  1&-\sqrt{2}&1&-2\sqrt{2}&4&-2\sqrt{2} \\ 
@@ -5809,7 +5841,7 @@ Computing the trace with the aid of Table \ref{Rtable}, we find
  4&0&4&0&0&0 \\ 
   2\sqrt{2}&-4&- 2\sqrt{2}&0 & 0 & 0 \end{pmatrix}. \ee
   
-Let us now take a closer look at $\mcs$. 
+Let us now take a closer look at $\mcb^2$. 
 The block of zeros in the bottom right warrants special attention, and means that braiding any two of the q-type particles around one another yields a state orthogonal to one in which they started. 
 This is physically reasonable, since braiding a q-type particle through a q-type loop changes the q-loop's fermion parity, preventing it from fusing back to the vacuum. 
 \dave{Should draw picture}
@@ -6118,6 +6150,7 @@ We will provide an example of such a condensation in section \ref{halfesix}.
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 \ethan{check what ragnar did}
+\ethan{Couldn't find it explicitly in his papers, he told me to maybe cite mross + jason's flux attachment wire construction paper}
 
 In this section, we briefly comment on another way to condense non-transparent fermions, 
 which doesn't make use of the back wall construction and allows the condensed theory to remain braided 
@@ -6510,7 +6543,7 @@ For the $C_2$ theory, this works out as
 \be \mcd_{C_2} = \sqrt{2} = \mcd_{\rm Ising} / \sqrt{2},\ee
 and is easily checked to hold for the other examples in the $A_n / \psi$ series.  
 
-It is a result of Muger \cite{muger2003a} that for any modular tensor category $\mcc$\dave{(I thought this was true for any UFC satisfying the usual assumptions? e.g., \cite{muger2003b})}, 
+It is a result of Muger \cite{muger2003a,2003b} that for any unitary fusion category $\mcc$, 
 the dimension of the center is related to $\mcd_\mcc$ by 
 \be \mcd_{\tube(\mcc)} =\mcd^2_\mcc.\ee
 We can then use \eqref{DC_and_DCpsi} to obtain 
