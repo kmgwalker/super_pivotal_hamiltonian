@@ -351,6 +351,15 @@
 \newcommand{\TubeProject}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeProject.pdf}}}}}
 
 
+\newcommand{\TuberraJ}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TuberraJ.pdf}}}}}
+\newcommand{\Tubeidr}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tubeidr.pdf}}}}}
+\newcommand{\Tuberr}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tuberr.pdf}}}}}
+
+
+\newcommand{\TuberrTraceCe}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TuberrTraceCe.pdf}}}}}
+\newcommand{\TuberrTraceCo}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TuberrTraceCo.pdf}}}}}
+
+
 
 \newcommand{\exyomegaa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{exyomegaa.pdf}}}}}
 \newcommand{\exyomegab}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{exyomegab.pdf}}}}}
@@ -5734,7 +5743,7 @@ Using Table \ref{Rtable}, we obtain
 for the non-vortex particles, and 
 \be \theta_{q_\unit} = A^{-3},\ \theta_{q_\psi} = -A^{-3},\ \theta_{q_\sigma} = 1\ee
 for the vortex particles. 
-%\dave{Should comment that there are only two innequivalent $C_2$ fusion categories (only two possible braidings of $\psi$ with $\sigma$), 
+\dave{Should comment that there are only two innequivalent $C_2$ fusion categories (only two possible braidings of $\psi$ with $\sigma$), 
 but seemingly $4$ appearing above.}
 
 The twists can also be obtained by computing their spins, which is done by directly Dehn-twisting the tubes in question. 
@@ -6410,6 +6419,10 @@ but TQFT considerations pick out a preferred map from torus string nets to $\cc$
 \kw{I will rewrite below}
 
 \kw{Note to self: be sure to introduce inner product (more general than trace)}
+
+\dave{Do the two agree at the level of the tube category?
+(i.e., I thought $\langle X, Y \rangle  = \langle \unit ,X^*Y\rangle = \text{tr} X^*Y$.
+I used this fact later in \ref{image_aJ} but can also do the same calculation without it.)}
 
 Recall that the path integral on a manifold $X$ is a linear function
 \be Z(X) : V(\p X) \ra \cc,\ee
@@ -7115,9 +7128,10 @@ A basis for
 the morphism space from $a$ to $b$ in 
 the annular category $\tube(\mcc)$ is given by,
 \begin{align}
-\TubeElementx{t}{a}{b}\quad \quad \text{with} \quad \quad t \in \bigoplus_r V^{rb r^*}_a
+\text{mor}(\underset{a}{\TubeBCx{}} \rightarrow \underset{b}{\TubeBCx{}})=
+\; \cc\left[ \TubeElementx{t}{a}{b} \right]\quad \quad \text{with} \quad \quad t \in \bigoplus_r V^{rb r^*}_a
 \end{align}
-By using \eqref{Omega_in_SLoop} we can change to a much more convenient basis via,
+With the help of \eqref{Omega_in_SLoop} we can change to a much more convenient basis via,
 \begin{align}
 \TubeBasisa \times \mcd^2 =  
 \TubeBasisb   =
@@ -7136,20 +7150,33 @@ and then using a series of $F$ and $R$ moves to reduce the diagram to the form o
 Since $\mcc$ is assumed to be modular, and all transformations shown 
 above are invertible we have shown that
 \begin{align}
-\tube(\mcc) \cong \cc\left[ \TubeBasisd \right] 
+%\tube(\mcc) 
+\text{mor}(\underset{a}{\TubeBCx{}} \rightarrow \underset{b}{\TubeBCx{}})\cong \cc\left[ \TubeBasisd \right] 
 \label{AnnCatMTC}
 \end{align}
 %\dave{Note to self: Did we define $\text{Ann}(\mcc)$ to be the annular category and $\tube(\mcc)$ to be the annular category along with a pair of pants somewhere?}
 %\kw{I thought Ann and Tube were synonyms/}
 %\dave{Indeed.}
-This basis for $\tube(\mcc)$ is rather special, the diagonal elements of it can be shown to be proportional to the minimal idempotents.
+This basis for the morphism space of $\tube(\mcc)$ is rather special, the diagonal elements of it can be shown to be proportional to the minimal idempotents.
 % \dave{Need to check this is true given multiplicities.}. 
 \kw{It's true with multiplicities, but one needs to say more about scaling}
-\dave{Could say something like: ``Letting $\nu \in V^{a}_{xy}$ and $\mu \in V_a^{xy}$ such that $\nu \circ \mu = \sqrt{\frac{d_x d_y}{d_a}} \text{id}_a$ then the above tubes become idempotents if we normalize them by $\sqrt{\frac{d_x d_y}{d_a}}$.
+\dave{Could say something like: ``Letting $\nu \in V^{a}_{xy}$ and $\mu \in V_a^{xy}$ such that $\nu \circ \mu = \sqrt{\frac{d_x d_y}{d_a}} \text{id}_a$ then the above tubes become minimal idempotents if we normalize them by $\sqrt{\frac{d_x d_y}{d_a}}$.
 The choice of $\mu$ and $\nu$ is not unique.''}
 To verify this one stacks the tubes on top of one another, and uses property (c) and (a) of Table \ref{omega_loop_properties}.
 The isomorphism class is labeled by elements in $\sob(\mcc) \times \sob(\mcc)$.
 For a particular isomorphism class $(x,y)$, the isomorphisms are given by the possible $(\mu,\nu) \in \bigoplus_{a,b \in \text{sob}(\mcc)}(V^{xy}_a,V_{xy}^b)$, and the tube by \eqref{AnnCatMTC}.
+\dave{A less transparent, but maybe more algebraic way to say this could be 
+``The isomorphism class is labeled by elements in $\sob(\mcc) \times \sob(\mcc)$.
+As a matrix algebra it is given by $\text{Mat}(x,y)\cong \bigoplus_{a,b} V^{b}_{xy} \boxtimes V^{xy}_a$, 
+with multiplication given by $(\lambda^a_{xy} \boxtimes \lambda_b^{xy} )\cdot( \rho^b_{xy} \boxtimes \rho^{xy}_c) = (\lambda^a_{xy}\boxtimes \rho^{xy}_c) \text{tr}\frac{\lambda^{xy}_b \circ \rho^b_{xy}}{d_x d_y}$, 
+where $\lambda_{xy}^a \in V_{xy}^a$ etc.
+Choosing $\nu \in V^a_{xy}$, $\mu \in V^{xy}_a$ such that $\text{tr}\frac{\mu \circ \nu}{d_x d_y}
+=1$ results in an idempotent.
+Resolving the tensor product $\text{id}_x \tp \text{id}_y = \oplus_a \text{(coeff)} \mu \circ \nu$ we can find a complete set of idempotents.
+Checking that $(\nu \tp \mu) \cdot \text{Mat}(x,y) \cdot (\nu \tp \mu)$ is one dimensional shows that they are also minimal."
+This was a sketch of something we could say, don't know if it's helpful, and I haven't refined it.
+}
+
 \dave{add words about minimality, orthogonality, non-zero, completeness.}
 
 %Although such a formula exists for $\mcc/\psi$, 
@@ -7170,13 +7197,13 @@ to one and vice versa isn't complete;
 we need to include pictures which involve strands traversing the entire annulus.
 However, it is enough to establish an isomorphism between the tube category 
 of annulai with two marked points and the tube category of annulai with one marked point on each boundary."}
-In this basis, the minimal idempotents of $\text{Ann}(\mcc)$ are simply given by,
+In this basis, the minimal idempotents of $\tube(\mcc)$ are simply given by,
 \begin{align}
 e_{xy}  = \TubeIdempotentTwoStrand \in \tube(\mcc)
 \label{minimal_idempotent_C}
 \end{align}
 Notice that the isomorphism class is still labeled by pairs of simple objects, but there is no additional choice of for the fusion space required.
-Also notice that orthogonality of the idempotents is obvious given that $\omega \cdot \omega = \omega$.
+Also notice that orthogonality of the idempotents is obvious given that $\omega \tp \omega = \omega$.
 The idempotents above can be used to show that $\tube(\mcc) \cong \mcc \times \bar{\mcc}$ \cite{Who was the first to show this?}.
 In the following subsection we state, and prove the analogous theorem for $\tube(\mcc/\psi)$..
 %\kw{should probably say $\mcc/\psi$ instead of fermionic}
@@ -7189,21 +7216,27 @@ In the following subsection we state, and prove the analogous theorem for $\tube
 In this subsection we prove that $\tube(\mcc/\psi) \cong \mcc \times \bar{\mcc}/\psi$ 
 (as tensor categories)
 when $\psi$ is  fermion 
-(satisfying conditions of xxxxx above)
+(satisfying conditions of \ref{gntf_condense} above)
 and $\mcc$ is a modular tensor category.
 \dave{Will need to think about the following sentence.}This theorem allows us to easily compute, for example the modular transformations of $\tube(\mcc/\psi)$ without going through the brute force methods used in Section~\ref{C2_quasiparticles}.
+We also hypothesize about the analogous theorem for a braided tensor functor, 
+but the proof is beyond the scope of this paper.
 
 A key insight will be to find the minimal idempotents of the condensed theory.
-These can be found by taking the minimal idempotents of the parent theory and quotienting by the fermion.
+These follow from a few observations. 
+%These can be found by taking the minimal idempotents of the parent theory and quotienting by the fermion.
+Any net configuration of the parent theory is a net configuration of the condensed theory. 
+In particular we can always use the inclusion map from $\tube(\mcc)$ to $\tube(\mcc/\psi)$.
+Similarly, every even morphism of $\mcc/\psi$ has a lift to $\mcc$.
+These two facts allow us to find the minimal idempotents of the quotient, using the minimal idempotents of the parent theory.
 The details of the quotient are important.
 For example, the image of some of the idempotents may simply be zero, 
 others may be identified or fall in the same isomorphism class. 
 These details, as well as minimality and completeness of the idempotents will have to be addressed carefully,
 once doing so we arrive at the following theorem:
 
-\dave{Define lift somewhere.}
 \begin{theorem}
-Let ${\mcc}$ be a unitary modular tensor category and let $\psi$ be a fermion in ${\mcc}$ as in \ref{psi_defintion}.
+Let ${\mcc}$ be a unitary modular tensor category and let $\psi$ be a fermion in ${\mcc}$ as in \ref{gntf_condense}.
 Let $\mcc/\psi$ be the super pivotal category resulting from the fermionic quotient.
 Let
 $
@@ -7225,29 +7258,76 @@ We first compute the image of \eqref{minimal_idempotent_C} in $\tube(\mcc/\psi)$
 and show that we have a complete set of minimal idempotents.
 Next we find a tensor functor $\mcc \times \bar{\mcc}/\psi $ and the minimal idempotents thus showing that $\tube(\mcc/\psi) \cong \mcc \times \bar{\mcc}/\psi$.
 
-
+\dave{We should probably consider moving this discussion to the tube category generalities section, and take $\psi \in \mcz(\mcc)$. }
 The image of $\tube(\mcc)$ under condensation can be found with the help of two projectors which sum to the identity. 
-We first decompose $\tube(\mcc)$ into two orthogonal sets of tubes.
 To do so we define the two projectors
 \begin{align}
 a_{B/N} = \frac{1}{2}(\text{cl}(\unit) \pm \text{cl}(\psi)).
+\label{aJloop}
 \end{align}
-Which satisfy $a_J \tp a_W = \delta_{JW} a_J$ and $a_B + a_N = \text{cl}(\unit)$.
-These projectors are like the $\omega$ loop defined in \eqref{omega_loop}, but only involve $\unit$ and $\psi$, the objects we are quotienting by. 
-Importantly, an $a_J$ loop on a tube with spin structure $J$ is the identity, while an $a_J$ loop on a tube with spin structure $W \neq J$ projects the tube to zero, i.e., 
+Where $\text{cl}(x)$ denotes the closed up $x$ strand along a circle.
+Importantly, they satisfy $a_J \tp a_W = \delta_{JW} a_J$ and $a_B + a_N = \text{cl}(\unit)$.
+%These projectors are like the $\omega$ loop defined in \eqref{omega_loop}, but only involve $\unit$ and $\psi$, the objects we are quotienting by. 
+%We first decompose $\tube(\mcc)$ into two orthogonal sets of tubes.
+Notice that an $a_J$ loop on a tube with spin structure $J$ is the identity, while an $a_J$ loop on a tube with spin structure $W \neq J$ projects the tube to zero, i.e., 
 \begin{align}
 \SpinStructureProjector = \delta_{JW}\; \EmptyTubeW \in \tube_W(\mcc/\psi).
 \end{align}
+The $W$ on the interior of the gray disc denotes the spin structure for the disc it bounds.
 We next define the two projectors on $\tube(\mcc)$ by defining how they act on the basis elements,
 \begin{align}
-\hat{a}_J \cdot \TubeBasisa = \TubeProject
+\hat{a}_J \cdot \TubeBasisa = \TubeProject.
 \label{aJ_projector}
 \end{align}
 \dave{better notation?}
-so that the image $\hat{a}_J$ in $\tube(\mcc)$ condenses to even tubes in $\tube_J(\mcc/\psi)$.
-The kernal of $\hat{a}_J$ are all tubes whose image under condensation is zero in $\tube_J(\mcc/\psi)$.
-Obviously we have $\hat{a}_B + \hat{a}_N = \text{id}$. 
-Thus we have computed the image of $\tube(\mcc)$ in $\tube(\mcc/\psi)$. 
+The image of $\hat{a}_J$ in $\tube(\mcc)$ condenses to even tubes in $\tube_J(\mcc/\psi)$.
+%The kernal of $\hat{a}_J$ are all tubes whose image under condensation is zero in $\tube_J(\mcc/\psi)$.
+Even more so, a non-zero tube in $\tube(\mcc)$ in the image of $a_J$ remains non-zero under condensation as a tube in $\tube_J(\mcc/\psi)$, we make this precise with the following lemma,
+%Obviously we have $\hat{a}_B + \hat{a}_N = \text{id}$. 
+%Thus we have computed the image of $\tube(\mcc)$ in $\tube(\mcc/\psi)$. 
+
+\dave{I found the following both conceptually and computationally useful, although it is kind of obvious (but some one should double check with skepticism).
+I also stated it as a lemma since I was using it for the proof -- I am certainly not adverse to reverting it to a calculation.
+We may want to move it to the inner product section?
+Or the tube algebra section?}
+\begin{lemma}
+\label{image_aJ}
+Let $\mcc$ be a unitary fusion category and $\psi$ a fermion in $\mcz(\mcc)$ as defined in \ref{lift_and_condense}.
+Let $\hat{a}_J$ be as defined in \eqref{aJ_projector}.
+Then 
+\[\begin{tikzcd}        
+    \tube(\mcc)\arrow{r}{\hat{a}_J} &\tube(\mcc) \arrow[hook]{r} &  \tube_J(\mcc/\psi)
+\end{tikzcd}\]
+is injective.
+In particular, a non-zero element of $\tube(\mcc)$ in the image of $a_J$ is non-zero in $\tube_J(\mcc/\psi)$.
+\dave{This may also be a tensor functor.
+Will need to think about it.
+I was thinking it may have some use for `guaging' the fermion and getting back to the parent theory. }
+\end{lemma}
+
+\begin{proof}
+The proof follows from a simple observation.
+Let $t \in \tube(\mcc)$ be in the image of $\hat{a}_J$ so that, 
+\begin{align}
+\left \langle\; \Tubeidr,\Tuberr \; \right \rangle_{\tube(\mcc)} &=\left \langle\; \Tubeidr,\TuberraJ \; \right \rangle_{\tube(\mcc)}  \\
+&= \frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^J \TuberrTraceCo  \right \rangle_{\mcc}
+\end{align}
+The first step follows from the definition of being in the image of the projector $\hat{a}_J$, while the second step follows from the defintion of the inner product, see xx-Bosonic-trace-xx.
+The angle brackets with subscript $\mcc$ means we evaluate the picture on the two-sphere using $\mcc$.
+And we have defined $(-1)^J = 1$ if $J$ is bounding and $-1$ otherwise.
+Since any net configuration in $\mcc$ evaluated on $S^2$ agrees with the evaluation in $\mcc/\psi$ we have,
+\begin{align}
+\frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^J \TuberrTraceCo  \right \rangle_{\mcc} &=\frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^J \TuberrTraceCo  \right \rangle_{\mcc/\psi} \\
+&= \frac{1}{2} \left \langle\; \Tubeidr,\Tuberr \; \right \rangle_{\tube_J(\mcc/\psi)}.
+\end{align}
+Where we have again used the definition of the trace, but this time for the super pivotal category, see xx-Fermionic-trace-xx.
+Hence, if $X,Y \in \tube(\mcc)$ are in the image of $\hat{a}_J$, then $\langle X, Y \rangle = \langle \unit, X^* Y\rangle$. 
+Using that $\tube(\mcc)$ is semi-simple, and that the $t \in \tube(\mcc)$ above span all morphisms of $\tube(\mcc)$, we can always find an isomorphism such that $t \cong X^*Y$.
+Hence we also have that $\langle X, Y \rangle_{\tube(\mcc)} = \frac{1}{2} \langle X, Y \rangle_{\tube_J(\mcc/\psi)}$.
+Since the the inner-product is non-degenerate, the inclusion of the image of $\hat{a}_J$ into $\tube_J(\mcc/\psi)$ is injective.
+\end{proof}
+
+
 
 Let's now apply these projectors to the idempotents in \eqref{minimal_idempotent_C}.
 Define the image of $e_{xy}$ under condensation to be $f^J_{xy}$. 
@@ -7263,14 +7343,19 @@ e_{xy} =  \TubeIdempotentTwoStrand= \exyomegaa = \begin{cases}
 \end{cases}
 \end{align}
 and so each $e_{xy}$ has an image in $\tube(\mcc/\psi)$ given by
-\dave{Is this enough to say that the $f_{xy}^{J(y)}$ are non-zero?}
 \begin{align}
 e_{xy} \xrightarrow{\text{condense $\psi$}}f_{xy}^{J(y)} \quad \quad \text{with $J(y) = B$ if $\nu_y = 0$ and $J(y) = N$ otherwise}
 \label{image_of_exy}
 \end{align}
 In the following we will sometimes write just $J$ instead of $J(y)$. 
-The $f_{xy}^J$ also remain orthogonal $f_{xy}^J f_{x' y'}^W = \delta_{xx'} \delta_{yy'}\delta_{JW} f_{xy}^J$, which follows from the fact that $\omega \tp \omega = \omega$ and $a_J \tp a_W = \delta_{JW} a_J$.
-It remains to show that the idempotents $f_{xy}^J$ are minimal, and complete. 
+Since the $e_{xy}$ are complete, orthogonal and non-zero then by using the lemma  \ref{image_aJ}
+we also have that the $f^J_{xy}$ are complete, orthogonal and non-zero.
+%By the lemma \ref{image_aJ} we also have that teh $f^J_{xy}$ are nonzero
+%The $f_{xy}^J$ also remain orthogonal $f_{xy}^J f_{x' y'}^W = \delta_{xx'} \delta_{yy'}\delta_{JW} f_{xy}^J$, which follows from the fact that $\omega \tp \omega = \omega$ and $a_J \tp a_W = \delta_{JW} a_J$.
+Since the inclusion of the image of $\hat{a}_J$ into $\tube_J(\mcc/\psi)$ is not surjective, 
+we still need to show that the idempotents remain minimal.
+\dave{The tubes we are missing are the ones with q-type strands and a fermion hanging off them.}
+%It remains to show that the idempotents $f_{xy}^J$ are minimal, and complete. 
 
 %Consider $f_{xy}^J \cdot f_{x'y'}^W$. 
 %Let $a_{B/N} = \frac{1}{2}(\text{cl}(\unit) \pm \text{cl}(\psi))$, so that
@@ -7283,7 +7368,7 @@ It remains to show that the idempotents $f_{xy}^J$ are minimal, and complete.
 %f_{xy}^J \cdot f_{x'y'}^W = \delta_{xx'} \delta_{yy'} \delta_{JW} f_{xy}^J
 %\end{align}
 
-Lets begin by showing that the idempotents $f_{xy}^J$ are minimal.
+Lets show that the idempotents $f_{xy}^J$ are indeed minimal.
 We need to show that $f_{xy}^J \tube(\mcc/\psi) f_{xy}^J$ is one dimensional.
 By the spine lemma\cite{REF}, 
 a generic element of $f_{xy}^J \tube(\mcc/\psi) f_{xy}^J$ can be written as
@@ -7295,7 +7380,7 @@ where we have suppressed the spin structure index (the spin structure is determi
 %Because we took $f^J_{xy}$ to be in the image of $e_{xy}$ under condensation, 
 %we can trivially lift the $\omega_0$ loop of the condensed theory, to the pre-condensed theory. 
 The no tadpole theorem guarenties that $r \cong \unit$ and consequently that $c \cong c'$, and that the loop traversing annulus paralell to $\omega$ can be removed at the expense of multiplying by its quantum dimension.
-Lastly, we can use property (c) of Table \ref{omega_loop_properties} to slide the lower $\omega_0$ loop around the line connecting $x$ and $y$.
+Lastly, we can use property (c) of Table \ref{omega_loop_properties} to slide the lower $\omega$ loop around the line connecting $x$ and $y$.
 %This can be done in two ways, either so that the $\omega_0$ loop is above the trivalent junction (closer to the readers face), or below the trivalent junction (further from the readers face).
 Using property (a) of \ref{omega_loop_properties} we see that both $c \cong c' \cong \unit$.
 %Lastly, the loop traversing the annulus can be absorbed into the $\omega_0$ loop at the expense of multiplying by $d_w$.
@@ -7313,6 +7398,7 @@ f_{xy}^J \tube(\mcc/\psi) f_{x' y'}^J \cong
 Hence, the $f^{J}_{xy}$ are minimal. 
 This also shows that $f_{xy}^J$ and $f_{x(y\tp \psi)}^J$ are oddly isomorphic.
 
+\dave{Should we use this somewhere, it's really just a simplified version of \eqref{completeness}.}
 We now need to show that the idempotents are complete.
 In the parent theory we have,
 \begin{align}
@@ -7325,9 +7411,10 @@ Hence, allowing us to identify a resolution of the $a$ strand for either spin st
 \dave{Does this require more details?}
 
 
-{\bf nonzero}
-Using the inner product defined in \ref{generalities_section} we can check which idempotents are zero and which are not. 
-\dave{Need to add this.}
+%follows from lemma.
+%{\bf nonzero}
+%Using the inner product defined in \ref{generalities_section} we can check which idempotents are zero and which are not. 
+%\dave{Need to add this.}
 
 We now write down an \dave{invertible? Super?} tensor functor from $\mcc \times \bar{\mcc}/\psi$ to $\tube(\mcc/\psi)$.
 We now define the tensor functor\footnote{\dave{Should we footnote a definition of tensor functor for physicists?}}
@@ -7369,6 +7456,8 @@ and $(c,z)$ living at the boundary circles.
 Near each boundary circle we have applied the corresponding minimal idempotent to each boundary condition. 
 Using the exact same arguments following \eqref{MinimalProof} we can simplify the diagram using the relations of Table ~\ref{omega_loop_properties}. One finds that $r \cong s \cong t \cong u \cong v \cong \unit$, and and $p$ and the left over $p$ and $q$ loops can be removed with multiplying the picture by there quantum dimensions. 
 The left over picture is isomorphic to $V^{ab}_c(\mcc) \tp V^{xy}_z(\mcc/\psi)$.
+
+
 
 \begin{align}
 U_{X,Y}: \; E(X) \tp E(Y) \ra E(X \tp Y)
