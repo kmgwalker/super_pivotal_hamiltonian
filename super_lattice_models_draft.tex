@@ -1156,22 +1156,22 @@ in the Ising theory, the $SO(3)_6$ theory, and the $\halfesix$ theory.
 \section{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%
 
-\ethan{Obviously still under construction} 
-\kw{The basic structure of this intro seems good to me; I do not have the urge to rewrite it.
-I think it needs to be tweaked in various ways, but it's a great starting point.
-A few comments below, more later.}
-
-Blah blah blah bosonic topological phases. 
+A large program in condensed matter physics in recent years has been to classify 
+topological phases of matter which host emergent quasiparticle excitations 
+with topological properties like exotic braiding statistics. 
+The mathematical framework of category theory has proven to provide the right 
+framework needed to formally develop classification efforts. 
+Thus far, the bulk of these efforts have focused on understanding bosonic topological phases.
 These phases are ``bosonic'' because the topological excitations emerge from bosonic 
-local degrees of freedom (like the spins in Kitaev's toric code). 
+local degrees of freedom. 
 
-By contrast, much less is known about {\it fermionic} topological phases, in which fermions constitute 
+By contrast, much less is known about how to complete a classification program for {\it fermionic} topological phases, in which fermions constitute 
 the underlying degrees of freedom. 
-Progress on understanding the coherence relations used to classify fermionic topological phases was made in \cite{gu2015,gu2014,Lan2016b}, and several recent works have enumerated a class of examples of fermionic topological phases. 
+Progress on understanding the coherence relations used to classify fermionic topological phases and the identification of a class of examples of such phases was made in \cite{gu2015,gu2014,Lan2016b}. 
 Very recently, Majorana dimer lattice models have appeared \cite{ware2016,tarantino2016}, 
 which give an explicit Hamiltonian construction of a simple fermionic phase derived from the Ising theory. 
 There has also been some recent work in the math community \cite{usher2016,brundan2016,bruillard2017} 
-devoted to studying the formal category-theoretic description of fermionic topological phases. 
+devoted to studying the formal category-theoretic description of fermionic topological phases and spin-TQFTs. 
 
 Intimately related to the description of fermionic topological phases is the concept of fermion condensation, 
 whereby emergent (anyonic) fermions are driven through a topological phase transition to become 
@@ -1283,6 +1283,9 @@ is also modified in the fermionic setting.
 The behavior of the $S$ and $T$ modular transformations on the torus depends on the spin structure of the torus in question, and 
 certain relations like $(ST)^3 = \unit$ are realized projectively in the fermionic setting, becoming 
 $(ST)^3=(-1)^F\unit$ where $(-1)^F$ is the fermion parity operator. 
+Unlike in bosonic phases, the matrix of double braids (mutual statistics) is not identical to the 
+modular $S$-matrix, although complete information about the double braids 
+is enough to reconstruct the modular $S$-matrix. 
 
 Finally, we show how to construct a commuting projector lattice Hamiltonian 
 for fermionic phases. It is similar in character to the Levin-Wen Hamiltonian of \cite{}, 
@@ -3016,7 +3019,6 @@ In the table, $A\times B$ means ``stack $A$ (left most column) on top of $B$ (to
 For multiplications involving odd tubes, we always take fermions in the $A$ tube to have a 
 higher ordering than the fermions in the $B$ tube. 
 
-\dave{Need to double check this table since changing basis required some algebra.}
 \be
 \renewcommand{\arraystretch}{3}
 \centering
@@ -3364,7 +3366,6 @@ As we have seen in \eqref{ptubes} this subalgebra again has two even generators 
 %\be \tube^N_\beta = \left\langle\; \FubeXss_N,\;\FubeXsds_N,\; \FubessX_N,\; \FubessdX_N\right\rangle.\ee
 Therefore, as an algebra, we must have $\tube_{\beta \rightarrow \beta}^N \cong \cl_2$ or $\tube_{\beta \rightarrow \beta}^N \cong \cl_1\oplus\cl_1$. 
 To determine which choice is correct, we work out the multiplication table, which is
-\dave{Similarly I need to check these again.}
 \be
 \renewcommand{\arraystretch}{3}
 \centering
@@ -4828,7 +4829,6 @@ along their longitudinal cycle do not (they map to quasiparticles that have been
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{The modular $S$ and $T$ matrices}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\dave{Will come back to these two paragraphs.}
 In this section, we will compute the modular $S$ and $T$ matrices on the torus, which generate the modular group. 
 The modular $S$ matrix acts on states on the torus by interchanging the meridional and longitudinal cycles 
 of the torus\footnote{An alternate picture of the modular $S$ matrix in terms of Turaev-Viro state sums 
@@ -4838,21 +4838,22 @@ Turaev-Viro state-sum with boundary conditions specified by the given string-net
 The other is to fill the {\it interior} of the torus with a Turaev-Viro state-sum possessing the same boundary conditions. 
 The modular $S$-matrix performs the change of basis between these two choices.
 We will avoid using this in what follows because it is difficult to perform explicit calculations along these lines.}. 
-If we draw the torus as a square with opposing sides identified, then $S$ acts by rotating the square by $\pi/2$.
-\dave{Should change to annulus and draw picture.} 
+If we draw the torus as a square with opposing sides identified, then $S$ acts by rotating the square by $\pi/2$ counterclockwise. 
 The modular $T$ matrix represents the action of the Dehn twist on the torus, 
 which corresponds to cutting the torus along a meridional cycle, 
 twisting the boundary conditions at the cut by $2\pi$ relative to one another, and gluing the torus back together.
-In bosonic theories, the $T$-matrix is diagonalized in the quasiparticle basis, with 
-entries corresponding to the topological twists of the quasiparticles in the theory. 
+In terms the annular pictures we have been drawing of the tubes, the twist is accomplished by 
+twisting the inner boundary of the annulus by $2\pi$ counterclockwise. 
 
 Importantly, the $S$ and $T$ modular transformations do {\it not} always preserve the spin structure of the torus they act on. 
 Figure \ref{spin_str_mapping_class_group} shows how the different possible spin structures are permuted under $S$ and $T$. 
 Since $T$ does not preserve the spin structures, it cannot generically have well-defined eigenstates with a definite spin structure. 
 Furthermore, the spins of quasiparticles excitations in super fusion categories are in general only defined 
 up to a $\pm$ sign, see e.g. \cite{cano2014,bruillard2017,gu2014} for details.
-More precisely, the spin of a given simple object in the tube category is ambiguous across the isomorphism class of that object (although it is well defined on any given representative of the isomorphism class). 
-In contrast with $T$, the action of $T^2$ preserves spin structures, and so we are still able to associate definite $T^2$ 
+More precisely, the spin of a given simple object in the tube category is ambiguous across the isomorphism 
+class of that object (although it is well defined on any given representative of the isomorphism class). 
+In contrast with $T$, the action of $T^2$ preserves spin structures, and so we are still able to associate 
+definite $T^2$ 
 eigenvalues to the quasiparticles in the theory.
 Because of this, the twists of the particles whose associated spin structures are not preserved 
 by $T$ (i.e., the particles associated with a bounding spin structure, $m_\unit,m_\psi,$ and $m_\sigma^+$ in 
@@ -4869,9 +4870,12 @@ the present example) are ambiguous up to a factor of $\pm1$.
 %\be \label{tube_shorthands} e := \FubeXXX,\quad h := \FubesXs,\quad v := \FubeXss,\quad t:= \FubessX.\ee
 We now proceed to examine the action of the $S$ and $T$ modular transformations on the four spin tori which compose 
 the twelve dimensional Hilbert space listed in Figure \ref{TorusBasisC2}.
-Although the calculations are most easily facilitated with the topological basis in Figure \ref{TorusBasisC2}, 
-it is more natural to analyze the resulting transformations in the idempotent basis in Figure \ref{CTwoParticles}. 
-The change of basis between the two are written explicitly in equations \eqref{C2Change_of_Basis}. 
+Although the calculations are most easily performed in the topological basis in Figure \ref{TorusBasisC2}, 
+it is more natural to analyze the resulting transformations in the idempotent basis given in Figure \ref{CTwoParticles}. 
+The basis vectors in the idempotent basis are constructed by taking the idempotents associated with the 
+quasiparticles identified in the previous section and closing them up (with different choices of spin structure) 
+along the longitudinal direction. 
+The change of basis between the topological and idempotent bases are written explicitly in equations \eqref{C2Change_of_Basis}. 
 %twelve ground states, going in groups of three for each of the four different spin structures. 
 
 \medskip
@@ -4898,7 +4902,7 @@ h\\
 e\\
 v\\
 h\\
-\end{matrix} \right)_{BB}
+\end{matrix} \right)_{BB}.
 \end{align}
 %\be S^{gs}_{AA} = \begin{pmatrix} 1 & 0 &0 \\ 0 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}. \ee
 To transform $S^{BB\rightarrow BB}$ into the quasiparticle basis we use \eqref{C2Change_of_Basis}.
@@ -4931,7 +4935,7 @@ which is identical to the S-matrix for the Ising TQFT.
 Now for the $(B,N)$ and $(N,B)$ spin structures.
 These are interchanged by the S-matrix, as indicated in \ref{spin_str_mapping_class_group}.
 In the idempotent bases these induce transformations between the non-vortex and vortex quasi-particles.
-It's straightforward to compute,
+We obtain 
 \begin{align}
 \left( \begin{matrix}
 e\\
@@ -4975,10 +4979,11 @@ h\\
 t\\
 \end{matrix} \right)_{BN}.
 \end{align}
+\ethan{if he rotated counter-clockwise, I agree}
 Notice that if we compose both transformations we get the identity. 
 These can each be transformed into the idempotent bases using \eqref{C2Change_of_Basis}, 
 where one finds,
-\dave{Need to double check these.}
+\ethan{I get minus signs in different places... will come check later}
 \begin{align}
 \left( \begin{matrix}
 m_\unit\\
@@ -5000,7 +5005,9 @@ m_\psi\\
 \hat{q}_\sigma^+\\
 \hat{q}_\psi\\
 \end{matrix} \right)_{NB}
-\quad \text{and} \quad 
+\end{align}
+and
+\begin{align}
 \left( \begin{matrix}
 \hat{q}_\unit\\
 \hat{q}_\sigma^+\\
@@ -5024,8 +5031,7 @@ m_\psi\\
 \end{align}
 In order to make the matrix unitary, we have defined $\hat{q} = q/\sqrt{2}$ so that each $\hat{q}$ idempotent has unit norm.
 
-We can collect all the results into one matrix. 
-Lets define,
+To collect all these results, we define
 \begin{align}
 {\bf M} = [ m_\unit \;  m_\sigma^+\;  m_\psi]^T \qquad \widehat{{\bf Q} }= [\hat{q}_\unit \; \hat{q}_\sigma \; \hat{q}_\psi ]^T
 \end{align}
@@ -5097,9 +5103,10 @@ T^{BB \rightarrow BN}=  & \left( \begin{matrix}
 &&1\\
 \end{matrix} \right)
 \end{align}
-One can check that $(ST)^3 = \unit$ as expected. 
+One can check that the usual modular group relation $(ST)^3 = \unit$ holds as expected. 
 
-\ethan{
+%old computations 
+\begin{comment}
 Now for the $(P,A)$ spin structure, which is preserved by $T$ (as the q-type quasiparticles have well-defined self-statistics). 
 First for the $S$-matrix, which maps the $PA$ spin structure to the $AP$ spin structure. As a map between the ground state basis $(e,v,t)_{PA}^T$ and the ground state basis $(e,t,h)_{AP}^T$, the $S$ matrix is
 \be S^{gs}_{PA\mapsto AP} = \begin{pmatrix}
@@ -5113,7 +5120,8 @@ This means that in the idempotent basis, the $S$ matrix is
 \be S_{PA \mapsto AP} = V_{AP}^{-1} S^{top}_{PA \mapsto AP} V_{PA} = \begin{pmatrix}
 d/2 & 1 & d/2 \\ 1 & 0 & -1 \\ -d/2 & 1 & -d/2
 \end{pmatrix}.\ee
-}
+\end{comment}
+
 
 More interesting is the $(N,N)$ torus, whose spin structure is preserved under both $S$ and $T$. 
 This has been investigated before in \cite{ware2016}, and our results agree with theirs in this case. 
@@ -5194,9 +5202,9 @@ One can check that we have the modular relations
  \end{align}
 The minus sign comes from the fact that the action of $S^4$ on performs a $2\pi$ rotation 
 of the fermion framing, resulting in a phase of $-1$, since the $(N,N)$ torus has odd fermion parity. 
-These relations easily generalize to $(ST)^3=S^4=(-1)^F\unit$, where $(-1)^F$ denotes the 
-fermion parity of the tori being acted upon.
-\dave{Ethan, what does this last sentence mean?}This also means that in the fermionic setting, 
+These relations easily generalize to $(ST)^3=S^4=(-1)^F\unit$, where $(-1)^F$ is the fermion 
+parity operator. 
+This also means that in the fermionic setting, 
 the $S$ matrix is not self-dual as it is for bosonic theories.
 
 
@@ -5305,13 +5313,15 @@ T = \begin{pmatrix}   			&&&				1&0&0&		&&&			&& \\
 						&&&				&&&			&&&			A^{5}&0&0\\
 						&&&				&&&			&&&			0&1&0 \\ 
 						&&&				&&&			&&&			0&0&-A^{5} \end{pmatrix}\ee	
-The $T$-matrix is not completely diagonalized in the quasiparticle basis, since it acts nontrivially on the spin structures. 
+\ethan{agree if you're twisting counterclockise. otherwise get some sign differences}					
+The $T$-matrix is not completely diagonalized in the idempotent basis, since it acts nontrivially on the spin structures (although it is diagonalized within each spin structure block). 
 This leads to subtleties involved with identifying the topological twists of the quasiparticles, 
 which we elaborate on in the next section. 
 
 
-
-\ethan{
+%\ethan{following commented-out block is my computations
+%%%%%%%%%%%%%%%
+\begin{comment}
 In this section, we will compute the modular $S$ and $T$ matrices on the torus, which generate the modular group. 
 To explain what the modular $S$-matrix does, we note that there are two ways of representing a given string-net configuration on a torus embedded in $S^3$ in terms of Turaev-Viro state-sums: one way is to fill the exterior of the torus with a Turaev-Viro state-sum with boundary conditions specified by the given string-net configuration, as discussed in the previous section. 
 The other is to fill the {\it interior} of the torus with a Turaev-Viro state-sum possessing the same boundary conditions. 
@@ -5453,6 +5463,8 @@ T = \begin{pmatrix}    &&&				1&0&0&			&&&			&& \\
 The $T$-matrix is not completely diagonalized, since it acts nontrivially on the spin structures. 
 This leads to subtleties involved with identifying the topological twists of the quasiparticles, which we elaborate on in the next section. 
 }
+\end{comment}
+%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%% 
@@ -5493,6 +5505,7 @@ The idempotent label at the crosses represent a collection of pictures, one for 
 \overset{m_\sigma^+}{\IdempEnd} =  \frac{1}{2} \left( \tcca \; +   \; A^3 \tccb \right) \quad \text{and} \quad 
 \underset{m_\sigma^+}{\text{\reflectbox{\rotatebox[origin=c]{180}{$\IdempEnd$}}}} = \frac{1}{2} \left(  \tccc + A^3 \tccd \right).
 \end{align}
+\ethan{are these lines curling the right way? should their handedness be reversed?}
 The termination of a $\beta$ line at the bottom of a line corresponds to a puncture surrounding the entire system.
 %\be \includegraphics{msig_def.pdf} \ee
 
@@ -5510,6 +5523,7 @@ For example, to calculate $R^{q_\psi q_{1/\psi}}_{m_{\psi/1}}$, we write
 \qqmbraida \xrightarrow{\; \; R\;\; }\qqmbraidb \;=  \; \theta_{q_\psi}^* \qqmbraidc
 \end{align}
 %\be \includegraphics{qpsiq1psi_braiding} \ee
+\ethan{this is the correct handedness convention if $T$ twists the top of the tube counterclockwise, which gels with $\theta_{m_\sigma} = A^3$.}
 where the dashed blue lines are the branch cuts, and we have taken advantage of our knowledge 
 of the eigenvalue of $q_\psi$ under the twisted tube (i.e.\ the spin of $q_\psi$). 
 
@@ -5545,6 +5559,9 @@ As an example, we can calculate the braiding of the odd fusion channel in $R^{q_
 Manipulations like these can be used to work out the full table of $R$-symbols, which we present in Table \ref{Rtable}. 
 The $\bullet$ symbol is used to denote odd fusion channels, i.e.\ the action of 
 the braiding operation on an odd vector in the fusion space $V^{ab}_c$.  
+
+%%begin old table
+\begin{comment}
 \begin{table}
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{c||c|c|c||c|c|c}
@@ -5582,6 +5599,10 @@ the bottom right entry tells us that $R^{q_\psi q_\psi}_{m_\unit} = -A^3$ when a
 even vector in $V^{q_\psi q_\psi}_{m_\unit}$ and $R^{q_\psi q_\psi}_{m_\unit} = -A^7 = A^{-1}$ 
 when acting on the odd vector. \dave{Table has to be fixed due to new conventions.}}
 \end{table}
+\end{comment}
+%%%% end old table
+
+
 
 \begin{table}
 \resizebox{\linewidth}{!}{%
@@ -5591,9 +5612,9 @@ $     R^{ab}_{c \in a\otimes b} $&$m_\unit $&$m_\sigma^+$&$m_\psi$&$q_\unit$&$q_
      \hline     
 $m_\unit $&$m_\unit$&$ m_\sigma^+$&$m_\psi$&    $(1+1\bullet)q_\unit$&$(1+1\bullet)q_\sigma$&$(1+1\bullet)q_\psi$ \\ %yup
      \hline
-$m_\sigma^+ $&$m_\sigma^+$&$A^{-3}(m_\unit-A^4\bullet m_\psi) $&$ \bullet m_\sigma^+ $&$      A^{-3}(1-A^4\bullet)q_\sigma $&$ XXXX$&$ A^{-3}(1-A^4\bullet)q_\sigma$ \\
+$m_\sigma^+ $&$m_\sigma^+$&$A^{-3}(m_\unit-A^4\bullet m_\psi) $&$ \bullet m_\sigma^+ $&$      A^{-3}(1-A^4\bullet)q_\sigma $&$ (1+A^6/d\bullet)q_\unit$&$ A^{-3}(1-A^4\bullet)q_\sigma$ \\
 
- $$&$$&$$&$$&$$&$XXXX$&$$\\
+ $$&$$&$$&$$&$$&$(1-A^6/d\bullet)q_\psi$&$$\\
      \hline
      
 $m_\psi $&$m_\psi$&$(-1\bullet) m_\sigma^+$&$m_\unit$&      $-(1+ 1\bullet)q_\psi$&$(1+1\bullet )q_\sigma$&$-(1+1\bullet)q_\unit $\\
@@ -5603,19 +5624,21 @@ $m_\psi $&$m_\psi$&$(-1\bullet) m_\sigma^+$&$m_\unit$&      $-(1+ 1\bullet)q_\ps
      
 $q_\unit $&$(1+1\bullet)q_\unit$&$-A^3(1+A^4 \bullet)q_\sigma $&$(1+1\bullet)q_\psi$&$-A^3(1+A^4 \bullet)m_\unit$&$(1+ A^{2}/d \bullet )m_\sigma^+$&$-A^3(1+A^4 \bullet)m_\psi$\\
 \hline
-$q_\sigma $&$(1+1\bullet)q_\sigma$&$XXXX$&$(1+1\bullet)q_\sigma$&$(A^{-2}+ d \bullet )m_\sigma^+$&$XXXX$&$(-A^{-2}+d \bullet)m_\sigma^+$ \\
+$q_\sigma $&$(1+1\bullet)q_\sigma$&$(A^{2}-dA^4\bullet)q_\unit$&$(1+1\bullet)q_\sigma$&$(A^{-2}+ d \bullet )m_\sigma^+$&$(1-A^4\bullet)m_\unit$&$(-A^{-2}+d \bullet)m_\sigma^+$ \\
 
-$                $&$$&$XXXX$&$$&$$&$XXXX$&$$ \\
+$                $&$$&$(-A^{2}-dA^4\bullet)q_\psi$&$$&$$&$(1+A^4\bullet)m_\psi$&$$ \\
 \hline
 $q_\psi $&$(1+1\bullet)q_\psi$&$A^3(1+A^4\bullet)q_\sigma$&$(1+1 \bullet)q_\unit$&$A^3(1+A^4\bullet)m_\psi$&$(1-A^{2}/d \bullet )m_\sigma^+$&$A^3(1+A^4 \bullet)m_\unit$
 \end{tabular}
 }
 \caption{\label{Rtable} The R-symbols for the $C_2$ theory. 
 The particle labels in each entry denote fusion channels, with the bullets 
-signifying which fusion channels are odd. For example, the bottom right entry 
+signifying which fusion channels are odd. 
+For the entry $R^{ab}_c$, $a$ denotes the row of the entry and $b$ the column. 
+For example, the bottom right entry 
 tells us that $R^{q_\psi q_\psi}_{m_\unit} = A^3$ when acting on the even 
 vector in $V^{q_\psi q_\psi}_{m_\unit}$ and $R^{q_\psi q_\psi}_{m_\unit} = A^7$ when 
-acting on the odd vector. \dave{Started computing the braids in the annulus basis.}}
+acting on the odd vector.}
 \end{table}
 
 
@@ -5774,37 +5797,44 @@ where the precise meaning of the trace is discussed in Sec. \ref{qdims_and_trace
 Using Table \ref{Rtable}, we obtain
 \be \theta_{m_\unit} = 1,\ \theta_{m_\psi} = 1,\ \theta_{m^\pm_\sigma} = \pm A^3\ee
 for the non-vortex particles, and 
-\be \theta_{q_\unit} = A^{-3},\ \theta_{q_\psi} = -A^{-3},\ \theta_{q_\sigma} = 1\ee
+\be \theta_{q_\unit} = A^5,\ \theta_{q_\psi} = -A^5,\ \theta_{q_\sigma} = 1\ee
 for the vortex particles. 
 %\dave{Should comment that there are only two innequivalent $C_2$ fusion categories (only two possible braidings of $\psi$ with $\sigma$), 
 %but seemingly $4$ appearing above.}
 
 The twists can also be obtained by computing their spins, which is done by directly Dehn-twisting the tubes in question. 
 This amounts to computing the eigenvalue of each quasiparticle under $t$, where $t$ is the twisted tube defined in \eqref{tube_shorthands}.
-We can then use the tube algebra multiplication tables to read off the eigenvalues, and in the basis $(m_\unit,m^\pm_\sigma,m_\psi,q_\unit,q_\sigma,q_\psi)^T$ we find the matrix of self-statistics (which we will write as $\Tr R$ to distinguish it from the modular $T$-matrix, which is a $12\times 12$ non-diagonal matrix) to be
-\be \Tr R = {\rm diag}[1,\pm A^3,1,A^{-3},1,-A^{-3}].\ee
+We can then use the tube algebra multiplication tables to read off the eigenvalues, and in the basis $(m_\unit,m^\pm_\sigma,m_\psi,q_\unit,q_\sigma,q_\psi)^T$ we find the matrix of self-statistics (which we will write as $\Tr\ R$ to distinguish it from the modular $T$-matrix, which is a $12\times 12$ non-diagonal matrix) to be
+\be \Tr\ R = {\rm diag}[1,\pm A^3,1,A^{5},1,-A^{5}].\ee
 This yields the same result as we obtained by tracing out the $R$-symbols (hence the notation), confirming that the spin-statistics relation holds in this theory.
 
-Making an explicit choice for $A$ can help to shed some light on these results. If we choose $A = ie^{\pm i \pi/8}$ (giving $d=+\sqrt{2}$ and $A^4 = \pm i$), then the $\Tr R$-matrix in the vortex sector decomposes as the tensor product
-\be \Tr R = T_{p\pm ip} \tp T_{\text{Ising}_{\nu =\mp1}},\ee
-where $T_{p\pm ip} = e^{\pm i\pi/8}$ is the modular $T$-matrix of a $p\pm ip$ superconductor. %Other allowed choices for $A$ correspond to $\nu = 3,5$ and...
-\ethan{discuss}
+Making an explicit choice for $A$ can help to shed some light on these results. For the choice $A = ie^{\pm i \pi/8}$ (giving $d=+\sqrt{2}$ and $A^4 = \pm i$), the $\Tr\ R$-matrix in the vortex sector (the $3\times3$ matrix of the twists of non-bounding idempotents) decomposes as the tensor product
+\be \Tr\ R = T_{p\pm ip} \tp T_{\text{Ising}_{\nu =\mp1}},\ee
+where $T_{p\pm ip} = e^{\pm i\pi/8}$ is the modular $T$-matrix of a $p\pm ip$ superconductor. 
+This decomposition was noted in \cite{ware2016}, where the background physical fermions used to perform the condensation 
+were identified with a $p\pm ip$ topological superconductor. 
+This $p\pm ip$ superconductor has a chiral central charge of $c_-=1/2$, which precisely cancels 
+out the chiral central charge of the Ising component in the tensor product, leaving a non-chiral theory---something
+that is required since we have obtained the phase in question from a string-net lattice model. 
 
-In the expressions above, the twists of every non-vortex particle are ambiguous up to a factor of $\pm1$, corresponding to an ambiguity in the parity of physical fermions attached to the tubes at the time of twisting.
-\dave{Is this correct?
-Is this the parity of physical electrons? 
-I.e., the same ambiguous parity of the tori in the bounding sector, or is it a different parity?}
-The vortex particles have no such ambiguity, since moving a physical fermion around a tube with periodic boundary conditions picks up no $-1$ signs.   
+%In the expressions above, the twists of every non-vortex particle are ambiguous up to a factor of $\pm1$, corresponding to an ambiguity in the parity of physical fermions attached to the tubes at the time of twisting.
+%\dave{Is this correct?
+%Is this the parity of physical electrons? 
+%I.e., the same ambiguous parity of the tori in the bounding sector, or is it a different parity?}
+%The vortex particles have no such ambiguity, since moving a physical fermion around a tube with periodic boundary conditions picks up no $-1$ signs.   
 
-We now briefly comment on the issue of the chiral central charge of this theory. Since we have realized this theory as a lattice model, we expect that it possesses chiral central charge $c_- = 0$. 
-If we believe that the chiral central charge of these theories can be computed in the same 
-way as in bosonic theories (as in \cite{cano2014}), then we see that we indeed have $c_- =0$ for 
-the vortex sector, which is a nontrivial consistency check. We do not have $c_-=0$ in the 
+More generally, if we believe that the chiral central charge of these theories can be computed in the same 
+way as in bosonic theories (as in \cite{cano2014}), then we must have $c_- =0$ independently 
+for each spin structure sector, which is a nontrivial consistency check. We do not have $c_-=0$ in the 
 non-vortex sector if we use the twists as written, but we have to keep in mind that the 
 non-vortex twists possess a $\pm$ phase ambiguity. We then expect that in the 
-expression for $c_-$ in the non-vortex sector, the sum over twists ``averages out'' and becomes zero. 
+expression for $c_-$ in the non-vortex sector, the sum over twists ``averages out'' and becomes zero, 
+giving a non-chiral theory as required. 
 
-\subsubsection{Mutual statistics}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Double braids and mutual statistics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Having obtained the $R$ symbols, we can also calculate the braiding data of the quasiparticles by calculating 
 the double braids (mutual statistics) of the quasiparticles. 
@@ -5812,14 +5842,14 @@ As already mentioned, the matrix of double braids that contains information abou
 To distinguish these two matrices, we will write the matrix of double braids between the 
 quasiparticles in the theory as $\mcb^2$ (for the square of the braiding operator). 
 %This distinction is because of the need to choose a spin structure on the torus: we will return to this issue in Section \ref{modulartforms}. For now, we will restrict ourselves to calculating the $S$-matrix measuring the mutual statistics of the quasiparticles in the theory. 
-When we calculate the mutual statistics, we should keep in mind that although there are some $\pm1$ ambiguities in the statistical $\mct$-matrix, there should be no similar ambiguities present in $\mcs$, since physical fermions have trivial double-braiding with one another. 
-That is, mapping $m_a \mapsto fm_a$ where $a\in \{\unit,\psi,\sigma\}$ and $f$ is a physical fermion should not affect the matrix elements of $\mcs$. 
+When we calculate the mutual statistics, we should keep in mind that although there are some $\pm1$ ambiguities in the statistical $\mct$-matrix, there should be no similar ambiguities present in $\mcb^2$, since physical fermions have trivial double-braiding with one another. 
+That is, mapping $m_a \mapsto fm_a$ where $a\in \{\unit,\psi,\sigma\}$ and $f$ is a physical fermion should not affect the matrix elements of $\mcb^2$. 
 
 \begin{figure}
 \begin{center}
 \includegraphics{both_braided_tubes.pdf}
 \caption{\label{braided_tubes} 
-(a): How the tracing out of the $R$-symbols is performed when calculating the elements $\mcb^2_{ab}$ of the double braid matrix. 
+(a): How the tracing out of the $R$-symbols is performed when calculating the elements $[\mcb^2]_{ab}$ of the double braid matrix. 
 Here, the $a$ and $b$ label tori hosting different quasiparticles, and are contained within a larger torus marked $c$. 
 The entire network of tubes is embedded with the three-sphere, where it can then be evaluated to give a number (the partition function). 
 (b): The setup for calculating the matrix $[\mcb^2_\psi]_{ab}$, which encapsulates odd braiding processes during which a fermion is exchanged (represented by the two connected blue dots) between the two particles being braided. }
@@ -5848,7 +5878,7 @@ This is physically reasonable, since braiding a q-type particle through a q-type
 Indeed, this is the same reason why the matrix element $S_{\sigma\sigma}$ vanishes in the regular Ising theory. 
 
 A more precise understanding for why the braiding between two q-type quasiparticles vanishes comes from considering the precise meaning of the trace in \eqref{Smattr}.
-As described during our discussion of the ground states on the torus, the trace of an operator that acts on a collection of tubes (like the $\mcs$ matrix) is computed by identifying the top and bottom of the operator by ``closing up'' the tubes it contains along the time direction (see \eqref{TrO_def}).
+As described during our discussion of the ground states on the torus, the trace of an operator that acts on a collection of tubes (like the $\mcb^2$ matrix) is computed by identifying the top and bottom of the operator by ``closing up'' the tubes it contains along the time direction (see \eqref{TrO_def}).
 The braiding of two quasiparticles $a$ and $b$ is then found by computing the partition function for the picture given in Figure \ref{braided_tubes} (a). 
 In the figure, the two quasiparticles we are interested in braiding are hosted on the surface of the tori marked $a$ and $b$, which are contained inside a larger torus $c$, all of which are then embedded in $S^3$. 
 
@@ -5861,32 +5891,30 @@ Furthermore, if Figure \ref{TrO_def} defining the trace of an operator is to rep
 In particular, fixing $c_l=0$ (anti-periodic) forces 
 \be a_m = b_l,\quad a_l=b_m.\ee
 Therefore, if $a_m = b_m = 1$, which is the case if both $a$ and $b$ host q-type particles, then we must have $a_l = b_l = 1$. 
-This explains why $\mcs_{ab}=0$ if both $a$ and $b$ are q-type: to trace out the $R$-symbols we need the $a$ and $b$ tori in Figure \ref{braided_tubes} (a) to each have $(P,P)$ spin structures. 
+This explains why $[\mcb^2]_{ab}=0$ if both $a$ and $b$ are q-type: to trace out the $R$-symbols we need the $a$ and $b$ tori in Figure \ref{braided_tubes} (a) to each have $(P,P)$ spin structures. 
 However, as we saw in the previous section on the modular $S$-matrix, non-zero string-net configurations on tori with $(P,P)$ spin structures must have {\it odd} fermion parity.
-In calculating the statistical $\mcs$-matrix we have assumed that each torus in Figure \ref{braided_tubes} has {\it even} fermion parity, and so $\mcs_{ab}$ must vanish if both $a$ and $b$ are q-type. 
+In calculating the $\mcb^2$-matrix we have assumed that each torus in Figure \ref{braided_tubes} has {\it even} fermion parity, and so $[\mcb^2]_{ab}$ must vanish if both $a$ and $b$ are q-type. 
 
-The $\mcs$ matrix in \eqref{statistical_S} carries almost the same amount of information as the modular $S$-matrix worked out previously: we can identify each of its four $3\times3$ blocks with a $3\times3$ block in the modular $S$-matrix \eqref{modularS}. 
+The $\mcb^2$ matrix in \eqref{statistical_S} carries almost the same amount of information as the modular $S$-matrix worked out previously: we can identify each of its four $3\times3$ blocks with a $3\times3$ block in the modular $S$-matrix \eqref{modularS}. 
 However, the bottom-right block in \eqref{modularS} proportional to $A^{-2}$ is missing. Does this mean that the braiding statistics capture less information than the modular transformations? 
-In fact it does not, because there is an additional braiding process between q-type particles that we need to consider, one in which the quasiparticles being braided exchange a fermion (or an odd number of fermions) during braiding. 
-We will write the statistical matrix governing this braiding process as $\mcs^\psi$, and it is computed using the setup in Figure \ref{braided_tubes} (b), where the fermion exchanged between the two quasiparticles is indicated by the blue lines. 
+In fact it does not, because there is an additional braiding process between q-type particles that we need to consider, one in which the quasiparticles being braided exchange a fermion (more generally, an odd number of fermions) during braiding. 
+We will write the statistical matrix governing this braiding process as $\mcb^2_\psi$, and it is computed using the setup in Figure \ref{braided_tubes} (b), where the fermion exchanged between the two quasiparticles is indicated by the blue lines. 
 
 We can account for the fermion exchange by adding additional dots to the tubes representing the quasiparticles being braided.
-Mathematically, this means that $\mcs^\psi$ can be computed by tracing out the $R$-symbols composed with the operator $f_1\tp f_2$, which inserts fermions ordered in the appropriate way onto the $a$ and $b$ tubes as in Figure \ref{braided_tubes} (b). 
+Mathematically, this means that $\mcb^2_\psi$ can be computed by tracing out the $R$-symbols composed with the operator $f_1\tp f_2$, which inserts fermions ordered in the appropriate way onto the $a$ and $b$ tubes as in Figure \ref{braided_tubes} (b). 
 Thus, we have
-\be [\mcs^\psi]_{ab} = \frac{1}{\mcd_{q}}\sum_cd_c{\rm Tr}[(f_1\tp f_2)R^{ab}_cR^{ba}_c], \ee
+\be [\mcb^2_\psi]_{ab} = \frac{1}{\mcd_{q}}\sum_cd_c{\rm Tr}[(f_1\tp f_2)R^{ab}_cR^{ba}_c], \ee
 where 
 \be \mcd^2_q = \sum_{a \text{\ q-type}}\frac{d_a^2}{\dim\End(a)}\ee
-is the total quantum dimension of the q-type particles in the theory (this choice ensures that $\mcs^\psi$ is unitary). 
+is the total quantum dimension of the q-type particles in the theory (this choice ensures that $\mcb^2_\psi$ is unitary). 
 For the present case of the $C_2$ theory, $\mcd_q = 2$. 
 
 We can compute the above formula by drawing the diagrams with the fermions $f_1$ and $f_2$ in place and then immediately using local relations to annihilate them into the vacuum.
-For each fusion channel $c$ this leaves us with a diagram proportional to ${\rm Tr}(R^{ab}_cR^{ba}_c)$, which can be computed in the same way as the regular $\mcs$-matrix. 
+For each fusion channel $c$ this leaves us with a diagram proportional to ${\rm Tr}(R^{ab}_cR^{ba}_c)$, which can be computed in the same way as the regular $\mcb^2$-matrix. 
 Proceeding in this way, we obtain 
-\be \mcs^\psi = \frac{A^{-2}}{2}\begin{pmatrix} -1 & d & 1 \\ d & 0 & d \\ 1 & d & -1\end{pmatrix},\ee
-which matches the action of the modular $S$-matrix on tori with $(P,P)$ spin structures and satisfies $(\mcs^\psi)^4=-\unit_{3\times3}$. 
-Thus, the {\it full} statistical braiding information---both the $\mcs$ and $\mcs^\psi$ matrices---provide the same amount of information as the modular transformations on the collection of tori with each spin structure. 
-\dave{Perhaps we can re-phrase the section a little. 
-Instead of saying that we have two different S-matrices, we can say we have two independent ways of computing S. }
+\be \mcb^2_\psi = \frac{A^{-2}}{2}\begin{pmatrix} -1 & d & 1 \\ d & 0 & d \\ 1 & d & -1\end{pmatrix},\ee
+which matches the action of the modular $S$-matrix on tori with $(N,N)$ spin structures and satisfies $(\mcb^2_\psi)^4=(-1)^F\unit_{3\times3}=-\unit_{3\times3}$. 
+Thus, the {\it full} statistical braiding information---both the $\mcb^2$ and $\mcb^2_\psi$ matrices---provide the same amount of information as the modular transformations on the collection of tori with each spin structure. 
 %Because of the $A^{-2}$ prefactor in front, 
 
 
@@ -6917,9 +6945,10 @@ One can then compute the fusion rules of the simple objects either by use of the
 Verlinde formula and the S-matrix given above, or by direct calculation with the primitive idempotents.
 
 
-Finally, before ending this section we derive a final way of calculating the statistical $\mcs$-matrix. 
-Instead of tracing the $R$ matrices, we can appeal to a formula relating the $\mcs$ matrix to the topological twists. In bosonic theories, we have 
-\be \label{stwist_bosonic} \mcs^{bos}_{ab} = \frac{1}{\mcd} \sum_c d_c N^{ab}_c \frac{\theta_c}{\theta_a\theta_b}.\ee
+Before ending this section we derive a final way of calculating the matrix $\mcb^2$ of double braids (mutual statistics). 
+Instead of tracing out the $R$ matrices as we did in our analysis of the $C_2$ theory, we can appeal to a formula relating the $\mcb^2$ matrix to the topological twists. 
+In bosonic theories, we have the relation
+\be \label{stwist_bosonic} {\mcb^2_{bos}]_{ab} = \frac{1}{\mcd} \sum_c d_c N^{ab}_c \frac{\theta_c}{\theta_a\theta_b}.\ee
 This relation does {\it not} hold in the superfusion case, and needs to be modified. 
 The derivation of the correct version of \eqref{stwist_bosonic} relies on the fact that
 \be \label{stwist_fermionic} \theta_c = (-1)^{|v|(|c|+1)} \theta_a\theta_b [R^{ab}_c]_{vv} [R^{ba}_c]_{vv},\ee
@@ -6941,11 +6970,11 @@ This means that passing an odd vector in $V^{ab}_c$ over a vortex-type quasipart
  Additionally, we notice that vectors in $V^{ab}_c$ are transported in a loop during steps 1 and 2, 
  which contributes a sign of $-1$ if the vector $v$ is odd. 
  These two effects are responsible for the factor of $(-1)^{|v|(|c|+1)}$ in \eqref{stwist_fermionic}, 
- meaning that the correct expression for $\mcs$ in the fermionic setting is 
-\be \mcs_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in V^{ab}_c} d_c (-1)^{|v| (|c|+1)}   \frac{\theta_c}{\theta_a\theta_b}.\ee
+ meaning that the correct expression for $\mcb^2$ in the fermionic setting is 
+\be [\mcb^2]_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in V^{ab}_c} d_c (-1)^{|v| (|c|+1)}   \frac{\theta_c}{\theta_a\theta_b}.\ee
 
 
-\begin{comment} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 \subsection{General remarks on fermion condensation} \label{general_condensation}
 
@@ -6986,7 +7015,7 @@ The reverse process to condensation is related to the modular extensions discuss
 \ethan{mention difference between our approach and ``double the objects'' approach of wen in 1507.04673}
 \ethan{inverse of condensation is modular extension, and there are 16 modular extensions of sVec: eight Ising ones and eight TC-like ones (arXiv:0906.0620)}
 
-\end{comment} %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -11003,7 +11032,7 @@ In the superfusion setting there is a more interesting posibility, because actin
 Rotating the fermion framing is equivalent to multiplication by $-1$ if $v$ has odd fermion parity. 
 
 Therefore, in superfusion categories, the pivotal structure relation $P^3=\unit$ is realized {\it projectively}, in the sense that 
-\be P^3 = (-1)^F,\ee
+\be P^3 = (-1)^F \unit,\ee
 where $(-1)^F$ is the fermion parity operator, which acts on any $v\in V^{abc}$ as $(-1)^F v = (-1)^{|v|}v$.
 
 We now discuss the relationship between the $F$-symbols and the pivotal structure. 
