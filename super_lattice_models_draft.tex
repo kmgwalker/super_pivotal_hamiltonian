@@ -1160,10 +1160,10 @@ A large program in condensed matter physics in recent years has been to classify
 topological phases of matter which host emergent quasiparticle excitations 
 with topological properties like exotic braiding statistics. 
 The mathematical framework of category theory has proven to provide the right 
-framework needed to formally develop classification efforts. 
+framework needed to formally develop classification efforts \cite{kitaev2006}. 
 Thus far, the bulk of these efforts have focused on understanding bosonic topological phases.
 These phases are ``bosonic'' because the topological excitations emerge from bosonic 
-local degrees of freedom. 
+local degrees of freedom. \ethan{should update with canonical refs}
 
 By contrast, much less is known about how to complete a classification program for {\it fermionic} topological phases, in which fermions constitute 
 the underlying degrees of freedom. 
@@ -1207,6 +1207,7 @@ on which $\psi$ worldlines are allowed to end.
 \kw{I think we need to be clearer when talking about simple objects of $\mcc$ (or $\mcc/\psi$)
 versus simple objects of Tube($\mcc$) (or Tube($\mcc/\psi$)).
 Are we calling both of these ``anyons"?}
+\ethan{we've waffled a bit on the terminology. I've been calling all of the stuff in the tube category as ``quasiparticles'' because this is unambiguous if a bit long to write out. I'm fine with calling things in $\mcc$ ``objects'' or ``string-net labels'' and things in $\tube(\mcc)$ as ``anyons'', though.}
 
 A central difference between fermionic topological phases and their bosonic counterparts is that 
 the former possesses two distinct classes of simple objects (or anyons). 
@@ -1247,13 +1248,20 @@ we use the tube category construction \cite{} (again, it is imprecise to call th
 of the tube category ``excitations'' until after we have carefully defined a Hamiltonian).
 The construction of the tube category is modified for fermionic theories, and produces a theory
 equivalent to a fermionic version of Drinfeld center of the input category.
+We prove that the tube category $\tube(\mcc/\psi)$ can be obtained from $\mcc$ through \ethan{dropped the op on the second factor since $\mcc \cong \mcc^{op}$ and so we don't have to explain what $\bar\mcc$ is}
+\be \tube(\mcc / \psi) \cong \mcc \times (\mcc / \psi).\ee
+In terms of Drinfeld centers, this can be read as $\mcz(\mcc / \psi)\cong \mcz(\mcc)/\psi$, where on the right-hand side 
+$\psi$ is an embedding of $\psi$ into $\mcz(\mcc)$.
+
 Because quasiparticle excitations are supported on circular boundary components of the ambient 
-manifold on which the theory is defined, there are two distinct classes of quasiparticles in 
+manifold on which the theory is defined, there are two distinct classes of quasiparticles (aka objects in the tube category) in 
 fermionic theories: those with anti-periodic fermion boundary conditions around the circle, and 
 those with periodic boundary conditions. 
-Thus, the tubes in the tube category come equipped with spin structures, which gives the tube category a $\zt$ grading. 
-The excitations associated with anti-periodic boundary conditions are bona fide deconfined quasiparticles, 
-while, depending on the precise definition of the Hamiltonian, those associated with periodic boundary conditions may be better thought of as spin defects, and are linearly confined. 
+Thus, the tubes in the tube category come equipped with spin structures, which gives the tube category a $\zt$ grading
+and separates the quasiparticle spectrum in to vortex quasiparticles (those which bind spin structure defects) 
+and non-vortex quasiparticles (which are similar in character to the quasiparticles present in bosonic theories). 
+%The excitations associated with anti-periodic boundary conditions are bona fide deconfined quasiparticles, 
+%while, depending on the precise definition of the Hamiltonian, those associated with periodic boundary conditions may be better thought of as spin defects, and are linearly confined. 
 \ethan{should debate rephrasing this}
 
 
@@ -1288,7 +1296,8 @@ modular $S$-matrix, although complete information about the double braids
 is enough to reconstruct the modular $S$-matrix. 
 
 Finally, we show how to construct a commuting projector lattice Hamiltonian 
-for fermionic phases. It is similar in character to the Levin-Wen Hamiltonian of \cite{}, 
+for fermionic phases, whose excitation spectrum is given by the objects in the fermionic tube category.  
+It is similar in character to the Levin-Wen Hamiltonian of \cite{}, 
 except that it includes an extra edge term which is responsible for moving fermions along
 q-type worldlines. 
 Spin structure defect excitations (those for which fermions transported around them have periodic 
@@ -4171,7 +4180,7 @@ To do this, we will employ a fancier argument relating a basis of the torus Hilb
 
 \medskip
 
-Let $\tube_B$ denote the bounding tube category and $\tube_N$ denote the non-bounding tube category.
+Let $\tube^B$ denote the bounding tube category and $\tube^N$ denote the non-bounding tube category.
 \kw{do we already have other notation for this?}
 Our goal is to prove the following result (valid for any super pivotal category, not just $C_2$):
 
@@ -4187,12 +4196,12 @@ where $\gamma_j$ runs through a set of representatives of odd endomorphisms of t
 \kw{the closure map $cl$ should have a better notation; maybe just add mathoperator}
 
 Since $T_{BN}$ is spin diffeomorphic to $T_{NB}$, we can compute the Hilbert space for these spin surfaces in two different ways, one using
-idempotents of $\tube_B$ and the other using idempotents of $\tube_N$.
+idempotents of $\tube^B$ and the other using idempotents of $\tube^N$.
 \ethan{I was a little confused by this. I might have been more verbose, e.g.}
-This result allows us to prove that all the idempotents of $\tube_B$ must be m-type.
+This result allows us to prove that all the idempotents of $\tube^B$ must be m-type.
 Indeed, since $T_{BN}$ is spin diffeomorphic to $T_{NB}$ and $T_{NB}$ is even, $T_{BN}$ must also be even.
-Using the $T_{XN}\cong\cc^{p|q}$ identification with $X=B$, this means that $q=0$, and so $\tube_B$ cannot contain any q-type idempotents. 
-It follows that the idempotents of $\tube_B$ must all be m-type.
+Using the $T_{XN}\cong\cc^{p|q}$ identification with $X=B$, this means that $q=0$, and so $\tube^B$ cannot contain any q-type idempotents. 
+It follows that the idempotents of $\tube^B$ must all be m-type.
 \kw{refer also to Dave's different proof of this fact, if it's in the paper}
 
 \kw{might want to stick proof in the general section; not sure what's best}
@@ -4285,7 +4294,7 @@ and we get a summand of $\cc^{0|1}$.
 
 \end{enumerate}
 
-For the $C_2$ theory, $\tube_B$ has three m-type minimal idempotents, and $\tube_N$ has three q-type minimal idempotents.
+For the $C_2$ theory, $\tube^B$ has three m-type minimal idempotents, and $\tube^N$ has three q-type minimal idempotents.
 It follows that $H(T_{BB}) \cong H(T_{NB}) \cong H(T_{BN}) \cong \cc^{3|0}$ and
 $H(T_{NN}) \cong \cc^{0|3}$.
 Therefore the diagrams of Figure xxx must all be non-zero.
@@ -4348,16 +4357,16 @@ Figure \ref{TorusBasisC2} shows the remaining non-zero diagrams for each spin st
 It is easy to see that these diagrams are linearly independent if they are non-zero (they are), but we have not yet proved that they are in fact non-zero.
 To do this, we will employ a fancier argument relating a basis of the torus Hilbert space to minimal idempotents of the tube category.
 
-Let $\tube_B$ denote the bounding tube category and $\tube_N$ denote the non-bounding tube category.
+Let $\tube^B$ denote the bounding tube category and $\tube^N$ denote the non-bounding tube category.
 We can make use of the following results, which we prove in a more general context in Sec \ref{torus_basis_theorem}:
-The ground state spaces of the ${BB}, {NB},$ and ${BN}$ tori are purely even, with an orthogonal basis given by closed-up minimal idempotents of $\tube_B$.
-Additionally, the ground state space of the $NN$ torus is isomorphic to $\cc^{p|q}$, where $p$ is the number of m-type idempotents of $\tube_N$
-and $q$ is the number of q-type idempotents of $\tube_N$.
-An orthogonal basis is given by (representatives of) the minimal m-type idempotents of $\tube_N$,
+The ground state spaces of the ${BB}, {NB},$ and ${BN}$ tori are purely even, with an orthogonal basis given by closed-up minimal idempotents of $\tube^B$.
+Additionally, the ground state space of the $NN$ torus is isomorphic to $\cc^{p|q}$, where $p$ is the number of m-type idempotents of $\tube^N$
+and $q$ is the number of q-type idempotents of $\tube^N$.
+An orthogonal basis is given by (representatives of) the minimal m-type idempotents of $\tube^N$,
 union $\{cl(\gamma_j)\}$,
-where $\gamma_j$ runs through a set of representatives of odd endomorphisms of the minimal q-type idempotents of $\tube_N$.
+where $\gamma_j$ runs through a set of representatives of odd endomorphisms of the minimal q-type idempotents of $\tube^N$.
 
-For the $C_2$ theory, we can use these results to conclude that $\tube_B$ has three m-type minimal idempotents, and $\tube_N$ has three q-type minimal idempotents.
+For the $C_2$ theory, we can use these results to conclude that $\tube^B$ has three m-type minimal idempotents, and $\tube^N$ has three q-type minimal idempotents.
 Letting $\mch^{T^2}_{(J,K)}$ denote the Hilbert space on the torus with $JK$ spin structure, it follows that $\mch^{T^2}_{(B,B)} \cong \mch^{T^2}_{(N,B)} \cong \mch^{T^2}_{(B,N)} \cong \cc^{3|0}$ and
 $\mch^{T^2}_{(N,N)} \cong \cc^{0|3}$,
 and so the diagrams of Figure \ref{TorusBasisC2} must indeed all be non-zero.
@@ -4472,7 +4481,7 @@ Generically, a q-type idempotent can only be glued up into a torus in an odd way
 \end{array}
 \end{align}
 \caption{\label{TorusBasisC2} The ground states on the four different spin tori. 
-Notice that the non-bounding torus has only odd parity ground states.}
+Notice that the non-bounding torus (with $(N,N)$ spin structure) has only odd fermion parity ground states.}
 }
 
 \end{figure}
@@ -6325,7 +6334,9 @@ maybe a separate subsection for how to think of tube cat from the hamiltonian PO
 Instead, I think we should emphasize string nets (as we have in the large majority of the paper
 preceding this location).
 Let's discuss on skype.}
+\ethan{tried to make it more formal for you}
 
+\begin{comment}
 \kwsep
 
 Possible outline:
@@ -6347,100 +6358,57 @@ about tube-B and tube-N.
 Parts of this outline are similar to what's already written below.
 
 \kwsep
+\end{comment}
 
-The basic idea behind the tube category for bosonic theories is as follows. 
-The setting for examining a collection of $n$ excitations in a given topological phase is a 
-manifold with $n$ circular punctures, with an excitation localized at the location of each puncture (strictly speaking the notion of an excitation is not well-defined until we construct a Hamiltonian for the theory, which we will do in Sec \ref{Super_pivotal_Hamiltonian}). 
-The distinct types of excitations constitute the objects of the tube category. 
-%Local operators on excited states correspond to operators which take cylindrical tubes (or annuli, 
-%hence the association with $\text{Ann}(\mcc)$) and fuse them into the punctures on the manifold, 
-%by gluing the bottom end of a tube into a puncture.
-%The tubes are decorated with different string-net configurations, and can be viewed as linear 
-%maps between circles with different boundary conditions. 
-The collection of excitations constitute the objects of the tube category, while the collection of all 
-tubes (modulo local relations) form the morphisms of the tube category, where composition of two morphisms 
-$f,g$ is given by stacking the tubes of $f$ on top of the tubes of $g$. 
-%Since the quasiparticles in the phases we are studying are topological, our way of describing them should be invariant under ``zooming in'' or ``zooming out'' of the region around the puncture. That is, our way of describing a quasiparticle should be unchanged if we perform a scale transformation by adding in extra space around the puncture on which the quasiparticle is localized. These scale transformations are implemented by stacking tubes onto the location of each puncture. The condition that our quasiparticles be ``topological'' is equivalent to demanding that the quasiparticle at a given puncture remains invariant under such scale transformations. \ethan{make figure to show this}
+We will now overview the basic idea behind the tube category. 
+Formally, the string-net spin-TQFT construction we have been working with lets us assign a Hilbert space $\mch$
+to an arbitrary spin surface $X$ (the space-time manifold on which our theory lives) with specified string-net boundary conditions. 
+Two surfaces $X$ and $Y$ can be glued together along their boundary components, provided that 
+the boundary conditions and choices of spin structure on these boundary components agree with one another. 
+The manifolds we will consider will always have boundaries that are disjoint unions of circles, and so to 
+study how different manifolds can be glued together, it suffices to specialize to the choice $X = A$, 
+where $A$ is a spin annulus with $\p A = S^1 \cup S^1$. 
 
-%The set of all tubes modulo local relations on the tubes forms an algebra called the {\it tube algebra}, where the multiplication of two tubes is given by stacking one tube on top of the other. The statement that a quasiparticle located at a puncture is invariant under scale transformations is equivalent to saying that the vector space corresponding to the quasiparticle remains invariant under the action of the tube algebra. Mathematically, such invariant vector spaces are the modules of the tube algebra. If a module is semisimple, it corresponds to a collection of quasiparticles, while if it is simple it is associated with an irreducible quasiparticle. 
+The tube category $\tube(\mcc)$ for a string-net TQFT derived from the category $\mcc$ is defined as follows. 
+The objects of $\tube(\mcc)$ are isomorphism classes of string-net boundary conditions on spin annuli. 
+Because specifying the boundary conditions on a spin annulus involve specifying a choice of spin structure, 
+each object in $\tube(\mcc)$ carries a $\zt$ spin structure label according to whether it is associated with the bounding or 
+non-bounding spin structure. 
+This means are two types of objects in the tube category: objects with bounding spin structure
+and ``vortices'', which are objects with non-bounding spin structure.
+As with the original category $\mcc$, $\tube(\mcc)$ can contain both m-type and q-type objects, with q-type 
+objects distinguished by their non-trivial endomorphism algebras as before. 
+Later we will be able to show that a given object $a$ in $\tube(\mcc)$ will admit a non-trivial odd 
+endomorphism only if it is associated with a non-bounding spin structure, and so every simple object 
+labeled by a bounding spin structure must be m-type. 
+The converse is not true, however---in what follows we will see examples of theories with m-type vortices. 
 
-The distinct excitations (objects of the tube category) are given by vector spaces which are preserved 
-under the action of the morphisms in $\tube(\mcc)$\footnote{That vector spaces on circular punctures 
-reproduce $\mcz(\mcc)$ makes sense from a formal perspective, as the category $\mcz(\mcc)$ is what a 
-(fully-extended) TQFT assigns to an $S^1$.}. 
-If we view $\tube(\mcc)$ as an algebra, then the irreducible excitations correspond precisely to the 
-simple modules of $\tube(\mcc)$.
-Since every simple module $M_a$ of an algebra algebra can be dually represented by a primitive idempotent 
-$\Pi_a : \tube(\mcc) \ra M_a$ that projects onto the vector space $M_a$, we can equivalently classify 
-excitations by the primitive idempotents of $\tube(\mcc)$\footnote{Since the excitations are invariant 
-under morphisms of $\tube(\mcc)$, we require the action of $\Pi_a$ to commute with the action of 
-morphisms $\tube(\mcc)$ and so the $\Pi_a$ must be central.}. 
-Therefore, classifying the quasiparticles that a given theory supports can be done by enumerating a 
-set of minimal central idempotents of the tube algebra. 
-To employ this formalism for fermionic theories, the punctured manifold on which our excitations are defined, 
-as well as the objects and morphisms of the tube category, must come equipped with spin structures. 
-We will discuss this in much more detail in what follows. 
-
-A potentially helpful physical picture is to think of the tube category as performing ``scale transformations'' 
-\kw{Is this an analogy with the scale transformations of CFT?}
-on topological quasiparticles, which are localized around circular punctures on the ambient manifold \cite{lan2014}. 
-These ``scale transformations'' consist of gluing in annuli with different string-net configurations to the 
-punctures associated with each quasiparticle. 
-Since the quasiparticle excitations are topological they must be invariant under these scale transformations, 
-and thus finding the quasiparticle excitations in the theory is equivalent to finding the simple 
-modules of the tube category. 
-
-Now we will make these ideas a bit more concrete. 
-Morphisms in the tube category are represented by $\cc$-linear combinations of tubes decorated 
-with different string-nets. 
+A spin annulus decorated with string-nets is naturally viewed as a map between its outer and inner boundary conditions,  
+and so spin annuli decorated with different string-net configurations constitute the morphisms of
+the tube category. 
 We can use local relations on the tubes to reduce any string-net configuration to a $\cc$-linear combination of string-net configurations 
-of the form of a string-net with one marked point at each of the tube's boundary $S^1$s
+that take the form of a string-net with one marked point at each of the tube's boundary components
 and one string wrapping around the tube's diameter. 
 This allows us to present the morphisms in $\tube(\mcc)$ concisely as  
 \begin{align}
 {\rm mor}(\tube({\cal C}))\; =\; \mathbb{C} \left[\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{} \right] 
 % \Annulus{\AnnularTube}{X} \right] \\%\AnnulusP{\AnnularTube}{B}{} \right] 
 \end{align}
-where $a,b,c,d$ are simple objects in $\cal{C}$. The multiplicity indices $\mu$, and $\nu$ are 
+where $a,b,c,d$ are simple objects in $\cal{C}$ and $X$ denotes the spin structure of the annulus. 
+The multiplicity indices $\mu$, and $\nu$ are 
 collective indices that denote the vector in the fusion space $V^{db}_a$ and $V^{c \bar{d}}_b$, 
-as well as the ordering in the tensor product $V^{d b}_a \tp V^{c d^*}_b$ which forms the Hilbert s
-pace of the tube (keeping track of this ordering is important because of the Koszul signs incurred 
+as well as the ordering in the tensor product $V^{d b}_a \tp V^{c d^*}_b$ which forms the Hilbert 
+space of the tube (keeping track of this ordering is important because of the Koszul signs incurred 
 when interchanging two odd vectors in a tensor product). 
-$X$ denotes the spin structure of the annulus, and is either $B$ for bounding, or $N$ for non-bounding. 
-Note that a non-zero morphism $a\ra b$ is only possible if $a$ and $b$ have the same spin 
-structure (i.e, the tubes in $\tube(\mcc)$ have a well-defined spin structure). 
-This means that any tube category admits the decomposition 
+
+Note that with this definition, a morphism in $\mor(\tube(\mcc))$ is only non-zero if its source and 
+target carry the same spin structure label. 
+Accordingly, any tube category admits the decomposition 
 \be \label{tube_spin_decomp} \tube(\mcc) \cong \tube^B(\mcc) \oplus \tube^N(\mcc)\ee
 into bounding- and non-bounding components. 
 Occasionally it can be helpful to think of both $\tube^B(\mcc)$ and $\tube^N(\mcc)$ as separate categories, 
 although we will adopt the view where there is only one tube category $\tube(\mcc)$ in what follows. 
-
-Thus there are two types of objects in the tube category: anyons (objects with bounding spin structure) 
-and ``vortices'' (objects with non-bounding spin structure).
-As for the original category $\mcc$, $\tube(\mcc)$ can contain both m-type and q-type objects, with q-type 
-objects distinguished by their non-trivial endomorphism algebras as before. 
-A given object $a$ in $\tube(\mcc)$ will admit a non-trivial odd endomorphism only if the tubes that constitute 
-$a$ have non-bounding spin structure, and so every anyon in $\tube(\mcc)$ (that is, every object in $\tube(\mcc)$ 
-with bounding spin structure) must be m-type. 
-The converse is not true, however---in what follows we will see examples of theories with m-type vortices. 
-
-It is somewhat cumbersome to continually label all indices in the tube, so we shift to a compact notation 
-introduced in [REF]\dave{I've seen Oceanu papers (around 1990,91, though not actually written by him) 
-with this notation, is that the first place it showed up?},
-\begin{align}
- \AnnularTubex{\AnnularTubeNoIndex}{a}{c}{\psi}{X}{}\; = \;\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{}%\Annulus{\AnnularTube}{X} 
- \quad \quad \quad \psi \in  V^{xy}_{a,1} \tp V^{cx^*}_{y,2},
-\end{align}
-%where the $\tp_{\text{End}(x)}$ is allowing fermions to slide around the annulus. \ethan{we haven't introduced this yet---and I don't think we really need to mod out by local relns explicitly in any of these calculations (we didn't for Ising or $SO(3)_6$ stuff}
-%When tensoring over endomorphisms one has to be mindful of the spin structure.
-where the $1,2$ subscripts in the fusion spaces denote the order in which they appear in the tensor product. 
-We also need to keep in mind that these pictures are drawn modulo local relations 
-involving sliding fermions along q-type worldlines. 
-%Explicitly we choose 
-%\begin{align}
-% t_{abcd;\mu \nu }\equiv \SphereTube
-%\end{align}
-\dave{Could do more graphical indices. $ \tubex{\psi}{a}{b}{c}{d}{\mu}{\nu}{X}$}
+$X$ denotes the spin structure of the annulus, and is either $B$ for bounding, or $N$ for non-bounding. 
 
 Composition of morphisms in $\tube(\mcc)$ is defined by stacking tubes together.
 The stacking operation plays the role of multiplication 
@@ -6454,6 +6422,81 @@ Graphically, tubes are stacked as
 The $\delta$ functions ensure that if the string labels of the two tubes don't agree on the 
 boundary on which they are being glued (i.e. if $b\neq c$), or if the spin structures of the 
 two tubes disagree, the two tubes compose (or multiply) to zero. 
+
+In addition to composing morphisms, we can define a tensor product $\tp$ on $\tube(\mcc)$ 
+(from a physical perspective, $\tp$ implements quasiparticle fusion). 
+The definition of $\tp$ is best phrased in terms of vector spaces on the pair of pants, and we defer a 
+discussion of this construction until Sec \ref{fusion_rules}. 
+
+To actually determine the objects in $\tube(\mcc)$, 
+it is helpful to think about the simple objects in $\tube(\mcc)$ in terms of vector spaces which are preserved 
+under the action of the morphisms in $\tube(\mcc)$\footnote{That vector spaces on circular punctures 
+reproduce $\mcz(\mcc)$ makes sense from a formal perspective, as the category $\mcz(\mcc)$ is what a 
+(fully-extended) TQFT assigns to an $S^1$.}. 
+If we view $\tube(\mcc)$ as an algebra, then these invariant vector spaces correspond precisely to the 
+simple modules of $\tube(\mcc)$.
+Since every simple module $M_a$ of an algebra algebra can be dually represented by a primitive idempotent 
+$\Pi_a : \tube(\mcc) \ra M_a$ that projects onto the vector space $M_a$, we can classify 
+simple objects in $\tube(\mcc)$ by the primitive idempotents of $\tube(\mcc)$.
+
+%\ethan{I don't think we ended up using this alternate notation anywhere, so I commented it out for now}
+%It is somewhat cumbersome to continually label all indices in the tube, so we shift to a compact notation 
+%introduced in [REF]\dave{I've seen Oceanu papers (around 1990,91, though not actually written by him) 
+%with this notation, is that the first place it showed up?},
+%\begin{align}
+% \AnnularTubex{\AnnularTubeNoIndex}{a}{c}{\psi}{X}{}\; = \;\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{}%\Annulus{\AnnularTube}{X} 
+ %\quad \quad \quad \psi \in  V^{xy}_{a,1} \tp V^{cx^*}_{y,2},
+%\end{align}
+%where the $\tp_{\text{End}(x)}$ is allowing fermions to slide around the annulus. \ethan{we haven't introduced this yet---and I don't think we really need to mod out by local relns explicitly in any of these calculations (we didn't for Ising or $SO(3)_6$ stuff}
+%When tensoring over endomorphisms one has to be mindful of the spin structure.
+%where the $1,2$ subscripts in the fusion spaces denote the order in which they appear in the tensor product. 
+%We also need to keep in mind that these pictures are drawn modulo local relations 
+%involving sliding fermions along q-type worldlines. 
+%Explicitly we choose 
+%\begin{align}
+% t_{abcd;\mu \nu }\equiv \SphereTube
+%\end{align}
+%\dave{Could do more graphical indices. $ \tubex{\psi}{a}{b}{c}{d}{\mu}{\nu}{X}$}
+
+%\footnote{Since the quasiparticles are invariant 
+%under morphisms of $\tube(\mcc)$, we require the action of $\Pi_a$ to commute with the action of 
+%morphisms $\tube(\mcc)$ and so the $\Pi_a$ must be central.}. 
+
+Before moving on, we remark on the physical interpretation of the tube category. 
+The setting for examining a collection of $n$ excitations in a given topological phase is a 
+manifold decorated with string-nets that possesses $n$ circular punctures (boundary components), with an excitation localized at the location of each puncture.
+The type of excitation at a given puncture determines the boundary conditions of the string-net TQFT at that puncture, 
+and the simple objects in $\tube(\mcc)$ are identified with the distinct types of quasiparticle excitations that the theory supports. 
+Thus, enumerating the objects of $\tube(\mcc)$ amounts to constructing the quasiparticle excitation spectrum of the theory in question. 
+
+A potentially helpful physical picture is to think of the morphisms in the tube category as performing ``scale transformations'' 
+on quasiparticles, which are localized around circular punctures on the ambient manifold \cite{lan2014}. 
+These ``scale transformations'' consist of gluing in annuli (formally, acting with morphisms in the tube category) with different string-net configurations to the 
+punctures associated with each quasiparticle. 
+Since the quasiparticle excitations under consideration are topological, they must be invariant under these scale transformations, 
+and thus enumerating the quasiparticle excitations in the theory is also equivalent to writing down the simple 
+modules of the tube category. 
+
+Of course, the notion of an excitation is strictly speaking not well-defined until we construct a Hamiltonian for the theory.
+We will do this in Sec \ref{Super_pivotal_Hamiltonian}), but until then we will continue to abuse the word ``excitation''
+to refer to an object of the tube category. 
+We emphasize that the tube category is a perfectly well-defined mathematical object within 
+the formal setting of string-net spin-TQFTs, and the discussion of the tube category 
+which follows can be understood without using terms like ``excitation'' and ``Hamiltonian''. 
+
+
+%Local operators on excited states correspond to operators which take cylindrical tubes (or annuli, 
+%hence the association with $\text{Ann}(\mcc)$) and fuse them into the punctures on the manifold, 
+%by gluing the bottom end of a tube into a puncture.
+%The tubes are decorated with different string-net configurations, and can be viewed as linear 
+%maps between circles with different boundary conditions. 
+
+%Since the quasiparticles in the phases we are studying are topological, our way of describing them should be invariant under ``zooming in'' or ``zooming out'' of the region around the puncture. That is, our way of describing a quasiparticle should be unchanged if we perform a scale transformation by adding in extra space around the puncture on which the quasiparticle is localized. These scale transformations are implemented by stacking tubes onto the location of each puncture. The condition that our quasiparticles be ``topological'' is equivalent to demanding that the quasiparticle at a given puncture remains invariant under such scale transformations. \ethan{make figure to show this}
+
+%The set of all tubes modulo local relations on the tubes forms an algebra called the {\it tube algebra}, where the multiplication of two tubes is given by stacking one tube on top of the other. The statement that a quasiparticle located at a puncture is invariant under scale transformations is equivalent to saying that the vector space corresponding to the quasiparticle remains invariant under the action of the tube algebra. Mathematically, such invariant vector spaces are the modules of the tube algebra. If a module is semisimple, it corresponds to a collection of quasiparticles, while if it is simple it is associated with an irreducible quasiparticle. 
+
+
+
 
 %%%next little bit is details on the multiplication rules that we never used
 \begin{comment}
@@ -6650,7 +6693,7 @@ If there are no q-type particles in $\tube$ then there are no terms in the secon
 and we reproduce the bosonic sum-of-squares formula (see e.g. \cite{Lan2014}). 
 
 As an example, we can consider the $C_2$ theory. 
-There are three q-type simple modules (all in the $\tube_N$ sector) and three m-types. 
+There are three q-type simple modules (all in the $\tube^N$ sector) and three m-types. 
 All of the simple modules are one-dimensional with the exception of $m_\sigma$, 
 which is the two-dimensional isomorphism class of $m_\sigma^+$ and $m_\sigma^-$. 
 Since there are 12 linearly independent tubes in $\tube(C_2)$ (see \eqref{atubes} and \eqref{ptubes}), 
@@ -6660,8 +6703,8 @@ the sum-of-squares formula reads
 %%%%% tried to condense-ify this
 \begin{comment}
 As an example of the power of \eqref{sumofsqs}, we will reproduce the quasiparticle content of the $C_2$ theory starting with equations \eqref{atubes} and \eqref{ptubes} enumerating the elements of the tube algebra, without having to actually compute the minimal idempotents. 
-Since $\tube \cong \tube_B \oplus \tube_N$, we can apply \eqref{sumofsqs} to each of $\tube_B$ and $\tube_N$. 
-Since $\dim \tube^B = \dim \tube^N = 6$ from the list of tubes in \eqref{atubes} and \eqref{ptubes}, and since all the minimal idempotents in $\tube_N(C_2)$ are q-type (although this doesn't hold in more general examples)
+Since $\tube \cong \tube^B \oplus \tube^N$, we can apply \eqref{sumofsqs} to each of $\tube^B$ and $\tube^N$. 
+Since $\dim \tube^B = \dim \tube^N = 6$ from the list of tubes in \eqref{atubes} and \eqref{ptubes}, and since all the minimal idempotents in $\tube^N(C_2)$ are q-type (although this doesn't hold in more general examples)
 for the $C_2$ theory we must have 
 \be 6 = \sum_{a \in \mcz^B(C_2)} (\dim M_a)^2,\qquad 6 = 2 \sum_{a\in \mcz^N(C_2)} (\dim M_a)^2,\ee
 where $\mcz^B(C_2)$ are all the quasiparticles associated with bounding spin structures and $\mcz^N(C_2)$ are those associated with the non-bounding spin structures. 
@@ -6678,7 +6721,7 @@ However, since $\tube^B$ is non-abelian the former possibility is ruled out, and
 In what follows, we will let $T_{XY}$ with $X,Y\in\{B,N\}$ denote the torus with spin structure $XY$
 (with spin structure $X$ along the meridional cycle and $Y$ along the longitudinal cycle),
 and $\mch(T_{XY})$ the Hilbert space of ground-state string-net configurations on $T_{XY}$.  
-As before, we will also let $\tube_B$ denote the bounding tube category and $\tube_N$ denote the non-bounding tube category. 
+As before, we will also let $\tube^B$ denote the bounding tube category and $\tube^N$ denote the non-bounding tube category. 
 
 We have the following theorem, valid for any super pivotal category, which allows us to determine 
 the ground states on a torus from the tube category:
@@ -6783,14 +6826,14 @@ If $e_i$ is q-type and $Y$ is $N$, then any even endomorphism is of the form $\e
 and we get a summand of $\cc^{0|1}$.
 
 A useful corollary of Theorem \ref{torus_basis_theorem} is that all the idempotents of 
-$\tube_B$ must be m-type.
+$\tube^B$ must be m-type.
 Since $T_{BN}$ is spin diffeomorphic to $T_{NB}$, we can compute the Hilbert space for 
 these spin surfaces in two different ways, one using
-idempotents of $\tube_B$ and the other using idempotents of $\tube_N$.
+idempotents of $\tube^B$ and the other using idempotents of $\tube^N$.
 By the first part of the theorem, the Hilbert space of $T_{NB}$ is purely even.
 By the second part of theorem, the dimension of the odd part of the Hilbert space of $T_{BN}$
-is given by the number of q-type idempotents of $\tube_B$.
-Since the two Hilbert spaces are isomorphic, there can be no q-type idempotents in $\tube_B$.
+is given by the number of q-type idempotents of $\tube^B$.
+Since the two Hilbert spaces are isomorphic, there can be no q-type idempotents in $\tube^B$.
 
 
 
@@ -7322,7 +7365,7 @@ Let ${\mcc}$ be a unitary modular tensor category and let $\psi$ be a fermion in
 Let $\mcc/\psi$ be the super pivotal category resulting from the fermionic quotient.
 Let
 $
-\tube(\mcc/\psi) = \tube_B(\mcc/\psi) \cup \tube_N(\mcc/\psi)
+\tube(\mcc/\psi) = \tube^B(\mcc/\psi) \cup \tube^N(\mcc/\psi)
 $
 be the annular category of $\mcc/\psi$. 
 Then as tensor categories,
