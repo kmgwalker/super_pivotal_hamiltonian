@@ -441,9 +441,13 @@
 \newcommand{\Scalcbc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcbc.pdf}}}}}  
 \newcommand{\Scalcbb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcbb.pdf}}}}}
 \newcommand{\Scalcba}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcba.pdf}}}}}  
+
+
+\newcommand{\Scalcbedot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcbedot.pdf}}}}}  
+\newcommand{\Scalcbddot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcbddot.pdf}}}}}  
+\newcommand{\Scalcbadot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcbadot.pdf}}}}}    
   
 
-  
   
 %\newcommand{\SMatrix}[2]{\mathrel{\ooalign{$\OmegaSLoop$
 %\mathrel{\raisebox{#1}{$\oldsqsubset$}}
@@ -7638,12 +7642,12 @@ U_{X,Y}: \; E(X) \tp E(Y) \ra E(X \tp Y)
 
 %Dave: could also include modular transformations
 
-\subsubsection{Modular transformations}
+\subsection{Modular transformations}
 The explicit representation of the minimal idempotents allows us to easily read off the modular transformations for the condensed theory. 
 %This theorem allows us to easily compute, for example the modular transformations of $\tube(\mcc/\psi)$ without going through the brute force methods used in Section~\ref{C2_quasiparticles}.
 
 We again assume that $\mcc$ is a MTC. 
-We first do the $S$ transformation. 
+We first do the $S$ transformation, with a bounding spin structure, that is atleast one of the two cycles of the torus is bounding.
 Recall that the spin structure along the azimuthal direction is fixed by whether or not the label $b$ below is transparent with respect to $\psi$. 
 We have,
 \begin{align}
@@ -7662,7 +7666,8 @@ We first investigate the part of the diagram with the $a$ string and the $\tilde
 \;=\; \Scalcab 
 \;=\; \Scalcac
 \;=\; \Scalcad
-\;=\; \sum_x \frac{\kappa_x}{\mcd^2} \SMatrix{a}{x} \; \Scalcae
+\;=\; \sum_{x\in \sob(\mcc)} \frac{\kappa_x}{\mcd^2} \SMatrix{a}{x} \; \Scalcae
+\label{Scalc_above}
 \end{align}
 We can now do the same for the $b$ loop,
 \begin{align}
@@ -7670,7 +7675,7 @@ We can now do the same for the $b$ loop,
 \; = \; \Scalcbb
 \; = \; \Scalcbc
 \; = \; \Scalcbd
-\; = \; \sum_y \frac{\kappa_y}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe
+\; = \; \sum_{y \in \sob(\mcc/\psi)} \frac{\kappa_y}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe
 \end{align}
 where we have used that the $\omega$ loop is a projector onto the vacuum. 
 Putting both the calculations together, and removing spurious $\omega$ loops (which provides a necessary additional factor of $\mcd^{-2}$) we find that the $S$ matrix is given by,
@@ -7678,6 +7683,15 @@ Putting both the calculations together, and removing spurious $\omega$ loops (wh
 \DCSmatrixb_{W_yJ_b} =  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} S_{ax} \kappa_x S_{by}^* \kappa_y \; \DCSmatrixh_{J_b W_y}
 \end{align}
 \dave{Need to denote spin structures in a nice way.}
+
+The non-bounding spin structure can be done in an analogous way.
+The first half of the calculation remains the same as in \eqref{Scalc_above}.
+The second half of the calculation changes only if $b$ is q-type:
+\dave{Need to double check this, may have a mistake in the last step.}
+\begin{align}
+\frac{1}{\mcd^2} \;  \Scalcbadot \; = \; \Scalcbddot \; =\;  \frac{1}{\mcd} \sum_{y\in Q} \kappa_y [ S^{\psi} ]_{by}^*\Scalcbedot
+\end{align}
+
 
 \begin{comment}
 Next we use that the $\omega$ loop can slide strands around:
