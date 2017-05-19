@@ -7191,6 +7191,9 @@ and so there is no need to define $\Arf(Y)$ in this case.
 
 \kw{only sketch; refer to paper in prep for full details.}
 
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fermion condensation in modular tensor categories and quantum doubles (Drinfeld center?)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -7210,20 +7213,46 @@ In this section we investigate fermion condensation in modular tensor categories
 %\kw{But on second thought, the discussion in the torus subsection of Section 4 depends on some of the things we say
 %in the tube subsection, so now I lean toward leaving things organized as they are now.}
 %\dave{Sounds good.}
-If $\mcc$ is a MTC it is a well known theorem that $\tube(\mcc) \overset{\tp}{\cong}_\text{br} \mcc \times \bar{\mcc}$, 
-\kw{Unless we are using that notation elsewhere in the paper, I would just write
-``$\tube(\mcc) \cong \mcc \times \bar{\mcc}$ as braided tensor categories".}
-see for example theorem 7.10 of \cite{muger2003b} \dave{Will check this citation.}.
-In the following we prove an analogue of this theorem for the super pivotal categories resulting from fermion condensation.
-We only prove the tensor equivalence, and leave the braided equivalence for future work. 
+If $\mcc$ is a MTC it is a well known theorem that $\tube(\mcc) \cong \mcc \times \overline{\mcc}$ as braided tensor categories.
+%If $\mcc$ is a MTC it is a well known theorem that $\tube(\mcc) \overset{\tp}{\cong}_\text{br} \mcc \times \bar{\mcc}$, 
+%\kw{Unless we are using that notation elsewhere in the paper, I would just write
+%``$\tube(\mcc) \cong \mcc \times \bar{\mcc}$ as braided tensor categories".}
+%% I see now that you copied the notation from Muger, but I don't think it's widely used, so we can't assume the reader knows what it means
+(See for example Theorem 7.10 of \cite{muger2003b} \dave{Will check this citation.}\kw{citation looks OK to me; i
+there's an earlier one, hopefully someone will tell us}.)
+In the following we prove an analogue of this theorem for the super pivotal categories resulting from fermion condensation on MTCs.
+Specifically, if $\mcc$ is modular then
+\be
+	\tube(\mcc/\psi) \cong \mcc \times \overline{\mcc/\psi}
+\ee 
+as tensor categories.
+Neither side of this equivalence is braided, so an equivalence of tensor categories is the best we can hope for.\footnote{However, 
+both sides are vortex-braided in the sense of subsection \ref{xxxxx}, and the isomorphism we construct
+is compatible with the vortex-braided on both sides.
+But in this paper we will content ourselves with proving the only the tensor equivalence.
+\kw{Dave, is this claim about vortex-braiding true?
+If we are not sure it is true then we should delete this footnote.}
+}
+The analogous result when $\psi$ is a boson is a special case of Corollary 4.8 of 
+\kw{B\"ockenhauer-Eveans-Kawahigashi, Cor. 4.8, Publ RIMS, Kyoto Univ. 37 (2001) 1-35}
+(see also the 1998 announcement by Ocneaunu referred to therein).
+%We only prove the tensor equivalence, and leave the braided equivalence for future work. 
 %We prove an analogue of the theorem $\tube(\mcc) \overset{\tp}{\cong} \mcc \times \bar{\mcc}$ for $\mcc$ a modular tensor category \ref{muger2003b}.
-To begin with we remind the reader of this known result for the bosonic theories.
-We then turn our attention to the super pivotal categories and make the necessary modifications.
-\kw{I think probably the bosonic version of our theorem is in the literature.
-We should confirm this and cite as appropriate.}
-\dave{Yes to both.
-For now, I put \cite{muger2003b}, see Theorem 7.10.
-He doesn't cite anyone else, so perhaps it's the first published proof, will look into this.}
+
+To begin, we remind the reader of this known result for $\tube(\mcc)$.
+We then turn our attention to the super pivotal categories $\tube(\mcc/\psi)$ and make the necessary modifications.
+%\kw{I think probably the bosonic version of our theorem is in the literature.
+%We should confirm this and cite as appropriate.}
+%\dave{Yes to both.
+%For now, I put \cite{muger2003b}, see Theorem 7.10.
+%He doesn't cite anyone else, so perhaps it's the first published proof, will look into this.}
+%\kw{I think you misunderstood my comment; I meant $\tube(\mcc/\psi) \cong \mcc \times \overline{\mcc/\psi}$ might be a known result
+%when $\psi$ is a boson (and more generally for bosonic algebra objects).}
+%% KW: I added a ref above
+
+
+\subsection{$\omega$ loops}
+
 
 An essential tool will be the the $\omega$ loop \cite{Lins1994}.
 We take $\mcc$ to be a MTC and $\sob(\mcc)$ 
@@ -7232,30 +7261,40 @@ Maybe define a macro and use it consistently throughout the paper.}
 \dave{Lets just make it a command, that way we can change it more easily later.
 I chose $\sob(\mcc)$ = list of representatives of simple objects and 
 $\sobi(\mcc)$ = list of simple objects (i.e., representative + isomorphism class)}
+\kw{I don't understand the difference between $\sob$ and $\sobi$}
 be the set of simple objects. 
-The $\omega$ loop is defined by,
+The $\omega$ loop is defined by
 \begin{align}
-\omega  = \frac{1}{\mathcal{D}^2}\sum_{x\in \text{sob}(\mcc)} d_x \text{cl}(x)
+	\omega  = \frac{1}{\mathcal{D}^2}\sum_{x\in \text{sob}(\mcc)} d_x \cdot \text{cl}(x) ,
 \label{omega_loop}
 \end{align}
-%where the $\text{cl}(x)$ denotes the simple object $x$ closed up into a loop whose neighbourhood is diffeomorphic to a solid torus \dave{not super satisfied with this.}.
-%\kw{yes; vector spaces use $\oplus$, vectors use $+$}\dave{In hindsight, I should have known this.}
-where the $\text{cl}(x)$ denotes that the simple object has been closed up into a loop whose neighborhood is diffeomorphic to a solid torus.
-\kw{need to rephrase this; also comment on ring idempotents}
-Digrammatically we denote the $\omega$ loop embedded in a 3-manifold by
+where the $\text{cl}(x)$ denotes the closure of $x$ inside a solid torus.
+
+One way to think of the $\omega$ loop is as follows.
+In any premodular category,
+string nets in the solid torus (with empty boundary condition) form a semisimple commutative algebra
+(isomorphic to the fusion ring of the premodular category).
+Therefore this vector space has a basis given by the minimal idempotents of the algebra structure.
+For modular categories, the $S$ matrix gives a bijection between these idempotents and $\sob(\mcc)$.
+The $\omega$ loop is the minimal idempotent in the solid torus corresponding to the trivial object of $\mcc$.
+
+Diagrammatically we denote the $\omega$ loop embedded in a 3-manifold by
 \begin{align}
 \OmegaLoopx{\omega} = \frac{1}{\mcd^2}\sum_{x\in \text{sob}(\mcc)} d_x\; \LoopArrowx{x} ,
 \end{align}
-where the gray disc in the center represents a cycle that the $\omega$ loop wraps around. 
-If the gray region is empty, then the $\omega$ loop can be evaluated using the MTC and since $1 = \sum_x d_x^2/\mcd^2$, the $\omega$ loop can be removed with impunity.
+where the gray 
+\kw{looks black to me; maybe use a lighter grey?}
+disk in the center represents a cycle that the $\omega$ loop wraps around. 
+If the gray region is empty, then the $\omega$ loop can be evaluated using the MTC, 
+and since $1 = \sum_x d_x^2/\mcd^2$, the $\omega$ loop can be removed with impunity.
 We summarize all the properties which we will make use of in Table~\ref{omega_loop_properties}.
-For a modular theory, we can easily use part (a) of Table\ref{omega_loop_properties} to see that,
+For a modular theory, we can easily use part (a) of Table \ref{omega_loop_properties} to see that
 \begin{align}
 \OmegaLoopDefectx{\omega\;\;}{\omega\;\;} \quad \; =  \frac{1}{\mcd^2} \; \DiscGray.
 \label{Omega_in_SLoop}
 \end{align}
 This is true, independent of what is inside the gray disc.
-We will shortly see that this allows us to re-write elements in the tube algebra in a particularly nice basis.
+We will shortly see that this allows us to rewrite elements in the tube algebra in a particularly nice basis.
 \begin{table}
 \begin{center}{
 \begin{flalign*} & \begin{array}{c @{\quad \quad  \quad  } c @{\quad \quad \quad } c }
@@ -7267,9 +7306,9 @@ We will shortly see that this allows us to re-write elements in the tube algebra
 		\end{array} & \end{flalign*}
 		}\end{center}
 		\caption{
-		All unlabeled lines in the above are $\omega$ loops as defined in \eqref{omega_loop}.
+		All unlabeled lines in the above figures are $\omega$ loops as defined in \eqref{omega_loop}.
 For a modular theory, the $\omega$ loop projects onto the vacuum as shown in part (a).
-Part (b) shows that lines can be isotopied across any $\omega$ loop. 
+Part (b) shows that lines can be isotoped across any $\omega$ loop. 
 Part(c) shows the same isotopy as part (b) but with an $\omega$ loop, 
 rather than a single simple object $x$.  }
 		\label{omega_loop_properties}
