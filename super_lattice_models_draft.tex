@@ -344,6 +344,18 @@
 \newcommand{\TubeBasisb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeBasisb.pdf}}}}}
 \newcommand{\TubeBasisc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeBasisc.pdf}}}}}
 \newcommand{\TubeBasisd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeBasisd.pdf}}}}}
+\newcommand{\TubeBasisdprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeBasisdprime.pdf}}}}}
+
+
+
+\newcommand{\VxyaoVxya}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{VxyaoVxya.pdf}}}}}
+\newcommand{\idaprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{idaprime.pdf}}}}}
+
+\newcommand{\Vxyxy}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Vxyxy.pdf}}}}}
+\newcommand{\idxy}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{idxy.pdf}}}}}
+\newcommand{\Vxyxyomega}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Vxyxyomega.pdf}}}}}
+
+
 
 \newcommand{\SpinStructureProjector}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{SpinStructureProjector.pdf}}}}}
 
@@ -7164,7 +7176,8 @@ and so there is no need to define $\Arf(Y)$ in this case.
 \dave{Note to self: look at \cite{Koenig2010}, they also have the same idempotents.}
 
 \dave{Should give a table of the conventions we use for an MTC somewhere
-e.g., normalizations on vertices, F-symbols, R-symobls and $\bar{\mcc}$}
+e.g., normalizations on vertices, F-symbols, R-symobls and $\bar{\mcc}$.
+Maybe we don't need this.}
 
 In this section we investigate fermion condensation in modular tensor categories (MTC).
 %\ethan{I think we should either put this in sec 4 along side our more general discussion of the tube category, or move that discussion to this section.
@@ -7181,8 +7194,8 @@ If $\mcc$ is a MTC it is a well known theorem that $\tube(\mcc) \cong \mcc \time
 %\kw{Unless we are using that notation elsewhere in the paper, I would just write
 %``$\tube(\mcc) \cong \mcc \times \bar{\mcc}$ as braided tensor categories".}
 %% I see now that you copied the notation from Muger, but I don't think it's widely used, so we can't assume the reader knows what it means
-(See for example Theorem 7.10 of \cite{muger2003b} \dave{Will check this citation.}\kw{citation looks OK to me; i
-there's an earlier one, hopefully someone will tell us}.)
+(See for example Theorem 7.10 of \cite{muger2003b} 
+.)
 In the following we prove an analogue of this theorem for the super pivotal categories resulting from fermion condensation on MTCs.
 Specifically, if $\mcc$ is modular then
 \be
@@ -7195,8 +7208,10 @@ is compatible with the vortex-braided on both sides.
 But in this paper we will content ourselves with proving the only the tensor equivalence.
 \kw{Dave, is this claim about vortex-braiding true?
 If we are not sure it is true then we should delete this footnote.}
+\dave{I think there is a consistent braiding we can define on both sides.
+I will try to see if there is something concrete to say.}
 }
-The analogous result when $\psi$ is a boson is a special case of Corollary 4.8 of 
+The analogous result when $\psi$ is a boson is a special case of Corollary 4.8 of \cite{kawahigashi2001}
 \kw{B\"ockenhauer-Eveans-Kawahigashi, Cor. 4.8, Publ RIMS, Kyoto Univ. 37 (2001) 1-35}
 (see also the 1998 announcement by Ocneaunu referred to therein).
 %We only prove the tensor equivalence, and leave the braided equivalence for future work. 
@@ -7225,6 +7240,7 @@ Maybe define a macro and use it consistently throughout the paper.}
 I chose $\sob(\mcc)$ = list of representatives of simple objects and 
 $\sobi(\mcc)$ = list of simple objects (i.e., representative + isomorphism class)}
 \kw{I don't understand the difference between $\sob$ and $\sobi$}
+\dave{$\sob(\mcc)$ is a set of representatives of the isomorphism classes of simple objects (e.g., $\sob(\tube(C_2)) = m_\unit, m_\sigma^+, m_\psi,\cdots$), while $\sobi(\mcc)$ is a set of all simple objects (e.g., $\sobi(\tube(C_2)) = m_\unit, m_\sigma^+,m_\sigma^-, m_\psi,\cdots$)}
 be the set of simple objects. 
 The $\omega$ loop is defined by
 \begin{align}
@@ -7247,6 +7263,7 @@ Diagrammatically we denote the $\omega$ loop embedded in a 3-manifold by
 \end{align}
 where the gray 
 \kw{looks black to me; maybe use a lighter grey?}
+\dave{Better?}
 disk in the center represents a cycle that the $\omega$ loop wraps around. 
 If the gray region is empty, then the $\omega$ loop can be evaluated using the MTC, 
 and since $1 = \sum_x d_x^2/\mcd^2$, the $\omega$ loop can be removed with impunity.
@@ -7319,9 +7336,36 @@ above are invertible we have shown that
 \label{AnnCatMTC}
 \end{align}
 
+
 \kw{I think we should rewrite this paragraph more along the lines of your second ``alternative" argument, but with a couple of details filled in.
 I'll email some hand-written notes sketching what I have in mind.}
 This basis for the morphism space of $\tube(\mcc)$ is rather special, the ``diagonal" elements of it can be shown to be proportional to the minimal idempotents.
+We have shown that
+\begin{align}
+\text{mor}(\underset{a}{\TubeBCx{}} \rightarrow \underset{b}{\TubeBCx{}})\cong \bigoplus_{xy} V^{b}_{xy} \boxtimes V^{xy}_a.
+\label{morabMTC}
+\end{align}
+Letting $\mu_i$, $i= 1, \cdots,N_{xy}^a$, be a basis of $V^{xy}_a$ and similarly $\nu_i$ a basis for $V^{a}_{xy}$ normalizaed such that,
+\begin{align}
+\VxyaoVxya = \delta_{ij} \frac{d_x d_y}{d_a} \idaprime.
+\end{align}
+It follows that,
+\begin{align}
+\Vxyxy\;  =\;  \idxy\; + \; \cdots \quad \quad \text{so that} \quad \quad \Vxyxyomega \;=\; \idxy.
+\end{align}
+The normalization was picked so that there is no factor in front of $\text{id}_{x \tp y}$ on the right hand side of the second equality. 
+With these conventions we define a basis of morphisms by,
+\begin{align}
+f_a^b(x,y,j,i)\; = \; \TubeBasisdprime
+\end{align}
+where $\nu_j$ is a basis of $V_{xy}^b$ and $\mu_i$ a basis of $V^{xy}_a$, normalized so that $\nu_j \circ \mu_i =\frac{d_x d_y}{d_a} \delta_{ij} \delta_{ab} \text{id}_a$.
+Hence, it follows that,
+\begin{align}
+f_b^c(x,y,j,i) \cdot f_a^b(x',y',j',i') = \delta_{xx'}\delta_{yy'} \delta_{ij'} f_a^c(x,y,j,i')
+\end{align}
+
+\dave{Still editing.}
+
 Letting $\nu \in V^{b}_{xy}$ and $\mu \in V_a^{xy}$ such that $\nu \circ \mu = \frac{d_x d_y}{d_a} \text{id}_a$
 results in an idempotent.
 The choice of $\mu$ and $\nu$ is not unique.
