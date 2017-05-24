@@ -390,6 +390,8 @@
 \newcommand{\TubeIdempotentTwoStrand}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeIdempotentTwoStrand.pdf}}}}}
 \newcommand{\fTubeCf}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{fTubeCf.pdf}}}}}
 \newcommand{\fTubefOdd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{fTubefOdd.pdf}}}}}
+\newcommand{\minimalBosonic}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{minimalBosonic.pdf}}}}}
+
 
 
 \newcommand{\FusionIsomorphism}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FusionIsomorphism.pdf}}}}}
@@ -398,6 +400,9 @@
 \newcommand{\TubeCompletea}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeCompletea.pdf}}}}}
 \newcommand{\TubeCompleteb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeCompleteb.pdf}}}}}
 \newcommand{\TubeCompletec}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeCompletec.pdf}}}}}
+\newcommand{\TubeCompletecprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeCompletecprime.pdf}}}}}
+
+
 
 \newcommand{\Ufghk}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Ufghk.pdf}}}}}
 
@@ -7342,19 +7347,20 @@ above are invertible we have shown that
 
 \kw{I think we should rewrite this paragraph more along the lines of your second ``alternative" argument, but with a couple of details filled in.
 I'll email some hand-written notes sketching what I have in mind.}
-This basis for the morphism space of $\tube(\mcc)$ is rather special, the ``diagonal" elements of it can be shown to be proportional to the minimal idempotents.
+This basis for the morphism space of $\tube(\mcc)$ is rather special, the ``diagonal" elements are proportional to the minimal idempotents.
 We have shown that
 \begin{align}
 \text{mor}(\underset{a}{\TubeBCx{}} \rightarrow \underset{b}{\TubeBCx{}})\cong \bigoplus_{xy} V^{b}_{xy} \boxtimes V^{xy}_a.
 \label{morabMTC}
 \end{align}
+Where the $\boxtimes$ is the outer tensor product.
 Letting $\mu_i$, $i= 1, \cdots,N_{xy}^a$, be a basis of $V^{xy}_a$ and similarly $\nu_i$ a basis for $V^{a}_{xy}$ normalizaed such that,
 \begin{align}
 \VxyaoVxya = \delta_{ij} \frac{d_x d_y}{d_a} \idaprime.
 \end{align}
 It follows that,
 \begin{align}
-\Vxyxy\;  =\;  \idxy\; + \; \cdots, \quad \quad \text{ hence} \quad \quad \Vxyxyomega \;=\; \idxy.
+\Vxyxy\;  =\delta_{ij}\;  \idxy\; + \; \cdots, \quad \quad \text{ hence} \quad \quad \Vxyxyomega \;=\delta_{ij}\; \idxy.
 \end{align}
 The normalization was picked so that there is no factor in front of $\text{id}_{x \tp y}$ on the right hand side of the second equality. 
 With these conventions we define a basis of morphisms by,
@@ -7377,6 +7383,7 @@ labeled by simple objects in $\sob(\mcc) \times \sob(\mcc)$:
 \end{align}
 where the matrix algebra is given by $\text{Mat}(x,y)\cong \bigoplus_{a,b} V^{b}_{xy} \boxtimes V^{xy}_a$, and $\boxtimes$ is the outer tensor product\footnote{The multiplication in $\text{Mat}(x,y)$ is given by $(\lambda^a_{xy} \boxtimes \lambda_b^{xy} )\cdot( \rho^b_{xy} \boxtimes \rho^{xy}_c) = (\lambda^a_{xy}\boxtimes \rho^{xy}_c) \text{tr}\frac{\lambda^{xy}_b \circ \rho^b_{xy}}{d_x d_y}$, 
 where $\lambda_{xy}^a \in V_{xy}^a$ etc.}.
+%Each simple matrix algebra is a subcategory of $\tube(\mcc)$. 
 The $f_a^b(x,y,j,i)$ provide a basis for this simple matrix algebra \eqref{tube_matrix_algebra}.
 It follows from \eqref{matrix_units} that,
 \begin{align}
@@ -7431,16 +7438,25 @@ The idempotents are given by,
 e_{xy} = \TubeIdempotentTwoStrand
 \end{align}
 Using the $\omega$ loop properties defined in Table \ref{omega_loop_properties} 
-one can easily show these are both minimal and orthogonal.  
-\dave{Will add pictures soon.}
-We will show they are complete in a moment. 
+it's easy to see that $e_{xy} \cdot e_{x'y'} = \delta_{xx'} \delta_{yy'} e_{xy}$ and hence are orthogonal idempotents. 
+To show that the idempotents are minimal, we need to check that $e_{xy} \tube(\mcc) e_{xy}$ is one dimensional. 
+Using the spine lemma, a basis for $e_{xy} \tube(\mcc) e_{xy}$ is spanned by,
+\begin{align}
+\minimalBosonic.
+\end{align}
+First we note that $r \cong \unit$ due to the no tadpole theorem, and hence the line labeled by $p$ can be removed at the expense of multipliying by $d_p$. 
+The fact that $r \cong \unit$ means that $c \cong c'$. 
+Using property (c) and then (a) of Table \ref{omega_loop_properties} we can slide 
+one of the $\omega$ loops around $c$ and  conclude that $c \cong c' \cong \unit$. 
+Hence we find that $e_{xy} \tube(\mcc) e_{xy}$ is indeed one dimensional.
+Before showing that the idempotents are complete, we first show that they are equivalent to the set of idempotents $e(a,x,y,j)$.
 %\dave{The following are old equations that could be useful if we decide to show that the idempotents above are complete.}
 %Completeness follows from,
 %\begin{align}
 %\mcd^2 \TubeCompletea =  \TubeCompleteb = \sum_{xy\mu \tilde{\mu}}\; \TubeCompletec
 %\end{align}
 
-The idempotents $e_{xy}$ and $e(a,x,y,j)$ are equivalent. 
+The idempotents $e_{xy}$ and $e(a,x,y,j)$ are equivalent if there exist $g$ and $h$ such that $e_{xy} = h\cdot g$ and $e(a,x,y,j) = g \cdot h$.
 Indeed, letting,
 \begin{align}
 g(b,x,y,j) =\; \gxyaj \quad \quad \text{and} \quad \quad h(a,x,y,i) = \; \hxyai
@@ -7449,11 +7465,19 @@ we have,
 \begin{align}
 e_{xy} = h(a,x,y,j) \cdot g(a,x,y,j) \quad \quad \text{ and} \quad \quad e(a,x,y,j) =g(a,x,y,j) \cdot h(a,x,y,j)
 \end{align}
-%Although such a formula exists for $\mcc/\psi$, 
-%which will be discussed in the next subsection, 
+Completeness of the idempotents follows from,
+\begin{align}
+\mcd^2 \TubeCompletea =  \TubeCompleteb = \frac{1}{\mcd^2}\sum_{x,y,i} \sqrt{\frac{d_xd_y}{d_a}} \;  \TubeCompletecprime
+\end{align}
+where we have used the normalization $\nu_i \circ \mu_j = \delta_{ij} \sqrt{\frac{d_x d_y}{d_a}} \text{id}_a$.
+The above formula also assumed the theory to be unitary, if this weren't the case then a non-zero phase factor could enter in the coefficients of the summand.
+\dave{We could be more cryptic and leave out the last sentence and the normalization in the above}
 
+The idempotents above can be used to show that $\tube(\mcc) \cong \mcc \times \overline{\mcc}$.
+%\dave{I've never seen this theorem proved this way, so don't know who to cite.}.
+In the following subsection we state and prove the analogous theorem for $\tube(\mcc/\psi)$.
 
-
+\begin{comment}
 \dave{the following is old stuff.}
 There is another set of minimal idempotents which extends to the fermionic case more easily.
 %These are the minimal idempotents that live in the annular category with two marked points on each of the circles bounding the annulus.
@@ -7478,8 +7502,7 @@ e_{xy}  = \TubeIdempotentTwoStrand \in \tube(\mcc)
 \end{align}
 Notice that the isomorphism class is still labeled by pairs of simple objects, but there is no additional choice of for the fusion space required.
 Also notice that orthogonality of the idempotents is obvious given that $\omega \cdot \omega = \omega$.
-The idempotents above can be used to show that $\tube(\mcc) \cong \mcc \times \overline{\mcc}$ \dave{I've never seen this theorem proved this way, so don't know who to cite.}.
-In the following subsection we state and prove the analogous theorem for $\tube(\mcc/\psi)$.
+\end{comment}
 
 
 \subsection{Double of the fermionic quotient}
