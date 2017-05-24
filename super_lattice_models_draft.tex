@@ -347,6 +347,8 @@
 \newcommand{\TubeBasisdprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeBasisdprime.pdf}}}}}
 
 
+\newcommand{\gxyaj}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{gxyaj.pdf}}}}}
+\newcommand{\hxyai}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{hxyai.pdf}}}}}
 
 \newcommand{\VxyaoVxya}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{VxyaoVxya.pdf}}}}}
 \newcommand{\idaprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{idaprime.pdf}}}}}
@@ -7323,6 +7325,7 @@ With the help of \eqref{Omega_in_SLoop} we can change to a much more convenient 
 \nu =1,\cdots, N_{xy}^b}
 }C_{t; xy\mu\nu} \times 
 \TubeBasisd
+\label{idempotent_complete}
 \end{align}
 where we have written the annulus as a rectangle with the left and right (blank) edges identified. 
 The indices $\mu$ and $\nu$ run over a complete orthogonal basis of $V^{xy}_a$ and $V_{xy}^b$ respectively.
@@ -7351,7 +7354,7 @@ Letting $\mu_i$, $i= 1, \cdots,N_{xy}^a$, be a basis of $V^{xy}_a$ and similarly
 \end{align}
 It follows that,
 \begin{align}
-\Vxyxy\;  =\;  \idxy\; + \; \cdots \quad \quad \text{so that} \quad \quad \Vxyxyomega \;=\; \idxy.
+\Vxyxy\;  =\;  \idxy\; + \; \cdots, \quad \quad \text{ hence} \quad \quad \Vxyxyomega \;=\; \idxy.
 \end{align}
 The normalization was picked so that there is no factor in front of $\text{id}_{x \tp y}$ on the right hand side of the second equality. 
 With these conventions we define a basis of morphisms by,
@@ -7361,11 +7364,29 @@ f_a^b(x,y,j,i)\; = \; \TubeBasisdprime
 where $\nu_j$ is a basis of $V_{xy}^b$ and $\mu_i$ a basis of $V^{xy}_a$, normalized so that $\nu_j \circ \mu_i =\frac{d_x d_y}{d_a} \delta_{ij} \delta_{ab} \text{id}_a$.
 Hence, it follows that,
 \begin{align}
-f_b^c(x,y,j,i) \cdot f_a^b(x',y',j',i') = \delta_{xx'}\delta_{yy'} \delta_{ij'} f_a^c(x,y,j,i')
+f_b^c(x,y,j,i) \cdot f_a^b(x',y',j',i') = \delta_{xx'}\delta_{yy'} \delta_{ij'} f_a^c(x,y,j,i').
+\label{matrix_units}
 \end{align}
+Thus the $f_a^b(x,y,j,i)$ is a basis of matrix units for $\tube(\mcc)$. 
+Said another way,
+$\tube(\mcc)$ splits as a direct sum of simple matrix algebras 
+labeled by simple objects in $\sob(\mcc) \times \sob(\mcc)$:
+\begin{align}
+\tube(\mcc) \cong \bigoplus_{xy} \text{Mat}(x,y)
+\label{tube_matrix_algebra}
+\end{align}
+where the matrix algebra is given by $\text{Mat}(x,y)\cong \bigoplus_{a,b} V^{b}_{xy} \boxtimes V^{xy}_a$, and $\boxtimes$ is the outer tensor product\footnote{The multiplication in $\text{Mat}(x,y)$ is given by $(\lambda^a_{xy} \boxtimes \lambda_b^{xy} )\cdot( \rho^b_{xy} \boxtimes \rho^{xy}_c) = (\lambda^a_{xy}\boxtimes \rho^{xy}_c) \text{tr}\frac{\lambda^{xy}_b \circ \rho^b_{xy}}{d_x d_y}$, 
+where $\lambda_{xy}^a \in V_{xy}^a$ etc.}.
+The $f_a^b(x,y,j,i)$ provide a basis for this simple matrix algebra \eqref{tube_matrix_algebra}.
+It follows from \eqref{matrix_units} that,
+\begin{align}
+e(a,x,y,j) = f_a^a(x,y,j,j)
+\label{idempotent_one_strand}
+\end{align}
+is a minimal idempotent. 
+Two idempotents $e(a,x,y,i)$ and $e(b,x',y',j)$ are equivalent if $x=x'$, and $y=y'$ with the isomorphism given by $e(a,x,y,i) = f_b^a(x,y,i,j) \cdot f_a^b(x,y,j,i)$ and $e(b,x,y,j) = f_a^b(x,y,j,i) \cdot f_b^a(x,y,i,j)$.
 
-\dave{Still editing.}
-
+\begin{comment}
 Letting $\nu \in V^{b}_{xy}$ and $\mu \in V_a^{xy}$ such that $\nu \circ \mu = \frac{d_x d_y}{d_a} \text{id}_a$
 results in an idempotent.
 The choice of $\mu$ and $\nu$ is not unique.
@@ -7373,7 +7394,8 @@ To verify this one stacks the tubes on top of one another, and uses property (c)
 The isomorphism class is labeled by elements in $\sob(\mcc) \times \sob(\mcc)$.
 %For a particular isomorphism class $(x,y)$, the isomorphisms are given by the possible $(\mu,\nu) \in \bigoplus_{a,b \in \sob(\mcc)}V^{xy}_a\boxtimes V_{xy}^b)$, and the tube by \eqref{AnnCatMTC}.
 %\dave{A less transparent, but maybe more algebraic way to say this could be: }
-Alternatively, we have a direct way of seeing that $\tube(\mcc)$ splits as a direct sum of matrix algebras 
+Alternatively, we have a direct way of seeing that 
+$\tube(\mcc)$ splits as a direct sum of matrix algebras 
 labeled by simple objects in $\sob(\mcc) \times \sob(\mcc)$:
 \begin{align}
 \tube(\mcc) \cong \bigoplus_{xy} \text{Mat}(x,y)
@@ -7385,6 +7407,7 @@ Choosing $\nu \in V^a_{xy}$, $\mu \in V^{xy}_a$ such that $\text{tr}{\mu \circ \
 If we further require that $\text{id}_x \tp \text{id}_y = \sum_{a,j} \mu^{xy}_a(j) \circ \nu_{xy}^a(j)$ then we find a complete set of minimal idempotents.
 Minimality is shown by checking that $(\nu_{xy}^a(j) \boxtimes \mu^{xy}_a(j)) \cdot \text{Mat}(x,y) \cdot (\nu_{xy}^a(j) \boxtimes \mu^{xy}_a(j))$ is one dimensional.
 \dave{This was a sketch of something we could say, don't know if it's helpful, and I haven't refined it.}
+\end{comment}
 
 %the following is another way of saying completeness.
 \begin{comment}
@@ -7401,8 +7424,36 @@ Hence, allowing us to identify a resolution of the $a$ strand for either spin st
 \dave{Does this require more details?}
 \end{comment}
 
+It will be useful to have another complete set of minimal idempotents for $\tube(\mcc)$ at our disposal. 
+These are given by,
+\begin{align}
+e_{xy} = \TubeIdempotentTwoStrand
+\end{align}
+Using the $\omega$ loop properties defined in Table \ref{omega_loop_properties} 
+one can easily show these are both minimal and orthogonal.  
+\dave{Will add pictures soon.}
+We will show they are complete in a moment. 
+%\dave{The following are old equations that could be useful if we decide to show that the idempotents above are complete.}
+%Completeness follows from,
+%\begin{align}
+%\mcd^2 \TubeCompletea =  \TubeCompleteb = \sum_{xy\mu \tilde{\mu}}\; \TubeCompletec
+%\end{align}
+
+The idempotents $e_{xy}$ and $e(a,x,y,j)$ are equivalent. 
+Indeed, letting,
+\begin{align}
+g(b,x,y,j) =\; \gxyaj \quad \quad \text{and} \quad \quad h(a,x,y,i) = \; \hxyai
+\end{align}
+we have,
+\begin{align}
+e_{xy} = h(a,x,y,j) \cdot g(a,x,y,j) \quad \quad \text{ and} \quad \quad e(a,x,y,j) =g(a,x,y,j) \cdot h(a,x,y,j)
+\end{align}
 %Although such a formula exists for $\mcc/\psi$, 
 %which will be discussed in the next subsection, 
+
+
+
+\dave{the following is old stuff.}
 There is another set of minimal idempotents which extends to the fermionic case more easily.
 These are the minimal idempotents that live in the annular category with two marked points on each of the circles bounding the annulus.
 A basis for the morphism space of $\tube(\mcc)$ with two marked points can be found by taking the basis in \eqref{AnnCatMTC} and multiplying by the morphisms
