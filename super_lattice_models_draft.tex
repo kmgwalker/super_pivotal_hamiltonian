@@ -74,6 +74,7 @@
 \newcommand{\mcc}{\mathcal{C}}
 \newcommand{\mco}{\mathcal{O}}
 \newcommand{\mcm}{\mathcal{M}}
+\newcommand{\mcp}{\mathcal{P}}
 \newcommand{\mcv}{\mathcal{V}}
 \newcommand{\mcx}{\mathcal{X}}
 \newcommand{\ul}{\underline}
@@ -7599,10 +7600,7 @@ These details, as well as minimality and completeness of the idempotents, will h
 Once doing so, we arrive at the following theorem:
 
 \begin{theorem}
-Let ${\mcc}$ be a 
-%% KW: dont need unitary, right?
-%unitary 
-modular tensor category and let $\psi$ be a fermion in ${\mcc}$ as in \ref{gntf_condense}.
+Let ${\mcc}$ be a modular tensor category and let $\psi$ be a fermion in ${\mcc}$ as in \ref{gntf_condense}.
 Let $\mcc/\psi$ be the super pivotal category resulting from the fermionic quotient.
 Let
 $
@@ -7618,6 +7616,7 @@ Let $a \in \sob(\mcc/\psi)$ and $\tilde{a} \in \sob({\mcc})$ be a lift of $a$.
 If $\tilde a$ is transparent with respect to $\psi$, then $(x, a)$ is in the bounding sector of $\tube(\mcc/\psi)$
 (for any $x\in\sob(\mcc)$), while
 $(x, a)$ is in the non-bounding sector otherwise.
+\label{minimal_idempotents_modular_C/psi}
 \end{theorem}
 
 The above result can also be written in terms of the tube category of the parent theory $\tube(\mcc)$. 
@@ -7682,6 +7681,12 @@ Then
 \end{tikzcd}\]
 is injective.
 \kw{``injective" doesn't really make sense for functors; should rephrase in terms of morphism spaces.}
+\dave{Perhaps ``is a faithful functor on the image of $\hat{a}_J$." is the right way to say it. 
+It is not full since q-type idempotents have odd endomorphisms, 
+e.g., if we let $F$ be the functor defined above, 
+then for $q \in \tube(\mcc/\psi)$ we have $\text{mor}_{\tube{\mcc}}(q\ra q) \xrightarrow{F} \text{mor}_{\tube(\mcc/\psi)}(F(q) \ra F(q))$ is does not have the ``odd" morphism, and so cannot be surjective.
+It is faithful since objects of $\mcc$ are also objects of $\mcc/\psi$.
+And $\text{mor}_{\tube(\mcc)}(a \ra b) \in \text{image}(\hat{a}_J)$ are mapped onto $\text{mor}_{\tube(\mcc/\psi)}(a \ra b)$ injectively.}
 In particular, a non-zero element of $\tube(\mcc)$ in the image of $a_J$ is non-zero in $\tube_J(\mcc/\psi)$.
 %\dave{This may also be a tensor functor.
 %Will need to think about it.
@@ -7952,6 +7957,50 @@ Also the analogue of the $\omega$ loop projector,
 which satisfies $\omega_x \tp \omega_y = \delta_{xy} \omega_x$. 
 
 \end{comment}
+
+
+\subsection{Minimal idempotents of $\tube(\mcc)$, when $\mcc$ is a super modular tensor category}
+\dave{Work in progress.}
+
+\dave{I think it's easiest to assume a super-modular category and a minimal modular extension. 
+Then $S_C = \tilde{s} \tp s_{sVec}$ with $\text{det} \tilde{s} \neq 0$. 
+I think we could do something slightly more general but would require some work 
+(i.e., understanding some known results, and checking the following intuition).
+The idea is to use Lemma 3.3 of \cite{bruillard2017} (Arxiv version) and start with any pre-modular category $\mcb$.
+Its Muger center is the representation category of $(G,z)$ for some $G$, 
+and $z$ a central element of $G$ of order less than or equal to $2$.
+We then ``de-equivariantize" $\mcb$ to find $\mcb_G$, which is a G-graded modular or super-modular tensor category (is this equivalent to a modular extension of $\mcb$?).
+The intuition is that if $\mcb_G$ is modular, then $\tube(\mcb)\cong \cup_{g \in G} \mca_g\times \mca_{g^{-1}}$, where $\mca_g$ is the set of simple objects of $\mcb_G$ carrying label $g$ and the functor is given by the 1-stand idempotents.
+If $\mcb_G$ is super-modular, then let $G_0$ be an index $2$ subgroup and $G_1 = G / G_0$. 
+Then $\tube(\mcb) \cong (\cup_{g \in G_0} \mca_g \times \mca_{g^{-1}})  \cup (\cup_{g \in G_1} \mcv_g \times \mcv_{g^{-1}})$.
+}
+
+Here we extend the theorem~\ref{minimal_idempotents_modular_C/psi} to the case of super modular categories.
+We use definition 3.1 of~\cite{bruillard2017},
+A braided fusion category $\mcp$ is super modular if the Muger center $\mcz_2(\mcp) \cong \text{sVec}$.
+Equivalently, the set of transparent sub-objects has one non-trivial object which is a fermion as defined in \ref{gntf_condense}.
+Then we have the following theorem,
+\begin{theorem}
+Let ${\mcp}$ be a super modular tensor category and let $\psi$ be the fermion in ${\mcp}$ as in \ref{gntf_condense}.
+Let $\mcc$ be a minimal modular extension of $\mcp$.
+Let $\mcc/\psi$ be the super pivotal category resulting from the fermionic quotient of the extension.
+Let $\mca/\psi \subset \mcc/\psi$ be the set of simple objects that are transparent with respect to $\psi$, 
+and $\mcv/\psi  \subset \mcc/\psi$ the set which are not transparent with respect to $\psi$.
+Let
+$
+\tube(\mcp/\psi) = \tube^B(\mcp/\psi) \cup \tube^N(\mcp/\psi)
+$
+be the annular category of $\mcp/\psi$. 
+Then as tensor categories,
+\begin{align}
+\tube(\mcp/\psi) \cong (\mca/\psi \times \overline{\mca/\psi}) \cup( \mcv/\psi \times \overline{\mcv/\psi}).
+\end{align}
+In particular, $\sob(\tube(\mcc/\psi)) \cong \sob({\mca/\psi}) \times \sob(\overline{\mca/\psi}) \cup  \sob({\mcv/\psi}) \times \sob(\overline{\mcv/\psi}) $. 
+Let $a, \tilde{a} \in \sob(\mca/\psi)$, then $(a,\tilde{a})$ is in the bounding sector and if $a, \tilde{a} \in \mcv/\psi$ then $(a, \tilde{a})$ is in the non-bounding sector.
+\label{minimal_idempotents_super_modular/psi}
+\end{theorem}
+
+
 
 \section{Fermion condensation in $SO(3)_6$} \label{so36}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
