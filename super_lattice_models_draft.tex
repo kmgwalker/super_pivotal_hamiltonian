@@ -7421,6 +7421,7 @@ Letting $\mu_i$, $i= 1, \cdots,N_{xy}^a$ be a basis of $V^{xy}_a$ and similarly 
 It then follows that
 \begin{align}
 \Vxyxy\;  =\delta_{ij}\;  \idxy\; + \; \cdots, \quad \quad \text{ hence} \quad \quad \Vxyxyomega \;=\delta_{ij}\; \idxy.
+\label{vertex_normalization}
 \end{align}
 \kw{I lean toward replacing ``$\cdots$" with a more explicit expression, to make it clear
 that the relevant ribbon labels are all nontrivial.}
@@ -7981,8 +7982,8 @@ A braided fusion category $\mcp$ is super modular if the Muger center $\mcz_2(\m
 Equivalently, the set of transparent sub-objects has one non-trivial object which is a fermion as defined in \ref{gntf_condense}.
 Then we have the following theorem,
 \begin{theorem}
-Let ${\mcp}$ be a super modular tensor category and let $\psi$ be the fermion in ${\mcp}$ as in \ref{gntf_condense}.
-Let $\mcc$ be a minimal modular extension of $\mcp$.
+Let ${\mcp}$ be a super modular tensor category and let $\psi$ be a fermion in ${\mcp}$ as in \ref{gntf_condense}.
+Let $\mcc$ be a minimal modular extension of $\mcp$\dave{refer to somewhere.}.
 Let $\mcc/\psi$ be the super pivotal category resulting from the fermionic quotient of the extension.
 Let $\mca/\psi \subset \mcc/\psi$ be the set of simple objects that are transparent with respect to $\psi$, 
 and $\mcv/\psi  \subset \mcc/\psi$ the set which are not transparent with respect to $\psi$.
@@ -8000,6 +8001,58 @@ Let $a, \tilde{a} \in \sob(\mca/\psi)$, then $(a,\tilde{a})$ is in the bounding 
 \label{minimal_idempotents_super_modular/psi}
 \end{theorem}
 
+Let $\mcc$ be a minimal modular extension of $\mcp$ as defined in \dave{Find appropriate references.}.
+The objects of $\mcc$ are $\zt$ graded by how they braid with $\psi$. 
+Denote $\mca = \mcp$ the objects of $\mcc$ which braid trivially with $\psi$, 
+and $\mcv$ the objects of $\mcc$ that braid non-trivially with $\psi$.
+Define the the $\omega$-loop of $\mca$ to be $\omega = \frac{1}{\mcd^2} \sum_{x \in \mca} d_x \text{cl}(x)$, with $\mcd^2 = \sum_{a \in \mca} d_a^2$. 
+
+\dave{Stopping here for now.  
+Need to re-evaluate how to write down these idempotents when $x,y \in \mcv$ are q-type. 
+In this scenario, the $f_a^a(x,y,j,i)$ are not necessarily idempotent.
+There is extra data coming from how a $\psi$ line is pulled past the fusion vertices $\mu_i$ and $\mu_j$. }
+
+Consider the following set of morphisms for $\tube(\mcp/\psi)$,
+\begin{align}
+{f}_a^b(x,y,j,i) = \TubeBasisdprime_{J}, \quad \quad \text{with} \quad \quad \nu_x = \nu_y = J.
+\end{align}
+With $x,y \in \mca/\psi$ or $x,y \in \mcv/\psi$
+and we used $\nu = 0(1)$ to denote $J= \text{bounding(non-bounding)}$ spin structures, 
+and $\nu_j$, $\mu_i$ are normalized so that $\nu_j \circ \mu_i = \delta_{ij}\lambda^{F_{xy}^b F_a^{xy}} \frac{d_x d_y}{d_a} \text{id}_a$.
+Where $F_{xy}^b$ and $F_a^{xy}$ are $0$, or $1$ denote the parity of the fusion vertices $\nu_j$ and $\mu_i$.
+By fusing all strands into the annulus, we notice that ${f}_a^b(x,y,j,i)$ is not just a morphism of $\mcc/\psi$ but one of $\tube(\mcp/\psi)$ as well.
+
+\begin{itemize}
+\item If $x,y \in \mca$, then we have a complete set of matrix units for $\tube_B(\mcp/\psi)$. 
+Proof is same as before. 
+\item if $x,y \in \mcv$, and atleast one of them is not q-type, then we have a complete set of matrix units, proof is the same as before. 
+Some of them are oddly isomorphic. 
+\item if $x,y \in \mcv$ are both q-type, then the minimal idempotents we used before are no longer minimal, or orthogonal. 
+Will work this out soon.
+\end{itemize}
+
+The $q$-type simple objects which may appear in $\mcc/\psi$ lead to linear relations on the $f_a^b(x,y,j,i)$ viewed as morphisms of $\tube(\mcp/\psi)$. 
+In order to not over count these idempotents, we need to quotient by these linear relations.
+If either $x$ or $y$ is a q-type simple object, then $\lambda f_a^b(x,y,j,i) = f_a^b(x,y,\tilde{j},\tilde{i})$,
+where $\tilde{j}$ is found from $\nu_j$ by acting with an odd endomorphism from below, 
+and $\tilde{i}$ is found from $\mu_i$ by acting with an odd endomorphism from above.
+\dave{Will add pictures if we go this route.}
+
+
+\dave{do this after proof.}
+It was shown in \cite{bruillard2017}\dave{need to check this} that if there is one modular extension of $\mcp$, then there are 16 of them. 
+Roughly speaking, the 16 different extensions are given by stacking with the Ising TQFT, 
+and condensing the fermion coming from Ising paired with the fermion already present in the extension. 
+%\dave{Note to self: the 16 here, 
+%the $\mathbb{Z}_2 \times \mathbb{Z}_2$ of Pin$_+$ the $\mathbb{Z}_4$ of Pin$_{-}$ and the $4$ super-pivotal fusion cats of Ising$/\psi$. }
+A non-trivial check of the proof, is that the minimal idempotents are independant of the particular extension....
+
+
+need to show:
+\begin{itemize}
+\item we have a minimal orthogonal and complete set of idempotents of $\tube(\mcp/\psi)$.
+\item we have a tensor functor from $\mca/\psi \times \mca/\psi \cup \mcv / \psi \times \mcv /\psi \ra \tube(\mcc/\psi)$
+\end{itemize}
 
 
 \section{Fermion condensation in $SO(3)_6$} \label{so36}
