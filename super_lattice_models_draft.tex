@@ -8009,7 +8009,7 @@ Define the the $\omega$-loop of $\mca$ to be $\omega = \frac{1}{\mcd^2} \sum_{x 
 
 \dave{Stopping here for now.  
 Need to re-evaluate how to write down these idempotents when $x,y \in \mcv$ are q-type. 
-In this scenario, the $f_a^a(x,y,j,i)$ are not necessarily idempotent.
+In this scenario, the $f_a^a(x,y,j,j)$ are not necessarily idempotent.
 There is extra data coming from how a $\psi$ line is pulled past the fusion vertices $\mu_i$ and $\mu_j$. }
 
 Consider the following set of morphisms for $\tube(\mcp/\psi)$,
@@ -11641,15 +11641,16 @@ This spin structure affects the details of the local projections which constitut
 Additionally, we will need to allow the local degrees of freedom that constitute the 
 Hilbert space for our lattice model to be super vector spaces, rather than the regular vector spaces in bosonic models. 
 %This will require us to take special care when forming tensor products of Hilbert spaces on different lattice sites. 
-Finally, we will need to add a new term in the Hamiltonian with support on the edges and pairs of neighboring vertices in the lattice that allows fermions to fluctuate across edges in the lattice that host q-type strings.% \ref{EdgeHamiltonianTerms}.
+Finally, we will need to add a new term in the Hamiltonian with support on the edges and pairs of neighboring vertices in the lattice that allows fermions to fluctuate across edges 
+%in the lattice 
+that host q-type strings.% \ref{EdgeHamiltonianTerms}.
 %Apart from these differences, the Hamiltonian is the same as in the bosonic case.
 %: it implements local relations of the fusion category, and so the ground space will be an isotopy weighted super position of all allowed string nets.
 
 To begin the construction of the lattice model, we will thus need the following data:
 \begin{enumerate}
 \item a super pivotal fusion category ${\cal C}$,
-\item an oriented surface $\Sigma$ with a spin structure $\sigma$,
-\kw{should consider dropping $\sigma$ and just saying spin surface \dave{Sounds good to me.}}
+\item an oriented spin surface $\Sigma$ %with a spin structure $\sigma$,
 \item and a graph $\mcg$ embedded in $\Sigma$ (more precisely, a cell decomposition of $\Sigma$) which inherits information about the spin structure.
 %\kw{one doesn't usual say that a cell decomposition (or lattice) has a spin structure}
 %\ethan{how about ``inherits information about the spin structure''? And as a general comment, feel free to precise-ify language whenever and wherever you see fit}
@@ -12081,8 +12082,10 @@ The edge term is then \kw{something like}
 
 To derive the Hamiltonian \eqref{ham} and explain the nature of the $B_p$, $D_e$, and $A_v$ operators, we will first need to describe how the graph inherits spin structure data from the ambient spin manifold on which it is defined. 
 
-Recall that we have a graph $\mcg$ embedded in an orientable surface $\Sigma$ which comes equipped with a spin structure $\sigma$.
-\kw{Might want to just say that $\Sigma$ is a spin surface and drop mention of $\sigma$; possible to-do for later.}
+Recall that we have a graph $\mcg$ embedded in an orientable spin surface $\Sigma$.
+% which comes equipped with a spin structure $\sigma$.
+%\kw{Might want to just say that $\Sigma$ is a spin surface and drop mention of $\sigma$; possible to-do for later.}
+%\dave{Been changing to spin surface as I go through.}
 %an equivalence class of spin structures on this surface by $\sigma$. 
 %$\sigma$ provides us a way of associating boundary conditions (periodic or anti-periodic) to homotopy classes of framed closed paths  
 %in $\Sigma$ (which are the same as ordinary closed paths in the frame bundle of $\Sigma$).
@@ -12719,8 +12722,10 @@ But its ground state would be isomorphic to the above edge-like vertex term.
 
 Note that vectors in the ground state of the vertex term can be interpreted as string nets.
 If $K$ is the ground state of the vertex term, we have maps
+\dave{Should we use $\mch$ rather than H?}
 \be
 	K \to H(\Sigma \setminus \mbox{2-cells}) \to H(\Sigma) .
+	\label{ground_state_projection}
 \ee
 where $H(\Sigma \setminus \mbox{2-cells})$ and $H(\Sigma)$ are the ground-state Hilbert spaces of $\Sigma \setminus \mbox{2-cells}$ and $\Sigma$, respecitvely.
 The job of the edge term (below) will be to pick out a subspace of $K$ on which the first map is an isomorphism. 
@@ -13226,14 +13231,87 @@ Another way to deconfine the vortex quasiparticles and allow them to move freely
  %%%%%%%%%%%%%%%%%%%%%%%
 \section{Tensor networks and wave function}
 %%%%%%%%%%%%%%%%%%%%%%%
-\kw{Maybe this should be a separate section (rather than subsection).}
-\dave{Yes.}
+\dave{All in progress. Here is a current sketch of outline.}
+In this section we write down the ground state wave functions for the Hamiltonian discussed in section XXX. 
+The simplest approach is to define the ground state wavefunction via the projectors appearing in the Hamiltonian.
 
-- Usual story for string nets
+An arguably simpler approach, is to first use the bosonic parent theory to build a tensor network. 
+Then modify the contraction of the virtual bonds in order to ``condense" the fermions. 
+This works especially well for theories that come from fermion condensation.
 
-- Also show how to do it when taking the center commutes with condensing fermions. 
+We show that the tensor network naturally satisfy a matrix product operator (MPO) symmetry.
+The MPO's satisfy all the relations of the input fusion category.
+
+Lastly, we write down a generic tensor network satisfying the MPO symmetries using the Reshitikhan-Kirillov-Turaev shadow world.\dave{Maybe we do, maybe we don't}
+
+\subsection{Tensor network}
+Here we write out the tensor network for the ground state wave function of the Hamiltonian \eqref{ham}.
+If the spin surface $\Sigma$ has non-trivial topology,
+then in general the ground state space will be degenerate.
+Our goal is to write down the simplest possible tensor network which captures the entire ground space. 
+
+A satisfactory tensor network will be written in terms of local tensors. 
+These tensors consist of physical degrees of freedom and virtual degrees of freedom which we contract over.
+Roughly
+\begin{align}
+\ket{\Psi} =\sum_{v_i} \text{eval} \bigotimes \left[ T^{v(i)} \right]_{x_1 \cdots x_n} 
+\end{align}
+where eval denotes a contraction of the tensors living inside the tensor product.
+The $v(i)$ are basis vectors of $\mch_v$. 
+
+We build the full wave function in two steps. 
+First we choose a topological basis of the spin surface 
+and write down a net configuration on this fixed topological basis. 
+We then embed this topological basis into the Hilbert space for the string net. 
+This consists of a list of 0- and 1-handles whose whose compliment is a disjoint union of discs in $\Sigma$, as well as a choice of vectors at each vertex which satisfy the vertex term.
+\dave{draw picture of topological basis and embedding into handle decomposition.}
+Next we write down the ground state wave function of the edge term in the topological basis. 
+
+We then ``fill in" the discs and glue them across the 0- and 1-handles harbouring the topological basis. 
+The 0- and 1-handles used in the topological basis can also be viewed as MPO's inserted on the virtual degrees of freedom see section xxxx. 
+
+\subsubsection{Wavefunction on nets modulo 1-handles}
+We define a topological basis of $\Sigma$ as a collection of 
+0- and 1-handles whose compliment is a disjoint union of discs.
+Let the collection of 0-handles be denoted by $V' \subset V$, and the set of 1-handles connecting them $E'\subset E$.
+We now pick a basis vector of the net configuration for the topological basis.
+This is a state which belongs to $K$ of \eqref{ground_state_projection}. 
+We would like to use this state to find one of $\mch(\Sigma \setminus \mbox{2-cells})$, i.e., a net configuration that is invariant under the edge projector.
+
+We assume that each vertex is in the standard pitch-fork configuration.
+We have also assumed that a standard basis for each trivalent vertex has been picked.
+To find the wave function, we simply apply the edge term. 
+Far from any trivalent vertex the tensors take on the form 
+
+Note that the parity of this wave function could be even or odd depending on the fusion category $\mcc$,
+and the spin structure. 
+\dave{refer to examples}
+We require this wave function to be in the ground space of the vertex term.
 
 
+
+\subsubsection{Wavefunction on nets modulo 2-handles}
+We first fill in the discs, this is most easily accomplished by using the shadow world
+
+\begin{align}
+\ket{\Psi_{Disc}} = ....
+\end{align}
+
+
+We next glue together the discs across the 'topological' net configuration defined above.
+
+
+\subsection{Wavefunction from condensation} 
+\dave{pending energy}
+Here we write down the same wave-function when the theory is found from fermion condensation. 
+That is we start with the standard bosonic wave function, 
+and modify the tensor contraction so that it inserts fermions at the end points of bonds that have a surpluss of emergent fermions.
+
+\subsection{Generic tensor network with MPO symmetry }
+\dave{pending energy}
+Shadow world with arbitrary $ f \in \text{Hom}(a_1 \tp \cdots \tp a_n)$ etc.
+
+\dave{Old stuff}
 \dave{
 I was reminded of Frobenius algebra objects and wanted to write a note to myself to bring up the next time we Skype.
 I am curious what role the algebra objects play in tensor networks (both fermionic and bosonic).
