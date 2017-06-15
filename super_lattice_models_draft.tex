@@ -74,6 +74,7 @@
 \newcommand{\mcc}{\mathcal{C}}
 \newcommand{\mco}{\mathcal{O}}
 \newcommand{\mcm}{\mathcal{M}}
+\newcommand{\mcp}{\mathcal{P}}
 \newcommand{\mcv}{\mathcal{V}}
 \newcommand{\mcx}{\mathcal{X}}
 \newcommand{\ul}{\underline}
@@ -7422,6 +7423,7 @@ Letting $\mu_i$, $i= 1, \cdots,N_{xy}^a$ be a basis of $V^{xy}_a$ and similarly 
 It then follows that
 \begin{align}
 \Vxyxy\;  =\delta_{ij}\;  \idxy\; + \; \cdots, \quad \quad \text{ hence} \quad \quad \Vxyxyomega \;=\delta_{ij}\; \idxy.
+\label{vertex_normalization}
 \end{align}
 \kw{I lean toward replacing ``$\cdots$" with a more explicit expression, to make it clear
 that the relevant ribbon labels are all nontrivial.}
@@ -7601,10 +7603,7 @@ These details, as well as minimality and completeness of the idempotents, will h
 Once doing so, we arrive at the following theorem:
 
 \begin{theorem}
-Let ${\mcc}$ be a 
-%% KW: dont need unitary, right?
-%unitary 
-modular tensor category and let $\psi$ be a fermion in ${\mcc}$ as in \ref{gntf_condense}.
+Let ${\mcc}$ be a modular tensor category and let $\psi$ be a fermion in ${\mcc}$ as in \ref{gntf_condense}.
 Let $\mcc/\psi$ be the super pivotal category resulting from the fermionic quotient.
 Let
 $
@@ -7620,6 +7619,7 @@ Let $a \in \sob(\mcc/\psi)$ and $\tilde{a} \in \sob({\mcc})$ be a lift of $a$.
 If $\tilde a$ is transparent with respect to $\psi$, then $(x, a)$ is in the bounding sector of $\tube(\mcc/\psi)$
 (for any $x\in\sob(\mcc)$), while
 $(x, a)$ is in the non-bounding sector otherwise.
+\label{minimal_idempotents_modular_C/psi}
 \end{theorem}
 
 The above result can also be written in terms of the tube category of the parent theory $\tube(\mcc)$. 
@@ -7684,6 +7684,12 @@ Then
 \end{tikzcd}\]
 is injective.
 \kw{``injective" doesn't really make sense for functors; should rephrase in terms of morphism spaces.}
+\dave{Perhaps ``is a faithful functor on the image of $\hat{a}_J$." is the right way to say it. 
+It is not full since q-type idempotents have odd endomorphisms, 
+e.g., if we let $F$ be the functor defined above, 
+then for $q \in \tube(\mcc/\psi)$ we have $\text{mor}_{\tube{\mcc}}(q\ra q) \xrightarrow{F} \text{mor}_{\tube(\mcc/\psi)}(F(q) \ra F(q))$ is does not have the ``odd" morphism, and so cannot be surjective.
+It is faithful since objects of $\mcc$ are also objects of $\mcc/\psi$.
+And $\text{mor}_{\tube(\mcc)}(a \ra b) \in \text{image}(\hat{a}_J)$ are mapped onto $\text{mor}_{\tube(\mcc/\psi)}(a \ra b)$ injectively.}
 In particular, a non-zero element of $\tube(\mcc)$ in the image of $a_J$ is non-zero in $\tube_J(\mcc/\psi)$.
 %\dave{This may also be a tensor functor.
 %Will need to think about it.
@@ -7954,6 +7960,102 @@ Also the analogue of the $\omega$ loop projector,
 which satisfies $\omega_x \tp \omega_y = \delta_{xy} \omega_x$. 
 
 \end{comment}
+
+
+\subsection{Minimal idempotents of $\tube(\mcc)$, when $\mcc$ is a super modular tensor category}
+\dave{Work in progress.}
+
+\dave{I think it's easiest to assume a super-modular category and a minimal modular extension. 
+Then $S_C = \tilde{s} \tp s_{sVec}$ with $\text{det} \tilde{s} \neq 0$. 
+I think we could do something slightly more general but would require some work 
+(i.e., understanding some known results, and checking the following intuition).
+The idea is to use Lemma 3.3 of \cite{bruillard2017} (Arxiv version) and start with any pre-modular category $\mcb$.
+Its Muger center is the representation category of $(G,z)$ for some $G$, 
+and $z$ a central element of $G$ of order less than or equal to $2$.
+We then ``de-equivariantize" $\mcb$ to find $\mcb_G$, which is a G-graded modular or super-modular tensor category (is this equivalent to a modular extension of $\mcb$?).
+The intuition is that if $\mcb_G$ is modular, then $\tube(\mcb)\cong \cup_{g \in G} \mca_g\times \mca_{g^{-1}}$, where $\mca_g$ is the set of simple objects of $\mcb_G$ carrying label $g$ and the functor is given by the 1-stand idempotents.
+If $\mcb_G$ is super-modular, then let $G_0$ be an index $2$ subgroup and $G_1 = G / G_0$. 
+Then $\tube(\mcb) \cong (\cup_{g \in G_0} \mca_g \times \mca_{g^{-1}})  \cup (\cup_{g \in G_1} \mcv_g \times \mcv_{g^{-1}})$.
+}
+
+Here we extend the theorem~\ref{minimal_idempotents_modular_C/psi} to the case of super modular categories.
+We use definition 3.1 of~\cite{bruillard2017},
+A braided fusion category $\mcp$ is super modular if the Muger center $\mcz_2(\mcp) \cong \text{sVec}$.
+Equivalently, the set of transparent sub-objects has one non-trivial object which is a fermion as defined in \ref{gntf_condense}.
+Then we have the following theorem,
+\begin{theorem}
+Let ${\mcp}$ be a super modular tensor category and let $\psi$ be a fermion in ${\mcp}$ as in \ref{gntf_condense}.
+Let $\mcc$ be a minimal modular extension of $\mcp$\dave{refer to somewhere.}.
+Let $\mcc/\psi$ be the super pivotal category resulting from the fermionic quotient of the extension.
+Let $\mca/\psi \subset \mcc/\psi$ be the set of simple objects that are transparent with respect to $\psi$, 
+and $\mcv/\psi  \subset \mcc/\psi$ the set which are not transparent with respect to $\psi$.
+Let
+$
+\tube(\mcp/\psi) = \tube^B(\mcp/\psi) \cup \tube^N(\mcp/\psi)
+$
+be the annular category of $\mcp/\psi$. 
+Then as tensor categories,
+\begin{align}
+\tube(\mcp/\psi) \cong (\mca/\psi \times \overline{\mca/\psi}) \cup( \mcv/\psi \times \overline{\mcv/\psi}).
+\end{align}
+In particular, $\sob(\tube(\mcc/\psi)) \cong \sob({\mca/\psi}) \times \sob(\overline{\mca/\psi}) \cup  \sob({\mcv/\psi}) \times \sob(\overline{\mcv/\psi}) $. 
+Let $a, \tilde{a} \in \sob(\mca/\psi)$, then $(a,\tilde{a})$ is in the bounding sector and if $a, \tilde{a} \in \mcv/\psi$ then $(a, \tilde{a})$ is in the non-bounding sector.
+\label{minimal_idempotents_super_modular/psi}
+\end{theorem}
+
+Let $\mcc$ be a minimal modular extension of $\mcp$ as defined in \dave{Find appropriate references.}.
+The objects of $\mcc$ are $\zt$ graded by how they braid with $\psi$. 
+Denote $\mca = \mcp$ the objects of $\mcc$ which braid trivially with $\psi$, 
+and $\mcv$ the objects of $\mcc$ that braid non-trivially with $\psi$.
+Define the the $\omega$-loop of $\mca$ to be $\omega = \frac{1}{\mcd^2} \sum_{x \in \mca} d_x \text{cl}(x)$, with $\mcd^2 = \sum_{a \in \mca} d_a^2$. 
+
+\dave{Stopping here for now.  
+Need to re-evaluate how to write down these idempotents when $x,y \in \mcv$ are q-type. 
+In this scenario, the $f_a^a(x,y,j,j)$ are not necessarily idempotent.
+There is extra data coming from how a $\psi$ line is pulled past the fusion vertices $\mu_i$ and $\mu_j$. }
+
+Consider the following set of morphisms for $\tube(\mcp/\psi)$,
+\begin{align}
+{f}_a^b(x,y,j,i) = \TubeBasisdprime_{J}, \quad \quad \text{with} \quad \quad \nu_x = \nu_y = J.
+\end{align}
+With $x,y \in \mca/\psi$ or $x,y \in \mcv/\psi$
+and we used $\nu = 0(1)$ to denote $J= \text{bounding(non-bounding)}$ spin structures, 
+and $\nu_j$, $\mu_i$ are normalized so that $\nu_j \circ \mu_i = \delta_{ij}\lambda^{F_{xy}^b F_a^{xy}} \frac{d_x d_y}{d_a} \text{id}_a$.
+Where $F_{xy}^b$ and $F_a^{xy}$ are $0$, or $1$ denote the parity of the fusion vertices $\nu_j$ and $\mu_i$.
+By fusing all strands into the annulus, we notice that ${f}_a^b(x,y,j,i)$ is not just a morphism of $\mcc/\psi$ but one of $\tube(\mcp/\psi)$ as well.
+
+\begin{itemize}
+\item If $x,y \in \mca$, then we have a complete set of matrix units for $\tube_B(\mcp/\psi)$. 
+Proof is same as before. 
+\item if $x,y \in \mcv$, and atleast one of them is not q-type, then we have a complete set of matrix units, proof is the same as before. 
+Some of them are oddly isomorphic. 
+\item if $x,y \in \mcv$ are both q-type, then the minimal idempotents we used before are no longer minimal, or orthogonal. 
+Will work this out soon.
+\end{itemize}
+
+The $q$-type simple objects which may appear in $\mcc/\psi$ lead to linear relations on the $f_a^b(x,y,j,i)$ viewed as morphisms of $\tube(\mcp/\psi)$. 
+In order to not over count these idempotents, we need to quotient by these linear relations.
+If either $x$ or $y$ is a q-type simple object, then $\lambda f_a^b(x,y,j,i) = f_a^b(x,y,\tilde{j},\tilde{i})$,
+where $\tilde{j}$ is found from $\nu_j$ by acting with an odd endomorphism from below, 
+and $\tilde{i}$ is found from $\mu_i$ by acting with an odd endomorphism from above.
+\dave{Will add pictures if we go this route.}
+
+
+\dave{do this after proof.}
+It was shown in \cite{bruillard2017}\dave{need to check this} that if there is one modular extension of $\mcp$, then there are 16 of them. 
+Roughly speaking, the 16 different extensions are given by stacking with the Ising TQFT, 
+and condensing the fermion coming from Ising paired with the fermion already present in the extension. 
+%\dave{Note to self: the 16 here, 
+%the $\mathbb{Z}_2 \times \mathbb{Z}_2$ of Pin$_+$ the $\mathbb{Z}_4$ of Pin$_{-}$ and the $4$ super-pivotal fusion cats of Ising$/\psi$. }
+A non-trivial check of the proof, is that the minimal idempotents are independant of the particular extension....
+
+
+need to show:
+\begin{itemize}
+\item we have a minimal orthogonal and complete set of idempotents of $\tube(\mcp/\psi)$.
+\item we have a tensor functor from $\mca/\psi \times \mca/\psi \cup \mcv / \psi \times \mcv /\psi \ra \tube(\mcc/\psi)$
+\end{itemize}
+
 
 \section{Fermion condensation in $SO(3)_6$} \label{so36}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -11541,15 +11643,16 @@ This spin structure affects the details of the local projections which constitut
 Additionally, we will need to allow the local degrees of freedom that constitute the 
 Hilbert space for our lattice model to be super vector spaces, rather than the regular vector spaces in bosonic models. 
 %This will require us to take special care when forming tensor products of Hilbert spaces on different lattice sites. 
-Finally, we will need to add a new term in the Hamiltonian with support on the edges and pairs of neighboring vertices in the lattice that allows fermions to fluctuate across edges in the lattice that host q-type strings.% \ref{EdgeHamiltonianTerms}.
+Finally, we will need to add a new term in the Hamiltonian with support on the edges and pairs of neighboring vertices in the lattice that allows fermions to fluctuate across edges 
+%in the lattice 
+that host q-type strings.% \ref{EdgeHamiltonianTerms}.
 %Apart from these differences, the Hamiltonian is the same as in the bosonic case.
 %: it implements local relations of the fusion category, and so the ground space will be an isotopy weighted super position of all allowed string nets.
 
 To begin the construction of the lattice model, we will thus need the following data:
 \begin{enumerate}
 \item a super pivotal fusion category ${\cal C}$,
-\item an oriented surface $\Sigma$ with a spin structure $\sigma$,
-\kw{should consider dropping $\sigma$ and just saying spin surface \dave{Sounds good to me.}}
+\item an oriented spin surface $\Sigma$ %with a spin structure $\sigma$,
 \item and a graph $\mcg$ embedded in $\Sigma$ (more precisely, a cell decomposition of $\Sigma$) which inherits information about the spin structure.
 %\kw{one doesn't usual say that a cell decomposition (or lattice) has a spin structure}
 %\ethan{how about ``inherits information about the spin structure''? And as a general comment, feel free to precise-ify language whenever and wherever you see fit}
@@ -11981,8 +12084,10 @@ The edge term is then \kw{something like}
 
 To derive the Hamiltonian \eqref{ham} and explain the nature of the $B_p$, $D_e$, and $A_v$ operators, we will first need to describe how the graph inherits spin structure data from the ambient spin manifold on which it is defined. 
 
-Recall that we have a graph $\mcg$ embedded in an orientable surface $\Sigma$ which comes equipped with a spin structure $\sigma$.
-\kw{Might want to just say that $\Sigma$ is a spin surface and drop mention of $\sigma$; possible to-do for later.}
+Recall that we have a graph $\mcg$ embedded in an orientable spin surface $\Sigma$.
+% which comes equipped with a spin structure $\sigma$.
+%\kw{Might want to just say that $\Sigma$ is a spin surface and drop mention of $\sigma$; possible to-do for later.}
+%\dave{Been changing to spin surface as I go through.}
 %an equivalence class of spin structures on this surface by $\sigma$. 
 %$\sigma$ provides us a way of associating boundary conditions (periodic or anti-periodic) to homotopy classes of framed closed paths  
 %in $\Sigma$ (which are the same as ordinary closed paths in the frame bundle of $\Sigma$).
@@ -12619,8 +12724,10 @@ But its ground state would be isomorphic to the above edge-like vertex term.
 
 Note that vectors in the ground state of the vertex term can be interpreted as string nets.
 If $K$ is the ground state of the vertex term, we have maps
+\dave{Should we use $\mch$ rather than H?}
 \be
 	K \to H(\Sigma \setminus \mbox{2-cells}) \to H(\Sigma) .
+	\label{ground_state_projection}
 \ee
 where $H(\Sigma \setminus \mbox{2-cells})$ and $H(\Sigma)$ are the ground-state Hilbert spaces of $\Sigma \setminus \mbox{2-cells}$ and $\Sigma$, respecitvely.
 The job of the edge term (below) will be to pick out a subspace of $K$ on which the first map is an isomorphism. 
@@ -13126,14 +13233,87 @@ Another way to deconfine the vortex quasiparticles and allow them to move freely
  %%%%%%%%%%%%%%%%%%%%%%%
 \section{Tensor networks and wave function}
 %%%%%%%%%%%%%%%%%%%%%%%
-\kw{Maybe this should be a separate section (rather than subsection).}
-\dave{Yes.}
+\dave{All in progress. Here is a current sketch of outline.}
+In this section we write down the ground state wave functions for the Hamiltonian discussed in section XXX. 
+The simplest approach is to define the ground state wavefunction via the projectors appearing in the Hamiltonian.
 
-- Usual story for string nets
+An arguably simpler approach, is to first use the bosonic parent theory to build a tensor network. 
+Then modify the contraction of the virtual bonds in order to ``condense" the fermions. 
+This works especially well for theories that come from fermion condensation.
 
-- Also show how to do it when taking the center commutes with condensing fermions. 
+We show that the tensor network naturally satisfy a matrix product operator (MPO) symmetry.
+The MPO's satisfy all the relations of the input fusion category.
+
+Lastly, we write down a generic tensor network satisfying the MPO symmetries using the Reshitikhan-Kirillov-Turaev shadow world.\dave{Maybe we do, maybe we don't}
+
+\subsection{Tensor network}
+Here we write out the tensor network for the ground state wave function of the Hamiltonian \eqref{ham}.
+If the spin surface $\Sigma$ has non-trivial topology,
+then in general the ground state space will be degenerate.
+Our goal is to write down the simplest possible tensor network which captures the entire ground space. 
+
+A satisfactory tensor network will be written in terms of local tensors. 
+These tensors consist of physical degrees of freedom and virtual degrees of freedom which we contract over.
+Roughly
+\begin{align}
+\ket{\Psi} =\sum_{v_i} \text{eval} \bigotimes \left[ T^{v(i)} \right]_{x_1 \cdots x_n} 
+\end{align}
+where eval denotes a contraction of the tensors living inside the tensor product.
+The $v(i)$ are basis vectors of $\mch_v$. 
+
+We build the full wave function in two steps. 
+First we choose a topological basis of the spin surface 
+and write down a net configuration on this fixed topological basis. 
+We then embed this topological basis into the Hilbert space for the string net. 
+This consists of a list of 0- and 1-handles whose whose compliment is a disjoint union of discs in $\Sigma$, as well as a choice of vectors at each vertex which satisfy the vertex term.
+\dave{draw picture of topological basis and embedding into handle decomposition.}
+Next we write down the ground state wave function of the edge term in the topological basis. 
+
+We then ``fill in" the discs and glue them across the 0- and 1-handles harbouring the topological basis. 
+The 0- and 1-handles used in the topological basis can also be viewed as MPO's inserted on the virtual degrees of freedom see section xxxx. 
+
+\subsubsection{Wavefunction on nets modulo 1-handles}
+We define a topological basis of $\Sigma$ as a collection of 
+0- and 1-handles whose compliment is a disjoint union of discs.
+Let the collection of 0-handles be denoted by $V' \subset V$, and the set of 1-handles connecting them $E'\subset E$.
+We now pick a basis vector of the net configuration for the topological basis.
+This is a state which belongs to $K$ of \eqref{ground_state_projection}. 
+We would like to use this state to find one of $\mch(\Sigma \setminus \mbox{2-cells})$, i.e., a net configuration that is invariant under the edge projector.
+
+We assume that each vertex is in the standard pitch-fork configuration.
+We have also assumed that a standard basis for each trivalent vertex has been picked.
+To find the wave function, we simply apply the edge term. 
+Far from any trivalent vertex the tensors take on the form 
+
+Note that the parity of this wave function could be even or odd depending on the fusion category $\mcc$,
+and the spin structure. 
+\dave{refer to examples}
+We require this wave function to be in the ground space of the vertex term.
 
 
+
+\subsubsection{Wavefunction on nets modulo 2-handles}
+We first fill in the discs, this is most easily accomplished by using the shadow world
+
+\begin{align}
+\ket{\Psi_{Disc}} = ....
+\end{align}
+
+
+We next glue together the discs across the 'topological' net configuration defined above.
+
+
+\subsection{Wavefunction from condensation} 
+\dave{pending energy}
+Here we write down the same wave-function when the theory is found from fermion condensation. 
+That is we start with the standard bosonic wave function, 
+and modify the tensor contraction so that it inserts fermions at the end points of bonds that have a surpluss of emergent fermions.
+
+\subsection{Generic tensor network with MPO symmetry }
+\dave{pending energy}
+Shadow world with arbitrary $ f \in \text{Hom}(a_1 \tp \cdots \tp a_n)$ etc.
+
+\dave{Old stuff}
 \dave{
 I was reminded of Frobenius algebra objects and wanted to write a note to myself to bring up the next time we Skype.
 I am curious what role the algebra objects play in tensor networks (both fermionic and bosonic).
