@@ -310,6 +310,16 @@
   }}}
   
 
+  \newcommand{\Cellup}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Cellup.pdf}}}}}
+    \newcommand{\Celldown}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Celldown.pdf}}}}}
+        \newcommand{\Cellmid}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Cellmid.pdf}}}}}
+        \newcommand{\TwoCell}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TwoCell.pdf}}}}}
+                \newcommand{\Onecell}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Onecell.pdf}}}}}      
+        
+        
+
+ 
+
 
 \newcommand{\TorusLocalRelationc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusLocalRelationc.pdf}}}}}
 \newcommand{\TorusLocalRelationb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusLocalRelationb.pdf}}}}}
@@ -11753,6 +11763,7 @@ If all of the edges incident to $v$ point out,
 then we define
 \be
 	\mch_v = \bigoplus_{a,b,c} V^{abc}  \quad\quad\quad\quad\quad\quad \PitchFork{a}{b}{c}{}
+	\label{pitchfork_basis}
 \ee
 where the sum is over our favorite complete set of simple objects of $\mcc$
 (i.e.\ we choose a complete set at the outset and keep it fixed throughout).
@@ -13233,6 +13244,278 @@ Another way to deconfine the vortex quasiparticles and allow them to move freely
  %%%%%%%%%%%%%%%%%%%%%%%
 \section{Tensor networks and wave function}
 %%%%%%%%%%%%%%%%%%%%%%%
+\dave{Refs.}
+\cite{Turaev2010}
+
+In this section we define a tensor network which produces the ground state wavefunction of the Hamiltonian defined in \eqref{ham}.
+We do so using the Turaev-Viro-Barrett-Westbury (TVBW) state sum\cite{Turaev1992,Barrett1996}.
+We remind the reader first how this works for the bosonic state sums, 
+and then give the necessary modifications for the super pivotal fusion categories.
+We will not focus on prescribing teh full fermionic state sum, the interested reader can look to \cite{bhardwaj2016,...} for more details on that. 
+Instead we will specialize to state sums defined on $\Sigma \times [0,1]$, which will determine wave functions on $\Sigma$ which are in the ground space of \eqref{ham}.
+We then turn the state sum into a tensor network which with some work can be put into a computer.
+
+
+Since the parition function is a topological invariant any cell decomposition of $\Sigma \times [0,1]$ will do. 
+The cell decomposition at $\Sigma \times 1$ needs to match the cell decomposition used in describing the Hamiltonian. 
+The cell decomposition on $\Sigma \times 0$ can be anything we like, different labelings of this input state will project into different topological sectors of the output states. 
+It is useful to choose a ``minimal" cell decomposition, for example in the case of the torus the topological basis used in \eqref{xxx}.
+
+We first review this for the Bosonic state sums and corresponding tensor networks, 
+then apply the same technique to the fermionic state sum.
+
+\subsection{Bosonic state sum and tensor networks}
+
+Recall that a TVBW state sum assigns a number to closed 3-manifolds, and a functional on 3-manfiolds with boundary. 
+The state sum is defined on a simplical decomposition of the 3-manifold.
+In defining the state sum, one attaches a vector space to each simplex $V(\text{simplex})$, and a number to each vector $Z: \; V_\text{simplex} \ra \cc$.
+Thus one can define a partition function for each simplical decomposistion of a 3-manifold $\mcm$ via that ``state sum": 
+\begin{align}
+Z(\mcm) = \sum_{v \in V_\text{simplex} } \prod_{\text{simplices}} Z(v).
+\end{align} 
+For a manifold with boundary, we fix a boundary condition and evaluate the above state sum. 
+Requiring $Z(\mcm)$ be a topological invariant imposes additional restrictions on $Z: \; V_\text{simplex} \ra \cc$. 
+Indeed, Pachner showed that two piecewise linear 3-manifolds are homeomorphic 
+iff there simplical decompositions differ by a finite number of ``elementary shellings"~\cite{Pachner1991}.
+The ``elementary" shellings later became known as ``Pachner moves" and physically correspond to re-triangulations of space.
+And so topological invariance of $Z(\mcm)$ is achieved by showing that the partition function is invariant under the Pachner moves.
+Importantly, the Pachner moves are local constraints, and so can be readily verified.
+
+It was recognized by Barrett and Westbury that for 3-manifolds, the appropriate data for a topological invariant is given by a spherical fusion category~\cite{Barrett1996}. 
+There construction was originally described on triangulated 3-manifolds, 
+here we will describe the same invariant but on cell decompositions dual to a triangulation.
+We do so since the string net Hamiltonian defined in \eqref{ham} naturally lives on a cell decomposition.
+
+%\dave{Will put a comment in like this later.}
+%This construction, actually pre-dates the Turaev-Viro-Barrett-Westbury state sums, 
+%and was first found by Kirillov and Reshetikhin who coined the term `shadow world'~\cite{Kirillow1989}\dave{reference needs to be fixed.}, 
+%which was later generalized by Turaev~\cite{turaev1992shadow} \dave{Maybe also \cite{turaev1990}, need to check.}.
+
+The shadow world construction lends itself a convenient way to write down the tensor network for the wavefunction. 
+\dave{add usual blurb citing appropriate people}
+It also gives a general way to solve the ``pulling through" relations defined in \cite{Bultinck2017} as we will explain.
+\dave{draw some pictures for shadow world.
+Somehitng like cutting and folding.}
+A tensor network is a graph whose nodes label tensors, 
+and edges label tensor contractions, 
+this will be our ending point.
+
+We first describe the ``shadow world" construction for the bosonic string nets then comment how this can be re-formulated as a tensor network. 
+We identify the differences between the bosonic string-nets and the fermionic ones, explicitly write out the tensor network. 
+Finally we do one example, and put the tensor network in the context of known results.
+
+
+\subsubsection{Bosonic wavefunction}
+We review the case of a standard string net, with a spherical fusion category\footnote{If we restrict ourselves to quantum mechanics, then one should consider unitary spherical fusion categories.}. 
+We first describe the amplitude assigned to a valid net-configuration given by the TVBW state-sum, 
+we then turn it into a tensor network. 
+
+The basic input data is a spherical fusion category $\mcc$, a surface $\Sigma$, 
+a
+\begin{itemize}
+\item cell decomposition $\Sigma_1$ of $\Sigma$, 
+\item `topological' cell decomposition $\Sigma_0$ of $\Sigma$ which is in normal position with respect to $\Sigma_1$
+\item  a cell decomposition of $\Sigma \times [0,1]$, given by extending $\Sigma_1$ into $\Sigma \times [\frac{1}{2},1]$ and $\Sigma_0$ into $\Sigma \times [0,\frac{1}{2}]$.
+Denote the intermediary cell decomposition by $\Sigma_{0\ra 1}$, see Figure~\ref{CellDecomposition}, and the full cell decomposition by $\Sigma_{0 \ra 1}$.
+\end{itemize}
+We take the cell decompositions $\Sigma_0$ and $\Sigma_1$ to be dual to a triangulation so that there are only trivalent vertices. 
+We also require that the cell decompositions are in `normal' position, i.e., $\Sigma_0$ only intersects $\Sigma_1$ on edges, again see Figure~\ref{CellDecomposition}.
+\begin{figure}
+\begin{center}
+\includegraphics{CellDecomposition.pdf}
+\caption{\label{CellDecomposition}
+\dave{Need to think about how to handle orientations.}
+Cell decomposition used to construct the tensor network.
+The top layer denoted $\Sigma_1$ is the cell decomposition that we built the Hamiltonian over in \eqref{ham}.
+The input cell decomposition $\Sigma_0$ should be in `normal' position with respect to $\Sigma_1$, that is they should only interesect along edges. 
+The intermediary cell decomposition $\Sigma_{0\ra1}$ is found by extending $\Sigma_0$ into 
+$\Sigma \times [0,\frac{1}{2}]$, and $\Sigma_{1}$ into $\Sigma \times [\frac{1}{2},1]$.
+On the right, we have shown two dimensional representation of the cell decompositions. 
+Notice that the orientation of all lines on $\Sigma_{0 \ra1}$ have been reversed relative to $\Sigma_0$ and $\Sigma_1$. 
+In the two dimensional pictures we will denote the cells stemming from $\Sigma_0$ by squiggly lines.
+}
+\end{center}
+\end{figure}
+Every edge of the cell decomposition must also be oriented so that we can define a Hilbert space at each vertex as in \eqref{pitchfork_basis}.
+We now compute the partition function for a fixed labeling of the cell decompositions $\Sigma_0$ and $\Sigma_1$. 
+The partition function $Z(\Sigma_{0\ra1})$ is a map from $V(\Sigma_0)$ to $V(\Sigma_1)$, 
+and in particular a ground state wave function of \eqref{ham} is given by,
+\begin{align}
+\ket{\Psi} = \sum_{v \in V(\Sigma_1)} \ket{v} v^* \cdot Z(\Sigma_{0\ra1})\cdot v_0
+\end{align}
+where $v_0 \in V(\Sigma_0)$. 
+Where $V(\Sigma_j)$ is the vector space assigned to the cell decomposition $\Sigma_j$ by $\mcc$, recall \eqref{GraphHilbertSpace}.
+We first need to define $ v^* \cdot Z(\Sigma_{0\ra1})\cdot v_0$ and then how to re-write this as a tensor network.
+From the tensor network point of view, the input state $v_0$ represents a matrix product operator (MPO). 
+
+We first define the state sum. 
+Since our main objective is to define the ground state wave function, we focus on 3-manifolds of the form $\Sigma \times [0,1]$\footnote{The state sum assigned to such a 3-manifold is sometimes referred to as the 'shadow world'.
+This construction, actually pre-dates the Turaev-Viro-Barrett-Westbury state sums, 
+and was first found by Kirillov and Reshetikhin who coined the term `shadow world'~\cite{Kirillow1989}\dave{reference needs to be fixed.}, 
+later, this idea was generalized by Turaev~\cite{turaev1992shadow} \dave{Maybe also \cite{turaev1990}, need to check.}}.
+The cell decomposition of such a surface can always taken to be of the form described above. 
+%The state sum is given by,
+%\begin{align}
+%Z(\mcm) = \sum{\substack{2-\text{cell} //\text{labels}}} \sum{\substack{1- \text{cell} //\text{labels}}} \sum{\substack{0 \text{cell} //\text{labels}}} \prod_{3-\text{cells}} \mcd^{-2} \prod_{2-\text{cells}} 
+%\end{align}
+The amplitudes are fixed by $Z(\Sigma_{0\ra1})$. 
+It will be convenient to draw the cell decomposition for $\Sigma_{0\ra1}$ in the plane, 
+as we have done in the middle right of Figure~\ref{CellDecomposition}.
+That is, we need to specify a number to a fixed labeling of the cell decomposition, then the partition function is given by summing over all internal labels i.e., labels that are not fixed by the boundary condition.
+Briefly, each 2-cell is labeled by a simple object from $\mcc$, and weighted by its dimension. 
+Each 1-cell is labeled by a pair of elements in the fusion space of the three labels on the neighbouring 2-cells. 
+Each 0-cell is labeled by the simple objects of the six 2-cells it neighbours and the fusion spaces assigned to each 1-cell that it neighbours.
+Lets now describe each of those labels, and weights in detail.
+
+\dave{Think I'll go back and pitchfork everything.
+}
+Our main task is to define the amplitude assigned to $V(\Sigma_{0\ra1})$. 
+As usual, the 3-cells are each assigned a factor of $\mcd^{-2}$, with $\mcd^2 = \sum_x d_x^2$.
+The 2-cells are labeled by simple objects of $\mcc$ and are weighed by there quantum dimension,
+\begin{align}
+Z\left( \TwoCell \right)  = d_A.
+\end{align}
+The 1-cells each neighbour three 2-cells. 
+To the end points of each 1-cell we identify a fusion space from the simple objects of the three neighbouring 2-cells along with a weight given given by the `theta' symbol,
+\begin{align}
+\Onecell = \mu \tp \mu^* \in V^{AcB^*} \tp V^{A^*c^* B}, \quad \quad Z(\Onecell) = (\mu^* \circ \mu)^{-1}. 
+\end{align}
+Where $\mu^*$ is the dual of $\mu$. 
+We used the orientation of $\Sigma \times \frac{1}{2}$ to define the fusion spaces. 
+\dave{Need to address squiggly 1-cells. 
+Will do so once I've thought more carefully about the tetrahedra. }
+
+Lastly, We need to specify weights for the 0-cells. 
+To find the weight of the 0-cells, we notice that a spherical neighbourhood of each zero-cell intersects the cell decomposition $\Sigma_{0\ra 1}$ via a tetrahedron, see Figure~\ref{XXXX}. 
+There are only 3-types of 0-cells we must address,
+\begin{align}
+  \Cellup \quad \quad 
+  \Celldown
+\quad \quad  \Cellmid
+  \end{align}
+The first is a cell that came from $\Sigma_1$, the third from $\Sigma_0$, 
+and the second is mixed from $\Sigma_0$ and $\Sigma_1$. 
+The 2-cells labeled by lower case roman charectors come from $\Sigma_1$, 
+the 2-cells labeled by capital roman letters come from $\Sigma_{0\ra 1}$ and are summed over, 
+the 2-cells with greek letters came from $\Sigma_0$, and are always drawn with a squigly line.
+
+
+\dave{Old stuff...}
+
+To define the state sum we need to specify a vector space for every cell, 
+and a dual tensor which maps a fixed vector to $\cc$.
+Each 2-cell is assigned the vector space $\mch_f \cong \tp_{e \in 2-\text{cell}}E$ where $E \cong \bigoplus_a \cc_a$, and $e \in 2-\text{cell}E$ are the edges neighbouring the $2-cell$.
+To each 1-cell we assign a vector space built from the neighbouring 2-cell labels. 
+If the three neighbouring 2-cells all have the same orientation then the 1-cell is assigned the vector space $W \tp E^{\tp 3} \tp W^*$, with $W \cong \bigoplus_{abc} V^{abc}$.
+To every 0-cell we assign the vector space $W^{\tp4}$.
+
+To each of these vector spaces we also must assign a number, the local weight for the cell appearing the partition function. 
+
+
+That is, the spherical neighbourhood of every 0-cell intersects four 2-cells, and four 1-cells. 
+Taking the intersection of the spherical nieghbourhood of a 0-cell with teh cell decomposition results in a tetrahedron. 
+
+
+Recall, the TVBW state-sum on a cell decomposition is given by,
+\begin{align}
+Z(\mcm) = \sum_{\substack{2-\text{cell} \\ \text{labels}}} \sum_{\substack{1-\text{cell} \\ \text{labels}}}
+\prod_{3-\text{cells}} \mcd^{-1} \prod_{2-\text{cells}} <loop> \prod_{1-\text{cells}} <\theta> \prod_{0-\text{cells}} <Tet>
+\end{align}
+The 2-cell labels are simple objects in $\mcc$, the 1-cell labels are pairs of basis elements elements of $\bigoplus_{abc} V^{abc}$, the 0-cell labels are pairs of basis elements in $\bigoplus_{abcd} V^{abcd}$. 
+
+3-manifolds with boundary require boundary conditions. 
+These are fixed by labeling the vertices in $\Sigma_1$ by vectors $\alpha_v \in \mch_v$, 
+$v \in V_1$, the vertex set of the cell decomposition of $\Sigma_1$. 
+We choose the basis of $\mch_v$ to be complete and orthogonal, and denote the dual vectors by $\alpha_w^*  \in \mch_v^*$ so that 
+\begin{align}
+\alpha_w^* \circ \alpha_v = \delta_{wv} \text{theta symbol} 
+\end{align}
+and $\sum_{\alpha \in V^{abc} }  \alpha \circ \alpha^* = \text{id}_{a \tp b \tp c}$.
+$\alpha^*$ has its orientation reversed relative to $\alpha$.
+On the boundary $\Sigma_0$ we label each vertex by $\alpha_w^* \in \mch_w^*$, 
+$w \in V_0$, the vertex set of the cell decomposition $\Sigma_0$.
+
+\dave{re-structure}
+The summation appearing for the wave function is over all the `intermediary' labelings in of the cell decomposition $\Sigma_{[0,1]}$.
+The amplitude is given by the product of weights assigned to each $0-$, $1-$, $2-$, and $3-cell$. 
+The $3-$cells recieve a factor of $\mcd^-{2}$. 
+Each $2-$cell is labeled by a simple object of $\mcc$ and weighted by its quantum dimension. 
+Each 1-cell is neigboured by two 0-cells, and three 2-cells, 
+it is weighted by a theta symbol which which takes 3-simple objects from the neighbouring 2-cells, 
+and two basis elements of the fusion spaces $\mch_v$of the nieghbouring 0-cells.
+Lastly, each $0$-cell is weighted by a tetrahedral symbol 
+\dave{Cyclic ordering of $V_0 \tp V_1 \tp V_2 \tp V_3$.}
+\dave{Will draw pictures then do weightings again.}
+
+There are three kinds of 0-cells that can appear in the `intermediary' cell decomposition. 
+Trivalent from above, from below, or intersecting. \dave{draw picture of each.}
+Each of the intersection points can be surrounded by $S^2$. 
+These $S^2$'s are intersected by $6$ 2-cells. 
+The labels from those 2-cells become the labels of the edges of the tetrahdron.
+At each intersection point of 3 2-cells on the $S^2$, we insert a basis vector from $V^{abc}$. 
+Then evaluate picture.
+
+\subsubsection{Tensor network.}
+The above wavefunction can be re-written as a tensor network.
+To each vertex of $V_{\frac{1}{2}}$, we have a single tensor. 
+If the vertex descends from $V^{1}$, then it will carry a physical index. 
+Otherwise it descends from $V_0$, and only carries virtual degrees of freedom.
+\dave{Draw picture for tensor network, label physical indices, virtual and 'topological basis'.}
+
+
+The quantum dimensions coming from the 2-cells are a nuisance. 
+They are naturally associated to 2-cells, but muck up the tensor network if we leave them on the 2-cells. 
+It is natural to push them off the 2-cell onto the 0-cells. 
+This can be done in a democratic way, where if teh 2-cell has $k$ edges, then we choose a $k^{th}$ root, and distribute the dimension across all neighbouring 0-cells. 
+Alternatively, for each 2-cell we can pick a special vertex, and assign the quantum dimension to that vertex.
+Similarly each 1-cell results in a contraction of the tensor network, we can either absorb this into the contraction, or we can push them off to the neighbouring vertices. 
+The pushing off can be done democratically, by choosing a square root. 
+Or it can be done arbitrarily, e.g., since every edge is oriented we could push it toward the vertex which the edge is directed at. 
+
+Once choosing a convention for distributing quantum dimensions and $\theta$ symbols,
+we can place write down all tensors.
+Each physical tensor will will be written as,
+\begin{align}
+T^{\alpha}_{v \beta_0 \beta_1 \beta_3}  = \sum_{\beta_0,\beta_1,\beta_3}d_{\cdots} \theta_{\cdots} \times  <T(\alpha^* \tp \beta_0 \tp \beta_1 \tp \beta_2)> \alpha \tp  \tp \beta_0 \tp \beta_1 \tp \beta_2
+\end{align}
+for $v \in V_1$. 
+\dave{It may be more familiar if we write it as $T = \text{(coeff)} \ket{\alpha} \tp \ket{\beta_1} \tp \ket{\beta_2} \tp \ket{\beta_3}$}
+The virtual tensors or MPO's, will be written as,
+\begin{align}
+T_{e \; \beta_0 \gamma_1 \beta_2 , \gamma_3} = < \cdots> \beta^0\tp  \gamma_1 \tp \beta_2 \tp \gamma_3
+\end{align}
+
+
+
+\subsubsection{Fermionic tensor network}
+Modifications: 
+\begin{itemize} 
+\item The surface is replaced by a spin surface.
+The spin structure of $\Sigma \times [0,1]$ is the obvious one.
+\item All vector spaces are now super vector spaces. 
+\item To account for the spin structure, we multiply the $\theta$-symbols by a phase $ \alpha(e,x) \cdot \beta_j$. 
+\dave{need to check how this works itself into the state sum carefully, it is easy to mess up $\pm$ signs.}
+\item tensor contractions are the same as before, except now we we have to contract over odd indices as well. 
+Will need to carefully say how this is done. 
+\end{itemize}
+
+\subsubsection{Example}
+\dave{Atleast write down the Ising wave function on a cylinder.}
+
+\subsection{Generalities}
+\begin{itemize}
+\item Discuss non-zero correlation length tensor networks (i.e., boundary conditions which are not topological) and also MPO symmetries.
+\item Excitations and tube category (i.e., how to drill a hole)
+\item Could easily compute topological entanglement entropy
+\item Could write down statistical mechanics models for fermionic systems, e.g., Euclidean evolution of Kitaev wire. 
+\end{itemize}
+
+
+
+
+
+\begin{comment}
+\dave{Old stuff}
 \dave{All in progress. Here is a current sketch of outline.}
 In this section we write down the ground state wave functions for the Hamiltonian discussed in section XXX. 
 The simplest approach is to define the ground state wavefunction via the projectors appearing in the Hamiltonian.
@@ -13312,6 +13595,9 @@ and modify the tensor contraction so that it inserts fermions at the end points 
 \subsection{Generic tensor network with MPO symmetry }
 \dave{pending energy}
 Shadow world with arbitrary $ f \in \text{Hom}(a_1 \tp \cdots \tp a_n)$ etc.
+
+\end{comment} 
+
 
 \dave{Old stuff}
 \dave{
@@ -13454,6 +13740,9 @@ is presently unclear.
  
  \paragraph{Acknowledgements}
  Boulder school, KITP for hosting, Ryan Thorngren for discussions. 
+Dave Aasen gratefully acknowledges support from the National Science Foundation through grant DMR- 1723367
+and the Caltech Institute for Quantum Information and Matter, 
+an NSF Physics Frontiers Center with support of the Gordon and Betty Moore Foundation through Grant GBMF1250.
  
  
 
