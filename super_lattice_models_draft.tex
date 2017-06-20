@@ -72,6 +72,7 @@
 \newcommand{\mch}{\mathcal{H}}
 \newcommand{\mcl}{\mathcal{L}}
 \newcommand{\mcc}{\mathcal{C}}
+\newcommand{\mck}{\mathcal{K}}
 \newcommand{\mco}{\mathcal{O}}
 \newcommand{\mcm}{\mathcal{M}}
 \newcommand{\mcp}{\mathcal{P}}
@@ -224,6 +225,15 @@
 
 \newcommand{\SAnnulusNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{SAnnulusNoLabel.pdf}}}}}
 \newcommand{\TAnnulusNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TAnnulusNoLabel.pdf}}}}}
+
+
+\newcommand{\OneHandleTheta}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{OneHandleTheta.pdf}}}}}
+\newcommand{\OneHandlemud}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{OneHandlemud.pdf}}}}}
+\newcommand{\OneHandlemu}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{OneHandlemu.pdf}}}}}
+\newcommand{\OneHandlea}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{OneHandlea.pdf}}}}}
+
+\newcommand{\Tetrahedron}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tetrahedron.pdf}}}}}
+
 
 
 
@@ -1223,6 +1233,8 @@ in the Ising theory, the $SO(3)_6$ theory, and the $\halfesix$ theory.
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%
+
+\dave{Lets not forget to cite \cite{Walker2014,Walker2015} in the intro.}
 
 A large program in condensed matter physics in recent years has been to classify 
 topological phases of matter which host emergent quasiparticle excitations 
@@ -4384,7 +4396,7 @@ of them horizontally and go around the torus.}}
 \end{figure}
 
 \item In fact, elements of the form \eqref{cl_ker} generate all of the kernel of $cl$.
-In the bosonic case, this is a standard fact (see \cite{walker2006}).
+In the bosonic case, this is a standard fact (see \cite{Walker2006}).
 The proof for the fermionic case is exactly the same, except that we have to keep track of
 Koszul signs and signs coming from the spin structure.
 The key idea of the proof is that any isotopy of the torus can be decomposed into (a) isotopies which
@@ -6929,7 +6941,7 @@ $(-1)^{|g||h|}$ comes from the super-commutativity of the tensor product.
 \end{figure}
 
 \item In fact, elements of the form \eqref{cl_ker} generate all of the kernel of $cl$.
-In the bosonic case, this is a standard fact (see \cite{walker2006}).
+In the bosonic case, this is a standard fact (see \cite{Walker2006}).
 The proof for the fermionic case is exactly the same, except that we have to keep track of
 Koszul signs and signs coming from the spin structure.
 The key idea of the proof is that any isotopy of the torus can be decomposed into (a) isotopies which
@@ -13303,58 +13315,214 @@ In this section we define a tensor network which produces the ground state wavef
 We do so using the Turaev-Viro-Barrett-Westbury (TVBW) state sum\cite{Turaev1992,Barrett1996}.
 We remind the reader first how this works for the bosonic state sums, 
 and then give the necessary modifications for the super pivotal fusion categories.
-We will not focus on prescribing teh full fermionic state sum, the interested reader can look to \cite{bhardwaj2016,...} for more details on that. 
-Instead we will specialize to state sums defined on $\Sigma \times [0,1]$, which will determine wave functions on $\Sigma$ which are in the ground space of \eqref{ham}.
-We then turn the state sum into a tensor network which with some work can be put into a computer.
 
+%We will not focus on writing the full fermionic state sum, the interested reader can look to \cite{bhardwaj2016,...} for more details on that. 
 
-Since the parition function is a topological invariant any cell decomposition of $\Sigma \times [0,1]$ will do. 
-The cell decomposition at $\Sigma \times 1$ needs to match the cell decomposition used in describing the Hamiltonian. 
-The cell decomposition on $\Sigma \times 0$ can be anything we like, different labelings of this input state will project into different topological sectors of the output states. 
-It is useful to choose a ``minimal" cell decomposition, for example in the case of the torus the topological basis used in \eqref{xxx}.
+%Instead we will specialize to state sums defined on $\Sigma \times [0,1]$, 
+%which will determine wave functions on $\Sigma$ which are in the ground space of \eqref{ham}.
+%Since the parition function is a topological invariant any cell decomposition of $\Sigma \times [0,1]$ will do. 
+%The cell decomposition of $\Sigma \times 1$ needs to match the cell decomposition used in describing the Hamiltonian. 
+%The cell decomposition of $\Sigma \times 0$ can be anything we like, 
+%different labelings of the input state will project into different topological sectors of the output state. 
+%It is useful to choose a ``minimal" cell decomposition, for example in the case of the torus the topological basis used in \eqref{xxx}.
 
-We first review this for the Bosonic state sums and corresponding tensor networks, 
-then apply the same technique to the fermionic state sum.
-
-\subsection{Bosonic state sum and tensor networks}
-
-Recall that a TVBW state sum assigns a number to closed 3-manifolds, and a functional on 3-manfiolds with boundary. 
+Recall that a TVBW state sum assigns a number to closed 3-manifolds, 
+and a linear functional on 3-manfiolds with boundary. 
 The state sum is defined on a simplical decomposition of the 3-manifold.
 In defining the state sum, one attaches a vector space to each simplex $V(\text{simplex})$, and a number to each vector $Z: \; V_\text{simplex} \ra \cc$.
-Thus one can define a partition function for each simplical decomposistion of a 3-manifold $\mcm$ via that ``state sum": 
+The partition function for each simplicial decomposition of a 3-manifold $\mcm$ is given via the ``state sum": 
 \begin{align}
 Z(\mcm) = \sum_{v \in V_\text{simplex} } \prod_{\text{simplices}} Z(v).
 \end{align} 
 For a manifold with boundary, we fix a boundary condition and evaluate the above state sum. 
 Requiring $Z(\mcm)$ be a topological invariant imposes additional restrictions on $Z: \; V_\text{simplex} \ra \cc$. 
 Indeed, Pachner showed that two piecewise linear 3-manifolds are homeomorphic 
-iff there simplical decompositions differ by a finite number of ``elementary shellings"~\cite{Pachner1991}.
-The ``elementary" shellings later became known as ``Pachner moves" and physically correspond to re-triangulations of space.
-And so topological invariance of $Z(\mcm)$ is achieved by showing that the partition function is invariant under the Pachner moves.
-Importantly, the Pachner moves are local constraints, and so can be readily verified.
+iff there simplicial decompositions differ by a finite number of ``elementary shellings"~\cite{Pachner1991}.
+The ``elementary shellings" became known as ``Pachner moves" and physically correspond to re-triangulations of space.
+Topological invariance of $Z(\mcm)$ is achieved by showing that the partition function is invariant under the Pachner moves.
+Importantly, the Pachner moves are local constraints and hence can be readily verified.
 
-It was recognized by Barrett and Westbury that for 3-manifolds, the appropriate data for a topological invariant is given by a spherical fusion category~\cite{Barrett1996}. 
+It was recognized by Turaev and Viro, and more generally by Barrett and Westbury that a large class of topological invariants of oriented 3-manifolds
+can be constructed using a spherical fusion category~\cite{Turaev1992,Barrett1996}.
 There construction was originally described on triangulated 3-manifolds, 
-here we will describe the same invariant but on cell decompositions dual to a triangulation.
-We do so since the string net Hamiltonian defined in \eqref{ham} naturally lives on a cell decomposition.
+here we will describe the same invariant but on cell decomposition.
+It is useful to take the cell decomposition to be dual to a triangulation, 
+but not necessary. 
+
+We first write down a state-sum closely following the cutting and gluing procedure in \cite{Walker2006}. 
+This version is conceptually powerful, 
+but lends little utility in actually evaluating the topological invariant. 
+To remedy this, we standardize the tensors appearing in the state sum, 
+and catalogue all data for how these tensors are contracted over.
+With this standarized state sum, 
+it is then straight forward to write down the fermionic state sum with only minor modifications. 
+Lastly, we specialize to surfaces of the form $\Sigma \times [0,1]$ 
+and use this to write down a tensor network for the ground state of \eqref{ham}. 
+Historically, this version of the state sum pre-dates TVBW and was first found by Kirillov and Reshetikhin~\cite{Kirillow1989} who coined the term `shadow world', which was later extended by Turaev~\cite{turaev1992shadow} which included shadows of links which he coined the term `shlinks'.
+\dave{Will double check second reference.}
 
 %\dave{Will put a comment in like this later.}
 %This construction, actually pre-dates the Turaev-Viro-Barrett-Westbury state sums, 
 %and was first found by Kirillov and Reshetikhin who coined the term `shadow world'~\cite{Kirillow1989}\dave{reference needs to be fixed.}, 
 %which was later generalized by Turaev~\cite{turaev1992shadow} \dave{Maybe also \cite{turaev1990}, need to check.}.
 
-The shadow world construction lends itself a convenient way to write down the tensor network for the wavefunction. 
-\dave{add usual blurb citing appropriate people}
-It also gives a general way to solve the ``pulling through" relations defined in \cite{Bultinck2017} as we will explain.
-\dave{draw some pictures for shadow world.
-Somehitng like cutting and folding.}
-A tensor network is a graph whose nodes label tensors, 
-and edges label tensor contractions, 
-this will be our ending point.
+\subsubsection{State sum via cut-and-glue}
+\dave{First pass at this.}
+\dave{should we take the inner product to be sesquilinear or bilinear when we resolve the 1-handles.
+I think the partition function doesn't care, 
+but it may be easier to deal with a bilinear form when we add the fermions. }
+We first review the state sum found using the cutting and gluing formalism of \cite{Walker2006}. 
+We will focus on the bosonic state sums, 
+although the same technique lends itself equally well to the fermionic state sum as we discuss in \ref{standardized_fermionic_SS}.
 
-We first describe the ``shadow world" construction for the bosonic string nets then comment how this can be re-formulated as a tensor network. 
-We identify the differences between the bosonic string-nets and the fermionic ones, explicitly write out the tensor network. 
-Finally we do one example, and put the tensor network in the context of known results.
+The input data for the state sum is
+\begin{itemize}
+\item an oriented 3-manifold $\mcm$, which for now we consider to be closed, see \ref{xxx} for 3-manifolds with boundary
+\item a cell decomposition of $\mcm$, with orientations on the 1- and 2-cells
+\item spherical fusion category $\mcc$ 
+\end{itemize}
+We will suppose the cell decomposition is dual to a triangulation so that each 1-cell neighbours three 2-cells.
+The orientations on the 1- and 2-cells can be chosen arbitrarily, 
+and play the role of the global ordering of the vertices in the TVBW state sum \dave{Need to check this.}. 
+The three cells inherit and orientation from $\mcm$.
+We next take the cell decomposition and turn it into a handle decomposition by fattenning each cell.
+\dave{Kevin, this is my understanding of your words.
+If it's way off let me know.}
+Lets denote the set of j-handles by $\mck_j$ and the set of gluing regions between $\mck_j$ and $\mck_{j-1} \cup \cdots \cup \mck_{0}$ by $g_{j-1}$. 
+In particular $g_2$ is homeomorphic to $S^2$, 
+$g_1$ is homeomorphic to $S^1 \times [0,1]$,
+$g_0$ is homeomorphic to $D^2$.
+
+The partition function $Z(\mcm)$ is defined recursively through the cut and glue formula,
+\begin{align}
+Z(\mcm) = \sum_{v_i \in A(g)} Z(\mcm \setminus K, v_i) \cdot \frac{Z(K, v_i^*) }{\langle v_i, v_i \rangle_{A(g)}}
+\end{align}
+where $g$ is the gluing region living at the boundary of $K$ and $\mcm \setminus K$ and $v_i \in A(g)$  is a complete set of boundary conditions assigned to the gluing region $g$ by $\mcc$.
+In this case, all $g_j$ are surfaces, and so $v_i$ are nets on $g_j$ modulo local relations.
+
+We can now apply this formula to find a systematic way of evaluating $Z(\mcm)$ for any 3-manifold $\mcm$.
+After all the smoke clears, this will be the TVBW state sum.
+The first step is to re-move all 3-handles from $\mcm$, using the gluing formula, 
+\begin{align}
+Z(\mcm) = Z(\mcm \setminus \mck_3, \phi) \cdot \frac{Z(\mck_3, \phi)}{\langle \phi,\phi \rangle_{A(g_2)} }= \left(\prod_{\text{3-handles}} \frac{1}{\mcd^2} \right) \cdot Z(\mcm \setminus \mck_3, \phi)
+\end{align}
+where $\phi$ is the empty boundary condition (all boundary conditions are a $\cc$ number times the empty boundary condition). 
+We assume that $Z(S^2,\phi) = 1$ \dave{Is that OK?}.
+It is well known that $\langle \phi , \phi \rangle_A(S^2) = \mcd^2$, with $\mcd^2 = \sum_x d_x^2$.
+Next, we remove the 2-handles, these are glued to the 1-handles via $g_1$, which is a disjoint union of annulai. 
+The boundary of the annulai are empty due the two neighbouring 3-handles. 
+Thus the vector space assigned to the annulus is $\bigoplus_{x\in \mcc} \cc_x$, 
+where $x$ runs over simple objects of $\mcc$. 
+A complete set of basis elements is given by minimal idempotents of $\tube(\mcc)$. 
+However, $Z(\mck_2,\{e_{i}\})$ is only non-zero if each idempotent is the trivial idempotent $e_0$, in which case $Z(\mck_2, \{e_0 \}) = 1$, and $\langle e_0, e_0 \rangle_{A(S^1 \times [0,1])} =1$.
+\dave{Lets draw a picture for this.}
+In this case, the trivial idempotent is given by $\omega = \sum_x d_x \text{cl}(x)/\mcd^2$, 
+and so
+\begin{align}
+Z(\mcm \setminus \mck_3, \phi) = \sum_{\{ e_i \}} Z(\mcm \setminus (\mck_3 \cup \mck_2),\{ e_{i} \}) \cdot \frac{Z(\mck_2, \{ e_i \})}{\langle e_i, e_i \rangle} = Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \omega \})
+\end{align}
+The last expression can be turned into a sum over all boundary conditions, 
+\begin{align}
+Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \omega \}) = \sum_{\{x_{r} \in \mcc \}, r \in \mck_2}\;  \left( \prod_r \frac{d_{x_r} }{\mcd^2} \right) Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \text{cl}(x_{r}) \} )
+\end{align}
+where the sum runs over all 2-handles, and $\text{cl}(x_r)$ is naturally oriented from the orientation of the 2-cells.
+For reference in Figure, we have shown a labeled 1-handle in the midst of the remaining partition function.\ref{OneHandle}. 
+\begin{figure}
+\begin{center}
+\includegraphics{Onehandle.pdf}
+\caption{\label{OneHandle}
+On the left we show a 1-cell neighbouring three 2-cells. 
+The three 2-cells are oriented.
+This requires knowing which side of the 2-cell is the 'up' side
+\dave{Figure out proper way to say this.}
+\dave{Maybe this is why we need a global ordering on the edges (vertices in the standard TVBWSS)}
+}
+\end{center}
+\end{figure}
+
+We now need to cut open each of the 1-handles.
+Once doing so we will have a partition function that we can evaluate solely in terms of the data associated to $\mcc$.
+This is also the point where one should start being careful. 
+We can cut open each one handle to find a disk with three marked points (if the cell decomposition were not dual to a triangulation, then we would have to write n-marked points).
+We pick a point somewhere in the middle of the 1-handle and cut it open along to discs. 
+Each disc will have a boundary with three marked points (coming from the 2-handle labels), 
+and so a resolution of the identity can be inserted by summing over a linearly independent basis of $V^{abc}$.
+Explicitly,
+\begin{align}
+\OneHandlea = \sum_\mu \frac{\OneHandlemu \OneHandlemud }{\OneHandleTheta} 
+\end{align}
+\dave{Does this only hold if the two sides of the 1-handle are not connected by any other part of the diagram?}
+If the arrows are reversed, then one has to interchange $a$ with $a^*$. 
+With $\mu  \in V^{cb^*a}$ and $\mu^* \in (V^{cb^*a})^*$, so that $\nu^* \in  (V^{cb^*a})^*$ and $\nu^* \circ \mu = \delta_{\mu,\nu} \mu^* \circ \mu$.
+Replacing every 1-handle in $Z(\mcm \setminus (\mck_3 \cup \mck_2), \{ \omega \})$ by this identity results in a partition function that can be evaluated using only data from $\mcc$. 
+Indeed, each 1-handle terminates a 0-handle, which now has a boundary condition labeled by the 2-handles, and 1-handles.
+We denote the resulting number associated to each 0-handle $s \in \mck_0$ by $T_s(\tp_{l \in \mck_1 \cap s} \mu_i)$, where each $\mu_i$ is the associated fusion space of the disc on the 1-handle terminating at the 0-handle $s$. 
+\dave{Add picture to illustrate why this thing is annoying to evaluate.}
+If the the orientation of the 1-handle is reversed then we must interchange $\mu_i$ with $\mu_i^*$. 
+With this, 
+we can finely write down the partition function,
+\dave{Need to look up less annoying notation. 
+Or should we write it as a sum over a product of pictures?}
+\begin{align}
+Z(\mcm) = \sum_{\substack{\{x_i\} \in \mcc \\ i \in \mck_2}}\sum_{\substack{\{ \mu_j \} \in A(D_j)  \\ j \in \mck_1} }
+ \prod_{r \in \mck_3} \frac{1}{\mcd^2}\;  \prod_{i \in \mck_2} d_{x_i} \; \prod_{j \in \mck_1} (\mu_j^* \circ \mu_j)^{-1} \; 
+ \prod_{s \in \mck_0 } T_s(\tp_{l \in \mck_1 \cap s} \mu_l)
+ \label{state_sum}
+\end{align}
+Our next task will be to standardize each of the handles.
+
+
+\subsubsection{Standardized bosonic state sum}
+For catalogization purposes we would like to standardize the sum appearing in \ref{state_sum}.
+We follow a similar procedure to the pitchforkiztion chosen for each vertex when setting up the Hamiltonian. 
+In addition to the oriented cell decomposition we also need,
+\begin{itemize}
+\item standardized tetrahedra that have been flattenned into the plane with pitchforked vertices
+\item a collection of pivots associated to the 1-handles which relate pitchfork at the incoming side of the 1-handle to the outgoing side
+\end{itemize}
+The standard flattenned tetrahedron is given by,
+\begin{align}
+T(\alpha \tp \beta \tp \gamma \tp \delta) =\; \Tetrahedron
+\end{align}
+where we have defined the tensor by its evaluation on the right with $\alpha \in \bigoplus_{abc} V^{abc}$, $\beta \in \bigoplus_{a^* bc} V^{a^* bc}$, $\gamma \in \bigoplus_{a^* b c^*} V^{a^* b c^*}$, $ \delta \in \bigoplus_{a^* b^* c^*} V^{a^* b^* c^*}$.
+One can change the orientation by flipping a the arrow and taking the appropriate objects dual. 
+
+For each 1-handle we have a relation between two pitchforks. 
+Since the pitch forks are oriented in the same way, we know that in transporting the incoming pitchfork (recall each 1-cell is oriented) to the outgoing pitch fork it undergoes a rotation and a reflection. 
+The reflection is always the same we assume the pitchfork starts its journey coming out of the page, 
+and ends by going back into the page. 
+\dave{Is this the only point where non-orientable surfaces would matter?}
+We record the pivot by saying how many times the pitch fork winds countourclockwise around the 1-cell using the right-hand rule; see Figure \ref{XXXX}
+The pivot satisfies $P^3 = \text{id}$, and its explicit matrix elemtents are given by,
+\begin{align}
+\mu \circ P \circ \nu = \cdots, \quad \quad \mu \in (V^{abc})^*, \quad \nu \in V^{cab}. 
+\end{align}
+Hence the state sum can be written as,
+\begin{align}
+Z(\mcm) = \cdots
+\end{align}
+
+
+\subsubsection{Standardized fermionic state sum}
+\label{standardized_fermionic_SS}
+ref. \ref{bhardwaj2016}
+
+\begin{itemize}
+\item all vector spaces become super vectors spaces
+\item one needs to keep track of Kozul signs during tensor contraction
+\item pivots now satisfy $P^3 = (-1)^F \text{id}$.
+\end{itemize}
+
+
+
+
+
+
+\subsubsection{Shadow world for fermionic state sum}
+\dave{some of the below can be salveged into this section.
+Will continue tomorrow.}
+
+
 
 
 \subsubsection{Bosonic wavefunction}
@@ -13362,16 +13530,17 @@ We review the case of a standard string net, with a spherical fusion category\fo
 We first describe the amplitude assigned to a valid net-configuration given by the TVBW state-sum, 
 we then turn it into a tensor network. 
 
-The basic input data is a spherical fusion category $\mcc$, a surface $\Sigma$, 
-a
+The basic input data is a spherical fusion category $\mcc$, 
+a surface $\Sigma$, a
 \begin{itemize}
 \item cell decomposition $\Sigma_1$ of $\Sigma$, 
 \item `topological' cell decomposition $\Sigma_0$ of $\Sigma$ which is in normal position with respect to $\Sigma_1$
 \item  a cell decomposition of $\Sigma \times [0,1]$, given by extending $\Sigma_1$ into $\Sigma \times [\frac{1}{2},1]$ and $\Sigma_0$ into $\Sigma \times [0,\frac{1}{2}]$.
-Denote the intermediary cell decomposition by $\Sigma_{0\ra 1}$, see Figure~\ref{CellDecomposition}, and the full cell decomposition by $\Sigma_{0 \ra 1}$.
+Denote the intermediary cell decomposition by $\Sigma_{0\ra 1}$, see Figure~\ref{CellDecomposition}.
 \end{itemize}
 We take the cell decompositions $\Sigma_0$ and $\Sigma_1$ to be dual to a triangulation so that there are only trivalent vertices. 
-We also require that the cell decompositions are in `normal' position, i.e., $\Sigma_0$ only intersects $\Sigma_1$ on edges, again see Figure~\ref{CellDecomposition}.
+We also require that the cell decompositions are in `normal' position, 
+i.e., $\Sigma_0$ only intersects $\Sigma_1$ on edges, again see Figure~\ref{CellDecomposition}.
 \begin{figure}
 \begin{center}
 \includegraphics{CellDecomposition.pdf}
