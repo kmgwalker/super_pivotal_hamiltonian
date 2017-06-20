@@ -233,6 +233,8 @@
 \newcommand{\OneHandlea}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{OneHandlea.pdf}}}}}
 
 \newcommand{\Tetrahedron}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tetrahedron.pdf}}}}}
+\newcommand{\PitchforkIdempotent}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{PitchforkIdempotent.pdf}}}}}
+
 
 
 
@@ -12309,6 +12311,7 @@ Let $e* \gamma_{b^*}$ denote the edge with the standard generator $\gamma_{b^*}$
 Then
 \be
 	\gamma_b * e = \alpha(e, b) \cdot e* \gamma_{b^*} ,
+	\label{fermion_slide}
 \ee
 where
 \be
@@ -13445,18 +13448,17 @@ where $x$ runs over simple objects of $\mcc$.
 A complete set of basis elements is given by minimal idempotents of $\tube(\mcc)$. 
 However, $Z(\mck_2,\{ e_{i} \})$ is only non-zero if each idempotent is the trivial idempotent $e_0$, 
 in which case $Z(\mck_2, \{e_0 \}) = 1$, 
-and $\langle e_0, e_0 \rangle_{A(S^1 \times [0,1])} =1$.
-\dave{Lets draw a picture for this.}
+and $\langle e_0, e_0 \rangle_{A(S^1 \times [0,1])} =1/\mcd^2$.
 In this case, the trivial idempotent is given by $\omega = \sum_x d_x \text{cl}(x)/\mcd^2$, 
 and so
 \begin{align}
-Z(\mcm \setminus \mck_3, \phi) = \sum_{\{ e_i \}} Z(\mcm \setminus (\mck_3 \cup \mck_2),\{ e_{i} \}) \cdot \frac{Z(\mck_2, \{ e_i \})}{\langle e_i, e_i \rangle} = Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \omega \})
+Z(\mcm \setminus \mck_3, \phi) = \sum_{\{ e_i \}} Z(\mcm \setminus (\mck_3 \cup \mck_2),\{ e_{i} \}) \cdot \frac{Z(\mck_2, \{ e_i \})}{\langle \{ e_i\}, \{e_i\} \rangle} %= Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \omega \})
 \end{align}
-The last expression can be turned into a sum over all boundary conditions, 
+Using that $Z(\mck_2, \{ e_i \})$ is zero unless all $e_i$ are equal to $e_0 = \omega$ we have, 
 \begin{align}
-Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \omega \}) = \sum_{\substack{\{x_{r} \in \mcc \}\\ r \in \mck_2}}\;  \left( \prod_r \frac{d_{x_r} }{\mcd^2} \right) Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \text{cl}(x_{r}) \} )
+Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \omega \}) = \sum_{\substack{\{x_{r} \} \\ r \in \mck_2}}\;  \left( \prod_{r \in \mck_2} d_{x_r}  \right) Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \text{cl}(x_{r}) \} )
 \end{align}
-where the sum runs over all 2-handles, and $\text{cl}(x_r)$ is naturally oriented from the orientation of the 2-cells
+where the sum runs over all 2-handles with each labeled by a simple object of $\mcc$, and $\text{cl}(x_r)$ is naturally oriented from the orientation of the 2-cells
 \dave{Need to say how we orient the 2-cells.}.
 For reference in Figure~\ref{OneHandle}, we have shown a labeled 1-handle in the midst of the remaining partition function. 
 \begin{figure}
@@ -13484,7 +13486,7 @@ The one I put is sketchy at best.}
 \footnote{Technically this only holds if the two regions seperated by the 1-handle are disconnected. 
 Since we are imposing this resolution of the identity across every 1-handle the formula is justified},
 \begin{align}
-\OneHandlea = \sum_{\mu \in A(g_0)} \frac{\OneHandlemu \OneHandlemud }{\OneHandleTheta} 
+\OneHandlea = \sum_{\mu \in A(g_0)} \OneHandlemu\;  \OneHandlemud  \times \left(\OneHandleTheta \right)^{-1}
 \end{align}
 If the arrows are reversed, then one has to interchange $a$ with $a^*$. 
 With $\mu  \in V^{cb^*a} \in A(g_0)$ and $\mu^* \in (V^{cb^*a})^* \in A(\bar{g_0})$, 
@@ -13520,17 +13522,47 @@ We follow a similar procedure to the pitchforkiztion chosen for each vertex when
 In addition to the oriented cell decomposition we also need,
 \begin{itemize}
 \item standardized tetrahedra that have been flattenned into the plane with pitchforked vertices
-\item a collection of pivots associated to the 1-handles which relate pitchfork at the incoming side of the 1-handle to the outgoing side
+\item a collection of pivots associated to the 1-handles which relate a pitchfork at the incoming side of the 1-handle to the outgoing side
 \end{itemize}
 The standard flattenned tetrahedron is given by,
 \begin{align}
 T(\alpha \tp \beta \tp \gamma \tp \delta) =\; \Tetrahedron
 \end{align}
 where we have defined the tensor by its evaluation on the right with $\alpha \in \bigoplus_{abc} V^{abc}$, $\beta \in \bigoplus_{a^* bc} V^{a^* bc}$, $\gamma \in \bigoplus_{a^* b c^*} V^{a^* b c^*}$, $ \delta \in \bigoplus_{a^* b^* c^*} V^{a^* b^* c^*}$.
-One can change the orientation by flipping a the arrow and taking the appropriate objects dual. 
+One can change the orientation by flipping an arrow and taking the appropriate object to its dual. 
 
-For each 1-handle we have a relation between two pitchforks. 
-Since the pitch forks are oriented in the same way, we know that in transporting the incoming pitchfork (recall each 1-cell is oriented) to the outgoing pitch fork it undergoes a rotation and a reflection. 
+
+For each 1-handle we have a relation between two pitchforks, whose orientation differs by a translation in the plane, see Figure{XXX}.
+This closely paralells the discussion surrounding \eqref{fermion_slide}, 
+and for good reason, as we will see shortly. 
+To every disc that is oriented ``out" of the plane (by the orientation of the 1-cells) we have a complete set of minimal idempotents given by,
+\begin{align}
+e_\mu = \mu \circ \mu^* = \PitchforkIdempotent
+\end{align}
+In fact we can take this as a definition of $\mu$ and $\mu^*$ once we impose $e_\mu \circ e_\nu = \delta_{\mu\nu} e_\mu$.
+And to every disc oriented ``into" the plane (again given by the orientation of the 1-cells) we have the dual idempotents, $e_{\mu^*}$.
+\dave{Here somewhere.....}
+
+
+Our task is to shuttle the idempotent across the 1-handle that attaches the two pitchforks. 
+The incoming pitchfork and outgoing pitchfork are both standardized. 
+Furthurmore the 1-handle is oriented, and so the the only possibility is that the labels could be rotate around the 1-handle as they are being transported from the incoming pitchfork to the outgoing one. 
+Denote the counterclockwise pivot by $P$,
+\begin{align}
+P: \; V^{abc} \ra V^{cab}$
+\end{align}
+
+
+Let $e_\mu *h$ denote the 1-handle with the idempotent $e_\mu$ at its incoming end and $h*e_{\mu^*}$
+the one handle with the dual idempotent at its outgoing end. 
+Then 
+\begin{align}
+h * e_\mu= P_h e_{\mu^*} P_h^{-1} *h
+\end{align}
+ 
+Since the pitch forks are oriented in the same way, 
+we know that in transporting the incoming pitchfork (recall each 1-cell is oriented) to the outgoing pitchfork it could undergo a rotation 
+
 The reflection is always the same we assume the pitchfork starts its journey coming out of the page, 
 and ends by going back into the page. 
 \dave{Is this the only point where non-orientable surfaces would matter?}
