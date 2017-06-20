@@ -135,13 +135,14 @@
 \definecolor{amber(sae/ece)}{rgb}{1.0, 0.49, 0.0}
 
 \newcommand{\dave}[1]{{\color{ao(english)}\footnotesize{(DA) #1}}}
-\newcommand{\remove}[1]{{\color{amber(sae/ece)}\footnotesize{(RM?) #1}}}
+\newcommand{\questionable}[1]{{\color{amber(sae/ece)}\footnotesize{(??) #1}}} %use this to flag questionable stuff
 
 %a purple that looks different from red. EL: nice! I like the name
 \definecolor{amethyst}{rgb}{0.6, 0.4, 0.8}
 \newcommand{\ethan}[1]{{\color{amethyst}\footnotesize{(EL) #1}}}
 
 \newcommand{\abullet}{{\color{amethyst} \bullet}}
+
 
 \newcommand{\CapDotLeft}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{CapDotLeft.pdf}}}}}
 \newcommand{\CapDotRight}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{CapDotRight.pdf}}}}}
@@ -10440,8 +10441,7 @@ So that the $S$-matrix is given by,
 \end{align}
 Note that $S^{NN\ra NN}$ splits as $S^{NN\ra NN}_q \oplus S^{NN\ra NN}_m$ into blocks which operate on q-type and m-type particles, as it must: S-transformations cannot change the type of a given quasiparticle. 
 
-\dave{Is a summary like this useful? Perhaps at the end of the section we could display this with T}
-In summary we have
+In summary, we have
 \begin{align}
 \left(\begin{matrix}
 \left( \begin{matrix}
@@ -10892,6 +10892,7 @@ examples of the many coherence relations these data must satisfy.
 \kw{Under construction.
 This list of axioms was adapted from the paper with Scott, which does the more general
 2-category case.}
+\ethan{I'm not sure if we need the list of axioms---certainly physicists will not know about / care about the majority of these. I think our present discussion of the differences present in the fermionic case is sufficiently complete with its current level of mathematical careful-ness}
 
 \begin{axiom}[Objects and morphisms]
 We have a set \obj(C) of objects and a set $\mor(C)$ of morphisms.
@@ -10992,7 +10993,7 @@ is $\cc$, and {q-type} if its endomorphism algebra is $\cl_1$:
 &\text{End}(x) = \mathbb{C} \ell_1 \ar@{<->}[rr]  &  &\text{$x$ is a simple q-type object}&
 	}}
 \end{align}
-This terminology comes from the notation of [cite Jos], which classifies simple super algebras over $\cc$ as either
+This terminology comes from the notation of \cite{jozefiak1988}, which classifies simple super algebras over $\cc$ as either
 $M(p,q) = \End(\cc^{p|q})$ or $Q(n)$ (see appendix \ref{superstuff}).
 Note that we are using ``simple" here in two different (and well-established) senses: 
 any $M(p,q)$ or $Q(n)$ is a simple super algebra
@@ -11002,9 +11003,9 @@ because all of the larger $M(p,q)$ or $Q(n)$ contain non-invertible elements.
 %(i.e. because $\cc$ and $\cl_1$ are the only non-trivial $\zt$-graded division algebras).
 
 The existence of q-type particles is responsible for the majority of the novel physics present after performing fermion condensation. 
-q-type objects were also discussed in \ref{wen, usher, kapustin and Gaiotto}, where they were referred to as ``Majorana objects''. 
-\kw{did all of those sources call them ``Majorana objects"?  I thought only Usher did.}
-\ethan{yeah---I think Usher borrowed it from Kapustin and Gaiotto. ``Majorana'' object is pretty natural from the physics point of view}
+q-type objects were also discussed in \ref{usher2016,gaiotto2016}, where they were referred to as ``Majorana objects''. 
+%\kw{did all of those sources call them ``Majorana objects"?  I thought only Usher did.}
+%\ethan{yeah---I think Usher borrowed it from Kapustin and Gaiotto. ``Majorana'' object is pretty natural from the physics point of view}
 
 
 
@@ -11038,7 +11039,7 @@ then we must be able to find a representation of $\End(\tau)^{\tp 3} = \cl_1^{\t
 This is impossible if $V^{\tau\tau}_{\tau}\cong \cc^{1|1}$, since $\cc^{1|1}$ is not large enough to represent $\cl_3$. 
 This means that theories which contain a q-type particle $\tau$ with $V^{\tau\tau}_{\tau}\neq0$ must contain nontrivial 
 fusion multiplicities, which provide us with fusion spaces that are large enough to admit a representation of $\cl_3$.
-Indeed such a q-type particle exists in the $\halfesix$ theory considered earlier (see \ref{halfe6}), 
+Indeed such a q-type particle exists in the $\halfesix$ theory considered earlier (see \ref{halfesix}), 
 which possesses nontrivial fusion multiplicities that allow the relevant fusion spaces in the theory to be large enough to represent $\cl_3$. 
 %The $\Gamma$ matrices in the $\halfesix$ case are essentially determined by the relations \eqref{esixdotslide}. 
 
@@ -11296,14 +11297,15 @@ Instead, it sort of hides them so that they don't need to be mentioned as often.
 
 Because of the anti-commuting nature of fusion spaces (i.e., because they can have odd fermion number), taking tensor products of fusion spaces necessitates defining an ordering 
 of the fusion spaces. 
-We will write $V^{ab}_{c,n}$ to designate that the vector space $V^{ab}_c$ appears as the $n$th factor in a given tensor product (although when we are only talking about one fusion vertex we will omit the subscript).\footnote{One 
-possibility would be to assign a normal-ordering based on the order in which the fusion spaces appear in the tensor product. 
+We will usually adopt a concise notation where the Koszul signs are kept implicit, 
+although when we want to be explicit we will write $V^{ab}_{c,n}$ to designate that the vector space $V^{ab}_c$ appears as the $n$th factor in a given tensor product (when we are only talking about one fusion vertex, we will omit the subscript).\footnote{One 
+possibility is to assign a Koszul ordering based on the order in which the fusion spaces appear in the tensor product. 
 However, for us fusion spaces are marked points on the spacetime manifold we're working over, and we will often want to move their locations around. 
 Therefore, we find that it is less error-prone to list the normal ordering of each fusion space explicitly.}
 
-Interchanging the normal ordering of two fusion spaces will generate a minus sign if both spaces have odd fermion parity, since doing this is equivalent to exchanging two fermions. 
-We write $P_{ij}$ for the map that exchanges the normal ordering of the fusion spaces with normal order $i$ and $j$. 
-The action of $P_{12}$ is encapsulated by the Koszul sign rule:
+Interchanging the Koszul ordering of two fusion spaces will generate a minus sign if both spaces have odd fermion parity, since doing this is equivalent to exchanging two fermions. 
+We write $P_{ij}$ for the map that exchanges the normal ordering of the fusion spaces with Koszul order $i$ and $j$. 
+The action of $P_{12}$ is encapsulated by the Koszul sign rule expressing the supercommutativity of the tensor product:
 \begin{align}
 \vcenter{\xymatrix @!0 @M=1mm @C=42mm{
  &P_{12}: \; \;V^{ab}_{c,1} \tp V^{xy}_{z,2} \ar[r]            &  V^{xy}_{z,1} \tp V^{ab}_{c,2} \\
@@ -11333,23 +11335,27 @@ These results mean that in the present formulation, the sizes of the Hilbert spa
 In order to fix these inconsistencies, we need to mod out by ``internal'' degrees of freedom carried by q-type particles when taking tensor products. 
 These internal degrees of freedom are encapsulated in the fusion spaces $V^{x\unit}_x, V^{\unit x}_x,$ and $V^{xx}_\unit$, each of which is $\cl_1$ if $x$ is q-type.
 Graphically, modding out by these internal degrees of freedom is equivalent to modding out by local relations involving fermions and q-type particles.  
-These relations are given by locally creating pairs of fermions and by sliding fermions from one fusion vertex to another: \ethan{Still not sure if this is the best figure.}
- \begin{align} 
+These relations are given by locally sliding fermions along a q-type edge from one fusion vertex to another.
+%: \ethan{Still not sure if this is the best figure.}
+% \begin{align} 
 %\LocalRelationUp \sim \LocalRelationDown %\quad \quad  \LocalRelationLeft \sim \LocalRelationRight \lambda^{-1},
-\mathord{\vcenter{\hbox{\includegraphics[scale=1]{alternate_local_reln.pdf}}}}
-\label{FusionSpaceRelation}
- \end{align}
-where $x$ is assumed to be q-type. A tensor product between fusion spaces taken over a q-type particle must be quotiented by isomorphisms like this. 
+%\mathord{\vcenter{\hbox{\includegraphics[scale=1]{alternate_local_reln.pdf}}}}
+%\label{FusionSpaceRelation}
+% \end{align}
+%where $x$ is assumed to be q-type. 
+A tensor product between fusion spaces taken over a q-type particle must be quotiented by ``sliding isomorphisms'' like this. 
 %Since the first equivalence relation can be derived from the second, and vice versa, both relations define the same equivalence class on the fusion space.
 
-To do this, we examine the left equivalence relation in \eqref{FusionSpaceRelation}. 
-Explicitly, it reads
-\be (V^{ab}_x f_1) \tp_\cc V^{xc}_d \sim V^{ab}_x \tp_\cc (f_1 V^{xc}_d),\ee
-where $f_1$ is an odd endomorphism of $x$.\footnote{Here we are explicitly transferring all odd degrees of freedom onto fusion spaces of the form $V^{x\unit}_{x,1} = f_1$. See the discussion at the end of Sec \ref{Koszul_sign_rule} for details.}
-This equivalence relation is saying we need to be able to freely move {\it odd} elements between factors in a tensor product involving q-type particles. 
+To perform the modding out procedure described above, we examine the 
+equivalence relation 
+\begin{align} \label{equivreln}
+(V^{ab}_{x,1} f_3) \tp_{\mathbb{C}}V^{xc}_{d,2} \sim V^{ab}_{x,1} \tp_{\mathbb{C}} (f_3 V^{xc}_{d,2})
+\end{align}
+where $f_3$ is an odd endomorphism of $x$ (as before, the numerical subscripts keep track of the Koszul ordering).%\footnote{Here we are explicitly transferring all odd degrees of freedom onto fusion spaces of the form $V^{x\unit}_{x,1} = f_1$. See the discussion at the end of Sec \ref{Koszul_sign_rule} for details.}
+This equivalence relation establishes an equivalence between states that differ by the placement of {\it odd} elements between factors in a tensor product involving q-type particles. 
 Since $\cl_1 = \langle1,f\rangle$ and $\End(x) = \cl_1$ if $x$ is q-type, this can be accomplished by using $\End(x)$ as the tensor unit, {\it instead} of $\cc$. 
 This means that in order to achieve a self-consistent fermionic theory, we need to replace the tensor product of two fusion spaces linked by the simple object $x$ with a tensor product over $\End(x)$. 
- Explicitly, 
+ Explicitly, to construct a fermionic theory, we must make the following replacements:
 \be \ba
  &V^{ab}_{x,2} \tp_{\mathbb{C}} V^{xc}_{d,1}\quad  \text{is replaced by} \quad V^{ab}_{x,2} \tp_{\text{End}(x)} V^{xc}_{d,1},\ \  {\rm and} \\ 
   &V^{ax}_{d,1} \tp_{\mathbb{C}} V^{bc}_{x,2}\quad  \text{is replaced by} \quad V^{ax}_{d,1} \tp_{\End(x)} V^{bc}_{x,2},
@@ -11363,11 +11369,7 @@ where $\tp_{\End(x)}$ means that $\End(x)$ is taken to be the tensor unit. Expli
 V^{ab}_{x,1} \tp_{\text{End}(x)} V^{xc}_{d,2} = V^{ab}_{x,1} \tp_{\mathbb{C}}V^{xc}_{d,2}/ \sim,
 \label{qtensor}
 \end{align}
-where $\sim$ is the equivalence relation 
-\begin{align} \label{equivreln}
-(V^{ab}_{x,1} f_3) \tp_{\mathbb{C}}V^{xc}_{d,2} \sim V^{ab}_{x,1} \tp_{\mathbb{C}} (f_3 V^{xc}_{d,2})
-\end{align}
-for all $f \in \text{End}(x)$. 
+where $\sim$ is the equivalence relation \eqref{equivreln}. 
 Analogous relations hold for fusion spaces connected in different ways. 
 %Likewise, we have $V^{ax}_d \tp_{\End(x)} V^{bc}_x = V^{ax}_d \tp_\cc V^{bc}_x / \sim$, where $\sim$ is the equivalence relation $(V^{ax}_{d,1} f_3) \tp_{\mathbb{C}}V^{bc}_{x,2} \sim V^{ax}_{d,1} \tp_{\mathbb{C}} (f_3 V^{bc}_{x,2})$ for all $f\in \End(x)$. 
 
@@ -11426,9 +11428,14 @@ From now, when we write $\tp$ we will always mean $\tp_\cc$, unless specified ot
 %Although they may have a nontrivial action on the fusion spaces.
 %From now, when we write $\tp$ we will always mean $\tp_\cc$, unless specified otherwise.
 
-Quotienting by the local relations in (\ref{FusionSpaceRelation}) is reminiscent of the condensation of electron pairs in superconductors: these relations say that pairs of fermions can be freely added or removed from the condensate, and that fermions lines terminating on q-type objects (which are the Majorana spin structure defects in this analogy) are able to move around freely. 
-Indeed, a fermionic phase of matter will generate such terms at second order in perturbation theory when proximity coupled to a superconductor.
-Thus, heuristically, we can think of q-type particles as the result of proximity induced superconductivity on a fusion category with only m-type particles.
+As alluded to earlier, quotienting by the local relations like \eqref{equivreln} is reminiscent of the 
+condensation of electron pairs in superconductors: these relations say that pairs of fermions can be freely 
+added or removed from the condensate, and that fermions lines terminating on q-type objects (which are 
+the Majorana spin structure defects in this analogy) are able to move around freely. 
+Indeed, a fermionic phase of matter will generate such terms at second order in perturbation theory when 
+proximity coupled to a superconductor.
+Thus, heuristically, we can think of q-type particles as the result of proximity induced superconductivity on 
+a fusion category with only m-type particles.
 
 
 %%%%%%%%%%%%%%%%%%
@@ -11438,18 +11445,31 @@ Thus, heuristically, we can think of q-type particles as the result of proximity
 The $F$-symbols are defined as basis transformations between different fusion spaces. 
 There are two additional considerations when defining the $F$-symbols in the fermionic setting: they must account for the normal-ordering of the fusion spaces that are transformed during the $F$-move, and they must incorporate the modified tensor product introduced in Sec \ref{modified_tensor_product}. 
 
-There is some arbitrariness involved in our definition of the $F$-moves. They must be linear transformations between two different fusion graphs with four outgoing anyon worldlines, although the details of the structure of the graphs they provide a relation between (e.g.\ how many of their outgoing legs point up or down) is arbitrary, with the different choices being related by pivotal matrices $P^{ab}_c$ which will be defined in the following section. 
-Additionally, we must choose how they act on the relative sign-ordering of the fusion spaces involved in the $F$-move. We will choose the following convention, in which the $F$-symbols are basis transformations between two fusion spaces of the form $V^{ab}_c$, and such that the vertical sign-ordering of the fusion spaces in any diagram is preserved under $F$-moves: 
+There is some arbitrariness involved in our definition of the $F$-moves. They must be linear 
+transformations between two different fusion graphs with four outgoing anyon worldlines, although the 
+details of the structure of the graphs they provide a relation between (e.g.\ how many of their outgoing legs 
+point up or down) is arbitrary, with the different choices being related by pivotal matrices $P^{ab}_c$ which 
+will be defined in the following section. 
+Additionally, we must choose how they act on the relative sign-ordering of the fusion spaces involved in 
+the $F$-move. We will choose the following convention (standard in the physics literature), in which the $F$-symbols are basis 
+transformations between two fusion spaces of the form $V^{ab}_c$.
+We will also choose a convention in which the vertical Koszul
+of the fusion spaces in any diagram is preserved under $F$-moves: 
 \begin{align} \label{Fdef}
 F^{abc}_d: \; \; \bigoplus_x V^{ab}_{x,2} \tp_{\text{End}(x)} V^{xc}_{d,1} \rightarrow \bigoplus_y V^{ay}_{d,1} \tp_{\text{End}(y)} V^{bc}_{y,2}
 \end{align}
 Graphically, this is written in terms of the matrix elements of $F$ as
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{Fsymbol_defn.pdf}}}},\ee
 where the greek indices label particular fusion space basis vectors (so that e.g.\ $\mu$ is a basis vector of $V^{ab}_x$).
-When we take tensor products of fusion spaces, the fusion spaces appear in the tensor product in the same left-to-right order that they appear in the fusion diagram, while the normal ordering of the fusion spaces to increase as we go ``up'' the diagram. 
-This means that the $F$-move permutes the normal ordering of the fusion spaces appearing in the fusion diagram, which we will see leads to Koszul-sign modifications of the pentagon relation. 
+When we take tensor products of fusion spaces, the fusion spaces appear in the tensor product in the 
+same left-to-right order that they appear in the fusion diagram, while the Koszul ordering of the fusion 
+spaces to increase as we go ``up'' the diagram. 
+This means that the $F$-move permutes the normal ordering of the fusion spaces appearing in the fusion 
+diagram, which we will see leads to Koszul-sign modifications of the pentagon relation. 
 
-To implement the modified tensor products $\tp_{\End(x)}$ and $\tp_{\End(y)}$ in \eqref{Fdef}, we impose the condition that the F-symbols commute with the gauge transformations $L,R$ that implement the modified tensor product. 
+To implement the modified tensor products $\tp_{\End(x)}$ and $\tp_{\End(y)}$ in \eqref{Fdef}, we impose 
+the condition that the F-symbols commute with the gauge transformations $L,R$ that implement the 
+modified tensor product. 
 Imposing this condition means that the following diagram must commute:
 \begin{align}
 	\vcenter{\xymatrix @!0 @M=1mm @R=30mm @C=42mm{
@@ -11494,10 +11514,18 @@ The pentagon relation in the superfusion case is defined as an equivalence betwe
 	}} 
 	\label{endoPentagon}
 \end{align}
-where we have used the notation $\tp_x \equiv \tp_{\text{End}(x)}$. Note that this is actually a hexagon, not a pentagon: the extra arrow is the one marked $P_{23}$, which is the Koszul sign originating from switching the fermion ordering of the $V^{yt}_s$ and $V^{z2}_t$ fusion spaces. 
-The use of the modified tensor products $\tp_x$ is how (\ref{endoPentagon}) differs from the ``super-pentagon" equation which has already appeared in the literature \cite{Gu2015, gaiotto2016, usher2016} and which is only applicable to theories that possess no q-type objects 
-(note that if our theory has no q-type objects we can set $\tp_x = \tp_\cc$ for all $x$, and so \eqref{endoPentagon} reduces to the super-pentagon equation in the case with no q-type particles).
-In practice, it is often easiest to first solve the pentagon equation in the ``extended space'' by replacing all $\tp_x$ tensor products with $\tp_\cc$ (yielding the super pentagon equation), and then requiring the resulting $F$-symbols to satisfy the constraint (\ref{Fcommute}), which is tantamount to implementing the modified tensor products.
+where we have used the notation $\tp_x \equiv \tp_{\text{End}(x)}$. Note that this is actually a hexagon, 
+not a pentagon: the extra arrow is the one marked $P_{23}$, which is the Koszul sign originating from 
+switching the Koszul ordering of the $V^{yt}_s$ and $V^{z2}_t$ fusion spaces. 
+The use of the modified tensor products $\tp_x$ is how (\ref{endoPentagon}) differs from the ``super-
+pentagon" equation which has already appeared in the literature \cite{Gu2015, gaiotto2016, usher2016} 
+and which is only applicable to theories that possess no q-type objects 
+(note that if our theory has no q-type objects we can set $\tp_x = \tp_\cc$ for all $x$, and so 
+\eqref{endoPentagon} reduces to the super-pentagon equation in the case with no q-type particles).
+In practice, it is often easiest to first solve the pentagon equation in the ``extended space'' by replacing all 
+$\tp_x$ tensor products with $\tp_\cc$ (yielding the super pentagon equation), and then requiring the 
+resulting $F$-symbols to satisfy the constraint (\ref{Fcommute}), which is tantamount to implementing the 
+modified tensor products.
 
 \begin{comment}
 \dave{We should think about to what extent all super fusion categories can be realized by fermion condensation}
@@ -11524,7 +11552,7 @@ Finally, we remark on the pivotal structure of fusion spaces in superfusion cate
 &\kappa_a: \;\; V^{a a^*} \tp_{\text{End}(a^*)} V_{a^*a} \rightarrow V^a_a% \\
 %&\tilde{\kappa}_a: \;\; V_{a a^*} \tp_{\text{End}(a^*)} V^{a^*a} \rightarrow V^a_a
 \end{align}
-Or diagrammatically, 
+Diagrammatically, 
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{FS_defn.pdf}}}}
  \ee
 The Frobenius-Schur move is a special case of the pivot: 
@@ -11576,28 +11604,32 @@ Define
 \begin{align}
 \TwodotCap =  \lambda_{\text{cap}} \; \Qcap \quad \quad
 \TwodotCup =  \lambda_{\text{cup}}\; \Qcup \quad \quad
-\Qdotdot =  \lambda \; \QIdentity
+\Qdotdot =  \lambda \; \QIdentity,
 \end{align}
+where the black lines denote arbitrary string-net configurations on which the q-type strings terminate.
 With these definitions one can show that
 \begin{align}
 \QCapDotL =(-\lambda_{\text{cap}}^{-1} \lambda )\; \QCapDotR \qquad \qquad \QCapDotR  = (\lambda_{\text{cap}}^{-1} \lambda ) \; \QCapDotL\\ 
 \\
 \QCupDotR= (-\lambda_{\text{cup}}^{-1} \lambda )\; \QCupDotL \qquad \qquad \QCupDotL  = (\lambda_{\text{cup}}^{-1} \lambda) \; \QCupDotR
 \end{align}
-\kw{I think it would be more straightforward to make $(-\lambda_{\text{cap}}^{-1} \lambda ) = \pm i$ the fundamental constant,
-since it does not change if we rescale the fermionic dot.}
-\dave{I agree.}
-Applying the relation twice must be equivalent to doing nothing, so that we have $\lambda^2 = -\lambda_{\text{cap}}^2$ and $\lambda^2 = -\lambda_{\text{cup}}^2$.
-The spin structure guarantees that when a fermion goes around a loop which bounds a disk it must pick up a minus sign. 
-Therefore we also have, $\lambda^2 = -\lambda_{\text{cap}} \lambda_{\text{cup}}$.
-Altogether, these relations imply that $\lambda_{\text{cup}} = \lambda_{\text{cap}}$, and also $(-\lambda_{\text{cap}} \lambda)^2 = -1$.
-And we conclude that a dot slide must be purely imaginary. It is convenient to define clockwise dot slides as
-\begin{align}
-&\QCapDotL =\Omega \; \QCapDotR \quad \quad \QCupDotR= \Omega \; \QCupDotL \quad \quad \Omega^* = -\Omega, \quad \lambda^4 >0
-\end{align}
-\dave{It would be good if we could show $\lambda^4>0$, but not sure how.} \ethan{$\lambda^4=1$ means that we can remove eight fermions for free, which we expect from the whole $\zz_8$ fermion classification thing.}
-\kw{If I'm understanding you correctly, then there are no restrictions on $\lambda$ until we consider orientation-reversing maps (reflections).
-By rescaling the dot we can make $\lambda$ any non-zero number.}
+%\kw{I think it would be more straightforward to make $(-\lambda_{\text{cap}}^{-1} \lambda ) = \pm i$ the fundamental constant,
+%since it does not change if we rescale the fermionic dot.}
+%\dave{I agree.}
+Sliding a fermion counterclockwise under a cup and then sliding it back must be equivalent to doing nothing, so that we have $\lambda^2 = -\lambda_{\text{cap}}^2$ and $\lambda^2 = -\lambda_{\text{cup}}^2$.
+Additionally, when a fermion travels around a closed loop of q-type string which bounds a disk it must pick up a minus sign (from the bounding spin structure the loop inherits). 
+Therefore we also have $\lambda^2 = -\lambda_{\text{cap}} \lambda_{\text{cup}}$.
+Together, these relations imply that $\lambda_{\text{cup}} = \lambda_{\text{cap}}$, and $(-\lambda_{\text{cap}} \lambda)^2 = -1$, allowing us to  
+conclude that the phase produced by a dot slide must be purely imaginary (recall that 
+$\lambda$ is fixed to be purely imaginary by the discussion in \ref{fermion_line_bundle}). 
+For example, in the $C_2$ theory considered earlier, we have $\lambda = A^4 = \pm i$ and $\lambda_{\rm cap}=A^8=-1$. 
+%It is convenient to define clockwise dot slides as
+%\begin{align}
+%&\QCapDotL =\Omega \; \QCapDotR \quad \quad \QCupDotR= \Omega \; \QCupDotL \quad \quad \Omega^* = -\Omega, \quad \lambda^4 >0
+%\end{align}
+%\dave{It would be good if we could show $\lambda^4>0$, but not sure how.} \ethan{$\lambda^4=1$ means that we can remove eight fermions for free, which we expect from the whole $\zz_8$ fermion classification thing.}
+%\kw{If I'm understanding you correctly, then there are no restrictions on $\lambda$ until we consider orientation-reversing maps (reflections).
+%By rescaling the dot we can make $\lambda$ any non-zero number.}
 
 
 
@@ -11699,16 +11731,19 @@ where the sums are over the plaquettes $P$, edges $E$, and vertices $V$ of the g
 %We require a hierarchy in the couplings, $\lambda_p \ll \lambda_e \ll \lambda_v$,
 %which ensures that the low energy spectrum can be characterized by simple objects in $\mcz(\mathcal{C})$.
 %If we want the excitations to be in correspondence with the primitive idempotents of the tube algebra, then w
-As in the bosonic case, we require a hierarchy in the couplings of $\lambda_v \gg \lambda_e \gg \lambda_p$.
-\dave{This makes the low energy spectrum purely ``flux" excitations. 
-The ``charged" idempotents always violate both the plaquette and vertex term, which with this hiearchy costs a lot of energy. 
-We could mention in a footnote that if this bothers the reader then the the plaquette term can be modified by $B_p \rightarrow B_p \prod_{v \in p} A_v$ or make the model an actual commuting projector Hamiltonian by taking $B_p \rightarrow B_p \prod_{e \in p} D_e \prod_{v \in p} A_v$, and $D_e \rightarrow D_e \prod_{v \in e} A_v$. }
-\kw{This is an issue for the usual bosonic LW Hamiltonian too.
-Is there anything we can refer to for the bosonic case?}
-\dave{Perhaps this one \cite{hu2015}. 
-It looks like they circumvent the problem by adding an extra leg to the vertices to accomadate the flux+charge excitations.
-Ethan are you familiar with that paper? Or do you know if there are other appropriate references.}
-\kw{We should add a remark along the lines of Dave's suggestion.}
+As in the bosonic case, we require a hierarchy in the couplings of $\lambda_v \gg \lambda_e \gg \lambda_p$\footnote{This makes the low energy spectrum consist purely of ``flux" excitations: 
+the ``charged" idempotents always violate both the plaquette and vertex term, which with this hierarchy of coefficients costs a large amount of energy. 
+One way to put charge and flux excitations on an energetically more equal footing is to add ``tails'' to each 
+plaquette that host the charge degrees of freedom, as in \cite{hu2015}.}.
+%\dave{This makes the low energy spectrum purely ``flux" excitations. 
+%The ``charged" idempotents always violate both the plaquette and vertex term, which with this hiearchy costs a lot of energy. 
+%We could mention in a footnote that if this bothers the reader then the the plaquette term can be modified by $B_p \rightarrow B_p \prod_{v \in p} A_v$ or make the model an actual commuting projector Hamiltonian by taking $B_p \rightarrow B_p \prod_{e \in p} D_e \prod_{v \in p} A_v$, and $D_e \rightarrow D_e \prod_{v \in e} A_v$. }
+%\kw{This is an issue for the usual bosonic LW Hamiltonian too.
+%Is there anything we can refer to for the bosonic case?}
+%\dave{Perhaps this one \cite{hu2015}. 
+%It looks like they circumvent the problem by adding an extra leg to the vertices to accomadate the flux+charge excitations.
+%Ethan are you familiar with that paper? Or do you know if there are other appropriate references.}
+%\kw{We should add a remark along the lines of Dave's suggestion.}
 This is because the operators appearing in the plaquette terms are not well-defined unless the edge term energies are minimized, and in turn the terms appearing in the edge operators are not well-defined unless the vertex term energies are minimized.
 Thus, the projectors associated with $k$-handles are only defined on the ground states of the projectors associated with $l$-handles, for all $l<k$.  
 %\kw{maybe insert a caveat about later projectors only being defined on the ground state of earlier projectors}
@@ -11716,20 +11751,22 @@ Thus, the projectors associated with $k$-handles are only defined on the ground 
 %\dave{I changed ``commuting projector" to ``frustration free" above. 
 %We should elaborate that when the vertex end edge terms the Hamiltonian is a commuting projector model.}
 In Fig.~\ref{example_lattice} we illustrate the support of each operator appearing in the Hamiltonian with dashed circles, where we have drawn a section of the graph $\mcg$ embedded in the plane for the sake of visualization. 
+For simplicity, we will assume that all vertices in $\mcg$ are trivalent\footnote{Any surface possesses a cell decomposition with trivalent vertices.
+Such cell decompositions are Poincar\'e dual to triangulations.}.
 
-\kw{NOTE: One consequence of our putting all degrees of freedom at vertices is that the support of a ``vertex" projector is actually two adjacent vertices, 
-which is the same support as the the edge term.}
+%\kw{NOTE: One consequence of our putting all degrees of freedom at vertices is that the support of a ``vertex" projector is actually two adjacent vertices, 
+%which is the same support as the the edge term.}
 
 %\ethan{moved discussion of excitations to its own subsection at the end, since I think we have a good bit of stuff to say. Feel free to undo}
 %\dave{No problem, I probably put too much detail anyway. Maybe we should refer to that paragram somewhere in this introductory section so that the reader can learn the physics of the Hamiltonian without slogging through the details.}
-\dave{Maybe we should refer to that paragram somewhere in this introductory section so that the reader can learn the physics of the Hamiltonian without slogging through the details.}
+%\dave{Maybe we should refer to that paragram somewhere in this introductory section so that the reader can learn the physics of the Hamiltonian without slogging through the details.}
 
 
 %%%%%%%%%%%%%%%
 \subsection{Hilbert space} \label{hilbertspacesect}
 %%%%%%%%%%%%%%%
 
-\kw{Below I have tried to remove inessential material and add in some important points.
+%\kw{Below I have tried to remove inessential material and add in some important points.
 The exposition could stand some improvement, so feel free to edit.
 Also, the explanations in the second half could be moved to an appendix (though I lean slightly toward keeping them here).}
 
@@ -11739,39 +11776,41 @@ the big Hilbert space on which the Hamiltonian is defined is
  \mch_\mcg =\bigotimes_{v \in \mcv} \mch_v  = \mch_{v_1} \tp \mch_{v_{2}} \tp \dots \tp \mch_{v_n} .
 \end{align}
 The tensor products above are supercommutative, in the sense that for $\psi\in \mch_{v_i},\eta\in \mch_{v_{i+1}}$, $\psi \tp \eta = (-1)^{|\psi||\eta|}\eta\tp\psi \in \mch_{v_{i+1}} \tp \mch_{v_i}$. 
-For details on this, see Appendix \ref{??}
+%For details on this, see Appendix \ref{??}
 
 The vertex Hilbert spaces $\mch_{v_n}$ will depend on three sets of choices.
 First, we must choose an orientation of each edge of $\mcg$.
-(This is because of the possibility of non-trivial Frobenius-Schur indicators; see below.)
+This is because of the possibility of non-trivial Frobenius-Schur indicators; see below.
 Second, we must choose an ordering of the edges incident to each vertex, consistent with with the intrinsic cyclic ordering of those edges
-coming from the embedding of $\mcg$ in the oriented surface.
-(So if the vertex is $r$-valent, there are $r$ possible orderings.)
-This choice of ordering is the same thing as a ``pitchforkization" of each vertex (see Figure xxx).
-Finally, we must choose a spin framing at each vertex, consistent with the pitchforkization.
+coming from the embedding of $\mcg$ in the oriented surface
+(so if the vertex is $r$-valent, there are $r$ possible orderings).
+
+In order to make the choice of cyclic ordering manifest in diagrams, and in order to simplify spin-structure-related
+aspects of our construction, we will choose to draw our graphs in a way such that all of the outgoing 
+edges at each trivalent vertex are ``on the same footing''. This is in contrast to the conventions in the physics literature
+and in the earlier sections of this paper, where vertices are drawn with one ``incoming'' edges and two 
+``outgoing'' edges, since in this convention the incoming edge is distinguished from the two outgoing edges.
+We will choose a convention in which all three edges at each trivalent vertex are outgoing: with this
+choice, each vertex resembles a pitchfork. \ethan{pitchforks usually have four tines, perhaps ``trident'' is slightly more precise}
+The cyclic ordering of the edges at a given vertex is determined by the left-to-right ordering of the pitchfork legs. 
+
+Finally, we must choose a spin framing at each vertex, consistent with the ``pitchforkization'' convention.
 The pitchforkization and spin framing are needed in order to define an unambiguous
 isomorphism between string nets near $v$ is standard vector spaces $V^{abc}$.
-\kw{maybe refer to def section}
 Without this standardization, the local Hilbert spaces would be ambiguous up to automorphisms. 
 The standardization procedure is nothing more than fixing a convenient choice of gauge in the way we present our fusion diagrams. 
 
-For simplicity, we will now assume that all vertices are trivalent.
-(Any surface possesses a cell decomposition with trivalent vertices.
-Such cell decompositions are Poincar\'e dual to triangulations.)
-
-If all of the edges incident to $v$ point out,
-then we define
+If all the edges incident to a vertex $v$ point out of the vertex, we define the vertex Hilbert space at $v$ by 
 \be
-	\mch_v = \bigoplus_{a,b,c} V^{abc}  \quad\quad\quad\quad\quad\quad \PitchFork{a}{b}{c}{}
+	\mch_v = \bigoplus_{a,b,c} V^{abc}  \quad\quad\quad\quad\quad\quad \PitchFork{a}{b}{c}{},
 	\label{pitchfork_basis}
 \ee
-where the sum is over our favorite complete set of simple objects of $\mcc$
-(i.e.\ we choose a complete set at the outset and keep it fixed throughout).
+where the sum is over the simple objects of $\mcc$\footnote{We choose our favorite complete set of simple objects at the outset and keep it fixed throughout.}.
 If the first edge points in and the other two point out, then we define
 \be
-	\mch_v = \bigoplus_{a,b,c} V^{a^*bc}  \quad\quad\quad\quad\quad\quad \PitchForkas{a}{b}{c}{} =  \PitchFork{a^*}{b}{c}{}.
+	\mch_v = \bigoplus_{a,b,c} V^{a^*bc}  \quad\quad\quad\quad\quad\quad \PitchForkas{a}{b}{c}{} =  \PitchFork{a^*}{b}{c}{},
 \ee
-And so on for all eight possible patterns of in/out of the three adjacent edges.
+and so on for all eight possible patterns of in/out of the three incident edges.
 
 \medskip
 
@@ -11786,13 +11825,11 @@ Levin and Wen explicitly assume that $V^{abc}$ is at most 1-dimensional.
 This is true for theories based on Temperley-Lieb or $Rep_q(sl_2)$, but it is not true in general,
 so we need to add spins on vertices.
 But each basis vector in $\bigoplus_{a,b,c} V^{abc}$ ``knows" the labels on the adjacent edges, so once we have these vertex degrees of
-freedom the edge degrees of freedom become redundant and can be eliminated.
-
-(An argument in favor of edge degrees of freedom is that they can lead to smaller local Hilbert spaces, at least for simple theories.
+freedom the edge degrees of freedom become redundant and can be eliminated\footnote{An argument in favor of edge degrees of freedom is that they can lead to smaller local Hilbert spaces, at least for simple theories.
 For example, one can write a Hamiltonian for the $C_2$ theory which has a $(2|0)$-dimensional Hilbert space at each edge
 and a $(1|1)$-dimensional Hilbert space at each vertex.
 The general Hamiltonian we are now discussing, specialized to the $C_2$ theory, 
-would assign a $(4|3)$-dimensional Hilbert space to each vertex (but no Hilbert spaces for edges).)
+would assign a $(4|3)$-dimensional Hilbert space to each vertex (but no Hilbert spaces for edges).}.
 
 Why must we choose an orientation of each edge?
 The short answer: because of the possibility of non-trivial Frobenius-Schur indicators.
@@ -11803,7 +11840,7 @@ This means that each edge sees two inward pointing edges.
 \begin{align}
 \PitchForkWithEdge
 \end{align}
-\kw{Thanks for the fig.  Probably we should add a box in the middle of the edge. \dave{done.}}
+%\kw{Thanks for the fig.  Probably we should add a box in the middle of the edge. \dave{done.}}
 If the two labels coming from the two adjacent vertices are $a$ and $b$
 (which we will assume are both m-type, for simplicity), then the
 associated vector space for the edge is $V^{ab}$, which is 0-dimensional unless $a \cong b^*$.
@@ -11812,7 +11849,7 @@ $\cc = \cc^{1|0}$ and we can ignore it.
 
 But if $a$ is evenly self-dual with FS indicator $-1$, then there is a sign ambiguity in identifying $V^{aa}$ with $\cc$, and we will have to
 keep careful track of this sign when defining the Hamiltonian.
-Even worse, if $a$ is {\it oddly} self-dual (and $a$ is m-type), with FS indicator $\pm i$ (see xxx-E6), then $V^{aa}$ is an odd vector space, 
+Even worse, if $a$ is {\it oddly} self-dual (and $a$ is m-type), with FS indicator $\pm i$ (as occurs in the $\halfesix$ theory studied earlier), then $V^{aa}$ is an odd vector space, 
 non-canonically isomorphic to $\cc^{0|1}$.
 Keeping track of these odd vector spaces would entail even more bookkeeping.
 %The extra bookkeeping this entails is even more annoying.
@@ -11821,8 +11858,7 @@ Overall, we think the least annoying solution to the above problems is to orient
 This allows us to treat $a$ and $a^*$ as distinct objects, even when they happen to be isomorphic.
 Now, instead of $V^{aa}$, we have $V^{aa^*} = \End(a)$, which has a canonical element $id: a\to a$.
 
-Why the pitchforks?
-Because rotations by $2\pi/3$ can act non-trivially on $V^{aaa}$, and so it is helpful to choose a vertex configuration where every outgoing edge is on the same footing. 
+Why the pitchforks? As alluded to earlier, rotations by $2\pi/3$ can act non-trivially on $V^{aaa}$, and so it is helpful to choose a vertex configuration where every outgoing edge is placed on the same footing. 
 This is true even in the bosonic case.
 
 Why the spin framings?
@@ -11990,8 +12026,10 @@ h: &\mathcal{H}_v \tp \mathcal{H}_v \rightarrow \mathbb{C}^{1|0}\\
 
 
 
-
-
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+\ethan{Old notes (mostly Kevin's) follow. It seems like all of the following text has either been incorporated into the un-commented-out version below or is no longer relevant. 6/19/2017} 
 \subsection{temporary notes}
 
 \kw{misc notes:}
@@ -12016,9 +12054,6 @@ for the surface with all plaquettes punctured.}
 
 \kw{Should probably choose an orientation of each edge.
 Each vertex then inherits a pattern of incoming/outgoing edges.}
-
-
-
 
 \kwsep
 
@@ -12081,8 +12116,9 @@ The edge term is then \kw{something like}
 
 
 \kw{out of time}
-
-
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -12172,7 +12208,7 @@ This results in a spin framing which is parallel to the outgoing edges at the to
 \end{figure}
 
 Just as we do for the 0-handles, we will ``standardize'' the 1-handles so that they all assume the same form. 
-After standardizing our 0-handles, 1-handles will always enter/exit from a 0-handle ``vertically'' (see Figure \ref{Spinisomorphisms}), 
+After standardizing our 0-handles, 1-handles will always enter/exit from a 0-handle ``vertically'' (see Figure \ref{SpinIsomorphisms}), 
 and so our standardized 1-handles will look like 
 \begin{align}
 \Horseshoe
@@ -12188,13 +12224,13 @@ The spin structure on a 1-handle (relative to the two attaching intervals) will 
 \caption{\label{framing_rot} Parallel-transporting a fermion along a q-type edge, which is oriented as shown. 
 The red arrow keeps track of the fermion framing, which rotates by $\pi$ when proceeding along the direction of the edge's orientation.
 The blue arrows at the ends of the edge indicate the fixed framing at each 0-handle at the endpoints of the edge. 
-\dave{Maybe we could leave the blue dot at a fixed position, and just pull the box over the cap?
-\kw{I don't understand this comment (above).}}
-\dave{The point was we could move the box ( = termination of $\psi + \text{fermion}$) and leave the dot (= junction of $\psi$ with e.g., q-type object) at a fixed position.
-Then the process of moving a fermion across the edge is split into two pieces -- the spin structure dependant part and the isotopy.
-}
-\dave{Should also say where in the text we describe how to put the box back into its standard position, 
-i.e., with the $\psi$ line exiting to the left.}
+%\dave{Maybe we could leave the blue dot at a fixed position, and just pull the box over the cap?
+%\kw{I don't understand this comment (above).}}
+%\dave{The point was we could move the box ( = termination of $\psi + \text{fermion}$) and leave the dot (= junction of $\psi$ with e.g., q-type object) at a fixed position.
+%Then the process of moving a fermion across the edge is split into two pieces -- the spin structure dependant part and the isotopy.
+%}
+%\dave{Should also say where in the text we describe how to put the box back into its standard position, 
+%i.e., with the $\psi$ line exiting to the left.}
 }
   \label{framing_rotation}
 \end{figure}
@@ -12230,7 +12266,7 @@ boundary of each 2-handle has a bounding spin structure; see below.
 
 Let $b$ be a q-type simple object.
 We want to analyze the effect of sliding a fermionic dot over the edge $e$ when $e$ is labeled by $b$.
-\kw{Could possibly move following discussion to the definition section.}
+%\kw{Could possibly move following discussion to the definition section.}
 At the outset, we will choose an odd element $\gamma_b\in\End(b)$ such that $\gamma_b^2 = \id_b$, and also
 $\gamma_{b^*}\in\End(b^*)$ such that $\gamma_{b^*}^2 = \id_{b^*}$.
 The requirement that $\gamma_b^2 = \id_b$ determines $\gamma_b$ up to sign.
@@ -12312,15 +12348,15 @@ which are the defining relations for the representations of complex Clifford alg
 \begin{center}
 \includegraphics{spin_rot_through_0handle.pdf}
 \caption{ \label{spin_rot_through_0handle} An illustration of a $+\pi$ spin framing rotation picked up as the path $\gamma$ (drawn in dashed purple) passes through a 0-handle. 
-If we were to proceed along $\gamma$ in the opposite direction, we would pick up a $-\pi$ spin framing rotation instead. \ethan{may want to thicken to handle-ify this figure}
+If we were to proceed along $\gamma$ in the opposite direction, we would pick up a $-\pi$ spin framing rotation instead. %\ethan{may want to thicken to handle-ify this figure}
   }
 \end{center}
 \end{figure}
 
 We mentioned above that the collection of $\{\alpha(e)\}$ must satisfy some constraints if it is 
 to extend over the 2-cells and give a specified spin structure.
-Here are the details.
-Let $\gamma$ be an oriented framed loop in $\Sigma$.
+Here are the details:
+let $\gamma$ be an oriented framed loop in $\Sigma$.
 For simplicity, we will assume that (a) $\gamma$ is embedded, (b) the framing is the natural one coming from the tangent 
 space of $\gamma$, and (c) $\gamma$ is contained in the union of the 0- and 1-handles.
 We want to compute the spin rotation, either 0 or $2\pi$, which $\gamma$ picks up from the spin structure on the 0- and 1-handles.
@@ -12328,11 +12364,16 @@ When $\gamma$ goes over a 1-handle $e$, it picks up a rotation of $\alpha(e)$ or
 with or against the orientation of $e$.
 Each time $\gamma$ passes though a 0-handle, it also picks up a rotation of $\pm\pi$.
 Suppose $\gamma$ enters the 0-handle at the $i$-th 1-handle and exits the 0-handle at the $j$-th 1-handle\footnote{Note that $i$ and $j$ refer to the ordering of 1-handle attachments local to the 0-handle, not to some global ordering. The $i$ and $j$ are assigned in the same way as the $\Gamma_i$ and $\Gamma_j$ in \eqref{gamma1_defn} and \eqref{gamma2gamma3_defn}.}.
-The we get a rotation of $+\pi$ if $i<j$ and a rotation of $-\pi$ if $i > j$ (see Figure \ref{spin_rot_through_0handle}).
+With our ordering conventions, this gives a rotation of $+\pi$ if $i<j$ and a rotation of $-\pi$ if $i > j$ (see Figure \ref{spin_rot_through_0handle}).
 Combining all of these $\pm\pi$ rotations results in a rotation of 0 or $2\pi$.
-A bounding spin structure on $\gamma$ yields a $2\pi$ rotation, and a non-bounding one to no rotation.
-In particular, if $\gamma$ is the boundary of a single 2-cell/plaquette, then it must get a rotation of $2\pi$, since we assume that the spin structure around each 2-cell is bounding (which allows the spin structure on the 0- and 1-handles extends to a spin structure on all of $\Sigma$). 
-More generally, $\gamma$ will always get a rotation by $2\pi$ if it is trivial in $H_1(\Sigma)$.
+A bounding spin structure on $\gamma$ yields a $2\pi$ rotation (since a $2\pi$ rotation acts as 
+multiplication by $-1$ and produces the requisite anti-periodic boundary conditions), and a non-bounding 
+spin structure corresponds to no rotation.
+In particular, if $\gamma$ is the boundary of a single 2-cell/plaquette, then it must correspond to a spin 
+framing rotation of $2\pi$, since we assume that the spin structure around each 2-cell is bounding (which 
+allows the spin structure on the 0- and 1-handles extends to a spin structure on all of $\Sigma$). 
+More generally, $\gamma$ will always get a spin framing rotation by $2\pi$ if it is in the trivial homology 
+class of $H_1(\Sigma)$.
 
 
 
@@ -12867,14 +12908,10 @@ Ensuring that ground states are superpositions of different fermion configuratio
 %Including the edge term in the Hamiltonian mods out by these degrees of freedom energetically; for an alternate approach involving the re-definition of the tensor product see Section \ref{modified_tensor_product}. 
 
 
-Finally, we note that a 1D Kitaev wire in the topological phase also exhibits the same behavior as the q-type strings in our theories.
-However, since generic theories (like the $\halfesix$ example considered earlier) can have fusion rules in which two q-type simple objects to fuse to a third q-type simple object, our q-type strings are more general versions of Kitaev wires, since at the junction of three Kitaev wires a zero mode is left behind, which does not occur in the $\halfesix$ theory. 
-\dave{I think we should be careful in saying that they are more general Kitaev wires.
-But lets Skype about this sometime.}
-
-
-
-
+As mentioned earlier, it can be conceptually helpful to note that a 1D Kitaev wire in the topological phase also exhibits the same behavior as the q-type strings in our theories.
+However, since generic theories (like the $\halfesix$ example considered earlier) can have fusion rules in which two q-type simple objects to fuse to a third q-type simple object, this analogy is subtle, since at the junction of three Kitaev wires a zero mode is left behind, which does not occur in the $\halfesix$ theory. 
+%\dave{I think we should be careful in saying that they are more general Kitaev wires.
+%But lets Skype about this sometime.}
 
 %%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%
@@ -13137,27 +13174,42 @@ Explicitly, we have
 \begin{align} \label{plaquette_term_defn}
 B_p =\frac{1}{\mcd} \sum_{a \in \mcc} \frac{d_a}{\text{dim} \; \text{End}(a)} \mcb^a_p, % \sum_{\mathcal{O}_p \in \text{End}(\mathcal{A}(p, \partial p; a) )}  \mathcal{O}_p
 \end{align}
-where the operator $\mcb_p^a$ fuses in a loop labeled by $a$ into the plaquette $p$ using a collection of $F$-moves and pivoting moves \ref{someone} (note that the operator $\mcb_p^a$ only has a nontrivial action when all vertices neighboring the plaquette $p$ are stable).
+where the operator $\mcb_p^a$ fuses in a loop labeled by $a$ into the plaquette $p$ (note that 
+as discussed earlier, the operator $\mcb_p^a$ is only defined when all vertices neighboring the plaquette $p$ are stable).
+% using a collection of $F$-moves and pivoting moves \ref{someone} .
 %Additionally, when computing the matrix elements of $\mcb_p$, it is helpful to perform gauge transformations that ensure that $g_e=0$ for all $d\subset \p p$.
 %This can always be done as long as $p$ contains no spin structure vortex in its interior. 
 
-An explicit form for the matrix elements of the $\mco_p^a$ operators can be written down following the straightforward, if slightly tedious, standard procedure of \ref{??}.
-However, there is a more general and high-level way of describing the plaquette term that we will find useful to employ in what follows. 
+An explicit form for the matrix elements of the $\mco_p^a$ operators can be written down following the straightforward, if tedious, standard procedure of \ref{levin2005}.
+Namely, one inserts a loop of $a$ string in the interior of $p$ and fuses it into the boundary of $p$ using a
+collection of $F$ and pivoting moves. 
+With the ``pitchfork'' conventions adopted in this section, the graphical presentation of the $F$ moves is
+slightly different than the standard way they are presented in the literature.
+
+
+Instead of writing down the explicit formula for the matrix elements of the plaquette operator, there is a 
+more general and high-level way of describing the plaquette term in terms of the tube algebra.
 From \eqref{plaquette_term_defn}, we see that the plaquette operator acts to insert a 
 weighted superposition of all closed loops labeled by objects in $\mcc$.
 This corresponds exactly to the trivial idempotent in the tube algebra for the theory, 
 which is a weighted superposition of all tubes that have zero charge (so that their boundaries have no marked points on them) and which have fluxes that run over the objects in $\mcc$.
 This means that $B_p$ implements the action of the trivial idempotent in the tube algebra applied to the plaquette $p$:
 \begin{align}
-B_{p} = \Pi_{\unit \in \tube}.
+B_{p} = \Pi_{\unit \in \tube},
 \end{align}
-Therefore, $B_p$ projects onto plaquettes that host no quasiparticle excitations\footnote{Recall that in string-net models, we think of each plaquette as containing a puncture. Quasiparticles are localized at these punctures, and so acting with $\Pi_\unit$ on a puncture projects onto a state in which no quasiparticle is present on the puncture.}, 
+where $\unit\in\tube$ denotes the trivial idempotent in the tube algebra. 
+From this presentation, we see that $B_p$ projects onto plaquettes that host no quasiparticle excitations\footnote{Recall that in 
+string-net models, we think of each plaquette as containing a puncture. Quasiparticles are localized at 
+these punctures, and so acting with $\Pi_\unit$ on a puncture projects onto a state in which no 
+quasiparticle is present on the puncture.}, 
 and so violations of the plaqauette term are the quasiparticle excitations of the theory. 
-Plaquettes that satisfy the plaquette term (those with an eigenvalue of $1$ under $B_p$) contain no quasiparticles in their interiors, and thus the punctures in their interiors can be smoothly filled in. 
-Therefore, we can also think of the plaquette term as energetically providing a way to allow strings to fluctuate freely across the interiors of plaquettes. 
+Plaquettes that satisfy the plaquette term (those with an eigenvalue of $1$ under $B_p$) contain no 
+quasiparticles in their interiors, and thus the punctures in their interiors can be smoothly filled in. 
+Therefore, we can also think of the plaquette term as energetically providing a way to allow strings to 
+fluctuate freely across the interiors of plaquettes. 
 
-\kw{Maybe we should say more about how to write the loop operators in terms of F-moves and rotations/pivots.}
-\ethan{Yeah, I think we were planning on it---just procrastinating a bit for now}
+%\kw{Maybe we should say more about how to write the loop operators in terms of F-moves and rotations/pivots.}
+%\ethan{Yeah, I think we were planning on it---just procrastinating a bit for now}
 
 %\dave{Only here as a reference for calculation.}
 %\begin{align}
@@ -13175,16 +13227,16 @@ Therefore, we can also think of the plaquette term as energetically providing a 
 %%%%%%%%%%%%%%%%%%%
 \subsection{Excitation spectrum} \label{excitations_of_H}
 %%%%%%%%%%%%%%%%%%%
-\dave{Should mention somewhere that pure flux excitations only violate plaquettes, while flux and charge violate both the plaquette and a vertex.}
+%\dave{Should mention somewhere that pure flux excitations only violate plaquettes, while flux and charge violate both the plaquette and a vertex.}
 
 Finally, we briefly comment on the spectrum of $H$ and the types of excitations our model supports. 
 Each of the terms in the Hamiltonian enforces one of the local relations of the vector space assigned to $\Sigma$ by $\mcc$. 
 As such, the zero-energy ground space is just a basis for the vector space assigned to $\Sigma$ by $\mcc$.
-The deconfined anyonic excitations in the model correspond to violations of the plaquette terms, as discussed in \cite{blah blah blah}.
-By construction, these are in one-to-one correspondence with the bounding idempotents of the tube algebra. 
+The deconfined anyonic excitations in the model correspond to violations of the plaquette terms\footnote{Note that from the structure of the Hamiltonian, pure flux excitations violate only plaquette terms, while general dyonic excitations (with nonzero charge) violate both plaquette and vertex terms.}, and
+by construction, these are in one-to-one correspondence with the bounding idempotents of the tube algebra. 
 This is simply because as discussed earlier, the $B_p$ operator in the plaquette term is the projector $\Pi_\unit$, which projects onto states containing no quasiparticles in the interior of $p$. 
-The fusion rules and braiding properties of the excitations can be computed with the methods of sections \ref{XXX}.
-The specific string operators which create these excitations can also be computed with similar methods, see \ref{APPXXX?}.
+The fusion rules and braiding properties of the excitations can be computed with the tube algebra methods developed in earlier sections. 
+%The specific string operators which create these excitations can also be computed with similar methods, see \ref{APPXXX?}.
 
 \begin{figure}
 \begin{center}
@@ -13622,42 +13674,42 @@ though I'm not sure if it's the best place for me to look.).
 \section{Discussion} \label{discussion}
 %%%%%%%%%%%%%%%%%%
 
-\ethan{obviously still under construction}
-
 %First, it will be interesting to see how our approach to classifying fermionic topological phases fits in 
 %with the others discussed in the literature. 
 %blah blah modular extensions, Wen's yucky tables, kapustin's field theory stuff, etc
 
-One exciting aspect of the fermionic topological orders we have considered is their potential quantum information 
+One exciting aspect of the fermionic topological orders we have studied in this paper is their potential quantum information 
 applications, which we now briefly speculate on. 
-First, we could consider a hybrid system with defects and deconfined anyonic excitations.
-Imagaine the scenario where many q-type defects terminate at a boundary, as in Fig.\ref{QCApplication}. 
-There is a computational space associated with the fusion space of those defects given by $V^{Q_1 Q_2 \cdots Q_n}$. 
-There are two kinds of gates we can act by on this fusion space.
-One is given by braiding anyons in the bulk, familiar from conventional topological quantum computation.
-The other is given by the action of $\cl_n$.
-It is known that the resulting clifford gates is nearly universal i.e., the addition of a single entangling gate results in a universal gate set (\dave{will look up precise statement}).
-The action of $\cl_n$ can be implimented by connecting Kitaev wires to the terminations of the q-type defects, as shown in Fig.~\ref{QCApplication}, and tuning the flux through those wires. 
-Adiabatically tuning the flux by one flux quantum, one ejects a pair of electrons into the q-type defects, and hence applies the clifford gate $\Gamma_i \tp \Gamma_j$.
-\dave{I'll make this more precise if we want to include a discussion of this sort.
-It may make our paper more appealing to some people.}
-\ethan{please do!}
+First, we can consider a hybrid system with spin structure defects and deconfined anyonic excitations.
+Consider the scenario where several q-type defects terminate at a boundary of a sample, as shown in Fig.\ref{QCApplication}, where the q-type defects are drawn as orange lines.
+For a system with $n$ such defects,  
+the computational space associated with the defects $Q_1,Q_2,\dots,Q_n$ is the fusion space $V^{Q_1 Q_2 \cdots Q_n}$. 
+There are two kinds of logical operations we can perform on the defects:
+one is given by braiding the deconfined anyons in the bulk, and is familiar from conventional topological quantum computation.
+The other is given by the action of $\End(Q_1)\tp\End(Q_2)\tp\dots\tp\End(Q_n)\cong\cl_1^{\tp n} \cong \cl_n$ on the defects.
+It is known that the resulting clifford gates are nearly universal, meaning that the addition of a single entangling gate results in a universal gate set.
+The action of $\cl_n$ can be implemented by connecting Kitaev wires to the terminations of the q-type defects, as shown in Fig.~\ref{QCApplication}, and tuning the flux through those wires. 
+Adiabatically tuning the flux by one flux quantum, one ejects a pair of electrons into the q-type defects, and hence applies the Clifford gate $\Gamma_i \tp \Gamma_j$, where $\Gamma_i$ is the odd generator 
+of the $i$th tensor factor in $\cl^{\tp n}$.
+%\dave{I'll make this more precise if we want to include a discussion of this sort.
+%It may make our paper more appealing to some people.}
+%\ethan{should try to make this better}
 
 \begin{figure}
 \begin{center}
 \includegraphics{QCApplication.pdf}
 \includegraphics{QCApplication2.pdf}
 \caption{\label{QCApplication}  
-An illustration of one possible application of the topological orders discussed in the main text. 
-We have four q-type defects which terminate at the boundary, and are strongly hybridized with two Kitaev wires. 
-By adiabatically tuning the flux $\Phi_j$ through the Kitaev wires, one impliments the clifford gates. 
-In addition to the clifford gates, we can also braid the deconfined m-type particles appearing the fusion space of the q-type defects to realize a richer gate set. 
+An illustration of one possible quantum information application of the topological orders discussed in the main text. 
+In this setup, we have four q-type defects $Q$ (orange lines) which terminate at the boundary of the sample, and are strongly hybridized with two Kitaev wires (green lines). 
+By adiabatically tuning the flux $\Phi_j$ through the Kitaev wires, one implements Clifford gates acting
+on the Clifford algebra $\cl_4$. 
+In addition to the Clifford gates, we can also braid the deconfined m-type particles appearing the fusion space of the q-type defects (blue lines) to realize a richer gate set. 
 }
 \end{center}
 \end{figure}
 
-
-It would be useful to make more precise connections between physical entities and some of the mathematical 
+Additionally, it would be useful to make more precise connections between physical entities and some of the mathematical 
 devices we have used to construct the fermionic theories 
 we have studied. 
 In particular, it would be useful to clarify the precise physical meaning of the complex line bundle 
@@ -13743,6 +13795,8 @@ is presently unclear.
 Dave Aasen gratefully acknowledges support from the National Science Foundation through grant DMR- 1723367
 and the Caltech Institute for Quantum Information and Matter, 
 an NSF Physics Frontiers Center with support of the Gordon and Betty Moore Foundation through Grant GBMF1250.
+Ethan Lake is supported by the Fannie and John Hertz Foundation.
+
  
  
 
@@ -13933,7 +13987,7 @@ This implies that $\lambda = - \lambda^*$, and so $\lambda$ must be purely imagi
 \section{Basic facts about superalgebras} \label{superstuff}
 %%%%%%%%%%%%%%%%%%%%%%%
 
-In this appendix we briefly recall some of the key mathematical facts about superalgebras, see \cite{jozefiak1988}.
+In this appendix we briefly recall some of the key mathematical facts about superalgebras; details can be found in \cite{jozefiak1988}.
 
 There are two distinct classes of simple superalgebras over $\cc$. One class is the set of superalgebras $M(r|s)$ for $r,s\in\zz$, which are $(r+s)\times(r+s)$ matrices whose even and odd subspaces take the form
 \be M(r|s)_0 = \text{matrices of the form\ } \begin{pmatrix} A & 0 \\ 0 & B \end{pmatrix},\qquad M(r|s)_1 = \text{matrices of the form\ } \begin{pmatrix} 0 & C \\ D & 0 \end{pmatrix}.\ee
