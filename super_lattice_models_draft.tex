@@ -11231,10 +11231,12 @@ In this section we elaborate on the differences arising in fermionic theories be
 We assume that our categories are additively complete, which means that it makes sense to
 multiply objects by supervector spaces. 
 This is simply a categorified version of multiplying vectors (objects) by scalars (vector spaces).
-For any collection of supervector spaces $\{W_a\}$ indexed by objects in our category, can therefore add to our category new objects of the form
+For any collection of supervector spaces $\{W_a\}$ indexed by 
+a finite set of objects in our category, 
+we can therefore add to our category new objects of the form
 \be \bigoplus_a W_a \cdot a.\ee
 Morphisms between these more general objects are calculated as  
-\be
+\be  \label{amordef}
 	\mor(\bigoplus_a W_a\cdot a \to \bigoplus_b W'_b\cdot b) = \bigoplus_{a,b} \Hom(W_a \to W'_b)\otimes_\cc \mor(a\to b) .
 \ee
 
@@ -11251,7 +11253,7 @@ Combining \eqref{asumx} and \eqref{amordef}, we can compute endomorphisms of obj
 	\End(a) \cong \bigoplus_x \End(W_x) \otimes_\cc \End(x).
 \ee
 
-We are now ready to talk about the fusion rules. 
+We are now ready to discuss fusion rules. 
 For any $a$ and $b$, define the vector spaces $\Delta^{ab}_c$ by
 \be
 	a \otimes b \cong \bigoplus_c \Delta^{ab}_c \cdot c ,
@@ -11261,23 +11263,24 @@ The $\Delta^{ab}_c$ are the fusion rule coefficients.
 
 The fusion spaces $V^{ab}_c$ are defined as the vector space of morphisms from $a\tp b$ to $c$:
 \be \label{defn_of_V_by_Delta}
-	V^{ab}_c \equiv \mor(a\tp b \to c),
+	V^{ab}_c \equiv \mor(c \to a\tp b),
 \ee
 where $a,b,c$ are simple objects. 
+\kw{Note: I have reversed the arrow in the definition (and made corresponding changes below).  Do you agree?}
 Decomposing the tensor product and using the simplicity of $c$, we see that 
 \be V^{ab}_c \cong \Delta^{ab}_c \tp \rm{mor}(c \ra c) \cong \Delta^{ab}_c \otimes \End(c).\ee
-Thus, the fusion spaces are generically larger than the vector spaces appearing in the fusion rules (in bosonic theories, the fusion spaces and fusion rule coefficients are equal).
+Thus, the fusion spaces can be larger than the vector spaces appearing in the fusion rules 
+(in bosonic theories, the fusion spaces and fusion rule coefficients are always equal).
 As examples, in the $C_2$ theory studied earlier, we have 
-\be \Delta^{q_\sigma q_\sigma}_{m_\psi} = \cc^{1|1},\quad\Delta^{q_\sigma m_\unit}_{q_\sigma} = \cc,\ee
+\be \Delta^{q_\sigma q_\sigma}_{m_\psi} \cong \cc^{1|1},\quad\Delta^{q_\sigma m_\unit}_{q_\sigma} \cong \cc,\ee
 while 
-\be V^{q_\sigma q_\sigma}_{m_\psi} = V^{q_\sigma m_\unit}_{q_\sigma} = \cc^{1|1}.\ee
+\be V^{q_\sigma q_\sigma}_{m_\psi} \cong V^{q_\sigma m_\unit}_{q_\sigma} \cong \cc^{1|1}.\ee
 
-$V_{ab}^x$ is symmetric (up to isomorphism) in $a,b,x$ (if $a$ and $b$ are simple).
-%The isomorphism in the qualifier ``up to isomorphism'' is the isomorphism that sends a simple object $a$ to its dual $a^*$. 
+$V^{ab}_x$ is cyclically symmetric (up to isomorphism) in $a,b,x$ (if $a$ and $b$ are simple).
 Explicitly, this is because 
-\be \mor(a\tp b \ra c) \cong \mor(a\tp b \tp c^* \ra \unit) \cong \mor(a\tp c^* \ra b^*),\ee 
-which allows us to freely permute the indices of $V$, so long as we take the duals of any objects that move from subscripts to superscripts, and vice versa. 
-For example, we have $V^{ab}_c \cong V^{ba}_c \cong V^{ac^*}_{b^*}$. 
+\be \mor(c \ra a\tp b) \cong \mor(\unit \ra a\tp b \tp c^*) \cong \mor(a^* \ra b\tp c^*),\ee 
+which allows us to cyclicly permute the indices of $V$, so long as we take the duals of any objects that move from subscripts to superscripts, and vice versa. 
+For example, we have $V^{ab}_c \cong V^{bc^*}_{a^*} \cong V^{c^*a}_{b^*}$. 
 On the other hand, $\Delta^{ab}_c$ is {\it not} symmetric in $a,b,c$, as the $C_2$ theory example shows. 
 Additionally, while $V^{ab}_c$ has an action of $\End(a)\otimes\End(b)\otimes\End(c)$ (as mentioned earlier), $\Delta^{ab}_c$
 only has an action of $\End(a)\otimes\End(b)$.
