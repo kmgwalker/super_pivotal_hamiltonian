@@ -13306,7 +13306,7 @@ With this standarized state sum,
 it is then straight forward to write down the fermionic state sum with only minor modifications. 
 Lastly, we specialize to surfaces of the form $\Sigma \times [0,1]$ 
 and use this to write down a tensor network for the ground state of \eqref{ham}. 
-Historically, this version of the state sum pre-dates TVBW and was first found by Kirillov and Reshetikhin~\cite{Kirillow1989} who coined the term `shadow world', which was later extended by Turaev~\cite{turaev1992shadow} which included shadows of links which he coined the term `shlinks'.
+Historically, this version of the state sum pre-dates TVBW and was first found by Kirillov and Reshetikhin~\cite{Kirillow1989} who coined the term `shadow world', which was later extended by Turaev~\cite{turaev1992shadow} and included shadows of links which he coined `shlinks'.
 \dave{Will double check second reference.}
 
 %\dave{Will put a comment in like this later.}
@@ -13331,38 +13331,62 @@ The input data for the state sum is
 \end{itemize}
 We will suppose the cell decomposition is dual to a triangulation so that each 1-cell neighbours three 2-cells.
 The orientations on the 1- and 2-cells can be chosen arbitrarily, 
-and play the role of the global ordering of the vertices in the TVBW state sum \dave{Need to check this.}. 
+and play the role of the global ordering of the vertices in the TVBW state sum 
+\dave{Need to check this.
+Is there an intrinsic or standard way of orienting the 2-cells?
+They don't naturally have an interior or an exterior.
+One naive approach is to specify a direction between neighbouring 3-handles (in the same way we use the orientation of the 1-cells to orient the 1-handles).}. 
 The three cells inherit and orientation from $\mcm$.
 We next take the cell decomposition and turn it into a handle decomposition by fattenning each cell.
 \dave{Kevin, this is my understanding of your words.
 If it's way off let me know.}
 Lets denote the set of j-handles by $\mck_j$ and the set of gluing regions between $\mck_j$ and $\mck_{j-1} \cup \cdots \cup \mck_{0}$ by $g_{j-1}$. 
-In particular $g_2$ is homeomorphic to $S^2$, 
-$g_1$ is homeomorphic to $S^1 \times [0,1]$,
-$g_0$ is homeomorphic to $D^2$.
+In particular the elements of $g_2$ are homeomorphic to $S^2$, 
+elements of $g_1$ are homeomorphic to $S^1 \times B^1$,
+elements of $g_0$ are homeomorphic to $D^2 \sim B^2$.
 
-The partition function $Z(\mcm)$ is defined recursively through the cut and glue formula,
+The partition function $Z(\mcm)$ is defined recursively through the cut and glue formula.
+That is, we take $\mcm = \mcm \setminus K \cup K$, 
+and then use that $Z(\mcm) = Z(\mcm \setminus K) \tp_{A(g)} Z(K)$ where $g$ is the gluing surface with $g \subset \partial(\mcm \setminus K)$ and $\bar{g} \subset K$, and the tensor product over $A(g)$ plays the role of introducing a complete set of states across the boundary region.
+In practice, the tensor product can be split as a sum over basis vectors $v_i$,
+\dave{Add picture}
 \begin{align}
 Z(\mcm) = \sum_{v_i \in A(g)} Z(\mcm \setminus K, v_i) \cdot \frac{Z(K, v_i^*) }{\langle v_i, v_i \rangle_{A(g)}}
+\label{gluing_formula}
 \end{align}
 where $g$ is the gluing region living at the boundary of $K$ and $\mcm \setminus K$ and $v_i \in A(g)$  is a complete set of boundary conditions assigned to the gluing region $g$ by $\mcc$.
-In this case, all $g_j$ are surfaces, and so $v_i$ are nets on $g_j$ modulo local relations.
+
+\dave{Will come back to this paragraph. 
+It's important to get this one right.}
+For a 3-manifold, it is sufficient to consider gluing regions $g$ which are surfaces, 
+possibly with marked points or boundary conditions. 
+A spherical fusion category assigns a topological set of states to every surface with a fixed boundary condition and so play a large role in the construction of topological state sums in three dimensions.
+Hence the $v_i$ above are nets on $g$ modulo local relations.
+As we will see, 
+\dave{add blurb on} topological invariance of the partition function is manifest by handle slides.
 
 We can now apply this formula to find a systematic way of evaluating $Z(\mcm)$ for any 3-manifold $\mcm$.
-After all the smoke clears, this will be the TVBW state sum.
-The first step is to re-move all 3-handles from $\mcm$, using the gluing formula, 
+After all the smoke clears, we will arrive at the TVBW state sum, 
+but in a way that generalizes more readily to fermions.
+The first step is to re-move all 3-handles from $\mcm$, using the gluing formula\eqref{gluing_formula}, 
 \begin{align}
 Z(\mcm) = Z(\mcm \setminus \mck_3, \phi) \cdot \frac{Z(\mck_3, \phi)}{\langle \phi,\phi \rangle_{A(g_2)} }= \left(\prod_{\text{3-handles}} \frac{1}{\mcd^2} \right) \cdot Z(\mcm \setminus \mck_3, \phi)
 \end{align}
-where $\phi$ is the empty boundary condition (all boundary conditions are a $\cc$ number times the empty boundary condition). 
-We assume that $Z(S^2,\phi) = 1$ \dave{Is that OK?}.
-It is well known that $\langle \phi , \phi \rangle_A(S^2) = \mcd^2$, with $\mcd^2 = \sum_x d_x^2$.
-Next, we remove the 2-handles, these are glued to the 1-handles via $g_1$, which is a disjoint union of annulai. 
-The boundary of the annulai are empty due the two neighbouring 3-handles. 
+where $\phi$ is the empty boundary condition (all boundary conditions assigned to $S^2$ by $\mcc$ are just a $\cc$ number times the empty boundary condition).
+\dave{Need help here:
+How do you justify $Z(B^3,\phi)/\langle \phi, \phi \rangle_{A(S^2)} = 1/\mcd^2$?
+I tried using $Z(B^3) = Z((S^2 \times B^1) \cup B^3,\phi) = Z(S^2 \times B^1,\phi,\phi) \cdot Z(B^3,\phi)/\langle \phi, \phi\rangle_{A(S^2)}$ but this shows that $\langle \phi, \phi \rangle_{A(S^2)} =Z(S^2 \times B^1,\phi)$. 
+}.
+It is known that $\langle \phi , \phi \rangle_{A(S^2)} = \mcd^2$, with $\mcd^2 = \sum_x d_x^2$.
+\dave{and I guess $Z(B^3, \phi ) =1$...}
+Next, we cut out the 2-handles, these are glued to the 1-handles via $g_1$, which is a disjoint union of annulai. 
+The boundary condition of each annulus is empty due the two neighbouring 3-handles, which have empty boundary conditions.
 Thus the vector space assigned to the annulus is $\bigoplus_{x\in \mcc} \cc_x$, 
 where $x$ runs over simple objects of $\mcc$. 
 A complete set of basis elements is given by minimal idempotents of $\tube(\mcc)$. 
-However, $Z(\mck_2,\{e_{i}\})$ is only non-zero if each idempotent is the trivial idempotent $e_0$, in which case $Z(\mck_2, \{e_0 \}) = 1$, and $\langle e_0, e_0 \rangle_{A(S^1 \times [0,1])} =1$.
+However, $Z(\mck_2,\{ e_{i} \})$ is only non-zero if each idempotent is the trivial idempotent $e_0$, 
+in which case $Z(\mck_2, \{e_0 \}) = 1$, 
+and $\langle e_0, e_0 \rangle_{A(S^1 \times [0,1])} =1$.
 \dave{Lets draw a picture for this.}
 In this case, the trivial idempotent is given by $\omega = \sum_x d_x \text{cl}(x)/\mcd^2$, 
 and so
@@ -13371,10 +13395,11 @@ Z(\mcm \setminus \mck_3, \phi) = \sum_{\{ e_i \}} Z(\mcm \setminus (\mck_3 \cup 
 \end{align}
 The last expression can be turned into a sum over all boundary conditions, 
 \begin{align}
-Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \omega \}) = \sum_{\{x_{r} \in \mcc \}, r \in \mck_2}\;  \left( \prod_r \frac{d_{x_r} }{\mcd^2} \right) Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \text{cl}(x_{r}) \} )
+Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \omega \}) = \sum_{\substack{\{x_{r} \in \mcc \}\\ r \in \mck_2}}\;  \left( \prod_r \frac{d_{x_r} }{\mcd^2} \right) Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \text{cl}(x_{r}) \} )
 \end{align}
-where the sum runs over all 2-handles, and $\text{cl}(x_r)$ is naturally oriented from the orientation of the 2-cells.
-For reference in Figure, we have shown a labeled 1-handle in the midst of the remaining partition function.\ref{OneHandle}. 
+where the sum runs over all 2-handles, and $\text{cl}(x_r)$ is naturally oriented from the orientation of the 2-cells
+\dave{Need to say how we orient the 2-cells.}.
+For reference in Figure~\ref{OneHandle}, we have shown a labeled 1-handle in the midst of the remaining partition function. 
 \begin{figure}
 \begin{center}
 \includegraphics{Onehandle.pdf}
@@ -13391,34 +13416,44 @@ This requires knowing which side of the 2-cell is the 'up' side
 We now need to cut open each of the 1-handles.
 Once doing so we will have a partition function that we can evaluate solely in terms of the data associated to $\mcc$.
 This is also the point where one should start being careful. 
-We can cut open each one handle to find a disk with three marked points (if the cell decomposition were not dual to a triangulation, then we would have to write n-marked points).
-We pick a point somewhere in the middle of the 1-handle and cut it open along to discs. 
-Each disc will have a boundary with three marked points (coming from the 2-handle labels), 
-and so a resolution of the identity can be inserted by summing over a linearly independent basis of $V^{abc}$.
-Explicitly,
+We can cut open each one handle along the $g_0$ to find a disk with three marked points (if the cell decomposition were not dual to a triangulation, then we would have to write n-marked points).
+Each disc will have a boundary with three marked points coming from the 2-handle labels, 
+and so a resolution of the identity can be inserted by summing over a complete basis of associated to the disc $A(g_0)$, for example
+\dave{Doesn't this only hold if the two sides of the 1-handle are not connected by any other part of the diagram? 
+Perhaps we can add a foot note justifying this. 
+The one I put is sketchy at best.}
+\footnote{Technically this only holds if the two regions seperated by the 1-handle are disconnected. 
+Since we are imposing this resolution of the identity across every 1-handle the formula is justified},
 \begin{align}
-\OneHandlea = \sum_\mu \frac{\OneHandlemu \OneHandlemud }{\OneHandleTheta} 
+\OneHandlea = \sum_{\mu \in A(g_0)} \frac{\OneHandlemu \OneHandlemud }{\OneHandleTheta} 
 \end{align}
-\dave{Does this only hold if the two sides of the 1-handle are not connected by any other part of the diagram?}
 If the arrows are reversed, then one has to interchange $a$ with $a^*$. 
-With $\mu  \in V^{cb^*a}$ and $\mu^* \in (V^{cb^*a})^*$, so that $\nu^* \in  (V^{cb^*a})^*$ and $\nu^* \circ \mu = \delta_{\mu,\nu} \mu^* \circ \mu$.
+With $\mu  \in V^{cb^*a} \in A(g_0)$ and $\mu^* \in (V^{cb^*a})^* \in A(\bar{g_0})$, 
+so that $\nu^* \in  (V^{cb^*a})^*$ and $\nu^* \circ \mu = \delta_{\mu,\nu} \mu^* \circ \mu$.
 Replacing every 1-handle in $Z(\mcm \setminus (\mck_3 \cup \mck_2), \{ \omega \})$ by this identity results in a partition function that can be evaluated using only data from $\mcc$. 
-Indeed, each 1-handle terminates a 0-handle, which now has a boundary condition labeled by the 2-handles, and 1-handles.
-We denote the resulting number associated to each 0-handle $s \in \mck_0$ by $T_s(\tp_{l \in \mck_1 \cap s} \mu_i)$, where each $\mu_i$ is the associated fusion space of the disc on the 1-handle terminating at the 0-handle $s$. 
+Indeed, each 1-handle terminates on a 0-handle, 
+which now has a boundary condition labeled by the neighbour 2- and 1-handles.
+We denote the resulting number associated to each 0-handle $w \in \mck_0$ by $T_w$, 
+it depends on the labels of the boundary condition of the discs which resolved the 1-handles.
 \dave{Add picture to illustrate why this thing is annoying to evaluate.}
-If the the orientation of the 1-handle is reversed then we must interchange $\mu_i$ with $\mu_i^*$. 
+%If the the orientation of the 1-handle is reversed then we must interchange $\mu_i$ with $\mu_i^*$. 
 With this, 
 we can finely write down the partition function,
 \dave{Need to look up less annoying notation. 
 Or should we write it as a sum over a product of pictures?}
 \begin{align}
-Z(\mcm) = \sum_{\substack{\{x_i\} \in \mcc \\ i \in \mck_2}}\sum_{\substack{\{ \mu_j \} \in A(D_j)  \\ j \in \mck_1} }
+%Z(\mcm) = \sum_{\substack{\{ x_i\} \in \mcc \\ i \in \mck_2}}\sum_{\substack{\{ \mu_j \} \in A(g_j)  \\ j \in \mck_1} }
+ %\prod_{r \in \mck_3} \frac{1}{\mcd^2}\;  \prod_{i \in \mck_2} d_{x_i} \; \prod_{j \in \mck_1} (\mu_j^* \circ \mu_j)^{-1} \; 
+ %\prod_{s \in \mck_0 } T_s(\tp_{l \in \mck_1 \cap s} \mu_l)
+Z(\mcm) = \sum_{\substack{\{ x_i\}\\  i \in \mck_2}} \; \sum_{\substack{\{ \mu_j \} \\ j \in \mck_1} }\; 
  \prod_{r \in \mck_3} \frac{1}{\mcd^2}\;  \prod_{i \in \mck_2} d_{x_i} \; \prod_{j \in \mck_1} (\mu_j^* \circ \mu_j)^{-1} \; 
- \prod_{s \in \mck_0 } T_s(\tp_{l \in \mck_1 \cap s} \mu_l)
+ \prod_{w \in \mck_0 } T_w
  \label{state_sum}
 \end{align}
+Where $\{ x_i \}$ runs over all possible configurations of simple objects assigned to the 2-handles, 
+ $\{ \mu_j \}$ to the discs cutting the 1-handles,
+and $T_w$ to the 0-handles.
 Our next task will be to standardize each of the handles.
-
 
 \subsubsection{Standardized bosonic state sum}
 For catalogization purposes we would like to standardize the sum appearing in \ref{state_sum}.
