@@ -233,6 +233,8 @@
 \newcommand{\OneHandlea}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{OneHandlea.pdf}}}}}
 
 \newcommand{\Tetrahedron}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tetrahedron.pdf}}}}}
+\newcommand{\PitchforkIdempotent}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{PitchforkIdempotent.pdf}}}}}
+
 
 
 
@@ -10924,6 +10926,8 @@ The definition of a super pivotal category differs from the usual bosonic case i
 
 \subsection{Formal definition}
 
+\kw{The consensus seems to be to delete this subsection (see discussion below).}
+
 In this subsection we outline the formal, mathematical definition of a super pivotal tensor category.
 We will give a complete list of the data required, but we will only include some representative
 examples of the many coherence relations these data must satisfy.
@@ -10936,6 +10940,11 @@ This list of axioms was adapted from the paper with Scott, which does the more g
 2-category case.}
 \ethan{I'm not sure if we need the list of axioms---certainly physicists will not know about / care about the majority of these. I think our present discussion of the differences present in the fermionic case is sufficiently complete with its current level of mathematical careful-ness}
 \kw{Dave, what do you think?  I'm happy to make the paper shorter and easier to read/write.}
+\dave{I am in favour of making the paper shorter and easier to read/write.
+I liked the viewpoint we discussed once before `suppose you think you have a super-pivotal fusion category' 
+then here are the coherence conditions you need to check.}
+\kw{But as currently written, we are not giving a complete set of coherence relations, just a 
+representative sampling.}
 
 \begin{axiom}[Objects and morphisms]
 We have a set \obj(C) of objects and a set $\mor(C)$ of morphisms.
@@ -11249,10 +11258,12 @@ In this section we elaborate on the differences arising in fermionic theories be
 We assume that our categories are additively complete, which means that it makes sense to
 multiply objects by supervector spaces. 
 This is simply a categorified version of multiplying vectors (objects) by scalars (vector spaces).
-For any collection of supervector spaces $\{W_a\}$ indexed by objects in our category, can therefore add to our category new objects of the form
+For any collection of supervector spaces $\{W_a\}$ indexed by 
+a finite set of objects in our category, 
+we can therefore add to our category new objects of the form
 \be \bigoplus_a W_a \cdot a.\ee
 Morphisms between these more general objects are calculated as  
-\be
+\be  \label{amordef}
 	\mor(\bigoplus_a W_a\cdot a \to \bigoplus_b W'_b\cdot b) = \bigoplus_{a,b} \Hom(W_a \to W'_b)\otimes_\cc \mor(a\to b) .
 \ee
 
@@ -11269,7 +11280,7 @@ Combining \eqref{asumx} and \eqref{amordef}, we can compute endomorphisms of obj
 	\End(a) \cong \bigoplus_x \End(W_x) \otimes_\cc \End(x).
 \ee
 
-We are now ready to talk about the fusion rules. 
+We are now ready to discuss fusion rules. 
 For any $a$ and $b$, define the vector spaces $\Delta^{ab}_c$ by
 \be
 	a \otimes b \cong \bigoplus_c \Delta^{ab}_c \cdot c ,
@@ -11279,23 +11290,25 @@ The $\Delta^{ab}_c$ are the fusion rule coefficients.
 
 The fusion spaces $V^{ab}_c$ are defined as the vector space of morphisms from $a\tp b$ to $c$:
 \be \label{defn_of_V_by_Delta}
-	V^{ab}_c \equiv \mor(a\tp b \to c),
+	V^{ab}_c \equiv \mor(c \to a\tp b),
 \ee
 where $a,b,c$ are simple objects. 
+\kw{Note: I have reversed the arrow in the definition (and made corresponding changes below).  Do you agree?}
 Decomposing the tensor product and using the simplicity of $c$, we see that 
 \be V^{ab}_c \cong \Delta^{ab}_c \tp \rm{mor}(c \ra c) \cong \Delta^{ab}_c \otimes \End(c).\ee
-Thus, the fusion spaces are generically larger than the vector spaces appearing in the fusion rules (in bosonic theories, the fusion spaces and fusion rule coefficients are equal).
+Thus, the fusion spaces can be larger than the vector spaces appearing in the fusion rules 
+(in bosonic theories, the fusion spaces and fusion rule coefficients are always equal).
 As examples, in the $C_2$ theory studied earlier, we have 
-\be \Delta^{q_\sigma q_\sigma}_{m_\psi} = \cc^{1|1},\quad\Delta^{q_\sigma m_\unit}_{q_\sigma} = \cc,\ee
+\be \Delta^{q_\sigma q_\sigma}_{m_\psi} \cong \cc^{1|1},\quad\Delta^{q_\sigma m_\unit}_{q_\sigma} \cong \cc,\ee
 while 
-\be V^{q_\sigma q_\sigma}_{m_\psi} = V^{q_\sigma m_\unit}_{q_\sigma} = \cc^{1|1}.\ee
+\be V^{q_\sigma q_\sigma}_{m_\psi} \cong V^{q_\sigma m_\unit}_{q_\sigma} \cong \cc^{1|1}.\ee
 
-$V_{ab}^x$ is symmetric (up to isomorphism) in $a,b,x$ (if $a$ and $b$ are simple).
-%The isomorphism in the qualifier ``up to isomorphism'' is the isomorphism that sends a simple object $a$ to its dual $a^*$. 
+$V^{ab}_x$ is cyclically symmetric (up to isomorphism) in $a,b,x$ (if $a$ and $b$ are simple).
 Explicitly, this is because 
-\be \mor(a\tp b \ra c) \cong \mor(a\tp b \tp c^* \ra \unit) \cong \mor(a\tp c^* \ra b^*),\ee 
-which allows us to freely permute the indices of $V$, so long as we take the duals of any objects that move from subscripts to superscripts, and vice versa. 
-For example, we have $V^{ab}_c \cong V^{ba}_c \cong V^{ac^*}_{b^*}$. 
+\be \mor(c \ra a\tp b) \cong \mor(\unit \ra a\tp b \tp c^*) \cong \mor(a^* \ra b\tp c^*),\ee 
+which allows us to cyclicly permute the indices of $V$, so long as we take the duals of any objects that move from subscripts to superscripts, and vice versa. 
+For example, we have $V^{ab}_c \cong V^{bc^*}_{a^*} \cong V^{c^*a}_{b^*}$. 
+
 On the other hand, $\Delta^{ab}_c$ is {\it not} symmetric in $a,b,c$, as the $C_2$ theory example shows. 
 Additionally, while $V^{ab}_c$ has an action of $\End(a)\otimes\End(b)\otimes\End(c)$ (as mentioned earlier), $\Delta^{ab}_c$
 only has an action of $\End(a)\otimes\End(b)$.
@@ -11305,6 +11318,7 @@ Indeed, suppose $c$ were q-type, and $\Delta^{ab}_c \cong \cc^{r|s}$.
 Then $V^{ab}_c \cong \cc^{r|s} \tp \cc^{1|1} \cong \cc^{r+s|r+s}$. 
 The result then follows by the symmetry of $V^{ab}_c$. 
 
+\kw{Is this paragraph necessary?  It seems like an obvious observation, and I don't think we use it anywhere.}
 Constraints on associativity allow us to derive relations between the fusion rule coefficients and fusion spaces. 
 Looking at associativity $(a\otimes b)\otimes c \cong a\otimes (b\otimes c)$, we see that
 \be
@@ -11312,20 +11326,22 @@ Looking at associativity $(a\otimes b)\otimes c \cong a\otimes (b\otimes c)$, we
 \ee
 Applying \eqref{defn_of_V_by_Delta}, we obtain
 \be
-	\bigoplus_x V^{ab}_x \otimes_{\End(x)} V^{xc}_d \cong \bigoplus_y V^{ay}_d \otimes_{\End(y)} V^{bc}_y,
+	\bigoplus_x V^{ab}_x \otimes_{\End(x)} V^{xc}_d \cong \bigoplus_y V^{ay}_d \otimes_{\End(y)} V^{bc}_y .
 \ee
-where $\tp_{\End(x)}$ denotes a tensor product over the ring $\End(x)$. 
+%%KW: unnecessary reminder      where $\tp_{\End(x)}$ denotes a tensor product over the ring $\End(x)$. 
 
-If at least one of $a,b,c$ is q-type, we can simplify the construction of $V^{ab}_c$ slightly, which we have done when working out the examples considered earlier.  
-Since in this case $V^{ab}_c \cong \cc^{r|r}$ for some $r$, there are just as many even basis vectors in $V^{ab}_c$ as odd ones. 
+If at least one of $a,b,c$ is q-type, we can simplify the description of $V^{ab}_c$ slightly, 
+which we have done when working out the examples considered earlier.
+%Since in this case $V^{ab}_c \cong \cc^{r|r}$ for some $r$, there are just as many even basis vectors in $V^{ab}_c$ as odd ones. 
 Suppose $c$ is q-type, and that $\{|\psi_i\rangle\} \in [V^{ab}_c]^0, i =1,\dots, r$ are the even basis vectors in $V^{ab}_c$. 
-Then we can define a complete set of odd basis vectors $\{ |\eta_i\rangle \}$ for $[V^{ab}_c]^1$ by $|\eta_i\rangle = f|\psi_i\rangle$, where $f$ is the odd element of $\End(c) \cong \cc^{1|1}$ (or any odd element in $\End(c)$ if $c$ is not simple).
+Then we can define a complete set of odd basis vectors $\{ |\eta_i\rangle \}$ for $[V^{ab}_c]^1$ by $|\eta_i\rangle = f|\psi_i\rangle$, where $f$ is the odd element of $\End(c) \cong \cc^{1|1}$.
+%%KW: I don't think this is true for non-simple c      (or any odd element in $\End(c)$ if $c$ is not simple).
 When we write $|\eta_i\rangle$ graphically, we will write it as $f |\psi \rangle$, which allows us to  ``shift the oddness out of the vertex onto the edge'' by transferring the fermion residing on the fusion space to the q-type particle $c$. 
 Graphically, this means that we are allowed to ``displace'' dots from trivalent vertices onto q-type worldlines:
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_displacement.pdf}}}}, \ee
 where the picture on the left is $|\eta_i\rangle$ and the one on the right is $f|\psi_i\rangle$, and $c$ is assumed to be q-type. 
-Mathematically, this is nothing more than the mapping $V^{ab}_c \mapsto [V^{ab}_c]^0 \tp V^{c\unit}_{c} \cong [V^{ab}_c]^0 \tp \End(c)$ 
-where $[V^{ab}_c]^0$ is a purely even vector space.
+%Mathematically, this is nothing more than the mapping $V^{ab}_c \mapsto [V^{ab}_c]^0 \tp V^{c\unit}_{c} \cong [V^{ab}_c]^0 \tp \End(c)$ 
+%where $[V^{ab}_c]^0$ is a purely even vector space.
 Although this is not a deep fact, it proves to be helpful when doing graphical manipulations. 
 
 
@@ -12354,6 +12370,7 @@ Let $e* \gamma_{b^*}$ denote the edge with the standard generator $\gamma_{b^*}$
 Then
 \be
 	\gamma_b * e = \alpha(e, b) \cdot e* \gamma_{b^*} ,
+	\label{fermion_slide}
 \ee
 where
 \be
@@ -13491,18 +13508,17 @@ where $x$ runs over simple objects of $\mcc$.
 A complete set of basis elements is given by minimal idempotents of $\tube(\mcc)$. 
 However, $Z(\mck_2,\{ e_{i} \})$ is only non-zero if each idempotent is the trivial idempotent $e_0$, 
 in which case $Z(\mck_2, \{e_0 \}) = 1$, 
-and $\langle e_0, e_0 \rangle_{A(S^1 \times [0,1])} =1$.
-\dave{Lets draw a picture for this.}
+and $\langle e_0, e_0 \rangle_{A(S^1 \times [0,1])} =1/\mcd^2$.
 In this case, the trivial idempotent is given by $\omega = \sum_x d_x \text{cl}(x)/\mcd^2$, 
 and so
 \begin{align}
-Z(\mcm \setminus \mck_3, \phi) = \sum_{\{ e_i \}} Z(\mcm \setminus (\mck_3 \cup \mck_2),\{ e_{i} \}) \cdot \frac{Z(\mck_2, \{ e_i \})}{\langle e_i, e_i \rangle} = Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \omega \})
+Z(\mcm \setminus \mck_3, \phi) = \sum_{\{ e_i \}} Z(\mcm \setminus (\mck_3 \cup \mck_2),\{ e_{i} \}) \cdot \frac{Z(\mck_2, \{ e_i \})}{\langle \{ e_i\}, \{e_i\} \rangle} %= Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \omega \})
 \end{align}
-The last expression can be turned into a sum over all boundary conditions, 
+Using that $Z(\mck_2, \{ e_i \})$ is zero unless all $e_i$ are equal to $e_0 = \omega$ we have, 
 \begin{align}
-Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \omega \}) = \sum_{\substack{\{x_{r} \in \mcc \}\\ r \in \mck_2}}\;  \left( \prod_r \frac{d_{x_r} }{\mcd^2} \right) Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \text{cl}(x_{r}) \} )
+Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \omega \}) = \sum_{\substack{\{x_{r} \} \\ r \in \mck_2}}\;  \left( \prod_{r \in \mck_2} d_{x_r}  \right) Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \text{cl}(x_{r}) \} )
 \end{align}
-where the sum runs over all 2-handles, and $\text{cl}(x_r)$ is naturally oriented from the orientation of the 2-cells
+where the sum runs over all 2-handles with each labeled by a simple object of $\mcc$, and $\text{cl}(x_r)$ is naturally oriented from the orientation of the 2-cells
 \dave{Need to say how we orient the 2-cells.}.
 For reference in Figure~\ref{OneHandle}, we have shown a labeled 1-handle in the midst of the remaining partition function. 
 \begin{figure}
@@ -13530,7 +13546,7 @@ The one I put is sketchy at best.}
 \footnote{Technically this only holds if the two regions seperated by the 1-handle are disconnected. 
 Since we are imposing this resolution of the identity across every 1-handle the formula is justified},
 \begin{align}
-\OneHandlea = \sum_{\mu \in A(g_0)} \frac{\OneHandlemu \OneHandlemud }{\OneHandleTheta} 
+\OneHandlea = \sum_{\mu \in A(g_0)} \OneHandlemu\;  \OneHandlemud  \times \left(\OneHandleTheta \right)^{-1}
 \end{align}
 If the arrows are reversed, then one has to interchange $a$ with $a^*$. 
 With $\mu  \in V^{cb^*a} \in A(g_0)$ and $\mu^* \in (V^{cb^*a})^* \in A(\bar{g_0})$, 
@@ -13566,17 +13582,47 @@ We follow a similar procedure to the pitchforkiztion chosen for each vertex when
 In addition to the oriented cell decomposition we also need,
 \begin{itemize}
 \item standardized tetrahedra that have been flattenned into the plane with pitchforked vertices
-\item a collection of pivots associated to the 1-handles which relate pitchfork at the incoming side of the 1-handle to the outgoing side
+\item a collection of pivots associated to the 1-handles which relate a pitchfork at the incoming side of the 1-handle to the outgoing side
 \end{itemize}
 The standard flattenned tetrahedron is given by,
 \begin{align}
 T(\alpha \tp \beta \tp \gamma \tp \delta) =\; \Tetrahedron
 \end{align}
 where we have defined the tensor by its evaluation on the right with $\alpha \in \bigoplus_{abc} V^{abc}$, $\beta \in \bigoplus_{a^* bc} V^{a^* bc}$, $\gamma \in \bigoplus_{a^* b c^*} V^{a^* b c^*}$, $ \delta \in \bigoplus_{a^* b^* c^*} V^{a^* b^* c^*}$.
-One can change the orientation by flipping a the arrow and taking the appropriate objects dual. 
+One can change the orientation by flipping an arrow and taking the appropriate object to its dual. 
 
-For each 1-handle we have a relation between two pitchforks. 
-Since the pitch forks are oriented in the same way, we know that in transporting the incoming pitchfork (recall each 1-cell is oriented) to the outgoing pitch fork it undergoes a rotation and a reflection. 
+
+For each 1-handle we have a relation between two pitchforks, whose orientation differs by a translation in the plane, see Figure{XXX}.
+This closely paralells the discussion surrounding \eqref{fermion_slide}, 
+and for good reason, as we will see shortly. 
+To every disc that is oriented ``out" of the plane (by the orientation of the 1-cells) we have a complete set of minimal idempotents given by,
+\begin{align}
+e_\mu = \mu \circ \mu^* = \PitchforkIdempotent
+\end{align}
+In fact we can take this as a definition of $\mu$ and $\mu^*$ once we impose $e_\mu \circ e_\nu = \delta_{\mu\nu} e_\mu$.
+And to every disc oriented ``into" the plane (again given by the orientation of the 1-cells) we have the dual idempotents, $e_{\mu^*}$.
+\dave{Here somewhere.....}
+
+
+Our task is to shuttle the idempotent across the 1-handle that attaches the two pitchforks. 
+The incoming pitchfork and outgoing pitchfork are both standardized. 
+Furthurmore the 1-handle is oriented, and so the the only possibility is that the labels could be rotate around the 1-handle as they are being transported from the incoming pitchfork to the outgoing one. 
+Denote the counterclockwise pivot by $P$,
+\begin{align}
+P: \; V^{abc} \ra V^{cab}
+\end{align}
+
+
+Let $e_\mu *h$ denote the 1-handle with the idempotent $e_\mu$ at its incoming end and $h*e_{\mu^*}$
+the one handle with the dual idempotent at its outgoing end. 
+Then 
+\begin{align}
+h * e_\mu= P_h e_{\mu^*} P_h^{-1} *h
+\end{align}
+ 
+Since the pitch forks are oriented in the same way, 
+we know that in transporting the incoming pitchfork (recall each 1-cell is oriented) to the outgoing pitchfork it could undergo a rotation 
+
 The reflection is always the same we assume the pitchfork starts its journey coming out of the page, 
 and ends by going back into the page. 
 \dave{Is this the only point where non-orientable surfaces would matter?}
