@@ -2308,9 +2308,6 @@ structures.
 
 \kw{Also need to prove or at least state that cancellation relation is consistent locally.}
 
-\kwsep
-
-
 \kw{some things to mention: pin+ is only possibility because 1-dim'l; transition functions/spin/pin (?); ...}
 
 \kw{need to discuss dependency on ordering for tensor products}
@@ -6798,6 +6795,11 @@ We then view this rotated tube as a linear map from $D^2$ to $D^2$, and the trac
 \end{center}
 \end{figure}
 
+Now that we know how to take traces and map string-nets on the torus to $\cc$, we are equipped with a way 
+of taking inner products between morphisms in the tube category. To form the inner product $\langle u,v\rangle$, 
+we take the annuli corresponding to $u$ and $v$, identify their boundaries together to form a torus, 
+and use our tracing procedure to map this string-net torus to a complex number, which we identify with $\langle u,v\rangle$. 
+
 The quantum dimension $d_x$ of an excitation $x$ in $\tube(\mcc)$ is defined by the trace of the associated idempotent $\Pi_x$: 
 \begin{align}
 d_x \equiv \text{Tr} (\Pi_x).% = {\dblank}_x.
@@ -7277,7 +7279,7 @@ surface obtained by capping each boundary component off with a disk.
 
 If $Y$ has a nonbounding boundary component, say $U_1$, then by assumption
 the label $a_1$ is m-type.
-It follows that $S'_{a_1 x} = 0$ if $x$ is q-type, \ethan{elaborate} 
+It follows that $S'_{a_1 x} = 0$ if $x$ is q-type, \ethan{elaborate?} 
 and so there is no need to define $\Arf(Y)$ in this case.
 
 
@@ -7287,7 +7289,6 @@ and so there is no need to define $\Arf(Y)$ in this case.
 
 
 \kw{only sketch; refer to paper in prep for full details.}
-\ethan{for expediency's sake, maybe we can just refer to the paper in prep and call it good}
 
 
 
@@ -7387,8 +7388,8 @@ Diagrammatically, we will denote the $\omega$ loop embedded in an ambient 3-mani
 \OmegaLoopx{\omega} = \frac{1}{\mcd^2}\sum_{x\in \text{sob}(\mcc)} d_x\; \LoopArrowx{x} ,
 \end{align}
 where the gray 
-\kw{looks black to me; maybe use a lighter grey?}
-\dave{Better?}
+%\kw{looks black to me; maybe use a lighter grey?}
+%\dave{Better?}
 disk in the center represents a cycle that the $\omega$ loop wraps around. 
 If the gray region is empty, then the $\omega$ loop can be shrunk and evaluated using the rules of MTC (since in that case cl$(x)$ is equal to $d_x$ times the empty diagram), 
 and since $1 = \sum_x d_x^2/\mcd^2$, the $\omega$ loop simply acts as the identity. 
@@ -7708,15 +7709,16 @@ showing that fermion condensation commutes with the functor sending $\mcc$ to $\
 
 
 The proof of the theorem splits into two parts. 
-We first compute the images of the minimal idempotents given in \eqref{minimal_idempotent_C} in $\tube(\mcc/\psi)$
+We first compute the images of the minimal idempotents in $\tube(\mcc/\psi)$ under condensation
 and show that these images provide us with a complete set of minimal idempotents in the condensed theory.
 Next we find a tensor functor from $\mcc \times \overline{\mcc/\psi} $ to the minimal idempotents,
 thus showing that $\tube(\mcc/\psi) \cong \mcc \times \overline{\mcc/\psi}$.
 
 
 
-\dave{We should probably consider moving this discussion to the tube category generalities section, and take $\psi \in \mcz(\mcc)$. }
-The image of the idempotents in $\tube(\mcc)$ under condensation can be found with the help of two projectors which sum to the identity:
+%\dave{We should probably consider moving this discussion to the tube category generalities section, and take $\psi \in \mcz(\mcc)$. }
+The image of the idempotents in $\tube(\mcc)$ under condensation can be found with the help of two projectors $a_B,a_N$ which sum to the identity, and are defined to act on morphisms in $\tube(\mcc/\psi)$. 
+They are defined as
 \begin{align}
 a_B = \frac{1}{2}(\text{cl}(\unit) + \text{cl}(\psi)), \;\;\;\;   a_N = \frac{1}{2}(\text{cl}(\unit) - \text{cl}(\psi)),
 \label{aJloop}
@@ -7731,7 +7733,10 @@ That is,
 \SpinStructureProjector = \delta_{JW}\; \EmptyTubeW \in \tube^W(\mcc/\psi),
 \end{align}
 where $W$ on the interior of the gray disc denotes the spin structure for the disc it bounds.
-On general morphisms in $\tube(\mcc)$, the projectors act as 
+
+The projectors can also be defined to act on morphisms in $\tube(\mcc)$. In this setting we will denote 
+them as $\hat a_B$ and $\hat a_N$. 
+On general morphisms in $\tube(\mcc)$, they act as 
 \begin{align}
 \hat{a}_J \cdot \TubeBasisa = \TubeProject.
 \label{aJ_projector}
@@ -7754,19 +7759,22 @@ Or the tube algebra section?}
 \label{image_aJ}
 Let $\mcc$ be a unitary fusion category and $\psi$ a fermion in $\mcz(\mcc)$ as defined in \ref{lift_and_condense}.
 Let $\hat{a}_J$ be as defined in \eqref{aJ_projector}.
-Then 
+Then there exists a functor 
 \[\begin{tikzcd}        
-    \tube(\mcc)\arrow{r}{\hat{a}_J} &\tube(\mcc) \arrow[hook]{r} &  \tube^J(\mcc/\psi)
+    %\tube(\mcc)\arrow{r}{\hat{a}_J} &\tube(\mcc) \arrow[hook]{r} &  \tube^J(\mcc/\psi)
+   I: \hat a_J \cdot \tube(\mcc) \rightarrow \tube^J(\mcc/\psi)
 \end{tikzcd}\]
-is injective.
-\kw{``injective" doesn't really make sense for functors; should rephrase in terms of morphism spaces.}
-\dave{Perhaps ``is a faithful functor on the image of $\hat{a}_J$." is the right way to say it. 
-It is not full since q-type idempotents have odd endomorphisms, 
-e.g., if we let $F$ be the functor defined above, 
-then for $q \in \tube(\mcc/\psi)$ we have $\text{mor}_{\tube{\mcc}}(q\ra q) \xrightarrow{F} \text{mor}_{\tube(\mcc/\psi)}(F(q) \ra F(q))$ is does not have the ``odd" morphism, and so cannot be surjective.
-It is faithful since objects of $\mcc$ are also objects of $\mcc/\psi$.
-And $\text{mor}_{\tube(\mcc)}(a \ra b) \in \text{image}(\hat{a}_J)$ are mapped onto $\text{mor}_{\tube(\mcc/\psi)}(a \ra b)$ injectively.}
-In particular, a non-zero element of $\tube(\mcc)$ in the image of $a_J$ is non-zero in $\tube^J(\mcc/\psi)$.
+%is injective.
+which is faithful, meaning that morphisms in $\hat a_J\cdot\tube(\mcc)$ are mapped injectively to morphisms in $\tube^J(\mcc/\psi)$. 
+\ethan{may still need to be rephrased}
+%\kw{``injective" doesn't really make sense for functors; should rephrase in terms of morphism spaces.}
+%\dave{Perhaps ``is a faithful functor on the image of $\hat{a}_J$." is the right way to say it. 
+%It is not full since q-type idempotents have odd endomorphisms, 
+%e.g., if we let $F$ be the functor defined above, 
+%then for $q \in \tube(\mcc/\psi)$ we have $\text{mor}_{\tube{\mcc}}(q\ra q) \xrightarrow{F} \text{mor}_{\tube(\mcc/\psi)}(F(q) \ra F(q))$ is does not have the ``odd" morphism, and so cannot be surjective.
+%It is faithful since objects of $\mcc$ are also objects of $\mcc/\psi$.
+%And $\text{mor}_{\tube(\mcc)}(a \ra b) \in \text{image}(\hat{a}_J)$ are mapped onto $\text{mor}_{\tube(\mcc/\psi)}(a \ra b)$ injectively.}
+In particular, an tube of $\tube(\mcc)$ that is not mapped to zero by $a_J$ remains non-zero after being mapped into $\tube^J(\mcc/\psi)$.
 %\dave{This may also be a tensor functor.
 %Will need to think about it.
 %I was thinking it may have some use for `guaging' the fermion and getting back to the parent theory. }
@@ -9406,30 +9414,30 @@ It is important to mod out by local relations in the algebra. In the basis we ha
 \subsubsection{Local relations on the annulus}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Let us now investigate local relations on the tubes. 
-Lets also use the notation
+We will make use of the notation \ethan{edited this because $|X|$ suggests a relation to fermion parity which isn't there and since we used $s(X)$ at one point earlier in the paper. Can do a find+replace to revert if you don't dig it}
 \begin{align}
-|X| =\left\{
+s(X) =\left\{
                 \begin{array}{ll}
-                  1 \quad \text{if } X =B \quad \text{Bounding} \\
-                  0 \quad \text{if } X = N \quad \text{Non-bounding}
+                  0 \quad \text{if } X =B \quad \text{Bounding} \\
+                  1 \quad \text{if } X = N \quad \text{Non-bounding}
                 \end{array}
               \right.
 \end{align}
-\dave{Should we label the cycle and denote the sign $-(-1)^{|X|}$ for cycle $r$ as $q_{r}$. I think Reshetikhin's paper uses this notation which is also what people seem to be familiar with.} \ethan{yeah, either $q_X$ which is good but might be confused with q-type stuff, or $\eta(X)$ which we use later in the paper}
-then we have
+%\dave{Should we label the cycle and denote the sign $-(-1)^{|X|}$ for cycle $r$ as $q_{r}$. I think Reshetikhin's paper uses this notation which is also what people seem to be familiar with.} \ethan{yeah, either $q_X$ which is good but might be confused with q-type stuff, or $\eta(X)$ which we use later in the paper}
+We then have 
 \begin{align}
-& \AddDat{\hTube}{X}{} \; =  -(-1)^{|X|}  \AddDat{\hTube}{X}{} \quad \quad \quad \AddDat{\hTube}{X}{\dotb} \; =  (-1)^{|X|}  \AddDat{\hTube}{X}{\dotb} 
+& \AddDat{\hTube}{X}{} \; =  (-1)^{s(X)}  \AddDat{\hTube}{X}{} \quad \quad \quad \AddDat{\hTube}{X}{\dotb} \; =  -(-1)^{s(X)}  \AddDat{\hTube}{X}{\dotb} 
 \label{hlocalrelation}
 \end{align}
 which is found from taking two fermions out of the vacuum and sliding them around the annulus.
 Similarly we have,
 \begin{align}
-\AddDat{\TaddownTube{\mu }}{X}{}\;= -(-1)^{|X|} \sigma^{x}_{\mu \nu} \AddDat{\TaddownTube{\nu}}{X}{} \quad \quad \quad
-\AddDat{\TadupTube{\mu}}{X}{}\;= -(-1)^{|X|} \sigma^y_{\mu \nu} \AddDat{\TadupTube{\nu}}{X}{}
+\AddDat{\TaddownTube{\mu }}{X}{}\;= (-1)^{s(X)} \sigma^{x}_{\mu \nu} \AddDat{\TaddownTube{\nu}}{X}{} \quad \quad \quad
+\AddDat{\TadupTube{\mu}}{X}{}\;= (-1)^{s(X)} \sigma^y_{\mu \nu} \AddDat{\TadupTube{\nu}}{X}{}
 \end{align}
 
 \begin{align}
-& \AddDat{\XTube{\mu}{\nu}}{X}{} \;\;  =-(-1)^{|X|} (\sigma^x \tp \sigma^y )_{\mu \nu; \kappa \tau}\AddDat{\XTube{\kappa}{\tau}}{X}{} 
+& \AddDat{\XTube{\mu}{\nu}}{X}{} \;\;  =(-1)^{s(X)} (\sigma^x \tp \sigma^y )_{\mu \nu; \kappa \tau}\AddDat{\XTube{\kappa}{\tau}}{X}{} 
 \label{XlocalRelationAnnulus}
 \end{align}
 
@@ -9484,16 +9492,16 @@ For example, due to (\ref{hlocalrelation}), and the analogous ones with the extr
 
 By symmetry, we know that (\ref{XlocalRelationAnnulus}), must gain another local relation, and indeed we have,
 \begin{align}
-\AddDatTorus{\XTube{a}{b}}{X}{Y}{} \; = M_{ab;\alpha \beta} \AddDatTorus{\XTube{\alpha}{\beta}}{X}{Y}{} \qquad M = (-1)^{|X|+1} \sigma^x \tp \sigma^y, \; \; (-1)^{|Y| +1} \sigma^y \tp \sigma^z 
+\AddDatTorus{\XTube{a}{b}}{X}{Y}{} \; = M_{ab;\alpha \beta} \AddDatTorus{\XTube{\alpha}{\beta}}{X}{Y}{} \qquad M = (-1)^{s(X)} \sigma^x \tp \sigma^y, \; \; (-1)^{s(Y)} \sigma^y \tp \sigma^z 
 \end{align}
 The two relations above can be multiplied to find a third, and hence all tubes of this form become linearly dependant,
 \begin{align}
-\AddDatTorus{\XTube{1}{1}}{X}{Y}{} \; = (-1)^{|X|+|Y|+1} \AddDatTorus{\XTube{1}{2}}{X}{Y}{}  \; = i (-1)^{|Y|} \AddDatTorus{\XTube{2}{1}}{X}{Y}{} \; = i (-1)^{|X|} \AddDatTorus{\XTube{2}{2}}{X}{Y}{} 
+\AddDatTorus{\XTube{1}{1}}{X}{Y}{} \; = (-1)^{s(X)+s(Y)+1} \AddDatTorus{\XTube{1}{2}}{X}{Y}{}  \; = i (-1)^{s(Y)+1} \AddDatTorus{\XTube{2}{1}}{X}{Y}{} \; = i (-1)^{s(X)+1} \AddDatTorus{\XTube{2}{2}}{X}{Y}{} 
 \label{XLocalRelation}
 \end{align}
 We take the state with $(a,b) = (1,1)$ as the representative. 
 
-There is one additional linear that shows that the tube above is linearly dependant on the other three non-zero tubes.
+There is one additional linear that shows that the tube above is linearly dependent on the other three non-zero tubes.
 This relation can be found many different ways, here we show one, and will use a different method for the $(N,N)$ spin structure. 
 It comes form nucleating $\rho$ loop, and extending it around the torus before fusing it back into the canonical basis
 \begin{align}
@@ -9787,9 +9795,7 @@ We list the fusion rules in Table \ref{halfesixFusionRules}.
 			M_6		 		&\cc^{1|1}M_2 \oplus \cc^{1|1}M_3 		&\cc^{1|1}M_2 		&\cc^{0|1}M_1 \oplus M_2 \oplus M_3		\\
 			\end{array} & \end{flalign*}
 	\caption{$\halfesix$ fusion rules. We define $\mca = \{ M_1, M_2, M_3\}$ and $\mcv = \{ Q_1, Q_2, M_6 \}$. 
-	The $\cc^{p|q}$ denote the vector space associated with $V^{ab}_c$ \ethan{should we do the fusion spaces or the $\Delta$s?}
-	\dave{Should probably write the $\Delta$'s instead.}
-	}
+	The $\cc^{p|q}$ denote the vector space associated with $V^{ab}_c$ 	}
 %	\label{halfesixFusionRules}
 \end{table}
 \end{comment}
@@ -9817,13 +9823,13 @@ We list the fusion rules in Table \ref{halfesixFusionRules}.
 			\end{array} & \end{flalign*}
 	\caption{$\halfesix$ fusion rules. We define $\mca = \{ M_1, M_2, M_3\}$ and $\mcv = \{ Q_1, Q_2, M_6 \}$. 
 	The $\cc^{p|q}$ denote the vector space associated with $\Delta^{ab}_c$ which is related to the fusion space through $V^{ab}_c =\Delta^{ab}_c \tp \text{End}(c)$.
-	Notice that $M_6$ is self-dual and can only fuse oddly to the vacuum. \dave{Hence it's FS indicator is ... }}
+	Notice that $M_6$ is self-dual and can only fuse oddly to the vacuum, and hence it has an imaginary Frobenius-Schur indicator. %\dave{Hence it's FS indicator is ... }}
 	\label{halfesixFusionRules}
 \end{table}
 
 It is useful to also keep track of the isomorphisms between the different representatives 
-of an isomorphism class, see the section \ref{XXX} for more details.
-We have,
+of an isomorphism class.
+In the present case, we have,
 \begin{align}
 M_2 = \frac{e^{i \pi /4}}{2} \sqrt{\frac{d}{3}} \AddDatTorusDot{\TaddownTube{1}}{B}{}{}  \times \AddDatTorusDot{\TadupTube{1}}{B}{}{}  \; = \frac{e^{- i \pi /4}}{2} \sqrt{\frac{d}{3}} \AddDatTorusDot{\TaddownTube{1}}{B}{}{\dota} \times \AddDatTorusDot{\TadupTube{1}}{B}{}{\dotc} 
 \end{align}
@@ -11351,7 +11357,10 @@ Indeed, suppose $c$ were q-type, and $\Delta^{ab}_c \cong \cc^{r|s}$.
 Then $V^{ab}_c \cong \cc^{r|s} \tp \cc^{1|1} \cong \cc^{r+s|r+s}$. 
 The result then follows by the symmetry of $V^{ab}_c$. 
 
+
+\begin{comment}
 \kw{Is this paragraph necessary?  It seems like an obvious observation, and I don't think we use it anywhere.}
+\ethan{don't think so, thanks}
 Constraints on associativity allow us to derive relations between the fusion rule coefficients and fusion spaces. 
 Looking at associativity $(a\otimes b)\otimes c \cong a\otimes (b\otimes c)$, we see that
 \be
@@ -11362,6 +11371,7 @@ Applying \eqref{defn_of_V_by_Delta}, we obtain
 	\bigoplus_x V^{ab}_x \otimes_{\End(x)} V^{xc}_d \cong \bigoplus_y V^{ay}_d \otimes_{\End(y)} V^{bc}_y .
 \ee
 %%KW: unnecessary reminder      where $\tp_{\End(x)}$ denotes a tensor product over the ring $\End(x)$. 
+\end{comment}
 
 If at least one of $a,b,c$ is q-type, we can simplify the description of $V^{ab}_c$ slightly, 
 which we have done when working out the examples considered earlier.
