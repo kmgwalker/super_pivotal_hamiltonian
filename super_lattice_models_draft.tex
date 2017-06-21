@@ -235,6 +235,10 @@
 \newcommand{\Tetrahedron}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tetrahedron.pdf}}}}}
 \newcommand{\PitchforkIdempotent}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{PitchforkIdempotent.pdf}}}}}
 
+\newcommand{\Pitchforkabc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Pitchforkabc.pdf}}}}}
+\newcommand{\Pitchforkabcrot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Pitchforkabcrot.pdf}}}}}
+
+
 
 
 
@@ -10970,6 +10974,10 @@ I liked the viewpoint we discussed once before `suppose you think you have a sup
 then here are the coherence conditions you need to check.}
 \kw{But as currently written, we are not giving a complete set of coherence relations, just a 
 representative sampling.}
+\dave{Lets discuss on Skype at some point which to include and which not too  
+(also for my own sake to understand what the other coherence conditions are).
+Perhaps tomorrow is good (June 21), I think Ethan will still be in internet range.
+}
 
 \begin{axiom}[Objects and morphisms]
 We have a set \obj(C) of objects and a set $\mor(C)$ of morphisms.
@@ -13473,16 +13481,13 @@ although the same technique lends itself equally well to the fermionic state sum
 The input data for the state sum is
 \begin{itemize}
 \item an oriented 3-manifold $\mcm$, which for now we consider to be closed, see \ref{xxx} for 3-manifolds with boundary
-\item a cell decomposition of $\mcm$, with orientations on the 1- and 2-cells
+\item a cell decomposition of $\mcm$, with a longitudinal orientation on the 1-cells and a transverse orientation on the 2-cells
 \item spherical fusion category $\mcc$ 
 \end{itemize}
 We will suppose the cell decomposition is dual to a triangulation so that each 1-cell neighbours three 2-cells.
 The orientations on the 1- and 2-cells can be chosen arbitrarily, 
 and play the role of the global ordering of the vertices in the TVBW state sum 
-\dave{Need to check this.
-Is there an intrinsic or standard way of orienting the 2-cells?
-They don't naturally have an interior or an exterior.
-One naive approach is to specify a direction between neighbouring 3-handles (in the same way we use the orientation of the 1-cells to orient the 1-handles).}. 
+\dave{Need to check this.}. 
 The three cells inherit and orientation from $\mcm$.
 We next take the cell decomposition and turn it into a handle decomposition by fattenning each cell.
 \dave{Kevin, this is my understanding of your words.
@@ -13515,17 +13520,12 @@ As we will see,
 We can now apply this formula to find a systematic way of evaluating $Z(\mcm)$ for any 3-manifold $\mcm$.
 After all the smoke clears, we will arrive at the TVBW state sum, 
 but in a way that generalizes more readily to fermions.
-The first step is to re-move all 3-handles from $\mcm$, using the gluing formula\eqref{gluing_formula}, 
+The first step is to remove all 3-handles from $\mcm$, using the gluing formula\eqref{gluing_formula}, 
 \begin{align}
 Z(\mcm) = Z(\mcm \setminus \mck_3, \phi) \cdot \frac{Z(\mck_3, \phi)}{\langle \phi,\phi \rangle_{A(g_2)} }= \left(\prod_{\text{3-handles}} \frac{1}{\mcd^2} \right) \cdot Z(\mcm \setminus \mck_3, \phi)
 \end{align}
 where $\phi$ is the empty boundary condition (all boundary conditions assigned to $S^2$ by $\mcc$ are just a $\cc$ number times the empty boundary condition).
-\dave{Need help here:
-How do you justify $Z(B^3,\phi)/\langle \phi, \phi \rangle_{A(S^2)} = 1/\mcd^2$?
-I tried using $Z(B^3) = Z((S^2 \times B^1) \cup B^3,\phi) = Z(S^2 \times B^1,\phi,\phi) \cdot Z(B^3,\phi)/\langle \phi, \phi\rangle_{A(S^2)}$ but this shows that $\langle \phi, \phi \rangle_{A(S^2)} =Z(S^2 \times B^1,\phi)$. 
-}.
-It is known that $\langle \phi , \phi \rangle_{A(S^2)} = \mcd^2$, with $\mcd^2 = \sum_x d_x^2$.
-\dave{and I guess $Z(B^3, \phi ) =1$...}
+We have used that $Z(B^3, \phi) = 1$ and $\langle \phi , \phi \rangle_{A(S^2)} = \mcd^2$, with $\mcd^2 = \sum_x d_x^2$.
 Next, we cut out the 2-handles, these are glued to the 1-handles via $g_1$, which is a disjoint union of annulai. 
 The boundary condition of each annulus is empty due the two neighbouring 3-handles, which have empty boundary conditions.
 Thus the vector space assigned to the annulus is $\bigoplus_{x\in \mcc} \cc_x$, 
@@ -13543,8 +13543,7 @@ Using that $Z(\mck_2, \{ e_i \})$ is zero unless all $e_i$ are equal to $e_0 = \
 \begin{align}
 Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \omega \}) = \sum_{\substack{\{x_{r} \} \\ r \in \mck_2}}\;  \left( \prod_{r \in \mck_2} d_{x_r}  \right) Z(\mcm \setminus(\mck_3 \cup \mck_2),\{ \text{cl}(x_{r}) \} )
 \end{align}
-where the sum runs over all 2-handles with each labeled by a simple object of $\mcc$, and $\text{cl}(x_r)$ is naturally oriented from the orientation of the 2-cells
-\dave{Need to say how we orient the 2-cells.}.
+where the sum runs over all 2-handles with each labeled by a simple object of $\mcc$, and $\text{cl}(x_r)$ is naturally oriented from the orientation of the 2-cells.
 For reference in Figure~\ref{OneHandle}, we have shown a labeled 1-handle in the midst of the remaining partition function. 
 \begin{figure}
 \begin{center}
@@ -13591,8 +13590,9 @@ Or should we write it as a sum over a product of pictures?}
 %Z(\mcm) = \sum_{\substack{\{ x_i\} \in \mcc \\ i \in \mck_2}}\sum_{\substack{\{ \mu_j \} \in A(g_j)  \\ j \in \mck_1} }
  %\prod_{r \in \mck_3} \frac{1}{\mcd^2}\;  \prod_{i \in \mck_2} d_{x_i} \; \prod_{j \in \mck_1} (\mu_j^* \circ \mu_j)^{-1} \; 
  %\prod_{s \in \mck_0 } T_s(\tp_{l \in \mck_1 \cap s} \mu_l)
-Z(\mcm) = \sum_{\substack{\{ x_i\}\\  i \in \mck_2}} \; \sum_{\substack{\{ \mu_j \} \\ j \in \mck_1} }\; 
- \prod_{r \in \mck_3} \frac{1}{\mcd^2}\;  \prod_{i \in \mck_2} d_{x_i} \; \prod_{j \in \mck_1} (\mu_j^* \circ \mu_j)^{-1} \; 
+Z(\mcm) = \sum_{{\{ x_i\}  \; i \in \mck_2}} \;
+ \sum_{{\{ \mu_j \}\;  j \in \mck_1} }\; 
+ \prod_{r \in \mck_3}\mcd^{-2} \prod_{i \in \mck_2} d_{x_i}  \prod_{j \in \mck_1} (\mu_j^* \circ \mu_j)^{-1} 
  \prod_{w \in \mck_0 } T_w
  \label{state_sum}
 \end{align}
@@ -13615,51 +13615,98 @@ T(\alpha \tp \beta \tp \gamma \tp \delta) =\; \Tetrahedron
 \end{align}
 where we have defined the tensor by its evaluation on the right with $\alpha \in \bigoplus_{abc} V^{abc}$, $\beta \in \bigoplus_{a^* bc} V^{a^* bc}$, $\gamma \in \bigoplus_{a^* b c^*} V^{a^* b c^*}$, $ \delta \in \bigoplus_{a^* b^* c^*} V^{a^* b^* c^*}$.
 One can change the orientation by flipping an arrow and taking the appropriate object to its dual. 
+\dave{Add comment that spherical means that all tetrahedra can be evaluated from this one by using the appropriate pivots.}
 
-
-For each 1-handle we have a relation between two pitchforks, whose orientation differs by a translation in the plane, see Figure{XXX}.
-This closely paralells the discussion surrounding \eqref{fermion_slide}, 
-and for good reason, as we will see shortly. 
-To every disc that is oriented ``out" of the plane (by the orientation of the 1-cells) we have a complete set of minimal idempotents given by,
+********
+\dave{I think the alternative below is more clear, but won't delete this just yet.}
+For each 1-handle we have a relation between two standardized pitchforks in the plane.
+Much of this discussion directly paralells that of \eqref{fermion_slide}.
+Starting with the pitchfork at the incoming end we keep track of how it is rotated as it is transported through the 1-handle. 
+There are three possibilities, either the pitchfork is reflected, or it has been rotated by $2\pi/3$ or $4\pi/3$.
+Hence, denoting the reflected vector space by $V^{c^*b^*a^*}$ and letting $W$ be the 1-handle we have,
+\dave{Maybe it's better to define the reflected fusion space $V^{c^* b^* a^*} \cong (V^{abc})^* = R\circ V^{abc}$,  and then $W = R \circ P_W $}
 \begin{align}
-e_\mu = \mu \circ \mu^* = \PitchforkIdempotent
+W \circ V^{abc} \cong P_W \circ V^{c^*b^*a^*} .
 \end{align}
-In fact we can take this as a definition of $\mu$ and $\mu^*$ once we impose $e_\mu \circ e_\nu = \delta_{\mu\nu} e_\mu$.
-And to every disc oriented ``into" the plane (again given by the orientation of the 1-cells) we have the dual idempotents, $e_{\mu^*}$.
-\dave{Here somewhere.....}
-
-
-Our task is to shuttle the idempotent across the 1-handle that attaches the two pitchforks. 
-The incoming pitchfork and outgoing pitchfork are both standardized. 
-Furthurmore the 1-handle is oriented, and so the the only possibility is that the labels could be rotate around the 1-handle as they are being transported from the incoming pitchfork to the outgoing one. 
-Denote the counterclockwise pivot by $P$,
+Where $P_W$ is either the identity, $P$ or $P^2$ with $P$ defined as,
 \begin{align}
-P: \; V^{abc} \ra V^{cab}
+P \circ \Pitchforkabc \;=\;  \Pitchforkabcrot.
 \end{align}
 
-
-Let $e_\mu *h$ denote the 1-handle with the idempotent $e_\mu$ at its incoming end and $h*e_{\mu^*}$
-the one handle with the dual idempotent at its outgoing end. 
-Then 
+\dave{To avoid dividing by zeros in partition sum we should make edge weights look like $\mu^* \circ \nu/((\mu^*\circ \mu) (\nu^* \circ \nu))$}
+*****
+\dave{alternative}
+Let $D$ be the incoming disk for a 1-handle $W$ and $D'$ the out going disk which is found by translating the standard disk $D$. 
+Denote the reflected disk by $\bar{D} = R\cdot D$.
+$W$ takes $D$ to $\bar{D}$ but possibly with a cyclic permutation of the marked points. 
+Lets denote the the counterclockwise rotation of the marked points by $P$:
 \begin{align}
-h * e_\mu= P_h e_{\mu^*} P_h^{-1} *h
+P \circ \Pitchforkabc \;=\;  \Pitchforkabcrot.
 \end{align}
+Then we can write $W = R \circ P_W$, where $P_W$ is either the identity, $P$ or $P^2$. 
+\dave{draw picture.}
+Lets define $\mu_i$ as a basis for $V^{abc}$, the vector space associated with the disk with marked points $a,b$ and $c$.
+And $\mu_i^*$ a basis for $R \circ V^{abc} \cong (V^{abc})^* \cong V^{c^* b^* a^*}$ such that,
+\begin{align}
+\sum_{i} \mu_i \tp \mu_i^*  = \text{id}_{\cdots}
+\end{align}
+Then we can define,
+\begin{align}
+\theta_{\mu_i}(W) = \mu_i^* P_W \mu_i 
+\end{align}
+\dave{In a unitary fusion cateogry this is non-zero, 
+since $\mu_i \circ \mu_i^*$ is an idempotent and $P$ is unitary. 
+Here $P$ is invertible, but the fusion cateogry isn't necessarily unitary. 
+I'm fairly sure this is always non-zero, and if not then we can easily remedy the edge term so that we are never dividing by zero (i.e., using something like  $\mu^* \circ \nu/((\mu^*\circ \mu) (\nu^* \circ \nu))$).
+Will think about this tomorrow.  
+}
+
+The partition function becomes, 
+\begin{align}
+Z(\mcm) = \sum_{x_i} \sum_{\mu_j} \prod \mcd^{-2} \prod_{j} \theta_{\mu_j}(W) \prod_k T_k(\mu_1 \tp \mu_2 \tp \mu_3 \tp \mu_4)
+\end{align}
+\dave{will coherentize notation tomorrow.}
+%older discussion.
+%This closely paralells the discussion surrounding \eqref{fermion_slide}. 
+%To every disc that is oriented ``out" of the plane (by the orientation of the 1-cells) we have a complete set of minimal idempotents given by,
+%\begin{align}
+%e_\mu =\theta_\mu^{-1} \mu \circ \mu^* = \PitchforkIdempotent
+%\end{align}
+%where $\theta_\mu = \mu^* \circ \mu$ and on the right we have shown a graphical depiction of $e_\mu$.
+%To every disc oriented ``into" the plane (again given by the orientation of the 1-cells) we have the dual idempotents, $e_{\mu^*}$.
+
+
+%Our task is to shuttle the idempotent across the 1-handle that attaches the two pitchforks. 
+%The incoming pitchfork and outgoing pitchfork are both standardized. 
+%Furthurmore the 1-handle is oriented, and so the the only possibility is that the labels could be rotate around the 1-handle as they are being transported from the incoming pitchfork to the outgoing one. 
+%Denote the counterclockwise pivot by $P$,
+%\begin{align}
+%P: \; V^{abc} \ra V^{cab}
+%\end{align}
+
+
+%Let $e_\mu *h$ denote the 1-handle with the idempotent $e_\mu$ at its incoming end and $h*e_{\mu^*}$
+%the one handle with the dual idempotent at its outgoing end. 
+%Then 
+%\begin{align}
+%h * e_\mu= P_h e_{\mu^*} P_h^{-1} *h
+%\end{align}
  
-Since the pitch forks are oriented in the same way, 
-we know that in transporting the incoming pitchfork (recall each 1-cell is oriented) to the outgoing pitchfork it could undergo a rotation 
+%Since the pitch forks are oriented in the same way, 
+%we know that in transporting the incoming pitchfork (recall each 1-cell is oriented) to the outgoing pitchfork it could undergo a rotation 
 
-The reflection is always the same we assume the pitchfork starts its journey coming out of the page, 
-and ends by going back into the page. 
-\dave{Is this the only point where non-orientable surfaces would matter?}
-We record the pivot by saying how many times the pitch fork winds countourclockwise around the 1-cell using the right-hand rule; see Figure \ref{XXXX}
-The pivot satisfies $P^3 = \text{id}$, and its explicit matrix elemtents are given by,
-\begin{align}
-\mu \circ P \circ \nu = \cdots, \quad \quad \mu \in (V^{abc})^*, \quad \nu \in V^{cab}. 
-\end{align}
-Hence the state sum can be written as,
-\begin{align}
-Z(\mcm) = \cdots
-\end{align}
+%The reflection is always the same we assume the pitchfork starts its journey coming out of the page, 
+%and ends by going back into the page. 
+%\dave{Is this the only point where non-orientable surfaces would matter?}
+%We record the pivot by saying how many times the pitch fork winds countourclockwise around the 1-cell using the right-hand rule; see Figure \ref{XXXX}
+%The pivot satisfies $P^3 = \text{id}$, and its explicit matrix elemtents are given by,
+%\begin{align}
+%\mu \circ P \circ \nu = \cdots, \quad \quad \mu \in (V^{abc})^*, \quad \nu \in V^{cab}. 
+%\end{align}
+%Hence the state sum can be written as,
+%\begin{align}
+%Z(\mcm) = \cdots
+%\end{align}
 
 
 \subsubsection{Standardized fermionic state sum}
