@@ -13629,38 +13629,83 @@ where we have defined the tensor by its evaluation on the right with $\alpha \in
 One can change the orientation by flipping an arrow and taking the appropriate object to its dual. 
 \dave{Add comment that spherical means that all tetrahedra can be evaluated from this one by using the appropriate pivots.}
 
-********
-\dave{I think the alternative below is more clear, but won't delete this just yet.}
+
+%\dave{I think the alternative below is more clear, but won't delete this just yet.}
+%For each 1-handle we have a relation between two standardized pitchforks in the plane.
+%Much of this discussion directly paralells that of \eqref{fermion_slide}.
+%Starting with the pitchfork at the incoming end we keep track of how it is rotated as it is transported through the 1-handle. 
+%There are three possibilities, either the pitchfork is reflected, or it has been rotated by $2\pi/3$ or $4\pi/3$.
+%Hence, denoting the reflected vector space by $V^{c^*b^*a^*}$ and letting $W$ be the 1-handle we have,
+%\dave{Maybe it's better to define the reflected fusion space $V^{c^* b^* a^*} \cong (V^{abc})^* = R\circ V^{abc}$,  and then $W = R \circ P_W $}
+%\begin{align}
+%W \circ V^{abc} \cong P_W \circ V^{c^*b^*a^*} .
+%\end{align}
+%Where $P_W$ is either the identity, $P$ or $P^2$ with $P$ defined as,
+%\begin{align}
+%P \circ \Pitchforkabc \;=\;  \Pitchforkabcrot.
+%\end{align}
+
 For each 1-handle we have a relation between two standardized pitchforks in the plane.
-Much of this discussion directly paralells that of \eqref{fermion_slide}.
-Starting with the pitchfork at the incoming end we keep track of how it is rotated as it is transported through the 1-handle. 
-There are three possibilities, either the pitchfork is reflected, or it has been rotated by $2\pi/3$ or $4\pi/3$.
-Hence, denoting the reflected vector space by $V^{c^*b^*a^*}$ and letting $W$ be the 1-handle we have,
-\dave{Maybe it's better to define the reflected fusion space $V^{c^* b^* a^*} \cong (V^{abc})^* = R\circ V^{abc}$,  and then $W = R \circ P_W $}
-\begin{align}
-W \circ V^{abc} \cong P_W \circ V^{c^*b^*a^*} .
-\end{align}
-Where $P_W$ is either the identity, $P$ or $P^2$ with $P$ defined as,
+Let $D$ be the disk living at the incoming end of the 1-handle with three marked points.
+Let $D'$ be the disk found at the outgoing end by sliding $D$ through $W$ 
+while keeping the normal vector of $D$ paralell to the 1-cell.
+Since the final disk $D'$ is also on the plane, we know it has to differ from $D$ by a reflection. 
+In addition, the 1-handle could have also pivoted $D$ around as it is slide through $W$. 
+Hence, the outgoing disk $D'$ is related to the incoming disk $D$ by a reflection composed with a pivot.
+Lets define a pivot on the basis vectors of a disk with three marked points to be:
 \begin{align}
 P \circ \Pitchforkabc \;=\;  \Pitchforkabcrot.
 \end{align}
+Hence,  two pitchforks connected by a 1-handle can be cut open and re-glued together.
+More explicitly, we have,
+\begin{align}
+Z(W): \; A(D) \ra A(D')
+\end{align}
+and if we define $\text{id}_{A(D) \ra A(D')} = \sum_i \frac{1}{\mu_i^* \circ \mu_i} \mu_i \tp \mu_i^*$, 
+then we can express $Z(W)$ as 
+\begin{align}
+Z(W)= \sum_i \frac{1}{\mu_i^* \circ \mu_i} \mu_i \tp (P_W\circ \mu_i^*).
+\end{align}
+\dave{I think Bassalm and Kirrillov may have notation for this.}
+Where $P_W$ is either the identity, $P$ or $P^2$.
 
-\dave{To avoid dividing by zeros in partition sum we should make edge weights look like $\mu^* \circ \nu/((\mu^*\circ \mu) (\nu^* \circ \nu))$}
-*****
-\dave{alternative}
-Let $D$ be the incoming disk for a 1-handle $W$ and $D'$ the out going disk which is found by translating the standard disk $D$. 
+The partition function is then modified so that,
+\begin{align}
+Z(\mcm) =\mcd^{-2n} \sum_{x_f} \sum_{\mu_e \tp \mu_e^*}  \prod_f d_{x_f} \prod_{e}(\mu_e^* \circ \mu_e)^{-1} \prod_v T_v(\mu_1 \tp \mu_2 \tp \mu_3 \tp \mu_4)
+\end{align}
+where $n$ is the number of 2-handles, $x_f$ runs over all the possible labels of the 2-cells. 
+The sum over all fusion vertices $\mu_e$ runs over all non-zero fusion indices. 
+If $\mu_e$ is at the outgoing end of a 1-cell we replace it with $\mu_e^*$.
+The tensor $T_v(\mu_1\tp \mu_2 \tp \mu_3 \tp \mu_4)$ is given by $T(\mu_1\tp \mu_2 \tp \mu_3 \tp \mu_4)$ if the 1-cells are all oriented away from the 0-cell $v$. 
+For each 1-cell $W$ oriented into the 0-cell we replace $\mu_i$ with $P_W \circ \mu_i^*$.
+
+\begin{comment}
+\dave{Old stuff.}
+Let $D$ be the incoming disk with three marked points for a 1-handle $W$ and $D'$ the out going disk.
+Since the outgoing disk lives on the same plane as the incoming disk, we know the two disks differ by a reflection. 
+Furthurtmore, 
+
+
+
+The outgoing disk $D'$ is related to $D$ by a reflection and a translation. 
+
+ with three marked points found by reflecting $D$. 
 Denote the reflected disk by $\bar{D} = R\cdot D$.
 $W$ takes $D$ to $\bar{D}$ but possibly with a cyclic permutation of the marked points. 
 Lets denote the the counterclockwise rotation of the marked points by $P$:
 \begin{align}
 P \circ \Pitchforkabc \;=\;  \Pitchforkabcrot.
 \end{align}
-Then we can write $W = R \circ P_W$, where $P_W$ is either the identity, $P$ or $P^2$. 
+Then we can write the action of $W$ on $D$ by composing a reflection with a pivot:
+\begin{align}
+W = P_W \circ R,
+\end{align}
+where $P_W$ is either the identity, $P$ or $P^2$. 
 \dave{draw picture.}
 Lets define $\mu_i$ as a basis for $V^{abc}$, the vector space associated with the disk with marked points $a,b$ and $c$.
 And $\mu_i^*$ a basis for $R \circ V^{abc} \cong (V^{abc})^* \cong V^{c^* b^* a^*}$ such that,
 \begin{align}
-\sum_{i} \mu_i \tp \mu_i^*  = \text{id}_{\cdots}
+\sum_{i}\theta_{\mu_i}^-1 \mu_i \tp \mu_i^*  = \text{id}_{\cdots}
 \end{align}
 Then we can define,
 \begin{align}
@@ -13719,7 +13764,7 @@ Z(\mcm) = \sum_{x_i} \sum_{\mu_j} \prod \mcd^{-2} \prod_{j} \theta_{\mu_j}(W) \p
 %\begin{align}
 %Z(\mcm) = \cdots
 %\end{align}
-
+\end{comment}
 
 \subsubsection{Standardized fermionic state sum}
 \label{standardized_fermionic_SS}
