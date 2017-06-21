@@ -7504,7 +7504,7 @@ Our normalization is thus chosen so that there is no numerical prefactor in fron
 of the above equality. 
 
 With these conventions, we define a basis of morphisms by
-\begin{align}
+\begin{align} \label{f_morphism_defn}
 f_a^b(x,y,j,i)\; = \; \TubeBasisdprime,
 \end{align}
 where $\nu_j$ is a basis of $V_{xy}^b$ and $\mu_i$ a basis of $V^{xy}_a$, which are normalized according to \eqref{bubble_normalization}.
@@ -7529,13 +7529,20 @@ where $\lambda_{xy}^a \in V_{xy}^a$ etc.}.
 %Each simple matrix algebra is a subcategory of $\tube(\mcc)$. 
 The $f_a^b(x,y,j,i)$ provide a basis for this simple matrix algebra \eqref{tube_matrix_algebra}.
 It follows from \eqref{matrix_units} that the ``diagonal'' morphisms 
-\begin{align}
+\begin{align} 
 e(a,x,y,j) = f_a^a(x,y,j,j)
 \label{idempotent_one_strand}
 \end{align}
 are each a minimal idempotent. 
 The idempotents $e(a,x,y,i)$ and $e(b,x',y',j)$ are equivalent\footnote{Two idempotents $e$ and $e'$ are equivalent if $e = uv$ and $e' = vu$ for some $u$ and $v$.}
 if $x=x'$ and $y=y'$, with the isomorphism given by $e(a,x,y,i) = f_b^a(x,y,i,j) \cdot f_a^b(x,y,j,i)$ and $e(b,x,y,j) = f_a^b(x,y,j,i) \cdot f_b^a(x,y,i,j)$.
+This presentation of the minimal idempotents also appeared in \cite{ocneanu1994}.
+\kw{Did Ocneanu draw diagrams like this for idempotents?  I thought this was something Dave made up.}
+\dave{It turns out he did -- in his talks, and then others wrote papers about them like the one I cited above (it's actually quite difficult to obtain that paper).
+I first found that formula in Mugers paper \cite{muger2003b} (I think section 6 or 7 -- when he's talking about the quantum double of an MTC).
+The one I made up was similar -- I was advertising as a ``modularity detector" last Fall. 
+I recently found out that a similar idempotent to that one had appeared in the literature before, see \cite{Fuchs2002} p.452 eq. 5.34.
+}
 %\ethan{isn't it actually $e(a,x,y,i) \cong f_b^a(x,y,i,j) \cdot e(b,x,y,j) \cdot f_a^b(x,y,j,i)$?}
 %\dave{That's also true. 
 %I was using that: idempotents $e$ and $e'$ are equivalent if $e = uv$ and $e' = vu$ for some $u$ and $v$.
@@ -7726,7 +7733,8 @@ a_B = \frac{1}{2}(\text{cl}(\unit) + \text{cl}(\psi)), \;\;\;\;   a_N = \frac{1}
 \label{aJloop}
 \end{align}
 where as before, $\text{cl}(x)$ denotes a closed up $x$ strand embedded in a solid torus.
-Importantly, they satisfy $a_J \tp a_W = \delta_{JW} a_J$ and $a_B + a_N = \text{cl}(\unit)$.
+Importantly, they satisfy $a_J \tp a_W = \delta_{JW} a_J$ and $a_B + a_N = \text{cl}(\unit)$\footnote{By ${\rm cl}(a)\tp{\rm cl}(b)$, we mean ${\rm cl}(a\tp b)$.}.
+Also, from the definition of the $\omega$ loop we note that $\omega\tp a_J = \delta_{J,B}\omega$. 
 %These projectors are like the $\omega$ loop defined in \eqref{omega_loop}, but only involve $\unit$ and $\psi$, the objects we are quotienting by. 
 %We first decompose $\tube(\mcc)$ into two orthogonal sets of tubes.
 Notice that an $a_J$ loop encircling a tube with spin structure $J$ is the identity, while an $a_J$ loop on a tube with spin structure $W \neq J$ projects the tube to zero.
@@ -7776,7 +7784,7 @@ which is faithful, meaning that morphisms in $\hat{a}_J\cdot\tube(\mcc)$ are map
 %then for $q \in \tube(\mcc/\psi)$ we have $\text{mor}_{\tube{\mcc}}(q\ra q) \xrightarrow{F} \text{mor}_{\tube(\mcc/\psi)}(F(q) \ra F(q))$ is does not have the ``odd" morphism, and so cannot be surjective.
 %It is faithful since objects of $\mcc$ are also objects of $\mcc/\psi$.
 %And $\text{mor}_{\tube(\mcc)}(a \ra b) \in \text{image}(\hat{a}_J)$ are mapped onto $\text{mor}_{\tube(\mcc/\psi)}(a \ra b)$ injectively.}
-In particular, an tube of $\tube(\mcc)$ that is not mapped to zero by $\hat{a}_J$ remains non-zero after being mapped into $\tube^J(\mcc/\psi)$.
+In particular, an tube of $\tube(\mcc)$ that is not mapped to zero by $\hat{a}_J$ is nonzero in the image of $I$. 
 %\dave{This may also be a tensor functor.
 %Will need to think about it.
 %I was thinking it may have some use for `guaging' the fermion and getting back to the parent theory. }
@@ -7787,39 +7795,42 @@ The proof follows from a simple observation.
 Let $t \in \tube(\mcc)$ be in the image of $\hat{a}_J$ so that, 
 \begin{align}
 \left \langle\; \Tubeidr,\Tuberr \; \right \rangle_{\tube(\mcc)} &=\left \langle\; \Tubeidr,\TuberraJ \; \right \rangle_{\tube(\mcc)}  \\
-&= \frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^J \TuberrTraceCo  \right \rangle_{\mcc}
+&= \frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^{s(J)} \TuberrTraceCo  \right \rangle_{\mcc}
 \end{align}
-The first step follows from $t$ being in the image of $\hat{a}_J$, 
-while the second step follows from the definition of the inner product, see xx-Bosonic-trace-xx.
-The angle brackets with subscript $\mcc$ means we evaluate the picture on the two-sphere using $\mcc$.
-And we have defined $(-1)^J = 1$ if $J$ is bounding and $-1$ otherwise.
+The first step follows from $t$ being in the image of the projector $\hat{a}_J$, 
+while the second step follows from the definition of the inner product in the tube category (written as $\langle,\rangle_{\tube(\mcc)}$, which is discussed in Sec \ref{qdims_and_traces}). 
+The angle brackets with subscript $\mcc$ in the second line means that we evaluate the picture on the two-sphere using local relations in $\mcc$.
+As before, we have defined $s(J)= 0$ if $J$ is bounding and $s(J)=1$ otherwise.
+
 Since any net configuration in $\mcc$ evaluated on $S^2$ agrees with the evaluation in $\mcc/\psi$ we have,
 \begin{align}
-\frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^J \TuberrTraceCo  \right \rangle_{\mcc} &=\frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^J \TuberrTraceCo  \right \rangle_{\mcc/\psi} \\
-&= \frac{1}{2} \left \langle\; \Tubeidr,\Tuberr \; \right \rangle_{\tube^J(\mcc/\psi)}.
+\frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^{s(J)} \TuberrTraceCo  \right \rangle_{\mcc} &=\frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^{s(J)} \TuberrTraceCo  \right \rangle_{\mcc/\psi} \\
+&= \frac{1}{2} \left \langle\; \Tubeidr,\Tuberr \; \right \rangle_{\tube^J(\mcc/\psi)},
 \end{align}
-Where we have again used the definition of the trace, but this time for the super pivotal category, see xx-Fermionic-trace-xx.
+where we have again used the definition of the trace. %, but this time for the super pivotal category, see xx-Fermionic-trace-xx.
 Hence, if $X,Y \in \tube(\mcc)$ are in the image of $\hat{a}_J$, then $\langle X, Y \rangle = \langle \unit, X^* Y\rangle$. 
 Using that $\tube(\mcc)$ is semi-simple, and that the $t \in \tube(\mcc)$ above span all morphisms of $\tube(\mcc)$, we can always find an isomorphism such that $t \cong X^*Y$.
-Hence we also have that $\langle X, Y \rangle_{\tube(\mcc)} = \frac{1}{2} \langle X, Y \rangle_{\tube^J(\mcc/\psi)}$.
-Since the the inner-product is non-degenerate, the inclusion of the image of $\hat{a}_J$ into $\tube^J(\mcc/\psi)$ is injective.
+\ethan{I'm confused by the last two sentences and why we need them}
+From the previous equation we have that $\langle X, Y \rangle_{\tube(\mcc)} = \frac{1}{2} \langle X, Y \rangle_{\tube^J(\mcc/\psi)}$.
+Since the the inner product is non-degenerate \ethan{did we prove this?}, the inclusion of $\hat{a}_J\cdot\tube(\mcc)$ into $\tube^J(\mcc/\psi)$ is injective on morphisms.
 \end{proof}
 
 
 
-Let's now apply the $\hat a_J$ projectors to the idempotents in \eqref{minimal_idempotent_C}.
+Let's now apply the $\hat a_J$ projectors to the idempotents in the parent theory $\tube(\mcc)$. 
 Define the image of $e_{xy}$ under condensation to be $f^J_{xy}$. 
 Using that $\omega \tp a_J = \delta_{JB} \omega$, we can replace the $\omega$ appearing in $e_{xy}$ with $a_B \tp \omega$. 
 We can next pass the $a_B$ through the $y$ strand sitting between the $\omega$ loop and the back wall. 
-Doing so permutes $a_B$ to $a_N$ if $\nu_y = 1$ (i.e. if $y$ has nontrivial braiding with $\psi$), otherwise (if $y$ braids trivially with $\psi$) $a_B$ remains unchanged. 
+Doing so permutes $a_B$ to $a_N$ if $y$ has nontrivial braiding with $\psi$, otherwise $a_B$ remains unchanged (if $y$ braids trivially with $\psi$). 
 Diagrammatically, 
 \begin{align}
 e_{xy} =  \TubeIdempotentTwoStrand= \exyomegaa = \begin{cases}
 \exyomegac& \text{if}\; \nu_y = 0 \\
 \\
 \exyomegab& \text{if}\; \nu_y =1
-\end{cases}.
+\end{cases},
 \end{align}
+where the indicator $\nu_y$ is defined as before by $\nu_y=0$ if $y$ braids trivially with $\psi$, and $\nu_y=1$ otherwise. 
 This means that each $e_{xy}$ has an image in $\tube(\mcc/\psi)$ given by
 \begin{align}
 e_{xy} \xrightarrow{\text{condense $\psi$}}f_{xy}^{J(y)} \quad \quad \text{with $J(y) = B$ if $\nu_y = 0$ and $J(y) = N$ otherwise}
@@ -7827,7 +7838,7 @@ e_{xy} \xrightarrow{\text{condense $\psi$}}f_{xy}^{J(y)} \quad \quad \text{with 
 \end{align}
 In the following we will sometimes write just $J$ instead of $J(y)$. 
 Since the $e_{xy}$ are complete, orthogonal and non-zero then by using the lemma \ref{image_aJ}
-we also have that the $f^J_{xy}$ are complete, orthogonal and non-zero.
+we also have that the $f^J_{xy}$ are complete, orthogonal and non-zero.\ethan{orthogonal and non-zero yeah, but how do you know they're complete?}
 %By the lemma \ref{image_aJ} we also have that teh $f^J_{xy}$ are nonzero
 %The $f_{xy}^J$ also remain orthogonal $f_{xy}^J f_{x' y'}^W = \delta_{xx'} \delta_{yy'}\delta_{JW} f_{xy}^J$, which follows from the fact that $\omega \tp \omega = \omega$ and $a_J \tp a_W = \delta_{JW} a_J$.
 Note that the inclusion of the image of $\hat{a}_J$ in $\tube^J(\mcc/\psi)$ is not surjective: 
@@ -7851,7 +7862,8 @@ Hence, we also need to show that the resulting idempotents are minimal.
 %\end{align}
 
 Showing that the $f_{xy}^J$ are indeed minimal is done 
-as before by showing that the subspace $f_{xy}^J \tube(\mcc/\psi) f_{xy}^J$ is one dimensional.
+as before by showing that the subspace $f_{xy}^J \tube(\mcc/\psi) f_{xy}^J$ is a simple algebra, i.e. 
+that it contains no nontrivial subalgebras. 
 By the spine lemma, 
 a generic element of $f_{xy}^J \tube(\mcc/\psi) f_{xy}^J$ can be written as
 \begin{align}
@@ -7868,8 +7880,8 @@ Using property (a) of \ref{omega_loop_properties} we see that both $c \cong c' \
 %Lastly, the loop traversing the annulus can be absorbed into the $\omega_0$ loop at the expense of multiplying by $d_w$.
 If $\alpha \cong \psi$ then we require $y \tp \psi \cong y$.
 Using this, along with the orthogonality of the idempotents we have,
-\dave{Should we say minimal idempotent means that $e \tube(\mcc) e \cong \text{simple algebra}$ rather than one-dimensional?
-}
+%\dave{Should we say minimal idempotent means that $e \tube(\mcc) e \cong \text{simple algebra}$ rather than one-dimensional?
+%}
 \begin{align}
 f_{xy}^J \tube(\mcc/\psi) f_{x' y'}^J \cong
 \begin{cases}
@@ -7879,9 +7891,9 @@ f_{xy}^J \tube(\mcc/\psi) f_{x' y'}^J \cong
 0 & \text{otherwise}
 \end{cases}
 \end{align}
-Hence, the $f^{J}_{xy}$ are minimal 
-\dave{If we define what a minimal idempotent is in the tube generalities section we should refer to that.}. 
-This also shows that $f_{xy}^J$ and $f_{x(y\tp \psi)}^J$ are oddly isomorphic.
+Hence, the $f^{J}_{xy}$ are minimal, since $f_{xy}^J \tube(\mcc/\psi) f_{x' y'}^J$ is always a simple algebra. 
+%\dave{If we define what a minimal idempotent is in the tube generalities section we should refer to that.}. 
+This also confirms that $f_{xy}^J$ and $f_{x(y\tp \psi)}^J$ are oddly isomorphic.
 
 
 
@@ -7915,13 +7927,13 @@ We claim that it is also a tensor functor.
 \dave{This is copied from KW's notes:}
 The tensor structure on $\tube(\mcc/\psi)$ is initially defined on $\text{Rep}(\tube(\mcc/\psi))$ and then transferred to $\tube(\mcc/\psi)$ using semisimplicity ($\tube(\mcc) \cong \text{Rep}(\tube(\mcc))$). 
 Consequently, we only need to show that $E$ is a tensor functor on $\text{Rep}(\tube(\mcc/\psi))$.
-Towards this, we show that
-\begin{align}
-V^{E(a,x),E(b,y)}_{E(c,z)} \cong V^{ab}_c(\mcc) \tp V^{xy}_z(\mcc/\psi)
+Towards this, we will show that
+\begin{align} \label{fusion_isomorphism}
+V^{E(a,x),E(b,y)}_{E(c,z)} \cong V^{ab}_c(\mcc) \tp V^{xy}_z(\mcc/\psi),
 \end{align}
-Where $V(\mcc)$ denotes the fusion space for $\mcc$ and $V(\mcc/\psi)$ denotes the fusion space for $\mcc/\psi$.
-\dave{Now we add words about why this implies that $E$ is a tensor functor. 
-}
+where $V(\mcc)$ denotes the fusion space for $\mcc$ and $V(\mcc/\psi)$ denotes the fusion space for $\mcc/\psi$.
+%\dave{Now we add words about why this implies that $E$ is a tensor functor. 
+%} 
 This isomorphism is established by the following figure:
 \begin{align}
 \FusionIsomorphism
@@ -7929,10 +7941,12 @@ This isomorphism is established by the following figure:
 with $\alpha = \unit$ for the even fusion space and $\alpha = \psi$ for the odd fusion space.
 By the spine lemma, the internal lines, labeled $r,s,t,u,v$ span the entire space of 
 net configurations for $V(P)$ with marked points, $(a,x)$, $(b,y)$, 
-and $(c,z)$ living at the boundary circles. 
+and $(c,z)$ living at the boundary circles (as before, $P$ is the pair of pants). 
 Near each boundary circle we have applied the corresponding minimal idempotent to each boundary condition. 
 Using the exact same arguments following \eqref{MinimalProof} we can simplify the diagram using the relations of Table ~\ref{omega_loop_properties}. One finds that $r \cong s \cong t \cong u \cong v \cong \unit$, and the left over $p$ and $q$ loops can be removed by multiplying the picture with their quantum dimensions. 
 The left over picture is isomorphic to $V^{ab}_c(\mcc) \tp V^{xy}_z(\mcc/\psi)$.
+
+Since $E$ acts as a tensor functor on the elementary fusion spaces as in \eqref{fusion_isomorphism}, it acts as a tensor functor on arbitrary morphism spaces.
 
 \dave{And finish proof here.}
 
@@ -7979,20 +7993,19 @@ The explicit representation of the minimal idempotents allows us to easily read 
 %This theorem allows us to easily compute, for example the modular transformations of $\tube(\mcc/\psi)$ without going through the brute force methods used in Section~\ref{C2_quasiparticles}.
 
 We again assume that $\mcc$ is a MTC. 
-We first do the $S$ transformation, with a bounding spin structure, that is atleast one of the two cycles of the torus is bounding.
+We first examine the $S$ transformation on a torus with a spin structure such that at least one of the two cycles inherits a bounding spin structure. 
 Recall that the spin structure along the azimuthal direction is fixed by whether or not the label $b$ below is transparent with respect to $\psi$. 
-We have,
+The $S$ transformation acts to interchange the longitudinal and meridional cycles of the torus, and so it acts as
 \begin{align}
 S:\;\; \DCSmatrixa\; \mapsto \; \DCSmatrixb \;=\; \STorusBasisa
 %\mcd^2 \DCSmatrixc 
 \label{s_transformation}
 \end{align}
-We have introduced $\tilde{\omega} =\frac{1}{\mcd^2}\sum_x \kappa_x \text{cl}(x)$. 
-Which satisfies $\omega \tp \tilde{\omega} = \tilde{\omega}$.
-We have also re-written the annulus on the plane (so that the top and bottom as well al left and right edges are now identified).
-This was done purely for aesthetics, and all calculations remain on the annulus.
-We now need to perform a series of manipulations that returns the right hand side of \eqref{s_transformation} to a linear combination of annulai that are written in the basis of the left hand side of \eqref{s_transformation}.
-We first investigate the part of the diagram with the $a$ string and the $\tilde{\omega}$ loop, 
+In the last equality, we have introduced $\tilde{\omega} =\frac{1}{\mcd^2}\sum_x \kappa_x \text{cl}(x)$, which satisfies $\omega \tp \tilde{\omega} = \tilde{\omega}$ (in the first two pictures we have drawn 
+the torus as a annulus with inner and outer boundaries identified, while in the last picture we have re-written the torus on the plane as a square with the top and bottom as well al left and right edges identified. This was done purely for aesthetics).
+
+We now need to perform a series of manipulations that returns the right hand side of \eqref{s_transformation} to a linear combination of pictures that are written in the basis of the left hand side of \eqref{s_transformation}.
+We first investigate the part of the diagram with the $a$ string and the $\tilde{\omega}$ loop:
 \begin{align}
 \frac{1}{\mcd^2} \; \Scalcaa 
 \;=\; \Scalcab 
@@ -8010,16 +8023,20 @@ We can now do the same for the $b$ loop,
 \; = \; \sum_{y \in \sob(\mcc/\psi)} \frac{\kappa_y}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe
 \end{align}
 where we have used that the $\omega$ loop is a projector onto the vacuum. 
-Putting both the calculations together, and removing spurious $\omega$ loops (which provides a necessary additional factor of $\mcd^{-2}$) we find that the $S$ matrix is given by,
+Putting both the calculations together, and removing leftover $\omega$ loops (which provide an additional factor of $\mcd^{-2}$) we find that the matrix elements of the $S$ matrix can be written as
 \begin{align}
-\DCSmatrixb_{W_yJ_b} =  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} S_{ax} \kappa_x S_{by}^* \kappa_y \; \DCSmatrixh_{J_b W_y}
+\DCSmatrixb_{W_yJ_b} =  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} S_{ax} \kappa_x S_{by}^* \kappa_y \; \DCSmatrixh_{J_b W_y}.
 \end{align}
+In the above formula, the $S_{ax}$ and $S^*_{by}$ are matrix elements of the $S$ matrix in the original 
+input theory $\mcc$ (which we assumed to be an MTC) \ethan{right?}. Thus, we have calculated the $S$ matrix of the condensed theory in 
+terms of the modular data of the input theory.  
 \dave{Need to denote spin structures in a nice way.}
 
-The non-bounding spin structure can be done in an analogous way.
+The matrix elements of the $S$ matrix on the torus with non-bounding spin structure (periodic boundary conditions around both cycles) can be calculated in an analogous way.
 The first half of the calculation remains the same as in \eqref{Scalc_above}.
 The second half of the calculation changes only if $b$ is q-type:
 \dave{Need to double check this, may have a mistake in the last step.}
+\ethan{why no $1/\mcd^2$ from the $\omega$ instead of $1/\mcd$ and why only the sum over stuff in $Q$?}
 \begin{align}
 \frac{1}{\mcd^2} \;  \Scalcbadot \; = \; \Scalcbddot \; =\;  \frac{1}{\mcd} \sum_{y\in Q} \kappa_y [ S^{\psi} ]_{by}^*\Scalcbedot
 \end{align}
@@ -8049,6 +8066,8 @@ which satisfies $\omega_x \tp \omega_y = \delta_{xy} \omega_x$.
 
 
 \subsection{Minimal idempotents of $\tube(\mcc)$, when $\mcc$ is a super modular tensor category}
+
+\ethan{This was the part with the difficulty with transparent fermions and multiplicity stuff, right? Were we going to postpone this section until after v1? I think that might be smart}
 \dave{Work in progress.}
 
 \dave{I think it's easiest to assume a super-modular category and a minimal modular extension. 
@@ -8394,12 +8413,13 @@ Therefore, it is perfectly consistent to have two m-type particles fuse to a q-t
 that the fusion rules do not respect the $\zt$ 
 decomposition of objects according to their type, 
 unlike the finite-group-based models in Refs \ref{bhardwaj2016,kapustin2017} where the type of objects is determined 
-from a homomorphism $\sigma : \mcc \ra \zt$. \ethan{$\mcc$ is always a finite group for these guys}
+by a homomorphism $\sigma : \mcc \ra \zt$. 
+%\ethan{$\mcc$ is always a finite group for these guys}
 %see e.g. page 36
-\kw{Did Kapustin really assume this??  If so, presumably he was confusing the $\tp$ of simple super-algebras with the $\tp$ of anyons; same notation,
-but very different things}
-\ethan{Yes, he assumes that q-type guys are determined by a homomorphism $\pi : G \ra \zt$ (he only considers $G$-graded Ising-type theories) which I think is actually a natural guess from a physical point of view. Should quadruple check, though. Relevant stuff to look for is the Ising pull-backs in the big paper and the $\pi_1$ in the paper with just Gaiotto.}
-\dave{Lets double check this before removing the comments.}
+%\kw{Did Kapustin really assume this??  If so, presumably he was confusing the $\tp$ of simple super-algebras with the $\tp$ of anyons; same notation,
+%but very different things}
+%\ethan{Yes, he assumes that q-type guys are determined by a homomorphism $\pi : G \ra \zt$ (he only considers $G$-graded Ising-type theories) which I think is actually a natural guess from a physical point of view. Should quadruple check, though. Relevant stuff to look for is the Ising pull-backs in the big paper and the $\pi_1$ in the paper with just Gaiotto.}
+%\dave{Lets double check this before removing the comments.}
 Interestingly, $q_3$ appears in $m_2 \tp m_1$ with coefficient $\mathbb{C}^{1|0}$, despite the fact that $V^{m_2 m_1}_{q_3} \cong \mathbb{C}^{1|1}$.
 %It has fusion rules\footnote{Note that although the $m_2 \tp m_2 \rightarrow m_2$ fusion rule has a $\mathbb{C}^{1|1}$ coefficient, it is not q-type. },
 %\begin{align}
@@ -8464,63 +8484,66 @@ One can then compute the fusion rules of the simple objects either by use of the
 \end{comment}
 
 
+
+\begin{comment}
+\ethan{this stuff is essentially redundant due to what we've done in sec 5}
 %%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Idempotents of the tube category for modular theories}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We will now give a presentation of the primitive idempotents of the tube category for a modular tensor category $\mcc$.
-For ease of notation, we assume that $\mcc$ is multiplicity free (all $N_{ab}^c = 0,1$) and all particles are self dual.
+We will now give yet another presentation of the primitive idempotents of the tube category for a modular tensor category $\mcc$, which is essentially the same as the one described earlier in \eqref{idempotent_one_strand}.
+In what follows we will assume that $\mcc$ is multiplicity free (all $N_{ab}^c = 0,1$) and all particles are self dual, since this will suffice for the examples we consider in this section. 
 %which will help us work out the $SU(2)_6$ and $SO(3)_6$ examples. 
 %This will be useful for us because we will always perform computations of idempotents in modular theories: 
 %even in the non-modular $\halfesix$ example we discuss later, we will first lift it to a 
 %modular theory before computing the idempotents. 
 %As mentioned before, our strategy will be to compute the primitive idempotents in the tube %algebra of $SU(2)_6$, and then condense $\psi$ to obtain the quasiparticle excitations in the condensed theory. 
 %We will then exploit the close relation between $SU(2)_6$ and $SO(3)_6$ to compute the quasiparticle excitations in $SO(3)_6/\psi$.
-The minimal idempotents of $\tube(\mcc)$ are given by \cite{ocneanu1994},
-\kw{Did Ocneanu draw diagrams like this for idempotents?  I thought this was something Dave made up.}
-\dave{It turns out he did -- in his talks, and then others wrote papers about them like the one I cited above (it's actually quite difficult to obtain that paper).
-I first found that formula in Mugers paper \cite{muger2003b} (I think section 6 or 7 -- when he's talking about the quantum double of an MTC).
-The one I made up was similar -- I was advertising as a ``modularity detector" last Fall. 
-I recently found out that a similar idempotent to that one had appeared in the literature before, see \cite{Fuchs2002} p.452 eq. 5.34.
-}
+The minimal idempotents of $\tube(\mcc)$ are given by
 %\begin{align}
 %\Pi_{(a,b)}^c = \sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\Omega_0}{}}
 %\end{align}
 \begin{align}
 \xymatrix{
-\Pi_{(a,b)}^c = \sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega_0}{X}}
+f_c^c(a,b) = \sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega_0}{X}}
 &
 \text{
 {\tabulinesep=1.2mm
 \begin{tabu}{ c c | c }
-type& spin & isomorphism class \\ \hline
-$\Pi_{ab}$ &$\theta_a \theta_b^*$&$a \tp b $ \\
+type& spin & isomorphism class representative  \\ \hline
+$(a,b)$ &$\theta_a \theta_b^*$&$ c\ina \tp b $ \\
 \end{tabu}
 }}
 }
 \label{MTCIdemp}
 \end{align}
-where $\omega_0 = \bigoplus_x \frac{d_x}{\mcd^2} \; x $ and $\mcd$ is the total quantum dimension as defined in \eqref{total_qdim_defn}.
-\dave{As for notation, does $\omega_0 |= \bigoplus_x \frac{d_x}{\mcd^2} \; x|$ work (with longer lines) or do you prefer either cl(...)/ loop()? }
-One can use the R-- and F--symbols of $\mcc$ to explicitly reduce the picture \eqref{MTCIdemp} to one in the tube category.
-One can check that, due to the $\omega_0$ loop, 
+where $\omega_0 = \bigoplus_x \frac{d_x}{\mcd^2} \; x $ as before (the meaning of the subscript will become clear soon).% and $\mcd$ is the total quantum dimension as defined in \eqref{total_qdim_defn}.
+%\dave{As for notation, does $\omega_0 |= \bigoplus_x \frac{d_x}{\mcd^2} \; x|$ work (with longer lines) or do you prefer either cl(...)/ loop()? }
+%One can use the $R$ and $F$ symbols of $\mcc$ to explicitly reduce the picture \eqref{MTCIdemp} to one in the tube category.
+%One can check that, due to the $\omega_0$ loop, 
 %\kw{isn't this usually $\omega$, not $\Omega$?}
 %\dave{yes, I will change this the next time I go through this section.}
-any two idempotents with differing labels are orthogonal. 
-This fact relies on modularity; had there been transparent particles not all idempotents listed above would necessarily be orthogonal.
-Any $c \in a \tp b$ provides a suitable representative for the isomorphism class of the minimal idempotent labeled $(a,b)$.
+%any two idempotents with differing labels are orthogonal. 
+The orthogonality of these idempotents relies on modularity: had there been transparent particles not all idempotents listed above would necessarily be orthogonal.
+Any $c \in a \tp b$ provides a suitable representative for the isomorphism class of the minimal idempotent labeled by $(a,b)$.
 Sometimes we will drop the $c$ when we compute quantities which are independent of the representative of the isomorphism class.
-\kw{Need to also mention (unimportant) choice of elements of $V_{abc}$ at trivalent vertices, 
-if this is meant to be general and not just for SU(2).}
-\dave{Maybe we just list in an appendix the conventions/normalizations we use for an MTC?}
+%\kw{Need to also mention (unimportant) choice of elements of $V_{abc}$ at trivalent vertices, 
+%if this is meant to be general and not just for SU(2).}
+%\dave{Maybe we just list in an appendix the conventions/normalizations we use for an MTC?}
+%\ethan{we restricted our attention to multiplicity-free stuff at the beginning of the section} 
 
-\dave{Still working on this paragraph. 
-Will define things properly later.
-Am also fine with removing it.}
-Similarly if we have a UBFC $\mcb$ that is pre-modular by a fermion and also given a $\zt$ modular extension, 
-the idempotents take a simple form.  
-Let $\mcc$ be a minimal modular extension of $\mcb$.
-Then the minimal idempotents of $\tube(\mcd)$ are given as above with $\omega_0 = \bigoplus_{x \in \mcb} \frac{d_x}{\mcd^2} x$ and $(a,b) \in \mcc \times \mcc$ such that $a \tp b \in \mcd$. 
+%\dave{Still working on this paragraph. 
+%Will define things properly later.
+%Am also fine with removing it.}
+%Similarly if we have a UBFC $\mcb$ that is pre-modular by a fermion and also given a $\zt$ modular extension, 
+%the idempotents take a simple form.  
+%Let $\mcc$ be a minimal modular extension of $\mcb$.
+%Then the minimal idempotents of $\tube(\mcd)$ are given as above with $\omega_0 = \bigoplus_{x \in \mcb} \frac{d_x}{\mcd^2} x$ and $(a,b) \in \mcc \times \mcc$ such that $a \tp b \in \mcd$. 
+\end{comment}
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Primitive idempotents of $SU(2)_6/\psi$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -8537,18 +8560,18 @@ For brevity's sake, we will only present the results of the calculations in what
 
 
 %For $SU(2)_6$, we will take $M = \{ 0, 1, 2 \}$, $\psi \tp M = \{ 6,5,4\}$, and $Q = 3$.  
-For the example at hand, we will find it convenient to adopt a specific presentation of the idempotents. 
+For the example at hand, we will find it convenient to adopt a specific presentation of the idempotents which is essentially the same as the one described earlier in \eqref{idempotent_one_strand}. 
 For any MTC, we can write the idempotents in $\mcc/\psi$ as
 \begin{align}
 \xymatrix{
-M_{ab}^x \; \; \text{or} \; \; Q_{ab}^x = 
-\sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega_x}{J}}
+f_{ab}^c %\; \; \text{or} \; \; Q_{ab}^x = 
+=\sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega_x}{J}}
 &
 \text{
 {\tabulinesep=1.2mm
 \begin{tabu}{ r c }
-constraint: & $-1 = (-1)^{J + \nu_b}$ \\ 
-topological twist:& $\frac{\theta_a}{\theta_b} (-1)^{Jp_{ab}^c + x(\nu_a + \nu_b)}$ \\
+consistency constraint: & $ (-1)^{s(J) + \nu_b}=1$ \\ 
+topological twist:& $\frac{\theta_a}{\theta_b} (-1)^{(s(J)+1)p_{ab}^c + x(\nu_a + \nu_b)}$ \\
 isomorphism class: & $c \in a \tp b$
 \end{tabu}
 }}
@@ -8561,35 +8584,29 @@ isomorphism class: & $c \in a \tp b$
 %}}
 }
 \end{align} 
-Where $J = 0$ ($J=1$) 
-%\kw{Are $X$ and $x$ getting mixed up here?}
-%\dave{Yes, it should be a small $x$.}
-for a non-bounding (bounding) spin structure,
- $x\in \{0,1\}$ denotes the use of an $\omega_0$ or $\omega_\psi$ loop in the annulus on the left, 
+where as before $s(J) = 0$ ($s(J)=1)$ if $J=B$ ($J=N$) and $x=0$ denotes the presence of an $\omega_0$ loop in the annulus on the left while $x=1$ corresponds to the presence of an $\omega_\psi$ loop in the annulus, where $\omega_x$ is defined by 
  with 
  \begin{align}
- \omega_x = \frac{1}{\mathcal{D}_{\mcc/\psi}^2/2} \bigoplus_r \frac{d_r }{ 2^{n_r}} (-1)^{x \nu_r}  \cdot r,
+ \omega_x = \frac{1}{\mathcal{D}_{\mcc/\psi}^2/2} \bigoplus_{r\in \sob(\mcc/\psi)} \frac{d_r }{ \dim\End(r)} (-1)^{x \nu_r}  \cdot r,
 \end{align}
-where $\mcd_{\mcc/\psi}^2 = \sum_{x \in \mcc/\psi} d_x^2 / \dim \End(x)$ is the total quantum dimension of the condensed theory in the sense of \eqref{total_qdim_defn} and
-the sum is over simple objects in $\mcc/\psi$. 
+where $\mcd_{\mcc/\psi}^2 = \sum_{x \in \mcc/\psi} d_x^2 / \dim \End(x)$ is the total quantum dimension of the condensed theory in the sense of \eqref{total_qdim_defn}. 
 The particular representative of the isomorphism class is given by choosing $c \in a\tp b$, and a vector from $V^{ab}_c(\mcc/\psi)$.
 The $p_{ab}^c$ appearing in the twist of the idempotent denotes whether the vector in the fusion space $V^{ab}_c(\mcc/\psi)$ is even or odd.
-\kw{I thought $V^{ab}_c$ was in the parent theory, in which case I'm not sure what's meant by parity.}
-\dave{These are meant to be in the condensed theory, I'll fix on my next re-write.}
-\dave{Should we have some notation for when a fusion space is in the condensed theory verse the parent theory? e.g., when it's unclear we could use $V^{ab}_c(\mcc)$ and $V^{ab}_c(\mcc/\psi)$}
+%\kw{I thought $V^{ab}_c$ was in the parent theory, in which case I'm not sure what's meant by parity.}
+%\dave{These are meant to be in the condensed theory, I'll fix on my next re-write.}
+%\dave{Should we have some notation for when a fusion space is in the condensed theory verse the parent theory? e.g., when it's unclear we could use $V^{ab}_c(\mcc)$ and $V^{ab}_c(\mcc/\psi)$}
 %We also define 
 %\begin{align}
  %\omega_x = \frac{1}{\mathcal{D}_{\text{condensed}}^2} \bigoplus_r \frac{d_r (-1)^{\nu_r x} }{ \text{dim} \; \text{End} \; r} \cdot r
 %\end{align}
-\kw{Maybe some notation like loop(r) or cl(r) to make it clear that we are summing loops in a solid torus
-labeled by $r$.}
-\kw{Is this the same as $\omega_\psi$?}
-\dave{We have been using $x = 0$ or $1$ and $x = 0$ or $\psi$ interchangebly.
-In the above $\Omega_1$ is the same as $\omega_\psi$.}
+%\kw{Maybe some notation like loop(r) or cl(r) to make it clear that we are summing loops in a solid torus
+%labeled by $r$.}
+%\kw{Is this the same as $\omega_\psi$?}
+%\dave{We have been using $x = 0$ or $1$ and $x = 0$ or $\psi$ interchangebly.
+%In the above $\Omega_1$ is the same as $\omega_\psi$.}
 %where $\mcd_{\text{condensed}}$ is the total quantum dimension of the condensed theory in the sense of \eqref{total_qdim_defn}. 
 
-
-Consistency requires that $-(-1)^{\nu_b + J} = +1$.
+%Consistency requires that $(-1)^{\nu_b + s(J)} = 1$.
 Let $Q$ denote the collection of all q-type simple objects (those invariant under fusion with $\psi$). 
 \begin{itemize}
 \item If $a \in Q$ then the idempotent $M_{ab}^\psi$ is oddly isomorphic to $M_{ab}^0$.
