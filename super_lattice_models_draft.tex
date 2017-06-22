@@ -13497,6 +13497,66 @@ Historically, this version of the state sum pre-dates TVBW and was first found b
 %and was first found by Kirillov and Reshetikhin who coined the term `shadow world'~\cite{Kirillow1989}\dave{reference needs to be fixed.}, 
 %which was later generalized by Turaev~\cite{turaev1992shadow} \dave{Maybe also \cite{turaev1990}, need to check.}.
 
+\subsubsection{State sum found from cut-and-glue}
+We give a breif review of the state sum found from the cut-and-glue formalism. 
+For details and explicit expressions see....... some intro.
+
+The input data for the state sum is
+\begin{itemize}
+\item an oriented 3-manifold $\mcm$, which for now we consider to be closed, see \ref{xxx} for 3-manifolds with boundary
+\item a cell decomposition of $\mcm$, with a longitudinal orientation on the 1-cells and a transverse orientation on the 2-cells
+\item spherical fusion category $\mcc$ 
+\end{itemize}
+We will suppose the cell decomposition is dual to a triangulation so that each 1-cell neighbours three 2-cells.
+The orientations on the 1- and 2-cells can be chosen arbitrarily, 
+and play the role of the global ordering of the vertices in the TVBW state sum. 
+We now specify admissible labelings and the weights assigned to them.
+
+
+The 0-cell labelings are constrained by the 1-cell labelings, which are constrained by the 2-cell labelings. 
+Hence, a 0-cell labeling is admissible if it's compatible with the 1-cell labelling, 
+the 1-cell labelling is admissible if it's compatible with the 2-cell labeling. 
+We first denote all possible labelings and then the admissability requirements.
+
+We breifly summarize our labeling conventions here, 
+and provide details below, along with the maps to $\cc$.
+\begin{itemize}
+\item the 2-cells are labeled by a simple object of $\mcc$.
+\item the 1-cells are labeled by ordered triples of simple objects from $\mcc$ that can fuse to the vacuum. 
+\item the 0-cells are labeled by quadruples of triples
+\end{itemize}
+
+{\it 2-cells}
+We will denote the collection of 2-cells by $\mcf$, 
+and the collection of labeled 2-cells by $\{ x_f \}$, $f \in \mcf$.
+
+{\it 1-cells}
+We denote the collection of 1-cells by $\mce$.
+The 1-cells are labeled by ordered triples of simple objects from $\mcc$ that the fuse to the vacuum. 
+A labeled 1-cell is denoted $\mu(e)$ and is given by a basis vector of $\bigoplus_{abc}V^{abc}$ 
+if the orientation of the boundary of the neighbouring 2-cells agrees with the orientation of the 1-cells.
+If one of the orientations of the 2-cells does not agree with the orientation of the 1-cell then we take the object to its dual.
+
+{\it 0-cells}
+We denote the collection of 0-cells by $\mcv$. 
+Each 0-cell $v \in \mcv$ has four neighbouring 1-cells which either point toward or away from $v$. 
+Each $v$ will be labeled by the labels of the neighbouring 1-cells, denote the collection of neighoburing 1-cells by $e^v_j$, $j =1, \cdots 4$. 
+If $e^v_j$ is oriented away from the 0-cell, label it $\mu(e^v_j)$.
+If $e_j^v$ is oriented into the 0-cell, label it by the dual vector $\mu(e^v_j)^*$.
+
+A labeling is admissible if the labeling of the 1-cells is compatible with the labeling of the 2-cells.
+For each 0-cell $v$, denote the evaluation of the net configuration of the 0-handle labeled by the $e_j^v$ above 
+by $T_v( \{ e^v_j \})$. 
+Then, the state sum is given by
+\begin{align}
+Z(\mcm) = \frac{1}{\mcd^{2n_3}}\sum_{ \mcl } \prod_{f \in \mcf} d_{x_f}  \prod_{e \in \mce} (\mu(e)^*\circ \mu_e)^{-1} \prod_{v \in \mcv} T_v(\{ e_j^v \})
+\end{align}
+where $\mcl$ denotes the set of all admissible labelings and $n_3$ denotes the number of 3-cells in the cell decomposition. 
+The tensors $T_v$ are difficult to evaluate. 
+In the next subsection we discuss how to standardize the tensors so that the partition function can be easily evaluated. 
+
+
+\begin{comment}
 \subsubsection{State sum via cut-and-glue}
 \dave{First pass at this.}
 \dave{should we take the inner product to be sesquilinear or bilinear when we resolve the 1-handles.
@@ -13629,6 +13689,7 @@ Where $\{ x_i \}$ runs over all possible configurations of simple objects assign
  $\{ \mu_j \}$ to the discs cutting the 1-handles,
 and $T_w$ to the 0-handles.
 Our next task will be to standardize each of the handles.
+\end{comment}
 
 \subsubsection{Standardized bosonic state sum}
 For catalogization purposes we would like to standardize the sum appearing in \ref{state_sum}.
@@ -13695,6 +13756,17 @@ The sum over all fusion vertices $\mu_e$ runs over all non-zero fusion indices.
 If $\mu_e$ is at the outgoing end of a 1-cell we replace it with $\mu_e^*$.
 The tensor $T_v(\mu_1\tp \mu_2 \tp \mu_3 \tp \mu_4)$ is given by $T(\mu_1\tp \mu_2 \tp \mu_3 \tp \mu_4)$ if the 1-cells are all oriented away from the 0-cell $v$. 
 For each 1-cell $W$ oriented into the 0-cell we replace $\mu_i$ with $P_W \circ \mu_i^*$.
+
+\subsubsection{State sum}
+The TVBW state sum can be written as,
+\begin{align}
+Z(\mcm) = \sum_{\mcl} Z(\mcl, M)
+\end{align}
+where $\mcl$ is an admissible labeling of the cell decomposition of $M$. 
+
+
+
+
 
 \begin{comment}
 \dave{Old stuff.}
