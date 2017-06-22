@@ -11941,6 +11941,8 @@ and in the earlier sections of this paper, where vertices are drawn with one ``i
 ``outgoing'' edges, since in this convention the incoming edge is distinguished from the two outgoing edges.
 We will choose a convention in which all three edges at each trivalent vertex are outgoing: with this
 choice, each vertex resembles a pitchfork. \ethan{pitchforks usually have four tines, perhaps ``trident'' is slightly more precise}
+\dave{I'm a pretty big fan of the word pitchfork.
+Plus `tridentization' doesn't sound as good.}
 The cyclic ordering of the edges at a given vertex is determined by the left-to-right ordering of the pitchfork legs. 
 
 Finally, we must choose a spin framing at each vertex, consistent with the ``pitchforkization'' convention.
@@ -13547,16 +13549,18 @@ If one of the orientations of the 2-cells does not agree with the orientation of
 {\it 0-cells}
 We denote the collection of 0-cells by $\mcv$. 
 Each 0-cell $v \in \mcv$ has four neighbouring 1-cells which either point toward or away from $v$. 
-Each $v$ will be labeled by the labels of the neighbouring 1-cells, denote the collection of neighoburing 1-cells by $e^v_j$, $j =1, \cdots 4$. 
+Each $v$ will be labeled by the labels of the neighbouring 1-cells.
+Denote the collection of neighbouring 1-cells by $e^v_j$, $j =1, \cdots 4$. 
 If $e^v_j$ is oriented away from the 0-cell, label it $\mu(e^v_j)$.
 If $e_j^v$ is oriented into the 0-cell, label it by the dual vector $\mu(e^v_j)^*$.
 
 A labeling is admissible if the labeling of the 1-cells is compatible with the labeling of the 2-cells.
 For each 0-cell $v$, denote the evaluation of the net configuration of the 0-handle labeled by the $e_j^v$ above 
-by $T_v( \{ e^v_j \})$. 
+by $T_v( \{ \mu(e^v_j) \})$. 
 Then, the state sum is given by
 \begin{align}
-Z(\mcm) = \frac{1}{\mcd^{2n_3}}\sum_{ \mcl } \prod_{f \in \mcf} d_{x_f}  \prod_{e \in \mce} (\mu(e)^*\circ \mu_e)^{-1} \prod_{v \in \mcv} T_v(\{ e_j^v \})
+Z(\mcm) = \frac{1}{\mcd^{2n_3}}\sum_{ \mcl } \prod_{f \in \mcf} d_{x_f}  \prod_{e \in \mce} (\mu(e)^*\circ \mu_e)^{-1} \prod_{v \in \mcv} T_v(\{ \mu(e_j^v) \})
+\label{state_sum}
 \end{align}
 where $\mcl$ denotes the set of all admissible labelings and $n_3$ denotes the number of 3-cells in the cell decomposition. 
 The tensors $T_v$ are difficult to evaluate. 
@@ -13690,7 +13694,7 @@ Z(\mcm) = \sum_{{\{ x_i\}  \; i \in \mck_2}} \;
  \sum_{{\{ \mu_j \}\;  j \in \mck_1} }\; 
  \prod_{r \in \mck_3}\mcd^{-2} \prod_{i \in \mck_2} d_{x_i}  \prod_{j \in \mck_1} (\mu_j^* \circ \mu_j)^{-1} 
  \prod_{w \in \mck_0 } T_w
- \label{state_sum}
+% \label{state_sum}
 \end{align}
 Where $\{ x_i \}$ runs over all possible configurations of simple objects assigned to the 2-handles, 
  $\{ \mu_j \}$ to the discs cutting the 1-handles,
@@ -13699,20 +13703,35 @@ Our next task will be to standardize each of the handles.
 \end{comment}
 
 \subsubsection{Standardized bosonic state sum}
-For catalogization purposes we would like to standardize the sum appearing in \ref{state_sum}.
+For catalogization purposes we would like to standardize tensors $T_v$ appearing in the state sum \eqref{state_sum}.
 We follow a similar procedure to the pitchforkiztion chosen for each vertex when setting up the Hamiltonian. 
 In addition to the oriented cell decomposition we also need,
 \begin{itemize}
 \item standardized tetrahedra that have been flattenned into the plane with pitchforked vertices
 \item a collection of pivots associated to the 1-handles which relate a pitchfork at the incoming side of the 1-handle to the outgoing side
 \end{itemize}
-The standard flattenned tetrahedron is given by,
+The standardized 0-cells can be found by first deforming the 2-cells so that locally they look like a nearly closed book whose spine follows the 1-cell which they neighbour and the pages are given by the 2-cells, see Figure~\ref{OneHandle}.
+\begin{figure}
+\begin{center}
+\includegraphics{Onehandle.pdf}
+\caption{\label{OneHandle}
+On the left we have shown one example of how the 2-cells meet the 1-cell. 
+On the right we show the `pitchforkized' version. 
+\dave{I'll make a figure to match the description.}
+}
+\end{center}
+\end{figure}
+The the spine of the book meets the a spherical neighbourhood of the 0-cell at at a pitchfork.
+We next deform the pitchforks on the spherical neighbourhood of the 0-cell so that they are in a standard position, 
+which can then be trivially mapped onto the plane. 
+Once on the plane, we define,
 \begin{align}
 T(\alpha \tp \beta \tp \gamma \tp \delta) =\; \Tetrahedron
+\label{Tetrahedron}
 \end{align}
 where we have defined the tensor by its evaluation on the right with $\alpha \in \bigoplus_{abc} V^{abc}$, $\beta \in \bigoplus_{a^* bc} V^{a^* bc}$, $\gamma \in \bigoplus_{a^* b c^*} V^{a^* b c^*}$, $ \delta \in \bigoplus_{a^* b^* c^*} V^{a^* b^* c^*}$.
 One can change the orientation by flipping an arrow and taking the appropriate object to its dual. 
-\dave{Add comment that spherical means that all tetrahedra can be evaluated from this one by using the appropriate pivots.}
+\dave{Add comment that spherical means that all tetrahedra can be evaluated from this one by using the appropriate pivots + spherical property.}
 
 
 %\dave{I think the alternative below is more clear, but won't delete this just yet.}
@@ -13730,12 +13749,13 @@ One can change the orientation by flipping an arrow and taking the appropriate o
 %P \circ \Pitchforkabc \;=\;  \Pitchforkabcrot.
 %\end{align}
 
-For each 1-handle we have a relation between two standardized pitchforks in the plane.
-Let $D$ be the disk living at the incoming end of the 1-handle with three marked points.
-Let $D'$ be the disk found at the outgoing end by sliding $D$ through $W$ 
-while keeping the normal vector of $D$ paralell to the 1-cell.
+For each 1-handle we have a relation between the two standardized pitchforks which it terminates on.
+Let $D$ be the disk living at the incoming end of a 1-handle $W$ with three marked points and 
+$D'$ be the disk found at the outgoing end by isotopy.
+\dave{Is that the appropriate use of isotopy here?}
+%sliding $D$ through the 1-handle.
 Since the final disk $D'$ is also on the plane, we know it has to differ from $D$ by a reflection. 
-In addition, the 1-handle could have also pivoted $D$ around as it is slide through $W$. 
+In addition, the 1-handle could also pivot the labels of $D$.
 Hence, the outgoing disk $D'$ is related to the incoming disk $D$ by a reflection composed with a pivot.
 Lets define a pivot on the basis vectors of a disk with three marked points to be:
 \begin{align}
@@ -13746,7 +13766,7 @@ More explicitly, we have,
 \begin{align}
 Z(W): \; A(D) \ra A(D')
 \end{align}
-and if we define $\text{id}_{A(D) \ra A(D')} = \sum_i \frac{1}{\mu_i^* \circ \mu_i} \mu_i \tp \mu_i^*$, 
+and if we define $\text{id}_{A(D) \ra A(\bar{D})} = \sum_i \frac{1}{\mu_i^* \circ \mu_i} \mu_i \tp \mu_i^*$, 
 then we can express $Z(W)$ as 
 \begin{align}
 Z(W)= \sum_i \frac{1}{\mu_i^* \circ \mu_i} \mu_i \tp (P_W\circ \mu_i^*).
@@ -13754,15 +13774,26 @@ Z(W)= \sum_i \frac{1}{\mu_i^* \circ \mu_i} \mu_i \tp (P_W\circ \mu_i^*).
 \dave{I think Bassalm and Kirrillov may have notation for this.}
 Where $P_W$ is either the identity, $P$ or $P^2$.
 
-The partition function is then modified so that,
+We can now write down the partition function in a standardized way. 
+The only modification is to the tensors $T_v$ and how we catalogue the data of the partition function.
+Let $e_j^v$ be the 1-cells which meets the spherical neihgbourhood of the 0-cell in the standardized way
+with the numerical index corresponding to the ordering in \eqref{Tetrahedron}.
+Define,
 \begin{align}
-Z(\mcm) =\mcd^{-2n} \sum_{x_f} \sum_{\mu_e \tp \mu_e^*}  \prod_f d_{x_f} \prod_{e}(\mu_e^* \circ \mu_e)^{-1} \prod_v T_v(\mu_1 \tp \mu_2 \tp \mu_3 \tp \mu_4)
+\tilde{\mu}(e_j^v) = 
+\begin{cases} \mu(e_j^v)& \text{\ if $e_j$ is oriented away from $v$,}\\
+P_e \circ \mu(e_j^v)^* &\text{\ if $e_j$ is oriented toward $v$} \end{cases}
 \end{align}
-where $n$ is the number of 2-handles, $x_f$ runs over all the possible labels of the 2-cells. 
-The sum over all fusion vertices $\mu_e$ runs over all non-zero fusion indices. 
-If $\mu_e$ is at the outgoing end of a 1-cell we replace it with $\mu_e^*$.
-The tensor $T_v(\mu_1\tp \mu_2 \tp \mu_3 \tp \mu_4)$ is given by $T(\mu_1\tp \mu_2 \tp \mu_3 \tp \mu_4)$ if the 1-cells are all oriented away from the 0-cell $v$. 
-For each 1-cell $W$ oriented into the 0-cell we replace $\mu_i$ with $P_W \circ \mu_i^*$.
+Then we define the tensor,
+\begin{align}
+T_v(\{ \tilde{\mu}(e^v_j) \} ) = T(\tilde{\mu}(e_1^v) \tp \tilde{\mu}(e_2^v)\tp \tilde{\mu}(e_3^v)\tp \tilde{\mu}(e_4^v)).
+\end{align}
+Thus finally the partition function is given by
+\begin{align}
+Z(\mcm) = \frac{1}{\mcd^{2n_3}}\sum_{ \mcl } \prod_{f \in \mcf} d_{x_f}  \prod_{e \in \mce} (\mu(e)^*\circ \mu_e)^{-1} \prod_{v \in \mcv} T_v(\{ \tilde{\mu}(e_j^v) \})
+\label{state_sum_standardized}
+\end{align}
+Where $\mcl$ runs over all admissable labelings.
 
 \subsubsection{State sum}
 The TVBW state sum can be written as,
