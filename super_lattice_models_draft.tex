@@ -13512,9 +13512,9 @@ For details and explicit expressions see....... some intro.
 
 The input data for the state sum is
 \begin{itemize}
-\item an oriented 3-manifold $\mcm$, which for now we consider to be closed, see \ref{xxx} for 3-manifolds with boundary
-\item a cell decomposition of $\mcm$, with a longitudinal orientation on the 1-cells and a transverse orientation on the 2-cells
-\item spherical fusion category $\mcc$ 
+\item an oriented 3-manifold $\mcm$, which for now we assume to be closed
+\item a cell decomposition of $\mcm$ with an orientation on the 1-cells and a transverse orientation on the 2-cells
+\item a spherical fusion category $\mcc$ 
 \end{itemize}
 We will suppose the cell decomposition is dual to a triangulation so that each 1-cell neighbours three 2-cells.
 The orientations on the 1- and 2-cells can be chosen arbitrarily, 
@@ -13776,7 +13776,7 @@ Where $P_W$ is either the identity, $P$ or $P^2$.
 
 We can now write down the partition function in a standardized way. 
 The only modification is to the tensors $T_v$ and how we catalogue the data of the partition function.
-Let $e_j^v$ be the 1-cells which meets the spherical neihgbourhood of the 0-cell in the standardized way
+Let $e_j^v$ be the 1-cells which meets the spherical neihgbourhood of the 0-cell $v$ in the standardized way
 with the numerical index corresponding to the ordering in \eqref{Tetrahedron}.
 Define,
 \begin{align}
@@ -13795,6 +13795,11 @@ Z(\mcm) = \frac{1}{\mcd^{2n_3}}\sum_{ \mcl } \prod_{f \in \mcf} d_{x_f}  \prod_{
 \end{align}
 Where $\mcl$ runs over all admissible labelings.
 
+It is useful to promote the set of labelings $\mcl$ to basis elements of a vector space $\mch$, 
+and $Z(\mcm)$ as a linear functional on this vector space.
+This will help to keep track of a Kozul signs when we define the fermionic partition function.
+To do so, lets define $\mch = \bigoplus_{\mcl} \mch(\mcl)$, where each labeling $\mcl$ denotes a basis vector of $\mch$. 
+Each of those basis vectors is written as a tensor product $\mch(\mcl) = \tp_{v} \mch_v \tp_{e} \mch_e$....
 
 \begin{comment}
 \dave{Old stuff.}
@@ -13887,6 +13892,38 @@ Z(\mcm) = \sum_{x_i} \sum_{\mu_j} \prod \mcd^{-2} \prod_{j} \theta_{\mu_j}(W) \p
 \label{standardized_fermionic_SS}
 ref. \ref{bhardwaj2016}
 
+The fermionic state sum has an added complication, 
+namely one needs to track the spin structure and the Kozul signs. 
+The construction of the state sum is exactly the same as for the bosonic case with some minor differences. 
+
+The necessary modifications of the state space relative to the bosonic case are,
+\begin{itemize}
+\item replace the 3-manifold with a spin 3-manifold
+\item the vectors $\mu(e_j^v)$ are $\zt$ graded
+\item the pivots now take one of six values since $P^3 = (-1)^{F}\text{id}$, where $F$ is the fermion parity
+\item the labelings are taken modulo all even permutations of the sign ordering
+\item the normalization of the quantum dimensions is modified for q-type objects
+\end{itemize}
+Lets explain each of those points in some detail.
+The first is self explanatory, the first and second are self explanatory and both are intrinsic to any putative fermionic state sum. 
+The third is less intuitive, two standardized pitchforks in the plane which are connected by a 1-handle will always differ by a reflection and a pivot. 
+However, if the disk carries an odd vector, in addition to the pivot we kept track of for the bosonic 1-handles, 
+we also need to keep track of the spin framing.
+\dave{
+It is clear that the Pivots are now $P^6 = id$, 
+but also need to think about $R_\pi$ as we had in the Hamiltonian section.}
+
+Lastly, we handle the Kozul signs in the following way.
+To each labeling $\mcl$ we assign a fermion sign ordering to every edge labeled by an odd vector.
+Two labelings are equivalent if they differ by an even number of permutations of odd factors. 
+....
+\dave{Need to come back to this. 
+}
+
+Then,
+\begin{align}
+Z(\mcm) = \frac{1}{\mcd^{2n_3}}\sum_{ \mcl } (-1)^{s(\mcl)}\prod_{f \in \mcf} \frac{d_{x_f}}{2^{n_{x_f}}}  \prod_{e \in \mce} (\mu(e)^*\circ \mu_e)^{-1} \prod_{v \in \mcv} T_v(\{ \tilde{\mu}(e_j^v) \})
+\end{align}
 
 \begin{itemize}
 \item all vector spaces become super vectors spaces.
@@ -13895,6 +13932,11 @@ ref. \ref{bhardwaj2016}
 \end{itemize}
 
 
+The input for the state sum is,
+\begin{itemize}
+\item an oriented spin 3-manifold $\mcm$, which for now we assume to be closed
+\item a cell decomposition of $\mcm$ with `
+\end{itemize}
 
 
 
