@@ -13877,6 +13877,7 @@ P_e \circ \mu(e_j^v)^* &\text{\ if $e_j$ is oriented toward $v$} \end{cases}
 Then we define the tensor,
 \begin{align}
 T_v(\{ \tilde{\mu}(e^v_j) \} ) = T(\tilde{\mu}(e_1^v) \tp \tilde{\mu}(e_2^v)\tp \tilde{\mu}(e_3^v)\tp \tilde{\mu}(e_4^v)).
+\label{zero_cell_tensor}
 \end{align}
 Thus finally the partition function is given by
 \begin{align}
@@ -13885,11 +13886,87 @@ Z(\mcm) = \frac{1}{\mcd^{2n_3}}\sum_{ \mcl } \prod_{f \in \mcf} d_{x_f}  \prod_{
 \end{align}
 Where $\mcl$ runs over all admissible labelings.
 
-It is useful to promote the set of labelings $\mcl$ to basis elements of a vector space $\mch$, 
-and $Z(\mcm)$ as a linear functional on this vector space.
-This will help to keep track of a Kozul signs when we define the fermionic partition function.
-To do so, lets define $\mch = \bigoplus_{\mcl} \mch(\mcl)$, where each labeling $\mcl$ denotes a basis vector of $\mch$. 
-Each of those basis vectors is written as a tensor product $\mch(\mcl) = \tp_{v} \mch_v \tp_{e} \mch_e$....
+
+It is useful to re-write the sum over all labelings as a trace over tensors.
+Roughly, we interchange the products with tensor products, 
+the numbers with tensors, and the sum with a trace. 
+
+%Tensors are defined by 
+%\begin{align}
+%T: \; V_1 \tp V_2 \tp \cdots V_k \ra \cc
+%\end{align}
+%where the $V_i$ are vector spaces.
+%A convenient way to denote this is by writing,
+%$T(v_1 \tp v_2 \tp \cdots \tp v_k)  \in \cc$, or
+%\begin{align}
+%T = \sum_{\{ v_i \} } T_{v_1 v_2 \cdots v_k} v_1^*\tp  v_2^* \tp \cdots \tp v_k^*
+%\end{align}
+
+
+
+
+The assignment of the quantum dimension to each 2-cell results in a rank $k$ tensor, 
+where $k$ is the number of 1-cells which neighbour the cell. 
+Lets define the vector space 
+\begin{align}
+F = \bigoplus_a \cc_a
+\end{align}
+of dimension equal to the number of objects in $\mcc$.
+We denote a vector in $\cc_a$ by $v_{a}$ and its dual by $v_a^*$, so that $v_a^* \cdot v_b = \delta_{ab}$.
+We will immediately disregard this notation and denote $v_a$ with just $a$ itself, 
+similarly for $a^*$.
+The 2-cell tenseor can be written as,
+\dave{Need to think about orientations.}
+\begin{align}
+T_f = \sum_{x, a_1, a_2, \cdots, a_k} d_x \delta_{xa_1} \delta_{xa_2} \cdots \delta_{xa_k} a_1^* \cdots a_k^* 
+\end{align}
+where the subscript $i$ denotes the neighbouring 1-cell.
+Physically, the face tensor introduces an $\omega$ loop on every 2-cell. 
+\dave{draw picture.}
+
+Next we define the 1-cell tensors,  $T_e$. 
+These are rank 5 tensors. 
+They have three indices which are contracted with the neighbouring face tensors $T_f$ 
+and two indices which are contracted with the neighbouring 
+0-cells tensors (implicitly defined in \eqref{zero_cell_tensor}).
+Denote the vector space associated to the three neighbouring 2-cells $F_j$, $j=1,2,3$.
+The edge tensor can then be written as,
+\begin{align}
+T_e =\sum_{a_j \in F_j}  \sum_{\hat{\alpha} \in V^{a_1a_2a_3}} (\alpha^* \circ \alpha)^{-1}   \hat{\alpha}^* \tp a_1 \tp a_2 \tp a_3 \tp \hat{\alpha}
+\end{align}
+where the hatted vectors are unit normalized so that $\hat{\alpha}^* \in (V^{abc})^*$, 
+$\hat{\beta} \in V^{abc}$ satisfy $\hat{\alpha} \circ \hat{\beta} = \delta_{\alpha \beta}$. 
+If the orientation of any of the 2-cells doesn't match the orientation of the 1-cell then the appropriate label in $V^{a_1 a_2 a_3}$ needs to be taken to its dual. 
+\dave{Need to re-visit this, make sure there is nothing weird happening for self dual objects.} 
+
+\dave{This is very rough, will return to it. }
+Lastly, the zero cell tensors are given by,
+\begin{align}
+T_v = \sum_{\mu(e^v_j)}T_v(\{ \tilde{\mu}(e^v_j) \} ) \widehat{\mu(e^v_1)} \tp\widehat{\mu(e^v_2)} \tp \widehat{\mu(e^v_3)} \tp \widehat{\mu(e^v_2)} 
+\end{align}
+where,
+\begin{align}
+\widehat{\mu(e^v_j)} \propto
+\begin{cases} 
+\mu(e_j^v)     & \text{\ if $e_j$ is oriented away from $v$,}\\
+\mu(e_j^v)^* &  \text{\ if $e_j$ is oriented toward $v$} \end{cases}
+\end{align}
+and the normalization is fixed so that the hatted vectors are unit normalized.
+
+The partition function is given by,
+\begin{align}
+Z(\mcm) = \mcd^{-2n_3} \Tr \bigotimes_{f \in \mcf}  T_f \bigotimes_{e \in \mce} T_e \bigotimes_{v \in \mcv} T_v
+\label{Bosonic_partition_function}
+\end{align}
+where the trace denotes tensor contraction. 
+
+\dave{Reminder to maybe include a comment of this sort and connect with the analogue in Hamiltonian section:
+Equivalently, we could write this as a composition of functions, 
+\begin{align}
+\cc \xrightarrow{T_{\unit \ra3}} \tp_{\text{3-cells}}\cc  \xrightarrow{T_{3\ra2}} \tp_{\text{2-cells}} E \xrightarrow{T_{2\ra1}} \tp_{\text{1-cells}} W \xrightarrow{T_{1 \ra 0} } Z(\mcm)
+\end{align}
+}
+
 
 \begin{comment}
 \dave{Old stuff.}
@@ -13979,56 +14056,46 @@ Z(\mcm) = \sum_{x_i} \sum_{\mu_j} \prod \mcd^{-2} \prod_{j} \theta_{\mu_j}(W) \p
 \end{comment}
 
 \subsubsection{Standardized fermionic state sum}
+\dave{still very rough} 
+
 \label{standardized_fermionic_SS}
 ref. \ref{bhardwaj2016}
 
 The fermionic state sum has an added complication, 
 namely one needs to track the spin structure and the Kozul signs. 
-The construction of the state sum is exactly the same as for the bosonic case with some minor differences. 
 
 The necessary modifications of the state space relative to the bosonic case are,
 \begin{itemize}
 \item replace the 3-manifold with a spin 3-manifold
 \item the vectors $\mu(e_j^v)$ are $\zt$ graded
-\item the pivots now take one of six values since $P^3 = (-1)^{F}\text{id}$, where $F$ is the fermion parity
-\item the labelings are taken modulo all even permutations of the sign ordering
+\item the pivots now take one of six values since in addition to the three pivots possible in the bosonic case we can also have an additional spin rotation\dave{lapsing name}
 \item the normalization of the quantum dimensions is modified for q-type objects
 \end{itemize}
 Lets explain each of those points in some detail.
-The first is self explanatory, the first and second are self explanatory and both are intrinsic to any putative fermionic state sum. 
-The third is less intuitive, two standardized pitchforks in the plane which are connected by a 1-handle will always differ by a reflection and a pivot. 
-However, if the disk carries an odd vector, in addition to the pivot we kept track of for the bosonic 1-handles, 
+The first and second are self explanatory and both are intrinsic to any putative fermionic state sum. 
+The third is less intuitive, 
+two standardized pitchforks in the plane which are connected by a 1-handle will always differ by a reflection and a pivot. 
+However, if the disk carries an odd vector, 
+in addition to the pivot we kept track of for the bosonic 1-handles, 
 we also need to keep track of the spin framing.
 \dave{
 It is clear that the Pivots are now $P^6 = id$, 
 but also need to think about $R_\pi$ as we had in the Hamiltonian section.}
 
-Lastly, we handle the Kozul signs in the following way.
-To each labeling $\mcl$ we assign a fermion sign ordering to every edge labeled by an odd vector.
-Two labelings are equivalent if they differ by an even number of permutations of odd factors. 
-....
-\dave{Need to come back to this. 
-}
-
-Then,
+We can then write the partition function in the same way we did for the bosonic state sum, 
+but now with the modified tensors,
 \begin{align}
-Z(\mcm) = \frac{1}{\mcd^{2n_3}}\sum_{ \mcl } (-1)^{s(\mcl)}\prod_{f \in \mcf} \frac{d_{x_f}}{2^{n_{x_f}}}  \prod_{e \in \mce} (\mu(e)^*\circ \mu_e)^{-1} \prod_{v \in \mcv} T_v(\{ \tilde{\mu}(e_j^v) \})
+T_f(a_1 \tp \cdots \tp a_k) = 
+\begin{cases}
+0 & \text{if not all $a_i$ are the same}\\
+\frac{d_a}{2^{n_a}} & \text{ if $a_i = a$ for $i = 1,\cdots k$. }
+\end{cases}
 \end{align}
-
-\begin{itemize}
-\item all vector spaces become super vectors spaces.
-\item one needs to keep track of Kozul signs during tensor contraction
-\item pivots now satisfy $P^3 = (-1)^F \text{id}$.
-\end{itemize}
-
-
-The input for the state sum is,
-\begin{itemize}
-\item an oriented spin 3-manifold $\mcm$, which for now we assume to be closed
-\item a cell decomposition of $\mcm$ with `
-\end{itemize}
-
-
+where $n_a$ is $1$ if `a' is q-type, and zero otherwise.
+The 1- and 2-cell tensors remain the same, except one has to remember that the pivots appearing in $\tilde{\mu}_j^v$ take one of six values. 
+The partition function is then given by \eqref{Bosonic_partition_function} but now using the tensor product defined in \eqref{XXXX}.
+This allows us to hide the Kozul signs under the rug, but if one were to evaluate this trace you would have to order all of the edges.
+\dave{Should comment on this trace.}
 
 
 \subsubsection{Shadow world for fermionic state sum}
