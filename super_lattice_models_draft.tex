@@ -11177,12 +11177,23 @@ I found this both amusing and confusing.
 \subsection{Fusion spaces} \label{fusion_spaces}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The input data for a super pivotal category includes a list of simple objects and their types (q or m), 
-as well as a fusion space $V^{ab}_c = \mor(c\to a\tp b)$ for each triple $a,b,c$ of objects (equivalently, of minimal idempotents)
-of $\mcc$.
-This is a supervector space of dimension
+%The input data for a super pivotal category includes a list of simple objects and their types (q or m), 
+%as well as a fusion space $V^{ab}_c = \mor(c\to a\tp b)$ for each triple $a,b,c$ of objects (equivalently, of minimal idempotents)
+%of $\mcc$.
+Arbitrary morphism spaces in a super pivotal category can be built out of basic fusion spaces
+$V^{ab}_c = \mor(c\to a\tp b)$,
+where $a$, $b$ and $c$ are simple objects (equivalently, minimal idempotents).
+This is a super vector space of dimension
 $N^{ab}_c = \dim V^{ab}_c = p|q$, where $p$ is the dimension of the even part
 of $V^{ab}_c$ and $q$ is the dimension of the odd part of $V^{ab}_c$.
+
+Alternatively, we can treat $a$, $b$ and $c$ more symmetrically and define
+$V^{abc} = \mor(\unit\to a\tp b\tp c)$, a super vector space of dimension $N^{abc}$.
+In most of this paper we use $V^{ab}_c$, but in Sections xxx and xxx we find it more convenient
+to use $V^{abc}$.
+Of course we have $V^{ab}_c \cong V^{abc^*}$.
+
+\medskip
 
 It is very important to note that $V^{ab}_c$ is not merely a super vector space -- it also comes equipped with an action
 of (i.e.\ module structure for) the endomorphism algebras of $a$, $b$ and $c$, and hence admits an action of $\End(a)\tp \End(b)\tp \End(c)$. 
@@ -11213,6 +11224,22 @@ which possesses nontrivial fusion multiplicities that allow the relevant fusion 
 %This means that the $\{\Gamma_i\}$ at a vertex $v$ with fusion space $V^{abc}$ where $n$ of $a,b,c$ are q-type generate a representation of $\cl_n$. 
 %This is to be expected, since if $n$ lines emanating from $v$ are labeled with q-type objects, then the Hilbert space associated with the three lines is $\cl_1^{\tp n}\cong\cl_n$ (although this is actually over-complete, in the sense that the physical Hilbert space is smaller, see Sec \ref{modified_tensor_product}). 
 
+
+\medskip
+
+If at least one of $a,b,c$ is q-type, we can simplify the description of $V^{ab}_c$ slightly, 
+which we have done when working out the examples considered earlier.
+%Since in this case $V^{ab}_c \cong \cc^{r|r}$ for some $r$, there are just as many even basis vectors in $V^{ab}_c$ as odd ones. 
+Suppose $c$ is q-type, and that $\{|\psi_i\rangle\} \in [V^{ab}_c]^0, i =1,\dots, r$ are the even basis vectors in $V^{ab}_c$. 
+Then we can define a complete set of odd basis vectors $\{ |\eta_i\rangle \}$ for $[V^{ab}_c]^1$ by $|\eta_i\rangle = f|\psi_i\rangle$, where $f$ is the odd element of $\End(c) \cong \cc^{1|1}$.
+%%KW: I don't think this is true for non-simple c      (or any odd element in $\End(c)$ if $c$ is not simple).
+When we write $|\eta_i\rangle$ graphically, we will write it as $f |\psi \rangle$, which allows us to  ``shift the oddness out of the vertex onto the edge'' by transferring the fermion residing on the fusion space to the q-type particle $c$. 
+Graphically, this means that we are allowed to ``displace'' dots from trivalent vertices onto q-type worldlines:
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_displacement.pdf}}}}, \ee
+where the picture on the left is $|\eta_i\rangle$ and the one on the right is $f|\psi_i\rangle$, and $c$ is assumed to be q-type. 
+%Mathematically, this is nothing more than the mapping $V^{ab}_c \mapsto [V^{ab}_c]^0 \tp V^{c\unit}_{c} \cong [V^{ab}_c]^0 \tp \End(c)$ 
+%where $[V^{ab}_c]^0$ is a purely even vector space.
+Although this is not a deep fact, it proves to be helpful when doing graphical manipulations. 
 
 
 
@@ -11437,22 +11464,6 @@ Applying \eqref{defn_of_V_by_Delta}, we obtain
 \ee
 %%KW: unnecessary reminder      where $\tp_{\End(x)}$ denotes a tensor product over the ring $\End(x)$. 
 \end{comment}
-
-If at least one of $a,b,c$ is q-type, we can simplify the description of $V^{ab}_c$ slightly, 
-which we have done when working out the examples considered earlier.
-%Since in this case $V^{ab}_c \cong \cc^{r|r}$ for some $r$, there are just as many even basis vectors in $V^{ab}_c$ as odd ones. 
-Suppose $c$ is q-type, and that $\{|\psi_i\rangle\} \in [V^{ab}_c]^0, i =1,\dots, r$ are the even basis vectors in $V^{ab}_c$. 
-Then we can define a complete set of odd basis vectors $\{ |\eta_i\rangle \}$ for $[V^{ab}_c]^1$ by $|\eta_i\rangle = f|\psi_i\rangle$, where $f$ is the odd element of $\End(c) \cong \cc^{1|1}$.
-%%KW: I don't think this is true for non-simple c      (or any odd element in $\End(c)$ if $c$ is not simple).
-When we write $|\eta_i\rangle$ graphically, we will write it as $f |\psi \rangle$, which allows us to  ``shift the oddness out of the vertex onto the edge'' by transferring the fermion residing on the fusion space to the q-type particle $c$. 
-Graphically, this means that we are allowed to ``displace'' dots from trivalent vertices onto q-type worldlines:
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_displacement.pdf}}}}, \ee
-where the picture on the left is $|\eta_i\rangle$ and the one on the right is $f|\psi_i\rangle$, and $c$ is assumed to be q-type. 
-%Mathematically, this is nothing more than the mapping $V^{ab}_c \mapsto [V^{ab}_c]^0 \tp V^{c\unit}_{c} \cong [V^{ab}_c]^0 \tp \End(c)$ 
-%where $[V^{ab}_c]^0$ is a purely even vector space.
-Although this is not a deep fact, it proves to be helpful when doing graphical manipulations. 
-
-
 
 
 
