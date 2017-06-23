@@ -11022,6 +11022,7 @@ The definition of a super pivotal category differs from the usual bosonic case i
 \kw{Should remark (either here or earlier in this section) that the earliest definition was given in the blob paper.}
 
 
+\begin{comment} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Formal definition}
 
@@ -11110,6 +11111,7 @@ There is a map $*:C^2_{ef} \to C^2_{f^*e^*}$.
 \nn{need to say more about coherence relations and how * interacts with associators etc.}
 \end{axiom}
 
+\end{comment} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -11175,12 +11177,27 @@ I found this both amusing and confusing.
 \subsection{Fusion spaces} \label{fusion_spaces}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The input data for a super pivotal category includes a list of simple objects and their types (q or m), 
-as well as a fusion space $V^{ab}_c = \mor(a\tp b \to c)$ for each triple $a,b,c$ of objects (equivalently, of minimal idempotents)
-of $\mcc$.
-This is a supervector space of dimension
+%The input data for a super pivotal category includes a list of simple objects and their types (q or m), 
+%as well as a fusion space $V^{ab}_c = \mor(c\to a\tp b)$ for each triple $a,b,c$ of objects (equivalently, of minimal idempotents)
+%of $\mcc$.
+Arbitrary morphism spaces in a super pivotal category can be built out of basic fusion spaces
+$V^{ab}_c = \mor(c\to a\tp b)$,
+where $a$, $b$ and $c$ are simple objects (equivalently, minimal idempotents).
+This is a super vector space of dimension
 $N^{ab}_c = \dim V^{ab}_c = p|q$, where $p$ is the dimension of the even part
 of $V^{ab}_c$ and $q$ is the dimension of the odd part of $V^{ab}_c$.
+
+Alternatively, we can treat $a$, $b$ and $c$ more symmetrically and define
+$V^{abc} = \mor(\unit\to a\tp b\tp c)$, a super vector space of dimension $N^{abc}$.
+In most of this paper we use $V^{ab}_c$, but in Sections xxx and xxx we find it more convenient
+to use $V^{abc}$.
+Of course we have $V^{ab}_c \cong V^{abc^*}$.
+
+More generally, we define $V^{ab}_{cd} = \mor(c\tp d\to a\tp b)$, $V^{ab}_{cde} = \mor(c\tp d\tp e\to a\tp b)$,
+$V_{abcd} = \mor(a\tp b\tp c\tp d\to \unit)$, etc.
+In general, we do not require that $a$, $b$ etc. be simple.
+
+\medskip
 
 It is very important to note that $V^{ab}_c$ is not merely a super vector space -- it also comes equipped with an action
 of (i.e.\ module structure for) the endomorphism algebras of $a$, $b$ and $c$, and hence admits an action of $\End(a)\tp \End(b)\tp \End(c)$. 
@@ -11194,7 +11211,7 @@ Acting with the odd (and invertible) element of $\cl_1$ gives an isomorphism bet
 Requiring that the Hilbert space at a given vertex admit a 
 representation of $\End(a)\tp \End(b)\tp \End(c)$ places constraints on the types 
 of fermionic theories one can write down. 
-For example, we can use this to show that a ``q-type Fibbonacci'' theory 
+For example, we can use this to show that a ``q-type Fibonacci'' theory 
 which contains a single q-type particle $\tau$ with the fusion space $V^{\tau\tau}_{\tau}\cong \cc^{1|1}$, cannot exist. 
 Indeed, if $V^{\tau\tau}_{\tau}$ is nontrivial and $\tau$ is q-type, 
 then we must be able to find a representation of $\End(\tau)^{\tp 3} = \cl_1^{\tp 3} \cong \cl_3$ on $V^{\tau\tau}_{\tau}$.
@@ -11212,11 +11229,37 @@ which possesses nontrivial fusion multiplicities that allow the relevant fusion 
 %This is to be expected, since if $n$ lines emanating from $v$ are labeled with q-type objects, then the Hilbert space associated with the three lines is $\cl_1^{\tp n}\cong\cl_n$ (although this is actually over-complete, in the sense that the physical Hilbert space is smaller, see Sec \ref{modified_tensor_product}). 
 
 
+\medskip
+
+If at least one of $a,b,c$ is q-type, we can simplify the description of $V^{ab}_c$ slightly, 
+which we have done when working out the examples considered earlier.
+%Since in this case $V^{ab}_c \cong \cc^{r|r}$ for some $r$, there are just as many even basis vectors in $V^{ab}_c$ as odd ones. 
+Suppose $c$ is q-type, and that $\{|\psi_i\rangle\} \in [V^{ab}_c]^0, i =1,\dots, r$ are the even basis vectors in $V^{ab}_c$. 
+Then we can define a complete set of odd basis vectors $\{ |\eta_i\rangle \}$ for $[V^{ab}_c]^1$ by $|\eta_i\rangle = f|\psi_i\rangle$, where $f$ is the odd element of $\End(c) \cong \cc^{1|1}$.
+%%KW: I don't think this is true for non-simple c      (or any odd element in $\End(c)$ if $c$ is not simple).
+When we write $|\eta_i\rangle$ graphically, we will write it as $f |\psi \rangle$, which allows us to  ``shift the oddness out of the vertex onto the edge'' by transferring the fermion residing on the fusion space to the q-type particle $c$. 
+Graphically, this means that we are allowed to ``displace'' dots from trivalent vertices onto q-type worldlines:
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_displacement.pdf}}}}, \ee
+where the picture on the left is $|\eta_i\rangle$ and the one on the right is $f|\psi_i\rangle$, and $c$ is assumed to be q-type. 
+%Mathematically, this is nothing more than the mapping $V^{ab}_c \mapsto [V^{ab}_c]^0 \tp V^{c\unit}_{c} \cong [V^{ab}_c]^0 \tp \End(c)$ 
+%where $[V^{ab}_c]^0$ is a purely even vector space.
+Although this is not a deep fact, it proves to be helpful when doing graphical manipulations. 
+
+
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Fusion rules and fusion spaces} \label{fusion_rules_and_fusion_spaces}
+\subsection{Pivotal structure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\nn{...}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Fusion rules and fusion spaces} \label{fusion_rules_and_fusion_spaces}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{comment}
@@ -11436,26 +11479,10 @@ Applying \eqref{defn_of_V_by_Delta}, we obtain
 %%KW: unnecessary reminder      where $\tp_{\End(x)}$ denotes a tensor product over the ring $\End(x)$. 
 \end{comment}
 
-If at least one of $a,b,c$ is q-type, we can simplify the description of $V^{ab}_c$ slightly, 
-which we have done when working out the examples considered earlier.
-%Since in this case $V^{ab}_c \cong \cc^{r|r}$ for some $r$, there are just as many even basis vectors in $V^{ab}_c$ as odd ones. 
-Suppose $c$ is q-type, and that $\{|\psi_i\rangle\} \in [V^{ab}_c]^0, i =1,\dots, r$ are the even basis vectors in $V^{ab}_c$. 
-Then we can define a complete set of odd basis vectors $\{ |\eta_i\rangle \}$ for $[V^{ab}_c]^1$ by $|\eta_i\rangle = f|\psi_i\rangle$, where $f$ is the odd element of $\End(c) \cong \cc^{1|1}$.
-%%KW: I don't think this is true for non-simple c      (or any odd element in $\End(c)$ if $c$ is not simple).
-When we write $|\eta_i\rangle$ graphically, we will write it as $f |\psi \rangle$, which allows us to  ``shift the oddness out of the vertex onto the edge'' by transferring the fermion residing on the fusion space to the q-type particle $c$. 
-Graphically, this means that we are allowed to ``displace'' dots from trivalent vertices onto q-type worldlines:
-\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_displacement.pdf}}}}, \ee
-where the picture on the left is $|\eta_i\rangle$ and the one on the right is $f|\psi_i\rangle$, and $c$ is assumed to be q-type. 
-%Mathematically, this is nothing more than the mapping $V^{ab}_c \mapsto [V^{ab}_c]^0 \tp V^{c\unit}_{c} \cong [V^{ab}_c]^0 \tp \End(c)$ 
-%where $[V^{ab}_c]^0$ is a purely even vector space.
-Although this is not a deep fact, it proves to be helpful when doing graphical manipulations. 
-
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Koszul sign rule} \label{koszul_signs}
+\subsection{Koszul sign rule} \label{koszul_signs}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We will treat Koszul signs as in Section 1.2 of \cite{xxxx}.
@@ -11542,6 +11569,8 @@ The action of $P_{12}$ is encapsulated by the Koszul sign rule expressing the su
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Modified tensor product} \label{modified_tensor_product}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\kw{I think this section can be shortened}
 
 There is an important subtlety involved when we tensor together fusion spaces which involve q-type particles, which stems from the non-triviality of the fusion space $V^{x\unit}_x$ if $x$ is q-type.
 To see where this comes from, suppose $x$ is a q-type particle, and consider the resolution of the identity 
