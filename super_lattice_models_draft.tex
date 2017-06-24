@@ -6950,6 +6950,7 @@ and
 \ee
 for any objects $a$, $b$ and $c$.
 These isomorphisms are required to be functorial with respect to $a$ and $c$.
+\kw{TO DO: what do we say about $b$?}
 
 For objects $a$, we require that $a^{**} = a$ on the nose (strict pivotal).
 For morphisms $f : a\to b$, we define $f^* : b^* \to a^*$ by $f^* = P_L(P_R(f))$.
@@ -6977,7 +6978,7 @@ as $P_R\circ P_L$.
 In terms of diagrams and matrices, this looks like
 \kw{insert eqn similar to existing one in older pivotal subsection}.
 We can similarly define $P^{abc} : V^{abc}\to V^{bca^*}$
-\kw{insert similar eqn/fig}
+\kw{insert similar eqn/fig; this is the pivot we will use for hamiltonian and tensor network}
 We will usually write simply $P$, since the $a$, $b$ and $c$ are typically clear from context.
 
 Note that we have $P^3 = (-1)^F$.
@@ -7120,15 +7121,19 @@ Another possible convention would be to use the ordering corresponding to (say) 
 but this creates opportunities for error when changing diagrams by isotopies,
 and is not really workable for diagrams drawn on higher genus surfaces.
 
-A map between unordered tensor products 
+A map between unordered tensor products
 \be
 	\bigotimes_i W_i \; \to \; \bigotimes_j V_j
 \ee
 is defined to be a collection of maps between
 all possible pairs of ordered tensor products.
+We will call such a collection an ``unordered map".
 These maps are required to commute with the Koszul isomorphisms on either side.
-To specify such a map, it suffices to give a map between one particular pair of ordered tensor products.
+To specify such a map, it suffices to give a single map between one particular pair of ordered tensor products.
 All other maps in the collection are uniquely determined by this choice and the commutativity requirement.
+This map will be called an ``ordered representative" of the unordered map.
+See \ref{coherence_ss} for a further discussion of the distinction between unordered maps and
+their ordered representatives.
 
 
 
@@ -7142,7 +7147,7 @@ Let $\mcx$ be a complete collection of simple objects (minimal idempotents), one
 (In this subsection, as in most of the paper, we are assuming that our category is semisimple with finitely many equivalence
 classes of simple objects.)
 For arbitrary objects $x$ and $y$, we have
-\be
+\be \label{sobdecomp}
 	\mor(x\to y) \: \cong \: \bigoplus_{a\in\mcx} \mor(x\to a) \tp_{\End(a)} \mor(a\to y) .
 \ee
 Recall that the relative tensor product on the RHS above is defined as the usual tensor product over scalars, modulo elements
@@ -7151,7 +7156,9 @@ Clearly such elements are in the kernel of the composition map $\mor(x\to a) \tp
 Our semisimplicity assumption implies that the composition map (summing over all $a\in \mcx$) is surjective and that such
 elements generate all of the kernel.
 
-It follows (though not quite directly) that we have isomorphisms
+Diagrammatically, the relative tensor product means that fermionic dots can move across edges labeled by q-type simple objects.
+
+It follows (though not quite directly) from \ref{sobdecomp} that we have isomorphisms
 \be \label{pfi1}
 	V^{abc}_d \cong \bigoplus_{x\in \mcx} V^{ab}_x \tp_{\End(x)} V^{xc}_d
 \ee
@@ -7159,10 +7166,26 @@ and also
 \be \label{pfi2}
 	V^{abc}_d \cong \bigoplus_{y\in \mcx} V^{ay}_d \tp_{\End(y)} V^{bc}_y .
 \ee
+\kw{should probably add the familiar figs for these}
+Similarly, 
+\be
+	V^{abcd} \cong \bigoplus_{x\in \mcx} V^{ab}_x \tp_{\End(x)} V^{xcd} ,
+\ee
+and using the isomorphism $P_R: V^{ab}_x \to V^{abx^*}$ this becomes
+\be  \label{pfpfi1}
+	V^{abcd} \cong \bigoplus_{x\in \mcx} V^{abx^*} \tp_{\End(x)} V^{xcd} .
+\ee
+\kw{need figs}
+(We are implicitly using the $*$ functor to convert an $\End(x)$ action into an $\End(x^*)$ action.)
+Alternatively,
+\be  \label{pfpfi2}
+	V^{abcd} \cong \bigoplus_{x\in \mcx} V^{bc}_x \tp_{\End(x)} V^{axd} \cong \bigoplus_{x\in \mcx} V^{bcx^*} \tp_{\End(x)} V^{xcd} .
+\ee
 
-\medskip
 
-Diagrammatically, the relative tensor product means that fermionic dots can move across edges labeled by q-type simple objects.
+
+
+\bigskip
 
 
 \kw{What else needs to be said here?}
@@ -7175,10 +7198,21 @@ Diagrammatically, the relative tensor product means that fermionic dots can move
 %%%%%%%%%%%%%%%%%%
 
 It follows from \ref{pfi1} and \ref{pfi2} that there is an isomorphism
-\be
+\be  \label{fdef21}
 	F^{abc}_d : \bigoplus_{x\in \mcx} V^{ab}_x \tp_{\End(x)} V^{xc}_d \;\to\; \bigoplus_{y\in \mcx} V^{ay}_d \tp_{\End(y)} V^{bc}_y .
 \ee
+For the pitchfork version, we instead use \ref{pfpfi1} and \ref{pfpfi2} to obtain
+\be  \label{fdef30}
+	F^{abcd} : \bigoplus_{x\in \mcx} V^{abx^*} \tp_{\End(x)} V^{xcd}   \;\to\;   \bigoplus_{x\in \mcx} V^{bcx^*} \tp_{\End(x)} V^{axd} .
+\ee
+\kw{figs?  or just rely on the figs from the previous subsection?}
 
+
+
+\bigskip
+
+
+\kw{What else needs to be said here?}
 
 
 
@@ -7187,13 +7221,36 @@ It follows from \ref{pfi1} and \ref{pfi2} that there is an isomorphism
 \subsection{Coherence relations} \label{coherence_ss}
 %%%%%%%%%%%%%%%%%%
 
+We will not list all coherence relations here.
+Instead we will give a few examples, in order to highlight how the bosonic case
+must be changed to take account of Koszul signs.
+\kw{and other stuff}
+
+\medskip
+
+We will start with the well-known pentagon equation, in the version that uses the basic fusion spaces $V^{ab}_c$.
+If we work in terms of {\it unordered maps}, with \ref{fdef21} interpreted as an unordered map between direct sums of
+unordered tensor products, then the fermionic pentagon equation looks just like the bosonic case:
+\kw{insert pentagon commutative diagram}
+But if we peer under the hood and look at {\it ordered representatives} (as we need to do if, for example,
+we were checking the pentagon equation on a computer), then we
+see that a Koszul sign appears:
+\kw{insert hexagonal pentagon diagram}.
+
+\medskip
+
+\kw{TO DO: say a little bit (but only a little bit) about other coherence relations}
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%
 \subsection{Reflection structure} \label{reflection_ss}
 %%%%%%%%%%%%%%%%%%
 
-
+\kw{TO DO: discuss reflection structures, pin, etc.
+probably just give basic defs}
 
 
 
