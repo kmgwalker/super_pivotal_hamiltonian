@@ -227,6 +227,8 @@
 \newcommand{\TAnnulusNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TAnnulusNoLabel.pdf}}}}}
 
 
+\newcommand{\EdgeTensor}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EdgeTensor.pdf}}}}}
+
 \newcommand{\OneHandleTheta}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{OneHandleTheta.pdf}}}}}
 \newcommand{\OneHandlemud}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{OneHandlemud.pdf}}}}}
 \newcommand{\OneHandlemu}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{OneHandlemu.pdf}}}}}
@@ -13629,6 +13631,26 @@ Historically, this version of the state sum pre-dates TVBW and was first found b
 We give a breif review of the state sum found from the cut-and-glue formalism. 
 For details and explicit expressions see....... some intro.
 
+\dave{Add non-degenerate pairing here, or in defintions section?}
+We require a non-degenerate pairing between $V^{a_1 a_2 \cdots a_l}$ and $V^{a_l^* \dots a_1}$.
+A pairing on all vector spaces is determined by a pairing on $V^{abc}$. 
+Denote the canonical pairing by $\varphi$,
+\begin{align}
+\varphi: &V^{abc} \tp V^{c^* b^* a^*} \ra \cc \\
+\mu \tp \nu &\mapsto \text{theta symbol for $\mu \circ \nu$}
+\end{align}
+The non-degeneracy condition means that the matrix defined by $\varphi(\mu, \nu)$ should have a non-zero determinant. 
+\dave{Can this always be chosen to be symmetric?}
+Note that this differs from the conventional defintion which is anti-linear.
+\dave{... will consult some literature soon.}
+With this defintion we have the following useful identity, which the whole state sum relies on,
+\dave{place holder figure.}
+\begin{align}
+\sum_\mu \varphi( \mu,\mu^*)^{-1} \PitchFork{a}{b}{c}{\mu} \;\;\;\;  \PitchFork{c^*}{b^*}{a^*}{\mu^*} = \text{id}_{a \tp b \tp c}
+\end{align}
+\dave{show a cylinder attached to the plane, and then cut out but with a sum of states. }
+
+
 The input data for the state sum is
 \begin{itemize}
 \item an oriented 3-manifold $\mcm$, which for now we assume to be closed
@@ -13641,44 +13663,63 @@ and play the role of the global ordering of the vertices in the TVBW state sum.
 We now specify admissible labelings and the weights assigned to them.
 
 
-The 0-cell labelings are constrained by the 1-cell labelings, which are constrained by the 2-cell labelings. 
+The 2-cell labels constrain the 1-cell labelings, which constrain the 0-cell labelings.
 Hence, a 0-cell labeling is admissible if it's compatible with the 1-cell labelling, 
 the 1-cell labelling is admissible if it's compatible with the 2-cell labeling. 
 We first denote all possible labelings and then the admissability requirements.
 
 We breifly summarize our labeling conventions here, 
-and provide details below, along with the maps to $\cc$.
+and provide details below, along with the there weights,
 \begin{itemize}
 \item the 2-cells are labeled by a simple object of $\mcc$.
-\item the 1-cells are labeled by ordered triples of simple objects from $\mcc$ that can fuse to the vacuum. 
-\item the 0-cells are labeled by quadruples of triples
+\item the 1-cells are labeled by ordered triples of simple objects from $\mcc$ that can fuse to the vacuum, 
+and a basis element of that fusion space.
+\item the 0-cells are labeled by four ordered triples and a basis state from each fusion space of the ordered triple
 \end{itemize}
 
 {\it 2-cells}
-We will denote the collection of 2-cells by $\mcf$, 
+Denote the collection of 2-cells by $\mcf$, 
 and the collection of labeled 2-cells by $\{ x_f \}$, $f \in \mcf$.
+Each $x_f$ is a simple object from $\mcc$.
+Each 2-cell is weighted by the quantum dimension of its label. 
 
 {\it 1-cells}
 We denote the collection of 1-cells by $\mce$.
-The 1-cells are labeled by ordered triples of simple objects from $\mcc$ that the fuse to the vacuum. 
-A labeled 1-cell is denoted $\mu(e)$ and is given by a basis vector of $\bigoplus_{abc}V^{abc}$ 
-if the orientation of the boundary of the neighbouring 2-cells agrees with the orientation of the 1-cells.
-If one of the orientations of the 2-cells does not agree with the orientation of the 1-cell then we take the object to its dual.
+The orientation of the 1-cell can either match or oppose orientation of the boundaries of the neighbouring 2-cells. 
+If the orientation of the 1-cell agrees with the orientation of all three 2-cells, 
+then the 1-cell is labeled by basis elements of $\bigoplus V^{abc}$.
+\dave{FS indicator issue should be addressed. }
+If one or more of the 2-cell orientation disagrees with the 1-cells orientation, 
+then the corresponding simple objects need to be replaced by there duals.
+\dave{I keep waffling between match verse are dual to. 
+In the cut-and-glue method, we would want them to be dual to each other.
+Since $d_x \text{cl}(x) = d_{x^*} \text{cl}(x^*)$ the 2-cell orientations are only important for consistent 1-cell labelings.
+Anyone have a preference?}
+For bookkeeping purposes, it's easier to label each edge by a pair of elements, $\mu \in  \bigoplus V^{abc}$ and $\mu^*$, the dual. 
+We label the incoming side of the 1-cell by $\mu(e_+)$ and the outgoing side by $\mu(e_-) = \mu(e_+)^*$.
+The 1-cells are weighted by $\theta(\mu(e_-),\mu(e_+))^{-1}$.
 
 {\it 0-cells}
 We denote the collection of 0-cells by $\mcv$. 
 Each 0-cell $v \in \mcv$ has four neighbouring 1-cells which either point toward or away from $v$. 
-Each $v$ will be labeled by the labels of the neighbouring 1-cells.
 Denote the collection of neighbouring 1-cells by $e^v_j$, $j =1, \cdots 4$. 
-If $e^v_j$ is oriented away from the 0-cell, label it $\mu(e^v_j)$.
-If $e_j^v$ is oriented into the 0-cell, label it by the dual vector $\mu(e^v_j)^*$.
+If $e^v_j$ is oriented away from the 0-cell, 
+label it $\mu(e^v_{j^+})$.
+If $e_j^v$ is oriented into the 0-cell, 
+label it by the dual $\mu(e^v_{j^-}) = \mu(e^v_{j^+})^*$.
+Where $\mu(..)$ is taking the same labels as above.
+The weighting of each 0-cell is given by the evaluation of the net configuration 
+of the 0-handle labeled with the $e_j^v$ above and denote $T_v( \{ \mu(e^v_j) \})$.
+\dave{Add footnote about how not all 0cells are the same/or add figure for geometric picture.}
 
-A labeling is admissible if the labeling of the 1-cells is compatible with the labeling of the 2-cells.
-For each 0-cell $v$, denote the evaluation of the net configuration of the 0-handle labeled by the $e_j^v$ above 
-by $T_v( \{ \mu(e^v_j) \})$. 
-Then, the state sum is given by
+\dave{Add figure for this.}
+A 2-cell labeling is admissible if every triple of 2-cells neighbouring a 1-cell is labeled by simple objects that can fuse to vacuum. 
+A 1-cell labeling is admissible if it is compatible with the neighbouring 2-cell labelings.
+A 0-cell labeling is admissible if it is compatible with the neighbouring 2- and 1-cell labelings.
+
+With these conventions, the state sum is given by
 \begin{align}
-Z(\mcm) = \frac{1}{\mcd^{2n_3}}\sum_{ \mcl } \prod_{f \in \mcf} d_{x_f}  \prod_{e \in \mce} (\mu(e)^*\circ \mu_e)^{-1} \prod_{v \in \mcv} T_v(\{ \mu(e_j^v) \})
+Z(\mcm) = \frac{1}{\mcd^{2n_3}}\sum_{ \mcl } \prod_{f \in \mcf} d_{x_f}  \prod_{e \in \mce} \text{eval}(\mu(e)^*\circ \mu_e)^{-1} \prod_{v \in \mcv} T_v(\{ \mu(e_j^v) \})
 \label{state_sum}
 \end{align}
 where $\mcl$ denotes the set of all admissible labelings and $n_3$ denotes the number of 3-cells in the cell decomposition. 
@@ -13822,14 +13863,14 @@ Our next task will be to standardize each of the handles.
 \end{comment}
 
 \subsubsection{Standardized bosonic state sum}
-For catalogization purposes we would like to standardize tensors $T_v$ appearing in the state sum \eqref{state_sum}.
+For catalogization purposes we would like to standardize the tensors $T_v$ appearing in the state sum \eqref{state_sum}.
 We follow a similar procedure to the pitchforkiztion chosen for each vertex when setting up the Hamiltonian. 
 In addition to the oriented cell decomposition we also need,
 \begin{itemize}
 \item standardized tetrahedra that have been flattenned into the plane with pitchforked vertices
 \item a collection of pivots associated to the 1-handles which relate a pitchfork at the incoming side of the 1-handle to the outgoing side
 \end{itemize}
-The standardized 0-cells can be found by first deforming the 2-cells so that locally they look like a nearly closed book whose spine follows the 1-cell which they neighbour and the pages are given by the 2-cells, see Figure~\ref{OneHandle}.
+The standardized 0-cells can be found by first deforming the 2-cells so that in the neighbourhood of a 0-cell they look like a nearly closed book whose spine follows the 1-cell which they neighbour and the pages are given by the 2-cells, see Figure~\ref{OneHandle}.
 \begin{figure}
 \begin{center}
 \includegraphics{Onehandle.pdf}
@@ -13840,7 +13881,6 @@ On the right we show the `pitchforkized' version.
 }
 \end{center}
 \end{figure}
-The the spine of the book meets the a spherical neighbourhood of the 0-cell at at a pitchfork.
 We next deform the pitchforks on the spherical neighbourhood of the 0-cell so that they are in a standard position, 
 which can then be trivially mapped onto the plane. 
 Once on the plane, we define,
@@ -13849,7 +13889,7 @@ T(\alpha \tp \beta \tp \gamma \tp \delta) =\; \Tetrahedron
 \label{Tetrahedron}
 \end{align}
 where we have defined the tensor by its evaluation on the right with $\alpha \in \bigoplus_{abc} V^{abc}$, $\beta \in \bigoplus_{a^* bc} V^{a^* bc}$, $\gamma \in \bigoplus_{a^* b c^*} V^{a^* b c^*}$, $ \delta \in \bigoplus_{a^* b^* c^*} V^{a^* b^* c^*}$.
-One can change the orientation by flipping an arrow and taking the appropriate object to its dual. 
+One can flip an arrow by taking the appropriate object to its dual. 
 \dave{Add comment that spherical means that all tetrahedra can be evaluated from this one by using the appropriate pivots + spherical property.}
 
 
@@ -13869,33 +13909,39 @@ One can change the orientation by flipping an arrow and taking the appropriate o
 %\end{align}
 
 For each 1-handle we have a relation between the two standardized pitchforks which it terminates on.
-Let $D$ be the disk living at the incoming end of a 1-handle $W$ with three marked points and 
-$D'$ be the disk found at the outgoing end by isotopy.
-\dave{Is that the appropriate use of isotopy here?}
-%sliding $D$ through the 1-handle.
+Let $D$ be the standard disk living at the incoming end of a 1-handle $W$ with three marked points and 
+$D'$ be the standard disk at the outgoing end.
 Since the final disk $D'$ is also on the plane, we know it has to differ from $D$ by a reflection. 
 In addition, the 1-handle could also pivot the labels of $D$.
 Hence, the outgoing disk $D'$ is related to the incoming disk $D$ by a reflection composed with a pivot.
+\dave{Draw figure and relate to canonical pairing.}
+\dave{Will refer to definitions section for this, but leave it here until I do that.}
 Lets define a pivot on the basis vectors of a disk with three marked points to be:
 \begin{align}
 P \circ \Pitchforkabc \;=\;  \Pitchforkabcrot.
 \end{align}
-Hence,  two pitchforks connected by a 1-handle can be cut open and re-glued together.
-More explicitly, we have,
+Denoting the linear map induced on the pitchforks by $z(W)$, 
+we have
 \begin{align}
-Z(W): \; A(D) \ra A(D')
+z(W) : & A(D) \ra A(D') \\
+&\mu \mapsto  \theta(\mu^*_1, \mu_2)^{-1} P_W \circ \mu^* \in A(D')
 \end{align}
-and if we define $\text{id}_{A(D) \ra A(\bar{D})} = \sum_i \frac{1}{\mu_i^* \circ \mu_i} \mu_i \tp \mu_i^*$, 
-then we can express $Z(W)$ as 
-\begin{align}
-Z(W)= \sum_i \frac{1}{\mu_i^* \circ \mu_i} \mu_i \tp (P_W\circ \mu_i^*).
-\end{align}
-\dave{I think Bassalm and Kirrillov may have notation for this.}
+%More explicitly, we have,
+%\begin{align}
+%Z(W): \; A(D) \ra A(D')
+%\end{align}
+%and if we define $\text{id}_{A(D) \ra A(\bar{D})} = \sum_i \frac{1}{\mu_i^* \circ \mu_i} \mu_i \tp \mu_i^*$, 
+%then we can express $Z(W)$ as 
+%\begin{align}
+%Z(W)= \sum_i \frac{1}{\mu_i^* \circ \mu_i} \mu_i \tp (P_W\circ \mu_i^*).
+%\end{align}
+%\dave{I think Bassalm and Kirrillov may have notation for this.}
 Where $P_W$ is either the identity, $P$ or $P^2$.
 
 We can now write down the partition function in a standardized way. 
 The only modification is to the tensors $T_v$ and how we catalogue the data of the partition function.
-Let $e_j^v$ be the 1-cells which meets the spherical neihgbourhood of the 0-cell $v$ in the standardized way
+Let $e_j^v$ be the 1-cells which meet the spherical neighbourhood of the 0-cell $v$
+ in the standardized way
 with the numerical index corresponding to the ordering in \eqref{Tetrahedron}.
 Define,
 \begin{align}
@@ -13910,12 +13956,12 @@ T_v(\{ \tilde{\mu}(e^v_j) \} ) = T(\tilde{\mu}(e_1^v) \tp \tilde{\mu}(e_2^v)\tp 
 \end{align}
 Thus finally the partition function is given by
 \begin{align}
-Z(\mcm) = \frac{1}{\mcd^{2n_3}}\sum_{ \mcl } \prod_{f \in \mcf} d_{x_f}  \prod_{e \in \mce} (\mu(e)^*\circ \mu_e)^{-1} \prod_{v \in \mcv} T_v(\{ \tilde{\mu}(e_j^v) \})
+Z(\mcm) = \frac{1}{\mcd^{2n_3}}\sum_{ \mcl } \prod_{f \in \mcf} d_{x_f}  \prod_{e \in \mce} (\mu(e)^*\circ \mu(e))^{-1} \prod_{v \in \mcv} T_v(\{ \tilde{\mu}(e_j^v) \})
 \label{state_sum_standardized}
 \end{align}
 Where $\mcl$ runs over all admissible labelings.
 
-
+\subsubsection{state sum as a tensor contraction}
 It is useful to re-write the sum over all labelings as a trace over tensors.
 Roughly, we interchange the products with tensor products, 
 the numbers with tensors, and the sum with a trace. 
@@ -13942,14 +13988,13 @@ F = \bigoplus_a \cc_a
 \end{align}
 of dimension equal to the number of objects in $\mcc$.
 We denote a vector in $\cc_a$ by $v_{a}$ and its dual by $v_a^*$, so that $v_a^* \cdot v_b = \delta_{ab}$.
-We will immediately disregard this notation and denote $v_a$ with just $a$ itself, 
-similarly for $a^*$.
-The 2-cell tenseor can be written as,
-\dave{Need to think about orientations.}
+We will immediately disregard this notation and denote $v_a$ with by $\hat{a}$, and similarly its dual 
+$\hat{a}^*$.
+The 2-cell tensor can be written as,
 \begin{align}
-T_f = \sum_{x, a_1, a_2, \cdots, a_k} d_x \delta_{xa_1} \delta_{xa_2} \cdots \delta_{xa_k} a_1^* \cdots a_k^* 
+T_f = \sum_{x, a_1, a_2, \cdots, a_k} d_x \left(\prod_{j=1}^k \delta_{xa_j} \right) \hat{a}_1^* \cdots \hat{a}_k^* 
 \end{align}
-where the subscript $i$ denotes the neighbouring 1-cell.
+where the subscript denotes the neighbouring 1-cell.
 Physically, the face tensor introduces an $\omega$ loop on every 2-cell. 
 \dave{draw picture.}
 
@@ -13961,12 +14006,19 @@ and two indices which are contracted with the neighbouring
 Denote the vector space associated to the three neighbouring 2-cells $F_j$, $j=1,2,3$.
 The edge tensor can then be written as,
 \begin{align}
-T_e =\sum_{a_j \in F_j}  \sum_{\hat{\alpha} \in V^{a_1a_2a_3}} (\alpha^* \circ \alpha)^{-1}   \hat{\alpha}^* \tp a_1 \tp a_2 \tp a_3 \tp \hat{\alpha}
+T_e =\sum_{a_j \in F_j}  \sum_{\hat{\alpha} \in V^{a_1a_2a_3}} (\alpha^* \circ \alpha)^{-1}   \hat{\alpha}^* \tp \hat{a}_1 \tp \hat{a}_2 \tp \hat{a}_3 \tp \hat{\alpha}
 \end{align}
 where the hatted vectors are unit normalized so that $\hat{\alpha}^* \in (V^{abc})^*$, 
 $\hat{\beta} \in V^{abc}$ satisfy $\hat{\alpha} \circ \hat{\beta} = \delta_{\alpha \beta}$. 
 If the orientation of any of the 2-cells doesn't match the orientation of the 1-cell then the appropriate label in $V^{a_1 a_2 a_3}$ needs to be taken to its dual. 
-\dave{Need to re-visit this, make sure there is nothing weird happening for self dual objects.} 
+Diagrammatically we write the tensor as,
+\begin{align}
+\EdgeTensor \;\; =
+\begin{cases}
+(\hat{\alpha}^* \circ \alpha)^{-1}& \text{if $ \alpha \in V^{a^* bc}$}\\
+0 & \text{otherwise}
+\end{cases}
+\end{align}
 
 \dave{This is very rough, will return to it. }
 Lastly, the zero cell tensors are given by,
