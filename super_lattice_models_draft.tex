@@ -11193,11 +11193,13 @@ Alternatively, we can treat $a$, $b$ and $c$ more symmetrically and define
 $V^{abc} = \mor(\unit\to a\tp b\tp c)$, a super vector space of dimension $N^{abc}$.
 In most of this paper we use $V^{ab}_c$, but in Sections xxx and xxx we find it more convenient
 to use $V^{abc}$.
-Of course we have $V^{ab}_c \cong V^{abc^*}$.
+(We call the fusion space $V^{abc}$ ``pitchforks" because of their graphical depiction.)
+Of course we have $V^{ab}_c \cong V^{abc^*}$ (see \ref{pivotal_ss} below).
+\kw{probably should add figs for $V^{ab}_c$ and $V^{abc}$}
 
 More generally, we define $V^{ab}_{cd} = \mor(c\tp d\to a\tp b)$, $V^{ab}_{cde} = \mor(c\tp d\tp e\to a\tp b)$,
 $V_{abcd} = \mor(a\tp b\tp c\tp d\to \unit)$, etc.
-In general, we do not require that $a$, $b$ etc. be simple.
+In general, we do not require that the objects $a$, $b$ etc. be simple.
 
 \medskip
 
@@ -11242,6 +11244,7 @@ Then we can define a complete set of odd basis vectors $\{ |\eta_i\rangle \}$ fo
 When we write $|\eta_i\rangle$ graphically, we will write it as $f |\psi \rangle$, which allows us to  ``shift the oddness out of the vertex onto the edge'' by transferring the fermion residing on the fusion space to the q-type particle $c$. 
 Graphically, this means that we are allowed to ``displace'' dots from trivalent vertices onto q-type worldlines:
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_displacement.pdf}}}}, \ee
+\kw{should add arrows (edge orientations) to this and similar figs}
 where the picture on the left is $|\eta_i\rangle$ and the one on the right is $f|\psi_i\rangle$, and $c$ is assumed to be q-type. 
 %Mathematically, this is nothing more than the mapping $V^{ab}_c \mapsto [V^{ab}_c]^0 \tp V^{c\unit}_{c} \cong [V^{ab}_c]^0 \tp \End(c)$ 
 %where $[V^{ab}_c]^0$ is a purely even vector space.
@@ -11252,7 +11255,7 @@ Although this is not a deep fact, it proves to be helpful when doing graphical m
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Pivotal structure}
+\subsection{Pivotal structure}  \label{pivotal_ss}   \label{pivotal_structure} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The pivotal structure assigns to each object $a$ a dual object $a^*$.
@@ -11299,8 +11302,10 @@ We will usually write simply $P$, since the $a$, $b$ and $c$ are typically clear
 Note that we have $P^3 = (-1)^F$.
 \kw{fig/eqn for this too; $(-1)^\mu$}
 
+\medskip
+\kw{do we need anything else here?}
 
-\nn{...}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Fusion rules and fusion spaces} \label{fusion_rules_and_fusion_spaces}
@@ -11585,6 +11590,16 @@ Another possible convention would be to use the ordering corresponding to (say) 
 but this creates opportunities for error when changing diagrams by isotopies,
 and is not really workable for diagrams drawn on higher genus surfaces.
 
+A map between unordered tensor products 
+\be
+	\bigotimes_i W_i \; \to \; \bigotimes_j V_j
+\ee
+is defined to be a collection of maps between
+all possible pairs of ordered tensor products.
+These maps are required to commute with the Koszul isomorphisms on either side.
+To specify such a map, it suffices to give a map between one particular pair of ordered tensor products.
+All other maps in the collection are uniquely determined by this choice and the commutativity requirement.
+
 
 \begin{comment}
 Because of the anti-commuting nature of fusion spaces (i.e., because they can have odd fermion number), 
@@ -11610,11 +11625,78 @@ The action of $P_{12}$ is encapsulated by the Koszul sign rule expressing the su
 \end{align}
 \end{comment}
 
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Modified tensor product} \label{modified_tensor_product}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\kw{I think this section can be shortened}
+Let $\mcx$ be a complete collection of simple objects (minimal idempotents), one from each equivalence class.
+(In this subsection, as in most of the paper, we are assuming that our category is semisimple with finitely many equivalence
+classes of simple objects.)
+For arbitrary objects $x$ and $y$, we have
+\be
+	\mor(x\to y) \: \cong \: \bigoplus_{a\in\mcx} \mor(x\to a) \tp_{\End(a)} \mor(a\to y) .
+\ee
+Recall that the relative tensor product on the RHS above is defined as the usual tensor product over scalars, modulo elements
+of the form $\alpha f \tp \beta - \alpha\tp f\beta$.
+Clearly such elements are in the kernel of the composition map $\mor(x\to a) \tp \mor(a\to y) \to \mor(x\to y)$.
+Our semisimplicity assumption implies that the composition map (summing over all $a\in \mcx$) is surjective and that such
+elements generate all of the kernel.
+
+It follows (though not quite directly) that we have isomorphisms
+\be \label{pfi1}
+	V^{abc}_d \cong \bigoplus_{x\in \mcx} V^{ab}_x \tp_{\End(x)} V^{xc}_d
+\ee
+and also
+\be \label{pfi2}
+	V^{abc}_d \cong \bigoplus_{y\in \mcx} V^{ay}_d \tp_{\End(y)} V^{bc}_y .
+\ee
+
+\medskip
+
+Diagrammatically, the relative tensor product means that fermionic dots can move across edges labeled by q-type simple objects.
+
+
+\kw{What else needs to be said here?}
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+\subsection{F-symbols} \label{Fsymbols}
+%%%%%%%%%%%%%%%%%%
+
+It follows from \ref{pfi1} and \ref{pfi2} that there is an isomorphism
+\be
+	F^{abc}_d : \bigoplus_{x\in \mcx} V^{ab}_x \tp_{\End(x)} V^{xc}_d \;\to\; \bigoplus_{y\in \mcx} V^{ay}_d \tp_{\End(y)} V^{bc}_y .
+\ee
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+\subsection{Coherence relations} \label{coherence_ss}
+%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%
+\subsection{Reflection structure} \label{reflection_ss}
+%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Modified tensor product (old version)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\kw{I think this section can be shortened; I think some of the material already appears far above.}
 
 There is an important subtlety involved when we tensor together fusion spaces which involve q-type particles, which stems from the non-triviality of the fusion space $V^{x\unit}_x$ if $x$ is q-type.
 To see where this comes from, suppose $x$ is a q-type particle, and consider the resolution of the identity 
@@ -11737,7 +11819,7 @@ a fusion category with only m-type particles.
 
 
 %%%%%%%%%%%%%%%%%%
-\subsection{F-symbols} \label{Fsymbols}
+\subsection{F-symbols (old version)}
 %%%%%%%%%%%%%%%%%%
 
 The $F$-symbols are defined as basis transformations between different fusion spaces. 
@@ -11856,7 +11938,7 @@ For a simple q-type object we have
 
 
 %%%%%%%%%%%%%%%%%%%%
-\subsubsection{Pivotal structure} \label{pivotal_structure} 
+\subsubsection{Pivotal structure (old version)}
 %%%%%%%%%%%%%%%%%%%%
 
 Finally, we remark on the pivotal structure of fusion spaces in superfusion categories. First, we have the Frobenius-Schur indicator, which is given by
