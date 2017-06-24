@@ -10942,10 +10942,12 @@ We could add an appendix with some of the details, e.g., 6j symbols and particle
 \section{Super pivotal categories}  \label{def_sect}
 %%%%%%%%%%%%%%%%%%%%%%
 
-In this section we give a formal definition of super pivotal categories.
-%%%%%%%%%%%%%%%%%%%
-%\subsection{Definitions and summary}
-%%%%%%%%%%%%%%%%%%%
+In this section we give a more formal (though not completely formal) definition of super pivotal categories.
+Since the usual bosonic case is well covered in the literature, we will concentrate on
+the differences between the bosonic case and the fermionic/super case.
+We will also fix some notation and conventions used elsewhere in the paper.
+
+
 There are various ways of axiomatizing string nets, including Kuperberg spiders \cite{kup_spider}, 
 planar algebras \cite{jones_pa},
 disk-like 2-categories \cite{blob_paper}, and pivotal tensor categories \cite{kitaev2006}.
@@ -11193,11 +11195,13 @@ Alternatively, we can treat $a$, $b$ and $c$ more symmetrically and define
 $V^{abc} = \mor(\unit\to a\tp b\tp c)$, a super vector space of dimension $N^{abc}$.
 In most of this paper we use $V^{ab}_c$, but in Sections xxx and xxx we find it more convenient
 to use $V^{abc}$.
-Of course we have $V^{ab}_c \cong V^{abc^*}$.
+(We call the fusion space $V^{abc}$ ``pitchforks" because of their graphical depiction.)
+Of course we have $V^{ab}_c \cong V^{abc^*}$ (see \ref{pivotal_ss} below).
+\kw{probably should add figs for $V^{ab}_c$ and $V^{abc}$}
 
 More generally, we define $V^{ab}_{cd} = \mor(c\tp d\to a\tp b)$, $V^{ab}_{cde} = \mor(c\tp d\tp e\to a\tp b)$,
 $V_{abcd} = \mor(a\tp b\tp c\tp d\to \unit)$, etc.
-In general, we do not require that $a$, $b$ etc. be simple.
+In general, we do not require that the objects $a$, $b$ etc. be simple.
 
 \medskip
 
@@ -11242,6 +11246,7 @@ Then we can define a complete set of odd basis vectors $\{ |\eta_i\rangle \}$ fo
 When we write $|\eta_i\rangle$ graphically, we will write it as $f |\psi \rangle$, which allows us to  ``shift the oddness out of the vertex onto the edge'' by transferring the fermion residing on the fusion space to the q-type particle $c$. 
 Graphically, this means that we are allowed to ``displace'' dots from trivalent vertices onto q-type worldlines:
 \be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_displacement.pdf}}}}, \ee
+\kw{should add arrows (edge orientations) to this and similar figs}
 where the picture on the left is $|\eta_i\rangle$ and the one on the right is $f|\psi_i\rangle$, and $c$ is assumed to be q-type. 
 %Mathematically, this is nothing more than the mapping $V^{ab}_c \mapsto [V^{ab}_c]^0 \tp V^{c\unit}_{c} \cong [V^{ab}_c]^0 \tp \End(c)$ 
 %where $[V^{ab}_c]^0$ is a purely even vector space.
@@ -11252,11 +11257,55 @@ Although this is not a deep fact, it proves to be helpful when doing graphical m
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Pivotal structure}
+\subsection{Pivotal structure}  \label{pivotal_ss}   \label{pivotal_structure} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\nn{...}
+The pivotal structure assigns to each object $a$ a dual object $a^*$.
+It also provides linear isomorphisms
+\be
+	P_L : \mor(a \to b\tp c) \to \mor(b^*\tp a \to c)
+\ee
+and
+\be
+	P_R : \mor(a\tp b \to c) \to \mor(a \to c\tp b^*)
+\ee
+for any objects $a$, $b$ and $c$.
+These isomorphisms are required to be functorial with respect to $a$ and $c$.
 
+For objects $a$, we require that $a^{**} = a$ on the nose (strict pivotal).
+For morphisms $f : a\to b$, we define $f^* : b^* \to a^*$ by $f^* = P_L(P_R(f))$.
+\kw{should add fig for this}
+(We have implicitly added and then removed some tensor units (trivial objects) here.)
+We think of $f^*$ as a $+\pi$ rotation of the morphism.
+We have
+\be
+	(fg)^* = (-1)^{|f||g|} g^* f^* .
+\ee
+In other words, $*$ is a contravariant functor if one takes Koszul signs into account.
+
+For (strict) pivotal bosonic categories, one requires that $**$ is the identity functor, but
+in the fermionic case one requires that $**$ is the spin-flip functor $(-1)^F$.
+More specifically, we require
+\be
+	f^{**} = (-1)^{|f|} f ,
+\ee
+since $f^{**}$ is a $2\pi$ rotation of $f$.
+
+The part of the pivotal structure most used in calculations is the $+2\pi/3$ rotation on the 
+basic trivalent fusion spaces.
+We define the ``pivot" $P^{ab}_c : V^{ab}_c \to V^{bc^*}_{a^*}$
+as $P_R\circ P_L$.
+In terms of diagrams and matrices, this looks like
+\kw{insert eqn similar to existing one in older pivotal subsection}.
+We can similarly define $P^{abc} : V^{abc}\to V^{bca^*}$
+\kw{insert similar eqn/fig}
+We will usually write simply $P$, since the $a$, $b$ and $c$ are typically clear from context.
+
+Note that we have $P^3 = (-1)^F$.
+\kw{fig/eqn for this too; $(-1)^\mu$}
+
+\medskip
+\kw{do we need anything else here?}
 
 
 
@@ -11543,6 +11592,16 @@ Another possible convention would be to use the ordering corresponding to (say) 
 but this creates opportunities for error when changing diagrams by isotopies,
 and is not really workable for diagrams drawn on higher genus surfaces.
 
+A map between unordered tensor products 
+\be
+	\bigotimes_i W_i \; \to \; \bigotimes_j V_j
+\ee
+is defined to be a collection of maps between
+all possible pairs of ordered tensor products.
+These maps are required to commute with the Koszul isomorphisms on either side.
+To specify such a map, it suffices to give a map between one particular pair of ordered tensor products.
+All other maps in the collection are uniquely determined by this choice and the commutativity requirement.
+
 
 \begin{comment}
 Because of the anti-commuting nature of fusion spaces (i.e., because they can have odd fermion number), 
@@ -11568,11 +11627,78 @@ The action of $P_{12}$ is encapsulated by the Koszul sign rule expressing the su
 \end{align}
 \end{comment}
 
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Modified tensor product} \label{modified_tensor_product}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\kw{I think this section can be shortened}
+Let $\mcx$ be a complete collection of simple objects (minimal idempotents), one from each equivalence class.
+(In this subsection, as in most of the paper, we are assuming that our category is semisimple with finitely many equivalence
+classes of simple objects.)
+For arbitrary objects $x$ and $y$, we have
+\be
+	\mor(x\to y) \: \cong \: \bigoplus_{a\in\mcx} \mor(x\to a) \tp_{\End(a)} \mor(a\to y) .
+\ee
+Recall that the relative tensor product on the RHS above is defined as the usual tensor product over scalars, modulo elements
+of the form $\alpha f \tp \beta - \alpha\tp f\beta$.
+Clearly such elements are in the kernel of the composition map $\mor(x\to a) \tp \mor(a\to y) \to \mor(x\to y)$.
+Our semisimplicity assumption implies that the composition map (summing over all $a\in \mcx$) is surjective and that such
+elements generate all of the kernel.
+
+It follows (though not quite directly) that we have isomorphisms
+\be \label{pfi1}
+	V^{abc}_d \cong \bigoplus_{x\in \mcx} V^{ab}_x \tp_{\End(x)} V^{xc}_d
+\ee
+and also
+\be \label{pfi2}
+	V^{abc}_d \cong \bigoplus_{y\in \mcx} V^{ay}_d \tp_{\End(y)} V^{bc}_y .
+\ee
+
+\medskip
+
+Diagrammatically, the relative tensor product means that fermionic dots can move across edges labeled by q-type simple objects.
+
+
+\kw{What else needs to be said here?}
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+\subsection{F-symbols} \label{Fsymbols}
+%%%%%%%%%%%%%%%%%%
+
+It follows from \ref{pfi1} and \ref{pfi2} that there is an isomorphism
+\be
+	F^{abc}_d : \bigoplus_{x\in \mcx} V^{ab}_x \tp_{\End(x)} V^{xc}_d \;\to\; \bigoplus_{y\in \mcx} V^{ay}_d \tp_{\End(y)} V^{bc}_y .
+\ee
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+\subsection{Coherence relations} \label{coherence_ss}
+%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%
+\subsection{Reflection structure} \label{reflection_ss}
+%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Modified tensor product (old version)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\kw{I think this section can be shortened; I think some of the material already appears far above.}
 
 There is an important subtlety involved when we tensor together fusion spaces which involve q-type particles, which stems from the non-triviality of the fusion space $V^{x\unit}_x$ if $x$ is q-type.
 To see where this comes from, suppose $x$ is a q-type particle, and consider the resolution of the identity 
@@ -11695,7 +11821,7 @@ a fusion category with only m-type particles.
 
 
 %%%%%%%%%%%%%%%%%%
-\subsection{F-symbols} \label{Fsymbols}
+\subsection{F-symbols (old version)}
 %%%%%%%%%%%%%%%%%%
 
 The $F$-symbols are defined as basis transformations between different fusion spaces. 
@@ -11814,7 +11940,7 @@ For a simple q-type object we have
 
 
 %%%%%%%%%%%%%%%%%%%%
-\subsubsection{Pivotal structure} \label{pivotal_structure} 
+\subsubsection{Pivotal structure (old version)}
 %%%%%%%%%%%%%%%%%%%%
 
 Finally, we remark on the pivotal structure of fusion spaces in superfusion categories. First, we have the Frobenius-Schur indicator, which is given by
@@ -12115,20 +12241,20 @@ This means that each edge sees two inward pointing edges.
 %\kw{Thanks for the fig.  Probably we should add a box in the middle of the edge. \dave{done.}}
 If the two labels coming from the two adjacent vertices are $a$ and $b$
 (which we will assume are both m-type, for simplicity), then the
-associated vector space for the edge is $V^{ab}$, which is 0-dimensional unless $a \cong b^*$.
-If $a$ is not self-dual, or if $a$ is evenly self-dual with FS indicator 1, then there is a canonical identification of $V^{ab}$ with 
+associated vector space for the edge is $V_{ab}$, which is 0-dimensional unless $a \cong b^*$.
+If $a$ is not self-dual, or if $a$ is evenly self-dual with FS indicator 1, then there is a canonical identification of $V_{ab}$ with 
 $\cc = \cc^{1|0}$ and we can ignore it.
 
-But if $a$ is evenly self-dual with FS indicator $-1$, then there is a sign ambiguity in identifying $V^{aa}$ with $\cc$, and we will have to
+But if $a$ is evenly self-dual with FS indicator $-1$, then there is a sign ambiguity in identifying $V_{aa}$ with $\cc$, and we will have to
 keep careful track of this sign when defining the Hamiltonian.
-Even worse, if $a$ is {\it oddly} self-dual (and $a$ is m-type), with FS indicator $\pm i$ (as occurs in the $\halfesix$ theory studied earlier), then $V^{aa}$ is an odd vector space, 
+Even worse, if $a$ is {\it oddly} self-dual (and $a$ is m-type), with FS indicator $\pm i$ (as occurs in the $\halfesix$ theory studied earlier), then $V_{aa}$ is an odd vector space, 
 non-canonically isomorphic to $\cc^{0|1}$.
 Keeping track of these odd vector spaces would entail even more bookkeeping.
 %The extra bookkeeping this entails is even more annoying.
 
 Overall, we think the least annoying solution to the above problems is to orient each edge of the graph.
 This allows us to treat $a$ and $a^*$ as distinct objects, even when they happen to be isomorphic.
-Now, instead of $V^{aa}$, we have $V^{aa^*} = \End(a)$, which has a canonical element $id: a\to a$.
+Now, instead of $V_{aa}$, we have $V_{aa^*} \cong \End(a)$, which has a canonical element $id: a\to a$.
 
 Why the pitchforks? As alluded to earlier, rotations by $2\pi/3$ can act non-trivially on $V^{aaa}$, and so it is helpful to choose a vertex configuration where every outgoing edge is placed on the same footing. 
 This is true even in the bosonic case.
