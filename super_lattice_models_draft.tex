@@ -6978,6 +6978,7 @@ as $P_R\circ P_L$.
 In terms of diagrams and matrices, this looks like
 \kw{insert eqn similar to existing one in older pivotal subsection}.
 We can similarly define $P^{abc} : V^{abc}\to V^{bca^*}$
+\dave{I would have thought this should be $P^{abc} : V^{abc}\to V^{bca}$ (or possibly $P^{abc} : V^{abc}\to V^{b^*ca^*}$ depending on convention)?}
 \kw{insert similar eqn/fig; this is the pivot we will use for hamiltonian and tensor network}
 We will usually write simply $P$, since the $a$, $b$ and $c$ are typically clear from context.
 
@@ -8107,6 +8108,8 @@ Continually violating edge terms along a path of neighboring plaquettes results 
 These excitations are linked by a spin structure defect line, which excites each edge that it crosses. 
 This means that the vortex excitations can only be separated
 at the expense of a linear increase in energy, and so the vortex excitations are linearly confined. 
+\dave{Note to self: this is only true if the fusino category has q-type objects, 
+otherwise there are no edge terms to violate.}
 
 However, this does not mean that the non-bounding excitations are always necessarily linearly confined, and we can modify the Hamiltonian so that the vortex excitations are not confined.
 One way to do this is to modify the Hamiltonian to be defined on a graph with punctures at the locations of the vortex particles, and to incorporate their effect on the spin structure into the $\alpha(e)$ factors appearing in the expression for $D_e$. 
@@ -8116,10 +8119,184 @@ However, in this case the vortex excitations themselves are still immobile.
 Another way to deconfine the vortex quasiparticles and allow them to move freely is to make the spin structure dynamical; we leave the study of this possibility to future work. 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{Super pivotal state sums and tensor networks} 
+%%%%%%%%%%%%%%%%%%%%%%%
+\label{state_sums}
 
+\dave{The following is a sketch}
+
+In this section we write down a Turaev-Viro-Barrett-Westbury (TVBW) state sum for the super pivotal fusion categories\cite{Turaev1992,Barrett1996}, 
+and a tensor network for the ground state wave function of the Hamiltonian in \eqref{ham}.
+Very closely related work was presented in~\cite{bhardwaj2016}, 
+see also \cite{Bultinck2017, upcoming-paper?}.
+We first breifly review the TVBW construction for spherical fusion categories. 
+We do so in a way that naturally extends to the super-pivotal case with only minor modifications.
+Lastly we use the state sum to write down an explicit wave function for the ground ground state of \eqref{ham}.
+
+\subsection{Review of Turaev-Viro-Barrett-Westbury state sum}
+\dave{Alternative title: Review state sum from cut-and-glue,
+then do standardization procedure,
+then write down TVBW state sum}
+We give a lightening review of the TVBW state sum construction. 
+The main purpose of this section is to set up the notation used for defining the super pivotal state sum. 
+Experts are recommended to skip this section with possibly, only glancing at the figures.
+Those interested in the details of the original construction are referred to \cite{Turaev1992,Barrett1996}, 
+and the one followed here in \cite{Walker2006}. 
+
+The starting point is a list of data:
+\begin{itemize}
+\item an oriented 3-manifold $\mcm$
+\item a cell decomposition with oriented 1-cells and transversal orientation of the 2-cell
+\item a spherical fusion category $\mcc$
+\end{itemize} 
+from which one defines a partition function $Z(\mcm)$. 
+
+\dave{I wanted to run this theme.
+We cut the manifold up into pieces and assign vector spaces to each piece.
+We then define the gluing maps as the tensors.}
+The partition function is defined via the cut and glue formalism. 
+This consists of fattenning the cell decomposition into a handle decomposition. 
+Then cutting out each k-handle, and summing over a complete set of normalized states across the boundary,
+which glues the surface back together.
+The result of which is a series of linear maps,
+\begin{align}\nonumber
+\cc \ra A(\text{3-handles}) \ra A(\text{2-handles}) \ra A(\text{1-handles}) \ra A(\text{0-handles}) \ra Z(\mcm)
+\end{align}
+where $A(m)$ is the vector space assigned to the boundary $m$ by $\mcc$.
+Semi-simplicity of $\mcc$ means that each of these vector spaces are finite dimensional.
+Furthurmore, the k-handles are disjoint subsets of $\mcm$ and so the vector spaces appearing above are tensor products of vector spaces associate to each k-handle, e.g., $A(\text{0-handles}) = \tp_{v \in \mcv} A_v$,
+where $\mcv$ denotes the collection of 0-handles, and $A_v$ the vector space assigned to each. 
+The linear maps are naturally described by tensors, 
+and the partition function $Z(\mcm)$ as a tensor trace.
+
+Denoting the number of 3-cells by $n_3$, the collection of 2-cells by $\mcf$, 
+collection of 1-cells $\mce$, and the collection of 0-cells by $\mcv$, 
+the partition function can be written as,
+\begin{align}
+Z(\mcm) = \frac{1}{\mcd^{2 n_3}}\sum_{\mcl} \prod_{f \in \mcf} T_f \prod_{e \in \mce} T_e \prod_{v \in \mcv} T_v
+\label{TVBWss}
+\end{align}
+where $\mcl$ runs over a label set determined by $\mcc$, 
+and the $T_f$, $T_e$, and $T_v$, 
+are fixed numbers for a particular labeling. 
+Each tensor is solely determined by the labels ascribed to each cell corresponding to the 0-, 1-, and 2-cells,
+these numbers are provided by evalutions of diagrams on $S^2$.
+
+Abstractly, the tensors appearing in \eqref{TVBWss}, 
+defined by,
+\begin{align}\nonumber
+\cc \ra A(\text{3-handles}) \ra \tp_{f} A(f) \xrightarrow{T_f} \tp_{e \in \mce} A(e) \xrightarrow{T_e} \tp_{v \in \mcv} A(v) \xrightarrow{T_v} Z(\mcm)
+\end{align}
+where each $T$ is given by,
+\dave{Will think about this more carefully in the near term.}
+\begin{align}
+T = \sum_{\phi, \psi}T_{\phi \psi}  \psi \tp \phi^*
+\end{align}
+For explicit definitions see \cite{Walker2006}.
+The above technically gives the correct answer for the fermionic case, 
+practical implimentation requires care.
+In the next section we present a standardization procedure that allows one to evaluate the partition function.
+
+\subsection{Standardization of cell labels}
+To define the tensors in \eqref{TVBWss} explicitly, 
+it is helpful to standardize each of the cells. 
+Technically, the partition function is built on the handle decomposition, 
+but its useful to label the data associated to each handle by the corresponding cell. 
+Much of this section is notational, 
+readers are invited to familiarize themselves with Figure~\ref{FIGURE}, 
+and Table~\ref{TABLE}, and continue with the next subsection. 
+
+
+Although not necessary, we assume the cell decomposition is dual to a triangulation for ease of notation.
+The standardization procedure is similar to the pitchforkization procedure defined in \eqref{pitchfork_basis} and surrounding text.
+Before we assign labels to each cell, and there associated weights, 
+we first establish some notation for the components of each cell. 
+
+We begin with the 2-cells.
+Each 2-cell is labeled by an $f \in \mcf$, 
+and is homeomorphic to a polygon with $r(f)$ edges.
+\dave{draw figure.}
+Each edge is oriented by the transversal orientation assigned to $f$ (equivalently, each 2-cell is equiped with a boundary orientation).
+Denote the edge at the boundary of the 2-cell $f$, which neighbours the 1-cell $e$ by $c_{fe}$,
+See Figure~\ref{FIGURE}.
+\dave{make figure.}
+
+The tubular neighbourhood of the 1-cells is homeomorphic to $\text{(pitchfork)}\times [0,1]$ \dave{unlabeled pitchfork. Come up with name. Draw picture.}.
+The boundaries of these are naturally oriented by the neighbouring 2-cells. 
+We denote the edges which neighbour the 2-cells by $\bar{c}_{fe}$, the bar denotes that the orientation is oppisote that of the edge of the 2-cell $c_{fe}$, see Figure~\ref{FIGURE}. 
+The 1-cell neighbours two 0-cells, $v$ and $v'$. 
+Denote the pitchforks appearing at either end by $c_{ev}$ and $c_{ev'}$, again these pitchforks are oriented by the neighbouring 2-cells, see Figure~\ref{FIGURE}.
+
+The spherical neighbourhood of the 0-cell is intersected by six 2-cells, and four 1-cells.
+For our purposes, it is enough to keep track of the four neighbouring 1-cells.
+Removing a single point from this spherical neighbourhood allows us to define a homeomorphism into the plane. 
+Furthurmore, the gluing regions for the 1-cells can all be taken to be pitchforks as in \eqref{pitchfork_basis}, see Figure~\ref{FIGURE}.
+This is our standardized 0-cell (actually spherical neighbourhood of the 0-cell). 
+Denote the 0-cell by $v$ and the neighbouring 1-cells by $e_j$, $j=1, \cdots 4$.
+We denote the four pitchforks by $\bar{c}_{e_j v}$, again the overbar is denotes that these are in the oppisote orientation relative to that $c_{e_jv}$ boundaries of the 1-cells. 
+
+We now are ready to define labels for each of the gluing regions $c_{xy}$ defined above.
+Define the vector spaces 
+\begin{align}
+E = \bigoplus_{x} \cc_x \quad \quad \quad W = \bigoplus_{abc}V^{abc}.
+\end{align}
+Momentarily, the vector space $W$ will be assigned to pitchforks, as with \eqref{pitchfork_basis}, 
+not all pitchforks will be oriented outward. 
+In this scenario we replace the appropriate object with its dual, this will be clear from context, 
+and so we will overload the notation. 
+The vector space we assign to each of the components defined above is listed in Table~\ref{TABLE}
+\dave{Make table for this.
+Notation for these vector spaces? $\mch$ maybe better?}
+\begin{align}
+A(c_{ev}) &= E \\
+A(\bar{c}_{ev}) &= E^* \\
+A(c_{ev}) & = W \\
+A(\bar{c}_{ev}) &= W^* \\ 
+A(f) &= \tp_{e \in f}  A(c_{ev})\\
+A(e) &= \tp_{f \in e} A(\bar{c}_{ev})\\
+A(v) & = \tp_{j} A(\bar{c}_{e_j v})
+\end{align}
+\dave{In caption say:}
+Where $ e \in f$ denotes all edges $e$ that neighbour the face $f$, similarly for $f \in e$.
+\dave{Draw a few pictures denoting basis elements of $A(f)$, $A(v)$ and $A(e)$.}
+
+\dave{To do}
+\begin{itemize}
+\item define (or refer to) an evaluation map/how we identify duals
+\item define a kronnecker delta function (i.e., and evaluation map normalized so so that $\delta(\mu, \mu') = \delta_{\mu,\mu'^*}$)
+\item Draw picture for standardardized 1-handles taking disk to disk.
+\item Add paragraph on how the 1-handles are composition of reflection and pivot
+\item define tensors for TVBW state sum as $\text{(labeled picture)} = number$
+\item Write doen $Z(\mcm) = \sum_{\mcl} \prod_{\text{labeled pictures}}$, re-pharase as $Z(\mcm) = \delta(\tp_{\text{cells} } T_x)$, 
+where $\delta(...)$ means contract tensors. 
+\end{itemize}
+
+\subsection{Super pivotal state sum}
+\dave{To do (this was written whilest tired, and may not reflect the authors true intentions)}
+\begin{itemize} 
+\item List differences of input data
+\item add paragraph on how $A(e)$ and $A(f)$ are now super vector spaces
+\item Refer to section on reflection structure in defintion section \dave{check Turzillo paper}. 
+define the kronecker product and evaluation maps
+\item define face tensor with new new normalization $d_{x} \ra d_x/2^{n_x}$
+\item discuss that we now keep track of pivots on 1-handles which are now satisfying $P^6 = \text{id}$
+\item Define 1-cell and 2-cell tensor 
+\item refer to definition section on fancy way of handling graded tensor products/evaluations, 
+and re-assure reader that everything is well defined but some work is required for plugging into computer
+\end{itemize}
+
+\subsection{Shadow world and explicit ground state wave function}
+\dave{To do:}
+\begin{itemize} 
+\item write down explicit wave function on e.g., honeycomb lattice. Using the TV state sum on a slab
+\item connection to MPO's/mention tube category/excitations
+\item Do some sort of example. At the very least we can write down the wave function for the Kitaev wire.
+We could write down the ground state of the $C_2$ theory.
+\end{itemize} 
 
  %%%%%%%%%%%%%%%%%%%%%%%
-\section{Tensor networks and wave function} \label{state_sums}
+\section{\dave{Old section.} Tensor networks and wave function} 
 %%%%%%%%%%%%%%%%%%%%%%%
 \dave{Refs.}
 \cite{Turaev2010}
