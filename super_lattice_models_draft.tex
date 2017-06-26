@@ -6841,8 +6841,9 @@ We can similarly define $P^{abc} : V^{abc}\to V^{bca^*}$
 \kw{insert similar eqn/fig; this is the pivot we will use for hamiltonian and tensor network}
 We will usually write simply $P$, since the $a$, $b$ and $c$ are typically clear from context.
 
-Note that we have $P^3 = (-1)^F$.
-\kw{fig/eqn for this too; $(-1)^\mu$}
+Since $P^3$ acts as a $2\pi$ rotation, we have $P^3 = (-1)^F$. Diagrammatically, this is
+\be\mathord{\vcenter{\hbox{\includegraphics[scale=1]{pivot_cubed.pdf}}}}\ee
+where $\mu \in V^{ab}_c$. 
 
 \medskip
 \kw{do we need anything else here?}
@@ -7090,14 +7091,38 @@ must be changed to take account of Koszul signs.
 
 We will start with the well-known pentagon equation, in the version that uses the basic fusion spaces $V^{ab}_c$.
 If we work in terms of {\it unordered maps}, with \ref{fdef21} interpreted as an unordered map between direct sums of
-unordered tensor products, then the fermionic pentagon equation looks just like the bosonic case:
+unordered tensor products, then the fermionic pentagon equation looks just like the bosonic case, namely
+that the following diagram commutes:
 \kw{insert pentagon commutative diagram}
-But if we peer under the hood and look at {\it ordered representatives} (as we need to do if, for example,
+However, if we peer under the hood and look at {\it ordered representatives} (as we need to do if, for example,
 we were checking the pentagon equation on a computer), then we
-see that a Koszul sign appears:
-\kw{insert hexagonal pentagon diagram}.
+see that a Koszul sign appears, and the commutative diagram becomes hexagonal:
+\begin{align}
+\newcommand{\A}{\bigoplus_{p,q}V^{xy}_{p,3}\tp_p V^{pz}_{q,2}  \tp_q V^{qw}_{u,1}}
+\newcommand{\AB}{\ar[rru]^{F^{pzw}_u} \ar[rrd]^{F^{xyz}_q}}
+\newcommand{\B}{\bigoplus_{p,t} V^{xy}_{p,3} \tp_p V^{pt}_{u,1} \tp_t V^{zw}_{t,2}}
+\newcommand{\BC}{\ar[rrr]^{F^{xyt}_u}}
+\newcommand{\C}{\bigoplus_{t,s} V^{xs}_{u,1} \tp_s V^{yt}_{s,3} \tp_t V^{zw}_{t,2}}
+\newcommand{\CF}{\ar[rrd]^{P_{23}}}
+\newcommand{\D}{\bigoplus_{r,q}V^{xr}_{q,2}\tp_r V^{yz}_{r,3}  \tp_q V^{qw}_{u,1}}
+\newcommand{\DE}{\ar[rrr]^{F^{xrw}_u} }
+\newcommand{\E}{\bigoplus_{s,r}V^{xs}_{u,1}\tp_s V^{yz}_{r,3}  \tp_r V^{rw}_{s,2}}
+\newcommand{\EF}{\ar[rru]^{F^{yzw}_s}} 
+\newcommand{\F}{\bigoplus_{t,s} V^{xs}_{u,1} \tp_s V^{yt}_{s,2} \tp_t V^{zw}_{t,3}}
+\vcenter{\xymatrix @!0 @M=2mm @R=22mm @C=19mm{
+&&\B \BC &&&\C \CF &&\\
+\A \AB &&&&&&&\F \\
+&&\D \DE&&&\E \EF&&
+	}} 
+	\label{endoPentagon}
+\end{align}
+where we have used the notation $\tp_x \equiv \tp_{\text{End}(x)}$.
+In terms of the matrix elements of the $F$-symbols, this reads 
+\be  \begin{aligned} \sum_{r\in {\rm sObj}(\mcc)}\sum_{\sigma\in V^{xr}_q}\sum_{\omega \in V^{yz}_r}\sum_{\eta\in V^{rw}_s}& [F^{xyz}_q]_{(p;\mu\nu)(r;\omega\sigma)}[F^{xrw}_u]_{(q;\sigma\lambda)(s;\eta\gamma)}[F^{yzw}_s]_{(r;\beta\eta)(t;\alpha\delta)} \\ & = \sum_{\beta \in V^{pt}_u}(-1)^{|\delta||\alpha|}[F^{pzw}_u]_{(p;\nu\lambda)(t;\alpha\beta)}[F^{xyt}_u]_{(P;\mu\beta)(s;\delta\gamma)}, \end{aligned} \ee
+where $\mu\in V^{xy}_p,\nu\in V^{pz}_q,\lambda\in V^{qw}_u,\gamma\in V^{xs}_u,\delta\in V^{yt}_s,$ and $\alpha\in V^{zw}_t$. 
+The Koszul sign $P_{23}$ appearing in \eqref{endoPentagon} appears in the above formula as $(-1)^{|\delta||\alpha|}$, where as usual $|\delta|$ denotes the parity 
+of the vector $\delta$. 
 
-\medskip
 
 \kw{TO DO: say a little bit (but only a little bit) about other coherence relations}
 
@@ -7487,9 +7512,7 @@ edges at each trivalent vertex are ``on the same footing''. This is in contrast 
 and in the earlier sections of this paper, where vertices are drawn with one ``incoming'' edges and two 
 ``outgoing'' edges, since in this convention the incoming edge is distinguished from the two outgoing edges.
 We will choose a convention in which all three edges at each trivalent vertex are outgoing: with this
-choice, each vertex resembles a pitchfork. \ethan{pitchforks usually have four tines, perhaps ``trident'' is slightly more precise}
-\dave{I'm a pretty big fan of the word pitchfork.
-Plus `tridentization' doesn't sound as good.}
+choice, each vertex resembles a pitchfork. 
 The cyclic ordering of the edges at a given vertex is determined by the left-to-right ordering of the pitchfork legs. 
 
 Finally, we must choose a spin framing at each vertex, consistent with the ``pitchforkization'' convention.
@@ -9122,7 +9145,20 @@ The failure of $\eta_\sigma$ to factor over the concatenation of two paths $\gam
 where $\gamma+\gamma'$ is the concatenation of $\gamma$ and $\gamma'$. 
 This means that spin structures can be described as a quadratic refinement of the intersection pairing. 
 
-This perspective allows us to easily calculate the number of spin structures that a given manifold admits. For example, there are two spin structures on the cylinder: one with periodic boundary conditions (vortex spin structure) and one with anti-periodic boundary conditions (non-vortex spin structure). Similarly for the torus there are four, one for each combination of boundary conditions around the two non-contractible cycles of the torus. There are also four spin structures on the pair of pants: determining boundary conditions around two of the punctures uniquely determines the boundary condition around the third puncture. Since fermions traveling around {\it contractible} loops have anti-periodic boundary conditions, anti-periodic boundary conditions serve as the ``identity'' in the group $H^1(M,\zt)$ of spin structures. This means that if two of the punctures on a pair of pants have $P$ boundary conditions, the third must have $A$ boundary conditions. This is relevant for determining the fusion rules of quasiparticles in our theory: their fusion rules are $\zt$-graded by their spin structures, with vortex spin structures being associated with the nontrivial element of $\zt$. If we think of periodic boundary conditions as being implemented by branch cuts, this just means that the branch cuts obey $\zt$ fusion rules, and are only allowed to terminate on punctures which host a vortex-type quasiparticle. 
+This perspective allows us to easily calculate the number of spin structures that a given manifold admits. 
+For example, there are two spin structures on the cylinder: one with periodic boundary conditions (vortex 
+spin structure) and one with anti-periodic boundary conditions (non-vortex spin structure). Similarly for the 
+torus there are four, one for each combination of boundary conditions around the two non-contractible 
+cycles of the torus. There are also four spin structures on the pair of pants: determining boundary 
+conditions around two of the punctures uniquely determines the boundary condition around the third 
+puncture. Since fermions traveling around {\it contractible} loops have anti-periodic boundary conditions, 
+anti-periodic boundary conditions serve as the ``identity'' in the group $H^1(M,\zt)$ of spin structures. This 
+means that if two of the punctures on a pair of pants have $P$ boundary conditions, the third must have 
+$A$ boundary conditions. This is relevant for determining the fusion rules of quasiparticles in our theory: 
+their fusion rules are $\zt$-graded by their spin structures, with vortex spin structures being associated 
+with the nontrivial element of $\zt$. If we think of periodic boundary conditions as being implemented by 
+branch cuts, this just means that the branch cuts obey $\zt$ fusion rules, and are only allowed to terminate 
+on punctures which host a vortex-type quasiparticle. 
 
 
 To think about inner products of diagrams, we need to have the ability to reflect them in a given spacetime plane. Incorporating reflections into our arsenal means replacing $SO(n)$ with $O(n)$ in \eqref{spin_gp_seq}. This allows us to define the groups $pin_\pm(n)$, which are the ``reflection-enhanced'' versions of $Spin(n)$ defined by the exact sequence 
