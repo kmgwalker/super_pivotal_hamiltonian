@@ -229,7 +229,17 @@
 \newcommand{\OneHandlemu}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{OneHandlemu.pdf}}}}}
 \newcommand{\OneHandlea}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{OneHandlea.pdf}}}}}
 
+\newcommand{\Bilineara}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.85]{Bilineara.pdf}}}}}
+\newcommand{\Bilinearb}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.85]{Bilinearb.pdf}}}}}
+\newcommand{\Bilinearc}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.85]{Bilinearc.pdf}}}}}
+
+
+
+
 \newcommand{\Tetrahedron}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tetrahedron.pdf}}}}}
+\newcommand{\StandardZeroCell}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{StandardZeroCell.pdf}}}}}
+\newcommand{\HorshoeIdentity}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{HorshoeIdentity.pdf}}}}}
+
 \newcommand{\PitchforkIdempotent}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{PitchforkIdempotent.pdf}}}}}
 
 \newcommand{\Pitchforkabc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Pitchforkabc.pdf}}}}}
@@ -8038,7 +8048,7 @@ One can now re-interpret the matrices above $Z(M_{\text{cut}} \cup e_i \cup \hat
 the attaching regions of the (k+1)-handles to the k-handles. 
 Abstractly we have,
 \begin{align}\nonumber
-\cc \rightarrow{??}V(\{ c_3 \}) \xrightarrow{T_{\mcf}} V(\{ c_2 \})  \xrightarrow{T_{\mce}} V(\{ c_1 \})  \xrightarrow{T_{\mcv}} V(\{ c_0 \}) 
+\cc \xrightarrow{??}V(\{ c_3 \}) \xrightarrow{T_{\mcf}} V(\{ c_2 \})  \xrightarrow{T_{\mce}} V(\{ c_1 \})  \xrightarrow{T_{\mcv}} V(\{ c_0 \}) 
 \end{align}
 where $V(\{c_k \})$ is the attaching region for the k-handle. 
 %\kw{full boundary or non-attaching boundary?}
@@ -8094,7 +8104,7 @@ The above technically gives the correct answer for the fermionic case,
 practical implimentation requires care.
 In the next section we present a standardization procedure that allows one to evaluate the partition function.
 
-\subsection{Notation used}
+\subsection{Notation and standardization of state sum}
 To define the tensors in \eqref{TVBWss} explicitly, 
 it is helpful to standardize each of the cells, 
 and the vector spaces we assign to each cell. 
@@ -8104,65 +8114,104 @@ Much of this section is notational,
 readers are invited to familiarize themselves with Figure~\ref{FIGURE}, 
 and Table~\ref{TABLE}, 
 and continue with the next subsection. 
-
-
 Although not necessary, we assume the cell decomposition is dual to a triangulation for ease of notation.
 The standardization procedure is similar to the pitchforkization procedure defined in \eqref{pitchfork_basis} and surrounding text.
-Before we assign labels to each cell, and there associated weights, 
-we first establish some notation for the components of each cell. 
+We first establish some notation for the components of each cell. 
 
 We begin with the 2-cells.
 We denote the collection of 2-cells by $\mcf$.
-Each $f \in \mcf$ is homeomorphic to a simple polygon with $r(f)$ edges.
-\dave{draw figure.}
+Each $f \in \mcf$ is homeomorphic to a simple polygon, see `f' in Figure~\ref{NotationStateSum}.
 Each edge is oriented by the transversal orientation assigned to $f$ (equivalently, each 2-cell is equiped with a boundary orientation).
-Denote the edge at the boundary of the 2-cell $f$, which neighbours the 1-cell $e$ by $c_{fe}$,
-See Figure~\ref{FIGURE}.
-\dave{make figure.}
+Denote the edge at the boundary of the 2-cell $f$, which neighbours the 1-cell $e$ by $c_{fe}$, again, see Figure~\ref{NotationStateSum}.
 
-The tubular neighbourhood of the 1-cells is homeomorphic to $\text{(pitchfork)}\times [0,1]$ \dave{unlabeled pitchfork. Come up with name. Draw picture.}.
-The boundaries of these are naturally oriented by the neighbouring 2-cells. 
-We denote the edges which neighbour the 2-cells by $\bar{c}_{fe}$, the bar denotes that the orientation is oppisote that of the edge of the 2-cell $c_{fe}$, see Figure~\ref{FIGURE}. 
+The tubular neighbourhood of the 1-cells is a 1-handle with oriented trivalent vertices on each disk connected by an annulus with three oriented lines.
+The orientation of the lines is opposite that of the neighbouring 2-cell boundary, 
+and determines the orientation of the three lines entering the two disks, see Figure~\ref{NotationStateSum}.
+We denote the edges which neighbour the 2-cells by $\bar{c}_{fe}$, the bar denotes that the orientation is oppisote that of the edge of the 2-cell $c_{fe}$, see Figure~\ref{NotationStateSum}. 
 The 1-cell neighbours two 0-cells, $v$ and $v'$. 
-Denote the pitchforks appearing at either end by $c_{ev}$ and $c_{ev'}$, again these pitchforks are oriented by the neighbouring 2-cells, see Figure~\ref{FIGURE}.
+Denote the pitchforks appearing at either end by $c_{ev}$ and $c_{ev'}$, 
+again these pitchforks are oriented by the neighbouring 2-cells, see Figure~\ref{NotationStateSum}.
 
 The spherical neighbourhood of the 0-cell is intersected by six 2-cells, and four 1-cells.
 For our purposes, it is enough to keep track of the four neighbouring 1-cells.
-Removing a single point from this spherical neighbourhood allows us to define a homeomorphism into the plane. 
-Furthurmore, the gluing regions for the 1-cells can all be taken to be pitchforks as in \eqref{pitchfork_basis}, see Figure~\ref{FIGURE}.
-This is our standardized 0-cell (actually spherical neighbourhood of the 0-cell). 
+\dave{Comment on why this is.}
+%Removing a single point from this spherical neighbourhood allows us to define a homeomorphism into the plane. 
+%Furthurmore, the gluing regions for the 1-cells can all be taken to be pitchforks as in \eqref{pitchfork_basis}, see Figure~\ref{FIGURE}.
+%This is our standardized 0-cell (actually spherical neighbourhood of the 0-cell). 
 Denote the 0-cell by $v$ and the neighbouring 1-cells by $e_j$, $j=1, \cdots 4$.
-We denote the four pitchforks by $\bar{c}_{e_j v}$, again the overbar is denotes that these are in the oppisote orientation relative to that $c_{e_jv}$ boundaries of the 1-cells. 
+We denote the four trivalent junctions by $\bar{c}_{e_j v}$, 
+and again the bar denotes that these are in the opposite orientation relative to the trivalent vertices $c_{e_jv}$ at the boundaries of the 1-cells. 
 
-We now are ready to define labels for each of the gluing regions $c_{xy}$ defined above.
-Define the vector spaces 
+The Figure \ref{NotationStateSum} only shows one representative sample of cells, which all others are homeomorphic to. 
+We now standardize each cell so that we can keep track of the topological data associated to the handle decomposition relative to a `standard' one. 
+This is analogous to our pitchforkization procedure discussed in the text surrounding \eqref{pitchfork_basis}.
+We first note that the spherical neighbourhood of each 0-cell can be standardized by removing a point and mapping to the plane. 
+We can next pitchforkize the attaching region for each 1-handle in the neighbourhood of the 0-cell, so that each take the form,
+\begin{align}
+\StandardZeroCell
+\end{align}
+where the dashed circles are the attaching regions for the 1-handles.
+The numbers indicate the which edge is connected to where on the standard 0-handle, i.e., associated with $\bar{c}_{e_j v}$.
+The 1-handles which attach two 0-handles are now horshoeshaped.
+Each can be deformed into,
+\begin{align}
+\HorshoeIdentity
+\end{align}
+where $P_e$ is either the identity, $P$ or $P^2$ defined in \eqref{REFER_To_Def}.
+
+We now are ready to define labels for each of the gluing regions $c_{xy}$ defined above, 
+and associated with the standardized 0-handles, and 1-handles. 
+We define the vector spaces 
 \begin{align}
 E = \bigoplus_{x} \cc_x \quad \quad \quad W = \bigoplus_{abc}V^{abc}.
 \end{align}
 Momentarily, the vector space $W$ will be assigned to pitchforks.
 As with \eqref{pitchfork_basis}, not all pitchforks will be oriented with all edges pointing outwards. 
 In this scenario we replace the appropriate object with its dual.
-The vector space we assign to each of the components defined above is listed in Table~\ref{TABLE}
-\dave{Make table for this.
-Notation for these vector spaces? $\mch$ maybe better?
-Maybe $l(c_{ev})$ etc.}
-
+The vector space we assign to each of the attachment regions are,
 \begin{align}
-A(c_{fe}) &= E \\
-A(\bar{c}_{fe}) &= A(c_{fe})^* \\
-A(c_{ev}) & = 
-\begin{cases} W &\text{if $e$ is oriented away from $v$} \\
+  \mch(c_{fe}) &= E \quad \quad \mch(\bar{c}_{fe}) = \mch(c_{fe})^* = E^*\\
+  \\
+\mch(c_{fe} )&= \begin{cases} W &\text{if $e$ is oriented away from $v$} \\
 W^* &\text{otherwise} 
 \end{cases}\\
-A(\bar{c}_{ev}) &= A(c_{ev})^* \\ 
-A(f) &= \tp_{e \in f}  A(c_{ev})\\
-A(e) &= A(c_{ev}) \tp_{f \in e} A(\bar{c}_{fe}) \tp A(c_{ev'}) \\
-A(v) & = \tp_{j=1}^4 A(\bar{c}_{e_j v})
+\mch(\bar{c}_{fe}) &= \mch(c_{fe})^*
 \end{align}
-\dave{In caption say:}
-Where $ e \in f$ denotes all edges $e$ that neighbour the face $f$, similarly for $f \in e$.
-And we have defined $e$ to be oriented from $v$ to $v'$.
-\dave{Draw a few pictures denoting basis elements of $A(f)$, $A(v)$ and $A(e)$.}
+Correspondingly, each cell is attached to the vector space 
+\begin{align}
+\text{2-cells} \quad \quad  & \mch(f) = \tp_{e \in f} \mch(c_{ef})  \\
+\text{1-cells}\quad \quad   & \mch(e) = \tp_{f \in e}\mch (\bar{c}_{ef}) \tp \mch(c_{ev}) \tp \mch (c_{ev'}) \\
+ \text{0-cell} \quad \quad  & \mch(v) = \tp_{j =1}^4\mch(\bar{c}_{e_jv}) 
+\end{align}
+The assignment of vector spaces has been so that the labels of the attachment attachment labels of the (k+1)-handles connecting to the k-handle are dual.
+
+\dave{This should be in the definition section. 
+Will write it here for now, and move it there later.}
+Lastly we define a non-degenerate bilinear pairing between a disks with $n$ marked points. 
+It is defined via,
+\begin{align}
+\mcb:\;  &V^{x_1 x_2 \cdots x_n} \tp V^{x_n^* \cdots x_2^* x_1^*} \ra \cc \\
+&\Bilineara \tp \Bilinearb \mapsto \Bilinearc
+\end{align} 
+where $\mu_i \in V^{x_1 x_2 \cdots x_n}$ and $\nu_j \in V^{x_n^* \cdots x_2^* x_1^*}$. 
+This bilinear form is just the evalutation map. 
+In particular, it gives us a linear action on each basis element $\mu_i  \in V^{abc}$ by basis elements of $\nu_j \in V^{a^* b^* c^*}$. 
+The non-degeneracy condition means that the matrix $B_{ij} = \mcb(\mu_i \tp \nu_j)$ is invertible. 
+Hence we can define a set of vectors $\mu_j^* = \sum_i \nu_i (B^{-1} )_{ij} $ so that,
+\begin{align} 
+\mcb( \mu_i \tp \mu_j^*)  = \delta_{ij}
+\end{align} 
+Note that $\mcb$ is $\cc$-linear in both its arguments. 
+It is helpful to define a 
+\dave{I am here.....}
+
+Hence we can define a kronnecker delta function for each vector space $E$ and $W$.
+Let $v_a$ be a complete set of basis elements for $E$, and $\mu_i$ a complete set of basis elements for $W$, 
+then define,
+%\begin{align}
+%\delta( v_a \tp v_b^*) = \delta_{ab} \quad \quad \text{and} \quad  \qaud \delta(\mu_i \tp \mu_j^*) = \delta_{ij}
+%\end{align} 
+
 
 
 
@@ -8220,7 +8269,17 @@ Note that for this to be non-zero $\mu_v \in V^{a_1^* a_2 a_3}$ and $\mu_{v'} = 
 \begin{center}
 \includegraphics{NotationStateSum.pdf}
 \caption{\label{NotationStateSum}
-Notation
+Notation used in this section. 
+The cells can be used to label the weights that determine the partition function.
+In the figure we have labeled a `face' by $f$, an `edge' by $e$ and a vertex by v. 
+Each is naturally associated to a 2-, 1- and 0-cell repsectively. 
+We assume a cell decomposition that is dual to a triangulation so that each 1-cell is neighboured by three 2-cells and two 0-cells. 
+Each, 0-cell is neighboured by four 1-cells. 
+The faces are transversally oriented, so that there is an orientation for there boundary. 
+The edges are also oriented, indicted by the double arrow. 
+The oriented boundary edge of the face `f' that neighbours the edge `e' is labeled $c_{fe}$, 
+and the opposing edge by $\bar{c}_{fe}$. 
+The trivalent junctions ocurring at either end of the edge are denoted $c_{ev}$ and $c_{ev'}$, the opposing trivalent junctions associate to the 0-cells by $\bar{c}_{ev'}$ and $\bar{c}_{ev}$ (not displayed).
 }
 \end{center}
 \end{figure}
