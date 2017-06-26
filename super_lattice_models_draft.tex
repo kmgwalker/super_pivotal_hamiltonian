@@ -235,6 +235,11 @@
 \newcommand{\Pitchforkabc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Pitchforkabc.pdf}}}}}
 \newcommand{\Pitchforkabcrot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Pitchforkabcrot.pdf}}}}}
 
+\newcommand{\FaceWeight}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FaceWeight.pdf}}}}}
+\newcommand{\EdgeTensorprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EdgeTensorprime.pdf}}}}}
+
+
+
 
 
 
@@ -7995,8 +8000,17 @@ The result of which is a series of linear maps,
 \end{align}
 where $A(m)$ is the vector space assigned to the boundary $m$ by $\mcc$.
 \kw{full boundary or non-attaching boundary?}
+\dave{Supposing that non-attaching means what it sounds like, then non-attaching boundary.}
 \kw{more generally, while I think the viewpoint you propose is correct in spirit, when one looks at the details things become a little messier,
 and I doubt it's possible to make a clean (and correct) statement along the lines you propose.}
+\dave{
+I agree it's only worth saying if we can do it cleanly (and obviously has to be correct).
+Lets discuss on Skype.
+The picture I had in mind was to think of each tensor as a linear map from incoming indices, living on (k+1)-handles to outgoing ones living on k-handles.
+Then evaluation of the tensor network is just composition of functions.
+The tensors would be something like basis of net-configurations/local relations on a k-handle sandwiched between
+ idempotents on attaching region of $k+1$ handle and idemoptents of outgoing attaching region on $k$ handle.
+}
 Semi-simplicity of $\mcc$ means that each of these vector spaces are finite dimensional.
 Furthurmore, the k-handles are disjoint subsets of $\mcm$ and so the vector spaces appearing above are tensor products of vector spaces associate to each k-handle, e.g., $A(\text{0-handles}) = \tp_{v \in \mcv} A_v$,
 where $\mcv$ denotes the collection of 0-handles, and $A_v$ the vector space assigned to each. 
@@ -8031,14 +8045,16 @@ The above technically gives the correct answer for the fermionic case,
 practical implimentation requires care.
 In the next section we present a standardization procedure that allows one to evaluate the partition function.
 
-\subsection{Standardization of cell labels}
+\subsection{Notation used}
 To define the tensors in \eqref{TVBWss} explicitly, 
-it is helpful to standardize each of the cells. 
-Technically, the partition function is built on the handle decomposition, 
+it is helpful to standardize each of the cells, 
+and the vector spaces we assign to each cell. 
+Technically, the partition function is built on a handle decomposition, 
 but its useful to label the data associated to each handle by the corresponding cell. 
 Much of this section is notational, 
 readers are invited to familiarize themselves with Figure~\ref{FIGURE}, 
-and Table~\ref{TABLE}, and continue with the next subsection. 
+and Table~\ref{TABLE}, 
+and continue with the next subsection. 
 
 
 Although not necessary, we assume the cell decomposition is dual to a triangulation for ease of notation.
@@ -8047,8 +8063,8 @@ Before we assign labels to each cell, and there associated weights,
 we first establish some notation for the components of each cell. 
 
 We begin with the 2-cells.
-Each 2-cell is labeled by an $f \in \mcf$, 
-and is homeomorphic to a polygon with $r(f)$ edges.
+We denote the collection of 2-cells by $\mcf$.
+Each $f \in \mcf$ is homeomorphic to a simple polygon with $r(f)$ edges.
 \dave{draw figure.}
 Each edge is oriented by the transversal orientation assigned to $f$ (equivalently, each 2-cell is equiped with a boundary orientation).
 Denote the edge at the boundary of the 2-cell $f$, which neighbours the 1-cell $e$ by $c_{fe}$,
@@ -8074,28 +8090,32 @@ Define the vector spaces
 \begin{align}
 E = \bigoplus_{x} \cc_x \quad \quad \quad W = \bigoplus_{abc}V^{abc}.
 \end{align}
-Momentarily, the vector space $W$ will be assigned to pitchforks, as with \eqref{pitchfork_basis}, 
-not all pitchforks will be oriented outward. 
-In this scenario we replace the appropriate object with its dual, this will be clear from context, 
-and so we will overload the notation. 
+Momentarily, the vector space $W$ will be assigned to pitchforks.
+As with \eqref{pitchfork_basis}, not all pitchforks will be oriented with all edges pointing outwards. 
+In this scenario we replace the appropriate object with its dual.
 The vector space we assign to each of the components defined above is listed in Table~\ref{TABLE}
 \dave{Make table for this.
-Notation for these vector spaces? $\mch$ maybe better?}
+Notation for these vector spaces? $\mch$ maybe better?
+Maybe $l(c_{ev})$ etc.}
+
 \begin{align}
-A(c_{ev}) &= E \\
-A(\bar{c}_{ev}) &= A(c_{ev})^* \\
+A(c_{fe}) &= E \\
+A(\bar{c}_{fe}) &= A(c_{fe})^* \\
 A(c_{ev}) & = 
 \begin{cases} W &\text{if $e$ is oriented away from $v$} \\
 W^* &\text{otherwise} 
 \end{cases}\\
 A(\bar{c}_{ev}) &= A(c_{ev})^* \\ 
 A(f) &= \tp_{e \in f}  A(c_{ev})\\
-A(e) &= \tp_{f \in e} A(\bar{c}_{ev}) \tp_{v \in e} A(c_{ev}) \\
+A(e) &= A(c_{ev}) \tp_{f \in e} A(\bar{c}_{fe}) \tp A(c_{ev'}) \\
 A(v) & = \tp_{j=1}^4 A(\bar{c}_{e_j v})
 \end{align}
 \dave{In caption say:}
-Where $ e \in f$ denotes all edges $e$ that neighbour the face $f$, similarly for $f \in e$, and $v\in e$.
+Where $ e \in f$ denotes all edges $e$ that neighbour the face $f$, similarly for $f \in e$.
+And we have defined $e$ to be oriented from $v$ to $v'$.
 \dave{Draw a few pictures denoting basis elements of $A(f)$, $A(v)$ and $A(e)$.}
+
+
 
 \dave{To do}
 \begin{itemize}
@@ -8108,11 +8128,71 @@ Where $ e \in f$ denotes all edges $e$ that neighbour the face $f$, similarly fo
 where $\delta(...)$ means contract tensors. 
 \end{itemize}
 
+We define a Kronnecker delta function which we use for contraction.
+Oppisotely oriented edges with the same label means kronecker delta evaluates to one. 
+Zero otherwise.
+Oppisotely oriented vertices which are labeled by 
+
+
+\dave{Weights}
+The 2-cell weights are given by $T_f \in A(f)^*$,
+\begin{align}
+T_f(\tp_{e \in f} a_e) = \sum_x d_x \prod_{e \in f}  \delta_{x, a_e}
+\end{align}
+where each $a_e$ is a basis vector of $A(c_{fe})$.
+Diagrammatically we denote this tensor as, 
+\begin{align}
+\FaceWeight = \sum_{x} d_x \prod_i \delta_{x, a_i}
+\end{align}
+
+The 1-cell weights are given by $T_e \in A(e)^*$ defined via,
+\begin{align}
+ T_e(\mu_v \tp a_{1}^*\tp a_{2}^* \tp a_{3}^* \tp \mu_{v'})  = 
+ \begin{cases} 
+ \phi(\mu_v, \mu_{v'})^{-1}  & \text{if labels agree} \\
+ 0 & \text{otherwise}
+ \end{cases} 
+\end{align}
+where $\phi(*,*)$ is the pairing between a disk and a reflected disk. 
+Or diagrammartically we write this as,
+\begin{align}
+\EdgeTensorprime = 
+ \begin{cases} 
+ \phi(\mu_v, \mu_{v'})^{-1}  & \text{if labels agree} \\
+ 0 & \text{otherwise}
+ \end{cases} 
+\end{align}
+Note that for this to be non-zero $\mu_v \in V^{a_1^* a_2 a_3}$ and $\mu_{v'} = \mu_{v}^*$.
+\dave{What if $a \cong a^*$?}
+
+
+
+\begin{figure}
+\begin{center}
+\includegraphics{NotationStateSum.pdf}
+\caption{\label{NotationStateSum}
+Notation
+}
+\end{center}
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+\includegraphics{HorshoeTube.pdf}
+\caption{\label{HorshoeTube}
+\dave{Will use this later.}
+}
+\end{center}
+\end{figure}
+
+
+
 \subsection{Super pivotal state sum}
 \dave{To do (this was written whilest tired, and may not reflect the authors true intentions)}
 \begin{itemize} 
 \item List differences of input data
-\item add paragraph on how $A(e)$ and $A(f)$ are now super vector spaces
+\item add paragraph on how $A(e)$ and $A(v)$ are now super vector spaces
 \item Refer to section on reflection structure in defintion section \dave{check Turzillo paper}. 
 define the kronecker product and evaluation maps
 \item define face tensor with new new normalization $d_{x} \ra d_x/2^{n_x}$
