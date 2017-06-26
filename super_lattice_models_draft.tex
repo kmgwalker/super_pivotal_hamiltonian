@@ -8201,53 +8201,90 @@ We first breifly review the TVBW construction for spherical fusion categories.
 We do so in a way that naturally extends to the super-pivotal case with only minor modifications.
 Lastly we use the state sum to write down an explicit wave function for the ground ground state of \eqref{ham}.
 
-\subsection{Review of Turaev-Viro-Barrett-Westbury state sum}
+\subsection{Review of cut-and-glue state sum}
+\dave{Avoiding spending time on this section. 
+View it as notes for now or as my late night hobby.
+If I can turn it into something reasonable at some point, I will. 
+Otherwise will do a more standard introduction.}
+
 \dave{Alternative title: Review state sum from cut-and-glue,
 then do standardization procedure,
 then write down TVBW state sum}
-We give a lightening review of the TVBW state sum construction. 
-The main purpose of this section is to set up the notation used for defining the super pivotal state sum. 
-Experts are recommended to skip this section with possibly, only glancing at the figures.
+We give a lightning review of the TVBW state sum construction, via the cut-and-glue formalism.
+Since much is known about TVBW state sums, 
+we present a slightly different perspective than what is usual taken,
+so that the super pivotal state sums are written in essentially the same way.
+We view the state sum as a composition of linear maps from finite dimensional tensor product spaces, starting with with the ``vacuum" $\cc$. 
+This composition of linear maps can be interpreted as a tensor network, 
+which we investigate in the subsequent sections.
 Those interested in the details of the original construction are referred to \cite{Turaev1992,Barrett1996}, 
 and the one followed here in \cite{Walker2006}. 
 
 The starting point is a list of data:
 \begin{itemize}
-\item an oriented 3-manifold $\mcm$
-\item a cell decomposition with oriented 1-cells and transversal orientation of the 2-cell
 \item a spherical fusion category $\mcc$
+\item an oriented 3-manifold $\mcm$
+\item a cell decomposition with oriented 1-cells and transversally orientated 2-cells (equivalently, the boundary of the 2-cells has an orientation)
 \end{itemize} 
 from which one defines a partition function $Z(\mcm)$. 
+
 
 \dave{I wanted to run this theme.
 We cut the manifold up into pieces and assign vector spaces to each piece.
 We then define the gluing maps as the tensors.}
+
 The partition function is defined via the cut and glue formalism. 
 This consists of fattenning the cell decomposition into a handle decomposition. 
-Then cutting out each k-handle, and summing over a complete set of normalized states across the boundary,
-which glues the surface back together.
-The result of which is a series of linear maps,
-\begin{align}\nonumber
-\cc \ra A(\text{3-handles}) \ra A(\text{2-handles}) \ra A(\text{1-handles}) \ra A(\text{0-handles}) \ra Z(\mcm)
-\end{align}
-where $A(m)$ is the vector space assigned to the boundary $m$ by $\mcc$.
-\kw{full boundary or non-attaching boundary?}
-\dave{Supposing that non-attaching means what it sounds like, then non-attaching boundary.}
-\kw{more generally, while I think the viewpoint you propose is correct in spirit, when one looks at the details things become a little messier,
-and I doubt it's possible to make a clean (and correct) statement along the lines you propose.}
-\dave{
-I agree it's only worth saying if we can do it cleanly (and obviously has to be correct).
-Lets discuss on Skype.
-The picture I had in mind was to think of each tensor as a linear map from incoming indices, living on (k+1)-handles to outgoing ones living on k-handles.
-Then evaluation of the tensor network is just composition of functions.
-The tensors would be something like basis of net-configurations/local relations on a k-handle sandwiched between
- idempotents on attaching region of $k+1$ handle and idemoptents of outgoing attaching region on $k$ handle.
+Recall that a handle decompositon for an (n+1)-manifold $\mcm$ is built from a series of k-handles which are homeomorphic to $D^n$. 
+The topology of $\mcm$ is built into the attaching regions, each of which is homeomorphic to $S^k \times D^{n-k}$.
+We are interested in 3-manifolds,
+hence the attaching regions between between the 3-, 2-, 1- and 0-handles are given by,
+$S^2 \times D^0$, $S^1 \times D^1$, and $S^{0} \times D^2$.
+The fusion category assigns maps from (k+1)-handles to a k-handles via the attaching the attaching maps. 
+This is done through the cut-and-glue relation,
+\dave{Note to self: Check ch.6 Walker notes.
+There's a formula that even looks like the one I want.
+It is something like:
 }
-Semi-simplicity of $\mcc$ means that each of these vector spaces are finite dimensional.
-Furthurmore, the k-handles are disjoint subsets of $\mcm$ and so the vector spaces appearing above are tensor products of vector spaces associate to each k-handle, e.g., $A(\text{0-handles}) = \tp_{v \in \mcv} A_v$,
-where $\mcv$ denotes the collection of 0-handles, and $A_v$ the vector space assigned to each. 
-The linear maps are naturally described by tensors, 
-and the partition function $Z(\mcm)$ as a tensor trace.
+\begin{align}
+Z(M_{\text{gl}}) = \sum_{i,j}Z(M_{\text{cut}} \cup e_i \cup \hat{e}_j)g^{ij}
+\end{align}
+where $e_i$ and $\hat{e}_j$ are basis of the gluing region on the (k+1)-handle and k-handle respectively, 
+and $g^{ij} = (g^{-1})_{ij} $, with $g_{ij} = \langle \hat{e}_j, e_i \rangle_{S^2}$.
+This can be simplified by letting $e_i$, and $\hat{e}_j$ run over orthogonal basis for the gluing region and dual gluing region. 
+This is done with idempotents etc. 
+
+One can now re-interpret the matrices above $Z(M_{\text{cut}} \cup e_i \cup \hat{e}_j)g^{ij}$ as linear maps from the vector spaces assigned to 
+the attaching regions of the (k+1)-handles to the k-handles. 
+Abstractly we have,
+\begin{align}\nonumber
+\cc \rightarrow{??}V(\{ c_3 \}) \xrightarrow{T_{\mcf}} V(\{ c_2 \})  \xrightarrow{T_{\mce}} V(\{ c_1 \})  \xrightarrow{T_{\mcv}} V(\{ c_0 \}) 
+\end{align}
+where $V(\{c_k \})$ is the attaching region for the k-handle. 
+%\kw{full boundary or non-attaching boundary?}
+%\dave{Supposing that non-attaching means what it sounds like, then non-attaching boundary.}
+%\kw{more generally, while I think the viewpoint you propose is correct in spirit, when one looks at the details things become a little messier,
+%and I doubt it's possible to make a clean (and correct) statement along the lines you propose.}
+%\dave{
+%I agree it's only worth saying if we can do it cleanly (and obviously has to be correct).
+%Lets discuss on Skype.
+%The picture I had in mind was to think of each tensor as a linear map from incoming indices, living on (k+1)-handles to outgoing ones living on k-handles.
+%Then evaluation of the tensor network is just composition of functions.
+%The tensors would be something like basis of net-configurations/local relations on a k-handle sandwiched between
+% idempotents on attaching region of $k+1$ handle and idemoptents of outgoing attaching region on $k$ handle.
+%}
+%Semi-simplicity of $\mcc$ means that each of these vector spaces are finite dimensional.
+%Furthurmore, the k-handles are disjoint subsets of $\mcm$ and so the vector spaces appearing above are tensor products of vector spaces associate to each k-handle, e.g., $A(\text{0-handles}) = \tp_{v \in \mcv} A_v$,
+%where $\mcv$ denotes the collection of 0-handles, and $A_v$ the vector space assigned to each. 
+%The linear maps are naturally described by tensors, 
+%and the partition function $Z(\mcm)$ as a tensor trace.
+The partition function is given by the image of the compositino of the linear maps,
+\begin{align}
+Z(\mcm) \in \text{Im} \; T_{\mcv} \circ T_{\mce} \circ T_{\mcf}
+\end{align}
+``Locality" of the handle decomposition means that the linear maps can be re-expressed as tensor contractions which are local with respect to the handle decomposition.
+\dave{Will come back to here.}
+
 
 Denoting the number of 3-cells by $n_3$, the collection of 2-cells by $\mcf$, 
 collection of 1-cells $\mce$, and the collection of 0-cells by $\mcv$, 
