@@ -8104,6 +8104,8 @@ Those interested in the details of the original construction are referred to \ci
 and the one followed here in \cite{Walker2006}. 
 
 The starting point is a list of data:
+\dave{Is pivotal and spherical the same thing?
+I remember getting quite confused about this in a Muger paper.}
 \begin{itemize}
 \item a spherical fusion category $\mcc$
 \item an oriented 3-manifold $\mcm$
@@ -8143,7 +8145,7 @@ Abstractly we have,
 \begin{align}\nonumber
 \cc \xrightarrow{??}V(\{ c_3 \}) \xrightarrow{T_{\mcf}} V(\{ c_2 \})  \xrightarrow{T_{\mce}} V(\{ c_1 \})  \xrightarrow{T_{\mcv}} V(\{ c_0 \}) 
 \end{align}
-where $V(\{c_k \})$ is the attaching region for the k-handle. 
+where $V(\{c_k \})$ is vector space assigned to the attaching region for the k-handles. 
 %\kw{full boundary or non-attaching boundary?}
 %\dave{Supposing that non-attaching means what it sounds like, then non-attaching boundary.}
 %\kw{more generally, while I think the viewpoint you propose is correct in spirit, when one looks at the details things become a little messier,
@@ -8263,20 +8265,40 @@ As with \eqref{pitchfork_basis}, not all pitchforks will be oriented with all ed
 In this scenario we replace the appropriate object with its dual.
 The vector space we assign to each of the attachment regions are,
 \begin{align}
-  \mch(c_{fe}) &= E \quad \quad \mch(\bar{c}_{fe}) = \mch(c_{fe})^* = E^*\\
+  \mch(c_{ev}) &= E \quad \quad \mch(\bar{c}_{fe}) = \mch(c_{fe})^* = E^*\\
   \\
-\mch(c_{fe} )&= \begin{cases} W &\text{if $e$ is oriented away from $v$} \\
+\mch(c_{ev} )&= \begin{cases} W &\text{if $e$ is oriented away from $v$} \\
 W^* &\text{otherwise} 
 \end{cases}\\
-\mch(\bar{c}_{fe}) &= \mch(c_{fe})^*
+\mch(\bar{c}_{ev}) &= \mch(c_{ev})^*
 \end{align}
 Correspondingly, each cell is attached to the vector space 
 \begin{align}
+\label{tensor_space}
 \text{2-cells} \quad \quad  & \mch(f) = \tp_{e \in f} \mch(c_{ef})  \\
 \text{1-cells}\quad \quad   & \mch(e) = \tp_{f \in e}\mch (\bar{c}_{ef}) \tp \mch(c_{ev}) \tp \mch (c_{ev'}) \\
  \text{0-cell} \quad \quad  & \mch(v) = \tp_{j =1}^4\mch(\bar{c}_{e_jv}) 
 \end{align}
 The assignment of vector spaces has been so that the labels of the attachment attachment labels of the (k+1)-handles connecting to the k-handle are dual.
+\begin{figure}
+\begin{center}
+\includegraphics{NotationStateSum.pdf}
+\caption{\label{NotationStateSum}
+Notation used in this section. 
+The cells can be used to label the weights that determine the partition function.
+In the figure we have labeled a `face' by $f$, an `edge' by $e$ and a vertex by v. 
+Each is naturally associated to a 2-, 1- and 0-cell repsectively. 
+We assume a cell decomposition that is dual to a triangulation so that each 1-cell is neighboured by three 2-cells and two 0-cells. 
+Each, 0-cell is neighboured by four 1-cells. 
+The faces are transversally oriented, so that there is an orientation for there boundary. 
+The edges are also oriented, indicted by the double arrow. 
+The oriented boundary edge of the face `f' that neighbours the edge `e' is labeled $c_{fe}$, 
+and the opposing edge by $\bar{c}_{fe}$. 
+The trivalent junctions ocurring at either end of the edge are denoted $c_{ev}$ and $c_{ev'}$, the opposing trivalent junctions associate to the 0-cells by $\bar{c}_{ev'}$ and $\bar{c}_{ev}$ (not displayed).
+}
+\end{center}
+\end{figure}
+
 
 \dave{This should be in the definition section. 
 Will write it here for now, and move it there later.}
@@ -8321,98 +8343,172 @@ $$
 \dave{Does it make sense?
 Do picture example?}
 \dave{This is basically a PEPS.}
+\dave{To Dave:
+Cite Levin's tensor trace paper?
+I think they essentially did the same construction, but will need to check.}
 
 \subsection{Turaev-Viro-Barrett-Westbury state sum }
+\dave{Consider joining this section with the next and writing one table that has two columns. 
+One for bosonic and one for fermioninc. 
+Then tensors for each.}
 
 We now write down the Turaev-Viro-Barrett-Westbury state sum in the language and notation discussed above.
 The benefit of defining \eqref{contract} is that we can now define a partition function by specifying vector in $\mch(\mcm)$.
+Since the construction for the bosonic state sum is very well known, see the original works \cite{Turaev1992,Barrett1996}, 
+we just provide the answer and then move on to the super pivotal state sum. 
 
-
-\dave{To do}
-\begin{itemize}
-\item define tensors for TVBW state sum as $\text{(labeled picture)} = number$
-\item Write doen $Z(\mcm) = \sum_{\mcl} \prod_{\text{labeled pictures}}$, re-pharase as $Z(\mcm) = \delta(\tp_{\text{cells} } T_x)$, 
-where $\delta(...)$ means contract tensors. 
-\end{itemize}
-
-
-\dave{Weights}
-The 2-cell weights are given by $T_f \in A(f)^*$,
-\begin{align}
-T_f(\tp_{e \in f} a_e) = \sum_x d_x \prod_{e \in f}  \delta_{x, a_e}
-\end{align}
-where each $a_e$ is a basis vector of $A(c_{fe})$.
+We now specify three sets of tensors $T_f$, $T_e$, and $T_v$, living the in vector spaces defined in \eqref{tensor_space}. 
+The 2-cell tensors are given by,
+\begin{align} 
+T_f = \sum_{x, \; \{ v_{a_{e}}\} \;  : \;e \in f} \left( d_x  \prod_{e \in f} \delta_{x a_e} \right)   \tp _{e \in f}v_{a_e}
+\end{align} 
+%\begin{align}
+%T_f(\tp_{e \in f} a_e) = \sum_x d_x \prod_{e \in f}  \delta_{x, a_e}
+%\end{align}
+%where each $a_e$ is a basis vector of $A(c_{fe})$.
+\dave{Should we we also draw pictures for each tensor?
+usually good practice for string nets to do (labeled picture) = number}
 Diagrammatically we denote this tensor as, 
 \begin{align}
 \FaceWeight = \sum_{x} d_x \prod_i \delta_{x, a_i}
 \end{align}
 
-The 1-cell weights are given by $T_e \in A(e)^*$ defined via,
+\dave{Someone should read the following carefully at some point,
+probably once I've been over it a few times.}
+Now consider a 1-cell $e$. 
+Suppose that the neighbouring 0-cells are labeled $v$ and $v'$ and $e$ is oriented from $v$ to $v'$. 
+Then the 1-cell tensor takes the form,
+\dave{notation for the $r \in e$ should be made less ugly.}
 \begin{align}
- T_e(\mu_v \tp a_{1}^*\tp a_{2}^* \tp a_{3}^* \tp \mu_{v'})  = 
- \begin{cases} 
- \phi(\mu_v, \mu_{v'})^{-1}  & \text{if labels agree} \\
- 0 & \text{otherwise}
- \end{cases} 
+T_e = \sum_{i,j, \; \{ v_{a_r}\} \; :\; r \in e} \mcb(\mu \tp P_e \circ \nu_j^*) \tp_{r \in e} v_{a_r}^* \tp \mu_i \tp \nu_j^*
 \end{align}
-where $\phi(*,*)$ is the pairing between a disk and a reflected disk. 
-Or diagrammartically we write this as,
+Note that in the conventional normalization, where $\mu_j \in V^{abc}$, and $\mcb(\mu_i \tp \mu_j^*) = \delta_{ij} \theta_{\mu_i}$, one would modify the above by,
+$\mcb(\mu \tp P_e \circ \nu_j^*) \ra \mcb(\mu \tp P_e \circ \nu_j^*)/(\theta_{\mu_i} \theta_{\mu_j})$. 
+\dave{comment on $P_e$ taking into account the labels of the 2-cells.
+}
+
+
+Lastly we define the 0-cell tensors by,
 \begin{align}
-\EdgeTensorprime = 
- \begin{cases} 
- \phi(\mu_v, \mu_{v'})^{-1}  & \text{if labels agree} \\
- 0 & \text{otherwise}
- \end{cases} 
+T_v = \sum_{\mu_{e_j} \in \mch(\bar{c}_{e_j v}) } \text{Tet}(\mu_{e_1} \tp \mu_{e_2} \tp \mu_{e_3} \tp \mu_{e_4} ) \tp_{j=1}^4 \mu_{e_j} 
 \end{align}
-Note that for this to be non-zero $\mu_v \in V^{a_1^* a_2 a_3}$ and $\mu_{v'} = \mu_{v}^*$.
-\dave{What if $a \cong a^*$?}
+where, 
+\begin{align}
+\text{Tet}(\alpha \tp \beta \tp \gamma \tp \delta) =\; \Tetrahedron.
+\label{Tetrahedron}
+\end{align}
+We have defined the tensor by its evaluation on the right with 
+$\alpha \in \bigoplus_{abc} V^{abc}$, $\beta \in \bigoplus_{a^* bc} V^{a^* bc}$, $\gamma \in \bigoplus_{a^* b c^*} V^{a^* b c^*}$, $ \delta \in \bigoplus_{a^* b^* c^*} V^{a^* b^* c^*}$.
+One can flip an arrow by taking the appropriate object to its dual. 
+\dave{Add comment that spherical means that all tetrahedra can be evaluated from this one by using the appropriate pivots + spherical property.}
+
+Lastly, we can write down the TVBW state sum as,
+\begin{align}
+Z(\mcm) = \mcb(\tp_{f \in \mcf} T_f \tp_{e \in \mce} T_e \tp_{v \in \mcv} T_v)
+\end{align} 
+where $\mcb$ is used in the sense of \eqref{contract}.
+Lastly we would like to comment that this is the same as the state sum, 
+where one sums over all possible compatible labelings of the attaching regions, with the appropriate weights defined by the tensors above. 
+The benefit of writing the partition function this way, 
+is that we an write down the super pivotal state sum with little modification. 
+
+%The 1-cell weights are given by $T_e \in A(e)^*$ defined via,%
+%\begin{align}
+% T_e(\mu_v \tp a_{1}^*\tp a_{2}^* \tp a_{3}^* \tp \mu_{v'})  = 
+% \begin{cases} 
+ %\phi(\mu_v, \mu_{v'})^{-1}  & \text{if labels agree} \\
+% 0 & \text{otherwise}
+% \end{cases} 
+%\end{align}%
+%where $\phi(*,*)$ is the pairing between a disk and a reflected disk. 
+%Or diagrammartically we write this as,
+%\begin{align}
+%\EdgeTensorprime = 
+ %\begin{cases} 
+% \phi(\mu_v, \mu_{v'})^{-1}  & \text{if labels agree} \\
+% 0 & \text{otherwise}
+ %\end{cases} 
+%\end{align}
+%Note that for this to be non-zero $\mu_v \in V^{a_1^* a_2 a_3}$ and $\mu_{v'} = \mu_{v}^*$.
+%\dave{What if $a \cong a^*$?}
 
 
 
-\begin{figure}
-\begin{center}
-\includegraphics{NotationStateSum.pdf}
-\caption{\label{NotationStateSum}
-Notation used in this section. 
-The cells can be used to label the weights that determine the partition function.
-In the figure we have labeled a `face' by $f$, an `edge' by $e$ and a vertex by v. 
-Each is naturally associated to a 2-, 1- and 0-cell repsectively. 
-We assume a cell decomposition that is dual to a triangulation so that each 1-cell is neighboured by three 2-cells and two 0-cells. 
-Each, 0-cell is neighboured by four 1-cells. 
-The faces are transversally oriented, so that there is an orientation for there boundary. 
-The edges are also oriented, indicted by the double arrow. 
-The oriented boundary edge of the face `f' that neighbours the edge `e' is labeled $c_{fe}$, 
-and the opposing edge by $\bar{c}_{fe}$. 
-The trivalent junctions ocurring at either end of the edge are denoted $c_{ev}$ and $c_{ev'}$, the opposing trivalent junctions associate to the 0-cells by $\bar{c}_{ev'}$ and $\bar{c}_{ev}$ (not displayed).
-}
-\end{center}
-\end{figure}
 
-
-\begin{figure}
-\begin{center}
-\includegraphics{HorshoeTube.pdf}
-\caption{\label{HorshoeTube}
-\dave{Will use this later.}
-}
-\end{center}
-\end{figure}
+%\begin{figure}
+%\begin{center}
+%\includegraphics{HorshoeTube.pdf}
+%\caption{\label{HorshoeTube}
+%\dave{Will use this later.}
+%}
+%\end{center}
+%\end{figure}
 
 
 
 \subsection{Super pivotal state sum}
-\dave{To do (this was written whilest tired, and may not reflect the authors true intentions)}
+The super pivotal state sum can be computed using the cut-and-glue technique. 
+Here we present only the result, since the technique is exactly the same as the Bosonic case.
+
+Firstly, the input data is,
+\dave{Is a super-pivotal-spherical fusion category the same as a super-pivotal one?}
 \begin{itemize} 
-\item List differences of input data
-\item add paragraph on how $A(e)$ and $A(v)$ are now super vector spaces
-\item Refer to section on reflection structure in defintion section \dave{check Turzillo paper}. 
-define the kronecker product and evaluation maps
-\item define face tensor with new new normalization $d_{x} \ra d_x/2^{n_x}$
-\item discuss that we now keep track of pivots on 1-handles which are now satisfying $P^6 = \text{id}$
-\item Define 1-cell and 2-cell tensor 
-\item refer to definition section on fancy way of handling graded tensor products/evaluations, 
-and re-assure reader that everything is well defined but some work is required for plugging into computer
-\end{itemize}
+\item a super pivotal category $\mcc$
+\item an oriented spin 3-manifold $\mcm$
+\item a cell decomposition with oriented 1-cells and transversally oriented 2-cells
+\end{itemize} 
+
+The vector spaces $E$ and $W$ which are assigned to the attaching regions are again defined in the same way. 
+In particular, the vector space $W$ is a super vector space. 
+
+The bilinear pairing remains the same. 
+Except now one must of course define a sign ordering in the tensor product.
+We again define the contraction in \eqref{contract}.
+This is defined on the un-ordered tensor product defined in \ref{koszul_signs}.
+To get a number at the end of the day, one still has to choose an ordering of the tensor product spaces, 
+then when applying $\mcb$, one needs to have the correct order of tensor factors.
+This can always be done with a finite number of Koszul isormorphisms.
+\dave{Check Turzillo paper.}
+\dave{I found that the $\mcb(\psi_1 \tp \eta_2) = \mcb(\eta_1 \tp \psi _2)$ is symmetric. }
+
+The 1-cell tensors are modified as are modified to now include the possiblity of non-trivial endomorphism algebras on q-type simple objects. 
+Hence, 
+\begin{align}
+T_f = \sum_{x, \; \{ v_{a_{e}}\} \;  : \;e \in f} \left( \frac{d_x}{2^n_x}  \prod_{e \in f} \delta_{x a_e} \right)   \tp _{e \in f}v_{a_e}
+\end{align}
+where $n_x = 0$ if $x$ is m-type, and $n_x = 1$ if $x$ is q-type. 
+The vector space remains bosonic and so the tensor needs no furthur adjustments. 
+
+The one-handles have, arguably the most interesting adjustment. 
+In the bosonic state sum, we needed to keep track of three possible pivots.
+This remains for the fermionic state sum, however, its no longer three pivots but six. 
+This is because we could also have an automorphism of the spin framing as a femrion traverses the 1-handle. 
+THus the edge tensors remain see no changes, 
+\begin{align}
+T_e = \sum_{i,j, \; \{ v_{a_r}\} \; :\; r \in e} \mcb(\mu \tp P_e \circ \nu_j^*) \tp_{r \in e} v_{a_r}^* \tp \mu_i \tp \nu_j^*
+\end{align}
+except for the fact that $P_e^6$ is now the identity, and $P_e^3$ is the spin flip isomorphism ($P_e$ is of course even).
+In addition, we need to keep track of the ordering in the tensor product. 
+\dave{Double check this. 
+Remind reader that implicit ordering is from left to right?}
+
+The 0-cell term is exactly the same, except we order the tensor factors when defining the tetrahedral symbol, and so must do so also in defining the tensor
+\begin{align}
+T_v = \sum_{\mu_{e_j} \in \mch(\bar{c}_{e_j v}) } \text{Tet}(\mu_{e_1} \tp \mu_{e_2} \tp \mu_{e_3} \tp \mu_{e_4} )  \mu_{e_1} \tp \mu_{e_2} \tp \mu_{e_3}\tp \mu_{e_4}
+\end{align}
+with
+\begin{align}
+\text{Tet}(\alpha \tp \beta \tp \gamma \tp \delta) =\; \Tetrahedron.
+\label{Tetrahedron}
+\end{align}
+
+With these modifications, one finds the super pivotal state sum, 
+\begin{align}
+Z(\mcm) = \mcb( \tp_{f \in \mcf} T_f \tp_{e \in \mce} T_e \tp_{v \in \mcv} T_v)
+\end{align}
+where we are using the unordered tensor product defined in\ref{koszul_signs}. 
+
+\dave{Obviously I need to go through this again}. 
 
 \subsection{Shadow world and explicit ground state wave function}
 \dave{To do:}
