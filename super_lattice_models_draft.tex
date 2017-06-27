@@ -2225,6 +2225,8 @@ For example, in the non-bounding sector we have
 \kw{Using $\times$ for composition in a category is a little weird/unconventional.
 We might want to change to $\bullet$ or $\cdot$.
 \dave{What about using $\circ$? I think we sometimes use this for composition of morphisms.}}
+\kw{$\circ$ is common, but is always used with the ``function" convention for ordering morphisms,
+rather than the ``arrow" convention which we use here.}
 
 Note that since the spin structures on two tubes being fused must agree on the boundary 
 at which they are fused, non-bounding tubes can only be stacked on top of non-bounding tubes, 
@@ -2445,54 +2447,87 @@ We postpone a more general discussion of how to compute fusion rules in fermioni
 and in this section restrict ourselves to working out examples for the $C_2$ theory. 
 
 
+%The quasiparticles -- or primitive idempotents -- displayed in Table \ref{CTwoParticles} naturally define 
+%simple modules of the tube category, which are the images of the primitive idempotents.
+%These simple modules are irreducible representations 
+%of the tube category, and so to each quasiparticle $a$ we can construct an irreducible representation, 
+%which we will also denote as $a$. 
 
-The quasiparticles -- or primitive idempotents -- displayed in Table \ref{CTwoParticles} naturally define 
-simple modules of the tube category, which are the images of the primitive idempotents.
-These simple modules are irreducible representations 
-of the tube category, and so to each quasiparticle $a$ we can construct an irreducible representation, 
-which we will also denote as $a$. 
+Recall that to each minimal idempotent $e$ we can associate an irreducible module 
+(a.k.a.\ irreducible representation) $M_e$ as follows.
+Let $\mct$ denote the tube category, and let $x$ be object
+of $\mct$ which hosts $e$ (i.e.\ $e\in \End(x)$).
+To each object $y$ of $\mct$, the module $M_e$ associates the subspace of $\mor(x\to y)$ consisting of morphisms
+of the form $ef$, where $e$ is our chosen idempotent and $f$ is an arbitrary morphism from $x$ to $y$.
+We can express this compactly as
+\be
+	M_e = e\mct .
+\ee
+It is easy to check that if $e$ and $e'$ are isomorphic idempotents, then $M_e$ and $M_{e'}$ are isomorphic modules, and conversely.
+Geometrically, the module $M_e$ consists of tubes with $e$ fixed at one end and arbitrary string nets ($f$ above)
+at the other end.
 
-Even after modding out by local relations, there will often exist several irreducible representations which are 
-isomorphic to one another, the collection of which form a single isomorphism class, 
-The choice of representative affects the explicit representation of the fusion space, but does not affect the 
-values of any gauge invariant quantities. 
-For example, the idempotent given by ${m_\sigma^+}$ constitutes a choice of representative of the isomorphism 
-class formed by $m_\sigma^+$ and $m_\sigma^-$, but we could have just as easily chosen ${m_\sigma^-}$ as a representative.
+We will frequently simplify notation and denote both the idempotent $e$ and the corresponding module $M_e$ as simply $e$.
 
-Given two irreps $a$ and $b$, we can form the tensor product representation $a\tp b$, which need not be irreducible.
+%Even after modding out by local relations, there will often exist several irreducible representations which are 
+%isomorphic to one another, the collection of which form a single isomorphism class, 
+%The choice of representative affects the explicit representation of the fusion space, but does not affect the 
+%values of any gauge invariant quantities. 
+%For example, the idempotent given by ${m_\sigma^+}$ constitutes a choice of representative of the isomorphism 
+%class formed by $m_\sigma^+$ and $m_\sigma^-$, but we could have just as easily chosen ${m_\sigma^-}$ as a representative.
+
+It is important to note that there many idempotents within a given equivalence class,
+and these idempotents might be hosted at different objects.
+Furthermore, the isomorphism relating two idempotents might be odd
+(i.e.\ it reverses fermion parity).
+Despite these differences, all of the idempotents within an equivalence class should be thought of as representing the same
+anyon type.
+To do calculations, we must choose a particular idempotent within the equivalence class.
+This is analogous to a gauge choice.
+For example, the idempotent given by ${m_\sigma^+}$ constitutes a choice of representative of the equivalence 
+class containing $m_\sigma^+$ and $m_\sigma^-$, but we could have just as easily chosen ${m_\sigma^-}$ as a representative.
+
+%Given two irreps $a$ and $b$, we can form the tensor product representation $a\tp b$, which need not be irreducible.
+%Intuitively, forming $a\tp b$ amounts to fusing the quasiparticles $a$ and $b$ together by bringing them close 
+%to one another, and ``zooming out'' to view $a$ and $b$ as a single composite quasiparticle. 
+%The $\tp$ operation is the usual tensor product of representations when the tube category, viewed as an algebra, 
+%comes equipped with a natural tensor product operation. 
+%However, to precisely define the $\tp$ operation in general, we need to examine vector spaces on the pair of 
+%pants: the tensor product $a \tp b$ is constructed by constructing a pair of pants with 
+%boundary conditions on the two ``incoming'' legs determined by $a$ and $b$.
+%We will defer a more precise discussion of this to Sec. \ref{fusion_rules}. 
+
+Given two modules $a$ and $b$ of $\mct$, we can construct a tensor product module $a\tp b$.
 Intuitively, forming $a\tp b$ amounts to fusing the quasiparticles $a$ and $b$ together by bringing them close 
 to one another, and ``zooming out'' to view $a$ and $b$ as a single composite quasiparticle. 
-The $\tp$ operation is the usual tensor product of representations when the tube category, viewed as an algebra, 
-comes equipped with a natural tensor product operation. 
-However, to precisely define the $\tp$ operation in general, we need to examine vector spaces on the pair of 
-pants: the tensor product $a \tp b$ is constructed by constructing a pair of pants with 
-boundary conditions on the two ``incoming'' legs determined by $a$ and $b$.
-We will defer a more precise discussion of this to Sec. \ref{fusion_rules}. 
-
-\kw{I think the above paragraphs still need some tweaking, but they are in the ballpark.
-I'll plan on making some edits later, but not in the near future.}
+To make this precise, we can impost the idempotent versions of $a$ and $b$ as boundary conditions on the two inner boundary components
+of a twice-punctured disk $P$ (a.k.a.\ pair of pants).
+Adding tubes to the outer boundary component of $P$ gives a module for the tube category, and this
+module is, by definition $a\tp b$.
+We will discuss this in more detail in \ref{fusion_rules}. 
 
 We define the fusion space $V^{ab}_c$ as the space
 \be V^{ab}_c \equiv {\rm mor}(c \ra a \tp b).\ee
 Geometrically, $V^{ab}_c$ corresponds to the space of all string-net configurations (modulo local relations) 
 on a pair of pants whose outgoing legs are labeled by the quasiparticles $a$ and $b$, and whose incoming leg is labelled by $c$. 
 
-One subtle property of fermion theories is that the vector space $V^{ab}_c$ are {\it not} 
+One subtle property of fermion theories is that the vector spaces $V^{ab}_c$ are {\it not} 
 the vector spaces which appear in the direct sum decomposition of $a\tp b$. 
-Instead, we define the fusion rule coefficients $\Delta^{ab}_c$ through\footnote{The $\Delta^{ab}_c$ are 
-complex supervector spaces, not numbers, and so ``fusion rule coefficients'' is a bit misleading. 
-However, vector spaces are the categorified version of scalars, and so we will continue to adopt 
-this slightly imprecise terminology.}
+Instead, we define the fusion rule coefficients $\Delta^{ab}_c$ via\footnote{The $\Delta^{ab}_c$ are 
+complex super vector spaces, not numbers.
+They are a categorified version of the coefficients used to write a general vector as a linear combination
+of basis vectors.}
 \be \label{fusion_coeffs_defn} 
 	a \tp b \cong \bigoplus_c \Delta^{ab}_ c c,
 \ee
 where the sum runs over a set of representatives for the equivalence classes of irreducible 
 representations (equivalently, of minimal idempotents). 
 In bosonic theories $V^{ab}_c = \Delta^{ab}_c$, but in fermionic theories the fusion spaces 
-are larger than the $\Delta^{ab}_c$s:
+can be larger than the the fusion coefficients:
 \be V^{ab}_c \cong \Delta^{ab}_c \tp \End(c).\ee
 We demonstrate and elaborate on this in Section \ref{fusion_rules_and_fusion_spaces}. 
 
+\medskip
 
 We will now illustrate how to compute the fusion spaces with simple examples in the $C_2$ theory. 
 Suppose we want to find the fusion rule for $q_\sigma \otimes m_\unit$.
@@ -7896,7 +7931,7 @@ where
 \ee
 This is illustrated in Figure \ref{alphae_defn}.
 
-
+\kw{should probably move definition of $\Gamma$ to definition section}
 Fermionic dots can also be ``absorbed'' into vertices.
 We can do this with operators $\Gamma_i$, $i\in \{1,2,3\}$, which absorb a pitchfork with a standard dot ($\gamma_b$)
 on the $i$-th outgoing pitchfork edge to a pitchfork without a fermion dot on a leg. 
