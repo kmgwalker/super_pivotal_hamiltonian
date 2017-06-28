@@ -107,7 +107,7 @@
 \newcommand{\vect}{\text{Vec}}
 \newcommand{\svect}{\text{sVec}}
 \newcommand{\spin}{\text{Spin}}
-\newcommand{\pin}{\text{Pin}}
+\newcommand{\pin}{\text{pin}}
 \newcommand{\fube}{\textbf{Tube}}
 \newcommand{\tube}{\textbf{Tube}}
 \newcommand{\fld}{\mathcal{F}} 
@@ -2655,8 +2655,7 @@ The fusion spaces $V^{ab}_c$ can then be obtained through the use of $V^{ab}_c \
  \end{flalign*}
  
  
-\caption{ \label{fusiontable} The fusion rules in $\tube(C_2) \cong \mcz(C_2)$. 
-	\kw{not clear what $\mcz$ means when spin structures are in play.  Probably we should drop reference to $\mcz$.}
+\caption{ \label{fusiontable} The fusion rules in $\tube(C_2)$. 
 	We have defined $\mca = \{ m_\unit, m_\sigma^+, m_\psi \} $ and $\mcv = \{ q_\unit, q_\sigma, q_\psi \}$ as the set of anyons and set of vortices, respectively.
 	The ($a$-$b$)th entry in each table is the sum $\oplus_c \Delta_c^{ab} c$, where we have omitted any $\Delta^{ab}_c$ that is equal to $\cc$ and used $\bullet = \mathbb{C}^{1|1}$ to signify that the associated $\Delta^{ab}_c$ is isomorphic to $\cc^{1|1}$.
 		Entries with $\cc^{0|1}$ indicate that the fusion channel is purely odd. 
@@ -7238,8 +7237,8 @@ Note that to specify an element of the unordered tensor product, it suffices to 
 particular ordered tensor product $T_f$.
 All of the other $t_g$ are uniquely determined by $t_f$.
 
-When writing equations involving tensor products of fusion spaces, we will indicate the Koszul ordering 
-explicitly with subscripts, e.g. $V^{ab}_{c,1} \tp V^{cd}_{e,2}$. \ethan{for our coherence relation stuff later, I think it's easier to indicate the ordering explicitly}
+When writing equations involving particular ordered tensor products of fusion spaces, we will indicate the Koszul ordering 
+explicitly with subscripts, e.g. $V^{ab}_{c,1} \tp V^{cd}_{e,2}$. \ethan{for our coherence relation stuff later, I think it's easier to indicate the ordering as subscripts rather than implicitly as left-to-right ordering}
 %adopt the usual convention that the ordering is left-to-right on the page.
 When drawing diagrams with a particular ordering in mind, we always indicate the ordering explicitly by numbers near each fusion space (i.e.\ near
 each vertex in the string net).
@@ -7356,10 +7355,8 @@ and that it maps into fusion spaces with the same ordering. That is, with explic
 \ee
 \ethan{this is what we use in the hexagon isomorphism, and is also what Gu-Wen do}
 Graphically, and written as a matrix equation, we thus have \ethan{Dave feel free to re-make if you like}
-\begin{align} \label{Fdef}
-F^{abc}_d: \; \; \bigoplus_x V^{ab}_{x,2} \tp_{\text{End}(x)} V^{xc}_{d,1} \rightarrow \bigoplus_y V^{ay}_{d,1} \tp_{\text{End}(y)} V^{bc}_{y,2}
-\end{align}
-
+\be \label{graphical_Fmove} \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{Fsymbol_defn.pdf}}}},\ee
+where the greek indices label particular fusion space basis vectors, with $\mu\in V^{ab}_x,\nu\in V^{xc}_d,\alpha\in V^{bc}_y,$ and $\beta\in V^{ay}_d$.
 We also choose the following left-to-right ordering convention for the $F^{abcd}$ move:
 \be  
 	F^{abcd} : \bigoplus_{x\in \mcx} V^{abx^*}_1 \tp_{\End(x)} V^{xcd}_2   \;\to\;   \bigoplus_{x\in \mcx} V^{bcx^*}_1 \tp_{\End(x)} V^{axd}_2 .
@@ -7445,7 +7442,7 @@ The Koszul sign $P_{23}$ appearing in \eqref{endoPentagon} appears in the above 
 
 \kw{TO DO: discuss reflection structures, pin, etc.
 probably just give basic defs}
-
+\ethan{Are we wanting to talk about inner products and stuff? I think we can largely just refer to stuff in the line bundle appendix}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -8151,12 +8148,11 @@ But its ground state would be isomorphic to the above edge-like vertex term.
 
 Note that vectors in the ground state of the vertex term can be interpreted as string nets.
 If $K$ is the ground state of the vertex term, we have maps
-\dave{Should we use $\mch$ rather than H?}
 \be
-	K \to H(\Sigma \setminus \mbox{2-cells}) \to H(\Sigma) .
+	K \to \mch(\Sigma \setminus \mbox{2-cells}) \to \mch(\Sigma) .
 	\label{ground_state_projection}
 \ee
-where $H(\Sigma \setminus \mbox{2-cells})$ and $H(\Sigma)$ are the ground-state Hilbert spaces of $\Sigma \setminus \mbox{2-cells}$ and $\Sigma$, respecitvely.
+where $\mch(\Sigma \setminus \mbox{2-cells})$ and $\mch(\Sigma)$ are the ground-state Hilbert spaces of $\Sigma \setminus \mbox{2-cells}$ and $\Sigma$, respecitvely.
 The job of the edge term (below) will be to pick out a subspace of $K$ on which the first map is an isomorphism. 
 The job of the plaquette term will be to further reduce to a subspace such that the composite map to $H(\Sigma)$ is an isomorphism.
 
@@ -9170,6 +9166,7 @@ At each endpoint, there are two possible lifts of an $O(2)$ framing,
 so $\tcf(r)$ is a set with $2^{k+1}$ elements.
 Again, $\tcf(r)$ does not change if we reverse the spin structure on $B$.
 \kw{should perhaps define ``reverse the spin structure".  maybe put it in spin str appendix.}
+\ethan{Do you mean reversing the orientation (or exchanging positive and negative framings) and then lifting the $O(2)$ framings?}
 
 Let $S(r)$ denote the set of all orderings of the endpoints of $r$.
 It is a set with $k!$ elements.
