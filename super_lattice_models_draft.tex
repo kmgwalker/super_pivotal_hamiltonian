@@ -107,7 +107,7 @@
 \newcommand{\vect}{\text{Vec}}
 \newcommand{\svect}{\text{sVec}}
 \newcommand{\spin}{\text{Spin}}
-\newcommand{\pin}{\text{Pin}}
+\newcommand{\pin}{\text{pin}}
 \newcommand{\fube}{\textbf{Tube}}
 \newcommand{\tube}{\textbf{Tube}}
 \newcommand{\fld}{\mathcal{F}} 
@@ -1416,7 +1416,7 @@ tube parent theories, and their tube categories.
 Additionally, we present a Verlinde-type
 dimension formula for fermionic theories,
 
-In Sec \ref{more_on_tubes}, we\dots 
+In Sec \ref{more_on_tubes}, we
 
 
 Sec \ref{so36} is devoted to the example of performing condensation in the $SO(3)_6$ 
@@ -2710,7 +2710,10 @@ The fusion spaces $V^{ab}_c$ can then be obtained through the use of $V^{ab}_c \
  
  
 \caption{ \label{fusiontable} The fusion rules in $\tube(C_2)$. 
+<<<<<<< HEAD
 	\kw{not clear what $\mcz$ means when spin structures are in play.  Probably we should drop reference to $\mcz$. \dave{Sounds good. Removed $\mcz$.}}
+=======
+>>>>>>> 6c1bdaf78fe672b5519137441e4b89b8c963b326
 	We have defined $\mca = \{ m_\unit, m_\sigma^+, m_\psi \} $ and $\mcv = \{ q_\unit, q_\sigma, q_\psi \}$ as the set of anyons and set of vortices, respectively.
 	The ($a$-$b$)th entry in each table is the sum $\oplus_c \Delta_c^{ab} c$, where we have omitted any $\Delta^{ab}_c$ that is equal to $\cc$ and used $\bullet = \mathbb{C}^{1|1}$ to signify that the associated $\Delta^{ab}_c$ is isomorphic to $\cc^{1|1}$.
 		Entries with $\cc^{0|1}$ indicate that the fusion channel is purely odd. 
@@ -3135,7 +3138,7 @@ m_\psi\\
 \end{matrix} \right)_{BN} 
 \xrightarrow{S^{BN \rightarrow NB}} &\frac{1}{2} \left( \begin{matrix}
 1&d&1\\
--d&0&d\\
+d&0&-d\\ %%%??? lines marked like this had contentious minus signs on the d's. This is what I (ethan) got
 -1&d&-1\\
 \end{matrix} \right)
 \left( \begin{matrix}
@@ -3152,9 +3155,9 @@ and
 \hat{q}_\psi\\
 \end{matrix} \right)_{NB} 
 \xrightarrow{S^{NB \rightarrow BN}} & \left( \begin{matrix}
-1&-d&-1\\
+1&d&-1\\ %%%???
 d&0&d\\
-1&d&-1\\
+1&-d&-1\\ %%%???
 \end{matrix} \right)
 \left( \begin{matrix}
 m_\unit\\
@@ -3379,6 +3382,17 @@ which we elaborate on in the next section.
 \subsection{Braiding data} \label{C2_braiding}
 %%%%%%%%%%%%%%%%%%%%%%%
 
+\kw{I think that there are (interesting and useful) subtleties when talking about braiding.
+We must not only keep track of a spin structure on the pair of pants, but also keep track of 
+the $\End(a)\times\End(b)\times\End(c)$ action on $V^{ab}_c$.
+The latter amounts to keeping track of three independent spin framings on the three boundary
+components, or in other words a relative spin structure.
+I don't understand all of this as well as I would like, but I think that one
+implication will be that we should treat braidings in a more sophisticated way than we do below.
+If that's right, then we might want to move this section to a future paper that goes into more detail
+about the subtleties.
+}
+
 In this section we compute the braiding data of the quasiparticles in the $C_2$ theory.
 This in turn allows us to compute the mutual- and self-statistics of the quasiparticles in the theory.
 In conventional (bosonic) topological phases, the matrix of double-braids (mutual statistics) 
@@ -3396,7 +3410,7 @@ can in fact be completely recovered from a complete knowledge of the braiding da
 %%%%%%%%%%%%%%%%%%%%%
 To begin, we will construct a table of the $R$ symbols in the theory. 
 First, we need to set some conventions on our fusion spaces in this section, this is akin to picking a gauge for each fusion space. 
-We will work on the pair of pants as described in section \ref{C2_fusion_rules}.
+We will work on the pair of pants as described in Section \ref{C2_fusion_rules}.
 
 We will write a generic even fusion space, which is an even vector in the fusion space $V^{ab}_c$, as 
 \begin{align}
@@ -3419,6 +3433,7 @@ The branch cut records the difference between the spin structure inherited from 
 spin structure we want to depict.
 For concreteness, we will draw our branch cuts to always extend from the puncture vertically to the point at $\infty$.
 For example, to calculate $R^{q_\psi q_{1/\psi}}_{m_{\psi/1}}$, we write
+\kw{I don't understand subscript $\psi/1$.  Does it mean $\psi$-or-1?  If so, maybe it would be clearer to just pick 1 or $\psi$.}
 \begin{align}
 \qqmbraida \xrightarrow{\; \; R\;\; }\qqmbraidb \;=  \; \theta_{q_\psi}^* \qqmbraidc
 \end{align}
@@ -3427,6 +3442,7 @@ of the eigenvalue of $q_\psi$ under the twisted tube (i.e.\ the twist of $q_\psi
 
 We define odd vectors in $V^{a,b}_c$ by placing dots on the top left leg of the pants, on the 
 leg marked $u$ in \eqref{pants_braiding_basis}. 
+\kw{ref is broken}
 If this is impossible (e.g.\ if the top left leg is an $m_\psi$ idempotent), we put the dot on the top 
 right leg of the pants, marked $v$ in \eqref{pants_braiding_basis}. 
 For example, we can calculate the $R$-symbol $R^{m_\psi m_\sigma^+}_{m_\sigma^+} = -1$ by
@@ -3638,39 +3654,46 @@ In this section we discuss the general case and some variants thereof.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In this section we will explore fermion condensation in more general settings. 
-In Sec. \ref{gntf_condense} we make some general remarks on fermion condensation in a
+In Section \ref{gntf_condense} we make some general remarks on fermion condensation in a
 generic unitary braided fusion category $\mcc$. 
-In Sec. \ref{condense_transparent_fermion} we add the stipulation that the fermion we aim 
+In Section \ref{condense_transparent_fermion} we add the stipulation that the fermion we aim 
 to condense is {\it transparent}, in that it braids trivially with the other particles in the theory. 
-Sec. \ref{lift_and_condense} examines the more general case where the object we wish to condense is 
-not necessarily fermionic, but only that it lifts to a fermionic object in the Drinfeld center $\mcz(\mcc)$ 
-(aka the tube category $\tube(\mcc)$).
-Finally, Sec. \ref{spin_defects_condensation} sketches (at a schematic level of rigor) a construction in which the braiding 
-of the parent theory is retained after condensation, where spin structure defects are bound to 
+Sec. \ref{lift_and_condense} examines the more general case where the parent category $\mcc$ is not braided,
+but the object we want to condense lifts to a fermionic object in the Drinfeld center $\mcz(\mcc)$.
+Finally, Sec. \ref{spin_defects_condensation} sketches a construction in which the braiding 
+of the parent theory is retained after condensation, and spin structure defects are bound to 
 particles that the fermion braids nontrivially with. 
 
 First, some preliminary remarks. 
-In what follows we will work with a fusion category $\mathcal{C}$ which contains a fermion that we aim to condense. 
-We denote this fermionic object by $\psi \in \sob\mcc$, 
-where $\psi$ is a simple object of $\mcc$.
+In what follows we will work with a 
+\kw{braided, right?  we use braiding immediately below} 
+fusion category $\mathcal{C}$ which contains a fermionic object $\psi$ that we aim to condense. 
 We require that $\psi$ satisfy the following properties:
 \begin{itemize} 
 	\item $\psi\ot\psi\cong\unit$
-	\item The Frobenius-Schur indicator of $\psi$ is $\alpha_\psi =1$
+	\item The Frobenius-Schur indicator of $\psi$ is 1
 	\item The topological twist of $\psi$ is fermionic, i.e. $\theta_\psi =-1$
-	\item The braiding of $\psi$ with itself (see \eqref{statistics_inconsistency}) is equal to $(-1)$ times the identity
-	\item The quantum dimension of $\psi$ is $d_\psi=1$
+	\item The braiding of $\psi$ with itself (see \eqref{statistics_inconsistency}) is equal to $-1$ times the identity
+	\item The quantum dimension $d_\psi$ of $\psi$ is 1
 \end{itemize}
 Note that there is some redundancy in this list.
 For example, 
 in unitary theories we have the spin-statistics relation, and $d_\psi=1$ can be inferred from $\psi\tp\psi \cong \unit$.
-\kw{the following is not correct; should rephrase or remove}
-Also, we note that we can relax the assumption that $\psi \tp \psi \cong \unit$ slightly. 
-Instead, consider a fermion $\Psi$ such that $\Psi \tp \Psi \cong B$, 
-where $B$ is a commutative algebra object in $\mcc$. Condensing $\Psi$ can then be achieved by first 
-condensing $B$ and then condensing the image of $\Psi$ under the condensation of $B$, which 
-we will denote as $\psi\in\mcc/B$. $\psi$ then satisfies the fusion rule $\psi\tp\psi\cong\unit$ in $\mcc /B$, and so 
-can be condensed in the manner described in the following sections. 
+
+%\kw{the following is not correct; should rephrase or remove}
+%Also, we note that we can relax the assumption that $\psi \tp \psi \cong \unit$ slightly. 
+%Instead, consider a fermion $\Psi$ such that $\Psi \tp \Psi \cong B$, 
+%where $B$ is a commutative algebra object in $\mcc$. Condensing $\Psi$ can then be achieved by first 
+%condensing $B$ and then condensing the image of $\Psi$ under the condensation of $B$, which 
+%we will denote as $\psi\in\mcc/B$. $\psi$ then satisfies the fusion rule $\psi\tp\psi\cong\unit$ in $\mcc /B$, and so 
+%can be condensed in the manner described in the following sections. 
+
+\kw{The following could be dropped}
+We remark that the above assumptions allow us to endow the object $\unit\oplus\psi$ 
+with the structure of a {\it fermionic commutative algebra object} in $\mcc$.
+Can can more generally condense any fermionic commutative algebra object $\alpha$.
+In the quotient category $\mcc/\alpha$, any simple summand of $\alpha$ becomes isomorphic to $\unit$,
+or perhaps isomorphic to a direct sum of copies of $\unit$.
 
 
 \dave{Another note to self: check if the `metaplectic' categories for this scenario.}
@@ -7138,6 +7161,7 @@ In terms of diagrams and matrices, this looks like
 P^{ab}_c \left( \;  \PivotYa \; \right) = \PivotYb
 \end{align} 
 \dave{Should we use $P(...)$ or $P\circ ....$?}
+\ethan{I think the former}
 %\kw{insert eqn similar to existing one in older pivotal subsection}.
 %\dave{done.}
 We can similarly define $P^{abc} : V^{abc}\to V^{bca}$. 
@@ -7151,9 +7175,9 @@ P^{abc} \left(  \Pitchforkabc \right ) \;=\;  \Pitchforkabcrot.
 %\dave{done}
 We will usually write simply $P$, since the $a$, $b$ and $c$ are typically clear from context.
 
-Since $P^3$ acts as a $2\pi$ rotation, we have $P^3 = (-1)^F$. Diagrammatically, this is
+Since $P^3$ acts as a $2\pi$ rotation, we have $P^3 = (-1)^F$. Diagrammatically, when acting on $V^{abc}$ this is written 
 \begin{align}
-P^3 \left(  \Pitchforkabc \right )\; = \; \PivotThreeTimes
+P^3 \left(  \Pitchforkabc \right )\; = \; \PivotThreeTimes \; = \;(-1)^F \Pitchforkabc.
 \end{align}
 %\be\mathord{\vcenter{\hbox{\includegraphics[scale=1]{pivot_cubed.pdf}}}}\ee
 %where $\mu \in V^{ab}_c$. 
@@ -7211,7 +7235,7 @@ where $a,b,c$ are simple objects.
 Decomposing the tensor product and using the simplicity of $c$, we see that 
 \be V^{ab}_c \cong \Delta^{ab}_c \tp \rm{mor}(c \ra c) \cong \Delta^{ab}_c \otimes \End(c).\ee
 Thus, the fusion spaces can be larger than the vector spaces appearing in the fusion rules 
-(in bosonic theories, the fusion spaces and fusion rule coefficients are always equal).
+(in contrast to bosonic theories, where the fusion spaces and fusion rule coefficients are always equal).
 As examples, in the $C_2$ theory studied earlier, we have 
 \be \Delta^{q_\sigma q_\sigma}_{m_\psi} \cong \cc^{1|1},\quad\Delta^{q_\sigma m_\unit}_{q_\sigma} \cong \cc,\ee
 while 
@@ -7287,9 +7311,10 @@ Note that to specify an element of the unordered tensor product, it suffices to 
 particular ordered tensor product $T_f$.
 All of the other $t_g$ are uniquely determined by $t_f$.
 
-When writing equations, we will adopt the usual convention that the ordering is left-to-right on the page.
-
-When drawing diagrams, we always indicate the ordering explicitly by numbers near each fusion space (i.e.\ near
+When writing equations involving particular ordered tensor products of fusion spaces, we will indicate the Koszul ordering 
+explicitly with subscripts, e.g. $V^{ab}_{c,1} \tp V^{cd}_{e,2}$. \ethan{for our coherence relation stuff later, I think it's easier to indicate the ordering as subscripts rather than implicitly as left-to-right ordering}
+%adopt the usual convention that the ordering is left-to-right on the page.
+When drawing diagrams with a particular ordering in mind, we always indicate the ordering explicitly by numbers near each fusion space (i.e.\ near
 each vertex in the string net).
 Another possible convention would be to use the ordering corresponding to (say) bottom-to-top on the page,
 but this creates opportunities for error when changing diagrams by isotopies,
@@ -7324,13 +7349,15 @@ For arbitrary objects $x$ and $y$, we have
 \be \label{sobdecomp}
 	\mor(x\to y) \: \cong \: \bigoplus_{a\in\mcx} \mor(x\to a) \tp_{\End(a)} \mor(a\to y) .
 \ee
-Recall that the relative tensor product on the RHS above is defined as the usual tensor product over scalars, modulo elements
-of the form $\alpha f \tp \beta - \alpha\tp f\beta$.
+Recall that the relative tensor product $\tp_{\End(a)}$ on the RHS above is defined as the usual tensor product over scalars, modulo elements
+of the form $\alpha f \tp \beta - \alpha\tp f\beta$ with $f\in \End(a)$.
 Clearly such elements are in the kernel of the composition map $\mor(x\to a) \tp \mor(a\to y) \to \mor(x\to y)$.
 Our semisimplicity assumption implies that the composition map (summing over all $a\in \mcx$) is surjective and that such
 elements generate all of the kernel.
 
-Diagrammatically, the relative tensor product means that fermionic dots can move across edges labeled by q-type simple objects.
+Diagrammatically, the relative tensor product is responsible for allowing fermionic dots to move across edges labeled by q-type simple objects.
+Loosely, treating $\End(a)$ as the tensor unit when $a$ is q-type prevents us from over-counting diagrams that 
+differ only by the position of a fermionic dot on the $a$ worldline.  
 
 It follows (though not quite directly) from \ref{sobdecomp} that we have isomorphisms
 \be \label{pfi1}
@@ -7351,7 +7378,7 @@ for $\varphi \in V^{abc}_d$ and $\mu \in V^{ab}_x$, $\nu \in V^{xc}_d$, etc.
 to say how the tensor factors appear. 
 Should we include those or leave them implicit? 
 It might cause more confusion since we just said we were dealing with an un-ordered tensor product.}
-\dave{Should we add a }
+\ethan{I don't think we need them in the bosonic case.}
 Similarly, 
 \be
 	V^{abcd} \cong \bigoplus_{x\in \mcx} V^{ab}_x \tp_{\End(x)} V^{xcd} ,
@@ -7392,14 +7419,22 @@ For the pitchfork version, we instead use \ref{pfpfi1} and \ref{pfpfi2} to obtai
 	F^{abcd} : \bigoplus_{x\in \mcx} V^{abx^*} \tp_{\End(x)} V^{xcd}   \;\to\;   \bigoplus_{x\in \mcx} V^{bcx^*} \tp_{\End(x)} V^{axd} .
 \ee
 \kw{figs?  or just rely on the figs from the previous subsection?}
-
-
-
-\bigskip
-
-
-\kw{What else needs to be said here?}
-
+\ethan{I think the following is needed to discuss coherence relation stuff}
+The tensor products appearing in the above isomorphisms are unordered tensor products. 
+For numerical applications, particular ordered representatives of the tensor products need to be chosen. 
+For the $F^{abc}_d$ isomorphism, we will choose the convention that it acts on tensor products of fusion spaces whose ordering increases as one goes up the diagram, 
+and that it maps into fusion spaces with the same ordering. That is, with explicit Koszul-ordering we have 
+\be \label{Fmove_ordering_conventions}
+	F^{abc}_d : \bigoplus_{x\in \mcx} V^{ab}_{x,2} \tp_{\End(x)} V^{xc}_{d,1} \;\to\; \bigoplus_{y\in \mcx} V^{ay}_{d,1} \tp_{\End(y)} V^{bc}_{y,2}.
+\ee
+\ethan{this is what we use in the hexagon isomorphism, and is also what Gu-Wen do}
+Graphically, and written as a matrix equation, we thus have \ethan{Dave feel free to re-make if you like}
+\be \label{graphical_Fmove} \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{Fsymbol_defn.pdf}}}},\ee
+where the greek indices label particular fusion space basis vectors, with $\mu\in V^{ab}_x,\nu\in V^{xc}_d,\alpha\in V^{bc}_y,$ and $\beta\in V^{ay}_d$.
+We also choose the following left-to-right ordering convention for the $F^{abcd}$ move:
+\be  
+	F^{abcd} : \bigoplus_{x\in \mcx} V^{abx^*}_1 \tp_{\End(x)} V^{xcd}_2   \;\to\;   \bigoplus_{x\in \mcx} V^{bcx^*}_1 \tp_{\End(x)} V^{axd}_2 .
+\ee
 
 
 
@@ -7415,10 +7450,30 @@ must be changed to take account of Koszul signs.
 \medskip
 
 We will start with the well-known pentagon equation, in the version that uses the basic fusion spaces $V^{ab}_c$.
-If we work in terms of {\it unordered maps}, with \ref{fdef21} interpreted as an unordered map between direct sums of
+If we work in terms of {\it unordered maps}, with \eqref{fdef21} interpreted as an unordered map between direct sums of
 unordered tensor products, then the fermionic pentagon equation looks just like the bosonic case, namely
 that the following diagram commutes:
-\kw{insert pentagon commutative diagram}
+\begin{align}
+\newcommand{\A}{\bigoplus_{p,q}V^{xy}_{p}\tp_p V^{pz}_{q}  \tp_q V^{qw}_{u}}
+\newcommand{\AB}{\ar[rrru]^{F^{pzw}_u} \ar[rrd]^{F^{xyz}_q}}
+\newcommand{\B}{\bigoplus_{p,t} V^{xy}_{p} \tp_p V^{pt}_{u} \tp_t V^{zw}_{t}}
+\newcommand{\BC}{\ar[rrrrd]^{F^{xyt}_u}}
+\newcommand{\D}{\bigoplus_{r,q}V^{xr}_{q}\tp_r V^{yz}_{r}  \tp_q V^{qw}_{u}}
+\newcommand{\DE}{\ar[rrr]^{F^{xrw}_u} }
+\newcommand{\E}{\bigoplus_{s,r}V^{xs}_{u}\tp_s V^{yz}_{r}  \tp_r V^{rw}_{s}}
+\newcommand{\EF}{\ar[rru]^{F^{yzw}_s}} 
+\newcommand{\F}{\bigoplus_{t,s} V^{xs}_{u} \tp_s V^{yt}_{s} \tp_t V^{zw}_{t}}
+\vcenter{\xymatrix @!0 @M=2mm @R=22mm @C=19mm{
+&&&\B\BC&&&&\\
+\A\AB&&&&&&&\F\\
+&&\D\DE&&&\E\EF&&
+	}} 
+	\label{bosonPentagon}
+\end{align}
+where all the sums are over a representative set of simple objects and we have used the notation $\tp_x \equiv \tp_{\text{End}(x)}$.
+Technically the modified tensor products $\tp_x$ also appear in the conventional bosonic pentagon equation, although in that 
+case we can set $\tp_x = \tp_\cc$ without loss of generality. 
+
 However, if we peer under the hood and look at {\it ordered representatives} (as we need to do if, for example,
 we were checking the pentagon equation on a computer), then we
 see that a Koszul sign appears, and the commutative diagram becomes hexagonal:
@@ -7441,12 +7496,12 @@ see that a Koszul sign appears, and the commutative diagram becomes hexagonal:
 	}} 
 	\label{endoPentagon}
 \end{align}
-where we have used the notation $\tp_x \equiv \tp_{\text{End}(x)}$.
+The Koszul ordering of each tensor product in the diagram is obtained with the help of the conventions in 
+\eqref{Fmove_ordering_conventions}. 
 In terms of the matrix elements of the $F$-symbols, this reads 
 \be  \begin{aligned} \sum_{r\in {\rm sObj}(\mcc)}\sum_{\sigma\in V^{xr}_q}\sum_{\omega \in V^{yz}_r}\sum_{\eta\in V^{rw}_s}& [F^{xyz}_q]_{(p;\mu\nu)(r;\omega\sigma)}[F^{xrw}_u]_{(q;\sigma\lambda)(s;\eta\gamma)}[F^{yzw}_s]_{(r;\beta\eta)(t;\alpha\delta)} \\ & = \sum_{\beta \in V^{pt}_u}(-1)^{|\delta||\alpha|}[F^{pzw}_u]_{(p;\nu\lambda)(t;\alpha\beta)}[F^{xyt}_u]_{(P;\mu\beta)(s;\delta\gamma)}, \end{aligned} \ee
 where $\mu\in V^{xy}_p,\nu\in V^{pz}_q,\lambda\in V^{qw}_u,\gamma\in V^{xs}_u,\delta\in V^{yt}_s,$ and $\alpha\in V^{zw}_t$. 
-The Koszul sign $P_{23}$ appearing in \eqref{endoPentagon} appears in the above formula as $(-1)^{|\delta||\alpha|}$, where as usual $|\delta|$ denotes the parity 
-of the vector $\delta$. 
+The Koszul sign $P_{23}$ appearing in \eqref{endoPentagon} appears in the above formula as $(-1)^{|\delta||\alpha|}$. 
 
 
 \kw{TO DO: say a little bit (but only a little bit) about other coherence relations}
@@ -7461,7 +7516,7 @@ of the vector $\delta$.
 
 \kw{TO DO: discuss reflection structures, pin, etc.
 probably just give basic defs}
-
+\ethan{Are we wanting to talk about inner products and stuff? I think we can largely just refer to stuff in the line bundle appendix}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -8167,12 +8222,11 @@ But its ground state would be isomorphic to the above edge-like vertex term.
 
 Note that vectors in the ground state of the vertex term can be interpreted as string nets.
 If $K$ is the ground state of the vertex term, we have maps
-\dave{Should we use $\mch$ rather than H?}
 \be
-	K \to H(\Sigma \setminus \mbox{2-cells}) \to H(\Sigma) .
+	K \to \mch(\Sigma \setminus \mbox{2-cells}) \to \mch(\Sigma) .
 	\label{ground_state_projection}
 \ee
-where $H(\Sigma \setminus \mbox{2-cells})$ and $H(\Sigma)$ are the ground-state Hilbert spaces of $\Sigma \setminus \mbox{2-cells}$ and $\Sigma$, respecitvely.
+where $\mch(\Sigma \setminus \mbox{2-cells})$ and $\mch(\Sigma)$ are the ground-state Hilbert spaces of $\Sigma \setminus \mbox{2-cells}$ and $\Sigma$, respecitvely.
 The job of the edge term (below) will be to pick out a subspace of $K$ on which the first map is an isomorphism. 
 The job of the plaquette term will be to further reduce to a subspace such that the composite map to $H(\Sigma)$ is an isomorphism.
 
@@ -9082,6 +9136,9 @@ and $m_\sigma^-$ in the main text.
 %\be Spin(n) = \pin_+(n) \cap [C\ell_n]^0.\ee
 
 
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Constructing the fermion line bundle}
 \label{fermion_line_bundle} \label{flb_appendix}
@@ -9183,6 +9240,7 @@ At each endpoint, there are two possible lifts of an $O(2)$ framing,
 so $\tcf(r)$ is a set with $2^{k+1}$ elements.
 Again, $\tcf(r)$ does not change if we reverse the spin structure on $B$.
 \kw{should perhaps define ``reverse the spin structure".  maybe put it in spin str appendix.}
+\ethan{Do you mean reversing the orientation (or exchanging positive and negative framings) and then lifting the $O(2)$ framings?}
 
 Let $S(r)$ denote the set of all orderings of the endpoints of $r$.
 It is a set with $k!$ elements.
