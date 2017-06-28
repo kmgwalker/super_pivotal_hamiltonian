@@ -18,9 +18,11 @@
 \usepackage[colorlinks]{hyperref}
 \hypersetup{linkcolor={hanpurple}}
 
-% number tables within subsections
+% number tables and figures within subsections
+%%%%%KW: should we also number eqns within subsections?
 \usepackage{chngcntr}
 \counterwithin{table}{subsection}
+\counterwithin{figure}{subsection}
 
 \usetikzlibrary{positioning,arrows}
 \usetikzlibrary{decorations.pathmorphing}
@@ -2796,7 +2798,7 @@ Notice that the non-bounding torus (with $(N,N)$ spin structure) has only odd fe
 
 
 For future reference we also tabulate the change of basis between the ground-state tori in Figure \ref{TorusBasisC2} 
-and the primitive idempotents identified previously.
+and the closed-up primitive idempotents.
 To form string-net pictures drawn on tori from the idempotents, 
 we close up the idempotents along the longitudinal direction by identifying the inner puncture 
 of the annulus on which the idempotent lives with the outer puncture, 
@@ -2808,9 +2810,10 @@ e=\; {\FubeXXXA} \quad h = \;{\FubesXsA}  \quad v =\; {\FubeXssA} \quad t = \; {
 \end{align}
 and append subscripts to denote a particular spin structure. 
 We will also use an overscript $\bullet$
-if the torus is closed with an odd endomorphism, for example,
+if we are closing up an odd endomorphism rather than the idempotent itself.
+For example,
 \begin{align}
-h_{NB}= \; \AddDatTorus{\FubesXsA}{N}{B} \quad \quad \text{and} \quad \quad \overset{\bullet}{t}_{NN} = \FubessdXA.
+h_{NB}= \; \AddDatTorus{\FubesXsA}{N}{B} \quad \quad \text{and} \quad \quad \overset{\bullet}{t}_{NN} = \FubessdXA \; .
 \end{align}
 We can then compute the change of basis shown in Figure \ref{C2Change_of_Basis}.
 \begin{figure}
@@ -2879,13 +2882,13 @@ t\\
 \overset{\bullet}{h}\\
 \overset{\bullet}{v}\\
 \overset{\bullet}{t}\\
-\end{matrix} \right)_{NB}
+\end{matrix} \right)_{NN}
 \end{align}
 \caption{Change of basis between the quasiparticle (idempotent) basis given in Table \eqref{CTwoParticles} 
 and the topological bases in Figure \eqref{TorusBasisC2} for the torus.
-These are simply given by projecting the idempotents into the topological bases. 
+These are simply given by expressing the idempotents in the topological bases. 
 Note that the odd torus has a sign ambiguity on each of the of the idempotents. 
-Indeed we only require that $\overset{\bullet}{q}^2 = q$, which leaves $\overset{\bullet}{q}$ ambiguous up to a $\pm$ sign. 
+We can require that $\overset{\bullet}{q}^2 = q$, but that leaves $\overset{\bullet}{q}$ ambiguous up to a $\pm$ sign. 
 This ambiguity can lead to different $S$ matrices, see \eqref{NNSmatrix} and surrounding text for more details.}
 \label{C2Change_of_Basis}
 \end{figure}
@@ -2918,16 +2921,17 @@ labeled by $B$ or $N$ has either a bounding ($B$) or non-bounding ($N$) spin str
 }
 \end{figure}
 
-In this section, we will compute the representation of the modular $S$ and $T$ matrices in the $C_2$ theory, which together generate the modular group. 
+In this section, we will compute the representation of the modular $S$ and $T$ matrices in the $C_2$ theory, which together generate the modular groupoid. 
 The modular $S$ matrix acts on states on the torus by interchanging the meridional and longitudinal cycles 
-of the torus\footnote{An alternate picture of the modular $S$ matrix in terms of Turaev-Viro state sums 
-is as follows: we note that there are two ways of representing a given string-net configuration on a torus embedded 
-in $S^3$ in terms of Turaev-Viro state-sums: one way is to fill the exterior of the torus with a 
-Turaev-Viro state-sum with boundary conditions specified by the given string-net configuration, as discussed in the previous section. 
-The other is to fill the {\it interior} of the torus with a Turaev-Viro state-sum possessing the same boundary conditions. 
-The modular $S$-matrix performs the change of basis between these two choices.
-We will avoid using this in what follows because it is difficult to perform explicit calculations along these lines.}. 
-If we draw the torus as a square with opposing sides identified, then $S$ acts by rotating the square by $\pi/2$ counterclockwise. 
+of the torus.
+%\footnote{An alternate picture of the modular $S$ matrix in terms of Turaev-Viro state sums 
+%is as follows: we note that there are two ways of representing a given string-net configuration on a torus embedded 
+%in $S^3$ in terms of Turaev-Viro state-sums: one way is to fill the exterior of the torus with a 
+%Turaev-Viro state-sum with boundary conditions specified by the given string-net configuration, as discussed in the previous section. 
+%The other is to fill the {\it interior} of the torus with a Turaev-Viro state-sum possessing the same boundary conditions. 
+%The modular $S$-matrix performs the change of basis between these two choices.
+%We will avoid using this in what follows because it is difficult to perform explicit calculations along these lines.}. 
+If we draw the torus as a square with opposite sides identified, then $S$ acts by rotating the square by $\pi/2$ counterclockwise. 
 The modular $T$ matrix represents the action of the Dehn twist on the torus, 
 which corresponds to cutting the torus along a meridional cycle, 
 twisting the boundary conditions at the cut by $2\pi$ relative to one another, and gluing the torus back together.
@@ -2941,22 +2945,27 @@ meaning that it will generically not be diagonal in the idempotent (quasiparticl
 In contrast with $T$, the action of $T^2$ preserves spin structures, and so we are still able to associate 
 definite $T^2$ 
 eigenvalues to the quasiparticles in the theory.
-Furthermore, the spins of quasiparticles excitations in super fusion categories are in general only defined 
+Furthermore, the twists of quasiparticles excitations in super fusion categories are in general only defined 
 up to a $\pm$ sign, see e.g. \cite{cano2014,bruillard2017,gu2014} for details.
-More precisely, the spin of a given simple object in the tube category is ambiguous across the isomorphism 
+More precisely, the twist of a given simple object in the tube category is ambiguous across the isomorphism 
 class of that object (although it is well defined on any given representative of the isomorphism class). 
-Indeed, we will see that the spins of the two idempotents in the $m_\sigma$ isomorphism class (namely $m_\sigma^+$ and 
+Indeed, we will see that the twists of the two idempotents in the $m_\sigma$ isomorphism class (namely $m_\sigma^+$ and 
 $m_\sigma^-$) have twists that differ by a factor of $-1$. 
+\kw{I used to think that the above is true, but now I think that for the bounding annulus, the twist eigenvalue
+does not make sense, even if we fix a representative in the equivalence class.
+(Or at least there is a sense in which it does not make sense.)
+For the non-bounding annulus, the twist is fine.
+We should think more about this.}
 
 
 We now proceed to examine the action of the $S$ and $T$ modular transformations on the four spin tori which compose 
-the twelve dimensional Hilbert space listed in Figure \ref{TorusBasisC2}.
+the 12-dimensional space listed in Figure \ref{TorusBasisC2}.
 Although the calculations are most easily performed in the topological basis in Figure \ref{TorusBasisC2}, 
 it is more natural to analyze the resulting transformations in the idempotent basis given in Table \ref{CTwoParticles}. 
 As mentioned earlier, the basis vectors in the idempotent basis are constructed by taking the idempotents associated with the 
 quasiparticles identified in the previous section and closing them up (with different choices of spin structure) 
 along the longitudinal direction. 
-The change of basis between the topological and idempotent bases are written explicitly in equations \eqref{C2Change_of_Basis}. 
+The change of basis between the topological and idempotent bases are written explicitly in Figure \ref{C2Change_of_Basis}. 
 
 
 We'll start with the $(B,B)$ spin structure, which is preserved under the action of $S$. 
@@ -3100,8 +3109,11 @@ S^{NB \rightarrow BN}&&\\
 
 
 Similarly we can compute the modular $T$-matrix, the action of which twists the inner boundary of an annulus by an angle of $2\pi$ counterclockwise with respect to its outer boundary. 
-This definition ensures that the $T$-matrix acts as the identity on tubes with no charge line (i.e. with no strings ending on their inner annular boundaries).
-Within each spin structure sector the $T$-matrix is diagonal in the idempotent basis, with eigenvalues given by the topological spins appearing in Figure \ref{C2Data}. 
+This definition ensures that the $T$-matrix acts as the identity on tubes with no charge line 
+(i.e. with no strings ending on their inner annular boundaries).
+Within each spin structure sector the $T$-matrix is diagonal in the idempotent basis, 
+with eigenvalues given by the topological twists appearing in Figure \ref{C2Data}. 
+\kw{Twists are no longer part of that figure.}
 We can read off the structure of the $T$-matrix with the help of Figure \ref{spin_str_mapping_class_group} to find
 \begin{align}
 \left( \begin{matrix}
@@ -3207,7 +3219,9 @@ One can check that we have the modular relations
 \begin{align}
  (S^{NN\ra NN}T^{NN\ra NN})^3 = (S^{NN \ra NN})^4= A^{8}\unit = -\unit
  \end{align}
-The minus sign comes from the fact that the action of $S^4$ on performs a $2\pi$ rotation 
+\kw{I think we should save $\unit$ for trivial objects (tensor units), and use a different notation
+(like simply ``id") for identity maps.}
+The minus sign comes from the fact that acting by $S^4$ performs a $2\pi$ rotation 
 of the fermion framing, resulting in a phase of $-1$, since the $(N,N)$ torus has odd fermion parity. 
 These relations easily generalize to $(ST)^3=S^4=(-1)^F\unit$, where $(-1)^F$ is the fermion 
 parity operator. 
@@ -3221,6 +3235,7 @@ Collecting these results, we can now write down the complete modular $S$ and $T$
 which act across all spin structures. 
 We will write them down in the quasiparticle 
 basis $[(m_\unit,m_\sigma^+,m_\psi)_{BB},(m_\unit,m_\sigma^+,m_\psi)_{BN},(q_\unit,q_\sigma,q_\psi)_{NB},(q_\unit,q_\sigma,q_\psi)_{NN}]^T$, 
+\kw{I think there should be bullets over the NN guys.}
 in which we can write
 \be \label{modularS}
 S = \frac{1}{2}\begin{pmatrix} 1 & d & 1 &			&&&			&&&			&& \\ 
@@ -3235,16 +3250,17 @@ S = \frac{1}{2}\begin{pmatrix} 1 & d & 1 &			&&&			&&&			&& \\
 						&&&				&&&			&&&			-A^{2} & -A^{2}d & A^{2}\\
 						&&&				&&&			&&&			-A^{2}d & 0 & -A^{2}d \\ 
 						&&&				&&&			&&&			A^{2} & -A^{2}d & -A^{-2} \end{pmatrix}\ee		
+\kw{I think one of the -1's should be a +1 (does not agree with above in one of the middle blocks)}
 where we have only listed the non-zero entries. 
 $S$ has two different direct-sum decompositions. First, essentially by construction, 
-it splits into a direct sum over blocks according to equivalence classes of spin structures 
+it splits into a direct sum over blocks according to spin structures 
 under the $S$ modular transformation. 
 Additionally, we have $S = S_{even} \oplus S_{odd}$, where $S_{odd}$ is the $S$-matrix 
 acting on ground states with odd fermion parity.
 This decomposition is always possible, but it will not always match a decomposition based 
 on spin structures. 
 That is, while $S_{odd} = S^{NN\ra NN}$ in this theory, spin structure blocks of $S^{NN\ra NN}$ 
-will not have a definite fermion parity in general, see sections \ref{so36} and \ref{halfesix} for examples. 
+will not have a definite fermion parity in general; see Sections \ref{so36} and \ref{halfesix} for examples. 
 Also note that $S^4 = \unit_{9\times9}\oplus(-\unit_{3\times3})$ in accordance with $S = S_{even} \oplus S_{odd}$ and $S^4=(-1)^F\unit$. 
 
 Now for the $T$-matrix. 
@@ -3318,7 +3334,7 @@ For example, to calculate $R^{q_\psi q_{1/\psi}}_{m_{\psi/1}}$, we write
 \qqmbraida \xrightarrow{\; \; R\;\; }\qqmbraidb \;=  \; \theta_{q_\psi}^* \qqmbraidc
 \end{align}
 where the dashed blue lines are the branch cuts, and we have taken advantage of our knowledge 
-of the eigenvalue of $q_\psi$ under the twisted tube (i.e.\ the spin of $q_\psi$). 
+of the eigenvalue of $q_\psi$ under the twisted tube (i.e.\ the twist of $q_\psi$). 
 
 We define odd vectors in $V^{a,b}_c$ by placing dots on the top left leg of the pants, on the 
 leg marked $u$ in \eqref{pants_braiding_basis}. 
@@ -3398,7 +3414,7 @@ acting on the odd vector.}
 \subsubsection{Twists and self-statistics}
 %%%%%%%%%%%%%%%%%%%%%%%%
 
-There are three ways to compute the topological twist $\theta_a$ (self-statistics) of a quasiparticle $a$: by statistics (braiding two identical $a$ quasiparticles around one another), by spin (applying Dehn twists on the tubes associated with $a$), and by modular transformations (by acting with the modular $T$-matrix on the ground states on the tori associated with $a$). 
+There are three ways to compute the topological twist $\theta_a$ (self-statistics) of a quasiparticle $a$: by statistics (braiding two identical $a$ quasiparticles around one another), by twisting (applying Dehn twists on the tubes associated with $a$), and by modular transformations (by acting with the modular $T$-matrix on the ground states on the tori associated with $a$). 
 We'll examine the first two methods below, and will comment on the relation between these and the third method at the end of the section. 
 
 We'll start by computing the twists $\{\theta_a\}$ by statistics, namely by braiding two identical quasiparticles once around one another. 
@@ -3411,7 +3427,7 @@ for the non-vortex particles, and
 \be \theta_{q_\unit} = A^5,\ \theta_{q_\psi} = -A^5,\ \theta_{q_\sigma} = 1\ee
 for the vortex particles. 
 
-The twists can also be obtained by computing their spins, which is done by directly Dehn-twisting the tubes in question. 
+The twists can also be obtained by computing their twists, which is done by directly Dehn-twisting the tubes in question. 
 This amounts to computing the eigenvalue of each quasiparticle under $t$, where $t$ is the twisted tube defined in \eqref{tube_shorthands}.
 We can then use the tube algebra multiplication tables to read off the eigenvalues, and in the basis $(m_\unit,m^\pm_\sigma,m_\psi,q_\unit,q_\sigma,q_\psi)^T$ we find the matrix of self-statistics (which we will write as $\Tr\ R$ to distinguish it from the modular $T$-matrix, which is a $12\times 12$ non-diagonal matrix) to be
 \be \Tr\ R = {\rm diag}[1,\pm A^3,1,A^{5},1,-A^{5}].\ee
