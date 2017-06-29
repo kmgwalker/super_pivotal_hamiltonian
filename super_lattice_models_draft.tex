@@ -8520,7 +8520,8 @@ where $V(\{c_k \})$ is vector space assigned to the attaching region for the k-h
 %where $\mcv$ denotes the collection of 0-handles, and $A_v$ the vector space assigned to each. 
 %The linear maps are naturally described by tensors, 
 %and the partition function $Z(\mcm)$ as a tensor trace.
-The partition function is given by the image of the compositino of the linear maps,
+The partition function is given by the image of the composition of the linear maps, 
+\ethan{Why the $\in$ and not $=$? I guess I might not understand this exactly}
 \begin{align}
 Z(\mcm) \in \text{Im} \; T_{\mcv} \circ T_{\mce} \circ T_{\mcf}
 \end{align}
@@ -8546,17 +8547,23 @@ defined by,
 \begin{align}\nonumber
 \cc \ra A(\text{3-handles}) \ra \tp_{f} A(f) \xrightarrow{T_f} \tp_{e \in \mce} A(e) \xrightarrow{T_e} \tp_{v \in \mcv} A(v) \xrightarrow{T_v} Z(\mcm)
 \end{align}
+\ethan{note to self: I don't think we've ever defined $A({\rm stuff})$ anywhere. Should find the earliest place we use it and add the defn}
 where each $T$ is given by,
 \dave{Will think about this more carefully in the near term.}
 \begin{align}
 T = \sum_{\phi, \psi}T_{\phi \psi}  \psi \tp \phi^*
 \end{align}
+where $\psi$ and $\phi$ are basis vectors in the spaces assigned to $k$-handles and $(k+1)$-handles, respectively. 
 For explicit definitions see \cite{Walker2006}.
 The above technically gives the correct answer for the fermionic case, 
 practical implimentation requires care.
 In the next section we present a standardization procedure that allows one to evaluate the partition function.
 
-\subsection{Notation and standardization of state sum}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Notation and standardization of the state sum}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 To define the tensors in \eqref{TVBWss} explicitly, 
 it is helpful to standardize each of the cells, 
 and the vector spaces we assign to each cell. 
@@ -8573,50 +8580,56 @@ We first establish some notation for the components of each cell.
 We begin with the 2-cells.
 We denote the collection of 2-cells by $\mcf$.
 Each $f \in \mcf$ is homeomorphic to a simple polygon, see `f' in Figure~\ref{NotationStateSum}.
-Each edge is oriented by the transversal orientation assigned to $f$ (equivalently, each 2-cell is equiped with a boundary orientation).
-Denote the edge at the boundary of the 2-cell $f$, which neighbours the 1-cell $e$ by $c_{fe}$, again, see Figure~\ref{NotationStateSum}.
+Each edge is oriented by the transversal orientation assigned to $f$ (equivalently, each 2-cell is equipped with a boundary orientation).
+Denote the edge at the boundary of the 2-cell $f$, which neighbors the 1-cell $e$ by $c_{fe}$, again, see Figure~\ref{NotationStateSum}.
 
-The tubular neighbourhood of the 1-cells is a 1-handle with oriented trivalent vertices on each disk connected by an annulus with three oriented lines.
-The orientation of the lines is opposite that of the neighbouring 2-cell boundary, 
+The tubular neighborhood of a given 1-cell is a 1-handle with oriented trivalent vertices on each disk cross-section. %connected by an annulus with three oriented lines.
+The orientation of the lines is opposite that of the neighboring 2-cell boundary, 
 and determines the orientation of the three lines entering the two disks, see Figure~\ref{NotationStateSum}.
-We denote the edges which neighbour the 2-cells by $\bar{c}_{fe}$, the bar denotes that the orientation is oppisote that of the edge of the 2-cell $c_{fe}$, see Figure~\ref{NotationStateSum}. 
-The 1-cell neighbours two 0-cells, $v$ and $v'$. 
-Denote the pitchforks appearing at either end by $c_{ev}$ and $c_{ev'}$, 
-again these pitchforks are oriented by the neighbouring 2-cells, see Figure~\ref{NotationStateSum}.
+We denote the edges which form the boundary of a given 2-cell $f$ by $\bar{c}_{fe}$, where the bar signifies that the orientation is opposite that of the edge of the 2-cell, see Figure~\ref{NotationStateSum}. 
+A 1-cell $e$ connects two 0-cells, $v$ and $v'$. 
+We will denote the pitchforks appearing at either end of $e$ by $c_{ev}$ and $c_{ev'}$ with these pitchforks oriented by the neighboring 2-cells; again see Figure~\ref{NotationStateSum}.
 
-The spherical neighbourhood of the 0-cell is intersected by six 2-cells, and four 1-cells.
-For our purposes, it is enough to keep track of the four neighbouring 1-cells.
+A small $S^2$ drawn around any given 0-cell is intersected by six 2-cells and four 1-cells.
+For our purposes, it is enough to keep track of the four neighboring 1-cells.
 \dave{Comment on why this is.}
 %Removing a single point from this spherical neighbourhood allows us to define a homeomorphism into the plane. 
 %Furthurmore, the gluing regions for the 1-cells can all be taken to be pitchforks as in \eqref{pitchfork_basis}, see Figure~\ref{FIGURE}.
 %This is our standardized 0-cell (actually spherical neighbourhood of the 0-cell). 
-Denote the 0-cell by $v$ and the neighbouring 1-cells by $e_j$, $j=1, \cdots 4$.
-We denote the four trivalent junctions by $\bar{c}_{e_j v}$, 
+Denote the 0-cell by $v$ and the neighboring 1-cells by $e_j$, $j=1, \cdots 4$.
+Each of the four 1-cells intersects the small $S^2$ at a point where three of the intersections of 
+the six 2-cells with the $S^2$ meet. 
+We denote these four trivalent junctions by $\bar{c}_{e_j v}$, 
 and again the bar denotes that these are in the opposite orientation relative to the trivalent vertices $c_{e_jv}$ at the boundaries of the 1-cells. 
 
 The Figure \ref{NotationStateSum} only shows one representative sample of cells, which all others are homeomorphic to. 
 We now standardize each cell so that we can keep track of the topological data associated to the handle decomposition relative to a `standard' one. 
 This is analogous to our pitchforkization procedure discussed in the text surrounding \eqref{pitchfork_basis}.
-We first note that the spherical neighbourhood of each 0-cell can be standardized by removing a point and mapping to the plane. 
-We can next pitchforkize the attaching region for each 1-handle in the neighbourhood of the 0-cell, so that each take the form,
+We first note that the spherical neighborhood of each 0-cell can be standardized by removing a point and mapping the resulting picture to the plane. 
+We can next pitchforkize the attaching region for each 1-handle in the neighborhood of the 0-cell, so that each take the form
 \begin{align}
 \StandardZeroCell
 \end{align}
-where the dashed circles are the attaching regions for the 1-handles.
+where the dashed circles are the attaching regions for the 1-handles and again, 
+the edges in the above diagram represent the intersections of the six 2-cells 
+with the $S^2$ surrounding the 0-cell. 
 The numbers indicate the which edge is connected to where on the standard 0-handle, i.e., associated with $\bar{c}_{e_j v}$.
-The 1-handles which attach two 0-handles are now horsehoeshaped.
-Each can be deformed into,
+The 1-handles which attach two 0-handles are now horsehoe-shaped.
+Each can be deformed into
 \begin{align}
 \HorshoeIdentity
 \end{align}
-where $P_e$ is either the identity, $P$ or $P^2$ defined in \eqref{Pitchfork_pivot}.
+where $P_e$ is either the identity, $P$, or $P^2$, where $P$ is the pivot defined in \eqref{Pitchfork_pivot}.
+The possible presence of $P$ and $P^2$ is needed to keep track of any relative pivoting
+between ends of different 1-handles. 
 
 We now are ready to define labels for each of the gluing regions $c_{xy}$ defined above, 
-and associated with the standardized 0-handles, and 1-handles. 
+and associated with the standardized 0-handles and 1-handles. 
 We define the vector spaces 
 \begin{align}
-E = \bigoplus_{x} \cc_x \quad \quad \quad W = \bigoplus_{abc}V^{abc}.
+E = \bigoplus_{x} \cc_x \quad \quad \quad W = \bigoplus_{abc}V^{abc}
 \end{align}
+where the sum runs over the label set $\mcl$, which depends on the input category. 
 Momentarily, the vector space $W$ will be assigned to pitchforks.
 As with \eqref{pitchfork_basis}, not all pitchforks will be oriented with all edges pointing outwards. 
 In this scenario we replace the appropriate object with its dual.
@@ -8632,11 +8645,12 @@ W^* &\text{otherwise}
 Correspondingly, each cell is attached to the vector space 
 \begin{align}
 \label{tensor_space}
-\text{2-cells} \quad \quad  & \mch(f) = \tp_{e \in f} \mch(c_{ef})  \\
-\text{1-cells}\quad \quad   & \mch(e) = \tp_{f \in e}\mch (\bar{c}_{ef}) \tp \mch(c_{ev}) \tp \mch (c_{ev'}) \\
- \text{0-cell} \quad \quad  & \mch(v) = \tp_{j =1}^4\mch(\bar{c}_{e_jv}) 
+\text{2-cells} \quad \quad  & \mch(f) = \bigotimes_{e \in f} \mch(c_{ef})  \\
+\text{1-cells}\quad \quad   & \mch(e) = \bigotimes_{f \in e}\mch (\bar{c}_{ef}) \tp \mch(c_{ev}) \tp \mch (c_{ev'}) \\
+ \text{0-cell} \quad \quad  & \mch(v) = \bigotimes_{j =1}^4\mch(\bar{c}_{e_jv}) 
 \end{align}
-The assignment of vector spaces has been so that the labels of the attachment attachment labels of the (k+1)-handles connecting to the k-handle are dual.
+\ethan{I think the $e\in f$ and $f\in e$ notation is kinda confusing. Maybe $e\in \partial f$ or something?}
+The assignment of vector spaces has been so that the labels of the attachment labels of the (k+1)-handles connecting to the k-handle are dual. \ethan{??}
 \begin{figure}
 \begin{center}
 \includegraphics{NotationStateSum.pdf}
@@ -8644,22 +8658,25 @@ The assignment of vector spaces has been so that the labels of the attachment at
 Notation used in this section. 
 The cells can be used to label the weights that determine the partition function.
 In the figure we have labeled a `face' by $f$, an `edge' by $e$ and a vertex by v. 
-Each is naturally associated to a 2-, 1- and 0-cell repsectively. 
-We assume a cell decomposition that is dual to a triangulation so that each 1-cell is neighboured by three 2-cells and two 0-cells. 
-Each, 0-cell is neighboured by four 1-cells. 
-The faces are transversally oriented, so that there is an orientation for there boundary. 
-The edges are also oriented, indicted by the double arrow. 
-The oriented boundary edge of the face `f' that neighbours the edge `e' is labeled $c_{fe}$, 
+Each is naturally associated to a 2-, 1- and 0-cell respectively. 
+We assume a cell decomposition that is dual to a triangulation so that each 1-cell is neighbored by three 2-cells and two 0-cells, and each 0-cell is neighbored by four 1-cells. 
+The faces are transversally oriented, so that their boundaries possess an orientation. 
+The edges are also oriented, with the orientation of the edge $e$ in the figure indicted by the double arrow. 
+The oriented boundary edge of the face `$f$' that neighbors the edge `$e$' is labeled $c_{fe}$, 
 and the opposing edge by $\bar{c}_{fe}$. 
-The trivalent junctions ocurring at either end of the edge are denoted $c_{ev}$ and $c_{ev'}$, the opposing trivalent junctions associate to the 0-cells by $\bar{c}_{ev'}$ and $\bar{c}_{ev}$ (not displayed).
+The trivalent junctions occurring at either end of the edge are denoted $c_{ev}$ and 
+$c_{ev'}$, the opposing trivalent junctions associate to the 0-cells by $\bar{c}_{ev'}$ 
+and $\bar{c}_{ev}$ (not displayed).
 }
 \end{center}
 \end{figure}
 
 
 \dave{Should this be in the definition section?}
-Lastly we define a non-degenerate bilinear pairing between a disks with $n$ marked points. 
-It is defined via,
+\ethan{I think keeping it here is good, since we don't use it earlier and in the definition 
+section we aren't pitchforking too hard}
+Lastly we define a non-degenerate bilinear pairing between vectors in the vector space assigned to a disk with $n$ marked points. 
+It is defined via
 \begin{align}
 \mcb:\;  &V^{x_1 x_2 \cdots x_n} \tp V^{x_n^* \cdots x_2^* x_1^*} \ra \cc \\
 &\Bilineara \tp \Bilinearb \mapsto \Bilinearc
@@ -8696,6 +8713,8 @@ $$
 $$
 \dave{Does it make sense?
 Do picture example?}
+\ethan{I'm a little confused by the notation. Is this map supposed to be contracting out 
+a given edge in the 1-handle?}
 \dave{This is basically a PEPS.}
 \dave{To Dave:
 Cite Levin's tensor trace paper?
@@ -8708,7 +8727,7 @@ Then tensors for each.}
 
 We now write down the Turaev-Viro-Barrett-Westbury state sum in the language and notation discussed above.
 The benefit of defining \eqref{contract} is that we can now define a partition function by specifying a vector in $\mch(\mcm)$.
-Since the construction for the bosonic state sum is very well known, see the original works \cite{Turaev1992,Barrett1996}, 
+Since the construction for the bosonic state sum is very well known (see the original works \cite{Turaev1992,Barrett1996}), 
 we just provide the answer and then move on to the super pivotal state sum. 
 
 We now specify three sets of tensors $T_f$, $T_e$, and $T_v$, living the in vector spaces defined in \eqref{tensor_space}. 
@@ -8825,13 +8844,14 @@ This can always be done with a finite number of Koszul isormorphisms.
 \dave{Check Turzillo paper.}
 \dave{I found that the $\mcb(\psi_1 \tp \eta_2) = \mcb(\eta_1 \tp \psi _2)$ is symmetric. }
 
-The 1-cell tensors are modified as are modified to now include the possiblity of non-trivial endomorphism algebras on q-type simple objects. 
-Hence, 
+In the fermionic case, the 1-cell tensors are modified to avoid over-counting states with labels that possess non-trivial endomorphism algebras. 
+We then have 
 \begin{align}
 T_f = \sum_{x, \; \{ v_{a_{e}}\} \;  : \;e \in f} \left( \frac{d_x}{2^{n_x}}  \prod_{e \in f} \delta_{x a_e} \right)   \tp _{e \in f}v_{a_e}
 \end{align}
 where $n_x = 0$ if $x$ is m-type, and $n_x = 1$ if $x$ is q-type. 
-The vector space remains bosonic and so the tensor needs no furthur adjustments. 
+\ethan{I think $\dim \End(x)$ is slightly more transparent than $2^{n_x}$}
+The vector space remains bosonic and so the tensor needs no further adjustments. 
 
 The one-handles have, arguably the most interesting adjustment. 
 In the bosonic state sum, we needed to keep track of three possible pivots.
