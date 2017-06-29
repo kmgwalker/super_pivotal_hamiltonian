@@ -8530,6 +8530,10 @@ where $V(\{c_k \})$ is vector space assigned to the attaching region for the k-h
 %and the partition function $Z(\mcm)$ as a tensor trace.
 The partition function is given by the image of the composition of the linear maps, 
 \ethan{Why the $\in$ and not $=$? I guess I might not understand this exactly}
+\dave{I should re-word. 
+This section will probably be dropped so I didn't want to put too much effort into it.
+If $\mcm$ has boundary, then I think of the composition of maps as a projector onto the string net ground state living at that boundary. 
+}
 \begin{align}
 Z(\mcm) \in \text{Im} \; T_{\mcv} \circ T_{\mce} \circ T_{\mcf}
 \end{align}
@@ -8556,6 +8560,8 @@ defined by,
 \cc \ra A(\text{3-handles}) \ra \tp_{f} A(f) \xrightarrow{T_f} \tp_{e \in \mce} A(e) \xrightarrow{T_e} \tp_{v \in \mcv} A(v) \xrightarrow{T_v} Z(\mcm)
 \end{align}
 \ethan{note to self: I don't think we've ever defined $A({\rm stuff})$ anywhere. Should find the earliest place we use it and add the defn}
+\dave{I changed to $\mch(\text{space})$, 
+which I think jives with what we use earlier.}
 where each $T$ is given by,
 \dave{Will think about this more carefully in the near term.}
 \begin{align}
@@ -8578,33 +8584,33 @@ and the vector spaces we assign to each cell.
 Technically, the partition function is built on a handle decomposition, 
 but its useful to label the data associated to each handle by the corresponding cell. 
 Much of this section is notational, 
-readers are invited to familiarize themselves with Figure~\ref{FIGURE}, 
-and Table~\ref{TABLE}, 
+readers are invited to familiarize themselves with Figure~\ref{NotationStateSum}, 
+and \eqref{attaching_region}-\eqref{tensor_space}, 
 and continue with the next subsection. 
 Although not necessary, we assume the cell decomposition is dual to a triangulation for ease of notation.
 The standardization procedure is similar to the pitchforkization procedure defined in \eqref{pitchfork_basis} and surrounding text.
-We first establish some notation for the components of each cell. 
+We first establish some notation for the attaching regions of each cell. 
 
 We begin with the 2-cells.
 We denote the collection of 2-cells by $\mcf$.
 Each $f \in \mcf$ is homeomorphic to a simple polygon, see `f' in Figure~\ref{NotationStateSum}.
 Each edge is oriented by the transversal orientation assigned to $f$ (equivalently, each 2-cell is equipped with a boundary orientation).
-Denote the edge at the boundary of the 2-cell $f$, which neighbors the 1-cell $e$ by $c_{fe}$, again, see Figure~\ref{NotationStateSum}.
+Denote the edge at the boundary of the 2-cell $f$, which neighbours the 1-cell $e$ by $c_{fe}$, again, see Figure~\ref{NotationStateSum}.
 
-The tubular neighborhood of a given 1-cell is a 1-handle with oriented trivalent vertices on each disk cross-section. %connected by an annulus with three oriented lines.
+The tubular neighbourhood of a given 1-cell is a 1-handle with oriented trivalent vertices on each disk cross-section. %connected by an annulus with three oriented lines.
 The orientation of the lines is opposite that of the neighboring 2-cell boundary, 
 and determines the orientation of the three lines entering the two disks, see Figure~\ref{NotationStateSum}.
 We denote the edges which form the boundary of a given 2-cell $f$ by $\bar{c}_{fe}$, where the bar signifies that the orientation is opposite that of the edge of the 2-cell, see Figure~\ref{NotationStateSum}. 
 A 1-cell $e$ connects two 0-cells, $v$ and $v'$. 
-We will denote the pitchforks appearing at either end of $e$ by $c_{ev}$ and $c_{ev'}$ with these pitchforks oriented by the neighboring 2-cells; again see Figure~\ref{NotationStateSum}.
+We will denote the pitchforks appearing at either end of $e$ by $c_{ev}$ and $c_{ev'}$ with these pitchforks are oriented by the neighbouring 2-cells; again see Figure~\ref{NotationStateSum}.
 
 A small $S^2$ drawn around any given 0-cell is intersected by six 2-cells and four 1-cells.
-For our purposes, it is enough to keep track of the four neighboring 1-cells.
-\dave{Comment on why this is.}
+For our purposes, it is enough to keep track of the four neighbouring 1-cells, 
+since they contain all the orientation information that the 2-cells assign to the $S^2$ surrounding the 0-cell.
 %Removing a single point from this spherical neighbourhood allows us to define a homeomorphism into the plane. 
 %Furthurmore, the gluing regions for the 1-cells can all be taken to be pitchforks as in \eqref{pitchfork_basis}, see Figure~\ref{FIGURE}.
 %This is our standardized 0-cell (actually spherical neighbourhood of the 0-cell). 
-Denote the 0-cell by $v$ and the neighboring 1-cells by $e_j$, $j=1, \cdots 4$.
+Denote the 0-cell by $v$ and the neighbouring 1-cells by $e_j$, $j=1, \cdots 4$.
 Each of the four 1-cells intersects the small $S^2$ at a point where three of the intersections of 
 the six 2-cells with the $S^2$ meet. 
 We denote these four trivalent junctions by $\bar{c}_{e_j v}$, 
@@ -8621,7 +8627,7 @@ We can next pitchforkize the attaching region for each 1-handle in the neighborh
 where the dashed circles are the attaching regions for the 1-handles and again, 
 the edges in the above diagram represent the intersections of the six 2-cells 
 with the $S^2$ surrounding the 0-cell. 
-The numbers indicate the which edge is connected to where on the standard 0-handle, i.e., associated with $\bar{c}_{e_j v}$.
+The numbers indicate which edge is connected to where on the standard 0-handle, i.e., associated with $\bar{c}_{e_j v}$.
 The 1-handles which attach two 0-handles are now horsehoe-shaped.
 Each can be deformed into
 \begin{align}
@@ -8629,9 +8635,9 @@ Each can be deformed into
 \end{align}
 where $P_e$ is either the identity, $P$, or $P^2$, where $P$ is the pivot defined in \eqref{Pitchfork_pivot}.
 The possible presence of $P$ and $P^2$ is needed to keep track of any relative pivoting
-between ends of different 1-handles. 
+between the ends of different 1-handles. 
 
-We now are ready to define labels for each of the gluing regions $c_{xy}$ defined above, 
+We now are ready to define labels for each of the attaching regions $c_{xy}$ defined above, 
 and associated with the standardized 0-handles and 1-handles. 
 We define the vector spaces 
 \begin{align}
@@ -8643,6 +8649,7 @@ As with \eqref{pitchfork_basis}, not all pitchforks will be oriented with all ed
 In this scenario we replace the appropriate object with its dual.
 The vector space we assign to each of the attachment regions are,
 \begin{align}
+\label{attaching_region}
   \mch(c_{fe}) &= E \quad \quad \mch(\bar{c}_{fe}) = \mch(c_{fe})^* = E^*\\
   \\
 \mch(c_{ev} )&= \begin{cases} W &\text{if $e$ is oriented away from $v$} \\
@@ -8652,13 +8659,23 @@ W^* &\text{otherwise}
 \end{align}
 Correspondingly, each cell is attached to the vector space 
 \begin{align}
-\label{tensor_space}
 \text{2-cells} \quad \quad  & \mch(f) = \bigotimes_{e \in f} \mch(c_{ef})  \\
 \text{1-cells}\quad \quad   & \mch(e) = \bigotimes_{f \in e}\mch (\bar{c}_{ef}) \tp \mch(c_{ev}) \tp \mch (c_{ev'}) \\
  \text{0-cell} \quad \quad  & \mch(v) = \bigotimes_{j =1}^4\mch(\bar{c}_{e_jv}) 
+ \label{tensor_space}
 \end{align}
 \ethan{I think the $e\in f$ and $f\in e$ notation is kinda confusing. Maybe $e\in \partial f$ or something?}
-The assignment of vector spaces has been so that the labels of the attachment labels of the (k+1)-handles connecting to the k-handle are dual. \ethan{??}
+\dave{I agree, this is tricky.
+Could definitely use some notational insight. 
+It’s doubly confusing since we use the word edge for 3 things at this point. 
+Once for the edges of the 2-cells, once for the corresponding edges on the 1-handles, and again as the thing that we use to identify which 1-handle we are referring to.
+$e \in \partial f$ is great for the 2-cells. 
+But what do we call the edges on the 1-handles ($e in \partial e$ doesn’t work.)?
+}
+The vector spaces have been assigned so that the pair of attachment regions on the (k+1)-handle and the k-handle are dual.
+%The assignment of vector spaces has been so that the labels of the attachment labels of the (k+1)-handles connecting to the k-handle are dual. 
+\ethan{??}
+\dave{Is that better?}
 \begin{figure}
 \begin{center}
 \includegraphics{NotationStateSum.pdf}
@@ -8680,11 +8697,12 @@ and $\bar{c}_{ev}$ (not displayed).
 \end{figure}
 
 
-\dave{Should this be in the definition section?}
-\ethan{I think keeping it here is good, since we don't use it earlier and in the definition 
-section we aren't pitchforking too hard}
+%\dave{Should this be in the definition section?}
+%\ethan{I think keeping it here is good, since we don't use it earlier and in the definition 
+%section we aren't pitchforking too hard}%
+%\dave{I agree.}
 Lastly we define a non-degenerate bilinear pairing between vectors in the vector space assigned to a disk with $n$ marked points. 
-It is defined via
+It is defined by the evaluation map,
 \begin{align}
 \mcb:\;  &V^{x_1 x_2 \cdots x_n} \tp V^{x_n^* \cdots x_2^* x_1^*} \ra \cc \\
 &\Bilineara \tp \Bilinearb \mapsto \Bilinearc
@@ -8692,7 +8710,7 @@ It is defined via
 where $\mu_i \in V^{x_1 x_2 \cdots x_n}$ and $\nu_j \in V^{x_n^* \cdots x_2^* x_1^*}$. 
 This bilinear pairing is just the evaluation map. 
 We emphasize that it is $\cc$-linear in both its arguments. 
-In particular, it gives us a linear action on each basis element $\mu_i  \in V^{abc}$ by for each element  $\nu_j \in V^{ c^*b^* a^*}$. 
+In particular, it gives us a linear action on each basis element $\mu_i  \in V^{abc}$ for each element  $\nu_j \in V^{ c^*b^* a^*}$. 
 The non-degeneracy condition means that the matrix $B_{ij} = \mcb(\mu_i \tp \nu_j)$ is invertible. 
 Hence we can define a set of vectors $\mu_j^* = \sum_i \nu_i (B^{-1} )_{ij} $ so that,
 \begin{align} 
@@ -8723,6 +8741,11 @@ $$
 Do picture example?}
 \ethan{I'm a little confused by the notation. Is this map supposed to be contracting out 
 a given edge in the 1-handle?}
+\dave{Yes.
+Maybe its better to just describe in words.
+Or replace the $\mch(e)$ in the above with a $ \tp_{f \in e}  \mch(\bar{c}_{ef}) \tp \mch(c_{ev}) \tp \mch(c_{ev’})$}
+\dave{This also highlights how awful the $f \in e$ notation is. 
+Lets think of something better.}
 \dave{This is basically a PEPS.}
 \dave{To Dave:
 Cite Levin's tensor trace paper?
