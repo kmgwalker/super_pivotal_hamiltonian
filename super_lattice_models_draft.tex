@@ -7132,8 +7132,23 @@ Although this is not a deep fact, it proves to be helpful when doing graphical m
 and operators implementing transformations like \eqref{dot_displacement} will be crucial for writing down the lattice 
 Hamiltonian which realizes the fermionic generalization of the Levin-Wen Hamiltonian. 
 
-
-
+Lastly, we can define a non-degenerate bilinear pairing between vectors in the vector space assigned to a disk with $n$ marked points. 
+We will focus on fusion spaces of the form $V^{x_1\dots x_n}$, but the construction
+for different types of fusion spaces is analogous. 
+The pairing is defined by 
+\begin{align} \label{reflection_pairing_defn}
+\mcb:\;  &V^{x_1 x_2 \cdots x_n} \tp V^{x_n^* \cdots x_2^* x_1^*} \ra \cc \\
+&\Bilineara \tp \Bilinearb \mapsto \Bilinearc
+\end{align} 
+where $\mu_i \in V^{x_1 x_2 \cdots x_n}$ and $\nu_j \in V^{x_n^* \cdots x_2^* x_1^*}$. 
+This bilinear pairing is just the evaluation map, and is $\cc$-linear in both its arguments. 
+It is non-degenerate, meaning that the matrix $\mcb_{ij} = \mcb(\mu_i \tp \nu_j)$ is invertible. 
+Hence we can define a set of vectors $\mu_j^* = \sum_i \nu_i (\mcb^{-1} )_{ij} $ so that
+$\mcb( \mu_i \tp \mu_j^*)\propto\delta_{ij}$ for $\mu_i \in V^{abc}$ and $\mu_j^* \in V^{c^*b^*a^*}$. 
+For most of the paper, we will choose the normalization convention
+\begin{align} 
+\mcb( \mu_i \tp \mu_j^*)  = \sqrt{d_a d_b d_c} \delta_{ij}.
+\end{align} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -8193,6 +8208,15 @@ The $\Gamma_i$ are all odd matrices, meaning that they act as $\sigma^x$ on the 
 For more complicated theories, they will also act nontrivially on the multiplicity degrees of freedom by the action of 
 some unitary matrix (e.g.\ equation \ref{esixdotslide} for the $\halfesix$ theory). 
 
+The matrix elements of the $\Gamma_i$ matrices for a fixed coloring 
+of the legs of a given vertex can be written in terms of evaluated diagrams 
+by using the inner product \eqref{reflection_pairing_defn} on pitchforks, which allows us to evaluate 
+vectors in $V^{abc} \tp V^{c^*b^*a^*}$.
+Denoting the dual of a vector $\psi\in V^{abc}$ by $\psi^*$ so that 
+$\mcb(\eta\tp\psi^*)\propto\delta_{\eta,\psi}$, we can write 
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{gamma1_matrix_elements.pdf}}}}, \ee
+and similarly for $\Gamma_2$ and $\Gamma_3$. 
+
 It is easy to check that when they are non-zero (i.e.\ when they act on q-type edges), the $\Gamma_i$ operators obey the anti-commutation relations 
 \be \{ \Gamma_i , \Gamma_j \} = 2\lambda \delta_{ij},\ee
 which are the defining relations for the representations of complex Clifford algebras, and where as before, $\lambda=\pm i$ is the phase picked up when removing a pair of dots from a q-type object worldline. 
@@ -8204,8 +8228,7 @@ which are the defining relations for the representations of complex Clifford alg
 \begin{center}
 \includegraphics{spin_rot_through_0handle.pdf}
 \caption{ \label{spin_rot_through_0handle} An illustration of a $+\pi$ spin framing rotation picked up as the path $\gamma$ (drawn in dashed purple) passes through a 0-handle. 
-If we were to proceed along $\gamma$ in the opposite direction, we would pick up a $-\pi$ spin framing rotation instead. %\ethan{may want to thicken to handle-ify this figure}
-  }
+If we were to proceed along $\gamma$ in the opposite direction, we would pick up a $-\pi$ spin framing rotation instead.   }
 \end{center}
 \end{figure}
 
@@ -8685,31 +8708,16 @@ and $\bar{c}_{ev}$ (not displayed).
 \end{center}
 \end{figure}
 
-
-\dave{Should this be in the definition section?}
-\ethan{I think keeping it here is good, since we don't use it earlier and in the definition 
-section we aren't pitchforking too hard}
-Lastly we define a non-degenerate bilinear pairing between vectors in the vector space assigned to a disk with $n$ marked points. 
-It is defined via
-\begin{align}
-\mcb:\;  &V^{x_1 x_2 \cdots x_n} \tp V^{x_n^* \cdots x_2^* x_1^*} \ra \cc \\
-&\Bilineara \tp \Bilinearb \mapsto \Bilinearc
-\end{align} 
-where $\mu_i \in V^{x_1 x_2 \cdots x_n}$ and $\nu_j \in V^{x_n^* \cdots x_2^* x_1^*}$. 
-This bilinear pairing is just the evaluation map. 
-We emphasize that it is $\cc$-linear in both its arguments. 
-In particular, it gives us a linear action on each basis element $\mu_i  \in V^{abc}$ by for each element  $\nu_j \in V^{ c^*b^* a^*}$. 
-The non-degeneracy condition means that the matrix $B_{ij} = \mcb(\mu_i \tp \nu_j)$ is invertible. 
-Hence we can define a set of vectors $\mu_j^* = \sum_i \nu_i (B^{-1} )_{ij} $ so that,
-\begin{align} 
-\mcb( \mu_i \tp \mu_j^*)  = \delta_{ij}
-\end{align} 
-Note that in most of the paper we have re-scaled these vectors so that 
-$B(\mu_i \tp  \mu_j^*) = \sqrt{d_a d_b d_c} \delta_{ij}$ for $\mu_i \in V^{abc}$ and $\mu_j^* \in V^{c^*b^*a^*}$.
+\ethan{moved the bilinear pairing thing to the definition section (in the fusion spaces subsection) at Dave's suggestion}
+We will find it helpful to change the normalization of the bilinear pairing \eqref{reflection_pairing_defn} between 
+vectors in $V^{x_1\dots x_n}$ and vectors in $V^{x_n^*\dots x_1^*}$.
+Namely, in what follows we will work with the normalization 
+\be \mcb(\mu_i\tp \mu_j^*) = \delta_{ij}.\ee
 \dave{Is the following sensical, or can I just stipulate it.
 Also FS indicators? }For the vector space $E$ above, 
-it is natural to identify $v_a \in \cc_a$ with $V^{a a^*}$, and define $\mcb(v_a \tp v_b) = \delta_{ab^*}$.
+it is natural to identify $v_a \in \cc_a$ with $V^{a a^*}_\unit$, and define $\mcb(v_a \tp v_b) = \delta_{ab^*}$.
 \dave{What if $a$ is self dual?}
+\ethan{then shouldn't it be $\mcb(v_a \tp v_{a^*}) = \kappa_a$?}
 
 \dave{Kevin, this would be something I'd want you to look at.
 }
