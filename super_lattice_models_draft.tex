@@ -56,6 +56,7 @@
 
 \newcommand{\tp}{\otimes}
 \newcommand{\tpc}{\tilde{\otimes}}
+\newcommand{\bigtp}{\bigotimes}
 \newcommand{\ra}{\rightarrow}
 \newcommand{\unit}{\mathds{1}}
 \newcommand{\zz}{\mathbb{Z}}
@@ -2131,8 +2132,7 @@ modular transformations of the ground states on the torus.
 We will identify the excitations using a fermionic generalization of a device known as the {\it tube category}. 
 We will briefly review the tube category as applied to the $C_2$ theory below; 
 for a more detailed overview and for an explanation of why the fermionic version of the tube category computes the excitations, 
-we refer the reader to Section \ref{}, where we discuss the construction in full generality. 
-\kw{Need to fill in ref}
+we refer the reader to Section \ref{more_on_tubes}, where we discuss the construction in full generality. 
 
 %As mentioned in the introduction, it is premature to call the objects in the tube category ``excitations'' until 
 %we have defined a Hamiltonian that produces the ground states of the fermionic string-net TQFTs 
@@ -3189,10 +3189,10 @@ I have that first row $(1,-d,-1)$ second row $(d,0,d)$, third row $(1,d,-1)$
 \hat{q}_\sigma^+\\
 \hat{q}_\psi\\
 \end{matrix} \right)_{NB} 
-\xrightarrow{S^{NB \rightarrow BN}} & \left( \begin{matrix}
-1&d&-1\\ 
+\xrightarrow{S^{NB \rightarrow BN}} & \frac{1}{2}\left( \begin{matrix}
+1&-d&-1\\ 
 d&0&d\\
-1&-d&-1\\
+1&d&-1\\
 \end{matrix} \right)
 \left( \begin{matrix}
 m_\unit\\
@@ -3356,11 +3356,11 @@ S = \frac{1}{2}\begin{pmatrix} 1 & d & 1 &			&&&			&&&			&& \\
 					      d & 0 &-d &			&&&			&&&			&&\\
 					      1&-d&1 & 			&&&			&&&			&&\\
 						&&&				&&&			1&d&1&		&& \\
-						&&&				&&&			-d&0&d&		&&\\ %??? ethan: changed the signs of d in the rows marked by this symbol
+						&&&				&&&			-d&0&d&		&&\\ 
 						&&&				&&&			-1&d&-1&		&&\\
-						&&&				1&-d&-1&		&&&			&&\\ %???
+						&&&				1&-d&-1&		&&&			&&\\ 
 						&&&				d&0&d&		&&&			&&\\
-						&&&				-1&d&-1&		&&&			&&\\ %???
+						&&&				1&d&-1&		&&&			&&\\ 
 						&&&				&&&			&&&			-A^{2} & -A^{2}d & A^{2}\\
 						&&&				&&&			&&&			-A^{2}d & 0 & -A^{2}d \\ 
 						&&&				&&&			&&&			A^{2} & -A^{2}d & -A^{-2} \end{pmatrix}\ee		
@@ -7141,7 +7141,7 @@ Although this is not a deep fact, it proves to be helpful when doing graphical m
 and operators implementing transformations like \eqref{dot_displacement} will be crucial for writing down the lattice 
 Hamiltonian which realizes the fermionic generalization of the Levin-Wen Hamiltonian. 
 
-Lastly, we can define a non-degenerate bilinear pairing between vectors in the vector space assigned to a disk with $n$ marked points. 
+Lastly, we will define a non-degenerate bilinear pairing between vectors in the vector space assigned to a disk with $n$ marked points. 
 We will focus on fusion spaces of the form $V^{x_1\dots x_n}$, but the construction
 for different types of fusion spaces is analogous. 
 The pairing is defined by 
@@ -7189,7 +7189,7 @@ in fusion spaces like $V^{aa^*}_\unit$.)
 \dave{Why have we removed tensor units? 
 I thought $V^{b^*b}$ and $V{aa^*}$ were defined without units.}
 \kw{The pivots are defined on $V^{ab}_c$, not $V^a_a$.}
-We think of $f^*$ as a $+\pi$ rotation of the morphism.
+We think of $f^*$ as a $+\pi$ rotation of the morphism $f$.
 We have
 \be
 	(f\circ g)^* = (-1)^{|f||g|} g^* \circ f^* .
@@ -8200,6 +8200,7 @@ where
 This is illustrated in Figure \ref{alphae_defn}.
 
 \kw{should probably move definition of $\Gamma$ to definition section} 
+\ethan{we already kinda do with our discussion of displacing dots onto edges. maybe I can try to just expand that discussion}
 Fermionic dots can also be ``absorbed'' into vertices, as discussed in Section \eqref{fusion_spaces}. 
 We can do this with operators $\Gamma_i$, $i\in \{1,2,3\}$, which absorb a pitchfork with a standard dot ($\gamma_b$)
 on the $i$-th outgoing pitchfork edge to a pitchfork without a fermion dot on a leg. 
@@ -8668,7 +8669,7 @@ with the $S^2$ surrounding the 0-cell.
 The numbers indicate which edge is connected to where on the standard 0-handle, i.e., associated with $\bar{c}_{e_j v}$.
 The 1-handles which attach two 0-handles are now horsehoe-shaped.
 Each can be deformed into
-\begin{align}
+\begin{align} \label{horshoe_resln} 
 \HorshoeIdentity
 \end{align}
 where $P_e$ is either the identity, $P$, or $P^2$, where $P$ is the pivot defined in \eqref{Pitchfork_pivot}.
@@ -8708,8 +8709,9 @@ Could definitely use some notational insight.
 It’s doubly confusing since we use the word edge for 3 things at this point. 
 Once for the edges of the 2-cells, once for the corresponding edges on the 1-handles, and again as the thing that we use to identify which 1-handle we are referring to.
 $e \in \partial f$ is great for the 2-cells. 
-But what do we call the edges on the 1-handles ($e in \partial e$ doesn’t work.)?
+But what do we call the edges on the 1-handles ($e in \partial e$ doesn't work.)?
 }
+\ethan{maybe call the 1-handles $t$ (for tube) or something and reserve $e$ for the edges on the 1-handles, so that we can sorta sensibly write $e\in \partial t$ and $e\in \partial f$?}
 The vector spaces have been assigned so that the pair of attachment regions on the (k+1)-handle and the k-handle are dual.
 %The assignment of vector spaces has been so that the labels of the attachment labels of the (k+1)-handles connecting to the k-handle are dual. 
 \ethan{??}
@@ -8782,7 +8784,7 @@ where $\mch(\mcm) =  \tp_{f\in \mcf } \mch(f) \tp_{e\in \mce}\mch(e) \tp_{\in \m
 This is defined by applying $\mcb$ across all pairs of attaching regions.
 For example, 
 $$
-\mcb: \;  \mch(c_{ef}) \tp \mch(e) \ra \tp_{f \notin e}  \mch(\bar{c}_{ef}) \tp \mch(c_{ev}) \tp \mch(c_{ev'})
+\mcb: \;  \mch(c_{ef}) \tp \mch(e) \ra \bigtp_{f \notin e}  \mch(\bar{c}_{ef}) \tp \mch(c_{ev}) \tp \mch(c_{ev'})
 $$
 \dave{Does it make sense?
 Do picture example?}
@@ -8793,6 +8795,7 @@ Maybe its better to just describe in words.
 Or replace the $\mch(e)$ in the above with a $ \tp_{f \in e}  \mch(\bar{c}_{ef}) \tp \mch(c_{ev}) \tp \mch(c_{ev’})$}
 \dave{This also highlights how awful the $f \in e$ notation is. 
 Lets think of something better.}
+\ethan{so then should it actually be $\bigtp_{f'\in e, f'\neq f}$ on the RHS?}
 \dave{This is basically a PEPS.}
 \dave{To Dave:
 Cite Levin's tensor trace paper?
@@ -8811,15 +8814,16 @@ we just provide the answer and then move on to the super pivotal state sum.
 We now specify three sets of tensors $T_f$, $T_e$, and $T_v$, living the in vector spaces defined in \eqref{tensor_space}. 
 The 2-cell tensors are given by,
 \begin{align} 
-T_f = \sum_{x, \; \{ v_{a_{e}}\} \;  : \;e \in f} \left( d_x  \prod_{e \in f} \delta_{x a_e} \right)   \tp _{e \in f}v_{a_e}
+T_f = \sum_{x, \; \{ v_{a_{e}}\} \;  : \;e \in f} \left( d_x  \prod_{e \in f} \delta_{x, a_e} \right)   \bigtp_{e \in f}v_{a_e}
 \end{align} 
+\ethan{still find the notation confusing}
 %\begin{align}
 %T_f(\tp_{e \in f} a_e) = \sum_x d_x \prod_{e \in f}  \delta_{x, a_e}
 %\end{align}
 %where each $a_e$ is a basis vector of $A(c_{fe})$.
 \dave{Should we we also draw pictures for each tensor?
 usually good practice for string nets to do (labeled picture) = number}
-Diagrammatically we denote this tensor as, 
+For example, for a pentagonal 2-cell we can diagrammatically denote the matrix elements of this tensor as
 \begin{align}
 \FaceWeight = \sum_{x} d_x \prod_i \delta_{x, a_i}
 \end{align}
@@ -8831,37 +8835,40 @@ Suppose that the neighbouring 0-cells are labeled $v$ and $v'$ and $e$ is orient
 Then the 1-cell tensor takes the form,
 \dave{notation for the $r \in e$ should be made less ugly.}
 \begin{align}
-T_e = \sum_{i,j, \; \{ v_{a_r}\} \; :\; r \in e} \mcb(\mu_i \tp P_e ( \nu_j^*)) \tp_{r \in e} v_{a_r}^* \tp \mu_i \tp \nu_j^*
+T_e = \sum_{i,j, \; \{ v_{a_r}\} \; :\; r \in e} \mcb(\mu_i \tp P_e ( \nu_j^*)) \bigtp_{r \in e} v_{a_r}^* \tp \mu_i \tp \nu_j^*
 \end{align}
-Note that in the conventional normalization, where $\mu_j \in V^{abc}$, and $\mcb(\mu_i \tp \mu_j^*) = \delta_{ij} \theta_{\mu_i}$, one would modify the above by,
-$\mcb(\mu \tp P_e \circ \nu_j^*) \ra \mcb(\mu \tp P_e \circ \nu_j^*)/(\theta_{\mu_i} \theta_{\mu_j})$. 
+where the $\mu_i$ and $\nu_j$ are basis vectors in the vector space at $v$ and $v'$, 
+respectively. \ethan{right?}
+Note that for a different normalization of the bilinear pairing $\mcb(\mu_i \tp \mu_j^*) = \delta_{ij} \theta_{\mu_i}$, one would modify the above by replacing
+$\mcb(\mu \tp P_e( \nu_j^*)) \ra \mcb(\mu \tp P_e (\nu_j^*))/(\theta_{\mu_i} \theta_{\mu_j})$. 
 \dave{comment on $P_e$ taking into account the labels of the 2-cells.
 }
 
 
-Lastly we define the 0-cell tensors by,
+Lastly we define the 0-cell tensors by
 \begin{align}
-T_v = \sum_{\mu_{e_j} \in \mch(\bar{c}_{e_j v}) } \text{Tet}(\mu_{e_1} \tp \mu_{e_2} \tp \mu_{e_3} \tp \mu_{e_4} ) \tp_{j=1}^4 \mu_{e_j} 
+T_v = \sum_{\mu_{e_j} \in \mch(\bar{c}_{e_j v}) } \text{Tet}(\mu_{e_1} \tp \mu_{e_2} \tp \mu_{e_3} \tp \mu_{e_4} ) \bigotimes_{j=1}^4 \mu_{e_j}, 
 \end{align}
-where, 
+where the tetrahedral symbol is defined in our standardization convention by 
 \begin{align}
-\text{Tet}(\alpha \tp \beta \tp \gamma \tp \delta) =\; \Tetrahedron.
+\text{Tet}(\alpha \tp \beta \tp \gamma \tp \delta) =\; \Tetrahedron
 \label{Tetrahedron}
 \end{align}
 We have defined the tensor by its evaluation on the right with 
 $\alpha \in \bigoplus_{abc} V^{abc}$, $\beta \in \bigoplus_{a^* bc} V^{a^* bc}$, $\gamma \in \bigoplus_{a^* b c^*} V^{a^* b c^*}$, $ \delta \in \bigoplus_{a^* b^* c^*} V^{a^* b^* c^*}$.
-One can flip an arrow by taking the appropriate object to its dual. 
+We have defined this tensor for a particular collection of edge orientations; for different 
+orientations one can flip the direction of an arrow by taking the appropriate object label to its dual. 
 \dave{Add comment that spherical means that all tetrahedra can be evaluated from this one by using the appropriate pivots + spherical property.}
 
-Lastly, we can write down the TVBW state sum as,
+Finally, we can write down the TVBW state sum as
 \begin{align}
 Z(\mcm) = \mcb(\tp_{f \in \mcf} T_f \tp_{e \in \mce} T_e \tp_{v \in \mcv} T_v)
 \end{align} 
 where $\mcb$ is used in the sense of \eqref{contract}.
 Lastly we would like to comment that this is the same as the state sum, 
 where one sums over all possible compatible labelings of the attaching regions, with the appropriate weights defined by the tensors above. 
-The benefit of writing the partition function this way, 
-is that we an write down the super pivotal state sum with little modification. 
+The benefit of writing the partition function this way 
+is that we can write down the state sum in the fermionic case with little modification. 
 
 %The 1-cell weights are given by $T_e \in A(e)^*$ defined via,%
 %\begin{align}
@@ -8896,10 +8903,12 @@ is that we an write down the super pivotal state sum with little modification.
 %\end{figure}
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Super pivotal state sum}
+%%%%%%%%%%%%%%%%%%%%%%
+
 The super pivotal state sum can be computed using the cut-and-glue technique. 
-Here we present only the result, since the technique is exactly the same as the Bosonic case.
+Here we present only the result, since the technique is exactly the same as the bosonic case.
 
 Firstly, the input data is,
 \dave{Is a super-pivotal-spherical fusion category the same as a super-pivotal one?}
@@ -8916,26 +8925,29 @@ The bilinear pairing remains the same.
 Except now one must of course define a sign ordering in the tensor product.
 We again define the contraction in \eqref{contract}.
 This is defined on the un-ordered tensor product defined in \ref{koszul_signs}.
-To get a number at the end of the day, one still has to choose an ordering of the tensor product spaces, 
-then when applying $\mcb$, one needs to have the correct order of tensor factors.
-This can always be done with a finite number of Koszul isormorphisms.
+To get a number at the end of the day, one still has to choose a definite ordering of the tensor product spaces, and
+when applying $\mcb$, one needs to have the correct order of tensor factors.
+We will continue to adopt the implicit notation where the Koszul ordering increases
+from left to right in tensor factors. 
+Mapping an arbitrary Koszul ordering to this standard ordering can always be done with a finite number of Koszul isormorphisms.
 \dave{Check Turzillo paper.}
 \dave{I found that the $\mcb(\psi_1 \tp \eta_2) = \mcb(\eta_1 \tp \psi _2)$ is symmetric. }
 
-In the fermionic case, the 1-cell tensors are modified to avoid over-counting states with labels that possess non-trivial endomorphism algebras. 
-We then have 
+In the fermionic case, the 1-cell tensors are modified to avoid over-counting states with Namely,
 \begin{align}
-T_f = \sum_{x, \; \{ v_{a_{e}}\} \;  : \;e \in f} \left( \frac{d_x}{2^{n_x}}  \prod_{e \in f} \delta_{x a_e} \right)   \tp _{e \in f}v_{a_e}
+T_f = \sum_{x, \; \{ v_{a_{e}}\} \;  : \;e \in f} \left( \frac{d_x}{2^{n_x}}  \prod_{e \in f} \delta_{x a_e} \right)   \bigtp_{e \in f}v_{a_e}
 \end{align}
 where $n_x = 0$ if $x$ is m-type, and $n_x = 1$ if $x$ is q-type. 
 \ethan{I think $\dim \End(x)$ is slightly more transparent than $2^{n_x}$}
 The vector space remains bosonic and so the tensor needs no further adjustments. 
+\ethan{I thought the $v_{a_e}$ could be odd?}
 
-The one-handles have, arguably the most interesting adjustment. 
-In the bosonic state sum, we needed to keep track of three possible pivots.
-For the fermionic state sum we have six possible pivots, 
-in addition to the three we could have in the Bosonic state sum, 
-we can also have an action of the spin-flip functor, recall \eqref{spin_flip_functor}.
+The tensors for the one-handles are modified in a more interesting way. 
+In the bosonic state sum, we needed to keep track of three possible pivots
+in the resolution \eqref{horshoe_resln}.
+For the fermionic state sum we have six possible pivots:
+in addition to the three we could have in the bosonic state sum, 
+we can also have an action of the spin-flip functor; recall \eqref{spin_flip_functor}.
 Hence, the edge tensors remain the same,
 \begin{align}
 T_e = \sum_{i,j, \; \{ v_{a_r}\} \; :\; r \in e} \mcb(\mu_i \tp P_e \circ \nu_j^*) \tp_{r \in e} v_{a_r}^* \tp \mu_i \tp \nu_j^*
@@ -8982,43 +8994,44 @@ We do so, we evaluate $Z(\mcm)$ on three manifolds of the form $\mcm =\Sigma \ti
 
 The basic input to the wave-function the same as that of the Hamiltonian defined in \eqref{ham}.
 However, in addition we must also specify a cell decomposition for $\Sigma \times [0,1]$. 
-The cell decomposition for $\Sigma \times \{ 1 \} $ is fixed by the cell decomposition for the Hamiltonian \eqref{ham}, and we denote it $\Sigma_1$.
+The cell decomposition for the slice $\Sigma \times \{ 1 \} $ is fixed by the cell decomposition used for the Hamiltonian \eqref{ham}, and we denote it by $\Sigma_1$.
 We also pick a cel decomposition of $\Sigma \times \{0\}$, which we denote $\Sigma_0$.
 The partition function then provides a linear map,
 \begin{align}
 Z(\Sigma_{0\ra1} ): \; \mch(\Sigma_0) \ra \mch(\Sigma_1)
 \end{align}
-whose image is the space of ground states of \eqref{ham}, 
-explicitly, 
-\begin{align}
-\label{GroundState}
-\ket{\Psi} = \sum_{ v_1 \in \mch(\Sigma_1)} \ket{v_1} v_1^* \cdot Z(\Sigma_{0\ra1} ) \cdot v_0.
-\end{align} 
-\dave{Or maybe write it as, 
-\begin{align}
-\ket{\Psi} = \sum_{v_1 \in \mch(\Sigma_1)} \ket{v_1} Z(\Sigma_{0\ra1}; v_0, v_1)
+whose image is the space of ground states of \eqref{ham}.
+Explicitly, 
+%\begin{align}
+%
+%\ket{\Psi} = \sum_{ v_1 \in \mch(\Sigma_1)} \ket{v_1} v_1^* \cdot Z(\Sigma_{0\ra1} ) %\cdot v_0.
+%\end{align} 
+\begin{align}\label{GroundState}
+\ket{\Psi} = \sum_{v_1 \in \mch(\Sigma_1)} \ket{v_1} Z(\Sigma_{0\ra1}; v_0, v_1),
 \end{align}
-}
-Where the cell decomposition $\Sigma_{0\ra1}$ is any cell decomposition that agrees with $\Sigma_0$ and $\Sigma_1$. 
+where $Z(\Sigma_{0\ra1}; v_0, v_1)$ is the evaluation of the partition function with 
+boundary conditions fixed by $v_0$ and $v_1$. 
+
+The cell decomposition in the bulk of $\Sigma_{0\ra1}$ is any cell decomposition that agrees with $\Sigma_0$ and $\Sigma_1$ on the boundaries. 
 However, there is a natural choice, which corresponds to extending $\Sigma_0$ into $\Sigma \times [0, 1/2]$, and $\Sigma_1$ into $\Sigma \times [1/2, 1]$, see Figure~\ref{CellDecomposition}. 
 It is convenient to take the two cell decompositions to be in `normal' position,
 meaning that $\Sigma_0$ only intersects $\Sigma_1$ along edges, again see Figure~\ref{CellDecomposition}.
 
-We now specify the amplitude $v_1^* \cdot Z(\Sigma_{0\ra1}) \cdot v_0 = Z(\Sigma_{0\ra 1}; v_0, v_1) $ in \eqref{GroundState}.
+We now specify the amplitude $Z(\Sigma_{0\ra 1}; v_0, v_1) $ in \eqref{GroundState}.
 The labels of the 2-cells that extend from $\Sigma_0$ and $\Sigma_1$ are determined by $v_0$ and $v_1$. 
 The 2-cell labels living at $\Sigma \times \{ 1/2 \}$ need to be summed over.
 We can orient each 2-cell using the orientation of $\Sigma$. 
-By looking at Figure~\ref{CellDecomposition}, we see that there are only three kinds of 0-cells that show up\dave{Figure}. 
-Rather than drawing a spherical neighbourhood of each 0-cell, 
+By looking at Figure~\ref{CellDecomposition}, we see that there are only three kinds of 0-cells that show up \dave{Figure}. 
+Rather than drawing a spherical neighborhood of each 0-cell, 
 we will draw a cube. 
 The three kinds of 0-cells are displayed in Figure~\ref{StandardizedSlabTensors}.
 As well as there standardized versions.
-The 1-handles, that appear in the contraction all need an orientation.
+The 1-handles that appear in the contraction all need an orientation.
 In principle this can be arbitrary, there is a natural choice -- the 1-handles biject with with the 1-cells of $\Sigma_0$ and $\Sigma_1$, and hence assign an orientation to each 1-handle in $\Sigma_{0 \ra 1}$. 
-We can use the orienation of the 1-cells descending from $\Sigma_0$ and $\Sigma_1$ to orient the 1-handles.
+We can use the orientation of the 1-cells descending from $\Sigma_0$ and $\Sigma_1$ to orient the 1-handles.
 It is helpful to project each picture in part a) of Figure~\ref{StandardizedSlabTensors} into the into $\Sigma \times \{ \frac{1}{2} \} $, and specify its weight by part c). 
 
-Each vertex on $\Sigma_1$ will have three neighbouring 2-cells that need to be summed over, and three 1-handles. 
+Each vertex on $\Sigma_1$ will have three neighboring 2-cells that need to be summed over, and three 1-handles. 
 \begin{align}
 \Tensora \; &= \;\sum_{\{ s_i \} }  \Tensoraa \cdot \mu_0 \tp s_1 \tp s_2 \tp s_3 \\
 \Tensorb \; &= \;  \Tensorbb \\
@@ -9087,8 +9100,8 @@ of the $i$th tensor factor in $\cl^{\tp n}$.
 
 \begin{figure}
 \begin{center}
-\includegraphics{QCApplication.pdf}
-\includegraphics{QCApplication2.pdf}
+\includegraphics[scale=.8]{QCApplication.pdf}
+\includegraphics[scale=.8]{QCApplication2.pdf}
 \caption{\label{QCApplication}  
 An illustration of one possible quantum information application of the topological orders discussed in the main text. 
 In this setup, we have four q-type defects $Q$ (orange lines) which terminate at the boundary of the sample, and are strongly hybridized with two Kitaev wires (green lines). 
@@ -9670,7 +9683,6 @@ d = 1 + \sqrt{3} \quad \quad c_1 = \frac{e^{-5 i \pi/6} }{\sqrt{d}} \quad \quad 
 \subsection{Idempotents}
 \label{IdempotentsHalfESix}
 %\dave{These are data from an older version of the notes. We don't have to include them but they could be useful for other people. }
-
 
 \begin{table}
 {\tabulinesep=1.2mm
