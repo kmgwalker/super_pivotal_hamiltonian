@@ -56,6 +56,7 @@
 
 \newcommand{\tp}{\otimes}
 \newcommand{\tpc}{\tilde{\otimes}}
+\newcommand{\bigtp}{\bigotimes}
 \newcommand{\ra}{\rightarrow}
 \newcommand{\unit}{\mathds{1}}
 \newcommand{\zz}{\mathbb{Z}}
@@ -7134,7 +7135,7 @@ Although this is not a deep fact, it proves to be helpful when doing graphical m
 and operators implementing transformations like \eqref{dot_displacement} will be crucial for writing down the lattice 
 Hamiltonian which realizes the fermionic generalization of the Levin-Wen Hamiltonian. 
 
-Lastly, we can define a non-degenerate bilinear pairing between vectors in the vector space assigned to a disk with $n$ marked points. 
+Lastly, we will define a non-degenerate bilinear pairing between vectors in the vector space assigned to a disk with $n$ marked points. 
 We will focus on fusion spaces of the form $V^{x_1\dots x_n}$, but the construction
 for different types of fusion spaces is analogous. 
 The pairing is defined by 
@@ -7182,7 +7183,7 @@ in fusion spaces like $V^{aa^*}_\unit$.)
 \dave{Why have we removed tensor units? 
 I thought $V^{b^*b}$ and $V{aa^*}$ were defined without units.}
 \kw{The pivots are defined on $V^{ab}_c$, not $V^a_a$.}
-We think of $f^*$ as a $+\pi$ rotation of the morphism.
+We think of $f^*$ as a $+\pi$ rotation of the morphism $f$.
 We have
 \be
 	(f\circ g)^* = (-1)^{|f||g|} g^* \circ f^* .
@@ -8193,6 +8194,7 @@ where
 This is illustrated in Figure \ref{alphae_defn}.
 
 \kw{should probably move definition of $\Gamma$ to definition section} 
+\ethan{we already kinda do with our discussion of displacing dots onto edges. maybe I can try to just expand that discussion}
 Fermionic dots can also be ``absorbed'' into vertices, as discussed in Section \eqref{fusion_spaces}. 
 We can do this with operators $\Gamma_i$, $i\in \{1,2,3\}$, which absorb a pitchfork with a standard dot ($\gamma_b$)
 on the $i$-th outgoing pitchfork edge to a pitchfork without a fermion dot on a leg. 
@@ -8701,8 +8703,9 @@ Could definitely use some notational insight.
 It’s doubly confusing since we use the word edge for 3 things at this point. 
 Once for the edges of the 2-cells, once for the corresponding edges on the 1-handles, and again as the thing that we use to identify which 1-handle we are referring to.
 $e \in \partial f$ is great for the 2-cells. 
-But what do we call the edges on the 1-handles ($e in \partial e$ doesn’t work.)?
+But what do we call the edges on the 1-handles ($e in \partial e$ doesn't work.)?
 }
+\ethan{maybe call the 1-handles $t$ (for tube) or something and reserve $e$ for the edges on the 1-handles, so that we can sorta sensibly write $e\in \partial t$ and $e\in \partial f$?}
 The vector spaces have been assigned so that the pair of attachment regions on the (k+1)-handle and the k-handle are dual.
 %The assignment of vector spaces has been so that the labels of the attachment labels of the (k+1)-handles connecting to the k-handle are dual. 
 \ethan{??}
@@ -8772,7 +8775,7 @@ where $\mch(\mcm) =  \tp_{f\in \mcf } \mch(f) \tp_{e\in \mce}\mch(e) \tp_{\in \m
 This is defined by applying $\mcb$ across all pairs of attaching regions.
 For example, 
 $$
-\mcb: \;  \mch(c_{ef}) \tp \mch(e) \ra \tp_{f \notin e}  \mch(\bar{c}_{ef}) \tp \mch(c_{ev}) \tp \mch(c_{ev'})
+\mcb: \;  \mch(c_{ef}) \tp \mch(e) \ra \bigtp_{f \notin e}  \mch(\bar{c}_{ef}) \tp \mch(c_{ev}) \tp \mch(c_{ev'})
 $$
 \dave{Does it make sense?
 Do picture example?}
@@ -8783,6 +8786,7 @@ Maybe its better to just describe in words.
 Or replace the $\mch(e)$ in the above with a $ \tp_{f \in e}  \mch(\bar{c}_{ef}) \tp \mch(c_{ev}) \tp \mch(c_{ev’})$}
 \dave{This also highlights how awful the $f \in e$ notation is. 
 Lets think of something better.}
+\ethan{so then should it actually be $\bigtp_{f'\in e, f'\neq f}$ on the RHS?}
 \dave{This is basically a PEPS.}
 \dave{To Dave:
 Cite Levin's tensor trace paper?
@@ -8801,7 +8805,7 @@ we just provide the answer and then move on to the super pivotal state sum.
 We now specify three sets of tensors $T_f$, $T_e$, and $T_v$, living the in vector spaces defined in \eqref{tensor_space}. 
 The 2-cell tensors are given by,
 \begin{align} 
-T_f = \sum_{x, \; \{ v_{a_{e}}\} \;  : \;e \in f} \left( d_x  \prod_{e \in f} \delta_{x a_e} \right)   \tp _{e \in f}v_{a_e}
+T_f = \sum_{x, \; \{ v_{a_{e}}\} \;  : \;e \in f} \left( d_x  \prod_{e \in f} \delta_{x, a_e} \right)   \bigtp_{e \in f}v_{a_e}
 \end{align} 
 \ethan{still find the notation confusing}
 %\begin{align}
@@ -8810,7 +8814,7 @@ T_f = \sum_{x, \; \{ v_{a_{e}}\} \;  : \;e \in f} \left( d_x  \prod_{e \in f} \d
 %where each $a_e$ is a basis vector of $A(c_{fe})$.
 \dave{Should we we also draw pictures for each tensor?
 usually good practice for string nets to do (labeled picture) = number}
-Diagrammatically we denote this tensor as, 
+For example, for a pentagonal 2-cell we can diagrammatically denote the matrix elements of this tensor as
 \begin{align}
 \FaceWeight = \sum_{x} d_x \prod_i \delta_{x, a_i}
 \end{align}
@@ -8822,21 +8826,23 @@ Suppose that the neighbouring 0-cells are labeled $v$ and $v'$ and $e$ is orient
 Then the 1-cell tensor takes the form,
 \dave{notation for the $r \in e$ should be made less ugly.}
 \begin{align}
-T_e = \sum_{i,j, \; \{ v_{a_r}\} \; :\; r \in e} \mcb(\mu_i \tp P_e ( \nu_j^*)) \tp_{r \in e} v_{a_r}^* \tp \mu_i \tp \nu_j^*
+T_e = \sum_{i,j, \; \{ v_{a_r}\} \; :\; r \in e} \mcb(\mu_i \tp P_e ( \nu_j^*)) \bigtp_{r \in e} v_{a_r}^* \tp \mu_i \tp \nu_j^*
 \end{align}
+where the $\mu_i$ and $\nu_j$ are basis vectors in the vector space at $v$ and $v'$, 
+respectively. \ethan{right?}
 Note that for a different normalization of the bilinear pairing $\mcb(\mu_i \tp \mu_j^*) = \delta_{ij} \theta_{\mu_i}$, one would modify the above by replacing
-$\mcb(\mu \tp P_e \circ \nu_j^*) \ra \mcb(\mu \tp P_e \circ \nu_j^*)/(\theta_{\mu_i} \theta_{\mu_j})$. 
+$\mcb(\mu \tp P_e( \nu_j^*)) \ra \mcb(\mu \tp P_e (\nu_j^*))/(\theta_{\mu_i} \theta_{\mu_j})$. 
 \dave{comment on $P_e$ taking into account the labels of the 2-cells.
 }
 
 
-Lastly we define the 0-cell tensors by,
+Lastly we define the 0-cell tensors by
 \begin{align}
-T_v = \sum_{\mu_{e_j} \in \mch(\bar{c}_{e_j v}) } \text{Tet}(\mu_{e_1} \tp \mu_{e_2} \tp \mu_{e_3} \tp \mu_{e_4} ) \tp_{j=1}^4 \mu_{e_j} 
+T_v = \sum_{\mu_{e_j} \in \mch(\bar{c}_{e_j v}) } \text{Tet}(\mu_{e_1} \tp \mu_{e_2} \tp \mu_{e_3} \tp \mu_{e_4} ) \bigotimes_{j=1}^4 \mu_{e_j}, 
 \end{align}
-where, 
+where the tetrahedral symbol is defined in our standardization convention by 
 \begin{align}
-\text{Tet}(\alpha \tp \beta \tp \gamma \tp \delta) =\; \Tetrahedron.
+\text{Tet}(\alpha \tp \beta \tp \gamma \tp \delta) =\; \Tetrahedron
 \label{Tetrahedron}
 \end{align}
 We have defined the tensor by its evaluation on the right with 
@@ -8852,8 +8858,8 @@ Z(\mcm) = \mcb(\tp_{f \in \mcf} T_f \tp_{e \in \mce} T_e \tp_{v \in \mcv} T_v)
 where $\mcb$ is used in the sense of \eqref{contract}.
 Lastly we would like to comment that this is the same as the state sum, 
 where one sums over all possible compatible labelings of the attaching regions, with the appropriate weights defined by the tensors above. 
-The benefit of writing the partition function this way, 
-is that we an write down the super pivotal state sum with little modification. 
+The benefit of writing the partition function this way 
+is that we can write down the state sum in the fermionic case with little modification. 
 
 %The 1-cell weights are given by $T_e \in A(e)^*$ defined via,%
 %\begin{align}
@@ -8920,12 +8926,12 @@ Mapping an arbitrary Koszul ordering to this standard ordering can always be don
 
 In the fermionic case, the 1-cell tensors are modified to avoid over-counting states with Namely,
 \begin{align}
-T_f = \sum_{x, \; \{ v_{a_{e}}\} \;  : \;e \in f} \left( \frac{d_x}{2^{n_x}}  \prod_{e \in f} \delta_{x a_e} \right)   \tp _{e \in f}v_{a_e}
+T_f = \sum_{x, \; \{ v_{a_{e}}\} \;  : \;e \in f} \left( \frac{d_x}{2^{n_x}}  \prod_{e \in f} \delta_{x a_e} \right)   \bigtp_{e \in f}v_{a_e}
 \end{align}
 where $n_x = 0$ if $x$ is m-type, and $n_x = 1$ if $x$ is q-type. 
 \ethan{I think $\dim \End(x)$ is slightly more transparent than $2^{n_x}$}
 The vector space remains bosonic and so the tensor needs no further adjustments. 
-\ethan{I thought the $V_{a_e}$ could be odd?}
+\ethan{I thought the $v_{a_e}$ could be odd?}
 
 The tensors for the one-handles are modified in a more interesting way. 
 In the bosonic state sum, we needed to keep track of three possible pivots
@@ -9668,7 +9674,6 @@ d = 1 + \sqrt{3} \quad \quad c_1 = \frac{e^{-5 i \pi/6} }{\sqrt{d}} \quad \quad 
 \subsection{Idempotents}
 \label{IdempotentsHalfESix}
 %\dave{These are data from an older version of the notes. We don't have to include them but they could be useful for other people. }
-
 
 \begin{table}
 {\tabulinesep=1.2mm
