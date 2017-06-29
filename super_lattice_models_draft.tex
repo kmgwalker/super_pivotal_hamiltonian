@@ -2423,11 +2423,14 @@ To summarize, we have found six types of quasiparticles in the theory: three non
 associated with tubes possessing bounding spin structures, and three vortex quasiparticles associated 
 with tubes possessing non-bounding spin structures. 
 They are displayed in Table \ref{CTwoParticles}.
-The quantum dimension of these excitations can be computed by studying the fusion rules \kw{how does that go? 
+The quantum dimension of these excitations can be computed \kw{how does that go? 
 \dave{Perhaps the same way we do for bosonic theories. 
 Compute the dimension of the vector space as a function of the number of strands.
-Ethan is that true? Or did you have something else in mind?}}, 
-or by tracing out the 
+Ethan is that true? Or did you have something else in mind?}
+\ethan{yeah, by either finding eigenvalues of fusion matrices, or by computing asymptotic dimensions
+of fusion spaces. Not sure if it'll work for arbitrary fermionic theories though, so I modified the sentence 
+to just talk about tracing} 
+by tracing out the 
 idempotents associated with each excitation, which we elaborate on in Section \ref{qdims_and_traces}. 
 The quantum dimensions are displayed in Table \ref{C2Data}. 
 \begin{table}
@@ -2461,10 +2464,10 @@ We have chosen $m_\sigma^+$ as the representative of the isomorphism class given
 			\text{particle}				&m_\unit		&m_\sigma^+		&m_\psi	&q_\unit	&q_\sigma	&q_\psi \\[.5ex] \hline \\ [-2ex]
 			\text{quantum dimension}		&1			&\sqrt{2}		&1		&\sqrt{2}	&2		&\sqrt{2} \\ [.5ex]
 						\end{array} & \end{flalign*}
-	\caption{$\tube(C_2)$ quantum dimensions. The total quantum dimension is $\mcd = \sqrt{8}$.
+	\caption{\label{C2Data} $\tube(C_2)$ quantum dimensions. The total quantum dimension is $\mcd = \sqrt{8}$.
 	The quantum dimensions above have been normalized so that the trivial idempotent $m_\unit$ has unit quantum dimension.
 }
-	\label{C2Data}
+	
 \end{table}
 
 
@@ -3197,13 +3200,10 @@ S^{NB \rightarrow BN}&&\\
 \end{matrix} \right).
 \end{align}
 
-
 Similarly we can compute the modular $T$-matrix, the action of which twists the inner boundary of an annulus by an angle of $2\pi$ counterclockwise with respect to its outer boundary. 
 This definition ensures that the $T$-matrix acts as the identity on tubes with no charge line 
 (i.e. with no strings ending on their inner annular boundaries).
-Within each spin structure sector the $T$-matrix is diagonal in the idempotent basis, 
-with eigenvalues given by the topological twists appearing in Figure \ref{C2Data}. 
-\kw{Twists are no longer part of that figure.}
+Within each spin structure sector the $T$-matrix is diagonal in the idempotent basis. 
 \dave{Should we define a complex number via $T e = \theta eT$ somewhere?
 And comment on the validity of calling it a twist.
 }
@@ -3345,6 +3345,7 @@ S = \frac{1}{2}\begin{pmatrix} 1 & d & 1 &			&&&			&&&			&& \\
 It also doesn't match the matrices we found above (which I just double checked and seem to be correct).
 Ethan, call me on Skype when you have a chance. 
 I found the d's should have the other sign in the row and column you changed.}
+\ethan{Everything above should now be correct}
 where we have only listed the non-zero entries. 
 $S$ has two different direct-sum decompositions. First, essentially by construction, 
 it splits into a direct sum over blocks according to spin structures 
@@ -3415,7 +3416,7 @@ First, we need to set some conventions on our fusion spaces in this section, thi
 We will work on the pair of pants as described in Section \ref{C2_fusion_rules}.
 
 We will write a generic even fusion space, which is an even vector in the fusion space $V^{ab}_c$, as 
-\begin{align}
+\begin{align} \label{pants_braiding_basis}
 \CTwoFusion
 \end{align}
 where $a,b,c$ are idempotents (see Figure \ref{CTwoParticles}) and $u,v,w \in \{ \unit, \beta \}$ are variables indicating whether or not a $\beta$ line is present. 
@@ -3444,7 +3445,6 @@ of the eigenvalue of $q_\psi$ under the twisted tube (i.e.\ the twist of $q_\psi
 
 We define odd vectors in $V^{a,b}_c$ by placing dots on the top left leg of the pants, on the 
 leg marked $u$ in \eqref{pants_braiding_basis}. 
-\kw{ref is broken}
 If this is impossible (e.g.\ if the top left leg is an $m_\psi$ idempotent), we put the dot on the top 
 right leg of the pants, marked $v$ in \eqref{pants_braiding_basis}. 
 For example, we can calculate the $R$-symbol $R^{m_\psi m_\sigma^+}_{m_\sigma^+} = -1$ by
@@ -7085,8 +7085,6 @@ fusion multiplicities, which provide us with fusion spaces that are large enough
 Indeed such a q-type particle exists in the $\halfesix$ theory considered earlier (see Section \ref{halfesix}), 
 which possesses nontrivial fusion multiplicities that allow the relevant fusion spaces in the theory to be large enough to represent $\cl_3$. 
 
-
-
 \medskip
 
 If at least one of $a,b,c$ is q-type, we can simplify the description of $V^{ab}_c$ slightly, 
@@ -7097,13 +7095,15 @@ Then we can define a complete set of odd basis vectors $\{ |\eta_i\rangle \}$ fo
 When we write $|\eta_i\rangle$ graphically, we will write it as $f |\psi \rangle$, which allows us to  ``shift the oddness out of the vertex onto the edge'' by transferring the fermion residing on the fusion space to the q-type particle $c$. 
 Graphically, this means that we are allowed to ``displace'' dots from trivalent vertices onto q-type worldlines:
 %\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_displacement.pdf}}}}, \ee
-\begin{align}
+\begin{align} \label{dot_displacement} 
 \NonPitchforkDot{a}{b}{c}{\eta_i} \;\; = \;\; \NonPitchforkDotDisplaced{a}{b}{c}{\psi_i}
 \end{align}
 %\kw{should add arrows (edge orientations) to this and similar figs}
 %\dave{I'll add arrows to figs as I go through.}
 where the picture on the left is $|\eta_i\rangle$ and the one on the right is $f|\psi_i\rangle$, and $c$ is assumed to be q-type. 
-Although this is not a deep fact, it proves to be helpful when doing graphical manipulations. 
+Although this is not a deep fact, it proves to be helpful when doing graphical manipulations, 
+and operators implementing transformations like \eqref{dot_displacement} will be crucial for writing down the lattice 
+Hamiltonian which realizes the fermionic generalization of the Levin-Wen Hamiltonian. 
 
 
 
@@ -7165,6 +7165,9 @@ P^{ab}_c \left( \;  \PivotYa \; \right) = \PivotYb
 \end{align} 
 \dave{Should we use $P(...)$ or $P\circ ....$?}
 \ethan{I think the former}
+The Frobenius-Schur indicator $\kappa_a$ is a special case of the pivot, defined 
+by $\kappa_a = [P^{\unit a^*}_{a^*}]_{00}$. 
+
 %\kw{insert eqn similar to existing one in older pivotal subsection}.
 %\dave{done.}
 We can similarly define $P^{abc} : V^{abc}\to V^{bca}$. 
@@ -7314,12 +7317,12 @@ Note that to specify an element of the unordered tensor product, it suffices to 
 particular ordered tensor product $T_f$.
 All of the other $t_g$ are uniquely determined by $t_f$.
 
-When writing equations involving particular ordered tensor products of fusion spaces, we will indicate the Koszul ordering 
-explicitly with subscripts, e.g. $V^{ab}_{c,1} \tp V^{cd}_{e,2}$. \ethan{for our coherence relation stuff later, I think it's easier to indicate the ordering as subscripts rather than implicitly as left-to-right ordering}
-\kw{But usually we don't bother with these subscripts, so we should say so.
-I would say the ordering is always left-to-right, unless we indicate otherwise with overscripts.
-(I think overscripts would be better than subscripts.)}
-%adopt the usual convention that the ordering is left-to-right on the page.
+When writing equations involving particular ordered tensor products of fusion spaces, we will adopt the 
+convention that the Koszul ordering is left-to-right on the page, unless explicitly 
+indicated otherwise. If we want to indicate an ordering which departs from this left-to-right convention, 
+we will indicate the ordering explicitly with numerical subscripts, 
+e.g. $V^{ab}_{c,1} \tp V^{cd}_{e,2}$. \kw{(I think overscripts would be better than subscripts.)
+\ethan{By overscripts do you mean $e.g.$ $V^{ab,1}_c$ or something else? I went with subscripts since that's what we have in later sections and earlier in this section.}}
 When drawing diagrams with a particular ordering in mind, we always indicate the ordering explicitly by numbers near each fusion space (i.e.\ near
 each vertex in the string net).
 Another possible convention would be to use the ordering corresponding to (say) bottom-to-top on the page,
@@ -7437,7 +7440,7 @@ and that it maps into fusion spaces with the same ordering. That is, with explic
 Graphically, and written as a matrix equation, we thus have
 \be \label{graphical_Fmove} \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{Fsymbol_defn.pdf}}}},\ee
 where the greek indices label particular fusion space basis vectors, with $\mu\in V^{ab}_x,\nu\in V^{xc}_d,\alpha\in V^{bc}_y,$ and $\beta\in V^{ay}_d$.
-We also choose the following left-to-right ordering convention for the $F^{abcd}$ move:
+We also stick with the left-to-right ordering convention for the $F^{abcd}$ move:
 \be  
 	F^{abcd} : \bigoplus_{x\in \mcx} V^{abx^*}_1 \tp_{\End(x)} V^{xcd}_2   \;\to\;   \bigoplus_{x\in \mcx} V^{bcx^*}_1 \tp_{\End(x)} V^{axd}_2 .
 \ee
@@ -7509,6 +7512,24 @@ In terms of the matrix elements of the $F$-symbols, this reads
 where $\mu\in V^{xy}_p,\nu\in V^{pz}_q,\lambda\in V^{qw}_u,\gamma\in V^{xs}_u,\delta\in V^{yt}_s,$ and $\alpha\in V^{zw}_t$. 
 The Koszul sign $P_{23}$ appearing in \eqref{endoPentagon} appears in the above formula as $(-1)^{|\delta||\alpha|}$. 
 
+\ethan{Feel free to delete if desired}
+Other coherence relations are modified to take into account Koszul 
+signs.
+For example, requiring consistency between $F$-moves and the pivot means that the following 
+diagram must commute:
+\begin{align}
+\newcommand{\A}{\bigoplus_x V^{ab}_{x,2} \tp_x V^{xc}_{d,1}}
+\newcommand{\B}{\bigoplus_y V^{ay}_{d,1} \tp_y V^{bc}_{y,2} }
+\newcommand{\C}{\bigoplus_y V^{dd^*} \tp_{d^*} V^{d^* a}_{y,1} \tp_y V^{yb}_{c^*,2}  \tp_{c^*} V_{c^*c}  }
+\newcommand{\D}{\bigoplus_x V^{dd^*} \tp_{d^*} V^{d^*x}_{c^*,2} \tp_x V^{ab}_{x,1}  \tp_{c^*} V_{c^*c} }
+\newcommand{\E}{\bigoplus_x V^{ab}_{x,1} \tp_x V^{xc}_{d,2}}
+\vcenter{\xymatrix @!0 @M=4mm @R=25mm @C=30mm{
+&\A \ar[ld]^{F^{abc}_d}\ar[rr]^{P_{12}} &&\E&\\
+\B \ar[rd]^{P^{ay}_{d,1} \tp P^{bc}_{y,2} \circ (\kappa_d  \kappa_y \kappa_c)^{-1}}&&&&\D \ar[ul]^{\kappa_d \kappa_c \circ (P^{d^*x}_{c^*,2})^{-1}} \\
+&&\C &\ar[ru]^{F^{d^*ab}_{c^*}}&
+	}} 
+	\label{pivotconsistent}
+\end{align} 
 
 \kw{TO DO: say a little bit (but only a little bit) about other coherence relations}
 
@@ -8122,8 +8143,8 @@ where
 \ee
 This is illustrated in Figure \ref{alphae_defn}.
 
-\kw{should probably move definition of $\Gamma$ to definition section}
-Fermionic dots can also be ``absorbed'' into vertices.
+\kw{should probably move definition of $\Gamma$ to definition section} 
+Fermionic dots can also be ``absorbed'' into vertices, as discussed in Sec \eqref{fusion_spaces}. 
 We can do this with operators $\Gamma_i$, $i\in \{1,2,3\}$, which absorb a pitchfork with a standard dot ($\gamma_b$)
 on the $i$-th outgoing pitchfork edge to a pitchfork without a fermion dot on a leg. 
 Graphically, $\Gamma_1$ is defined by 
