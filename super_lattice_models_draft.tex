@@ -7179,6 +7179,9 @@ For most of the paper, we will choose the normalization convention
 \mcb( \mu_i \tp \mu_j^*)  = \sqrt{d_a d_b d_c} \delta_{ij}.
 \end{align} 
 
+\dave{Should note that $\mcb$ is symmetric. 
+i.e., $\mcb(\mu_i \tp \mu_j) = \mcb(\mu_j \tp \mu_i)$. 
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Pivotal structure}  \label{pivotal_ss}   \label{pivotal_structure} 
@@ -8719,26 +8722,28 @@ W^* &\text{otherwise}
 \end{cases}\\
 \mch(\bar{c}_{ev}) &= \mch(c_{ev})^*
 \end{align}
-Correspondingly, each cell is attached to the vector space 
+Each of these vector spaces corresponds to an attachment region for a k-handle.
+The corresponding pair of attachment regions for a (k+1)-handle and a k-handle are dual.
+Correspondingly, the vector space assigned to each cell is given by tensoring over the vector spaces assigned to each attachment region,
 \begin{align}
-\text{2-cells} \quad \quad  & \mch(f) = \bigotimes_{e \in f} \mch(c_{ef})  \\
-\text{1-cells}\quad \quad   & \mch(e) = \bigotimes_{f \in e}\mch (\bar{c}_{ef}) \tp \mch(c_{ev}) \tp \mch (c_{ev'}) \\
+\text{2-cells} \quad \quad  & \mch(f) = \bigotimes_{c_{ef} \in \partial f} \mch(c_{ef})  \\
+\text{1-cells}\quad \quad   & \mch(e) = \bigotimes_{\bar{c}_{ef} \in \partial e }\mch (\bar{c}_{ef}) \tp \mch(c_{ev}) \tp \mch (c_{ev'}) \\
  \text{0-cell} \quad \quad  & \mch(v) = \bigotimes_{j =1}^4\mch(\bar{c}_{e_jv}) 
  \label{tensor_space}
 \end{align}
-\ethan{I think the $e\in f$ and $f\in e$ notation is kinda confusing. Maybe $e\in \partial f$ or something?}
-\dave{I agree, this is tricky.
-Could definitely use some notational insight. 
-It’s doubly confusing since we use the word edge for 3 things at this point. 
-Once for the edges of the 2-cells, once for the corresponding edges on the 1-handles, and again as the thing that we use to identify which 1-handle we are referring to.
-$e \in \partial f$ is great for the 2-cells. 
-But what do we call the edges on the 1-handles ($e in \partial e$ doesn't work.)?
-}
-\ethan{maybe call the 1-handles $t$ (for tube) or something and reserve $e$ for the edges on the 1-handles, so that we can sorta sensibly write $e\in \partial t$ and $e\in \partial f$?}
-The vector spaces have been assigned so that the pair of attachment regions on the (k+1)-handle and the k-handle are dual.
-%The assignment of vector spaces has been so that the labels of the attachment labels of the (k+1)-handles connecting to the k-handle are dual. 
-\ethan{??}
-\dave{Is that better?}
+where $c_{ef} \in \partial f$ are the oriented attachment regions of the 2-cell labeled by $f$. 
+The $\bar{c}_{ef} \in e$ are the oriented attachment regions of the 1-cell labeled by $e$.
+%\ethan{I think the $e\in f$ and $f\in e$ notation is kinda confusing. Maybe $e\in \partial f$ or something?}
+%\dave{I agree, this is tricky.
+%Could definitely use some notational insight. 
+%It’s doubly confusing since we use the word edge for 3 things at this point. 
+%Once for the edges of the 2-cells, once for the corresponding edges on the 1-handles, and again as the thing that we use to identify which 1-handle we are referring to.
+%$e \in \partial f$ is great for the 2-cells. 
+%But what do we call the edges on the 1-handles ($e in \partial e$ doesn't work.)?
+%}
+%\ethan{maybe call the 1-handles $t$ (for tube) or something and reserve $e$ for the edges on the 1-handles, so that we can sorta sensibly write $e\in \partial t$ and $e\in \partial f$?}
+\dave{How about the above changes?
+It’s still clunky, but I think it’s clearer.}
 \begin{figure}
 \begin{center}
 \includegraphics{NotationStateSum.pdf}
@@ -8759,11 +8764,43 @@ and $\bar{c}_{ev}$ (not displayed).
 \end{center}
 \end{figure}
 
-
 %\dave{Should this be in the definition section?}
 %\ethan{I think keeping it here is good, since we don't use it earlier and in the definition 
 %section we aren't pitchforking too hard}%
 %\dave{I agree.}
+
+\dave{This may need to be re-worded.}
+We next define the indicator function $\chi$, 
+which pairs the vectors in neighbouring dual vector spaces. 
+We have 
+\begin{align}
+\chi: &\mch^* \tp \mch \ra \cc\\
+& w^* \tp v \mapsto \delta_{vw}.
+\end{align}
+This is the same as the bilinear pairing defined in \eqref{reflection_pairing_defn} with an unconventional normalization.
+It is defined on every pair of tensor factors $\mch(c_{xy}) \tp \mch( \bar{c}_{xy})$.
+Note that the ordering above is important, 
+for example $\chi(v_1 \tp w^*_2) = (-1)^{|v||w|} \chi(w^*_2 \tp v_1)$,
+but one can check that $\chi(v_1 \tp w_2^*) = \chi(w_1^* \tp v_2)$. 
+\dave{Maybe we should note this in the bilinear pairing section}.
+We can now use $\chi$, as a map from the vector space,
+\begin{align}
+\mch(\mcm) = \tp_{f \in \mcf} \mch(f) \tp_{e \in mce} \mch(e) \tp_{v \in \mcv} \mch(v)
+\end{align}
+to the complex numbers,
+\begin{align}
+\label{indicator}
+\chi:\; \mch(\mcm) \rightarrow \cc
+\end{align}
+which is defined on each basis element of $\mch(\mcm)$.
+Note, that in practice, 
+one has to specify an ordering on all tensor factors in $\mch(\mcm)$, 
+and keep track of the Kozul signs when evaluating the indicator function.
+
+We can now specify a partition function by simply writing it as $Z = \chi(X)$,
+where $ X \in \mch(\mcm)$.
+
+\begin{comment}
 Lastly we define a non-degenerate bilinear pairing between vectors in the vector space assigned to a disk with $n$ marked points. 
 It is defined by the evaluation map,
 \begin{align}
@@ -8823,18 +8860,46 @@ Lets think of something better.}
 \dave{To Dave:
 Cite Levin's tensor trace paper?
 I think they essentially did the same construction, but will need to check.}
+\end{comment}
 
 \subsection{Turaev-Viro-Barrett-Westbury state sum }
-\dave{Consider joining this section with the next and writing one table that has two columns. 
-One for bosonic and one for fermioninc. 
-Then tensors for each.}
 
-We now write down the Turaev-Viro-Barrett-Westbury state sum in the language and notation discussed above.
-The benefit of defining \eqref{contract} is that we can now define a partition function by specifying a vector in $\mch(\mcm)$.
+As a warm up, 
+we write down the Turaev-Viro-Barrett-Westbury state sum in the language and notation discussed above.
+The benefit of defining \eqref{indicator} is that we can now define a partition function by specifying a vector in $\mch(\mcm)$.
 Since the construction for the bosonic state sum is very well known (see the original works \cite{Turaev1992,Barrett1996}), 
 we just provide the answer and then move on to the super pivotal state sum. 
 
-We now specify three sets of tensors $T_f$, $T_e$, and $T_v$, living the in vector spaces defined in \eqref{tensor_space}. 
+%We now specify three sets of tensors $T_f$, $T_e$, and $T_v$, living the in vector spaces defined in \eqref{tensor_space}. 
+%Correspondingly, 
+%we define a set of tensors 
+As said above, the partition function is defined by writing down a set of tensors,
+\begin{align}
+T_f = \sum_{w_f \in \mch(f)} T_f(w_f) w_f \quad T_e = \sum_{w_e \in \mch(e)} T_e(w_e) w_e \quad T_v = \sum_{w_v \in \mch(v) } T_v(w_v) w_v  
+\end{align}
+where each sum runs of the basis vectors of the vector space, and the tensor is given by assigned a particular weight to each basis vector. 
+The partition partition function is simply,
+\begin{align}
+Z(\mcm)  = \chi \left( \bigotimes_{f \in \mcf}  T_f \bigotimes_{e \in \mce}  T_e \bigotimes_{v \in \mcv}  T_v \right) 
+\end{align}
+which can be written in the conventional notation by,
+\begin{align}
+Z(\mcm) = \sum_{\{ w_f \} } \sum_{\{ w_e\}} \sum_{\{ w_v \}} \prod_{f \in \mcf} T_f(w_f) 
+\prod_{e \in \mce} T_e(w_e) \prod_{v \in \mcv} T_v(w_v) 
+%\chi \left(\bigotimes_{f \in \mcf}  w_f \bigotimes_{e \in \mce}  w_e \bigotimes_{v \in \mcv}  w_v \right) 
+\chi(w_\mcl)
+\end{align}
+where we have defined $ w_\mcl = \bigotimes_{f \in \mcf}  w_f \bigotimes_{e \in \mce}  w_e \bigotimes_{v \in \mcv}  w_v $.
+Defining an admissible labeling by $\mcl$ such that $\chi(w_\mcl) =1$, then the state sum can be written as, 
+\begin{align} 
+Z(\mcm) = \sum_{ \mcl } \prod_{f \in \mcf} T_f(w_f) 
+\prod_{e \in \mce} T_e(w_e) \prod_{v \in \mcv} T_v(w_v)
+\end{align} 
+which is the familiar form of \cite{Turaev1992,Barrett1996}).
+
+\dave{Will continue from here.}
+
+
 The 2-cell tensors are given by,
 \begin{align} 
 T_f = \sum_{x, \; \{ v_{a_{e}}\} \;  : \;e \in f} \left( d_x  \prod_{e \in f} \delta_{x, a_e} \right)   \bigtp_{e \in f}v_{a_e}
@@ -8928,7 +8993,7 @@ is that we can write down the state sum in the fermionic case with little modifi
 \dave{A sketch of the alternative we discussed on Skype.}
 
 \begin{align}
-Z(\mcm)  = \sum_{\mcl} \prod_f T_f \prod_e T_e \prod_v T_v
+Z(\mcm)  = \sum_{\mcl} (-1)^{\mcl}\prod_f T_f \prod_e T_e \prod_v T_v
 \end{align}
 where $\mcl$ runs over all labelings of the tetrahedra. 
 An admissible labeling is one a basis vector of the 0-cells defined \eqref{tensor_space}.
