@@ -1209,6 +1209,7 @@
 \maketitle
 
 \begin{abstract}
+\ethan{sorta happy with this---make any edits you like, though}
 We study fermionic topological phases through the lens of fermion condensation. 
 We give a prescription for performing fermion condensation in generic 
 bosonic topological phases which contain a fermion. 
@@ -1216,20 +1217,23 @@ Our approach to fermion condensation can roughly be understood
 as coupling the parent bosonic topological phase to a phase of physical fermions, and condensing 
 pairs of physical and emergent fermions. 
 There are two distinct types of objects in fermionic theories, which we dub ``m-type particles'' and ``q-type particles''. 
-q-type particles have endomorphism algebras equal to complex Clifford algebras, and 
-have no bosonic analogue. 
+The endomorphism algebras of q-type particles are complex Clifford algebras, and they
+have no analogues in bosonic theories. 
 We construct a fermionic generalization of the tube category, which allows us to compute
-the quasiparticle excitations in fermionic topological phases. 
-We prove a series of results relating data in condensed theories to data in their parent theories, 
+the quasiparticle excitations in fermionic topological phases and in which 
+spin structures play a prominent role.  
+We then prove a series of results relating data in condensed theories to data in their parent theories, 
 namely that if $\mcc$ is a modular tensor category containing a fermion, then the tube category 
 of the condensed theory satisfies 
 $\tube(\mcc/\psi) \cong \mcc \times (\mcc/\psi)$.  
 We also study how modular transformations, fusion rules, and coherence relations 
-are modified in the fermionic setting, and construct 
-a commuting projector lattice Hamiltonian for fermionic theories.  
-Spin structures play a prominent role throughout our analysis. 
+are modified in the fermionic setting, construct 
+a commuting projector lattice Hamiltonian for fermionic theories, and 
+write down a fermionic version of the Turaev-Viro-Barrett-Westbury state sum.  
+%Spin structures play a prominent role throughout our analysis. 
 A large portion of this work is devoted to three detailed examples of performing fermion condensation to produce fermionic topological phases: we condense fermions 
-in the Ising theory, the $SO(3)_6$ theory, and the $\halfesix$ theory. 
+in the Ising theory, the $SO(3)_6$ theory, and the $\halfesix$ theory, and compute the 
+quasiparticle excitation spectrum in each of these examples. 
 \end{abstract}
 
 \tableofcontents
@@ -1240,7 +1244,8 @@ in the Ising theory, the $SO(3)_6$ theory, and the $\halfesix$ theory.
 \section{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%
 
-\dave{Lets not forget to cite \cite{Walker2014,Walker2015} in the intro.}
+%\dave{Lets not forget to cite \cite{Walker2014,Walker2015} in the intro.}
+%\ethan{done}
 
 A large program in condensed matter physics in recent years has been to classify 
 topological phases of matter which host emergent quasiparticle excitations 
@@ -1249,12 +1254,12 @@ The mathematical framework of category theory has proven to provide the right
 framework needed to formally develop classification efforts \cite{kitaev2006}. 
 Thus far, the bulk of these efforts have focused on understanding bosonic topological phases.
 These phases are ``bosonic'' because the topological excitations emerge from bosonic 
-local degrees of freedom. \ethan{should update with canonical refs}
+local degrees of freedom.
 
 By contrast, much less is known about how to complete a classification program for {\it fermionic} topological phases, in which fermions constitute 
 the underlying degrees of freedom. 
 Progress on understanding the coherence relations used to classify fermionic topological phases and the identification of a class of examples of such phases was made in \cite{gu2015,gu2014,Lan2016b}. 
-Very recently, Majorana dimer lattice models have appeared \cite{ware2016,tarantino2016}, 
+Recently, Majorana dimer lattice models have appeared \cite{ware2016,tarantino2016}, 
 which give an explicit Hamiltonian construction of a 
 non-trivial
 fermionic phase closely related to the Ising theory. 
@@ -1263,31 +1268,32 @@ devoted to studying the formal category-theoretic description of fermionic topol
 
 Intimately related to the description of fermionic topological phases is the concept of fermion condensation, 
 whereby emergent (anyonic) fermions are driven through a topological phase transition to become 
-local particles. 
+local particles (meaning that they can be created and destroyed locally). 
 \dave{This is a nice sentence. But subtle. 
 Is the idea is that 'condensing' something is the same as saying it's a local excitation?
 Also are you considering physical fermions as local?
 We could add a footnote which describes this sentence in more detail....
 Also for the phase transition bit we can cite \cite{Bais2009}.}
+\ethan{Right. I'm saying it means you can create/destroy something in a condensate locally. Feel free to add whatever explanatory remarks you like}
 There have been several recent approaches related to understanding 
 fermionic topological phases with field theoretic methods, fermion condensation, and bosonization \cite{gaiotto2016, bhardwaj2016, bhardwaj2016b,kapustin2017,putrov2016}, 
 with a more algebraic take on fermion condensation given in \cite{wan2016}. 
 
 In this work, we perform a systematic study of fermionic topological phases and fermion condensation from a category-theoretic
-point of view. 
+point of view, taking the approach of \cite{Walker2014,Walker2014}. 
 The strategy we will use to construct examples of fermionic topological phases will be to start with 
 a bosonic phase described by a tensor category $\mcc$
 which contains an emergent fermion $\psi$.
 To obtain a fermionic theory, we will condense $\psi$.
 That is, we will show how to introduce a phase transition in the bosonic phase 
-described by $\mcc$ to a phase where $\psi$ are {\it local} (as opposed to anyonic) excitations.
+described by $\mcc$ to a phase where $\psi$ is a {\it local} (as opposed to an anyonic) excitation.
 The resulting fermionic topological phase is described by a super tensor category, which we denote
 as $\mcc / \psi$.
 $\mcc/\psi$ is a fermionic phase because in order for a phase to support local fermionic excitations, 
 its underlying degrees of freedom must be fermionic. 
 
-Condensing fermions is not a straightforward business. 
-In order to perform the condensation, it is necessary to equip the configuration 
+Due to their nontrivial spin and statistics, condensing fermions is not a straightforward business. 
+From a mathematical perspective, in order to perform the condensation it is necessary to equip the configuration 
 space of $\psi$ worldline endpoints with a certain complex line bundle. 
 Physically, the construction of this bundle amounts to attaching a phase of physical (not emergent) fermions $f$ 
 to the parent bosonic theory: 
@@ -1301,6 +1307,7 @@ on which $\psi$ worldlines are allowed to end.
 versus simple objects of Tube($\mcc$) (or Tube($\mcc/\psi$)).
 Are we calling both of these ``anyons"?}
 \ethan{we've waffled a bit on the terminology. I've been calling all of the stuff in the tube category as ``quasiparticles'' because this is unambiguous if a bit long to write out. I'm fine with calling things in $\mcc$ ``objects'' or ``string-net labels'' and things in $\tube(\mcc)$ as ``anyons'', though.}
+\ethan{any recent thoughts on terminology? I'm fine with what we're doing currently}
 
 A central difference between fermionic topological phases and their bosonic counterparts is that 
 the former possesses two distinct classes of simple objects (or anyons). 
@@ -3368,13 +3375,13 @@ S = \frac{1}{2}\begin{pmatrix} 1 & d & 1 &			&&&			&&&			&& \\
 						&&&				&&&			&&&			-A^{2} & -A^{2}d & A^{2}\\
 						&&&				&&&			&&&			-A^{2}d & 0 & -A^{2}d \\ 
 						&&&				&&&			&&&			A^{2} & -A^{2}d & -A^{-2} \end{pmatrix}\ee		
-\kw{I think one of the -1's should be a +1 (does not agree with above in one of the middle blocks)}
-\dave{That's a good point. 
-It also doesn't match the matrices we found above (which I just double checked and seem to be correct).
-Ethan, call me on Skype when you have a chance. 
-I found the d's should have the other sign in the row and column you changed.}
-\ethan{Everything above should now be correct}
-\dave{I agree.}
+%\kw{I think one of the -1's should be a +1 (does not agree with above in one of the middle blocks)}
+%\dave{That's a good point. 
+%It also doesn't match the matrices we found above (which I just double checked and seem to be correct).
+%Ethan, call me on Skype when you have a chance. 
+%I found the d's should have the other sign in the row and column you changed.}
+%\ethan{Everything above should now be correct}
+%\dave{I agree.}
 where we have only listed the non-zero entries. 
 $S$ has two different direct-sum decompositions. First, essentially by construction, 
 it splits into a direct sum over blocks according to spin structures 
@@ -3906,7 +3913,7 @@ which doesn't make use of the back wall construction and allows the condensed th
 (for a braided input category). 
 For related ideas, see \cite{kapustin2017,thorngren2015}. 
 
-The construction proceeds as follows.
+The construction proceeds schematically as follows.
 We allow the $\psi$ worldlines to be absorbed into the vacuum at any point.
 In this picture the $\psi$ lines end anywhere in 3-space, they are not restricted to terminating on a back wall. 
 In order to resolve problems with the twist and self-statistics of $\psi$, 
@@ -3957,7 +3964,8 @@ braided structure.
 I could never figure out how to check it.
 But I don’t see why it would be incorrect.
 }
-This picture also gives us a physical interpretation of how to invert the condensation 
+\ethan{Yeah, I'm okay with it. I inserted some instances of ``schematically'' in this subsection to make it clear that we aren't pretending to be precise}
+This picture also gives us a schematic physical interpretation of how to invert the condensation 
 procedure. 
 To go the other way and un-condense $\psi$, we just decouple the $x$ lines from the spin structure defects.
 This gives us a phase consisting of the MTC $\mcc$ together with a loop gas of spin structure defects.
@@ -3971,8 +3979,11 @@ worldlines to be closed and restoring the original phase.
 \subsection{The tube category of $\mcc/\psi$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\dave{Note to self: check that we have a definition of minimal idempotent somewhere.
-Refer to it in Section 5.}
+%\ethan{compress a bit---don't hold the reader's hand so much. Can be more concise. }
+%\ethan{talk about diffeomorphisms of spin circles and beaurau of standards between spin circles when introducing tube stuff. Maybe write $\tube(X)$ where $X$ is a particular spin circle. Convinient to pick a standard bounding and non-bounding circle. 
+%Talk about B and N tube categories and then combine them because we have a tensor product structure.}
+%\dave{Note to self: check that we have a definition of minimal idempotent somewhere.
+%Refer to it in Section 5.}
 
 The quasiparticle excitations in a bosonic topological phase obtained from a category $\mcc$ 
 are given by the simple objects in the Drinfeld center $\mcz(\mcc)$ \cite{levin2005}.
@@ -4003,50 +4014,57 @@ in the more general fermionic setting considered here.
 %study how different manifolds can be glued together, it suffices to specialize to the choice $X = A$, 
 %where $A$ is a spin annulus with $\p A = S^1 \du S^1$. 
 
-The tube category $\tube(\mcc)$ for a string-net TQFT derived from the category $\mcc$ is defined as follows. 
-The objects of $\tube(\mcc)$ are isomorphism classes of string-net boundary conditions on spin circles. 
-Because specifying the boundary conditions on a spin annulus involve specifying a choice of spin structure, 
-each object in $\tube(\mcc)$ carries a $\zt$ spin structure label according to whether it is associated with the bounding or 
-non-bounding spin structure. 
-This means are two types of objects in the tube category: objects with bounding spin structure
-and ``vortices'', which are objects with non-bounding spin structure.
-As with the original category $\mcc$, $\tube(\mcc)$ can contain both m-type and q-type objects, with q-type 
-objects distinguished by their non-trivial endomorphism algebras as before. 
-Later we will be able to show that a given object $a$ in $\tube(\mcc)$ will admit a non-trivial odd 
-endomorphism only if it is associated with a non-bounding spin structure, and so every simple object 
-labeled by a bounding spin structure must be m-type. 
-The converse is not true, however---in what follows we will see examples of theories with m-type vortices. 
+%The tube category $\tube(\mcc)$ for a string-net TQFT derived from the category $\mcc$ is defined as follows. 
+We will now define two categories $\tube^B(\mcc),\tube^N(\mcc)$ for a string-net TQFT derived from the category $\mcc$. 
+The objects of the two spin tube categories $\tube^B(\mcc)$ and $\tube^N(\mcc)$ are defined as isomorphism classes of string-net boundary conditions on spin circles with bounding 
+and non-bounding spin structures, respectively. 
+Later, we will show that every simple object 
+in $a\in\tube^B(\mcc)$ must be m-type (although the converse is not true). 
+For each spin tube category, we will fix a representative spin circle with which to define its
+objects. 
+Other possible choices of spin circles are related to the chosen representative
+by spin diffeomorphisms, and the exact specification of the particular representative will 
+be unimportant in our analysis. 
+%Because specifying the boundary conditions on a spin annulus involve specifying a choice of spin structure, 
+%each object in $\tube(\mcc)$ carries a $\zt$ spin structure label according to whether it is associated with the bounding or 
+%non-bounding spin structure. 
+%This means are two types of objects in the tube category: objects with bounding spin structure
+%and ``vortices'', which are objects with non-bounding spin structure.
+%Both tube categories may contain both m-type and q-type objects, with q-type 
+%objects distinguished by their non-trivial endomorphism algebras as before. 
 
-A spin annulus decorated with string-nets is naturally viewed as a map between its outer and inner boundary conditions,  
-and so spin annuli decorated with different string-net configurations constitute the morphisms of
-the tube category. 
-We can use local relations on the tubes to reduce any string-net configuration to a $\cc$-linear combination of string-net configurations 
-that take the form of a string-net with one marked point at each of the tube's boundary components
-and one string wrapping around the tube's diameter. 
-This allows us to present the morphisms in $\tube(\mcc)$ concisely as  
+%The converse is not true, however---in what follows we will see examples of theories with m-type vortices. 
+
+Spin annuli decorated with different string-net configurations constitute the morphisms of
+the two spin tube categories. Again, we will fix a particular representative spin annulus for each spin structure to use
+when defining morphisms, with other choices being related by spin diffeomorphisms. 
+We can use local relations in $\mcc$
+%on the tubes to reduce any string-net configuration to a $\cc$-linear combination of string-net configurations 
+%that take the form of a string-net with one marked point at each of the tube's boundary components
+%and one string wrapping around the tube's diameter. 
+%This allows us 
+to present these morphisms concisely as  
 \begin{align}
-{\rm mor}(\tube({\cal C}))\; =\; \mathbb{C} \left[\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{} \right] 
+{\rm mor}(\tube^X({\cal C}))\; =\; \mathbb{C} \left[\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{} \right] 
 \end{align}
-where $a,b,c,d$ are simple objects in $\cal{C}$ and $X$ denotes the spin structure of the annulus. 
+where $a,b,c,d$ are simple objects in $\cal{C}$ and $X\in\{B,N\}$ denotes the spin structure of the annulus. 
 The multiplicity indices $\mu$, and $\nu$ are 
 collective indices that denote the vector in the fusion space $V^{db}_a$ and $V^{c \bar{d}}_b$, 
-as well as the ordering in the tensor product $V^{d b}_a \tp V^{c d^*}_b$ which forms the Hilbert 
-space of the tube (keeping track of this ordering is important because of the Koszul signs incurred 
-when interchanging two odd vectors in a tensor product). 
+as well as the ordering of the tensor product ($V^{d b}_a \tp V^{c d^*}_b$ or $V^{c d^*}_b\tp V^{d b}_a$) which forms the Hilbert 
+space of the tube.% (keeping track of this ordering is important because of the Koszul signs incurred 
+%when interchanging two odd vectors in a tensor product). 
 
-Note that with this definition, a morphism in $\mor(\tube(\mcc))$ is only non-zero if its source and 
-target carry the same spin structure label. 
-Accordingly, any tube category admits the decomposition 
-\be \label{tube_spin_decomp} \tube(\mcc) \cong \tube^B(\mcc) \oplus \tube^N(\mcc)\ee
-into bounding- and non-bounding components. 
-Occasionally it can be helpful to think of both $\tube^B(\mcc)$ and $\tube^N(\mcc)$ as separate categories, 
-although we will adopt the view where there is only one tube category $\tube(\mcc)$ in what follows. 
-$X$ denotes the spin structure of the annulus, and is either $B$ for bounding, or $N$ for non-bounding. 
+Since morphisms preserve the spin structures of the spin circles they act on, 
+we are prompted to construct the {\it full} tube category $\tube(\mcc)$ by forming the direct sum
+\be \label{tube_spin_decomp} \tube(\mcc) \cong \tube^B(\mcc) \oplus \tube^N(\mcc).\ee
+In what follows we will mostly think of $\tube(\mcc)$ as the fundamental category of interest. 
+This is because in what follows we will be led to consider a $\tp$ structure on $\tube(\mcc)$, which mixes the two spin components (we defer a discussion of this to 
+Section \ref{fusion_rules}). 
 
 Composition of morphisms in $\tube(\mcc)$ is defined by stacking tubes together.
-The stacking operation plays the role of multiplication 
-in $\tube(\mcc)$ when $\tube(\mcc)$ is viewed as an algebra. 
-Graphically, tubes are stacked as 
+%The stacking operation plays the role of multiplication 
+%in $\tube(\mcc)$ when $\tube(\mcc)$ is viewed as an algebra. 
+Graphically,
 \begin{align}
 \AnnularTubex{\AnnularTubeNoIndex}{a}{b}{\eta}{X}{} \circ
 \AnnularTubex{\AnnularTubeNoIndex}{c}{d}{\psi}{Y}{} \;
@@ -4056,10 +4074,10 @@ The $\delta$ functions ensure that if the string labels of the two tubes don't a
 boundary on which they are being glued (i.e. if $b\neq c$), or if the spin structures of the 
 two tubes disagree, the two tubes compose (or multiply) to zero. 
 
-In addition to composing morphisms, we can define a tensor product $\tp$ on $\tube(\mcc)$ 
-(from a physical perspective, $\tp$ implements quasiparticle fusion). 
-The definition of $\tp$ is best phrased in terms of vector spaces on the pair of pants, and we defer a 
-discussion of this construction until Section \ref{fusion_rules}. 
+%In addition to composing morphisms, we can define a tensor product $\tp$ on $\tube(\mcc)$ 
+%(from a physical perspective, $\tp$ implements quasiparticle fusion). 
+%The definition of $\tp$ is best phrased in terms of vector spaces on the pair of pants, and we defer a 
+%discussion of this construction until . 
 
 To actually determine the objects in $\tube(\mcc)$, 
 it is helpful to think about the simple objects in $\tube(\mcc)$ in terms of vector spaces which are preserved 
@@ -4067,24 +4085,25 @@ under the action of the morphisms in $\tube(\mcc)$\footnote{That vector spaces o
 reproduce $\mcz(\mcc)$ makes sense from a formal perspective, as the category $\mcz(\mcc)$ is what a 
 (fully-extended) TQFT assigns to an $S^1$.}. 
 If we view $\tube(\mcc)$ as an algebra, then these invariant vector spaces correspond precisely to the 
-simple modules of $\tube(\mcc)$.
-Since every simple module $M_a$ of an algebra algebra can be dually represented by a primitive idempotent 
-$\Pi_a : \tube(\mcc) \ra M_a$ that projects onto the vector space $M_a$, we can classify 
-simple objects in $\tube(\mcc)$ by the primitive idempotents of $\tube(\mcc)$.
+simple modules $\{M_a\}$ of $\tube(\mcc)$.
+This allows us to equivalently classify 
+%Since every simple module $M_a$ of an algebra algebra can be dually represented by a primitive idempotent 
+%$\Pi_a : \tube(\mcc) \ra M_a$ that projects onto the vector space $M_a$, we can classify 
+the
+simple objects in $\tube(\mcc)$ by the primitive idempotents (projectors whose images are simple modules) $\Pi_a : \tube(\mcc) \ra M_a$ of the tube category.%, each of which project onto a different simple module $M_a$ of $\tube(\mcc)$.
 
-Before moving on, we remark on the physical interpretation of the tube category. 
+Before moving on, we briefly remark on the physical interpretation of the tube category. 
 The setting for examining a collection of $n$ excitations in a given topological phase is a 
 manifold decorated with string-nets that possesses $n$ circular punctures (boundary components), with an excitation localized at the location of each puncture.
 The type of excitation at a given puncture determines the boundary conditions of the string-net TQFT at that puncture, 
-and the simple objects in $\tube(\mcc)$ are identified with the distinct types of quasiparticle excitations that the theory supports. 
-Thus, enumerating the objects of $\tube(\mcc)$ amounts to constructing the quasiparticle excitation spectrum of the theory in question. 
-
+and thus the simple objects in $\tube(\mcc)$ are identified with the distinct types of quasiparticle excitations that the theory supports. 
+%Thus, enumerating the objects of $\tube(\mcc)$ amounts to constructing the quasiparticle excitation spectrum of the theory in question. 
 A potentially helpful physical picture is to think of the morphisms in the tube category as performing ``scale transformations'' 
-on quasiparticles, which are localized around circular punctures on the ambient manifold \cite{lan2014}. 
-These ``scale transformations'' consist of gluing in annuli (formally, acting with morphisms in the tube category) with different string-net configurations to the 
+on quasiparticles \cite{lan2014}. 
+These ``scale transformations'' consist of gluing in string-net-decorated spin annuli (i.e. acting with morphisms in the tube category) to the 
 punctures associated with each quasiparticle. 
-Since the quasiparticle excitations under consideration are topological, they must be invariant under these scale transformations, 
-and thus enumerating the quasiparticle excitations in the theory is also equivalent to writing down the simple 
+Since the topological quasiparticle excitations must be invariant under these scale transformations, 
+enumerating the quasiparticle excitations in the theory is equivalent to writing down the simple 
 modules of the tube category. 
 
 Of course, the notion of an excitation is strictly speaking not well-defined until we construct a Hamiltonian for the theory.
@@ -4093,9 +4112,6 @@ to refer to an object of the tube category.
 We emphasize that the tube category is a perfectly well-defined mathematical object within 
 the formal setting of string-net spin-TQFTs, and the discussion of the tube category 
 which follows can be understood without using terms like ``excitation'' and ``Hamiltonian''. 
-
-
-
 
 
 
@@ -7614,8 +7630,8 @@ diagram must commute:
 \end{align} 
 
 \kw{TO DO: say a little bit (but only a little bit) about other coherence relations}
-
 \dave{Should we add the coherence relation for pivoting?}
+\ethan{I think the above ``other relations are modified, for example...''}1
 
 
 
@@ -7886,9 +7902,6 @@ $\lambda$ is fixed to be purely imaginary by the discussion in Appendix \ref{fer
 For example, in the $C_2$ theory considered earlier, we have $\lambda = A^4 = \pm i$ and $\lambda_{\rm cap}=A^8=-1$. 
 
 
-
-
-
 %%%%%%%%%%%%%%%%%%%%%
  \section{Super pivotal Hamiltonian}
  \label{Super_pivotal_Hamiltonian}
@@ -7896,7 +7909,7 @@ For example, in the $C_2$ theory considered earlier, we have $\lambda = A^4 = \p
 
 In this section we will write down a commuting projector Hamiltonian 
 for a generic fermionic topological phase. 
-Since our goal in this section is to be rather general, we will put a fair amount of effort into making our construction mathematically precise---readers who are only interested in the final result may skip to \ref{??}. 
+Since our goal in this section is to be rather general, we will put a fair amount of effort into making our construction mathematically precise---readers who are only interested in the final result may skip to \ref{terms_in_Hamiltonian}. 
 
  \begin{figure}
 \begin{center}
@@ -8300,7 +8313,7 @@ class of $H_1(\Sigma)$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%
-\subsection{Terms in the Hamiltonian}
+\subsection{Terms in the Hamiltonian} \label{terms_in_Hamiltonian}
 %%%%%%%%%%%%%%%%%%%%%
 
 In this section we will finally write down the Hamiltonian, and then explain the terms appearing in it in detail. 
@@ -8731,6 +8744,7 @@ Correspondingly, the vector space assigned to each cell is given by tensoring ov
  \text{0-cell} \quad \quad  & \mch(v) = \bigotimes_{j =1}^4\mch(\bar{c}_{e_jv}) 
  \label{tensor_space}
 \end{align}
+<<<<<<< HEAD
 where $c_{ef} \in \partial f$ are the oriented attachment regions of the 2-cell labeled by $f$. 
 The $\bar{c}_{ef} \in e$ are the oriented attachment regions of the 1-cell labeled by $e$.
 %\ethan{I think the $e\in f$ and $f\in e$ notation is kinda confusing. Maybe $e\in \partial f$ or something?}
@@ -8744,6 +8758,19 @@ The $\bar{c}_{ef} \in e$ are the oriented attachment regions of the 1-cell label
 %\ethan{maybe call the 1-handles $t$ (for tube) or something and reserve $e$ for the edges on the 1-handles, so that we can sorta sensibly write $e\in \partial t$ and $e\in \partial f$?}
 \dave{How about the above changes?
 It’s still clunky, but I think it’s clearer.}
+=======
+\ethan{I think the $e\in f$ and $f\in e$ notation is kinda confusing. Maybe $e\in \partial f$ or something?}
+\dave{I agree, this is tricky.
+Could definitely use some notational insight. 
+It’s doubly confusing since we use the word edge for 3 things at this point. 
+Once for the edges of the 2-cells, once for the corresponding edges on the 1-handles, and again as the thing that we use to identify which 1-handle we are referring to.
+$e \in \partial f$ is great for the 2-cells. 
+But what do we call the edges on the 1-handles ($e in \partial e$ doesn't work.)?
+}
+\ethan{maybe call the 1-handles $t$ (for tube) or something and reserve $e$ for the edges on the 1-handles, so that we can sorta sensibly write $e\in \partial t$ and $e\in \partial f$?}
+The vector spaces have been assigned so that the spaces assigned to the pair of attachment regions on the (k+1)-handle and the k-handle are dual to one another.
+%The assignment of vector spaces has been so that the labels of the attachment labels of the (k+1)-handles connecting to the k-handle are dual. 
+>>>>>>> 6825bf9779cd761f3dbe67d1dbf35faffba51a3e
 \begin{figure}
 \begin{center}
 \includegraphics{NotationStateSum.pdf}
@@ -8991,7 +9018,7 @@ is that we can write down the state sum in the fermionic case with little modifi
 %\end{figure}
 
 \dave{A sketch of the alternative we discussed on Skype.}
-
+\ethan{I kinda liked having the $T$s be tensors, but I guess no strong preference}
 \begin{align}
 Z(\mcm)  = \sum_{\mcl} (-1)^{\mcl}\prod_f T_f \prod_e T_e \prod_v T_v
 \end{align}
