@@ -101,6 +101,7 @@
 \newcommand{\End}{\text{End}}
 \newcommand{\Tor}{\text{Tor}}
 \newcommand{\Ext}{\text{Ext}}
+\newcommand{\tr}{\text{tr}}
 \newcommand{\p}{\partial}
 \newcommand{\wt}{\widetilde}
 \usepackage{verbatim}
@@ -4643,13 +4644,76 @@ of $Y$, but the even and odd Hilbert space dimensions do depend of the spin stru
 
 \subsubsection{Sketch of proof}
 
+In this subsection we sketch the proof of the above dimension formula.
+
+\newcommand{\ztt}{Z}
+\newcommand{\zob}{Z_{S^1_B}}
+\newcommand{\zon}{Z_{S^1_N}}
+
+
+Let $\ztt$ denote the $2{+}1$-dimensional TQFT associated to the super pivotal category $\mcc$.
+Let $Y$ be a closed spin surface with Hilbert space $\ztt(Y)$, and let $p|q = \dim(\ztt(Y))$.
+Then we have
+\be
+	p+q = \tr(\id: \ztt(Y) \to \ztt(Y)) = \ztt(Y\times S^1_B)
+\ee
+and
+\be
+	p-q = \tr((-1)^F: \ztt(Y) \to \ztt(Y)) = \ztt(Y\times S^1_N) .
+\ee
+More generally, if $Y$ has nonempty boundary and the boundary components are labeled by $a_1,\ldots,a_k$ 
+(minimal idempotents of the tube category), then
+\begin{align}
+	p+q & = \tr(\id: \ztt(Y; a_1,\ldots,a_k) \to \ztt(Y; a_1,\ldots,a_k)) \\
+		& = \ztt(Y\times S^1_B)(cl_B(a_1)\du\cdots\du cl_B(a_k))
+\end{align}
+and
+\begin{align}
+	p-q & = \tr((-1)^F:  \ztt(Y; a_1,\ldots,a_k) \to \ztt(Y; a_1,\ldots,a_k)) \\
+		& = \ztt(Y\times S^1_N)(cl_N(a_1)\du\cdots\du cl_N(a_k)) .
+\end{align}
+Here $cl_X(a_i)$ denotes the element of $\ztt(T^2_{UX})$ obtained by closing up the idempotent $a_i$,
+and $U$ is the spin structure ($B$ or $N$) on the $i$-th boundary component.
+Note that if $a_i$ is q-type, then $cl_N(a_i) \in \ztt(T^2_{NN})$ is zero.
+But in this case we also know that $p-q = 0$, since the odd endomorphism of $a_i$ maps the even part of 
+$\ztt(Y; a_1,\ldots,a_k)$ bijectively to the odd part.
+
+Recall that we can define reduced $1{+}1$-dimensional TQFTs $\zob$ and $\zon$ via
+\be
+	\zob(M) = \ztt(M\times S^1_B) \quad\quad \zon(M) = \ztt(M\times S^1_N) ,
+\ee
+where $M$ is a manifold of dimension 0, 1 or 2.
+Combining the above we have, for closed spin surfaces $Y$,
+\be
+	p+q = \zob(Y)
+\ee
+and
+\be
+	p-q = \zon(Y) ,
+\ee
+and there are similar formulas when $Y$ has boundary.
+
+We can now outline the remainder of the proof of the dimension formula.
+We have just seen that the super dimension $p|q$ can be calculated entirely in terms of the reduced 
+$1{+}1$-dimensional TQFTs $\zob$ and $\zon$.
+Because 1 is a small number, we can completely classify $1{+}1$-dimensional spin TQFTs and give an explicit
+expression for the path integral in terms of basic structure constants of the $1{+}1$-dimensional TQFT.
+Then all that remains to be done is express the structure constants of the $1{+}1$-dimensional TQFTs in terms
+of the structure constants of the original $2{+}1$-dimensional TQFT $\ztt$.
+It turns out that the only structure constants we will need are the list of minimal idempotents of the tube category, 
+their types (m or q), and the $S$ matrix.
+
+\nn{...}
+
+
+
+\kwsep
+
 
 \kw{only sketch; refer to paper in prep for full details.}
 
-Outline:
+Outline of remainder:
 \begin{itemize}
-\item p+q = ... (x s1b); p-q = ... (x s1n)
-\item rephrasing, dim reduce (over s1b and s1n) 
 \item classification of 1+1 spin theories
 \item c and cl1 are the two morita eq classes
 \item give answer; closed and (more generally) non-clsed cases
