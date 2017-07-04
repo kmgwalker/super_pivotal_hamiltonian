@@ -101,6 +101,7 @@
 \newcommand{\End}{\text{End}}
 \newcommand{\Tor}{\text{Tor}}
 \newcommand{\Ext}{\text{Ext}}
+\newcommand{\tr}{\text{tr}}
 \newcommand{\p}{\partial}
 \newcommand{\wt}{\widetilde}
 \usepackage{verbatim}
@@ -4643,16 +4644,86 @@ of $Y$, but the even and odd Hilbert space dimensions do depend of the spin stru
 
 \subsubsection{Sketch of proof}
 
+In this subsection we sketch the proof of the above dimension formula.
+
+\newcommand{\ztt}{Z}
+\newcommand{\zob}{Z_{S^1_B}}
+\newcommand{\zon}{Z_{S^1_N}}
+
+
+Let $\ztt$ denote the $2{+}1$-dimensional TQFT associated to the super pivotal category $\mcc$.
+Let $Y$ be a closed spin surface with Hilbert space $\ztt(Y)$, and let $p|q = \dim(\ztt(Y))$.
+Then we have
+\be
+	p+q = \tr(\id: \ztt(Y) \to \ztt(Y)) = \ztt(Y\times S^1_B)
+\ee
+and
+\be
+	p-q = \tr((-1)^F: \ztt(Y) \to \ztt(Y)) = \ztt(Y\times S^1_N) .
+\ee
+More generally, if $Y$ has nonempty boundary and the boundary components are labeled by $a_1,\ldots,a_k$ 
+(minimal idempotents of the tube category), then
+\begin{align}
+	p+q & = \tr(\id: \ztt(Y; a_1,\ldots,a_k) \to \ztt(Y; a_1,\ldots,a_k)) \\
+		& = \ztt(Y\times S^1_B)(cl_B(a_1)\du\cdots\du cl_B(a_k))
+\end{align}
+and
+\begin{align}
+	p-q & = \tr((-1)^F:  \ztt(Y; a_1,\ldots,a_k) \to \ztt(Y; a_1,\ldots,a_k)) \\
+		& = \ztt(Y\times S^1_N)(cl_N(a_1)\du\cdots\du cl_N(a_k)) .
+\end{align}
+Here $cl_X(a_i)$ denotes the element of $\ztt(T^2_{UX})$ obtained by closing up the idempotent $a_i$,
+and $U$ is the spin structure ($B$ or $N$) on the $i$-th boundary component.
+Note that if $a_i$ is q-type, then $cl_N(a_i) \in \ztt(T^2_{NN})$ is zero.
+But in this case we also know that $p-q = 0$, since the odd endomorphism of $a_i$ maps the even part of 
+$\ztt(Y; a_1,\ldots,a_k)$ bijectively to the odd part.
+
+Recall that we can define reduced $1{+}1$-dimensional TQFTs $\zob$ and $\zon$ via
+\be
+	\zob(M) = \ztt(M\times S^1_B) \quad\quad \zon(M) = \ztt(M\times S^1_N) ,
+\ee
+where $M$ is a manifold of dimension 0, 1 or 2.
+Combining the above we have, for closed spin surfaces $Y$,
+\be
+	p+q = \zob(Y)
+\ee
+and
+\be
+	p-q = \zon(Y) ,
+\ee
+and there are similar formulas when $Y$ has boundary.
+
+We can now outline the remainder of the proof of the dimension formula.
+We have just seen that the super dimension $p|q$ can be calculated entirely in terms of the reduced 
+$1{+}1$-dimensional TQFTs $\zob$ and $\zon$.
+Because 1 is a small number, we can completely classify $1{+}1$-dimensional spin TQFTs and give an explicit
+expression for the path integral in terms of basic structure constants of the $1{+}1$-dimensional TQFT.
+Then all that remains to be done is express the structure constants of the $1{+}1$-dimensional TQFTs in terms
+of the structure constants of the original $2{+}1$-dimensional TQFT $\ztt$.
+It turns out that the only structure constants we will need are the list of minimal idempotents of the tube category, 
+their types (m or q), and the $S$ matrix.
+
+\nn{...}
+
+
+
+\kwsep
+
 
 \kw{only sketch; refer to paper in prep for full details.}
 
+Outline of remainder:
+\begin{itemize}
+\item classification of 1+1 spin theories
+\item c and cl1 are the two morita eq classes
+\item give answer; closed and (more generally) non-clsed cases
+\item idem of dim red = idems of tube cat (b, n)
+\item boundary cond leads to S'
+\end{itemize}
+
+
 
 \subsubsection{Sample calculations}
-
-There are three specific $S$ matrices calculated in this paper, for the $C_2$, $SO(3)_6/\psi$, and $\halfesix/\psi$.
-Note that all three of these theories have just one non-trivial simple object.
-Plugging the $S$ matrix entries into the above dimension formula, we find, for closed surfaces of genus $g$ and specified Arf invariant,
-the results in Figure \ref{dim_formula_fig1}.
 
 \begin{figure}\begin{center}  \tabulinesep = 1mm
 \begin{tabu}{|X[$l]|X[$c]|X[$c]|X[$c]|}
@@ -4672,8 +4743,21 @@ the results in Figure \ref{dim_formula_fig1}.
 \caption{Hilbert space dimensions for closed surfaces in various theories.} \label{dim_formula_fig1}
 \end{center}\end{figure}
 
-\kw{Should also do some examples for surfaces with boundary.}
 
+There are three specific $S$ matrices calculated in this paper, for the $C_2$, $SO(3)_6/\psi$, and $\halfesix/\psi$.
+Note that all three of these theories have just one non-trivial simple object.
+Plugging the $S$ matrix entries into the above dimension formula, we find, for closed surfaces of genus $g$ and specified Arf invariant,
+the results in Figure \ref{dim_formula_fig1}.
+\kw{Maybe better to make eqn rather than figure??}
+
+
+\kw{Remark that this is a good way to detect errors in S? (most errors lead to non-integer dims)}
+
+
+\kw{Should also do some examples for surfaces with boundary.
+e.g.\ odd fusion channels in C2, odd self-duality in E6/2/p, genus two surface with two labeled boundary components}
+
+\kw{Is it worthwhile to write out the sums for some of the calculations?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{More on fermion condensation in modular tensor categories and the tube category} \label{more_on_tubes}
@@ -4703,11 +4787,18 @@ is compatible with the vortex-braided on both sides.
 But in this paper we will content ourselves with proving the only the tensor equivalence.
 \kw{Dave, is this claim about vortex-braiding true?
 If we are not sure it is true then we should delete this footnote.}
-\dave{I think there is a consistent braiding we can define on both sides.
-I will try to see if there is something concrete to say.}
-\dave{Given the subtleties, maybe it’s best not to speculate.
-We can do it in the follow up paper.} 
-}
+%\dave{I think there is a consistent braiding we can define on both sides.
+%I will try to see if there is something concrete to say.}
+\dave{Given the subtleties, maybe it's best not to speculate.
+We can do it in the follow up paper.
+Although I'm confused by the following:
+$E_6 = A_{11}/\mca$, where $\mca = 1 \oplus 7$.
+I was pretty sure that we showed $\tube(E_6) \cong \tube(A_{11}/\mca) \cong A_{11} \times A_{11}/\mca$ 
+as tensor categories.
+I was under the impression that $E_6$ cannot be braided, which makes the following result of \cite{kawahigashi2001} (cor 4.9) confusing:  $\tube(E_6) \cong A_{11} \times A_3$. 
+I could have mis-interpreted. 
+Would like to go back.}}
+
 The analogous result when $\psi$ is a boson is a special case of Corollary 4.8 of \cite{kawahigashi2001}
 \kw{B\"ockenhauer-Eveans-Kawahigashi, Cor. 4.8, Publ RIMS, Kyoto Univ. 37 (2001) 1-35}
 (see also the 1998 announcement by Ocneaunu referred to therein).
@@ -4939,6 +5030,7 @@ In the following subsection we will state and prove the analogous theorem for $\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Double of the fermionic quotient}
+\label{double_fermionic_quotient}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In this subsection we prove that $\tube(\mcc/\psi) \cong \mcc \times \overline{\mcc/\psi}$ as tensor categories
@@ -5370,7 +5462,7 @@ need to show:
 %\dave{In progress. I have the general formulas for minimal idempotents, S and T in any MTC/psi. 
 %As well as any UBCF that is only non-modular by a transparent fermion, like in $SO(3)_6$.
 %Should we include those?}
-\dave{Note to self: check what's going on in \cite{bonderson2017}.}
+%\dave{Note to self: check what's going on in \cite{bonderson2017}.}
 Here we provide more examples of fermion condensation in two different theories which are closely related to one another:
 the $SU(2)_6$ and $SO(3)_6$ theories. 
 Each theory contains a fermion $\psi$, which we will condense. 
@@ -5449,8 +5541,8 @@ Note that there are no q-type objects in $SO(3)_6/\psi$.
 
 The non-trivial fusion rules of $SU(2)_6/\psi$ are given by
 %\dave{Should put these in our standard form.}
-\dave{Put into our standard form, should double check though.}
-\dave{We should make this a table and not an equation, I'll do that soon.}
+%\dave{Put into our standard form, should double check though.}
+%\dave{We should make this a table and not an equation, I'll do that soon.}
 \begin{table} 
 \begin{align}
 \xymatrix{
@@ -5753,10 +5845,17 @@ and so it can freely ``absorb'' fermions (odd endomorphisms), which allows us to
 One can show that $M_{33}$ is not q-type: to do so we note that if it were, then there would be an odd endomorphism with trivial boundary conditions (since $m_0$ is a representative in its isomorphism class). 
 But this isn't possible, since we would have an odd tube in $\tube(SO(3)_6/\psi)$ with trivial boundary conditions.
 This is only possible if $SO(3)_6/\psi$ has a particle with an odd endomorphism, 
+<<<<<<< HEAD
 but as noted in \eqref{noq-type} this is not possible since $\psi$ is transparent in this theory.
 One can explicitly construct an odd endomorphism for $Q_{13}$ by putting a fermion on $3$ and fusing all strands into the annulus;
 similarly for $Q_{31}$. 
 %\ethan{nice!}
+=======
+but as noted in \eqref{noq-type} transparency of $\psi$ exceludes this possibility.
+%this is not possible since $\psi$ is transparent in this theory.
+One can explicitly construct an odd endomorphism for $Q_{13}$ by putting a fermion on $3$ and fusing all strands into the annulus. 
+Similarly for $Q_{31}$. 
+>>>>>>> 9e94c5d577eb26dfe7f54219149669b3547e87c0
 
 
 
@@ -5775,6 +5874,9 @@ Using the basis above, one finds
 \TorusBraidBasis{a}{b\;}{}{\omega_0}{X}{Y}
 \end{align}
 where $a$ and $b$ label the idempotent as before, and $X$, $Y$, denote the two spin structures. 
+We warn the reader, that when $X$ is non-bounding, 
+$a, b\in \{ m_1, q_3 \}$, which lies outside of $SO(3)_6/\psi$.
+However, when the diagram is fused into the torus we find a torus string net labeled with objects only in $SO(3)_6/\psi$, as required.
 %\ethan{what's the $\Omega$ loop defined as? Why not $\omega$ (or $\omega_0$?}
 %\dave{$\omega_0$}
 
@@ -5785,6 +5887,12 @@ In this graphical convention, the modular $S$-transformation acts as
 {\TorusBraidBasis{r}{w}{}{\omega_0}{Y}{X} }.
 \end{align}
 The matrix elements can be computed explicitly using the $S$ matrix of $SU(2)_6$. 
+\begin{comment}
+\dave{This calculation is quite tedious.
+It's almost quicker to just do it by brute force. 
+I would say we remove the figure, and just tell the reader that the S-matrix can be found from direct calculation.
+If we want to add more details about the calculation to version 2, we can do that.
+}
 In Fig.~\ref{SMatrixBFC} we have sketched one method to compute these matrix elements.
  \begin{figure}
   \includegraphics[scale=0.5]{SmatrixCalculationSketch.pdf}
@@ -5808,6 +5916,7 @@ where $n_x = 0$ if $x = 0,1,2$ and $n_x = 1$ if $x = 3$ is an indicator distingu
 The extra factors of $\sqrt{2}$ come from the fact that two of the idempotents in the non-bounding sector 
 are q-type, and as such have endomorphism algebras of nontrivial dimension that affect how the $S$-
 matrix is normalized.
+\end{comment}
 Explicitly, the $S$-matrix acts on each of three spin tori with at least one bounding cycle as 
 \begin{align}
 \left( \begin{matrix}
@@ -5941,13 +6050,13 @@ Q_{31}\\
 M_{33}\\
 \end{matrix} \right)_{BB}
 \end{align}
-One can verify that $(TS)^3 = \unit$, which holds since all three of the spin tori discussed above have 
-fermion parity even ground states (recall that the more general identity is $(ST)^3 = (-1)^F$). 
+One can verify that $(TS)^3 = \text{id}$, which holds since all three of the spin tori discussed above have 
+ even fermion parity (recall that the more general identity is $(ST)^3 = (-1)^F$). 
 
 The modular $S$ transformations on the torus with $NN$ spin structure are a little more tedious to calculate. 
-For this spin structure we find four ground states, which can be identified with two m-type and two q-type idempotents. 
-The m-type idempotents are always associated with spin tori whose ground states are fermion parity even, while the q-type idempotents are associated with ones with odd parity. 
-A complete basis for the ground-state configurations on the $NN$ spin torus is given by
+%The m-type idempotents are always associated with spin tori whose ground states are fermion parity even, while the q-type idempotents are associated with ones with odd parity. 
+A complete basis %for the ground-state
+of net configurations on the $NN$ spin torus is given by
 \begin{align}
 \underbrace{
 \xymatrix{
@@ -5962,9 +6071,11 @@ A complete basis for the ground-state configurations on the $NN$ spin torus is g
  \\}
  }_{\text{odd}}
 \end{align}
+%For this spin structure we find four states, which can be identified with two m-type and two q-type idempotents. 
+On the non-bounding torus, m-type idempotents always close up into even parity states, 
+while q-type idempotents close up into odd parity states.
 The first two vectors have even parity and correspond to the closed up idempotents $M_{11}$ and $M_{33}$, while the second two have odd parity and correspond to the closed up idempotents $Q_{13}$ and $Q_{31}$.
 After some calculation one finds that the $S$ and $T$ modular matrices act as 
-
 \begin{align}
 \xymatrix{
 {\left( \begin{matrix}
@@ -6029,8 +6140,9 @@ e^{-3i \pi /4}&0\\
 }
 } 
 \end{align}
-As required, the odd part of the $S$ matrix satisfies $S^4 = -\unit$ and $(TS)^3 = -\unit$, while the even part satisfies the usual $S^4 = \unit$ and $(TS)^3 = \unit$. 
-This provides us with an example of a theory in which the femion parity of a ground state 
+As required, the odd part of the $S$ matrix satisfies $S^4 = -\text{id}$ and $(TS)^3 = -\text{id}$, while the even part satisfies the usual $S^4 = \text{id}$ and $(TS)^3 = \text{id}$. 
+This provides us with an example of a theory in which the femion parity of the spin torus 
+%a ground state 
 is not uniquely determined from the ambient spin structure. 
 
 
@@ -6225,12 +6337,15 @@ The nontrivial fusion rule of the condensed theory is
 \begin{align}
 \rho \tp \rho = \mathbb{C}^{1|1}\cdot \mathds{1} \oplus \mathbb{C}^{1|1} \cdot \rho.
 \end{align}
-The fusion rule coefficients $\Delta^{\rho\rho}_\rho = \Delta^{\rho\rho}_\unit \cong \cc^{1|1}$ appearing in the above formula are constrained by the relation $V^{ab}_c \cong \Delta^{ab}_c \tp \End(c)$ and the knowledge of the fusion spaces $V^{\rho\rho}_\rho \cong \cc^{2|2}, V^{\rho \unit}_\rho \cong \End(\rho) \cong \cc^{1|1}$\footnote{We could have also taken $\Delta^{\rho \rho}_\rho \cong \cc^{2|0}$ or $ \cc^{0|2}$
+The fusion rule coefficients $\Delta^{\rho\rho}_\rho = \Delta^{\rho\rho}_\unit \cong \cc^{1|1}$ appearing in the above formula are constrained by the relation $V^{ab}_c \cong \Delta^{ab}_c \tp \End(c)$ and the knowledge of the fusion spaces $V^{\rho\rho}_\rho \cong \cc^{2|2}, V^{\rho \unit}_\rho \cong \cc^{1|1}$\footnote{We could have also taken $\Delta^{\rho \rho}_\rho \cong \cc^{2|0}$ or $ \cc^{0|2}$
 \dave{Reminder to revisit this in case we find more constraints that rule these out.}
 \dave{Still unsure what to say about this.}}. 
 
 %\dave{I think we should consider dropping this heuristic.}
+<<<<<<< HEAD
 %\ethan{Agreed.}
+=======
+>>>>>>> 9e94c5d577eb26dfe7f54219149669b3547e87c0
 %Heuristically, one can think of the $\rho$ lines as carrying a p-wave superconductor.
 %In this scenario the junction of three of these has four different ways to fuse together, two even and two odd. 
 %However, unlike a p-wave superconductor the junction does not leave behind a vortex. 
@@ -6306,6 +6421,23 @@ Similarly we have,
 \AddDat{\TadupTube{\mu}}{X}{}\;= (-1)^{s(X)} \sigma^y_{\mu \nu} \AddDat{\TadupTube{\nu}}{X}{}
 \end{align}
 
+\begin{table}
+\begin{tabu}{ r  c c c c c c }
+&$e$&$h$&$v$&$t$&$X_{11}$&$X_{12}$ \\
+\cline{2-7} 
+&      &      &      &     &              &\\[-2ex]
+$\text{Bounding}$ &$\AddDat{\eTube}{B}{} $&$\AddDat{\hTube}{B}{} $&$ \AddDat{\vTube}{B}{} $&$ \AddDat{\tTube}{B}{}  $&$ \AddDat{\XTube{1}{1}}{B}{} $&$ \AddDat{\XTube{1}{2}}{B}{}$\\
+\\
+$\text{Non-bounding}$ &$\AddDat{\eTube}{N}{}  $& &$ \AddDat{\vTube}{N}{}$&$ \AddDat{\tTube}{N}{} $& $\AddDat{\XTube{1}{1}}{N}{}$ &$ \AddDat{\XTube{1}{2}}{N}{} $ \\
+\end{tabu}
+\caption{\label{AnnulusBasis} The table above is the basis of tubes we use on the annulus for a bounding spin structure ($B$) and non-bounding spin structure ($N$). 
+%We also list which tubes are oddly isomorphic by labeling an arrow between them with $\Pi$, and which tubes have odd endomorphisms by labeling them with $\Pi_e$. 
+The labels above each tube are short-hand for that tube, $e$-- empty, $h$-- horizontal, $v$-- vertical, $t$-- twist, $X$-- crossed.
+The tubes $X_{11}$ and $X_{12}$ are oddly isomorphic.
+}
+\end{table}
+
+\begin{comment}
 \begin{figure}
 \begin{align}
 \xymatrix @!0 @M=1mm @C=20mm{
@@ -6319,11 +6451,12 @@ Similarly we have,
 }
 \nonumber
 \end{align}
-\caption{\label{AnnulusBasis} The table above table is the basis of tubes we use on the annulus for a bounding spin structure ($B$) and non-bounding spin structure ($N$). 
+\caption{The table above table is the basis of tubes we use on the annulus for a bounding spin structure ($B$) and non-bounding spin structure ($N$). 
 We also list which tubes are oddly isomorphic by labeling an arrow between them with $\Pi$, and which tubes have odd endomorphisms by labeling them with $\Pi_e$. 
 The labels above each tube are short-hand for that tube, $e$-- empty, $h$-- horizontal, $v$-- vertical, $t$-- twist, $X$-- crossed.
 \dave{I think we should remove the $\Pi$'s and just comment in the caption that $X_{11} \cong X_{12}$ oddly.}}
 \end{figure}
+\end{comment}
 
 \begin{align}
 & \AddDat{\XTube{\mu}{\nu}}{X}{} \;\;  =(-1)^{s(X)} (\sigma^x \tp \sigma^y )_{\mu \nu; \kappa \tau}\AddDat{\XTube{\kappa}{\tau}}{X}{} 
@@ -6492,6 +6625,30 @@ We will see that there are six excitations in the condensed theory: three excita
 We index them as $\mca = \{ M_1, M_2, M_3\}$ and $\mcv = \{ Q_1, Q_2, M_6 \}$, where $\mca$ is the set of non-vortex anyons and $\mcv$ is the set of vortex defects. 
 As the notation suggests, there are two q-type excitations and one m-type excitation (namely $M_6$) in $\mcv$, while all of the excitations in $\mca$ are (necessarily) m-type. 
 
+
+\dave{Re-worded a bit. 
+I'm not opposed to removing this bit. 
+It may be useful to anyone who follows up on the work, 
+but it is also prone to error.
+For example in identifying with \cite{Hong2008} I couldn't figure out which particle corresponds to $X_2$ and which to $X_3$.
+We could add a remark about that.
+}
+
+In the notation of \cite{Hong2008}, we find the following maps from idempotents in $\tube(\halfesix)$ to those in in $\tube(\halfesix / y)$:
+\begin{align}
+\xymatrix @!0 @M=1mm @C=10mm{
+& &M_1 && M_2 && &&& M_3 &&  \\
+ \\
+ \quad&\mathds{1} \ar[ruu] \quad & Y \ar[uu] & W\ar[dd] & U\ar[uu] & V \ar[uul] & X_1 \ar[dd] & X_{2}\ar[ddr] &X_{3} \ar[dd] & X_4\ar[uu] & X_5\ar[uul] &  \\
+\\
+&&&Q_1& &&Q_2 &&M_6& &&  \\
+},
+\end{align}
+where the center line lists the idempotents in $\tube(\halfesix)$ and the upper and lower objects are the objects in $\tube(\halfesix / y)$.
+The identifications are made by taking a minimal idempotent in $\tube(\halfesix)$ and using the inclusion to $\tube(\halfesix/y)$, 
+as discussed in Section \ref{double_fermionic_quotient}.
+
+\begin{comment}
 There are two nontrivial maps from tubes in $\tube(\halfesix)$ to those in $\tube(\halfesix / y)$ that we will make use of. 
 One is the gluing of odd punctures, which we denote by $\Sigma$, while 
 the other is the odd isomorphism which acts to pull a $y$ dot through a tube, which we denote by $\Pi$. 
@@ -6509,7 +6666,7 @@ and I thought it would be helpful for something but never used it.}
 },
 \end{align}
 where the center line lists the idempotents in $\tube(\halfesix)$ and the upper and lower objects are the objects in $\tube(\halfesix / y)$.
-
+\end{comment} 
 
 \begin{table}
 {{\tabulinesep=1.2mm
@@ -6636,7 +6793,7 @@ We list the fusion rules in Table \ref{halfesixFusionRules}.
 			\mcv \tp \mca 		&M_1		&M_2									&M_3		\\[.5ex] \hline \\ [-2ex]
 			Q_1				&Q_1		&\cc^{1|1}Q_1 \oplus Q_2 \oplus \cc^{1|1}M_6		&Q_1 \oplus Q_2 \oplus \cc^{1|1}M_6		\\
 			Q_2				&Q_2		&Q_1 \oplus \cc^{1|1} M_6					&Q_1 \oplus  Q_2		\\
-			M_6		 		&M_6		&Q_1 \oplus Q_2 \oplus \cc^{0|1}M_6			&Q_1 \oplus M_6		\\
+			M_6		 		&M_6		&Q_1 \oplus Q_2 \oplus \cc^{0|1}M_6			&Q_1 \oplus \cc^{0|1} M_6		\\
 			\end{array} & \end{flalign*}		
 
 \begin{flalign*} & \begin{array}{c@{ \quad}  | @{\quad \quad} l @{\quad \quad} l @{\quad \quad} l}
@@ -6648,7 +6805,9 @@ We list the fusion rules in Table \ref{halfesixFusionRules}.
 	\caption{$\halfesix$ fusion rules. We define $\mca = \{ M_1, M_2, M_3\}$ and $\mcv = \{ Q_1, Q_2, M_6 \}$ as the set of non-vortex and vortex quasiparticles, respectively. 
 	The $\cc^{p|q}$ denote the vector space associated with $\Delta^{ab}_c$ which is related to the fusion space through $V^{ab}_c =\Delta^{ab}_c \tp \text{End}(c)$.
 	Notice that $M_6$ is self-dual and can only fuse oddly to the vacuum (the relevant fusion channel is marked in red), and hence it has an imaginary Frobenius-Schur indicator.
-	\dave{I need to double check these.}} 
+	\dave{I need to double check these.}
+	\dave{I think they are now correct.
+	But it may not be a bad idea to double-double check the $M_6$ fusion rules.}} 
 	\label{halfesixFusionRules}
 \end{table}
 
