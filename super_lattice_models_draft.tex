@@ -1025,6 +1025,10 @@
 \newcommand{\Fusionspacec}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Fusionspacec.pdf}}}}}
 
 
+\newcommand{\TensorProducta}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TensorProducta.pdf}}}}}
+\newcommand{\TensorProductb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TensorProductb.pdf}}}}}
+\newcommand{\TensorProductc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TensorProductc.pdf}}}}}
+\newcommand{\TensorProductd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TensorProductd.pdf}}}}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1191,9 +1195,10 @@
 \newcommand{\FusionSpaceRightOrdered}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{FusionSpaceRightOrdered.pdf}}}}}
 \newcommand{\FusionSpaceLeftOrdered}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{FusionSpaceLeftOrdered.pdf}}}}}
 
+
+\newcommand{\PitchforkFLeft}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFLeft.pdf}}}}}
+\newcommand{\PitchforkFRight}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFRight.pdf}}}}} 
  
-
-
 
 
 
@@ -7634,7 +7639,7 @@ $M(1,0) \cong M(0,1) \cong \cc$ or $Q(1) \cong \cl_1$,
 because all of the larger $M(p,q)$ or $Q(n)$ contain non-invertible elements.
 
 The existence of q-type particles is responsible for much of the novel physics present after performing fermion condensation. 
-q-type objects were also discussed in \ref{usher2016,gaiotto2016}, where they were referred to as ``Majorana objects''. 
+q-type objects were also discussed in \cite{usher2016,gaiotto2016}, where they were referred to as ``Majorana objects''. 
 %\kw{did all of those sources call them ``Majorana objects"?  I thought only Usher did.}
 %\ethan{yeah---I think Usher borrowed it from Kapustin and Gaiotto. ``Majorana'' object is pretty natural from the physics point of view}
 \dave{I'm actually very curious about this Majorana object name. 
@@ -7718,7 +7723,9 @@ Graphically, this means that we are allowed to ``displace'' dots from trivalent 
 where the picture on the left is $|\eta_i\rangle$ and the one on the right is $f|\psi_i\rangle$, and $c$ is assumed to be q-type. 
 Although this is not a deep fact, it proves to be helpful when doing graphical manipulations, 
 and operators implementing transformations like \eqref{dot_displacement} will be crucial for writing down the lattice 
-Hamiltonian which realizes the fermionic generalization of the Levin-Wen Hamiltonian. 
+Hamiltonian which realizes the
+super pivotal version% fermionic generalization 
+of the Levin-Wen Hamiltonian. 
 
 Lastly, we will define a non-degenerate bilinear pairing between vectors in the vector space assigned to a disk with $n$ marked points. 
 We will focus on fusion spaces of the form $V^{x_1\dots x_n}$, but the construction
@@ -7728,6 +7735,7 @@ The pairing is defined by
 \mcb:\;  &V^{x_1 x_2 \cdots x_n} \tp V^{x_n^* \cdots x_2^* x_1^*} \ra \cc \\
 &\Bilineara \tp \Bilinearb \mapsto \Bilinearc
 \end{align} 
+\dave{Maybe more natural to have $\mcb:\; V^* \tp V \ra \cc$ like in quantum mechanics $\bra{x} \tp \ket{y} \mapsto <x,y>$}
 where $\mu_i \in V^{x_1 x_2 \cdots x_n}$ and $\nu_j \in V^{x_n^* \cdots x_2^* x_1^*}$. 
 We are working with the convention that the Koszul ordering of the tensor product increases 
 in a left-to-right fashion---we will elaborate on this convention in Sec \ref{koszul_signs}. 
@@ -7740,9 +7748,11 @@ For most of the paper, we will choose the normalization convention
 \mcb( \mu_i \tp \mu_j^*)  = \sqrt{d_a d_b d_c} \delta_{ij}.
 \end{align} 
 
-\dave{Should note that $\mcb$ is symmetric. 
-i.e., $\mcb(\mu_i \tp \mu_j) = \mcb(\mu_j \tp \mu_i)$. 
-}
+The pairing has the following symmetry properties $\mcb(\mu_{i,1} \tp \nu_{j,2}) = \mcb(\nu_{j,1} \tp \mu_{i,2}) = (-1)^{|\mu_i| |\nu_j|}\mcb(\mu_{i,2} \tp \nu_{j,1})$. 
+The first follows from the pivotal structure, while the second follows from the usual Koszul signs.
+%\dave{Should note that $\mcb$ is symmetric. 
+%i.e., $\mcb(\mu_i \tp \mu_j) = \mcb(\mu_j \tp \mu_i)$. 
+%}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Pivotal structure}  \label{pivotal_ss}   \label{pivotal_structure} 
@@ -7798,13 +7808,13 @@ In terms of diagrams and matrices, this looks like
 \begin{align}
 P^{ab}_c \left( \;  \PivotYa \; \right) = \PivotYb
 \end{align} 
-\dave{Should we use $P(...)$ or $P\circ ....$?}
-\ethan{I think the former}
+%\dave{Should we use $P(...)$ or $P\circ ....$?}
+%\ethan{I think the former}
 The Frobenius-Schur indicator $\kappa_a$ is a special case of the pivot, defined 
 by $\kappa_a = [P^{\unit a^*}_{a^*}]_{00}$. 
-\dave{If we’re being careful, 
-doesn’t that expression depend on vertex normalization $V^{\unit a^*}_{a^*}$?
-Maybe it should be the inner product $\langle \text{id}_a, \text{id}_{a^*} \rangle$ or $\mcb(v_a\tp v_{a^*}) = \kappa_a d_a$ or just define it through $F$-move (which is essentially what the above does).}
+%\dave{If we’re being careful, 
+%doesn’t that expression depend on vertex normalization $V^{\unit a^*}_{a^*}$?
+%Maybe it should be the inner product $\langle \text{id}_a, \text{id}_{a^*} \rangle$ or $\mcb(v_a\tp v_{a^*}) = \kappa_a d_a$ or just define it through $F$-move (which is essentially what the above does).}
 
 %\kw{insert eqn similar to existing one in older pivotal subsection}.
 %\dave{done.}
@@ -7988,7 +7998,6 @@ their ordered representatives.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Modified tensor product} \label{modified_tensor_product}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 Let $\mcx$ be a complete collection of simple objects (minimal idempotents), one from each equivalence class.
 (In this subsection, as in most of the paper, we are assuming that our category is semisimple with finitely many equivalence
 classes of simple objects.)
@@ -8004,7 +8013,7 @@ elements generate all of the kernel.
 
 Diagrammatically, the relative tensor product is responsible for allowing fermionic dots to move across edges labeled by q-type simple objects.
 Loosely, treating $\End(a)$ as the tensor unit when $a$ is q-type prevents us from over-counting diagrams that 
-differ only by the position of a fermionic dot on the $a$ worldline.  
+differ only by the position of a fermionic dot on the $a$ worldline. 
 
 It follows (though not quite directly) from \ref{sobdecomp} that we have isomorphisms
 \be \label{pfi1}
@@ -8018,14 +8027,13 @@ and also
 \dave{Do you mean the following figures, where the tensor over endomorphisms is implicit, or did you have something else in mind.}
 Diagrammatically these read,
 \begin{align}
-\Fusionspacea \cong \bigoplus_{\mu,\nu, x}  \Fusionspaceb \cong  \bigoplus_{\rho, \sigma,y}  \Fusionspacec
+%\Fusionspacea \cong 
+\bigoplus_{x}  \Fusionspaceb \cong  \bigoplus_{y}  \Fusionspacec
 \end{align} 
-for $\varphi \in V^{abc}_d$ and $\mu \in V^{ab}_x$, $\nu \in V^{xc}_d$, etc. 
-\dave{Even with the bosonic case there should still be an ordering on the vertices, 
-to say how the tensor factors appear. 
-Should we include those or leave them implicit? 
-It might cause more confusion since we just said we were dealing with an un-ordered tensor product.}
-\ethan{I don't think we need them in the bosonic case.}
+where the unlabeled trivalent vertex labels the fusion spaces $V^{ab}_x$, $V^{xc}_d$, $V^{ay}_d$, and $V^{bc}_y$, 
+and the tensor product over endomorphisms is implicit in the diagram.
+\dave{We should add the appropriate figure at the first point we talk about this tensor product. 
+Maybe the beginning of this subsection.}
 Similarly, 
 \be
 	V^{abcd} \cong \bigoplus_{x\in \mcx} V^{ab}_x \tp_{\End(x)} V^{xcd} ,
@@ -8038,12 +8046,18 @@ and using the isomorphism $P_R: V^{ab}_x \to V^{abx^*}$ this becomes
 \dave{Is the figure you want something like $\text{id}_{x^*} \tp_{\text{end}(x)} \text{id}_x = \text{id}_x \tp_{\cc} \text{id}_x / (\gamma^* \circ  x^* \tp x \sim x^* \tp \gamma \circ x )$}}
 (We are implicitly using the $*$ functor to convert an $\End(x)$ action into an $\End(x^*)$ action.)
 Alternatively,
+%\be  \label{pfpfi2}
+%	V^{abcd} \cong \bigoplus_{x\in \mcx} V^{bc}_x \tp_{\End(x)} V^{axd} \cong \bigoplus_{x\in \mcx} V^{bcx^*} \tp_{\End(x)} V^{xcd} .
+%\ee
+\dave{Changed so that they only differ by a pivot like the above.}
 \be  \label{pfpfi2}
-	V^{abcd} \cong \bigoplus_{x\in \mcx} V^{bc}_x \tp_{\End(x)} V^{axd} \cong \bigoplus_{x\in \mcx} V^{bcx^*} \tp_{\End(x)} V^{xcd} .
+	V^{abcd} \cong \bigoplus_{x\in \mcx} V^{bc}_x \tp_{\End(x)} V^{axd} \cong \bigoplus_{x\in \mcx} V^{bcx^*} \tp_{\End(x)} V^{axd} .
 \ee
-
-
-
+Diagrammatically we have,
+\begin{align}
+\bigoplus_x \TensorProducta \; \cong\;  \bigoplus_x\TensorProductb \; \cong \; \bigoplus_x \TensorProductc \; \cong \; \bigoplus_x \TensorProductd
+\end{align}
+where the unlabeled trivalent junctions represent the fusion space of the three oriented lines which terminate there.
 
 \bigskip
 
@@ -8065,8 +8079,8 @@ For the pitchfork version, we instead use \ref{pfpfi1} and \ref{pfpfi2} to obtai
 \be  \label{fdef30}
 	F^{abcd} : \bigoplus_{x\in \mcx} V^{abx^*} \tp_{\End(x)} V^{xcd}   \;\to\;   \bigoplus_{x\in \mcx} V^{bcx^*} \tp_{\End(x)} V^{axd} .
 \ee
-\kw{figs?  or just rely on the figs from the previous subsection?}
-\ethan{I think the following is needed to discuss coherence relation stuff}
+%\kw{figs?  or just rely on the figs from the previous subsection?}
+%\ethan{I think the following is needed to discuss coherence relation stuff}
 The tensor products appearing in the above isomorphisms are unordered tensor products. 
 For numerical applications, particular ordered representatives of the tensor products need to be chosen. 
 For the $F^{abc}_d$ isomorphism, we will choose the convention that it acts on tensor products of fusion spaces whose ordering increases as one goes up the diagram, 
@@ -8084,10 +8098,14 @@ Graphically, and written as a matrix equation, we thus have
 \end{align}
 where the greek indices label particular fusion space basis vectors, with $\mu\in V^{ab}_x,\nu\in V^{xc}_d,\alpha\in V^{bc}_y,$ and $\beta\in V^{ay}_d$.
 We also stick with the left-to-right ordering convention for the $F^{abcd}$ move:
+\dave{Changed order and and $x \ra x^*$.}
 \be  
-	F^{abcd} : \bigoplus_{x\in \mcx} V^{abx^*}_1 \tp_{\End(x)} V^{xcd}_2   \;\to\;   \bigoplus_{x\in \mcx} V^{bcx^*}_1 \tp_{\End(x)} V^{axd}_2 .
+	F^{abcd} : \bigoplus_{x\in \mcx} V^{abx}_1 \tp_{\End(x)} V^{x^*cd}_2   \;\to\;   \bigoplus_{x\in \mcx} V^{axd}_1 \tp_{\End(x)} V^{x^*bc}_2 .
 \ee
-
+Which written as a matrix equation is,
+\begin{align}
+\PitchforkFLeft = \sum_{y} \sum_{\rho \sigma} \left( F^{abcd} \right)_{(x; \mu \nu)(y; \rho \sigma)} \PitchforkFRight
+\end{align}
 
 
 %%%%%%%%%%%%%%%%%%
@@ -8107,6 +8125,25 @@ unordered tensor products, then the fermionic pentagon equation looks just like 
 that the following diagram commutes:
 \begin{align}
 \newcommand{\A}{\bigoplus_{p,q}V^{xy}_{p}\tp_p V^{pz}_{q}  \tp_q V^{qw}_{u}}
+\newcommand{\AB}{\ar[rrrru]^{F^{pzw}_u} \ar[rrd]^{F^{xyz}_q}}
+\newcommand{\B}{\bigoplus_{p,t} V^{xy}_{p} \tp_p V^{pt}_{u} \tp_t V^{zw}_{t}}
+\newcommand{\BC}{\ar[rrrrd]^{F^{xyt}_u}}
+\newcommand{\D}{\bigoplus_{r,q}V^{xr}_{q}\tp_r V^{yz}_{r}  \tp_q V^{qw}_{u}}
+\newcommand{\DE}{\ar[rrrr]^{F^{xrw}_u} }
+\newcommand{\E}{\bigoplus_{s,r}V^{xs}_{u}\tp_s V^{yz}_{r}  \tp_r V^{rw}_{s}}
+\newcommand{\EF}{\ar[rru]^{F^{yzw}_s}} 
+\newcommand{\F}{\bigoplus_{t,s} V^{xs}_{u} \tp_s V^{yt}_{s} \tp_t V^{zw}_{t}}
+\vcenter{\xymatrix @!0 @M=5mm @R=28mm @C=16mm{
+&&&&\B\BC&&&&\\
+\A\AB&&&&&&&&\F\\
+&&\D\DE&&&&\E\EF&&
+	}} 
+		\label{bosonPentagon}
+\end{align}
+%\dave{Formatting.}
+\begin{comment} 
+\begin{align}
+\newcommand{\A}{\bigoplus_{p,q}V^{xy}_{p}\tp_p V^{pz}_{q}  \tp_q V^{qw}_{u}}
 \newcommand{\AB}{\ar[rrru]^{F^{pzw}_u} \ar[rrd]^{F^{xyz}_q}}
 \newcommand{\B}{\bigoplus_{p,t} V^{xy}_{p} \tp_p V^{pt}_{u} \tp_t V^{zw}_{t}}
 \newcommand{\BC}{\ar[rrrrd]^{F^{xyt}_u}}
@@ -8122,6 +8159,7 @@ that the following diagram commutes:
 	}} 
 	\label{bosonPentagon}
 \end{align}
+\end{comment}
 where all the sums are over a representative set of simple objects and we have used the notation $\tp_x \equiv \tp_{\text{End}(x)}$.
 Technically the modified tensor products $\tp_x$ also appear in the conventional bosonic pentagon equation, although in that 
 case we can set $\tp_x = \tp_\cc$ without loss of generality. 
