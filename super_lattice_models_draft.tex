@@ -5017,37 +5017,59 @@ The idempotents are given by
 \begin{align}
 e_{xy} = \TubeIdempotentTwoStrand.
 \end{align}
-\kw{resume here}
-To show that the $e_{xy}$ are minimal idempotents, we check their multiplication law: using the $\omega$ loop properties defined in Table \ref{omega_loop_properties}
-we see that $e_{xy} \cdot e_{x'y'} = \delta_{xx'} \delta_{yy'} e_{xy}$, and hence the $e_{xy}$ are orthogonal idempotents. 
-To show that the idempotents are minimal, we need to check that $e_{xy} \tube(\mcc) e_{xy}$ is one dimensional.
+
+To show that the $e_{xy}$ are a complete set of minimal idempotents, 
+we first show that $e_{xy} \tube(\mcc) e_{x'y'}$
+is zero unless $x=x'$ and $y=y'$, in which case it is 1-dimensional.
+(This implies that the $e_{xy}$ are minimal and pairwise orthogonal.)
+%we check their multiplication law: using the $\omega$ loop properties defined in Table \ref{omega_loop_properties}
+%we see that $e_{xy} \cdot e_{x'y'} = \delta_{xx'} \delta_{yy'} e_{xy}$, and hence the $e_{xy}$ are orthogonal idempotents. 
+%To show that the idempotents are minimal, we need to check that $e_{xy} \tube(\mcc) e_{xy}$ is one dimensional.
 %\dave{I thought we were going to try and not say 'project' }
 %(i.e. that the $e_{xy}$ project onto one-dimensional subspaces of $\tube(\mcc)$). 
-Using the spine lemma \cite{????} \dave{Who to cite for the Lemma?}, a basis for $e_{xy} \tube(\mcc) e_{xy}$ is spanned by
+Using the spine lemma,\footnote{
+This is a well-known and easy-to-prove folk result which says that arbitrary string nets are 
+equivalent to linear combinations of labeled spines.
+We don't know a reference for this result. 
+}
+a basis for $e_{xy} \tube(\mcc) e_{x'y'}$ is spanned by
 \begin{align}
 \minimalBosonic.
 \end{align}
-First we note that $r \cong \unit$ if the diagram is to be nonzero due to the ``no tadpole'' theorem, and hence the line labeled by $p$ can be removed at the expense of multiplying the diagram by $d_p$. 
-The fact that $r \cong \unit$ means that $c \cong c'$, and by 
-using property (c) and then (a) of Table \ref{omega_loop_properties} we can slide 
-one of the $\omega$ loops around $c$ and conclude that $c \cong c' \cong \unit$. 
-Hence we are left with a single nonzero diagram, and we find that $e_{xy} \tube(\mcc) e_{xy}$ is indeed one dimensional.
-Before showing that the idempotents are complete, we first show that they are equivalent to the set of idempotents $e(a,x,y,j)$ defined above.
+\kw{modify above fig to put $x'$ and $y'$ on the top; then add ``= RHS", as described below}
+The RHS is derived from the LHS by first sliding the $p$ loop over the lower $\omega$ loop, then sliding the lower $\omega$ loop
+over the upper $\omega$ loop.
+The ``no tadpole" axiom implies that the diagram is zero unless $p\cong\unit$,
+and (a) of Table \ref{omega_loop_properties} implies that $c$ (and hence also $c'$) must be $\unit$ in any non-zero diagram.
+This proves the claim.
 
-The idempotents $e_{xy}$ and $e(a,x,y,j)$ are equivalent if there exist $g$ and $h$ such that $e_{xy} = h\cdot g$ and $e(a,x,y,j) = g \cdot h$.
-Indeed, letting,
-\begin{align}
-g(b,x,y,j) =\; \gxyaj \quad \quad \text{and} \quad \quad h(a,x,y,i) = \; \hxyai
-\end{align}
-we have,
-\begin{align}
-e_{xy} = h(a,x,y,j) \cdot g(a,x,y,j) \quad \quad \text{ and} \quad \quad e(a,x,y,j) =g(a,x,y,j) \cdot h(a,x,y,j)
-\end{align}
+%First we note that $r \cong \unit$ if the diagram is to be nonzero due to the ``no tadpole'' theorem, and hence the line labeled by $p$ can be removed at the expense of multiplying the diagram by $d_p$. 
+%The fact that $r \cong \unit$ means that $c \cong c'$, and by 
+%using property (c) and then (a) of Table \ref{omega_loop_properties} we can slide 
+%one of the $\omega$ loops around $c$ and conclude that $c \cong c' \cong \unit$. 
+%Hence we are left with a single nonzero diagram, and we find that $e_{xy} \tube(\mcc) e_{xy}$ is indeed one dimensional.
+%Before showing that the idempotents are complete, we first show that they are equivalent to the set of idempotents $e(a,x,y,j)$ defined above.
+
 Completeness of the idempotents follows from the resolution of the identity 
 \begin{align}
-\mcd^2 \TubeCompletea =  \TubeCompleteb = \frac{1}{\mcd^2}\sum_{x,y,i} \sqrt{\frac{d_xd_y}{d_a}} \;  \TubeCompletecprime,
+\mcd^2 \TubeCompletea =  \TubeCompleteb = \frac{1}{\mcd^2}\sum_{x,y,i} \sqrt{\frac{d_xd_y}{d_a}} \;  \TubeCompletecprime .
 \end{align}
-where we have used the normalization $\nu_i \circ \mu_j = \delta_{ij} \sqrt{\frac{d_x d_y}{d_a}} \text{id}_a$ \footnote{This formula assumes the theory to be unitary; if this weren't the case then a non-zero phase factor could enter in the coefficients of the summand.}.
+%where we have used the normalization $\nu_i \circ \mu_j = \delta_{ij} \sqrt{\frac{d_x d_y}{d_a}} \text{id}_a$.\footnote{
+%This formula assumes the theory to be unitary; 
+%if this weren't the case then a non-zero phase factor could enter in the coefficients of the summand.
+%\kw{I'm confused -- isn't there already a non-zero phase factor in the summand?}
+%}
+
+
+It is easy to show directly that the idempotents $e_{xy}$ and $e(a,x,y,j)$ are equivalent.
+Let
+\begin{align}
+	g(b,x,y,j) =\; \gxyaj \quad \quad \text{and} \quad \quad h(a,x,y,i) = \; \hxyai .
+\end{align}
+Then we have
+\begin{align}
+	e_{xy} = g(a,x,y,j) \cdot h(a,x,y,j) \quad \quad \text{ and} \quad \quad e(a,x,y,j) = h(a,x,y,j) \cdot g(a,x,y,j) .
+\end{align}
 
 The idempotents above can be used to show that $\tube(\mcc) \cong \mcc \times \overline{\mcc}$.
 In the following subsection we will state and prove the analogous theorem for $\tube(\mcc/\psi)$.
