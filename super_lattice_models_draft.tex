@@ -4888,14 +4888,15 @@ rather than a single simple object $x$.  }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The starting point for our proof of \eqref{tube_theorem_teaser} will be
-a convenient presentation of the minimal idempotents of $\tube(\mcc)$ \cite{ocneanu1994}. 
+a convenient set of minimal idempotents of $\tube(\mcc)$ \cite{ocneanu1994}. 
 %To aid in our proof of the relation \eqref{tube_theorem_teaser}, it will behoove us to 
 %work with a convenient presentation of the minimal idempotents of $\tube(\mcc)$ \cite{ocneanu1994}. 
 We will give two constructions for complete sets of minimal idempotents of $\tube(\mcc)$:
-one set is more conventional (and appeared first historically), while the second will allow us to prove 
-\eqref{tube_theorem_teaser} more easily.
+one set is more conventional (and appeared first historically), while the second 
+is more suited to the proof of \eqref{tube_theorem_teaser}.
+%will allow us to prove \eqref{tube_theorem_teaser} more easily.
 
-The first way of presenting the set of minimal idempotents utilizes annuli that possess only one marked point at each boundary.
+The first construction of a set of minimal idempotents utilizes annuli that possess only one marked point at each boundary.
 A basis for the morphism space from $a$ to $b$ in 
 the annular category $\tube(\mcc)$ is given by
 \begin{align}
@@ -4908,7 +4909,7 @@ With the help of \eqref{Omega_in_SLoop} we can change to a much more convenient 
 \TubeBasisa \times \mcd^2 =  
 \TubeBasisb   =
 \TubeBasisc  = \sum_{\substack{x,y \in \sob(\mcc) \\
-\mu =1,\cdots, N_{xy}^a \\
+\mu =1,\cdots, N^{xy}_a \\
 \nu =1,\cdots, N_{xy}^b}
 }C_{t; xy\mu\nu} \times 
 \TubeBasisd
@@ -4926,10 +4927,9 @@ above are invertible, we have shown that the morphism spaces can be alternativel
 \end{align}
 Equivalently, we have shown that
 \begin{align}
-\text{mor}(\underset{a}{\TubeBCx{}} \rightarrow \underset{b}{\TubeBCx{}})\cong \bigoplus_{xy} V^{b}_{xy} \boxtimes V^{xy}_a,
+\text{mor}(\underset{a}{\TubeBCx{}} \rightarrow \underset{b}{\TubeBCx{}})\cong \bigoplus_{xy} V^{b}_{xy} \tp V^{xy}_a .
 \label{morabMTC}
 \end{align}
-where the $\boxtimes$ is the outer tensor product.
 This basis for the morphism space of $\tube(\mcc)$ is rather special, and we will see that the diagonal elements (those with $a=b$) are proportional to the minimal idempotents.
 
 Letting $\mu_i$, $i= 1, \cdots,N_{xy}^a$ be a basis of $V^{xy}_a$ and similarly letting $\nu_i$ be a basis for $V^{a}_{xy}$, we take the normalization convention 
@@ -4956,32 +4956,51 @@ f_a^b(x,y,j,i)\; = \; \TubeBasisdprime,
 where $\nu_j$ is a basis of $V_{xy}^b$ and $\mu_i$ a basis of $V^{xy}_a$, which are normalized according to \eqref{bubble_normalization}.
 It follows that the $f_a^b$ morphisms compose as 
 \begin{align}
-f_b^c(x,y,j,i) \cdot f_a^b(x',y',j',i') = \delta_{xx'}\delta_{yy'} \delta_{ij'} f_a^c(x,y,j,i').
+f_a^b(x,y,j,i) \cdot f_b^c(x',y',j',i') = \delta_{xx'}\delta_{yy'} \delta_{ij'} f_a^c(x,y,j,i').
 \label{matrix_units}
 \end{align}
+\kw{with the  cdot notation for morphism composition, we write things in ``arrow" order (reverse of function order);
+need to make sure this is consistent throughout the paper.}
 Therefore, the $f_a^b(x,y,j,i)$ is a basis of matrix units for $\tube(\mcc)$. 
 Said another way,
-$\tube(\mcc)$ splits as a direct sum of simple matrix algebras 
-labeled by simple objects in $\sob(\mcc) \times \sob(\mcc)$:
+$\tube(\mcc)$ 
+(strictly speaking, the subcategory of $\tube(\mcc)$ spanned by objects with only a single marked point)
+splits as a direct sum of full matrix categories\footnote{
+Recall that a full matrix category is one in which each object is a finite-dimensional vector space,
+and the morphisms between two objects are all linear maps.
+A full matrix category with only one object is a full matrix algebra.
+Full matrix categories are Morita trivial; all minimal idempotents within a full matrix category are equivalent to each other.
+} 
+labeled by pairs of simple objects in $\sob(\mcc) \times \sob(\mcc)$:
 \begin{align}
 \tube(\mcc) \cong \bigoplus_{xy} \text{Mat}(x,y),
 \label{tube_matrix_algebra}
 \end{align}
-where the matrix algebra is given by $\text{Mat}(x,y)\cong \bigoplus_{a,b} V^{b}_{xy} \boxtimes V^{xy}_a$ 
-(as before, $\boxtimes$ is the outer tensor product)\footnote{The multiplication in $\text{Mat}(x,y)$ is given 
-by $(\lambda^a_{xy} \boxtimes \lambda_b^{xy} )\cdot( \rho^b_{xy} \boxtimes \rho^{xy}_c) = 
-(\lambda^a_{xy}\boxtimes \rho^{xy}_c) \text{tr}\frac{\lambda^{xy}_b \circ \rho^b_{xy}}{d_x d_y}$, 
-where $\lambda_{xy}^a \in V_{xy}^a$ etc., and the trace is given by closing $x\tp y$ on the plane and evaluating the diagram.}.
-The $f_a^b(x,y,j,i)$ provide a basis for this simple matrix algebra \eqref{tube_matrix_algebra}.
+with the vector space associated to the object $a$ of $\tube(\mcc)$ at the $(x,y)$ summand being $V^a_{xy}$,
+and 
+\be
+	\mor(a\to b) \cong \bigoplus_{x,y} \hom(V^a_{xy} \to V^b_{xy}) .
+\ee
+%where the matrix algebra is given by $\text{Mat}(x,y)\cong \bigoplus_{a,b} V^{b}_{xy} \boxtimes V^{xy}_a$ 
+%(as before, $\boxtimes$ is the outer tensor product)\footnote{The multiplication in $\text{Mat}(x,y)$ is given 
+%by $(\lambda^a_{xy} \boxtimes \lambda_b^{xy} )\cdot( \rho^b_{xy} \boxtimes \rho^{xy}_c) = 
+%(\lambda^a_{xy}\boxtimes \rho^{xy}_c) \text{tr}\frac{\lambda^{xy}_b \circ \rho^b_{xy}}{d_x d_y}$, 
+%where $\lambda_{xy}^a \in V_{xy}^a$ etc., and the trace is given by closing $x\tp y$ on the plane and evaluating the diagram.}.
+%The $f_a^b(x,y,j,i)$ provide a basis for this simple matrix algebra \eqref{tube_matrix_algebra}.
 It follows from \eqref{matrix_units} that the ``diagonal'' morphisms 
 \begin{align} 
 e(a,x,y,j) = f_a^a(x,y,j,j)
 \label{idempotent_one_strand}
 \end{align}
 are each a minimal idempotent. 
-The idempotents $e(a,x,y,i)$ and $e(b,x',y',j)$ are equivalent\footnote{Two idempotents $e$ and $e'$ are equivalent if $e = uv$ and $e' = vu$ for some $u$ and $v$.}
-if $x \cong x'$ and $y \cong y'$, with the isomorphism given by $e(a,x,y,i) = f_b^a(x,y,i,j) \cdot f_a^b(x,y,j,i)$ and $e(b,x,y,j) = f_a^b(x,y,j,i) \cdot f_b^a(x,y,i,j)$.
+The idempotents $e(a,x,y,i)$ and $e(b,x',y',j)$ are equivalent\footnote{Two idempotents 
+$e$ and $e'$ are equivalent if $e = uv$ and $e' = vu$ for some $u$ and $v$.}
+if and only if $x \cong x'$ and $y \cong y'$, with the isomorphism given by 
+$e(a,x,y,i) = f_a^b(x,y,i,j) \cdot f_b^a(x,y,j,i)$ and $e(b,x,y,j) = f_b^a(x,y,j,i) \cdot f_a^b(x,y,i,j)$.
 This presentation of the minimal idempotents also appeared in \cite{ocneanu1994}.
+
+
+
 %\kw{Did Ocneanu draw diagrams like this for idempotents?  I thought this was something Dave made up.}
 %\dave{It turns out he did -- in his talks, and then others wrote papers about them like the one I cited above (it's actually quite difficult to obtain that paper).
 %I first found that formula in Mugers paper \cite{muger2003b} (I think section 6 or 7 -- when he's talking about the quantum double of an MTC).
@@ -4998,6 +5017,7 @@ The idempotents are given by
 \begin{align}
 e_{xy} = \TubeIdempotentTwoStrand.
 \end{align}
+\kw{resume here}
 To show that the $e_{xy}$ are minimal idempotents, we check their multiplication law: using the $\omega$ loop properties defined in Table \ref{omega_loop_properties}
 we see that $e_{xy} \cdot e_{x'y'} = \delta_{xx'} \delta_{yy'} e_{xy}$, and hence the $e_{xy}$ are orthogonal idempotents. 
 To show that the idempotents are minimal, we need to check that $e_{xy} \tube(\mcc) e_{xy}$ is one dimensional.
