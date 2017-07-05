@@ -9490,12 +9490,11 @@ Z(\mcm) = \sum_{\{ w_f \} } \sum_{\{ w_e\}} \sum_{\{ w_v \}} \prod_{f \in \mcf} 
 %\chi \left(\bigotimes_{f \in \mcf}  w_f \bigotimes_{e \in \mce}  w_e \bigotimes_{v \in \mcv}  w_v \right) 
 \chi(w_\mcl)
 \end{align}
-where the sums are over all possible string-net labelings of the vectors of each of the face, edge, and vertex Hilbert spaces, and
+where the sums are over all possible string-net colorings of the faces, edges, and vertices, and
 where we have defined 
 \be w_\mcl = \bigotimes_{f \in \mcf}  w_f \bigotimes_{e \in \mce}  w_e \bigotimes_{v \in \mcv}  w_v\ee
 for a particular 
-choice of colorings $w_f,w_e,$ and $w_v$.
-
+choice of string-net colorings $w_f,w_e,$ and $w_v$.
 We will call a labeling $\mcl$ of the cell decomposition {\it admissible} if $\chi(w_\mcl) =1$.
 The state sum can then be written as
 \begin{align} 
@@ -9507,10 +9506,9 @@ where the sum over labelings $\mcl$ is restricted to run only over all admissibl
 This is the familiar form of the partition function given in \cite{Turaev1992,Barrett1996}.
 
 Now we need to define the tensor weights appearing in our expression for the partition function.
-For a 2-cell $f$ with $r$ edges, we have $w_f = w_{a_1} \tp w_{a_2} \tp \cdots \tp  w_{a_r} \in \mch(f)$,
-with the 2-cell tensor $T_f(w_f)$ given by
+For a 2-cell $f$ with $r$ edges, the 2-cell tensor $T_f(w_f)$ is given by
 \begin{align} 
-T_f(w_{a_1} \tp w_{a_2} \tp \cdots \tp  w_{a_r})   =\sum_{v_x^* \in E} d_x \prod_{i = 1}^r \chi(v_x^* \tp v_{a_i})
+T_f(w_f) = T_f(w_{a_1} \tp w_{a_2} \tp \cdots \tp  w_{a_r})   =\sum_{v_x^* \in E} d_x \prod_{i = 1}^r \chi(v_x^* \tp v_{a_i})
 % \sum_{x, \; \{ v_{a_{e}}\} \;  : \;e \in f} \left( d_x  \prod_{e \in f} \delta_{x, a_e} \right)   \bigtp_{e \in f}v_{a_e}
 \end{align} 
 %\begin{align}
@@ -9525,6 +9523,8 @@ T_f(w_{a_1} \tp w_{a_2} \tp \cdots \tp  w_{a_r})   =\sum_{v_x^* \in E} d_x \prod
 %\end{align}
 Note that this tensor is only non-zero if all edge labels of the boundary 1-cells of the 2-cell $f$ are the same.
 
+
+
 Now consider a 1-cell $e$. 
 Suppose that the boundary 0-cells at the ends of $e$ are labeled as $v$ and $v'$, with $e$ oriented from $v$ to $v'$. 
 Letting $w_e = v_{a_1}^* \tp v_{a_2}^* \tp v_{a_3}^* \tp \mu_i \tp \nu_j^*$ where $\mu,\nu$ are 
@@ -9537,8 +9537,10 @@ end of $e$ differ by $2\pi/3$ rotations).%, and $P_e(\nu_j)$ is zero unless $\te
 Since each 1-handle has three edges, there are $2^3 = 8$ possible orientations that the edges of a given 1-handle can have, 
 and hence there are technically $8$ different 1-cell tensors to specify, differing by the presence of either $v_{a_i}$ or $v^*_{a_i}$.
 
-Lastly we define the 0-cell tensors $T_v$, which map vectors in $\alpha \tp \beta \tp \gamma \tp \delta \in \mch(v)$ to complex numbers. 
-The matrix elements of the $T_v$ tensors are defined as evaluations of tetrahedral string-nets whose vertices have been transformed into the pitchfork convention, namely
+
+Lastly we define the 0-cell tensors $T_v$, which map vectors in $\mch(v)$ to complex numbers. 
+The matrix elements of the $T_v$ tensors are defined as evaluations of tetrahedral string-nets whose vertices have been transformed into the pitchfork convention.
+That is, 
 \begin{align}
 T_v(\alpha \tp \beta \tp \gamma \tp \delta) = \Tetrahedron
 \end{align}
@@ -9605,29 +9607,24 @@ Pugging the tensors into \eqref{ZTensor} (or equivalently into \eqref{ZConventio
 \subsection{The fermionic state sum}
 %%%%%%%%%%%%%%%%%%%%%%
 
-The super pivotal (fermionic) state sum can be computed using the technique described above.  
+The fermionic version of the state sum can be computed using the technique described above.  
 Here we present only the result, since the methods involved are exactly the same as the bosonic case.
 
-As in the bosonic case, there are two pieces of input data for the state sum. 
-They each acquire extra adjectives in the fermionic setting:
-the first is a super pivotal fusion category $\mcc$,
-and the second is an oriented spin 3-manifold $\mcm$
-possessing a given cell decomposition.
-
+As in the bosonic case, there are two pieces of input data for the state sum, 
+which each acquire extra adjectives in the fermionic setting:
+\begin{itemize}
+\item a super pivotal fusion category $\mcc$,
+\item an oriented spin 3-manifold $\mcm$ possessing a given cell decomposition.
+\end{itemize}
 We will employ the same notation used in the previous section. 
 The vector spaces $E$ and $W$ which are assigned to the attaching regions are again defined in the same way. 
-%In the fermionic case the vector space $W$ is a super vector space, while $E$ remain a purely bosonic (even) vector space. \ethan{I was thinking that $E = \oplus_x \End(x)$}
+\ethan{I was initially thinking that $E = \oplus_x \End(x)$?}
+%In the fermionic case the vector space $W$ is a super vector space, while $E$ remain a purely bosonic (even) vector space. 
 
-
-A crucial difference is that one now needs to keep track of Koszul signs when evaluating different cell-decomposition colorings with $\chi$,
-see \eqref{indicator} and surrounding discussion.
-%The bilinear pairing remains the same. 
-
-
-Although we have been using unordered tensor products throughout, to actually compute
-the partition function a particular choice of ordering must be chosen. 
-Different orderings are related by the usual Koszul signs, so that 
-e.g. $\chi(v_1 \tp w^*_2) = (-1)^{|v||w|} \chi(v_2 \tp w^*_1)$.
+There are two differences present in the construction of the fermionic state sum. 
+Although we have largely been using unordered tensor products throughout our discussion of fermionic theories, to actually compute
+the partition function a particular choice of ordering must be chosen, with different orderings are related by the usual Koszul signs.
+Additionally, since simple objects in $\mcc$ can have non-trivial endomorphism algebras, some additional care must be taken to ensure the proper normalization of the partition function. 
 
 %Except now one must of course define a sign ordering in the tensor product.
 %We again define the contraction in \eqref{contract}.
@@ -9640,36 +9637,43 @@ e.g. $\chi(v_1 \tp w^*_2) = (-1)^{|v||w|} \chi(v_2 \tp w^*_1)$.
 %\dave{Check Turzillo paper.}
 %\dave{I found that the $\mcb(\psi_1 \tp \eta_2) = \mcb(\eta_1 \tp \psi _2)$ is symmetric. }
 
-In the fermionic case, 
-the 2-cell tensors are also modified to account for the non-trivial endomorphism algebras of the q-type simple objects, which enter into the normalization factors present in the 2-cell tensors. 
-Their explicit form is 
+The latter difference leads to a modification of 
+the 2-cell tensors, which is needed to account for the non-trivial endomorphism algebras of the q-type simple objects.
+The fermionic version of the 2-cell tensor at a face $f$ with $r$ boundary edges is 
 \begin{align}
-T_f(w_{a_1} \tp w_{a_2} \tp \cdots \tp  w_{a_r})   =\sum_{v_x^* \in E} \frac{d_x}{\text{dim} \; \text{End}(x)}
-\prod_{i = 1}^r \chi(v_x^* \tp v_{a_i})
+T_f(w_f)=T_f(w_{a_1} \tp w_{a_2} \tp \cdots \tp  w_{a_r})   =\sum_{v_x^* \in E} \frac{d_x}{\text{dim} \; \text{End}(x)}
+\prod_{i = 1}^r \chi(v_x^* \tp v_{a_i}).
 \end{align}
 This is the same $\text{dim} \; \text{End}(x)$ that appears in \eqref{total_qdim_defn}. %ethan: is that the \eqref you wanted? 
-The vector space for the 2-cell tensors remains bosonic, and so the tensor needs no further adjustments for the fermionic setting. 
+Since the 2-cells inherit a bounding spin structure, any closed loop of string embedded in the 2-cell will 
+have even fermion parity, and so the vector space for the 2-cell tensors remains bosonic, and as such needs no further adjustments for the fermionic setting. 
+\ethan{jah?}
 
-The tensors for the one-handles are modified in a more interesting way. 
+The tensors for the one-handles are also modified when passing to the fermionic setting. 
 In the bosonic state sum, we needed to keep track of three possible pivots
 in the resolution \eqref{horshoe_resln}.
-For the fermionic state sum $P^3 = (-1)^F$ and ewe have six possible pivots:
+For the fermionic state sum $P^3 = (-1)^F$ and we now have six possible pivots:
 in addition to the three we could have in the bosonic state sum (id, $P$, and $P^2$), 
-we can also have an action of the spin-flip functor $P^3$; recall \eqref{spin_flip_functor}.
-Hence, the edge tensors remain the same,
+we can also have an action of the spin-flip $P^3$; recall \eqref{spin_flip_functor}.
+Hence, the edge tensors retain the same form, namely
 \begin{align}
-T_e(v_{a_1} \tp v_{a_2} \tp v_{a_3} \tp \mu_i \tp \nu_j^*) = \frac{\mcb(\mu_i^* \tp P_e(\nu_j))}{\mcb(\mu_i \tp \mu_i^*) \mcb(\nu_j^* \tp \nu_j)} 
+T_e(v_{a_1} \tp v_{a_2} \tp v_{a_3} \tp \mu_i \tp \nu_j^*) = \frac{\mcb(\mu_i^* \tp P_e(\nu_j))}{\mcb(\mu_i \tp \mu_i^*) \mcb(\nu_j^* \tp \nu_j)} ,
 %T_e = \sum_{i,j, \; \{ v_{a_r}\} \; :\; r \in e} \mcb(\mu_i \tp P_e \circ \nu_j^*) \tp_{r \in e} v_{a_r}^* \tp \mu_i \tp \nu_j^*
 \end{align}
-except for the fact that $P_e$ now has order 6, with $P_e^3$ is $(-1)^F$.
-In addition, we need to keep track of the Koszul ordering in the tensor product. In the above we implicitly assumed it was formed from the usual left-to-right ordering convention. 
-\dave{Double check the tensor.}
+except for the fact that $P_e$ now has order 6, with $P_e^3=(-1)^F$. As before, we assume that 
+the edge $e$ ends on the 0-cells $v,v'$, is oriented from $v$ to $v'$, and that 
+$\mu_i$ is a basis vector in the Hilbert space $\mch(c_{ev})$ and $\nu_j$ is a basis vector 
+in $\mch(c_{ev'})$.
+Additionally, we need to keep track of the Koszul ordering in above the tensor product. 
+In the above we assumed the standard implicit left-to-right ordering convention. 
+If we are given an ordering that departs from this convention, 
+we must introduce the appropriate Koszul sign required to standardize the order. 
 
-The 0-cell tensor is exactly the same as in the bosonic case, 
-except we keep track of an ordering of the four tensor factors when defining the tetrahedral symbol. 
-Thus, we have 
+The 0-cell tensors are exactly the same as in the bosonic case, 
+except that we must keep track of an ordering of the four tensor factors when defining the tetrahedral symbol. 
+We choose the following ordering convention:
 \begin{align}
-T_v(\alpha \tp \beta \tp \gamma \tp \delta) = \Tetrahedron
+T(w_v)=T_v(\alpha \tp \beta \tp \gamma \tp \delta) = \Tetrahedron.
 % = \sum_{\mu_{e_j} \in \mch(\bar{c}_{e_j v}) } \text{Tet}(\mu_{e_1} \tp \mu_{e_2} \tp \mu_{e_3} \tp \mu_{e_4} )  \mu_{e_1} \tp \mu_{e_2} \tp \mu_{e_3}\tp \mu_{e_4}
 \end{align}
 %with
@@ -9677,23 +9681,23 @@ T_v(\alpha \tp \beta \tp \gamma \tp \delta) = \Tetrahedron
 %\text{Tet}(\alpha \tp \beta \tp \gamma \tp \delta) =\; \Tetrahedron.
 %\label{Tetrahedron}
 %\end{align}
+If we are given a tetrahedron with a different ordering, we must change the ordering to the standard one, which as usual is done at the cost of the appropriate Koszul signs. 
 
-With these modifications, one finds the super pivotal state sum
+The fermionic partition function can be written formally in the same way as before:
 \begin{align}
-Z(\mcm) = \chi( \bigotimes_{f \in \mcf} T_f \bigotimes_{e \in \mce} T_e \bigotimes_{v \in \mcv} T_v),
+Z(\mcm) = \chi\left( \bigotimes_{f \in \mcf} T_f \bigotimes_{e \in \mce} T_e \bigotimes_{v \in \mcv} T_v\right),
 \end{align}
-where the fact that the tensors are all even means that the order on the tensor product does not matter. 
-However, when evaluating using the indicator $\chi$, 
-one has to carefully keep track of the Koszul signs. 
-We note that the partition function has an explicit dependence on the spin structure of $\mcm$, 
-which is encoded in the pivots $P_e$ in the edge tensors. .
-Lastly, we note that the partition function can be written in the more conventional form
+%where the fact that the tensors are all even means that the order on the tensor product does not matter. 
+However, when evaluating the RHS, 
+one has to carefully keep track of the Koszul signs acquired when performing the tensor contraction induced by $\chi$. 
+To be more explicit, we can write 
 \begin{align} 
 Z(\mcm) = \sum_{ \mcl } (-1)^{k_\mcl} \prod_{f \in \mcf} T_f(w_f) 
 \prod_{e \in \mce} T_e(w_e) \prod_{v \in \mcv} T_v(w_v),
 \end{align} 
-where $\mcl$ runs over all compatible labels and $(-1)^{k_\mcl} = \chi(w_\mcl)$ is the Koszul sign. 
-\dave{Need to double check this.}
+where $\mcl$ runs over all admissible labels and $(-1)^{k_\mcl} = \chi(w_\mcl)$ is the Koszul sign acquired 
+when ensuring that the ordering of the tensor factors is the same as the orderings present in the 
+definitions of the $k$-cell tensors. 
 
 
 \begin{comment} 
