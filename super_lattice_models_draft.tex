@@ -7663,7 +7663,7 @@ Elements of the morphism spaces $V^{abc}$ and $V^{ab}_c$ are depicted by
 \begin{align}
 \PitchFork{a}{b}{c}{\mu} \quad \quad \quad \text{and} \quad \quad \quad \Nonpitchfork{a}{b}{c}{\mu}.
 \end{align}
-(We call the fusion space $V^{abc}$ ``pitchforks" because of their graphical depiction.)
+We call the fusion space $V^{abc}$ ``pitchforks" because of their graphical depiction.
 Of course we have $V^{ab}_c \cong V^{abc^*}$ (see \ref{pivotal_ss} below).
 %\kw{probably should add figs for $V^{ab}_c$ and $V^{abc}$}
 %\dave{Done.}
@@ -7732,13 +7732,13 @@ It is non-degenerate, meaning that the matrix $\mcb_{ij} = \mcb(\mu_i \tp \nu_j)
 Hence we can define a set of vectors $\mu_j^* = \sum_i \nu_i (\mcb^{-1} )_{ij} $ so that
 $\mcb( \mu_i \tp \mu_j^*)\propto\delta_{ij}$ for $\mu_i \in V^{abc}$ and $\mu_j^* \in V^{c^*b^*a^*}$. 
 For most of the paper, we will choose the normalization convention
-\begin{align} 
+\begin{align}  \label{b_pairing_defn}
 \mcb( \mu_i \tp \mu_j^*)  = \sqrt{d_a d_b d_c} \delta_{ij}.
 \end{align} 
 
-\dave{Should note that $\mcb$ is symmetric. 
-i.e., $\mcb(\mu_i \tp \mu_j) = \mcb(\mu_j \tp \mu_i)$. 
-}
+%\dave{Should note that $\mcb$ is symmetric. 
+%i.e., $\mcb(\mu_i \tp \mu_j) = \mcb(\mu_j \tp \mu_i)$. 
+%}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Pivotal structure}  \label{pivotal_ss}   \label{pivotal_structure} 
@@ -9068,11 +9068,10 @@ We first breifly review the TVBW construction for spherical fusion categories.
 We do so in a way that naturally extends to the super-pivotal case with only minor modifications.
 Lastly we use the state sum to write down an explicit wave function for the ground ground state of \eqref{ham}.
 
-
-We first give a lightning review of the TVBW state sum construction, via the cut-and-glue formalism.
-Since much is known about TVBW state sums, 
-we present the state sum from a slightly different perspective than usual,
-so that the fermionic version of the state sum can be written in essentially the same way.
+%We first give a lightning review of the TVBW state sum construction, via the cut-and-glue formalism.
+%Since much is known about TVBW state sums, 
+%we present the state sum from a slightly different perspective than usual,
+%so that the fermionic version of the state sum can be written in essentially the same way.
 
 We view the state sum as a composition of linear maps from finite dimensional tensor product spaces, starting with with the ``vacuum" $\cc$. 
 This composition of linear maps can be interpreted as a tensor network, 
@@ -9097,14 +9096,14 @@ We start with two pieces of data:
 \end{itemize}
 In what follows, we will assume that $\mcm$ is closed for simplicity. 
 
-To define the state-sum we will assign vector spaces to each piece of the cell decomposition
-and then construct the partition function by gluing these pieces together with certain linear maps corresponding to tensor contractions.
+To define the state-sum we will assign vector spaces to each piece of the cell decomposition and then 
+construct the partition function by gluing these pieces together with certain linear maps corresponding to tensor contractions.
 In order for our formalism to be most amenable to fermionic modifications, we will need to carry out a 
 standardization procedure of the cell decomposition of $\mcm$, in much the same way that we 
-performed the standardization procedure that allowed us to define the lattice Hamiltonian. 
+performed the standardization procedure that we used to define the lattice Hamiltonian. 
 This is the issue to which we now turn. 
-Much of the following section is notational, 
-readers are invited to familiarize themselves with Figure~\ref{NotationStateSum}, 
+Much of the following section is notational; 
+readers are invited to familiarize themselves with Figure~\ref{NotationStateSum}
 and \eqref{attaching_region}-\eqref{tensor_space}, 
 and continue with the next subsection. 
 
@@ -9135,33 +9134,36 @@ The standardization procedure is similar to the pitchforkization procedure defin
 \caption{\label{NotationStateSum}
 Notation used in this section. 
 The cells can be used to label the weights that determine the partition function.
-In the figure we have labeled a `face' by $f$, an `edge' by $e$ and a vertex by v. 
-Each is naturally associated to a 2-, 1- and 0-cell respectively. 
-We assume a cell decomposition that is dual to a triangulation so that each 1-cell is neighbored by three 2-cells and two 0-cells, and each 0-cell is neighbored by four 1-cells. 
-The faces are transversally oriented, so that their boundaries possess an orientation. 
-The edges are also oriented, with the orientation of the edge $e$ in the figure indicted by the double arrow. 
-The oriented boundary edge of the face `$f$' that neighbors the edge `$e$' is labeled $c_{fe}$, 
-and the opposing edge by $\bar{c}_{fe}$. 
+In the figure we have labeled a 2-cell (face) by $f$, a 1-cell (edge) by $e$, and a 0-cell (vertex) by $v$. 
+We assume a cell decomposition that is dual to a triangulation, so that each 1-cell is neighbored by three 2-cells and two 0-cells, and each 0-cell is neighbored by four 1-cells. 
+The boundaries of each 2-cell $f$ possess an orientation (left). 
+The 1-cells are also oriented, with the orientation of the edge $e$ in the figure indicted by the double arrow (center). 
+The oriented boundary edge of the face $f$ that neighbors the edge $e$ is labeled $c_{fe}$ (left), 
+and the opposing edge that is glued to $c_{fe}$ is labelled by $\bar{c}_{fe}$. 
 The trivalent junctions occurring at either end of the edge are denoted $c_{ev}$ and 
-$c_{ev'}$, the opposing trivalent junctions associate to the 0-cells by $\bar{c}_{ev'}$ 
-and $\bar{c}_{ev}$ (not displayed).
+$c_{ev'}$ (center).
+A small $S^2$ surrounding a 0-cell $v'$ intersects six 2-cells in six oriented lines, which 
+meet at four trivalent junctions $\bar{c}_{ev'}$ (right). 
 }
 \end{center}
 \end{figure}
 
-We first establish some notation for the attaching regions of the $k$-handles. 
-We denote the collection of 2-cells by $\mcf$.
+\ethan{tried (valiantly) to make this more comprehensible, but may have not fully succeeded} 
+
+
+We first establish some notation for the attaching regions of the $k$-handles, which are summarized 
+in Figure~\ref{NotationStateSum}. 
+We denote the collection of 2-cells by $\mcf$, the collection of 1-cells by $\mce$, and the collection of 0-cells by $\mcv$.
 Each $f \in \mcf$ is homeomorphic to a simple polygon, see `f' in Figure~\ref{NotationStateSum}.
 Each edge is oriented by the orientation assigned to $f$.% (equivalently, each 2-cell is equipped with a boundary orientation).
 We will denote the edge $e$ at the boundary of the 2-cell $f$ by $c_{fe}$.
-
-\ethan{tried (valiantly) to make this more comprehensible, but may have not fully succeeded} 
 
 The tubular neighborhood of a given 1-cell $e$ is a 1-handle which intersects 
 three neighboring 2-cells.% in a collection of three rectangles. %On any given $D^2$ cross-section of 
 %a 1-handle, these intersection regions meet at a trivalent vertex. %connected by an annulus with three oriented lines.
 The surface of each 1-handle comes equipped with three oriented lines, which match up with 
-the edges of the three 2-cells whose boundaries include the 1-cell $e$. 
+the edges of the three 2-cells whose boundaries include the 1-cell $e$. For an 
+illustration of this, see Figure \ref{One_handle}. 
 %The intersections of the three 2-cells with the surface of the 1-handle consists of three lines, 
 The orientation of these lines is defined to be opposite to that of the neighboring 2-cell boundaries.
 We denote the edge on the surface of a 1-handle $e$ that matches up with a boundary component 
@@ -9188,7 +9190,7 @@ and again the bar denotes that these are in the opposite orientation relative to
 
 The Figure \ref{NotationStateSum} only shows one representative sample of cells, which all others are homeomorphic to. 
 We now standardize each cell so that we can keep track of the topological data associated to the handle decomposition relative to a `standard' one. 
-This is analogous to our pitchforkization procedure discussed in the text surrounding \eqref{pitchfork_basis}.
+This is analogous to the pitchforkization procedure discussed in the text surrounding \eqref{pitchfork_basis}.
 We first note that the spherical neighborhood of an arbitrary 0-cell $v$ can be standardized by removing a point and mapping the resulting picture to the plane. 
 We can next `pitchforkize' the attaching region where the four 1-handles are attached to $v$ so that each take the form
 \begin{align}
@@ -9388,7 +9390,7 @@ admits a decomposition into a subspace tensored with its dual, and hence we have
 which is defined on each basis element of $\mch(\mcm)$ and extended to the whole
 Hilbert space by linearity.
 We can now specify a state-sum partition function by simply writing it as $Z = \chi(X)$,
-where $ X \in \mch(\mcm)$ is a weighted sum of basis, with the 
+where $ X \in \mch(\mcm)$ is a weighted sum of basis vectors, with the 
 weights determined by tensors that we will write down shortly. 
 %Note that in practice, 
 %one has to specify an ordering on all tensor factors in $\mch(\mcm)$, 
@@ -9524,19 +9526,18 @@ T_f(w_f) = T_f(w_{a_1} \tp w_{a_2} \tp \cdots \tp  w_{a_r})   =\sum_{v_x^* \in E
 Note that this tensor is only non-zero if all edge labels of the boundary 1-cells of the 2-cell $f$ are the same.
 
 
-
 Now consider a 1-cell $e$. 
 Suppose that the boundary 0-cells at the ends of $e$ are labeled as $v$ and $v'$, with $e$ oriented from $v$ to $v'$. 
-Letting $w_e = v_{a_1}^* \tp v_{a_2}^* \tp v_{a_3}^* \tp \mu_i \tp \nu_j^*$ where $\mu,\nu$ are 
-basis vectors in the pitchfork vector spaces at $v$ and $v'$, we have 
+Letting $w_e = v_{a_1} \tp v_{a_2} \tp v_{a_3} \tp \mu \tp \nu$ with $v_{a_i}$ basis vectors in $\mch(\bar{c}_{ef_i})$ for each 2-cell $f_i$ neighboring $e$ and $\mu,\nu$ are 
+basis vectors in $\mch(c_{ev})$ and $\mch(c_{ev'})$ respectively, we have
 \begin{align}
-T_e(v_{a_1}^* \tp v_{a_2}^* \tp v_{a_3}^* \tp \mu_i \tp \nu_j^*) = \frac{\mcb(\mu_i^* \tp P_e(\nu_j))}{\mcb(\mu_i^* \tp \mu_i) \mcb(\nu_j^* \tp \nu_j)},
+T_e(w_e) = T_e(v_{a_1} \tp v_{a_2} \tp v_{a_3} \tp \mu \tp \nu^*) = \frac{\mcb(\mu \tp P_e(\nu_j^*))}{\mcb(\mu \tp \mu^*) \mcb(\nu \tp \nu^*)},
 \end{align}
-where as before, $P_e$ encodes the pivot of the 1-handle $e$ (i.e. to what degree the pitchforks at either 
+where $\mcb$ is the pairing defined in \eqref{b_pairing_defn} (which differs from $\chi$ only in its normalization). 
+As before, $P_e$ encodes the pivot of the 1-handle $e$ (i.e. to what degree the pitchforks at either 
 end of $e$ differ by $2\pi/3$ rotations).%, and $P_e(\nu_j)$ is zero unless $\text{id}_{a_{1^* }\tp a_{2^*} \tp a_{3^*}} \circ \nu_j = \nu_j$.
 Since each 1-handle has three edges, there are $2^3 = 8$ possible orientations that the edges of a given 1-handle can have, 
-and hence there are technically $8$ different 1-cell tensors to specify, differing by the presence of either $v_{a_i}$ or $v^*_{a_i}$.
-
+and hence there are technically $8$ different 1-cell tensors to specify, differing by the presence of either vectors or their duals in the expression for $T_e$ above. 
 
 Lastly we define the 0-cell tensors $T_v$, which map vectors in $\mch(v)$ to complex numbers. 
 The matrix elements of the $T_v$ tensors are defined as evaluations of tetrahedral string-nets whose vertices have been transformed into the pitchfork convention.
@@ -9608,7 +9609,7 @@ Pugging the tensors into \eqref{ZTensor} (or equivalently into \eqref{ZConventio
 %%%%%%%%%%%%%%%%%%%%%%
 
 The fermionic version of the state sum can be computed using the technique described above.  
-Here we present only the result, since the methods involved are exactly the same as the bosonic case.
+Here we present only the result, since the methods involved are exactly the same as in the bosonic case.
 
 As in the bosonic case, there are two pieces of input data for the state sum, 
 which each acquire extra adjectives in the fermionic setting:
@@ -9618,7 +9619,7 @@ which each acquire extra adjectives in the fermionic setting:
 \end{itemize}
 We will employ the same notation used in the previous section. 
 The vector spaces $E$ and $W$ which are assigned to the attaching regions are again defined in the same way. 
-\ethan{I was initially thinking that $E = \oplus_x \End(x)$?}
+\ethan{You said $E$ was bosonic, but I was initially thinking that $E = \oplus_x \End(x)$?}
 %In the fermionic case the vector space $W$ is a super vector space, while $E$ remain a purely bosonic (even) vector space. 
 
 There are two differences present in the construction of the fermionic state sum. 
@@ -9644,10 +9645,10 @@ The fermionic version of the 2-cell tensor at a face $f$ with $r$ boundary edges
 T_f(w_f)=T_f(w_{a_1} \tp w_{a_2} \tp \cdots \tp  w_{a_r})   =\sum_{v_x^* \in E} \frac{d_x}{\text{dim} \; \text{End}(x)}
 \prod_{i = 1}^r \chi(v_x^* \tp v_{a_i}).
 \end{align}
-This is the same $\text{dim} \; \text{End}(x)$ that appears in \eqref{total_qdim_defn}. %ethan: is that the \eqref you wanted? 
+This is the same $\text{dim} \; \text{End}(x)$ that appears in the definition of the total quantum dimension $\mcd$ (see \ref{total_qdim_defn}). 
 Since the 2-cells inherit a bounding spin structure, any closed loop of string embedded in the 2-cell will 
 have even fermion parity, and so the vector space for the 2-cell tensors remains bosonic, and as such needs no further adjustments for the fermionic setting. 
-\ethan{jah?}
+\ethan{right?}
 
 The tensors for the one-handles are also modified when passing to the fermionic setting. 
 In the bosonic state sum, we needed to keep track of three possible pivots
@@ -9657,12 +9658,12 @@ in addition to the three we could have in the bosonic state sum (id, $P$, and $P
 we can also have an action of the spin-flip $P^3$; recall \eqref{spin_flip_functor}.
 Hence, the edge tensors retain the same form, namely
 \begin{align}
-T_e(v_{a_1} \tp v_{a_2} \tp v_{a_3} \tp \mu_i \tp \nu_j^*) = \frac{\mcb(\mu_i^* \tp P_e(\nu_j))}{\mcb(\mu_i \tp \mu_i^*) \mcb(\nu_j^* \tp \nu_j)} ,
+T_e(v_{a_1} \tp v_{a_2} \tp v_{a_3} \tp \mu \tp \nu^*) = \frac{\mcb(\mu \tp P_e(\nu^*))}{\mcb(\mu \tp \mu^*) \mcb(\nu^* \tp \nu)} ,
 %T_e = \sum_{i,j, \; \{ v_{a_r}\} \; :\; r \in e} \mcb(\mu_i \tp P_e \circ \nu_j^*) \tp_{r \in e} v_{a_r}^* \tp \mu_i \tp \nu_j^*
 \end{align}
 except for the fact that $P_e$ now has order 6, with $P_e^3=(-1)^F$. As before, we assume that 
 the edge $e$ ends on the 0-cells $v,v'$, is oriented from $v$ to $v'$, and that 
-$\mu_i$ is a basis vector in the Hilbert space $\mch(c_{ev})$ and $\nu_j$ is a basis vector 
+$\mu$ is a basis vector in the Hilbert space $\mch(c_{ev})$ and $\nu$ is a basis vector 
 in $\mch(c_{ev'})$.
 Additionally, we need to keep track of the Koszul ordering in above the tensor product. 
 In the above we assumed the standard implicit left-to-right ordering convention. 
