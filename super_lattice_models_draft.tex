@@ -9221,7 +9221,7 @@ and the one followed here in \cite{Walker2006}.
 We start with two pieces of data: 
 \begin{itemize}
 \item a spherical fusion category $\mcc$, 
-\item and an oriented 3-manifold $\mcm$ possessing a chosen cell decomposition. 
+\item and an oriented 3-manifold $\mcm$ possessing a cell decomposition with transversally oriented 2-cells and oriented 1-cells. 
 \end{itemize}
 In what follows, we will assume that $\mcm$ is closed for simplicity. 
 
@@ -9229,7 +9229,7 @@ To define the state-sum we will assign vector spaces to each piece of the cell d
 construct the partition function by gluing these pieces together with certain linear maps corresponding to tensor contractions.
 In order for our formalism to be most amenable to fermionic modifications, we will need to carry out a 
 standardization procedure of the cell decomposition of $\mcm$, in much the same way that we 
-performed the standardization procedure that we used to define the lattice Hamiltonian. 
+performed the standardization procedure to define the lattice Hamiltonian. 
 This is the issue to which we now turn. 
 Much of the following section is notational; 
 readers are invited to familiarize themselves with Figure~\ref{NotationStateSum}
@@ -9242,7 +9242,7 @@ and continue with the next subsection.
 \subsection{Notation, standardization, and Hilbert spaces}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Our first order of business is to fatten the cell decomposition into a handle decomposition, as was done in Section \ref{standardized_handles} (recall that a handle decomposition for an $n$-manifold $\mcm$ is built from a series of k-handles, with $k=0,1,\dots,n$, each of which are homeomorphic to $D^n$). 
+Our first order of business is to fatten the cell decomposition into a handle decomposition, as was done in Section \ref{standardized_handles} (recall that a handle decomposition for an $n+1$-manifold $\mcm$ is built from a series of k-handles, with $k=0,1,\dots,n$, each of which are homeomorphic to $D^{n+1}$). 
 We will often refer to a $k$-cell and its associated $k$-handle with the same letter. 
 The topology of $\mcm$ is built into the attaching regions where different handles are connected, each of which is homeomorphic to $S^k \times D^{n-k}$.
 We are interested in 3-manifolds,
@@ -9277,18 +9277,23 @@ meet at four trivalent junctions $\bar{c}_{ev'}$ (right).
 \end{center}
 \end{figure}
 
-\ethan{tried (valiantly) to make this more comprehensible, but may have not fully succeeded} 
+%\ethan{tried (valiantly) to make this more comprehensible, but may have not fully succeeded} 
+%\dave{A valiant effort indeed.}
 
 
 We first establish some notation for the attaching regions of the $k$-handles, which are summarized 
 in Figure~\ref{NotationStateSum}. 
 We denote the collection of 2-cells by $\mcf$, the collection of 1-cells by $\mce$, and the collection of 0-cells by $\mcv$.
 Each $f \in \mcf$ is homeomorphic to a simple polygon, see `f' in Figure~\ref{NotationStateSum}.
-Each edge is oriented by the orientation assigned to $f$.% (equivalently, each 2-cell is equipped with a boundary orientation).
-We will denote the edge $e$ at the boundary of the 2-cell $f$ by $c_{fe}$.
+The transversal orientation of $f$ translates to an orientation of each edge of the simple polygon (equivalently, we could say each 2-cell is equipped with a boundary orientation, rather than a transversal orientation).
+%Each edge of $f$ is oriented by the orientation assigned to $f$.% (equivalently, each 2-cell is equipped with a boundary orientation).
+%We will denote the edge $e$ at the boundary of the 2-cell $f$ by $c_{fe}$.
+We will denote the edge at the boundary of the 2-cell labeled $f$ by $c_{fe}$, where $e$ labels the 1-cell which it attaches too (note the the transversal orientation of the 2-cell and orientation of the 1-cell are chosen independently).
+
 
 The tubular neighborhood of a given 1-cell $e$ is a 1-handle which intersects 
-three neighboring 2-cells.% in a collection of three rectangles. %On any given $D^2$ cross-section of 
+three neighboring 2-cells.
+% in a collection of three rectangles. %On any given $D^2$ cross-section of 
 %a 1-handle, these intersection regions meet at a trivalent vertex. %connected by an annulus with three oriented lines.
 The surface of each 1-handle comes equipped with three oriented lines, which match up with 
 the edges of the three 2-cells whose boundaries include the 1-cell $e$. For an 
@@ -9327,8 +9332,10 @@ We can next `pitchforkize' the attaching region where the four 1-handles are att
 \end{align}
 or some variant thereof obtained by reversing the orientations of the edges. 
 The dashed circles in the above equation are the attaching regions for the 1-handles and again, 
-the lines in the above diagram represent the intersections of the six 2-cells whose boundaries include $v$
-with the $S^2$ surrounding $v$. 
+the lines in the above diagram represent the intersections of the six 2-cells 
+with the spherical neighbourhood of $v$. 
+%whose boundaries include $v$
+%with the $S^2$ surrounding $v$. 
 The numbers indicate which edge is connected to where on the standard 0-handle, and are associated with $\bar{c}_{e_j v}$.
 
 With this standardization procedure, 
@@ -9340,9 +9347,12 @@ Each 1-handle $e$ can be deformed into the following form:
 where $P_e$ is either the identity, $P$, or $P^2$, where $P$ is the pivot defined in \eqref{Pitchfork_pivot}.
 The possible presence of $P$ and $P^2$ is needed to keep track of any relative pivoting
 between the pitchforks at either ends of the 1-handles. 
+The orientation of the 1-cell is required to determine in the handidness of the pivot. 
+\dave{Probably a better word than handidness.}
 
 %end of notation bullshit 
 
+%\dave{This sentence has a lot of enthusiasm.}
 With our vast notational arsenal now fully developed and eager to be utilized, 
 we are ready to assign vector spaces to each of the attaching regions $c_{xy}$ defined above.
 We define the vector spaces 
@@ -9352,7 +9362,7 @@ E = \bigoplus_{x\in\mcc} \cc_x \quad \quad \quad W = \bigoplus_{a,b,c\in\mcc}V^{
 where the sums are over a representative set of the simple objects in the input category $\mcc$. 
 Momentarily, the vector space $W$ will be assigned to pitchforks.
 Not all pitchforks will be oriented with all edges pointing outwards; in this scenario 
-we repeat the construction in \eqref{pitchfork_basis} replace an object labelling an inward-pointing 
+we repeat the construction in \eqref{pitchfork_basis} and replace an object labelling an inward-pointing 
 edge with its dual. 
 The vector space we assign to each of the attachment regions are as follows:
 \begin{align}
@@ -9374,8 +9384,8 @@ For a 2-handle $f$, a 1-handle $e$, and a 0-handle $v$, we have
 where as before, $c_{ef} \in \partial f$ are the oriented attachment regions of the 2-cell labeled by $f$, 
 and the $\bar{c}_{ef} \in \partial e$ are the lines on the surface of the 1-handle $e$ (the $\bar{c}_{ef}$ are the edges labeled $a,b,c$ in Figure \ref{One_handle}).
 
-From these assignments, we see that if the vector space $V$ is assigned to the region of a $k$-handle in which it is glued
-to a $(k+1)$-handle, the corresponding attaching region on the $(k+1)$-handle is assigned 
+From these assignments, we see that if the vector space $V$ is assigned to the region of a $(k+1)$-handle in which it is glued
+to a $k$-handle, the corresponding attaching region on the $k$-handle is assigned 
 the dual space $V^*$. 
 For example, for each $\mch(c_{ev})$ tensor factor in $\mch(e)$, there is a dual tensor factor $\mch(\bar{c}_{ev})=\mch(c_{ev})^*$ in $\mch(v)$.
 
@@ -9405,6 +9415,7 @@ three 2-cells which terminate on a given 1-cell, with the orientations of the 2-
 In the top right picture we show a 1-handle with its three marked edges and their orientations shown. 
 In the bottom left we have the same picture as in the top right, but with the intersection of the 2-cells 
 with the 1-handle shaded in color. In the bottom right picture, we show the same picture as in the bottom left, but this time with the vertices standardized via our pitchforkization procedure. 
+\dave{Should modify this picture to match text.}
 }
 \end{center}
 \end{figure}
@@ -9502,9 +9513,12 @@ We define
 \chi: &\mch^* \tp \mch \ra \cc\\
 & w^* \tp v \mapsto \delta_{vw}.
 \end{align}
-This is essentially the same as the bilinear pairing defined in \eqref{reflection_pairing_defn}, just with a different normalization.
-It is defined on every pair of tensor factors $\mch(c_{xy}) \tp \mch( \bar{c}_{xy})$ that are assigned 
-to matching gluing regions in the handle decomposition.
+This is essentially the same as the bilinear pairing defined in \eqref{reflection_pairing_defn}, just with a different normalization, and ordering on the tensor factors 
+\dave{This difference in ordering may Koszul headaches later.}.
+It is defined on every pair of tensor factors $\mch(\bar{c}_{xy}) \tp \mch( c_{xy})$
+that are assigned 
+to attaching regions in the handle decomposition.
+
 
 Since the vector spaces for the attaching regions between $(k+1)-$ and $k$-handles are dual 
 to each other, the total Hilbert space 
@@ -9518,7 +9532,7 @@ admits a decomposition into a subspace tensored with its dual, and hence we have
 \end{align}
 which is defined on each basis element of $\mch(\mcm)$ and extended to the whole
 Hilbert space by linearity.
-We can now specify a state-sum partition function by simply writing it as $Z = \chi(X)$,
+A state-sum is specified by $\chi(X)$,
 where $ X \in \mch(\mcm)$ is a weighted sum of basis vectors, with the 
 weights determined by tensors that we will write down shortly. 
 %Note that in practice, 
@@ -9608,8 +9622,9 @@ T_f &= \sum_{w_f \in \mch(f)} T_f(w_f) w_f, \\
  T_e &= \sum_{w_e \in \mch(e)} T_e(w_e) w_e, \\
   T_v &= \sum_{w_v \in \mch(v) } T_v(w_v) w_v,
 \end{align}
-where each sum runs of the basis vectors of the indicated Hilbert space, and the tensor is assigned a particular weight to each basis vector. 
-The partition partition function is simply
+where each sum runs over the orthogonal basis vectors of the indicated Hilbert space, 
+and the tensor is defined by assigning a particular weight to each basis vector. 
+The partition function is simply
 \begin{align}
 Z(\mcm)  = \chi \left( \bigotimes_{f \in \mcf}  T_f \bigotimes_{e \in \mce}  T_e \bigotimes_{v \in \mcv}  T_v \right). 
 \label{ZTensor}
@@ -9621,11 +9636,15 @@ Z(\mcm) = \sum_{\{ w_f \} } \sum_{\{ w_e\}} \sum_{\{ w_v \}} \prod_{f \in \mcf} 
 %\chi \left(\bigotimes_{f \in \mcf}  w_f \bigotimes_{e \in \mce}  w_e \bigotimes_{v \in \mcv}  w_v \right) 
 \chi(w_\mcl)
 \end{align}
-where the sums are over all possible string-net colorings of the faces, edges, and vertices, and
+where the sums are over all possible basis vectors of $\mch(f)$, $\mch(e)$, and $\mch(v)$, and
 where we have defined 
+%where the sums are over all possible string-net colorings of the faces, edges, and vertices, and
+%where we have defined 
 \be w_\mcl = \bigotimes_{f \in \mcf}  w_f \bigotimes_{e \in \mce}  w_e \bigotimes_{v \in \mcv}  w_v\ee
 for a particular 
-choice of string-net colorings $w_f,w_e,$ and $w_v$.
+choice of
+% string-net colorings 
+$w_f,w_e,$ and $w_v$.
 We will call a labeling $\mcl$ of the cell decomposition {\it admissible} if $\chi(w_\mcl) =1$.
 The state sum can then be written as
 \begin{align} 
@@ -9639,7 +9658,7 @@ This is the familiar form of the partition function given in \cite{Turaev1992,Ba
 Now we need to define the tensor weights appearing in our expression for the partition function.
 For a 2-cell $f$ with $r$ edges, the 2-cell tensor $T_f(w_f)$ is given by
 \begin{align} 
-T_f(w_f) = T_f(w_{a_1} \tp w_{a_2} \tp \cdots \tp  w_{a_r})   =\sum_{v_x^* \in E} d_x \prod_{i = 1}^r \chi(v_x^* \tp v_{a_i})
+T_f(w_f) = T_f(w_{a_1} \tp w_{a_2} \tp \cdots \tp  w_{a_r})   =\sum_{v_x^* \in E} d_x \prod_{i = 1}^r \chi(v_x^* \tp w_{a_i})
 % \sum_{x, \; \{ v_{a_{e}}\} \;  : \;e \in f} \left( d_x  \prod_{e \in f} \delta_{x, a_e} \right)   \bigtp_{e \in f}v_{a_e}
 \end{align} 
 %\begin{align}
@@ -9667,6 +9686,7 @@ As before, $P_e$ encodes the pivot of the 1-handle $e$ (i.e. to what degree the 
 end of $e$ differ by $2\pi/3$ rotations).%, and $P_e(\nu_j)$ is zero unless $\text{id}_{a_{1^* }\tp a_{2^*} \tp a_{3^*}} \circ \nu_j = \nu_j$.
 Since each 1-handle has three edges, there are $2^3 = 8$ possible orientations that the edges of a given 1-handle can have, 
 and hence there are technically $8$ different 1-cell tensors to specify, differing by the presence of either vectors or their duals in the expression for $T_e$ above. 
+\dave{Sphericity halves this number.}
 
 Lastly we define the 0-cell tensors $T_v$, which map vectors in $\mch(v)$ to complex numbers. 
 The matrix elements of the $T_v$ tensors are defined as evaluations of tetrahedral string-nets whose vertices have been transformed into the pitchfork convention.
@@ -9686,7 +9706,7 @@ there are $2^6 = 64$ possible collections of edge orientations, each of which re
 \footnote{Not all these $64$ tetrahedra are independent however, as 
 some of them can be transformed into one another by using the pivotal and spherical structure of the input category.}. 
 
-Pugging the tensors into \eqref{ZTensor} (or equivalently into \eqref{ZConventional}), one finds the explicit presentation of the TVBW state sum in terms of the evaluation of string-net pictures. 
+Plugging the tensors into \eqref{ZTensor} (or equivalently into \eqref{ZConventional}), one finds the explicit presentation of the TVBW state sum in terms of the evaluation of string-net pictures. 
 
 
 %Finally, we can write down the TVBW state sum as
@@ -9748,13 +9768,23 @@ which each acquire extra adjectives in the fermionic setting:
 \end{itemize}
 We will employ the same notation used in the previous section. 
 The vector spaces $E$ and $W$ which are assigned to the attaching regions are again defined in the same way. 
-\ethan{You said $E$ was bosonic, but I was initially thinking that $E = \oplus_x \End(x)$?}
+Note however, that $W$ is a super vector space, while $E$ remains bosonic. 
+%\ethan{You said $E$ was bosonic, but I was initially thinking that $E = \oplus_x \End(x)$?}
+%\dave{We could write it as $(\text{End}(x))^0$ if we want. 
+%But I think we should keep them bosonic.
+%}
 %In the fermionic case the vector space $W$ is a super vector space, while $E$ remain a purely bosonic (even) vector space. 
 
 There are two differences present in the construction of the fermionic state sum. 
 Although we have largely been using unordered tensor products throughout our discussion of fermionic theories, to actually compute
-the partition function a particular choice of ordering must be chosen, with different orderings are related by the usual Koszul signs.
+the partition function a particular choice of ordering must be made, 
+with different orderings related by the usual Koszul signs.
+\dave{Need to say ordering on what.
+I would be inclined to say that we need an ordering for every tensor. 
+And then give a prescription to contract over tensors and find a possibly large tensor, with another ordering.}
 Additionally, since simple objects in $\mcc$ can have non-trivial endomorphism algebras, some additional care must be taken to ensure the proper normalization of the partition function. 
+\dave{maybe 3 main differences and add include pivot + spin structure.}
+
 
 %Except now one must of course define a sign ordering in the tensor product.
 %We again define the contraction in \eqref{contract}.
@@ -9772,12 +9802,16 @@ the 2-cell tensors, which is needed to account for the non-trivial endomorphism 
 The fermionic version of the 2-cell tensor at a face $f$ with $r$ boundary edges is 
 \begin{align}
 T_f(w_f)=T_f(w_{a_1} \tp w_{a_2} \tp \cdots \tp  w_{a_r})   =\sum_{v_x^* \in E} \frac{d_x}{\text{dim} \; \text{End}(x)}
-\prod_{i = 1}^r \chi(v_x^* \tp v_{a_i}).
+\prod_{i = 1}^r \chi(v_x^* \tp w_{a_i}).
 \end{align}
 This is the same $\text{dim} \; \text{End}(x)$ that appears in the definition of the total quantum dimension $\mcd$ (see \ref{total_qdim_defn}). 
-Since the 2-cells inherit a bounding spin structure, any closed loop of string embedded in the 2-cell will 
-have even fermion parity, and so the vector space for the 2-cell tensors remains bosonic, and as such needs no further adjustments for the fermionic setting. 
-\ethan{right?}
+%\dave{removed the following for now.}
+%Since the 2-cells inherit a bounding spin structure, any closed loop of string embedded in the 2-cell will 
+%have even fermion parity, and so the vector space for the 2-cell tensors remains bosonic, and as such needs no further adjustments for the fermionic setting. 
+%\ethan{right?}
+%\dave{The tensors always have even parity. 
+%The normalization is because it's the trivial idempotent that we plug into the $S^1 \times D^1$ attaching region in the cut and glue picture.
+%}
 
 The tensors for the one-handles are also modified when passing to the fermionic setting. 
 In the bosonic state sum, we needed to keep track of three possible pivots
@@ -9790,7 +9824,12 @@ Hence, the edge tensors retain the same form, namely
 T_e(v_{a_1} \tp v_{a_2} \tp v_{a_3} \tp \mu \tp \nu^*) = \frac{\mcb(\mu \tp P_e(\nu^*))}{\mcb(\mu \tp \mu^*) \mcb(\nu^* \tp \nu)} ,
 %T_e = \sum_{i,j, \; \{ v_{a_r}\} \; :\; r \in e} \mcb(\mu_i \tp P_e \circ \nu_j^*) \tp_{r \in e} v_{a_r}^* \tp \mu_i \tp \nu_j^*
 \end{align}
-except for the fact that $P_e$ now has order 6, with $P_e^3=(-1)^F$. As before, we assume that 
+except for the fact that $P_e$ now has order 6, with $P_e^3=(-1)^F$. 
+\dave{Need to check ordering on this.}
+\dave{are equivalence classes of spin structures in 1-1 with $\{ P_e \}$? 
+May be worth commenting on, it seems unlikely that this is the case.
+}
+As before, we assume that 
 the edge $e$ ends on the 0-cells $v,v'$, is oriented from $v$ to $v'$, and that 
 $\mu$ is a basis vector in the Hilbert space $\mch(c_{ev})$ and $\nu$ is a basis vector 
 in $\mch(c_{ev'})$.
@@ -9798,6 +9837,8 @@ Additionally, we need to keep track of the Koszul ordering in above the tensor p
 In the above we assumed the standard implicit left-to-right ordering convention. 
 If we are given an ordering that departs from this convention, 
 we must introduce the appropriate Koszul sign required to standardize the order. 
+\dave{Which ordering are you referring to? 
+It seems like it's already fixed in the above.}
 
 The 0-cell tensors are exactly the same as in the bosonic case, 
 except that we must keep track of an ordering of the four tensor factors when defining the tetrahedral symbol. 
@@ -9812,6 +9853,8 @@ T(w_v)=T_v(\alpha \tp \beta \tp \gamma \tp \delta) = \Tetrahedron.
 %\label{Tetrahedron}
 %\end{align}
 If we are given a tetrahedron with a different ordering, we must change the ordering to the standard one, which as usual is done at the cost of the appropriate Koszul signs. 
+\dave{I thought by assumption the 1-cells meeting a tetrahedron are ordered?}
+\dave{I think the only Koszul signs we have to worry about are those appearing in the tensor contraction.}
 
 The fermionic partition function can be written formally in the same way as before:
 \begin{align}
