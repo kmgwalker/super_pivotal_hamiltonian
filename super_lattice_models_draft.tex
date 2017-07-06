@@ -5207,11 +5207,18 @@ when $\psi$ is  fermion satisfying conditions of \ref{gntf_condense} and $\mcc$ 
 %Otherwise, maybe drop the speculation.}
 %\dave{Shall we drop the speculation?}
 
-\kw{to do: define separate B and N functors}
 To get insights on the relation between $\tube(\mcc/\psi)$ and the data of $\mcc$, we will need to find the minimal idempotents of the condensed theory.
 These follow from a few observations. 
-First, any string net configuration of the parent theory descends to a string net configuration of the condensed theory, 
-giving us a functor $\tube(\mcc) \rightarrow \tube(\mcc/\psi)$.
+First, any string net configuration of the parent theory descends to a string net configuration of the condensed theory.
+In particular, we have two functors
+\be
+	\varphi_B : \tube(\mcc) \rightarrow \tube^B(\mcc/\psi)
+\ee
+and
+\be
+	\varphi_N : \tube(\mcc) \rightarrow \tube^N(\mcc/\psi) .
+\ee
+%giving us a functor $\tube(\mcc) \rightarrow \tube(\mcc/\psi)$.
 Conversely, we can always take an even morphism in $\mcc/\psi$ and lift it to $\mcc$, giving 
 us a way from lifting tubes in $\tube(\mcc/\psi)$ to those in $\tube(\mcc)$.
 These two facts allow us to find the minimal idempotents of the quotient theory, 
@@ -5257,16 +5264,34 @@ Next we define a tensor functor from $\mcc \times \overline{\mcc/\psi} $ to $\tu
 show that it is an isomorphism of tensor categories.
 %thus showing that $\tube(\mcc/\psi) \cong \mcc \times \overline{\mcc/\psi}$ as tensor categories.
 
-Recall that the endomorphisms of the trivial object in $\tube(\mcc)$ is a commutative algebra
+Recall that the endomorphisms of the trivial object in $\tube(\mcc)$ form a commutative algebra
 isomorphic to the fusion ring of $\mcc$, and that the $\omega$ loops are the minimal idempotents of this algebra.
 We define two non-minimal idempotents in this algebra,
 \begin{align}  \label{aJloop}
 	a_B = \frac{1}{2}(\text{cl}(\unit) + \text{cl}(\psi)), \;\;\;\;   a_N = \frac{1}{2}(\text{cl}(\unit) - \text{cl}(\psi)),
 \end{align}
+where as before $\text{cl}(x)$ denotes a closed up $x$ strand embedded in a solid torus.
+These two idempotents are orthogonal (i.e.\ $a_I\cdot a_J = \delta_{IJ}a_I$), and $a_B + a_N = \id$.
+Thus we have a decomposition of $\tube(\mcc)$ into two summands, $\tube(\mcc)\bullet a_B$ and $\tube(\mcc)\bullet a_N$.
+In pictures, tensoring with $a_J$ looks like
+\begin{align}  \label{aJ_projector}
+	\TubeBasisa \bullet a_J = \TubeProject.
+\end{align}
+We also have
+\be
+	\varphi_I(a_J) = \delta_{IJ} \id .
+\ee
+It follows that the summand $\tube(\mcc)\bullet a_B$ maps to zero when included in $\tube^N(\mcc/\psi)$,
+and the summand $\tube(\mcc)\bullet a_N$ maps to zero when included in $\tube^B(\mcc/\psi)$.
+With a little more work, we can show that $\tube(\mcc)\bullet a_J$ maps faithfully (injectively) into
+$\tube^J(\mcc/\psi)$ under the functor $\varphi_J$.
 
-\kw{resume here}
+\kw{not satisfied with above; will rewrite soon}
 
-\nn{...}
+\kw{$\bullet$ above is more usually denoted $\tp$, but it's not the same tensor product at the one
+coming from the pair of pants, so I thought it would be better to use a different symbol.}
+
+\begin{comment} %%%%%%%%%%%%%%%%
 
 The image of the idempotents in $\tube(\mcc)$ under condensation can be found with the help of 
 two projectors $a_B,a_N$ which sum to the identity, and are defined to act on morphisms in $\tube(\mcc/\psi)$. 
@@ -5295,10 +5320,15 @@ On general morphisms in $\tube(\mcc)$, they act as
 \label{aJ_projector}
 \end{align}
 
+
 The $\hat{a}_J$ projectors allow us to determine which idempotents in $\tube(\mcc)$ survive the projection 
 to $\tube(\mcc/\psi)$:
 a non-zero tube in $\tube(\mcc)$ in the image of $\hat{a}_J$ remains non-zero under condensation as a tube in $\tube^J(\mcc/\psi)$. 
 We make this precise in the following lemma:
+
+\end{comment} %%%%%%%%%%%%%%%%
+
+\kw{resume here}
 
 \begin{lemma}
 \label{image_aJ}
