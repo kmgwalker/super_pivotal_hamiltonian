@@ -5190,7 +5190,7 @@ and
 
 
 The idempotents above can be used to show that $\tube(\mcc) \cong \mcc \times \overline{\mcc}$.
-In the following subsection we will state and prove the analogous theorem for $\tube(\mcc/\psi)$.
+In the following subsection we will state and prove an analogous theorem for $\tube(\mcc/\psi)$.
 
 
 
@@ -5209,8 +5209,16 @@ when $\psi$ is  fermion satisfying conditions of \ref{gntf_condense} and $\mcc$ 
 
 To get insights on the relation between $\tube(\mcc/\psi)$ and the data of $\mcc$, we will need to find the minimal idempotents of the condensed theory.
 These follow from a few observations. 
-First, any string net configuration of the parent theory descends to a string net configuration of the condensed theory, 
-giving us a functor $\tube(\mcc) \rightarrow \tube(\mcc/\psi)$.
+First, any string net configuration of the parent theory descends to a string net configuration of the condensed theory.
+In particular, we have two functors
+\be
+	\varphi_B : \tube(\mcc) \rightarrow \tube^B(\mcc/\psi)
+\ee
+and
+\be
+	\varphi_N : \tube(\mcc) \rightarrow \tube^N(\mcc/\psi) .
+\ee
+%giving us a functor $\tube(\mcc) \rightarrow \tube(\mcc/\psi)$.
 Conversely, we can always take an even morphism in $\mcc/\psi$ and lift it to $\mcc$, giving 
 us a way from lifting tubes in $\tube(\mcc/\psi)$ to those in $\tube(\mcc)$.
 These two facts allow us to find the minimal idempotents of the quotient theory, 
@@ -5224,10 +5232,7 @@ Once doing so, we arrive at the following theorem:
 \begin{theorem}  \label{minimal_idempotents_modular_C/psi}
 Let ${\mcc}$ be a modular tensor category and let $\psi$ be a fermion in ${\mcc}$ as in \ref{gntf_condense}.
 Let $\mcc/\psi$ be the super pivotal category resulting from the fermionic quotient.
-Let
-$
-\tube(\mcc/\psi) = \tube^B(\mcc/\psi) \cup \tube^N(\mcc/\psi)
-$
+Let $\tube(\mcc/\psi) = \tube^B(\mcc/\psi) \cup \tube^N(\mcc/\psi)$
 be the annular category of $\mcc/\psi$. 
 Then as tensor categories,
 \begin{align}
@@ -5250,15 +5255,49 @@ $\psi \in \sob(\mcc)$ into $\tube(\mcc)$ by $\psi \mapsto \tilde\psi$, where $\t
 \be \tube(\mcc/\psi) \cong \tube(\mcc) / \tilde\psi,\ee
 showing that fermion condensation commutes with constructing the tube category.
 \dave{I haven't checked the above, will come back to it.}
-
-\kw{resume here}
+\kw{Looks OK to me.}
 
 The proof of the theorem splits into two parts. 
 We first compute the images of the minimal idempotents in $\tube(\mcc/\psi)$ under condensation
 and show that these images provide us with a complete set of minimal idempotents in the condensed theory.
-Next we find a tensor functor from $\mcc \times \overline{\mcc/\psi} $ to $\tube(\mcc/\psi)$,
-thus showing that $\tube(\mcc/\psi) \cong \mcc \times \overline{\mcc/\psi}$ as tensor categories.
+Next we define a tensor functor from $\mcc \times \overline{\mcc/\psi} $ to $\tube(\mcc/\psi)$ and
+show that it is an isomorphism of tensor categories.
+%thus showing that $\tube(\mcc/\psi) \cong \mcc \times \overline{\mcc/\psi}$ as tensor categories.
 
+Recall that the endomorphisms of the trivial object in $\tube(\mcc)$ form a commutative algebra
+isomorphic to the fusion ring of $\mcc$, and that the $\omega$ loops are the minimal idempotents of this algebra.
+We define two non-minimal idempotents in this algebra,
+\begin{align}  \label{aJloop}
+	a_B = \frac{1}{2}(\text{cl}(\unit) + \text{cl}(\psi)), \;\;\;\;   a_N = \frac{1}{2}(\text{cl}(\unit) - \text{cl}(\psi)),
+\end{align}
+where as before $\text{cl}(x)$ denotes a closed up $x$ strand embedded in a solid torus.
+These two idempotents are orthogonal (i.e.\ $a_I\cdot a_J = \delta_{IJ}a_I$), and $a_B + a_N = \id$.
+
+Placing $a_J$ behind a tube diagram yields a functor $\hat{a}_J : \tube(\mcc) \to \tube(\mcc)$
+\begin{align}  \label{aJ_projector}
+	\hat{a}_J \left( \TubeBasisa \right) = \TubeProject .
+\end{align}
+We have a decomposition of $\tube(\mcc)$ into two summands, $\hat{a}_B(\tube(\mcc))$ and $\hat{a}_N(\tube(\mcc))$.
+%Thus we have a decomposition of $\tube(\mcc)$ into two summands, $\tube(\mcc)\bullet a_B$ and $\tube(\mcc)\bullet a_N$.
+%In pictures, tensoring with $a_J$ looks like
+%\begin{align}  \label{aJ_projector}
+%	\TubeBasisa \bullet a_J = \TubeProject.
+%\end{align}
+We also have
+\be
+	\varphi_I(a_J) = \delta_{IJ} \id ,
+\ee
+which implies that $\varphi_B\circ\hat a_N$ and $\varphi_N\circ\hat a_B$ are both the zero functor.
+On the other hand, we have:
+%$\varphi_B\circ\hat a_B$ and $\varphi_N\circ\hat a_N$ are both faithful:
+%It follows that the summand $\tube(\mcc)\bullet a_B$ maps to zero when included in $\tube^N(\mcc/\psi)$,
+%and the summand $\tube(\mcc)\bullet a_N$ maps to zero when included in $\tube^B(\mcc/\psi)$.
+%With a little more work, we can show that $\tube(\mcc)\bullet a_J$ maps faithfully (injectively) into
+%$\tube^J(\mcc/\psi)$ under the functor $\varphi_J$.
+%
+%\kw{not satisfied with above; will rewrite soon}
+
+\begin{comment} %%%%%%%%%%%%%%%%
 
 The image of the idempotents in $\tube(\mcc)$ under condensation can be found with the help of 
 two projectors $a_B,a_N$ which sum to the identity, and are defined to act on morphisms in $\tube(\mcc/\psi)$. 
@@ -5287,23 +5326,33 @@ On general morphisms in $\tube(\mcc)$, they act as
 \label{aJ_projector}
 \end{align}
 
+
 The $\hat{a}_J$ projectors allow us to determine which idempotents in $\tube(\mcc)$ survive the projection 
 to $\tube(\mcc/\psi)$:
 a non-zero tube in $\tube(\mcc)$ in the image of $\hat{a}_J$ remains non-zero under condensation as a tube in $\tube^J(\mcc/\psi)$. 
 We make this precise in the following lemma:
 
-\begin{lemma}
-\label{image_aJ}
-Let $\mcc$ be a unitary fusion category and $\psi$ a fermion in $\mcz(\mcc)$ as defined in \ref{lift_and_condense}.
-Let $\hat{a}_J$ be as defined in \eqref{aJ_projector}.
-Then there exists a functor 
-\[\begin{tikzcd}        
-   I: \hat{a}_J \cdot \tube(\mcc) \rightarrow \tube^J(\mcc/\psi)
-\end{tikzcd}\]
-which is faithful, meaning that morphisms in $\hat{a}_J\cdot\tube(\mcc)$ are mapped injectively to morphisms in $\tube^J(\mcc/\psi)$. 
-\ethan{may still need to be rephrased}
-In particular, a tube of $\tube(\mcc)$ that is not mapped to zero by $\hat{a}_J$ is nonzero in the image of $I$. 
+\end{comment} %%%%%%%%%%%%%%%%
+
+
+\begin{lemma}  \label{image_aJ}
+The functors $\varphi_B\circ\hat a_B$ and $\varphi_N\circ\hat a_N$ are both faithful (injective on morphisms spaces).
 \end{lemma}
+
+%\begin{lemma}
+%\label{image_aJ}
+%Let $\mcc$ be a modular tensor category and $\psi$ a fermion in $\mcz(\mcc)$ as defined in \ref{lift_and_condense}.
+%Let $\hat{a}_J$ be as defined in \eqref{aJ_projector}.
+%Then there exists a functor 
+%\[\begin{tikzcd}        
+%   I: \hat{a}_J \cdot \tube(\mcc) \rightarrow \tube^J(\mcc/\psi)
+%\end{tikzcd}\]
+%which is faithful, meaning that morphisms in $\hat{a}_J\cdot\tube(\mcc)$ are mapped injectively to morphisms in $\tube^J(\mcc/\psi)$. 
+%\ethan{may still need to be rephrased}
+%In particular, a tube of $\tube(\mcc)$ that is not mapped to zero by $\hat{a}_J$ is nonzero in the image of $I$. 
+%\end{lemma}
+
+\kw{resume here}
 
 \begin{proof}
 The proof follows from a simple observation.
