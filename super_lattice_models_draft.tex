@@ -4432,6 +4432,7 @@ Strictly speaking, $Z$ is the Hilbert space; $A$ could be called the pre-dual Hi
 In the finite/semisimple case, $A$ and $Z$ are isomorphic, so one does not need to make a big deal about the distinction.
 In any case, I think we should try to be more consistent with the notation.
 I admit that I am probably responsible for most of the notational inconsistency.}
+\ethan{Agreed. In that case, can I replace $V(Y)$ with $A(Y)$ in the discussion of the fusion rules?}
 
 In this subsection, we will define the fusion (tensor product) of representations of the tube category.
 
@@ -4668,7 +4669,7 @@ for the $\halfesix/\psi$ theory, \eqref{hE6_S_NN}.
 
 Note that the formula for $p+q$ above does not depend on the Arf invariant of $Y$, while the formula for $p-q$ does.
 Thus the total dimension of the Hilbert space is not sensitive to the spin structure
-of $Y$, but the even and odd Hilbert space dimensions do depend of the spin structure.
+of $Y$, but the even and odd Hilbert space dimensions do depend on the spin structure.
 
 
 
@@ -9394,14 +9395,14 @@ Each 1-handle $e$ can be deformed into the following form:
 \HorshoeIdentity,
 \end{align}
 where $P_e$ is either the identity, $P$, or $P^2$, where $P$ is the pivot defined in \eqref{Pitchfork_pivot}.
+We define $P$ to rotate diagrams counterclockwise relative to the orientation of $e$.
 The possible presence of $P$ and $P^2$ is needed to keep track of any relative pivoting
 between the pitchforks at either ends of the 1-handles. 
-The orientation of the 1-cell is required to determine in the handidness of the pivot. 
-\dave{Probably a better word than handidness.}
+
 
 %end of notation bullshit 
 
-%\dave{This sentence has a lot of enthusiasm.}
+%\dave{This sentence has a lot of enthusiasm.} \ethan{:)}
 With our vast notational arsenal now fully developed and eager to be utilized, 
 we are ready to assign vector spaces to each of the attaching regions $c_{xy}$ defined above.
 We define the vector spaces 
@@ -9464,7 +9465,7 @@ three 2-cells which terminate on a given 1-cell, with the orientations of the 2-
 In the top right picture we show a 1-handle with its three marked edges and their orientations shown. 
 In the bottom left we have the same picture as in the top right, but with the intersection of the 2-cells 
 with the 1-handle shaded in color. In the bottom right picture, we show the same picture as in the bottom left, but this time with the vertices standardized via our pitchforkization procedure. 
-\dave{Should modify this picture to match text.}
+\dave{Should modify this picture to match text.} \ethan{looks good to me?}
 }
 \end{center}
 \end{figure}
@@ -9563,7 +9564,8 @@ We define
 & w^* \tp v \mapsto \delta_{vw}.
 \end{align}
 This is essentially the same as the bilinear pairing defined in \eqref{reflection_pairing_defn}, just with a different normalization, and ordering on the tensor factors 
-\dave{This difference in ordering may Koszul headaches later.}.
+\dave{This difference in ordering may Koszul headaches later.}
+\ethan{Don't we usually have $\mch^*\cong\mch$ so that the difference is just a matter of labeling? However, might be best to dualize the definition of $\chi$}.
 It is defined on every pair of tensor factors $\mch(\bar{c}_{xy}) \tp \mch( c_{xy})$
 that are assigned 
 to attaching regions in the handle decomposition.
@@ -9817,45 +9819,27 @@ which each acquire extra adjectives in the fermionic setting:
 \end{itemize}
 We will employ the same notation used in the previous section. 
 The vector spaces $E$ and $W$ which are assigned to the attaching regions are again defined in the same way. 
-Note however, that $W$ is a super vector space, while $E$ remains bosonic. 
+Note however, that $W$ is a super vector space, while $E$ remains bosonic
+\footnote{A perhaps more natural choice for the edge vector space would be $E'=\oplus_x\End(x)$, which is generically a super vector space. 
+Odd vectors in $E'$ would then correspond to q-type edges which host fermionic dots. However, one 
+could always use odd endomorphisms to move these dots to the ends of the edges, which ``displaces'' 
+the odd degrees of freedom from the edges to the vertices. This displacement procedure results in a simpler (purely bosonic) edge Hilbert space $E$.}.
 %\ethan{You said $E$ was bosonic, but I was initially thinking that $E = \oplus_x \End(x)$?}
 %\dave{We could write it as $(\text{End}(x))^0$ if we want. 
 %But I think we should keep them bosonic.
 %}
 %In the fermionic case the vector space $W$ is a super vector space, while $E$ remain a purely bosonic (even) vector space. 
 
-There are two differences present in the construction of the fermionic state sum. 
+There are three main differences present in the construction of the fermionic state sum. 
 Although we have largely been using unordered tensor products throughout our discussion of fermionic theories, to actually compute
-the partition function a particular choice of ordering must be made, 
-with different orderings related by the usual Koszul signs.
-\dave{Need to say ordering on what.
-I would be inclined to say that we need an ordering for every tensor. 
-And then give a prescription to contract over tensors and find a possibly large tensor, with another ordering.}
-Additionally, since simple objects in $\mcc$ can have non-trivial endomorphism algebras, some additional care must be taken to ensure the proper normalization of the partition function. 
-\dave{maybe 3 main differences and add include pivot + spin structure.}
+the partition function through a tensor contraction, a particular choice of ordering for the tensors involved in the partition function must be made (with different orderings related by the usual Koszul signs).
+%\dave{Need to say ordering on what.
+%I would be inclined to say that we need an ordering for every tensor. 
+%And then give a prescription to contract over tensors and find a possibly large tensor, with another ordering.}
+Secondly, since simple objects in $\mcc$ can have non-trivial endomorphism algebras, some additional care must be taken to ensure the proper normalization of the partition function. 
+Finally, spin structure considerations means that the pivot $P_e$ appearing in the definition of the fermionic 1-cell tensor $T_e$ has different properties 
+than the one appearing in the bosonic partition function. 
 
-\dave{Explicit about the contraction. 
-Here is one way we can do it.
-Maybe we should do this as an example in the Koszul sign section?}
-Suppose we have two tensors $X$ and $Y$,
-defined by 
-\begin{align}
-X = \sum_{x_i \in V_i}X(x_1 \tp x_2 \tp \cdots \tp x_n) x_1 \tp \cdots x_n\\
-Y = \sum_{y_i \in V_i}Y(y_1 \tp y_2 \tp \cdots \tp  y_m) y_1 \tp \cdots y_m
-\end{align} 
-And we want to define the contracted version of the tensor, by say contracting over the indices $x_p$ and $y_q$.
-Denote the contracted tensor by $Z$,
-then
-\begin{align}
-Z = \sum_{\substack{x_i \in V_i, i \neq p\\ y_j \in V_j, j \neq q}} Z(x_1 \tp \cdots \tp x_{p-1} \tp x_{p+1} \tp \cdots \tp x_n \tp y_1 \tp \cdots\tp y_{q-1} \tp y_{q+1} \tp \cdots \tp y_m) \\
-\times x_1 \tp \cdots \tp x_{p-1} \tp x_{p+1} \tp \cdots \tp x_n \tp y_1 \tp \cdots\tp y_{q-1} \tp y_{q+1} \tp \cdots \tp y_m
-\end{align}
-where 
-\begin{align}
-=&Z(x_1 \tp \cdots \tp x_{p-1} \tp x_{p+1} \tp \cdots \tp x_n \tp y_1 \tp \cdots\tp y_{q-1} \tp y_{q+1} \tp \cdots \tp y_m) \\ 
-=& \sum_{x_p \in V_p, y_s \in V_s}X(x_1 \tp \cdots \tp x_n)Y(y_1 \tp\cdots \tp  y_m) \\
-&\times (-1)^{|x_p|(|x_{p+1}| + \cdots + |x_n|)} (-1)^{(|y_1| + \cdots + |y_{s-1}| ) |y_s|} \chi(x_p \tp y_s)
-\end{align}
 \dave{stopping here. Will continue tomorrow.}
 
 %Except now one must of course define a sign ordering in the tensor product.
@@ -9869,8 +9853,8 @@ where
 %\dave{Check Turzillo paper.}
 %\dave{I found that the $\mcb(\psi_1 \tp \eta_2) = \mcb(\eta_1 \tp \psi _2)$ is symmetric. }
 
-The latter difference leads to a modification of 
-the 2-cell tensors, which is needed to account for the non-trivial endomorphism algebras of the q-type simple objects.
+The difference in the allowed endomorphism algebras for the simple objects in $\mcc$ leads to a modification of 
+the 2-cell tensors, which is needed to account for the fact that $\dim\End(x)\neq1$ if $x$ is q-type.
 The fermionic version of the 2-cell tensor at a face $f$ with $r$ boundary edges is 
 \begin{align}
 T_f(w_f)=T_f(w_{a_1} \tp w_{a_2} \tp \cdots \tp  w_{a_r})   =\sum_{v_x^* \in E} \frac{d_x}{\text{dim} \; \text{End}(x)}
@@ -9905,12 +9889,12 @@ As before, we assume that
 the edge $e$ ends on the 0-cells $v,v'$, is oriented from $v$ to $v'$, and that 
 $\mu$ is a basis vector in the Hilbert space $\mch(c_{ev})$ and $\nu$ is a basis vector 
 in $\mch(c_{ev'})$.
-Additionally, we need to keep track of the Koszul ordering in above the tensor product. 
-In the above we assumed the standard implicit left-to-right ordering convention. 
-If we are given an ordering that departs from this convention, 
-we must introduce the appropriate Koszul sign required to standardize the order. 
-\dave{Which ordering are you referring to? 
-It seems like it's already fixed in the above.}
+%Additionally, we need to keep track of the Koszul ordering in above the tensor product. 
+%In the above we assumed the standard implicit left-to-right ordering convention. 
+%If we are given an ordering that departs from this convention, 
+%we must introduce the appropriate Koszul sign required to standardize the order. 
+%\dave{Which ordering are you referring to? 
+%It seems like it's already fixed in the above.}
 
 The 0-cell tensors are exactly the same as in the bosonic case, 
 except that we must keep track of an ordering of the four tensor factors when defining the tetrahedral symbol. 
@@ -9924,25 +9908,50 @@ T(w_v)=T_v(\alpha \tp \beta \tp \gamma \tp \delta) = \Tetrahedron.
 %\text{Tet}(\alpha \tp \beta \tp \gamma \tp \delta) =\; \Tetrahedron.
 %\label{Tetrahedron}
 %\end{align}
-If we are given a tetrahedron with a different ordering, we must change the ordering to the standard one, which as usual is done at the cost of the appropriate Koszul signs. 
-\dave{I thought by assumption the 1-cells meeting a tetrahedron are ordered?}
-\dave{I think the only Koszul signs we have to worry about are those appearing in the tensor contraction.}
+%If we are given a tetrahedron with a different ordering, we must change the ordering to the standard one, which as usual is done at the cost of the appropriate Koszul signs. 
+%\dave{I thought by assumption the 1-cells meeting a tetrahedron are ordered?}
+%\dave{I think the only Koszul signs we have to worry about are those appearing in the tensor contraction.}
 
 The fermionic partition function can be written formally in the same way as before:
-\begin{align}
+\begin{align} \label{simple_fermion_Z}
 Z(\mcm) = \chi\left( \bigotimes_{f \in \mcf} T_f \bigotimes_{e \in \mce} T_e \bigotimes_{v \in \mcv} T_v\right),
 \end{align}
 %where the fact that the tensors are all even means that the order on the tensor product does not matter. 
 However, when evaluating the RHS, 
-one has to carefully keep track of the Koszul signs acquired when performing the tensor contraction induced by $\chi$. 
-To be more explicit, we can write 
+one has to be careful about Koszul sign issues when performing the tensor contraction induced by $\chi$. 
+When we contract out two tensor indices of a tensor in $\mch^*\tp\mch$, we must be careful to only perform 
+the contraction after the two tensor factors have been moved adjacent to one another in the tensor product. 
+\ethan{as Dave suggested, this should maybe go in defn sec}
+For example, suppose we have two tensors $X \in V_1 \tp \dots \tp V_n$ and $Y \in W_1\tp \dots \tp W_m$,
+defined by
+\begin{align}
+X = \sum_{x_i \in V_i}X(x_1 \tp x_2 \tp \cdots \tp x_n) x_1 \tp \cdots \tp x_n,\\
+Y = \sum_{y_i \in W_i}Y(y_1 \tp y_2 \tp \cdots \tp  y_m) y_1 \tp \cdots \tp y_m,
+\end{align} 
+and suppose we want to contract over the indices $x_p$ and $y_q$ in the tensor $X\tp Y$, where $V_p \cong W_q^*$.
+If we denote the contracted tensor by $Z$,
+then 
+\begin{align}
+Z = \sum_{\substack{x_i \in V_i, i \neq p\\ y_j \in W_j, j \neq q}} Z(x_1 \tp \cdots \tp x_{p-1} \tp x_{p+1} \tp \cdots \tp x_n \tp y_1 \tp \cdots\tp y_{q-1} \tp y_{q+1} \tp \cdots \tp y_m) \\
+\times x_1 \tp \cdots \tp x_{p-1} \tp x_{p+1} \tp \cdots \tp x_n \tp y_1 \tp \cdots\tp y_{q-1} \tp y_{q+1} \tp \cdots \tp y_m
+\end{align}
+where 
+\begin{align} \label{contraction_example}
+Z(x_1 \tp \cdots \tp x_{p-1} \tp & x_{p+1} \tp \cdots \tp x_n \tp y_1 \tp \cdots\tp y_{q-1} \tp y_{q+1} \tp \cdots \tp y_m) \\ 
+=& \sum_{x_p \in V_p, y_q \in W_q}X(x_1 \tp \cdots \tp x_n)Y(y_1 \tp\cdots \tp  y_m) \\ & \qquad \times (-1)^{|x_p|(|x_{p+1}| + \cdots + |x_n|)} (-1)^{(|y_1| + \cdots + |y_{q-1}| ) |y_q|} \chi(x_p \tp y_q).
+\end{align}
+The Koszul signs appearing in the above equation are simply those acquired when re-ordering the tensor factors in $X \tp Y$ so that $x_p$ and $y_q$ appear in the order $x_p\tp y_q$, with no other 
+intervening tensor factors. 
+
+The Koszul signs that appear in this example arise when performing the tensor contraction induced by $\chi$ in the 
+partition function \eqref{simple_fermion_Z}.
+To be slightly more explicit, we can write 
 \begin{align} 
 Z(\mcm) = \sum_{ \mcl } (-1)^{k_\mcl} \prod_{f \in \mcf} T_f(w_f) 
 \prod_{e \in \mce} T_e(w_e) \prod_{v \in \mcv} T_v(w_v),
 \end{align} 
 where $\mcl$ runs over all admissible labels and $(-1)^{k_\mcl} = \chi(w_\mcl)$ is the Koszul sign acquired 
-when ensuring that the ordering of the tensor factors is the same as the orderings present in the 
-definitions of the $k$-cell tensors. 
+when performing the tensor contraction, which can be derived by using \eqref{contraction_example}. \ethan{leaving it at this feels like we're cheating a bit, but I'm okay with it}
 
 
 \begin{comment} 
