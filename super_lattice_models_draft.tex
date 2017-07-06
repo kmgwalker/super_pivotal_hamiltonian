@@ -7890,11 +7890,7 @@ For most of the paper, we will choose the normalization convention
 \mcb( \mu_i \tp \mu_j^*)  = \sqrt{d_a d_b d_c} \delta_{ij}.
 \end{align} 
 
-The pairing has the following symmetry properties $\mcb(\mu_{i,1} \tp \nu_{j,2}) = \mcb(\nu_{j,1} \tp \mu_{i,2}) = (-1)^{|\mu_i| |\nu_j|}\mcb(\mu_{i,2} \tp \nu_{j,1})$. 
-The first follows from the pivotal structure, while the second follows from the usual Koszul signs.
-%\dave{Should note that $\mcb$ is symmetric. 
-%i.e., $\mcb(\mu_i \tp \mu_j) = \mcb(\mu_j \tp \mu_i)$. 
-%}
+The pairing satisfies $\mcb(\mu_{i,1} \tp \nu_{j,2}) =  (-1)^{|\mu_i| |\nu_j|} \mcb(\nu_{j,1} \tp \mu_{i,2})$. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Pivotal structure}  \label{pivotal_ss}   \label{pivotal_structure} 
@@ -9568,7 +9564,11 @@ We define
 \chi: &\mch^* \tp \mch \ra \cc\\
 & w^* \tp v \mapsto \delta_{vw}.
 \end{align}
-This is essentially the same as the bilinear pairing defined in \eqref{reflection_pairing_defn}, just with a different normalization, and ordering on the tensor factors 
+This is essentially the same as the bilinear pairing defined in \eqref{reflection_pairing_defn}, just with a different normalization, and ordering on the tensor factors. 
+Note that it has the following symmetries,
+\begin{align}
+\delta_{wv} = \chi(w^* \tp v)=(-1)^{|v| |w|} \chi(w^*_2 \tp v_1) = (-1)^{|v| |w|} \chi(v \tp w^*) = (-1)^{|v| |w|} \delta_{v^* w^{*}}
+\end{align}
 \dave{This difference in ordering may Koszul headaches later.}
 \ethan{Don't we usually have $\mch^*\cong\mch$ so that the difference is just a matter of labeling? However, might be best to dualize the definition of $\chi$}.
 \dave{What does it mean to dualize the definition of $\chi$?}
@@ -9848,7 +9848,6 @@ Secondly, since simple objects in $\mcc$ can have non-trivial endomorphism algeb
 Finally, spin structure considerations means that the pivot $P_e$ appearing in the definition of the fermionic 1-cell tensor $T_e$ has different properties 
 than the one appearing in the bosonic partition function. 
 
-\dave{stopping here. Will continue tomorrow.}
 
 %Except now one must of course define a sign ordering in the tensor product.
 %We again define the contraction in \eqref{contract}.
@@ -9929,27 +9928,51 @@ However, when evaluating the RHS,
 one has to be careful about Koszul sign issues when performing the tensor contraction induced by $\chi$. 
 When we contract out two tensor indices of a tensor in $\mch^*\tp\mch$, we must be careful to only perform 
 the contraction after the two tensor factors have been moved adjacent to one another in the tensor product. 
+
 \ethan{as Dave suggested, this should maybe go in defn sec}
-For example, suppose we have two tensors $X \in V_1 \tp \dots \tp V_n$ and $Y \in W_1\tp \dots \tp W_m$,
-defined by
+\dave{It may also be fine to leave here. I'm going to clean it up now.}
+Suppose we have two tensors $Q \in V_Q$ and $T\in V_T$,
+defined by,
 \begin{align}
-X = \sum_{x_i \in V_i}X(x_1 \tp x_2 \tp \cdots \tp x_n) x_1 \tp \cdots \tp x_n,\\
-Y = \sum_{y_i \in W_i}Y(y_1 \tp y_2 \tp \cdots \tp  y_m) y_1 \tp \cdots \tp y_m,
+Q &= \sum_{q_L \tp q \tp q_r } Q(q_L \tp q \tp q_R)q_L \tp q \tp q_R\\
+T &= \sum_{t_L \tp t \tp t_R} T(t_L \tp t \tp t_R  )t_L \tp t \tp t_R
+\end{align}
+and we have split the vector spaces $V_Q$ and $V_T$ into tensor factors on 
+the left and right of the two indices that we would like to contract, namely $t \in V$ and $q \in V^*$.
+Define the contracted tensor by $K$, which is given by
+\begin{align}
+K = \sum_{ q_L \tp q_R \tp t_L \tp t_R}K(q_L \tp q_R \tp t_L \tp t_R) q_L \tp q_R \tp t_L \tp t_R
 \end{align} 
-and suppose we want to contract over the indices $x_p$ and $y_q$ in the tensor $X\tp Y$, where $V_p \cong W_q^*$.
-If we denote the contracted tensor by $Z$,
-then 
+with 
 \begin{align}
-Z = \sum_{\substack{x_i \in V_i, i \neq p\\ y_j \in W_j, j \neq q}} Z(x_1 \tp \cdots \tp x_{p-1} \tp x_{p+1} \tp \cdots \tp x_n \tp y_1 \tp \cdots\tp y_{q-1} \tp y_{q+1} \tp \cdots \tp y_m) \\
-\times x_1 \tp \cdots \tp x_{p-1} \tp x_{p+1} \tp \cdots \tp x_n \tp y_1 \tp \cdots\tp y_{q-1} \tp y_{q+1} \tp \cdots \tp y_m
+K(q_L \tp q_R \tp t_L \tp t_R) &= \sum_{q,t} Q(q_L \tp q \tp q_R)R(t_L \tp t \tp t_R  ) (-1)^{|q| |q_r|}(-1)^{|t_L| | t|} \chi(q \tp t)\\
+&= \sum_{t} Q(q_L \tp t^* \tp q_R)R(t_L \tp t \tp t_R  ) (-1)^{|t|( |q_R| +|t_L|)}.
 \end{align}
-where 
-\begin{align} \label{contraction_example}
-Z(x_1 \tp \cdots \tp x_{p-1} \tp & x_{p+1} \tp \cdots \tp x_n \tp y_1 \tp \cdots\tp y_{q-1} \tp y_{q+1} \tp \cdots \tp y_m) \\ 
-=& \sum_{x_p \in V_p, y_q \in W_q}X(x_1 \tp \cdots \tp x_n)Y(y_1 \tp\cdots \tp  y_m) \\ & \qquad \times (-1)^{|x_p|(|x_{p+1}| + \cdots + |x_n|)} (-1)^{(|y_1| + \cdots + |y_{q-1}| ) |y_q|} \chi(x_p \tp y_q).
-\end{align}
-The Koszul signs appearing in the above equation are simply those acquired when re-ordering the tensor factors in $X \tp Y$ so that $x_p$ and $y_q$ appear in the order $x_p\tp y_q$, with no other 
-intervening tensor factors. 
+The Koszul sign $(-1)^{|t|( |q_R| +|t_L|)}$ is picked up from commuting the tensor factors $q$ and $t$ next to one another.
+
+
+
+
+%For example, suppose we have two tensors $X \in V_1 \tp \dots \tp V_n$ and $Y \in W_1\tp \dots \tp W_m$,
+%defined by
+%\begin{align}
+%X = \sum_{x_i \in V_i}X(x_1 \tp x_2 \tp \cdots \tp x_n) x_1 \tp \cdots \tp x_n,\\
+%Y = \sum_{y_i \in W_i}Y(y_1 \tp y_2 \tp \cdots \tp  y_m) y_1 \tp \cdots \tp y_m,
+%\end{align} 
+%and suppose we want to contract over the indices $x_p$ and $y_q$ in the tensor $X\tp Y$, where $V_p \cong W_q^*$.
+%If we denote the contracted tensor by $Z$,
+%then 
+%\begin{align}
+%Z = \sum_{\substack{x_i \in V_i, i \neq p\\ y_j \in W_j, j \neq q}} Z(x_1 \tp \cdots \tp x_{p-1} \tp x_{p+1} \tp \cdots \tp x_n \tp y_1 \tp \cdots\tp y_{q-1} \tp y_{q+1} \tp \cdots \tp y_m) \\
+%\times x_1 \tp \cdots \tp x_{p-1} \tp x_{p+1} \tp \cdots \tp x_n \tp y_1 \tp \cdots\tp y_{q-1} \tp y_{q+1} \tp \cdots \tp y_m
+%\end{align}
+%where 
+%\begin{align} \label{contraction_example}
+%Z(x_1 \tp \cdots \tp x_{p-1} \tp & x_{p+1} \tp \cdots \tp x_n \tp y_1 \tp \cdots\tp y_{q-1} \tp y_{q+1} \tp \cdots \tp y_m) \\ 
+%=& \sum_{x_p \in V_p, y_q \in W_q}X(x_1 \tp \cdots \tp x_n)Y(y_1 \tp\cdots \tp  y_m) \\ & \qquad \times (-1)^{|x_p|(|x_{p+1}| + \cdots + |x_n|)} (-1)^{(|y_1| + \cdots + |y_{q-1}| ) |y_q|} \chi(x_p \tp y_q).
+%\end{align}
+%The Koszul signs appearing in the above equation are simply those acquired when re-ordering the tensor factors in $X \tp Y$ so that $x_p$ and $y_q$ appear in the order $x_p\tp y_q$, with no other 
+%intervening tensor factors. 
 
 The Koszul signs that appear in this example arise when performing the tensor contraction induced by $\chi$ in the 
 partition function \eqref{simple_fermion_Z}.
