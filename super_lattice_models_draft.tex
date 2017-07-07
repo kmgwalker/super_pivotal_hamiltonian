@@ -385,6 +385,14 @@
 \newcommand{\TubeBasisdprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeBasisdprime.pdf}}}}}
 
 
+\newcommand{\TubeBasisaF}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubebasisaF.pdf}}}}}
+\newcommand{\TubeBasisbF}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubebasisbF.pdf}}}}}
+\newcommand{\TubeBasiscF}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubebasiscF.pdf}}}}}
+\newcommand{\TubeBasisdF}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubebasisdF.pdf}}}}}
+
+
+
+
 \newcommand{\gxyaj}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{gxyaj.pdf}}}}}
 \newcommand{\hxyai}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{hxyai.pdf}}}}}
 
@@ -431,7 +439,7 @@
 \newcommand{\minimalBosonic}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{minimalBosonic.pdf}}}}}
 
 \newcommand{\minimalBosonicRHS}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{minimalBosonicRHS.pdf}}}}}
-
+\newcommand{\ftubefOddRHS}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{ftubefOddRHS.pdf}}}}}
 
 
 
@@ -4260,6 +4268,201 @@ that we prove in Section \ref{double_fermionic_quotient}), we have
 \be \mcd_{\tube(\mcc/\psi)} = \sqrt{2}\mcd^2_{\mcc/\psi}.\ee
 For example, in the $C_2$ theory this is verified by $\mcd_{\tube(C_2)} = \sqrt{8} = \sqrt{2} (\sqrt{2})^2 = \sqrt{2} \mcd^2_{C_2}.$
 
+\subsubsection{\dave{May salvage some material from this, but otherwise may be removed.}}
+
+
+%First, any string net configuration of the parent theory descends to a string net configuration of the condensed theory.
+In particular, we have two functors
+\be
+	\varphi_B : \tube(\mcc) \rightarrow \tube^B(\mcc/\psi)
+\ee
+and
+\be
+	\varphi_N : \tube(\mcc) \rightarrow \tube^N(\mcc/\psi) .
+\ee
+%giving us a functor $\tube(\mcc) \rightarrow \tube(\mcc/\psi)$.
+%Conversely, we can always take an even morphism in $\mcc/\psi$ and lift it to $\mcc$, giving 
+%us a way from lifting tubes in $\tube(\mcc/\psi)$ to those in $\tube(\mcc)$.
+%These two facts allow us to find the minimal idempotents of the quotient theory, 
+%using the minimal idempotents of the parent theory.
+
+
+
+%\dave{I haven't checked the above, will come back to it.}
+%\kw{Looks OK to me.}
+
+The proof of the theorem splits into two parts. 
+We first compute the images of the minimal idempotents in $\tube(\mcc/\psi)$ under condensation
+and show that these images provide us with a complete set of minimal idempotents in the condensed theory.
+Next we define a tensor functor from $\mcc \times \overline{\mcc/\psi} $ to $\tube(\mcc/\psi)$ and
+show that it is an isomorphism of tensor categories.
+%thus showing that $\tube(\mcc/\psi) \cong \mcc \times \overline{\mcc/\psi}$ as tensor categories.
+
+Recall that the endomorphisms of the trivial object in $\tube(\mcc)$ form a commutative algebra
+isomorphic to the fusion ring of $\mcc$, and that the $\omega$ loops are the minimal idempotents of this algebra.
+We define two non-minimal idempotents in this algebra,
+\begin{align}  \label{aJloop}
+	a_B = \frac{1}{2}(\text{cl}(\unit) + \text{cl}(\psi)), \;\;\;\;   a_N = \frac{1}{2}(\text{cl}(\unit) - \text{cl}(\psi)),
+\end{align}
+where as before $\text{cl}(x)$ denotes a closed up $x$ strand embedded in a solid torus.
+These two idempotents are orthogonal (i.e.\ $a_I\cdot a_J = \delta_{IJ}a_I$), and $a_B + a_N = \id$.
+
+Placing $a_J$ behind a tube diagram yields a functor $\hat{a}_J : \tube(\mcc) \to \tube(\mcc)$
+\begin{align}  \label{aJ_projector}
+	\hat{a}_J \left( \TubeBasisa \right) = \TubeProject .
+\end{align}
+We have a decomposition of $\tube(\mcc)$ into two summands, $\hat{a}_B(\tube(\mcc))$ and $\hat{a}_N(\tube(\mcc))$.
+%Thus we have a decomposition of $\tube(\mcc)$ into two summands, $\tube(\mcc)\bullet a_B$ and $\tube(\mcc)\bullet a_N$.
+%In pictures, tensoring with $a_J$ looks like
+%\begin{align}  \label{aJ_projector}
+%	\TubeBasisa \bullet a_J = \TubeProject.
+%\end{align}
+We also have
+\be
+	\varphi_I(a_J) = \delta_{IJ} \id ,
+\ee
+which implies that $\varphi_B\circ\hat a_N$ and $\varphi_N\circ\hat a_B$ are both the zero functor.
+On the other hand, we have:
+%$\varphi_B\circ\hat a_B$ and $\varphi_N\circ\hat a_N$ are both faithful:
+%It follows that the summand $\tube(\mcc)\bullet a_B$ maps to zero when included in $\tube^N(\mcc/\psi)$,
+%and the summand $\tube(\mcc)\bullet a_N$ maps to zero when included in $\tube^B(\mcc/\psi)$.
+%With a little more work, we can show that $\tube(\mcc)\bullet a_J$ maps faithfully (injectively) into
+%$\tube^J(\mcc/\psi)$ under the functor $\varphi_J$.
+%
+%\kw{not satisfied with above; will rewrite soon}
+
+\begin{comment} %%%%%%%%%%%%%%%%
+
+The image of the idempotents in $\tube(\mcc)$ under condensation can be found with the help of 
+two projectors $a_B,a_N$ which sum to the identity, and are defined to act on morphisms in $\tube(\mcc/\psi)$. 
+They are defined as
+\begin{align}
+a_B = \frac{1}{2}(\text{cl}(\unit) + \text{cl}(\psi)), \;\;\;\;   a_N = \frac{1}{2}(\text{cl}(\unit) - \text{cl}(\psi)),
+\label{aJloop}
+\end{align}
+where as before, $\text{cl}(x)$ denotes a closed up $x$ strand embedded in a solid torus.
+Importantly, they satisfy $a_J \tp a_W = \delta_{JW} a_J$ and $a_B + a_N = \text{cl}(\unit)$\footnote{
+By ${\rm cl}(a)\tp{\rm cl}(b)$, we mean ${\rm cl}(a\tp b)$.}.
+Also, from the definition of the $\omega$ loop we note that $\omega\tp a_J = \delta_{J,B}\omega$. 
+Notice that an $a_J$ loop encircling a tube with spin structure $J$ is the identity, while an $a_J$ loop 
+on a tube with spin structure $W \neq J$ projects the tube to zero.
+That is, 
+\begin{align}
+\SpinStructureProjector = \delta_{JW}\; \EmptyTubeW \in \tube^W(\mcc/\psi),
+\end{align}
+where $W$ on the interior of the gray disc denotes the spin structure for the disc it bounds.
+
+The projectors can also be defined to act on morphisms in $\tube(\mcc)$. In this setting we will denote 
+them as $\hat{a}_B$ and $\hat{a}_N$. 
+On general morphisms in $\tube(\mcc)$, they act as 
+\begin{align}
+\hat{a}_J \cdot \TubeBasisa = \TubeProject.
+\label{aJ_projector}
+\end{align}
+
+
+The $\hat{a}_J$ projectors allow us to determine which idempotents in $\tube(\mcc)$ survive the projection 
+to $\tube(\mcc/\psi)$:
+a non-zero tube in $\tube(\mcc)$ in the image of $\hat{a}_J$ remains non-zero under condensation as a tube in $\tube^J(\mcc/\psi)$. 
+We make this precise in the following lemma:
+
+\end{comment} %%%%%%%%%%%%%%%%
+
+
+\begin{lemma}  \label{image_aJ}
+The functors $\varphi_B\circ\hat a_B$ and $\varphi_N\circ\hat a_N$ are both faithful (i.e.\ injective on morphism spaces).
+\end{lemma}
+
+%\begin{lemma}
+%\label{image_aJ}
+%Let $\mcc$ be a modular tensor category and $\psi$ a fermion in $\mcz(\mcc)$ as defined in \ref{lift_and_condense}.
+%Let $\hat{a}_J$ be as defined in \eqref{aJ_projector}.
+%Then there exists a functor 
+%\[\begin{tikzcd}        
+%   I: \hat{a}_J \cdot \tube(\mcc) \rightarrow \tube^J(\mcc/\psi)
+%\end{tikzcd}\]
+%which is faithful, meaning that morphisms in $\hat{a}_J\cdot\tube(\mcc)$ are mapped injectively to morphisms in $\tube^J(\mcc/\psi)$. 
+%\ethan{may still need to be rephrased}
+%In particular, a tube of $\tube(\mcc)$ that is not mapped to zero by $\hat{a}_J$ is nonzero in the image of $I$. 
+%\end{lemma}
+
+\kw{I'm skipping the proof of the lemma; will come back later}
+
+\begin{proof}
+The proof follows from a simple observation.
+Let $t \in \tube(\mcc)$ be in the image of $\hat{a}_J$ so that, 
+\begin{align}
+\left \langle\; \Tubeidr,\Tuberr \; \right \rangle_{\tube(\mcc)} &=\left \langle\; \Tubeidr,\TuberraJ \; \right \rangle_{\tube(\mcc)}  \\
+&= \frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^{s(J)} \TuberrTraceCo  \right \rangle_{\mcc}
+\end{align}
+The first step follows from $t$ being in the image of the projector $\hat{a}_J$, 
+while the second step follows from the definition of the inner product in the tube category 
+(written as $\langle,\rangle_{\tube(\mcc)}$, which is discussed in Section \ref{qdims_and_traces}). 
+The angle brackets with subscript $\mcc$ in the second line means that we evaluate the picture on 
+the two-sphere using local relations in $\mcc$.
+As before, we have defined $s(J)= 0$ if $J$ is bounding and $s(J)=1$ otherwise.
+
+Since any net configuration in $\mcc$ evaluated on $S^2$ agrees with the evaluation in $\mcc/\psi$ we have,
+\begin{align}
+\frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^{s(J)} \TuberrTraceCo  \right \rangle_{\mcc} &=\frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^{s(J)} \TuberrTraceCo  \right \rangle_{\mcc/\psi} \\
+&= \frac{1}{2} \left \langle\; \Tubeidr,\Tuberr \; \right \rangle_{\tube^J(\mcc/\psi)},
+\end{align}
+where we have again used the definition of the trace. 
+Hence, if $X,Y \in \tube(\mcc)$ are in the image of $\hat{a}_J$, then $\langle X, Y \rangle = \langle \unit, X^* Y\rangle$. 
+Using that $\tube(\mcc)$ is semi-simple, and that the $t \in \tube(\mcc)$ above span all 
+morphisms of $\tube(\mcc)$, we can always find an isomorphism such that $t \cong X^*Y$.
+\ethan{I'm confused by the last two sentences and why we need them}
+\dave{If a tube $X$ is non-zero in $\tube(\mcc)$, then $\langle X, X\rangle$ is non-zero (I'm assuming the 
+inner product is non-degenerate for both $\tube(\mcc)$ and $\tube(\mcc/\psi)$. 
+Not all tubes in $\tube(\mcc)$ look like $t$ above, so we need to say that they are all isomorphic 
+to one that looks like $t$. 
+I think that in order for that to be true $\tube(\mcc)$ should be semi-simple, 
+but this I'm not certain of.
+}
+From the previous equation we have that $\langle X, Y \rangle_{\tube(\mcc)} = \frac{1}{2} \langle X, Y \rangle_{\tube^J(\mcc/\psi)}$.
+Since the the inner product is non-degenerate \ethan{did we prove this?}
+\dave{No, not yet.
+I assumed in the next re-write of the inner product section we would either mention it's non-degenerate with a reference, or prove it.
+Otherwise we could re-word the above.}, the inclusion of $\hat{a}_J\cdot\tube(\mcc)$ into $\tube^J(\mcc/\psi)$ is injective on morphisms.
+\end{proof}
+
+
+
+Let's now apply the $\hat a_J$ functors to the idempotents in the parent theory $\tube(\mcc)$. 
+%Define the image of $e_{xy}$ under condensation to be $f^J_{xy}$. 
+Define
+\be
+	f^J_{xy} = \varphi_J(e_{xy}) .
+\ee
+Using that $\omega \cdot a_J = \delta_{JB} \omega$, we can replace the $\omega$ appearing in $e_{xy}$ with $a_B \cdot \omega$. 
+We can next pass the $a_B$ through the $y$ strand sitting between the $\omega$ loop and the back wall. 
+Doing so permutes $a_B$ and $a_N$ if $y$ has nontrivial braiding with $\psi$.
+Otherwise $a_B$ remains unchanged (if $y$ braids trivially with $\psi$). 
+Diagrammatically, 
+\begin{align}
+e_{xy} =  \TubeIdempotentTwoStrand= \exyomegaa = \begin{cases}
+\exyomegac& \text{if}\; \nu_y = 0 \\
+\\
+\exyomegab& \text{if}\; \nu_y =1
+\end{cases},
+\end{align}
+\kw{We can also see the above more directly, since we are free to insert $a_J$ in an annular diagram with spin structure $J$.}
+where the indicator $\nu_y$ is defined as before by $\nu_y=0$ if $y$ braids trivially with $\psi$, and $\nu_y=1$ otherwise. 
+This means that each $e_{xy}$ has an image in $\tube(\mcc/\psi)$ given by
+\begin{align}
+e_{xy} \xrightarrow{\text{condense $\psi$}}f_{xy}^{J(y)} \quad \quad \text{with $J(y) = B$ if $\nu_y = 0$ and $J(y) = N$ otherwise}
+\label{image_of_exy}
+\end{align}
+\kw{Is previous statement redundant?}
+In the following we will sometimes write just $J$ instead of $J(y)$. 
+Since the $e_{xy}$ are complete, orthogonal and non-zero then by using the Lemma \ref{image_aJ}
+we also have that the $f^J_{xy}$ are complete, orthogonal and non-zero\footnote{they are complete since all the non-zero even 
+tubes in the condensed theory lift to non-zero tubes in the parent theory, meaning that we are not ``missing'' any 
+idempotents after projecting the idempotents in the parent theory to the condensed theory.}.
+Note that the inclusion of the image of $\hat{a}_J$ in $\tube^J(\mcc/\psi)$ is not surjective: 
+indeed, tubes that have $\psi$ lines terminating on the interior of the tube do not appear in $\tube(\mcc)$.
+For example a tube with a q-type strand could always have a $\psi$ line extending from it and terminating on the back wall.
+Hence, we also need to show that the resulting idempotents are minimal.
 
 
 %%%%%%%%%%%%%%%%%
@@ -5207,24 +5410,11 @@ In the following subsection we will state and prove an analogous theorem for $\t
 
 In this subsection we prove that $\tube(\mcc/\psi) \cong \mcc \times \overline{\mcc/\psi}$ as tensor categories
 when $\psi$ is a fermion satisfying conditions of \ref{gntf_condense} and $\mcc$ is a modular tensor category.
-%We also hypothesize about the analogous theorem for a braided tensor functor, 
-%but the proof is beyond the scope of this paper.
-%\kw{Let's see if we can make a statement about braiding that we are confident of.
-%Otherwise, maybe drop the speculation.}
-%\dave{Shall we drop the speculation?}
 
-To get insights on the relation between $\tube(\mcc/\psi)$ and the data of $\mcc$, we will need to find the minimal idempotents of the condensed theory.
-These follow from a few observations. 
-First, any string net configuration of the parent theory descends to a string net configuration of the condensed theory.
-In particular, we have two functors
-\be
-	\varphi_B : \tube(\mcc) \rightarrow \tube^B(\mcc/\psi)
-\ee
-and
-\be
-	\varphi_N : \tube(\mcc) \rightarrow \tube^N(\mcc/\psi) .
-\ee
-%giving us a functor $\tube(\mcc) \rightarrow \tube(\mcc/\psi)$.
+To gain insights on the relation between $\tube(\mcc/\psi)$ and $\mcc$, 
+we will need to find the minimal idempotents of the condensed theory; 
+useful quantities in their own right.
+Progress is made by noticing that any string net configuration of the parent theory descends to a string net configuration of the condensed theory.
 Conversely, we can always take an even morphism in $\mcc/\psi$ and lift it to $\mcc$, giving 
 us a way from lifting tubes in $\tube(\mcc/\psi)$ to those in $\tube(\mcc)$.
 These two facts allow us to find the minimal idempotents of the quotient theory, 
@@ -5260,200 +5450,90 @@ Using the isomorphism $\tube(\mcc) \cong \mcc \times \bar\mcc$, we can embed
 $\psi \in \sob(\mcc)$ into $\tube(\mcc)$ by $\psi \mapsto \tilde\psi$, where $\tilde\psi \cong \unit \times \psi$. This means that as tensor categories, 
 \be \tube(\mcc/\psi) \cong \tube(\mcc) / \tilde\psi,\ee
 showing that fermion condensation commutes with constructing the tube category.
-\dave{I haven't checked the above, will come back to it.}
-\kw{Looks OK to me.}
 
-The proof of the theorem splits into two parts. 
-We first compute the images of the minimal idempotents in $\tube(\mcc/\psi)$ under condensation
-and show that these images provide us with a complete set of minimal idempotents in the condensed theory.
-Next we define a tensor functor from $\mcc \times \overline{\mcc/\psi} $ to $\tube(\mcc/\psi)$ and
-show that it is an isomorphism of tensor categories.
-%thus showing that $\tube(\mcc/\psi) \cong \mcc \times \overline{\mcc/\psi}$ as tensor categories.
 
-Recall that the endomorphisms of the trivial object in $\tube(\mcc)$ form a commutative algebra
-isomorphic to the fusion ring of $\mcc$, and that the $\omega$ loops are the minimal idempotents of this algebra.
-We define two non-minimal idempotents in this algebra,
-\begin{align}  \label{aJloop}
-	a_B = \frac{1}{2}(\text{cl}(\unit) + \text{cl}(\psi)), \;\;\;\;   a_N = \frac{1}{2}(\text{cl}(\unit) - \text{cl}(\psi)),
-\end{align}
-where as before $\text{cl}(x)$ denotes a closed up $x$ strand embedded in a solid torus.
-These two idempotents are orthogonal (i.e.\ $a_I\cdot a_J = \delta_{IJ}a_I$), and $a_B + a_N = \id$.
-
-Placing $a_J$ behind a tube diagram yields a functor $\hat{a}_J : \tube(\mcc) \to \tube(\mcc)$
-\begin{align}  \label{aJ_projector}
-	\hat{a}_J \left( \TubeBasisa \right) = \TubeProject .
-\end{align}
-We have a decomposition of $\tube(\mcc)$ into two summands, $\hat{a}_B(\tube(\mcc))$ and $\hat{a}_N(\tube(\mcc))$.
-%Thus we have a decomposition of $\tube(\mcc)$ into two summands, $\tube(\mcc)\bullet a_B$ and $\tube(\mcc)\bullet a_N$.
-%In pictures, tensoring with $a_J$ looks like
-%\begin{align}  \label{aJ_projector}
-%	\TubeBasisa \bullet a_J = \TubeProject.
-%\end{align}
-We also have
-\be
-	\varphi_I(a_J) = \delta_{IJ} \id ,
-\ee
-which implies that $\varphi_B\circ\hat a_N$ and $\varphi_N\circ\hat a_B$ are both the zero functor.
-On the other hand, we have:
-%$\varphi_B\circ\hat a_B$ and $\varphi_N\circ\hat a_N$ are both faithful:
-%It follows that the summand $\tube(\mcc)\bullet a_B$ maps to zero when included in $\tube^N(\mcc/\psi)$,
-%and the summand $\tube(\mcc)\bullet a_N$ maps to zero when included in $\tube^B(\mcc/\psi)$.
-%With a little more work, we can show that $\tube(\mcc)\bullet a_J$ maps faithfully (injectively) into
-%$\tube^J(\mcc/\psi)$ under the functor $\varphi_J$.
-%
-%\kw{not satisfied with above; will rewrite soon}
-
-\begin{comment} %%%%%%%%%%%%%%%%
-
-The image of the idempotents in $\tube(\mcc)$ under condensation can be found with the help of 
-two projectors $a_B,a_N$ which sum to the identity, and are defined to act on morphisms in $\tube(\mcc/\psi)$. 
-They are defined as
+We prove the theorem by finding an invertible tensor functor $E:\mcc \times \overline{\mcc/\psi} \rightarrow \tube(\mcc/\psi)$.
+It is given by
 \begin{align}
-a_B = \frac{1}{2}(\text{cl}(\unit) + \text{cl}(\psi)), \;\;\;\;   a_N = \frac{1}{2}(\text{cl}(\unit) - \text{cl}(\psi)),
-\label{aJloop}
+\xymatrix @!0 @M=2mm @R=15mm @C=48mm{
+ &E: \; \; \mcc \times \overline{\mcc/\psi} \ar[r]            & \tube(\mcc/\psi) & \\
+		  &\;\;\;\;\; \left(\;  \EFunctora
+\;,\;\EFunctorb \; \right)\;  \ar@{|->}[r] &\EFunctorc_{J(y)}&
+		  }
+		  \label{FunctorCxCtoTubeC}
 \end{align}
-where as before, $\text{cl}(x)$ denotes a closed up $x$ strand embedded in a solid torus.
-Importantly, they satisfy $a_J \tp a_W = \delta_{JW} a_J$ and $a_B + a_N = \text{cl}(\unit)$\footnote{
-By ${\rm cl}(a)\tp{\rm cl}(b)$, we mean ${\rm cl}(a\tp b)$.}.
-Also, from the definition of the $\omega$ loop we note that $\omega\tp a_J = \delta_{J,B}\omega$. 
-Notice that an $a_J$ loop encircling a tube with spin structure $J$ is the identity, while an $a_J$ loop 
-on a tube with spin structure $W \neq J$ projects the tube to zero.
-That is, 
+Where $J(y) = B$ is $\nu_y = 0$ and $J(y) = N$ if $\nu_y=1$.
+This is clearly a functor, it preserves the identity and morphisms in an obvious way. 
+To show that $E$ is a an invertible tensor functor we need to show two things: 
+\begin{enumerate} 
+\item if $\{a_i \}$ and $\{f_j \}$ are a complete set of minimal idempotents for $\mcc $ and $ \overline{\mcc / \psi }$ respectively, then so are $\{ E(a_i, f_j) \}$ for $\tube(\mcc/\psi)$
+\item  $E$ is a tensor functor %so that $V^{e_i e_j}_{e_k} \tp V^{f_s f_t}_{f_w} \cong V^{E(e_i,f_s) E(e_j,f_t)}_{E(e_k,f_w)}$
+\end{enumerate} 
+
+
+
+We first establish that  $\{ E(a_i, f_j) \}$ are a complete set of minimal idempotents for $\tube(\mcc/\psi)$.
+This is done in three parts, first we show completeness, followed by minimality, and lastly that the idempotents are non-zero. 
+A complete basis of morphisms for $\tube(\mcc/\psi)$ is given by
 \begin{align}
-\SpinStructureProjector = \delta_{JW}\; \EmptyTubeW \in \tube^W(\mcc/\psi),
+ \mcd^2 \times \TubeBasisaF_J, 
+ \end{align}
+where the normalization has $\mcd^2$ has been introduced for convenience. 
+The label $\alpha$ is either $\unit$
+if the tube has even fermion parity and $ t \in \bigoplus_x V^{x b x^*}_{a} $, 
+or it denotes a $\psi$ line terminating on the back wall and the tube has odd fermion parity with $t \in \bigoplus_x V^{x b x^*}_{a \tp \psi} $.
+ It follows from \eqref{idempotent_complete} that,
+ \begin{align}
+\mcd^2 \times \TubeBasisaF_J
+ =  
+\sum_{\substack{x,y \in \sob(\mcc) \\
+\mu =1,\cdots, N^{xy}_a \\
+\nu =1,\cdots, N_{xy}^b}
+}C_{t; xy\mu\nu} \times 
+\TubeBasisdF_J
 \end{align}
-where $W$ on the interior of the gray disc denotes the spin structure for the disc it bounds.
+for some coefficients $C_{t; xy \mu \nu}$.
+Next we replace $y$ with its image under condensation.
+If $y$ is in $\mcc/\psi$ then no furthur work is required. 
+If $y$ is oddly isomorphic to a particle in $\mcc/\psi$, then we have to replace $y$ with 
+This results in a pair of odd isomorphisms at the trivalent junctions if $y$ fell out of $\sob(\mcc/\psi)$, otherwise no change.
+\dave{Will add picture.}
+Therefore, any morphism $t \in \tube(\mcc/\psi)$ can be written as,
+\begin{align} 
+t = \sum_{k} x_k \cdot E(e_{i_k},f_{j_k} ) \cdot y_{k}
+\end{align}
+hence, the $\{ E(e_i, f_j) \}$ are complete. 
 
-The projectors can also be defined to act on morphisms in $\tube(\mcc)$. In this setting we will denote 
-them as $\hat{a}_B$ and $\hat{a}_N$. 
-On general morphisms in $\tube(\mcc)$, they act as 
+We now establish that the the set of idempotents $\{ E(e_i, f_j) \} $ are non-zero.
+%Re-writing $\omega = \frac{1 }{\mcd^2}  \sum_{x \in \mcc}  d_{x} \text{cl}(e_i) =  \frac{1 }{\mcd^2} \sum_{x \in \mcc/\psi }\frac{d_{x}}{\text{dim End}(x)}(\text{cl}( \unit) + \text{cl}(\psi) ) \cdot  \text{cl}(x)$.
+\dave{Will come back to this after going through the trace section}
+Using the trace defined in \eqref{trace} we have,
 \begin{align}
-\hat{a}_J \cdot \TubeBasisa = \TubeProject.
-\label{aJ_projector}
+\tr \left ( E(x,y) \right) = \tr \left( \TubeIdempotentTwoStrand_{J(y)} \right) =(1+ (-1)^{s(J)}(-1)^{\nu_y})d_x d_y 
 \end{align}
+which is non-zero so long as $s(J) = \nu_y$, as is the case in \eqref{FunctorCxCtoTubeC}.
 
-
-The $\hat{a}_J$ projectors allow us to determine which idempotents in $\tube(\mcc)$ survive the projection 
-to $\tube(\mcc/\psi)$:
-a non-zero tube in $\tube(\mcc)$ in the image of $\hat{a}_J$ remains non-zero under condensation as a tube in $\tube^J(\mcc/\psi)$. 
-We make this precise in the following lemma:
-
-\end{comment} %%%%%%%%%%%%%%%%
-
-
-\begin{lemma}  \label{image_aJ}
-The functors $\varphi_B\circ\hat a_B$ and $\varphi_N\circ\hat a_N$ are both faithful (i.e.\ injective on morphism spaces).
-\end{lemma}
-
-%\begin{lemma}
-%\label{image_aJ}
-%Let $\mcc$ be a modular tensor category and $\psi$ a fermion in $\mcz(\mcc)$ as defined in \ref{lift_and_condense}.
-%Let $\hat{a}_J$ be as defined in \eqref{aJ_projector}.
-%Then there exists a functor 
-%\[\begin{tikzcd}        
-%   I: \hat{a}_J \cdot \tube(\mcc) \rightarrow \tube^J(\mcc/\psi)
-%\end{tikzcd}\]
-%which is faithful, meaning that morphisms in $\hat{a}_J\cdot\tube(\mcc)$ are mapped injectively to morphisms in $\tube^J(\mcc/\psi)$. 
-%\ethan{may still need to be rephrased}
-%In particular, a tube of $\tube(\mcc)$ that is not mapped to zero by $\hat{a}_J$ is nonzero in the image of $I$. 
-%\end{lemma}
-
-\kw{I'm skipping the proof of the lemma; will come back later}
-
-\begin{proof}
-The proof follows from a simple observation.
-Let $t \in \tube(\mcc)$ be in the image of $\hat{a}_J$ so that, 
-\begin{align}
-\left \langle\; \Tubeidr,\Tuberr \; \right \rangle_{\tube(\mcc)} &=\left \langle\; \Tubeidr,\TuberraJ \; \right \rangle_{\tube(\mcc)}  \\
-&= \frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^{s(J)} \TuberrTraceCo  \right \rangle_{\mcc}
-\end{align}
-The first step follows from $t$ being in the image of the projector $\hat{a}_J$, 
-while the second step follows from the definition of the inner product in the tube category 
-(written as $\langle,\rangle_{\tube(\mcc)}$, which is discussed in Section \ref{qdims_and_traces}). 
-The angle brackets with subscript $\mcc$ in the second line means that we evaluate the picture on 
-the two-sphere using local relations in $\mcc$.
-As before, we have defined $s(J)= 0$ if $J$ is bounding and $s(J)=1$ otherwise.
-
-Since any net configuration in $\mcc$ evaluated on $S^2$ agrees with the evaluation in $\mcc/\psi$ we have,
-\begin{align}
-\frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^{s(J)} \TuberrTraceCo  \right \rangle_{\mcc} &=\frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^{s(J)} \TuberrTraceCo  \right \rangle_{\mcc/\psi} \\
-&= \frac{1}{2} \left \langle\; \Tubeidr,\Tuberr \; \right \rangle_{\tube^J(\mcc/\psi)},
-\end{align}
-where we have again used the definition of the trace. 
-Hence, if $X,Y \in \tube(\mcc)$ are in the image of $\hat{a}_J$, then $\langle X, Y \rangle = \langle \unit, X^* Y\rangle$. 
-Using that $\tube(\mcc)$ is semi-simple, and that the $t \in \tube(\mcc)$ above span all 
-morphisms of $\tube(\mcc)$, we can always find an isomorphism such that $t \cong X^*Y$.
-\ethan{I'm confused by the last two sentences and why we need them}
-\dave{If a tube $X$ is non-zero in $\tube(\mcc)$, then $\langle X, X\rangle$ is non-zero (I'm assuming the 
-inner product is non-degenerate for both $\tube(\mcc)$ and $\tube(\mcc/\psi)$. 
-Not all tubes in $\tube(\mcc)$ look like $t$ above, so we need to say that they are all isomorphic 
-to one that looks like $t$. 
-I think that in order for that to be true $\tube(\mcc)$ should be semi-simple, 
-but this I'm not certain of.
-}
-From the previous equation we have that $\langle X, Y \rangle_{\tube(\mcc)} = \frac{1}{2} \langle X, Y \rangle_{\tube^J(\mcc/\psi)}$.
-Since the the inner product is non-degenerate \ethan{did we prove this?}
-\dave{No, not yet.
-I assumed in the next re-write of the inner product section we would either mention it's non-degenerate with a reference, or prove it.
-Otherwise we could re-word the above.}, the inclusion of $\hat{a}_J\cdot\tube(\mcc)$ into $\tube^J(\mcc/\psi)$ is injective on morphisms.
-\end{proof}
-
-
-
-Let's now apply the $\hat a_J$ functors to the idempotents in the parent theory $\tube(\mcc)$. 
-%Define the image of $e_{xy}$ under condensation to be $f^J_{xy}$. 
-Define
-\be
-	f^J_{xy} = \varphi_J(e_{xy}) .
-\ee
-Using that $\omega \cdot a_J = \delta_{JB} \omega$, we can replace the $\omega$ appearing in $e_{xy}$ with $a_B \cdot \omega$. 
-We can next pass the $a_B$ through the $y$ strand sitting between the $\omega$ loop and the back wall. 
-Doing so permutes $a_B$ and $a_N$ if $y$ has nontrivial braiding with $\psi$.
-Otherwise $a_B$ remains unchanged (if $y$ braids trivially with $\psi$). 
-Diagrammatically, 
-\begin{align}
-e_{xy} =  \TubeIdempotentTwoStrand= \exyomegaa = \begin{cases}
-\exyomegac& \text{if}\; \nu_y = 0 \\
-\\
-\exyomegab& \text{if}\; \nu_y =1
-\end{cases},
-\end{align}
-\kw{We can also see the above more directly, since we are free to insert $a_J$ in an annular diagram with spin structure $J$.}
-where the indicator $\nu_y$ is defined as before by $\nu_y=0$ if $y$ braids trivially with $\psi$, and $\nu_y=1$ otherwise. 
-This means that each $e_{xy}$ has an image in $\tube(\mcc/\psi)$ given by
-\begin{align}
-e_{xy} \xrightarrow{\text{condense $\psi$}}f_{xy}^{J(y)} \quad \quad \text{with $J(y) = B$ if $\nu_y = 0$ and $J(y) = N$ otherwise}
-\label{image_of_exy}
-\end{align}
-\kw{Is previous statement redundant?}
-In the following we will sometimes write just $J$ instead of $J(y)$. 
-Since the $e_{xy}$ are complete, orthogonal and non-zero then by using the Lemma \ref{image_aJ}
-we also have that the $f^J_{xy}$ are complete, orthogonal and non-zero\footnote{they are complete since all the non-zero even 
-tubes in the condensed theory lift to non-zero tubes in the parent theory, meaning that we are not ``missing'' any 
-idempotents after projecting the idempotents in the parent theory to the condensed theory.}.
-Note that the inclusion of the image of $\hat{a}_J$ in $\tube^J(\mcc/\psi)$ is not surjective: 
-indeed, tubes that have $\psi$ lines terminating on the interior of the tube do not appear in $\tube(\mcc)$.
-For example a tube with a q-type strand could always have a $\psi$ line extending from it and terminating on the back wall.
-Hence, we also need to show that the resulting idempotents are minimal.
-
-
-Showing that the $f_{xy}^J$ are indeed minimal is done 
-as before by showing that $f_{xy}^J \tube(\mcc/\psi) f_{xy}^J$ is a simple algebra, i.e. 
-that it contains no nontrivial subalgebras. 
-\dave{I'm confused since we show that it can be isomorphic to $\cc^{0|1}$.
-How do we modify this to a correct statement?
-Before we had said `minimal if $f_{xy}^J \tube(\mcc/\psi) f_{xy}^J$ is one-dimensional', but I didn't like this either since $\cc^{1|1}$ is two dimensional.
-}
-\ethan{note to self: if you fix representatives in each class, you always get a simple algebra}
+Now we show that the $\{ E(e_i, f_j) \}$ are minimal. 
+We do this by showing that $E(x,y) \cdot \tube(\mcc/\psi) \cdot E(x',y')$ is either one dimensional, in which case $E(x,y)$ is an m-type idempotent, 
+or $\cc^{1|1} $ dimensional in which case $E(x,y)$ a q-type idempotent.
+% is a simple algebra, i.e. 
+%that it contains no nontrivial subalgebras. 
+%\dave{I'm confused since we show that it can be isomorphic to $\cc^{0|1}$.
+%How do we modify this to a correct statement?
+%Before we had said `minimal if $f_{xy}^J \tube(\mcc/\psi) f_{xy}^J$ is one-dimensional', but I didn't like this either since $\cc^{1|1}$ is two dimensional.
+%}
+%\ethan{note to self: if you fix representatives in each class, you always get a simple algebra}
 By the spine lemma, 
-a generic element of $f_{xy}^J \tube(\mcc/\psi) f_{xy}^J$ can be written as
+a generic element of $E(x,y) \cdot \tube(\mcc/\psi) \cdot E(x',y')$ can be written as
 \begin{align}
-\fTubefOdd, \quad \quad \delta \in V^{x}_{xc}, \; \rho \in V^{y\tp \alpha}_{c' y}, \; \sigma \in V^{cc'}_r, \; \kappa \in V^{pr}_p
+\fTubefOdd = \ftubefOddRHS, \quad \quad \delta \in V^{x}_{xc}, \; \rho \in V^{y\tp \alpha}_{c' y}, \; \sigma \in V^{cc'}_r, \; \kappa \in V^{pr}_p
 \label{MinimalProof}
 \end{align}
 where we have suppressed the spin structure index (the spin structure is determined by $y$; 
-recall \eqref{image_of_exy}), with all vector spaces appearing being written in terms of the 
-parent theory, $\mcc$, and $\alpha$ is either $\unit$ or $\psi$ denoting whether the tube is 
+recall \eqref{FunctorCxCtoTubeC}), 
+with all vector spaces appearing being written in terms of the 
+parent theory, $\mcc$, 
+and $\alpha$ is either $\unit$ or $\psi$ denoting whether the tube is 
 even or odd in $\tube^J(\mcc/\psi)$.
 The no tadpole theorem guarenties that $r \cong \unit$ and consequently that $c \cong c'$, 
 and that the loop traversing the annulus parallel to $\omega$ labeled $p$ can be removed at 
@@ -5461,10 +5541,10 @@ the expense of multiplying by its quantum dimension $d_p$.
 Lastly, we can use property (c) of Table \ref{omega_loop_properties} to slide the lower $\omega$ 
 loop around the line connecting $x$ and $y$ labeled by $c$ (which is isomorphic to $c'$ by the above).
 Using property (a) of \ref{omega_loop_properties} we see that both $c \cong c' \cong \unit$.
-If $\alpha \cong \psi$ then we require $y \tp \psi \cong y$.
+If $\alpha \cong \psi$ then we require $y \tp \psi \cong y'$.
 Using this, along with the orthogonality of the idempotents we have,
 \begin{align}
-f_{xy}^J \tube(\mcc/\psi) f_{x' y'}^J \cong
+E(x,y) \cdot \tube(\mcc/\psi) \cdot E(x',y') \cong
 \begin{cases}
 \cc^{1|0}& \text{if}\; x \cong x' \; \text{and}\; y \cong y' \\
 \cc^{0|1}& \text{if}\; x \cong x' \; \text{and}\; y \cong \psi \tp y'  \\
@@ -5472,38 +5552,24 @@ f_{xy}^J \tube(\mcc/\psi) f_{x' y'}^J \cong
 0 & \text{otherwise}
 \end{cases}
 \end{align}
-Hence, the $f^{J}_{xy}$ are minimal, since $f_{xy}^J \tube(\mcc/\psi) f_{x' y'}^J$ is always a simple algebra. 
-This also confirms that $f_{xy}^J$ and $f_{x(y\tp \psi)}^J$ are oddly isomorphic.
+Hence, the $E(x,y)$ are minimal. 
+This also confirms that $E(x,y)$ and $E(x,y \tp \psi)$ are oddly isomorphic.
 
-
-We now write down an invertible tensor functor $E:\mcc \times \overline{\mcc/\psi} \rightarrow \tube(\mcc/\psi)$ 
-which establishes their equivalence.
-It is given by
-\begin{align}
-\xymatrix @!0 @M=2mm @R=15mm @C=48mm{
- &E: \; \; \mcc \times \overline{\mcc/\psi} \ar[r]            & \tube(\mcc/\psi) & \\
-		  &\;\;\;\;\; \left(\;  \EFunctora
-\;,\;\EFunctorb \; \right)\;  \ar@{|->}[r] &\EFunctorc&
-		  }
-\end{align}
-
-This is clearly a functor, it preserves the identity and morphisms in an obvious way. 
-We claim that it is also a tensor functor.
-\dave{This is copied from KW's notes:}
 The tensor structure on $\tube(\mcc/\psi)$ is initially defined on $\text{Rep}(\tube(\mcc/\psi))$ and 
 then transferred to $\tube(\mcc/\psi)$ using semisimplicity ($\tube(\mcc) \cong \text{Rep}(\tube(\mcc))$). 
 Consequently, we only need to show that $E$ is a tensor functor on $\text{Rep}(\tube(\mcc/\psi))$.
-Towards this, we will show that
+To establish this, we show that
 \begin{align} \label{fusion_isomorphism}
 V^{E(a,x),E(b,y)}_{E(c,z)} \cong V^{ab}_c(\mcc) \tp V^{xy}_z(\mcc/\psi),
 \end{align}
 where $V(\mcc)$ denotes the fusion space for $\mcc$ and $V(\mcc/\psi)$ denotes the fusion space for $\mcc/\psi$.
 This isomorphism is established by the following figure:
+\dave{Maybe add figure like the above ones.}
 \begin{align}
 \FusionIsomorphism
 \end{align}
 with $\alpha = \unit$ for the even fusion space and $\alpha = \psi$ for the odd fusion space.
-By the spine lemma, the internal lines, labeled $r,s,t,u,v,p,q$ span the entire space of 
+By the spine lemma, the internal lines, labeled $r,s,t,u,v,p,q$ (multiplicity indices suppressed) span the entire space of 
 net configurations for $V(P)$ with marked points, $(a,x)$, $(b,y)$, 
 and $(c,z)$ living at the boundary circles (as before, $P$ is the pair of pants). 
 Near each boundary circle we have applied the corresponding minimal idempotent to each boundary condition. 
@@ -5517,7 +5583,8 @@ it acts as a tensor functor on arbitrary morphism spaces,
 establishing that $E$ is a tensor functor on $\text{Rep}(\tube(\mcc/\psi))$.
 
 \dave{Is that sufficient to complete the proof? 
-Do we need to say anything else? e.g., what the natural transformations are.}
+Do we need to say anything else? 
+e.g., what the natural transformations are.}
 
 
 %\dave{Old guess at natural transformation.}
