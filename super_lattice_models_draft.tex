@@ -5699,7 +5699,7 @@ We first examine the $S$ transformation on bounding spin tori.
 %We first examine the $S$ transformation on a torus with a spin structure such that at least 
 %one of the two cycles bears a bounding spin structure. 
 Recall that if the spin structure along the azimuthal direction is bounding, then the label $b$ below
-must be transparent with respect to $\psi$, and if the azimuthal spin structure in non-bounding, then $b$ is non-transparent
+must be transparent with respect to $\psi$, and if the azimuthal spin structure is non-bounding, then $b$ is non-transparent
 with respect to $\psi$.
 %Recall that the spin structure along the azimuthal direction is fixed by whether or not the label 
 %$b$ below is transparent with respect to $\psi$. 
@@ -5713,23 +5713,25 @@ S:\;\; \DCSmatrixa\; \mapsto \; \DCSmatrixb \;=\; \STorusBasisa
 \label{s_transformation}
 \end{align}
 \kw{Why the wiggle in the omega loop?  I think it would be better without it.}
-In the last equality, we have introduced $\tilde{\omega} =\frac{1}{\mcd^2}\sum_x \kappa_x \text{cl}(x)$, 
-which satisfies $\omega \tp \tilde{\omega} = \tilde{\omega}$ and $\kappa_x$ is the Frobenius-Schur indicator.
-\kw{Why is this necessary?  I don't get it.}
+\dave{Sounds good. 
+Lemma 5.8 of \cite{muger2003b} was the reasoning. }
+%In the last equality, we have introduced $\tilde{\omega} =\frac{1}{\mcd^2}\sum_x \kappa_x \text{cl}(x)$, 
+%which satisfies $\omega \tp \tilde{\omega} = \tilde{\omega}$ and $\kappa_x$ is the Frobenius-Schur indicator.
+%\kw{Why is this necessary?  I don't get it.}
 (In the first two pictures we have drawn 
-the torus as a annulus with inner and outer boundaries identified, while in the last picture we have re-written 
-the torus on the plane as a square with the top and bottom as well al left and right edges identified.)
+the torus as an annulus with inner and outer boundaries identified, while in the last picture we have re-written 
+the torus on the plane as a square with the top and bottom as well as left and right edges identified.)
 
 We now need to perform a series of manipulations that returns the right hand side of \eqref{s_transformation} 
 to a linear combination of pictures that are written in the standard basis (the same as the left 
 hand side of \eqref{s_transformation} with the spin structures interchanged).
-We first investigate the part of the diagram with the $a$ string and the $\tilde{\omega}$ loop:
+We first investigate the part of the diagram with the $a$ string and the $\omega$ loop:
 \begin{align}
 \frac{1}{\mcd^2} \; \Scalcaa 
 \;=\; \Scalcab 
 \;=\; \Scalcac
 \;=\; \Scalcad
-\;=\; \sum_{x\in \sob(\mcc)} \frac{\kappa_x}{\mcd^2} \SMatrix{a}{x} \; \Scalcae
+\;=\; \sum_{x\in \sob(\mcc)} \frac{1}{\mcd^2} \SMatrix{a}{x} \; \Scalcae
 \label{Scalc_above}
 \end{align}
 We can now do the same for the $b$ loop,
@@ -5738,22 +5740,26 @@ We can now do the same for the $b$ loop,
 \; = \; \Scalcbb
 \; = \; \Scalcbc
 \; = \; \Scalcbd
-\; = \; \sum_{y \in \sob(\mcc/\psi)} \frac{\kappa_y}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe
+\; = \; \sum_{y \in \sob(\mcc/\psi)} \frac{1}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe
 \end{align}
 where we have used that the $\omega$ loop is a projector onto the vacuum. 
 Putting both the calculations together, and removing leftover $\omega$ loops (which provide an 
 additional factor of $\mcd^{-2}$) we find that the matrix elements of the $S$ matrix can be written as
 \begin{align}
-\DCSmatrixb =  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} S_{ax} \kappa_x S_{by}^* \kappa_y \; \DCSmatrixh.
+\DCSmatrixb =  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} S_{ax} S_{by}^*  \; \DCSmatrixh.
 \end{align}
 In the above formula, the $S_{ax}$ and $S^*_{by}$ are matrix elements of the $S$ matrix in the original 
 input theory $\mcc$ (which we assumed to be an MTC).
 Note that $\nu_b$ must be $0$ if $J$ is bounding, $1$ if $J$ is non-bounding, similarly for $\nu_y$.
 We can also write this in matrix form,
+%\dave{This was old notation}
+%\begin{align}
+%\text{cl}_W(f^{J}_{ab}) \xrightarrow{S^{JW \ra WJ}}  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} S_{ax}  S_{by}^*   \text{cl}_J(f^{W}_{xy})
+%\end{align}
 \begin{align}
-\text{cl}_W(f^{J}_{ab}) \xrightarrow{S^{JW \ra WJ}}  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} S_{ax} \kappa_x S_{by}^* \kappa_y  \text{cl}_J(f^{W}_{xy})
+\text{cl}_W(E(a,b)) \xrightarrow{S^{JW \ra WJ}}  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} S_{ax}  S_{by}^*   \text{cl}_J(E(x,y))
 \end{align}
-Where $\text{cl}_W(f^J_{ab})$ means we close the idempotent $f_{ab}^J$ with spin structure $J$ 
+Where $\text{cl}_W(E(a,b))$ means we close the idempotent $E(a,b)$ with spin structure $J(b)$ 
 onto the torus with spin structure $W$ around the newly closed cycle. 
 Note, as discussed above, unless $J = J(b)$ and $W=W(y)$, the resulting vector is zero.
 %\ethan{right?}. 
@@ -5763,15 +5769,16 @@ The matrix elements of the $S$ matrix on the torus with non-bounding spin struct
 boundary conditions around both cycles) can be calculated in an analogous way.
 The first half of the calculation remains the same as in \eqref{Scalc_above}.
 The second half of the calculation changes only if $b$ is q-type, in which case the idempotent 
-$f_{ab}^N$ is q-type, and has to be closed up on the torus with an odd isomorphism. 
+$E(a,b)$ is q-type, and has to be closed up on the torus with an odd isomorphism. 
 In such a case we have,
 \footnote{We have used $(S^z)_{xy} = \frac{1}{\mcd} \Szmatrix$}:
 %\dave{Need to double check this, may have a mistake in the last step.}
-\ethan{why no $1/\mcd^2$ from the $\omega$ instead of $1/\mcd$ and why only the sum over stuff in $Q$?}
-\dave{Check the notes I sent and let me know if that clears it up, also if you agree with the calculation.}
+%\ethan{why no $1/\mcd^2$ from the $\omega$ instead of $1/\mcd$ and why only the sum over stuff in $Q$?}
+%\dave{Check the notes I sent and let me know if that clears it up, also if you agree with the calculation.}
 %\begin{align}
 %\frac{1}{\mcd^2} \;  \Scalcbadot \; = \; \Scalcbddot \; =\;  \frac{1}{\mcd} \sum_{y\in Q} \kappa_y [ S^{\psi} ]_{by}^*\Scalcbedot
 %\end{align}
+\dave{Mention the sign ambiguity?}
 \begin{align}
 \frac{1}{\mcd^2} \; \Scalcbadotprime  \; = \;  \Scalcbddotprime \; =\;  \frac{1}{\mcd} \sum_{y\in Q} \kappa_y [ S^{\psi} ]_{yb} \; \Scalcbedot
 \end{align}
