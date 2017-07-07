@@ -196,6 +196,8 @@
 \newcommand{\RotatedTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{RotatedTube.pdf}}}}}
 \newcommand{\AnnulusGeneric}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{AnnulusGeneric.pdf}}}}}
 
+\newcommand{\DiskLarge}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DiskLarge.pdf}}}}}
+\newcommand{\TubeIdempotentBasistrace}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeIdempotentBasistrace.pdf}}}}}
 
 
 \newcommand{\FubeXXXA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EmptyTubeA.pdf}}}}}
@@ -390,7 +392,9 @@
 \newcommand{\TubeBasiscF}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubebasiscF.pdf}}}}}
 \newcommand{\TubeBasisdF}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubebasisdF.pdf}}}}}
 
-
+
+
+
 
 
 \newcommand{\gxyaj}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{gxyaj.pdf}}}}}
@@ -432,6 +436,7 @@
 \newcommand{\EFunctorc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EFunctorc.pdf}}}}}
 
 
+\newcommand{\IdempotentBasis}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{IdempotentBasis.pdf}}}}}
 
 \newcommand{\TubeIdempotentTwoStrand}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeIdempotentTwoStrand.pdf}}}}}
 \newcommand{\fTubeCf}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{fTubeCf.pdf}}}}}
@@ -5509,9 +5514,17 @@ We now establish that the the set of idempotents $\{ E(e_i, f_j) \} $ are non-ze
 \dave{Will come back to this after going through the trace section}
 Using the trace defined in \eqref{trace} we have,
 \begin{align}
-\tr \left ( E(x,y) \right) = \tr \left( \TubeIdempotentTwoStrand_{J(y)} \right) =(1+ (-1)^{s(J)}(-1)^{\nu_y})d_x d_y 
+\tr \left ( E(x,y) \right) &= \tr \left( \TubeIdempotentTwoStrand_{J} \right) \\
+&= \frac{1}{\mcd^2} \sum_{r \in \mcc/\psi} \left( 1+(-1)^{(s(J) + \nu_y)} \right) \frac{ d_r}{\dim \End(r)}  \tr \left( \IdempotentBasis_J \right)\\
+&  =\frac{1}{\mcd^2} (1+(-1)^{(s(J) + \nu_y)} )d_x d_y 
+ %&=\frac{1}{\mcd^2}(1+ (-1)^{s(J)}(-1)^{\nu_y})d_x d_y 
 \end{align}
-which is non-zero so long as $s(J) = \nu_y$, as is the case in \eqref{FunctorCxCtoTubeC}.
+which follows from,
+\begin{align}
+\tr \left( \IdempotentBasis_J \right) &=  \tr_{\text{Matrix}}   \left\{ \TubeIdempotentBasistrace : \DiskLarge \ra \DiskLarge \right \}= \delta_{r \unit} d_x d_y. 
+ \end{align} 
+Hence $\tr \left ( E(e_i,f_j) \right)$ is non-zero so long as $s(J) = \nu_{f_j}$, 
+which is true by assumption, recall \eqref{FunctorCxCtoTubeC}.
 
 Now we show that the $\{ E(e_i, f_j) \}$ are minimal. 
 We do this by showing that $E(x,y) \cdot \tube(\mcc/\psi) \cdot E(x',y')$ is either one dimensional, in which case $E(x,y)$ is an m-type idempotent, 
