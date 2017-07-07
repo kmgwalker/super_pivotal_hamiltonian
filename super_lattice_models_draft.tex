@@ -102,6 +102,7 @@
 \newcommand{\Tor}{\text{Tor}}
 \newcommand{\Ext}{\text{Ext}}
 \newcommand{\tr}{\text{tr}}
+\newcommand{\str}{\text{str}}
 \newcommand{\p}{\partial}
 \newcommand{\wt}{\widetilde}
 \usepackage{verbatim}
@@ -4153,11 +4154,75 @@ which follows can be understood without using terms like ``excitation'' and ``Ha
 \subsubsection{Computing traces in the tube category and quantum dimensions} \label{qdims_and_traces}
 %%%%%%%%%%%%%%%%%%%%
 
+\kw{new start for this subsection. might want to add details; this is an outline/sketch.}
+
+Recall that a trace on a linear category $C$ is a linear function from endomorphisms to $\cc$, satisfying
+\be
+	\tr(fg) = \tr(gf) ,
+\ee
+for all $f \in \mor(x\to y)$ and $g\in \mor(y\to x)$.
+All of the categories we consider have a $*$-structure (a.k.a. reflection structure), which is an order 2 antilinear antiautomorphism
+from $\mor(x\to y)$ to $\mor(y\to x)$ (for all objects $x$ and $y$).
+A trace is equivalent to a collection of sesquilinear inner products on $\mor(x\to y)$ satisfying
+\be
+	\langle fg, h \rangle = \langle f, h g^* \rangle \;\;\; and \;\;\; \langle fg, h \rangle = \langle g,f^*  h  \rangle 
+\ee
+for all $f\in\mor(x\to y)$, $g\in\mor(y\to z)$ and $h\in\mor(x\to z)$.
+\kw{Maybe should use bar instead of star to be consistent with other parts of the paper?}
+The trace and inner products are related by
+\be
+	\tr(f) = \langle f, \id_x \rangle   \;\;\; and \;\;\;   \langle g,h \rangle = \tr(gh^*)
+\ee
+for $f\in\mor(x\to x)$ and  $g,h\in\mor(x\to y)$.
+A trace is called nondegenerate if the corresponding inner product is nondegenerate in the usual sense (on each morphism space individually).
+
+\medskip
+
+We now recall two facts about TQFTs.
+The first is that we can define a nondegenerate pairing on the predual Hilbert
+space $A(Y; a_1,\ldots,a_k)$ (where $Y$ is a spin surface and $a_i$ are boundary labels) via
+\be
+	\langle u, v\rangle = Z(Y\times I) (u\cup \bar v) ,
+\ee
+where the bar denotes the ``reflection" map from $A(Y; a_1,\ldots,a_k)$ to $A(-Y; a_1,\ldots,a_k)$.
+Here we are using the ``pinched boundary" condition for $Y\times I$, so that $\bd (Y\times I) = Y\cup -Y)$.
+In other words, we glue together the string nets $u$ and $\bar v$ to get a string net on $\bd (Y\times I)$, and then we evaluate
+the path integral of $Y\times I$ with the $u\cup \bar v$ string net as a boundary condition.
+
+The second fact concerns the path integral of 3-manifolds of the form $Y\times S^1_B$ or $Y\times S^1_N$.
+Let $c$ be a string net on $(\bd Y)\times S^1$ (with either spin structure on $S^1$.
+$(\bd Y)\times S^1$ is a disjoint union or tori, and we can cut these tori open into a disjoint union of annuli.
+Let $c'$ denote the cut open string nets on the annuli.
+Note that $c'$ is not uniquely determined by $c$; $c'$ depends on where we cut.
+The string net $c'$ determines a linear map
+\be
+	g(c') : A(Y; a_i) \to A(Y; a_i) ,
+\ee
+given by gluing the $c'$ annuli on to the boundary of a string net on $Y$.
+The gluing rules for the path integral imply that
+\be
+	Z(Y\times S^1_B)(c) = \tr(g(c'))
+\ee
+and
+\be
+	Z(Y\times S^1_N)(c) = \str(g(c')) .
+\ee
+Note that any choice of cutting curves and $c'$ will yield the same answer on the RHS above.
+\kw{Need to make sure we have defined super trace $\str$.}
+
+\medskip
+
+We now apply the above to the case where $Y$ is an annulus to obtain a nondegenerate trace on the tube category.
+
+\kw{Take it from here, Dave.}
+
+\kwsep
 
 In what follows we will need to compute the trace of a generic operator (or in other words, an endomorphism) $\mco$ in the tube category. 
 \kw{I think we should say endomorphism rather than operator, and use lower case notation for this operator.}
 We will do the computations following the procedure outlined in \cite{Walker2006}; for more details see \cite{ghosh2016,das2014}.
 \dave{I think at one point I thought those two references might be useful, but not so sure anymore.}
+\kw{If you think the other two refs are useful and relevant, include them; otherwise not.}
 
 To compute the trace of a endomorphsism in $\mcc$ (which can be thought of
 as string nets on a disk), we identify the incoming and outgoing
