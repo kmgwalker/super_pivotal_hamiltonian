@@ -5341,6 +5341,7 @@ These are the minimal idempotents that live in the annular category with two mar
 The idempotents are given by
 \begin{align}
 e_{xy} = \TubeIdempotentTwoStrand.
+\label{Bosonic_twostrand_idempotent}
 \end{align}
 
 To show that the $e_{xy}$ are a complete set of minimal idempotents, 
@@ -5418,11 +5419,11 @@ In this subsection we prove that $\tube(\mcc/\psi) \cong \mcc \times \overline{\
 when $\psi$ is a fermion satisfying conditions of \ref{gntf_condense} and $\mcc$ is a modular tensor category.
 
 To gain insights on the relation between $\tube(\mcc/\psi)$ and $\mcc$, 
-we will need to find the minimal idempotents of the condensed theory; 
+we find the minimal idempotents of the condensed theory; 
 useful quantities in their own right.
-Progress is made by noticing that any string net configuration of the parent theory descends to a string net configuration of the condensed theory.
-Conversely, we can always take an even morphism in $\mcc/\psi$ and lift it to $\mcc$, giving 
-us a way from lifting tubes in $\tube(\mcc/\psi)$ to those in $\tube(\mcc)$.
+Toward this, we point out that any string net configuration of the parent theory descends to a string net configuration of the condensed theory.
+Conversely, we can always take an even morphism in $\mcc/\psi$ and lift it to $\mcc$, 
+giving us a way of lifting tubes in $\tube(\mcc/\psi)$ to those in $\tube(\mcc)$.
 These two facts allow us to find the minimal idempotents of the quotient theory, 
 using the minimal idempotents of the parent theory.
 The details of the functor $\tube(\mcc) \rightarrow \tube(\mcc/\psi)$ are important:
@@ -5463,47 +5464,45 @@ It is given by
 \begin{align}
 \xymatrix @!0 @M=2mm @R=15mm @C=48mm{
  &E: \; \; \mcc \times \overline{\mcc/\psi} \ar[r]            & \tube(\mcc/\psi) & \\
-		  &\;\;\;\;\; \left(\;  \EFunctora
+		  &\quad \quad  \;\; \left(\;  \EFunctora
 \;,\;\EFunctorb \; \right)\;  \ar@{|->}[r] &\EFunctorc_{J(y)}&
 		  }
 		  \label{FunctorCxCtoTubeC}
 \end{align}
-Where $J(y) = B$ is $\nu_y = 0$ and $J(y) = N$ if $\nu_y=1$.
+Where $J(y) = B$ if $\nu_y = 0$ and $J(y) = N$ if $\nu_y=1$.
 This is clearly a functor, it preserves the identity and morphisms in an obvious way. 
 To show that $E$ is a an invertible tensor functor we need to show two things: 
 \begin{enumerate} 
-\item if $\{a_i \}$ and $\{f_j \}$ are a complete set of minimal idempotents for $\mcc $ and $ \overline{\mcc / \psi }$ respectively, then so are $\{ E(a_i, f_j) \}$ for $\tube(\mcc/\psi)$
+\item if $\{e_i \}$ and $\{f_j \}$ are a complete set of minimal idempotents for $\mcc $ and $ \overline{\mcc / \psi }$ respectively, then so are $\{ E(e_i, f_j) \}$ for $\tube(\mcc/\psi)$
 \item  $E$ is a tensor functor %so that $V^{e_i e_j}_{e_k} \tp V^{f_s f_t}_{f_w} \cong V^{E(e_i,f_s) E(e_j,f_t)}_{E(e_k,f_w)}$
 \end{enumerate} 
 
-
-
-We first establish that  $\{ E(a_i, f_j) \}$ are a complete set of minimal idempotents for $\tube(\mcc/\psi)$.
+We first establish that  $\{ E(e_i, f_j) \}$ are a complete set of minimal idempotents for $\tube(\mcc/\psi)$.
 This is done in three parts, first we show completeness, followed by minimality, and lastly that the idempotents are non-zero. 
 A complete basis of morphisms for $\tube(\mcc/\psi)$ is given by
 \begin{align}
  \mcd^2 \times \TubeBasisaF_J, 
  \end{align}
-where the normalization has $\mcd^2$ has been introduced for convenience. 
+where the normalization $\mcd^2$ has been introduced for convenience. 
 The label $\alpha$ is either $\unit$
 if the tube has even fermion parity and $ t \in \bigoplus_x V^{x b x^*}_{a} $, 
-or it denotes a $\psi$ line terminating on the back wall and the tube has odd fermion parity with $t \in \bigoplus_x V^{x b x^*}_{a \tp \psi} $.
- It follows from \eqref{idempotent_complete} that,
+or $\psi$ denoting an odd parity tube with $t \in \bigoplus_x V^{x b x^*}_{a \tp \psi} $.
+Since $t$ is an even morphism in $\tube(\mcc/\psi)$, 
+we can lift it to $\tube(\mcc)$ and hence from \eqref{idempotent_complete} we have,
  \begin{align}
 \mcd^2 \times \TubeBasisaF_J
  =  
 \sum_{\substack{x,y \in \sob(\mcc) \\
-\mu =1,\cdots, N^{xy}_a \\
-\nu =1,\cdots, N_{xy}^b}
-}C_{t; xy\mu\nu} \times 
+\nu \in V^b_{xy} \\
+\mu \in V^{xy}_{a \tp \alpha}}}
+C_{t; xy\mu\nu} \times 
 \TubeBasisdF_J
 \end{align}
 for some coefficients $C_{t; xy \mu \nu}$.
-Next we replace $y$ with its image under condensation.
-If $y$ is in $\mcc/\psi$ then no furthur work is required. 
-If $y$ is oddly isomorphic to a particle in $\mcc/\psi$, then we have to replace $y$ with 
-This results in a pair of odd isomorphisms at the trivalent junctions if $y$ fell out of $\sob(\mcc/\psi)$, otherwise no change.
-\dave{Will add picture.}
+In the above equation, either $y$ is a lift from $\mcc/\psi$, 
+or $y\tp \psi$ is a lift from $\mcc/\psi$ (equivalently, when we include $y$ into $\mcc/\psi$ it may be oddly isomorphic to its representative).
+It follows that we can write the pair $(x,y) \in \mcc \times \overline{\mcc}$ in the above equation as a pair $(x,y) \in \mcc \times \overline{\mcc/\psi}$ 
+with possibly introducing two odd isomorphisms at the trivalent junctions.
 Therefore, any morphism $t \in \tube(\mcc/\psi)$ can be written as,
 \begin{align} 
 t = \sum_{k} x_k \cdot E(e_{i_k},f_{j_k} ) \cdot y_{k}
@@ -5511,25 +5510,27 @@ t = \sum_{k} x_k \cdot E(e_{i_k},f_{j_k} ) \cdot y_{k}
 hence, the $\{ E(e_i, f_j) \}$ are complete. 
 
 We now establish that the the set of idempotents $\{ E(e_i, f_j) \} $ are non-zero.
-%Re-writing $\omega = \frac{1 }{\mcd^2}  \sum_{x \in \mcc}  d_{x} \text{cl}(e_i) =  \frac{1 }{\mcd^2} \sum_{x \in \mcc/\psi }\frac{d_{x}}{\text{dim End}(x)}(\text{cl}( \unit) + \text{cl}(\psi) ) \cdot  \text{cl}(x)$.
-\dave{Will come back to this after going through the trace section}
-Using the trace defined in \eqref{trace} we have,
+We do this using the trace defined Section \ref{qdims_and_traces}.
+We have,
 \begin{align}
 \tr \left ( E(x,y) \right) &= \tr \left( \TubeIdempotentTwoStrand_{J} \right) \\
-&= \frac{1}{\mcd^2} \sum_{r \in \mcc/\psi} \left( 1+(-1)^{(s(J) + \nu_y)} \right) \frac{ d_r}{\dim \End(r)}  \tr \left( \IdempotentBasis_J \right)\\
-&  =\frac{1}{\mcd^2} (1+(-1)^{(s(J) + \nu_y)} )d_x d_y 
+&= \frac{1}{\mcd^2} \sum_{r \in \mcc/\psi} \left( 1+s(J)(-1)^{\nu_y} \right) \frac{ d_r}{\dim \End(r)}  \tr \left( \IdempotentBasis_J \right)\\
+&  =\frac{1}{\mcd^2} (1+s(J)(-1)^{\nu_y} )d_x d_y 
  %&=\frac{1}{\mcd^2}(1+ (-1)^{s(J)}(-1)^{\nu_y})d_x d_y 
 \end{align}
-which follows from,
+To get to the second line we used that $\omega_{\mcc} =(\text{cl}(\unit) +\text{cl}(\psi))\omega_{\mcc/\psi}$, 
+and that $\text{cl}(\psi)$ can be removed at the compensation of the phase $(-1)^{(s(J) + \nu_y)}$.
+The last line follows from the trace,
 \begin{align}
 \tr \left( \IdempotentBasis_J \right) &=  \tr_{\text{Matrix}}   \left\{ \TubeIdempotentBasistrace : \DiskLarge \ra \DiskLarge \right \}= \delta_{r \unit} d_x d_y. 
  \end{align} 
-Hence $\tr \left ( E(e_i,f_j) \right)$ is non-zero so long as $s(J) = \nu_{f_j}$, 
+Hence $\tr \left ( E(e_i,f_j) \right)$ is non-zero so long as $s(J) = (-1)^{\nu_{f_j}}$, 
 which is true by assumption, recall \eqref{FunctorCxCtoTubeC}.
 
 Now we show that the $\{ E(e_i, f_j) \}$ are minimal. 
 We do this by showing that $E(x,y) \cdot \tube(\mcc/\psi) \cdot E(x',y')$ is either one dimensional, in which case $E(x,y)$ is an m-type idempotent, 
 or $\cc^{1|1} $ dimensional in which case $E(x,y)$ a q-type idempotent.
+\dave{Should we explain why this means that $E(e_i,f_j)$ is minimal?}
 % is a simple algebra, i.e. 
 %that it contains no nontrivial subalgebras. 
 %\dave{I'm confused since we show that it can be isomorphic to $\cc^{0|1}$.
@@ -5567,7 +5568,8 @@ E(x,y) \cdot \tube(\mcc/\psi) \cdot E(x',y') \cong
 \end{cases}
 \end{align}
 Hence, the $E(x,y)$ are minimal. 
-This also confirms that $E(x,y)$ and $E(x,y \tp \psi)$ are oddly isomorphic.
+This also confirms that $E(x,y)$ and $E(x,y \tp \psi)$ are oddly isomorphic, and
+if $y \cong y\tp \psi$ then $E(x,y)$ has an odd endomorphism.
 
 The tensor structure on $\tube(\mcc/\psi)$ is initially defined on $\text{Rep}(\tube(\mcc/\psi))$ and 
 then transferred to $\tube(\mcc/\psi)$ using semisimplicity ($\tube(\mcc) \cong \text{Rep}(\tube(\mcc))$). 
@@ -5578,7 +5580,7 @@ V^{E(a,x),E(b,y)}_{E(c,z)} \cong V^{ab}_c(\mcc) \tp V^{xy}_z(\mcc/\psi),
 \end{align}
 where $V(\mcc)$ denotes the fusion space for $\mcc$ and $V(\mcc/\psi)$ denotes the fusion space for $\mcc/\psi$.
 This isomorphism is established by the following figure:
-\dave{Maybe add figure like the above ones.}
+\dave{Should I add a figure like we did for the other ones?}
 \begin{align}
 \FusionIsomorphism
 \end{align}
@@ -5594,7 +5596,8 @@ The left over picture is isomorphic to $V^{ab}_c(\mcc) \tp V^{xy}_z(\mcc/\psi)$.
 
 Since $E$ acts as a tensor functor on the elementary fusion spaces as in \eqref{fusion_isomorphism}, 
 it acts as a tensor functor on arbitrary morphism spaces, 
-establishing that $E$ is a tensor functor on $\text{Rep}(\tube(\mcc/\psi))$.
+establishing that $E$ is a tensor functor on $\text{Rep}(\tube(\mcc/\psi))$, 
+and by semisimplicity also on $\tube(\mcc/\psi)$.
 
 \dave{Is that sufficient to complete the proof? 
 Do we need to say anything else? 
