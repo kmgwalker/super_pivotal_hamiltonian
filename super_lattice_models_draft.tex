@@ -481,6 +481,14 @@
     \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern-10mu$}\cr
   }}}
   
+  
+  \newcommand{\SMatrixxx}[2]{\mathrel{\ooalign{$\OmegaSLoop$\cr
+  \hidewidth\raise0ex\hbox{$\scriptstyle{#1}\mkern12mu$}\cr
+    \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern-38mu$}\cr
+  }}}
+
+  
+  
   \newcommand{\OmegaLoopDefectx}[2]{\mathrel{\ooalign{$\OmegaLoopDefect$\cr
   \hidewidth\raise0ex\hbox{$\scriptstyle{#1}\mkern8mu$}\cr
     \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern-22mu$}\cr
@@ -3320,7 +3328,7 @@ One can check that the usual modular group relation $(ST)^3 = \unit$ holds as ex
 More interesting is the $(N,N)$ torus, whose spin structure is preserved under both $S$ and $T$. 
 This has been investigated before in \cite{ware2016}, and our results agree with theirs in this case. 
 According to Figure \ref{TorusBasisC2}, the Hilbert space is given by $\overset{\bullet}{h}$, $\overset{\bullet}{v}$, and $\overset{\bullet}{t}$,
-where as before the $\bullet$ mean that the associated tubes have odd fermion parity.
+where as before the $\bullet$ means that the associated tubes have odd fermion parity.
 In the topological basis, we obtain
 \begin{align}
 \left( \begin{matrix}
@@ -5630,6 +5638,7 @@ Using property (a) of \ref{omega_loop_properties} we see that both $c \cong c' \
 If $\alpha \cong \psi$ then we require $y \tp \psi \cong y'$.
 Using this, along with the orthogonality of the idempotents we have,
 \begin{align}
+\label{minimal_table}
 E(x,y) \cdot \tube(\mcc/\psi) \cdot E(x',y') \cong
 \begin{cases}
 \cc^{1|0}& \text{if}\; x \cong x' \; \text{and}\; y \cong y' \\
@@ -5740,41 +5749,83 @@ We first investigate the part of the diagram with the $a$ string and the $\omega
 \label{Scalc_above}
 \end{align}
 We can now do the same for the $b$ loop,
+%\begin{align}
+%\frac{1}{\mcd^2}\; \Scalcba 
+%\; = \; \Scalcbb
+%\; = \; \Scalcbc
+%\; = \; \Scalcbd
+%\; = \; \sum_{y \in \sob(\mcc/\psi)} \frac{1}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe
+%\end{align}
 \begin{align}
 \frac{1}{\mcd^2}\; \Scalcba 
 \; = \; \Scalcbb
 \; = \; \Scalcbc
 \; = \; \Scalcbd
-\; = \; \sum_{y \in \sob(\mcc/\psi)} \frac{1}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe
+\; = \; \sum_{y \in \sob(\mcc)} \frac{1}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe
 \end{align}
 where we have used that the $\omega$ loop is a projector onto the vacuum. 
-Putting both the calculations together, and removing leftover $\omega$ loops (which provide an 
-additional factor of $\mcd^{-2}$) we find that the matrix elements of the $S$ matrix can be written as
+In the last summation we need to replace $\sum_{y \in \sob(\mcc)}$ with $\sum_{y \in \sob(\mcc/\psi)}$.
+%As with \eqref{...} this is accomplished by simultaneously letting $\text{cl}(y) \ra \text{cl}((y + y\tp\psi)/2^{n_x}$
+As with \eqref{...}, this is accomplished by,
 \begin{align}
-\DCSmatrixb =  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} S_{ax} S_{by}^*  \; \DCSmatrixh.
+\label{interim_S_calc}
+ \sum_{y \in \sob(\mcc)} \frac{1}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe 
+\; =\; \sum_{y \in \sob(\mcc/\psi)} \frac{1}{\mcd^2} \frac{1}{2^{n_y}}\left(  \SMatrixx{b^{*}}{y} \;  +s(J)\SMatrixxx{b^{*}}{y \tp \psi} \;  \quad  \right) \Scalcbe
 \end{align}
-In the above formula, the $S_{ax}$ and $S^*_{by}$ are matrix elements of the $S$ matrix in the original 
+where the $s(J)$ is found by using that $\text{cl}_J(\psi \tp y) = s(J) \text{cl}_J (y)$.
+The factor of $2^{-n_x}$ is introduced so that we don't overcount the q-type simple objects from $\sob(\mcc)$.
+Using that $S_{b^* (y\tp \psi)} = (-1)^{\nu_b} S_{b^* y}$, and that $(-1)^{\nu_b} s(J) = 1$,  
+the right hand side of \eqref{interim_S_calc} is simplified to,
+\begin{align}
+=\; \sum_{y \in \sob(\mcc/\psi)} \frac{2}{2^{n_y}} \frac{1}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe 
+\end{align}
+Putting all calculations together, and removing leftover $\omega$ loops (which provide an 
+additional factor of $\mcd^{-2}$) we find that the matrix elements of the (un-normalized) $S$ matrix can be written as
+\begin{align}
+\label{Smatrix_final_step}
+\DCSmatrixb =  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} \frac{2}{2^{n_y}}S_{ax} S_{b^*y}  \; \DCSmatrixh.
+\end{align}
+In the above formula, the $S_{ax}$ and $S_{b^*y}$ are matrix elements of the $S$ matrix in the original 
 input theory $\mcc$ (which we assumed to be an MTC).
 Note that $\nu_b$ must be $0$ if $J$ is bounding, $1$ if $J$ is non-bounding, similarly for $\nu_y$.
-We can also write this in matrix form,
+Also note that we have assumed a fixed set of representatives of simple objects for $\mcc/\psi$, and $\mcc$. 
+we assume that the $y$ appearing in $S_{b^*y}$ is a trivial lift of the $y$ written in the closed up idempotent 
+(recall that the first is a simple object of $\mcc$, while the latter is a simple object of $\mcc/\psi$).
+One can change the representative of the isomorphism class of $y \in \mcc/\psi$ with the odd isomorphism taking $y \ra \tilde{y} = \psi \tp y$. 
+Under this odd-isomorphism the right hand side of \eqref{Smatrix_final_step} picks up a factor of $s(J)(-1)^{\nu_b}$, 
+which is always equal to $1$ (otherwise the input closed up idempotent is equal to zero).
+
+We can find the normalized $S$ matrix by dividing the q-type idempotents by $\sqrt{2}$.
+In the discussion following \eqref{minimal_table} we point out that $E(a,b)$ is q-type if $b$ is q-type.
+Hence we can normalize our idempotents by defining $\widehat{E}(a,b) = E(a,b)/(\sqrt{2})^{n_b}$.
+This results in a unitary $S$ matrix given by, 
+\dave{I will plug this into a computer and verify that it's unitary.}
 %\dave{This was old notation}
 %\begin{align}
 %\text{cl}_W(f^{J}_{ab}) \xrightarrow{S^{JW \ra WJ}}  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} S_{ax}  S_{by}^*   \text{cl}_J(f^{W}_{xy})
 %\end{align}
+%\begin{align}
+%\text{cl}_W(E(a,b)) \xrightarrow{S^{JW \ra WJ}}  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} S_{ax}  S_{by}^*   \text{cl}_J(E(x,y))
+%\end{align}
 \begin{align}
-\text{cl}_W(E(a,b)) \xrightarrow{S^{JW \ra WJ}}  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} S_{ax}  S_{by}^*   \text{cl}_J(E(x,y))
+\text{cl}_W(\widehat{E}(a,b)) \xrightarrow{S^{JW \ra WJ}}  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} \frac{2}{(\sqrt{2})^{n_b+n_y}}S_{ax}  S_{by}^*   \text{cl}_J(\widehat{E}(x,y))
 \end{align}
-Where $\text{cl}_W(E(a,b))$ means we close the idempotent $E(a,b)$ with spin structure $J(b)$ 
+Where $\text{cl}_W(\widehat{E}(a,b))$ means we close the idempotent $\widehat{E}(a,b)$ with spin structure $J(b)$ 
 onto the torus with spin structure $W$ around the newly closed cycle. 
 Note, as discussed above, unless $J = J(b)$ and $W=W(y)$, the resulting vector is zero.
 %\ethan{right?}. 
 %\dave{Yeap.}
+
+\dave{Ack. Sorry guys, made a transcription error from my notes.
+The last sum in the second part of the equation should be over $\sob(\mcc)$ not $\sob(\mcc/\psi)$. 
+Hopefully this clears things up, and addresses each of the points below.}
 
 \kw{what about $\sqrt 2$ normalization for q-type?}
 
 \kw{Need to also comment on how $S_{by}^*$ depends on choice of lift (or representative) of $y$}
 
 \kw{Should we explain the $*$ in $S_{by}^*$?}
+\dave{Changed it to $S_{b^*y}$. That's probably more clear anyway since that's what's written in the previous equation.}
 
 
 The matrix elements of the $S$ matrix on the torus with non-bounding spin structure (periodic 
@@ -5782,6 +5833,8 @@ boundary conditions around both cycles) can be calculated in an analogous way.
 The first half of the calculation remains the same as in \eqref{Scalc_above}.
 The second half of the calculation changes only if $b$ is q-type, in which case the idempotent 
 $E(a,b)$ is q-type, and has to be closed up on the torus with an odd endomorphism. 
+Since we close the idempotent with an odd endomorphism, 
+the resulting vector always has a sign ambiguity as discussed in the caption of Figure \ref{C2Change_of_Basis}.
 In such a case we have,
 \footnote{We have used $(S^z)_{xy} = \frac{1}{\mcd} \Szmatrix$}:
 %\dave{Need to double check this, may have a mistake in the last step.}
@@ -5790,12 +5843,11 @@ In such a case we have,
 %\begin{align}
 %\frac{1}{\mcd^2} \;  \Scalcbadot \; = \; \Scalcbddot \; =\;  \frac{1}{\mcd} \sum_{y\in Q} \kappa_y [ S^{\psi} ]_{by}^*\Scalcbedot
 %\end{align}
-\dave{Mention the sign ambiguity?}
-\kw{Probably yes}
+%\dave{Mention the sign ambiguity?}
+%\kw{Probably yes}
 \begin{align}
 \frac{1}{\mcd^2} \; \Scalcbadotprime  \; = \;  \Scalcbddotprime \; =\;  \frac{1}{\mcd} \sum_{y\in Q}  [ S^{\psi} ]_{yb} \; \Scalcbedot
 \end{align}
-\kw{Should we remove $\kappa_y$?}
 Thus, we have calculated the $S$ matrix of the condensed theory in 
 terms of the modular data of the input theory.  
 
