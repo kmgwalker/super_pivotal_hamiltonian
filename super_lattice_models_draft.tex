@@ -1421,7 +1421,9 @@ are realized as violations of this edge term, and are linearly confined.
 
 Finally, we show how to construct a tensor network which produces the ground state 
 wavefunction of our lattice Hamiltonian. We do this using a cut-and-glue approach to 
-the construction of the Turaev-Viro-Barrett-Westbury state sum, \dots \ethan{will fill in after section's done}
+the construction of the Turaev-Viro-Barrett-Westbury state sum, which allows us to concisely write the bosonic partition function
+as a tensor contraction. We then show how to modify the tensors 
+and the way we contract them in order to obtain a fermionic version of the TVBW state sum.  
 
 We illustrate all of the above points in a series of several in-depth examples, which occupy a large portion 
 of this paper.
@@ -1485,8 +1487,9 @@ is responsible for allowing fermions to fluctuate across q-type strings and the 
 of which produces linearly confined defects. 
 
 We show how to construct a tensor network realizing the ground state of our lattice Hamiltonian 
-in Section \ref{state_sums}. \dots
-
+in Section \ref{state_sums}. We first review how to write the partition function of a bosonic theory 
+as a tensor contraction in a way amenable to generalization, and then show how our construction 
+can be extended to cover the fermionic case. 
 
 Finally, we end with a conclusion and discussion in Section \ref{discussion}. 
 Several appendices contain miscellaneous results and background information. 
@@ -9748,17 +9751,21 @@ We define
 & w^* \tp v \mapsto \delta_{vw}.
 \end{align}
 This is essentially the same as the bilinear pairing defined in \eqref{reflection_pairing_defn}, just with a different normalization, and ordering on the tensor factors. 
-Note that it has the following symmetries,
-\begin{align}
-\delta_{wv} = \chi(w^* \tp v)=(-1)^{|v| |w|} \chi(w^*_2 \tp v_1) = (-1)^{|v| |w|} \chi(v \tp w^*) = (-1)^{|v| |w|} \delta_{v^* w^{*}}
-\end{align}
-\dave{This difference in ordering may Koszul headaches later.}
-\ethan{Don't we usually have $\mch^*\cong\mch$ so that the difference is just a matter of labeling? However, might be best to dualize the definition of $\chi$}.
-\dave{What does it mean to dualize the definition of $\chi$?}
 It is defined on every pair of tensor factors $\mch(\bar{c}_{xy}) \tp \mch( c_{xy})$
 that are assigned 
 to attaching regions in the handle decomposition.
-
+\ethan{strictly speaking, I don't think we need the following (it could just confuse people)}
+Under re-arrangement of tensor factors and Koszul signs, $\chi$ behaves as 
+\begin{align}
+\delta_{wv} = \chi(w^* \tp v)=(-1)^{|v| |w|} \chi(w^*_2 \tp v_1) = (-1)^{|w|}(-1)^{|v| |w|} \chi(v \tp w^*) = (-1)^{|w|(|v|+1)} \delta_{v^* w^{*}},
+\end{align}
+%\dave{This difference in ordering may Koszul headaches later.}
+%\ethan{Don't we usually have $\mch^*\cong\mch$ so that the difference is just a matter of labeling? %However, might be best to dualize the definition of $\chi$}.
+%\dave{What does it mean to dualize the definition of $\chi$?}
+where as usual, the numerical subscripts indicate an explicit Koszul ordering, and the absence of subscripts 
+indicates the standard ordering convention, which increases from left to right. The sign $(-1)^{|w|}$ appears 
+when performing a $2\pi$ rotation $P^3 = (-1)^F$ on the vector $w$ when interchanging the order of the tensor factors (recall that $\tp$ corresponds to horizontal superposition of diagrams).
+\ethan{I don't like the asymmetry... are we missing something?} 
 
 Since the vector spaces for the attaching regions between $(k+1)-$ and $k$-handles are dual 
 to each other, the total Hilbert space 
@@ -9864,7 +9871,7 @@ T_f &= \sum_{w_f \in \mch(f)} T_f(w_f) w_f, \\
 \end{align}
 where each sum runs over the orthogonal basis vectors of the indicated Hilbert space, 
 and the tensor is defined by assigning a particular weight to each basis vector. 
-The partition function is simply
+The partition function is given by the tensor contraction
 \begin{align}
 Z(\mcm)  = \chi \left( \bigotimes_{f \in \mcf}  T_f \bigotimes_{e \in \mce}  T_e \bigotimes_{v \in \mcv}  T_v \right). 
 \label{ZTensor}
@@ -9916,8 +9923,8 @@ Note that this tensor is only non-zero if all edge labels of the boundary 1-cell
 
 Now consider a 1-cell $e$. 
 Suppose that the boundary 0-cells at the ends of $e$ are labeled as $v$ and $v'$, with $e$ oriented from $v$ to $v'$. 
-Letting $w_e = v_{a_1} \tp v_{a_2} \tp v_{a_3} \tp \mu \tp \nu$ with $v_{a_i}$ basis vectors in $\mch(\bar{c}_{ef_i})$ for each 2-cell $f_i$ neighboring $e$ and $\mu,\nu$ are 
-basis vectors in $\mch(c_{ev})$ and $\mch(c_{ev'})$ respectively, we have
+Let $w_e = v_{a_1} \tp v_{a_2} \tp v_{a_3} \tp \mu \tp \nu$, with $v_{a_i}$ basis vectors in $\mch(\bar{c}_{ef_i})$ for each 2-cell $f_i$ neighboring $e$, and $\mu,\nu$ 
+basis vectors in $\mch(c_{ev})$ and $\mch(c_{ev'})$, respectively. We then have
 \begin{align}
 T_e(w_e) = T_e(v_{a_1} \tp v_{a_2} \tp v_{a_3} \tp \mu \tp \nu^*) = \frac{\mcb(\mu \tp P_e(\nu_j^*))}{\mcb(\mu \tp \mu^*) \mcb(\nu \tp \nu^*)},
 \end{align}
@@ -10014,7 +10021,8 @@ Odd vectors in $E'$ would then correspond to q-type edges which host fermionic d
 could always use odd endomorphisms to move these dots to the ends of the edges, which ``displaces'' 
 the odd degrees of freedom from the edges to the vertices. This displacement procedure results in a simpler (purely bosonic) edge Hilbert space $E$. 
 \dave{What's the benefit? Or are you just saying that there is none?
-Also these vector spaces don't have vertices associated with them.}}.
+Also these vector spaces don't have vertices associated with them.}
+\ethan{I'm saying that I think the natural edge Hilbert space is $E'$, which is super, as opposed to $E$, which isn't. We can still use $E$, but I wanted to explain why.}.
 %\ethan{You said $E$ was bosonic, but I was initially thinking that $E = \oplus_x \End(x)$?}
 %\dave{We could write it as $(\text{End}(x))^0$ if we want. 
 %But I think we should keep them bosonic.
@@ -10112,8 +10120,6 @@ one has to be careful about Koszul sign issues when performing the tensor contra
 When we contract out two tensor indices of a tensor in $\mch^*\tp\mch$, we must be careful to only perform 
 the contraction after the two tensor factors have been moved adjacent to one another in the tensor product. 
 
-\ethan{as Dave suggested, this should maybe go in defn sec}
-\dave{It may also be fine to leave here. I'm going to clean it up now.}
 Suppose we have two tensors $Q \in V_Q$ and $T\in V_T$,
 defined by,
 \begin{align}
@@ -10128,12 +10134,11 @@ K = \sum_{ q_L \tp q_R \tp t_L \tp t_R}K(q_L \tp q_R \tp t_L \tp t_R) q_L \tp q_
 \end{align} 
 with 
 \begin{align}
+\label{contraction_example}
 K(q_L \tp q_R \tp t_L \tp t_R) &= \sum_{q,t} Q(q_L \tp q \tp q_R)R(t_L \tp t \tp t_R  ) (-1)^{|q| |q_r|}(-1)^{|t_L| | t|} \chi(q \tp t)\\
 &= \sum_{t} Q(q_L \tp t^* \tp q_R)R(t_L \tp t \tp t_R  ) (-1)^{|t|( |q_R| +|t_L|)}.
 \end{align}
 The Koszul sign $(-1)^{|t|( |q_R| +|t_L|)}$ is picked up from commuting the tensor factors $q$ and $t$ next to one another.
-
-
 
 
 %For example, suppose we have two tensors $X \in V_1 \tp \dots \tp V_n$ and $Y \in W_1\tp \dots \tp W_m$,
@@ -10165,10 +10170,10 @@ Z(\mcm) = \sum_{ \mcl } (-1)^{k_\mcl} \prod_{f \in \mcf} T_f(w_f)
 \prod_{e \in \mce} T_e(w_e) \prod_{v \in \mcv} T_v(w_v),
 \end{align} 
 where $\mcl$ runs over all admissible labels and $(-1)^{k_\mcl} = \chi(w_\mcl)$ is the Koszul sign acquired 
-when performing the tensor contraction, which can be derived by using \eqref{contraction_example}. \ethan{leaving it at this feels like we're cheating a bit, but I'm okay with it}
-\dave{I agree.
-I think the only thing that needs more explanation is the Koszul sign, 
-everything else is just like the Bosonic case. }
+when re-arranging the Koszul ordering of the tensor factors in $w_\mcl$ when performing the tensor contraction. The Koszul sign can be found 
+by ensuring that tensor factors 
+being contracted always have adjacent Koszul-ordering and by using \eqref{contraction_example} repeatedly.
+
 
 \begin{comment} 
 
@@ -10229,7 +10234,7 @@ We could write down the ground state of the $C_2$ theory.
 \end{itemize} 
 
 In this subsection we define a tensor network that produces the ground state wavefunction of the Hamiltonian defined in \eqref{ham}.
-We do so, we evaluate $Z(\mcm)$ on three manifolds of the form $\mcm =\Sigma \times [0,1]$.
+To do so, we evaluate $Z(\mcm)$ on three manifolds of the form $\mcm =\Sigma \times [0,1]$.
 \footnote{Historically, this version of the state sum pre-dates TVBW and was first found by Kirillov and Reshetikhin~\cite{Kirillow1989} who coined the term `shadow world', which was later extended by Turaev~\cite{turaev1992shadow} and included shadows of links which he coined `shlinks'.}
 
 
@@ -10258,7 +10263,7 @@ However, there is a natural choice, which corresponds to extending $\Sigma_0$ in
 It is convenient to take the two cell decompositions to be in `normal' position,
 meaning that $\Sigma_0$ only intersects $\Sigma_1$ along edges, again see Figure~\ref{CellDecomposition}.
 
-\ethan{Stopping here for now}
+\ethan{I find this pretty cryptic at the moment---will have to go through and derive stuff on my own before I can attempt a clearer writing}
 
 We now specify the amplitude $Z(\Sigma_{0\ra 1}; v_0, v_1) $ in \eqref{GroundState}.
 The labels of the 2-cells that extend from $\Sigma_0$ and $\Sigma_1$ are determined by $v_0$ and $v_1$. 
@@ -10267,8 +10272,8 @@ We can orient each 2-cell using the orientation of $\Sigma$.
 By looking at Figure~\ref{CellDecomposition}, we see that there are only three kinds of 0-cells that show up \dave{Figure}. 
 Rather than drawing a spherical neighborhood of each 0-cell, 
 we will draw a cube. 
-The three kinds of 0-cells are displayed in Figure~\ref{StandardizedSlabTensors}.
-As well as there standardized versions.
+The three kinds of 0-cells are displayed in Figure~\ref{StandardizedSlabTensors} (first row), along
+with their standardized versions (middle row).
 The 1-handles that appear in the contraction all need an orientation.
 In principle this can be arbitrary, there is a natural choice -- the 1-handles biject with with the 1-cells of $\Sigma_0$ and $\Sigma_1$, and hence assign an orientation to each 1-handle in $\Sigma_{0 \ra 1}$. 
 We can use the orientation of the 1-cells descending from $\Sigma_0$ and $\Sigma_1$ to orient the 1-handles.
@@ -10291,6 +10296,7 @@ Each vertex on $\Sigma_1$ will have three neighboring 2-cells that need to be su
 In part a) we show the three kinds of possible 0-cell tensors that could appear in a $\Sigma_{0\ra1}$. 
 In part b) we show the first step for one possible standardization procedure. 
 In part c) we finish the standardization by making each trivalent vertex a pitchfork. 
+\ethan{I still find this figure confusing. In the first row, are these all neighborhoods around a 0-cell at $\Sigma \times 1/2$? And are the blue and orange lines intersections of 2-cells with the cube?}
 }
 \end{center}
 \end{figure}
@@ -10390,7 +10396,6 @@ For more
 complicated theories like the $\halfesix$ theory, whose modular matrices do not obviously contain a superconductor-related factor, 
 it is at present unclear how precise this interpretation really is. 
 
-\ethan{can add a paragraph about braiding data if we like, with a possible ``plan to pursue this in future studies'' or something}
 In our discussion of the modular $S$ and $T$ matrices in each of the examples we've worked out, 
 we have focused on the modular transformation perspective, rather than on the braiding statistics perspective. 
 For example, we have computed the $S$-matrix by considering the way it acts to exchange the two 
@@ -10398,7 +10403,7 @@ cycles of the torus.
 We have not focused on the statistical picture behind the $S$-matrix, in which matrix elements $S_{ab}$ correspond to double braids between $a$ and $b$ particles. 
 While we have checked that the computation of double braids reproduces the correct $S$-matrix 
 in the tube algebra of the $C_2$ theory, some subtitles involving relative spin structures rear their heads when trying to compute particular braiding data in more general settings. 
-We plan to address these subulties in future work. 
+We plan to address these subtitles in future work. 
 
 We have analyzed fermion condensation in all its different guises, but have had little to say about the reverse procedure:
 starting from a fermionic phase and ``bosonizing'' to obtain a bosonic one. Roughly, this can be done by 
