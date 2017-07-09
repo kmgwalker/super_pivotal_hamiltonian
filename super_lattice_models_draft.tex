@@ -4342,6 +4342,7 @@ and $M$ is a collection of representatives of the orbits of m-type objects under
 the collection of all m-type simple objects is $M\cup M\tp \psi$.   
 Since $x\tp \psi \cong x$ if $x\in Q$, we can write
 \begin{align}
+\label{dimCtoDimCpsi}
 \mcd_\mcc^2 & = \text{Tr} \left( \bigoplus_{x \in M} d_x (\mathds{1} \oplus \psi) \tp x \right ) + 
 \text{Tr}  \left(\bigoplus_{x  \in Q}\frac{d_x}{2}(\unit \oplus \psi) x \right) \\ & =\text{Tr}(\unit \oplus \psi) 
 \cdot \text{Tr} \left( \bigoplus_{x \in \mcc/\psi} \frac{d_x}{\dim\End(x)} x \right) = \mcd^2_{\rm sVec} 
@@ -5767,6 +5768,7 @@ We can now do the same for the $b$ loop,
 %\; = \; \sum_{y \in \sob(\mcc/\psi)} \frac{1}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe
 %\end{align}
 \begin{align}
+\label{ScalcBack}
 \frac{1}{\mcd^2}\; \Scalcba 
 \; = \; \Scalcbb
 \; = \; \Scalcbc
@@ -5776,18 +5778,18 @@ We can now do the same for the $b$ loop,
 where we have used that the $\omega$ loop is a projector onto the vacuum. 
 In the last summation we need to replace $\sum_{y \in \sob(\mcc)}$ with $\sum_{y \in \sob(\mcc/\psi)}$.
 %As with \eqref{...} this is accomplished by simultaneously letting $\text{cl}(y) \ra \text{cl}((y + y\tp\psi)/2^{n_x}$
-As with \eqref{...}, this is accomplished by,
+Analogous to \eqref{dimCtoDimCpsi}, this is accomplished by,
 \begin{align}
 \label{interim_S_calc}
  \sum_{y \in \sob(\mcc)} \frac{1}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe 
 \; =\; \sum_{y \in \sob(\mcc/\psi)} \frac{1}{\mcd^2} \frac{1}{2^{n_y}}\left(  \SMatrixx{b^{*}}{y} \;  +s(J)\SMatrixxx{b^{*}}{y \tp \psi} \;  \quad  \right) \Scalcbe
 \end{align}
 where the $s(J)$ is found by using that $\text{cl}_J(\psi \tp y) = s(J) \text{cl}_J (y)$.
-The factor of $2^{-n_x}$ is introduced so that we don't overcount the q-type simple objects from $\sob(\mcc)$.
+The factor of $2^{-n_y}$ is introduced so that we don't overcount the q-type simple objects from $\sob(\mcc)$.
 Using that $S_{b^* (y\tp \psi)} = (-1)^{\nu_b} S_{b^* y}$, and that $(-1)^{\nu_b} s(J) = 1$,  
-the right hand side of \eqref{interim_S_calc} is simplified to,
+the right hand side of \eqref{interim_S_calc}, so that \eqref{ScalcBack} becomes,
 \begin{align}
-=\; \sum_{y \in \sob(\mcc/\psi)} \frac{2}{2^{n_y}} \frac{1}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe 
+\frac{1}{\mcd^2}\; \Scalcba\; = \; \sum_{y \in \sob(\mcc/\psi)} \frac{2}{2^{n_y}} \frac{1}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe 
 \end{align}
 Putting all calculations together, and removing leftover $\omega$ loops (which provide an 
 additional factor of $\mcd^{-2}$) we find that the matrix elements of the (un-normalized) $S$-matrix can be written as
@@ -5799,14 +5801,18 @@ In the above formula, the $S_{ax}$ and $S_{b^*y}$ are matrix elements of the $S$
 input theory $\mcc$ (which we assumed to be an MTC).
 Note that $\nu_b$ must be $0$ if $J$ is bounding, $1$ if $J$ is non-bounding, similarly for $\nu_y$.
 Also note that we have assumed a fixed set of representatives of simple objects for $\mcc/\psi$, and $\mcc$. 
-we assume that the $y$ appearing in $S_{b^*y}$ is a trivial lift of the $y$ written in the closed up idempotent 
+The simple object $y$ appearing in $S_{b^*y}$ is a trivial lift of the $y$ written in the closed up idempotent 
 (recall that the first is a simple object of $\mcc$, while the latter is a simple object of $\mcc/\psi$).
-One can change the representative of the isomorphism class of $y \in \mcc/\psi$ with the odd isomorphism taking $y \ra \tilde{y} = \psi \tp y$. 
-Under this odd-isomorphism the right hand side of \eqref{Smatrix_final_step} picks up a factor of $s(J)(-1)^{\nu_b}$, 
-which is always equal to $1$ (otherwise the input closed up idempotent is equal to zero).
+\dave{Kevin, is that bad form to use the same label for $y$ and the lift of $y$?}
+One can change the representative of the isomorphism class of $y \in \mcc/\psi$ with an odd isomorphism $\text{mor}(y \ra \psi \tp y)$.
+%taking $y \ra \tilde{y} = \psi \tp y$. 
+Under this odd-isomorphism the right hand side of \eqref{Smatrix_final_step} picks up a factor of $s(J)(-1)^{\nu_b}$.
+By assumption we have $s(J)(-1)^{\nu_b} = 1$, otherwise the closed up input idempotent is identically zero.
+%which is always equal to $1$ (otherwise the input closed up idempotent is identically zero).
 
-We can find the normalized $S$-matrix by dividing the q-type idempotents by $\sqrt{2}$.
-In the discussion following \eqref{minimal_table} we point out that $E(a,b)$ is q-type if $b$ is q-type.
+In favour of finding a unitary $S$-matrix we normalize each q-type idempotent by dividing by its norm, $\sqrt{2}$.
+%Recall that q-type idemopotents have a norm of $\sqrt{2}$, hence to find the normalized and unitary $S$-matrix we have to divide each q-type idempotent by $\sqrt{2}$.
+In the discussion following \eqref{minimal_table} we pointed out that $E(a,b)$ is q-type if $b$ is q-type.
 Hence we can normalize our idempotents by defining $\widehat{E}(a,b) = E(a,b)/(\sqrt{2})^{n_b}$.
 This results in a unitary $S$-matrix given by, 
 \dave{I will plug this into a computer and verify that it's unitary.}
@@ -5826,16 +5832,18 @@ Note, as discussed above, unless $J = J(b)$ and $W=W(y)$, the resulting vector i
 %\ethan{right?}. 
 %\dave{Yeap.}
 
-\dave{Ack. Sorry guys, made a transcription error from my notes.
-The last sum in the second part of the equation should be over $\sob(\mcc)$ not $\sob(\mcc/\psi)$. 
-Hopefully this clears things up, and addresses each of the points below.}
+%\dave{Ack. Sorry guys, made a transcription error from my notes.
+%The last sum in the second part of the equation should be over $\sob(\mcc)$ not $\sob(\mcc/\psi)$. 
+%Hopefully this clears things up, and addresses each of the points below.}
 
-\kw{what about $\sqrt 2$ normalization for q-type?}
+%\kw{what about $\sqrt 2$ normalization for q-type?}
+%\dave{addressed}
 
-\kw{Need to also comment on how $S_{by}^*$ depends on choice of lift (or representative) of $y$}
+%\kw{Need to also comment on how $S_{by}^*$ depends on choice of lift (or representative) of $y$}
+%\dave{addressed}
 
-\kw{Should we explain the $*$ in $S_{by}^*$?}
-\dave{Changed it to $S_{b^*y}$. That's probably more clear anyway since that's what's written in the previous equation.}
+%\kw{Should we explain the $*$ in $S_{by}^*$?}
+%\dave{Changed it to $S_{b^*y}$. That's probably more clear anyway since that's what's written in the previous equation.}
 
 
 The matrix elements of the $S$-matrix on the torus with non-bounding spin structure (periodic 
@@ -5843,8 +5851,7 @@ boundary conditions around both cycles) can be calculated in an analogous way.
 The first half of the calculation remains the same as in \eqref{Scalc_above}.
 The second half of the calculation changes only if $b$ is q-type, in which case the idempotent 
 $E(a,b)$ is q-type, and has to be closed up on the torus with an odd endomorphism. 
-Since we close the idempotent with an odd endomorphism, 
-the resulting vector always has a sign ambiguity as discussed in the caption of Figure \ref{C2Change_of_Basis}.
+As discussed in the caption of Figure \ref{C2Change_of_Basis} closing an idempotent with an odd endomorphism always results in a sign ambiguity for the closed up idempotent.
 In such a case we have,
 \footnote{We have used $(S^z)_{xy} = \frac{1}{\mcd} \Szmatrix$}:
 %\dave{Need to double check this, may have a mistake in the last step.}
@@ -5860,6 +5867,15 @@ In such a case we have,
 \end{align}
 Thus, we have calculated the $S$-matrix of the condensed theory in 
 terms of the modular data of the input theory.  
+
+The $T$-matrix is found by closing up an idemopotent with an additional $2\pi$ rotation of the boundary. 
+For the annulus this is a $2\pi$ counter clockwise rotation of the inner $S^1$ with respect to the outer $S^1$.
+It is given by,
+\begin{align}
+\text{cl}_W(\widehat{E}(a,b)) \xrightarrow{\; \; \; T^{JW \ra J\widetilde{W}}\;\;\; } \theta_a \theta_b^* \text{cl}_{\widetilde{W}}(\widehat{E}(a,b))
+\end{align}
+where again $J = J(b)$, and $\widetilde{W}$ can be read off from Figure \ref{spin_str_mapping_class_group}.
+The phases $\theta_a$ and $\theta_b$ are the topological spins of the lift of $a$ and $b$ to the parent theory.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
