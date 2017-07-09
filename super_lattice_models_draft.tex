@@ -5778,19 +5778,20 @@ We can now do the same for the $b$ loop,
 \; = \; \sum_{y \in \sob(\mcc)} \frac{1}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe
 \end{align}
 where we have used that the $\omega$ loop is a projector onto the vacuum. 
-In the last summation we need to replace $\sum_{y \in \sob(\mcc)}$ with $\sum_{y \in \sob(\mcc/\psi)}$.
+In the last summation we need to replace $\sum_{y \in \sob(\mcc)}$ with $\sum_{y \in \sob(\mcc/\psi)}$:
 %As with \eqref{...} this is accomplished by simultaneously letting $\text{cl}(y) \ra \text{cl}((y + y\tp\psi)/2^{n_x}$
-Analogous to \eqref{dimCtoDimCpsi}, this is accomplished by,
 \begin{align}
 \label{interim_S_calc}
  \sum_{y \in \sob(\mcc)} \frac{1}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe 
-\; =\; \sum_{y \in \sob(\mcc/\psi)} \frac{1}{\mcd^2} \frac{1}{2^{n_y}}\left(  \SMatrixx{b^{*}}{y} \;  +s(J)\SMatrixxx{b^{*}}{y \tp \psi} \;  \quad  \right) \Scalcbe
+\; =\; \sum_{y \in \sob(\mcc/\psi)} \frac{1}{\mcd^2} \frac{1}{2^{n_y}}\left(  \SMatrixx{b^{*}}{y} \;  +s(J)\SMatrixxx{b^{*}}{y \tp \psi} \;  \quad  \right) \Scalcbe.
 \end{align}
-where the $s(J)$ is found by using that $\text{cl}_J(\psi \tp y) = s(J) \text{cl}_J (y)$.
-The factor of $2^{-n_y}$ is introduced so that we don't overcount the q-type simple objects from $\sob(\mcc)$.
-Using that $S_{b^* (y\tp \psi)} = (-1)^{\nu_b} S_{b^* y}$, and that $(-1)^{\nu_b} s(J) = 1$,  
-the right hand side of \eqref{interim_S_calc}, so that \eqref{ScalcBack} becomes,
-\kw{this sentence is a bit garbled}
+The factor of $s(J)$ appeared due to $\text{cl}_J(\psi \tp y) = s(J) \text{cl}_J (y)$, where the subscript $J$ means we close up $y$ around a cycle with spin structure $J$.
+\dave{Note to self: check if we use this notation earlier.}
+While the normalization $2^{-n_y}$ is inserted so that we don't over count the q-type simple objects from $\sob(\mcc)$ (recall for example, \eqref{dimCtoDimCpsi}). 
+Using that $S_{b^* (y\tp \psi)} = (-1)^{\nu_b} S_{b^* y}$, and that $(-1)^{\nu_b} s(J) = 1$ by assumption, 
+the right hand side of \eqref{interim_S_calc} can be simplified so that \eqref{ScalcBack} becomes
+%\kw{this sentence is a bit garbled}
+%\dave{Thanks. Brain had a glitch this morning. I think it's better now.}
 \begin{align}
 \frac{1}{\mcd^2}\; \Scalcba\; = \; \sum_{y \in \sob(\mcc/\psi)} \frac{2}{2^{n_y}} \frac{1}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe 
 \end{align}
@@ -5804,22 +5805,29 @@ In the above formula, the $S_{ax}$ and $S_{b^*y}$ are matrix elements of the $S$
 input theory $\mcc$ (which we assumed to be an MTC).
 Note that $\nu_b$ must be $0$ if $J$ is bounding, $1$ if $J$ is non-bounding, similarly for $\nu_y$.
 Also note that we have assumed a fixed set of representatives of simple objects for $\mcc/\psi$, and $\mcc$. 
-The simple object $y$ appearing in $S_{b^*y}$ is a trivial lift of the $y$ written in the closed up idempotent 
+The simple object $y$ appearing in $S_{b^*y}$ on the right hand side of \eqref{Smatrix_final_step} is a trivial lift of the $y$ written in the closed up idempotent 
 (recall that the first is a simple object of $\mcc$, while the latter is a simple object of $\mcc/\psi$).
-\dave{Kevin, is that bad form to use the same label for $y$ and the lift of $y$?}
-\kw{I think it's OK, since we define the objects of C/psi to the the objects of C.}
+%\dave{Kevin, is that bad form to use the same label for $y$ and the lift of $y$?}
+%\kw{I think it's OK, since we define the objects of C/psi to the the objects of C.}
 One can change the representative of the isomorphism class of $y \in \mcc/\psi$ with an odd isomorphism $\text{mor}(y \ra \psi \tp y)$.
 %taking $y \ra \tilde{y} = \psi \tp y$. 
-Under this odd-isomorphism the right hand side of \eqref{Smatrix_final_step} picks up a factor of $s(J)(-1)^{\nu_b}$.
-By assumption we have $s(J)(-1)^{\nu_b} = 1$, otherwise the closed up input idempotent is identically zero.
+Under this odd-isomorphism the right hand side of \eqref{Smatrix_final_step} picks up a factor of $s(J)(-1)^{\nu_b}$ which is equal to $1$ since $s(J(b)) = (-1)^{\nu_b}$.
+%By assumption we have $s(J)(-1)^{\nu_b} = 1$, otherwise the closed up input idempotent is identically zero.
 %which is always equal to $1$ (otherwise the input closed up idempotent is identically zero).
 
-In order for the $S$-matrix to be unitary, we normalize each q-type idempotent by dividing by its norm, $\sqrt{2}$.
+In order for the $S$-matrix to be unitary, we normalize each q-type idempotent.
 %Recall that q-type idemopotents have a norm of $\sqrt{2}$, hence to find the normalized and unitary $S$-matrix we have to divide each q-type idempotent by $\sqrt{2}$.
 In the discussion following \eqref{minimal_table} we pointed out that $E(a,b)$ is q-type if $b$ is q-type.
-Hence we can normalize our idempotents by defining $\widehat{E}(a,b) = E(a,b)/(\sqrt{2})^{n_b}$.
-This results in a unitary $S$-matrix given by, 
+Hence we can normalize our idempotents by re-scaling the q-type idempotents by a factor of $1/\sqrt{2}$, this results in the pseudo idempotents 
+\begin{align} 
+\widehat{E}(a,b) = E(a,b)/(\sqrt{2})^{n_b}
+\end{align}
+have unit norm.
+The resulting unitary $S$-matrix is given by,
+%This results in a unitary $S$-matrix given by, 
 \dave{I will plug this into a computer and verify that it's unitary.}
+\dave{Currently having licensing issues with Mathematica, 
+will do this once that's resolved.}
 %\dave{This was old notation}
 %\begin{align}
 %\text{cl}_W(f^{J}_{ab}) \xrightarrow{S^{JW \ra WJ}}  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} S_{ax}  S_{by}^*   \text{cl}_J(f^{W}_{xy})
@@ -5828,16 +5836,24 @@ This results in a unitary $S$-matrix given by,
 %\text{cl}_W(E(a,b)) \xrightarrow{S^{JW \ra WJ}}  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} S_{ax}  S_{by}^*   \text{cl}_J(E(x,y))
 %\end{align}
 \begin{align}
+\label{normalized_S_matrix}
 \text{cl}_W(\widehat{E}(a,b)) \xrightarrow{S^{JW \ra WJ}}  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} \frac{2}{(\sqrt{2})^{n_b+n_y}}S_{ax}  S_{b^*y}   \text{cl}_J(\widehat{E}(x,y))
 \end{align}
-Where $\text{cl}_W(\widehat{E}(a,b))$ means 
-\kw{haven't we already defined $cl_W$?}
-we close the idempotent $\widehat{E}(a,b)$ 
-\kw{hat means not an idempotent; could say ``pseudo-idempotent".}
-with spin structure $J(b)$ 
-onto the torus with spin structure $W$ around the newly closed cycle. 
-Note, as discussed above, unless $J = J(b)$ and $W=W(y)$, the resulting vector is zero.
-\kw{$y$??}
+%Recall that $\text{cl}_W(\widehat{E}(a,b))$ means 
+%\kw{haven't we already defined $cl_W$?}
+%\dave{I thought so, but can't find it. 
+%Will leave the reminder for now, and reference to the appropriate place later.}
+%we close the normalized idempotent $\widehat{E}(a,b)$ 
+%\kw{hat means not an idempotent; could say ``pseudo-idempotent".}
+%\dave{I think earlier we use the term `normalized idempotent'.
+% we could say normalized pseudo-idempotent}
+%with spin structure $J(b)$ 
+%onto the torus with spin structure $W$ around the newly closed cycle. 
+Note that $\text{cl}_J(\widehat{E}(x,y))$ on the right hand side of \eqref{normalized_S_matrix} is zero unless $y$ is compatible with the spin structure inherited from the left hand side of \eqref{normalized_S_matrix},
+explicitly $y$ must satisfy $s(W) = (-1)^{\nu_y}$.
+%, hence the sum over $y \in \sob(\mcc/\psi)$ in the righthand side of  should be restricted to those $y$ with $(-1)^{\nu_y} = s(W)$.
+%Note, as discussed above, unless $J = J(b)$ and $W=W(y)$, the resulting vector is zero.
+%\kw{$y$??}
 %\ethan{right?}. 
 %\dave{Yeap.}
 
@@ -5882,16 +5898,16 @@ terms of the modular data of the input theory.
 
 The $T$-matrix is found by closing up an idemopotent with an additional $2\pi$ rotation of the boundary. 
 For the annulus this is a $2\pi$ counter clockwise rotation of the inner $S^1$ with respect to the outer $S^1$.
-It is given by,
+The matrix elements are given by,
 \begin{align}
 \text{cl}_W(\widehat{E}(a,b)) \xrightarrow{\; \; \; T^{JW \ra J\widetilde{W}}\;\;\; } \theta_a \theta_b^* \text{cl}_{\widetilde{W}}(\widehat{E}(a,b))
 \end{align}
 where again $J = J(b)$, and $\widetilde{W}$ can be read off from Figure \ref{spin_str_mapping_class_group}.
 The phases $\theta_a$ and $\theta_b$ are the topological twists of the lifts of $a$ and $b$ to the parent theory.
-
 Note that if $J = B$ then replacing $b$ with $b\tp \psi$ changes the sign of the twist.
 This sign ambiguity is expected; see xxxx above.
 \kw{Dave, do you agree?}
+\dave{Yep, that's correct.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
