@@ -10682,20 +10682,25 @@ We could write down the ground state of the $C_2$ theory.
 \end{itemize} 
 
 In this subsection we define a tensor network that produces the ground state wavefunction of the Hamiltonian defined in \eqref{ham}.
-To do so, we evaluate $Z(\mcm)$ on three manifolds of the form $\mcm =\Sigma \times [0,1]$.
-\footnote{Historically, this version of the state sum pre-dates TVBW and was first found by Kirillov and Reshetikhin~\cite{Kirillow1989} who coined the term `shadow world', which was later extended by Turaev~\cite{turaev1992shadow} and included shadows of links which he coined `shlinks'.}
+To do so, we evaluate $Z(\mcm)$ on three-manifolds of the form $\mcm =\Sigma \times [0,1]$ using the 
+state-sum technology developed in the previous sections
+\footnote{Historically, this version of the state sum pre-dates TVBW and was first found by Kirillov and Reshetikhin~\cite{Kirillow1989} who coined the term `shadow world', which was later extended by Turaev~\cite{turaev1992shadow} and included shadows of links which he coined `shlinks'.}.
 
 
-The basic input to the wave-function the same as that of the Hamiltonian defined in \eqref{ham}.
-However, in addition we must also specify a cell decomposition for $\Sigma \times [0,1]$. 
-The cell decomposition for the slice $\Sigma \times \{ 1 \} $ is fixed by the cell decomposition used for the Hamiltonian \eqref{ham}, and we denote it by $\Sigma_1$.
-We also pick a cell decomposition of $\Sigma \times \{0\}$, which we denote $\Sigma_0$.
-The partition function then provides a linear map between vector spaces:
+The basic input to the wave-function the same as that of the Hamiltonian defined in \eqref{ham}, namely 
+a super tensor category $\mcc$, an oriented spin surface $\Sigma$, and a cell decomposition of $\Sigma$.
+We will be evaluating partition functions on the manifold $\Sigma \times [0,1]$, where the cell decomposition on the slice $\Sigma \times \{ 1 \} $ (which we denote by $\Sigma_1$)
+is fixed to be the cell decomposition on which we wish to define the Hamiltonian \eqref{ham}. 
+
+We also fix a cell decomposition of $\Sigma \times \{0\}$, which we denote $\Sigma_0$.
+This cell decomposition is responsible for building the ground state on which our Hamiltonian is defined. 
+
+The partition function provides a linear map between the Hilbert spaces at $\Sigma_0$ and $\Sigma_1$:
 \begin{align}
-Z(\Sigma_{0\ra1} ): \; \mch(\Sigma_0) \ra \mch(\Sigma_1)
+Z(\Sigma_{0\ra1} ): \; \mch(\Sigma_0) \ra \mch(\Sigma_1).
 \end{align}
-whose image is the space of ground states of \eqref{ham}.
-Explicitly, we can prepare wavefunctions by
+The image of this map is the space of ground states of \eqref{ham}.
+Explicitly, we can prepare wavefunctions out of a fixed input state $v_0\in \mch(\Sigma_0)$ by
 %\begin{align}
 %
 %\ket{\Psi} = \sum_{ v_1 \in \mch(\Sigma_1)} \ket{v_1} v_1^* \cdot Z(\Sigma_{0\ra1} ) %\cdot v_0.
@@ -10706,18 +10711,26 @@ Explicitly, we can prepare wavefunctions by
 where $Z(\Sigma_{0\ra1}; v_0, v_1)$ is the evaluation of the partition function with 
 boundary conditions fixed by $v_0$ and $v_1$. 
 
-We can take the cell decomposition in the bulk of $\Sigma_{0\ra1}$ to be any cell decomposition that agrees with $\Sigma_0$ and $\Sigma_1$ on the boundaries. 
-However, there is a natural choice, which corresponds to extending $\Sigma_0$ into $\Sigma \times [0, 1/2]$, and $\Sigma_1$ into $\Sigma \times [1/2, 1]$, see Figure~\ref{CellDecomposition}. 
-It is convenient to take the two cell decompositions to be in `normal' position,
-meaning that $\Sigma_0$ only intersects $\Sigma_1$ along edges, again see Figure~\ref{CellDecomposition}.
+In order to evaluate $Z(\Sigma_{0\ra1}; v_0, v_1)$, we need to specify a cell decomposition on $\Sigma_{0\ra 1}$ (although the actual partition function is independent of the particular choice). 
+We can take the cell decomposition in the bulk of $\Sigma_{0\ra1}$ to be any cell decomposition that agrees with the cell decomposition of $\Sigma_0$ and $\Sigma_1$ when restricted to $\partial \Sigma_{0\ra1}$.
+However, there is a particularly convenient choice, which corresponds to extending the cell decomposition of $\Sigma_0$ into $\Sigma \times [0, 1/2]$, and that of $\Sigma_1$ into $\Sigma \times [1/2, 1]$, see Figure~\ref{CellDecomposition}. 
+When we do this extension, every $k$-cell in $\Sigma_0$ and $\Sigma_1$ is extended into a $(k+1)$-cell in the bulk 
+of $\Sigma_{0\ra1}$ (the $(k+1)$-cells are the `shadows' of the $k$-cells, and hence the bulk constitutes the `shadow world'). 
+It is convenient to take the two cell decompositions on $\Sigma_0$ and $\Sigma_1$ to be in `normal' position,
+meaning that the extension of $\Sigma_0$ into the bulk only intersects the extension of $\Sigma_1$ transversely along edges, again see Figure~\ref{CellDecomposition}.
 
-\ethan{I find this pretty cryptic at the moment---will have to go through and derive stuff on my own before I can attempt a clearer writing}
 
 We now specify the amplitude $Z(\Sigma_{0\ra 1}; v_0, v_1) $ in \eqref{GroundState}.
+The amplitude is determined using the state sum procedure developed previously, and as such we will be brief in what follows. 
 The labels of the 2-cells that extend from $\Sigma_0$ and $\Sigma_1$ are determined by $v_0$ and $v_1$. 
 The 2-cell labels living at $\Sigma \times \{ 1/2 \}$ need to be summed over.
 We can orient each 2-cell using the orientation of $\Sigma$. 
-By looking at Figure~\ref{CellDecomposition}, we see that there are only three kinds of 0-cells that show up \dave{Figure}. 
+By looking at Figure~\ref{CellDecomposition}, we see that there are only three kinds of 0-cells that show up in 
+$\Sigma \times \{1/2\}$: those that are formed at the x-shaped intersection of a 1-cell in the extension of $
+\Sigma_0$ with a 1-cell in the extension of $\Sigma_1$, those where a 0-cell in the extension of $\Sigma_0$ 
+meets the interior of a 2-cell in 
+the extension of $\Sigma_1$, and vice versa. These possibilities lead to three different 0-cell tensors that need to be evaluated. 
+
 Rather than drawing a spherical neighborhood of each 0-cell, 
 we will draw a cube. 
 The three kinds of 0-cells are displayed in Figure~\ref{StandardizedSlabTensors} (first row), along
@@ -10734,6 +10747,22 @@ Each vertex on $\Sigma_1$ will have three neighboring 2-cells that need to be su
 \Tensorc \; &= \; \Tensorcc \\
 \end{align}
 
+\begin{figure}
+\begin{center}
+\includegraphics{CellDecomposition.pdf}
+\caption{\label{CellDecomposition}
+\dave{Will pitchforkize.} \ethan{Actually, I think it might be clearer if you don't. We mention the standardization procedure after we talk about the cell decomposition extension, and I think the figure is easier to look at pre-pitchforkization} 
+Cell decomposition used to construct the tensor network.
+The top layer $\Sigma_1$ is the cell decomposition that we use to construct the Hamiltonian in \eqref{ham}.
+The bulk cell decomposition $\Sigma_{0\ra1}$ is found by extending $\Sigma_0$ into 
+$\Sigma \times [0,\frac{1}{2}]$, and $\Sigma_{1}$ into $\Sigma \times [\frac{1}{2},1]$ (left figure).
+The input cell decomposition $\Sigma_0$ is taken to be in `normal' position with respect to $\Sigma_1$, meaning that when each cell decomposition is extended into the bulk, the two decompositions only intersect transversely along edges. 
+On the right, we have shown two dimensional representations of small patches of the cell decomposition. 
+In the two dimensional pictures we will denote the cells stemming from $\Sigma_0$ by squiggly lines.
+Notice that the orientation of all lines on $\Sigma_{0 \ra1}$ have been reversed relative to $\Sigma_0$ and $\Sigma_1$. 
+}
+\end{center}
+\end{figure}
 
 \dave{Do 1-handles?}
 
@@ -10751,22 +10780,7 @@ In part c) we finish the standardization by making each trivalent vertex a pitch
 
 
 
-\begin{figure}
-\begin{center}
-\includegraphics{CellDecomposition.pdf}
-\caption{\label{CellDecomposition}
-\dave{Will pitchforkize.}
-Cell decomposition used to construct the tensor network.
-The top layer denoted $\Sigma_1$ is the cell decomposition that we built the Hamiltonian over in \eqref{ham}.
-The input cell decomposition $\Sigma_0$ should be in `normal' position with respect to $\Sigma_1$, that is they should only interesect along edges. 
-The intermediary cell decomposition $\Sigma_{0\ra1}$ is found by extending $\Sigma_0$ into 
-$\Sigma \times [0,\frac{1}{2}]$, and $\Sigma_{1}$ into $\Sigma \times [\frac{1}{2},1]$.
-On the right, we have shown two dimensional representation of the cell decompositions. 
-Notice that the orientation of all lines on $\Sigma_{0 \ra1}$ have been reversed relative to $\Sigma_0$ and $\Sigma_1$. 
-In the two dimensional pictures we will denote the cells stemming from $\Sigma_0$ by squiggly lines.
-}
-\end{center}
-\end{figure}
+
 
 
 A cell decomposition of $\Sigma \times \{ 1 \}$ along with a set of pitchforkization maps \eqref{std0handle}, and a spin structure.
