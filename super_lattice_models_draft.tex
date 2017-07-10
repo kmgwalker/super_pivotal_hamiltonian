@@ -6033,11 +6033,13 @@ and the quotient theory will be braided.
 However, the transparency of $\psi$ also means that the $S$-matrix in the $SO(3)_6$ theory is degenerate, 
 and hence the theory is not modular. 
 In this case the lack of modularity is fairly benign, 
-$SO(3)_6$ is a subcategory of the modular tensor category $SU(2)_6$,
-a category of this type is sometimes referred to as non-split super modular\cite{bruillard2017,bruillard2017b}.
-\dave{Need to check that, or remove citation.}
-\kw{maybe we should drop ref to ``non-split super modular"}
-This will allow us to infer the minimal idempotents of $SO(3)_6/\psi$ from the minimal idempotents of $SU(2)_6/\psi$.
+$SO(3)_6$ is a subcategory of the modular tensor category $SU(2)_6$.
+%,
+%a category of this type is sometimes referred to as non-split super modular\cite{bruillard2017,bruillard2017b}.
+%\dave{Need to check that, or remove citation.}
+%\kw{maybe we should drop ref to ``non-split super modular"}
+%\dave{Sure}
+This will allo.w us to infer the minimal idempotents of $SO(3)_6/\psi$ from the minimal idempotents of $SU(2)_6/\psi$.
 %\dave{I think the two sentences are unnecessary. Feel free to undo.}
 %After finding the idempotents in $SO(3)_6$ and $SU(2)_6$ we will then perform fermion condensation to find the minimal idempotents of $SU(2)_6/\psi$ and $SO(3)_6/\psi$. 
 %Therefore, our strategy is the reverse of the one taken in our discussion of the $C_2$ theory: 
@@ -6225,15 +6227,19 @@ f_{ab}^c
 \text{
 {\tabulinesep=1.2mm
 \begin{tabu}{ r c }
-consistency constraint: & $ (-1)^{s(J) + \nu_b}=1$ \\ 
-topological twist:& $\frac{\theta_a}{\theta_b} (-1)^{(s(J)+1)p_{ab}^c + x(\nu_a + \nu_b)}$ \\
-isomorphism class: & $c \in a \tp b$
+%consistency constraint: & $ (-1)^{s(J) + \nu_b}=1$ \\ 
+consistency constraint: & $ s(J)(-1)^{\nu_b}=1$ \\ 
+%topological twist:& $\frac{\theta_a}{\theta_b} (-1)^{(s(J)+1)p_{ab}^c + x(\nu_a + \nu_b)}$ \\
+topological twist:& $\frac{\theta_a}{\theta_b} (-s(J))^{p_{ab}^c}(-1)^{x(\nu_a + \nu_b)}$
+%isomorphism class: & $c \in a \tp b$
 \end{tabu}
 }}
 }
 \end{align} 
 \kw{I don't understand what's meant by ``isomorphism class: $c \in a \tp b$"}
-where as before $s(J) = 0$ ($s(J)=1)$ if $J=B$ ($J=N$) and $x=0$ denotes the presence of an $\omega_0$ loop 
+\dave{dropped it. 
+Also realized we should have an additional index on $f_{ab}^c$ denoting whether $x =0$ or $x =\psi$.}
+where as before $s(J) = 1$ ($s(J)=-1)$ if $J=B$ ($J=N$) and $x=0$ denotes the presence of an $\omega_0$ loop 
 in the annulus on the left while $x=1$ corresponds to the presence of an $\omega_\psi$ loop in the annulus, 
 where $\omega_x$ is defined by 
 \begin{align}
@@ -6241,18 +6247,23 @@ where $\omega_x$ is defined by
 \end{align}
 \dave{dropped the factor of $2$ above to be consistent with the following.}
 \kw{which factor of 2 was dropped?}
-where $\mcd_{\mcc/\psi}^2 = \sum_{x \in \mcc/\psi} d_x^2 / \dim \End(x)$ is the total quantum dimension of 
+\dave{There was a factor of $2$ in the numerator at some point.
+I think at one point I just had $\mcd^2$ in the denominator and it was unlclear if that was for the parent theory or the condensed one and lead to an inconsistency once the following sentence was added.
+}
+and $\mcd_{\mcc/\psi}^2 = \sum_{x \in \mcc/\psi} d_x^2 / \dim \End(x)$ is the total quantum dimension of 
 the condensed theory in the sense of \eqref{total_qdim_defn}. 
 The particular representative of the isomorphism class is given by choosing $c \in a\tp b$, and a vector from $V^{ab}_c(\mcc/\psi)$.
 Finally, we have defined $p_{ab}^c$ in the twist of the idempotent by $p_{ab}^c=0$ ($p^c_{ab}=1$) 
 if the chosen basis vector in the fusion space $V^{ab}_c(\mcc/\psi)$ is even (odd).
-In what follows, we will write $f^c_{ab}$ as $M^c_{ab}$ 
+Note that in the language of Section~\ref{double_fermionic_quotient} the $f_{ab}^c$ are isomorphic to $E(a \tp x, b)$.
+In what follows, we will write $f^c_{ab}$ as $m^c_{ab}$ 
 \kw{Up unitl now we have been using lower case letters for idempotents, so maybe this should
 be changed to  $m^c_{ab}$?}
+\dave{Yes, agreed.}
 if the idempotent is m-type (i.e. not invariant under fusion with $\psi$)
-and $f^c_{ab}$ as $Q^c_{ab}$ if the idempotent is q-type (i.e. has an odd endomorphism / is invariant under fusion with $\psi$).
+and $f^c_{ab}$ as $q^c_{ab}$ if the idempotent is q-type (i.e. has an odd endomorphism / is invariant under fusion with $\psi$).
 Note that by our previous discussion in Section \ref{more_on_tubes}, if $b$ is a q-type object 
-then the idempotent $f^c_{ab}$ must be associated with a non-bounding spin structure.
+then the idempotent $f^c_{ab}$ must be associated with a non-bounding spin structure. \dave{I don't think this needs to be said here.}
 \kw{How does this paragraph line up with the current version of Section 5?}
 
 
@@ -6299,9 +6310,9 @@ $M_{22}^0$ &$1$ \\
 \text{
 \begin{tabu}{ c | c }
 type&twist $\times \; (-1)^{p_{ab}^c} $ \\ \hline
-$M_{02}^\psi$ &$-i$ \\
-$M_{12}^\psi$ &$ie^{3 i \pi /16}$ \\
-$M_{22}^\psi$ &$1$ \\
+$m_{02}^\psi$ &$-i$ \\
+$m_{12}^\psi$ &$ie^{3 i \pi /16}$ \\
+$m_{22}^\psi$ &$1$ \\
 \end{tabu}
 }
 \end{align}
@@ -6310,44 +6321,44 @@ while in the non-bounding spin structure sector we find
 &\text{
 \begin{tabu}{ c | c }
 type& twist \\ \hline
-$M_{01}^0$ &$-e^{-3i\pi/16}$ \\
-$M_{11}^0$ &$1$ \\
-$M_{21}^0$ &$-i e^{-3i \pi /16}$ \\
+$m_{01}^0$ &$-e^{-3i\pi/16}$ \\
+$m_{11}^0$ &$1$ \\
+$m_{21}^0$ &$-i e^{-3i \pi /16}$ \\
 \end{tabu}
 }
 \quad \quad
 \text{
 \begin{tabu}{ c | c }
 type& twist \\ \hline
-$M_{01}^\psi$ &$-e^{-3 i \pi /16}$ \\
-$M_{11}^\psi$ &$1$ \\
-$M_{21}^\psi$ &$-i e^{-3 i \pi /16}$ \\
+$m_{01}^\psi$ &$-e^{-3 i \pi /16}$ \\
+$m_{11}^\psi$ &$1$ \\
+$m_{21}^\psi$ &$-i e^{-3 i \pi /16}$ \\
 \end{tabu}
 }
 \quad \quad
 \text{
 \begin{tabu}{ c | c }
 type& twist \\ \hline
-$M_{31}^0$ &$e^{3 i \pi /4}$ \\
-$Q_{33}^0$ &$1$ \\
+$m_{31}^0$ &$e^{3 i \pi /4}$ \\
+$q_{33}^0$ &$1$ \\
 \end{tabu}
 }
 \\
 &\text{
 \begin{tabu}{ c | c }
 type& twist \\ \hline
-$Q_{03}^0$ &$-e^{-15 i \pi /16}$ \\
-$Q_{13}^0$ &$e^{- 3 i \pi /4}$ \\
-$Q_{23}^0$ &$-i e^{-15 i \pi /16}$ \\
+$q_{03}^0$ &$-e^{-15 i \pi /16}$ \\
+$q_{13}^0$ &$e^{- 3 i \pi /4}$ \\
+$q_{23}^0$ &$-i e^{-15 i \pi /16}$ \\
 \end{tabu}
 }
 \quad \quad
 \text{
 \begin{tabu}{ c | c }
 type& twist \\ \hline
-$Q_{03}^\psi$ &$-e^{-15 i \pi /16}$ \\
-$Q_{13}^\psi$ &$e^{- 3 i \pi /4}$ \\
-$Q_{23}^\psi$ &$- i e^{- 15i \pi /16}$ \\
+$q_{03}^\psi$ &$-e^{-15 i \pi /16}$ \\
+$q_{13}^\psi$ &$e^{- 3 i \pi /4}$ \\
+$q_{23}^\psi$ &$- i e^{- 15i \pi /16}$ \\
 \end{tabu}
 }
 \end{align}
@@ -6378,7 +6389,7 @@ a,b \in \sob(SU(2)_6/\psi) \quad \text{such that} \quad a \tp b \in \sob(SO(3)_6
 \label{SO3idempotent}
 \end{align}
 where $J$ denotes the spin structure of the annulus, 
-and we are using the normalization conventions of\cite{Bonderson2007}. 
+and we are using the normalization conventions of \cite{Bonderson2007}. 
 If we take $a,b \in \sob(SO(3)_6/\psi)$ (rather than in $\sob(SU(2)_6/\psi)$, then we will miss several idempotents. 
 The key observation is that we can take pairs of simple objects $(a,b)$ from $SU(2)_6/\psi$ whose fusion product is always in $SO(3)_6/\psi$.
 Hence the idempotents of $\tube(SO(3)_6/\psi)$ are just a restriction of the idempotents of $\tube(SU(2)_6/\psi)$. 
@@ -6395,11 +6406,11 @@ In the bounding sector $J = B$, we have $4$ m-type idempotents, given by
 \text{
 {{\tabulinesep=1.2mm
 \begin{tabu}{ c c | c }
-type& spin & isomorphism class \\ \hline
-$M_{00}$ &$1$&$m_0$ \\
-$M_{02}$ &$ -i $&$m_2 $\\
-$M_{20}$ & $i$&$m_2$\\
-$M_{22}$ &$ (-1)^{p^{ab}_c} $& $m_0 \oplus  \mathbb{C}^{1|1} m_2$\\
+type& twist & isomorphism class \\ \hline
+$m_{00}$ &$1$&$m_0$ \\
+$m_{02}$ &$ -i $&$m_2 $\\
+$m_{20}$ & $i$&$m_2$\\
+$m_{22}$ &$ (-1)^{p^{ab}_c} $& $m_0 \oplus  \mathbb{C}^{1|1} m_2$\\
 \end{tabu}
 }}}
 } 
@@ -6424,11 +6435,11 @@ Similarly, in the non-bounding sector we have
 \text{
 {{\tabulinesep=1.2mm
 \begin{tabu}{ c c | c }
-type& spin & isomorphism class \\ \hline
-$M_{11}$ &$1$&$m_0 \oplus m_2$ \\
-$Q_{13}$ &$ e^{-3 i \pi/4} $&$ m_2 $\\
-$Q_{31}$ & $e^{3 i \pi /4} $&$ m_2$\\
-$M_{33}$ &$ 1 $& $ m_0 \oplus m_2$\\
+type& twist & isomorphism class \\ \hline
+$m_{11}$ &$1$&$m_0 \oplus m_2$ \\
+$q_{13}$ &$ e^{-3 i \pi/4} $&$ m_2 $\\
+$q_{31}$ & $e^{3 i \pi /4} $&$ m_2$\\
+$m_{33}$ &$ 1 $& $ m_0 \oplus m_2$\\
 \end{tabu}
 }}}
 }
