@@ -1109,6 +1109,10 @@
  
  \newcommand{\EsixDynkin}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EsixDynkin.pdf}}}}}
  \newcommand{\EsixCondensePsi}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EsixCondensePsi.pdf}}}}}
+ 
+ \newcommand{\HalfEsixDynkin}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{HalfEsixDynkin.pdf}}}}}
+ \newcommand{\HalfEsixDynkinCondensed}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{HalfEsixDynkinCondensed.pdf}}}}}
+
 
  \newcommand{\AThreeDynkin}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{AThreeDynkin.pdf}}}}}
   \newcommand{\CTwoDynkin}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{CTwoDynkin.pdf}}}}} 
@@ -5778,19 +5782,20 @@ We can now do the same for the $b$ loop,
 \; = \; \sum_{y \in \sob(\mcc)} \frac{1}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe
 \end{align}
 where we have used that the $\omega$ loop is a projector onto the vacuum. 
-In the last summation we need to replace $\sum_{y \in \sob(\mcc)}$ with $\sum_{y \in \sob(\mcc/\psi)}$.
+In the last summation we need to replace $\sum_{y \in \sob(\mcc)}$ with $\sum_{y \in \sob(\mcc/\psi)}$:
 %As with \eqref{...} this is accomplished by simultaneously letting $\text{cl}(y) \ra \text{cl}((y + y\tp\psi)/2^{n_x}$
-Analogous to \eqref{dimCtoDimCpsi}, this is accomplished by,
 \begin{align}
 \label{interim_S_calc}
  \sum_{y \in \sob(\mcc)} \frac{1}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe 
-\; =\; \sum_{y \in \sob(\mcc/\psi)} \frac{1}{\mcd^2} \frac{1}{2^{n_y}}\left(  \SMatrixx{b^{*}}{y} \;  +s(J)\SMatrixxx{b^{*}}{y \tp \psi} \;  \quad  \right) \Scalcbe
+\; =\; \sum_{y \in \sob(\mcc/\psi)} \frac{1}{\mcd^2} \frac{1}{2^{n_y}}\left(  \SMatrixx{b^{*}}{y} \;  +s(J)\SMatrixxx{b^{*}}{y \tp \psi} \;  \quad  \right) \Scalcbe.
 \end{align}
-where the $s(J)$ is found by using that $\text{cl}_J(\psi \tp y) = s(J) \text{cl}_J (y)$.
-The factor of $2^{-n_y}$ is introduced so that we don't overcount the q-type simple objects from $\sob(\mcc)$.
-Using that $S_{b^* (y\tp \psi)} = (-1)^{\nu_b} S_{b^* y}$, and that $(-1)^{\nu_b} s(J) = 1$,  
-the right hand side of \eqref{interim_S_calc}, so that \eqref{ScalcBack} becomes,
-\kw{this sentence is a bit garbled}
+The factor of $s(J)$ appeared due to $\text{cl}_J(\psi \tp y) = s(J) \text{cl}_J (y)$, where the subscript $J$ means we close up $y$ around a cycle with spin structure $J$.
+\dave{Note to self: check if we use this notation earlier.}
+While the normalization $2^{-n_y}$ is inserted so that we don't over count the q-type simple objects from $\sob(\mcc)$ (recall for example, \eqref{dimCtoDimCpsi}). 
+Using that $S_{b^* (y\tp \psi)} = (-1)^{\nu_b} S_{b^* y}$, and that $(-1)^{\nu_b} s(J) = 1$ by assumption, 
+the right hand side of \eqref{interim_S_calc} can be simplified so that \eqref{ScalcBack} becomes
+%\kw{this sentence is a bit garbled}
+%\dave{Thanks. Brain had a glitch this morning. I think it's better now.}
 \begin{align}
 \frac{1}{\mcd^2}\; \Scalcba\; = \; \sum_{y \in \sob(\mcc/\psi)} \frac{2}{2^{n_y}} \frac{1}{\mcd^2} \SMatrixx{b^{*}}{y} \;  \Scalcbe 
 \end{align}
@@ -5804,22 +5809,29 @@ In the above formula, the $S_{ax}$ and $S_{b^*y}$ are matrix elements of the $S$
 input theory $\mcc$ (which we assumed to be an MTC).
 Note that $\nu_b$ must be $0$ if $J$ is bounding, $1$ if $J$ is non-bounding, similarly for $\nu_y$.
 Also note that we have assumed a fixed set of representatives of simple objects for $\mcc/\psi$, and $\mcc$. 
-The simple object $y$ appearing in $S_{b^*y}$ is a trivial lift of the $y$ written in the closed up idempotent 
+The simple object $y$ appearing in $S_{b^*y}$ on the right hand side of \eqref{Smatrix_final_step} is a trivial lift of the $y$ written in the closed up idempotent 
 (recall that the first is a simple object of $\mcc$, while the latter is a simple object of $\mcc/\psi$).
-\dave{Kevin, is that bad form to use the same label for $y$ and the lift of $y$?}
-\kw{I think it's OK, since we define the objects of C/psi to the the objects of C.}
+%\dave{Kevin, is that bad form to use the same label for $y$ and the lift of $y$?}
+%\kw{I think it's OK, since we define the objects of C/psi to the the objects of C.}
 One can change the representative of the isomorphism class of $y \in \mcc/\psi$ with an odd isomorphism $\text{mor}(y \ra \psi \tp y)$.
 %taking $y \ra \tilde{y} = \psi \tp y$. 
-Under this odd-isomorphism the right hand side of \eqref{Smatrix_final_step} picks up a factor of $s(J)(-1)^{\nu_b}$.
-By assumption we have $s(J)(-1)^{\nu_b} = 1$, otherwise the closed up input idempotent is identically zero.
+Under this odd-isomorphism the right hand side of \eqref{Smatrix_final_step} picks up a factor of $s(J)(-1)^{\nu_b}$ which is equal to $1$ since $s(J(b)) = (-1)^{\nu_b}$.
+%By assumption we have $s(J)(-1)^{\nu_b} = 1$, otherwise the closed up input idempotent is identically zero.
 %which is always equal to $1$ (otherwise the input closed up idempotent is identically zero).
 
-In order for the $S$-matrix to be unitary, we normalize each q-type idempotent by dividing by its norm, $\sqrt{2}$.
+In order for the $S$-matrix to be unitary, we normalize each q-type idempotent.
 %Recall that q-type idemopotents have a norm of $\sqrt{2}$, hence to find the normalized and unitary $S$-matrix we have to divide each q-type idempotent by $\sqrt{2}$.
 In the discussion following \eqref{minimal_table} we pointed out that $E(a,b)$ is q-type if $b$ is q-type.
-Hence we can normalize our idempotents by defining $\widehat{E}(a,b) = E(a,b)/(\sqrt{2})^{n_b}$.
-This results in a unitary $S$-matrix given by, 
+Hence we can normalize our idempotents by re-scaling the q-type idempotents by a factor of $1/\sqrt{2}$, this results in the pseudo idempotents 
+\begin{align} 
+\widehat{E}(a,b) = E(a,b)/(\sqrt{2})^{n_b}
+\end{align}
+have unit norm.
+The resulting unitary $S$-matrix is given by,
+%This results in a unitary $S$-matrix given by, 
 \dave{I will plug this into a computer and verify that it's unitary.}
+\dave{Currently having licensing issues with Mathematica, 
+will do this once that's resolved.}
 %\dave{This was old notation}
 %\begin{align}
 %\text{cl}_W(f^{J}_{ab}) \xrightarrow{S^{JW \ra WJ}}  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} S_{ax}  S_{by}^*   \text{cl}_J(f^{W}_{xy})
@@ -5828,16 +5840,24 @@ This results in a unitary $S$-matrix given by,
 %\text{cl}_W(E(a,b)) \xrightarrow{S^{JW \ra WJ}}  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} S_{ax}  S_{by}^*   \text{cl}_J(E(x,y))
 %\end{align}
 \begin{align}
+\label{normalized_S_matrix}
 \text{cl}_W(\widehat{E}(a,b)) \xrightarrow{S^{JW \ra WJ}}  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} \frac{2}{(\sqrt{2})^{n_b+n_y}}S_{ax}  S_{b^*y}   \text{cl}_J(\widehat{E}(x,y))
 \end{align}
-Where $\text{cl}_W(\widehat{E}(a,b))$ means 
-\kw{haven't we already defined $cl_W$?}
-we close the idempotent $\widehat{E}(a,b)$ 
-\kw{hat means not an idempotent; could say ``pseudo-idempotent".}
-with spin structure $J(b)$ 
-onto the torus with spin structure $W$ around the newly closed cycle. 
-Note, as discussed above, unless $J = J(b)$ and $W=W(y)$, the resulting vector is zero.
-\kw{$y$??}
+%Recall that $\text{cl}_W(\widehat{E}(a,b))$ means 
+%\kw{haven't we already defined $cl_W$?}
+%\dave{I thought so, but can't find it. 
+%Will leave the reminder for now, and reference to the appropriate place later.}
+%we close the normalized idempotent $\widehat{E}(a,b)$ 
+%\kw{hat means not an idempotent; could say ``pseudo-idempotent".}
+%\dave{I think earlier we use the term `normalized idempotent'.
+% we could say normalized pseudo-idempotent}
+%with spin structure $J(b)$ 
+%onto the torus with spin structure $W$ around the newly closed cycle. 
+Note that $\text{cl}_J(\widehat{E}(x,y))$ on the right hand side of \eqref{normalized_S_matrix} is zero unless $y$ is compatible with the spin structure inherited from the left hand side of \eqref{normalized_S_matrix},
+explicitly $y$ must satisfy $s(W) = (-1)^{\nu_y}$.
+%, hence the sum over $y \in \sob(\mcc/\psi)$ in the righthand side of  should be restricted to those $y$ with $(-1)^{\nu_y} = s(W)$.
+%Note, as discussed above, unless $J = J(b)$ and $W=W(y)$, the resulting vector is zero.
+%\kw{$y$??}
 %\ethan{right?}. 
 %\dave{Yeap.}
 
@@ -5882,16 +5902,16 @@ terms of the modular data of the input theory.
 
 The $T$-matrix is found by closing up an idemopotent with an additional $2\pi$ rotation of the boundary. 
 For the annulus this is a $2\pi$ counter clockwise rotation of the inner $S^1$ with respect to the outer $S^1$.
-It is given by,
+The matrix elements are given by,
 \begin{align}
 \text{cl}_W(\widehat{E}(a,b)) \xrightarrow{\; \; \; T^{JW \ra J\widetilde{W}}\;\;\; } \theta_a \theta_b^* \text{cl}_{\widetilde{W}}(\widehat{E}(a,b))
 \end{align}
 where again $J = J(b)$, and $\widetilde{W}$ can be read off from Figure \ref{spin_str_mapping_class_group}.
 The phases $\theta_a$ and $\theta_b$ are the topological twists of the lifts of $a$ and $b$ to the parent theory.
-
 Note that if $J = B$ then replacing $b$ with $b\tp \psi$ changes the sign of the twist.
 This sign ambiguity is expected; see xxxx above.
 \kw{Dave, do you agree?}
+\dave{Yep, that's correct.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -6017,10 +6037,12 @@ and the quotient theory will be braided.
 However, the transparency of $\psi$ also means that the $S$-matrix in the $SO(3)_6$ theory is degenerate, 
 and hence the theory is not modular. 
 In this case the lack of modularity is fairly benign, 
-$SO(3)_6$ is a subcategory of the modular tensor category $SU(2)_6$,
-a category of this type is sometimes referred to as non-split super modular\cite{bruillard2017,bruillard2017b}.
-\dave{Need to check that, or remove citation.}
-\kw{maybe we should drop ref to ``non-split super modular"}
+$SO(3)_6$ is a subcategory of the modular tensor category $SU(2)_6$.
+%,
+%a category of this type is sometimes referred to as non-split super modular\cite{bruillard2017,bruillard2017b}.
+%\dave{Need to check that, or remove citation.}
+%\kw{maybe we should drop ref to ``non-split super modular"}
+%\dave{Sure}
 This will allow us to infer the minimal idempotents of $SO(3)_6/\psi$ from the minimal idempotents of $SU(2)_6/\psi$.
 %\dave{I think the two sentences are unnecessary. Feel free to undo.}
 %After finding the idempotents in $SO(3)_6$ and $SU(2)_6$ we will then perform fermion condensation to find the minimal idempotents of $SU(2)_6/\psi$ and $SO(3)_6/\psi$. 
@@ -6136,7 +6158,11 @@ We note two features of these examples which were not present in our earlier $C_
 \item Even though $m_2$ is an m-type particle, $\mathbb{C}^{1|1}m_2$ 
 appears in the tensor product of $m_2$ with itself.
 So $SO(3)_6/\psi$ provides us with an example of a theory which has 
-no q-type objects, but which is still intrinsically ``fermionic'', in the sense that its fusion spaces contain odd elements. 
+no q-type objects, but which is still fermionic in the sense that its fusion spaces contain both even and odd elements. 
+%\dave{Should we say  `...its fusion spaces contain both even and odd elements.'. 
+%Is a ``non-intrinsically" fermionic theory one where the parity of a fusion space  $V^{abc \cdots}$ is fixed by $abc \cdots$?
+%}
+%\kw{``intrinsically" was not my word choice; dropped it.  I think we are not making a very precise observation here, which is fine.}
 \item The q-type particle $q_3$ appears in the tensor product of two m-type 
 particles, namely $m_2 \tp m_1$. 
 Thus our classification of simple objects as m- or q-type should not be thought of as a $\zz/2$ grading, since the types of 
@@ -6173,26 +6199,16 @@ $a$ and $b$ in no way constrain the possible types of the simple objects appeari
 The $F$-symbols of the condensed theories can be deduced from those of the parent theories, so we will not list them here.
 We now compute the minimal idempotents of the tube algebra in the condensed theories.
 
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Primitive idempotents of $SU(2)_6/\psi$}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\dave{Dropped some redundant things that were already in Section \ref{more_on_tubes}
-%feel free to un-drop them.}
-
 The primitive idempotents of the tube category of $SU(2)_6/\psi$ can be computed directly 
-from the primitive idempotents of the parent theory $SU(2)_6$ by condensing the fermions off 
-of the elements in $\tube(SU(2)_6)$, as discussed in Section \ref{more_on_tubes}. 
-%The primitive idempotents of the tube category of $SU(2)_6/\psi$ can be computed directly 
-%from the primitive idempotents of the parent theory $SU(2)_6$ by ``condensing" the fermions off of the elements in $\tube(SU(2)_6)$. 
-%This procedure always produces minimal idempotents in $\tube(SU(2)_6/\psi)$, 
-%although the process is rarely straightforward: condensing $\psi$ in $\tube(SU(2)_6)$ 
-%may send some of the idempotents to zero, enlarge the isomorphism classes or identify some idempotents with others, etc.
-%For brevity's sake, we will only present the results of the calculations in what follows. 
-For the example at hand, we will find it convenient to adopt a specific presentation of the idempotents 
+using the techniques of Section \ref{more_on_tubes}. 
+They are given by,
+\begin{align}
+E(a,b) = \TubeIdempotentTwoStrand_{J_b}, \quad \quad  (a,b) \in SU(2)_6 \times SU(2)_6/\psi
+\end{align}
+
+
+For the example at hand, we find it convenient to adopt a specific presentation of the idempotents 
 which is essentially the same as the one described earlier in \eqref{idempotent_one_strand}. 
 For any MTC, we can write the idempotents in $\mcc/\psi$ as 
 %\ethan{minor quibble: in this figure and in some in the next two subsections, some lines are drawn in orange---any stylistic reason why?}
@@ -6200,35 +6216,50 @@ For any MTC, we can write the idempotents in $\mcc/\psi$ as
 \dave{Will change twist when we decide how we are going to talk about them, both here and below.}
 \begin{align}
 \xymatrix{
-f_{ab}^c 
+f_{ab}^x 
 =\sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega_x}{J}}
 &
 \text{
 {\tabulinesep=1.2mm
 \begin{tabu}{ r c }
-consistency constraint: & $ (-1)^{s(J) + \nu_b}=1$ \\ 
-topological twist:& $\frac{\theta_a}{\theta_b} (-1)^{(s(J)+1)p_{ab}^c + x(\nu_a + \nu_b)}$ \\
-isomorphism class: & $c \in a \tp b$
+%consistency constraint: & $ (-1)^{s(J) + \nu_b}=1$ \\ 
+consistency constraint: & $ s(J)(-1)^{\nu_b}=1$ \\ 
+%topological twist:& $\frac{\theta_a}{\theta_b} (-1)^{(s(J)+1)p_{ab}^c + x(\nu_a + \nu_b)}$ \\
+topological twist:& $\frac{\theta_a}{\theta_b} (-s(J))^{p_{ab}^c}(-1)^{x(\nu_a + \nu_b)}$
+%isomorphism class: & $c \in a \tp b$
 \end{tabu}
 }}
 }
 \end{align} 
-where as before $s(J) = 0$ ($s(J)=1)$ if $J=B$ ($J=N$) and $x=0$ denotes the presence of an $\omega_0$ loop 
+\kw{I don't understand what's meant by ``isomorphism class: $c \in a \tp b$"}
+\dave{dropped it. }
+\dave{I think $f_{ab}^c$ should actually be $f_{ab}^x$ denoting whether $x =0$ or $x =\psi$.}
+where as before $s(J) = 1$ ($s(J)=-1)$ if $J=B$ ($J=N$) and $x=0$ denotes the presence of an $\omega$ loop 
 in the annulus on the left while $x=1$ corresponds to the presence of an $\omega_\psi$ loop in the annulus, 
 where $\omega_x$ is defined by 
 \begin{align}
  \omega_x = \frac{1}{\mathcal{D}_{\mcc/\psi}^2} \sum_{r\in \sob(\mcc/\psi)} \frac{d_r }{ \dim\End(r)} (-1)^{x \nu_r}   \text{cl}(r),
 \end{align}
 \dave{dropped the factor of $2$ above to be consistent with the following.}
-where $\mcd_{\mcc/\psi}^2 = \sum_{x \in \mcc/\psi} d_x^2 / \dim \End(x)$ is the total quantum dimension of 
+\kw{which factor of 2 was dropped?}
+\dave{There was a factor of $2$ in the numerator at some point.
+I think at one point I just had $\mcd^2$ in the denominator and it was unlclear if that was for the parent theory or the condensed one and lead to an inconsistency once the following sentence was added.
+}
+and $\mcd_{\mcc/\psi}^2 = \sum_{x \in \mcc/\psi} d_x^2 / \dim \End(x)$ is the total quantum dimension of 
 the condensed theory in the sense of \eqref{total_qdim_defn}. 
 The particular representative of the isomorphism class is given by choosing $c \in a\tp b$, and a vector from $V^{ab}_c(\mcc/\psi)$.
 Finally, we have defined $p_{ab}^c$ in the twist of the idempotent by $p_{ab}^c=0$ ($p^c_{ab}=1$) 
 if the chosen basis vector in the fusion space $V^{ab}_c(\mcc/\psi)$ is even (odd).
-In what follows, we will write $f^c_{ab}$ as $M^c_{ab}$ if the idempotent is m-type (i.e. not invariant under fusion with $\psi$)
-and $f^c_{ab}$ as $Q^c_{ab}$ if the idempotent is q-type (i.e. has an odd endomorphism / is invariant under fusion with $\psi$).
-Note that by our previous discussion in Section \ref{more_on_tubes}, if $b$ is a q-type object 
-then the idempotent $f^c_{ab}$ must be associated with a non-bounding spin structure.
+Note that in the language of Section~\ref{double_fermionic_quotient} the $f_{ab}^x$ are isomorphic to $E(a \tp x, b)$.
+In what follows, we will write $f^x_{ab}$ as $m^x_{ab}$ 
+\kw{Up unitl now we have been using lower case letters for idempotents, so maybe this should
+be changed to  $m^c_{ab}$?}
+\dave{Yes, agreed.}
+if the idempotent is m-type (i.e. not invariant under fusion with $\psi$)
+and $f^x_{ab}$ as $q^x_{ab}$ if the idempotent is q-type (i.e. has an odd endomorphism / is invariant under fusion with $\psi$).
+%Note that by our previous discussion in Section \ref{more_on_tubes}, if $b$ is a q-type object 
+%then the idempotent $f^x_{ab}$ must be associated with a non-bounding spin structure. \dave{I don't think this needs to be said here.}
+\kw{How does this paragraph line up with the current version of Section 5?}
 
 
 In the case of $SU(2)_6$ we find 14 m-type idempotents for the bounding spin structure, 
@@ -6239,44 +6270,44 @@ and $7$ m-type as well as $7$ q-type idempotents for the non-bounding spin struc
 &\text{
 \begin{tabu}{ c | c }
 type& twist \\ \hline
-$M_{00}^0$ &$1$ \\
-$M_{10}^0$ &$e^{3 i \pi /16}$ \\
-$M_{20}^0$ &$i$ \\
+$m_{00}^0$ &$1$ \\
+$m_{10}^0$ &$e^{3 i \pi /16}$ \\
+$m_{20}^0$ &$i$ \\
 \end{tabu}
 }
 \quad \quad
 \text{
 \begin{tabu}{ c | c }
 type& twist  \\ \hline
-$M_{00}^\psi$ &$1$ \\
-$M_{10}^\psi$ &$-e^{3 i \pi/16}$ \\
-$M_{20}^\psi$ &$i$ \\
+$m_{00}^\psi$ &$1$ \\
+$m_{10}^\psi$ &$-e^{3 i \pi/16}$ \\
+$m_{20}^\psi$ &$i$ \\
 \end{tabu}
 }
 \quad \quad
 \text{
 \begin{tabu}{ c | c }
 type& twist $\times \; (-1)^{p_{ab}^c} $ \\ \hline
-$M_{30}^0$ &$ e^{15i \pi /16}$ \\
-$M_{32}^0$ &$-ie^{15i \pi /16}$ \\
+$m_{30}^0$ &$ e^{15i \pi /16}$ \\
+$m_{32}^0$ &$-ie^{15i \pi /16}$ \\
 \end{tabu}
 }
 \\
 &\text{
 \begin{tabu}{ c | c }
 type& twist $\times \; (-1)^{p_{ab}^c} $ \\ \hline
-$M_{02}^0$ &$-i $ \\
-$M_{12}^0$ &$-i e^{3 i \pi/16}$ \\
-$M_{22}^0$ &$1$ \\
+$m_{02}^0$ &$-i $ \\
+$m_{12}^0$ &$-i e^{3 i \pi/16}$ \\
+$m_{22}^0$ &$1$ \\
 \end{tabu}
 }
 \quad \quad
 \text{
 \begin{tabu}{ c | c }
 type&twist $\times \; (-1)^{p_{ab}^c} $ \\ \hline
-$M_{02}^\psi$ &$-i$ \\
-$M_{12}^\psi$ &$ie^{3 i \pi /16}$ \\
-$M_{22}^\psi$ &$1$ \\
+$m_{02}^\psi$ &$-i$ \\
+$m_{12}^\psi$ &$ie^{3 i \pi /16}$ \\
+$m_{22}^\psi$ &$1$ \\
 \end{tabu}
 }
 \end{align}
@@ -6285,49 +6316,230 @@ while in the non-bounding spin structure sector we find
 &\text{
 \begin{tabu}{ c | c }
 type& twist \\ \hline
-$M_{01}^0$ &$-e^{-3i\pi/16}$ \\
-$M_{11}^0$ &$1$ \\
-$M_{21}^0$ &$-i e^{-3i \pi /16}$ \\
+$m_{01}^0$ &$-e^{-3i\pi/16}$ \\
+$m_{11}^0$ &$1$ \\
+$m_{21}^0$ &$-i e^{-3i \pi /16}$ \\
 \end{tabu}
 }
 \quad \quad
 \text{
 \begin{tabu}{ c | c }
 type& twist \\ \hline
-$M_{01}^\psi$ &$-e^{-3 i \pi /16}$ \\
-$M_{11}^\psi$ &$1$ \\
-$M_{21}^\psi$ &$-i e^{-3 i \pi /16}$ \\
+$m_{01}^\psi$ &$-e^{-3 i \pi /16}$ \\
+$m_{11}^\psi$ &$1$ \\
+$m_{21}^\psi$ &$-i e^{-3 i \pi /16}$ \\
 \end{tabu}
 }
 \quad \quad
 \text{
 \begin{tabu}{ c | c }
 type& twist \\ \hline
-$M_{31}^0$ &$e^{3 i \pi /4}$ \\
-$Q_{33}^0$ &$1$ \\
+$m_{31}^0$ &$e^{3 i \pi /4}$ \\
+$q_{33}^0$ &$1$ \\
 \end{tabu}
 }
 \\
 &\text{
 \begin{tabu}{ c | c }
 type& twist \\ \hline
-$Q_{03}^0$ &$-e^{-15 i \pi /16}$ \\
-$Q_{13}^0$ &$e^{- 3 i \pi /4}$ \\
-$Q_{23}^0$ &$-i e^{-15 i \pi /16}$ \\
+$q_{03}^0$ &$-e^{-15 i \pi /16}$ \\
+$q_{13}^0$ &$e^{- 3 i \pi /4}$ \\
+$q_{23}^0$ &$-i e^{-15 i \pi /16}$ \\
 \end{tabu}
 }
 \quad \quad
 \text{
 \begin{tabu}{ c | c }
 type& twist \\ \hline
-$Q_{03}^\psi$ &$-e^{-15 i \pi /16}$ \\
-$Q_{13}^\psi$ &$e^{- 3 i \pi /4}$ \\
-$Q_{23}^\psi$ &$- i e^{- 15i \pi /16}$ \\
+$q_{03}^\psi$ &$-e^{-15 i \pi /16}$ \\
+$q_{13}^\psi$ &$e^{- 3 i \pi /4}$ \\
+$q_{23}^\psi$ &$- i e^{- 15i \pi /16}$ \\
 \end{tabu}
 }
 \end{align}
 We now turn our attention to the $SO(3)_6$ theory. 
 
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Primitive idempotents of $SU(2)_6/\psi$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\dave{Thinking about how to improve this discussion and tie it in with Section 5. 
+Obviously in progress, need to check some things.}
+\begin{enumerate} 
+\item list idempotents of $SU(2)_6 /\psi$ via $E(a,b)$, $a \in \mcc$, $b \in \mcc/\psi$
+\item Define the isomorphic set of idempotents $\widetilde{E}(a,b,x) \cong E(a\tp x,b)$. $\widetilde{E}(a,b,x)$ is the same as $E(a,b)$ but we replace the $\omega$ loop with an $\omega_x$ loop.
+The complete set of idempotents is given by $\widetilde{E}(a,b,x)$, $a,b\in \mcc/\psi$ and $x =\unit, \psi$. 
+\item observe that if $a , b \in SO(3)_6/\psi$ then $E(a,b, \unit \oplus \psi)$ is a minimal idempotent for $\tube^B(SO(3)_6/\psi)$
+\item Next do the case where $a \tp b \in SO(3)_6/\psi$.
+Find a tensor functor from $\widetilde{\tube}(SU(2)_6/\psi)$ to $\tube(SO(3)_6/\psi)$.
+Idea is to look at $\tube(SU(2)_6/\psi)$ but constrain the allowed morphisms so that they have a nice inclusion into $\tube(SO(3)_6/\psi)$.
+(weight out this option with the 1-strand idempotent option, or mention both)
+\end{enumerate} 
+
+
+%\dave{Dropped some redundant things that were already in Section \ref{more_on_tubes}
+%feel free to un-drop them.}
+
+The primitive idempotents of the tube category of $SU(2)_6/\psi$ can be computed directly 
+from the primitive idempotents of the parent theory $SU(2)_6$ by condensing a fermion
+in $\tube(SU(2)_6)$, as discussed in Section \ref{more_on_tubes}. 
+%The primitive idempotents of the tube category of $SU(2)_6/\psi$ can be computed directly 
+%from the primitive idempotents of the parent theory $SU(2)_6$ by ``condensing" the fermions off of the elements in $\tube(SU(2)_6)$. 
+%This procedure always produces minimal idempotents in $\tube(SU(2)_6/\psi)$, 
+%although the process is rarely straightforward: condensing $\psi$ in $\tube(SU(2)_6)$ 
+%may send some of the idempotents to zero, enlarge the isomorphism classes or identify some idempotents with others, etc.
+%For brevity's sake, we will only present the results of the calculations in what follows. 
+For the example at hand, we find it convenient to adopt a specific presentation of the idempotents 
+which is essentially the same as the one described earlier in \eqref{idempotent_one_strand}. 
+For any MTC, we can write the idempotents in $\mcc/\psi$ as 
+%\ethan{minor quibble: in this figure and in some in the next two subsections, some lines are drawn in orange---any stylistic reason why?}
+%\dave{I had no reason. I can change it to black.}
+\dave{Will change twist when we decide how we are going to talk about them, both here and below.}
+\begin{align}
+\xymatrix{
+f_{ab}^x 
+=\sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega_x}{J}}
+&
+\text{
+{\tabulinesep=1.2mm
+\begin{tabu}{ r c }
+%consistency constraint: & $ (-1)^{s(J) + \nu_b}=1$ \\ 
+consistency constraint: & $ s(J)(-1)^{\nu_b}=1$ \\ 
+%topological twist:& $\frac{\theta_a}{\theta_b} (-1)^{(s(J)+1)p_{ab}^c + x(\nu_a + \nu_b)}$ \\
+topological twist:& $\frac{\theta_a}{\theta_b} (-s(J))^{p_{ab}^c}(-1)^{x(\nu_a + \nu_b)}$
+%isomorphism class: & $c \in a \tp b$
+\end{tabu}
+}}
+}
+\end{align} 
+\kw{I don't understand what's meant by ``isomorphism class: $c \in a \tp b$"}
+\dave{dropped it. }
+\dave{I think $f_{ab}^c$ should actually be $f_{ab}^x$ denoting whether $x =0$ or $x =\psi$.}
+where as before $s(J) = 1$ ($s(J)=-1)$ if $J=B$ ($J=N$) and $x=0$ denotes the presence of an $\omega$ loop 
+in the annulus on the left while $x=1$ corresponds to the presence of an $\omega_\psi$ loop in the annulus, 
+where $\omega_x$ is defined by 
+\begin{align}
+ \omega_x = \frac{1}{\mathcal{D}_{\mcc/\psi}^2} \sum_{r\in \sob(\mcc/\psi)} \frac{d_r }{ \dim\End(r)} (-1)^{x \nu_r}   \text{cl}(r),
+\end{align}
+\dave{dropped the factor of $2$ above to be consistent with the following.}
+\kw{which factor of 2 was dropped?}
+\dave{There was a factor of $2$ in the numerator at some point.
+I think at one point I just had $\mcd^2$ in the denominator and it was unlclear if that was for the parent theory or the condensed one and lead to an inconsistency once the following sentence was added.
+}
+and $\mcd_{\mcc/\psi}^2 = \sum_{x \in \mcc/\psi} d_x^2 / \dim \End(x)$ is the total quantum dimension of 
+the condensed theory in the sense of \eqref{total_qdim_defn}. 
+The particular representative of the isomorphism class is given by choosing $c \in a\tp b$, and a vector from $V^{ab}_c(\mcc/\psi)$.
+Finally, we have defined $p_{ab}^c$ in the twist of the idempotent by $p_{ab}^c=0$ ($p^c_{ab}=1$) 
+if the chosen basis vector in the fusion space $V^{ab}_c(\mcc/\psi)$ is even (odd).
+Note that in the language of Section~\ref{double_fermionic_quotient} the $f_{ab}^x$ are isomorphic to $E(a \tp x, b)$.
+In what follows, we will write $f^x_{ab}$ as $m^x_{ab}$ 
+\kw{Up unitl now we have been using lower case letters for idempotents, so maybe this should
+be changed to  $m^c_{ab}$?}
+\dave{Yes, agreed.}
+if the idempotent is m-type (i.e. not invariant under fusion with $\psi$)
+and $f^x_{ab}$ as $q^x_{ab}$ if the idempotent is q-type (i.e. has an odd endomorphism / is invariant under fusion with $\psi$).
+%Note that by our previous discussion in Section \ref{more_on_tubes}, if $b$ is a q-type object 
+%then the idempotent $f^x_{ab}$ must be associated with a non-bounding spin structure. \dave{I don't think this needs to be said here.}
+\kw{How does this paragraph line up with the current version of Section 5?}
+
+
+In the case of $SU(2)_6$ we find 14 m-type idempotents for the bounding spin structure, 
+and $7$ m-type as well as $7$ q-type idempotents for the non-bounding spin structure. 
+\dave{Need to check this again carefully and do sum of squares..}
+\dave{Should we remove the twist stuff?}
+\begin{align}
+&\text{
+\begin{tabu}{ c | c }
+type& twist \\ \hline
+$m_{00}^0$ &$1$ \\
+$m_{10}^0$ &$e^{3 i \pi /16}$ \\
+$m_{20}^0$ &$i$ \\
+\end{tabu}
+}
+\quad \quad
+\text{
+\begin{tabu}{ c | c }
+type& twist  \\ \hline
+$m_{00}^\psi$ &$1$ \\
+$m_{10}^\psi$ &$-e^{3 i \pi/16}$ \\
+$m_{20}^\psi$ &$i$ \\
+\end{tabu}
+}
+\quad \quad
+\text{
+\begin{tabu}{ c | c }
+type& twist $\times \; (-1)^{p_{ab}^c} $ \\ \hline
+$m_{30}^0$ &$ e^{15i \pi /16}$ \\
+$m_{32}^0$ &$-ie^{15i \pi /16}$ \\
+\end{tabu}
+}
+\\
+&\text{
+\begin{tabu}{ c | c }
+type& twist $\times \; (-1)^{p_{ab}^c} $ \\ \hline
+$m_{02}^0$ &$-i $ \\
+$m_{12}^0$ &$-i e^{3 i \pi/16}$ \\
+$m_{22}^0$ &$1$ \\
+\end{tabu}
+}
+\quad \quad
+\text{
+\begin{tabu}{ c | c }
+type&twist $\times \; (-1)^{p_{ab}^c} $ \\ \hline
+$m_{02}^\psi$ &$-i$ \\
+$m_{12}^\psi$ &$ie^{3 i \pi /16}$ \\
+$m_{22}^\psi$ &$1$ \\
+\end{tabu}
+}
+\end{align}
+while in the non-bounding spin structure sector we find
+\begin{align}
+&\text{
+\begin{tabu}{ c | c }
+type& twist \\ \hline
+$m_{01}^0$ &$-e^{-3i\pi/16}$ \\
+$m_{11}^0$ &$1$ \\
+$m_{21}^0$ &$-i e^{-3i \pi /16}$ \\
+\end{tabu}
+}
+\quad \quad
+\text{
+\begin{tabu}{ c | c }
+type& twist \\ \hline
+$m_{01}^\psi$ &$-e^{-3 i \pi /16}$ \\
+$m_{11}^\psi$ &$1$ \\
+$m_{21}^\psi$ &$-i e^{-3 i \pi /16}$ \\
+\end{tabu}
+}
+\quad \quad
+\text{
+\begin{tabu}{ c | c }
+type& twist \\ \hline
+$m_{31}^0$ &$e^{3 i \pi /4}$ \\
+$q_{33}^0$ &$1$ \\
+\end{tabu}
+}
+\\
+&\text{
+\begin{tabu}{ c | c }
+type& twist \\ \hline
+$q_{03}^0$ &$-e^{-15 i \pi /16}$ \\
+$q_{13}^0$ &$e^{- 3 i \pi /4}$ \\
+$q_{23}^0$ &$-i e^{-15 i \pi /16}$ \\
+\end{tabu}
+}
+\quad \quad
+\text{
+\begin{tabu}{ c | c }
+type& twist \\ \hline
+$q_{03}^\psi$ &$-e^{-15 i \pi /16}$ \\
+$q_{13}^\psi$ &$e^{- 3 i \pi /4}$ \\
+$q_{23}^\psi$ &$- i e^{- 15i \pi /16}$ \\
+\end{tabu}
+}
+\end{align}
+We now turn our attention to the $SO(3)_6$ theory. 
+\end{comment}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -6335,25 +6547,26 @@ We now turn our attention to the $SO(3)_6$ theory.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Finding the idempotents in the $SO(3)_6/\psi$ theory is more difficult, since the parent theory  $SO(3)_6$ isn't modular.
-\dave{drop next sentence?}
-However, the sole cause of its non-modularity is the transparent fermion $\psi$, 
-and it can be made modular by performing a ``modular extension'' and introducing defects 
-which braid non-trivially with $\psi$, see \cite{bruillard2017} for more details.
-Since $SO(3)_6$ is obtained from $SU(2)_6$ by discarding the elements in $SU(2)_6$ 
+%\dave{drop next sentence?}
+%However, the sole cause of its non-modularity is the transparent fermion $\psi$, 
+%and it can be made modular by performing a ``modular extension'' and introducing defects 
+%which braid non-trivially with $\psi$, see \cite{bruillard2017} for more details.
+But since $SO(3)_6$ is obtained from $SU(2)_6$ by discarding the elements in $SU(2)_6$ 
 that braid nontrivially with $\psi$, $SU(2)_6$ is a modular extension of $SO(3)_6$ (in fact, it is the minimal modular extension). 
 This fact will allow us to compute the idempotents in the $SO(3)_6/\psi$ theory using our knowledge of the $SU(2)_6$ theory. 
 
 As before, each isomorphism class of idempotents can be written as:
 \begin{align}
 \xymatrix{
-\sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega_0}{J}}
+\sqrt{\frac{d_a d_b}{d_c}} \underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega}{J}}
 &
 a,b \in \sob(SU(2)_6/\psi) \quad \text{such that} \quad a \tp b \in \sob(SO(3)_6/\psi) 
 }
 \label{SO3idempotent}
 \end{align}
 where $J$ denotes the spin structure of the annulus, 
-and we are using the normalization conventions of\cite{Bonderson2007}. 
+and we are using the normalization conventions of \cite{Bonderson2007}.
+The $\omega$ loop is for $SO(3)_6/\psi$. 
 If we take $a,b \in \sob(SO(3)_6/\psi)$ (rather than in $\sob(SU(2)_6/\psi)$, then we will miss several idempotents. 
 The key observation is that we can take pairs of simple objects $(a,b)$ from $SU(2)_6/\psi$ whose fusion product is always in $SO(3)_6/\psi$.
 Hence the idempotents of $\tube(SO(3)_6/\psi)$ are just a restriction of the idempotents of $\tube(SU(2)_6/\psi)$. 
@@ -6365,45 +6578,46 @@ We now write down the primitive idempotents of $SO(3)_6/\psi$ and their topologi
 In the bounding sector $J = B$, we have $4$ m-type idempotents, given by
 \begin{align}
 \xymatrix{
-\underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega_0}{B}}
+\underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega}{B}}
 &
 \text{
 {{\tabulinesep=1.2mm
-\begin{tabu}{ c c | c }
-type& spin & isomorphism class \\ \hline
-$M_{00}$ &$1$&$m_0$ \\
-$M_{02}$ &$ -i $&$m_2 $\\
-$M_{20}$ & $i$&$m_2$\\
-$M_{22}$ &$ (-1)^{p^{ab}_c} $& $m_0 \oplus  \mathbb{C}^{1|1} m_2$\\
+\begin{tabu}{ c c  }
+type& twist \\ \hline
+$m_{00}$ &$1$ \\
+$m_{02}$ &$ -i $\\
+$m_{20}$ & $i$\\
+$m_{22}$ &$ (-1)^{p^{ab}_c} $\\
 \end{tabu}
 }}}
 } 
 \end{align}
-where the column on the right displays the possible representatives of the isomorphism class, 
-whose coefficient denotes the possible parities of the fusion vertex on the idempotent. 
-For example, the idempotent $M_{22}$ has three possible representatives:
-one of them has boundary condition $m_0$, and the other two have boundary condition $m_2$. 
-The two fusion vertices of the idempotent with boundary condition $m_2$ can be either even or odd parity, 
-which is denoted by the coefficient $\cc^{1|1}$.
-Similarly, in the non-bounding sector we have 
+%where the column on the right displays the possible representatives of the isomorphism class, 
+%whose coefficient denotes the possible parities of the fusion vertex on the idempotent. 
+%For example, the idempotent $M_{22}$ has three possible representatives:
+%one of them has boundary condition $m_0$, and the other two have boundary condition $m_2$. 
+%The two fusion vertices of the idempotent with boundary condition $m_2$ can be either even or odd parity, 
+%which is denoted by the coefficient $\cc^{1|1}$.
+%Similarly, in the non-bounding sector we have 
 %\dave{Comment on $Q_{13},Q_{31}$. There is only 1 idempotent.} \ethan{what does this mean?}
 %\dave{There are two possible ways $1$ and $3$ can fuse to $m_2$, either evenly or oddly. 
 %Above these led to two different idempotents, below they do not. 
 %I added a paragraph on it, check it out and see if it clears things up.
 %}
 %\ethan{awesome!}
+meanwhile the non-bounding idempotents are given by,
 \begin{align}
 \xymatrix{
-\underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega_0}{N}}
+\underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega}{N}}
 &
 \text{
 {{\tabulinesep=1.2mm
-\begin{tabu}{ c c | c }
-type& spin & isomorphism class \\ \hline
-$M_{11}$ &$1$&$m_0 \oplus m_2$ \\
-$Q_{13}$ &$ e^{-3 i \pi/4} $&$ m_2 $\\
-$Q_{31}$ & $e^{3 i \pi /4} $&$ m_2$\\
-$M_{33}$ &$ 1 $& $ m_0 \oplus m_2$\\
+\begin{tabu}{ c c }
+type& twist \\ \hline
+$m_{11}$ &$1$ \\
+$q_{13}$ &$ e^{-3 i \pi/4} $\\
+$q_{31}$ & $e^{3 i \pi /4} $\\
+$m_{33}$ &$ 1 $\\
 \end{tabu}
 }}}
 }
@@ -6428,23 +6642,25 @@ $M_{33}$ &$ 1 $& $ m_0 \oplus m_2$\\
 %\dave{I need to convince myself of that last line again. Naively it could be $\mathbb{C}^{1|1} m_2$. But I think the oddly isomorphic idempotent is actually just the same idempotent.}
 Here we've made use of the above observation that only $a \tp b$ need be in $SO(3)_6/\psi$, 
 hence these idempotents have objects labeled by $1$ and $3$.
-Notice that for $Q_{13}$, $Q_{31}$, and $M_{33}$ the coefficient in front of $m_2$ is $\cc^{1|0}$, 
-and not $\cc^{1|1}$ as the fusion rules would indicate, see Table \ref{SU2six_psi_fusion}. 
-This is because $q_3$ is a q-type object in $SU(2)_6/\psi$, 
-and so it can freely ``absorb'' fermions (odd endomorphisms), which allows us to always ensure 
-that the vertices appearing in the idempotent have even parity. 
-One can show that $M_{33}$ is not q-type: to do so we note that if it were, then there would 
-be an odd endomorphism with trivial boundary conditions (since $m_0$ is a representative in its isomorphism class). 
-But this isn't possible, since we would have an odd tube in $\tube(SO(3)_6/\psi)$ with trivial boundary conditions.
-This is only possible if $SO(3)_6/\psi$ has a particle with an odd endomorphism, 
-but as noted in \eqref{noq-type} this is not possible since $\psi$ is transparent in this theory.
-One can explicitly construct an odd endomorphism for $Q_{13}$ by putting a fermion on $3$ and fusing all strands into the annulus;
-similarly for $Q_{31}$. 
+%Notice that for $Q_{13}$, $Q_{31}$, and $M_{33}$ the coefficient in front of $m_2$ is $\cc^{1|0}$, 
+%and not $\cc^{1|1}$ as the fusion rules would indicate, see Table \ref{SU2six_psi_fusion}. 
+%This is because $q_3$ is a q-type object in $SU(2)_6/\psi$, 
+%and so it can freely ``absorb'' fermions (odd endomorphisms), which allows us to always ensure 
+%that the vertices appearing in the idempotent have even parity. 
+As the notation suggests $m_{33}$ is not q-type,
+ to see this we note that if it were, then there would 
+be an odd endomorphism of $\tube(SO(3)_6/\psi)$ with trivial boundary conditions (since $m_0 \in q_3 \tp q_3$).
+That would require $SO(3)_6/\psi$ to contain a q-type simple object, but as explained in \eqref{noq-type} this is not possible since $\psi$ is transparent in $SO(3)_6$.
+%But this isn't possible, since we would have an odd tube in $\tube(SO(3)_6/\psi)$ with trivial boundary conditions.
+%This is only possible if $SO(3)_6/\psi$ has a particle with an odd endomorphism, 
+%but as noted in \eqref{noq-type} this is not possible since $\psi$ is transparent in this theory.
+One can explicitly construct an odd endomorphism for $q_{13}$ by putting a fermion on $q_3$ and fusing all strands into the annulus;
+similarly for $q_{31}$. 
 %\ethan{nice!}
-but as noted in \eqref{noq-type} transparency of $\psi$ exceludes this possibility.
+%but as noted in \eqref{noq-type} transparency of $\psi$ exceludes this possibility.
 %this is not possible since $\psi$ is transparent in this theory.
-One can explicitly construct an odd endomorphism for $Q_{13}$ by putting a fermion on $3$ and fusing all strands into the annulus. 
-Similarly for $Q_{31}$. 
+%One can explicitly construct an odd endomorphism for $Q_{13}$ by putting a fermion on $3$ and fusing all strands into the annulus. 
+%Similarly for $Q_{31}$. 
 
 
 
@@ -6455,6 +6671,8 @@ Similarly for $Q_{31}$.
 
 The modular transformations can be computed by direct calculation. 
 \dave{What are we going to say about spins?}
+\kw{I think we can leave the twist and T-matrix stuff more or less as is}
+\kw{Need to change ``spin" to ``twist" in this subsection}
 We already have the topological spins (which are read off from the string-net labels of the idempotents), 
 and the modular $T$ transformation can be obtained directly from the spins.
 The modular $S$-transformation requires a little more work, and so we discuss this in a little more detail.
@@ -6462,6 +6680,8 @@ The modular $S$-transformation requires a little more work, and so we discuss th
 When gluing the idempotents along the boundary of the annulus we have to take linear combinations of 
 idempotents in the same isomorphism class so that the glued up idempotent is invariant under local relations. 
 Using the basis above, one finds
+\kw{in several places, including here, we write $\omega_0$ insead of plain $\omega$ as in Section 5.
+I think we should drop the subscript 0.}
 \begin{align}
 \TorusBraidBasis{a}{b\;}{}{\omega_0}{X}{Y}
 \end{align}
@@ -6654,14 +6874,14 @@ of net configurations on the $NN$ spin torus is given by
 \begin{align}
 \underbrace{
 \xymatrix{
-\TorusBraidBasisd{\scale{.6}{1}}{\scale{.6}{1}\;}{}{\Omega_0}{N}{N}{\TorusBasisMTCNoLabel} \quad 
- \TorusBraidBasisd{\scale{.6}{3} }{\scale{.6}{3} \;}{}{\Omega_0}{N}{N}{\TorusBasisMTCdd}
+\TorusBraidBasisd{\scale{.6}{1}}{\scale{.6}{1}\;}{}{\omega_0}{N}{N}{\TorusBasisMTCNoLabel} \quad 
+ \TorusBraidBasisd{\scale{.6}{3} }{\scale{.6}{3} \;}{}{\omega_0}{N}{N}{\TorusBasisMTCdd}
  \\}
  }_{\text{even}}
  \quad \quad 
 \underbrace{
-\xymatrix{ \TorusBraidBasisd{\scale{.6}{1}}{\scale{.6}{3}\;}{}{\Omega_0}{N}{N}{\TorusBasisMTCdr} \quad
- \TorusBraidBasisd{\scale{.6}{3} }{\scale{.6}{1} \;}{}{\Omega_0}{N}{N}{\TorusBasisMTCdl}
+\xymatrix{ \TorusBraidBasisd{\scale{.6}{1}}{\scale{.6}{3}\;}{}{\omega_0}{N}{N}{\TorusBasisMTCdr} \quad
+ \TorusBraidBasisd{\scale{.6}{3} }{\scale{.6}{1} \;}{}{\omega_0}{N}{N}{\TorusBasisMTCdl}
  \\}
  }_{\text{odd}}
 \end{align}
@@ -6737,9 +6957,9 @@ e^{-3i \pi /4}&0\\
 \end{align}
 As required, the odd part of the $S$-matrix satisfies $S^4 = -\text{id}$ and $(TS)^3 = -\text{id}$, 
 while the even part satisfies the usual $S^4 = \text{id}$ and $(TS)^3 = \text{id}$. 
-This provides us with an example of a theory in which the femion parity of the spin torus 
-%a ground state 
-is not uniquely determined from the ambient spin structure. 
+%This provides us with an example of a theory in which the femion parity of the spin torus 
+%%a ground state 
+%is not uniquely determined from the ambient spin structure. 
 
 
 
@@ -6757,13 +6977,18 @@ $\rho$ obeys the fusion rule
 \end{align}
 %\dave{I think the word `enriched' has some connotation.}
 %which is a sort of ``fermion-enriched'' version of the Fibonacci fusion rule
-which is similar to the Fibonacci fusion rule but with q-type objects\footnote{A simpler generalization of the Fibonacci theory to the super pivotal case, with one non-trivial q-type particle and fusion space $V^{\tilde{\tau} \tilde{\tau}}_{\tilde {\tau}}\cong \mathbb{C}^{1|1}$, does not exist. Indeed, suppose $\text{End}(\tau) = \mathbb{C} \ell_1$ and $V^{\tau \tau \tau} \cong \mathbb{C}^{1|1}$.
+which is similar to the Fibonacci fusion rule but with q-type objects\footnote{A simpler generalization of the Fibonacci theory 
+to the super pivotal case, with one non-trivial q-type particle and fusion space 
+$V^{\tilde{\tau} \tilde{\tau}}_{\tilde {\tau}}\cong \mathbb{C}^{1|1}$, does not exist. 
+Indeed, suppose $\text{End}(\tau) = \mathbb{C} \ell_1$ and $V^{\tau \tau \tau} \cong \mathbb{C}^{1|1}$.
 $\gamma \in \text{End}(\tau)$ denote the odd endomorphism in $V^{\tau\tau\tau}$.
-Then we can write down three anti-commuting operators $\gamma \tp \gamma \tp 1$, $\gamma \tp 1 \tp \gamma$ and $1\tp \gamma \tp \gamma$ which are each even and as such preserve the grading on $V^{\tau\tau\tau}$. 
+Then we can write down three anti-commuting operators $\gamma \tp \gamma \tp 1$, $\gamma \tp 1 \tp \gamma$ and $1\tp \gamma \tp \gamma$ 
+which are each even and as such preserve the grading on $V^{\tau\tau\tau}$. 
 However, the even and odd subspaces of $V^{\tau\tau\tau}$ are one dimensional, and so these operators cannot be represented.
 Hence a theory with a single q-type particle with Fibonacci-like fusion rules must have nontrivial fusion multiplicity.
 In the $\halfesix$ theory we have $V^{\tau\tau\tau} \cong \cc^{2|2}$, which is big enough to represent all three of the above operators.}.
-The nontrivial fusion spaces are $V^{\rho\rho}_\rho \cong \cc^{2|2}$ and $V^{\rho\unit}_\rho \cong \cc^{1|1}$, with the first telling us that the theory has nontrivial fusion multiplicity. 
+The nontrivial fusion spaces are $V^{\rho\rho}_\rho \cong \cc^{2|2}$ and $V^{\rho\unit}_\rho \cong \cc^{1|1}$, 
+with the first telling us that the theory has nontrivial fusion multiplicity. 
 
 
 This theory is richer than the examples we have considered previously, and serves as a good 
@@ -6771,22 +6996,30 @@ case-study for the features that appear in phases described by more general supe
 categories. 
 These more general features include:
 \begin{itemize}
-\item The center has a quasiparticle excitation which has a non-bounding spin structure but which is m-type (this also occurs in the $SO(3)_6/\psi$ theory discussed previously).
-\item The ground state degeneracy on the three spin tori with a bounding cycle (with spin structures $BB$, $BN$, and $NB$) is $\mathbb{C}^{3|0}$, and the ground state degeneracy on the non-bounding torus (with $NN$ spin structure) is $\mathbb{C}^{1|2}$.
-In particular, the fermion parity of a ground state on the torus is not uniquely determined by the torus' spin structure (this also occurs in the $SO(3)_6/\psi$ theory discussed previously). 
+\item The center has a quasiparticle excitation which has a non-bounding spin structure but which is m-type 
+(this also occurs in the $SO(3)_6/\psi$ theory discussed previously).
+\item The ground state degeneracy on the three spin tori with a bounding cycle (with spin 
+structures $BB$, $BN$, and $NB$) is $\mathbb{C}^{3|0}$, and the ground state degeneracy on the 
+non-bounding torus (with $NN$ spin structure) is $\mathbb{C}^{1|2}$.
+In particular, the fermion parity of a ground state on the torus is not uniquely determined by 
+the torus' spin structure (this also occurs in the $SO(3)_6/\psi$ theory discussed previously). 
  \item As a fusion category, there is a fusion rule that takes two q-type particles to another q-type particle. 
-Therefore, the fusion rules do not always respect the $\zt$ grading of objects into q-type and m-type\footnote{However, q-type fusion products cannot appear in the fusion of two q-type particles in the tube
+Therefore, the fusion rules do not always respect the $\zt$ grading of objects into 
+q-type and m-type\footnote{However, q-type fusion products cannot appear in the fusion of two q-type particles in the tube
 category of a fermionic theory, since two idempotents in the tube category with non-bounding spin 
-structure must fuse to an idempotent with bounding spin structure (the fusion rules are $\zt$-graded by spin structure), which can never be q-type.}. 
+structure must fuse to an idempotent with bounding spin structure,
+%(the fusion rules are $\zt$-graded by spin structure), 
+which can never be q-type.}. 
 \end{itemize}
 
 Performing the condensation requires one additional step that did not appear in the previous examples. 
 This is because the category $\halfesix$ is not braided, and so doesn't have a fermion to condense.
-However, as described in section \ref{lift_and_condense}, all we need to perform fermion condensation 
+However, as described in Section \ref{lift_and_condense}, all we need to perform fermion condensation 
 is a particle that lifts to a fermion in the Drinfeld center. 
 This is the case for $\halfesix$.
 
-In what follows, we will first introduce the fusion theory of $\halfesix$ and its properties that are pertinent to the rest of the section.
+In what follows, we will first introduce the fusion theory of $\halfesix$ 
+and its properties that are pertinent to the rest of the section.
 We will then compute the half braid for the emergent fermion, and condense it in the same way we did in the previous examples.
 Following this, we will compute the idempotents in the condensed theory, 
 as well as the modular $S$ and $T$ matrices. 
@@ -6798,23 +7031,35 @@ as well as the modular $S$ and $T$ matrices.
 \label{halfesixFusionTheory}
 %%%%%%%%%%%%%%%%%%%%%%%%
 
-The $E_6$ fusion category is the fusion category whose principle graph is given by the $\text{E}_6$ Dynkin diagram, shown to the left in Fig. \ref{EsixDynkin}.
-The $E_6$ fusion category has two sub-categories: one subcategory has the fusion rules of the Ising theory, while the other is known as $\halfesix$ \cite{Hong2008} and has more complicated fusion rules. 
+The $E_6$ fusion category is the fusion category whose principle graph is given by the $\text{E}_6$ Dynkin diagram, 
+shown to the left in Fig. \ref{EsixDynkin}.
+The $E_6$ fusion category has two sub-categories: one subcategory has the fusion rules of the Ising theory, 
+while the other is known as $\halfesix$ \cite{Hong2008} and has more complicated fusion rules. 
 \begin{figure}
 \begin{align}
-\vcenter{\xymatrix @!0 @M=4mm @C=40mm{
-&\EsixDynkin  \ar[rr]<-3ex>^-{ \text{   condense $y$  }} &   &\EsixCondensePsi&  
-	}} \nonumber
+\vcenter{
+\xymatrix @!0 @M=4mm @R=28mm @C=40mm{
+&\EsixDynkin  \ar[rr]<-3ex>^-{ \text{   condense $y$  }} &   &\EsixCondensePsi&  \\
+&\HalfEsixDynkin  \ar[rr]<-1.5ex>^-{ \text{   condense $y$  }} &   &\HalfEsixDynkinCondensed&  \\
+ 	}} \nonumber
 \end{align}
 \caption{
 On the left we have the $E_6$ Dynkin diagram. 
 The $E_6$ fusion theory has two closed fusion subcategories whose simple objects are $\left \{ \mathds{1},\; \sigma,\; y \right\}$ and $\left \{ \mathds{1}, x,y \right \}$. 
 The first satisfies the Ising fusion rules while the second satisfies those of $\halfesix$ given in (\ref{halfEsixFusionRules}).
-In this section we describe how to quotient by $y$ in the sub-category $\halfesix$.
-$y$ is fermionic in the center of $\halfesix$, so this is tantamount to performing fermion condensation.
-The figure on the right denotes the principal graph of the theory after quotienting by $y$.
+%In this section we describe how to quotient by $y$ in the sub-category $\halfesix$.
+%$y$ is fermionic in the center of $\halfesix$, so this is tantamount to performing fermion condensation.
+The figure on the right denotes the principal graph of the theory after condensing $y$ (after first lifting $y$ to the Drinfeld center).
 Restricting to the quotient of the $\halfesix$ fusion subcategory reduces the particle content to just 
-$\{\unit,\rho\}$.  }
+$\{\unit,\rho\}$.  
+%\kw{I think we should also include the principal graphs of half-e6 and half-e6/psi.}
+%\dave{The more pictures the better. 
+%I'm uncertain of what they look like though.
+%Does the $\halfesix$ Dynkin diagram have a double line for the loop in the middle?
+%What about $\halfesix/\psi$? }
+\kw{Let's make the non-directed double edges non-parallel (as in fig 6.1.1), so that they are
+not confused with directed double edges.}
+}
 \label{EsixDynkin}
 \end{figure}
 
@@ -6832,19 +7077,28 @@ d_{\mathds{1}} = 1 \quad \quad d_x = 1 + \sqrt{3} \quad \quad d_y = 1.
 Note that one of the fusion spaces ($V_x^{xx}$) has dimension greater than 1.
 Note also that $x$ 
 is invariant under fusion with $y$, and that $y$ has quantum dimension $1$. 
-If the theory were braided, and $y$ were fermionic, then condensing $y$ would lead to a super pivotal fusion theory with only two objects, $\mathds{1}$ and $\rho$, the image of $x$ under condensation of $y$. 
-This theory however is not braided, and so we will have to do more work to quotient by $y$, as discussed in the next subsection \ref{condensey} (see also the discussion in Section \ref{lift_and_condense}).
+If the theory were braided, and $y$ were fermionic, then condensing $y$ would lead to a super pivotal 
+fusion theory with only two objects, $\mathds{1}$ and $\rho$, the image of $x$ under condensation of $y$. 
+This theory however is not braided, and so we will have to do more work to condense $y$, 
+as discussed in the next subsection 
+%\ref{condensey} 
+(see also the discussion in Section \ref{lift_and_condense}).
 
-It is useful to layout some of the basic data of $\halfesix$ which will be useful to us in the following sections. 
-Specifically we will give all information required to manipulate the $y$ line, which will be useful knowledge to have on hand when we condense $y$. 
+\medskip
 
-From looking at (\ref{halfEsixFusionRules}) we notice that all particles are self dual, and therefore we must specify their Frobenius-Schur indicators. 
-In this case both Frobenius-Schur indicators are equal to $1$, meaning that 
-\begin{align}
-\Kappay= \Idy
-\qquad \qquad \qquad
-\Kappax =\Idx
-\end{align}
+We now to lay out some of the basic data of $\halfesix$ which will be useful to us in the following sections. 
+Specifically we will give all information required to manipulate the $y$ line, 
+which will be useful knowledge to have on hand when we condense $y$. 
+
+From looking at (\ref{halfEsixFusionRules}) we notice that all particles are self dual, 
+and therefore we must specify their Frobenius-Schur indicators. 
+In this case both Frobenius-Schur indicators are equal to 1.
+%, meaning that 
+%\begin{align}
+%\Kappay= \Idy
+%\qquad \qquad \qquad
+%\Kappax =\Idx
+%\end{align}
 These can be found from the associators $\kappa_x = d_x \left[ F^{xxx}_x \right]_{\mathds{1}\mathds{1}}$, and similarly for $y$. 
 We list all the $F$-symbols (as found in \cite{okazaki2013,Wakui2002}) in App.~\ref{E6Fsymbols}.
 Using the $F$-symbols in App.~\ref{E6Fsymbols} we can check that, in this gauge, $y$ has nice pivotal properties:
@@ -6886,6 +7140,12 @@ The next three relations show what happens when $y$ shifts past the fusion space
 \end{align}
 where the $\sigma^w$, $w = x,y,z$ are the standard Pauli matrices\footnote{Explicitly $\sigma^x = \left( \begin{matrix} 0 &1\\ 1&0 \end{matrix} \right) \quad  \sigma^y = \left( \begin{matrix} 0 &-i\\ i&0 \end{matrix} \right)  \quad \sigma^z = \left( \begin{matrix} 1 &0\\ 0&-1 \end{matrix} \right)$}. 
 When we condense $y$, these sliding moves will correspond to even endomorphisms of the fusion space in the condensed theory.
+\kw{I'm confused by this.  Endomorphisms of what object?}
+\dave{Endomorphisms of $V^{\rho \rho}_\rho$.}
+\kw{But $V^{\rho \rho}_\rho$ is a morphism space, not an object, so ``endomorphism" is not the right word.
+Maybe ``These sliding moves will determine the action of $\End(\rho)$ on $V^{\rho \rho}_\rho$"?}
+\kw{I would have thought that the sliding moves have something to do with relations between $\Gamma$ matrices (which are odd operators).}
+\dave{They are also a product of two $\Gamma$ matrices.}
 
 Lastly, we have
 \begin{align}
@@ -6894,8 +7154,10 @@ W_{\mathds{1}} = \frac{e^{-7 i \pi /12}}{\sqrt{2}}\left( \begin{matrix} 1 &-i \\
 \nonumber \\
 &  \Vxxxya \; = \;  \left( W_{y} \right )_{ab} \; \Vxxxyb  \quad \quad   W_y = \frac{e^{-7 i \pi /12}}{\sqrt{2}}\left( \begin{matrix} 1 &-i \\ -1 & -i \end{matrix} \right)
 \end{align}
-These will be of use to us when we specify the pivotal properties of $\halfesix$ after condensing $y$; see Section \ref{ESixPivotal} for more details.
-The only data left to specify is the associators for the $V^{xxx}_x$ fusion space, which we list in Appendix~\ref{E6Fsymbols}.
+These will be of use to us when we specify the pivotal properties of $\halfesix$ 
+after condensing $y$; see Section \ref{ESixPivotal} for more details.
+The only data left to specify is the associators for the $V^{xxx}_x$ fusion space, 
+which we list in Appendix~\ref{E6Fsymbols}.
 
 
 
@@ -6906,16 +7168,18 @@ The only data left to specify is the associators for the $V^{xxx}_x$ fusion spac
 
 %\dave{Some references that may be fitting: \cite{majid1991}, and apparently \cite{joyal1991}. Also is this called a relative center? Notes on Modular Categories by Muger, or chapter 6 of \cite{heunen2013}.}
 In this subsection we will describe the procedure for condensing the $y$ particle in $\halfesix$. 
-As mentioned earlier, $\halfesix$ is not braided, and so when we say condense $y$, we actually mean that we lift $y$ to the Drinfeld center (where it is an emergent fermion), and condense the lift of $y$. 
+As mentioned earlier, $\halfesix$ is not braided, and so when we say condense $y$, 
+we actually mean that we lift $y$ to the Drinfeld center (where it is an emergent fermion), and condense the lift of $y$. 
 Since the center of $\halfesix$ has been computed in several places \cite{Hong2008,Izumi2001, kawahigashi2001} we will not provide all details. 
 
-The lift of $y$ to $\mcz(\halfesix)$ can be found by taking \eqref{halfbraid_resolution} subject to the constraints \eqref{identityBraid} and \eqref{junctionBraid}.
+The lift of $y$ to $\mcz(\halfesix)$ can be found by taking \eqref{halfbraid_resolution} 
+subject to the constraints \eqref{identityBraid} and \eqref{junctionBraid}.
 Using the fusion theory of $\halfesix$ defined above in Section~\ref{halfesixFusionTheory} one readily finds the unique solution,
 \begin{align}
 \halfbraid{\ebox}{y}{\unit +x+y}{} = \halfbraid{\eone}{y}{\mathds{1}}{} - \; i   \halfbraid{\ex}{y}{x}{x} -   \halfbraid{\ey}{y}{y}{\mathds{1}}.
 \label{yhalfbraid}
 \end{align}
-The all important negative sign on the last term makes the statistics and twist
+The negative sign on the last term makes the statistics and twist
 of $y$ fermionic. 
 
 We are now in a position to condense $y$.
@@ -6933,9 +7197,15 @@ The nontrivial fusion rule of the condensed theory is
 \begin{align}
 \rho \tp \rho = \mathbb{C}^{1|1}\cdot \mathds{1} \oplus \mathbb{C}^{1|1} \cdot \rho.
 \end{align}
-The fusion rule coefficients $\Delta^{\rho\rho}_\rho = \Delta^{\rho\rho}_\unit \cong \cc^{1|1}$ appearing in the above formula are constrained by the relation $V^{ab}_c \cong \Delta^{ab}_c \tp \End(c)$ and the knowledge of the fusion spaces $V^{\rho\rho}_\rho \cong \cc^{2|2}, V^{\rho \unit}_\rho \cong \cc^{1|1}$\footnote{We could have also taken $\Delta^{\rho \rho}_\rho \cong \cc^{2|0}$ or $ \cc^{0|2}$
+The fusion rule coefficients $\Delta^{\rho\rho}_\rho = \Delta^{\rho\rho}_\unit \cong \cc^{1|1}$ 
+appearing in the above formula are constrained by the relation $V^{ab}_c \cong \Delta^{ab}_c \tp \End(c)$ and the 
+knowledge of the fusion spaces $V^{\rho\rho}_\rho \cong \cc^{2|2}, V^{\rho \unit}_\rho \cong \cc^{1|1}$\footnote{We could have 
+also taken $\Delta^{\rho \rho}_\rho \cong \cc^{2|0}$ or $ \cc^{0|2}$
 \dave{Reminder to revisit this in case we find more constraints that rule these out.}
-\dave{Still unsure what to say about this.}}. 
+\dave{Still unsure what to say about this.}
+\kw{If we decide that $\cc^{2|0}$ is just as valid as $\cc^{1|1}$, 
+then we should reconsider the coloring of the edges on the principal graph fig.}
+}. 
 
 %\dave{I think we should consider dropping this heuristic.}
 %\ethan{Agreed.}
@@ -6952,19 +7222,21 @@ The fusion rule coefficients $\Delta^{\rho\rho}_\rho = \Delta^{\rho\rho}_\unit \
 \label{ESixPivotal}
 %%%%%%%%%%%%%%%%%%%%
 
-Since $\text{End}(\rho) \cong \cl_1$, $\End(\rho)$ possesses a natural odd isomorphism which we will denote as $f$. 
-We will denote the even basis vectors of $V^{\rho \rho}_\rho$ as $v_1$ and $v_2$, so that the odd basis vectors are $f {v_1}$ and $f {v_{2}}$, where the $f v_i$ are obtained by acting with $f$ on the bottom leg of the fusion space.
+Since $\text{End}(\rho) \cong \cl_1$, $\End(\rho)$ possesses an odd endomorphism which we will denote as $f$. 
+We will denote the even basis vectors of $V^{\rho \rho}_\rho$ as $v_1$ and $v_2$, so that the odd basis 
+vectors are $f {v_1}$ and $f {v_{2}}$, where the $f v_i$ are obtained by acting with $f$ on the bottom leg of the fusion space.
 Diagrammatically we can denote this vector space by
 \begin{align}
 V^{\rho \rho }_\rho \; \cong \; \mathbb{C} \left[ \VSeven , \quad \VSa \right] \quad \quad \quad a = 1, 2,
 \end{align}
 where $f$ is represented graphically by the blue dot. 
-We can then use our knowledge of local relations in the parent $\halfesix$ theory and the lift of $y$ to derive the following relations in the condensed theory:
+We can then use our knowledge of local relations in the parent $\halfesix$ theory and the lift of $y$ to 
+derive the following relations in the condensed theory:
 \begin{align} 
 \VSa = \sigma^z_{ab} \VSb \qquad \VSa = \sigma^y_{ab} \VSc \qquad \VSd = -i \sigma^x_{ab} \VSc,
 \label{esixdotslide}
 \end{align}
-where the $\sigma^{w}$ are the standard Pauli matrices. 
+where the $\sigma^{w}$ are the standard Pauli matrices (compare \eqref{yslide}). 
 We can also obtain the following pivoting moves:
  \begin{align}
  \PivotEsixEven  = 
@@ -7023,10 +7295,14 @@ $\text{Bounding}$ &$\AddDat{\eTube}{B}{} $&$\AddDat{\hTube}{B}{} $&$ \AddDat{\vT
 \\
 $\text{Non-bounding}$ &$\AddDat{\eTube}{N}{}  $& &$ \AddDat{\vTube}{N}{}$&$ \AddDat{\tTube}{N}{} $& $\AddDat{\XTube{1}{1}}{N}{}$ &$ \AddDat{\XTube{1}{2}}{N}{} $ \\
 \end{tabu}
-\caption{\label{AnnulusBasis} The table above is the basis of tubes we use on the annulus for a bounding spin structure ($B$) and non-bounding spin structure ($N$). 
+\caption{\label{AnnulusBasis} The table above is the basis of tubes we use on the annulus for a 
+bounding spin structure ($B$) and non-bounding spin structure ($N$). 
 %We also list which tubes are oddly isomorphic by labeling an arrow between them with $\Pi$, and which tubes have odd endomorphisms by labeling them with $\Pi_e$. 
-The labels above each tube are short-hand for that tube, $e$-- empty, $h$-- horizontal, $v$-- vertical, $t$-- twist, $X$-- crossed.
+The labels above each tube are short-hand for that tube, $e$ -- empty, $h$ -- horizontal, 
+$v$ -- vertical, $t$ -- twist, $X$ -- crossed.
 The tubes $X_{11}$ and $X_{12}$ are oddly isomorphic.
+\kw{What does it mean for vectors to be isomorphic?  This makes no sense to me.}
+\kw{Why are there no odd tubes in the figure?}
 }
 \end{table}
 
@@ -7055,11 +7331,13 @@ The labels above each tube are short-hand for that tube, $e$-- empty, $h$-- hori
 & \AddDat{\XTube{\mu}{\nu}}{X}{} \;\;  =(-1)^{s(X)} (\sigma^x \tp \sigma^y )_{\mu \nu; \kappa \tau}\AddDat{\XTube{\kappa}{\tau}}{X}{} 
 \label{XlocalRelationAnnulus}
 \end{align}
-We also have the odd isomorphism
+We also have 
+%the odd isomorphism
 \begin{align}
 \AddDat{\XTube{\mu}{\nu}}{X}{\dotc} \;= (\sigma^y \tp \sigma^z)_{\mu \nu; \kappa \tau} \; \AddDat{\XTube{\kappa}{\tau}}{X}{\dota}
 \end{align}
-Recapitulating, we can use these results to obtain a minimal basis for the vector space of string-nets on the annulus, which is given in Figure \ref{AnnulusBasis}.
+
+We can use these results to obtain a minimal basis for the vector space of string-nets on the annulus, which is given in Figure \ref{AnnulusBasis}.
 
 
 
@@ -7083,7 +7361,8 @@ Then we will consider the $(N,N)$ torus separately.
 We use the same notation as in Section~\ref{modulartforms}. 
 
 Depending on the spin structure, some of the annular tubes become zero after identifying the boundaries to form tori.
-Since there is always one cycle with bounding spin structure, an odd tube is identified with zero for the same reason as discussed in \ref{c2_stringnets_torus}.
+Since there is always one cycle with bounding spin structure, an odd tube is 
+identified with zero for the same reason as discussed in \ref{c2_stringnets_torus}.
 For example, due to (\ref{hlocalrelation}), we have
 \begin{align}
  0 = \;\AddDatTorus{\hTube}{N}{B} \;=\; \AddDatTorus{\vTube}{B}{N}\; = \; \AddDatTorus{\tTube}{B}{B}
@@ -7112,7 +7391,8 @@ d_\rho \AddDatTorus{\eTube}{X}{Y} \; = \;
 \label{rhoLoopRelation}
 \end{align}
 where $m_\lambda$ are coefficients that depend on the $F$-symbols.
-The string of equalities gives an additional local relation, in particular, it allows us solve for the tubes in (\ref{XLocalRelation}) above in terms of the other non-zero tubes.
+The string of equalities gives an additional local relation, in particular, it allows us 
+solve for the tubes in (\ref{XLocalRelation}) above in terms of the other non-zero tubes.
 Explicitly in the three sectors $(B,B), (B,N)$, and $(N,B)$ we have,
 \begin{align}
 & \AddDatTorus{\XTube{1}{1}}{B}{B} \;= e^{-i \pi /12} \frac{d+1}{\sqrt{d}} \left( \;\AddDatTorus{\eTube}{B}{B}\; -  \frac{1}{d} \left(\AddDatTorus{\hTube}{B}{B}   +  \AddDatTorus{\vTube}{B}{B}  \right) \right)\\
@@ -7127,7 +7407,8 @@ We first notice that
 \begin{align}
  0 = \;\AddDatTorus{\hTube}{N}{N} \;=\; \AddDatTorus{\vTube}{N}{N}\; = \; \AddDatTorus{\tTube}{N}{N}
 \end{align}
-which can be seen by nucleating two fermions out of the vacuum along each $\rho$ line and dragging one of them along the entire $\rho$ line before fusing them back to the vacuum.
+which can be seen by nucleating two fermions out of the vacuum along each $\rho$ line and 
+dragging one of them along the entire $\rho$ line before fusing them back to the vacuum.
 Furthermore, the same calculation as \eqref{rhoLoopRelation} implies that the the empty tube is identified with zero, 
 \begin{align}
 \AddDatTorus{\eTube}{N}{N} \; = 0
@@ -7214,9 +7495,12 @@ fermion condensation, rather than first performing fermion condensation and then
 In order for this strategy to work, we need to construct a map from idempotents of the parent theory to idempotents of the condensed theory.
 This mapping is performed by simply condensing fermions off the tubes in $\tube(\halfesix)$ to get tubes in $\tube(\halfesix / y)$. 
 Special care must be taken with respect to spin structure issues, since removing $y$ lines may force a pair of fermions to traverse a cycle of the tube. 
-We will see that there are six excitations in the condensed theory: three excitations with bounding spin structure, and three with non-bounding spin structure. 
-We index them as $\mca = \{ M_1, M_2, M_3\}$ and $\mcv = \{ Q_1, Q_2, M_6 \}$, where $\mca$ is the set of non-vortex anyons and $\mcv$ is the set of vortex defects. 
-As the notation suggests, there are two q-type excitations and one m-type excitation (namely $M_6$) in $\mcv$, while all of the excitations in $\mca$ are (necessarily) m-type. 
+We will see that there are six excitations in the condensed theory: three excitations 
+with bounding spin structure, and three with non-bounding spin structure. 
+We index them as $\mca = \{ M_1, M_2, M_3\}$ and $\mcv = \{ Q_1, Q_2, M_6 \}$, 
+where $\mca$ is the set of non-vortex anyons and $\mcv$ is the set of vortex defects. 
+As the notation suggests, there are two q-type excitations and one m-type excitation 
+(namely $M_6$) in $\mcv$, while all of the excitations in $\mca$ are (necessarily) m-type. 
 
 
 \dave{Re-worded a bit. 
@@ -7429,7 +7713,8 @@ Q_1 = \frac{e^{i \pi/4}}{\sqrt{d}} \AddDatTorusDot{\TaddownTube{1}}{N}{}{}  \cdo
 \subsubsection{Topological and idempotent bases}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 There are two natural bases on the torus. 
-One is the topological basis, corresponding to (\ref{TorusBasis}), the other is the idempotent basis (or quasiparticle basis) given in tables \ref{MIdempotents} and \ref{QIdempotents}.
+One is the topological basis, corresponding to (\ref{TorusBasis}), the other is the 
+idempotent basis (or quasiparticle basis) given in tables \ref{MIdempotents} and \ref{QIdempotents}.
 We will compute the modular transformations in the topological basis first, and then change over to the idempotent basis.
 
 We define the shorthand notation for the tubes as
@@ -7448,8 +7733,11 @@ h_{BN} =\; \AddDatTorus{\hTube}{B}{N}{}
 
 
 
-Every state on the torus can be expanded in terms of the above states, as long as we are also careful to use the local relations provided in Section \ref{TorusLocalRelations}.
-Hence one can directly compute the change of basis by taking the particles in tables \ref{MIdempotentsprime}, \ref{MIdempotents},  and \ref{QIdempotents} and projecting them onto the torus, and then modding out by the local relations described in Section \ref{TorusLocalRelations}.
+Every state on the torus can be expanded in terms of the above states, as long 
+as we are also careful to use the local relations provided in Section \ref{TorusLocalRelations}.
+Hence one can directly compute the change of basis by taking the particles in 
+Tables \ref{MIdempotentsprime}, \ref{MIdempotents},  and \ref{QIdempotents} and 
+projecting them onto the torus, and then modding out by the local relations described in Section \ref{TorusLocalRelations}.
 The change of basis matrices in the spin sectors with at least one bounding cycle are 
 \begin{align}
 \label{VAA}
@@ -7560,7 +7848,8 @@ In terms of the matrix elements of $S$, we have
 Where we have taken $\psi,\lambda  \in \bigoplus_{ab} V^{aba^*}_b$ modulo local relations.
 
 We can now work out the $S$-matrix for each spin structure in the topological basis, and then change over to the idempotent basis. 
-The calculation is the same in each case, we find the linear map on the in to the topological basis based on (\ref{STopologicalBasis}), and then change back to the particle basis using (\ref{VPA}--\ref{VPP}).
+The calculation is the same in each case, we find the linear map on the in to the 
+topological basis based on (\ref{STopologicalBasis}), and then change back to the particle basis using (\ref{VPA}--\ref{VPP}).
 
 For the $(B,B)$ spin structure one simply finds that $v$ and $h$ are interchanged so that,
 \begin{align}
@@ -7817,7 +8106,8 @@ In summary, we have \eqref{hE6_S_NN} together with
 \subsubsection{$T$-transformation}
 %%%%%%%%%%%%%%%%%%%%%%%
 
-The Dehn twist ($T$-transformation) corresponds to cutting the torus open along one cycle, applying a full $2\pi$ rotation and then gluing the torus back together along that cycle.
+The Dehn twist ($T$-transformation) corresponds to cutting the torus open along one cycle, 
+applying a full $2\pi$ rotation and then gluing the torus back together along that cycle.
 \begin{align}
 \xymatrix @!0 @M=1mm  @C=20mm{
 T^{XY \rightarrow \widetilde{X}\widetilde{Y}}:& \mch^{T^2}_{(X,Y)} \ar[rr] && \mch^{T^2}_{(\widetilde{X},\widetilde{Y})} & \\
