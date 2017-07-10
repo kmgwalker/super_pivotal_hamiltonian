@@ -9898,18 +9898,9 @@ This is essentially the same as the bilinear pairing defined in \eqref{reflectio
 It is defined on every pair of tensor factors $\mch(\bar{c}_{xy}) \tp \mch( c_{xy})$
 that are assigned 
 to attaching regions in the handle decomposition.
-\ethan{strictly speaking, I don't think we need the following (it could just confuse people)}
-Under re-arrangement of tensor factors and Koszul signs, $\chi$ behaves as 
-\begin{align}
-\delta_{wv} = \chi(w^* \tp v)=(-1)^{|v| |w|} \chi(w^*_2 \tp v_1) = (-1)^{|w|}(-1)^{|v| |w|} \chi(v \tp w^*) = (-1)^{|w|(|v|+1)} \delta_{v^* w^{*}},
-\end{align}
-%\dave{This difference in ordering may Koszul headaches later.}
-%\ethan{Don't we usually have $\mch^*\cong\mch$ so that the difference is just a matter of labeling? %However, might be best to dualize the definition of $\chi$}.
-%\dave{What does it mean to dualize the definition of $\chi$?}
-where as usual, the numerical subscripts indicate an explicit Koszul ordering, and the absence of subscripts 
-indicates the standard ordering convention, which increases from left to right. The sign $(-1)^{|w|}$ appears 
-when performing a $2\pi$ rotation $P^3 = (-1)^F$ on the vector $w$ when interchanging the order of the tensor factors (recall that $\tp$ corresponds to horizontal superposition of diagrams).
-\ethan{I don't like the asymmetry... are we missing something?} 
+On vectors in $W^*\tp W$, $\chi$ acts as the evaluation of the following diagram:
+\ethan{insert banana picture here. I can make it if Dave's busy, but it'll be stylistically slightly different}
+
 
 Since the vector spaces for the attaching regions between $(k+1)-$ and $k$-handles are dual 
 to each other, the total Hilbert space 
@@ -9933,6 +9924,9 @@ weights determined by tensors that we will write down shortly.
 %and extended to the whole vector space by linearity. 
 %I guess we should say that.}}
 
+In the case where $\partial \mcm \neq \emptyset$, $\mch(\mcm)$ admits a decomposition as $\mch^*_{bulk} \tp \mch_{bulk} \tp \mch(\partial \mcm)$, where 
+the Hilbert spaces of the degrees of freedom on $\partial \mcm$ lack dual tensor factors appearing in $\mch(\mcm)$. 
+The partition function is still performed with the help of $\chi$, which contracts out the tensor factors in $\mch^*_{bulk} \tp \mch_{bulk}$ but leaves those in $\mch(\partial \mcm)$ uncontracted, producing the wavefunction of the input state. 
 
 %\ethan{what follows is commented-out cut-and-glue stuff. Might come back and borrow stuff if we decide to expound on things in that direction}
 \begin{comment}
@@ -10169,6 +10163,7 @@ Also these vector spaces don't have vertices associated with them.}
 \ethan{I'm saying that I think the natural edge Hilbert space is $E'$, which is super, as opposed to $E$, which isn't. We can still use $E$, but I wanted to explain why.}
 \dave{Where are the vertices that you're displacing the fermions?
 On the 1-cells?}
+\ethan{On the ends of the 1-cells. So for the 1-handle Hilbert space we have $\mch(e) = E^{\tp 3} \tp W \tp W^*$, and we can take the fermionicness of the $E$ factors and displace it onto the $W$ factors, leaving the $E$s bosonic.}
 }.
 %\ethan{You said $E$ was bosonic, but I was initially thinking that $E = \oplus_x \End(x)$?}
 %\dave{We could write it as $(\text{End}(x))^0$ if we want. 
@@ -10210,9 +10205,25 @@ This is the same $\text{dim} \; \text{End}(x)$ that appears in the definition of
 %Since the 2-cells inherit a bounding spin structure, any closed loop of string embedded in the 2-cell will 
 %have even fermion parity, and so the vector space for the 2-cell tensors remains bosonic, and as such needs no further adjustments for the fermionic setting. 
 %\ethan{right?}
-%\dave{The tensors always have even parity. 
-%The normalization is because it's the trivial idempotent that we plug into the $S^1 \times D^1$ attaching region in the cut and glue picture.
+%\dave{The tensors always have even parity. \ethan{because of what I wrote above, right?}
+%The normalization is because it's the trivial idempotent that we plug into the $S^1 \times D^1$ attaching region in the cut and glue picture. \ethan{agreed}
 %}
+\ethan{strictly speaking, I don't think we need the following (it could just confuse people)}
+Under re-arrangement of tensor factors and Koszul signs, $\chi$ behaves in the fermionic setting as
+\begin{align}
+\delta_{wv} = \chi(w^* \tp v)=(-1)^{|v| |w|} \chi(w^*_2 \tp v_1) = (-1)^{|w|}(-1)^{|v| |w|} \chi(v \tp w^*) = (-1)^{|w|(|v|+1)} \delta_{v^* w^{*}},
+\end{align}
+%\dave{This difference in ordering may Koszul headaches later.}
+%\ethan{Don't we usually have $\mch^*\cong\mch$ so that the difference is just a matter of labeling? %However, might be best to dualize the definition of $\chi$}.
+%\dave{What does it mean to dualize the definition of $\chi$?}
+where as usual, the numerical subscripts indicate an explicit Koszul ordering, and the absence of subscripts 
+indicates the standard ordering convention, which increases from left to right. 
+The sign $(-1)^{|w|}$ appears 
+when performing a $2\pi$ rotation $P^3 = (-1)^F$ on the vector $w$ when interchanging the order of the tensor factors (recall that $\tp$ corresponds to horizontal superposition of diagrams).
+Since $\chi(w^*\tp v)$ is nonzero only when $w$ and $v$ have the same parity, this reads $\chi(w^*\tp v) = \chi(v\tp w^*)$. 
+
+
+
 
 The tensors for the one-handles are also modified when passing to the fermionic setting. 
 In the bosonic state sum, we needed to keep track of three possible pivots
