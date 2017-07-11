@@ -8650,10 +8650,11 @@ In this section we elaborate on the differences arising in fermionic theories be
 
 We assume that our categories are additively complete, which means that it makes sense to
 multiply objects by supervector spaces. 
-This is simply a categorified version of multiplying vectors (objects) by scalars (vector spaces).
+This is a categorified version of multiplying vectors by scalars.
+%This is simply a categorified version of multiplying vectors (objects) by scalars (vector spaces).
 For any collection of supervector spaces $\{W_a\}$ indexed by 
 a finite set of objects in our category, 
-we can therefore add to our category new objects of the form
+we therefore have an object of the form
 \be \bigoplus_a W_a \cdot a.\ee
 Morphisms between these more general objects are calculated as  
 \be  \label{amordef}
@@ -8670,15 +8671,14 @@ if $x$ is q-type.
 
 Combining \eqref{asumx} and \eqref{amordef}, we can compute endomorphisms of objects by
 \be
-	\End(a) \cong \bigoplus_x \End(W_x) \otimes_\cc \End(x).
+	\End(a) \cong \bigoplus_{xx\in \mcx} \End(W_x) \otimes_\cc \End(x).
 \ee
 
 We are now ready to discuss fusion rules. 
 For any $a$ and $b$, define the vector spaces $\Delta^{ab}_c$ by
 \be
-	a \otimes b \cong \bigoplus_c \Delta^{ab}_c \cdot c ,
+	a \otimes b \cong \bigoplus_{c\in \mcx} \Delta^{ab}_c \cdot c .
 \ee
-where the direct sum runs over all simple objects $c$ in $\mcx$. 
 The $\Delta^{ab}_c$ are the fusion rule coefficients. 
 
 The fusion spaces $V^{ab}_c$ are defined as the vector space of morphisms from $c$ to $a\tp b$:
@@ -8701,10 +8701,11 @@ Explicitly, this is because
 which allows us to cyclicly permute the indices of $V$, so long as we take the duals of any objects that move from subscripts to superscripts, and vice versa. 
 For example, we have $V^{ab}_c \cong V^{bc^*}_{a^*} \cong V^{c^*a}_{b^*}$. 
 
-On the other hand, $\Delta^{ab}_c$ is {\it not} symmetric in $a,b,c$, as the $C_2$ theory example shows. 
+On the other hand, $\Delta^{ab}_c$ is {\it not} cyclically symmetric in $a,b,c$, as the $C_2$ theory example shows. 
 Additionally, while $V^{ab}_c$ has an action of $\End(a)\otimes\End(b)\otimes\End(c)$ (as mentioned earlier), $\Delta^{ab}_c$
 only has an action of $\End(a)\otimes\End(b)$.
 
+\kw{Maybe this paragraph can be dropped?  We already have a a simpler proof of this fact above.}
 This definition of $V^{ab}_c$ gives us another way to show that $V^{ab}_c$ will always be a supervector space of the form $\cc^{n|n}$ for some integer $n$ if any of $a,b,c$ is q-type. 
 Indeed, suppose $c$ were q-type, and $\Delta^{ab}_c \cong \cc^{r|s}$. 
 Then $V^{ab}_c \cong \cc^{r|s} \tp \cc^{1|1} \cong \cc^{r+s|r+s}$. 
@@ -8727,7 +8728,7 @@ Let $I$ be a finite (and unordered) index set.
 For each $i\in I$, let $W_i$ be a super vector space.
 We define the unordered tensor product,
 \be
-	\bigotimes_i W_i ,
+	\bigotimes_{i\in I} W_i ,
 \ee
 as follows.
 For each bijection $f: \{1, \ldots,m\} \to I$ (i.e.\ for each ordering of $I$),
@@ -8769,8 +8770,10 @@ When writing equations involving particular ordered tensor products of fusion sp
 convention that the Koszul ordering is left-to-right on the page, unless explicitly 
 indicated otherwise. If we want to indicate an ordering which departs from this left-to-right convention, 
 we will indicate the ordering explicitly with numerical subscripts, 
-e.g. $V^{ab}_{c,1} \tp V^{cd}_{e,2}$. \kw{(I think overscripts would be better than subscripts.)
-\ethan{By overscripts do you mean $e.g.$ $V^{ab,1}_c$ or something else? I went with subscripts since that's what we have in later sections and earlier in this section.}}
+e.g. $V^{ab}_{c,1} \tp V^{cd}_{e,2}$. \kw{I think overscripts would be better than subscripts.}
+\ethan{By overscripts do you mean $e.g.$ $V^{ab,1}_c$ or something else? I went with subscripts since that's what we have in later sections and earlier in this section.}
+\kw{I meant something like $\overset{2}{V^{abc}} \tp \overset{1}{V^{xyz}}$, but it might be too much hassle to get the spacing right
+and make all the changes.}
 When drawing diagrams with a particular ordering in mind, we always indicate the ordering explicitly by numbers near each fusion space (i.e.\ near
 each vertex in the string net).
 Another possible convention would be to use the ordering corresponding to (say) bottom-to-top on the page,
