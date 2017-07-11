@@ -397,9 +397,13 @@
 
 
 
+ 
+\newcommand{\gxyajf}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{gxyajf.pdf}}}}}
+\newcommand{\hxyaif}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{hxyaif.pdf}}}}}
 
 
 
+\newcommand{\OneStrandIdempotentMTCpsi}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OneStrandIdempotentMTC.pdf}}}}}
 \newcommand{\gxyaj}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{gxyaj.pdf}}}}}
 \newcommand{\hxyai}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{hxyai.pdf}}}}}
 
@@ -6219,44 +6223,49 @@ We first define,
 \end{align}
 and
 \begin{align}
- \omega_x = \frac{1}{\mathcal{D}_{\mcc/\psi}^2} \sum_{r\in \sob(\mcc/\psi)} \frac{d_r }{ \dim\End(r)} (-1)^{x \nu_r}   \text{cl}(r).
+ \omega_x = \frac{d_x}{\mathcal{D}_{\mcc/\psi}^2} \sum_{r\in \sob(\mcc/\psi)} \frac{d_r }{ \dim\End(r)} \frac{S_{xr}}{S_{\unit r}}   \text{cl}(r).
 \end{align}
-when $x = \unit$ this is just the standard $\omega$ loop, 
-when $x =\psi$ it is a projector onto the $\psi$ strand.
+The $S$-matrix above is that of the parent theory.
+When $x = \unit$, $ \frac{S_{x r}}{S_{\unit r}}=1$ and this is just the standard $\omega$ loop, 
+when $x =\psi$, $ \frac{S_{x r}}{S_{\unit r}}=(-1)^{\nu_r}$ and $\omega_\psi$ is a projector onto the $\psi$ strand.
 The factor $\mcd_{\mcc/\psi}^2 = \sum_{x \in \mcc/\psi} d_x^2 / \dim \End(x)$ is the total quantum dimension of 
 the condensed theory in the sense of \eqref{total_qdim_defn}. 
-We have,
+The minimal idempotents given by $E(a,b)$ in \eqref{FunctorCxCtoTubeC}
+can be re-written as,
 \begin{align}
 E(a\tp x, b) \cong \widetilde{E}(a,b, \omega_x)
 \end{align}
 with $a,b \in \mcc/\psi$ and $x =\unit, \psi$.
 The isomorphism is an odd isomorphism if $x = \psi$.
-This presentation of the idempotents is more symmetric than those discussed in Section \ref{more_on_tubes}. 
-%It has the advantage of being symmetric, 
-%and that each tube only contains labels of $\mcc/\psi$. 
-Using the fermionic analogue of \eqref{TwoStrandToOneStrand},
+This presentation of the idempotents is more symmetric than those discussed in Section \ref{more_on_tubes}.
+
+We now write these idempotents so that they have a single strand at the boundary rather than two.
+We use the fermionic analogue of \eqref{TwoStrandToOneStrand},
+%and replace $\omega$ by $\omega_x$,
+%\begin{align}
+%g(a,b,\omega_x,c,j) = \gxyajf  \quad \quad \quad h(a,b,\omega_x,c,i) = \hxyaif
+%\end{align}
+to write down the single strand idempotents
 \begin{align}
-g = \cdots \quad \quad \quad h = \cdots
-\end{align}
-one finds an equivalent set of idempotents given by 
-\dave{better charector than $\tilde{e}$?}
-\begin{align}
-\tilde{e}(a,b,\omega_x,c,j) = g \cdot f
+\tilde{e}_{ab}(\omega_x,c,j) \; = \; \OneStrandIdempotentMTCpsi
+%g(a,b,\omega_x,c,j)  \cdot h(a,b,\omega_x,c,j) 
 \end{align}
 These idempotents are essentially the same as the ones described earlier in \eqref{idempotent_one_strand}. 
-The particular representative of the isomorphism class is given by choosing $c \in a\tp b$, and a vector from $V^{ab}_c(\mcc/\psi)$.
-We will denote the parity $\mu_j \in V^{ab}_c(\mcc/\psi)$ by $\sigma_j=1$ $(\sigma_j = -1)$ if the chosen basis vector $\mu_j$ in the fusion space $V^{ab}_c(\mcc/\psi)$ is even (odd).
-The twists of the idempotents can easily be worked out,
+The particular representative of the isomorphism class is given by choosing $c \in a\tp b$, and a vector from $\mu_j \in V^{ab}_c(\mcc/\psi)$.
+We will denote the parity of $\mu_j \in V^{ab}_c(\mcc/\psi)$ by $\sigma_j=1$ $(\sigma_j = -1)$ if the chosen basis vector $\mu_j$ in the fusion space $V^{ab}_c(\mcc/\psi)$ is even (odd).
+The twists of the idempotents are given by,
 \begin{align} 
-T \tilde{e}(a,b,\omega_x,c,j)  =\text{(twist)} \tilde{e}(a,b,\omega_x,c,j)  T 
+T\cdot \tilde{e}(a,b,\omega_x,c,j)  =\left[  \frac{\theta_a}{\theta_b} (-1)^{x (\nu_a + \nu_b)}(-s(J))^{(1-\sigma_j)/2}  \right ] \tilde{e}(a,b,\omega_x,c,j)
 \end{align}
 We will write $\tilde{e}(a,b,\omega_x,c,j)$ as $m_{ab}(\omega_x,c,j)$ 
-if the idempotent is m-type (i.e. not invariant under fusion with $\psi$)
-and $q_{ab}(\omega_x,c,j)$ if the idempotent is q-type (i.e. has an odd endomorphism).
-For $SU(2)_6/\psi$ we find 14 m-type idempotents for the bounding spin structure, and 14 idempotents for the non-bounding spin structure, 7 are m-type and 7 are q-type. 
-Explicitly, the idempotents and their twists are listed in tables \ref{bounding_SU26} and \ref{nonbounding_SU26}.
+if the idempotent is m-type and $q_{ab}(\omega_x,c,j)$ if the idempotent is q-type.
+For $SU(2)_6/\psi$ we list a complete set of minimal idempotents, 
+we find 14 m-type idempotents for the bounding spin structure, 
+and 14 idempotents for the non-bounding spin structure, 7 are m-type and 7 are q-type. 
+Explicitly, the idempotents and corresponding twists are listed in tables \ref{bounding_SU26} and \ref{nonbounding_SU26}.
+Note that if $a$ is q-type, then $\tilde{e}(a,b,\omega_\unit,j)$ is isomorphic to $\tilde{e}(a,b,\omega_\psi,j)$ and so we only list one of them.
 We now turn our attention to the $SO(3)_6$ theory. 
-\dave{to self: check if `their' verse `there'.}
+$\frac{\theta_a}{\theta_b} (-s(J))^{p_{ab}^c}(-1)^{x(\nu_a + \nu_b)}$
 \begin{table}
 \begin{center}
 \begin{align}
