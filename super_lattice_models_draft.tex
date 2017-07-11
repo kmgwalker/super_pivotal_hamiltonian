@@ -10711,42 +10711,6 @@ Explicitly, we can prepare wavefunctions out of a fixed input state $v_0\in \mch
 where $Z(\Sigma_{0\ra1}; v_0, v_1)$ is the evaluation of the partition function with 
 boundary conditions fixed by $v_0$ and $v_1$. 
 
-In order to evaluate $Z(\Sigma_{0\ra1}; v_0, v_1)$, we need to specify a cell decomposition on $\Sigma_{0\ra 1}$ (although the actual partition function is independent of the particular choice). 
-We can take the cell decomposition in the bulk of $\Sigma_{0\ra1}$ to be any cell decomposition that agrees with the cell decomposition of $\Sigma_0$ and $\Sigma_1$ when restricted to $\partial \Sigma_{0\ra1}$.
-However, there is a particularly convenient choice, which corresponds to extending the cell decomposition of $\Sigma_0$ into $\Sigma \times [0, 1/2]$, and that of $\Sigma_1$ into $\Sigma \times [1/2, 1]$, see Figure~\ref{CellDecomposition}. 
-When we do this extension, every $k$-cell in $\Sigma_0$ and $\Sigma_1$ is extended into a $(k+1)$-cell in the bulk 
-of $\Sigma_{0\ra1}$ (the $(k+1)$-cells are the `shadows' of the $k$-cells, and hence the bulk constitutes the `shadow world'). 
-It is convenient to take the two cell decompositions on $\Sigma_0$ and $\Sigma_1$ to be in `normal' position,
-meaning that the extension of $\Sigma_0$ into the bulk only intersects the extension of $\Sigma_1$ transversely along edges, again see Figure~\ref{CellDecomposition}.
-
-
-We now specify the amplitude $Z(\Sigma_{0\ra 1}; v_0, v_1) $ in \eqref{GroundState}.
-The amplitude is determined using the state sum procedure developed previously, and as such we will be brief in what follows. 
-The labels of the 2-cells that extend from $\Sigma_0$ and $\Sigma_1$ are determined by $v_0$ and $v_1$. 
-The 2-cell labels living at $\Sigma \times \{ 1/2 \}$ need to be summed over.
-We can orient each 2-cell using the orientation of $\Sigma$. 
-By looking at Figure~\ref{CellDecomposition}, we see that there are only three kinds of 0-cells that show up in 
-$\Sigma \times \{1/2\}$: those that are formed at the x-shaped intersection of a 1-cell in the extension of $
-\Sigma_0$ with a 1-cell in the extension of $\Sigma_1$, those where a 0-cell in the extension of $\Sigma_0$ 
-meets the interior of a 2-cell in 
-the extension of $\Sigma_1$, and vice versa. These possibilities lead to three different 0-cell tensors that need to be evaluated. 
-
-Rather than drawing a spherical neighborhood of each 0-cell, 
-we will draw a cube. 
-The three kinds of 0-cells are displayed in Figure~\ref{StandardizedSlabTensors} (first row), along
-with their standardized versions (middle row).
-The 1-handles that appear in the contraction all need an orientation.
-In principle this can be arbitrary, there is a natural choice -- the 1-handles biject with with the 1-cells of $\Sigma_0$ and $\Sigma_1$, and hence assign an orientation to each 1-handle in $\Sigma_{0 \ra 1}$. 
-We can use the orientation of the 1-cells descending from $\Sigma_0$ and $\Sigma_1$ to orient the 1-handles.
-It is helpful to project each picture in part a) of Figure~\ref{StandardizedSlabTensors} into the into $\Sigma \times \{ \frac{1}{2} \} $, and specify its weight by part c). 
-
-Each vertex on $\Sigma_1$ will have three neighboring 2-cells that need to be summed over, and three 1-handles. 
-\begin{align}
-\Tensora \; &= \;\sum_{\{ s_i \} }  \Tensoraa \cdot \mu_0 \tp s_1 \tp s_2 \tp s_3 \\
-\Tensorb \; &= \;  \Tensorbb \\
-\Tensorc \; &= \; \Tensorcc \\
-\end{align}
-
 \begin{figure}
 \begin{center}
 \includegraphics{CellDecomposition.pdf}
@@ -10764,7 +10728,79 @@ Notice that the orientation of all lines on $\Sigma_{0 \ra1}$ have been reversed
 \end{center}
 \end{figure}
 
-\dave{Do 1-handles?}
+In order to evaluate $Z(\Sigma_{0\ra1}; v_0, v_1)$, we need to specify a cell decomposition on $\Sigma_{0\ra 1}$ (although the actual partition function is independent of the particular choice). 
+We can take the cell decomposition in the bulk of $\Sigma_{0\ra1}$ to be any cell decomposition that agrees with the cell decomposition of $\Sigma_0$ and $\Sigma_1$ when restricted to $\partial \Sigma_{0\ra1}$.
+However, there is a particularly convenient choice, which corresponds to extending the cell decomposition of $\Sigma_0$ into $\Sigma \times [0, 1/2]$, and that of $\Sigma_1$ into $\Sigma \times [1/2, 1]$, see Figure~\ref{CellDecomposition}. 
+When we do this extension, every $k$-cell in $\Sigma_0$ and $\Sigma_1$ is extended into a $(k+1)$-cell in the bulk 
+of $\Sigma_{0\ra1}$ (the $(k+1)$-cells are the `shadows' of the $k$-cells, and hence the bulk constitutes the `shadow world'). 
+It is convenient to take the two cell decompositions on $\Sigma_0$ and $\Sigma_1$ to be in `normal' position,
+meaning that the extension of $\Sigma_0$ into the bulk only intersects the extension of $\Sigma_1$ transversely along edges, again see Figure~\ref{CellDecomposition}.
+
+
+We now specify the amplitude $Z(\Sigma_{0\ra 1}; v_0, v_1) $ in \eqref{GroundState}.
+The amplitude is determined using the state sum procedure developed previously, and as such we will be brief in what follows. 
+The labels of the 2-cells that extend from $\Sigma_0$ and $\Sigma_1$ are determined by $v_0$ and 
+$v_1$, since they are the shadows of 1-cells in $\Sigma_0$ and $\Sigma_1$. 
+The 2-cell labels living at $\Sigma \times \{ 1/2 \}$ are not fixed as input data however, and need to be 
+summed over.
+
+As described previously, to construct the tensors for a given 0-cell $v$ in $\Sigma \times \{1/2\}$, we insert a small $S^2$ around 
+$v$ and examine the intersections of neighboring 2-cells with the $S^2$. These intersections 
+are marked on the $S^2$ as edges, and weights for the tensor $T_v$ are formed by evaluating 
+the picture formed by these edges. 
+
+By looking at Figure~\ref{CellDecomposition}, we see that there are only three kinds of 0-cells that show up in 
+$\Sigma \times \{1/2\}$: those that are formed at the x-shaped intersection of a 1-cell in the extension of $
+\Sigma_0$ with a 1-cell in the extension of $\Sigma_1$, those where a 0-cell in the extension of $\Sigma_0$ 
+meets the interior of a 2-cell in 
+the extension of $\Sigma_1$, and vice versa. These possibilities lead to three different types of 0-cell tensors that need to be evaluated. 
+These three possibilities are illustrated in the top row $a)$ of Figure \ref{StandardizedSlabTensors}, where we have drawn a cube surrounding the 0-cell instead of an $S^2$.
+In the figure, the blue (orange) lines denote 
+the intersections of 2-cells in $\Sigma \times (1/2,1]$ (in $\Sigma \times [0,1/2)$) with the cube, 
+and the green lines denote the intersection of 2-cells in $\Sigma \times \{1/2\}$ with the cube. 
+The orientation of the lines drawn in these figures is fixed by the orientations of each of the 2-cells, 
+which are determined with the aid of the orientation of $\Sigma$. 
+In order to facilitate computations, we will need to standardize these diagrams according to the 
+usual `pitchforkization' procedure employed in the previous sections. 
+To do the standardization, we first project the diagrams into the plane (shown in the second row 
+of Figure \ref{StandardizedSlabTensors}), and then deform each of the trivalent vertices 
+to pitchforks. The final standardized diagrams are displayed in the third row of Figure \ref{StandardizedSlabTensors}.
+
+The evaluation of these standardized diagrams gives the weight of the 0-cell tensor
+in the computation of the partition function. 
+Explicitly, for a 0-cell $v$ involving three neighboring 2-cells from the extension of $\Sigma_1$ (left column of row $a)$ in Figure \ref{StandardizedSlabTensors}, we assign the tensor $T_v$ as follows:
+\begin{align}
+\Tensora \; \ra T_v&= \;  \Tensoraa \cdot \mu_0 \tp s_1 \tp s_2 \tp s_3. 
+\end{align}
+In the diagrams, the green letters $A,B,C$ denote the labels of the 2-cells in $\Sigma \times \{1/2\}$, which will 
+be summed over when computing the amplitude $Z(\Sigma_{0\ra1}; v_0, v_1)$. The labels of 
+the blue lines are fixed however, and determined by the labels of the 2-cells which are shadows of 1-cells 
+in $\Sigma_1$. 
+
+Tensors for the other types of 0-cells in $\Sigma \times \{1/2\}$ are determined similarly. For the type of 
+0-cell in the center column of row $a)$ in Figure \ref{StandardizedSlabTensors}, we assign the tensor
+\begin{align}
+\Tensorc \;\ra T_v &= \; \Tensorcc  \cdot \nu_0 \tp s_1 \tp s_2 \tp s_3, \\
+\end{align}
+while for the type of 0-cell in the last column we assign the tensor
+\begin{align}
+\Tensorb \; \ra T_v &= \;  \Tensorbb  \cdot s_0 \tp s_1 \tp s_2 \tp s_3. \\
+\end{align}
+
+In order to perform the contraction that will compute the partition function, all the 1-cells 
+$\Sigma \times \{1/2\}$ need an orientation. Since these 1-cells biject with the 1-cells of $\Sigma_0$ and $\Sigma_1$ (they are all shadows of 1-cells in either $\Sigma_0$ or $\Sigma_1$ from our 
+choice of cell decomposition in $\Sigma_{0\ra1}$), we can assign an orientation to each 1-handle in 
+$\Sigma \times \{1/2\}$ using the orientation of the 1-cells in $\Sigma_0$ and $\Sigma_1$, which 
+are fixed by the states $v_0$ and $v_1$.
+
+We can now compute $Z(\Sigma_{0\ra1}; v_0, v_1)$ 
+using the state sum: 
+\begin{align} 
+Z(\Sigma_{0\ra1}; v_0, v_1) = \sum_{ \mcl_{bulk} } (-1)^{k_{\mcl_{bulk}}} \prod_{f \in [\Sigma \times \{1/2\}]_2} T_f(w_f) 
+\prod_{e \in [\Sigma \times \{1/2\}]_1} T_e(w_e) \prod_{v \in [\Sigma \times \{1/2\}]_0} T_v(w_v),
+\end{align} 
+where we have used $[\Sigma \times \{1/2\}]_k$ to denote the collection of $k$-cells in $\Sigma \times \{1/2\}$ and $\mcl_{bulk}$ 
+to denote admissible colorings of the bulk degrees of freedom in $\Sigma_{0\ra1}$. 
 
 \begin{figure}
 \begin{center}
@@ -10779,14 +10815,8 @@ In part c) we finish the standardization by making each trivalent vertex a pitch
 \end{figure}
 
 
-
-
-
-
-A cell decomposition of $\Sigma \times \{ 1 \}$ along with a set of pitchforkization maps \eqref{std0handle}, and a spin structure.
-In general, the space of ground states will be degenerate. 
-Specifying different states in this degenerate ground space ammounts to choosing different input states for the cell decomposition at $\Sigma \times \{0 \}$. 
-
+ \ethan{to be continued...}
+ 
  
 %%%%%%%%%%%%%%%%%% 
 \section{Discussion} \label{discussion}
