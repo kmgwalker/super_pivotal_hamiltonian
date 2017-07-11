@@ -8377,11 +8377,11 @@ The definition of a super pivotal category differs from the usual bosonic case i
 	\item When combining basic 3-valent fusion spaces $V^{ab}_c$ to form fusion spaces of higher valence, we must take
 	tensor products over the endomorphism algebras of the simple objects which connect two fusion spaces. 
 	For example, we form the fusion space $V^{ab}_{cd}$ as $V^{ab}_{cd} \cong \bigoplus_e V^{ab}_e \tp_{\End(e)} V^e_{cd}$.
-	If $c$ is m-type, this is just the usual tensor product over $\cc$, as in the bosonic case.
-	But if $c$ is q-type, then we must take a non-trivial tensor product over $\cl_1$.
+	If $e$ is m-type, this is just the usual tensor product over $\cc$, as in the bosonic case.
+	But if $e$ is q-type, then we must take a non-trivial tensor product over $\cl_1$.
 	(See \ref{modified_tensor_product}.)
 	\item The square of the pivotal anti-automorphism is 
-	the fermion parity $(-1)^F$, rather than the identity functor (see \ref{pivotal_structure}). 
+	the fermion parity functor $(-1)^F$, rather than the identity functor (see \ref{pivotal_structure}). 
 	If $*$ is the pivotal anti-automorphism, then 
 	\be f^{**} = (-1)^{|f|}f.\ee
 	In order to keep track of minus signs that result from rotating fermions by $2\pi$, we must keep track of a spin-framing at each fusion space. 
@@ -8472,7 +8472,7 @@ Elements of the morphism spaces $V^{abc}$ and $V^{ab}_c$ are depicted by
 \begin{align}
 \PitchFork{a}{b}{c}{\mu} \quad \quad \quad \text{and} \quad \quad \quad \Nonpitchfork{a}{b}{c}{\mu}.
 \end{align}
-We call the fusion space $V^{abc}$ ``pitchforks" because of their graphical depiction.
+We call the fusion spaces $V^{abc}$ ``pitchforks" because of their graphical depiction.
 Of course we have $V^{ab}_c \cong V^{abc^*}$ (see \ref{pivotal_ss} below).
 %\kw{probably should add figs for $V^{ab}_c$ and $V^{abc}$}
 %\dave{Done.}
@@ -8485,12 +8485,15 @@ In general, we do not require that the objects $a$, $b$ etc. be simple.
 
 It is very important to note that $V^{ab}_c$ is not merely a super vector space -- it also comes equipped with an action
 of (i.e.\ module structure for) the endomorphism algebras of $a$, $b$ and $c$, and hence admits an action of $\End(a)\tp \End(b)\tp \End(c)$. 
-It is impossible to construct the full super pivotal category without knowing this module structure (see XXX below), 
+It is impossible to construct the full super pivotal category without knowing this module structure (see \ref{modified_tensor_product} below), 
 so the module
 structure is part of the input data.
 Note that the module structure implies that $N^{ab}_c = n|n$ if any of $a$, $b$ or $c$ is q-type.
 This is because any representation of $\cl_1$ has equal even and odd dimensions.
-Acting with the odd (and invertible) element of $\cl_1$ gives an isomorphism between the even and odd parts of $V^{ab}_c$, and hence they must have the same dimension.
+Acting with the odd (and invertible) element of $\cl_1$ gives an isomorphism between the even and odd parts of $V^{ab}_c$, 
+and hence they must have the same dimension.
+
+\kw{This would be a good place to insert a def of $\Gamma$ matrices}
 
 Requiring that the Hilbert space at a given vertex admit a 
 representation of $\End(a)\tp \End(b)\tp \End(c)$ places constraints on the types 
@@ -8527,6 +8530,8 @@ Hamiltonian which realizes the
 super pivotal version% fermionic generalization 
 of the Levin-Wen Hamiltonian. 
 
+\medskip
+
 Lastly, we will define a non-degenerate bilinear pairing between vectors in the vector space assigned to a disk with $n$ marked points. 
 We will focus on fusion spaces of the form $V^{x_1\dots x_n}$, but the construction
 for different types of fusion spaces is analogous. 
@@ -8538,14 +8543,14 @@ The pairing is defined by
 \dave{Maybe more natural to have $\mcb:\; V^* \tp V \ra \cc$ like in quantum mechanics $\bra{x} \tp \ket{y} \mapsto <x,y>$}
 where $\mu_i \in V^{x_1 x_2 \cdots x_n}$ and $\nu_j \in V^{x_n^* \cdots x_2^* x_1^*}$. 
 We are working with the convention that the Koszul ordering of the tensor product increases 
-in a left-to-right fashion---we will elaborate on this convention in Sec \ref{koszul_signs}. 
+in a left-to-right fashion -- we will elaborate on this convention in Sec \ref{koszul_signs}. 
 This bilinear pairing is just the evaluation map, and is $\cc$-linear in both its arguments. 
 It is non-degenerate, meaning that the matrix $\mcb_{ij} = \mcb(\mu_i \tp \nu_j)$ is invertible. 
 Hence we can define a set of vectors $\mu_j^* = \sum_i \nu_i (\mcb^{-1} )_{ij} $ so that
 $\mcb( \mu_i \tp \mu_j^*)\propto\delta_{ij}$ for $\mu_i \in V^{abc}$ and $\mu_j^* \in V^{c^*b^*a^*}$. 
 For most of the paper, we will choose the normalization convention
 \begin{align}  \label{b_pairing_defn}
-\mcb( \mu_i \tp \mu_j^*)  = \sqrt{d_a d_b d_c} \delta_{ij}.
+\mcb( \mu_i \tp \mu_j^*)  = \sqrt{d_a d_b d_c} \, \delta_{ij}.
 \end{align} 
 
 The pairing satisfies $\mcb(\mu_{i,1} \tp \nu_{j,2}) =  (-1)^{|\mu_i| |\nu_j|} \mcb(\nu_{j,1} \tp \mu_{i,2})$. 
@@ -8584,7 +8589,6 @@ We have
 \be
 	(f\circ g)^* = (-1)^{|f||g|} g^* \circ f^* .
 \ee
-\dave{I added $\circ$ to the above to emphasize composition.}
 In other words, $*$ is a contravariant functor if one takes Koszul signs into account.
 
 For (strict) pivotal bosonic categories, one requires that $**$ is the identity functor, but
