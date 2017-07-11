@@ -6075,13 +6075,14 @@ The principle graph for the theory is shown in the upper left of Fig.~\ref{SUSOs
 The $0$ particle is the trivial object, $6$ is a fermion, and we have $6 \tp x = (6-x)$. 
 Hence the particle $3$ is invariant under fusion with $6$, and so under condensation of the $6$ 
 particle $3$ becomes a q-type simple object in $SU(2)_6/\psi$.
-The collection of all q-type particles is simply $\sobq =\{3\}$. 
+%The collection of all q-type particles is simply $\sobq =\{3\}$. 
 Since one m-type particle is always related to another by fusion with $\psi$ and 
 there are six m-type particles, there are only three distinct equivalence classes of m-type
 particles under fusion with $\psi$. 
-We can take $\sobm = \{0,1,2\}$.
-\kw{I don't see where we ever use $\sobm$ and $\sobq$ (formerly $M$ and $Q$) again.
-Did I miss something?}
+We can take $\{0,1,2\}$ as the complete list of representatives.
+%\kw{I don't see where we ever use $\sobm$ and $\sobq$ (formerly $M$ and $Q$) again.
+%Did I miss something?}
+%\dave{You're right. Lets remove it.}
 %Therefore the collection of all m-type particles is
 %$M\cup (M\tp \psi)$, where one possible choice for $M$ (and the one
 %we will adopt in what follows) is $M=\{0,1,2\}$ (so that $M\tp \psi = \{4,5,6\}$). 
@@ -6208,6 +6209,7 @@ The $F$-symbols of the condensed theories can be deduced from those of the paren
 We now compute the minimal idempotents of the tube algebra in the condensed theories.
 
 \subsection{Primitive idempotents of $SU(2)_6/\psi$}
+\label{SU2psiIdempotents}
 The primitive idempotents of the tube category of $SU(2)_6/\psi$ can be computed directly 
 using the techniques of Section \ref{more_on_tubes}. 
 They are given by,
@@ -6246,7 +6248,9 @@ We use the fermionic analogue of \eqref{TwoStrandToOneStrand},
 %g(a,b,\omega_x,c,j) = \gxyajf  \quad \quad \quad h(a,b,\omega_x,c,i) = \hxyaif
 %\end{align}
 to write down the single strand idempotents
+\dave{check/comment on normalization conventions.}
 \begin{align}
+\label{OneStrandIdempotent}
 \tilde{e}_{ab}(\omega_x,c,j) \; = \; \OneStrandIdempotentMTCpsi
 %g(a,b,\omega_x,c,j)  \cdot h(a,b,\omega_x,c,j) 
 \end{align}
@@ -6265,7 +6269,6 @@ and 14 idempotents for the non-bounding spin structure, 7 are m-type and 7 are q
 Explicitly, the idempotents and corresponding twists are listed in tables \ref{bounding_SU26} and \ref{nonbounding_SU26}.
 Note that if $a$ is q-type, then $\tilde{e}(a,b,\omega_\unit,j)$ is isomorphic to $\tilde{e}(a,b,\omega_\psi,j)$ and so we only list one of them.
 We now turn our attention to the $SO(3)_6$ theory. 
-$\frac{\theta_a}{\theta_b} (-s(J))^{p_{ab}^c}(-1)^{x(\nu_a + \nu_b)}$
 \begin{table}
 \begin{center}
 \begin{align}
@@ -6567,7 +6570,7 @@ We now turn our attention to the $SO(3)_6$ theory.
 \subsection{Primitive idempotents of $SO(3)_6/\psi$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Finding the idempotents in the $SO(3)_6/\psi$ theory is more difficult, since the parent theory  $SO(3)_6$ isn't modular.
+Finding the idempotents in the $SO(3)_6/\psi$ theory is more difficult, since the parent theory $SO(3)_6$ isn't modular.
 %\dave{drop next sentence?}
 %However, the sole cause of its non-modularity is the transparent fermion $\psi$, 
 %and it can be made modular by performing a ``modular extension'' and introducing defects 
@@ -6575,11 +6578,30 @@ Finding the idempotents in the $SO(3)_6/\psi$ theory is more difficult, since th
 But since $SO(3)_6$ is obtained from $SU(2)_6$ by discarding the elements in $SU(2)_6$ 
 that braid nontrivially with $\psi$, $SU(2)_6$ is a modular extension of $SO(3)_6$ (in fact, it is the minimal modular extension). 
 This fact will allow us to compute the idempotents in the $SO(3)_6/\psi$ theory using our knowledge of the $SU(2)_6$ theory. 
-\dave{Will return to here.}
+
+Applying \eqref{OneStrandIdempotent} directly to $SO(3)_6$ will not yield a complete set of minimal idempotents due to the lack of modularity. 
+Instead we use  \eqref{OneStrandIdempotent} by taking pairs of simple objects $(a,b)$ from $SU(2)_6/\psi$ whose fusion product is always in $SO(3)_6/\psi$.
+Additionally, within this subset we need to take an appropriate linear combination of the $SU(2)_6/\psi$ idempotents so that the resulting annulus only has strands labeled by objects in $SO(3)_6/\psi$.
+This linear combination is given by taking $\tilde(e)_{ab}(\omega_\unit, c,j)+\tilde(e)_{ab}(\omega_\psi, c,j)$ which results in the minimal idempotent,
+\begin{align}
+\widetilde{e}_{ab}( \omega_\unit + \omega_\psi,c,j) \in \tube(SO(3))_6).
+\end{align}
+where the labels $(a,b) \in I_0/\psi \times I_0/\psi \cup I_1/\psi \times I_1/\psi$.
+One can show that the procedure creates a complete set of minimal idempotents by direct calculation. 
+The bounding idempotents are found when $(a,b) \in I_0/\psi \times I_0/\psi$, 
+these are the minimal idempotents found from a naive application of \eqref{OneStrandIdempotent}. 
+The non-bounding idempotents are given by by $(a,b) \in I_1/\psi \times I_1/\psi$
 
 
 
-
+%However, by taking linear combinations of an appropriate subset of the $SU(2)_6$ idempotents we will find the $SO(3)_6$ idemopotents. 
+%The relavent subset and linear combinations are given by 
+%\begin{align}
+ %\widetilde{e}_{ab}( \omega_\unit + \omega_\psi,c,j) \quad \quad (a,b) \in I_0 \times I_0 \cup I_1 \times I_1.
+%\end{align}
+%The restriction on the labels $(a,b)$ is so that $a \tp b \in SO(3)_6$. 
+%The linear combination $\omega_\unit + \omega_\psi$ is taken so that the omega loop for $SO(3)_6$.
+\begin{comment}
 \dave{Older stuff.}
 As before, each isomorphism class of idempotents can be written as:
 \begin{align}
@@ -6599,21 +6621,23 @@ Hence the idempotents of $\tube(SO(3)_6/\psi)$ are just a restriction of the ide
 One can show that the procedure creates orthogonal idempotents by direct calculation. 
 Additionally, the tube resulting from fusing the strands in (\ref{SO3idempotent}) 
 into the annulus only contains linear combinations of tubes in the annular category of $SO(3)_6/\psi$.
+\end{comment} 
 
-We now write down the primitive idempotents of $SO(3)_6/\psi$ and their topological spins. 
+
+We now write down the primitive idempotents of $SO(3)_6/\psi$ and their topological spins using the same notation as in section \ref{SU2psiIdempotents}. 
 In the bounding sector $J = B$, we have $4$ m-type idempotents, given by
 \begin{align}
 \xymatrix{
-\underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega}{B}}
-&
+%\underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega}{B}}
+%&
 \text{
 {{\tabulinesep=1.2mm
 \begin{tabu}{ c c  }
 type& twist \\ \hline
-$m_{00}$ &$1$ \\
-$m_{02}$ &$ -i $\\
-$m_{20}$ & $i$\\
-$m_{22}$ &$ (-1)^{p^{ab}_c} $\\
+$m_{00}(\omega_\unit + \omega_\psi,0,0)$ &$1$ \\
+$m_{02}(\omega_\unit + \omega_\psi,2,0)$ &$ -i $\\
+$m_{20}(\omega_\unit + \omega_\psi,2,0)$ & $i$\\
+$m_{22}(\omega_\unit + \omega_\psi,c,j)$ &$ \sigma_j $\\
 \end{tabu}
 }}}
 } 
@@ -6634,16 +6658,16 @@ $m_{22}$ &$ (-1)^{p^{ab}_c} $\\
 meanwhile the non-bounding idempotents are given by,
 \begin{align}
 \xymatrix{
-\underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega}{N}}
-&
+%\underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega}{N}}
+%&
 \text{
 {{\tabulinesep=1.2mm
 \begin{tabu}{ c c }
 type& twist \\ \hline
-$m_{11}$ &$1$ \\
-$q_{13}$ &$ e^{-3 i \pi/4} $\\
-$q_{31}$ & $e^{3 i \pi /4} $\\
-$m_{33}$ &$ 1 $\\
+$m_{11}(\omega_\unit + \omega_\psi,c,j)$ &$1$ \\
+$q_{13}(\omega_\unit + \omega_\psi,2,j)$ &$ e^{-3 i \pi/4} $\\
+$q_{31}(\omega_\unit + \omega_\psi,2,j)$ & $e^{3 i \pi /4} $\\
+$m_{33}(\omega_\unit + \omega_\psi,c,j)$ &$ 1 $\\
 \end{tabu}
 }}}
 }
@@ -6706,12 +6730,15 @@ The modular $S$-transformation requires a little more work, and so we discuss th
 When gluing the idempotents along the boundary of the annulus we have to take linear combinations of 
 idempotents in the same isomorphism class so that the glued up idempotent is invariant under local relations. 
 Using the basis above, one finds
-\kw{in several places, including here, we write $\omega_0$ insead of plain $\omega$ as in Section 5.
-I think we should drop the subscript 0.}
+%\kw{in several places, including here, we write $\omega_0$ insead of plain $\omega$ as in Section 5.
+%I think we should drop the subscript 0.}
 \begin{align}
-\TorusBraidBasis{a}{b\;}{}{\omega_0}{X}{Y}
+\tilde{e}_{ab}(\omega_\unit + \omega_\psi, c, j) \; \xrightarrow{\;\;  \text{cl}_Y \;\;  }\; \tilde{e}_{ab} \;=\;  \TorusBraidBasis{a}{b\;}{}{\omega}{X}{Y}
 \end{align}
-where $a$ and $b$ label the idempotent as before, and $X$, $Y$, denote the two spin structures. 
+\dave{I wrote it this way to avoid commenting on the sign $s(Y)$ that can appear if $\mu_j$ has odd parity.
+It seemed like it may cause more confusion than it's worth.
+We could add a footnote if we like.}
+where $a$ and $b$ label the idempotent as before, and $X$, $Y$, denote the two spin structures, and the omega loop is for $SO(3)_6/\psi$. 
 We warn the reader, that when $X$ is non-bounding, 
 $a, b\in \{ m_1, q_3 \}$, which lies outside of $SO(3)_6/\psi$.
 However, when the diagram is fused into the torus we find a torus string net labeled with objects only in $SO(3)_6/\psi$, as required.
@@ -6721,8 +6748,8 @@ However, when the diagram is fused into the torus we find a torus string net lab
 
 In this graphical convention, the modular $S$-transformation acts as
 \begin{align}
-{ \TorusBraidBasis{a}{b\;}{}{\omega_0}{X}{Y}} \stackrel{S}{\longrightarrow} \sum_{r,w} S^{{XY \rightarrow YX}}_{(a,b),(r,w)} \;
-{\TorusBraidBasis{r}{w}{}{\omega_0}{Y}{X} }.
+{ \TorusBraidBasis{a}{b\;}{}{\omega}{X}{Y}} \stackrel{S}{\longrightarrow} \sum_{r,w} S^{{XY \rightarrow YX}}_{(a,b),(r,w)} \;
+{\TorusBraidBasis{r}{w}{}{\omega}{Y}{X} }.
 \end{align}
 The matrix elements can be computed explicitly using the $S$-matrix of $SU(2)_6$. 
 \begin{comment}
@@ -6760,10 +6787,10 @@ matrix is normalized.
 Explicitly, the $S$-matrix acts on each of three spin tori with at least one bounding cycle as 
 \begin{align}
 \left( \begin{matrix}
-M_{00}\\
-M_{02}\\
-M_{20}\\
-M_{22}\\
+m_{00}\\
+m_{02}\\
+m_{20}\\
+m_{22}\\
 \end{matrix} \right)_{BB}
 \xrightarrow{S^{BB \rightarrow BB}}
 \frac{1}{2 \sqrt{2}} \left( \begin{matrix}
@@ -6773,19 +6800,19 @@ M_{22}\\
 d & -1& -1& \frac{1}{d}\\
 \end{matrix} \right)
 \left( \begin{matrix}
-M_{00}\\
-M_{02}\\
-M_{20}\\
-M_{22}\\
+m_{00}\\
+m_{02}\\
+m_{20}\\
+m_{22}\\
 \end{matrix} \right)_{BB}
 \end{align}
 
 \begin{align}
 \left( \begin{matrix}
-M_{11}\\
-Q_{13}\\
-Q_{31}\\
-M_{33}\\
+m_{11}\\
+q_{13}\\
+q_{31}\\
+m_{33}\\
 \end{matrix} \right)_{NB}
 \xrightarrow{S^{NB \rightarrow BN}}
 \frac{1}{2} \left( \begin{matrix}
@@ -6795,19 +6822,19 @@ M_{33}\\
 1&-1&-1&1\\
 \end{matrix} \right)
 \left( \begin{matrix}
-M_{00}\\
-M_{02}\\
-M_{20}\\
-M_{22}\\
+m_{00}\\
+m_{02}\\
+m_{20}\\
+m_{22}\\
 \end{matrix} \right)_{BN}
 \end{align}
 
 \begin{align}
 \left( \begin{matrix}
-M_{00}\\
-M_{02}\\
-M_{20}\\
-M_{22}\\
+m_{00}\\
+m_{02}\\
+m_{20}\\
+m_{22}\\
 \end{matrix} \right)_{BN}
 \xrightarrow{S^{BN \rightarrow NB}}
 \frac{1}{2} \left( \begin{matrix}
@@ -6817,20 +6844,20 @@ M_{22}\\
 1&-1&-1&1\\
 \end{matrix} \right)
 \left( \begin{matrix}
-M_{11}\\
-Q_{13}\\
-Q_{31}\\
-M_{33}\\
+m_{11}\\
+q_{13}\\
+q_{31}\\
+m_{33}\\
 \end{matrix} \right)_{NB}
 \end{align}
 As mentioned earlier, the Dehn twists follow directly from the spins computed above.
 Again for the tori with spin structures containing at least one bounding cycle, we find
 \begin{align}
 \left( \begin{matrix}
-M_{00}\\
-M_{02}\\
-M_{20}\\
-M_{22}\\
+m_{00}\\
+m_{02}\\
+m_{20}\\
+m_{22}\\
 \end{matrix} \right)_{BB}
 \xrightarrow{T^{BB \rightarrow BN}}
 \left( \begin{matrix}
@@ -6840,19 +6867,19 @@ M_{22}\\
 &&&1\\
 \end{matrix} \right)
 \left( \begin{matrix}
-M_{00}\\
-M_{02}\\
-M_{20}\\
-M_{22}\\
+m_{00}\\
+m_{02}\\
+m_{20}\\
+m_{22}\\
 \end{matrix} \right)_{BN}
 \end{align}
 
 \begin{align}
 \left( \begin{matrix}
-M_{11}\\
-Q_{13}\\
-Q_{31}\\
-M_{33}\\
+m_{11}\\
+q_{13}\\
+q_{31}\\
+m_{33}\\
 \end{matrix} \right)_{NB}
 \xrightarrow{T^{NB \rightarrow NB}}
  \left( \begin{matrix}
@@ -6862,19 +6889,19 @@ M_{33}\\
 &&&1\\
 \end{matrix} \right)
 \left( \begin{matrix}
-M_{11}\\
-Q_{13}\\
-Q_{31}\\
-M_{33}\\
+m_{11}\\
+q_{13}\\
+q_{31}\\
+m_{33}\\
 \end{matrix} \right)_{NB}
 \end{align}
 
 \begin{align}
 \left( \begin{matrix}
-M_{00}\\
-M_{02}\\
-M_{20}\\
-M_{22}\\
+m_{00}\\
+m_{02}\\
+m_{20}\\
+m_{22}\\
 \end{matrix} \right)_{BN}
 \xrightarrow{T^{BN \rightarrow BB}}
 \left( \begin{matrix}
@@ -6884,10 +6911,10 @@ M_{22}\\
 &&&1\\
 \end{matrix} \right)
 \left( \begin{matrix}
-M_{11}\\
-Q_{13}\\
-Q_{31}\\
-M_{33}\\
+m_{11}\\
+q_{13}\\
+q_{31}\\
+m_{33}\\
 \end{matrix} \right)_{BB}
 \end{align}
 One can verify that $(TS)^3 = \text{id}$, which holds since all three of the spin tori discussed above have 
@@ -6900,14 +6927,14 @@ of net configurations on the $NN$ spin torus is given by
 \begin{align}
 \underbrace{
 \xymatrix{
-\TorusBraidBasisd{\scale{.6}{1}}{\scale{.6}{1}\;}{}{\omega_0}{N}{N}{\TorusBasisMTCNoLabel} \quad 
- \TorusBraidBasisd{\scale{.6}{3} }{\scale{.6}{3} \;}{}{\omega_0}{N}{N}{\TorusBasisMTCdd}
+\TorusBraidBasisd{\scale{.6}{1}}{\scale{.6}{1}\;}{}{\omega}{N}{N}{\TorusBasisMTCNoLabel} \quad 
+ \TorusBraidBasisd{\scale{.6}{3} }{\scale{.6}{3} \;}{}{\omega}{N}{N}{\TorusBasisMTCdd}
  \\}
  }_{\text{even}}
  \quad \quad 
 \underbrace{
-\xymatrix{ \TorusBraidBasisd{\scale{.6}{1}}{\scale{.6}{3}\;}{}{\omega_0}{N}{N}{\TorusBasisMTCdr} \quad
- \TorusBraidBasisd{\scale{.6}{3} }{\scale{.6}{1} \;}{}{\omega_0}{N}{N}{\TorusBasisMTCdl}
+\xymatrix{ \TorusBraidBasisd{\scale{.6}{1}}{\scale{.6}{3}\;}{}{\omega}{N}{N}{\TorusBasisMTCdr} \quad
+ \TorusBraidBasisd{\scale{.6}{3} }{\scale{.6}{1} \;}{}{\omega}{N}{N}{\TorusBasisMTCdl}
  \\}
  }_{\text{odd}}
 \end{align}
@@ -6920,8 +6947,8 @@ After some calculation one finds that the $S$ and $T$ modular matrices act as
 \begin{align}
 \xymatrix{
 {\left( \begin{matrix}
-M_{11}\\
-M_{33}\\
+m_{11}\\
+m_{33}\\
 \end{matrix} \right)_{NN}
 \xrightarrow{S^{NN \rightarrow NN}}
  \left( \begin{matrix}
@@ -6929,14 +6956,14 @@ M_{33}\\
 0&1\\
 \end{matrix} \right)
 \left( \begin{matrix}
-M_{11}\\
-M_{33}\\
+m_{11}\\
+m_{33}\\
 \end{matrix} \right)_{NN}}
 &
 {
 \left( \begin{matrix}
-\stackrel{\bullet}{Q}_{13}\\
-\stackrel{\bullet}{Q}_{31}\\
+\stackrel{\bullet}{q}_{13}\\
+\stackrel{\bullet}{q}_{31}\\
 \end{matrix} \right)_{NN}
 \xrightarrow{S^{NN \rightarrow NN}}
 e^{- i \pi /4}\left( \begin{matrix}
@@ -6944,15 +6971,15 @@ e^{- i \pi /4}\left( \begin{matrix}
 0&i\\
 \end{matrix} \right)
 \left( \begin{matrix}
-\stackrel{\bullet}{Q}_{13}\\
-\stackrel{\bullet}{Q}_{31}\\
+\stackrel{\bullet}{q}_{13}\\
+\stackrel{\bullet}{q}_{31}\\
 \end{matrix} \right)_{NN} 
 }
 \\
 {
 \left( \begin{matrix}
-M_{11}\\
-M_{33}\\
+m_{11}\\
+m_{33}\\
 \end{matrix} \right)_{NN}
 \xrightarrow{T^{NN \rightarrow NN}}
  \left( \begin{matrix}
@@ -6960,14 +6987,14 @@ M_{33}\\
 0&1\\
 \end{matrix} \right)
 \left( \begin{matrix}
-M_{11}\\
-M_{33}\\
+m_{11}\\
+m_{33}\\
 \end{matrix} \right)_{NN}
 } & 
 {
 \left( \begin{matrix}
-\stackrel{\bullet}{Q}_{13}\\
-\stackrel{\bullet}{Q}_{31}\\
+\stackrel{\bullet}{q}_{13}\\
+\stackrel{\bullet}{q}_{31}\\
 \end{matrix} \right)_{NN}
 \xrightarrow{T^{NN \rightarrow NN}}
 \left( \begin{matrix}
@@ -6975,8 +7002,8 @@ e^{-3i \pi /4}&0\\
 0&e^{3 i \pi /4}\\
 \end{matrix} \right)
 \left( \begin{matrix}
-\stackrel{\bullet}{Q}_{13}\\
-\stackrel{\bullet}{Q}_{31}\\
+\stackrel{\bullet}{q}_{13}\\
+\stackrel{\bullet}{q}_{31}\\
 \end{matrix} \right)_{NN}
 }
 } 
