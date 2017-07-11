@@ -7523,12 +7523,14 @@ In summary, the Hilbert spaces on each of the different spin tori are
  \subsection{The tube category of $\halfesix / y$}
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
- In this subsection we compute the excitations of $\halfesix / y$ using the tube category. 
+\kw{I have not finished reviewing this subsection.  I'll discuss with Dave before proceeding.}
+
+ In this subsection we compute the minimal idempotents of the tube category of $\halfesix / y$. 
 The tube category is somewhat exotic, and highlights many of the non-trivial features which arise when studying fermionic theories. 
 
 \dave{Should we remove the $\halfesix$ idempotents? 
 I think they are correct, but I wasn't as careful when computing them.}
-In appendix \ref{IdempotentsHalfESix}, we compute the tube category of the parent (un-condensed) $\halfesix$ theory. 
+In Appendix \ref{IdempotentsHalfESix}, we compute the tube category of the parent (un-condensed) $\halfesix$ theory. 
 Our plan of attack in this section will be to first find the tube category of $\halfesix$ and then perform 
 fermion condensation, rather than first performing fermion condensation and then constructing the tube category. 
  
@@ -7539,6 +7541,7 @@ Special care must be taken with respect to spin structure issues, since removing
 We will see that there are six excitations in the condensed theory: three excitations 
 with bounding spin structure, and three with non-bounding spin structure. 
 We index them as $\mca = \{ M_1, M_2, M_3\}$ and $\mcv = \{ Q_1, Q_2, M_6 \}$, 
+\kw{I think we should switch to lower case notation for idempotents}
 where $\mca$ is the set of non-vortex anyons and $\mcv$ is the set of vortex defects. 
 As the notation suggests, there are two q-type excitations and one m-type excitation 
 (namely $M_6$) in $\mcv$, while all of the excitations in $\mca$ are (necessarily) m-type. 
@@ -8086,8 +8089,10 @@ In the idempotent basis, this is
 \quad \quad \text{where $\Sigma = \sigma_1 \sigma_2$.}
 \end{align}
 Note that $S^{NN\ra NN}$ splits as $S^{NN\ra NN}_q \oplus S^{NN\ra NN}_m$ into blocks which operate 
-on q-type and m-type particles, as it must: the $S$-transformations for the non-bounding torus cannot change the type of a given 
-quasiparticle. 
+on q-type and m-type particles, as it must: 
+the basis vectors coming from m-type (q-type) idempotents are even (odd), and $S$ preserves fermion parity.
+%the $S$-transformations for the non-bounding torus cannot change the type of a given 
+%quasiparticle. 
 
 In summary, we have \eqref{hE6_S_NN} together with 
 \begin{align}
@@ -8301,6 +8306,8 @@ for the $NN$ torus, and
 \end{align}
 for the spin tori with at least one bounding cycle.
 One can check that the modular matrices defined above satisfy $S^2 =\text{id}$ and $(ST)^3 = \text{id}$. 
+\kw{Don't we want to replace $id$ by $(-1)^F$?}
+\kw{Also should be $S^4 = \cdots$, not $S^2 = \cdots$.}
 
 
 %\dave{ 
@@ -8379,11 +8386,11 @@ The definition of a super pivotal category differs from the usual bosonic case i
 	\item When combining basic 3-valent fusion spaces $V^{ab}_c$ to form fusion spaces of higher valence, we must take
 	tensor products over the endomorphism algebras of the simple objects which connect two fusion spaces. 
 	For example, we form the fusion space $V^{ab}_{cd}$ as $V^{ab}_{cd} \cong \bigoplus_e V^{ab}_e \tp_{\End(e)} V^e_{cd}$.
-	If $c$ is m-type, this is just the usual tensor product over $\cc$, as in the bosonic case.
-	But if $c$ is q-type, then we must take a non-trivial tensor product over $\cl_1$.
+	If $e$ is m-type, this is just the usual tensor product over $\cc$, as in the bosonic case.
+	But if $e$ is q-type, then we must take a non-trivial tensor product over $\cl_1$.
 	(See \ref{modified_tensor_product}.)
 	\item The square of the pivotal anti-automorphism is 
-	the fermion parity $(-1)^F$, rather than the identity functor (see \ref{pivotal_structure}). 
+	the fermion parity functor $(-1)^F$, rather than the identity functor (see \ref{pivotal_structure}). 
 	If $*$ is the pivotal anti-automorphism, then 
 	\be f^{**} = (-1)^{|f|}f.\ee
 	In order to keep track of minus signs that result from rotating fermions by $2\pi$, we must keep track of a spin-framing at each fusion space. 
@@ -8474,7 +8481,7 @@ Elements of the morphism spaces $V^{abc}$ and $V^{ab}_c$ are depicted by
 \begin{align}
 \PitchFork{a}{b}{c}{\mu} \quad \quad \quad \text{and} \quad \quad \quad \Nonpitchfork{a}{b}{c}{\mu}.
 \end{align}
-We call the fusion space $V^{abc}$ ``pitchforks" because of their graphical depiction.
+We call the fusion spaces $V^{abc}$ ``pitchforks" because of their graphical depiction.
 Of course we have $V^{ab}_c \cong V^{abc^*}$ (see \ref{pivotal_ss} below).
 %\kw{probably should add figs for $V^{ab}_c$ and $V^{abc}$}
 %\dave{Done.}
@@ -8487,12 +8494,15 @@ In general, we do not require that the objects $a$, $b$ etc. be simple.
 
 It is very important to note that $V^{ab}_c$ is not merely a super vector space -- it also comes equipped with an action
 of (i.e.\ module structure for) the endomorphism algebras of $a$, $b$ and $c$, and hence admits an action of $\End(a)\tp \End(b)\tp \End(c)$. 
-It is impossible to construct the full super pivotal category without knowing this module structure (see XXX below), 
+It is impossible to construct the full super pivotal category without knowing this module structure (see \ref{modified_tensor_product} below), 
 so the module
 structure is part of the input data.
 Note that the module structure implies that $N^{ab}_c = n|n$ if any of $a$, $b$ or $c$ is q-type.
 This is because any representation of $\cl_1$ has equal even and odd dimensions.
-Acting with the odd (and invertible) element of $\cl_1$ gives an isomorphism between the even and odd parts of $V^{ab}_c$, and hence they must have the same dimension.
+Acting with the odd (and invertible) element of $\cl_1$ gives an isomorphism between the even and odd parts of $V^{ab}_c$, 
+and hence they must have the same dimension.
+
+\kw{This would be a good place to insert a def of $\Gamma$ matrices}
 
 Requiring that the Hilbert space at a given vertex admit a 
 representation of $\End(a)\tp \End(b)\tp \End(c)$ places constraints on the types 
@@ -8529,6 +8539,8 @@ Hamiltonian which realizes the
 super pivotal version% fermionic generalization 
 of the Levin-Wen Hamiltonian. 
 
+\medskip
+
 Lastly, we will define a non-degenerate bilinear pairing between vectors in the vector space assigned to a disk with $n$ marked points. 
 We will focus on fusion spaces of the form $V^{x_1\dots x_n}$, but the construction
 for different types of fusion spaces is analogous. 
@@ -8540,14 +8552,14 @@ The pairing is defined by
 \dave{Maybe more natural to have $\mcb:\; V^* \tp V \ra \cc$ like in quantum mechanics $\bra{x} \tp \ket{y} \mapsto <x,y>$}
 where $\mu_i \in V^{x_1 x_2 \cdots x_n}$ and $\nu_j \in V^{x_n^* \cdots x_2^* x_1^*}$. 
 We are working with the convention that the Koszul ordering of the tensor product increases 
-in a left-to-right fashion---we will elaborate on this convention in Sec \ref{koszul_signs}. 
+in a left-to-right fashion -- we will elaborate on this convention in Sec \ref{koszul_signs}. 
 This bilinear pairing is just the evaluation map, and is $\cc$-linear in both its arguments. 
 It is non-degenerate, meaning that the matrix $\mcb_{ij} = \mcb(\mu_i \tp \nu_j)$ is invertible. 
 Hence we can define a set of vectors $\mu_j^* = \sum_i \nu_i (\mcb^{-1} )_{ij} $ so that
 $\mcb( \mu_i \tp \mu_j^*)\propto\delta_{ij}$ for $\mu_i \in V^{abc}$ and $\mu_j^* \in V^{c^*b^*a^*}$. 
 For most of the paper, we will choose the normalization convention
 \begin{align}  \label{b_pairing_defn}
-\mcb( \mu_i \tp \mu_j^*)  = \sqrt{d_a d_b d_c} \delta_{ij}.
+\mcb( \mu_i \tp \mu_j^*)  = \sqrt{d_a d_b d_c} \, \delta_{ij}.
 \end{align} 
 
 The pairing satisfies $\mcb(\mu_{i,1} \tp \nu_{j,2}) =  (-1)^{|\mu_i| |\nu_j|} \mcb(\nu_{j,1} \tp \mu_{i,2})$. 
@@ -8586,7 +8598,6 @@ We have
 \be
 	(f\circ g)^* = (-1)^{|f||g|} g^* \circ f^* .
 \ee
-\dave{I added $\circ$ to the above to emphasize composition.}
 In other words, $*$ is a contravariant functor if one takes Koszul signs into account.
 
 For (strict) pivotal bosonic categories, one requires that $**$ is the identity functor, but
@@ -8648,10 +8659,11 @@ In this section we elaborate on the differences arising in fermionic theories be
 
 We assume that our categories are additively complete, which means that it makes sense to
 multiply objects by supervector spaces. 
-This is simply a categorified version of multiplying vectors (objects) by scalars (vector spaces).
+This is a categorified version of multiplying vectors by scalars.
+%This is simply a categorified version of multiplying vectors (objects) by scalars (vector spaces).
 For any collection of supervector spaces $\{W_a\}$ indexed by 
 a finite set of objects in our category, 
-we can therefore add to our category new objects of the form
+we therefore have an object of the form
 \be \bigoplus_a W_a \cdot a.\ee
 Morphisms between these more general objects are calculated as  
 \be  \label{amordef}
@@ -8668,15 +8680,14 @@ if $x$ is q-type.
 
 Combining \eqref{asumx} and \eqref{amordef}, we can compute endomorphisms of objects by
 \be
-	\End(a) \cong \bigoplus_x \End(W_x) \otimes_\cc \End(x).
+	\End(a) \cong \bigoplus_{xx\in \mcx} \End(W_x) \otimes_\cc \End(x).
 \ee
 
 We are now ready to discuss fusion rules. 
 For any $a$ and $b$, define the vector spaces $\Delta^{ab}_c$ by
 \be
-	a \otimes b \cong \bigoplus_c \Delta^{ab}_c \cdot c ,
+	a \otimes b \cong \bigoplus_{c\in \mcx} \Delta^{ab}_c \cdot c .
 \ee
-where the direct sum runs over all simple objects $c$ in $\mcx$. 
 The $\Delta^{ab}_c$ are the fusion rule coefficients. 
 
 The fusion spaces $V^{ab}_c$ are defined as the vector space of morphisms from $c$ to $a\tp b$:
@@ -8699,10 +8710,11 @@ Explicitly, this is because
 which allows us to cyclicly permute the indices of $V$, so long as we take the duals of any objects that move from subscripts to superscripts, and vice versa. 
 For example, we have $V^{ab}_c \cong V^{bc^*}_{a^*} \cong V^{c^*a}_{b^*}$. 
 
-On the other hand, $\Delta^{ab}_c$ is {\it not} symmetric in $a,b,c$, as the $C_2$ theory example shows. 
+On the other hand, $\Delta^{ab}_c$ is {\it not} cyclically symmetric in $a,b,c$, as the $C_2$ theory example shows. 
 Additionally, while $V^{ab}_c$ has an action of $\End(a)\otimes\End(b)\otimes\End(c)$ (as mentioned earlier), $\Delta^{ab}_c$
 only has an action of $\End(a)\otimes\End(b)$.
 
+\kw{Maybe this paragraph can be dropped?  We already have a a simpler proof of this fact above.}
 This definition of $V^{ab}_c$ gives us another way to show that $V^{ab}_c$ will always be a supervector space of the form $\cc^{n|n}$ for some integer $n$ if any of $a,b,c$ is q-type. 
 Indeed, suppose $c$ were q-type, and $\Delta^{ab}_c \cong \cc^{r|s}$. 
 Then $V^{ab}_c \cong \cc^{r|s} \tp \cc^{1|1} \cong \cc^{r+s|r+s}$. 
@@ -8725,7 +8737,7 @@ Let $I$ be a finite (and unordered) index set.
 For each $i\in I$, let $W_i$ be a super vector space.
 We define the unordered tensor product,
 \be
-	\bigotimes_i W_i ,
+	\bigotimes_{i\in I} W_i ,
 \ee
 as follows.
 For each bijection $f: \{1, \ldots,m\} \to I$ (i.e.\ for each ordering of $I$),
@@ -8767,8 +8779,10 @@ When writing equations involving particular ordered tensor products of fusion sp
 convention that the Koszul ordering is left-to-right on the page, unless explicitly 
 indicated otherwise. If we want to indicate an ordering which departs from this left-to-right convention, 
 we will indicate the ordering explicitly with numerical subscripts, 
-e.g. $V^{ab}_{c,1} \tp V^{cd}_{e,2}$. \kw{(I think overscripts would be better than subscripts.)
-\ethan{By overscripts do you mean $e.g.$ $V^{ab,1}_c$ or something else? I went with subscripts since that's what we have in later sections and earlier in this section.}}
+e.g. $V^{ab}_{c,1} \tp V^{cd}_{e,2}$. \kw{I think overscripts would be better than subscripts.}
+\ethan{By overscripts do you mean $e.g.$ $V^{ab,1}_c$ or something else? I went with subscripts since that's what we have in later sections and earlier in this section.}
+\kw{I meant something like $\overset{2}{V^{abc}} \tp \overset{1}{V^{xyz}}$, but it might be too much hassle to get the spacing right
+and make all the changes.}
 When drawing diagrams with a particular ordering in mind, we always indicate the ordering explicitly by numbers near each fusion space (i.e.\ near
 each vertex in the string net).
 Another possible convention would be to use the ordering corresponding to (say) bottom-to-top on the page,
