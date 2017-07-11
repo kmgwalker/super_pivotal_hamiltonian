@@ -7279,6 +7279,9 @@ Y_{ab} \Vrhorhorhoodd \quad \quad Y =  \frac{e^{7 i \pi/12}}{\sqrt{2}}\left( \be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Local relations on the annulus}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\kw{I think we should five a basis (even and odd) of the morphism spaces of the tube cat; (B.N) x (empty-empty, empty-rho, rho-rho) = 6 separate morphism spaces.}
+
 Let us now investigate local relations on the tubes. 
 We will make use of the notation 
 %\ethan{edited this because $|X|$ suggests a relation to fermion parity which isn't there and since we used $s(X)$ at one point earlier in the paper. Can do a find+replace to revert if you don't dig it}
@@ -7361,7 +7364,15 @@ We can use these results to obtain a minimal basis for the vector space of strin
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Local relations on the torus} \label{TorusLocalRelations}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-On the torus we have four spin structures, and extra local relations coming from the additional cycle. 
+
+In this subsection we compute bases for the Hilbert spaces of spin Tori.
+We could of course do this using knowledge of tube category idempotents and \ref{torus_basis_theorem}, but
+it's an instructive exercise to also compute bases using more elementary means.
+In addition, when computing $S$ and $T$ matrices, it will be useful to have a topologically simple basis at our disposal.
+
+\medskip
+
+On the torus there are four spin structures, and extra local relations coming from the additional cycle. 
 %On the torus we have four spin structures, and extra local relations coming from the additional cycle. 
 %We label the spin structures by with either a $B$ for bounding, and $N$ for non-bounding. 
 %The notation we use to denote the spin structure is \begin{align}
@@ -7373,14 +7384,14 @@ On the torus we have four spin structures, and extra local relations coming from
 %\begin{align}
 %\SmallTorus{\AnnulusBare}{X}{Y} \; \longrightarrow \; \AddDatTorus{\eTube}{X}{Y}{}.
 %\end{align}
-We will first investigate the local relations on the three tori which have spin structure $(X,Y) = (B,B),(N,B),(B,N)$.
+We will first investigate the local relations on the three bounding tori which have spin structure $(X,Y) = (B,B),(N,B),(B,N)$.
 Then we will consider the $(N,N)$ torus separately.
 We use the same notation as in Section~\ref{modulartforms}. 
 
 Depending on the spin structure, some of the annular tubes become zero after identifying the boundaries to form tori.
 Since there is always one cycle with bounding spin structure, an odd tube is 
 identified with zero for the same reason as discussed in \ref{c2_stringnets_torus}.
-For example, due to (\ref{hlocalrelation}), we have
+For another example, due to (\ref{hlocalrelation}) we have
 \begin{align}
  0 = \;\AddDatTorus{\hTube}{N}{B} \;=\; \AddDatTorus{\vTube}{B}{N}\; = \; \AddDatTorus{\tTube}{B}{B}
 \end{align}
@@ -7451,11 +7462,12 @@ Indeed we can find four of them,
 \end{align}
 %As before one can find linear relations between the fourth tube above and the ones with different multiplicity indices.
 However, these four tubes are not linearly independent. 
-There are two distinct linear relations that can be found between them by multiplying the tadpole like diagrams in two different ways,
+There are two independent linear relations that can be found between them by multiplying the tadpole-like diagrams in two different ways,
 \begin{align}
 \AddDatTorusDot{\TaddownTube{\mu}}{N}{N}{} \cdot \AddDatTorusDot{\TadupTube{\nu}}{N}{N}{\dotc} \;=\;
 \AddDatTorusDot{\TadupTube{\nu}}{N}{N}{\dotc} \cdot  \AddDatTorusDot{\TaddownTube{\mu}}{N}{N}{} .
 \end{align}
+(This is an instance of the familiar relations $cl(a\cdot b) = cl(b\cdot a)$.)
 Despite the indices $\mu$ and $\nu$ varying over four distinct values, this yields only two linearly independent relations on the torus. 
 They are given by,
 \begin{align}
@@ -10699,20 +10711,25 @@ We could write down the ground state of the $C_2$ theory.
 \end{itemize} 
 
 In this subsection we define a tensor network that produces the ground state wavefunction of the Hamiltonian defined in \eqref{ham}.
-To do so, we evaluate $Z(\mcm)$ on three manifolds of the form $\mcm =\Sigma \times [0,1]$.
-\footnote{Historically, this version of the state sum pre-dates TVBW and was first found by Kirillov and Reshetikhin~\cite{Kirillow1989} who coined the term `shadow world', which was later extended by Turaev~\cite{turaev1992shadow} and included shadows of links which he coined `shlinks'.}
+To do so, we evaluate $Z(\mcm)$ on three-manifolds of the form $\mcm =\Sigma \times [0,1]$ using the 
+state-sum technology developed in the previous sections
+\footnote{Historically, this version of the state sum pre-dates TVBW and was first found by Kirillov and Reshetikhin~\cite{Kirillow1989} who coined the term `shadow world', which was later extended by Turaev~\cite{turaev1992shadow} and included shadows of links which he coined `shlinks'.}.
 
 
-The basic input to the wave-function the same as that of the Hamiltonian defined in \eqref{ham}.
-However, in addition we must also specify a cell decomposition for $\Sigma \times [0,1]$. 
-The cell decomposition for the slice $\Sigma \times \{ 1 \} $ is fixed by the cell decomposition used for the Hamiltonian \eqref{ham}, and we denote it by $\Sigma_1$.
-We also pick a cell decomposition of $\Sigma \times \{0\}$, which we denote $\Sigma_0$.
-The partition function then provides a linear map between vector spaces:
+The basic input to the wave-function the same as that of the Hamiltonian defined in \eqref{ham}, namely 
+a super tensor category $\mcc$, an oriented spin surface $\Sigma$, and a cell decomposition of $\Sigma$.
+We will be evaluating partition functions on the manifold $\Sigma \times [0,1]$, where the cell decomposition on the slice $\Sigma \times \{ 1 \} $ (which we denote by $\Sigma_1$)
+is fixed to be the cell decomposition on which we wish to define the Hamiltonian \eqref{ham}. 
+
+We also fix a cell decomposition of $\Sigma \times \{0\}$, which we denote $\Sigma_0$.
+This cell decomposition is responsible for building the ground state on which our Hamiltonian is defined. 
+
+The partition function provides a linear map between the Hilbert spaces at $\Sigma_0$ and $\Sigma_1$:
 \begin{align}
-Z(\Sigma_{0\ra1} ): \; \mch(\Sigma_0) \ra \mch(\Sigma_1)
+Z(\Sigma_{0\ra1} ): \; \mch(\Sigma_0) \ra \mch(\Sigma_1).
 \end{align}
-whose image is the space of ground states of \eqref{ham}.
-Explicitly, we can prepare wavefunctions by
+The image of this map is the space of ground states of \eqref{ham}.
+Explicitly, we can prepare wavefunctions out of a fixed input state $v_0\in \mch(\Sigma_0)$ by
 %\begin{align}
 %
 %\ket{\Psi} = \sum_{ v_1 \in \mch(\Sigma_1)} \ket{v_1} v_1^* \cdot Z(\Sigma_{0\ra1} ) %\cdot v_0.
@@ -10723,36 +10740,96 @@ Explicitly, we can prepare wavefunctions by
 where $Z(\Sigma_{0\ra1}; v_0, v_1)$ is the evaluation of the partition function with 
 boundary conditions fixed by $v_0$ and $v_1$. 
 
-We can take the cell decomposition in the bulk of $\Sigma_{0\ra1}$ to be any cell decomposition that agrees with $\Sigma_0$ and $\Sigma_1$ on the boundaries. 
-However, there is a natural choice, which corresponds to extending $\Sigma_0$ into $\Sigma \times [0, 1/2]$, and $\Sigma_1$ into $\Sigma \times [1/2, 1]$, see Figure~\ref{CellDecomposition}. 
-It is convenient to take the two cell decompositions to be in `normal' position,
-meaning that $\Sigma_0$ only intersects $\Sigma_1$ along edges, again see Figure~\ref{CellDecomposition}.
+\begin{figure}
+\begin{center}
+\includegraphics{CellDecomposition.pdf}
+\caption{\label{CellDecomposition}
+\dave{Will pitchforkize.} \ethan{Actually, I think it might be clearer if you don't. We mention the standardization procedure after we talk about the cell decomposition extension, and I think the figure is easier to look at pre-pitchforkization} 
+Cell decomposition used to construct the tensor network.
+The top layer $\Sigma_1$ is the cell decomposition that we use to construct the Hamiltonian in \eqref{ham}.
+The bulk cell decomposition $\Sigma_{0\ra1}$ is found by extending $\Sigma_0$ into 
+$\Sigma \times [0,\frac{1}{2}]$, and $\Sigma_{1}$ into $\Sigma \times [\frac{1}{2},1]$ (left figure).
+The input cell decomposition $\Sigma_0$ is taken to be in `normal' position with respect to $\Sigma_1$, meaning that when each cell decomposition is extended into the bulk, the two decompositions only intersect transversely along edges. 
+On the right, we have shown two dimensional representations of small patches of the cell decomposition. 
+In the two dimensional pictures we will denote the cells stemming from $\Sigma_0$ by squiggly lines.
+Notice that the orientation of all lines on $\Sigma_{0 \ra1}$ have been reversed relative to $\Sigma_0$ and $\Sigma_1$. 
+}
+\end{center}
+\end{figure}
 
-\ethan{I find this pretty cryptic at the moment---will have to go through and derive stuff on my own before I can attempt a clearer writing}
+In order to evaluate $Z(\Sigma_{0\ra1}; v_0, v_1)$, we need to specify a cell decomposition on $\Sigma_{0\ra 1}$ (although the actual partition function is independent of the particular choice). 
+We can take the cell decomposition in the bulk of $\Sigma_{0\ra1}$ to be any cell decomposition that agrees with the cell decomposition of $\Sigma_0$ and $\Sigma_1$ when restricted to $\partial \Sigma_{0\ra1}$.
+However, there is a particularly convenient choice, which corresponds to extending the cell decomposition of $\Sigma_0$ into $\Sigma \times [0, 1/2]$, and that of $\Sigma_1$ into $\Sigma \times [1/2, 1]$, see Figure~\ref{CellDecomposition}. 
+When we do this extension, every $k$-cell in $\Sigma_0$ and $\Sigma_1$ is extended into a $(k+1)$-cell in the bulk 
+of $\Sigma_{0\ra1}$ (the $(k+1)$-cells are the `shadows' of the $k$-cells, and hence the bulk constitutes the `shadow world'). 
+It is convenient to take the two cell decompositions on $\Sigma_0$ and $\Sigma_1$ to be in `normal' position,
+meaning that the extension of $\Sigma_0$ into the bulk only intersects the extension of $\Sigma_1$ transversely along edges, again see Figure~\ref{CellDecomposition}.
+
 
 We now specify the amplitude $Z(\Sigma_{0\ra 1}; v_0, v_1) $ in \eqref{GroundState}.
-The labels of the 2-cells that extend from $\Sigma_0$ and $\Sigma_1$ are determined by $v_0$ and $v_1$. 
-The 2-cell labels living at $\Sigma \times \{ 1/2 \}$ need to be summed over.
-We can orient each 2-cell using the orientation of $\Sigma$. 
-By looking at Figure~\ref{CellDecomposition}, we see that there are only three kinds of 0-cells that show up \dave{Figure}. 
-Rather than drawing a spherical neighborhood of each 0-cell, 
-we will draw a cube. 
-The three kinds of 0-cells are displayed in Figure~\ref{StandardizedSlabTensors} (first row), along
-with their standardized versions (middle row).
-The 1-handles that appear in the contraction all need an orientation.
-In principle this can be arbitrary, there is a natural choice -- the 1-handles biject with with the 1-cells of $\Sigma_0$ and $\Sigma_1$, and hence assign an orientation to each 1-handle in $\Sigma_{0 \ra 1}$. 
-We can use the orientation of the 1-cells descending from $\Sigma_0$ and $\Sigma_1$ to orient the 1-handles.
-It is helpful to project each picture in part a) of Figure~\ref{StandardizedSlabTensors} into the into $\Sigma \times \{ \frac{1}{2} \} $, and specify its weight by part c). 
+The amplitude is determined using the state sum procedure developed previously, and as such we will be brief in what follows. 
+The labels of the 2-cells that extend from $\Sigma_0$ and $\Sigma_1$ are determined by $v_0$ and 
+$v_1$, since they are the shadows of 1-cells in $\Sigma_0$ and $\Sigma_1$. 
+The 2-cell labels living at $\Sigma \times \{ 1/2 \}$ are not fixed as input data however, and need to be 
+summed over.
 
-Each vertex on $\Sigma_1$ will have three neighboring 2-cells that need to be summed over, and three 1-handles. 
+As described previously, to construct the tensors for a given 0-cell $v$ in $\Sigma \times \{1/2\}$, we insert a small $S^2$ around 
+$v$ and examine the intersections of neighboring 2-cells with the $S^2$. These intersections 
+are marked on the $S^2$ as edges, and weights for the tensor $T_v$ are formed by evaluating 
+the picture formed by these edges. 
+
+By looking at Figure~\ref{CellDecomposition}, we see that there are only three kinds of 0-cells that show up in 
+$\Sigma \times \{1/2\}$: those that are formed at the x-shaped intersection of a 1-cell in the extension of $
+\Sigma_0$ with a 1-cell in the extension of $\Sigma_1$, those where a 0-cell in the extension of $\Sigma_0$ 
+meets the interior of a 2-cell in 
+the extension of $\Sigma_1$, and vice versa. These possibilities lead to three different types of 0-cell tensors that need to be evaluated. 
+These three possibilities are illustrated in the top row $a)$ of Figure \ref{StandardizedSlabTensors}, where we have drawn a cube surrounding the 0-cell instead of an $S^2$.
+In the figure, the blue (orange) lines denote 
+the intersections of 2-cells in $\Sigma \times (1/2,1]$ (in $\Sigma \times [0,1/2)$) with the cube, 
+and the green lines denote the intersection of 2-cells in $\Sigma \times \{1/2\}$ with the cube. 
+The orientation of the lines drawn in these figures is fixed by the orientations of each of the 2-cells, 
+which are determined with the aid of the orientation of $\Sigma$. 
+In order to facilitate computations, we will need to standardize these diagrams according to the 
+usual `pitchforkization' procedure employed in the previous sections. 
+To do the standardization, we first project the diagrams into the plane (shown in the second row 
+of Figure \ref{StandardizedSlabTensors}), and then deform each of the trivalent vertices 
+to pitchforks. The final standardized diagrams are displayed in the third row of Figure \ref{StandardizedSlabTensors}.
+
+The evaluation of these standardized diagrams gives the weight of the 0-cell tensor
+in the computation of the partition function. 
+Explicitly, for a 0-cell $v$ involving three neighboring 2-cells from the extension of $\Sigma_1$ (left column of row $a)$ in Figure \ref{StandardizedSlabTensors}, we assign the tensor $T_v$ as follows:
 \begin{align}
-\Tensora \; &= \;\sum_{\{ s_i \} }  \Tensoraa \cdot \mu_0 \tp s_1 \tp s_2 \tp s_3 \\
-\Tensorb \; &= \;  \Tensorbb \\
-\Tensorc \; &= \; \Tensorcc \\
+\Tensora \; \ra T_v&= \;  \Tensoraa \cdot \mu_0 \tp s_1 \tp s_2 \tp s_3. 
+\end{align}
+In the diagrams, the green letters $A,B,C$ denote the labels of the 2-cells in $\Sigma \times \{1/2\}$, which will 
+be summed over when computing the amplitude $Z(\Sigma_{0\ra1}; v_0, v_1)$. The labels of 
+the blue lines are fixed however, and determined by the labels of the 2-cells which are shadows of 1-cells 
+in $\Sigma_1$. 
+
+Tensors for the other types of 0-cells in $\Sigma \times \{1/2\}$ are determined similarly. For the type of 
+0-cell in the center column of row $a)$ in Figure \ref{StandardizedSlabTensors}, we assign the tensor
+\begin{align}
+\Tensorc \;\ra T_v &= \; \Tensorcc  \cdot \nu_0 \tp s_1 \tp s_2 \tp s_3, \\
+\end{align}
+while for the type of 0-cell in the last column we assign the tensor
+\begin{align}
+\Tensorb \; \ra T_v &= \;  \Tensorbb  \cdot s_0 \tp s_1 \tp s_2 \tp s_3. \\
 \end{align}
 
+In order to perform the contraction that will compute the partition function, all the 1-cells 
+$\Sigma \times \{1/2\}$ need an orientation. Since these 1-cells biject with the 1-cells of $\Sigma_0$ and $\Sigma_1$ (they are all shadows of 1-cells in either $\Sigma_0$ or $\Sigma_1$ from our 
+choice of cell decomposition in $\Sigma_{0\ra1}$), we can assign an orientation to each 1-handle in 
+$\Sigma \times \{1/2\}$ using the orientation of the 1-cells in $\Sigma_0$ and $\Sigma_1$, which 
+are fixed by the states $v_0$ and $v_1$.
 
-\dave{Do 1-handles?}
+We can now compute $Z(\Sigma_{0\ra1}; v_0, v_1)$ 
+using the state sum: 
+\begin{align} 
+Z(\Sigma_{0\ra1}; v_0, v_1) = \sum_{ \mcl_{bulk} } (-1)^{k_{\mcl_{bulk}}} \prod_{f \in [\Sigma \times \{1/2\}]_2} T_f(w_f) 
+\prod_{e \in [\Sigma \times \{1/2\}]_1} T_e(w_e) \prod_{v \in [\Sigma \times \{1/2\}]_0} T_v(w_v),
+\end{align} 
+where we have used $[\Sigma \times \{1/2\}]_k$ to denote the collection of $k$-cells in $\Sigma \times \{1/2\}$ and $\mcl_{bulk}$ 
+to denote admissible colorings of the bulk degrees of freedom in $\Sigma_{0\ra1}$. 
 
 \begin{figure}
 \begin{center}
@@ -10767,29 +10844,8 @@ In part c) we finish the standardization by making each trivalent vertex a pitch
 \end{figure}
 
 
-
-\begin{figure}
-\begin{center}
-\includegraphics{CellDecomposition.pdf}
-\caption{\label{CellDecomposition}
-\dave{Will pitchforkize.}
-Cell decomposition used to construct the tensor network.
-The top layer denoted $\Sigma_1$ is the cell decomposition that we built the Hamiltonian over in \eqref{ham}.
-The input cell decomposition $\Sigma_0$ should be in `normal' position with respect to $\Sigma_1$, that is they should only interesect along edges. 
-The intermediary cell decomposition $\Sigma_{0\ra1}$ is found by extending $\Sigma_0$ into 
-$\Sigma \times [0,\frac{1}{2}]$, and $\Sigma_{1}$ into $\Sigma \times [\frac{1}{2},1]$.
-On the right, we have shown two dimensional representation of the cell decompositions. 
-Notice that the orientation of all lines on $\Sigma_{0 \ra1}$ have been reversed relative to $\Sigma_0$ and $\Sigma_1$. 
-In the two dimensional pictures we will denote the cells stemming from $\Sigma_0$ by squiggly lines.
-}
-\end{center}
-\end{figure}
-
-
-A cell decomposition of $\Sigma \times \{ 1 \}$ along with a set of pitchforkization maps \eqref{std0handle}, and a spin structure.
-In general, the space of ground states will be degenerate. 
-Specifying different states in this degenerate ground space ammounts to choosing different input states for the cell decomposition at $\Sigma \times \{0 \}$. 
-
+ \ethan{to be continued...}
+ 
  
 %%%%%%%%%%%%%%%%%% 
 \section{Discussion} \label{discussion}
