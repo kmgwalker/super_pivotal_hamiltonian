@@ -1242,14 +1242,6 @@
 \newcommand{\PitchforkFRight}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFRight.pdf}}}}} 
  
 
-
-
-
-
-
-
-
-
 \begin{document}
 
 
@@ -7867,13 +7859,13 @@ We list the fusion rules in Table \ref{halfesixFusionRules}.
 			Q_2		 		&\cc^{1|1}M_2 \oplus \cc^{1|1}M_3		&\cc^{1|1}M_1 \oplus M_3		&\cc^{1|1}M_2		\\
 			M_6		 		&\cc^{1|1}M_2 \oplus \cc^{1|1}M_3 		&\cc^{1|1}M_2 		&\text{\textcolor{red}{$\cc^{0|1}$}}M_1 \oplus M_2 \oplus M_3		\\
 			\end{array} & \end{flalign*}
-	\caption{$\halfesix$ fusion rules. We define $\mca = \{ M_1, M_2, M_3\}$ and $\mcv = \{ Q_1, Q_2, M_6 \}$ as the set of non-vortex and vortex quasiparticles, respectively. 
+	\caption{ \label{halfesixFusionRules} $\halfesix$ fusion rules. We define $\mca = \{ M_1, M_2, M_3\}$ and $\mcv = \{ Q_1, Q_2, M_6 \}$ as the set of non-vortex and vortex quasiparticles, respectively. 
 	The $\cc^{p|q}$ denote the vector space associated with $\Delta^{ab}_c$ which is related to the fusion space through $V^{ab}_c =\Delta^{ab}_c \tp \text{End}(c)$.
 	Notice that $M_6$ is self-dual and can only fuse oddly to the vacuum (the relevant fusion channel is marked in red), and hence it has an imaginary Frobenius-Schur indicator.
 	\dave{I need to double check these.}
 	\dave{I think they are now correct.
-	But it may not be a bad idea to double-double check the $M_6$ fusion rules.}} 
-	\label{halfesixFusionRules}
+	But it may not be a bad idea to double-double check the $M_6$ fusion rules.}
+	} 
 \end{table}
 
 It is useful to also keep track of the isomorphisms between the different representatives 
@@ -7891,9 +7883,11 @@ Lastly we have,
 Q_1 = \frac{e^{i \pi/4}}{\sqrt{d}} \AddDatTorusDot{\TaddownTube{1}}{N}{}{}  \cdot  \AddDatTorusDot{\TadupTube{1}}{N}{}{} 
 \end{align}
 
-\subsection{Action of Mapping class group on Torus }
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Modular transformations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Topological and idempotent bases}
@@ -8447,10 +8441,10 @@ for the $NN$ torus, and
 \end{matrix} \right)
 \end{align}
 for the spin tori with at least one bounding cycle.
-One can check that the modular matrices defined above satisfy $S^2 =\text{id}$ and $(ST)^3 = \text{id}$. 
-\kw{Don't we want to replace $id$ by $(-1)^F$?}
-\kw{Also should be $S^4 = \cdots$, not $S^2 = \cdots$.}
-
+One can check that the modular matrices defined above satisfy $S^4 =\text{id}$ and $(ST)^3 = (-1)^F$. 
+%\kw{Don't we want to replace $id$ by $(-1)^F$?}
+%\kw{Also should be $S^4 = \cdots$, not $S^2 = \cdots$.}
+%\ethan{yep}
 
 %\dave{ 
 %Can ask: is it poassible 1d anyon spin chain built from this category host more exotic excitations than Majorana zero modes? 
@@ -10776,10 +10770,10 @@ the contraction after the two tensor factors have been moved adjacent to one ano
 Suppose we have two tensors $Q \in V_Q$ and $T\in V_T$,
 defined by,
 \begin{align}
-Q &= \sum_{q_L \tp q \tp q_r } Q(q_L \tp q \tp q_R)q_L \tp q \tp q_R\\
-T &= \sum_{t_L \tp t \tp t_R} T(t_L \tp t \tp t_R  )t_L \tp t \tp t_R
+Q &= \sum_{q_L \tp q \tp q_r } Q(q_L \tp q \tp q_R)q_L \tp q \tp q_R,\\
+T &= \sum_{t_L \tp t \tp t_R} T(t_L \tp t \tp t_R  )t_L \tp t \tp t_R,
 \end{align}
-and we have split the vector spaces $V_Q$ and $V_T$ into tensor factors on 
+where we have split the vector spaces $V_Q$ and $V_T$ into tensor factors on 
 the left and right of the two indices that we would like to contract, namely $t \in V$ and $q \in V^*$.
 Define the contracted tensor by $K$, which is given by
 \begin{align}
@@ -10900,6 +10894,7 @@ is fixed to be the cell decomposition on which we wish to define the Hamiltonian
 We also fix a cell decomposition of $\Sigma \times \{0\}$, which we denote $\Sigma_0$.
 This cell decomposition is responsible for building the ground state on which our Hamiltonian is defined. 
 
+
 The partition function provides a linear map between the Hilbert spaces at $\Sigma_0$ and $\Sigma_1$:
 \begin{align}
 Z(\Sigma_{0\ra1} ): \; \mch(\Sigma_0) \ra \mch(\Sigma_1).
@@ -10915,6 +10910,9 @@ Explicitly, we can prepare wavefunctions out of a fixed input state $v_0\in \mch
 \end{align}
 where $Z(\Sigma_{0\ra1}; v_0, v_1)$ is the evaluation of the partition function with 
 boundary conditions fixed by $v_0$ and $v_1$. 
+Depending on the topology of $\Sigma$ and the input super tensor category, the ground state of the theory 
+will generically be degenerate, with the choice of $v_0$ and $\Sigma_0$ determining which ground state
+the wavefunction is built upon. 
 
 \begin{figure}
 \begin{center}
@@ -11011,10 +11009,14 @@ to denote admissible colorings of the bulk degrees of freedom in $\Sigma_{0\ra1}
 \begin{center}
 \includegraphics[scale=0.6]{StandardizedSlabTensors.pdf}
 \caption{\label{StandardizedSlabTensors}
-In part a) we show the three kinds of possible 0-cell tensors that could appear in a $\Sigma_{0\ra1}$. 
-In part b) we show the first step for one possible standardization procedure. 
-In part c) we finish the standardization by making each trivalent vertex a pitchfork. 
-\ethan{I still find this figure confusing. In the first row, are these all neighborhoods around a 0-cell at $\Sigma \times 1/2$? And are the blue and orange lines intersections of 2-cells with the cube?}
+In row a) we show the three kinds of possible 0-cell tensors that could appear in the tensor contraction when 
+computing the partition function $Z(\Sigma;v_0,v_1)$. The cube is drawn so that the 0-cell is located in the cube center. 
+Blue (orange) lines represent intersections of 2-cells in the extension of the cell decomposition $\Sigma_1$ ($\Sigma_0$) with the cube, and 
+green lines represent intersections of 2-cells in $\Sigma \times \{1/2\}$ with the cube. 
+In row b) we show the first step for one possible standardization procedure, where the diagrams 
+have been drawn projected into two dimensions. 
+In row c) we finish the standardization of the diagrams by making each trivalent vertex a pitchfork. The appropriate 0-cell 
+tensors are found by evaluation of these diagrams. 
 }
 \end{center}
 \end{figure}
