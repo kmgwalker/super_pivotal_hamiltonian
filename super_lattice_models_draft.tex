@@ -18,7 +18,7 @@
 \usepackage[colorlinks]{hyperref}
 \hypersetup{linkcolor={hanpurple}}
 
-\usepackage{accents}
+%\usepackage{accents}
 
 % number tables and figures within subsections
 %%%%%KW: should we also number eqns within subsections?
@@ -1244,7 +1244,7 @@
 \newcommand{\PitchforkFRight}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFRight.pdf}}}}} 
 
 
-\newcommand{\Koszul}[2]{\smash[t]{\overset{{\color{kwcolor}{#1}}}{#2}}}
+%\newcommand{\Koszul}[2]{\smash[t]{\overset{{\color{kwcolor}{#1}}}{#2}}}
  
 
 \begin{document}
@@ -4198,7 +4198,7 @@ which follows can be understood without using terms like ``excitation'' and ``Ha
 Recall that a trace on a linear category $C$ is a linear function from endomorphisms to $\cc$, satisfying
 \dave{Koszul signs?}
 \be
-	\tr(fg) = \tr(gf) ,
+	\tr(fg) = (-1)^{|f||g|}\tr(gf) ,
 \ee
 for all $f \in \mor(x\to y)$ and $g\in \mor(y\to x)$.
 All of the categories we consider have a $*$-structure (a.k.a. reflection structure), which is an order 2 antilinear antiautomorphism
@@ -4206,13 +4206,13 @@ from $\mor(x\to y)$ to $\mor(y\to x)$ (for all objects $x$ and $y$).
 A trace is equivalent to a collection of sesquilinear inner products on $\mor(x\to y)$ satisfying
 \dave{Koszul signs?}
 \be
-	\langle fg, h \rangle = \langle f, h g^* \rangle \;\;\; and \;\;\; \langle fg, h \rangle = \langle g,f^*  h  \rangle 
+	\langle fg, h \rangle =(-1)^{|g||h|} \langle f, h \bar{g} \rangle \;\;\; and \;\;\; \langle fg, h \rangle = (-1)^{|g| |f|}\langle g,\bar{f}  h  \rangle 
 \ee
-for all $f\in\mor(x\to y)$, $g\in\mor(y\to z)$ and $h\in\mor(x\to z)$.
-\kw{Maybe should use bar instead of star to be consistent with other parts of the paper?}
+%\kw{Maybe should use bar instead of star to be consistent with other parts of the paper?}
+%\dave{Lets do that.}
 The trace and inner products are related by
 \be
-	\tr(f) = \langle f, \id_x \rangle   \;\;\; and \;\;\;   \langle g,h \rangle = \tr(gh^*)
+	\tr(f) = \langle f, \id_x \rangle   \;\;\; and \;\;\;   \langle g,h \rangle = \tr(g\bar{h})
 \ee
 for $f\in\mor(x\to x)$ and  $g,h\in\mor(x\to y)$.
 A trace is called nondegenerate if the corresponding inner product is nondegenerate in the usual sense (on each morphism space individually).
@@ -4225,7 +4225,7 @@ space $A(Y; a_1,\ldots,a_k)$ (where $Y$ is a spin surface and $a_i$ are boundary
 \be
 	\langle u, v\rangle = Z(Y\times I) (u\cup \bar v) ,
 \ee
-where the bar denotes the ``reflection" map from $A(Y; a_1,\ldots,a_k)$ to $A(-Y; a_1,\ldots,a_k)$\dave{stars on $a_i$'s in $A(-Y,....)$?}.
+where the bar denotes the ``reflection" map from $A(Y; a_1,\ldots,a_k)$ to $A(-Y; \bar{a}_1,\ldots,\bar{a}_k)$\dave{bars on $a_i$'s in $A(-Y,....)$?}.
 Here we are using the ``pinched boundary" condition for $Y\times I$, so that $\bd (Y\times I) = Y\cup -Y)$.
 In other words, we glue together the string nets $u$ and $\bar v$ to get a string net on $\bd (Y\times I)$, and then we evaluate
 the path integral of $Y\times I$ with the $u\cup \bar v$ string net as a boundary condition.
@@ -8961,13 +8961,13 @@ e.g. $V^{ab}_{c,1} \tp V^{cd}_{e,2}$. \kw{I think overscripts would be better th
 \ethan{By overscripts do you mean $e.g.$ $V^{ab,1}_c$ or something else? I went with subscripts since that's what we have in later sections and earlier in this section.}
 \kw{I meant something like $\overset{2}{V^{abc}} \tp \overset{1}{V^{xyz}}$, but it might be too much hassle to get the alignment right
 and make all the changes.}
-\dave{Other people have had the same problem, there is a package for this:  $\accentset{2}{V}^{abc} \tp \accentset{1}{V}^{xyz}$ 
-and $ \smash[t]{\overset{2}{V}}^{abc} \tp \smash[t]{\overset{1}{V}}^{xyz}$.
-}
-\dave{Even better can make color the sign ordering}:
-\begin{align}
- \Koszul{1}{V}^{abc} \tp \Koszul{2}{V}^{xyz} \tp  \Koszul{3}{V}^{pqw} \tp \Koszul{4}{V}^{str}
- \end{align}
+%\dave{Other people have had the same problem, there is a package for this:  $\accentset{2}{V}^{abc} \tp \accentset{1}{V}^{xyz}$ 
+%and $ \smash[t]{\overset{2}{V}}^{abc} \tp \smash[t]{\overset{1}{V}}^{xyz}$.
+%}
+%\dave{Even better can make color the sign ordering}:
+%\begin{align}
+ %\Koszul{1}{V}^{abc} \tp \Koszul{2}{V}^{xyz} \tp  \Koszul{3}{V}^{pqw} \tp \Koszul{4}{V}^{str}
+% \end{align}
 When drawing diagrams with a particular ordering in mind, we always indicate the ordering explicitly by numbers near each fusion space (i.e.\ near
 each vertex in the string net).
 Another possible convention would be to use the ordering corresponding to (say) bottom-to-top on the page,
