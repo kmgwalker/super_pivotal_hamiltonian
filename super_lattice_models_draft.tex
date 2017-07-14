@@ -434,6 +434,10 @@
 \newcommand{\TuberrTraceCe}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TuberrTraceCe.pdf}}}}}
 \newcommand{\TuberrTraceCo}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TuberrTraceCo.pdf}}}}}
 
+\newcommand{\Tuberrprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tuberrprime.pdf}}}}}
+\newcommand{\Tuberrprimecut}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tuberrprimecut.pdf}}}}}
+\newcommand{\PinchedDisk}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{PinchedDisk.pdf}}}}}
+
 
 
 \newcommand{\exyomegaa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{exyomegaa.pdf}}}}}
@@ -4212,6 +4216,7 @@ A trace is equivalent to a collection of sesquilinear inner products on $\mor(x\
 %\dave{Lets do that.}
 The trace and inner products are related by
 \be
+\label{trace_to_innerproduct}
 	\tr(f) = \langle f, \id_x \rangle   \;\;\; and \;\;\;   \langle g,h \rangle = \tr(g\bar{h})
 \ee
 for $f\in\mor(x\to x)$ and  $g,h\in\mor(x\to y)$.
@@ -4242,20 +4247,34 @@ The string net $c'$ determines a linear map
 given by gluing the $c'$ annuli on to the boundary of a string net on $Y$.
 The gluing rules for the path integral imply that
 \be
+\label{bounding_trace}
 	Z(Y\times S^1_B)(c) = \tr(g(c'))
 \ee
 and
 \be
+\label{nonbounding_trace}
 	Z(Y\times S^1_N)(c) = \str(g(c')) .
 \ee
 Note that any choice of cutting curves and $c'$ will yield the same answer on the RHS above.
 \kw{Need to make sure we have defined super trace $\str$.}
 
 \medskip
-
+\dave{Obviously in progress.}
 We now apply the above to the case where $Y$ is an annulus to obtain a nondegenerate trace on the tube category.
+%\kw{Take it from here, Dave.}
+Using \eqref{trace_to_innerproduct} and letting $t \in \tube^W(\mcc)$
+\begin{align}
+\tr (t)  = \langle t, \text{id} \rangle  = Z((S^1_W \times I) \times I ) (t \cup \overline{\text{id} })  = Z(S^1_W \times D^2) (t \cup \overline{\text{id}})
+\end{align}
+This is the partition function on a solid torus with the boundary condition $t \cup \overline{\text{id}}$.
+Graphically we can write this as,
+\begin{align}
+\left \langle\;\Tuberrprime_W,\text{id} \; \right \rangle =
+ \tr \left \{ \Tuberrprimecut \; : A\left( \PinchedDisk \right)  \xrightarrow{\quad \quad} A \left( \PinchedDisk \right) 
+ \right \}
+\end{align}
 
-\kw{Take it from here, Dave.}
+
 
 \kwsep
 
@@ -10962,21 +10981,22 @@ And standard ordering of the 1-cells is chronological with respect to incoming (
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Shadow world and explicit ground state wave function}
+\subsection{The shadow world and ground state wavefunctions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{itemize} 
-\item write down explicit wave function on e.g., honeycomb lattice. Using the TV state sum on a slab
+%\item write down explicit wave function on e.g., honeycomb lattice. Using the TV state sum on a slab
 \item connection to MPO's/mention tube category/excitations
-\item Do some sort of example. At the very least we can write down the wave function for the Kitaev wire.
-We could write down the ground state of the $C_2$ theory.
 \end{itemize} 
 
 In this subsection we define a tensor network that produces the ground state wavefunction of the Hamiltonian defined in \eqref{ham}.
-To do so, we evaluate $Z(\mcm)$ on three-manifolds of the form $\mcm =\Sigma \times [0,1]$ using the 
-state-sum technology developed in the previous sections
-\footnote{Historically, this version of the state sum pre-dates TVBW and was first found by Kirillov and Reshetikhin~\cite{Kirillow1989} who coined the term `shadow world', which was later extended by Turaev~\cite{turaev1992shadow} and included shadows of links which he coined `shlinks'.}.
-
+To do so, we evaluate $Z(\mcm)$ on manifolds of the form $\mcm =\Sigma \times [0,1]$ using the 
+state-sum technology developed in the previous sections\footnote{Historically, this version of the state sum 
+pre-dates TVBW and was first found by Kirillov and Reshetikhin~\cite{Kirillow1989} who coined the term 
+`shadow world', which was later extended by Turaev~\cite{turaev1992shadow} and included shadows of links 
+which he coined `shlinks'.}. 
+We will take $\Sigma$ to be a two-dimensional spin surface in what follows, although 
+the approach we describe can easily be modified to work for one-dimensional spin manifolds as well. 
 
 The basic input to the wave-function the same as that of the Hamiltonian defined in \eqref{ham}, namely 
 a super tensor category $\mcc$, an oriented spin surface $\Sigma$, and a cell decomposition of $\Sigma$.
@@ -11081,6 +11101,10 @@ while for the type of 0-cell in the last column we assign the tensor
 \begin{align}
 \Tensorb \; \ra T_v &= \;  \Tensorbb  \cdot s_0 \tp s_1 \tp s_2 \tp s_3. \\
 \end{align}
+\ethan{mention connection with string operators and drinfeld center (alpha's in Drinfeld center)}
+In all of these tensors, we are making use of the implicit left-to-right Koszul ordering convention for the 
+tensor factors. 
+
 
 In order to perform the contraction that will compute the partition function, all the 1-cells 
 $\Sigma \times \{1/2\}$ need an orientation. Since these 1-cells biject with the 1-cells of $\Sigma_0$ and $\Sigma_1$ (they are all shadows of 1-cells in either $\Sigma_0$ or $\Sigma_1$ from our 
@@ -11114,8 +11138,67 @@ tensors are found by evaluation of these diagrams.
 \end{figure}
 
 
- \ethan{to be continued...}
- 
+
+%%%%%%%%%%%%%%%%
+\subsection{Kitaev wire} \label{kitaev_wire}
+%%%%%%%%%%%%%%%%
+
+In this section, we show how the graphical formalism developed in previous sections
+can be used to succinctly capture the salient features of the `Kitaev wire', Kitaev's toy model 
+of a one-dimensional spinless $p$-wave superconductor \cite{kitaev2001}. 
+This elucidates the connection between Majorana zero modes and Ising anyons, and we will use 
+the graphical conventions of the $C_2$ theory throughout. 
+This also provides 
+a simple (alas, perhaps too simple) illustration of the shadow world approach detailed in the previous section 
+(with appropriate modifications for the reduced dimensionality of the problem). 
+
+
+The local ``on site" Hilbert space is spanned by two basis vectors
+\begin{align}
+    \CupSigma \qquad \text{and} \qquad \CupSigmadot
+\end{align}
+the first has even fermion parity, while the second has odd fermion parity.
+The only terms one can contruct a Hamiltonian out of are
+\begin{align}
+\Id \qquad \text{and} \qquad \TwoLinedotdot
+\end{align}
+the first is the identity line, while the second is nontrivial and should be identified with $i \gamma_1 \gamma_2$, a Majorana bi-linear which acts as the fermion parity operator on the on-site Hilbert space.
+To see this, we can just check the action of the Hamiltonian on the basis vectors. 
+\begin{align}
+\TwoLinedotdot\; \times \; \CupSigma \; =\;  \CupSigma \quad \text{and} \quad \TwoLinedotdot\; \times \; \CupSigmadot \; =\;   - \; \CupSigmadot
+\end{align}
+\dave{Need to define ordering on vertices properly. I've been doing it by labeling the states first, then the operators have a natural ordering on them and I just begin counting from the last fermion on the state.}
+For an $N$-site chain we have the basis of states,
+\begin{align}
+&\CupSigma \; \CupSigma \; \CupSigma \cdots \CupSigma\\
+&\CupSigmadot \; \CupSigma \; \CupSigma \cdots \CupSigma\\
+&\CupSigma \; \CupSigmadot \; \CupSigma \cdots \CupSigma\\
+&\CupSigma \; \CupSigma \; \CupSigmadot \cdots \CupSigma\\
+&\CupSigma \; \CupSigma \; \CupSigma \cdots \CupSigmadot\\
+&\CupSigmadot \; \CupSigmadot \; \CupSigma \cdots \CupSigma
+\end{align}
+etcetera. Where there are $N$ cups appearing, and the fermion dots are ordered from right to left, and any number of them can appear.
+If a state has an odd number of dots it has odd fermion parity, while an even number of dots has even fermion parity.
+The Hamiltonian has two types of terms. One term mixes the states on site -- or within a single cup, while the other mixes nearest neighbor cups.
+We will denote the onsite Hamiltonian terms by $H_{2j}$ and the the term which couples the nearest neighbor cups by $H_{2j+1}$.
+Then the Hamiltonian takes on the form,
+\begin{align}
+H = - \sum_j\; t_j \; \;  \TwoLinedotdot_{\text{site $j$}}
+\end{align}
+In the completely staggered limit (zero chemical potential) there are two ground states:
+\begin{align}
+\Psi_e = \;\StaggaredGSEven \; \cdots \; \StaggaredGSEvenR\;, 
+\qquad \text{and} \qquad 
+\Psi_o =\; \StaggaredGSOdd \; \cdots  \; \StaggaredGSEvenR.
+\end{align}
+Excitations are built by putting dots on the intermediate cups. 
+
+A nice feature of our diagrammatic notation is that the ``delocalization" of the femrion number is made manifest.
+For example, the fermion in the odd-parity state $\Psi_o$ is not localized: it is free to slide along the bottom $\beta$ line
+from one end of the chain to the other.
+%When transforming back to the original basis, one sees that the state is actually an even superposition of all possible placements of an even number of fermions, similarly for the odd state.
+
+
  
 %%%%%%%%%%%%%%%%%% 
 \section{Discussion} \label{discussion}
@@ -11615,66 +11698,13 @@ Note that all the $Q(n)$ can be generated from $M(n|0)$ and $Q(1)$ according to 
 %which is helpful when computing fusion rules. 
 
 
-
-
-
-%%%%%%%%%%%%% 
-\section{Kitaev Wire}
-%%%%%%%%%%%%%
-
-\ethan{not saying that this should be an appendix --- just dunno where to put it for now}
-\subsubsection{Kitaev wire}
-Here we propose a simple application of the above diagrammatic calculus. 
-We will re-write the Kitaev-Majorana chain using this basis. 
-The idea is to write down the natural anyon spin chain with this calculus and realize that it's exactly the Kitaev-Majorana chain. 
-This elucidates the connection between Majorana zero modes and Ising anyons. 
-
-The local ``on site" Hilbert space is spanned by two basis vectors
-\begin{align}
-    \CupSigma \qquad \text{and} \qquad \CupSigmadot
-\end{align}
-the first has even fermion parity, while the second has odd fermion parity.
-The only terms one can contruct a Hamiltonian out of are
-\begin{align}
-\Id \qquad \text{and} \qquad \TwoLinedotdot
-\end{align}
-the first is the identity line, while the second is nontrivial and should be identified with $i \gamma_1 \gamma_2$, a Majorana bi-linear.
-To see this, we can just check the action of the Hamiltonian on the basis vectors. 
-\begin{align}
-\TwoLinedotdot\; \times \; \CupSigma \; =\;  \CupSigma \quad \text{and} \quad \TwoLinedotdot\; \times \; \CupSigmadot \; =\;   - \; \CupSigmadot
-\end{align}
-\dave{Need to define ordering on vertices properly. I've been doing it by labeling the states first, then the operators have a natural ordering on them and I just begin counting from the last fermion on the state.}
-For an $N$-site chain we have the basis of states,
-\begin{align}
-&\CupSigma \; \CupSigma \; \CupSigma \cdots \CupSigma\\
-&\CupSigmadot \; \CupSigma \; \CupSigma \cdots \CupSigma\\
-&\CupSigma \; \CupSigmadot \; \CupSigma \cdots \CupSigma\\
-&\CupSigma \; \CupSigma \; \CupSigmadot \cdots \CupSigma\\
-&\CupSigma \; \CupSigma \; \CupSigma \cdots \CupSigmadot\\
-&\CupSigmadot \; \CupSigmadot \; \CupSigma \cdots \CupSigma
-\end{align}
-etcetera. Where there are $N$ cups appearing, and the fermion dots are ordered from right to left, and any number of them can appear.
-If a state has an odd number of dots it has odd fermion parity, while an even number of dots has even fermion parity.
-The Hamiltonian has two types of terms. One term mixes the states on site -- or within a single cup, while the other mixes nearest neighbour cups.
-We will denote the onsite Hamiltonian terms by $H_{2j}$ and the the term which couples the nearest neighbour cups by $H_{2j+1}$.
-Then the Hamiltonian takes on the form,
-\begin{align}
-H = - \sum_j\; t_j \; \;  \TwoLinedotdot_{\text{site $j$}}
-\end{align}
-Now in the completely staggered limit it's easy to see what the ground states are,
-\begin{align}
-\StaggaredGSEven \; \cdots \; \StaggaredGSEvenR  
-\qquad \text{and} \qquad 
-\StaggaredGSOdd \; \cdots  \; \StaggaredGSEvenR
-\end{align}
-The first differing from the second by fermion parity.
-Excitations are built by putting dots on the intermediate cups. 
-A nice feature of the diagrammatic notation is that the ``delocalization" of femrion number is made manifest.
-For example the fermion odd state does not have a femrion localized at either end, rather its free to slide from one end to the other.
-When transforming back to the original basis, one sees that the state is actually an even superposition of all possible placements of an even number of fermions, similarly for the odd state.
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{$\frac{1}{2}$E6 data}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%
 \subsection{Associators}
+%%%%%%%%%%%%%%%%
 \label{E6Fsymbols}
 There are four unitary solutions to the pentagon equation for $\frac{1}{2}$E6. They split into two sets, one pair has all positive quantum dimensions, while the other has negative quantum dimension on the $x$ particle. 
 The solutions in each set are related by complex conjugation. 
