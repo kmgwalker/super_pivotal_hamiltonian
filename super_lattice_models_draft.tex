@@ -10853,7 +10853,7 @@ The 0-cell tensors are exactly the same as in the bosonic case,
 except that we must keep track of an ordering of the four tensor factors when defining the tetrahedral symbol. 
 We choose the following ordering convention:
 \begin{align}
-T(w_v)=T_v(\alpha \tp \beta \tp \gamma \tp \delta) = \Tetrahedron.
+T_v(w_v)=T_v(\alpha \tp \beta \tp \gamma \tp \delta) = \Tetrahedron.
 % = \sum_{\mu_{e_j} \in \mch(\bar{c}_{e_j v}) } \text{Tet}(\mu_{e_1} \tp \mu_{e_2} \tp \mu_{e_3} \tp \mu_{e_4} )  \mu_{e_1} \tp \mu_{e_2} \tp \mu_{e_3}\tp \mu_{e_4}
 \end{align}
 %with
@@ -10864,6 +10864,12 @@ T(w_v)=T_v(\alpha \tp \beta \tp \gamma \tp \delta) = \Tetrahedron.
 %If we are given a tetrahedron with a different ordering, we must change the ordering to the standard one, which as usual is done at the cost of the appropriate Koszul signs. 
 %\dave{I thought by assumption the 1-cells meeting a tetrahedron are ordered?}
 %\dave{I think the only Koszul signs we have to worry about are those appearing in the tensor contraction.}
+As an example, in the $C_2$ theory there are 32 non-zero $T_v$ tensor weights to specify. If we write $V^{\unit\unit\unit} = \langle1\rangle,V^{\beta\beta\unit}=\langle v_e,v_o\rangle$ with $v_o$ odd, 
+then a few examples of $T_v$ tensor weights are $T_v(v_o\tp v_o\tp 1\tp v_e) = T_v(v_o\tp 1\tp v_e \tp v_o) = A^4d$ and 
+$T_v(v_o\tp v_e\tp 1 \tp v_o) = T_v(v_o\tp v_e \tp v_o \tp 1) = -d$\footnote{In evaluating these, we have used 
+the convention in which a fermionic dot at a vertex $v$ is displaced onto the right-most 
+$\beta$ string terminating at $v$.}. \ethan{this is just a reminder
+to write down some examples if we feel the need to be a little more friendly / verbose}
 
 The fermionic partition function can be written formally in the same way as before:
 \begin{align} \label{simple_fermion_Z}
@@ -10872,10 +10878,10 @@ Z(\mcm) = \chi\left( \bigotimes_{f \in \mcf} T_f \bigotimes_{e \in \mce} T_e \bi
 %where the fact that the tensors are all even means that the order on the tensor product does not matter. 
 However, when evaluating the RHS, 
 one has to be careful about Koszul sign issues when performing the tensor contraction induced by $\chi$. 
-When we contract out two tensor indices of a tensor in $\mch^*\tp\mch$, we must be careful to only perform 
-the contraction after the two tensor factors have been moved adjacent to one another in the tensor product. 
 
-Suppose we have two tensors $Q \in V_Q$ and $T\in V_T$,
+When we contract out two tensor indices of a tensor in $\mch^*\tp\mch$, we must be careful to only perform 
+the contraction on two tensor factors that have adjacent Koszul ordering in the tensor product. 
+For example, suppose we have two tensors $Q \in V_Q$ and $T\in V_T$,
 defined by,
 \begin{align}
 Q &= \sum_{q_L \tp q \tp q_r } Q(q_L \tp q \tp q_R)q_L \tp q \tp q_R,\\
