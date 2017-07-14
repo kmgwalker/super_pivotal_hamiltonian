@@ -18,6 +18,8 @@
 \usepackage[colorlinks]{hyperref}
 \hypersetup{linkcolor={hanpurple}}
 
+%\usepackage{accents}
+
 % number tables and figures within subsections
 %%%%%KW: should we also number eqns within subsections?
 \usepackage{chngcntr}
@@ -431,6 +433,10 @@
 
 \newcommand{\TuberrTraceCe}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TuberrTraceCe.pdf}}}}}
 \newcommand{\TuberrTraceCo}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TuberrTraceCo.pdf}}}}}
+
+\newcommand{\Tuberrprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tuberrprime.pdf}}}}}
+\newcommand{\Tuberrprimecut}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tuberrprimecut.pdf}}}}}
+\newcommand{\PinchedDisk}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{PinchedDisk.pdf}}}}}
 
 
 
@@ -1240,6 +1246,9 @@
 
 \newcommand{\PitchforkFLeft}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFLeft.pdf}}}}}
 \newcommand{\PitchforkFRight}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFRight.pdf}}}}} 
+
+
+%\newcommand{\Koszul}[2]{\smash[t]{\overset{{\color{kwcolor}{#1}}}{#2}}}
  
 
 \begin{document}
@@ -3295,9 +3304,10 @@ Similarly we can compute the modular $T$-matrix, the action of which twists the 
 This definition ensures that the $T$-matrix acts as the identity on tubes with no charge line 
 (i.e. with no strings ending on their inner annular boundaries).
 Within each spin structure sector the $T$-matrix is diagonal in the idempotent basis. 
-\dave{Should we define a complex number via $T e = \theta eT$ somewhere?
-And comment on the validity of calling it a twist.
-}
+%\dave{Should we define a complex number via $T e = \theta eT$ somewhere?
+%And comment on the validity of calling it a twist.
+%}
+%\dave{I don't like this idea anymore.}
 We can read off the structure of the $T$-matrix with the help of Figure \ref{spin_str_mapping_class_group} to find
 \begin{align}
 \left( \begin{matrix}
@@ -4192,7 +4202,7 @@ which follows can be understood without using terms like ``excitation'' and ``Ha
 Recall that a trace on a linear category $C$ is a linear function from endomorphisms to $\cc$, satisfying
 \dave{Koszul signs?}
 \be
-	\tr(fg) = \tr(gf) ,
+	\tr(fg) = (-1)^{|f||g|}\tr(gf) ,
 \ee
 for all $f \in \mor(x\to y)$ and $g\in \mor(y\to x)$.
 All of the categories we consider have a $*$-structure (a.k.a. reflection structure), which is an order 2 antilinear antiautomorphism
@@ -4200,13 +4210,14 @@ from $\mor(x\to y)$ to $\mor(y\to x)$ (for all objects $x$ and $y$).
 A trace is equivalent to a collection of sesquilinear inner products on $\mor(x\to y)$ satisfying
 \dave{Koszul signs?}
 \be
-	\langle fg, h \rangle = \langle f, h g^* \rangle \;\;\; and \;\;\; \langle fg, h \rangle = \langle g,f^*  h  \rangle 
+	\langle fg, h \rangle =(-1)^{|g||h|} \langle f, h \bar{g} \rangle \;\;\; and \;\;\; \langle fg, h \rangle = (-1)^{|g| |f|}\langle g,\bar{f}  h  \rangle 
 \ee
-for all $f\in\mor(x\to y)$, $g\in\mor(y\to z)$ and $h\in\mor(x\to z)$.
-\kw{Maybe should use bar instead of star to be consistent with other parts of the paper?}
+%\kw{Maybe should use bar instead of star to be consistent with other parts of the paper?}
+%\dave{Lets do that.}
 The trace and inner products are related by
 \be
-	\tr(f) = \langle f, \id_x \rangle   \;\;\; and \;\;\;   \langle g,h \rangle = \tr(gh^*)
+\label{trace_to_innerproduct}
+	\tr(f) = \langle f, \id_x \rangle   \;\;\; and \;\;\;   \langle g,h \rangle = \tr(g\bar{h})
 \ee
 for $f\in\mor(x\to x)$ and  $g,h\in\mor(x\to y)$.
 A trace is called nondegenerate if the corresponding inner product is nondegenerate in the usual sense (on each morphism space individually).
@@ -4219,7 +4230,7 @@ space $A(Y; a_1,\ldots,a_k)$ (where $Y$ is a spin surface and $a_i$ are boundary
 \be
 	\langle u, v\rangle = Z(Y\times I) (u\cup \bar v) ,
 \ee
-where the bar denotes the ``reflection" map from $A(Y; a_1,\ldots,a_k)$ to $A(-Y; a_1,\ldots,a_k)$\dave{stars on $a_i$'s in $A(-Y,....)$?}.
+where the bar denotes the ``reflection" map from $A(Y; a_1,\ldots,a_k)$ to $A(-Y; \bar{a}_1,\ldots,\bar{a}_k)$\dave{bars on $a_i$'s in $A(-Y,....)$?}.
 Here we are using the ``pinched boundary" condition for $Y\times I$, so that $\bd (Y\times I) = Y\cup -Y)$.
 In other words, we glue together the string nets $u$ and $\bar v$ to get a string net on $\bd (Y\times I)$, and then we evaluate
 the path integral of $Y\times I$ with the $u\cup \bar v$ string net as a boundary condition.
@@ -4236,20 +4247,34 @@ The string net $c'$ determines a linear map
 given by gluing the $c'$ annuli on to the boundary of a string net on $Y$.
 The gluing rules for the path integral imply that
 \be
+\label{bounding_trace}
 	Z(Y\times S^1_B)(c) = \tr(g(c'))
 \ee
 and
 \be
+\label{nonbounding_trace}
 	Z(Y\times S^1_N)(c) = \str(g(c')) .
 \ee
 Note that any choice of cutting curves and $c'$ will yield the same answer on the RHS above.
 \kw{Need to make sure we have defined super trace $\str$.}
 
 \medskip
-
+\dave{Obviously in progress.}
 We now apply the above to the case where $Y$ is an annulus to obtain a nondegenerate trace on the tube category.
+%\kw{Take it from here, Dave.}
+Using \eqref{trace_to_innerproduct} and letting $t \in \tube^W(\mcc)$
+\begin{align}
+\tr (t)  = \langle t, \text{id} \rangle  = Z((S^1_W \times I) \times I ) (t \cup \overline{\text{id} })  = Z(S^1_W \times D^2) (t \cup \overline{\text{id}})
+\end{align}
+This is the partition function on a solid torus with the boundary condition $t \cup \overline{\text{id}}$.
+Graphically we can write this as,
+\begin{align}
+\left \langle\;\Tuberrprime_W,\text{id} \; \right \rangle =
+ \tr \left \{ \Tuberrprimecut \; : A\left( \PinchedDisk \right)  \xrightarrow{\quad \quad} A \left( \PinchedDisk \right) 
+ \right \}
+\end{align}
 
-\kw{Take it from here, Dave.}
+
 
 \kwsep
 
@@ -6220,12 +6245,11 @@ We first define,
 \begin{align}
 \widetilde{E}(a,b,\text{cl}(r)) \; = \; \BasisForIdempotents
 \end{align}
-and
+and for $x = \unit$ or $x = \psi$
 \begin{align}
  \omega_x = \frac{d_x}{\mathcal{D}_{\mcc/\psi}^2} \sum_{r\in \sob(\mcc/\psi)} \frac{d_r }{ \dim\End(r)} \left( \frac{S_{xr}}{S_{\unit r}} \right)   \text{cl}(r).
 \end{align}
 The $S$-matrix above is that of the parent theory, and the labels are trivial lifts from $\mcc/\psi$.
-\dave{Note to self: double check this formula makes ``sense" for all labels $x$, otherwise say it's only used for $x = \unit, \psi$.}
 When $x = \unit$, $ \frac{S_{x r}}{S_{\unit r}}=1$ this is just the standard $\omega$ loop, 
 when $x =\psi$, $ \frac{S_{x r}}{S_{\unit r}}=(-1)^{\nu_r}$ and $\omega_\psi$ is a projector onto the $\psi$ strand.
 The factor $\mcd_{\mcc/\psi}^2 = \sum_{x \in \mcc/\psi} d_x^2 / \dim \End(x)$ is the total quantum dimension of 
@@ -6236,7 +6260,9 @@ can be re-written as,
 E(a\tp x, b) \cong \widetilde{E}(a,b, \omega_x)
 \end{align}
 with $a,b \in \mcc/\psi$ and $x =\unit, \psi$.
-The isomorphism is an odd isomorphism if $x = \psi$.
+The isomorphism relating the two idempotents is an odd isomorphism if $x = \psi$.
+Notice that running over all all pairs $a,b \in \mcc/\psi$ and $x = \unit$ or $\psi$ runs over all possible $E(a,b)$.
+Additionally if $a \tp \psi \cong a$ then $\widetilde{E}(a,b, \omega_\unit)$ and $\widetilde{E}(a,b, \omega_\psi)$ are equivalent. 
 This presentation of the idempotents is more symmetric than those discussed in Section \ref{more_on_tubes}.
 
 We now write these idempotents so that they have a single strand at the boundary rather than two.
@@ -6246,23 +6272,23 @@ We use the fermionic analogue of \eqref{TwoStrandToOneStrand},
 %g(a,b,\omega_x,c,j) = \gxyajf  \quad \quad \quad h(a,b,\omega_x,c,i) = \hxyaif
 %\end{align}
 to write down the single strand idempotents
-\dave{check/comment on normalization conventions.}
 \begin{align}
 \label{OneStrandIdempotent}
 \tilde{e}_{ab}(\omega_x,c,j) \; = \; \OneStrandIdempotentMTCpsi
 %g(a,b,\omega_x,c,j)  \cdot h(a,b,\omega_x,c,j) 
 \end{align}
 These idempotents are essentially the same as the ones described earlier in \eqref{idempotent_one_strand}. 
-The particular representative of the isomorphism class is given by choosing $c \in a\tp b$, and a vector from $\mu_j \in V^{ab}_c(\mcc/\psi)$.
+The particular representative of the isomorphism class is given by choosing $c \in a\tp b$, and appropriatey normalized vectors $\mu_j \in V^{ab}_c(\mcc/\psi)$, and $\nu_j \in V^{c}_{ab}(\mcc/\psi)$.
 We will denote the parity of $\mu_j \in V^{ab}_c(\mcc/\psi)$ by $\sigma_j=1$ $(\sigma_j = -1)$ if the chosen basis vector $\mu_j$ in the fusion space $V^{ab}_c(\mcc/\psi)$ is even (odd).
 The twists of the idempotents are given by,
 \begin{align} 
+\label{CmodPsiTwistsModular}
 T\cdot \tilde{e}(a,b,\omega_x,c,j)  =\left[  \frac{\theta_a}{\theta_b} (-1)^{x (\nu_a + \nu_b)}(-s(J))^{(1-\sigma_j)/2}  \right ] \tilde{e}(a,b,\omega_x,c,j)
 \end{align}
 We will write $\tilde{e}(a,b,\omega_x,c,j)$ as $m_{ab}(\omega_x,c,j)$ 
 if the idempotent is m-type and $q_{ab}(\omega_x,c,j)$ if the idempotent is q-type.
-For $SU(2)_6/\psi$ we list a complete set of minimal idempotents, 
-we find 14 m-type idempotents for the bounding spin structure, 
+For $SU(2)_6/\psi$ we list a complete set of representatives of minimal idempotents.
+We find 14 m-type idempotents for the bounding spin structure, 
 and 14 idempotents for the non-bounding spin structure, 7 are m-type and 7 are q-type. 
 Explicitly, the idempotents and corresponding twists are listed in tables \ref{bounding_SU26} and \ref{nonbounding_SU26}.
 Note that if $a$ is q-type, then $\tilde{e}(a,b,\omega_\unit,j)$ is isomorphic to $\tilde{e}(a,b,\omega_\psi,j)$ and so we only list one of them.
@@ -6316,7 +6342,11 @@ $m_{22}(\omega_\psi,c,j)$ &$1$ \\
 \end{tabu}
 }&}
 \end{align}
-\caption{ Bounding idempotents for $SU(2)_6/\psi$
+\caption{ Bounding idempotents for $SU(2)_6/\psi$.
+Where $c \in a \tp b$ and $j$ labels the choice of in the fusion space $V^{ab}_c (\mcc/\psi)$.
+\dave{Some of these labels are determined, 
+e.g., $m_{00}(\omega_0,c,j)$ can be simplified to $m_{00}(\omega_0,m_0,0)$.
+Should we do that for each case?}
 }
 \label{bounding_SU26}
 \end{center}
@@ -6573,12 +6603,12 @@ Finding the idempotents in the $SO(3)_6/\psi$ theory is more difficult, since th
 %However, the sole cause of its non-modularity is the transparent fermion $\psi$, 
 %and it can be made modular by performing a ``modular extension'' and introducing defects 
 %which braid non-trivially with $\psi$, see \cite{bruillard2017} for more details.
-But since $SO(3)_6$ is obtained from $SU(2)_6$ by discarding the elements in $SU(2)_6$ 
+However since $SO(3)_6$ is obtained from $SU(2)_6$ by discarding the elements in $SU(2)_6$ 
 that braid nontrivially with $\psi$, $SU(2)_6$ is a modular extension of $SO(3)_6$ (in fact, it is the minimal modular extension). 
 This fact will allow us to compute the idempotents in the $SO(3)_6/\psi$ theory using our knowledge of the $SU(2)_6$ theory. 
 
 Applying \eqref{OneStrandIdempotent} directly to $SO(3)_6$ will not yield a complete set of minimal idempotents due to the lack of modularity. 
-Instead we use  \eqref{OneStrandIdempotent} by taking pairs of simple objects $(a,b)$ from $SU(2)_6/\psi$ whose fusion product is always in $SO(3)_6/\psi$.
+Instead we use  \eqref{OneStrandIdempotent} by taking pairs of simple objects $(a,b)$ from $SU(2)_6/\psi \times SU(2)_6/\psi$ whose tensor product is always in $SO(3)_6/\psi$.
 Additionally, within this subset we need to take an appropriate linear combination of the $SU(2)_6/\psi$ idempotents so that the resulting annulus only has strands labeled by objects in $SO(3)_6/\psi$.
 This linear combination is given by taking $\tilde(e)_{ab}(\omega_\unit, c,j)+\tilde(e)_{ab}(\omega_\psi, c,j)$ which results in the minimal idempotent,
 \begin{align}
@@ -6588,7 +6618,7 @@ where the labels $(a,b) \in I_0/\psi \times I_0/\psi \cup I_1/\psi \times I_1/\p
 One can show that the procedure creates a complete set of minimal idempotents by direct calculation. 
 The bounding idempotents are found when $(a,b) \in I_0/\psi \times I_0/\psi$, 
 these are the minimal idempotents found from a naive application of \eqref{OneStrandIdempotent}. 
-The non-bounding idempotents are given by by $(a,b) \in I_1/\psi \times I_1/\psi$
+The non-bounding idempotents are given by $(a,b) \in I_1/\psi \times I_1/\psi$
 
 
 
@@ -6622,7 +6652,7 @@ into the annulus only contains linear combinations of tubes in the annular categ
 \end{comment} 
 
 
-We now write down the primitive idempotents of $SO(3)_6/\psi$ and their topological spins using the same notation as in section \ref{SU2psiIdempotents}. 
+We now write down the primitive idempotents of $SO(3)_6/\psi$ and their twists using the same notation as in section \ref{SU2psiIdempotents}. 
 In the bounding sector $J = B$, we have $4$ m-type idempotents, given by
 \begin{align}
 \xymatrix{
@@ -6653,7 +6683,8 @@ $m_{22}(\omega_\unit + \omega_\psi,c,j)$ &$ \sigma_j $\\
 %I added a paragraph on it, check it out and see if it clears things up.
 %}
 %\ethan{awesome!}
-meanwhile the non-bounding idempotents are given by,
+with $c \in m_2 \tp m_2$ and $j$ labeling a vector in the fusion space $V^{m_2 m_2}_c(\mcc/\psi)$.
+Meanwhile the non-bounding idempotents are given by,
 \begin{align}
 \xymatrix{
 %\underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega}{N}}
@@ -6688,8 +6719,9 @@ $m_{33}(\omega_\unit + \omega_\psi,c,j)$ &$ 1 $\\
 %}
 %\end{align}
 %\dave{I need to convince myself of that last line again. Naively it could be $\mathbb{C}^{1|1} m_2$. But I think the oddly isomorphic idempotent is actually just the same idempotent.}
+Similarly $c \in q_3 \tp q_3$ and $j$ labels a vector in $V^{q_3 q_3}_c(\mcc/\psi)$.
 Here we've made use of the above observation that only $a \tp b$ need be in $SO(3)_6/\psi$, 
-hence these idempotents have objects labeled by $1$ and $3$.
+hence the pairs $(a,b)$ in these idempotents are labeled by $m_1$ and $q_3$.
 %Notice that for $Q_{13}$, $Q_{31}$, and $M_{33}$ the coefficient in front of $m_2$ is $\cc^{1|0}$, 
 %and not $\cc^{1|1}$ as the fusion rules would indicate, see Table \ref{SU2six_psi_fusion}. 
 %This is because $q_3$ is a q-type object in $SU(2)_6/\psi$, 
@@ -6698,7 +6730,8 @@ hence these idempotents have objects labeled by $1$ and $3$.
 As the notation suggests $m_{33}$ is not q-type,
  to see this we note that if it were, then there would 
 be an odd endomorphism of $\tube(SO(3)_6/\psi)$ with trivial boundary conditions (since $m_0 \in q_3 \tp q_3$).
-That would require $SO(3)_6/\psi$ to contain a q-type simple object, but as explained in \eqref{noq-type} this is not possible since $\psi$ is transparent in $SO(3)_6$.
+That would require $SO(3)_6/\psi$ to contain a q-type simple object, 
+but as explained in \eqref{noq-type} this is not possible since $\psi$ is transparent in $SO(3)_6$.
 %But this isn't possible, since we would have an odd tube in $\tube(SO(3)_6/\psi)$ with trivial boundary conditions.
 %This is only possible if $SO(3)_6/\psi$ has a particle with an odd endomorphism, 
 %but as noted in \eqref{noq-type} this is not possible since $\psi$ is transparent in this theory.
@@ -6718,12 +6751,14 @@ similarly for $q_{31}$.
 %%%%%%%%%%%%%%%%%%%%%
 
 The modular transformations can be computed by direct calculation. 
-\dave{What are we going to say about spins?}
-\kw{I think we can leave the twist and T-matrix stuff more or less as is}
-\kw{Need to change ``spin" to ``twist" in this subsection}
-We already have the topological spins (which are read off from the string-net labels of the idempotents), 
-and the modular $T$ transformation can be obtained directly from the spins.
-The modular $S$-transformation requires a little more work, and so we discuss this in a little more detail.
+%\dave{What are we going to say about spins?}
+%\kw{I think we can leave the twist and T-matrix stuff more or less as is}
+%\kw{Need to change ``spin" to ``twist" in this subsection}
+%\dave{OK, I think I got all of them.}
+We already have the twists (which are read off from the string-net labels of the idempotents), 
+and the modular $T$-transformation can be obtained directly from the twists.
+The modular $S$-transformation requires a little more work, 
+and so we discuss this in a little more detail.
 
 When gluing the idempotents along the boundary of the annulus we have to take linear combinations of 
 idempotents in the same isomorphism class so that the glued up idempotent is invariant under local relations. 
@@ -6733,15 +6768,14 @@ Using the basis above, one finds
 \begin{align}
 \tilde{e}_{ab}(\omega_\unit + \omega_\psi, c, j) \; \xrightarrow{\;\;  \text{cl}_Y \;\;  }\; \tilde{e}_{ab} \;=\;  \TorusBraidBasis{a}{b\;}{}{\omega}{X}{Y}
 \end{align}
-\dave{I wrote it this way to avoid commenting on the sign $s(Y)$ that can appear if $\mu_j$ has odd parity.
-It seemed like it may cause more confusion than it's worth.
-We could add a footnote if we like.}
-where $a$ and $b$ label the idempotent as before, and $X$, $Y$, denote the two spin structures, and the omega loop is for $SO(3)_6/\psi$. 
+%\dave{I wrote it this way to avoid commenting on the sign $s(Y)$ that can appear if $\mu_j$ has odd parity.
+%It seemed like it may cause more confusion than it's worth.
+%We could add a footnote if we like.}
+where $a$ and $b$ label the idempotent as before, $X$ denotes the spin structure of the idempotent which is fixed by $b$, $Y$ the spin structure around the newly closed loop, 
+and the omega loop is for $SO(3)_6/\psi$. 
 We warn the reader, that when $X$ is non-bounding, 
 $a, b\in \{ m_1, q_3 \}$, which lies outside of $SO(3)_6/\psi$.
 However, when the diagram is fused into the torus we find a torus string net labeled with objects only in $SO(3)_6/\psi$, as required.
-%\ethan{what's the $\Omega$ loop defined as? Why not $\omega$ (or $\omega_0$?}
-%\dave{$\omega_0$}
 
 
 In this graphical convention, the modular $S$-transformation acts as
@@ -6782,7 +6816,7 @@ The extra factors of $\sqrt{2}$ come from the fact that two of the idempotents i
 are q-type, and as such have endomorphism algebras of nontrivial dimension that affect how the $S$-
 matrix is normalized.
 \end{comment}
-Explicitly, the $S$-matrix acts on each of three spin tori with at least one bounding cycle as 
+Explicitly, the $S$-matrix acts on each of the three bounding spin tori as 
 \begin{align}
 \left( \begin{matrix}
 m_{00}\\
@@ -6848,8 +6882,10 @@ q_{31}\\
 m_{33}\\
 \end{matrix} \right)_{NB}
 \end{align}
-As mentioned earlier, the Dehn twists follow directly from the spins computed above.
-Again for the tori with spin structures containing at least one bounding cycle, we find
+As mentioned earlier, 
+the Dehn twists follow directly from the twists computed above; 
+see \eqref{CmodPsiTwistsModular}.
+Again for the bounding spin tori we find
 \begin{align}
 \left( \begin{matrix}
 m_{00}\\
@@ -6939,8 +6975,8 @@ of net configurations on the $NN$ spin torus is given by
 %For this spin structure we find four states, which can be identified with two m-type and two q-type idempotents. 
 On the non-bounding torus, m-type idempotents always close up into even parity states, 
 while q-type idempotents close up into odd parity states.
-The first two vectors have even parity and correspond to the closed up idempotents $M_{11}$ and $M_{33}$, 
-while the second two have odd parity and correspond to the closed up idempotents $Q_{13}$ and $Q_{31}$.
+The first two vectors have even parity and correspond to the closed up idempotents $m_{11}$ and $m_{33}$, 
+while the second two have odd parity and correspond to the closed up idempotents $q_{13}$ and $q_{31}$.
 After some calculation one finds that the $S$ and $T$ modular matrices act as 
 \begin{align}
 \xymatrix{
@@ -7324,11 +7360,12 @@ Y_{ab} \Vrhorhorhoodd \quad \quad Y =  \frac{e^{7 i \pi/12}}{\sqrt{2}}\left( \be
 \subsubsection{Local relations on the annulus}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\kw{I think we should five a basis (even and odd) of the morphism spaces of the tube cat; (B.N) x (empty-empty, empty-rho, rho-rho) = 6 separate morphism spaces.}
-\dave{Sounds good.
-Is a table like the following three what you have in mind?
-Once we've added all the data we need, 
-I'll format it so it fits in the page better (nothing fanct, just a resizebox or something).}
+%\kw{I think we should five a basis (even and odd) of the morphism spaces of the tube cat; (B.N) x (empty-empty, empty-rho, rho-rho) = 6 separate morphism spaces.}
+%\dave{Sounds good.
+%Is a table like the following three what you have in mind?
+%Once we've added all the data we need, 
+%I'll format it so it fits in the page better (nothing fanct, just a resizebox or something).}
+%\dave{referenced each table throughout this subsection.}
 
 \begin{table}
 \scalebox{0.86}{
@@ -7345,7 +7382,10 @@ $\mor^N(e \ra e) $
 &&$\AddDat{\hTube}{N}{\dotb} $\\
 \end{tabu}
 }
-\caption{$\mor(e \ra e) \in \tube(\halfesix)$}
+\caption{We have listed a complete basis of morphisms for $\text{mor}B(e \ra e)$.
+The labels above each tube are short-hand for that tube, $e$ -- empty, $h$ -- horizontal. 
+The dot above $h$ denotes that the morphism is an odd morphism.}
+\label{etoe}
 
 \bigskip
 \bigskip
@@ -7384,10 +7424,12 @@ $\mor^N(\rho \ra e) $
 &$\AddDat{\AddDat{\TaddownTubeprime{1}}{N}{\dota}}{}{} $
 \end{tabu}
 }
-\caption{$\mor(e \ra \rho) \in  \tube(\halfesix) $
+\caption{A complete basis of morphisms $\mor(\rho \ra e) \in  \tube(\halfesix) $.
+We have denoted these by $k_1$ and $\stackrel{\bullet}{k}_1$.
 %	\kw{shouldn't there be only half this number, because of the relations?  $1|1$ instead of $2|2$}
 %	\dave{Fixed.}
 }
+\label{rhotoe}
 
 
 \bigskip
@@ -7419,14 +7461,17 @@ $\mor^N(\rho \ra \rho) $
 &$ \AddDat{\XTube{1}{2}}{N}{\dotc}$\\
 \end{tabu}
 }
-\caption{$\mor(\rho \ra \rho) \in  \tube(\halfesix)$}
+\caption{A complete basis of morphisms for $\mor(\rho \ra \rho) \in  \tube(\halfesix)$.
+The labels above each tube are short-hand for that tube, 
+$v$ -- vertical, $t$ -- twist, $X$ -- crossed, and a dot denotes an odd vector.}
+\label{rhotorho}
 \end{table}
-
 
 
 
 Let us now investigate local relations on the tubes. 
 We will make use of the notation 
+\dave{Maybe change to $s(X) = \pm1$ as we did in other sections.}
 %\ethan{edited this because $|X|$ suggests a relation to fermion parity which isn't there and since we used $s(X)$ at one point earlier in the paper. Can do a find+replace to revert if you don't dig it}
 %\dave{Works for me.}
 \begin{align}
@@ -7437,7 +7482,8 @@ s(X) =\left\{
                 \end{array}
               \right.
 \end{align}
-We then have 
+A complete basis of morphisms from trivial (empty) boundary to the empty boundary is listed in Table \ref{etoe}. 
+They satisfy,
 \begin{align}
 & \AddDat{\hTube}{X}{} \; =  (-1)^{s(X)}  \AddDat{\hTube}{X}{} \quad \quad \quad \AddDat{\hTube}{X}{\dotb} \; =  -(-1)^{s(X)}  \AddDat{\hTube}{X}{\dotb} 
 \label{hlocalrelation}
@@ -7446,9 +7492,12 @@ which is found from taking two fermions out of the vacuum and sliding them aroun
 Similarly we have,
 \begin{align}
 \AddDat{\TaddownTube{\mu }}{X}{}\;= (-1)^{s(X)} \sigma^{x}_{\mu \nu} \AddDat{\TaddownTube{\nu}}{X}{} \quad \quad \quad
-\AddDat{\TadupTube{\mu}}{X}{}\;= (-1)^{s(X)} \sigma^y_{\mu \nu} \AddDat{\TadupTube{\nu}}{X}{}
+\AddDat{\TadupTube{\mu}}{X}{}\;= (-1)^{s(X)} \sigma^y_{\mu \nu} \AddDat{\TadupTube{\nu}}{X}{}.
 \end{align}
+Hence some of these states are linearly dependent, and so a complete basis of morphisms is found if we fix the fusion space, and also consider the action of the odd endomorphism. 
+The basis we choose is listed in Table \ref{rhotoe}.
 
+\begin{comment}
 \begin{table}
 \begin{tabu}{ r  c c c c c c }
 &$e$&$h$&$v$&$t$&$X_{11}$&$X_{12}$ \\
@@ -7470,6 +7519,7 @@ The tubes $X_{11}$ and $X_{12}$ are oddly isomorphic.
 \dave{I was probably only listing tubes appearing in the idempotents. 
 I'm making the new tables now.}
 \end{table}
+\end{comment} 
 
 
 \begin{comment}
@@ -7493,17 +7543,18 @@ The labels above each tube are short-hand for that tube, $e$-- empty, $h$-- hori
 \end{figure}
 \end{comment}
 
+The morphisms of $\text{mor}(\rho \ra \rho)$ satisfy,
 \begin{align}
 & \AddDat{\XTube{\mu}{\nu}}{X}{} \;\;  =(-1)^{s(X)} (\sigma^x \tp \sigma^y )_{\mu \nu; \kappa \tau}\AddDat{\XTube{\kappa}{\tau}}{X}{} 
 \label{XlocalRelationAnnulus}
 \end{align}
-We also have 
+and also,
 %the odd isomorphism
 \begin{align}
 \AddDat{\XTube{\mu}{\nu}}{X}{\dotc} \;= (\sigma^y \tp \sigma^z)_{\mu \nu; \kappa \tau} \; \AddDat{\XTube{\kappa}{\tau}}{X}{\dota}
 \end{align}
-
-We can use these results to obtain a minimal basis for the vector space of string-nets on the annulus, which is given in Figure \ref{AnnulusBasis}.
+We can use these results to obtain a minimal basis for $\text{mor}(\rho \ra \rho)$ which is given in Table \ref{rhotorho}.
+% for the vector space of string-nets on the annulus, which is given in Figure \ref{AnnulusBasis}.
 
 
 
@@ -7561,10 +7612,10 @@ d_\rho \AddDatTorus{\eTube}{X}{Y} \; = \;
 \AddDatTorus{\TorusLocalRelationa}{X}{Y} \;=\;
 \AddDatTorus{\TorusLocalRelationb}{X}{Y} \;=\; 
 \AddDatTorus{\TorusLocalRelationc}{X}{Y} \;=\; 
-\sum_\lambda \; m_\lambda \AddDatTorus{\TorusNoLabelsx{\lambda}}{X}{Y},
+\sum_\lambda \; c_\lambda \AddDatTorus{\TorusNoLabelsx{\lambda}}{X}{Y},
 \label{rhoLoopRelation}
 \end{align}
-where $m_\lambda$ are coefficients that depend on the $F$-symbols.
+where $c_\lambda$ are coefficients that depend on the $F$-symbols.
 The string of equalities gives an additional local relation, in particular, it allows us 
 solve for the tubes in (\ref{XLocalRelation}) above in terms of the other non-zero tubes.
 Explicitly in the three sectors $(B,B), (B,N)$, and $(N,B)$ we have,
@@ -7674,11 +7725,13 @@ This mapping is performed by simply condensing fermions off the tubes in $\tube(
 Special care must be taken with respect to spin structure issues, since removing $y$ lines may force a pair of fermions to traverse a cycle of the tube. 
 We will see that there are six excitations in the condensed theory: three excitations 
 with bounding spin structure, and three with non-bounding spin structure. 
-We index them as $\mca = \{ M_1, M_2, M_3\}$ and $\mcv = \{ Q_1, Q_2, M_6 \}$, 
-\kw{I think we should switch to lower case notation for idempotents}
+We index them as $\mca = \{ m_1, m_2, m_3\}$ and $\mcv = \{ q_1, q_2, m_6 \}$, 
+%\kw{I think we should switch to lower case notation for idempotents}
+%\dave{sure.}
+%\dave{done.}
 where $\mca$ is the set of non-vortex anyons and $\mcv$ is the set of vortex defects. 
 As the notation suggests, there are two q-type excitations and one m-type excitation 
-(namely $M_6$) in $\mcv$, while all of the excitations in $\mca$ are (necessarily) m-type. 
+(namely $m_6$) in $\mcv$, while all of the excitations in $\mca$ are (necessarily) m-type. 
 
 
 \dave{Re-worded a bit. 
@@ -7692,11 +7745,11 @@ We could add a remark about that.
 In the notation of \cite{Hong2008}, we find the following maps from idempotents in $\tube(\halfesix)$ to those in in $\tube(\halfesix / y)$:
 \begin{align}
 \xymatrix @!0 @M=1mm @C=10mm{
-& &M_1 && M_2 && &&& M_3 &&  \\
+& &m_1 && m_2 && &&& m_3 &&  \\
  \\
  \quad&\mathds{1} \ar[ruu] \quad & Y \ar[uu] & W\ar[dd] & U\ar[uu] & V \ar[uul] & X_1 \ar[dd] & X_{2}\ar[ddr] &X_{3} \ar[dd] & X_4\ar[uu] & X_5\ar[uul] &  \\
 \\
-&&&Q_1& &&Q_2 &&M_6& &&  \\
+&&&q_1& &&q_2 &&m_6& &&  \\
 },
 \end{align}
 where the center line lists the idempotents in $\tube(\halfesix)$ and the upper and lower objects are the objects in $\tube(\halfesix / y)$.
@@ -7726,9 +7779,9 @@ where the center line lists the idempotents in $\tube(\halfesix)$ and the upper 
 \begin{table}
 {{\tabulinesep=1.2mm
 \begin{tabu}{ c c | c c }
-type &spin & $\AddDat{\eTube}{B}{}$ & $\AddDat{\hTube}{B}{}$ \\ \hline
-$\text{M}_{1}$ &$1$ & $\frac{1}{d \sqrt{3}}$ & $\frac{1}{2 \sqrt{3}}$\\ \hline
-$\text{M}_{2}$&$1$ & $ \frac{d}{2 \sqrt{3}}$ & $\frac{-1}{2 \sqrt{3}}$ 
+type &twist & $\AddDat{\eTube}{B}{}$ & $\AddDat{\hTube}{B}{}$ \\ \hline
+$\text{m}_{1}$ &$1$ & $\frac{1}{d \sqrt{3}}$ & $\frac{1}{2 \sqrt{3}}$\\ \hline
+$\text{m}_{2}$&$1$ & $ \frac{d}{2 \sqrt{3}}$ & $\frac{-1}{2 \sqrt{3}}$ 
 \end{tabu}
 }}
 \caption{
@@ -7741,18 +7794,18 @@ The particle is a linear combination of the tubes shown at the top of the table 
 {\tabulinesep=1.2mm
 \begin{tabu}{ c c | c c c c }
 type &spin &  $\AddDat{\vTube}{B}{} $ & $\AddDat{\tTube}{B}{} $ & $\AddDat{\XTube{1}{1}}{B}{} $ & $\AddDat{\XTube{1}{2}}{B}{} $ \\ \hline
-$\text{M}_{2}$&$1$ & $\frac{1}{2 \sqrt{3}}$  & $\frac{1}{2 \sqrt{3}}$  & $\frac{e^{i \pi /4}}{2 \sqrt{d}}$ & $\frac{- e^{-i \pi/4} }{2 \sqrt{3d}}$ \\
-$\Pi(\text{M}_2)$&$-1$  & $\frac{1}{2 \sqrt{3}}$  & $\frac{-1}{2 \sqrt{3}}$  &  $\frac{ e^{-i \pi/4} }{2 \sqrt{3d}}$& $\frac{-e^{i \pi /4}}{2 \sqrt{d}}$ \\ \hline
-$\text{M}_3$&$e^{i \pi /3}$  & $\frac{1}{2 + d}$ & $\frac{e^{- i \pi /3}}{2+d}$ & $\frac{- e^{i \pi /12}}{\sqrt{3d}}$ &  \\
-$\Pi(\text{M}_3)$&$-e^{i \pi /3}$  & $\frac{1}{2 + d}$ & $\frac{-e^{- i \pi /3}}{2+d} $&  & $\frac{e^{i \pi /12}}{\sqrt{3d}}$  \\ 
+$\text{m}_{2}$&$1$ & $\frac{1}{2 \sqrt{3}}$  & $\frac{1}{2 \sqrt{3}}$  & $\frac{e^{i \pi /4}}{2 \sqrt{d}}$ & $\frac{- e^{-i \pi/4} }{2 \sqrt{3d}}$ \\
+$\Pi(\text{m}_2)$&$-1$  & $\frac{1}{2 \sqrt{3}}$  & $\frac{-1}{2 \sqrt{3}}$  &  $\frac{ e^{-i \pi/4} }{2 \sqrt{3d}}$& $\frac{-e^{i \pi /4}}{2 \sqrt{d}}$ \\ \hline
+$\text{m}_3$&$e^{i \pi /3}$  & $\frac{1}{2 + d}$ & $\frac{e^{- i \pi /3}}{2+d}$ & $\frac{- e^{i \pi /12}}{\sqrt{3d}}$ &  \\
+$\Pi(\text{m}_3)$&$-e^{i \pi /3}$  & $\frac{1}{2 + d}$ & $\frac{-e^{- i \pi /3}}{2+d} $&  & $\frac{e^{i \pi /12}}{\sqrt{3d}}$  \\ 
 \end{tabu}
 }
-\caption{\label{MIdempotents} Quasiparticles of $\halfesix$ with bounding spin structures, and boudary condition $\rho$.
+\caption{\label{MIdempotents} Quasiparticles of $\halfesix$ with bounding spin structures, and boundary condition $\rho$.
 %All are m-type, with the horizontal lines separating the three quasiparticles. 
 %Two of the three quasiparticles are two dimensional, formed out of two smaller simple modules. $\Pi$ is an odd isomorphism. 
 The tube with a single $\rho$ line is a direct sum of four simple objects, 
-two of which we name $M_2$ and $M_3$.
-The other two are oddly isomorphic to $M_2$ and $M_3$ which we denote $\Pi(M_2)$ and $\Pi(M_3)$.
+two of which we name $m_2$ and $m_3$.
+The other two are oddly isomorphic to $m_2$ and $m_3$ which we denote $\Pi(m_2)$ and $\Pi(m_3)$.
 %\kw{It doesn't really make sense to talk about the ``dimension" of an object/quasiparticle.
 %I would say that the non-simple object ``strand" is a direct sum of four simple objects, two of which we name
 %$M_2$ and $M_3$.
@@ -7768,18 +7821,18 @@ The other two are oddly isomorphic to $M_2$ and $M_3$ which we denote $\Pi(M_2)$
 \begin{table}
 {{\tabulinesep=1.2mm
 \begin{tabu}{ c c | c c }
-type &spin & $\AddDat{\eTube}{B}{}$ & $\AddDat{\hTube}{B}{}$ \\ \hline
-$\text{M}_{1}$ &$1$ & $\frac{1}{d \sqrt{3}}$ & $\frac{1}{2 \sqrt{3}}$\\ \hline
-$\text{M}_{2}$&$1$ & $ \frac{d}{2 \sqrt{3}}$ & $\frac{-1}{2 \sqrt{3}}$ 
+type &twist & $\AddDat{\eTube}{B}{}$ & $\AddDat{\hTube}{B}{}$ \\ \hline
+$\text{m}_{1}$ &$1$ & $\frac{1}{d \sqrt{3}}$ & $\frac{1}{2 \sqrt{3}}$\\ \hline
+$\text{m}_{2}$&$1$ & $ \frac{d}{2 \sqrt{3}}$ & $\frac{-1}{2 \sqrt{3}}$ 
 \end{tabu}
 }
 $\qquad$ {\tabulinesep=1.2mm
 \begin{tabu}{ c c | c c c c }
-type &spin &  $\AddDat{\vTube}{B}{} $ & $\AddDat{\tTube}{B}{} $ & $\AddDat{\XTube{1}{1}}{B}{} $ & $\AddDat{\XTube{1}{2}}{B}{} $ \\ \hline
-$\text{M}_{2}$&$1$ & $\frac{1}{2 \sqrt{3}}$  & $\frac{1}{2 \sqrt{3}}$  & $\frac{e^{i \pi /4}}{2 \sqrt{d}}$ & $\frac{- e^{-i \pi/4} }{2 \sqrt{3d}}$ \\
-$\Pi(\text{M}_2)$&$-1$  & $\frac{1}{2 \sqrt{3}}$  & $\frac{-1}{2 \sqrt{3}}$  &  $\frac{ e^{-i \pi/4} }{2 \sqrt{3d}}$& $\frac{-e^{i \pi /4}}{2 \sqrt{d}}$ \\ \hline
-$\text{M}_3$&$e^{i \pi /3}$  & $\frac{1}{2 + d}$ & $\frac{e^{- i \pi /3}}{2+d}$ & $\frac{- e^{i \pi /12}}{\sqrt{3d}}$ &  \\
-$\Pi(\text{M}_3)$&$-e^{i \pi /3}$  & $\frac{1}{2 + d}$ & $\frac{-e^{- i \pi /3}}{2+d} $&  & $\frac{e^{i \pi /12}}{\sqrt{3d}}$  \\ 
+type &twist &  $\AddDat{\vTube}{B}{} $ & $\AddDat{\tTube}{B}{} $ & $\AddDat{\XTube{1}{1}}{B}{} $ & $\AddDat{\XTube{1}{2}}{B}{} $ \\ \hline
+$\text{m}_{2}$&$1$ & $\frac{1}{2 \sqrt{3}}$  & $\frac{1}{2 \sqrt{3}}$  & $\frac{e^{i \pi /4}}{2 \sqrt{d}}$ & $\frac{- e^{-i \pi/4} }{2 \sqrt{3d}}$ \\
+$\Pi(\text{m}_2)$&$-1$  & $\frac{1}{2 \sqrt{3}}$  & $\frac{-1}{2 \sqrt{3}}$  &  $\frac{ e^{-i \pi/4} }{2 \sqrt{3d}}$& $\frac{-e^{i \pi /4}}{2 \sqrt{d}}$ \\ \hline
+$\text{m}_3$&$e^{i \pi /3}$  & $\frac{1}{2 + d}$ & $\frac{e^{- i \pi /3}}{2+d}$ & $\frac{- e^{i \pi /12}}{\sqrt{3d}}$ &  \\
+$\Pi(\text{m}_3)$&$-e^{i \pi /3}$  & $\frac{1}{2 + d}$ & $\frac{-e^{- i \pi /3}}{2+d} $&  & $\frac{e^{i \pi /12}}{\sqrt{3d}}$  \\ 
 \end{tabu}
 }
 \caption{\label{MIdempotents} Quasiparticles of $\halfesix$ with bounding spin structures. 
@@ -7804,31 +7857,33 @@ The other two are oddly isomorpich to $M_2$ and $M_3$ which we denote $\Pi(M_2)$
 \begin{table}
 {{\tabulinesep=1.2mm
 \begin{tabu}{ c c | c }
-type& spin & $\AddDat{\eTube}{N}{}$ \\ \hline
-$\text{Q}_{1}$ &$1$&1
+type& twist & $\AddDat{\eTube}{N}{}$ \\ \hline
+$\text{q}_{1}$ &$1$&1
 \end{tabu}
 }
 $\qquad$
 {\tabulinesep=1.2mm
 \begin{tabu}{c  c | c c c c }
-type& spin & $\AddDat{\vTube}{N}{}$ & $\AddDat{\tTube}{N}{}$  & $\AddDat{\XTube{1}{1}}{N}{}$ & $\AddDat{\XTube{1}{2}}{N}{}$ \\ \hline
-$\text{Q}_1$&$1$ & $ \frac{1}{d}$&$ \frac{1}{d} $& $\frac{- e^{i \pi/4}}{d\sqrt{d}}$ & $\frac{- e^{i \pi/4}}{d\sqrt{d}}$ \\ \hline
-$\text{Q}_2$&$-i$ &$ \frac{1}{2+d} $& $\frac{i}{2+d}$ & $\frac{i \gamma}{\sqrt{2+d}}$ & $\frac{i \gamma}{\sqrt{2+d}}$ \\ \hline 
-$\text{M}_6$&$e^{5i \pi/6}$&$ \frac{1}{2+d} $&$ \frac{e^{-5i\pi/6}}{2+d} $ & $\frac{- \alpha e^{5 i \pi/6}}{\sqrt{2+d}}$ & $\frac{\beta e^{5 i \pi /6}}{\sqrt{2+d}}$ \\ 
-$\Pi(\text{M}_6)$&$e^{5i \pi/6}$&$ \frac{1}{2+d} $&$ \frac{e^{-5i\pi/6}}{2+d} $ &  $\frac{\beta e^{5 i \pi /6}}{\sqrt{2+d}}$  &$\frac{- \alpha e^{5 i \pi/6}}{\sqrt{2+d}}$ 
+type& twist & $\AddDat{\vTube}{N}{}$ & $\AddDat{\tTube}{N}{}$  & $\AddDat{\XTube{1}{1}}{N}{}$ & $\AddDat{\XTube{1}{2}}{N}{}$ \\ \hline
+$\text{q}_1$&$1$ & $ \frac{1}{d}$&$ \frac{1}{d} $& $\frac{- e^{i \pi/4}}{d\sqrt{d}}$ & $\frac{- e^{i \pi/4}}{d\sqrt{d}}$ \\ \hline
+$\text{q}_2$&$-i$ &$ \frac{1}{2+d} $& $\frac{i}{2+d}$ & $\frac{i \gamma}{\sqrt{2+d}}$ & $\frac{i \gamma}{\sqrt{2+d}}$ \\ \hline 
+$\text{m}_6$&$e^{5i \pi/6}$&$ \frac{1}{2+d} $&$ \frac{e^{-5i\pi/6}}{2+d} $ & $\frac{- \alpha e^{5 i \pi/6}}{\sqrt{2+d}}$ & $\frac{\beta e^{5 i \pi /6}}{\sqrt{2+d}}$ \\ 
+$\Pi(\text{m}_6)$&$e^{5i \pi/6}$&$ \frac{1}{2+d} $&$ \frac{e^{-5i\pi/6}}{2+d} $ &  $\frac{\beta e^{5 i \pi /6}}{\sqrt{2+d}}$  &$\frac{- \alpha e^{5 i \pi/6}}{\sqrt{2+d}}$ 
 \end{tabu}
  }
 \caption{  \label{QIdempotents} Quasiparticles of $\frac{1}{2} E6$ with vortex (periodic) spin structures. Two are q-type, and one is m-type. The m-type particle is two-dimensional, consisting of of two smaller simple modules.  $\Pi$ is an odd isomorphism, and 
-$\alpha = \frac{1}{2} \left( 1+ 1/\sqrt{2d+1} \right)$, and $\beta = \frac{1}{2} \left( 1- 1/\sqrt{2d+1} \right)$. \dave{Note: old notation for odd isomorphism is $X(.)$}}}
+$\alpha = \frac{1}{2} \left( 1+ 1/\sqrt{2d+1} \right)$, and $\beta = \frac{1}{2} \left( 1- 1/\sqrt{2d+1} \right)$. 
+%\dave{Note: old notation for odd isomorphism is $X(.)$}
+}}
 \end{table}
 
 \begin{table}
 \begin{flalign*} & \begin{array}{r@{ \quad \quad \quad}  c @{\quad \quad} c @{\quad \quad} c @{\quad \quad \quad \quad } c  @{\quad \quad} c @{\quad \quad} c  }
-			\text{particle}				&M_1		&M_2		&M_3	&Q_1	&Q_2	&M_6 \\[.5ex] \hline \\ [-2ex]
+			\text{particle}				&m_1		&m_2		&m_3	&q_1	&q_2	&m_6 \\[.5ex] \hline \\ [-2ex]
 			\text{quantum dimension}		&1			&1+d		&d		&2+d	&d		&d\\ [.5ex]
-			\text{topological spin}		&1			&1		&e^{- i \pi/3}	&1	&i	&e^{-5 i \pi /6} \\
+			\text{twist}				&1			&1		&e^{- i \pi/3}	&1	&i	&e^{-5 i \pi /6} \\
 						\end{array} & \end{flalign*}
-	\caption{The $\halfesix$ quantum dimensions and topological spins. 
+	\caption{The $\halfesix$ quantum dimensions and twists. 
 	 The total quantum dimension is given by $\mcd = d\sqrt{6}$.}
 	\label{halfesixFusionRules}
 \end{table}
@@ -7840,31 +7895,31 @@ We list the fusion rules in Table \ref{halfesixFusionRules}.
 
 			\begin{table}
 \begin{flalign*} & \begin{array}{c@{ \quad}  | @{\quad \quad} l @{\quad \quad} l @{\quad \quad} l}
-			\mca \tp \mca 		&M_1		&M_2		&M_3		\\[.5ex] \hline \\ [-2ex]
-			M_1		 		&M_1		&M_2		&M_3		\\
-			M_2		 		&M_2		&M_1\oplus \cc^{1|1}M_2	\oplus \cc^{1|1}M_3	&\cc^{1|1}  M_2 \oplus \cc^{0|1}M_3		\\
-			M_3		 		&M_3		&\cc^{1|1} M_2 \oplus \cc^{0|1}M_3		&M_1 \oplus \cc^{0|1}M_2 \oplus M_3		\\
+			\mca \tp \mca 		&m_1		&m_2		&m_3		\\[.5ex] \hline \\ [-2ex]
+			m_1		 		&m_1		&m_2		&m_3		\\
+			m_2		 		&m_2		&m_1\oplus \cc^{1|1}m_2	\oplus \cc^{1|1}m_3	&\cc^{1|1}  m_2 \oplus \cc^{0|1}m_3		\\
+			m_3		 		&m_3		&\cc^{1|1} m_2 \oplus \cc^{0|1}m_3		&m_1 \oplus \cc^{0|1}m_2 \oplus m_3		\\
 			\end{array} & \end{flalign*}
 	
 \begin{flalign*} & \begin{array}{c@{ \quad}  | @{\quad \quad} l @{\quad \quad} l @{\quad \quad} l}
-			\mcv \tp \mca 		&M_1		&M_2									&M_3		\\[.5ex] \hline \\ [-2ex]
-			Q_1				&Q_1		&\cc^{1|1}Q_1 \oplus Q_2 \oplus \cc^{1|1}M_6		&Q_1 \oplus Q_2 \oplus \cc^{1|1}M_6		\\
-			Q_2				&Q_2		&Q_1 \oplus \cc^{1|1} M_6					&Q_1 \oplus  Q_2		\\
-			M_6		 		&M_6		&Q_1 \oplus Q_2 \oplus \cc^{0|1}M_6			&Q_1 \oplus \cc^{0|1} M_6		\\
+			\mcv \tp \mca 		&m_1		&m_2									&m_3		\\[.5ex] \hline \\ [-2ex]
+			q_1				&q_1		&\cc^{1|1}q_1 \oplus q_2 \oplus \cc^{1|1}m_6		&q_1 \oplus q_2 \oplus \cc^{1|1}m_6		\\
+			q_2				&q_2		&q_1 \oplus \cc^{1|1} m_6					&q_1 \oplus  q_2		\\
+			m_6		 		&m_6		&q_1 \oplus q_2 \oplus \cc^{0|1}m_6			&q_1 \oplus \cc^{0|1} m_6		\\
 			\end{array} & \end{flalign*}		
 
 \begin{flalign*} & \begin{array}{c@{ \quad}  | @{\quad \quad} l @{\quad \quad} l @{\quad \quad} l}
-			\mcv \tp \mcv 		&Q_1		&Q_2		&M_6		\\[.5ex] \hline \\ [-2ex]
-			Q_1		 		&\cc^{1|1}M_1\oplus \cc^{2|2} M_2 \oplus \cc^{1|1}M_3		&\cc^{1|1}M_2 \oplus \cc^{1|1}M_3		&\cc^{1|1}M_2 \oplus \cc^{1|1}M_3		\\
-			Q_2		 		&\cc^{1|1}M_2 \oplus \cc^{1|1}M_3		&\cc^{1|1}M_1 \oplus M_3		&\cc^{1|1}M_2		\\
-			M_6		 		&\cc^{1|1}M_2 \oplus \cc^{1|1}M_3 		&\cc^{1|1}M_2 		&\text{\textcolor{red}{$\cc^{0|1}$}}M_1 \oplus M_2 \oplus M_3		\\
+			\mcv \tp \mcv 		&q_1		&q_2		&m_6		\\[.5ex] \hline \\ [-2ex]
+			q_1		 		&\cc^{1|1}m_1\oplus \cc^{2|2} m_2 \oplus \cc^{1|1}m_3		&\cc^{1|1}m_2 \oplus \cc^{1|1}m_3		&\cc^{1|1}m_2 \oplus \cc^{1|1}m_3		\\
+			q_2		 		&\cc^{1|1}m_2 \oplus \cc^{1|1}m_3		&\cc^{1|1}m_1 \oplus m_3		&\cc^{1|1}m_2		\\
+			m_6		 		&\cc^{1|1}m_2 \oplus \cc^{1|1}m_3 		&\cc^{1|1}m_2 		&\text{\textcolor{red}{$\cc^{0|1}$}}m_1 \oplus m_2 \oplus m_3		\\
 			\end{array} & \end{flalign*}
-	\caption{ \label{halfesixFusionRules} $\halfesix$ fusion rules. We define $\mca = \{ M_1, M_2, M_3\}$ and $\mcv = \{ Q_1, Q_2, M_6 \}$ as the set of non-vortex and vortex quasiparticles, respectively. 
+	\caption{ \label{halfesixFusionRules} $\halfesix$ fusion rules. We define $\mca = \{ m_1, m_2, m_3\}$ and $\mcv = \{ q_1, q_2, q_6 \}$ as the set of non-vortex and vortex quasiparticles, respectively. 
 	The $\cc^{p|q}$ denote the vector space associated with $\Delta^{ab}_c$ which is related to the fusion space through $V^{ab}_c =\Delta^{ab}_c \tp \text{End}(c)$.
-	Notice that $M_6$ is self-dual and can only fuse oddly to the vacuum (the relevant fusion channel is marked in red), and hence it has an imaginary Frobenius-Schur indicator.
+	Notice that $m_6$ is self-dual and can only fuse oddly to the vacuum (the relevant fusion channel is marked in red), and hence it has an imaginary Frobenius-Schur indicator.
 	\dave{I need to double check these.}
 	\dave{I think they are now correct.
-	But it may not be a bad idea to double-double check the $M_6$ fusion rules.}
+	But it may not be a bad idea to double-double check the $m_6$ fusion rules.}
 	} 
 \end{table}
 
@@ -7872,15 +7927,17 @@ It is useful to also keep track of the isomorphisms between the different repres
 of an isomorphism class.
 In the present case, we have,
 \begin{align}
-M_2 = \frac{e^{i \pi /4}}{2} \sqrt{\frac{d}{3}} \AddDatTorusDot{\TaddownTube{1}}{B}{}{}  \cdot  \AddDatTorusDot{\TadupTube{1}}{B}{}{}  \; = \frac{e^{- i \pi /4}}{2} \sqrt{\frac{d}{3}} \AddDatTorusDot{\TaddownTube{1}}{B}{}{\dota} \cdot \AddDatTorusDot{\TadupTube{1}}{B}{}{\dotc} 
+m_2 = \frac{e^{i \pi /4}}{2} \sqrt{\frac{d}{3}} \AddDatTorusDot{\TaddownTube{1}}{B}{}{}  \cdot  \AddDatTorusDot{\TadupTube{1}}{B}{}{}  \; = \frac{e^{- i \pi /4}}{2} \sqrt{\frac{d}{3}} \AddDatTorusDot{\TaddownTube{1}}{B}{}{\dota} \cdot \AddDatTorusDot{\TadupTube{1}}{B}{}{\dotc} 
 \end{align}
-which can be used to track the isomorphisms across the three representatives of $M_2$.
-$M_3$ is oddly isomorphic to $\Pi(M_3)$ with the odd isomorphism 
+\dave{Need to check the $\cdot$ notation matches up with what we used here. 
+There may need to be an additional $-$ sign in second equation. }
+which can be used to track the isomorphisms across the three representatives of $m_2$.
+$m_3$ is oddly isomorphic to $\Pi(m_3)$ with the odd isomorphism 
 given by sliding a fermion through the tube, and 
-similarly for $M_6$.
+similarly for $m_6$.
 Lastly we have,
 \begin{align}
-Q_1 = \frac{e^{i \pi/4}}{\sqrt{d}} \AddDatTorusDot{\TaddownTube{1}}{N}{}{}  \cdot  \AddDatTorusDot{\TadupTube{1}}{N}{}{} 
+q_1 = \frac{e^{i \pi/4}}{\sqrt{d}} \AddDatTorusDot{\TaddownTube{1}}{N}{}{}  \cdot  \AddDatTorusDot{\TadupTube{1}}{N}{}{} 
 \end{align}
 
 
@@ -7897,14 +7954,14 @@ One is the topological basis, corresponding to (\ref{TorusBasis}), the other is 
 idempotent basis (or quasiparticle basis) given in tables \ref{MIdempotents} and \ref{QIdempotents}.
 We will compute the modular transformations in the topological basis first, and then change over to the idempotent basis.
 
-We define the shorthand notation for the tubes as
-\begin{align}
-\begin{split}
-e =\; \AddDatTorus{\eTube}{}{}{}\quad &h =\; \AddDatTorus{\hTube}{}{}{} \quad v=\; \AddDatTorus{\vTube}{}{}{} \quad  t=\; \AddDatTorus{\tTube}{}{}{} \quad X = \; \AddDatTorus{\XTube{1}{1}}{}{}{}\\
-& \stackrel{\bullet}{h}\; =\; \AddDatTorusDot{\hTube}{}{}{\dotb} \quad \stackrel{\bullet}{v}\;=\; \AddDatTorusDot{\vTube}{}{}{\dotb} 
-\end{split}
-\label{TorusStates}
-\end{align}
+We define the shorthand notation for the tubes as in tables \ref{rhotorho}--\ref{etoe}
+%\begin{align}
+%\begin{split}
+%e =\; \AddDatTorus{\eTube}{}{}{}\quad &h =\; \AddDatTorus{\hTube}{}{}{} \quad v=\; \AddDatTorus{\vTube}{}{}{} \quad  t=\; \AddDatTorus{\tTube}{}{}{} \quad X = \; \AddDatTorus{\XTube{1}{1}}{}{}{}\\
+%& \stackrel{\bullet}{h}\; =\; \AddDatTorusDot{\hTube}{}{}{\dotb} \quad \stackrel{\bullet}{v}\;=\; \AddDatTorusDot{\vTube}{}{}{\dotb} 
+%\end{split}
+%\label{TorusStates}
+%\end{align}
 We will then denote the spin structure by a subscript, for example,
 \begin{align}
 h_{BN} =\; \AddDatTorus{\hTube}{B}{N}{}
@@ -7922,9 +7979,9 @@ The change of basis matrices in the spin sectors with at least one bounding cycl
 \begin{align}
 \label{VAA}
 \left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
+{m}_1\\
+{m}_2\\
+{m}_3\\
 \end{matrix} \right)_{BB} 
 &= \left( \begin{matrix}
 \frac{1}{d\sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
@@ -7938,9 +7995,9 @@ h\\
 \end{matrix} \right)_{BB}\\
 \label{VAP}  
 \left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
+{m}_1\\
+{m}_2\\
+{m}_3\\
 \end{matrix} \right)_{BN}
 &= \left( \begin{matrix}
 \frac{1}{d\sqrt{3}} & 0 & \frac{1}{2 \sqrt{3}} \\
@@ -7954,9 +8011,9 @@ h\\
 \end{matrix} \right)_{BN} \\
 \label{VPA} 
 \left( \begin{matrix}
-\text{Q}_1\\
-\text{Q}_2\\
-\text{M}_6\\
+{q}_1\\
+{q}_2\\
+{m}_6\\
 \end{matrix} \right)_{NB}
 &= \left( \begin{matrix}
 1 & 0 & 0 \\
@@ -7973,15 +8030,15 @@ t\\
 For the non-bounding $NN$ spin structure the q-type idempotents need to be closed up into a torus with an odd isomorphism
 % will be odd (in particular, any q-type idempotent glued around a non-bounding spin structure is odd).
 %\dave{Need to come back to this.}
-We define $\left[ \stackrel{\bullet}{Q}_{i}\right]^2  = Q_i$. 
+We define $\left[ \stackrel{\bullet}{q}_{i}\right]^2  = q_i$. 
 This has a $\pm$ ambiguity, we denote the $\pm$ signs by $\sigma_i$. 
 We can also change to the idempotent basis with,
 \begin{align}
 \label{VPP}
 \left( \begin{matrix}
-\stackrel{\bullet}{Q}_{1}\\
-\stackrel{\bullet}{Q}_{2}\\
-\text{M}_6 \\ 
+\stackrel{\bullet}{q}_{1}\\
+\stackrel{\bullet}{q}_{2}\\
+\text{m}_6 \\ 
 \end{matrix} \right) \; =\;
 \left( \begin{matrix}
 \sigma_1 e^{- i \pi /4} &0&0\\
@@ -8002,8 +8059,8 @@ X \\
 
 The q-type idempotents have norm square of $2$ (due to their two-dimensional endomorphism algebras), 
 opposed to the m-type idempotents that have norm square of $1$. 
-To ensure that the modular matrices are unitary, we adjust for this by defining $\widehat{Q} = Q/\sqrt{2}$. 
-When written in terms of the $\widehat{Q}$, the modular matrices are unitary. 
+To ensure that the modular matrices are unitary, we adjust for this by defining $\widehat{q} = q/\sqrt{2}$. 
+When written in terms of the $\widehat{q}$, the modular matrices are unitary. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -8053,9 +8110,9 @@ h\\
 We can now write down the $S$-matrix in the idempotent basis using the change of basis in (\ref{VAA})
 \begin{align}
 \left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
+m_1\\
+m_2\\
+m_3\\
 \end{matrix} \right)_{BB} \xrightarrow{S^{BB \rightarrow BB}} 
 \frac{1}{\sqrt{3}}\left( \begin{matrix}
 \frac{1}{d} & \frac{d}{2} & 1\\ 
@@ -8063,9 +8120,9 @@ We can now write down the $S$-matrix in the idempotent basis using the change of
 1 & -1 & 1\\
 \end{matrix} \right)
 \left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
+m_1\\
+m_2\\
+m_3\\
 \end{matrix} \right)_{BB}
 \end{align}
 
@@ -8091,9 +8148,9 @@ t\\
 \end{align}
 which can be written in the idempotent basis as
 \begin{align}\left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
+{m}_1\\
+{m}_2\\
+{m}_3\\
 \end{matrix} \right)_{BN}
 \xrightarrow{S^{BN \rightarrow NB}}
 \left( \begin{matrix}
@@ -8102,9 +8159,9 @@ which can be written in the idempotent basis as
 0& \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{3}} \\
 \end{matrix} \right)
 \left( \begin{matrix}
-\text{Q}_1\\
-\text{Q}_2\\
-\text{M}_6\\
+{q}_1\\
+{q}_2\\
+{m}_6\\
 \end{matrix} \right)_{NB}.
 \end{align}
 Similarly we can work out the $S$-matrix in the topological basis for the $(N,B)$ torus,
@@ -8129,9 +8186,9 @@ t\\
 And again we can write this in the idempotent basis:
 \begin{align}
 \left( \begin{matrix}
-\text{Q}_1\\
-\text{Q}_2\\
-\text{M}_6\\
+{q}_1\\
+{q}_2\\
+{m}_6\\
 \end{matrix} \right)_{NB}
 \xrightarrow{S^{NB \rightarrow BN}}
 \left( \begin{matrix}
@@ -8140,9 +8197,9 @@ And again we can write this in the idempotent basis:
 \frac{1}{\sqrt{3}} & - \frac{1}{\sqrt{3}} & - \frac{1}{\sqrt{3}} \\
 \end{matrix} \right)
 \left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
+{m}_1\\
+{m}_2\\
+{m}_3\\
 \end{matrix} \right)_{BN}
 \end{align}
 Notice that the $S$-matrix is invertible, but not unitary. 
@@ -8150,9 +8207,9 @@ This is because we didn't normalize our idempotents appropriately.
 As mentioned earlier, we write the normalized $Q$ idempotents with a hat, $\widehat{Q}_i = Q_i /\sqrt{2}$.
 Once doing so we find the appropriately normalized $S$-matrix is given by
 \begin{align}\left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
+{m}_1\\
+{m}_2\\
+{m}_3\\
 \end{matrix} \right)_{BN}
 \xrightarrow{S^{BN \rightarrow NB}}
 \left( \begin{matrix}
@@ -8161,16 +8218,16 @@ Once doing so we find the appropriately normalized $S$-matrix is given by
 0& \sqrt{\frac{2}{3}} & -\frac{1}{\sqrt{3}} \\
 \end{matrix} \right)
 \left( \begin{matrix}
-\widehat{\text{Q}}_1\\
-\widehat{\text{Q}}_2\\
-\text{M}_6\\
+\widehat{{q}}_1\\
+\widehat{{q}}_2\\
+{m}_6\\
 \end{matrix} \right)_{NB}
 \end{align}
 \begin{align}
 \left( \begin{matrix}
-\widehat{\text{Q}}_1\\
-\widehat{\text{Q}}_2\\
-\text{M}_6\\
+\widehat{{q}}_1\\
+\widehat{{q}}_2\\
+{m}_6\\
 \end{matrix} \right)_{NB}
 \xrightarrow{S^{NB \rightarrow BN}}
 \left( \begin{matrix}
@@ -8179,9 +8236,9 @@ Once doing so we find the appropriately normalized $S$-matrix is given by
 \frac{1}{\sqrt{3}} & - \frac{1}{\sqrt{3}} & - \frac{1}{\sqrt{3}} \\
 \end{matrix} \right)
 \left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
+{m}_1\\
+{m}_2\\
+{m}_3\\
 \end{matrix} \right)_{BN}
 \end{align}
 Notice that the matrix is symmetric, and unitary.
@@ -8207,9 +8264,9 @@ X \\\end{matrix} \right)_{NN}
 In the idempotent basis, this is
 \begin{align}   \label{hE6_S_NN}
 \left( \begin{matrix}
-\stackrel{\bullet}{Q}_{1}\\
-\stackrel{\bullet}{Q}_{2}\\
-\text{M}_6 \\ 
+\stackrel{\bullet}{q}_{1}\\
+\stackrel{\bullet}{q}_{2}\\
+{m}_6 \\ 
 \end{matrix} \right)_{NN}
  \xrightarrow{S^{NN \rightarrow NN}}
 \frac{e^{i \pi /4}}{\sqrt{2}}\left( \begin{matrix} 
@@ -8218,9 +8275,9 @@ In the idempotent basis, this is
 0&0& -\sqrt{2} e^{i \pi /4}\\
 \end{matrix} \right)
 \left( \begin{matrix}
-\stackrel{\bullet}{Q}_{1}\\
-\stackrel{\bullet}{Q}_{2}\\
-\text{M}_6 \\ 
+\stackrel{\bullet}{q}_{1}\\
+\stackrel{\bullet}{q}_{2}\\
+{m}_6 \\ 
 \end{matrix} \right)_{NN}
 \quad \quad \text{where $\Sigma = \sigma_1 \sigma_2$.}
 \end{align}
@@ -8234,21 +8291,21 @@ In summary, we have \eqref{hE6_S_NN} together with
 \begin{align}
 \left(\begin{matrix}
 \left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
+{m}_1\\
+{m}_2\\
+{m}_3\\
 \end{matrix} \right)_{BN} \\
 \\
 \left( \begin{matrix}
-\widehat{\text{Q}}_1\\
-\widehat{\text{Q}}_2\\
-\text{M}_6\\
+\widehat{{q}}_1\\
+\widehat{{q}}_2\\
+{m}_6\\
 \end{matrix} \right)_{NB}\\
 \\
 \left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
+{m}_1\\
+{m}_2\\
+{m}_3\\
 \end{matrix} \right)_{BB} \\
 \end{matrix} \right)
 \xrightarrow{S} \left( \begin{matrix}
@@ -8264,21 +8321,21 @@ In summary, we have \eqref{hE6_S_NN} together with
 \end{matrix} \right)
 \left(\begin{matrix}
 \left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
+{m}_1\\
+{m}_2\\
+{m}_3\\
 \end{matrix} \right)_{BN} \\
 \\
 \left( \begin{matrix}
-\widehat{\text{Q}}_1\\
-\widehat{\text{Q}}_2\\
-\text{M}_6\\
+\widehat{{q}}_1\\
+\widehat{{q}}_2\\
+{m}_6\\
 \end{matrix} \right)_{NB}\\
 \\
 \left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
+{m}_1\\
+{m}_2\\
+{m}_3\\
 \end{matrix} \right)_{BB} \\
 \end{matrix} \right)
 \end{align}
@@ -8373,9 +8430,9 @@ the idempotent basis as usual.
 We find
 \begin{align}
 \left( \begin{matrix}
-\stackrel{\bullet}{Q}_{1}\\
-\stackrel{\bullet}{Q}_{2}\\
-\text{M}_6 \\ 
+\stackrel{\bullet}{q}_{1}\\
+\stackrel{\bullet}{q}_{2}\\
+{m}_6 \\ 
 \end{matrix} \right)_{NN} \xrightarrow{T^{NN\rightarrow NN}}
 \left( \begin{matrix} 
 1 & 0&0 \\
@@ -8383,30 +8440,30 @@ We find
 0 & 0& e^{5 i \pi /6}\\
 \end{matrix} \right) 
 \left( \begin{matrix}
-\stackrel{\bullet}{Q}_{1}\\
-\stackrel{\bullet}{Q}_{2}\\
-\text{M}_6 \\ 
+\stackrel{\bullet}{q}_{1}\\
+\stackrel{\bullet}{q}_{2}\\
+{m}_6 \\ 
 \end{matrix} \right)_{NN}
 \end{align}
 for the $NN$ torus, and 
 \begin{align}
 \left(\begin{matrix}
 \left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
+{m}_1\\
+{m}_2\\
+{m}_3\\
 \end{matrix} \right)_{BN} \\
 \\
 \left( \begin{matrix}
-\widehat{\text{Q}}_1\\
-\widehat{\text{Q}}_2\\
-\text{M}_6\\
+\widehat{{q}}_1\\
+\widehat{{q}}_2\\
+{m}_6\\
 \end{matrix} \right)_{NB}\\
 \\
 \left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
+{m}_1\\
+{m}_2\\
+{m}_3\\
 \end{matrix} \right)_{BB} \\
 \end{matrix} \right)
 \xrightarrow{T} \left( \begin{matrix}
@@ -8422,26 +8479,26 @@ for the $NN$ torus, and
 \end{matrix} \right)
 \left(\begin{matrix}
 \left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
+{m}_1\\
+{m}_2\\
+{m}_3\\
 \end{matrix} \right)_{BN} \\
 \\
 \left( \begin{matrix}
-\widehat{\text{Q}}_1\\
-\widehat{\text{Q}}_2\\
-\text{M}_6\\
+\widehat{{q}}_1\\
+\widehat{{q}}_2\\
+{m}_6\\
 \end{matrix} \right)_{NB}\\
 \\
 \left( \begin{matrix}
-\text{M}_1\\
-\text{M}_2\\
-\text{M}_3\\
+{m}_1\\
+{m}_2\\
+{m}_3\\
 \end{matrix} \right)_{BB} \\
 \end{matrix} \right)
 \end{align}
 for the spin tori with at least one bounding cycle.
-One can check that the modular matrices defined above satisfy $S^4 =\text{id}$ and $(ST)^3 = (-1)^F$. 
+One can check that the modular matrices defined above satisfy $S^4 = (-1)^F$ and $(ST)^3 = (-1)^F$. 
 %\kw{Don't we want to replace $id$ by $(-1)^F$?}
 %\kw{Also should be $S^4 = \cdots$, not $S^2 = \cdots$.}
 %\ethan{yep}
@@ -8867,7 +8924,7 @@ The result then follows by the symmetry of $V^{ab}_c$.
 \subsection{Koszul sign rule and unordered tensor products} \label{koszul_signs}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We will treat Koszul signs as in Section 1.2 of \cite{deligne1999}.
+We will treat Koszul signs as in \cite[Section 1.2]{deligne1999}.
 %\kw{Section 1.2 of Chapter 1 of Volume 1 of the IAS "Quantum Fields and Strings" books.}
 This approach doesn't really do away with Koszul signs.
 Rather, it pushes them to the background, where they don't need to be mentioned as frequently.
@@ -8923,6 +8980,13 @@ e.g. $V^{ab}_{c,1} \tp V^{cd}_{e,2}$. \kw{I think overscripts would be better th
 \ethan{By overscripts do you mean $e.g.$ $V^{ab,1}_c$ or something else? I went with subscripts since that's what we have in later sections and earlier in this section.}
 \kw{I meant something like $\overset{2}{V^{abc}} \tp \overset{1}{V^{xyz}}$, but it might be too much hassle to get the alignment right
 and make all the changes.}
+%\dave{Other people have had the same problem, there is a package for this:  $\accentset{2}{V}^{abc} \tp \accentset{1}{V}^{xyz}$ 
+%and $ \smash[t]{\overset{2}{V}}^{abc} \tp \smash[t]{\overset{1}{V}}^{xyz}$.
+%}
+%\dave{Even better can make color the sign ordering}:
+%\begin{align}
+ %\Koszul{1}{V}^{abc} \tp \Koszul{2}{V}^{xyz} \tp  \Koszul{3}{V}^{pqw} \tp \Koszul{4}{V}^{str}
+% \end{align}
 When drawing diagrams with a particular ordering in mind, we always indicate the ordering explicitly by numbers near each fusion space (i.e.\ near
 each vertex in the string net).
 Another possible convention would be to use the ordering corresponding to (say) bottom-to-top on the page,
@@ -8984,7 +9048,7 @@ Diagrammatically these read,
 \bigoplus_{x}  \Fusionspaceb \cong  \bigoplus_{y}  \Fusionspacec
 \end{align} 
 \kw{Let's add in the middle a diagram with a 4-valent vertex, prepresenting $V^{abc}_d$}
-where the unlabeled trivalent vertex labels the fusion spaces $V^{ab}_x$, $V^{xc}_d$, $V^{ay}_d$, and $V^{bc}_y$, 
+where the unlabeled trivalent vertices label the fusion spaces $V^{ab}_x$, $V^{xc}_d$, $V^{ay}_d$, and $V^{bc}_y$, 
 and the tensor product over endomorphisms is implicit in the diagram.
 \dave{We should add the appropriate figure at the first point we talk about this tensor product. 
 Maybe the beginning of this subsection.}
@@ -9010,9 +9074,12 @@ Alternatively,
 Diagrammatically we have,
 \dave{Note to self: make figures match up.}
 \begin{align}
-\bigoplus_x \TensorProducta \; \cong\;  \bigoplus_x\TensorProductb \; \cong \; \bigoplus_x \TensorProductc \; \cong \; \bigoplus_x \TensorProductd
+\bigoplus_x \TensorProducta \; \cong\;  \bigoplus_x\TensorProductb \; \cong \; \bigoplus_x \TensorProductc \; \cong \; \bigoplus_x \TensorProductd .
 \end{align}
-where the unlabeled trivalent junctions represent the fusion space of the three oriented lines which terminate there.
+\kw{Let's figure out a way to put the endpoints in roughly the same place, and also add a 4-valent diagram.
+Will probably need to split it into two lines.}
+%%KW already said this a few sentences ago.
+%where the unlabeled trivalent junctions represent the fusion space of the three oriented lines which terminate there.
 
 \bigskip
 
@@ -9038,12 +9105,18 @@ For the pitchfork version, we instead use \ref{pfpfi1} and \ref{pfpfi2} to obtai
 %\ethan{I think the following is needed to discuss coherence relation stuff}
 The tensor products appearing in the above isomorphisms are unordered tensor products. 
 For numerical applications, particular ordered representatives of the tensor products need to be chosen. 
-For the $F^{abc}_d$ isomorphism, we will choose the convention that it acts on tensor products of fusion spaces whose ordering increases as one goes up the diagram, 
-and that it maps into fusion spaces with the same ordering. That is, with explicit Koszul-ordering we have 
+For the ordered $F^{abc}_d$ isomorphism, 
+we will adopt the convention
 \be \label{Fmove_ordering_conventions}
-	F^{abc}_d : \bigoplus_{x\in \mcx} V^{ab}_{x,2} \tp_{\End(x)} V^{xc}_{d,1} \;\to\; \bigoplus_{y\in \mcx} V^{ay}_{d,1} \tp_{\End(y)} V^{bc}_{y,2}.
+	F^{abc}_d : \bigoplus_{x\in \mcx} V^{xc}_{d} \tp_{\End(x)} V^{ab}_{x} \;\to\; \bigoplus_{y\in \mcx} V^{ay}_{d} \tp_{\End(y)} V^{bc}_{y} ,
 \ee
-\ethan{this is what we use in the hexagon isomorphism, and is also what Gu-Wen do}
+with implicit left-to-right ordering.
+%we will choose the convention that it acts on tensor products of fusion spaces whose ordering increases as one goes up the diagram, 
+%and that it maps into fusion spaces with the same ordering. That is, with explicit Koszul-ordering we have 
+%\be \label{Fmove_ordering_conventions}
+%	F^{abc}_d : \bigoplus_{x\in \mcx} V^{ab}_{x,2} \tp_{\End(x)} V^{xc}_{d,1} \;\to\; \bigoplus_{y\in \mcx} V^{ay}_{d,1} \tp_{\End(y)} V^{bc}_{y,2}.
+%\ee
+%\ethan{this is what we use in the hexagon isomorphism, and is also what Gu-Wen do}
 Graphically, and written as a matrix equation, we thus have
 %\be \label{graphical_Fmove} \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{Fsymbol_defn.pdf}}}},\ee
 %Made it look like other F-symbols (dave)
@@ -9055,12 +9128,13 @@ where the greek indices label particular fusion space basis vectors, with $\mu\i
 We also stick with the left-to-right ordering convention for the $F^{abcd}$ move:
 \dave{Changed order and and $x \ra x^*$.}
 \be  
-	F^{abcd} : \bigoplus_{x\in \mcx} V^{abx}_1 \tp_{\End(x)} V^{x^*cd}_2   \;\to\;   \bigoplus_{x\in \mcx} V^{axd}_1 \tp_{\End(x)} V^{x^*bc}_2 .
+	F^{abcd} : \bigoplus_{x\in \mcx} V^{abx} \tp_{\End(x)} V^{x^*cd}   \;\to\;   \bigoplus_{x\in \mcx} V^{axd} \tp_{\End(x)} V^{x^*bc} .
 \ee
-Which written as a matrix equation is,
+Which written as a matrix equation is
 \begin{align}
-\PitchforkFLeft = \sum_{y} \sum_{\rho \sigma} \left( F^{abcd} \right)_{(x; \mu \nu)(y; \rho \sigma)} \PitchforkFRight
+\PitchforkFLeft = \sum_{y} \sum_{\rho \sigma} \left( F^{abcd} \right)_{(x; \mu \nu)(y; \rho \sigma)} \PitchforkFRight .
 \end{align}
+\kw{need to make endpoints match up between two diagrams}
 
 
 %%%%%%%%%%%%%%%%%%
@@ -9116,12 +9190,12 @@ that the following diagram commutes:
 \end{align}
 \end{comment}
 where all the sums are over a representative set of simple objects and we have used the notation $\tp_x \equiv \tp_{\text{End}(x)}$.
-Technically the modified tensor products $\tp_x$ also appear in the conventional bosonic pentagon equation, although in that 
+Technically, the modified tensor products $\tp_x$ also appear in the conventional bosonic pentagon equation, although in that 
 case we can set $\tp_x = \tp_\cc$ without loss of generality. 
 
-However, if we peer under the hood and look at {\it ordered representatives} (as we need to do if, for example,
+However, if we peer under the hood and look at {\it ordered representatives} (as we would need to do if, for example,
 we were checking the pentagon equation on a computer), then we
-see that a Koszul sign appears, and the commutative diagram becomes hexagonal:
+see that a Koszul sign appears:
 \begin{align}
 \newcommand{\A}{\bigoplus_{p,q}V^{xy}_{p,3}\tp_p V^{pz}_{q,2}  \tp_q V^{qw}_{u,1}}
 \newcommand{\AB}{\ar[rru]^{F^{pzw}_u} \ar[rrd]^{F^{xyz}_q}}
@@ -9141,6 +9215,9 @@ see that a Koszul sign appears, and the commutative diagram becomes hexagonal:
 	}} 
 	\label{endoPentagon}
 \end{align}
+
+\kw{tentative to do: convert above diagram to left-to-right ordering}
+
 The Koszul ordering of each tensor product in the diagram is obtained with the help of the conventions in 
 \eqref{Fmove_ordering_conventions}. 
 In terms of the matrix elements of the $F$-symbols, this reads 
@@ -9169,7 +9246,7 @@ diagram must commute:
 
 \kw{TO DO: say a little bit (but only a little bit) about other coherence relations}
 \dave{Should we add the coherence relation for pivoting?}
-\ethan{I think the above ``other relations are modified, for example...''}1
+\ethan{I think the above ``other relations are modified, for example...''}
 
 
 
@@ -10414,6 +10491,7 @@ weights determined by tensors that we will write down shortly.
 In the case where $\partial \mcm \neq \emptyset$, $\mch(\mcm)$ admits a decomposition as $\mch^*_{bulk} \tp \mch_{bulk} \tp \mch(\partial \mcm)$, where 
 the Hilbert spaces of the degrees of freedom on $\partial \mcm$ lack dual tensor factors appearing in $\mch(\mcm)$. 
 The partition function is still performed with the help of $\chi$, which contracts out the tensor factors in $\mch^*_{bulk} \tp \mch_{bulk}$ but leaves those in $\mch(\partial \mcm)$ uncontracted, producing the wavefunction of the input state. 
+\dave{``..producing a wavefucntion supported on $\mch(\partial \mcm)$."}
 
 %\ethan{what follows is commented-out cut-and-glue stuff. Might come back and borrow stuff if we decide to expound on things in that direction}
 \begin{comment}
@@ -10651,6 +10729,7 @@ Also these vector spaces don't have vertices associated with them.}
 \dave{Where are the vertices that you're displacing the fermions?
 On the 1-cells?}
 \ethan{On the ends of the 1-cells. So for the 1-handle Hilbert space we have $\mch(e) = E^{\tp 3} \tp W \tp W^*$, and we can take the fermionicness of the $E$ factors and displace it onto the $W$ factors, leaving the $E$s bosonic.}
+\dave{Ok. But the 2-cells don't have this option.}
 }.
 %\ethan{You said $E$ was bosonic, but I was initially thinking that $E = \oplus_x \End(x)$?}
 %\dave{We could write it as $(\text{End}(x))^0$ if we want. 
@@ -10706,7 +10785,7 @@ Under re-arrangement of tensor factors and Koszul signs, $\chi$ behaves in the f
 where as usual, the numerical subscripts indicate an explicit Koszul ordering, and the absence of subscripts 
 indicates the standard ordering convention, which increases from left to right. 
 The sign $(-1)^{|w|}$ appears 
-when performing a $2\pi$ rotation $P^3 = (-1)^F$ on the vector $w$ when interchanging the order of the tensor factors (recall that $\tp$ corresponds to horizontal superposition of diagrams).
+when performing a $2\pi$ rotation $P^3 = (-1)^F$ on the vector $w$ when interchanging the order of the tensor factors (recall that $\tp$ corresponds to horizontal superposition of diagrams\dave{superposition may not be the best word.}).
 Since $\chi(w^*\tp v)$ is nonzero only when $w$ and $v$ have the same parity, this reads $\chi(w^*\tp v) = \chi(v\tp w^*)$. 
 
 
@@ -10934,7 +11013,7 @@ In order to evaluate $Z(\Sigma_{0\ra1}; v_0, v_1)$, we need to specify a cell de
 We can take the cell decomposition in the bulk of $\Sigma_{0\ra1}$ to be any cell decomposition that agrees with the cell decomposition of $\Sigma_0$ and $\Sigma_1$ when restricted to $\partial \Sigma_{0\ra1}$.
 However, there is a particularly convenient choice, which corresponds to extending the cell decomposition of $\Sigma_0$ into $\Sigma \times [0, 1/2]$, and that of $\Sigma_1$ into $\Sigma \times [1/2, 1]$, see Figure~\ref{CellDecomposition}. 
 When we do this extension, every $k$-cell in $\Sigma_0$ and $\Sigma_1$ is extended into a $(k+1)$-cell in the bulk 
-of $\Sigma_{0\ra1}$ (the $(k+1)$-cells are the `shadows' of the $k$-cells, and hence the bulk constitutes the `shadow world'). 
+of $\Sigma_{0\ra1}$ (the $(k+1)$-cells are the `shadows' of the $k$-cells, and hence the bulk constitutes the `shadow world'\dave{never made that connection before, is that why they called it the shadow world?}). 
 It is convenient to take the two cell decompositions on $\Sigma_0$ and $\Sigma_1$ to be in `normal' position,
 meaning that the extension of $\Sigma_0$ into the bulk only intersects the extension of $\Sigma_1$ transversely along edges, again see Figure~\ref{CellDecomposition}.
 
