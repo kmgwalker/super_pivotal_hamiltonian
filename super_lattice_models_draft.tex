@@ -3760,6 +3760,7 @@ In this section we discuss the general case and some variants thereof.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{General comments on fermion condensation}
+\label{General_comments_on_fermion_condensation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In this section we will explore fermion condensation in more general settings. 
@@ -4259,7 +4260,7 @@ Note that any choice of cutting curves and $c'$ will yield the same answer on th
 \kw{Need to make sure we have defined super trace $\str$.}
 
 \medskip
-\dave{Obviously in progress.}
+\dave{still in progress.}
 We now apply the above to the case where $Y$ is an annulus to obtain a nondegenerate trace on the tube category.
 %\kw{Take it from here, Dave.}
 Using \eqref{trace_to_innerproduct} and letting $t \in \tube^W(\mcc)$ we have
@@ -4270,14 +4271,148 @@ This is the partition function on a solid torus with the boundary condition $t \
 Graphically we can write this as,
 \begin{align}
 \left \langle\;\Tuberrprime_W,\text{id} \; \right \rangle =
- \tr \left \{ \Tuberrprimecut \; : A\left( \PinchedDisk \right)  \xrightarrow{\quad \quad} A \left( \PinchedDisk \right) 
+ \tr_W \left \{ \Tuberrprimecut \; : A\left( \scriptstyle{x\;} \PinchedDisk \right)  \xrightarrow{\quad \quad} A \left( \scriptstyle{x\;} \PinchedDisk \right) 
  \right \}
 \end{align}
-On the right hand side we have a 
+The trace is the standard trace if $W$ is bounding, 
+and the super trace if $W$ is non-bounding.
+The vector space assigned to the disk is $\text{mor}(\unit \ra x)$.
+In particular, if $x$ is a simple object then,
+\begin{align}
+A \left( \scriptstyle{x\;} \PinchedDisk \right)  = 
+\begin{cases} 
+\cc^{1|0} & \text{if $x \cong \unit$ } \\
+\cc^{0|1} & \text{if $x \cong \psi$ } \\ 
+0 & \text{otherwise} \\
+\end{cases}
+\end{align}
+Despite the abstract nature of this discussion, 
+the calculation of traces is easy in practice: 
+to compute the trace of a tube we close it up onto a torus by identifying the two $S^1$ boundaries, 
+then cut open the tube along a disk and treat the resulting diagram as a linear map from the disk to the disk. 
+The trace is defined as the standard matrix trace (super trace) of this linear map if the spin structure of the tube is bounding (non-bounding).
+%, we rotate the string-net configuration on the tube by $\pi/2$ counterclockwise, 
+%identify the top and bottom of the tube, and simplify the resulting diagram. The trace is then found by 
+%taking the coefficient of the final diagram. 
+We now provide some straightforward applications of the trace formula. 
+
+\dave{I made a distinction between normalized and unnormalized quantum dimensions (although perhaps the two definitions should be interchanged). 
+In physics we usually 
+define the quantum dimension as $d_x = \tr(x)/\tr(\unit)$.
+}
+The normalized quantum dimension $d_{e_j}$ of a minimal idempotent
+ $e_j$ in $\tube(\mcc)$ is just the trace of $e_j$,
+%defined by the trace of the associated idempotent $\Pi_x$: 
+\begin{align}
+d_{e_j} \equiv \tr_W (e_j).
+\end{align}
+where $W$ is bounding if $e_j \in \tube^{B}(\mcc/\psi)$ and non-bounding if $e_j \in \tube^N( \mcc/\psi)$
+\footnote{The un-normalized quantum dimension is given by $d_{e_j}/d_{e_0}$ where $e_0$ is the trivial idempotent.}.
+For example, in the $C_2$ theory, we can use this approach to obtain $d_{m_{\unit / \psi}} = 1/2, d_{m_\sigma^+} = q_{\unit/\psi} = d/2, q_\sigma = 1$. 
+Normalizing so that $d_{m_\unit} = 1$, we obtain the unnormalized quantum dimensions listed in Table \ref{C2Data}. 
+
+\dave{Maybe this should go elsewhere.}
+We will also need to know how to calculate the total quantum dimension $\mcd_{\mcc/\psi} = \dim(\mcc/\psi)$.
+In bosonic theories we have $\mcd_\mcc^2 = \sum_{x\in \mcc} d_x^2$, where the sum runs over all simple objects $x\in\mcc$. 
+This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
+The correct formula is
+\be \label{total_qdim_defn} \mcd_{\mcc/\psi}^2 = \sum_{x\in \mcc/\psi} \frac{d_x^2}{\dim \End(x)}.\ee
+This ensures that $\dim(\mcc)$ is related to $\dim(\mcc / \psi)$ by 
+\be \label{DC_and_DCpsi} \mcd_{\mcc / \psi} = \frac{\mcd_\mcc}{\mcd_{\rm sVec}} = \frac{1}{\sqrt{2}} \mcd_\mcc,\ee
+where we have viewed the category of supervector spaces, sVec, as consisting of two objects 
+${\rm sVec} = \{\unit,\psi\}$ with $d_\unit=d_\psi=1$, so that $\mcd_{\rm sVec} = \sqrt{2}$. 
+This result was also obtained in \cite{wan2016}. 
+
+To prove \eqref{DC_and_DCpsi}, we write 
+\be
+\mcd_\mcc^2 = \text{Tr} \left(\bigoplus_{x\in \mcc/\psi} d_x x\right) = \text{Tr} \left( \bigoplus_{x \in \sobm(\mcc/\psi)} d_x (\mathds{1} \oplus \psi) \tp x \right ) + \text{Tr} \left(\bigoplus_{x  \in \sobq(\mcc/\psi )} {d_x} x \right),\ee
+%where $Q$ is the set of all q-type objects in $\mcc$ (those that are invariant under fusion with $\psi$), 
+%and $M$ is a collection of representatives of the orbits of m-type objects under fusion with $\psi$, so that 
+%the collection of all m-type simple objects is $M\cup M\tp \psi$.   
+Since $x\tp \psi \cong x$ if $x\in \sobq(\mcc/\psi)$, we can write
+\begin{align}
+\label{dimCtoDimCpsi}
+\mcd_\mcc^2 & = \text{Tr} \left( \bigoplus_{x \in \sobm(\mcc/\psi)} d_x (\mathds{1} \oplus \psi) \tp x \right ) + 
+\text{Tr}  \left(\bigoplus_{x  \in \sobq(\mcc/\psi)}\frac{d_x}{2}(\unit \oplus \psi) x \right) \\ & =\text{Tr}(\unit \oplus \psi) 
+\cdot \text{Tr} \left( \bigoplus_{x \in \mcc/\psi} \frac{d_x}{\dim\End(x)} x \right) = \mcd^2_{\rm sVec} 
+\mcd_{\mcc/\psi}^2 = 2 \mcd_{\mcc/\psi}^2,
+\end{align}
+proving \eqref{DC_and_DCpsi}. 
+This result can also be motivated by making use of the theory of modular extensions, see for example \cite{lan2016}. 
+For the $C_2$ theory, this works out as 
+\be \mcd_{C_2} = \sqrt{2} = \mcd_{\rm Ising} / \sqrt{2},\ee
+and is easily checked to hold for the other examples in the $A_{4n+2} / \psi$ series.  
+
+It is a result of Muger \cite{muger2003a,muger2003b}\dave{need to check which reference} that for any unitary fusion category $\mcc$, 
+the dimension of the center is related to $\mcd_\mcc$ by 
+\be \mcd_{\tube(\mcc)} =\mcd^2_\mcc.\ee
+One can ask for the analogous formula in the super pivotal case.
+%We can then use \eqref{DC_and_DCpsi} to obtain 
+%\be \mcd_{\tube(\mcc)} = 2\mcd^2_{\mcc/\psi}.\ee
+Using \eqref{DC_and_DCpsi} again and specializing to the case where $\mcc$ is a modular tensor category then $\mcc \times (\mcc/\psi) \cong \tube(\mcc/\psi)$ (a result 
+that we prove in Section \ref{double_fermionic_quotient}), we have 
+\be \mcd_{\tube(\mcc/\psi)} = \mcd_{\mcc} \mcd_{\mcc/\psi}.\ee
+For example, in the $C_2$ theory this is verified by $\mcd_{\tube(C_2)} = \sqrt{8} = \sqrt{2} (\sqrt{2})^2 = \sqrt{2} \mcd^2_{C_2}.$
+
+
+More generally, let $\mcc$ be a unitary fusion category and $\mcc/\psi$ the super pivotal category resulting from condensing a fermion as discussed in Subsection \ref{General_comments_on_fermion_condensation}.
+Then we have have two functors
+\be
+	\varphi_B : \tube(\mcc) \rightarrow \tube^B(\mcc/\psi)
+\ee
+and
+\be
+	\varphi_N : \tube(\mcc) \rightarrow \tube^N(\mcc/\psi) .
+\ee
+which are inclusions of $\tube(\mcc)$ into $\tube(\mcc/\psi)$.
+
+
+Recall that the endomorphisms of the trivial object in $\tube(\mcc)$ form a commutative algebra
+isomorphic to the fusion ring of $\mcc$, and that the $\omega$ loops are the minimal idempotents of this algebra.
+We define two non-minimal idempotents in this algebra,
+\begin{align}  \label{aJloop}
+	a_B = \frac{1}{2}(\text{cl}(\unit) + \text{cl}(\psi)), \;\;\;\;   a_N = \frac{1}{2}(\text{cl}(\unit) - \text{cl}(\psi)),
+\end{align}
+where as before $\text{cl}(x)$ denotes a closed up $x$ strand embedded in a solid torus.
+These two idempotents are orthogonal (i.e.\ $a_I\cdot a_J = \delta_{IJ}a_I$), and $a_B + a_N = \id$.
+
+Placing $a_J$ behind a tube diagram yields a functor $\hat{a}_J : \tube(\mcc) \to \tube(\mcc)$
+\begin{align}  \label{aJ_projector}
+	\hat{a}_J \left( \TubeBasisa \right) = \TubeProject .
+\end{align}
+We have a decomposition of $\tube(\mcc)$ into two summands, $\hat{a}_B(\tube(\mcc))$ and $\hat{a}_N(\tube(\mcc))$.
+%Thus we have a decomposition of $\tube(\mcc)$ into two summands, $\tube(\mcc)\bullet a_B$ and $\tube(\mcc)\bullet a_N$.
+%In pictures, tensoring with $a_J$ looks like
+%\begin{align}  \label{aJ_projector}
+%	\TubeBasisa \bullet a_J = \TubeProject.
+%\end{align}
+We also have
+\be
+	\varphi_I(a_J) = \delta_{IJ} \id ,
+\ee
+which implies that $\varphi_B\circ\hat a_N$ and $\varphi_N\circ\hat a_B$ are both the zero functor.
+On the other hand we have,
+
+\dave{Still salvaging and re-organizing.
+Taking a break.}
+
+
+
+%On the other hand, we have:
+%$\varphi_B\circ\hat a_B$ and $\varphi_N\circ\hat a_N$ are both faithful:
+%It follows that the summand $\tube(\mcc)\bullet a_B$ maps to zero when included in $\tube^N(\mcc/\psi)$,
+%and the summand $\tube(\mcc)\bullet a_N$ maps to zero when included in $\tube^B(\mcc/\psi)$.
+%With a little more work, we can show that $\tube(\mcc)\bullet a_J$ maps faithfully (injectively) into
+%$\tube^J(\mcc/\psi)$ under the functor $\varphi_J$.
+
+%\kw{not satisfied with above; will rewrite soon}
+
+
+
+\medskip
 
 
 \kwsep
-
 In what follows we will need to compute the trace of a generic operator (or in other words, an endomorphism) $\mco$ in the tube category. 
 \kw{I think we should say endomorphism rather than operator, and use lower case notation for this operator.}
 We will do the computations following the procedure outlined in \cite{Walker2006}; for more details see \cite{ghosh2016,das2014}.
@@ -4401,18 +4536,15 @@ that we prove in Section \ref{double_fermionic_quotient}), we have
 \be \mcd_{\tube(\mcc/\psi)} = \sqrt{2}\mcd^2_{\mcc/\psi}.\ee
 For example, in the $C_2$ theory this is verified by $\mcd_{\tube(C_2)} = \sqrt{8} = \sqrt{2} (\sqrt{2})^2 = \sqrt{2} \mcd^2_{C_2}.$
 
+
+
+
+
 \subsubsection{\dave{May salvage some material from this, but otherwise may be removed.}}
 
 
 %First, any string net configuration of the parent theory descends to a string net configuration of the condensed theory.
-In particular, we have two functors
-\be
-	\varphi_B : \tube(\mcc) \rightarrow \tube^B(\mcc/\psi)
-\ee
-and
-\be
-	\varphi_N : \tube(\mcc) \rightarrow \tube^N(\mcc/\psi) .
-\ee
+
 %giving us a functor $\tube(\mcc) \rightarrow \tube(\mcc/\psi)$.
 %Conversely, we can always take an even morphism in $\mcc/\psi$ and lift it to $\mcc$, giving 
 %us a way from lifting tubes in $\tube(\mcc/\psi)$ to those in $\tube(\mcc)$.
@@ -4424,45 +4556,13 @@ and
 %\dave{I haven't checked the above, will come back to it.}
 %\kw{Looks OK to me.}
 
-The proof of the theorem splits into two parts. 
-We first compute the images of the minimal idempotents in $\tube(\mcc/\psi)$ under condensation
-and show that these images provide us with a complete set of minimal idempotents in the condensed theory.
-Next we define a tensor functor from $\mcc \times \overline{\mcc/\psi} $ to $\tube(\mcc/\psi)$ and
-show that it is an isomorphism of tensor categories.
+%The proof of the theorem splits into two parts. 
+%We first compute the images of the minimal idempotents in $\tube(\mcc/\psi)$ under condensation
+%and show that these images provide us with a complete set of minimal idempotents in the condensed theory.
+%Next we define a tensor functor from $\mcc \times \overline{\mcc/\psi} $ to $\tube(\mcc/\psi)$ and
+%show that it is an isomorphism of tensor categories.
 %thus showing that $\tube(\mcc/\psi) \cong \mcc \times \overline{\mcc/\psi}$ as tensor categories.
 
-Recall that the endomorphisms of the trivial object in $\tube(\mcc)$ form a commutative algebra
-isomorphic to the fusion ring of $\mcc$, and that the $\omega$ loops are the minimal idempotents of this algebra.
-We define two non-minimal idempotents in this algebra,
-\begin{align}  \label{aJloop}
-	a_B = \frac{1}{2}(\text{cl}(\unit) + \text{cl}(\psi)), \;\;\;\;   a_N = \frac{1}{2}(\text{cl}(\unit) - \text{cl}(\psi)),
-\end{align}
-where as before $\text{cl}(x)$ denotes a closed up $x$ strand embedded in a solid torus.
-These two idempotents are orthogonal (i.e.\ $a_I\cdot a_J = \delta_{IJ}a_I$), and $a_B + a_N = \id$.
-
-Placing $a_J$ behind a tube diagram yields a functor $\hat{a}_J : \tube(\mcc) \to \tube(\mcc)$
-\begin{align}  \label{aJ_projector}
-	\hat{a}_J \left( \TubeBasisa \right) = \TubeProject .
-\end{align}
-We have a decomposition of $\tube(\mcc)$ into two summands, $\hat{a}_B(\tube(\mcc))$ and $\hat{a}_N(\tube(\mcc))$.
-%Thus we have a decomposition of $\tube(\mcc)$ into two summands, $\tube(\mcc)\bullet a_B$ and $\tube(\mcc)\bullet a_N$.
-%In pictures, tensoring with $a_J$ looks like
-%\begin{align}  \label{aJ_projector}
-%	\TubeBasisa \bullet a_J = \TubeProject.
-%\end{align}
-We also have
-\be
-	\varphi_I(a_J) = \delta_{IJ} \id ,
-\ee
-which implies that $\varphi_B\circ\hat a_N$ and $\varphi_N\circ\hat a_B$ are both the zero functor.
-On the other hand, we have:
-%$\varphi_B\circ\hat a_B$ and $\varphi_N\circ\hat a_N$ are both faithful:
-%It follows that the summand $\tube(\mcc)\bullet a_B$ maps to zero when included in $\tube^N(\mcc/\psi)$,
-%and the summand $\tube(\mcc)\bullet a_N$ maps to zero when included in $\tube^B(\mcc/\psi)$.
-%With a little more work, we can show that $\tube(\mcc)\bullet a_J$ maps faithfully (injectively) into
-%$\tube^J(\mcc/\psi)$ under the functor $\varphi_J$.
-%
-%\kw{not satisfied with above; will rewrite soon}
 
 \begin{comment} %%%%%%%%%%%%%%%%
 
@@ -7053,7 +7153,7 @@ while the even part satisfies the usual $S^4 = \text{id}$ and $(TS)^3 = \text{id
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fermion condensation in $\halfesix$} \label{halfesix}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\dave{Note to self: look at p. 14 of \cite{wan2016}}
 In this section we perform fermion condensation in the category $\halfesix$.
 This provides an example of a super pivotal category with fusion multiplicity.
 After condensation we will obtain a theory with one non-trivial q-type particle, 
