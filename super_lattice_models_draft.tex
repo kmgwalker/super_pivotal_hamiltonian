@@ -11143,17 +11143,21 @@ tensors are found by evaluation of these diagrams.
 \subsection{Kitaev wire} \label{kitaev_wire}
 %%%%%%%%%%%%%%%%
 
+\ethan{still under construction}
+
 In this section, we show how the graphical formalism developed in previous sections
 can be used to succinctly capture the salient features of the `Kitaev wire', Kitaev's toy model 
 of a one-dimensional spinless $p$-wave superconductor \cite{kitaev2001}. 
-This elucidates the connection between Majorana zero modes and Ising anyons, and we will use 
-the graphical conventions of the $C_2$ theory throughout. 
-This also provides 
+This elucidates the connection between Majorana zero modes and Ising anyons, and provides 
 a simple (alas, perhaps too simple) illustration of the shadow world approach detailed in the previous section 
 (with appropriate modifications for the reduced dimensionality of the problem). 
 
 The Kitaev chain Hamiltonian is defined to act on a one-dimensional manifold, which we can take to be 
+<<<<<<< HEAD
 %either $\Sigma = I$, $\Sigma = S^1_B$, or $\Sigma = S^_N$, where $I$ is an interval in $\rr$. The shadow world prescription tells us to examine
+=======
+either $\Sigma = I$, $\Sigma = S^1_B$, or $\Sigma = S^1_N$, where $I$ is an interval in $\mathbb{R}$. The shadow world prescription tells us to examine
+>>>>>>> b289b28bc0ec2138860a2511245946ae8c8eca61
 partition functions on $\Sigma \times [0,1]$. We will specify to $\Sigma = I$ in what follows, and examine 
 chains whose Hilbert spaces contain $N$ tensor factors, where $N=2n$ is an even integer. Vectors in $\mch(I)$ can then be written as $a_1\tp\dots\tp a_N$, and graphically 
 they look like
@@ -11162,44 +11166,63 @@ they look like
 \ee
 Note that this is just a graphical presentation of a matrix product state. 
 
+For analyzing the Kitaev wire, we will draw the labels $a_i$ from the simple objects of the $C_2$ theory, namely $\unit$ and $\beta$, and we will use 
+the graphical conventions of the $C_2$ theory throughout.  
+We will see that the $\beta$ object plays the role of a Majorana fermion in the Kitaev wire. 
+
+
 When performing the shadow world construction, we need to compute partition functions on the 2-manifold 
 $\Sigma \times [0,1]$. The cell decomposition we will use is:
 \be 
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{kitaev_wire_shadow_wrld_cell_decomp.pdf}}}}.
 \ee
+<<<<<<< HEAD
 To construct ground-state wavefunctions, we need to fix the input vector $v_0\in\mch(\Sigma\times\{0\})$ to be used when computing 
 $Z(\Sigma\times[0,1];v_0,v_1)$. In the above pictures, $v_1$ is determined by the choice of the %$\
 %{a_1,\dots,a_N\}$, while $v_0$ is determined by the $\{b_1,\dots,b_N\}$. In what follows, 
+=======
+To construct ground-state wavefunctions, we need to fix the input vectors $v_0\in\mch(\Sigma\times\{0\})$ and $v_1\in\mch(\Sigma\times\{1\})$ to be used when computing 
+$Z(\Sigma\times[0,1];v_0,v_1)$. In the above pictures, $v_1$ is determined by the choice of $a_1\tp\dots\tp a_N$, while $v_0$ is determined by the $b_1\tp\dots\tp b_N$. In what follows, 
+>>>>>>> b289b28bc0ec2138860a2511245946ae8c8eca61
 we will choose $v_0 = \unit\tp\dots\tp\unit$ to be the vector with only vacuum lines, so that our wavefunctions are built
-over the vacuum. 
+over the vacuum (if we had chosen $\Sigma = S^1_N$ or $S^1_B$, $v_0$ would also need to 
+specify our choice of spin structure). 
 
 Physically, each pair of adjacent tensor factors $a_i\tp a_{i+1}$ forms the Hilbert space of a single 
-site in the physical superconductor. 
+site in the physical superconductor. This is just the familiar re-writing of a single electronic degree 
+of freedom in terms of two Majorana degrees of freedom. 
 The local Hilbert space at a given site is $\cc^{1|1}$, and is spanned by the two basis vectors
 \begin{align}
     \CupSigma \qquad \text{and} \qquad \CupSigmadot.
 \end{align}
 
+
+
 The Hamiltonian implements time evolution by extending the 1-cells on the $\Sigma\times\{1\}$ boundary. 
-The only terms one can contruct a Hamiltonian out of are
+The Hamiltonian must be local, and so it may only act on pairs of adjacent 1-cells on the boundary.
+Furthermore the Hamiltonian must preserve the overall fermion parity of the chain. Thus, the only terms one can construct a Hamiltonian out of are
 \begin{align}
 \Id \qquad \text{and} \qquad \TwoLinedotdot.
 \end{align}
-The first is the identity operator, while the second is nontrivial and can be identified with $i \gamma_1 \gamma_2$, a Majorana bi-linear which acts as the fermion parity operator on the on-site Hilbert space.
-To see this, we can simply check the action of the Hamiltonian on the basis vectors of the on-site Hilbert space:
+The first is the identity operator, while the second is nontrivial and is identified with $i \gamma_1 \gamma_2$, a Majorana bi-linear which acts as the fermion parity operator on the on-site Hilbert space.
+To see this, we can simply check the action of the Hamiltonian on the basis vectors of the on-site Hilbert space. Graphically, the  
+Hamiltonian acts by stacking diagrams onto input states, and so each putative Hamiltonian term acts
+on on-site basis states as
 \begin{align}
-\TwoLinedotdot\; \times \; \CupSigma \; =\;  \CupSigma \quad \text{and} \quad \TwoLinedotdot\; \times \; \CupSigmadot \; =\;   - \; \CupSigmadot
+\TwoLinedotdot\; \times \; \CupSigma \; =\;  \CupSigma \quad \text{and} \quad \TwoLinedotdot\; \times \; \CupSigmadot \; =\;   - \; \CupSigmadot,
 \end{align}
-For an $N$-site chain we have the following basis of states:
+where $A\times B$ means `stack $A$ on top of $B$'. 
+
+For our $N$-site chain we thus have the following basis of states:
 \begin{align}
-&\CupSigma \; \CupSigma \; \CupSigma \cdots \CupSigma\\
-&\CupSigmadot \; \CupSigma \; \CupSigma \cdots \CupSigma\\
-&\CupSigma \; \CupSigmadot \; \CupSigma \cdots \CupSigma\\
-&\CupSigma \; \CupSigma \; \CupSigmadot \cdots \CupSigma\\
-&\CupSigma \; \CupSigma \; \CupSigma \cdots \CupSigmadot\\
+&\CupSigma \; \CupSigma \; \CupSigma \cdots \CupSigma,\\
+&\CupSigmadot \; \CupSigma \; \CupSigma \cdots \CupSigma,\\
+&\CupSigma \; \CupSigmadot \; \CupSigma \cdots \CupSigma,\\
+&\CupSigma \; \CupSigma \; \CupSigmadot \cdots \CupSigma,\\
+&\CupSigma \; \CupSigma \; \CupSigma \cdots \CupSigmadot,\\
 &\CupSigmadot \; \CupSigmadot \; \CupSigma \cdots \CupSigma,
 \end{align}
-and so on. Where there are $N$ cups appearing, and the fermion dots are ordered from right to left, and any number of them can appear.
+and so on. Where there are $N/2=n$ cups appearing, and the fermion dots are ordered from right to left.
 
 The Hamiltonian has two types of terms. One term mixes the states on site, while the other mixes nearest neighbor cups.
 We will denote the onsite Hamiltonian terms by $H_{2j}$ and the the term which couples the nearest neighbor cups by $H_{2j+1}$.
@@ -11209,7 +11232,9 @@ H = - \sum_{j=1}^{N-1}\; t_j \; \;  \TwoLinedotdot_{\text{site $j+1$}},
 \end{align}
 where the left line is applied to site $j$ and the right line is applied to site $j+1$.
 
-In the completely staggered limit (physically, this corresponds to vanishing chemical potential and tuning the superconducting gap equal to the hopping amplitude) there are two ground states:
+To study the Kitaev wire in its topological phase, we will work in the completely staggered limit where
+the terms $H_{2j+1}$ dominate and the intra-site terms $H_{2j}$ are absent (physically, this corresponds to vanishing chemical potential and tuning the superconducting gap equal to the hopping amplitude).
+In this limit there are two ground states, differing by their fermion parity:
 \begin{align}
 \Psi_e = \;\StaggaredGSEven \; \cdots \; \StaggaredGSEvenR\;, 
 \qquad \text{and} \qquad 
@@ -11217,11 +11242,15 @@ In the completely staggered limit (physically, this corresponds to vanishing che
 \end{align}
 
 Note that the fermion dot appearing in $\Psi_o$ has zero energy, while this is not true for fermion dots 
-on the interior intermediate cups: excitations are built by putting dots on the intermediate cups. 
+on the interior intermediate cups.
+Physically, this implies the presence of two Majorana zero modes, which are identified with the $\beta$ 
+lines at the ends of the chain which are not acted on by the Hamiltonian. 
+Excited states are easily constructed by putting dots on the intermediate cups. 
 
-A nice feature of our diagrammatic notation is that the ``delocalization" of the femrion number is made manifest.
+A nice feature of our diagrammatic notation is that the ``delocalization" of the ferion number in the Kitaev wire is made manifest.
 For example, the fermion in the odd-parity state $\Psi_o$ is not localized: it is free to slide along the bottom $\beta$ line
-from one end of the chain to the other.
+from one end of the chain to the other (with the sliding being implemented through odd endomorphisms 
+as usual).
 %When transforming back to the original basis, one sees that the state is actually an even superposition of all possible placements of an even number of fermions, similarly for the odd state.
 
 
