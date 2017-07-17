@@ -440,6 +440,16 @@
 
 \newcommand{\Tuberrprimenolabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tuberrprimenolabel.pdf}}}}}
 
+\newcommand{\moronex}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{moronex.pdf}}}}}
+\newcommand{\moronexj}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{moronexj.pdf}}}}}
+
+
+
+\newcommand{\moronexcollar}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{moronexcollar.pdf}}}}}
+
+
+
+
 \newcommand{\exyomegaa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{exyomegaa.pdf}}}}}
 \newcommand{\exyomegab}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{exyomegab.pdf}}}}}
 \newcommand{\exyomegac}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{exyomegac.pdf}}}}}
@@ -4186,7 +4196,7 @@ enumerating the quasiparticle excitations in the theory is equivalent to writing
 modules of the tube category. 
 
 Of course, the notion of an excitation is strictly speaking not well-defined until we construct a Hamiltonian for the theory.
-We will do this in Section \ref{Super_pivotal_Hamiltonian}), but until then we will continue to abuse the word ``excitation''
+We will do this in Section \ref{Super_pivotal_Hamiltonian}, but until then we will continue to abuse the word ``excitation''
 to refer to an object of the tube category. 
 We emphasize that the tube category is a perfectly well-defined mathematical object within 
 the formal setting of string-net spin-TQFTs, and the discussion of the tube category 
@@ -4265,23 +4275,37 @@ We now apply the above to the case where $Y$ is an annulus to obtain a nondegene
 %\kw{Take it from here, Dave.}
 Using \eqref{trace_to_innerproduct} and letting $t \in \tube^W(\mcc)$ we have
 \begin{align}
+\label{trace_t}
 \tr (t)  = \langle t, \text{id} \rangle  = Z((S^1_W \times I) \times I ) (t \cup \overline{\text{id} })  = Z(S^1_W \times D^2) (t \cup \overline{\text{id}}).
 \end{align}
-This is the partition function on a solid torus with the boundary condition $t \cup \overline{\text{id}}$.
-Graphically we can write this as,
+This is the partition function of a solid torus with boundary condition $t \cup \overline{\text{id}}$.
+Diagrammatically we can write the evaluation of the partition function on the right hand side of \eqref{trace_t} as the trace of a matrix,
 \begin{align}
 \label{trace_formula}
 \left \langle\;\Tuberrprime_W,\text{id} \; \right \rangle =
- \tr_W \left \{ \Tuberrprimecut \; : A\left( \scriptstyle{x\;} \PinchedDisk \right)  \xrightarrow{\quad \quad} A \left( \scriptstyle{x\;} \PinchedDisk \right) 
+ \tr_W \left \{ \Tuberrprimecut \; : A\left(  \PinchedDisk \scriptstyle{x\;} \right)  \xrightarrow{\quad \quad} A \left(  \PinchedDisk \scriptstyle{x\;} \right) 
  \right \}
 \end{align}
-The trace is the standard trace if $W$ is bounding, 
-and the super trace if $W$ is non-bounding.
-If $x$ is not a simple object then the vector space assigned to the disk is $\text{mor}(\unit \ra x)$.
-This trace is defined for any super pivotal category satisfying the assumptions of Section~\ref{def_sect}.
+The cut open cylinder provides a linear map from the disk to the disk.
+Denoting a complete orthogonal basis of $\text{mor}(\unit \ra x)$ by
+\begin{align}
+A\left( \scriptstyle{x\;} \PinchedDisk \right)  \cong \text{mor}(\unit \ra x) = \bigoplus_i \moronex,
+\end{align}
+the linear map induced by the cut on this basis is given,
+\begin{align} 
+\moronex \mapsto \moronexcollar = \sum_{j} g_{ij} \; \moronexj.
+\end{align}
+The coefficients $g_{ij}$ are found by reducing the middle diagram using local relations.
+As usual, any basis of $\text{mor}(\unit \ra x)$ will do as the trace is invariant under a change of basis.
+Explicitly, \eqref{trace_formula} is given by,
+\begin{align} 
+\left \langle\;\Tuberrprime_W,\text{id} \; \right \rangle  =\tr_W(g) = \sum_{ \mu_j \in \text{mor}(\unit \ra x) } g_{ij} s(W)^{|\mu_j|}
+\end{align} 
+where we have used $|\mu_j| = 0$ if $\mu_j$ has even parity and $|\mu_j| =1$ otherwise.
+ 
+\dave{Made it to here. Have to go. Will be back later today.}
 
-Despite the abstract nature of this discussion, 
-the calculation of traces is easy in practice.
+We take the standard matrix trace if $W$ is bounding, and the super trace if $W$ is non-bounding.
 In particular, if $x$ is a simple object then,
 \begin{align}
 \label{Disk_Hilb}
@@ -4292,10 +4316,15 @@ A \left( \scriptstyle{x\;} \PinchedDisk \right)  =
 0 & \text{otherwise} \\
 \end{cases}
 \end{align}
+If $x$ is not a simple object then the super vector space assigned to the disk is $\text{mor}(\unit \ra x)$.
+As usual the trace is invariant under a change of basis, and so any basis will yield the same answer.
+This trace is defined for any super pivotal category satisfying the assumptions of Section~\ref{def_sect}.
 %If $x$ is not simple
 %then it is isomorphic to an ordered direct sum of simple objects (assuming semisimplicity) 
 %and \eqref{Disk_Hilb} is modified in the obvious way.
-Extending to finite direct sums of simple obejcts the trace in \eqref{trace_formula} can be written as
+
+If the super pivotal category is derived from a pivotal category $\mcc$ by condensing a fermion, then we can write the matrix trace in a particularly simple form.  
+Extending to finite direct sums of simple objects the trace in \eqref{trace_formula} can be written as
 \begin{align}
 \label{trace_simple_objects}
 \left \langle\;\Tuberrprimenolabel_W,\text{id} \; \right \rangle = 
