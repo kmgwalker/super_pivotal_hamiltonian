@@ -1261,6 +1261,8 @@
 \newcommand{\PitchforkFLeft}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFLeft.pdf}}}}}
 \newcommand{\PitchforkFRight}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFRight.pdf}}}}} 
 
+\newcommand{\Banana}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Banana.pdf}}}}} 
+
 
 %\newcommand{\Koszul}[2]{\smash[t]{\overset{{\color{kwcolor}{#1}}}{#2}}}
  
@@ -5808,18 +5810,20 @@ We do this using the trace defined Section \ref{traces_and_innerproducts}.
 We have,
 \begin{align}
 \tr \left ( E(x,y) \right) &= \tr \left( \TubeIdempotentTwoStrand_{J} \right) \\
-&= \frac{1}{\mcd^2} \sum_{r \in \mcc/\psi} \left( 1+s(J)(-1)^{\nu_y} \right) \frac{ d_r}{\dim \End(r)}  \tr \left( \IdempotentBasis_J \right)\\
+&= \frac{1}{\mcd^2} \sum_{r \in \mcc}\frac{ d_r}{\dim \End(r)}  \tr \left( \IdempotentBasis_J \right)\\
 &  =\frac{1}{\mcd^2} (1+s(J)(-1)^{\nu_y} )d_x d_y 
  %&=\frac{1}{\mcd^2}(1+ (-1)^{s(J)}(-1)^{\nu_y})d_x d_y 
 \end{align}
-The second line follows from the first using 
-$\omega_{\mcc} =(\text{cl}(\unit) +\text{cl}(\psi))\cdot \omega_{\mcc/\psi}$, 
-and that $\text{cl}(\psi)$ can be removed at the compensation of the phase $s(J) (-1)^{ \nu_y}$.
-The last line follows from the trace,
+The second line follows from linearity of the trace and the last line from
 \begin{align}
-\tr \left( \IdempotentBasis_J \right) &=  \tr_J   \left\{ \TubeIdempotentBasistrace : \DiskLarge \ra \DiskLarge \right \}= \delta_{r \unit} d_x d_y. 
+\tr \left( \IdempotentBasis_J \right) &=  \tr_J   \left\{ \TubeIdempotentBasistrace : \DiskLarge \ra \DiskLarge \right \}= (\delta_{r \unit} + s(J) (-1)^{\nu_y}\delta_{r \psi} )d_x d_y. 
  \end{align} 
-where $r \in \mcc/\psi$ runs over a set of representatives of simple objects in $\mcc/\psi$; see section \ref{traces_and_innerproducts} for more details.
+see section \ref{traces_and_innerproducts} for more details on the trace.
+We have used that when $\text{cl}(\psi)$ is pushed past $y$ the trace picks up the phase $ (-1)^{ \nu_y}$.
+%\begin{align}
+%\tr \left( \IdempotentBasis_J \right) &=  \tr_J   \left\{ \TubeIdempotentBasistrace : \DiskLarge \ra \DiskLarge \right \}= \delta_{r \unit} d_x d_y. 
+% \end{align} 
+%where $r \in \mcc/\psi$ runs over a set of representatives of simple objects in $\mcc/\psi$.
 Hence $\tr \left ( E(e_i,f_j) \right)$ is non-zero so long as $s(J) = (-1)^{\nu_{f_j}}$, 
 which is true by assumption, recall \eqref{FunctorCxCtoTubeC}.
 
@@ -10696,6 +10700,10 @@ that are assigned
 to attaching regions in the handle decomposition.
 On vectors in $W^*\tp W$, $\chi$ is proportional to the evaluation of the following `banana' diagram:
 \ethan{insert banana picture here. I can make it if Dave's busy, but it'll be stylistically slightly different}
+\dave{This banana picture?}
+\begin{align}
+\Banana
+\end{align}
 
 
 Since the vector spaces for the attaching regions between $(k+1)-$ and $k$-handles are dual 
