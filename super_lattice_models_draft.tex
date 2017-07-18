@@ -4270,7 +4270,6 @@ Note that any choice of cutting curves and $c'$ will yield the same answer on th
 \kw{Need to make sure we have defined super trace $\str$.}
 
 \medskip
-\dave{still in progress.}
 We now apply the above to the case where $Y$ is an annulus to obtain a nondegenerate trace on the tube category.
 %\kw{Take it from here, Dave.}
 Using \eqref{trace_to_innerproduct} and letting $t \in \tube^W(\mcc)$ we have
@@ -4289,7 +4288,7 @@ Diagrammatically we can write the evaluation of the partition function on the ri
 The cut open cylinder provides a linear map from the disk to the disk.
 Denoting a complete orthogonal basis of $\text{mor}(\unit \ra x)$ by
 \begin{align}
-A\left( \scriptstyle{x\;} \PinchedDisk \right)  \cong \text{mor}(\unit \ra x) = \bigoplus_i \moronex,
+A\left( \PinchedDisk  \scriptstyle{x\;} \right)  \cong \text{mor}(\unit \ra x) = \bigoplus_i \moronex,
 \end{align}
 the linear map induced by the cut on this basis is given,
 \begin{align} 
@@ -4299,42 +4298,31 @@ The coefficients $g_{ij}$ are found by reducing the middle diagram using local r
 As usual, the trace is basis independant and any basis of $\text{mor}(\unit \ra x)$ will do.
 Explicitly, \eqref{trace_formula} is given by,
 \begin{align} 
+\label{matrix_trace}
 \left \langle\;\Tuberrprime_W,\text{id} \; \right \rangle  =\tr_W(g) = \sum_{ j } g_{jj} s(W)^{|\mu_j|}
 \end{align} 
 where we have used $|\mu_j| = 0$ if $\mu_j$ has even parity and $|\mu_j| =1$ otherwise.
- 
-\dave{Made it to here. Have to go. Will be back later today.}
-
-We take the standard matrix trace if $W$ is bounding, and the super trace if $W$ is non-bounding.
-In particular, if $x$ is a simple object then,
-\begin{align}
-\label{Disk_Hilb}
-A \left( \scriptstyle{x\;} \PinchedDisk \right)  = 
-\begin{cases} 
-\cc^{1|0} & \text{if $x \cong \unit$ } \\
-\cc^{0|1} & \text{if $x \cong \psi$ } \\ 
-0 & \text{otherwise} \\
-\end{cases}
-\end{align}
-If $x$ is not a simple object then the super vector space assigned to the disk is $\text{mor}(\unit \ra x)$.
-As usual the trace is invariant under a change of basis, and so any basis will yield the same answer.
+If $W$ is bounding then $s(W) = 1$ and \eqref{matrix_trace} is just $\tr(g)$, 
+if $W$ is non-bounding then $s(W)  = -1$ and \eqref{matrix_trace} is the super trace $\str(g)$. 
+%In particular, if $x$ is a simple object then,
+%\begin{align}
+%\label{Disk_Hilb}
+%A \left( \scriptstyle{x\;} \PinchedDisk \right)  = 
+%\begin{cases} 
+%\cc^{1|0} & \text{if $x \cong \unit$ } \\
+%\cc^{0|1} & \text{if $x \cong \psi$ } \\ 
+%0 & \text{otherwise} \\
+%\end{cases}
+%\end{align}
+%If $x$ is not a simple object then the super vector space assigned to the disk is $\text{mor}(\unit \ra x)$.
+%As usual the trace is invariant under a change of basis, and so any basis will yield the same answer.
 This trace is defined for any super pivotal category satisfying the assumptions of Section~\ref{def_sect}.
 %If $x$ is not simple
 %then it is isomorphic to an ordered direct sum of simple objects (assuming semisimplicity) 
 %and \eqref{Disk_Hilb} is modified in the obvious way.
 
-If the super pivotal category is derived from a pivotal category $\mcc$ by condensing a fermion, then we can write the matrix trace in a particularly simple form.  
-Extending to finite direct sums of simple objects the trace in \eqref{trace_formula} can be written as
-\begin{align}
-\label{trace_simple_objects}
-\left \langle\;\Tuberrprimenolabel_W,\text{id} \; \right \rangle = 
-\frac{1}{2} \left (  \TuberrTraceCe + s(W) \TuberrTraceCo  \right ).
-\end{align}
-Where the diagram on the right is evaluated in the plane (equivalently, on $S^2$). 
-Since the diagram appearing on the right has a trivial lift to the parent category $\mcc$, 
-the evaluation is the same whether we use $\mcc$ or $\mcc/\psi$.
 \dave{Should we call $\tr(e_j)$ the normalized quantum dimension of $\tr(e_j)/\tr(e_0)$ the normalized quantum dimension?}
-As an application of \eqref{trace_simple_objects} we can compute the normalized quantum dimension $d_{e_j}$ of a minimal idempotent
+As an application of \eqref{matrix_trace} we can compute the normalized quantum dimension $d_{e_j}$ of a minimal idempotent
  $e_j$ in $\tube(\mcc)$.
  It is given by
 %defined by the trace of the associated idempotent $\Pi_x$: 
@@ -4345,6 +4333,23 @@ where $W$ is bounding if $e_j \in \tube^{B}(\mcc/\psi)$ and non-bounding if $e_j
 \footnote{The un-normalized quantum dimension is given by $d_{e_j}/d_{e_0}$ where $e_0$ is the trivial idempotent.}.
 For example, in the $C_2$ theory, we can use this approach to obtain $d_{m_{\unit / \psi}} = 1/2, d_{m_\sigma^+} = q_{\unit/\psi} = d/2, q_\sigma = 1$. 
 Normalizing so that $d_{m_\unit} = 1$, we obtain the unnormalized quantum dimensions listed in Table \ref{C2Data}. 
+
+\dave{Could add paragraph about q-type particles having norm $2$?}
+
+\dave{commented out things here that we may want to clean up/include, but is not crucial.
+i.e., we could relate inner product of parent theory to condensed theory.}
+\begin{comment} 
+
+If the super pivotal category is derived from a pivotal category $\mcc$ by condensing a fermion,
+then we can write the matrix trace in a particularly simple form. \eqref{trace_formula} can be written as
+\begin{align}
+\label{trace_simple_objects}
+\left \langle\;\Tuberrprimenolabel_W,\text{id} \; \right \rangle =  \TuberrTraceCe + s(W) \TuberrTraceCo 
+\end{align}
+Where the diagram on the right is evaluated in the plane (equivalently, on $S^2$). 
+Since the diagram appearing on the right has a trivial lift to the parent category $\mcc$, 
+the evaluation is the same whether we use $\mcc$ or $\mcc/\psi$.
+
 
 Equation \eqref{trace_simple_objects} is useful in its own right. 
 It provides a relation between the trace of a tube in $\tube(\mcc)$ and $\tube(\mcc/\psi)$.
@@ -4398,6 +4403,7 @@ $\tube(\mcc/\psi)$ given the minimal idempotents of $\tube(\mcc)$,
 as we do in proving Theorem \ref{minimal_idempotents_modular_C/psi}.
 
 
+
 %On the other hand, we have:
 %$\varphi_B\circ\hat a_B$ and $\varphi_N\circ\hat a_N$ are both faithful:
 %It follows that the summand $\tube(\mcc)\bullet a_B$ maps to zero when included in $\tube^N(\mcc/\psi)$,
@@ -4406,10 +4412,9 @@ as we do in proving Theorem \ref{minimal_idempotents_modular_C/psi}.
 %$\tube^J(\mcc/\psi)$ under the functor $\varphi_J$.
 
 %\kw{not satisfied with above; will rewrite soon}
+\end{comment} 
 
-
-\dave{Maybe this should go elsewhere. 
-Also it looks like we are using a different trace here than above.}
+\subsubsection{Quantum dimensions}
 We will also need to know how to calculate the total quantum dimension $\mcd_{\mcc/\psi} = \dim(\mcc/\psi)$.
 In bosonic theories we have $\mcd_\mcc^2 = \sum_{x\in \mcc} d_x^2$, where the sum runs over all simple objects $x\in\mcc$. 
 This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
@@ -4445,10 +4450,11 @@ It is a result of Muger \cite{muger2003a,muger2003b}\dave{need to check which re
 the dimension of the center is related to $\mcd_\mcc$ by 
 \be \mcd_{\tube(\mcc)} =\mcd^2_\mcc.\ee
 One can ask for the analogous formula in the super pivotal case.
-%We can then use \eqref{DC_and_DCpsi} to obtain 
-%\be \mcd_{\tube(\mcc)} = 2\mcd^2_{\mcc/\psi}.\ee
-Using \eqref{DC_and_DCpsi} again and specializing to the case where $\mcc$ is a modular tensor category then $\mcc \times (\mcc/\psi) \cong \tube(\mcc/\psi)$ (a result 
-that we prove in Section \ref{double_fermionic_quotient}), we have 
+We can then use \eqref{DC_and_DCpsi} to obtain 
+\be \mcd_{\tube(\mcc)} = 2\mcd^2_{\mcc/\psi}.\ee
+Using \eqref{DC_and_DCpsi} again and specializing to the case where $\mcc$ is a modular tensor category then $\mcc \times (\mcc/\psi) \cong \tube(\mcc/\psi)$ 
+(a result that we prove in Section \ref{double_fermionic_quotient})\dave{Ethan, I changed the above to MTC (as we assume for the theorem), is that what you meant, or do you know how to show the below more generally?
+(I expect it is true more generally, but don't know how to show it.)}, we have 
 \be \mcd_{\tube(\mcc/\psi)} = \mcd_{\mcc} \mcd_{\mcc/\psi}.\ee
 For example, in the $C_2$ theory this is verified by $\mcd_{\tube(C_2)} = \sqrt{8} = \sqrt{2} (\sqrt{2})^2 = \sqrt{2} \mcd^2_{C_2}.$
 
@@ -4456,9 +4462,9 @@ For example, in the $C_2$ theory this is verified by $\mcd_{\tube(C_2)} = \sqrt{
 
 \medskip
 
-\dave{Below is old stuff. 
+\dave{Below is old stuff (commented out). 
 Should decide if we want to keep anything else from it, I think most of it has been copied over.}
-\kwsep
+\begin{comment} 
 In what follows we will need to compute the trace of a generic operator (or in other words, an endomorphism) $\mco$ in the tube category. 
 \kw{I think we should say endomorphism rather than operator, and use lower case notation for this operator.}
 We will do the computations following the procedure outlined in \cite{Walker2006}; for more details see \cite{ghosh2016,das2014}.
@@ -4480,6 +4486,8 @@ but TQFT considerations pick out a preferred map from torus string nets to $\cc$
 \kw{Note to self: be sure to introduce inner product (more general than trace)}
 
 \kw{should probably make some observations needed for proof of lemma in MTC/psi section}
+
+
 
 \dave{Do the two agree at the level of the tube category?
 (i.e., I thought $\langle X, Y \rangle  = \langle \unit ,X^*Y\rangle = \text{tr} X^*Y$.
@@ -4529,6 +4537,8 @@ We then view this rotated tube as a linear map from $D^2$ to $D^2$, and the trac
 \end{center}
 \end{figure}
 
+
+
 Now that we know how to take traces and map string-nets on the torus to $\cc$, we are equipped with a way 
 of taking inner products between morphisms in the tube category. To form the inner product $\langle u,v\rangle$, 
 we take the annuli corresponding to $u$ and $v$, identify their boundaries together to form a torus, 
@@ -4551,6 +4561,8 @@ This ensures that $\dim(\mcc)$ is related to $\dim(\mcc / \psi)$ by
 where we have viewed the category of supervector spaces, sVec, as consisting of two objects 
 ${\rm sVec} = \{\unit,\psi\}$ with $d_\unit=d_\psi=1$, so that $\mcd_{\rm sVec} = \sqrt{2}$. 
 This result was also obtained in \cite{wan2016}. 
+
+
 
 To prove \eqref{DC_and_DCpsi}, we write 
 \be
@@ -4608,7 +4620,7 @@ For example, in the $C_2$ theory this is verified by $\mcd_{\tube(C_2)} = \sqrt{
 %Next we define a tensor functor from $\mcc \times \overline{\mcc/\psi} $ to $\tube(\mcc/\psi)$ and
 %show that it is an isomorphism of tensor categories.
 %thus showing that $\tube(\mcc/\psi) \cong \mcc \times \overline{\mcc/\psi}$ as tensor categories.
-
+\end{comment} 
 
 \begin{comment} %%%%%%%%%%%%%%%%
 
@@ -4647,6 +4659,8 @@ We make this precise in the following lemma:
 
 \end{comment} %%%%%%%%%%%%%%%%
 
+
+\begin{comment}
 
 \begin{lemma}  \label{image_aJ}
 The functors $\varphi_B\circ\hat a_B$ and $\varphi_N\circ\hat a_N$ are both faithful (i.e.\ injective on morphism spaces).
@@ -4742,12 +4756,13 @@ Note that the inclusion of the image of $\hat{a}_J$ in $\tube^J(\mcc/\psi)$ is n
 indeed, tubes that have $\psi$ lines terminating on the interior of the tube do not appear in $\tube(\mcc)$.
 For example a tube with a q-type strand could always have a $\psi$ line extending from it and terminating on the back wall.
 Hence, we also need to show that the resulting idempotents are minimal.
-
+\end{comment}
 
 %%%%%%%%%%%%%%%%%
 \subsubsection{The sum-of-squares formula}
 %%%%%%%%%%%%%%%%%
 
+\dave{Should}
 In this section, we briefly present a fermionic version of the sum-of-squares formula, which is useful for relating the dimension
 of the tube category to the dimensions of its simple modules (quasiparticles). 
 In many cases, this allows us to obtain a large amount of information about the quasiparticle 
@@ -5792,12 +5807,14 @@ We have,
 &  =\frac{1}{\mcd^2} (1+s(J)(-1)^{\nu_y} )d_x d_y 
  %&=\frac{1}{\mcd^2}(1+ (-1)^{s(J)}(-1)^{\nu_y})d_x d_y 
 \end{align}
-To get to the second line we used that $\omega_{\mcc} =(\text{cl}(\unit) +\text{cl}(\psi))\omega_{\mcc/\psi}$, 
-and that $\text{cl}(\psi)$ can be removed at the compensation of the phase $(-1)^{(s(J) + \nu_y)}$.
+The second line follows from the first using 
+$\omega_{\mcc} =(\text{cl}(\unit) +\text{cl}(\psi))\cdot \omega_{\mcc/\psi}$, 
+and that $\text{cl}(\psi)$ can be removed at the compensation of the phase $s(J) (-1)^{ \nu_y}$.
 The last line follows from the trace,
 \begin{align}
 \tr \left( \IdempotentBasis_J \right) &=  \tr_{\text{Matrix}}   \left\{ \TubeIdempotentBasistrace : \DiskLarge \ra \DiskLarge \right \}= \delta_{r \unit} d_x d_y. 
  \end{align} 
+where $r \in \mcc/\psi$ runs over a set of representatives of simple objects in $\mcc/\psi$; see section \ref{qdims_and_traces} for more details.
 Hence $\tr \left ( E(e_i,f_j) \right)$ is non-zero so long as $s(J) = (-1)^{\nu_{f_j}}$, 
 which is true by assumption, recall \eqref{FunctorCxCtoTubeC}.
 
@@ -6007,9 +6024,10 @@ Hence we can normalize our idempotents by re-scaling the q-type idempotents by a
 have unit norm.
 The resulting unitary $S$-matrix is given by,
 %This results in a unitary $S$-matrix given by, 
-\dave{I will plug this into a computer and verify that it's unitary.}
-\dave{Currently having licensing issues with Mathematica, 
-will do this once that's resolved.}
+%\dave{I will plug this into a computer and verify that it's unitary.}
+%\dave{Currently having licensing issues with Mathematica, 
+%will do this once that's resolved.}
+%\dave{Appears to check out.}
 %\dave{This was old notation}
 %\begin{align}
 %\text{cl}_W(f^{J}_{ab}) \xrightarrow{S^{JW \ra WJ}}  \sum_{\substack{x \in \sob(\mcc) \\ y \in \sob(\mcc/\psi) }} S_{ax}  S_{by}^*   \text{cl}_J(f^{W}_{xy})
@@ -6085,7 +6103,7 @@ The matrix elements are given by,
 \text{cl}_W(\widehat{E}(a,b)) \xrightarrow{\; \; \; T^{JW \ra J\widetilde{W}}\;\;\; } \theta_a \theta_b^* \text{cl}_{\widetilde{W}}(\widehat{E}(a,b))
 \end{align}
 where again $J = J(b)$, and $\widetilde{W}$ can be read off from Figure \ref{spin_str_mapping_class_group}.
-The phases $\theta_a$ and $\theta_b$ are the topological twists of the lifts of $a$ and $b$ to the parent theory.
+The phases $\theta_a$ and $\theta_b$ are the twists of the lifts of $a$ and $b$ to the parent theory.
 Note that if $J = B$ then replacing $b$ with $b\tp \psi$ changes the sign of the twist.
 This sign ambiguity is expected; see \kw{need ref} above.
 
