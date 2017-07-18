@@ -4451,7 +4451,7 @@ For the $C_2$ theory, this works out as
 \be \mcd_{C_2} = \sqrt{2} = \mcd_{\rm Ising} / \sqrt{2},\ee
 and is easily checked to hold for the other examples in the $A_{4n+2} / \psi$ series.  
 
-It is a result of Muger \cite{muger2003a,muger2003b}\dave{need to check which reference} that for any unitary fusion category $\mcc$, 
+It is a result of Muger \cite{muger2003b} that for any unitary fusion category $\mcc$, 
 the dimension of the center is related to $\mcd_\mcc$ by 
 \be \mcd_{\tube(\mcc)} =\mcd^2_\mcc.\ee
 One can ask for the analogous formula in the super pivotal case.
@@ -4767,7 +4767,7 @@ Hence, we also need to show that the resulting idempotents are minimal.
 \subsubsection{The sum-of-squares formula}
 %%%%%%%%%%%%%%%%%
 
-\dave{Should}
+\dave{simple module $\ra$ minimal idempotent?}
 In this section, we briefly present a fermionic version of the sum-of-squares formula, which is useful for relating the dimension
 of the tube category to the dimensions of its simple modules (quasiparticles). 
 In many cases, this allows us to obtain a large amount of information about the quasiparticle 
@@ -5817,7 +5817,7 @@ $\omega_{\mcc} =(\text{cl}(\unit) +\text{cl}(\psi))\cdot \omega_{\mcc/\psi}$,
 and that $\text{cl}(\psi)$ can be removed at the compensation of the phase $s(J) (-1)^{ \nu_y}$.
 The last line follows from the trace,
 \begin{align}
-\tr \left( \IdempotentBasis_J \right) &=  \tr_{\text{Matrix}}   \left\{ \TubeIdempotentBasistrace : \DiskLarge \ra \DiskLarge \right \}= \delta_{r \unit} d_x d_y. 
+\tr \left( \IdempotentBasis_J \right) &=  \tr_J   \left\{ \TubeIdempotentBasistrace : \DiskLarge \ra \DiskLarge \right \}= \delta_{r \unit} d_x d_y. 
  \end{align} 
 where $r \in \mcc/\psi$ runs over a set of representatives of simple objects in $\mcc/\psi$; see section \ref{traces_and_innerproducts} for more details.
 Hence $\tr \left ( E(e_i,f_j) \right)$ is non-zero so long as $s(J) = (-1)^{\nu_{f_j}}$, 
@@ -6519,9 +6519,8 @@ $m_{22}(\omega_\psi,c,j)$ &$1$ \\
 \end{align}
 \caption{ Bounding idempotents for $SU(2)_6/\psi$.
 Where $c \in a \tp b$ and $j$ labels the choice of in the fusion space $V^{ab}_c (\mcc/\psi)$.
-\dave{Some of these labels are determined, 
+Some of these labels are determined, 
 e.g., $m_{00}(\omega_0,c,j)$ can be simplified to $m_{00}(\omega_0,m_0,0)$.
-Should we do that for each case?}
 }
 \label{bounding_SU26}
 \end{center}
@@ -8871,6 +8870,23 @@ Acting with the odd (and invertible) element of $\cl_1$ gives an isomorphism bet
 and hence they must have the same dimension.
 
 \kw{This would be a good place to insert a def of $\Gamma$ matrices}
+\dave{OK. We had the following diagrams already made, so I'll use them.
+If we would rather use pitchforks, that's also fine.}
+The explicit matrix elements of the isomorphisms can be defined in the following way. 
+Let $\psi \in V^{ab}_c$ and suppose that $b$ is a q-type simple object, and let $\Gamma_b \in \End(b)$ be an odd endomorphism.
+Then,
+\begin{align}
+\label{Gamma_y_def}
+\Gamma_b \left( \Vertexa \right) \; = \; \Vertexb \; =\; \sum_{\tilde{\psi} \in V^{ab}_c} \; \Vertexe \; \left( 
+{\Vertexc}\middle/ {\Vertexd} \right)
+\end{align}
+and the $\tilde{\psi}^*$ provide a complete basis for $V^{b^*a^*}_{c^*}$.
+The matrix elements are defined by,
+\begin{align}
+\Gamma_b \left( \Vertexa \right) = \sum_{\tilde{\psi} \in V^{ab}_c} \left[ \Gamma_b \right]_{\psi \tilde{\psi} }\Vertexe
+\end{align}
+which can be read off from \eqref{Gamma_y_def}.
+If $a$ or $c$ has an odd endomorphism, then the $\Gamma_a$ and $\Gamma_c$ matrices can be found in a similar way. 
 
 %%KW this same argument has already been made in a footnote near the beginning of the E6/2 section, so I'm removing it here
 \begin{comment} %%%%%%%%%
@@ -9088,6 +9104,9 @@ Additionally, while $V^{ab}_c$ has an action of $\End(a)\otimes\End(b)\otimes\En
 only has an action of $\End(a)\otimes\End(b)$.
 
 \kw{Maybe this paragraph can be dropped?  We already have a a simpler proof of this fact above.}
+\dave{That's fine with me.
+Ethan, if that's fine with you go ahead and comment it out. 
+An alternative is to put it as a footnote.}
 This definition of $V^{ab}_c$ gives us another way to show that $V^{ab}_c$ will always be a supervector space of the form $\cc^{n|n}$ for some integer $n$ if any of $a,b,c$ is q-type. 
 Indeed, suppose $c$ were q-type, and $\Delta^{ab}_c \cong \cc^{r|s}$. 
 Then $V^{ab}_c \cong \cc^{r|s} \tp \cc^{1|1} \cong \cc^{r+s|r+s}$. 
@@ -9195,6 +9214,7 @@ their ordered representatives.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \kw{We should consider replacing $\mcx$ with $\sob$ in all of Section 8.}
+\dave{I think we should do that.}
 
 Let $\mcx$ be a complete collection of simple objects (minimal idempotents), one from each equivalence class.
 (In this subsection, as in most of the paper, we are assuming that our category is semisimple with finitely many equivalence
@@ -9222,13 +9242,13 @@ and also
 	V^{abc}_d \cong \bigoplus_{y\in \mcx} V^{ay}_d \tp_{\End(y)} V^{bc}_y .
 \ee
 Diagrammatically these read,
-\begin{align}
-%\Fusionspacea \cong 
-\bigoplus_{x}  \Fusionspaceb \cong  \bigoplus_{y}  \Fusionspacec
+\begin{align} 
+\bigoplus_{x}  \Fusionspaceb \cong \Fusionspacea \cong  \bigoplus_{y}  \Fusionspacec
 \end{align} 
 \kw{Let's add in the middle a diagram with a 4-valent vertex, prepresenting $V^{abc}_d$}
-where the unlabeled trivalent vertices label the fusion spaces $V^{ab}_x$, $V^{xc}_d$, $V^{ay}_d$, and $V^{bc}_y$, 
-and the tensor product over endomorphisms is implicit in the diagram.
+\dave{Sure. Done.}
+where the unlabeled trivalent vertices denote the fusion spaces $V^{ab}_x$, $V^{xc}_d$, $V^{ay}_d$, $V^{bc}_y$, and the unlabled quadvalent vertex in the middle diagram denotes the fusion space $V^{abc}_d$.
+The tensor product over endomorphisms is implicit in the diagram.
 \dave{We should add the appropriate figure at the first point we talk about this tensor product. 
 Maybe the beginning of this subsection.}
 Similarly, 
@@ -9399,7 +9419,7 @@ see that a Koszul sign appears:
 \kwsep
 
 \kw{I propose we switch to this diagram}
-
+\dave{That's fine with me.}
 
 \begin{align}
 \newcommand{\A}{\bigoplus_{p,q}V^{qw}_{u}\tp_q V^{pz}_{q}  \tp_p V^{xy}_{p}}
@@ -9435,6 +9455,8 @@ where $\mu\in V^{xy}_p,\nu\in V^{pz}_q,\lambda\in V^{qw}_u,\gamma\in V^{xs}_u,\d
 The Koszul sign $P_{23}$ appearing in \eqref{endoPentagon} appears in the above formula as $(-1)^{|\delta||\alpha|}$. 
 
 \ethan{Feel free to delete if desired}
+\dave{I think we should draw this one in the pitch fork basis. 
+I can do that.}
 Other coherence relations are modified to take into account Koszul 
 signs.
 For example, requiring consistency between $F$-moves and the pivot means that the following 
@@ -9466,6 +9488,7 @@ diagram must commute:
 \kw{TO DO: discuss reflection structures, pin, etc.
 probably just give basic defs}
 \ethan{Are we wanting to talk about inner products and stuff? I think we can largely just refer to stuff in the line bundle appendix}
+\dave{Should probably say atleast enough so that we know the Hamiltonian is hermitian.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -11322,7 +11345,12 @@ to denote admissible colorings of the bulk degrees of freedom in $\Sigma_{0\ra1}
 %%%%%%%%%%%%%%%%
 \subsection{Kitaev wire} \label{kitaev_wire}
 %%%%%%%%%%%%%%%%
-
+\dave{Should also cite the two Fidkowski Kitaev papers where they write this wave function down. 
+Turzillo et al and Bultinck et al each reiview and extend this work (but that should be double checked).
+}
+\dave{I think we still need to do an actual example of the shadow world we explain above. 
+This section is very nice for relating the Hamiltonian we define, to the ones that Ware et al, and Tarantino et al define.
+}
 In this section, we show how the graphical formalism developed in previous sections
 can be used to succinctly capture the salient features of the `Kitaev wire', Kitaev's toy model 
 of a one-dimensional spinless $p$-wave superconductor \cite{kitaev2001}. 
@@ -11337,12 +11365,17 @@ partition functions on $\Sigma \times [0,1]$. We will specify to $\Sigma = I$ in
 chains whose Hilbert spaces contain $N$ tensor factors, where $N=2n$ is an even integer. Vectors in $\mch(I)$ can then be written as $a_1\tp\dots\tp a_N$, and graphically 
 they look like\footnote{We will be specializing to the case of the $C_2$ theory, and as such we can
 refrain from drawing orientations on each edge.}
+\dave{Should probably include boundary condition.}
 \be 
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{kitaev_wire_cell_decomp.pdf}}}}.
 \ee
 Note that this is just a graphical presentation of a matrix product state, with the labels
 $a_1,\dots,a_N$ constituting the physical indices and the unlabeled contracted edges hosting the virtual 
 indices. 
+\dave{Should put into form that is more similar to MPS?
+i.e.,something like the picture version of $A^{a_i} = \sum_{xy, \mu \in V^{a_i}_{xy}} A_{xy}^{a_i}(\mu) \mu$ (in probably more thought out notation).
+Then $\psi = \sum_{\{ a_i \} }\tr(A^{a_1} \cdots A^{a_N}) \ket{a_1 \cdots a_n}$.
+}
 
 For analyzing the Kitaev wire, we will draw the labels $a_i$ from the simple objects of the $C_2$ theory, namely $\unit$ and $\beta$, and we will use 
 the graphical conventions of the $C_2$ theory throughout.  
@@ -11351,6 +11384,7 @@ We will see that the $\beta$ object plays the role of a Majorana fermion in the 
 
 When performing the shadow world construction, we need to compute partition functions on the 2-manifold 
 $\Sigma \times [0,1]$. The cell decomposition we will use is:
+\dave{boundary condition.}
 \be 
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{kitaev_wire_shadow_wrld_cell_decomp.pdf}}}}.
 \ee
@@ -11371,6 +11405,11 @@ The local Hilbert space at a given physical site (e.g, at a pair of edges $a_i\t
     \CupSigma \qquad \text{and} \qquad \CupSigmadot.
 \end{align}
 
+\dave{Around here I would write out the explicit tensors for the MPS from shadow world.
+Then do the following analysis relating to the wave function. 
+And finally writing down \eqref{kitaev_wire_ground_states} and saying how it's equivalent to $\ket{\psi} = \sum_{...}\tr (A\cdots) \ket{a_1 \cdots } $. }
+
+\dave{If we're just doing shadow world stuff, we can probably define the Hamiltonian at the very end.}
 The Hamiltonian implements time evolution by extending the uncontracted $a_i$ legs on the $\Sigma\times\{1\}$ boundary. 
 The Hamiltonian must be local, and so it may only act on pairs of adjacent uncontracted legs on the boundary.
 The Hamiltonian must also preserve the overall fermion parity of the chain. 
@@ -11379,7 +11418,7 @@ Thus, the only terms one can construct a Hamiltonian out of are
 \Id \qquad \text{and} \qquad \TwoLinedotdot.
 \end{align}
 The first is the identity operator, while the second is nontrivial and is identified with $i \gamma_1 \gamma_2$, 
-a Majorana bi-linear which acts as the fermion parity operator $(-1)^F$ on the on-site Hilbert space.
+a Majorana bilinear which acts as the fermion parity operator $(-1)^F$ on the on-site Hilbert space.
 To see this, we can simply check the action of the Hamiltonian on the basis vectors of the single (physical) site Hilbert space. 
 Graphically, the  
 Hamiltonian acts by stacking diagrams onto input states, and so $i\gamma_1\gamma_2$ acts
@@ -11388,6 +11427,9 @@ on single-site basis states as
 \TwoLinedotdot\; \times \; \CupSigma \; =\;  \CupSigma \quad \text{and} \quad \TwoLinedotdot\; \times \; \CupSigmadot \; =\;   - \; \CupSigmadot,
 \end{align}
 where as usual $A\times B$ means `stack $A$ on top of $B$'. 
+\dave{I think we stopped using $\times$ for stacking. 
+Sometimes we use $\cdot$, and sometimes we use $\circ$.
+This looks like $\circ$ to me.}
 
 For our $N$-site chain we thus have the following basis of states:
 \begin{align}
@@ -11418,6 +11460,7 @@ so that the Hamiltonian is
 H_{\rm staggered} = - \sum_{j=1}^{n-1}\; t_j \; \;  \TwoLinedotdot_{\text{site $2j$}},
 \end{align}
 In this limit the wire is in the topological phase and there are two ground states, differing by their fermion parity:
+\dave{Maybe we should also change basis so that we see that the wave function is a coherent sum over all parity even (odd) states.}
 \begin{align} \label{kitaev_wire_ground_states}
 \Psi_e = \;\StaggaredGSEven \; \cdots \; \StaggaredGSEvenR\;, 
 \qquad \text{and} \qquad 
