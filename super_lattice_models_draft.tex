@@ -2527,7 +2527,7 @@ Ethan is that true? Or did you have something else in mind?}
 of fusion spaces. Not sure if it'll work for arbitrary fermionic theories though, so I modified the sentence 
 to just talk about tracing} }
 by tracing out the 
-idempotents associated with each excitation, which we elaborate on in Section \ref{qdims_and_traces}. 
+idempotents associated with each excitation, which we elaborate on in Section \ref{traces_and_innerproducts}. 
 The quantum dimensions are displayed in Table \ref{C2Data}. 
 \begin{table}
   \centering
@@ -2866,21 +2866,21 @@ To go from the annulus to the torus we identify the inner and outer circles, and
 \AddDatTorus{\FubeXXXA}{X}{Y}\quad \quad \quad X,Y \in\{ B, N \}
 \end{align}
 where $X$ and $Y$ specify the spin structure along the azimuthal and radial cycles.
-\kw{I find this graphical notation/convention kind of confusing.
-It looks like you are labeling spin structures on the inner and outer boundary of the annulus.
-One alternative would be a pair of perpendicular line segments (x and y axes), 
-representing the meridian and longitude of the torus, each labeled by B/N.
-(Or a rectangle instead of two line segments.)
-Another possibility is to keep the annulus, but add a radial line segment and move the 
-labeled so that it is clear that one
-labels the drawn circle (boundary of annulus) and the other labels the radial loop.}
-\dave{It's difficult to find one that looks good, and is also compatible with all the annuli we use. 
-What about: 
-}
-\kw{maybe stick with the original notation, but add a figure that shows explicitly the two cycles
-that X and Y are labelling (like your fig above, but also with a circular arrow or something for the B.
-(maybe B and N should be changed to X and Y)}
-\dave{Works for me. Done. See Figure below.}
+%\kw{I find this graphical notation/convention kind of confusing.
+%It looks like you are labeling spin structures on the inner and outer boundary of the annulus.
+%One alternative would be a pair of perpendicular line segments (x and y axes), 
+%representing the meridian and longitude of the torus, each labeled by B/N.
+%(Or a rectangle instead of two line segments.)
+%Another possibility is to keep the annulus, but add a radial line segment and move the 
+%labeled so that it is clear that one
+%labels the drawn circle (boundary of annulus) and the other labels the radial loop.}
+%\dave{It's difficult to find one that looks good, and is also compatible with all the annuli we use. 
+%What about: 
+%}
+%\kw{maybe stick with the original notation, but add a figure that shows explicitly the two cycles
+%that X and Y are labelling (like your fig above, but also with a circular arrow or something for the B.
+%(maybe B and N should be changed to X and Y)}
+%\dave{Works for me. Done. See Figure below.}
 \begin{figure}
   \centering
     \begin{align}
@@ -3647,7 +3647,7 @@ We'll examine the first two methods below, and will comment on the relation betw
 We'll start by computing the twists $\{\theta_a\}$ by statistics, namely by braiding two identical quasiparticles once around one another. 
 This corresponds to tracing out the $R$ symbols \cite{barkeshli2014}:
 \be \label{Tmattr} \theta_a = \frac{1}{d_a}\sum_b d_b \text{Tr}[R^{aa}_b],\ee
-where the precise meaning of the trace is discussed in Section \ref{qdims_and_traces}.
+where the precise meaning of the trace is discussed in Section \ref{traces_and_innerproducts}.
 Using Table \ref{Rtable}, we obtain
 \be \theta_{m_\unit} = 1,\ \theta_{m_\psi} = 1,\ \theta_{m^\pm_\sigma} = \pm A^3\ee
 for the non-vortex particles, and 
@@ -4209,7 +4209,7 @@ which follows can be understood without using terms like ``excitation'' and ``Ha
 
 
 %%%%%%%%%%%%%%%%%%%%
-\subsubsection{Computing traces in the tube category and quantum dimensions} \label{qdims_and_traces}
+\subsubsection{Traces and inner products} \label{traces_and_innerproducts}
 %%%%%%%%%%%%%%%%%%%%
 
 \kw{new start for this subsection. might want to add details; this is an outline/sketch.}
@@ -4325,20 +4325,19 @@ This trace is defined for any super pivotal category satisfying the assumptions 
 %then it is isomorphic to an ordered direct sum of simple objects (assuming semisimplicity) 
 %and \eqref{Disk_Hilb} is modified in the obvious way.
 
-\dave{Should we call $\tr(e_j)$ the normalized quantum dimension of $\tr(e_j)/\tr(e_0)$ the normalized quantum dimension?}
-\ethan{the latter}
-As an application of \eqref{trace_simple_objects} we can compute the normalized quantum dimension $d_{e_j}$ of a minimal idempotent
+%\dave{Should we call $\tr(e_j)$ the normalized quantum dimension of $\tr(e_j)/\tr(e_0)$ the normalized quantum dimension?}
+%\ethan{the latter}
 As an application of \eqref{matrix_trace} we can compute the normalized quantum dimension $d_{e_j}$ of a minimal idempotent
  $e_j$ in $\tube(\mcc)$.
- It is given by
+The un-normalized quantum dimension $\tilde d_{e_j}$ is defined by
 %defined by the trace of the associated idempotent $\Pi_x$: 
 \begin{align}
-d_{e_j} \equiv \tr_W (e_j).
+\tilde d_{e_j} = \tr_W (e_j),
 \end{align}
-where $W$ is bounding if $e_j \in \tube^{B}(\mcc/\psi)$ and non-bounding if $e_j \in \tube^N( \mcc/\psi)$
-\footnote{The un-normalized quantum dimension is given by $d_{e_j}/d_{e_0}$ where $e_0$ is the trivial idempotent.}.
-For example, in the $C_2$ theory, we can use this approach to obtain $d_{m_{\unit / \psi}} = 1/2, d_{m_\sigma^+} = q_{\unit/\psi} = d/2, q_\sigma = 1$. 
-Normalizing so that $d_{m_\unit} = 1$, we obtain the unnormalized quantum dimensions listed in Table \ref{C2Data}. 
+where $W$ is bounding if $e_j \in \tube^{B}(\mcc/\psi)$ and non-bounding if $e_j \in \tube^N( \mcc/\psi)$.
+The normalized quantum dimension $d_{e_j}$ is then given by $\tilde d_{e_j}/\tilde d_{e_0}$, where $e_0$ is the trivial idempotent.
+For example, in the $C_2$ theory, we can use this approach to obtain $\tilde d_{m_{\unit / \psi}} = 1/2, \tilde d_{m_\sigma^+} = \tilde d_{q_{\unit/\psi}} = d/2, \tilde d_{q_\sigma} = 1$. 
+Normalizing so that $d_{m_\unit} = 1$, we obtain the normalized quantum dimensions listed in Table \ref{C2Data}. 
 
 \dave{Could add paragraph about q-type particles having norm $2$?}
 
@@ -4696,7 +4695,7 @@ Let $t \in \tube(\mcc)$ be in the image of $\hat{a}_J$ so that,
 \end{align}
 The first step follows from $t$ being in the image of the projector $\hat{a}_J$, 
 while the second step follows from the definition of the inner product in the tube category 
-(written as $\langle,\rangle_{\tube(\mcc)}$, which is discussed in Section \ref{qdims_and_traces}). 
+(written as $\langle,\rangle_{\tube(\mcc)}$, which is discussed in Section \ref{traces_and_innerproducts}). 
 The angle brackets with subscript $\mcc$ in the second line means that we evaluate the picture on 
 the two-sphere using local relations in $\mcc$.
 As before, we have defined $s(J)= 0$ if $J$ is bounding and $s(J)=1$ otherwise.
@@ -5805,7 +5804,7 @@ t = \sum_{k} x_k \cdot E(e_{i_k},f_{j_k} ) \cdot y_{k}
 hence, the $\{ E(e_i, f_j) \}$ are complete. 
 
 We now establish that the the set of idempotents $\{ E(e_i, f_j) \} $ are non-zero.
-We do this using the trace defined Section \ref{qdims_and_traces}.
+We do this using the trace defined Section \ref{traces_and_innerproducts}.
 We have,
 \begin{align}
 \tr \left ( E(x,y) \right) &= \tr \left( \TubeIdempotentTwoStrand_{J} \right) \\
@@ -5820,7 +5819,7 @@ The last line follows from the trace,
 \begin{align}
 \tr \left( \IdempotentBasis_J \right) &=  \tr_J   \left\{ \TubeIdempotentBasistrace : \DiskLarge \ra \DiskLarge \right \}= \delta_{r \unit} d_x d_y. 
  \end{align} 
-where $r \in \mcc/\psi$ runs over a set of representatives of simple objects in $\mcc/\psi$; see section \ref{qdims_and_traces} for more details.
+where $r \in \mcc/\psi$ runs over a set of representatives of simple objects in $\mcc/\psi$; see section \ref{traces_and_innerproducts} for more details.
 Hence $\tr \left ( E(e_i,f_j) \right)$ is non-zero so long as $s(J) = (-1)^{\nu_{f_j}}$, 
 which is true by assumption, recall \eqref{FunctorCxCtoTubeC}.
 
@@ -8517,7 +8516,7 @@ In summary, we have \eqref{hE6_S_NN} together with
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{$T$-transformation}
+\subsubsection{$T$ transformation}
 %%%%%%%%%%%%%%%%%%%%%%%
 
 The Dehn twist ($T$-transformation) corresponds to cutting the torus open along one cycle, 
@@ -11367,7 +11366,7 @@ The Kitaev chain Hamiltonian is defined to act on a one-dimensional manifold, wh
 either $\Sigma = I$, $\Sigma = S^1_B$, or $\Sigma = S^1_N$, where $I$ is an interval in $\mathbb{R}$. The shadow world prescription tells us to examine 
 partition functions on $\Sigma \times [0,1]$. We will specify to $\Sigma = I$ in what follows, and examine 
 chains whose Hilbert spaces contain $N$ tensor factors, where $N=2n$ is an even integer. Vectors in $\mch(I)$ can then be written as $a_1\tp\dots\tp a_N$, and graphically 
-they look like\footnote{We will be specializing to the case of the $C_2$ theory, and as such will 
+they look like\footnote{We will be specializing to the case of the $C_2$ theory, and as such we can
 refrain from drawing orientations on each edge.}
 \dave{Should probably include boundary condition.}
 \be 
