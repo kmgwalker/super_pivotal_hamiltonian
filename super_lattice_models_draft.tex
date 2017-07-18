@@ -11346,7 +11346,12 @@ to denote admissible colorings of the bulk degrees of freedom in $\Sigma_{0\ra1}
 %%%%%%%%%%%%%%%%
 \subsection{Kitaev wire} \label{kitaev_wire}
 %%%%%%%%%%%%%%%%
-
+\dave{Should also cite the two Fidkowski Kitaev papers where they write this wave function down. 
+Turzillo et al and Bultinck et al each reiview and extend this work (but that should be double checked).
+}
+\dave{I think we still need to do an actual example of the shadow world we explain above. 
+This section is very nice for relating the Hamiltonian we define, to the ones that Ware et al, and Tarantino et al define.
+}
 In this section, we show how the graphical formalism developed in previous sections
 can be used to succinctly capture the salient features of the `Kitaev wire', Kitaev's toy model 
 of a one-dimensional spinless $p$-wave superconductor \cite{kitaev2001}. 
@@ -11361,12 +11366,17 @@ partition functions on $\Sigma \times [0,1]$. We will specify to $\Sigma = I$ in
 chains whose Hilbert spaces contain $N$ tensor factors, where $N=2n$ is an even integer. Vectors in $\mch(I)$ can then be written as $a_1\tp\dots\tp a_N$, and graphically 
 they look like\footnote{We will be specializing to the case of the $C_2$ theory, and as such will 
 refrain from drawing orientations on each edge.}
+\dave{Should probably include boundary condition.}
 \be 
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{kitaev_wire_cell_decomp.pdf}}}}.
 \ee
 Note that this is just a graphical presentation of a matrix product state, with the labels
 $a_1,\dots,a_N$ constituting the physical indices and the unlabeled contracted edges hosting the virtual 
 indices. 
+\dave{Should put into form that is more similar to MPS?
+i.e.,something like the picture version of $A^{a_i} = \sum_{xy, \mu \in V^{a_i}_{xy}} A_{xy}^{a_i}(\mu) \mu$ (in probably more thought out notation).
+Then $\psi = \sum_{\{ a_i \} }\tr(A^{a_1} \cdots A^{a_N}) \ket{a_1 \cdots a_n}$.
+}
 
 For analyzing the Kitaev wire, we will draw the labels $a_i$ from the simple objects of the $C_2$ theory, namely $\unit$ and $\beta$, and we will use 
 the graphical conventions of the $C_2$ theory throughout.  
@@ -11375,6 +11385,7 @@ We will see that the $\beta$ object plays the role of a Majorana fermion in the 
 
 When performing the shadow world construction, we need to compute partition functions on the 2-manifold 
 $\Sigma \times [0,1]$. The cell decomposition we will use is:
+\dave{boundary condition.}
 \be 
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{kitaev_wire_shadow_wrld_cell_decomp.pdf}}}}.
 \ee
@@ -11395,6 +11406,11 @@ The local Hilbert space at a given physical site (e.g, at a pair of edges $a_i\t
     \CupSigma \qquad \text{and} \qquad \CupSigmadot.
 \end{align}
 
+\dave{Around here I would write out the explicit tensors for the MPS from shadow world.
+Then do the following analysis relating to the wave function. 
+And finally writing down \eqref{kitaev_wire_ground_states} and saying how it's equivalent to $\ket{\psi} = \sum_{...}\tr (A\cdots) \ket{a_1 \cdots } $. }
+
+\dave{If we're just doing shadow world stuff, we can probably define the Hamiltonian at the very end.}
 The Hamiltonian implements time evolution by extending the uncontracted $a_i$ legs on the $\Sigma\times\{1\}$ boundary. 
 The Hamiltonian must be local, and so it may only act on pairs of adjacent uncontracted legs on the boundary.
 The Hamiltonian must also preserve the overall fermion parity of the chain. 
@@ -11403,7 +11419,7 @@ Thus, the only terms one can construct a Hamiltonian out of are
 \Id \qquad \text{and} \qquad \TwoLinedotdot.
 \end{align}
 The first is the identity operator, while the second is nontrivial and is identified with $i \gamma_1 \gamma_2$, 
-a Majorana bi-linear which acts as the fermion parity operator $(-1)^F$ on the on-site Hilbert space.
+a Majorana bilinear which acts as the fermion parity operator $(-1)^F$ on the on-site Hilbert space.
 To see this, we can simply check the action of the Hamiltonian on the basis vectors of the single (physical) site Hilbert space. 
 Graphically, the  
 Hamiltonian acts by stacking diagrams onto input states, and so $i\gamma_1\gamma_2$ acts
@@ -11412,6 +11428,9 @@ on single-site basis states as
 \TwoLinedotdot\; \times \; \CupSigma \; =\;  \CupSigma \quad \text{and} \quad \TwoLinedotdot\; \times \; \CupSigmadot \; =\;   - \; \CupSigmadot,
 \end{align}
 where as usual $A\times B$ means `stack $A$ on top of $B$'. 
+\dave{I think we stopped using $\times$ for stacking. 
+Sometimes we use $\cdot$, and sometimes we use $\circ$.
+This looks like $\circ$ to me.}
 
 For our $N$-site chain we thus have the following basis of states:
 \begin{align}
@@ -11442,6 +11461,7 @@ so that the Hamiltonian is
 H_{\rm staggered} = - \sum_{j=1}^{n-1}\; t_j \; \;  \TwoLinedotdot_{\text{site $2j$}},
 \end{align}
 In this limit the wire is in the topological phase and there are two ground states, differing by their fermion parity:
+\dave{Maybe we should also change basis so that we see that the wave function is a coherent sum over all parity even (odd) states.}
 \begin{align} \label{kitaev_wire_ground_states}
 \Psi_e = \;\StaggaredGSEven \; \cdots \; \StaggaredGSEvenR\;, 
 \qquad \text{and} \qquad 
