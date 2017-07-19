@@ -4017,7 +4017,7 @@ However, this inconsistency is rather mild.
 A natural way to distinguish the simple objects in $\mcc$ to use the $\mathbb{Z}_2$ 
 grading inherited from the full braid of objects with $\psi$. 
 This can be defined by the indicator 
-\begin{align}
+\begin{align} \label{nu_indicator} 
 (-1)^{\nu_x} := S_{a \psi}/S_{a0} \in \{+1, -1 \}
 \label{grading}
 \end{align}
@@ -4215,33 +4215,36 @@ which follows can be understood without using terms like ``excitation'' and ``Ha
 \kw{new start for this subsection. might want to add details; this is an outline/sketch.}
 
 Recall that a trace on a linear category $C$ is a linear function from endomorphisms to $\cc$, satisfying
-\dave{Koszul signs?}
+\dave{Koszul signs?} \ethan{seems like, if we define $\tr(fg) = \tr(f_1g_2)$, then $\tr(fg) = (-1)^{|f|+|f||g|}\tr(gf)=\tr(gf)$}
 \be
-	\tr(fg) = (-1)^{|f||g|}\tr(gf) ,
+	\tr(fg) = \tr(gf) ,
 \ee
 for all $f \in \mor(x\to y)$ and $g\in \mor(y\to x)$.
-All of the categories we consider have a $*$-structure (a.k.a. reflection structure), which is an order 2 antilinear antiautomorphism
+All of the categories we consider have a $*$-structure (a.k.a. reflection structure), which is an order 2 \ethan{or does it square to the fermion parity operator?} antilinear antiautomorphism
 from $\mor(x\to y)$ to $\mor(y\to x)$ (for all objects $x$ and $y$).
 A trace is equivalent to a collection of sesquilinear inner products on $\mor(x\to y)$ satisfying
-\dave{Koszul signs?}
+\dave{Koszul signs?} \ethan{do we have $\bar{\bar{f}} = (-1)^{|f|}$ and $\bar{fg} = (-1)^{|f||g|}\bar{g}\bar{f}$? If yes then I think the koszul signs should be as below}
 \be
-	\langle fg, h \rangle =(-1)^{|g||h|} \langle f, h \bar{g} \rangle \;\;\; and \;\;\; \langle fg, h \rangle = (-1)^{|g| |f|}\langle g,\bar{f}  h  \rangle 
+	\langle fg, h \rangle =(-1)^{|g|(1+|h|)} \langle f, h \bar{g} \rangle \;\;\; {\rm and} \;\;\; \langle fg, h \rangle = (-1)^{|f|(1+|h|)}\langle g,\bar{f}  h  \rangle 
 \ee
 %\kw{Maybe should use bar instead of star to be consistent with other parts of the paper?}
 %\dave{Lets do that.}
 The trace and inner products are related by
 \be
 \label{trace_to_innerproduct}
-	\tr(f) = \langle f, \id_x \rangle   \;\;\; and \;\;\;   \langle g,h \rangle = \tr(g\bar{h})
+	\tr(f) = \langle f, \id_x \rangle   \;\;\; {\rm and} \;\;\;   \langle g,h \rangle = \tr(g\bar{h})
 \ee
 for $f\in\mor(x\to x)$ and  $g,h\in\mor(x\to y)$.
-A trace is called nondegenerate if the corresponding inner product is nondegenerate in the usual sense (on each morphism space individually).
+A trace is called nondegenerate if the corresponding inner product is nondegenerate in the usual sense (on each morphism space individually). 
+
 
 \medskip
 
 We now recall two facts about TQFTs.
 The first is that we can define a nondegenerate pairing on the predual Hilbert
-space $A(Y; a_1,\ldots,a_k)$ (where $Y$ is a spin surface and $a_i$ are boundary labels) via
+space $A(Y; a_1,\ldots,a_k)$, where $Y$ is a spin surface with $k$ disjoint boundary components 
+and the $a_i$ are labels specifying boundary conditions on each boundary component. 
+The nondegenerate pairing is defined via
 \be
 	\langle u, v\rangle = Z(Y\times I) (u\cup \bar v) ,
 \ee
@@ -4253,8 +4256,8 @@ the path integral of $Y\times I$ with the $u\cup \bar v$ string net as a boundar
 The second fact concerns the path integral of 3-manifolds of the form $Y\times S^1_B$ or $Y\times S^1_N$.
 Let $c$ be a string net on $(\bd Y)\times S^1$ (with either spin structure on $S^1$).
 $(\bd Y)\times S^1$ is a disjoint union of tori, and we can cut these tori open into a disjoint union of annuli.
-Let $c'$ denote the cut open string nets on the annuli.
-Note that $c'$ is not uniquely determined by $c$; $c'$ depends on where we cut.
+Let $c'$ denote the cut-open string nets on the annuli.
+Note that $c'$ is not uniquely determined by $c$; $c'$ depends on where we cut the tori.
 The string net $c'$ determines a linear map
 \be
 	g(c') : A(Y; a_i) \to A(Y; a_i) ,
@@ -4268,29 +4271,34 @@ The gluing rules for the path integral imply that
 and
 \be
 \label{nonbounding_trace}
-	Z(Y\times S^1_N)(c) = \str(g(c')) .
+	Z(Y\times S^1_N)(c) = \str(g(c')),
 \ee
-Note that any choice of cutting curves and $c'$ will yield the same answer on the RHS above.
+where $\str$ denotes the supertrace, which is the trace weighted by the fermion parity operator.
+Note that the partition functions above are independent of the details of the cutting procedure;
+any choice of cutting curves and any choice of $c'$ will yield the same answer on the RHS above.
 \kw{Need to make sure we have defined super trace $\str$.}
+\ethan{mentioned it above, should we elaborate more?}
 
 \medskip
 We now apply the above to the case where $Y$ is an annulus to obtain a nondegenerate trace on the tube category.
 %\kw{Take it from here, Dave.}
-Using \eqref{trace_to_innerproduct} and letting $t \in \tube^W(\mcc)$ we have
+Using \eqref{trace_to_innerproduct} and letting $t \in \tube^W(\mcc)$, we have
 \begin{align}
 \label{trace_t}
 \tr (t)  = \langle t, \text{id} \rangle  = Z((S^1_W \times I) \times I ) (t \cup \overline{\text{id} })  = Z(S^1_W \times D^2) (t \cup \overline{\text{id}}).
 \end{align}
-This is the partition function of a solid torus with boundary condition $t \cup \overline{\text{id}}$.
-Diagrammatically we can write the evaluation of the partition function on the right hand side of \eqref{trace_t} as the trace of a matrix,
+%This is the partition function of a solid torus with boundary condition $t \cup \overline{\text{id}}$.
+%Sorta confusing since the solid torus only has one boundary component
+Diagrammatically we can write the evaluation of the partition function on the right hand side of \eqref{trace_t} as the trace of a matrix, through 
 \begin{align}
 \label{trace_formula}
-\left \langle\;\Tuberrprime_W,\text{id} \; \right \rangle =
+\langle t,\text{id}\rangle = \left \langle\;\Tuberrprime_W,\text{id} \; \right \rangle =
  \tr_W \left \{ \Tuberrprimecut \; : A\left(  \PinchedDisk \scriptstyle{x\;} \right)  \xrightarrow{\quad \quad} A \left(  \PinchedDisk \scriptstyle{x\;} \right) 
- \right \}
+ \right \}, 
 \end{align}
-The cut open cylinder provides a linear map from the disk to the disk.
-Denoting a complete orthogonal basis of $\text{mor}(\unit \ra x)$ by
+where we have made use of the graphical representation of the endomorphism $t$ in the first equality. 
+The solid cylinder in the third equality provides a linear map from the disk at the origin of the $x$ line to the disk at the end of the $x$ line.
+The source and target of this linear map is defined as $\text{mor}(\unit \ra x)$, which we write as
 \begin{align}
 A\left( \PinchedDisk  \scriptstyle{x\;} \right)  \cong \text{mor}(\unit \ra x) = \bigoplus_i \moronex,
 \end{align}
@@ -4299,15 +4307,15 @@ the linear map induced by the cut on this basis is given,
 \moronex \mapsto \moronexcollar = \sum_{j} g_{ij} \; \moronexj.
 \end{align}
 The coefficients $g_{ij}$ are found by reducing the middle diagram using local relations.
-As usual, the trace is basis independant and any basis of $\text{mor}(\unit \ra x)$ will do.
-Explicitly, \eqref{trace_formula} is given by,
+As usual, the trace is basis independent and any basis of $\text{mor}(\unit \ra x)$ will do.
+
+Explicitly, \eqref{trace_formula} is then given by
 \begin{align} 
 \label{matrix_trace}
-\left \langle\;\Tuberrprime_W,\text{id} \; \right \rangle  =\tr_W(g) = \sum_{ j } g_{jj} s(W)^{|\mu_j|}
+\left \langle\;\Tuberrprime_W,\text{id} \; \right \rangle  =\tr_W(g) = \sum_{ j } g_{jj} s(W)^{|\mu_j|}.
 \end{align} 
-where we have used $|\mu_j| = 0$ if $\mu_j$ has even parity and $|\mu_j| =1$ otherwise.
-If $W$ is bounding then $s(W) = 1$ and \eqref{matrix_trace} is just $\tr(g)$, 
-if $W$ is non-bounding then $s(W)  = -1$ and \eqref{matrix_trace} is the super trace $\str(g)$. 
+If $W$ is bounding then $s(W) = 1$ and \eqref{matrix_trace} is just $\tr(g)$. On the other hand, 
+if $W$ is non-bounding then $s(W)  = -1$, and \eqref{matrix_trace} is the super trace $\str(g)$. 
 %In particular, if $x$ is a simple object then,
 %\begin{align}
 %\label{Disk_Hilb}
@@ -4320,26 +4328,16 @@ if $W$ is non-bounding then $s(W)  = -1$ and \eqref{matrix_trace} is the super t
 %\end{align}
 %If $x$ is not a simple object then the super vector space assigned to the disk is $\text{mor}(\unit \ra x)$.
 %As usual the trace is invariant under a change of basis, and so any basis will yield the same answer.
+
 This trace is defined for any super pivotal category satisfying the assumptions of Section~\ref{def_sect}.
 %If $x$ is not simple
 %then it is isomorphic to an ordered direct sum of simple objects (assuming semisimplicity) 
 %and \eqref{Disk_Hilb} is modified in the obvious way.
+\ethan{added the following}
+The inner product obtained from the trace is even, in the sense that $\langle v,w\rangle = 0$ if $|v|\neq|w|$. 
+Furthermore, it is super positive-definite, namely that for all nonzero $v$, we have $\langle v,v\rangle > 0$ if 
+$|v|=0$ and $\langle v,v\rangle/i > 0$ if $|v|=1$. \ethan{this is the usual convention, which makes choosing $A^4=i$ slightly better than $A^4=-i$}
 
-%\dave{Should we call $\tr(e_j)$ the normalized quantum dimension of $\tr(e_j)/\tr(e_0)$ the normalized quantum dimension?}
-%\ethan{the latter}
-As an application of \eqref{matrix_trace} we can compute the normalized quantum dimension $d_{e_j}$ of a minimal idempotent
- $e_j$ in $\tube(\mcc)$.
-The un-normalized quantum dimension $\tilde d_{e_j}$ is defined by
-%defined by the trace of the associated idempotent $\Pi_x$: 
-\begin{align}
-\tilde d_{e_j} = \tr_W (e_j),
-\end{align}
-where $W$ is bounding if $e_j \in \tube^{B}(\mcc/\psi)$ and non-bounding if $e_j \in \tube^N( \mcc/\psi)$.
-The normalized quantum dimension $d_{e_j}$ is then given by $\tilde d_{e_j}/\tilde d_{e_0}$, where $e_0$ is the trivial idempotent.
-For example, in the $C_2$ theory, we can use this approach to obtain $\tilde d_{m_{\unit / \psi}} = 1/2, \tilde d_{m_\sigma^+} = \tilde d_{q_{\unit/\psi}} = d/2, \tilde d_{q_\sigma} = 1$. 
-Normalizing so that $d_{m_\unit} = 1$, we obtain the normalized quantum dimensions listed in Table \ref{C2Data}. 
-
-\dave{Could add paragraph about q-type particles having norm $2$?}
 
 \dave{commented out things here that we may want to clean up/include, but is not crucial.
 i.e., we could relate inner product of parent theory to condensed theory.}
@@ -4419,8 +4417,30 @@ as we do in proving Theorem \ref{minimal_idempotents_modular_C/psi}.
 %\kw{not satisfied with above; will rewrite soon}
 \end{comment} 
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Quantum dimensions}
-We will also need to know how to calculate the total quantum dimension $\mcd_{\mcc/\psi} = \dim(\mcc/\psi)$.
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\dave{Should we call $\tr(e_j)$ the normalized quantum dimension of $\tr(e_j)/\tr(e_0)$ the normalized quantum dimension?}
+%\ethan{the latter}
+As an application of the trace technology developed in the previous section, we can compute the quantum dimensions $d_{e_j}$ of the minimal idempotents in $\tube(\mcc)$.
+The un-normalized quantum dimension $\tilde d_{e_j}$ is defined by tracing out the idempotent:
+%defined by the trace of the associated idempotent $\Pi_x$: 
+\begin{align}
+\tilde d_{e_j} = \tr_W (e_j),
+\end{align}
+where $W$ is bounding if $e_j \in \tube^{B}(\mcc/\psi)$ and non-bounding if $e_j \in \tube^N( \mcc/\psi)$.
+The normalized quantum dimension $d_{e_j}$ is then given by $\tilde d_{e_j}/\tilde d_{e_0}$, where $e_0$ is the trivial idempotent.
+For example, in the $C_2$ theory, we can use this approach to obtain $\tilde d_{m_{\unit / \psi}} = 1/2, \tilde d_{m_\sigma^+} = \tilde d_{q_{\unit/\psi}} = 1/\sqrt{2}, \tilde d_{q_\sigma} = 1$. 
+Normalizing so that $d_{m_\unit} = 1$, we obtain the normalized quantum dimensions listed in Table \ref{C2Data}. 
+
+\dave{Could add paragraph about q-type particles having norm $2$?}
+
+
+We will also need to know how to calculate the total quantum dimension of the theory $\mcd_{\mcc/\psi} = \dim(\mcc/\psi)$.
 In bosonic theories we have $\mcd_\mcc^2 = \sum_{x\in \mcc} d_x^2$, where the sum runs over all simple objects $x\in\mcc$. 
 This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
 The correct formula is
@@ -4458,8 +4478,7 @@ One can ask for the analogous formula in the super pivotal case.
 We can then use \eqref{DC_and_DCpsi} to obtain 
 \be \mcd_{\tube(\mcc)} = 2\mcd^2_{\mcc/\psi}.\ee
 Using \eqref{DC_and_DCpsi} again and specializing to the case where $\mcc$ is a modular tensor category then $\mcc \times (\mcc/\psi) \cong \tube(\mcc/\psi)$ 
-(a result that we prove in Section \ref{double_fermionic_quotient})\dave{Ethan, I changed the above to MTC (as we assume for the theorem), is that what you meant, or do you know how to show the below more generally?
-(I expect it is true more generally, but don't know how to show it.)}, we have 
+(a result that we prove in Section \ref{double_fermionic_quotient}), we have 
 \be \mcd_{\tube(\mcc/\psi)} = \mcd_{\mcc} \mcd_{\mcc/\psi}.\ee
 For example, in the $C_2$ theory this is verified by $\mcd_{\tube(C_2)} = \sqrt{8} = \sqrt{2} (\sqrt{2})^2 = \sqrt{2} \mcd^2_{C_2}.$
 
@@ -4767,29 +4786,30 @@ Hence, we also need to show that the resulting idempotents are minimal.
 \subsubsection{The sum-of-squares formula}
 %%%%%%%%%%%%%%%%%
 
-\dave{simple module $\ra$ minimal idempotent?}
 In this section, we briefly present a fermionic version of the sum-of-squares formula, which is useful for relating the dimension
-of the tube category to the dimensions of its simple modules (quasiparticles). 
+of the tube category to the dimensions of its minimal idempotents (see e.g. \cite{Lan2014}). 
 In many cases, this allows us to obtain a large amount of information about the quasiparticle 
 content of the theory without actually finding the explicit representations of the primitive 
 idempotents of the tube category.
 
-If $\{M_a\}$ is a list of the simple modules of the tube category 
-(recall that these are in one-to-one correspondence with quasiparticles, otherwise known as isomorphism class of minimal idempotents of the tube category), then 
-the sum-of-squares formula is
-\be \label{sumofsqs} \dim \tube = \sum_{a | \End(a) \cong \cc} (\dim M_a)^2 + 2\sum_{a|\End(a) \cong \cl_1} (\dim M_a)^2,\ee
+If $\{e_a\}$ is a list of isomorphism classes of minimal idempotents of $\tube(\mcc/\psi)$, 
+%(recall that these are in one-to-one correspondence with quasiparticles, otherwise known as %isomorphism class of minimal idempotents of the tube category), 
+then 
+the sum-of-squares formula reads
+\be \label{sumofsqs} \dim \tube(\mcc/\psi) = \sum_{e_a \text{ m-type}} (\dim e_a)^2 + 2\sum_{e_a \text{ q-type}} (\dim e_a)^2,\ee
 where the factor of 2 in front of the second sum comes from the fact that if $a$ is q-type, 
-the even and odd parts of $M_a$ have equal dimensions (as they are oddly isomorphic). 
-The left hand side of the above formula is simply the number of non-zero linearly independent tubes in $\tube$. 
+the even and odd parts of the image of $e_a$ have equal dimensions (as they are oddly isomorphic). 
+The left hand side of the above formula is simply the number of non-zero linearly independent tubes in $\tube(\mcc/\psi)$, which 
+is typically very easy to compute. 
 If there are no q-type particles in $\tube$ then there are no terms in the second sum on the right hand side, 
-and we reproduce the bosonic sum-of-squares formula (see e.g. \cite{Lan2014}). 
+and we reproduce the bosonic sum-of-squares formula.  
 
 As an example, we can consider the $C_2$ theory. 
-There are three q-type simple modules (all in the $\tube^N$ sector) and three m-types. 
-All of the simple modules are one-dimensional with the exception of $m_\sigma$, 
+There are three q-type minimal idempotents (all in the $\tube^N$ sector) and three m-types (all in the $\tube^B$ sector). 
+All of the minimal idempotents are one-dimensional with the exception of $m_\sigma$, 
 which is the two-dimensional isomorphism class of $m_\sigma^+$ and $m_\sigma^-$. 
 Since there are 12 linearly independent tubes in $\tube(C_2)$ (see \eqref{atubes} and \eqref{ptubes}), 
-the sum-of-squares formula reads
+the sum-of-squares formula then reads
 \be 12 = 1^2+2^2+1^2+2(1^2+1^2+1^2).\ee
 
 
@@ -4936,7 +4956,7 @@ Strictly speaking, $Z$ is the Hilbert space; $A$ could be called the pre-dual Hi
 In the finite/semisimple case, $A$ and $Z$ are isomorphic, so one does not need to make a big deal about the distinction.
 In any case, I think we should try to be more consistent with the notation.
 I admit that I am probably responsible for most of the notational inconsistency.}
-\ethan{Agreed. In that case, can I replace $V(Y)$ with $A(Y)$ in the discussion of the fusion rules?}
+\ethan{Agreed. I replaced $V(Y)$ with $A(Y)$ in the following discussion.}
 
 In this subsection, we will define the fusion (tensor product) of representations of the tube category.
 
@@ -4950,14 +4970,14 @@ boundary component.)
 %restriction of the full tube category $\tube \cong \tube^B \oplus \tube^N$ to the sector with 
 %spin structure given by the spin structure on $S_i$. 
 %That is, $T_i = \tube^B$ ($=\tube^N$) if $S_i$ is bounding (non-bounding).}.
-Given objects $c_i$ of $T_i$, for $1\le i \le k$, we have a super vector space $V(Y; c_1,\ldots,c_k)$ consisting on string nets
+Given objects $c_i$ of $T_i$, for $1\le i \le k$, we have a super vector space $A(Y; c_1,\ldots,c_k)$ consisting on string nets
 on $Y$, modulo local relations, with boundary conditions $c_i$ at $S_i$.
 
 We can then glue morphisms of $T_i$ (tubes) onto $S_i$ to obtain a new string net with (possibly) different boundary condition.
-A concise way to describe this algebraic structure is to say that the collection of super vector spaces $\{V(Y; c_1,\ldots,c_k)\}$
+A concise way to describe this algebraic structure is to say that the collection of super vector spaces $\{A(Y; c_1,\ldots,c_k)\}$
 (for all possible values of $c_1,\ldots,c_k$)
 affords a representation of the category $T_1\times\cdots\times T_k$.
-We will denote this representation by $V(Y)$.
+We will denote this representation by $A(Y)$.
 
 To define the fusion rules of excitations, we can take $Y$ to be the 
 pair of pants (a.k.a three-punctured sphere), which we will denote as $P$. 
@@ -4973,25 +4993,26 @@ Let $T_a$, $T_b$ and $T_c$ denote the three associated copies of the tube catego
 Given representations $\rho_a$ and $\rho_b$ of $T_a$ and $T_b$, we can define a new representation of $T_c$,
 denoted $\rho_a\tp\rho_b$, via
 \be  \label{tctpdef}
-	\rho_a\tp\rho_b = (\rho_a \boxtimes \rho_b) \tp_{T_a\times T_b} V(P) .
+	\rho_a\tp\rho_b = (\rho_a \boxtimes \rho_b) \tp_{T_a\times T_b} A(P) .
 \ee
 Here $\rho_a \boxtimes \rho_b$ denotes the ``outer" tensor product (so that $\rho_a \boxtimes \rho_b$ is a representation of $T_a\times T_b$), 
-and $V(P)$ is the 
+and $A(P)$ is the 
 trimodule defined above, built out of
 vector spaces of string-net configurations (modulo local relations) on $P$ with all possible boundary conditions. 
 Informally, $\rho_a\tp \rho_b$ is found by taking a superposition of tubes carrying $\rho_a$ and $\rho_b$ 
-(which is the outer product $\rho_a\boxtimes\rho_b$) and gluing them onto a pair of pants (given by $V(P)$). 
+(which is the outer product $\rho_a\boxtimes\rho_b$) and gluing them onto a pair of pants (given by $A(P)$). 
 The algebraic implementation of gluing is the tensor product $\tp_{T_a\times T_b}$. 
 
 If $\rho$ is the representation (i.e.\ module) determined by an idempotent $e$ (as described at the start of \ref{C2_fusion_rules}),
 then the above association of $\rho$ to a boundary component is equivalent to imposing $e$ as a boundary condition
 in a annular neighborhood of that boundary component.
 
-Note that the B/N grading of the tube category (and its modules) is respected by the above tensor product:
+Note that the spin structure grading of the tube category (and its modules) is respected by the above tensor product: \ethan{added some tubes to make it slightly more explicit}
 \begin{align}
-B \tp B = B \quad \quad B \tp N = N \quad \quad N \tp N = B .
+\tube^B \tp \tube^B \cong \tube^B \quad \quad \tube^B \tp \tube^N \cong \tube^N \quad \quad \tube^N \tp \tube^N \cong \tube^B .
 \end{align}
-\ethan{Maybe we can be slightly less schematic, e.g. $\tube^B \tp \tube^B \cong \tube^B$ or something}
+
+
 
 
 \begin{comment}
@@ -5320,7 +5341,7 @@ So we need to apply the $S$-matrix (actually $S'$, because $\hat e$ is normalize
 \ee
 where for convenience we have defined $\hat x = x$ if $x$ is m-type.
 
-Combining \eqref{df5}, \eqref{df6}, \eqref{zc_ans}, \eqref{zcl1_ans} and \eqref{df_cob}
+Combining \eqref{df5}, \eqref{df6}, \eqref{zc_ans}, \eqref{zcl1_ans}, and \eqref{df_cob}
 yields the dimension formula.
 
 
@@ -5440,7 +5461,7 @@ The $\omega$ loop is defined by
 	\omega  = \frac{1}{\mathcal{D}^2}\sum_{x\in \sob(\mcc)} d_x \cdot \text{cl}(x) ,
 \label{omega_loop}
 \end{align}
-where $\text{cl}(x)$ denotes a closed loop labeled by $x$, i.e.\ the closure of $x$ inside a solid torus.
+where as before, $\text{cl}(x)$ denotes a closed loop labeled by $x$, i.e.\ the closure of $x$ inside a solid torus.
 
 One way to think of the $\omega$ loop is as follows.
 In any premodular category,
@@ -5713,16 +5734,17 @@ In this subsection we prove that $\tube(\mcc/\psi) \cong \mcc \times \overline{\
 when $\psi$ is a fermion satisfying conditions of \ref{gntf_condense} and $\mcc$ is a modular tensor category.
 
 To gain insights on the relation between $\tube(\mcc/\psi)$ and $\mcc$, 
-we find the minimal idempotents of the condensed theory; 
-useful quantities in their own right.
-Toward this, we point out that any string net configuration of the parent theory descends to a string net configuration of the condensed theory.
+we will first construct the minimal idempotents of the condensed theory, which are 
+useful objects in their own right.
+To facilitate this construction, we note that any string net configuration in the parent theory $\mcc$ descends to a string net configuration 
+in the condensed theory $\mcc/\psi$.
 Conversely, we can always take an even morphism in $\mcc/\psi$ and lift it to $\mcc$, 
 giving us a way of lifting tubes in $\tube(\mcc/\psi)$ to those in $\tube(\mcc)$.
-These two facts allow us to find the minimal idempotents of the quotient theory, 
-using the minimal idempotents of the parent theory.
-The details of the functor $\tube(\mcc) \rightarrow \tube(\mcc/\psi)$ are important:
+These two facts allow us to find the minimal idempotents of the quotient theory 
+using knowledge of the minimal idempotents of the parent theory.
+The details of the condensation functor $\tube(\mcc) \rightarrow \tube(\mcc/\psi)$ are important:
 for example, the image of some of the idempotents may simply be zero, 
-while the images of other distinct idempotents of $\tube(\mcc)$ may fall in the same isomorphism class in $\tube(\mcc/\psi)$. 
+while the images of distinct idempotents of $\tube(\mcc)$ may map to the same isomorphism class in $\tube(\mcc/\psi)$. 
 These details, as well as minimality and completeness of the idempotents, will have to be addressed carefully.
 Once doing so, we arrive at the following theorem:
 
@@ -5760,15 +5782,17 @@ It is given by
  &E: \; \; \mcc \times \overline{\mcc/\psi} \ar[r]            & \tube(\mcc/\psi) & \\
 		  &\quad \quad  \;\; \left(\;  \EFunctora
 \;,\;\EFunctorb \; \right)\;  \ar@{|->}[r] &\EFunctorc_{J(y)}&
-		  }
+		  },
 		  \label{FunctorCxCtoTubeC}
 \end{align}
-Where $J(y) = B$ if $\nu_y = 0$ and $J(y) = N$ if $\nu_y=1$.
-This is clearly a functor, it preserves the identity and morphisms in an obvious way. 
+where $J(y) = B$ if $\nu_y = 0$ and $J(y) = N$ if $\nu_y=1$, with $\nu_y$ the indicator 
+defined in \eqref{nu_indicator}.
+This is clearly a functor, and it preserves the identity and morphisms in an obvious way. 
 To show that $E$ is a an invertible tensor functor we need to show two things: 
 \begin{enumerate} 
-\item if $\{e_i \}$ and $\{f_j \}$ are a complete set of minimal idempotents for $\mcc $ and $ \overline{\mcc / \psi }$ respectively, then so are $\{ E(e_i, f_j) \}$ for $\tube(\mcc/\psi)$
-\item  $E$ is a tensor functor %so that $V^{e_i e_j}_{e_k} \tp V^{f_s f_t}_{f_w} \cong V^{E(e_i,f_s) E(e_j,f_t)}_{E(e_k,f_w)}$
+\item if $\{e_i \}$ and $\{f_j \}$ are a complete set of minimal idempotents for $\mcc $ and $ \overline{\mcc / \psi }$ respectively, then $\{ E(e_i, f_j) \}$ are a complete set of minimal 
+idempotents for $\tube(\mcc/\psi)$,
+\item  $E$ is a tensor functor. %so that $V^{e_i e_j}_{e_k} \tp V^{f_s f_t}_{f_w} \cong V^{E(e_i,f_s) E(e_j,f_t)}_{E(e_k,f_w)}$
 \end{enumerate} 
 
 We first establish that  $\{ E(e_i, f_j) \}$ are a complete set of minimal idempotents for $\tube(\mcc/\psi)$.
@@ -5780,9 +5804,9 @@ A complete basis of morphisms for $\tube(\mcc/\psi)$ is given by
 where the normalization $\mcd^2$ has been introduced for convenience. 
 The label $\alpha$ is either $\unit$
 if the tube has even fermion parity and $ t \in \bigoplus_x V^{x b x^*}_{a} $, 
-or $\psi$ denoting an odd parity tube with $t \in \bigoplus_x V^{x b x^*}_{a \tp \psi} $.
+or $\psi$ if the tube has odd parity, with $t \in \bigoplus_x V^{x b x^*}_{a \tp \psi} $.
 Since $t$ is an even morphism in $\tube(\mcc/\psi)$, 
-we can lift it to $\tube(\mcc)$ and hence from \eqref{idempotent_complete} we have,
+we can lift it to $\tube(\mcc)$ and hence from \eqref{idempotent_complete} we have
  \begin{align}
 \mcd^2 \times \TubeBasisaF_J
  =  
@@ -5796,36 +5820,36 @@ for some coefficients $C_{t; xy \mu \nu}$.
 In the above equation, either $y$ is a lift from $\mcc/\psi$, 
 or $y\tp \psi$ is a lift from $\mcc/\psi$ (equivalently, when we include $y$ into $\mcc/\psi$ it may be oddly isomorphic to its representative).
 It follows that we can write the pair $(x,y) \in \mcc \times \overline{\mcc}$ in the above equation as a pair $(x,y) \in \mcc \times \overline{\mcc/\psi}$ 
-with possibly introducing two odd isomorphisms at the trivalent junctions.
-Therefore, any morphism $t \in \tube(\mcc/\psi)$ can be written as,
+after the possible insertion of two odd isomorphisms at the trivalent junctions.
+Therefore, any morphism $t \in \tube(\mcc/\psi)$ can be written as
 \begin{align} 
-t = \sum_{k} x_k \cdot E(e_{i_k},f_{j_k} ) \cdot y_{k}
+t = \sum_{k} x_k \cdot E(e_{i_k},f_{j_k} ) \cdot y_{k},
 \end{align}
-hence, the $\{ E(e_i, f_j) \}$ are complete. 
+and hence the $\{ E(e_i, f_j) \}$ are complete. 
 
 We now establish that the the set of idempotents $\{ E(e_i, f_j) \} $ are non-zero.
 We do this using the trace defined Section \ref{traces_and_innerproducts}.
-We have,
+We have
 \begin{align}
 \tr \left ( E(x,y) \right) &= \tr \left( \TubeIdempotentTwoStrand_{J} \right) \\
 &= \frac{1}{\mcd^2} \sum_{r \in \mcc/\psi} \left( 1+s(J)(-1)^{\nu_y} \right) \frac{ d_r}{\dim \End(r)}  \tr \left( \IdempotentBasis_J \right)\\
-&  =\frac{1}{\mcd^2} (1+s(J)(-1)^{\nu_y} )d_x d_y 
+&  =\frac{1}{\mcd^2} (1+s(J)(-1)^{\nu_y} )d_x d_y. 
  %&=\frac{1}{\mcd^2}(1+ (-1)^{s(J)}(-1)^{\nu_y})d_x d_y 
 \end{align}
 The second line follows from the first using 
 $\omega_{\mcc} =(\text{cl}(\unit) +\text{cl}(\psi))\cdot \omega_{\mcc/\psi}$, 
 and that $\text{cl}(\psi)$ can be removed at the compensation of the phase $s(J) (-1)^{ \nu_y}$.
-The last line follows from the trace,
+The last line follows from the definition of the trace,
 \begin{align}
 \tr \left( \IdempotentBasis_J \right) &=  \tr_J   \left\{ \TubeIdempotentBasistrace : \DiskLarge \ra \DiskLarge \right \}= \delta_{r \unit} d_x d_y. 
  \end{align} 
 where $r \in \mcc/\psi$ runs over a set of representatives of simple objects in $\mcc/\psi$; see section \ref{traces_and_innerproducts} for more details.
 Hence $\tr \left ( E(e_i,f_j) \right)$ is non-zero so long as $s(J) = (-1)^{\nu_{f_j}}$, 
-which is true by assumption, recall \eqref{FunctorCxCtoTubeC}.
+which is true by assumption (recall \eqref{FunctorCxCtoTubeC}).
 
 Now we show that the $\{ E(e_i, f_j) \}$ are minimal. 
 We do this by showing that $E(x,y) \cdot \tube(\mcc/\psi) \cdot E(x',y')$ is either one dimensional, in which case $E(x,y)$ is an m-type idempotent, 
-or $\cc^{1|1} $ dimensional in which case $E(x,y)$ a q-type idempotent.
+or is isomorphic to $\cc^{1|1} $, in which case $E(x,y)$ a q-type idempotent.
 \dave{Should we explain why this means that $E(e_i,f_j)$ is minimal?}
 % is a simple algebra, i.e. 
 %that it contains no nontrivial subalgebras. 
@@ -5853,7 +5877,7 @@ Lastly, we can use property (c) of Table \ref{omega_loop_properties} to slide th
 loop around the line connecting $x$ and $y$ labeled by $c$ (which is isomorphic to $c'$ by the above).
 Using property (a) of \ref{omega_loop_properties} we see that both $c \cong c' \cong \unit$.
 If $\alpha \cong \psi$ then we require $y \tp \psi \cong y'$.
-Using this, along with the orthogonality of the idempotents we have,
+Using this and the orthogonality of the idempotents, we have
 \begin{align}
 \label{minimal_table}
 E(x,y) \cdot \tube(\mcc/\psi) \cdot E(x',y') \cong
@@ -6060,7 +6084,7 @@ The resulting unitary $S$-matrix is given by,
 % we could say normalized pseudo-idempotent}
 %with spin structure $J(b)$ 
 %onto the torus with spin structure $W$ around the newly closed cycle. 
-Note that $\text{cl}_J(\widehat{E}(x,y))$ on the right hand side of \eqref{normalized_S_matrix} is zero unless $y$ is compatible with the spin structure inherited from the left hand side of \eqref{normalized_S_matrix},
+Note that $\text{cl}_J(\widehat{E}(x,y))$ on the right hand side of \eqref{normalized_S_matrix} is zero unless $y$ is compatible with the spin structure inherited from the left hand side of \eqref{normalized_S_matrix};
 explicitly $y$ must satisfy $s(W) = (-1)^{\nu_y}$.
 %, hence the sum over $y \in \sob(\mcc/\psi)$ in the righthand side of  should be restricted to those $y$ with $(-1)^{\nu_y} = s(W)$.
 %Note, as discussed above, unless $J = J(b)$ and $W=W(y)$, the resulting vector is zero.
@@ -9103,14 +9127,15 @@ On the other hand, $\Delta^{ab}_c$ is {\it not} cyclically symmetric in $a,b,c$,
 Additionally, while $V^{ab}_c$ has an action of $\End(a)\otimes\End(b)\otimes\End(c)$ (as mentioned earlier), $\Delta^{ab}_c$
 only has an action of $\End(a)\otimes\End(b)$.
 
-\kw{Maybe this paragraph can be dropped?  We already have a a simpler proof of this fact above.}
-\dave{That's fine with me.
-Ethan, if that's fine with you go ahead and comment it out. 
-An alternative is to put it as a footnote.}
-This definition of $V^{ab}_c$ gives us another way to show that $V^{ab}_c$ will always be a supervector space of the form $\cc^{n|n}$ for some integer $n$ if any of $a,b,c$ is q-type. 
-Indeed, suppose $c$ were q-type, and $\Delta^{ab}_c \cong \cc^{r|s}$. 
-Then $V^{ab}_c \cong \cc^{r|s} \tp \cc^{1|1} \cong \cc^{r+s|r+s}$. 
-The result then follows by the symmetry of $V^{ab}_c$. 
+%\kw{Maybe this paragraph can be dropped?  We already have a a simpler proof of this fact above.}
+%\dave{That's fine with me.
+%Ethan, if that's fine with you go ahead and comment it out. 
+%An alternative is to put it as a footnote.}
+%\ethan{deal}
+%This definition of $V^{ab}_c$ gives us another way to show that $V^{ab}_c$ will always be a supervector space of the form $\cc^{n|n}$ for some integer $n$ if any of $a,b,c$ is q-type. 
+%Indeed, suppose $c$ were q-type, and $\Delta^{ab}_c \cong \cc^{r|s}$. 
+%Then $V^{ab}_c \cong \cc^{r|s} \tp \cc^{1|1} \cong \cc^{r+s|r+s}$. 
+%The result then follows by the symmetry of $V^{ab}_c$. 
 
 
 
@@ -9171,9 +9196,13 @@ When writing equations involving particular ordered tensor products of fusion sp
 convention that the Koszul ordering is left-to-right on the page, unless explicitly 
 indicated otherwise. If we want to indicate an ordering which departs from this left-to-right convention, 
 we will indicate the ordering explicitly with numerical subscripts, 
-e.g. $V^{ab}_{c,1} \tp V^{cd}_{e,2}$. 
-\kw{Need to check whether we actually use this in the final version;
-also consider switching to ``overscripts" (not sure if that is the conventional name}
+e.g. $V^{ab}_{c,1} \tp V^{cd}_{e,2}$.
+This explicit notation is often better suited to our diagrammatic calculus, where 
+we frequently label the Koszul ordering of fermion dots in a way that is not tied to the 
+left-to-right order in which we write down tensor products (this was done throughout Sections
+\ref{C2_condense_sect} and \ref{C2_quasiparticles}, for example). 
+\kw{consider switching to ``overscripts" (not sure if that is the conventional name} 
+
 %\kw{I think overscripts would be better than subscripts.}
 %\ethan{By overscripts do you mean $e.g.$ $V^{ab,1}_c$ or something else? I went with subscripts since that's what we have in later sections and earlier in this section.}
 %\kw{I meant something like $\overset{2}{V^{abc}} \tp \overset{1}{V^{xyz}}$, but it might be too much hassle to get the alignment right
@@ -9213,20 +9242,21 @@ their ordered representatives.
 \subsection{Modified tensor product} \label{modified_tensor_product}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\kw{We should consider replacing $\mcx$ with $\sob$ in all of Section 8.}
-\dave{I think we should do that.}
+%\kw{We should consider replacing $\mcx$ with $\sob$ in all of Section 8.}
+%\dave{I think we should do that.}
+%\ethan{agreed. I did it}
 
-Let $\mcx$ be a complete collection of simple objects (minimal idempotents), one from each equivalence class.
+Let $\sob$ be a complete collection of simple objects (minimal idempotents), one from each equivalence class.
 (In this subsection, as in most of the paper, we are assuming that our category is semisimple with finitely many equivalence
 classes of simple objects.)
 For arbitrary objects $x$ and $y$, we have
 \be \label{sobdecomp}
-	\mor(x\to y) \: \cong \: \bigoplus_{a\in\mcx} \mor(x\to a) \tp_{\End(a)} \mor(a\to y) .
+	\mor(x\to y) \: \cong \: \bigoplus_{a\in\sob} \mor(x\to a) \tp_{\End(a)} \mor(a\to y) .
 \ee
 Recall that the relative tensor product $\tp_{\End(a)}$ on the RHS above is defined as the usual tensor product over scalars, modulo elements
 of the form $\alpha f \tp \beta - \alpha\tp f\beta$ with $f\in \End(a)$.
 Clearly such elements are in the kernel of the composition map $\mor(x\to a) \tp \mor(a\to y) \to \mor(x\to y)$.
-Our semisimplicity assumption implies that the composition map (summing over all $a\in \mcx$) is surjective and that such
+Our semisimplicity assumption implies that the composition map (summing over all $a\in \sob$) is surjective and that such
 elements generate all of the kernel.
 
 Diagrammatically, the relative tensor product is responsible for allowing fermionic dots to move across edges labeled by q-type simple objects.
@@ -9235,11 +9265,11 @@ differ only by the position of a fermionic dot on the $a$ worldline.
 
 It follows (though not quite directly) from \eqref{sobdecomp} that we have isomorphisms
 \be \label{pfi1}
-	V^{abc}_d \cong \bigoplus_{x\in \mcx} V^{ab}_x \tp_{\End(x)} V^{xc}_d
+	V^{abc}_d \cong \bigoplus_{x\in \sob} V^{ab}_x \tp_{\End(x)} V^{xc}_d
 \ee
 and also
 \be \label{pfi2}
-	V^{abc}_d \cong \bigoplus_{y\in \mcx} V^{ay}_d \tp_{\End(y)} V^{bc}_y .
+	V^{abc}_d \cong \bigoplus_{y\in \sob} V^{ay}_d \tp_{\End(y)} V^{bc}_y .
 \ee
 Diagrammatically these read,
 \begin{align} 
@@ -9253,22 +9283,22 @@ The tensor product over endomorphisms is implicit in the diagram.
 Maybe the beginning of this subsection.}
 Similarly, 
 \be
-	V^{abcd} \cong \bigoplus_{x\in \mcx} V^{ab}_x \tp_{\End(x)} V^{xcd} ,
+	V^{abcd} \cong \bigoplus_{x\in \sob} V^{ab}_x \tp_{\End(x)} V^{xcd} ,
 \ee
 and using the isomorphism $P_R: V^{ab}_x \to V^{abx^*}$ this becomes
 \be  \label{pfpfi1}
-	V^{abcd} \cong \bigoplus_{x\in \mcx} V^{abx^*} \tp_{\End(x)} V^{xcd} .
+	V^{abcd} \cong \bigoplus_{x\in \sob} V^{abx^*} \tp_{\End(x)} V^{xcd} .
 \ee
 %\kw{need figs
 %\dave{Is the figure you want something like $\text{id}_{x^*} \tp_{\text{end}(x)} \text{id}_x = \text{id}_x \tp_{\cc} \text{id}_x / (\gamma^* \circ  x^* \tp x \sim x^* \tp \gamma \circ x )$}}
 (We are implicitly using the $*$ functor to convert an $\End(x)$ action into an $\End(x^*)$ action.)
 Alternatively,
 %\be  \label{pfpfi2}
-%	V^{abcd} \cong \bigoplus_{x\in \mcx} V^{bc}_x \tp_{\End(x)} V^{axd} \cong \bigoplus_{x\in \mcx} V^{bcx^*} \tp_{\End(x)} V^{xcd} .
+%	V^{abcd} \cong \bigoplus_{x\in \sob} V^{bc}_x \tp_{\End(x)} V^{axd} \cong \bigoplus_{x\in \sob} V^{bcx^*} \tp_{\End(x)} V^{xcd} .
 %\ee
 \dave{Changed so that they only differ by a pivot like the above.}
 \be  \label{pfpfi2}
-	V^{abcd} \cong \bigoplus_{x\in \mcx} V^{bc}_x \tp_{\End(x)} V^{axd} \cong \bigoplus_{x\in \mcx} V^{bcx^*} \tp_{\End(x)} V^{axd} .
+	V^{abcd} \cong \bigoplus_{x\in \sob} V^{bc}_x \tp_{\End(x)} V^{axd} \cong \bigoplus_{x\in \sob} V^{bcx^*} \tp_{\End(x)} V^{axd} .
 \ee
 Diagrammatically we have,
 \dave{Note to self: make figures match up.}
@@ -9294,11 +9324,11 @@ Will probably need to split it into two lines.}
 
 It follows from \ref{pfi1} and \ref{pfi2} that there is an isomorphism
 \be  \label{fdef21}
-	F^{abc}_d : \bigoplus_{x\in \mcx} V^{ab}_x \tp_{\End(x)} V^{xc}_d \;\to\; \bigoplus_{y\in \mcx} V^{ay}_d \tp_{\End(y)} V^{bc}_y .
+	F^{abc}_d : \bigoplus_{x\in \sob} V^{ab}_x \tp_{\End(x)} V^{xc}_d \;\to\; \bigoplus_{y\in \sob} V^{ay}_d \tp_{\End(y)} V^{bc}_y .
 \ee
 For the pitchfork version, we instead use \ref{pfpfi1} and \ref{pfpfi2} to obtain
 \be  \label{fdef30}
-	F^{abcd} : \bigoplus_{x\in \mcx} V^{abx^*} \tp_{\End(x)} V^{xcd}   \;\to\;   \bigoplus_{x\in \mcx} V^{bcx^*} \tp_{\End(x)} V^{axd} .
+	F^{abcd} : \bigoplus_{x\in \sob} V^{abx^*} \tp_{\End(x)} V^{xcd}   \;\to\;   \bigoplus_{x\in \sob} V^{bcx^*} \tp_{\End(x)} V^{axd} .
 \ee
 %\kw{figs?  or just rely on the figs from the previous subsection?}
 %\ethan{I think the following is needed to discuss coherence relation stuff}
@@ -9307,13 +9337,13 @@ For numerical applications, particular ordered representatives of the tensor pro
 For the ordered $F^{abc}_d$ isomorphism, 
 we will adopt the convention
 \be \label{Fmove_ordering_conventions}
-	F^{abc}_d : \bigoplus_{x\in \mcx} V^{xc}_{d} \tp_{\End(x)} V^{ab}_{x} \;\to\; \bigoplus_{y\in \mcx} V^{ay}_{d} \tp_{\End(y)} V^{bc}_{y} ,
+	F^{abc}_d : \bigoplus_{x\in \sob} V^{xc}_{d} \tp_{\End(x)} V^{ab}_{x} \;\to\; \bigoplus_{y\in \sob} V^{ay}_{d} \tp_{\End(y)} V^{bc}_{y} ,
 \ee
 with implicit left-to-right ordering.
 %we will choose the convention that it acts on tensor products of fusion spaces whose ordering increases as one goes up the diagram, 
 %and that it maps into fusion spaces with the same ordering. That is, with explicit Koszul-ordering we have 
 %\be \label{Fmove_ordering_conventions}
-%	F^{abc}_d : \bigoplus_{x\in \mcx} V^{ab}_{x,2} \tp_{\End(x)} V^{xc}_{d,1} \;\to\; \bigoplus_{y\in \mcx} V^{ay}_{d,1} \tp_{\End(y)} V^{bc}_{y,2}.
+%	F^{abc}_d : \bigoplus_{x\in \sob} V^{ab}_{x,2} \tp_{\End(x)} V^{xc}_{d,1} \;\to\; \bigoplus_{y\in \sob} V^{ay}_{d,1} \tp_{\End(y)} V^{bc}_{y,2}.
 %\ee
 %\ethan{this is what we use in the hexagon isomorphism, and is also what Gu-Wen do}
 Graphically, and written as a matrix equation, we thus have
@@ -9327,7 +9357,7 @@ where the greek indices label particular fusion space basis vectors, with $\mu\i
 We also stick with the left-to-right ordering convention for the $F^{abcd}$ move:
 \dave{Changed order and and $x \ra x^*$.}
 \be  
-	F^{abcd} : \bigoplus_{x\in \mcx} V^{abx} \tp_{\End(x)} V^{x^*cd}   \;\to\;   \bigoplus_{x\in \mcx} V^{axd} \tp_{\End(x)} V^{x^*bc} .
+	F^{abcd} : \bigoplus_{x\in \sob} V^{abx} \tp_{\End(x)} V^{x^*cd}   \;\to\;   \bigoplus_{x\in \sob} V^{axd} \tp_{\End(x)} V^{x^*bc} .
 \ee
 Which written as a matrix equation is
 \begin{align}
