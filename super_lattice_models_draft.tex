@@ -10700,7 +10700,7 @@ On vectors in $W^*\tp W$, $\chi$ is proportional to the evaluation of the follow
 
 Since the vector spaces for the attaching regions between $(k+1)-$ and $k$-handles are dual 
 to each other, the total Hilbert space 
-\begin{align}
+\begin{align} \eqref{total_hilb_space}
 \mch(\mcm) = \bigotimes_{f \in \mcf} \mch(f) \bigotimes_{e \in \mce} \mch(e) \bigotimes_{v \in \mcv} \mch(v)
 \end{align}
 admits a decomposition into a subspace tensored with its dual, and hence we have a map
@@ -11003,8 +11003,14 @@ This is the same $\text{dim} \; \text{End}(x)$ that appears in the definition of
 %\dave{The tensors always have even parity. \ethan{because of what I wrote above, right?}
 %The normalization is because it's the trivial idempotent that we plug into the $S^1 \times D^1$ attaching region in the cut and glue picture. \ethan{agreed}
 %}
+
+The contraction map $\chi : \mch^* \tp \mch \ra \cc$ serves the same purpose as in the bosonic case, 
+but in the fermionic setting we must be careful to address Koszul ordering issues correctly. 
+We will define $\chi$ to act on two tensors with {\it adjacent} Koszul ordering. That is, in order
+to contract $w^*\tp v$ using $\chi$, the Koszul ordering of $w$ and $v$ must be $w^*_i \tp v_{i+1}$ for some $i\in \zz$. If we are 
+instead given $w_i^*\tp v_j$ for $j\neq i+1$, in order to evaluate $\chi(w^*\tp v)$ we must permute the Koszul ordering so that $j\mapsto i+1$, at the cost of the usual Koszul signs. 
 \ethan{strictly speaking, I don't think we need the following (it could just confuse people)}
-Under re-arrangement of tensor factors and Koszul signs, $\chi$ behaves in the fermionic setting as
+Under re-arrangement of tensor factors and Koszul signs, $\chi$ behaves as
 \begin{align}
 \delta_{wv} = \chi(w^* \tp v)=(-1)^{|v| |w|} \chi(w^*_2 \tp v_1) = (-1)^{|w|}(-1)^{|v| |w|} \chi(v \tp w^*) = (-1)^{|w|(|v|+1)} \delta_{v^* w^{*}},
 \end{align}
@@ -11076,20 +11082,26 @@ Z(\mcm) = \chi\left( \bigotimes_{f \in \mcf} T_f \bigotimes_{e \in \mce} T_e \bi
 %where the fact that the tensors are all even means that the order on the tensor product does not matter. 
 However, when evaluating the RHS, 
 one has to be careful about Koszul sign issues when performing the tensor contraction induced by $\chi$. 
+In the above equation, the Koszul ordering of each tensor factor is determined in the usual implicit way, 
+so that it increases from left to right on the page. However, this ordering will almost always not be 
+the ordering required to provide a valid input for the contraction map $\chi$.
+Re-arranging the Koszul ordering given by the left-to-right convention produces a Koszul sign not
+present in the bosonic partition function. 
 
-When we contract out two tensor indices of a tensor in $\mch^*\tp\mch$, we must be careful to only perform 
+We will now elaborate on the above comments. 
+When we contract out two tensor indices of a tensor in $\mch^*\tp\mch$ with $\chi$, we must be careful to only perform 
 the contraction on two tensor factors that have adjacent Koszul ordering in the tensor product. 
 For example, suppose we have two tensors $Q \in V_Q$ and $T\in V_T$,
-defined by,
+defined by
 \begin{align}
 Q &= \sum_{q_L \tp q \tp q_r } Q(q_L \tp q \tp q_R)q_L \tp q \tp q_R,\\
 T &= \sum_{t_L \tp t \tp t_R} T(t_L \tp t \tp t_R  )t_L \tp t \tp t_R,
 \end{align}
 where we have split the vector spaces $V_Q$ and $V_T$ into tensor factors on 
 the left and right of the two indices that we would like to contract, namely $t \in V$ and $q \in V^*$.
-Define the contracted tensor by $K$, which is given by
+We define the contracted tensor by $K$, which is given by
 \begin{align}
-K = \sum_{ q_L \tp q_R \tp t_L \tp t_R}K(q_L \tp q_R \tp t_L \tp t_R) q_L \tp q_R \tp t_L \tp t_R
+K = \sum_{ q_L \tp q_R \tp t_L \tp t_R}K(q_L \tp q_R \tp t_L \tp t_R) q_L \tp q_R \tp t_L \tp t_R,
 \end{align} 
 with 
 \begin{align}
@@ -11097,7 +11109,22 @@ with
 K(q_L \tp q_R \tp t_L \tp t_R) &= \sum_{q,t} Q(q_L \tp q \tp q_R)R(t_L \tp t \tp t_R  ) (-1)^{|q| |q_r|}(-1)^{|t_L| | t|} \chi(q \tp t)\\
 &= \sum_{t} Q(q_L \tp t^* \tp q_R)R(t_L \tp t \tp t_R  ) (-1)^{|t|( |q_R| +|t_L|)}.
 \end{align}
-The Koszul sign $(-1)^{|t|( |q_R| +|t_L|)}$ is picked up from commuting the tensor factors $q$ and $t$ next to one another.
+In the above, we have used the fact that $\chi$ is an even map, meaning that $\chi(q\tp t)$ is only non-zero
+if $|q|=|t|$. 
+The Koszul sign $(-1)^{|t|( |q_R| +|t_L|)}$ is picked up from commuting the tensor factors $q$ and $t$ next to one another, so that they have the correct Koszul ordering for being input into the contraction map. 
+
+In the above examples, we have used the implicit left-to-right Koszul ordering convention.
+In practice, we will more often be performing a contraction on a series of tensors whose Koszul
+orderings are indicated explicitly by numerical subscripts, since this notation is better suited to 
+our diagrammatic formalism. For example, we have 
+\be Q\tp T = \sum_{q_L \tp q \tp q_r } Q(q_L \tp q \tp q_R)T(t_L \tp t \tp t_R  ) q_{L1} \tp q_2 \tp q_{R3} \tp t_{L4} \tp t_5 \tp t_{R6}.\ee
+We would like to contract out the indices $t\in V,q\in V^*$, but in order to do this they must have adjacent Koszul ordering. 
+To obtain such an 
+order, we use the following manipulations:
+\begin{align} q_2 \tp q_{R3} \tp t_{L4} \tp t_5 & = (-1)^{|q||q_R|}q_3 \tp q_{R2} \tp t_{L4} \tp t_5 \\ & = (-1)^{|q||q_R|+|t||t_L|} q_3 \tp q_{R2} \tp t_{L5} \tp t_4.
+\end{align}
+This tensor is now ready to be contracted. The Koszul sign we pick up, namely 
+$(-1)^{|q||q_R|+|t||t_L|}$, is of course the same as the one obtained with the implicit left-to-right Koszul ordering convention. 
 
 
 %For example, suppose we have two tensors $X \in V_1 \tp \dots \tp V_n$ and $Y \in W_1\tp \dots \tp W_m$,
@@ -11129,7 +11156,8 @@ Z(\mcm) = \sum_{ \mcl } (-1)^{k_\mcl} \prod_{f \in \mcf} T_f(w_f)
 \prod_{e \in \mce} T_e(w_e) \prod_{v \in \mcv} T_v(w_v),
 \end{align} 
 where $\mcl$ runs over all admissible labels and $(-1)^{k_\mcl} = \chi(w_\mcl)$ is the Koszul sign acquired 
-when re-arranging the Koszul ordering of the tensor factors in $w_\mcl$ when performing the tensor contraction. The Koszul sign can be found 
+when re-arranging the Koszul ordering of the tensor factors in $w_\mcl$ when performing the tensor contraction. 
+When we form the total Hilbert space The Koszul sign can be found 
 by ensuring that tensor factors 
 being contracted always have adjacent Koszul-ordering and by using \eqref{contraction_example} repeatedly.
 
