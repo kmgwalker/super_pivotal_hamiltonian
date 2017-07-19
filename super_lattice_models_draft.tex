@@ -1272,7 +1272,14 @@
 
 
 %\newcommand{\Koszul}[2]{\smash[t]{\overset{{\color{kwcolor}{#1}}}{#2}}}
+%\newcommand{\Koszul}[3]{\mathbin{\ooalign{
+%$\overset{\scriptstyle{\color{kwcolor}{#1}}}{#2}$\cr$#3$\cr
+%}}}
+\newcommand{\Koszul}[3]{\mathbin{\ooalign{
+$\overset{\scriptstyle{\color{kwcolor}{#1}}}{ \mathop{\phantom{#2}}}$\cr$#3$\cr
+}}}
  
+
 
 \begin{document}
 
@@ -4225,6 +4232,7 @@ which follows can be understood without using terms like ``excitation'' and ``Ha
 
 Recall that a trace on a linear category $C$ is a linear function from endomorphisms to $\cc$, satisfying
 \dave{Koszul signs?} \ethan{seems like, if we define $\tr(fg) = \tr(f_1g_2)$, then $\tr(fg) = (-1)^{|f|+|f||g|}\tr(gf)=\tr(gf)$}
+\dave{I agree.}
 \be
 	\tr(fg) = \tr(gf) ,
 \ee
@@ -4287,6 +4295,7 @@ Note that the partition functions above are independent of the details of the cu
 any choice of cutting curves and any choice of $c'$ will yield the same answer on the RHS above.
 \kw{Need to make sure we have defined super trace $\str$.}
 \ethan{mentioned it above, should we elaborate more?}
+\dave{We could also just define it in the appendix on 'basic facts about super algebras'.}
 
 \medskip
 We now apply the above to the case where $Y$ is an annulus to obtain a nondegenerate trace on the tube category.
@@ -9231,6 +9240,10 @@ we frequently label the Koszul ordering of fermion dots in a way that is not tie
 left-to-right order in which we write down tensor products (this was done throughout Sections
 \ref{C2_condense_sect} and \ref{C2_quasiparticles}, for example). 
 \kw{consider switching to ``overscripts" (not sure if that is the conventional name} 
+\dave{I made a command for this. 
+It's not perfect, but works. 
+We can remove the coloring if we like.}
+ $\Koszul{1}{V}{V^{xyz}_{ab}}\tp \Koszul{2}{V}{V^{pqt}} \tp \Koszul{3}{V}{V^{stw}}$
 
 %\kw{I think overscripts would be better than subscripts.}
 %\ethan{By overscripts do you mean $e.g.$ $V^{ab,1}_c$ or something else? I went with subscripts since that's what we have in later sections and earlier in this section.}
