@@ -1268,6 +1268,9 @@
 \newcommand{\PitchforkFLeft}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFLeft.pdf}}}}}
 \newcommand{\PitchforkFRight}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFRight.pdf}}}}} 
 
+\newcommand{\PitchforkFLeftprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFLeftprime.pdf}}}}}
+\newcommand{\PitchforkFRightprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFRightprime.pdf}}}}} 
+
 \newcommand{\Banana}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Banana.pdf}}}}} 
 
 
@@ -5027,13 +5030,17 @@ If $\rho$ is the representation (i.e.\ module) determined by an idempotent $e$ (
 then the above association of $\rho$ to a boundary component is equivalent to imposing $e$ as a boundary condition
 in a annular neighborhood of that boundary component.
 
-Note that the spin structure grading of the tube category (and its modules) is respected by the above tensor product: \ethan{added some tubes to make it slightly more explicit}
+%Note that the spin structure grading of the tube category (and its modules) is respected by the above tensor product: \ethan{added some tubes to make it slightly more explicit}
+%\begin{align}
+%\tube^B \tp \tube^B \cong \tube^B \quad \quad \tube^B \tp \tube^N \cong \tube^N \quad \quad \tube^N \tp \tube^N \cong \tube^B .
+%\end{align}
+
+Note that the spin structure grading of the tube category (and its modules) is respected by the above tensor product:
+\dave{What if we left it the old way and just added a sentence explaining what we mean:}
 \begin{align}
-\tube^B \tp \tube^B \cong \tube^B \quad \quad \tube^B \tp \tube^N \cong \tube^N \quad \quad \tube^N \tp \tube^N \cong \tube^B .
+B \tp B = B \quad \quad B \tp N = N \quad \quad N \tp N = B
 \end{align}
-
-
-
+where $B (N)$ are shorthand for the bounding(non-bounding) tube categories.
 
 \begin{comment}
 \kw{We define $V^{ab}_c$ elsewhere, so probably no need to to it again here.}
@@ -9288,8 +9295,8 @@ their ordered representatives.
 %\dave{I think we should do that.}
 %\ethan{agreed. I did it}
 \dave{Should we use a different charector when we are referring to a super pivotal category that doesn't necessarily come from fermion condensation but still satisfies the assumptions laid out in this section?
-E.g., use $\mcc$, $\mcc/\psi$ and (maybe) $\mcf$ for bosonic, fermion condensed, and super pivotal.}
-\dave{Also the change of $\mcx \ra \sob$ should be $\mcx \ra \sob(\mcc/\psi)$ or $\sob(\mcf)$ etc.}
+E.g., use $\mcc$ for bosonic, $\mcc/\psi$ for the fermionic quotient, and $\mcf$ for super pivotal, other possibilities $\mathcal{G} \mathcal{H}\mathcal{K}\mathcal{Q}\mathcal{R}$ }
+\dave{Also the change of $\mcx \ra \sob$ should be $\mcx \ra \sob(\mcc/\psi)$ or $\sob(\mcf)$ depending on context.}
 Let $\sob$ be a complete collection of simple objects (minimal idempotents), one from each equivalence class.
 (In this subsection, as in most of the paper, we are assuming that our category is semisimple with finitely many equivalence
 classes of simple objects.)
@@ -9299,6 +9306,8 @@ For arbitrary objects $x$ and $y$, we have
 \ee
 Recall that the relative tensor product $\tp_{\End(a)}$ on the RHS above is defined as the usual tensor product over scalars, modulo elements
 of the form $\alpha f \tp \beta - \alpha\tp f\beta$ with $f\in \End(a)$.
+\dave{Should we add a picture for this? 
+Something similar to what we used have demonstrating $\tp_{\text{End} (a)} $.}
 Clearly such elements are in the kernel of the composition map $\mor(x\to a) \tp \mor(a\to y) \to \mor(x\to y)$.
 Our semisimplicity assumption implies that the composition map (summing over all $a\in \sob$) is surjective and that such
 elements generate all of the kernel.
@@ -9319,12 +9328,10 @@ Diagrammatically these read,
 \begin{align} 
 \bigoplus_{x}  \Fusionspaceb \cong \Fusionspacea \cong  \bigoplus_{y}  \Fusionspacec
 \end{align} 
-\kw{Let's add in the middle a diagram with a 4-valent vertex, prepresenting $V^{abc}_d$}
-\dave{Sure. Done.}
+%\kw{Let's add in the middle a diagram with a 4-valent vertex, prepresenting $V^{abc}_d$}
+%\dave{Sure. Done.}
 where the unlabeled trivalent vertices denote the fusion spaces $V^{ab}_x$, $V^{xc}_d$, $V^{ay}_d$, $V^{bc}_y$, and the unlabled quadvalent vertex in the middle diagram denotes the fusion space $V^{abc}_d$.
 The tensor product over endomorphisms is implicit in the diagram.
-\dave{We should add the appropriate figure at the first point we talk about this tensor product. 
-Maybe the beginning of this subsection.}
 Similarly, 
 \be
 	V^{abcd} \cong \bigoplus_{x\in \sob} V^{ab}_x \tp_{\End(x)} V^{xcd} ,
@@ -9340,18 +9347,25 @@ Alternatively,
 %\be  \label{pfpfi2}
 %	V^{abcd} \cong \bigoplus_{x\in \sob} V^{bc}_x \tp_{\End(x)} V^{axd} \cong \bigoplus_{x\in \sob} V^{bcx^*} \tp_{\End(x)} V^{xcd} .
 %\ee
-\dave{Changed so that they only differ by a pivot like the above.}
+%\dave{Changed so that they only differ by a pivot like the above.}
 \be  \label{pfpfi2}
 	V^{abcd} \cong \bigoplus_{x\in \sob} V^{bc}_x \tp_{\End(x)} V^{axd} \cong \bigoplus_{x\in \sob} V^{bcx^*} \tp_{\End(x)} V^{axd} .
 \ee
 Diagrammatically we have,
-\dave{Note to self: make figures match up.}
+%\dave{Note to self: make figures match up.}
 \begin{align}
-\bigoplus_x \TensorProducta \; \cong\;  \bigoplus_x\TensorProductb \; \cong \; \bigoplus_x \TensorProductc \; \cong \; \bigoplus_x \TensorProductd .
+\vcenter{\xymatrix @!0 @M=4mm @R=14mm @C=20mm{
+ \bigoplus_x \TensorProductbprime &\quad \cong& \TensorProducteprime  &\cong\quad&\bigoplus_x \TensorProductcprime   \\
+\quad \quad \rotatebox[origin=c]{90}{$\cong$}   &          &                                      &         &\quad\quad\rotatebox[origin=c]{90}{$\cong$}\\
+ \bigoplus_x \TensorProductaprime &          &                                      &         &\bigoplus_x \TensorProductdprime  
+	}}
 \end{align}
-\kw{Let's figure out a way to put the endpoints in roughly the same place, and also add a 4-valent diagram.
-Will probably need to split it into two lines.}
-\dave{Is this better?}
+%\begin{align}
+%\bigoplus_x \TensorProducta \; \cong\;  \bigoplus_x\TensorProductb \; \cong \; \bigoplus_x \TensorProductc \; \cong \; \bigoplus_x \TensorProductd .
+%\end{align}
+%\kw{Let's figure out a way to put the endpoints in roughly the same place, and also add a 4-valent diagram.
+%Will probably need to split it into two lines.}
+%\dave{Is this better?}
 %\begin{align}
 %\bigoplus_x \TensorProductaprime \; \cong \; 
 %\bigoplus_x \TensorProductbprime \; \cong \; 
@@ -9362,13 +9376,7 @@ Will probably need to split it into two lines.}
 %%KW already said this a few sentences ago.
 %where the unlabeled trivalent junctions represent the fusion space of the three oriented lines which terminate there.
 
-\begin{align}
-\vcenter{\xymatrix @!0 @M=4mm @R=14mm @C=20mm{
- \bigoplus_x \TensorProductbprime &\quad \cong& \TensorProducteprime  &\cong\quad&\bigoplus_x \TensorProductcprime   \\
-\quad \quad \rotatebox[origin=c]{90}{$\cong$}   &          &                                      &         &\quad\quad\rotatebox[origin=c]{90}{$\cong$}\\
- \bigoplus_x \TensorProductaprime &          &                                      &         &\bigoplus_x \TensorProductdprime  
-	}}
-\end{align}
+
 
 \bigskip
 
@@ -9421,10 +9429,10 @@ We also stick with the left-to-right ordering convention for the $F^{abcd}$ move
 \ee
 Which written as a matrix equation is
 \begin{align}
-\PitchforkFLeft = \sum_{y} \sum_{\rho \sigma} \left( F^{abcd} \right)_{(x; \mu \nu)(y; \rho \sigma)} \PitchforkFRight .
+\PitchforkFLeftprime = \sum_{y} \sum_{\rho \sigma} \left( F^{abcd} \right)_{(x; \mu \nu)(y; \rho \sigma)} \PitchforkFRightprime .
 \end{align}
-\kw{need to make endpoints match up between two diagrams}
-
+%\kw{need to make endpoints match up between two diagrams}
+%\dave{done.}
 
 %%%%%%%%%%%%%%%%%%
 \subsection{Coherence relations} \label{coherence_ss}
@@ -9510,6 +9518,7 @@ see that a Koszul sign appears:
 
 \kw{I propose we switch to this diagram}
 \dave{That's fine with me.}
+\dave{Do the brackets at serve any purpose?}
 
 \begin{align}
 \newcommand{\A}{\bigoplus_{p,q}V^{qw}_{u}\tp_q V^{pz}_{q}  \tp_p V^{xy}_{p}}
