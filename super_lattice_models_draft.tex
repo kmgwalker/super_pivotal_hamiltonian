@@ -1271,6 +1271,23 @@
 \newcommand{\PitchforkFLeftprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFLeftprime.pdf}}}}}
 \newcommand{\PitchforkFRightprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFRightprime.pdf}}}}} 
 
+
+\newcommand{\PitchforkFLeftprimesmall}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.8]{PivotCoherenceaa.pdf}}}}}
+\newcommand{\PitchforkFRightprimesmall}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.8]{PivotCoherencebb.pdf}}}}} 
+
+\newcommand{\PivotCoherencea}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.8]{PivotCoherencea.pdf}}}}}
+\newcommand{\PivotCoherenceb}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.8]{PivotCoherenceb.pdf}}}}}
+\newcommand{\PivotCoherencec}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.8]{PivotCoherencec.pdf}}}}}
+
+\newcommand{\Penta}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{Penta.pdf}}}}}
+\newcommand{\Pentb}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{Pentb.pdf}}}}}
+\newcommand{\Pentc}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{Pentc.pdf}}}}}
+\newcommand{\Pentd}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{Pentd.pdf}}}}}
+\newcommand{\Pente}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{Pente.pdf}}}}}
+\newcommand{\Pentf}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{Pentf.pdf}}}}}
+
+
+
 \newcommand{\Banana}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Banana.pdf}}}}} 
 
 
@@ -9426,7 +9443,7 @@ Graphically, and written as a matrix equation, we thus have
 \end{align}
 where the greek indices label particular fusion space basis vectors, with $\mu\in V^{ab}_x,\nu\in V^{xc}_d,\alpha\in V^{bc}_y,$ and $\beta\in V^{ay}_d$.
 We also stick with the left-to-right ordering convention for the $F^{abcd}$ move:
-\dave{Changed order and and $x \ra x^*$.}
+%\dave{Changed order and and $x \ra x^*$.}
 \be  
 	F^{abcd} : \bigoplus_{x\in \sob(\mcf)} V^{abx} \tp_{\End(x)} V^{x^*cd}   \;\to\;   \bigoplus_{x\in \sob(\mcf)} V^{axd} \tp_{\End(x)} V^{x^*bc} .
 \ee
@@ -9519,10 +9536,34 @@ see that a Koszul sign appears:
 %\kw{tentative to do: convert above diagram to left-to-right ordering}
 \kwsep
 
+
+
+However, if we peer under the hood and look at {\it ordered representatives} (as we would need to do if, for example,
+we were checking the pentagon equation on a computer), then we
+see that a Koszul sign appears:
+\begin{align}
+\newcommand{\A}{\bigoplus_{p,q}\Penta}
+\newcommand{\AB}{\ar[rru]^{F^{pzw}_u} \ar[rrd]^{F^{xyz}_q}}
+\newcommand{\B}{\bigoplus_{p,t} \Pentb}
+\newcommand{\BC}{\ar[rrr]^{P_{23}}}
+\newcommand{\C}{\bigoplus_{p,t} \Pentc}
+\newcommand{\CF}{\ar[rrd]^{F^{xyt}_u}}
+\newcommand{\D}{\bigoplus_{r,q}\Pentf}
+\newcommand{\DE}{\ar[rrr]^{F^{xrw}_u} }
+\newcommand{\E}{\bigoplus_{s,r}\Pente}
+\newcommand{\EF}{\ar[rru]^{F^{yzw}_s}} 
+\newcommand{\F}{\bigoplus_{t,s} \Pentd}
+\vcenter{\xymatrix @!0 @M=2mm @R=28mm @C=19mm{
+&&\B \BC &&&\C \CF &&\\
+\A \AB &&&&&&&\F \\
+&&\D \DE&&&\E \EF&&
+	}} 
+	\label{endoPentagonDiagram}
+\end{align}
 \kw{I propose we switch to this diagram}
 \dave{That's fine with me.}
 \dave{Do the brackets at serve any purpose?}
-
+ -- equivalently --- 
 \begin{align}
 \newcommand{\A}{\bigoplus_{p,q}V^{qw}_{u}\tp_q V^{pz}_{q}  \tp_p V^{xy}_{p}}
 \newcommand{\AB}{\ar[rru]^{F^{pzw}_u} \ar[rrd]^{F^{xyz}_q}}
@@ -9585,19 +9626,39 @@ Other coherence relations are modified to take into account Koszul
 signs.
 For example, requiring consistency between $F$-moves and the pivot means that the following 
 diagram must commute:
+\dave{Would we prefer to define the pivot in \eqref{Pitchfork_pivot} to keep the outer legs fixed and rotate the inner pitchfork, 
+so that it maps between the same vector space (as I did in the following). 
+Or would we prefer to leave it as a map between different vector spaces?
+For coherence conditions like the following I think the first is simpler.
+}
 \begin{align}
-\newcommand{\A}{\bigoplus_x V^{ab}_{x,2} \tp_x V^{xc}_{d,1}}
-\newcommand{\B}{\bigoplus_y V^{ay}_{d,1} \tp_y V^{bc}_{y,2} }
-\newcommand{\C}{\bigoplus_y V^{dd^*} \tp_{d^*} V^{d^* a}_{y,1} \tp_y V^{yb}_{c^*,2}  \tp_{c^*} V_{c^*c}  }
-\newcommand{\D}{\bigoplus_x V^{dd^*} \tp_{d^*} V^{d^*x}_{c^*,2} \tp_x V^{ab}_{x,1}  \tp_{c^*} V_{c^*c} }
-\newcommand{\E}{\bigoplus_x V^{ab}_{x,1} \tp_x V^{xc}_{d,2}}
-\vcenter{\xymatrix @!0 @M=4mm @R=25mm @C=30mm{
-&\A \ar[ld]^{F^{abc}_d}\ar[rr]^{P_{12}} &&\E&\\
-\B \ar[rd]^{P^{ay}_{d,1} \tp P^{bc}_{y,2} \circ (\kappa_d  \kappa_y \kappa_c)^{-1}}&&&&\D \ar[ul]^{\kappa_d \kappa_c \circ (P^{d^*x}_{c^*,2})^{-1}} \\
-&&\C &\ar[ru]^{F^{d^*ab}_{c^*}}&
+\newcommand{\A}{\bigoplus_x \PitchforkFLeftprimesmall}
+\newcommand{\B}{\bigoplus_z  \PivotCoherencec }
+\newcommand{\C}{\bigoplus_y  \PivotCoherenceb }
+\newcommand{\D}{\bigoplus_y   \PivotCoherencea }
+\newcommand{\E}{\bigoplus_y \PitchforkFRightprimesmall }
+\vcenter{\xymatrix @!0 @M=1.5mm @R=25mm @C=30mm{
+&\A  \ar[rr]^{F^{abcd}} &&\E \ar[rd]^{P^{ayd}}&\\
+\B\ar[ru]^{P^{dzc} \tp P^{z^*ab}} &&&&\D \ar[lld]^{P_{12}}   \\
+&&\C \ar[llu]^{F^{dabc} } &&
 	}} 
 	\label{pivotconsistent}
 \end{align} 
+
+
+%\begin{align}
+%\newcommand{\A}{\bigoplus_x V^{ab}_{x,2} \tp_x V^{xc}_{d,1}}
+%\newcommand{\B}{\bigoplus_y V^{ay}_{d,1} \tp_y V^{bc}_{y,2} }
+%\newcommand{\C}{\bigoplus_y V^{dd^*} \tp_{d^*} V^{d^* a}_{y,1} \tp_y V^{yb}_{c^*,2}  \tp_{c^*} V_{c^*c}  }
+%\newcommand{\D}{\bigoplus_x V^{dd^*} \tp_{d^*} V^{d^*x}_{c^*,2} \tp_x V^{ab}_{x,1}  \tp_{c^*} V_{c^*c} }
+%\newcommand{\E}{\bigoplus_x V^{ab}_{x,1} \tp_x V^{xc}_{d,2}}
+%\vcenter{\xymatrix @!0 @M=4mm @R=25mm @C=30mm{
+%&\A \ar[ld]^{F^{abc}_d}\ar[rr]^{P_{12}} &&\E&\\
+%\B \ar[rd]^{P^{ay}_{d,1} \tp P^{bc}_{y,2} \circ (\kappa_d  \kappa_y \kappa_c)^{-1}}&&&&\D \ar[ul]^{\kappa_d \kappa_c \circ (P^{d^*x}_{c^*,2})^{-1}} \\
+%&&\C &\ar[ru]^{F^{d^*ab}_{c^*}}&
+%	}} 
+%	\label{pivotconsistent}
+%\end{align} 
 
 \kw{TO DO: say a little bit (but only a little bit) about other coherence relations}
 \dave{Should we add the coherence relation for pivoting?}
