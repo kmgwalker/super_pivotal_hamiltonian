@@ -4242,6 +4242,7 @@ Recall that a trace on a linear category $C$ is a linear function from endomorph
 for all $f \in \mor(x\to y)$ and $g\in \mor(y\to x)$.
 All of the categories we consider have a $*$-structure (a.k.a. reflection structure), which is an order 2 antilinear antiautomorphism
 from $\mor(x\to y)$ to $\mor(y\to x)$ (for all objects $x$ and $y$).
+We will denote the image of a morphism $f$ under reflection as $\bar f$. 
 A trace is equivalent to a collection of sesquilinear inner products on $\mor(x\to y)$ satisfying
 \dave{Koszul signs?} \ethan{do we have $\overline{fg} = (-1)^{|f||g|}\bar{g}\bar{f}$? If yes then I think the koszul signs should be as below}
 \be
@@ -4268,7 +4269,7 @@ The nondegenerate pairing is defined via
 \be
 	\langle u, v\rangle = Z(Y\times I) (u\cup \bar v) ,
 \ee
-where the bar denotes the ``reflection" map from $A(Y; a_1,\ldots,a_k)$ to $A(-Y; \bar{a}_1,\ldots,\bar{a}_k)$\dave{bars on $a_i$'s in $A(-Y,....)$?}.
+where the bar denotes the reflection map from $A(Y; a_1,\ldots,a_k)$ to $A(-Y; \bar{a}_1,\ldots,\bar{a}_k)$\dave{bars on $a_i$'s in $A(-Y,....)$?}.
 Here we are using the ``pinched boundary" condition for $Y\times I$, so that $\bd (Y\times I) = Y\cup -Y)$.
 In other words, we glue together the string nets $u$ and $\bar v$ to get a string net on $\bd (Y\times I)$, and then we evaluate
 the path integral of $Y\times I$ with the $u\cup \bar v$ string net as a boundary condition.
@@ -4293,9 +4294,12 @@ and
 \label{nonbounding_trace}
 	Z(Y\times S^1_N)(c) = \str(g(c')),
 \ee
-where $\str$ denotes the supertrace, which is the trace weighted by the fermion parity operator.
+where $\str$ denotes the supertrace, which is the trace weighted by the fermion parity operator, i.e. $\str(A) = \tr((-1)^F A)$.
+The association of the trace (supertrace) with the $B$ ($N$) spin structure was 
+also noticed in \cite{turzillo2016}. 
 Note that the partition functions above are independent of the details of the cutting procedure;
 any choice of cutting curves and any choice of $c'$ will yield the same answer on the RHS above.
+
 \kw{Need to make sure we have defined super trace $\str$.}
 \ethan{mentioned it above, should we elaborate more?}
 \dave{We could also just define it in the appendix on 'basic facts about super algebras'.}
@@ -4303,7 +4307,7 @@ any choice of cutting curves and any choice of $c'$ will yield the same answer o
 \medskip
 We now apply the above to the case where $Y$ is an annulus to obtain a nondegenerate trace on the tube category.
 %\kw{Take it from here, Dave.}
-Using \eqref{trace_to_innerproduct} and letting $t \in \tube^W(\mcc)$, we have
+Letting $t \in \tube^W(\mcc)$ and writing $\tr_W(t)$ for the trace of $t$, we can use \eqref{trace_to_innerproduct} to write
 \begin{align}
 \label{trace_t}
 \tr (t)  = \langle t, \text{id} \rangle  = Z((S^1_W \times I) \times I ) (t \cup \overline{\text{id} })  = Z(S^1_W \times D^2) (t \cup \overline{\text{id}}).
@@ -4332,10 +4336,20 @@ The linear map induced by the cut on these basis elements is given by
 The coefficients $g_{ij}$ are found by reducing the middle diagram using local relations.
 As usual, the trace is basis independent and any basis of $\text{mor}(\unit \ra x)$ will do.
 
+Let us introduce the notation 
+\begin{align} \label{sX_defn}
+s(X) =\left\{
+                \begin{array}{ll}
+                  1 \quad \text{if } X =B \quad \text{Bounding} \\
+                  -1 \quad \text{if } X = N \quad \text{Non-bounding}
+                \end{array}
+              \right.
+\end{align}
 Explicitly, \eqref{trace_formula} is then given by
 \begin{align} 
 \label{matrix_trace}
-\left \langle\;\Tuberrprime_W,\text{id} \; \right \rangle  =\tr_W(g) = \sum_{ j } g_{jj} s(W)^{|\mu_j|}.
+%\left \langle\;\Tuberrprime_W,\text{id} \; \right \rangle  =
+\tr_W(g) = \sum_{ j } g_{jj} s(W)^{|\mu_j|}.
 \end{align} 
 If $W$ is bounding then $s(W) = 1$ and \eqref{matrix_trace} is just $\tr(g)$. On the other hand, 
 if $W$ is non-bounding then $s(W)  = -1$, and \eqref{matrix_trace} is the super trace $\str(g)$. 
@@ -5036,11 +5050,10 @@ in a annular neighborhood of that boundary component.
 %\end{align}
 
 Note that the spin structure grading of the tube category (and its modules) is respected by the above tensor product:
-\dave{What if we left it the old way and just added a sentence explaining what we mean:}
 \begin{align}
 B \tp B = B \quad \quad B \tp N = N \quad \quad N \tp N = B
 \end{align}
-where $B (N)$ are shorthand for the bounding(non-bounding) tube categories.
+where $B$ $(N)$ is shorthand for the bounding (non-bounding) sector of the tube category.
 
 \begin{comment}
 \kw{We define $V^{ab}_c$ elsewhere, so probably no need to to it again here.}
@@ -6474,22 +6487,26 @@ $a$ and $b$ in no way constrain the possible types of the simple objects appeari
 The $F$-symbols of the condensed theories can be deduced from those of the parent theories, so we will not list them here.
 We now compute the minimal idempotents of the tube algebra in the condensed theories.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Primitive idempotents of $SU(2)_6/\psi$}
 \label{SU2psiIdempotents}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 The primitive idempotents of the tube category of $SU(2)_6/\psi$ can be computed directly 
 using the techniques of Section \ref{more_on_tubes}. 
-They are given by,
+They are given by
 \begin{align}
-E(a,b) = \TubeIdempotentTwoStrandab_{J}, \quad \quad  (a,b) \in \sob(SU(2)_6) \times \sob(SU(2)_6/\psi).
+E(a,b) = \TubeIdempotentTwoStrandab_{J}, \quad \quad  (a,b) \in \sob(SU(2)_6) \times \sob(SU(2)_6/\psi),
 \end{align}
-Where as before we require that $s(J) = (-1)^{\nu_b}$.
+where as before we require that $s(J) = (-1)^{\nu_b}$.
 It will be useful to recast these idempotents in a form 
 that can easily used to compute the idempotents for $SO(3)_6$. 
-We first define,
+We first define
 \begin{align}
 \widetilde{E}(a,b,\text{cl}(r)) \; = \; \BasisForIdempotents
 \end{align}
-and for $x = \unit$ or $x = \psi$
+and for $x = \unit$ or $x = \psi$ we define the $\omega$ loop $\omega_x$ by 
 \begin{align}
  \omega_x = \frac{d_x}{\mathcal{D}_{\mcc/\psi}^2} \sum_{r\in \sob(\mcc/\psi)} \frac{d_r }{ \dim\End(r)} \left( \frac{S_{xr}}{S_{\unit r}} \right)   \text{cl}(r).
 \end{align}
@@ -6499,7 +6516,7 @@ when $x =\psi$, $ \frac{S_{x r}}{S_{\unit r}}=(-1)^{\nu_r}$ and $\omega_\psi$ is
 The factor $\mcd_{\mcc/\psi}^2 = \sum_{x \in \mcc/\psi} d_x^2 / \dim \End(x)$ is the total quantum dimension of 
 the condensed theory in the sense of \eqref{total_qdim_defn}. 
 The minimal idempotents given by $E(a,b)$ in \eqref{FunctorCxCtoTubeC}
-can be re-written as,
+can be re-written as
 \begin{align}
 E(a\tp x, b) \cong \widetilde{E}(a,b, \omega_x)
 \end{align}
@@ -6510,7 +6527,7 @@ Additionally if $a \tp \psi \cong a$ then $\widetilde{E}(a,b, \omega_\unit)$ and
 This presentation of the idempotents is more symmetric than those discussed in Section \ref{more_on_tubes}.
 
 We now write these idempotents so that they have a single strand at the boundary rather than two.
-We use the fermionic analogue of \eqref{TwoStrandToOneStrand},
+We use the fermionic analogue of \eqref{TwoStrandToOneStrand}
 %and replace $\omega$ by $\omega_x$,
 %\begin{align}
 %g(a,b,\omega_x,c,j) = \gxyajf  \quad \quad \quad h(a,b,\omega_x,c,i) = \hxyaif
@@ -6518,13 +6535,13 @@ We use the fermionic analogue of \eqref{TwoStrandToOneStrand},
 to write down the single strand idempotents
 \begin{align}
 \label{OneStrandIdempotent}
-\tilde{e}_{ab}(\omega_x,c,j) \; = \; \OneStrandIdempotentMTCpsi
+\tilde{e}_{ab}(\omega_x,c,j) \; = \; \OneStrandIdempotentMTCpsi.
 %g(a,b,\omega_x,c,j)  \cdot h(a,b,\omega_x,c,j) 
 \end{align}
 These idempotents are essentially the same as the ones described earlier in \eqref{idempotent_one_strand}. 
 The particular representative of the isomorphism class is given by choosing $c \in a\tp b$, and appropriatey normalized vectors $\mu_j \in V^{ab}_c(\mcc/\psi)$, and $\nu_j \in V^{c}_{ab}(\mcc/\psi)$.
 We will denote the parity of $\mu_j \in V^{ab}_c(\mcc/\psi)$ by $\sigma_j=1$ $(\sigma_j = -1)$ if the chosen basis vector $\mu_j$ in the fusion space $V^{ab}_c(\mcc/\psi)$ is even (odd).
-The twists of the idempotents are given by,
+The twists of the idempotents are given by 
 \begin{align} 
 \label{CmodPsiTwistsModular}
 T\cdot \tilde{e}(a,b,\omega_x,c,j)  =\left[  \frac{\theta_a}{\theta_b} (-1)^{x (\nu_a + \nu_b)}(-s(J))^{(1-\sigma_j)/2}  \right ] \tilde{e}(a,b,\omega_x,c,j)
@@ -6927,7 +6944,7 @@ $m_{22}(\omega_\unit + \omega_\psi,c,j)$ &$ \sigma_j $\\
 %}
 %\ethan{awesome!}
 with $c \in m_2 \tp m_2$ and $j$ labeling a vector in the fusion space $V^{m_2 m_2}_c(\mcc/\psi)$.
-Meanwhile the non-bounding idempotents are given by,
+Meanwhile the non-bounding idempotents are given by
 \begin{align}
 \xymatrix{
 %\underset{\quad \quad c \; \in \; a \tp b}{\IdempBraid{a}{b}{}{\omega}{N}}
@@ -6970,7 +6987,7 @@ hence the pairs $(a,b)$ in these idempotents are labeled by $m_1$ and $q_3$.
 %This is because $q_3$ is a q-type object in $SU(2)_6/\psi$, 
 %and so it can freely ``absorb'' fermions (odd endomorphisms), which allows us to always ensure 
 %that the vertices appearing in the idempotent have even parity. 
-As the notation suggests $m_{33}$ is not q-type,
+As the notation suggests $m_{33}$ is not q-type:
  to see this we note that if it were, then there would 
 be an odd endomorphism of $\tube(SO(3)_6/\psi)$ with trivial boundary conditions (since $m_0 \in q_3 \tp q_3$).
 That would require $SO(3)_6/\psi$ to contain a q-type simple object, 
@@ -7014,9 +7031,9 @@ Using the basis above, one finds
 %\dave{I wrote it this way to avoid commenting on the sign $s(Y)$ that can appear if $\mu_j$ has odd parity.
 %It seemed like it may cause more confusion than it's worth.
 %We could add a footnote if we like.}
-where $a$ and $b$ label the idempotent as before, $X$ denotes the spin structure of the idempotent which is fixed by $b$, $Y$ the spin structure around the newly closed loop, 
-and the omega loop is for $SO(3)_6/\psi$. 
-We warn the reader, that when $X$ is non-bounding, 
+where $a$ and $b$ label the idempotent as before, $X$ denotes the spin structure of the idempotent which is fixed by $b$, $Y$ denotes the spin structure around the newly closed loop, 
+and the $\omega$ loop is for the category $SO(3)_6/\psi$. 
+Note that when $X$ is non-bounding, 
 $a, b\in \{ m_1, q_3 \}$, which lies outside of $SO(3)_6/\psi$.
 However, when the diagram is fused into the torus we find a torus string net labeled with objects only in $SO(3)_6/\psi$, as required.
 
@@ -7711,19 +7728,11 @@ $v$ -- tube with vertical $\rho$ strand, $t$ -- tube with $\rho$ strand wrapping
 \end{table}
 
 Let us now investigate local relations on the tubes. 
-We will make use of the notation 
+We will make use of the notation $s(X)$ defined in \eqref{sX_defn}.
 %\dave{Maybe change to $s(X) = \pm1$ as we did in other sections.}
 %\ethan{agreed, changed}
 %\ethan{edited this because $|X|$ suggests a relation to fermion parity which isn't there and since we used $s(X)$ at one point earlier in the paper. Can do a find+replace to revert if you don't dig it}
 %\dave{Works for me.}
-\begin{align}
-s(X) =\left\{
-                \begin{array}{ll}
-                  1 \quad \text{if } X =B \quad \text{Bounding} \\
-                  -1 \quad \text{if } X = N \quad \text{Non-bounding}
-                \end{array}
-              \right.
-\end{align}
 A complete basis of morphisms from trivial (empty) boundary to the empty boundary is listed in Table \ref{etoe}. 
 They satisfy,
 \begin{align}
@@ -9498,6 +9507,8 @@ case we can set $\tp_x = \tp_\cc$ without loss of generality.
 However, if we peer under the hood and look at {\it ordered representatives} (as we would need to do if, for example,
 we were checking the pentagon equation on a computer), then we
 see that a Koszul sign appears:
+
+\begin{comment} %version with explicit ordering
 \begin{align}
 \newcommand{\A}{\bigoplus_{p,q}V^{xy}_{p,3}\tp_p V^{pz}_{q,2}  \tp_q V^{qw}_{u,1}}
 \newcommand{\AB}{\ar[rru]^{F^{pzw}_u} \ar[rrd]^{F^{xyz}_q}}
@@ -9517,12 +9528,10 @@ see that a Koszul sign appears:
 	}} 
 	\label{endoPentagon}
 \end{align}
+\end{comment}
 
-%\kw{tentative to do: convert above diagram to left-to-right ordering}
-\kwsep
-
-\kw{I propose we switch to this diagram}
-\dave{That's fine with me.}
+%\kw{I propose we switch to this diagram}
+%\dave{That's fine with me.}
 \dave{Do the brackets at serve any purpose?}
 
 \begin{align}
@@ -9544,12 +9553,12 @@ see that a Koszul sign appears:
 	}} 
 	\label{endoPentagon}
 \end{align}
-Here $P_{23}$ denotes the Koszul isomorphism associated to transposing the second and third tensor factors.
-Again we are using left-to-right ordering of each tensor product.
+Here, $P_{23}$ denotes the Koszul isomorphism associated to transposing the second and third tensor factors.
+Again, we are using the implicit left-to-right Koszul ordering of each tensor product.
 In terms of the matrix elements of the $F$-symbols, this reads 
 \be  
 \begin{aligned}
- \sum_{r\in \sob(\mcc)}
+ \sum_{r\in \sob(\mcf)}
  \sum_{\sigma\in V^{xr}_q}
  \sum_{\omega \in V^{yz}_r}
  \sum_{\eta\in V^{rw}_s}
@@ -9558,29 +9567,27 @@ In terms of the matrix elements of the $F$-symbols, this reads
  [F^{xrw}_u]_{(q;\sigma\lambda)(s;\eta\gamma)}
  [F^{yzw}_s]_{(r;\omega \eta)(t;\alpha\delta)} \\ 
  & = \sum_{\beta \in V^{pt}_u}
- [F^{pzw}_u]_{(p;\nu\lambda)(t;\alpha\beta)}
+ [F^{pzw}_u]_{(q;\nu\lambda)(t;\alpha\beta)}
  (-1)^{|\mu||\alpha|}
  [F^{xyt}_u]_{(p;\mu\beta)(s;\delta \gamma)}, 
 \end{aligned} 
 \ee
 where $\mu\in V^{xy}_p,\nu\in V^{pz}_q,\lambda\in V^{qw}_u,\gamma\in V^{xs}_u,\delta\in V^{yt}_s,$ and $\alpha\in V^{zw}_t$. 
 The Koszul sign $P_{23}$ appearing in \eqref{endoPentagon} appears in the above formula as $(-1)^{|\mu||\alpha|}$. 
+%\dave{I found:
+% $\beta$ in 3rd F-symbol, first line should be $\omega$.
+%The subscript $p$ in the first F-symbol of the second line should be $q$
+%}
+%\ethan{thanks, they were typos}
 
-\kwsep
+%The Koszul ordering of each tensor product in the diagram is obtained with the help of the conventions in 
+%\eqref{Fmove_ordering_conventions}. 
+%In terms of the matrix elements of the $F$-symbols, this reads 
+%\be  \begin{aligned} \sum_{r\in {\rm sObj}(\mcc)}\sum_{\sigma\in V^{xr}_q}\sum_{\omega \in V^{yz}_r}\sum_{\eta\in V^{rw}_s}& [F^{xyz}_q]_{(p;\mu\nu)(r;\omega\sigma)}[F^{xrw}_u]_{(q;\sigma\lambda)(s;\eta\gamma)}[F^{yzw}_s]_{(r;\beta\eta)(t;\alpha\delta)} \\ & = \sum_{\beta \in V^{pt}_u}(-1)^{|\delta||\alpha|}[F^{pzw}_u]_{(p;\nu\lambda)(t;\alpha\beta)}[F^{xyt}_u]_{(p;\mu\beta)(s;\delta\gamma)}, \end{aligned} \ee
 
+%where $\mu\in V^{xy}_p,\nu\in V^{pz}_q,\lambda\in V^{qw}_u,\gamma\in V^{xs}_u,\delta\in V^{yt}_s,$ and $\alpha\in V^{zw}_t$. 
+%The Koszul sign $P_{23}$ appearing in \eqref{endoPentagon} appears in the above formula as $(-1)^{|\delta||\alpha|}$. 
 
-The Koszul ordering of each tensor product in the diagram is obtained with the help of the conventions in 
-\eqref{Fmove_ordering_conventions}. 
-In terms of the matrix elements of the $F$-symbols, this reads 
-\be  \begin{aligned} \sum_{r\in {\rm sObj}(\mcc)}\sum_{\sigma\in V^{xr}_q}\sum_{\omega \in V^{yz}_r}\sum_{\eta\in V^{rw}_s}& [F^{xyz}_q]_{(p;\mu\nu)(r;\omega\sigma)}[F^{xrw}_u]_{(q;\sigma\lambda)(s;\eta\gamma)}[F^{yzw}_s]_{(r;\beta\eta)(t;\alpha\delta)} \\ & = \sum_{\beta \in V^{pt}_u}(-1)^{|\delta||\alpha|}[F^{pzw}_u]_{(p;\nu\lambda)(t;\alpha\beta)}[F^{xyt}_u]_{(p;\mu\beta)(s;\delta\gamma)}, \end{aligned} \ee
-\dave{I found:
- $\beta$ in 3rd F-symbol, first line should be $\omega$.
-The subscript $p$ in the first F-symbol of the second line should be $q$
-}
-where $\mu\in V^{xy}_p,\nu\in V^{pz}_q,\lambda\in V^{qw}_u,\gamma\in V^{xs}_u,\delta\in V^{yt}_s,$ and $\alpha\in V^{zw}_t$. 
-The Koszul sign $P_{23}$ appearing in \eqref{endoPentagon} appears in the above formula as $(-1)^{|\delta||\alpha|}$. 
-
-\ethan{Feel free to delete if desired}
 \dave{I think we should draw this one in the pitch fork basis. 
 I can do that.}
 Other coherence relations are modified to take into account Koszul 
@@ -9603,7 +9610,7 @@ diagram must commute:
 
 \kw{TO DO: say a little bit (but only a little bit) about other coherence relations}
 \dave{Should we add the coherence relation for pivoting?}
-\ethan{I think the above ``other relations are modified, for example...''}
+\ethan{I think the above ``other relations are modified, for example...'' is sufficient}
 
 
 
@@ -10230,7 +10237,7 @@ This is illustrated in Figure \ref{alphae_defn}.
 %\ethan{we already kinda do with our discussion of displacing dots onto edges. maybe I can try to just expand that discussion}
 Fermionic dots can also be ``absorbed'' into vertices using the action of $\cl_1$ on 
 fusion spaces involving q-type objects, as discussed in Section \eqref{fusion_spaces}. 
-We can do this in analogy with \eqref{poo} by constructing operators $\Gamma_i$, $i\in \{1,2,3\}$, which map a pitchfork with a standard dot 
+We can do this in analogy with \eqref{Gamma_y_def} by constructing operators $\Gamma_i$, $i\in \{1,2,3\}$, which map a pitchfork with a standard dot 
 on the $i$-th outgoing pitchfork edge to a pitchfork without a fermion dot on the $i$-th leg. 
 Graphically, $\Gamma_1$ is defined by 
 \be \label{gamma1_defn}
@@ -10830,23 +10837,24 @@ which pairs the vectors in neighboring dual vector spaces and allows us to compu
 We define
 \begin{align}
 \chi: &\mch^* \tp \mch \ra \cc\\
-& w^* \tp v \mapsto \delta_{vw}.
+& \mu^* \tp \nu \mapsto \delta_{\mu\nu}.
 \end{align}
 This is essentially the same as the bilinear pairing defined in \eqref{reflection_pairing_defn}, just with a different normalization, and ordering on the tensor factors. 
 It is defined on every pair of tensor factors $\mch(\bar{c}_{xy}) \tp \mch( c_{xy})$
 that are assigned 
 to attaching regions in the handle decomposition.
-On vectors in $W^*\tp W$, $\chi$ is proportional to the evaluation of the following `banana' diagram:
+On vectors $\mu^* \tp \nu \in (V^{abc})^*\tp V^{abc}$, $\chi$ is proportional to the evaluation of the following `banana' diagram:
 \ethan{insert banana picture here. I can make it if Dave's busy, but it'll be stylistically slightly different}
 \dave{This banana picture?}
+\ethan{yay! Thanks. We might want to switch the arrows (so that we're in $W^* \tp W$ instead of $W\tp W^*$) and write $\mu^*$ instead of $\mu$ (I think). But this doesn't change the evaluation so it doesn't really matter}
 \begin{align}
-\Banana
+\chi(\mu^* \yp \nu) \propto \Banana
 \end{align}
 
 
 Since the vector spaces for the attaching regions between $(k+1)-$ and $k$-handles are dual 
 to each other, the total Hilbert space 
-\begin{align} \eqref{total_hilb_space}
+\begin{align} \label{total_hilb_space}
 \mch(\mcm) = \bigotimes_{f \in \mcf} \mch(f) \bigotimes_{e \in \mce} \mch(e) \bigotimes_{v \in \mcv} \mch(v)
 \end{align}
 admits a decomposition into a subspace tensored with its dual, and hence we have a map
@@ -11027,7 +11035,7 @@ T_v(\alpha \tp \beta \tp \gamma \tp \delta) = \Tetrahedron
 %\label{Tetrahedron}
 %\end{align}
 We have defined the tensor by its evaluation on the right with 
-$\alpha \in \bigoplus_{abc} V^{abc}$, $\beta \in \bigoplus_{a^* bc} V^{a^* bc}$, $\gamma \in \bigoplus_{a^* b c^*} V^{a^* b c^*}$, $ \delta \in \bigoplus_{a^* b^* c^*} V^{a^* b^* c^*}$.
+$\alpha \in \bigoplus_{abc} V^{abc}$, $\beta \in \bigoplus_{a^* bc} V^{a^* bc}$, $\gamma \in \bigoplus_{a^* b c^*} V^{a^* b c^*}$, and $ \delta \in \bigoplus_{a^* b^* c^*} V^{a^* b^* c^*}$.
 We have defined this tensor for a particular collection of edge orientations, but generically %; one can flip the direction of an arrow by taking the appropriate object label to its dual. 
 there are $2^6 = 64$ possible collections of edge orientations, each of which requires its own $T_v$ tensor and is given by the appropriate diagram evaluation with $\alpha,\beta,\gamma,\delta$ chosen from the appropriate fusion spaces 
 \footnote{Not all these $64$ tetrahedra are independent however, as 
@@ -11166,7 +11174,7 @@ Under re-arrangement of tensor factors and Koszul signs, $\chi$ behaves as
 where as usual, the numerical subscripts indicate an explicit Koszul ordering, and the absence of subscripts 
 indicates the standard ordering convention, which increases from left to right. 
 The sign $(-1)^{|w|}$ appears 
-when performing a $2\pi$ rotation $P^3 = (-1)^F$ on the vector $w$ when interchanging the order of the tensor factors (recall that $\tp$ corresponds to horizontal superposition of diagrams\dave{superposition may not be the best word.}).
+when performing a $2\pi$ rotation $P^3 = (-1)^F$ on the vector $w$ when interchanging the order of the tensor factors (recall that graphically, $a\tp b$ corresponds to placing $a$ and $b$ side-by-side horizontally).
 Since $\chi(w^*\tp v)$ is nonzero only when $w$ and $v$ have the same parity, this reads $\chi(w^*\tp v) = \chi(v\tp w^*)$. 
 
 
@@ -11269,7 +11277,7 @@ To obtain such an
 order, we use the following manipulations:
 \begin{align} q_2 \tp q_{R3} \tp t_{L4} \tp t_5 & = (-1)^{|q||q_R|}q_3 \tp q_{R2} \tp t_{L4} \tp t_5 \\ & = (-1)^{|q||q_R|+|t||t_L|} q_3 \tp q_{R2} \tp t_{L5} \tp t_4.
 \end{align}
-This tensor is now ready to be contracted. The Koszul sign we pick up, namely 
+We are now ready to contract out the $q$ and $t$ indicies. The Koszul sign we pick up, namely 
 $(-1)^{|q||q_R|+|t||t_L|}$, is of course the same as the one obtained with the implicit left-to-right Koszul ordering convention. 
 
 
