@@ -9158,6 +9158,13 @@ P^3 \left(  \Pitchforkabc \right )\; = \; \PivotThreeTimes \; = \;(-1)^F \Pitchf
 \subsection{Fusion rules and fusion spaces} \label{fusion_rules_and_fusion_spaces}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\dave{Minor notational thing: we used $\cdot$ earlier for function composition and for multiplication here. 
+I think it's clear from context what we mean, 
+but am wondering if we should make a note of it.
+}
+
+\dave{Also need to change $\mcx \ra \sob(...)$ in this section.}
+
 
 In this section we elaborate on the differences arising in fermionic theories between fusion spaces and the supervector spaces appearing in the fusion rules. 
 
@@ -9298,6 +9305,11 @@ It's not perfect, but works.
 We can remove the coloring if we like.}
  $\Koszul{1}{V}{V^{xyz}_{ab}}\tp \Koszul{2}{V}{V^{pqt}} \tp \Koszul{3}{V}{V^{stw}}$
 \ethan{I think it's a bit ungainly and would slightly prefer the existing notation, but I don't have any particularly strenuous objections}
+\dave{I kind of like it.
+It puts the Koszul signs on a different footing than the other sub/super-scripts that may be floating around. 
+I don't think it's essential, 
+but it does seem like a nice way to handle it.
+}
 %\kw{I think overscripts would be better than subscripts.}
 %\ethan{By overscripts do you mean $e.g.$ $V^{ab,1}_c$ or something else? I went with subscripts since that's what we have in later sections and earlier in this section.}
 %\kw{I meant something like $\overset{2}{V^{abc}} \tp \overset{1}{V^{xyz}}$, but it might be too much hassle to get the alignment right
@@ -9344,6 +9356,9 @@ their ordered representatives.
 %E.g., use $\mcc$ for bosonic, $\mcc/\psi$ for the fermionic quotient, and $\mcf$ for super pivotal, other possibilities $\mathcal{G} \mathcal{H}\mathcal{K}\mathcal{Q}\mathcal{R}$ }
 %\dave{Also the change of $\mcx \ra \sob(\mcf)$ should be $\mcx \ra \sob(\mcc/\psi)$ or $\sob(\mcf)$ depending on context.}
 %\ethan{Yeah, agreed. was hoping just $\sob(\mcf)$ would let us get away with being a little ambiguous, but probably $\sob(\mcf)$ is better---changed it to that.}
+\dave{I think $\mcf$ probably isn't the best charector to use since we already use it for the set of `faces' in the tensor network section. 
+Lets make it a macro and then we can define it to whatever we like later.
+}
 Let $\sob(\mcf)$ be a complete collection of simple objects (minimal idempotents) in some 
 input super fusion category $\mcf$, one from each equivalence class.
 (In this subsection, as in most of the paper, we are assuming that our category $\mcf$ is semisimple with finitely many equivalence
@@ -9353,16 +9368,19 @@ For arbitrary objects $x$ and $y$, we have
 	\mor(x\to y) \: \cong \: \bigoplus_{a\in\sob(\mcf)} \mor(x\to a) \tp_{\End(a)} \mor(a\to y) .
 \ee
 Recall that the relative tensor product $\tp_{\End(a)}$ on the RHS above is defined as the usual tensor product over scalars, modulo elements
-of the form $\alpha f \tp \beta - \alpha\tp f\beta$ with $f\in \End(a)$.
-\dave{Should we add a picture for this? 
-Something similar to what we used have demonstrating $\tp_{\text{End} (a)} $.}
-Clearly such elements are in the kernel of the composition map $\mor(x\to a) \tp \mor(a\to y) \to \mor(x\to y)$.
+of the form $\alpha \cdot f \tp \beta - \alpha\tp f \cdot \beta$ with $\alpha \in \mor(x \to a)$, $\beta \in \mor(a \to y)$ and $f\in \End(a)$.
+%\dave{Could also use: ``...modulo elements
+%of the form $m_{xa} \cdot f_a \tp m_{by} - m_{xa}\tp f_a\cdot m_{ay}$ with $m_{xa} \in \mor(x \to a)$, $m_{ay} \in \mor(a \to y)$ and $f_a\in \End(a)$"}.
+Clearly such elements are in the kernel of the composition map $\mor(x\to a) \tp \mor(a\to y) \to \mor(x\to y)$ 
+\footnote{Composition is given by $\alpha \tp \beta \mapsto \alpha \cdot \beta$ (equivalently $\alpha \tp \beta \mapsto \beta \circ \alpha$) with $\alpha \in \mor(x \to a)$ and $\beta \in \mor(a \to y )$.
+}.
 Our semisimplicity assumption implies that the composition map (summing over all $a\in \sob(\mcf)$) is surjective and that such
 elements generate all of the kernel.
 
 Diagrammatically, the relative tensor product is responsible for allowing fermionic dots to move across edges labeled by q-type simple objects.
-Loosely, taking a tensor product over $\End(a)$ when $a$ is q-type prevents us from over-counting diagrams that 
-differ only by the position of a fermionic dot on the $a$ worldline. 
+Loosely, taking a tensor product over $\End(a)$ when $a$ is q-type prevents us from distinguishing diagrams that 
+differ only by the position of a fermionic dot on an $a$ strand. 
+
 
 It follows (though not quite directly) from \eqref{sobdecomp} that we have isomorphisms
 \be \label{pfi1}
@@ -9590,7 +9608,7 @@ see that a Koszul sign appears:
 \kw{I propose we switch to this diagram}
 \dave{That's fine with me.}
 \dave{Do the brackets at serve any purpose?}
- -- equivalently --- 
+ --- equivalently --- 
 \begin{align}
 \newcommand{\A}{\bigoplus_{p,q}V^{qw}_{u}\tp_q V^{pz}_{q}  \tp_p V^{xy}_{p}}
 \newcommand{\AB}{\ar[rru]^{F^{pzw}_u} \ar[rrd]^{F^{xyz}_q}}
@@ -9645,8 +9663,8 @@ The Koszul sign $P_{23}$ appearing in \eqref{endoPentagon} appears in the above 
 %where $\mu\in V^{xy}_p,\nu\in V^{pz}_q,\lambda\in V^{qw}_u,\gamma\in V^{xs}_u,\delta\in V^{yt}_s,$ and $\alpha\in V^{zw}_t$. 
 %The Koszul sign $P_{23}$ appearing in \eqref{endoPentagon} appears in the above formula as $(-1)^{|\delta||\alpha|}$. 
 
-\dave{I think we should draw this one in the pitch fork basis. 
-I can do that.}
+%\dave{I think we should draw this one in the pitch fork basis. 
+%I can do that.}
 Other coherence relations are modified to take into account Koszul 
 signs.
 For example, requiring consistency between $F$-moves and the pivot means that the following 
@@ -9656,10 +9674,11 @@ so that it maps between the same vector space (as I did in the following).
 Or would we prefer to leave it as a map between different vector spaces?
 For coherence conditions like the following I think the first is simpler.
 }
-\ethan{agreed about just rotating the inner pitchfork. I like this better and I think it's what we had originally} 
+\ethan{agreed about just rotating the inner pitchfork. I like this better and I think it's what we had originally}
+\dave{Should we re-define it in the definition section or just add a footnote here describing what we mean?} 
 \begin{align}
 \newcommand{\A}{\bigoplus_x \PitchforkFLeftprimesmall}
-\newcommand{\B}{\bigoplus_z  \PivotCoherencec }
+\newcommand{\B}{\bigoplus_z\;  \PivotCoherencec }
 \newcommand{\C}{\bigoplus_y  \PivotCoherenceb }
 \newcommand{\D}{\bigoplus_y   \PivotCoherencea }
 \newcommand{\E}{\bigoplus_y \PitchforkFRightprimesmall }
@@ -9690,6 +9709,9 @@ For coherence conditions like the following I think the first is simpler.
 \kw{TO DO: say a little bit (but only a little bit) about other coherence relations}
 \dave{Should we add the coherence relation for pivoting?}
 \ethan{I think the above ``other relations are modified, for example...'' is sufficient}
+\dave{As in you think this is all we need to say? 
+Or we should continue with the examples?
+I would atleast like to say what conditions aren't implied by those already written.}
 
 
 
