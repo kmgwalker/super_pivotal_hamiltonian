@@ -3135,7 +3135,7 @@ This ambiguity can lead to different $S$ matrices, see \eqref{NNSmatrix} and sur
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{The modular $S$ and $T$ matrices}
+\subsubsection{The modular $S$ and $T$ matrices} \label{C2_modular_mats}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure} 
@@ -6031,18 +6031,10 @@ The explicit representation of the minimal idempotents allows us to compute the
 modular transformations for the condensed theory. 
 
 %We again assume that $\mcc$ is a MTC. 
-We first examine the $S$ transformation on bounding spin tori. 
+We first examine the $S$ transformation on bounding spin tori (i.e, the three spin 
+tori that have at least one bounding cycle). 
 %We first examine the $S$ transformation on a torus with a spin structure such that at least 
 %one of the two cycles bears a bounding spin structure. 
-Recall that if the spin structure along the azimuthal direction is bounding, then the label $b$ below
-must be transparent with respect to $\psi$, and if the azimuthal spin structure is non-bounding, then $b$ is non-transparent
-with respect to $\psi$.
-%Recall that the spin structure along the azimuthal direction is fixed by whether or not the label 
-%$b$ below is transparent with respect to $\psi$. 
-Since we will work with bounding spin tori, and always transform to the standard basis of idempotents, 
-the spin structure can be inferred from context,
-and so we will suppress the labels in some of the diagrams. 
-
 The $S$ transformation acts to interchange the longitudinal and meridional cycles of the torus, and so it acts as
 \begin{align}
 S:\;\; \DCSmatrixa\; \mapsto \; \DCSmatrixb \;=\; \STorusBasisa
@@ -6054,9 +6046,18 @@ S:\;\; \DCSmatrixa\; \mapsto \; \DCSmatrixb \;=\; \STorusBasisa
 %In the last equality, we have introduced $\tilde{\omega} =\frac{1}{\mcd^2}\sum_x \kappa_x \text{cl}(x)$, 
 %which satisfies $\omega \tp \tilde{\omega} = \tilde{\omega}$ and $\kappa_x$ is the Frobenius-Schur indicator.
 %\kw{Why is this necessary?  I don't get it.}
-(In the first two pictures we have drawn 
+In the first two pictures we have drawn 
 the torus as an annulus with inner and outer boundaries identified, while in the last picture we have re-written 
-the torus on the plane as a square with the top and bottom as well as left and right edges identified.)
+the torus on the plane as a square with the top and bottom as well as left and right edges identified.
+Additionally, recall that from the way we constructed the idempotents, 
+if the spin structure along the azimuthal direction is bounding, then $b$
+must be transparent with respect to $\psi$, and if the azimuthal spin structure is non-bounding, then $b$ must be non-transparent
+with respect to $\psi$.
+%Recall that the spin structure along the azimuthal direction is fixed by whether or not the label 
+%$b$ below is transparent with respect to $\psi$. 
+Since we are working with bounding spin tori, and since we always transform to the standard basis of idempotents, 
+the spin structure can be inferred from context,
+and so we will suppress the labels in some of the diagrams. 
 
 We now need to perform a series of manipulations that returns the right hand side of \eqref{s_transformation} 
 to a linear combination of pictures that are written in the standard basis (the same as the left 
@@ -6096,7 +6097,7 @@ In the last summation we need to replace $\sum_{y \in \sob(\mcc)}$ with $\sum_{y
 \end{align}
 The factor of $s(J)$ appeared due to $\text{cl}_J(\psi \tp y) = s(J) \text{cl}_J (y)$, where the subscript $J$ means we close up $y$ around a cycle with spin structure $J$.
 %\dave{Note to self: check if we use this notation earlier.}
-While the normalization $2^{-n_y}$ is inserted so that we don't over count the q-type simple objects from $\sob(\mcc)$ (recall for example, \eqref{dimCtoDimCpsi}). 
+The normalization factor $2^{-n_y} = 1/\dim \End(y)$ is inserted so that we don't over-weight the q-type simple objects from $\sob(\mcc)$ (recall for example, \eqref{dimCtoDimCpsi}). 
 Using that $S_{b^* (y\tp \psi)} = (-1)^{\nu_b} S_{b^* y}$, and that $(-1)^{\nu_b} s(J) = 1$ by assumption, 
 the right hand side of \eqref{interim_S_calc} can be simplified so that \eqref{ScalcBack} becomes
 %\kw{this sentence is a bit garbled}
@@ -6112,27 +6113,27 @@ additional factor of $\mcd^{-2}$) we find that the matrix elements of the (un-no
 \end{align}
 In the above formula, the $S_{ax}$ and $S_{b^*y}$ are matrix elements of the $S$-matrix in the original 
 input theory $\mcc$ (which we assumed to be an MTC).
-Note that $\nu_b$ must be $0$ if $J$ is bounding, $1$ if $J$ is non-bounding, similarly for $\nu_y$.
-Also note that we have assumed a fixed set of representatives of simple objects for $\mcc/\psi$, and $\mcc$. 
+Note that $\nu_b$ must be $0$ if $J$ is bounding, $1$ if $J$ is non-bounding, and similarly for $\nu_y$.
+%Also note that we have assumed a fixed set of representatives of simple objects for $\mcc/\psi$, and $\mcc$. 
 The simple object $y$ appearing in $S_{b^*y}$ on the right hand side of \eqref{Smatrix_final_step} is a trivial lift of the $y$ written in the closed up idempotent 
 (recall that the first is a simple object of $\mcc$, while the latter is a simple object of $\mcc/\psi$).
 %\dave{Kevin, is that bad form to use the same label for $y$ and the lift of $y$?}
 %\kw{I think it's OK, since we define the objects of C/psi to the the objects of C.}
 One can change the representative of the isomorphism class of $y \in \mcc/\psi$ with an odd isomorphism $\text{mor}(y \ra \psi \tp y)$.
 %taking $y \ra \tilde{y} = \psi \tp y$. 
-Under this odd-isomorphism the right hand side of \eqref{Smatrix_final_step} picks up a factor of $s(J)(-1)^{\nu_b}$ which is equal to $1$ since $s(J(b)) = (-1)^{\nu_b}$.
+Under this odd isomorphism the right hand side of \eqref{Smatrix_final_step} picks up a factor of $s(J)(-1)^{\nu_b}$ which is equal to $1$ since $s(J(b)) = (-1)^{\nu_b}$.
 %By assumption we have $s(J)(-1)^{\nu_b} = 1$, otherwise the closed up input idempotent is identically zero.
 %which is always equal to $1$ (otherwise the input closed up idempotent is identically zero).
 
-In order for the $S$-matrix to be unitary, we normalize each q-type idempotent.
+In order for the $S$-matrix to be unitary, we need to normalize each q-type idempotent properly.
 %Recall that q-type idemopotents have a norm of $\sqrt{2}$, hence to find the normalized and unitary $S$-matrix we have to divide each q-type idempotent by $\sqrt{2}$.
 In the discussion following \eqref{minimal_table} we pointed out that $E(a,b)$ is q-type if $b$ is q-type.
-Hence we can normalize our idempotents by re-scaling the q-type idempotents by a factor of $1/\sqrt{2}$, this results in the pseudo idempotents 
+Hence we can normalize our idempotents by re-scaling the q-type idempotents by a factor of $1/\sqrt{2}$. This results in the ``pseudo idempotents'' 
 \begin{align} 
-\widehat{E}(a,b) = E(a,b)/(\sqrt{2})^{n_b}
+\widehat{E}(a,b) = E(a,b)/(\sqrt{2})^{n_b},
 \end{align}
-have unit norm.
-The resulting unitary $S$-matrix is given by,
+which have unit norm.
+The resulting unitary $S$-matrix is given by
 %This results in a unitary $S$-matrix given by, 
 %\dave{I will plug this into a computer and verify that it's unitary.}
 %\dave{Currently having licensing issues with Mathematica, 
@@ -6186,9 +6187,9 @@ boundary conditions around both cycles) can be calculated in an analogous way.
 The first half of the calculation remains the same as in \eqref{Scalc_above}.
 The second half of the calculation changes only if $b$ is q-type, in which case the idempotent 
 $E(a,b)$ is q-type, and has to be closed up on the torus with an odd endomorphism. 
-As discussed in the caption of Figure \ref{C2Change_of_Basis} closing an idempotent with an odd endomorphism always results in a sign ambiguity for the closed up idempotent.
-In such a case we have,
-\footnote{We have used $(S^z)_{xy} = \frac{1}{\mcd} \Szmatrix$}:
+As discussed in the caption of Figure \ref{C2Change_of_Basis}, closing an idempotent with an odd endomorphism always results in a sign ambiguity for the closed up idempotent.
+In such a case we have
+\footnote{We have used $(S^z)_{xy} = \frac{1}{\mcd} \Szmatrix$.}:
 %\dave{Need to double check this, may have a mistake in the last step.}
 %\ethan{why no $1/\mcd^2$ from the $\omega$ instead of $1/\mcd$ and why only the sum over stuff in $Q$?}
 %\dave{Check the notes I sent and let me know if that clears it up, also if you agree with the calculation.}
@@ -6206,16 +6207,18 @@ terms of the modular data of the input theory.
 
 \medskip
 
-The $T$-matrix is found by closing up an idemopotent with an additional $2\pi$ rotation of the boundary. 
-For the annulus this is a $2\pi$ counter clockwise rotation of the inner $S^1$ with respect to the outer $S^1$.
-The matrix elements are given by,
+The $T$-matrix is found by twisting one boundary of an idempotent by $2\pi$ before closing it up. 
+For the annulus, the twisting is implemented by performing a $2\pi$ counterclockwise rotation of the inner $S^1$ with respect to the outer $S^1$.
+The matrix elements are given by
 \begin{align}
 \text{cl}_W(\widehat{E}(a,b)) \xrightarrow{\; \; \; T^{JW \ra J\widetilde{W}}\;\;\; } \theta_a \theta_b^* \text{cl}_{\widetilde{W}}(\widehat{E}(a,b))
 \end{align}
-where again $J = J(b)$, and $\widetilde{W}$ can be read off from Figure \ref{spin_str_mapping_class_group}.
+where again $J = J(b)$, and where $\widetilde{W}$ can be read off from Figure \ref{spin_str_mapping_class_group}.
 The phases $\theta_a$ and $\theta_b$ are the twists of the lifts of $a$ and $b$ to the parent theory.
 Note that if $J = B$ then replacing $b$ with $b\tp \psi$ changes the sign of the twist.
-This sign ambiguity is expected; see \kw{need ref} above.
+This sign ambiguity is expected, since only $T^2$ has well-defined eigenvalues 
+on idempotents (see the discussion near the beginning of Section \ref{C2_modular_mats}). 
+\ethan{are we okay with this?}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -6365,7 +6368,7 @@ First we will establish some notation for UBFC's with fermions.
 
 We will now briefly review $SU(2)_6$ and its connection with $SO(3)_6$.
 Since these are well known theories we only list out some of their key properties and point the 
-reader to some references for more details \cite{kirillow1989} and also \cite{Bonderson2007}.
+reader to some references for more details: see e.g. \cite{kirillow1989} and \cite{Bonderson2007}.
 There are seven objects in $SU(2)_6$, labeled by $0,1,2,\cdots, 6$.
 The principle graph for the theory is shown in the upper left of Fig.~\ref{SUSOsix}. 
 The $0$ particle is the trivial object, $6$ is a fermion, and we have $6 \tp x = (6-x)$. 
@@ -6472,7 +6475,7 @@ no q-type objects, but which is still fermionic in the sense that its fusion spa
 particles, namely $m_2 \tp m_1$. 
 Thus our classification of simple objects as m- or q-type should not be thought of as a $\zz/2$ grading, since the types of 
 $a$ and $b$ in no way constrain the possible types of the simple objects appearing in $a\tp b$.
-(In the next section we will see an example of two q-type particles fusing to another q-type particle.)
+(In the next section we will also see an example of two q-type particles fusing to another q-type particle.)
 \end{itemize}
 
 
@@ -6535,7 +6538,7 @@ the condensed theory in the sense of \eqref{total_qdim_defn}.
 The minimal idempotents given by $E(a,b)$ in \eqref{FunctorCxCtoTubeC}
 can be re-written as
 \begin{align}
-E(a\tp x, b) \cong \widetilde{E}(a,b, \omega_x)
+E(a\tp x, b) \cong \widetilde{E}(a,b, \omega_x),
 \end{align}
 with $a,b \in \mcc/\psi$ and $x =\unit, \psi$.
 The isomorphism relating the two idempotents is an odd isomorphism if $x = \psi$.
@@ -6887,7 +6890,7 @@ This fact will allow us to compute the idempotents in the $SO(3)_6/\psi$ theory 
 Applying \eqref{OneStrandIdempotent} directly to $SO(3)_6$ will not yield a complete set of minimal idempotents due to the lack of modularity. 
 Instead we use  \eqref{OneStrandIdempotent} by taking pairs of simple objects $(a,b)$ from $SU(2)_6/\psi \times SU(2)_6/\psi$ whose tensor product is always in $SO(3)_6/\psi$.
 Additionally, within this subset we need to take an appropriate linear combination of the $SU(2)_6/\psi$ idempotents so that the resulting annulus only has strands labeled by objects in $SO(3)_6/\psi$.
-This linear combination is given by taking $\tilde(e)_{ab}(\omega_\unit, c,j)+\tilde(e)_{ab}(\omega_\psi, c,j)$ which results in the minimal idempotent,
+This linear combination is given by taking $\tilde(e)_{ab}(\omega_\unit, c,j)+\tilde(e)_{ab}(\omega_\psi, c,j)$ which results in the minimal idempotent
 \begin{align}
 \widetilde{e}_{ab}( \omega_\unit + \omega_\psi,c,j) \in \tube(SO(3))_6).
 \end{align}
@@ -6998,7 +7001,7 @@ $m_{33}(\omega_\unit + \omega_\psi,c,j)$ &$ 1 $\\
 %\dave{I need to convince myself of that last line again. Naively it could be $\mathbb{C}^{1|1} m_2$. But I think the oddly isomorphic idempotent is actually just the same idempotent.}
 Similarly $c \in q_3 \tp q_3$ and $j$ labels a vector in $V^{q_3 q_3}_c(\mcc/\psi)$.
 Here we've made use of the above observation that only $a \tp b$ need be in $SO(3)_6/\psi$, 
-hence the pairs $(a,b)$ in these idempotents are labeled by $m_1$ and $q_3$.
+and hence the pairs $(a,b)$ in these idempotents are labeled by $m_1$ and $q_3$.
 %Notice that for $Q_{13}$, $Q_{31}$, and $M_{33}$ the coefficient in front of $m_2$ is $\cc^{1|0}$, 
 %and not $\cc^{1|1}$ as the fusion rules would indicate, see Table \ref{SU2six_psi_fusion}. 
 %This is because $q_3$ is a q-type object in $SU(2)_6/\psi$, 
@@ -7058,7 +7061,7 @@ However, when the diagram is fused into the torus we find a torus string net lab
 In this graphical convention, the modular $S$-transformation acts as
 \begin{align}
 { \TorusBraidBasis{a}{b\;}{}{\omega}{X}{Y}} \stackrel{S}{\longrightarrow} \sum_{r,w} S^{{XY \rightarrow YX}}_{(a,b),(r,w)} \;
-{\TorusBraidBasis{r}{w}{}{\omega}{Y}{X} }.
+{\TorusBraidBasis{r}{w}{}{\omega}{Y}{X} }\; .
 \end{align}
 The matrix elements can be computed explicitly using the $S$-matrix of $SU(2)_6$. 
 \begin{comment}
@@ -7371,7 +7374,7 @@ non-bounding torus (with $NN$ spin structure) is $\mathbb{C}^{1|2}$.
 In particular, the fermion parity of a ground state on the torus is not uniquely determined by 
 the torus' spin structure (this also occurs in the $SO(3)_6/\psi$ theory discussed previously). 
  \item As a fusion category, there is a fusion rule that takes two q-type particles to another q-type particle. 
-Therefore, the fusion rules do not always respect the $\zt$ grading of objects into 
+This provides another example of the fact that the fusion rules do not always respect the classification of objects into 
 q-type and m-type\footnote{However, q-type fusion products cannot appear in the fusion of two q-type particles in the tube
 category of a fermionic theory, since two idempotents in the tube category with non-bounding spin 
 structure must fuse to an idempotent with bounding spin structure,
@@ -7544,7 +7547,7 @@ As mentioned earlier, $\halfesix$ is not braided, and so when we say condense $y
 we actually mean that we lift $y$ to the Drinfeld center (where it is an emergent fermion), and condense the lift of $y$. 
 Since the center of $\halfesix$ has been computed in several places \cite{Hong2008,Izumi2001, kawahigashi2001} we will not provide all details. 
 
-The lift of $y$ to $\mcz(\halfesix)$ can be found by taking \eqref{halfbraid_resolution} 
+The lift of $y$ to the Drinfeld center can be found by taking \eqref{halfbraid_resolution} 
 subject to the constraints \eqref{identityBraid} and \eqref{junctionBraid}.
 Using the fusion theory of $\halfesix$ defined above in Section~\ref{halfesixFusionTheory} one readily finds the unique solution,
 \begin{align}
@@ -7811,12 +7814,12 @@ The labels above each tube are short-hand for that tube, $e$-- empty, $h$-- hori
 \end{figure}
 \end{comment}
 
-The morphisms of $\text{mor}(\rho \ra \rho)$ satisfy,
+The morphisms of $\text{mor}(\rho \ra \rho)$ satisfy
 \begin{align}
 & \AddDat{\XTube{\mu}{\nu}}{X}{} \;\;  =s(X) (\sigma^x \tp \sigma^y )_{\mu \nu; \kappa \tau}\AddDat{\XTube{\kappa}{\tau}}{X}{} 
 \label{XlocalRelationAnnulus}
 \end{align}
-and also,
+and also
 %the odd isomorphism
 \begin{align}
 \AddDat{\XTube{\mu}{\nu}}{X}{\dotc} \;= (\sigma^y \tp \sigma^z)_{\mu \nu; \kappa \tau} \; \AddDat{\XTube{\kappa}{\tau}}{X}{\dota}
@@ -7898,11 +7901,11 @@ Explicitly in the three sectors $(B,B), (B,N)$, and $(N,B)$ we have,
 We now move onto the torus where the spin structure is non-bounding along both cycles.
 We first notice that
 \begin{align}
- 0 = \;\AddDatTorus{\hTube}{N}{N} \;=\; \AddDatTorus{\vTube}{N}{N}\; = \; \AddDatTorus{\tTube}{N}{N}
+ 0 = \;\AddDatTorus{\hTube}{N}{N} \;=\; \AddDatTorus{\vTube}{N}{N}\; = \; \AddDatTorus{\tTube}{N}{N}\;,
 \end{align}
 which can be seen by nucleating two fermions out of the vacuum along each $\rho$ line and 
 dragging one of them along the entire $\rho$ line before fusing them back to the vacuum.
-Furthermore, the same calculation as \eqref{rhoLoopRelation} implies that the the empty tube is identified with zero, 
+Furthermore, the same calculation as \eqref{rhoLoopRelation} implies that the the empty tube is identified with zero:
 \begin{align}
 \AddDatTorus{\eTube}{N}{N} \; = 0
 \end{align}
@@ -7932,9 +7935,9 @@ There are two independent linear relations that can be found between them by mul
 \AddDatTorusDot{\TaddownTube{\mu}}{N}{N}{} \cdot \AddDatTorusDot{\TadupTube{\nu}}{N}{N}{\dotc} \;=\;
 \AddDatTorusDot{\TadupTube{\nu}}{N}{N}{\dotc} \cdot  \AddDatTorusDot{\TaddownTube{\mu}}{N}{N}{} .
 \end{align}
-(This is an instance of the familiar relations $cl(a\cdot b) = cl(b\cdot a)$.)
+This is an instance of the familiar relation $cl(a\cdot b) = cl(b\cdot a)$.
 Despite the indices $\mu$ and $\nu$ varying over four distinct values, this yields only two linearly independent relations on the torus. 
-They are given by,
+They are given by
 \begin{align}
 \frac{de^{ -i \pi / 4 }}{\sqrt{2}}  \AddDatTorusDot{\hTube}{N}{N}{\dotb}\; =\;
  \AddDatTorusDot{\vTube}{N}{N}{\dotb}  \; + \; 
@@ -7949,7 +7952,7 @@ and\footnote{One can check that the second relation follows from the first by pe
  \AddDatTorusDot{\XTube{1}{1}}{N}{N}{\dotc}
 \end{align}
 We can now solve for any two of the above four states.
-We choose,
+We choose
 \begin{align}
  \AddDatTorusDot{\tTube}{N}{N}{\dotc}  \;&=\; \AddDatTorusDot{\hTube}{N}{N}{\dotb} \; -i\;  \AddDatTorusDot{\vTube}{N}{N}{\dotb}  \\
  &\\
