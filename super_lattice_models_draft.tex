@@ -4324,10 +4324,12 @@ any choice of cutting curves and any choice of $c'$ will yield the same answer o
 \medskip
 We now apply the above to the case where $Y$ is an annulus to obtain a nondegenerate trace on the tube category.
 %\kw{Take it from here, Dave.}
-Letting $t \in \tube^W(\mcc)$ and writing $\tr_W(t)$ for the trace of $t$, we can use \eqref{trace_to_innerproduct} to write
+Letting $t \in \tube^W(\mcc)$ and writing $\tr(t)$ for the trace of $t$, we can use \eqref{trace_to_innerproduct} to write
 \dave{I was thinking we could save $\tr_W(....)$ for traces of matrices i.e., $\tr$ and $\str$ of a matrix for $W = B$ or $W= N$. 
 Then reserve plain old $\tr$ for \eqref{trace_to_innerproduct}. 
-So that the LHS of \eqref{trace_formula} is just $\tr(t)$.} 
+So that the LHS of \eqref{trace_formula} is just $\tr(t)$.}
+\dave{Ethan, if you agree with the change then feel free to comment out the text, if I mis-interpreted something let me know.
+I added an extra sentence below \eqref{trace_formula} explaining the notation.} 
 \begin{align}
 \label{trace_t}
 \tr (t)  = \langle t, \text{id} \rangle  = Z((S^1_W \times I) \times I ) (t \cup \overline{\text{id} })  = Z(S^1_W \times D^2) (t \cup \overline{\text{id}}).
@@ -4344,6 +4346,7 @@ Diagrammatically we can write the evaluation of the partition function on the ri
 where we have made use of the graphical representation of the endomorphism $t$ in the first equality. 
 The solid cylinder in the third equality provides a linear map from the disk at the origin of the $x$ line to the disk at the end of the $x$ line, with each disk 
 possessing a single marked $x$ point on its boundary.
+The subscript $W$ denotes that the solid cylinder was found by cutting open a cycle with spin structure $W$, and $\tr_W$ will be either a trace or super trace if $W$ is bounding or non-bounding.
 The source and target of this linear map is thus $\text{mor}(\unit \ra x)$, which we write as
 the vector space assigned to a disc with one marked $x$ boundary point:
 \begin{align}
@@ -4394,7 +4397,7 @@ This trace is defined for any super pivotal category satisfying the assumptions 
 The inner product obtained from the trace is even, in the sense that $\langle v,w\rangle = 0$ if $|v|\neq|w|$. 
 Furthermore, it is super positive-definite, namely that for all nonzero $v$, we have $\langle v,v\rangle > 0$ if 
 $|v|=0$ and $\langle v,v\rangle/i > 0$ if $|v|=1$. \ethan{this is the usual convention, which makes choosing $A^4=i$ slightly better than $A^4=-i$}
-
+\dave{Maybe we should move this to where we talk about reflection structure?}
 
 \dave{commented out things here that we may want to clean up/include, but is not crucial.
 i.e., we could relate inner product of parent theory to condensed theory.}
@@ -4484,12 +4487,13 @@ as we do in proving Theorem \ref{minimal_idempotents_modular_C/psi}.
 %\dave{Should we call $\tr(e_j)$ the normalized quantum dimension of $\tr(e_j)/\tr(e_0)$ the normalized quantum dimension?}
 %\ethan{the latter}
 As an application of the trace technology developed in the previous section, we can compute the quantum dimensions $d_{e_j}$ of the minimal idempotents in $\tube(\mcc)$.
-The un-normalized quantum dimension $\tilde d_{e_j}$ is defined by tracing out the idempotent:
+The un-normalized quantum dimension $\tilde d_{e_j}$ is defined by the trace of the idempotent: 
+% tracing out the idempotent:
 %defined by the trace of the associated idempotent $\Pi_x$: 
 \begin{align}
-\tilde d_{e_j} = \tr_W (e_j),
+\tilde d_{e_j} = \tr (e_j),
 \end{align}
-where $W$ is bounding if $e_j \in \tube^{B}(\mcc/\psi)$ and non-bounding if $e_j \in \tube^N( \mcc/\psi)$.
+%where $W$ is bounding if $e_j \in \tube^{B}(\mcc/\psi)$ and non-bounding if $e_j \in \tube^N( \mcc/\psi)$.
 The normalized quantum dimension $d_{e_j}$ is then given by $\tilde d_{e_j}/\tilde d_{e_0}$, where $e_0$ is the trivial idempotent.
 For example, in the $C_2$ theory, we can use this approach to obtain $\tilde d_{m_{\unit / \psi}} = 1/2, \tilde d_{m_\sigma^+} = \tilde d_{q_{\unit/\psi}} = 1/\sqrt{2}, \tilde d_{q_\sigma} = 1$. 
 Normalizing so that $d_{m_\unit} = 1$, we obtain the normalized quantum dimensions listed in Table \ref{C2Data}. 
@@ -4501,7 +4505,8 @@ We will also need to know how to calculate the total quantum dimension of the th
 In bosonic theories we have $\mcd_\mcc^2 = \sum_{x\in \mcc} d_x^2$, where the sum runs over all simple objects $x\in\mcc$. 
 This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
 The correct formula is
-\be \label{total_qdim_defn} \mcd_{\mcc/\psi}^2 = \sum_{x\in \mcc/\psi} \frac{d_x^2}{\dim \End(x)}.\ee
+\be \label{total_qdim_defn} 
+\mcd_{\mcc/\psi}^2 = \sum_{x\in \mcc/\psi} \frac{d_x^2}{\dim \End(x)}.\ee
 This ensures that $\dim(\mcc)$ is related to $\dim(\mcc / \psi)$ by 
 \be \label{DC_and_DCpsi} \mcd_{\mcc / \psi} = \frac{\mcd_\mcc}{\mcd_{\rm sVec}} = \frac{1}{\sqrt{2}} \mcd_\mcc,\ee
 where we have viewed the category of supervector spaces, sVec, as consisting of two objects 
@@ -4510,16 +4515,16 @@ This result was also obtained in \cite{wan2016}.
 
 To prove \eqref{DC_and_DCpsi}, we write 
 \be
-\mcd_\mcc^2 = \text{Tr} \left(\bigoplus_{x\in \mcc/\psi} d_x x\right) = \text{Tr} \left( \bigoplus_{x \in \sobm(\mcc/\psi)} d_x (\mathds{1} \oplus \psi) \tp x \right ) + \text{Tr} \left(\bigoplus_{x  \in \sobq(\mcc/\psi )} {d_x} x \right),\ee
+\mcd_\mcc^2 = \tr \left(\bigoplus_{x\in \mcc/\psi} d_x x\right) = \tr \left( \bigoplus_{x \in \sobm(\mcc/\psi)} d_x (\mathds{1} \oplus \psi) \tp x \right ) + \tr \left(\bigoplus_{x  \in \sobq(\mcc/\psi )} {d_x} x \right),\ee
 %where $Q$ is the set of all q-type objects in $\mcc$ (those that are invariant under fusion with $\psi$), 
 %and $M$ is a collection of representatives of the orbits of m-type objects under fusion with $\psi$, so that 
 %the collection of all m-type simple objects is $M\cup M\tp \psi$.   
 Since $x\tp \psi \cong x$ if $x\in \sobq(\mcc/\psi)$, we can write
 \begin{align}
 \label{dimCtoDimCpsi}
-\mcd_\mcc^2 & = \text{Tr} \left( \bigoplus_{x \in \sobm(\mcc/\psi)} d_x (\mathds{1} \oplus \psi) \tp x \right ) + 
-\text{Tr}  \left(\bigoplus_{x  \in \sobq(\mcc/\psi)}\frac{d_x}{2}(\unit \oplus \psi) x \right) \\ & =\text{Tr}(\unit \oplus \psi) 
-\cdot \text{Tr} \left( \bigoplus_{x \in \mcc/\psi} \frac{d_x}{\dim\End(x)} x \right) = \mcd^2_{\rm sVec} 
+\mcd_\mcc^2 & = \tr \left( \bigoplus_{x \in \sobm(\mcc/\psi)} d_x (\mathds{1} \oplus \psi) \tp x \right ) + 
+\tr  \left(\bigoplus_{x  \in \sobq(\mcc/\psi)}\frac{d_x}{2}(\unit \oplus \psi) x \right) \\ & =\tr(\unit \oplus \psi) 
+\cdot \tr \left( \bigoplus_{x \in \mcc/\psi} \frac{d_x}{\dim\End(x)} x \right) = \mcd^2_{\rm sVec} 
 \mcd_{\mcc/\psi}^2 = 2 \mcd_{\mcc/\psi}^2,
 \end{align}
 proving \eqref{DC_and_DCpsi}. 
