@@ -4351,11 +4351,12 @@ any choice of cutting curves and any choice of $c'$ will yield the same answer o
 We now apply the above to the case where $Y$ is an annulus to obtain a nondegenerate trace on the tube category.
 %\kw{Take it from here, Dave.}
 Letting $t \in \tube^W(\mcc)$ and writing $\tr(t)$ for the trace of $t$, we can use \eqref{trace_to_innerproduct} to write
-\dave{I was thinking we could save $\tr_W(....)$ for traces of matrices i.e., $\tr$ and $\str$ of a matrix for $W = B$ or $W= N$. 
-Then reserve plain old $\tr$ for \eqref{trace_to_innerproduct}. 
-So that the LHS of \eqref{trace_formula} is just $\tr(t)$.}
-\dave{Ethan, if you agree with the change then feel free to comment out the text, if I mis-interpreted something let me know.
-I added an extra sentence below \eqref{trace_formula} explaining the notation.} 
+%\dave{I was thinking we could save $\tr_W(....)$ for traces of matrices i.e., $\tr$ and $\str$ of a matrix for $W = B$ or $W= N$. 
+%Then reserve plain old $\tr$ for \eqref{trace_to_innerproduct}. 
+%So that the LHS of \eqref{trace_formula} is just $\tr(t)$.}
+%\dave{Ethan, if you agree with the change then feel free to comment out the text, if I mis-interpreted something let me know.
+%I added an extra sentence below \eqref{trace_formula} explaining the notation.} 
+%\ethan{we're on the same page. Added a little more explanation but didn't change the notation}
 \begin{align}
 \label{trace_t}
 \tr (t)  = \langle t, \text{id} \rangle  = Z((S^1_W \times I) \times I ) (t \cup \overline{\text{id} })  = Z(S^1_W \times D^2) (t \cup \overline{\text{id}}).
@@ -4372,7 +4373,8 @@ Diagrammatically we can write the evaluation of the partition function on the ri
 where we have made use of the graphical representation of the endomorphism $t$ in the first equality. 
 The solid cylinder in the third equality provides a linear map from the disk at the origin of the $x$ line to the disk at the end of the $x$ line, with each disk 
 possessing a single marked $x$ point on its boundary.
-The subscript $W$ denotes that the solid cylinder was found by cutting open a cycle with spin structure $W$, and $\tr_W$ will be either a trace or super trace if $W$ is bounding or non-bounding.
+The subscript $W$ denotes that the solid cylinder was found by cutting open a cycle with spin structure $W$. 
+From \eqref{bounding_trace} and \eqref{nonbounding_trace}, we see that $\tr_W$ will be a trace if $W$ is bounding, and a super trace if $W$ is non-bounding.
 The source and target of this linear map is thus $\text{mor}(\unit \ra x)$, which we write as
 the vector space assigned to a disc with one marked $x$ boundary point:
 \begin{align}
@@ -7412,16 +7414,13 @@ non-bounding torus (with $NN$ spin structure) is $\mathbb{C}^{1|2}$.
 In particular, the fermion parity of a ground state on the torus is not uniquely determined by 
 the torus' spin structure (this also occurs in the $SO(3)_6/\psi$ theory discussed previously). 
  \item As a fusion category, there is a fusion rule that takes two q-type particles to another q-type particle. 
-This provides another example of the fact that the fusion rules do not always respect the classification of objects into 
-q-type and m-type\footnote{However, q-type fusion products cannot appear in the fusion of two q-type particles in the tube
+This provides another example of a theory in which 
+
+ \footnote{However, q-type fusion products cannot appear in the fusion of two q-type particles in the tube
 category of a fermionic theory, since two idempotents in the tube category with non-bounding spin 
 structure must fuse to an idempotent with bounding spin structure,
 %(the fusion rules are $\zt$-graded by spin structure), 
 which can never be q-type.}. 
-\dave{I think the second sentence has a typo.
-I know what you mean, but I'm low on words at the moment.
-}
-\dave{We could also just drop the second sentence.}
 \end{itemize}
 
 Performing the condensation requires one additional step that did not appear in the previous examples. 
@@ -10991,15 +10990,11 @@ We define
 \chi: &\mch^* \tp \mch \ra \cc\\
 & \mu^* \tp \nu \mapsto \delta_{\mu\nu}.
 \end{align}
-This is essentially the same as the bilinear pairing defined in \eqref{reflection_pairing_defn}, just with a different normalization, and ordering on the tensor factors. 
+This is essentially the same as the bilinear pairing defined in \eqref{reflection_pairing_defn}, just with a different normalization and Koszul ordering on tensor factors. 
 It is defined on every pair of tensor factors $\mch(\bar{c}_{xy}) \tp \mch( c_{xy})$
 that are assigned 
 to attaching regions in the handle decomposition.
 On vectors $\mu^* \tp \nu \in (V^{abc})^*\tp V^{abc}$, $\chi$ is proportional to the evaluation of the following `banana' diagram:
-\ethan{insert banana picture here. I can make it if Dave's busy, but it'll be stylistically slightly different}
-\dave{This banana picture?}
-\ethan{yay! Thanks. We might want to switch the arrows (so that we're in $W^* \tp W$ instead of $W\tp W^*$) and write $\mu^*$ instead of $\mu$ (I think). But this doesn't change the evaluation so it doesn't really matter}
-\dave{Sure, super easy.}
 \begin{align}
 \chi(\mu^* \tp  \nu) \propto \Banana
 \end{align}
@@ -11331,15 +11326,18 @@ when performing a $2\pi$ rotation $P^3 = (-1)^F$ on the vector $w$ when intercha
 Since $\chi(w^*\tp v)$ is nonzero only when $w$ and $v$ have the same parity, this reads $\chi(w^*\tp v) = \chi(v\tp w^*)$. 
 
 
-
-
 The tensors for the one-handles are also modified when passing to the fermionic setting. 
 In the bosonic state sum, we needed to keep track of three possible pivots
 in the resolution \eqref{horshoe_resln}.
-For the fermionic state sum $P^3 = (-1)^F$ and we now have six possible pivots:
+For the fermionic state sum $P^3 = (-1)^F$, meaning that $P_e$ now has order 6 and we now have six possible pivots:
 in addition to the three we could have in the bosonic state sum (id, $P$, and $P^2$), 
 we can also have an action of the spin-flip $P^3$; recall \eqref{spin_flip_functor}.
-Hence, the edge tensors retain the same form, namely
+The pivots carry spin structure data, with the product of all pivots over a closed path 
+determining the fermionic boundary conditions along that path. The $P_e$ terms 
+play a similar role to the $\alpha(e)$ variables employed in our construction 
+of the lattice Hamiltonian in Sec. \ref{standardized_handles}. 
+With the appropriate generalization of the $P_e$ operators to the fermionic case, 
+the edge tensors retain the same form as in the bosonic state-sum, namely
 \begin{align}
 T_e(v_{a_1} \tp v_{a_2} \tp v_{a_3} \tp \mu \tp \nu^*) = \frac{\mcb(\mu \tp P_e(\nu^*))}{\mcb(\mu \tp \mu^*) \mcb(\nu^* \tp \nu)} ,
 %T_e = \sum_{i,j, \; \{ v_{a_r}\} \; :\; r \in e} \mcb(\mu_i \tp P_e \circ \nu_j^*) \tp_{r \in e} v_{a_r}^* \tp \mu_i \tp \nu_j^*
@@ -11567,7 +11565,8 @@ the wavefunction is built upon.
 \includegraphics{CellDecomposition.pdf}
 \caption{\label{CellDecomposition}
 \dave{Will pitchforkize.} \ethan{Actually, I think it might be clearer if you don't. We mention the standardization procedure after we talk about the cell decomposition extension, and I think the figure is easier to look at pre-pitchforkization} 
-Cell decomposition used to construct the tensor network.
+The decomposition used to construct the shadow world tensor network, shown 
+in its pre-standardized, pre-pitchforkization state.
 The top layer $\Sigma_1$ is the cell decomposition that we use to construct the Hamiltonian in \eqref{ham}.
 The bulk cell decomposition $\Sigma_{0\ra1}$ is found by extending $\Sigma_0$ into 
 $\Sigma \times [0,\frac{1}{2}]$, and $\Sigma_{1}$ into $\Sigma \times [\frac{1}{2},1]$ (left figure).
@@ -11678,17 +11677,23 @@ to denote admissible colorings of the bulk degrees of freedom in $\Sigma_{0\ra1}
 
 
 %%%%%%%%%%%%%%%%
-\subsection{Kitaev wire} \label{kitaev_wire}
+\section{Kitaev wire} \label{kitaev_wire}
 %%%%%%%%%%%%%%%%
+\ethan{put this as its own section for now, since it's the amalgamation of a bunch of different things. Still undecided about whether this is the best option or not. Maybe putting as an appendix or breaking it up is better}
+
 \dave{Should also cite the two Fidkowski Kitaev papers where they write this wave function down. 
 Turzillo et al and Bultinck et al each reiview and extend this work (but that should be double checked).
 }
+\ethan{cited these papers in the section (only one by fidkowski-kitaev though). Tried to cite them at places where I thought they were relevant, but feel free to change around the citation locations if you disagree}
 \dave{I think we still need to do an actual example of the shadow world we explain above. 
 This section is very nice for relating the Hamiltonian we define, to the ones that Ware et al, and Tarantino et al define.
 }
 \dave{
 To make this more explicit we can also write the wave function for a single $\beta$ strand embedded in the disk, and do shadow world for that.
 }
+\ethan{added a short discussion on this at the end, and how it connects with stuff other people have done. Depending on time constraints may or may not want to expand it. I'm good with not making it more verbose, since the actual shadow world 
+for the kitaev wire embedded in a 2-manifold is pretty ugly and not too illuminating.}
+
 In this section, we show how the graphical formalism developed in previous sections
 can be used to succinctly capture the salient features of the `Kitaev wire', Kitaev's toy model 
 of a one-dimensional spinless $p$-wave superconductor \cite{kitaev2001}. 
@@ -11696,29 +11701,27 @@ This elucidates the connection between Majorana zero modes and Ising anyons, ser
 as a nice application of the graphical calculus of the $C_2$ theory, and provides 
 a simple (alas, perhaps too simple) illustration of the shadow world approach detailed in the previous section 
 (with appropriate modifications for the reduced dimensionality of the problem). 
+The Hamiltonian we write down and the associated wavefunctions we construct are 
+the same as those found in e.g. \cite{fidkowski2011}, but presented in a more graphical formalism and 
+discussed within the framework of the more general tools developed in this paper. 
 
-The Kitaev chain Hamiltonian is defined to act on a one-dimensional manifold, which we can take to be 
+The Kitaev chain is defined to on a one-dimensional manifold, which we can take to be 
 either $\Sigma = I$, $\Sigma = S^1_B$, or $\Sigma = S^1_N$, where $I$ is an interval in $\mathbb{R}$. The shadow world prescription tells us to examine 
 partition functions on $\Sigma \times [0,1]$. We will specify to $\Sigma = I$ in what follows, and examine 
-chains whose Hilbert spaces contain $N$ tensor factors, where $N=2n$ is an even integer. Vectors in $\mch(I)$ can then be written as $a_1\tp\dots\tp a_N$, and graphically 
+chains whose Hilbert spaces contain $N$ tensor factors, where $N=2n$ is an even integer. 
+Vectors in $\mch(I)$ can then be written as $a_1\tp\dots\tp a_N$, and graphically 
 they look like\footnote{We will be specializing to the case of the $C_2$ theory, and as such we can
 refrain from drawing orientations on each edge.}
 \dave{Should probably include boundary condition.}
-\be 
+\ethan{you mean tails sticking down, right? If we want to write it as a 1d MPS thing, usually I'd just set them all to the vacuum (which we do in what follows). Can modify the figure and talk about it if you want, though}
+\ethan{moved discussion of MPS to the end}
+\be  \label{graphical_MPS_state}
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{kitaev_wire_cell_decomp.pdf}}}}.
 \ee
-Note that this is just a graphical presentation of a matrix product state, with the labels
-$a_1,\dots,a_N$ constituting the physical indices and the unlabeled contracted edges hosting the virtual 
-indices. 
-\dave{Should put into form that is more similar to MPS?
-i.e.,something like the picture version of $A^{a_i} = \sum_{xy, \mu \in V^{a_i}_{xy}} A_{xy}^{a_i}(\mu) \mu$ (in probably more thought out notation).
-Then $\psi = \sum_{\{ a_i \} }\tr(A^{a_1} \cdots A^{a_N}) \ket{a_1 \cdots a_n}$.
-}
-
-For analyzing the Kitaev wire, we will draw the labels $a_i$ from the simple objects of the $C_2$ theory, namely $\unit$ and $\beta$, and we will use 
-the graphical conventions of the $C_2$ theory throughout.  
+For analyzing the Kitaev wire, we will draw the labels $a_i$ from the simple objects of the $C_2$ theory (namely $\unit$ and $\beta$),
+and we will freely use 
+the graphical calculus of the $C_2$ theory throughout.  
 We will see that the $\beta$ object plays the role of a Majorana fermion in the Kitaev wire. 
-
 
 When performing the shadow world construction, we need to compute partition functions on the 2-manifold 
 $\Sigma \times [0,1]$. The cell decomposition we will use is:
@@ -11786,6 +11789,7 @@ Then the Hamiltonian takes on the form
 H = - \sum_{j=1}^{N-1}\; t_j \; \;  \TwoLinedotdot_{\text{site $j$}},
 \end{align}
 where the left line is applied to site $j$ and the right line is applied to site $j+1$.
+\ethan{I am in favor of writing the Hamiltonian like this, with the understanding that when we draw pictures and stuff, we are modding out by fermion slides and that the spin framing is fixed so that we have the usual $C_2$ diagrammatic manipulations. We can talk about $\alpha(e)$ stuff and edge terms to implement endos etc, but I think we probably shouldn't}
 
 To study the Kitaev wire in its topological phase, we will work in the completely staggered limit, where
 the inter-site terms $H_{2j+1}$ dominate and the intra-site terms $H_{2j}$ are absent\footnote{Physically, this corresponds to tuning the chemical potential to zero and the 
@@ -11827,6 +11831,28 @@ $C_2$ theory. For both spin structures, the ground state is unique.
 The odd-parity $S^1_N$ wavefunction hosts a single fermion dot on the lower circular $\beta$ line, 
 and the delocalization of fermion parity is again manifest, as the exact location of the fermion dot 
 is arbitrary. 
+
+Note that the way we draw vectors in the Hilbert space of the Kitaev wire \eqref{graphical_MPS_state}
+is just a graphical presentation of a matrix product state (MPS), with the labels
+$a_1,\dots,a_N$ constituting the physical indices and the unlabeled (contracted) edges hosting the virtual 
+indices (which are also drawn from the label set $\{\unit, \beta\}$). 
+In the MPS formalism, a vertex on which the leg labeled $a_i$ is attached 
+to is associated with a matrix $A^{a_i}_{xy}$, where $x,y$ are virtual indices. 
+The $A^{a_i}$ matrices can be determined from the shadow world approach 
+discussed above, and are given by the structure constants of $\cl_1$ \cite{turzillo2016}. 
+Wavefunctions are then constructed by contracting the virtual indices following the 
+shadow world prescription. To construct a wavefunction $|\Psi\rangle$ we need to compute 
+partition functions of the form $Z(M;\emptyset,v_1)$, where $\emptyset$ denotes 
+the input vacuum state. 
+By using our earlier results \eqref{bounding_trace} and \eqref{nonbounding_trace} on 
+partition functions, we see that 
+\be |\Psi\rangle = \sum_{\{ a_i \} }\tr(A^{a_1} \cdots A^{a_N}) \ket{a_1 \cdots a_n} \ee
+if the Kitaev wire is defined over an interval or on $S^1_B$, and 
+\be |\Psi\rangle = \sum_{\{ a_i \} }\str(A^{a_1} \cdots A^{a_N}) \ket{a_1 \cdots a_n} \ee
+if the wire is defined on $S^1_N$. 
+This is the presentation of the wavefunctions used in the tensor network community, 
+and agrees with the results of \cite{turzillo2016,bultinck2017b}.
+
 
 %When transforming back to the original basis, one sees that the state is actually an even superposition of all possible placements of an even number of fermions, similarly for the odd state.
 
