@@ -13,6 +13,7 @@
 \definecolor{hanpurple}{rgb}{0.32, 0.09, 0.98}
 \setcounter{MaxMatrixCols}{12}
 \usepackage{tabu}
+\usepackage{authblk}
 
 \usepackage[numbers]{natbib}
 \usepackage[colorlinks]{hyperref}
@@ -1323,12 +1324,20 @@ $\overset{\scriptstyle{\color{kwcolor}{#1}}}{ \mathop{\phantom{#2}}}$\cr$#3$\cr
 \begin{document}
 
 
+
 \title{Fermion condensation and super lattice models} 
 %since the Hamiltonian isn't a huge part of the paper, I'd be inclined to say ``fermion condensation and super tensor categories'' or ``fermionic topological phases from fermion condensation'' or something. 
 %\dave{I like ``fermion condensation and super tensor categories"
 % super lattice models sounds weird to me.}
 
-\author{David Aasen, Ethan Lake, and Kevin Walker}
+\author{David Aasen$^1$, Ethan Lake$^{2}$, and Kevin Walker$^3$}
+\affil{
+$^1$ Department of Physics and Institute for Quantum Information and Matter, California Institute of Technology, Pasadena, CA 91125, USA}
+\affil{
+$^2$ Department of Physics and Astronomy, University of Utah, Salt Lake City, UT 84112, USA}
+\affil{
+$^3$ Station Q, Microsoft Research, Santa Barbara, California 93106-6105, USA}
+
 %\affiliation{Department of Physics and Astronomy, University of Utah, Salt Lake City, UT 84112, USA}
 %\emailAdd{lake@physics.utah.edu}
 
@@ -4283,11 +4292,13 @@ Recall that a trace on a linear category $C$ is a linear function from endomorph
 	\tr(fg) = \tr(gf) ,
 \ee
 for all $f \in \mor(x\to y)$ and $g\in \mor(y\to x)$.
-All of the categories we consider have a $*$-structure (a.k.a. reflection structure), which is an order 2 antilinear antiautomorphism
+All of the categories we consider have a $*$-structure\dave{I guess we use two $*$ structures, one for reflection and one for rotation by $\pi$.
+Should we comment on this?} (a.k.a. reflection structure), which is an order 2 antilinear antiautomorphism
 from $\mor(x\to y)$ to $\mor(y\to x)$ (for all objects $x$ and $y$).
 We will denote the image of a morphism $f$ under reflection as $\bar f$. 
 A trace is equivalent to a collection of sesquilinear inner products on $\mor(x\to y)$ satisfying
 \dave{Koszul signs?} \ethan{do we have $\overline{fg} = (-1)^{|f||g|}\bar{g}\bar{f}$? If yes then I think the koszul signs should be as below}
+\dave{I get the same assuming $\overline{fg} = (-1)^{|f| |g|} \bar{g} \bar{f}$.}
 \be
 	\langle fg, h \rangle =(-1)^{|g||h|} \langle f, h \bar{g} \rangle \;\;\; {\rm and} \;\;\; \langle fg, h \rangle = (-1)^{|f||h|}\langle g,\bar{f}  h  \rangle 
 \ee
@@ -4372,14 +4383,15 @@ Diagrammatically we can write the evaluation of the partition function on the ri
 \end{align}
 where we have made use of the graphical representation of the endomorphism $t$ in the first equality. 
 The solid cylinder in the third equality provides a linear map from the disk at the origin of the $x$ line to the disk at the end of the $x$ line, with each disk 
-possessing a single marked $x$ point on its boundary.
+possessing a single marked point on its boundary labeled  $x$.
 The subscript $W$ denotes that the solid cylinder was found by cutting open a cycle with spin structure $W$. 
 From \eqref{bounding_trace} and \eqref{nonbounding_trace}, we see that $\tr_W$ will be a trace if $W$ is bounding, and a super trace if $W$ is non-bounding.
 The source and target of this linear map is thus $\text{mor}(\unit \ra x)$, which we write as
-the vector space assigned to a disc with one marked $x$ boundary point:
+the vector space assigned to a disc with one marked point labeled  $x$:
 \begin{align}
 A\left( \PinchedDisk  \scriptstyle{x\;} \right)  \cong \text{mor}(\unit \ra x) = \bigoplus_i \moronex.
 \end{align}
+With $\mu_i$ denoting a complete basis of morphisms for $\mor(\unit \to x)$.
 The linear map induced by the cut on these basis elements is given by
 \begin{align} 
 \moronex \mapsto \moronexcollar = \sum_{j} g_{ij} \; \moronexj.
@@ -4391,8 +4403,8 @@ Let us introduce the notation
 \begin{align} \label{sX_defn}
 s(X) =\left\{
                 \begin{array}{ll}
-                  1 \quad \text{if } X =B \quad \text{Bounding} \\
-                  -1 \quad \text{if } X = N \quad \text{Non-bounding}
+                  1 \quad &\text{if } X =B \quad \text{Bounding} \\
+                  -1 \quad &\text{if } X = N \quad \text{Non-bounding}
                 \end{array}
               \right.
 \end{align}
@@ -7413,14 +7425,15 @@ structures $BB$, $BN$, and $NB$) is $\mathbb{C}^{3|0}$, and the ground state deg
 non-bounding torus (with $NN$ spin structure) is $\mathbb{C}^{1|2}$.
 In particular, the fermion parity of a ground state on the torus is not uniquely determined by 
 the torus' spin structure (this also occurs in the $SO(3)_6/\psi$ theory discussed previously). 
- \item As a fusion category, there is a fusion rule that takes two q-type particles to another q-type particle. 
-This provides another example of a theory in which 
-
- \footnote{However, q-type fusion products cannot appear in the fusion of two q-type particles in the tube
-category of a fermionic theory, since two idempotents in the tube category with non-bounding spin 
-structure must fuse to an idempotent with bounding spin structure,
+ \item As a fusion category, there is a fusion rule that takes two q-type particles to another q-type particle
+%This provides another example of a theory in which 
+\footnote{Note that fusion products of this type cannot appear in the tube category of a fermionic theory since two idempotents in the tube category with non-bounding spin structure must fuse to an idempotent with bounding spin structure, which can never be q-type.
+ % However, q-type fusion products cannot appear in the fusion of two q-type particles in the tube
+%category of a fermionic theory, since two idempotents in the tube category with non-bounding spin 
+%structure must fuse to an idempotent with bounding spin structure,
 %(the fusion rules are $\zt$-graded by spin structure), 
-which can never be q-type.}. 
+%which can never be q-type.
+}. 
 \end{itemize}
 
 Performing the condensation requires one additional step that did not appear in the previous examples. 
