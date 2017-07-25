@@ -69,8 +69,8 @@ with $n=N/2$ physical sites. The degree of freedom living on the $n$th physical 
 This association is just the familiar re-writing of a single electronic degree 
 of freedom in terms of two Majorana degrees of freedom. 
 The local Hilbert space at a given physical site (e.g, at a pair of edges $a_i\tp a_{i+1}$) is $\cc^{1|1}$, and is spanned by the two basis vectors
-\begin{align}
-    \CupSigma \qquad \text{and} \qquad \CupSigmadot.
+\begin{align} \label{kitaev_chain_basis_vects}
+   v_e = \; \CupSigma \qquad \text{and} \qquad v_o=\;\CupSigmadot.
 \end{align}
 
 \dave{Around here I would write out the explicit tensors for the MPS from shadow world.
@@ -82,18 +82,34 @@ The Hamiltonian implements time evolution by extending the uncontracted $a_i$ le
 The Hamiltonian must be local, and so it may only act on pairs of adjacent uncontracted legs on the boundary.
 The Hamiltonian must also preserve the overall fermion parity of the chain. 
 Thus, the only terms one can construct a Hamiltonian out of are
-\begin{align}
+\begin{align} \label{hamiltonian_options}
 \Id \qquad \text{and} \qquad \TwoLinedotdot.
 \end{align}
 The first is the identity operator, while the second is nontrivial and is identified with $i \gamma_1 \gamma_2$, 
 a Majorana bilinear which acts as the fermion parity operator $(-1)^F$ on the on-site Hilbert space.
-To see this, we can simply check the action of the Hamiltonian on the basis vectors of the single (physical) site Hilbert space. 
+To see this, we can simply check the action of the second term on the basis vectors of the single (physical) site Hilbert space. 
 Graphically, the  
-Hamiltonian acts by stacking diagrams onto input states, and so $i\gamma_1\gamma_2$ acts
+second term acts by stacking diagrams onto input states, and so it acts
 on single-site basis states as
 \begin{align}
 \TwoLinedotdot\; \circ \; \CupSigma \; =\;  \CupSigma \quad \text{and} \quad \TwoLinedotdot\; \circ\; \CupSigmadot \; =\;   - \; \CupSigmadot.
 \end{align}
+This is precisely the action of the Majorana bilinear $i\gamma_1\gamma_2 = (-1)^F$, 
+and we will build the Hamiltonian out of a summation of such terms. 
+
+\ethan{maybe move this to a reflection / inner product section if it gets written, although I think the 
+stuff in the line bundle appendix is sufficient if we're short on time}
+In order to show that this term is Hermitian, we need to define a graphical way of implementing 
+Hermitian conjugation. We define the Hermitian conjugate of a diagram to be its reflection about 
+the horizontal axis, with the action of reflection determined by the properties of the complex line 
+bundle constructed in Appendix \ref{flb_appendix}. One then verifies that $H^\dagger H = -\lambda^2 \unit$, where the 
+minus sign is a Koszul sign, $\lambda$ is the phase picked up when removing a pair of fermions 
+as in \eqref{removing_fermions}, and $\unit$ denotes a sum of identity operators (the left picture in \eqref{hamiltonian_options}). 
+As usual, the notation $H^\dagger H$ graphically corresponds to stacking $H^\dagger$ on top of $H$.
+Since $\lambda^2 = -1$ as we prove in Appendix \ref{fib_appendix}, we verify that $H^\dagger H = \unit$.  
+ 
+
+
 %where as usual $A\times B$ means `stack $A$ on top of $B$'. 
 
 For our $N$-site chain we thus have the following basis of states:
@@ -106,9 +122,10 @@ For our $N$-site chain we thus have the following basis of states:
 &\CupSigmadot \; \CupSigmadot \; \CupSigma \cdots \CupSigma,
 \end{align}
 and so on. In the above picture, there are $N/2=n$ cups appearing, and the fermion dots are ordered 
-with increasing Koszul ordering from left to right. 
+implicitly with increasing Koszul ordering from left to right. 
 
-The Hamiltonian has two types of terms. One term mixes the states within a single physical site by acting on $a_{2j}\tp a_{2j+1}$, while the other acts between neighboring physical sites by acting on 
+The Hamiltonian, built out of the bilinears $i\gamma_1\gamma_2$, has two types of terms. 
+One term mixes the states within a single physical site by acting on $a_{2j}\tp a_{2j+1}$, while the other acts between neighboring physical sites by acting on 
 $a_{2j+1}\tp a_{2j+2}$.
 We will denote the former terms by $H_{2j}$ and the latter terms by $H_{2j+1}$.
 Then the Hamiltonian takes on the form
@@ -126,12 +143,25 @@ so that the Hamiltonian is
 H_{\rm staggered} = - \sum_{j=1}^{n-1}\; t_j \; \;  \TwoLinedotdot_{\text{site $2j$}},
 \end{align}
 In this limit the wire is in the topological phase and there are two ground states, differing by their fermion parity:
-\dave{Maybe we should also change basis so that we see that the wave function is a coherent sum over all parity even (odd) states.}
+%\dave{Maybe we should also change basis so that we see that the wave function is a coherent sum over all parity even (odd) states.}
 \begin{align} \label{kitaev_wire_ground_states}
 \Psi_e = \;\StaggaredGSEven \; \cdots \; \StaggaredGSEvenR\;, 
 \qquad \text{and} \qquad 
 \Psi_o =\; \StaggaredGSOdd \; \cdots  \; \StaggaredGSEvenR.
 \end{align}
+To better understand these wavefunctions, we can perform a change of basis by applying $F$-moves to 
+each cup-cap pair with the $F$-move \eqref{cupcap_fmove}. 
+On a Kitaev wire with $n$ physical sites, we have
+\be \Psi_e = \frac{1}{d^{n-1}} \bigotimes_{i=1}^n \sum_{v_i = v_e,v_o} (-A^4)^{n_f/2} v_i,\ee
+where the sum is restricted so that only an even number $n_f$ of $v_o$ vectors appear 
+in the tensor product, where $v_e,v_o$ are defined as in \eqref{kitaev_chain_basis_vects}, 
+and where we are using an implicit left-to-right Koszul ordering as usual. 
+For the odd wavefunction $\Psi_o$, we get 
+\be \Psi_e = \frac{1}{d^{n-1}} \bigotimes_{i=1}^n \sum_{v_i = v_e,v_o} (-A^4)^{(n_f+1)/2} v_i,\ee
+where the sum is now restricted so that only an odd number $n_f$ of $v_o$ vectors appear 
+in the tensor product.
+From the expressions for $\Psi_e,\Psi_o$ in this basis, we see that they are given by configurations 
+that are coherent sums over all fermion parity even and fermion parity odd states, respectively.  
 
 Note that the fermion dot appearing in $\Psi_o$ has zero energy, while this is not true for fermion dots 
 on the interior intermediate cups.
@@ -175,10 +205,38 @@ By using our earlier results \eqref{bounding_trace} and \eqref{nonbounding_trace
 partition functions, we see that 
 \be |\Psi\rangle = \sum_{\{ a_i \} }\tr(A^{a_1} \cdots A^{a_N}) \ket{a_1 \cdots a_n} \ee
 if the Kitaev wire is defined over an interval or on $S^1_B$, and 
-\be |\Psi\rangle = \sum_{\{ a_i \} }\str(A^{a_1} \cdots A^{a_N}) \ket{a_1 \cdots a_n} \ee
+\begin{align}
+ |\Psi\rangle & = \sum_{\{ a_i \} }\tr((-1)^FA^{a_1} \cdots A^{a_N}) \ket{a_1 \cdots a_n} \\ 
+ & =\sum_{\{ a_i \} }\str(A^{a_1} \cdots A^{a_N}) \ket{a_1 \cdots a_n} 
+ \end{align}
 if the wire is defined on $S^1_N$. 
 This is the presentation of the wavefunctions used in the tensor network community, 
-and agrees with the results of \cite{turzillo2016,bultinck2017b}.
+and agrees with the results of \cite{turzillo2016,bultinck2017b}. \ethan{other references?}
+
+\ethan{the following should be better / less wordy and more mathy}
+This one-dimensional example sheds some light on the two-dimensional examples 
+considered in the majority of the paper. In the simple case of the $C_2$ theory, 
+$\beta$ strings are equivalent to fluctuating Kitaev wires in their topological phase. 
+We can see this by considering a state in the $C_2$ formed from a single closed $\beta$ string.
+\ethan{to be continued...}
+
+
+
+With these remarks in mind, it 
+is natural to view q-type strings in more general $(2+1)$-dimensional super fusion categories 
+as different types of fluctuating Kitaev chains, which is a point of view adopted in\cite{tarantino2016,ware2016,kapustin2017}. 
+There are several pieces of evidence for this: the fermion parity of a closed q-type string 
+depends only on the string's homology class and is determined by the spin structure it inherits, 
+and in the simplest case of the $C_2$ theory, q-type strings literally are Kitaev chains, as shown 
+above. 
+
+However, we have seen examples of theories in which q-type strings do not behave like Kitaev wires.
+In such theories (like the $SO(3)_6$ and $\halfesix$ examples considered earlier), two q-type
+strings can fuse to a q-type string, and two m-type strings can fuse to a q-type. 
+If all open q-type strings hosted Majorana zero modes at their ends, such fusion rules would 
+be disallowed, since the number of Majorana zero modes be preserved modulo 2. \ethan{do we even want to mention the above paragraph? More importantly, is it correct? Dave probably knows this best}
+
+
 
 
 %When transforming back to the original basis, one sees that the state is actually an even superposition of all possible placements of an even number of fermions, similarly for the odd state.
