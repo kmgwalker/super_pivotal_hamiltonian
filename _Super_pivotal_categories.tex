@@ -241,6 +241,7 @@ The pairing is defined by
 &\Bilineara \tp \Bilinearb \mapsto \Bilinearc
 \end{align} 
 \dave{Maybe more natural to have $\mcb:\; V^* \tp V \ra \cc$ like in quantum mechanics $\bra{x} \tp \ket{y} \mapsto <x,y>$}
+\ethan{I agree, especially since we've done $\chi$ that way}
 where $\mu_i \in V^{x_1 x_2 \cdots x_n}$ and $\nu_j \in V^{x_n^* \cdots x_2^* x_1^*}$. 
 We are working with the convention that the Koszul ordering of the tensor product increases 
 in a left-to-right fashion -- we will elaborate on this convention in Sec \ref{koszul_signs}. 
@@ -355,24 +356,25 @@ P^3 \left(  \Pitchforkabc \right )\; = \; \PivotThreeTimes \; = \;(-1)^F \Pitchf
 \subsection{Fusion rules and fusion spaces} \label{fusion_rules_and_fusion_spaces}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\dave{Minor notational thing: we used $\cdot$ earlier for function composition and for multiplication here. 
-I think it's clear from context what we mean, 
-but am wondering if we should make a note of it.
-}
+%\dave{Minor notational thing: we used $\cdot$ earlier for function composition and for multiplication here. 
+%I think it's clear from context what we mean, 
+%but am wondering if we should make a note of it.
+%}
 
-\dave{Also need to change $\mcx \ra \sob(...)$ in this section.}
-
+%\dave{Also need to change $\mcx \ra \sob(...)$ in this section.}
+%\ethan{done}
 
 In this section we elaborate on the differences arising in fermionic theories between fusion spaces and the supervector spaces appearing in the fusion rules. 
 
 We assume that our categories are additively complete, which means that it makes sense to
 multiply objects by supervector spaces. 
-This is a categorified version of multiplying vectors by scalars.
 %This is simply a categorified version of multiplying vectors (objects) by scalars (vector spaces).
 For any collection of supervector spaces $\{W_a\}$ indexed by 
-a finite set of objects in our category, 
+a finite set of objects $\{a\}$ in our category, 
 we therefore have an object of the form
-\be \bigoplus_a W_a \cdot a.\ee
+\be \bigoplus_a W_a \cdot a,\ee
+\ethan{moved a sentence to try to provide an explanation of $\cdot$ at Dave's suggestion} where $\cdot$ is the categorified version of multiplying vectors by scalars.
+
 Morphisms between these more general objects are calculated as  
 \be  \label{amordef}
 	\mor(\bigoplus_a W_a\cdot a \to \bigoplus_b W'_b\cdot b) = \bigoplus_{a,b} \Hom(W_a \to W'_b)\otimes_\cc \mor(a\to b) .
@@ -556,13 +558,16 @@ their ordered representatives.
 \dave{I think $\mcf$ probably isn't the best charector to use since we already use it for the set of `faces' in the tensor network section. 
 Lets make it a macro and then we can define it to whatever we like later.
 }
-Let $\sob(\mcf)$ be a complete collection of simple objects (minimal idempotents) in some 
-input super fusion category $\mcf$, one from each equivalence class.
-(In this subsection, as in most of the paper, we are assuming that our category $\mcf$ is semisimple with finitely many equivalence
+\ethan{done. macro is backslash scat (for supercategory)}
+
+
+Let $\sob(\scat)$ be a complete collection of simple objects (minimal idempotents) in some 
+input super fusion category $\scat$, one from each equivalence class.
+(In this subsection, as in most of the paper, we are assuming that our category $\scat$ is semisimple with finitely many equivalence
 classes of simple objects.)
 For arbitrary objects $x$ and $y$, we have
 \be \label{sobdecomp}
-	\mor(x\to y) \: \cong \: \bigoplus_{a\in\sob(\mcf)} \mor(x\to a) \tp_{\End(a)} \mor(a\to y) .
+	\mor(x\to y) \: \cong \: \bigoplus_{a\in\sob(\scat)} \mor(x\to a) \tp_{\End(a)} \mor(a\to y) .
 \ee
 Recall that the relative tensor product $\tp_{\End(a)}$ on the RHS above is defined as the usual tensor product over scalars, modulo elements
 of the form $\alpha \cdot f \tp \beta - \alpha\tp f \cdot \beta$ with $\alpha \in \mor(x \to a)$, $\beta \in \mor(a \to y)$ and $f\in \End(a)$.
@@ -571,7 +576,7 @@ of the form $\alpha \cdot f \tp \beta - \alpha\tp f \cdot \beta$ with $\alpha \i
 Clearly such elements are in the kernel of the composition map $\mor(x\to a) \tp \mor(a\to y) \to \mor(x\to y)$ 
 \footnote{Composition is given by $\alpha \tp \beta \mapsto \alpha \cdot \beta$ (equivalently $\alpha \tp \beta \mapsto \beta \circ \alpha$) with $\alpha \in \mor(x \to a)$ and $\beta \in \mor(a \to y )$.
 }.
-Our semisimplicity assumption implies that the composition map (summing over all $a\in \sob(\mcf)$) is surjective and that such
+Our semisimplicity assumption implies that the composition map (summing over all $a\in \sob(\scat)$) is surjective and that such
 elements generate all of the kernel.
 
 Diagrammatically, the relative tensor product is responsible for allowing fermionic dots to move across edges labeled by q-type simple objects.
@@ -581,11 +586,11 @@ differ only by the position of a fermionic dot on an $a$ strand.
 
 It follows (though not quite directly) from \eqref{sobdecomp} that we have isomorphisms
 \be \label{pfi1}
-	V^{abc}_d \cong \bigoplus_{x\in \sob(\mcf)} V^{ab}_x \tp_{\End(x)} V^{xc}_d
+	V^{abc}_d \cong \bigoplus_{x\in \sob(\scat)} V^{ab}_x \tp_{\End(x)} V^{xc}_d
 \ee
 and also
 \be \label{pfi2}
-	V^{abc}_d \cong \bigoplus_{y\in \sob(\mcf)} V^{ay}_d \tp_{\End(y)} V^{bc}_y .
+	V^{abc}_d \cong \bigoplus_{y\in \sob(\scat)} V^{ay}_d \tp_{\End(y)} V^{bc}_y .
 \ee
 Diagrammatically these read,
 \begin{align} 
@@ -597,22 +602,22 @@ where the unlabeled trivalent vertices denote the fusion spaces $V^{ab}_x$, $V^{
 The tensor product over endomorphisms is implicit in the diagram.
 Similarly, 
 \be
-	V^{abcd} \cong \bigoplus_{x\in \sob(\mcf)} V^{ab}_x \tp_{\End(x)} V^{xcd} ,
+	V^{abcd} \cong \bigoplus_{x\in \sob(\scat)} V^{ab}_x \tp_{\End(x)} V^{xcd} ,
 \ee
 and using the isomorphism $P_R: V^{ab}_x \to V^{abx^*}$ this becomes
 \be  \label{pfpfi1}
-	V^{abcd} \cong \bigoplus_{x\in \sob(\mcf)} V^{abx^*} \tp_{\End(x)} V^{xcd} .
+	V^{abcd} \cong \bigoplus_{x\in \sob(\scat)} V^{abx^*} \tp_{\End(x)} V^{xcd} .
 \ee
 %\kw{need figs
 %\dave{Is the figure you want something like $\text{id}_{x^*} \tp_{\text{end}(x)} \text{id}_x = \text{id}_x \tp_{\cc} \text{id}_x / (\gamma^* \circ  x^* \tp x \sim x^* \tp \gamma \circ x )$}}
 (We are implicitly using the $*$ functor to convert an $\End(x)$ action into an $\End(x^*)$ action.)
 Alternatively,
 %\be  \label{pfpfi2}
-%	V^{abcd} \cong \bigoplus_{x\in \sob(\mcf)} V^{bc}_x \tp_{\End(x)} V^{axd} \cong \bigoplus_{x\in \sob(\mcf)} V^{bcx^*} \tp_{\End(x)} V^{xcd} .
+%	V^{abcd} \cong \bigoplus_{x\in \sob(\scat)} V^{bc}_x \tp_{\End(x)} V^{axd} \cong \bigoplus_{x\in \sob(\scat)} V^{bcx^*} \tp_{\End(x)} V^{xcd} .
 %\ee
 %\dave{Changed so that they only differ by a pivot like the above.}
 \be  \label{pfpfi2}
-	V^{abcd} \cong \bigoplus_{x\in \sob(\mcf)} V^{bc}_x \tp_{\End(x)} V^{axd} \cong \bigoplus_{x\in \sob(\mcf)} V^{bcx^*} \tp_{\End(x)} V^{axd} .
+	V^{abcd} \cong \bigoplus_{x\in \sob(\scat)} V^{bc}_x \tp_{\End(x)} V^{axd} \cong \bigoplus_{x\in \sob(\scat)} V^{bcx^*} \tp_{\End(x)} V^{axd} .
 \ee
 Diagrammatically we have,
 %\dave{Note to self: make figures match up.}
@@ -659,11 +664,11 @@ They will be useful in the Hamiltonian section.}
 
 It follows from \ref{pfi1} and \ref{pfi2} that there is an isomorphism
 \be  \label{fdef21}
-	F^{abc}_d : \bigoplus_{x\in \sob(\mcf)} V^{ab}_x \tp_{\End(x)} V^{xc}_d \;\to\; \bigoplus_{y\in \sob(\mcf)} V^{ay}_d \tp_{\End(y)} V^{bc}_y .
+	F^{abc}_d : \bigoplus_{x\in \sob(\scat)} V^{ab}_x \tp_{\End(x)} V^{xc}_d \;\to\; \bigoplus_{y\in \sob(\scat)} V^{ay}_d \tp_{\End(y)} V^{bc}_y .
 \ee
 For the pitchfork version, we instead use \ref{pfpfi1} and \ref{pfpfi2} to obtain
 \be  \label{fdef30}
-	F^{abcd} : \bigoplus_{x\in \sob(\mcf)} V^{abx^*} \tp_{\End(x)} V^{xcd}   \;\to\;   \bigoplus_{x\in \sob(\mcf)} V^{bcx^*} \tp_{\End(x)} V^{axd} .
+	F^{abcd} : \bigoplus_{x\in \sob(\scat)} V^{abx^*} \tp_{\End(x)} V^{xcd}   \;\to\;   \bigoplus_{x\in \sob(\scat)} V^{bcx^*} \tp_{\End(x)} V^{axd} .
 \ee
 %\kw{figs?  or just rely on the figs from the previous subsection?}
 %\ethan{I think the following is needed to discuss coherence relation stuff}
@@ -672,13 +677,13 @@ For numerical applications, particular ordered representatives of the tensor pro
 For the ordered $F^{abc}_d$ isomorphism, 
 we will adopt the convention
 \be \label{Fmove_ordering_conventions}
-	F^{abc}_d : \bigoplus_{x\in \sob(\mcf)} V^{xc}_{d} \tp_{\End(x)} V^{ab}_{x} \;\to\; \bigoplus_{y\in \sob(\mcf)} V^{ay}_{d} \tp_{\End(y)} V^{bc}_{y} ,
+	F^{abc}_d : \bigoplus_{x\in \sob(\scat)} V^{xc}_{d} \tp_{\End(x)} V^{ab}_{x} \;\to\; \bigoplus_{y\in \sob(\scat)} V^{ay}_{d} \tp_{\End(y)} V^{bc}_{y} ,
 \ee
 with implicit left-to-right ordering.
 %we will choose the convention that it acts on tensor products of fusion spaces whose ordering increases as one goes up the diagram, 
 %and that it maps into fusion spaces with the same ordering. That is, with explicit Koszul-ordering we have 
 %\be \label{Fmove_ordering_conventions}
-%	F^{abc}_d : \bigoplus_{x\in \sob(\mcf)} V^{ab}_{x,2} \tp_{\End(x)} V^{xc}_{d,1} \;\to\; \bigoplus_{y\in \sob(\mcf)} V^{ay}_{d,1} \tp_{\End(y)} V^{bc}_{y,2}.
+%	F^{abc}_d : \bigoplus_{x\in \sob(\scat)} V^{ab}_{x,2} \tp_{\End(x)} V^{xc}_{d,1} \;\to\; \bigoplus_{y\in \sob(\scat)} V^{ay}_{d,1} \tp_{\End(y)} V^{bc}_{y,2}.
 %\ee
 %\ethan{this is what we use in the hexagon isomorphism, and is also what Gu-Wen do}
 Graphically, and written as a matrix equation, we thus have
@@ -688,11 +693,12 @@ Graphically, and written as a matrix equation, we thus have
  \label{graphical_Fmove} 
 \FusionSpaceLeftOrdered =\sum_y \sum_{\sigma \rho}\left( F^{abc}_d \right)_{(x; \mu \nu)(y;\sigma \rho)}   \FusionSpaceRightOrdered
 \end{align}
-where the greek indices label particular fusion space basis vectors, with $\mu\in V^{ab}_x,\nu\in V^{xc}_d,\alpha\in V^{bc}_y,$ and $\beta\in V^{ay}_d$.
+where the greek indices label particular fusion space basis vectors, with $\mu\in V^{ab}_x,\nu\in V^{xc}_d,\alpha\in V^{bc}_y,$ and $\beta\in V^{ay}_d$, 
+and where the first sum is over $y\in \sob(\scat)$. 
 We also stick with the left-to-right ordering convention for the $F^{abcd}$ move:
 %\dave{Changed order and and $x \ra x^*$.}
 \be  
-	F^{abcd} : \bigoplus_{x\in \sob(\mcf)} V^{abx} \tp_{\End(x)} V^{x^*cd}   \;\to\;   \bigoplus_{x\in \sob(\mcf)} V^{axd} \tp_{\End(x)} V^{x^*bc} .
+	F^{abcd} : \bigoplus_{x\in \sob(\scat)} V^{abx} \tp_{\End(x)} V^{x^*cd}   \;\to\;   \bigoplus_{x\in \sob(\scat)} V^{axd} \tp_{\End(x)} V^{x^*bc} .
 \ee
 Which written as a matrix equation is
 \begin{align}
@@ -833,7 +839,7 @@ Again, we are using the implicit left-to-right Koszul ordering of each tensor pr
 In terms of the matrix elements of the $F$-symbols, this reads 
 \be  
 \begin{aligned}
- \sum_{r\in \sob(\mcf)}
+ \sum_{r\in \sob(\scat)}
  \sum_{\sigma\in V^{xr}_q}
  \sum_{\omega \in V^{yz}_r}
  \sum_{\eta\in V^{rw}_s}
