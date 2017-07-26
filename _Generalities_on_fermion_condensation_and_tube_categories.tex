@@ -460,24 +460,27 @@ which follows can be understood without using terms like ``excitation'' and ``Ha
 \subsubsection{Traces and inner products} \label{traces_and_innerproducts}
 %%%%%%%%%%%%%%%%%%%%
 
-\kw{new start for this subsection. might want to add details; this is an outline/sketch.}
+\kw{Some rewrites below; D and E should review.}
 
-Recall that a trace on a linear category $C$ is a linear function from endomorphisms to $\cc$, satisfying
-\dave{Koszul signs?} \ethan{seems like, if we define $\tr(fg) = \tr(f_1g_2)$, then $\tr(fg) = (-1)^{|f|+|f||g|}\tr(gf)=\tr(gf)$}
-\dave{I agree.}
+Recall that a trace on a super linear category $C$ is a linear function from endomorphisms to $\cc$, satisfying
+%\dave{Koszul signs?} \ethan{seems like, if we define $\tr(fg) = \tr(f_1g_2)$, then $\tr(fg) = (-1)^{|f|+|f||g|}\tr(gf)=\tr(gf)$}
+%\dave{I agree.}
 \be
-	\tr(fg) = \tr(gf) ,
+	\tr(fg) = (-1)^{|f||g|} \tr(gf) ,
 \ee
 for all $f \in \mor(x\to y)$ and $g\in \mor(y\to x)$.
-All of the categories we consider have a $*$-structure\dave{I guess we use two $*$ structures, one for reflection and one for rotation by $\pi$.
-Should we comment on this?} (a.k.a. reflection structure), which is an order 2 antilinear antiautomorphism
+All of the categories we consider have a reflection structure\footnote{Usually called a $*$-structure,
+but we are already committed to denoting the pivotal structure in tensor categories by $*$.},
+%\dave{I guess we use two $*$ structures, one for reflection and one for rotation by $\pi$.
+%Should we comment on this?} 
+which is an order 2 antilinear antiautomorphism
 from $\mor(x\to y)$ to $\mor(y\to x)$ (for all objects $x$ and $y$).
 We will denote the image of a morphism $f$ under reflection as $\bar f$. 
 A trace is equivalent to a collection of sesquilinear inner products on $\mor(x\to y)$ satisfying
-\dave{Koszul signs?} \ethan{do we have $\overline{fg} = (-1)^{|f||g|}\bar{g}\bar{f}$? If yes then I think the koszul signs should be as below}
-\dave{I get the same assuming $\overline{fg} = (-1)^{|f| |g|} \bar{g} \bar{f}$.}
+%\dave{Koszul signs?} \ethan{do we have $\overline{fg} = (-1)^{|f||g|}\bar{g}\bar{f}$? If yes then I think the koszul signs should be as below}
+%\dave{I get the same assuming $\overline{fg} = (-1)^{|f| |g|} \bar{g} \bar{f}$.}
 \be
-	\langle fg, h \rangle =(-1)^{|g||h|} \langle f, h \bar{g} \rangle \;\;\; {\rm and} \;\;\; \langle fg, h \rangle = (-1)^{|f||h|}\langle g,\bar{f}  h  \rangle 
+	\langle fg, h \rangle =(-1)^{|g||h|} \langle f, h \bar{g} \rangle \;\;\; {\rm and} \;\;\; \langle fg, h \rangle = (-1)^{|f||g|}\langle g,\bar{f}  h  \rangle 
 \ee
 %\kw{Maybe should use bar instead of star to be consistent with other parts of the paper?}
 %\dave{Lets do that.}
@@ -495,12 +498,15 @@ A trace is called nondegenerate if the corresponding inner product is nondegener
 We now recall two facts about TQFTs.
 The first is that we can define a nondegenerate pairing on the predual Hilbert
 space $A(Y; a_1,\ldots,a_k)$, where $Y$ is a spin surface with $k$ disjoint boundary components 
-and the $a_i$ are labels specifying boundary conditions on each boundary component. 
+and the $a_i$ are reflection-invariant labels specifying boundary conditions on each boundary component. 
 The nondegenerate pairing is defined via
 \be
 	\langle u, v\rangle = Z(Y\times I) (u\cup \bar v) ,
 \ee
-where the bar denotes the reflection map from $A(Y; a_1,\ldots,a_k)$ to $A(-Y; \bar{a}_1,\ldots,\bar{a}_k)$\dave{bars on $a_i$'s in $A(-Y,....)$?}.
+where the bar denotes the reflection map from 
+$A(Y; a_1,\ldots,a_k)$ to $A(-Y; a_1,\ldots,a_k)$
+%$A(Y; a_1,\ldots,a_k)$ to $A(-Y; \bar{a}_1,\ldots,\bar{a}_k)$
+%\dave{bars on $a_i$'s in $A(-Y,....)$?}.
 Here we are using the ``pinched boundary" condition for $Y\times I$, so that $\bd (Y\times I) = Y\cup -Y)$.
 In other words, we glue together the string nets $u$ and $\bar v$ to get a string net on $\bd (Y\times I)$, and then we evaluate
 the path integral of $Y\times I$ with the $u\cup \bar v$ string net as a boundary condition.
@@ -547,7 +553,8 @@ Letting $t \in \tube^W(\mcc)$ and writing $\tr(t)$ for the trace of $t$, we can 
 %\ethan{we're on the same page. Added a little more explanation but didn't change the notation}
 \begin{align}
 \label{trace_t}
-\tr (t)  = \langle t, \text{id} \rangle  = Z((S^1_W \times I) \times I ) (t \cup \overline{\text{id} })  = Z(S^1_W \times D^2) (t \cup \overline{\text{id}}).
+\tr (t)  = \langle t, \text{id} \rangle  = Z((S^1_W \times I) \times I ) (t \cup \overline{\text{id} })  = Z(S^1_W \times D^2) (t \cup \overline{\text{id}})
+		= Z(S^1_W \times D^2) (cl(t)) .
 \end{align}
 %This is the partition function of a solid torus with boundary condition $t \cup \overline{\text{id}}$.
 %Sorta confusing since the solid torus only has one boundary component
@@ -569,6 +576,7 @@ the vector space assigned to a disc with one marked point labeled  $x$:
 A\left( \PinchedDisk  \scriptstyle{x\;} \right)  \cong \text{mor}(\unit \ra x) = \bigoplus_i \moronex.
 \end{align}
 With $\mu_i$ denoting a complete basis of morphisms for $\mor(\unit \to x)$.
+\kw{shouldn't we remark that this vectos space is zero unless $x \cong \unit$? (assuming $x$ is simple)}
 The linear map induced by the cut on these basis elements is given by
 \begin{align} 
 \moronex \mapsto \moronexcollar = \sum_{j} g_{ij} \; \moronexj.
@@ -615,6 +623,13 @@ The inner product obtained from the trace is even, in the sense that $\langle v,
 Furthermore, it is super positive-definite, namely that for all nonzero $v$, we have $\langle v,v\rangle > 0$ if 
 $|v|=0$ and $\langle v,v\rangle/i > 0$ if $|v|=1$. \ethan{this is the usual convention, which makes choosing $A^4=i$ slightly better than $A^4=-i$}
 \dave{Maybe we should move this to where we talk about reflection structure?}
+\kw{I agree we should say something along these lines.  Probably should be moved above; I'll take care of that later.}
+
+
+\kw{We should include some sample trace calculations.}
+
+\kw{Probably should also include a summary (glue, rotate 90 degrees, cut, take linear algebra (super) trace}
+
 
 \dave{commented out things here that we may want to clean up/include, but is not crucial.
 i.e., we could relate inner product of parent theory to condensed theory.}
