@@ -549,32 +549,32 @@ As with the vertex term, the plaquette term is essentially the same as the plaqu
 it inserts an $\omega$ loop 
 %loops labeled by different objects in $\mcc$ 
 into each plaquette, and uses local relations to fuse these $\omega$ loops into the boundaries of the plaquettes. 
-Physically it is responsible for the dynamics of net configurations residing in the ground space of the vertex and edge term. 
+Physically it is responsible for the dynamics of net configurations which reside in the ground space of the vertex and edge terms. 
 %It is responsible for the dynamics in the string-net phase, and allows us to perform time evolution on string-net states.  
 It is designed so that the amplitude of a net configuration is given by the evaluation of that net in the fusion category.
-Explicitly, we have
+Using the definition of the $\omega$ loop, we can write $B_p$ as 
 \begin{align} \label{plaquette_term_defn}
 B_p =\frac{1}{\mcd} \sum_{a \in \mcc} \frac{d_a}{\text{dim} \; \text{End}(a)} B^a_p, 
 \end{align}
 where the operator $B_p^a$ fuses in a loop labeled by $a$ into the plaquette $p$ (note that 
-as discussed earlier, the operator $B_p^a$ is only defined when all vertices and edges neighboring the plaquette $p$ satisfy the corrsponding vertex and edge terms).
+as discussed earlier, the operator $B_p^a$ is only defined when all vertices and edges neighboring the plaquette $p$ satisfy the corresponding vertex and edge terms).
 
 The matrix elements of $B_p^a$ depend on the choice of cell decomposition and pitchforkization procedure. 
-It is tedious to write down these matrix elements. 
+For a generic cell decomposition it is somewhat tedious to write down these matrix elements, although the procedure is straightforward. 
 To expedite this process we apply yet another standardization procedure.
-For a plaquette with $n$ neighbouring vertices we label them from $1, \cdots, n$ in a counterclockwise fashion with respect to the orientation of $\Sigma$, see Figure \ref{XXXX}.
-The Hilbert space associated to the plaquette is the subspace of
+Suppose we are given a plaquette $p$ with $n$ neighboring labeled from $1, \cdots, n$ in a counterclockwise fashion with respect to the orientation of $\Sigma$ (see Figure \ref{XXXX}).
+The Hilbert space associated to $p$  is the subspace of
 \begin{align}
 \mch_p = \mch_{v_1} \tp \mch_{v_2} \tp \cdots \tp \mch_{v_n}
 \end{align}
 which satisfies the vertex and edge terms. 
-Digarammatically, 
-state in this space takes the form,
+Diagrammatically, 
+states in this space take the form
 \begin{align}
 \text{insert digram corresponding to figure stretched into a line}.
 \end{align}
-It is useful to apply a number of pivots to $\mch_p$ so that the vector space takes on a standard form which will facilitate the application of $B_p^a$.
-Denote the operator by $R_p$ which is given by,
+It is useful to apply a number of pivots to vectors in $\mch_p$ so that the vector space takes on a standard form which will facilitate the application of $B_p^a$.
+Define the operator $R_p$ by
 \begin{align}
 R_p: \; \mch_p \ra \bigoplus_{\{ x_i, z_i \} } V^{x_n^* x_1 z_1} \tp V^{x_1^* x_2 z_2} \tp \cdots \tp V^{x_{n-1}^* x_n z_n}
 \end{align} 
@@ -582,49 +582,47 @@ which can be explicitly written as
 \begin{align}
 R_p = P_1 \tp P_2 \tp \cdots \tp P_n
 \end{align}
-with each $P_j = \bigoplus_{abc} (P^{abc} )^{l_j}$, defined in \eqref{Pitchfork_pivot} and $l_j = 0,1$ or $2$.
-Digrammatically, a vector in the image of $R_p$ takes on the form,
+with each $P_j = \bigoplus_{abc} (P^{abc} )^{l_j}$ defined in \eqref{Pitchfork_pivot} and with $l_j = 0,1,2$ controlling the angle by which the $j$th vertex is pivoted.
+Diagrammatically, a vector in the image of $R_p$ takes on the form
 \begin{align} 
 \label{plaquett_std_basis}
 \Plaquettea
 \end{align}
 We will write down the matrix elements of $B_p^a$ in this basis, which we call the {\em standardized} basis.
 
-To find the action of the plaquette term in the basis of \eqref{plaquett_std_basis}
-we first insert a closed strand labeled $a$,
+To find the action of $B_p^a$ in the standardized basis of \eqref{plaquett_std_basis}
+we first insert a closed strand labeled $a$ into the interior of $p$, which results in the picture
 \begin{align}
 \Plaquetteb
 \end{align}
-Next, we begin fusing the strand into the plaquette starting with the resulotion of the identity (see \eqref{identity}),
+Next, we begin fusing the strand into the plaquette using the resolution of the identity \eqref{identity}, which gives the picture
 \begin{align}
 \label{plaquette_first_F_move}
 \Plaquettec
 \end{align}
-Next we apply a sequence of $F$-moves starting with,
+Next we apply a sequence of $F$-moves to the diagram, the first of which gives
 \begin{align}
-\Plaquetted
+\Plaquetted.
 \end{align} 
-and so on, until we find,
+We repeat this procedure until we are left with a diagram of the form
 \begin{align}
 \Plaquettee =\\ 
 =\Plaquettef
 \end{align}
-This bubble diagram can be removed at the expense of a theta symbol, which cancels the theta symbol introduced in \eqref{plaquette_first_F_move}.
+The bubble part of this diagram (the 2-cell bounded by the edges $x_6$ and $a$) can 
+be removed at the expense of a theta symbol, which cancels the theta symbol 
+introduced in \eqref{plaquette_first_F_move}.
 \dave{Could refer to Kitaev chain section here.
 Fun fact (thought probably not for this paper): 
 This operator is the the fermionic version of Krammers-Wannier duality (in the Kitaev chain)!!
 (Note that it makes sense on finite size chains, and does not require a `half translation' )
 }
-Note that due to \eqref{pivotconsistent} the pivots ``commute" with the associators, 
-and so the order in which we apply the two is innessential.
-An equally tedious way to find the matrix elements is to fuse in the strand directly without applying $R_p$ first. 
+Note that due to \eqref{pivotconsistent} the pivots commute with the $F$-moves, 
+and so we may apply them in any order we wish. Indeed, an equally tedious way to 
+find the matrix elements is to fuse in the strand directly without applying $R_p$ first). 
 The two operators are the same, and can be related with the help of \eqref{pivotconsistent}\dave{need to check this}.
 
 %\dave{Old stuff below.}
-
-\ethan{you're a hero for doing the above. I think we should mention $B_p$ being the trivial 
-idempotent in $\tube$ though, probably by deleting the next paragraph and keeping (with edits) the one after that.}
-\dave{Yea, definitely.}
 
 %An explicit form for the matrix elements of the $\mco_p^a$ operators can be written down following the straightforward, if tedious, standard procedure of \ref{levin2005}.
 %Namely, one inserts a loop of $a$ string in the interior of $p$ and fuses it into the boundary of $p$ %using a
