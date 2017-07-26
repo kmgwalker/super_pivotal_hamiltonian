@@ -290,12 +290,12 @@ This allows the condensation to go through without the use of the back wall cons
 which allows us to perform fermion condensation without sacrificing the existence of a 
 braided structure. 
 
-\kw{Are both D and E comfortable with the claims in this paragraph?}
-\dave{I’m moderately comfortable. 
-I could never figure out how to check it.
-But I don’t see why it would be incorrect.
-}
-\ethan{Yeah, I'm okay with it. I inserted some instances of ``schematically'' in this subsection to make it clear that we aren't pretending to be precise}
+%\kw{Are both D and E comfortable with the claims in this paragraph?}
+%\dave{I’m moderately comfortable. 
+%I could never figure out how to check it.
+%But I don’t see why it would be incorrect.
+%}
+%\ethan{Yeah, I'm okay with it. I inserted some instances of ``schematically'' in this subsection to make it clear that we aren't pretending to be precise}
 This picture also gives us a schematic physical interpretation of how to invert the condensation 
 procedure. 
 To go the other way and un-condense $\psi$, we just decouple the $x$ lines from the spin structure defects.
@@ -350,7 +350,7 @@ We will now define two categories $\tube^B(\mcc),\tube^N(\mcc)$ for a string-net
 The objects of the two spin tube categories $\tube^B(\mcc)$ and $\tube^N(\mcc)$ are defined as isomorphism classes of string-net boundary conditions on spin circles with bounding 
 and non-bounding spin structures, respectively. 
 Later, we will show that every simple object 
-in $a\in\tube^B(\mcc)$ must be m-type (although the converse is not true). 
+in $a\in\tube^B(\mcc)$ must be m-type. 
 For each spin tube category, we will fix a representative spin circle with which to define its
 objects. 
 Other possible choices of spin circles are related to the chosen representative
@@ -366,15 +366,22 @@ be unimportant in our analysis.
 
 %The converse is not true, however---in what follows we will see examples of theories with m-type vortices. 
 
+\kw{Some rewriting starting near here.  D and E might want to review.}
+
 Spin annuli decorated with different string-net configurations constitute the morphisms of
 the two spin tube categories. Again, we will fix a particular representative spin annulus for each spin structure to use
 when defining morphisms, with other choices being related by spin diffeomorphisms. 
-We can use local relations in $\mcc$
-%on the tubes to reduce any string-net configuration to a $\cc$-linear combination of string-net configurations 
-%that take the form of a string-net with one marked point at each of the tube's boundary components
-%and one string wrapping around the tube's diameter. 
-%This allows us 
-to present these morphisms concisely as  
+Figure \kw{xxxx; includes annuli with multiple endpoints and non-matching numbers of endpoints} shows some examples
+of morphisms in the tube category.
+
+Up to isomorphism, every object in the tube category is isomorphic to a direct sum of objects with a exactly one string net endpoint on the circle.
+Put another way, the full subcategory spanned by such one-endpoint objects is Morita equivalent to the entire category.
+This means that for purposes of, for example, enumerating equivalence classes of minimal idempotents or computing Hilbert spaces (ground states),
+we can restrict our attention to the one-endpoint subcategory.
+And indeed we will usually do so without comment.
+(Note however that it sometimes convenient to work in the larger category; see e.g.\ \ref{mtc_idem_subsect}.)
+
+In the one-endpoint subcategory, morphism spaces can be presented as
 \begin{align}
 {\rm mor}(\tube^X({\cal C}))\; =\; \mathbb{C} \left[\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{} \right] 
 \end{align}
@@ -385,8 +392,7 @@ as well as the ordering of the tensor product ($V^{d b}_a \tp V^{c d^*}_b$ or $V
 space of the tube.% (keeping track of this ordering is important because of the Koszul signs incurred 
 %when interchanging two odd vectors in a tensor product). 
 
-Since morphisms preserve the spin structures of the spin circles they act on, 
-we are prompted to construct the {\it full} tube category $\tube(\mcc)$ by forming the direct sum
+We define the {\it full} tube category $\tube(\mcc)$ to be the direct sum
 \be \label{tube_spin_decomp} \tube(\mcc) \cong \tube^B(\mcc) \oplus \tube^N(\mcc).\ee
 In what follows we will mostly think of $\tube(\mcc)$ as the fundamental category of interest. 
 This is because in what follows we will be led to consider a $\tp$ structure on $\tube(\mcc)$, which mixes the two spin components (we defer a discussion of this to 
@@ -410,22 +416,26 @@ two tubes disagree, the two tubes compose (or multiply) to zero.
 %The definition of $\tp$ is best phrased in terms of vector spaces on the pair of pants, and we defer a 
 %discussion of this construction until . 
 
-To actually determine the objects in $\tube(\mcc)$, 
-it is helpful to think about the simple objects in $\tube(\mcc)$ in terms of vector spaces which are preserved 
-under the action of the morphisms in $\tube(\mcc)$\footnote{That vector spaces on circular punctures 
-reproduce $\mcz(\mcc)$ makes sense from a formal perspective, as the category $\mcz(\mcc)$ is what a 
-(fully-extended) TQFT assigns to an $S^1$.}. 
-If we view $\tube(\mcc)$ as an algebra, then these invariant vector spaces correspond precisely to the 
-simple modules $\{M_a\}$ of $\tube(\mcc)$.
-This allows us to equivalently classify 
-%Since every simple module $M_a$ of an algebra algebra can be dually represented by a primitive idempotent 
-%$\Pi_a : \tube(\mcc) \ra M_a$ that projects onto the vector space $M_a$, we can classify 
-the
-simple objects in $\tube(\mcc)$ by the primitive idempotents (projectors whose images are simple modules) $\Pi_a : \tube(\mcc) \ra M_a$ of the tube category.%, each of which project onto a different simple module $M_a$ of $\tube(\mcc)$.
+%%KW I think we discuss the correspondence between (simple) modules and (minimal) idempotents elsewhere
+%To actually determine the objects in $\tube(\mcc)$, 
+%it is helpful to think about the simple objects in $\tube(\mcc)$ in terms of vector spaces which are preserved 
+%under the action of the morphisms in $\tube(\mcc)$\footnote{That vector spaces on circular punctures 
+%reproduce $\mcz(\mcc)$ makes sense from a formal perspective, as the category $\mcz(\mcc)$ is what a 
+%(fully-extended) TQFT assigns to an $S^1$.}. 
+%If we view $\tube(\mcc)$ as an algebra, then these invariant vector spaces correspond precisely to the 
+%simple modules $\{M_a\}$ of $\tube(\mcc)$.
+%This allows us to equivalently classify 
+%%Since every simple module $M_a$ of an algebra algebra can be dually represented by a primitive idempotent 
+%%$\Pi_a : \tube(\mcc) \ra M_a$ that projects onto the vector space $M_a$, we can classify 
+%the
+%simple objects in $\tube(\mcc)$ by the primitive idempotents (projectors whose images are simple modules) $\Pi_a : \tube(\mcc) \ra M_a$ of the tube category.%, each of which project onto a different simple module $M_a$ of $\tube(\mcc)$.
+
+
+\medskip
 
 Before moving on, we briefly remark on the physical interpretation of the tube category. 
 The setting for examining a collection of $n$ excitations in a given topological phase is a 
-manifold decorated with string-nets that possesses $n$ circular punctures (boundary components), with an excitation localized at the location of each puncture.
+manifold decorated with string-nets that possesses $n$ circular punctures (boundary components), with an excitation localized at each puncture.
 The type of excitation at a given puncture determines the boundary conditions of the string-net TQFT at that puncture, 
 and thus the simple objects in $\tube(\mcc)$ are identified with the distinct types of quasiparticle excitations that the theory supports. 
 %Thus, enumerating the objects of $\tube(\mcc)$ amounts to constructing the quasiparticle excitation spectrum of the theory in question. 
