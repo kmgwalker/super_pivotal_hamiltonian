@@ -61,9 +61,10 @@ Two of these classes of projector are the fermionic analogues of the plaquette a
 while the third is an edge term which allows fermions to fluctuate across edges hosting q-type strings.
 The Hamiltonian takes the form
 \begin{align} \label{ham}
-H = \lambda_p \sum_{p \in P} (1-B_p) + \lambda_e \sum_{e \in E} (1-D_e) + \lambda_v \sum_{v \in V} (1-A_v),
+H = \lambda_p \sum_{p \in \mcf} (1-B_p) + \lambda_e \sum_{e \in E} (1-D_e) + \lambda_v \sum_{v \in V} (1-A_v),
 \end{align}
-where the sums are over the plaquettes $P$, edges $E$, and vertices $V$ of the graph, respectively, and the $\lambda_p,\lambda_e,\lambda_v$ are positive constants.
+where the sums are over the plaquettes (faces) $\mcf$, edges $\mce$, and vertices $\mcv$ of the graph, %\ethan{we used mathcal stuff in the state-sum section, so I mathcalized the things to be consistent}
+respectively, and the $\lambda_p,\lambda_e,\lambda_v$ are positive constants.
 %We require a hierarchy in the couplings, $\lambda_p \ll \lambda_e \ll \lambda_v$,
 %which ensures that the low energy spectrum can be characterized by simple objects in $\mcz(\mathcal{C})$.
 %If we want the excitations to be in correspondence with the primitive idempotents of the tube algebra, then w
@@ -131,7 +132,7 @@ If all the edges incident to a vertex $v$ point out of the vertex, we define the
 	\mch_v = \bigoplus_{a,b,c} V^{abc}  \quad\quad\quad\quad\quad\quad \PitchFork{a}{b}{c}{},
 	\label{pitchfork_basis}
 \ee
-where the sum is over the simple objects of $\mcc$\footnote{We choose our favorite complete set of simple objects at the outset and keep it fixed throughout.}.
+where the sum is over the simple objects of $\mcc$\footnote{We choose our favorite complete set of representatives of isomorphism classes of simple objects $\sob(\mcc)$ at the outset and keep it fixed throughout, abusing notation slightly by writing $\mcc$ for $\sob(\mcc)$.}.
 If the first edge points in and the other two point out, then we define
 \be
 	\mch_v = \bigoplus_{a,b,c} V^{a^*bc}  \quad\quad\quad\quad\quad\quad \PitchForkas{a}{b}{c}{} =  \PitchFork{a^*}{b}{c}{},
@@ -432,7 +433,7 @@ class of $H_1(\Sigma)$.
 In this section we will finally write down the Hamiltonian, and then explain the terms appearing in it in detail. 
 As mentioned earlier, the Hamiltonian consists of three kinds of mutually commuting projections:
 \begin{align}
-H = \lambda_p \sum_{p \in F} (1-B_p)  + \lambda_e \sum_{e \in E} (1-D_e) + \lambda_v \sum_{v \in V} (1-A_v)
+H = \lambda_p \sum_{p \in \mcf} (1-B_p)  + \lambda_e \sum_{e \in \mce} (1-D_e) + \lambda_v \sum_{v \in \mcv} (1-A_v)
 \end{align}
 We'll start with the familiar vertex term and then address the new edge term, 
 and end with the modifications needed for the plaquette term.
@@ -514,7 +515,8 @@ For example, if $e$ hosts a q-type edge label $x$, then we have
 \end{align}
 %\be \label{dot_slide_gamma} \mathord{\vcenter{\hbox{\includegraphics[scale=1]{dot_slide_gamma.pdf}}}},\ee
 where we have defined tensor products of $\Gamma$ operators to act so that operators located further to the left in tensor products absorb fermions with higher order than the operators to their right.
-Note that although the first and last steps in the above sequence look the same, they are not: the fermion parity of the vectors in the two vertex Hilbert spaces has been switched. 
+Note that although the diagrams in the first and last steps in the above sequence look the same, they are not: the fermion parity of the vectors in the two vertex Hilbert spaces $V^{abx^*}$ and 
+$V^{xcd}$ has been switched. 
 
 In general, if $e$ is oriented from $v_1$ to $v_2$ colored by a fixed object $x$ and $|\psi_1\rangle \tp |\psi_2\rangle$ is a vector in $\mch_{v_1}\tp \mch_{v_2}$, the edge term $D_e$ acts as 
 \be D_e(|\psi_1\rangle\tp |\psi_2\rangle) = \begin{cases}
@@ -618,37 +620,40 @@ and so the order in which we apply the two is innessential.
 An equally tedious way to find the matrix elements is to fuse in the strand directly without applying $R_p$ first. 
 The two operators are the same, and can be related with the help of \eqref{pivotconsistent}\dave{need to check this}.
 
-\dave{Old stuff below.}
+%\dave{Old stuff below.}
 
 \ethan{you're a hero for doing the above. I think we should mention $B_p$ being the trivial 
 idempotent in $\tube$ though, probably by deleting the next paragraph and keeping (with edits) the one after that.}
 \dave{Yea, definitely.}
 
-An explicit form for the matrix elements of the $\mco_p^a$ operators can be written down following the straightforward, if tedious, standard procedure of \ref{levin2005}.
-Namely, one inserts a loop of $a$ string in the interior of $p$ and fuses it into the boundary of $p$ using a
-collection of $F$ and pivoting moves. 
-With the ``pitchfork'' conventions adopted in this section, the graphical presentation of the $F$ moves is
-slightly different than the standard way they are presented in the literature.
+%An explicit form for the matrix elements of the $\mco_p^a$ operators can be written down following the straightforward, if tedious, standard procedure of \ref{levin2005}.
+%Namely, one inserts a loop of $a$ string in the interior of $p$ and fuses it into the boundary of $p$ %using a
+%collection of $F$ and pivoting moves. 
+%With the ``pitchfork'' conventions adopted in this section, the graphical presentation of the $F$ moves is
+%slightly different than the standard way they are presented in the literature.
 
 
-Instead of writing down the explicit formula for the matrix elements of the plaquette operator, there is a 
-more general and high-level way of describing the plaquette term in terms of the tube algebra.
+Before moving on, we briefly mention a
+more general and high-level way of describing the plaquette term in terms of the tube category.
 From \eqref{plaquette_term_defn}, we see that the plaquette operator acts to insert a 
-weighted superposition of all closed loops labeled by objects in $\mcc$.
+weighted superposition of all closed loops labeled by simple objects in the input super fusion 
+category $\mcc$.
 This corresponds exactly to the trivial idempotent in the tube algebra for the theory, 
-which is a weighted superposition of all tubes that have zero charge (so that their boundaries have no marked points on them) and which have fluxes that run over the objects in $\mcc$.
+which is a weighted superposition of all tubes that have zero charge (so that their 
+boundaries have no marked points on them) and which have fluxes that run over the objects in $\mcc$.
 This means that $B_p$ implements the action of the trivial idempotent in the tube algebra applied to the plaquette $p$:
 \begin{align}
-B_{p} = \Pi_{\unit \in \tube},
+B_{p} = e_{\unit\unit}(p),
 \end{align}
-where $\unit\in\tube$ denotes the trivial idempotent in the tube algebra. 
+where $e_{\unit\unit,p}\in\tube(\mcc)$ denotes the trivial idempotent in the tube algebra applied
+to the plaquette $p$ (see \eqref{Bosonic_twostrand_idempotent} for the definition of $e_{\unit\unit}$). %\ethan{technically the \eqref is for the bosonic case, but I think it's the clearest equation to reference since the presentation in the condensed theory is similar. There might be a better \eqref though}
 From this presentation, we see that $B_p$ projects onto plaquettes that host no quasiparticle excitations\footnote{Recall that in 
-string-net models, we think of each plaquette as containing a puncture. Quasiparticles are localized at 
-these punctures, and so acting with $\Pi_\unit$ on a puncture projects onto a state in which no 
-quasiparticle is present on the puncture.}, 
-and so violations of the plaqauette term are the quasiparticle excitations of the theory. 
-Plaquettes that satisfy the plaquette term (those with an eigenvalue of $1$ under $B_p$) contain no 
-quasiparticles in their interiors, and thus the punctures in their interiors can be smoothly filled in. 
+string-net models, we think of each plaquette as containing a puncture. Excitations are localized at 
+these punctures, and so acting with $e_{\unit\unit}$ on a puncture projects onto a state in which no 
+excitation is present on the puncture.}, 
+and so violations of the plaquette term constitute excitations of the theory. 
+Plaquettes with an eigenvalue of $1$ under $B_p$ contain no 
+excitations in their interiors, and thus the punctures in their interiors can be smoothly `filled in'. 
 Therefore, we can also think of the plaquette term as energetically providing a way to allow strings to 
 fluctuate freely across the interiors of plaquettes. 
 
