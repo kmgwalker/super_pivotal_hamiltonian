@@ -676,15 +676,19 @@ $|v|=0$ and $\langle v,v\rangle/i > 0$ if $|v|=1$. \ethan{this is the usual conv
 \dave{Maybe we should move this to where we talk about reflection structure?}
 \kw{I agree we should say something along these lines.  Probably should be moved above; I'll take care of that later.}
 
-\dave{The following is still in progress.}
 \kw{We should include some sample trace calculations.}
-\dave{Examples: }
-We now compute some illustrative examples.
-Denote $\text{cl}_B(x)$ the closure of $x$ on an annulus with bounding spin structure:
+\dave{Should we do any other examples?}
+\dave{Do you guys think we should join these with the following subsubsection, 
+or leave it as is?}
+We now compute some traces that illustrate the techniques 
+described in this section that will also be of use to us later.
+The first is to compute the total dimension of the category.
+An important intermediary step is to compute the norm squared of a single strand on an annulus with empty boundary conditions.
+Denote $\text{cl}_B(x)$ the closure of $x \in \sob(\scat)$ on an annulus with bounding spin structure:
 \begin{align}
 \text{cl}_B(x) \; = \; \underset{B}{\clx}
 \end{align}
-Then the norm of $\text{cl}_B(x)$ is
+The the norm squared of $\text{cl}_B(x)$ is
 \begin{align}
 \label{clxnorm}
 \langle \text{cl}_B(x), \text{cl}_B(x) \rangle = \tr_B \{ \id: \; \mor(\unit \to x \tp x^{*}) \ra \mor(\unit \to x \tp x^*)  \} = 
@@ -693,12 +697,24 @@ Then the norm of $\text{cl}_B(x)$ is
 2 & \text{if $x$ is q-type} 
 \end{cases}
 \end{align}
-or more more suggestively, $\langle \text{cl}_B(x), \text{cl}_B(x) \rangle = \dim \End(x)$.
-Indeed this calculation is responsible for the denominator in \eqref{XXXX}.
+or in a more more suggestive notation: $\langle \text{cl}_B(x), \text{cl}_B(x) \rangle = \dim \End(x)$.
+The total dimension $\mcd^2$ is given by $ \langle S^2_\phi, S^2_\phi \rangle$, the inner product of the 2-sphere (empty boundary conditions) with itself.
+The axioms of TQFT imply
+\begin{align}
+\langle S^2_\phi, S^2_\phi \rangle = Z(S^2 \times I)(S^2_\phi \cup \overline{S^2_\phi}) = \sum_{x \in \sob(\scat)} \frac{Z(D^3, \text{cl}(x)) Z(D^3, \overline{\text{cl}(x)}) }{\langle  \text{cl}_B(x), \text{cl}_B(x) \rangle}.
+\end{align}
+The 3-ball with a single closed up $x$ strand has partition function $Z(D^3, \overline{\text{cl}(x)}) = d_x$. 
+Hence the total dimension is given by,
+\begin{align}
+\mcd^2 = \sum_x \frac{d_x^2}{\dim \End(x)}
+\end{align} 
+An alternative derivation inspired by fermion condensation is given in Section \ref{Quantum_dimensions}.
+%Indeed this calculation is responsible for the denominator in \eqref{XXXX}.
 
-In \eqref{boundingNullVector} we pointed out that $\text{cl}_N(\beta)$ is identically zero. 
-This is true for any q-type idempotent closed up on an annulus. 
-Let $x \in \sob(\scat)$, then 
+A similar derivation recovers \eqref{non-boundingNullVector}, 
+where we pointed out that $\text{cl}_N(\beta)$ is identically zero.
+Let us see how this works out for a general super pivotal category $\scat$.
+Let $x \in \sob(\scat)$, it follows that
 \begin{align}
 \langle \text{cl}_N(x),\text{cl}_N(x) \rangle  = \tr_N\{ \id: \; \mor(\unit \to x \tp x^*) \ra  \mor(\unit \to x \tp x^*)  \}
 = \begin{cases} 
@@ -707,54 +723,77 @@ Let $x \in \sob(\scat)$, then
 \end{cases}
 \end{align} 
 The last equality follows from $\mor(\unit \to x \tp x^*)  \cong \End(x)$, 
-and that $\tr_N$ is the super trace of the identity map. 
-Thus m-type simple objects will contribute a factor of $1$, while q-types have non-zero odd vectors and the even and odd part contribute with equal weight but opposite sign (due to the super trace) resulting in $1+(-1) = 0$.
-Hence a closed up q-type idempotent on a non-bounding spin structure has norm zero. 
-This provides a nice crosscheck of \eqref{boundingNullVector}.
+and that $\tr_N$ is the super trace of $\id: \; \End(x) \to \End(x)$.
+More explicitly,
+if $x$ is m-type then as a vector space $\End(x) \cong \cc$ and $\str\{ \id: \; \cc \ra \cc \} = 1$. 
+On the other hand, if $x$ is q-type then as a vector space $\End(x) \cong \cc^{1|1}$ and
+\begin{align} 
+\str \{\id: \; \cc^{1|1} \ra \cc^{1|1} \} = \tr \{(-1)^F: \;  \cc^{1|1} \ra \cc^{1|1} \} =  1-1 = 0
+\end{align}
+%have non-zero odd vectors and the even and odd part contribute with equal weight but opposite sign (due to the super trace) resulting in $1+(-1) = 0$.
+Hence a closed up q-type idempotent with a non-bounding spin structure has norm zero. 
+This provides a nice crosscheck of \eqref{non-boundingNullVector}.
 Similarly, one can show that $\langle \text{cl}_N(x\cdot \gamma), \text{cl}_N(x\cdot \gamma) \rangle$ 
 is nonzero when $x$ is q-type and gamma is an odd endomorphism.
 
-\dave{Lets also do normalization for closed up idempotents onto the torus.}
-\dave{I am guessing there are many ways to do this calculation, if one of those is simpler and sits in the scope of this section, lets go with that. 
-Otherwise we have the following:}
-A fact that we make use of quite often is that a q-type idempotent of the tube category closed up into a torus has norm $\sqrt{2}$.
-See \eqref{XXXX} for an instance of this.
-Let $x$ be a minimal idempotent of $\tube(\scat)$, and $\text{cl}_W(x)$ be the string net found by closing $x$ onto a torus with spin structure $W$ along the newly closed cycle. 
+%\dave{Lets also do normalization for closed up idempotents onto the torus.}
+%\dave{I am guessing there are many ways to do this calculation, if one of those is simpler and sits in the scope of this section, lets go with that. 
+%Otherwise we have the following:}
+%Recall from Section \ref{...} when we closed up a q-type idempotent onto the torus we needed to normalize by a factor of $1/\sqrt{2}$ in order to get a unitary S-matrix.
+%We compute the modular data for several examples in this paper, to get a unitary S-matrix we need to normalize 
+%Lastly we show that the torus has norm squared 
+%A fact that we make use of quite often is that a q-type idempotent of the tube category closed up into a torus has norm $\sqrt{2}$.
+%See \eqref{XXXX} for an instance of this.
+
+\dave{KW and EL should double check this with skepticism.}
+We now show that closing up a q-type idempotent onto a torus results in a state with norm $\sqrt{2}$.
+Let $x$ be a minimal idempotent of $\tube(\scat)$, 
+and $\text{cl}_W(x) \in A(T^2)$ be the string net found by closing $x$ onto a torus with spin structure $W$ 
+along the newly closed cycle. 
 For the moment, assume the newly formed torus is bounding.
 The norm squared of $\text{cl}_W(x)$ is
 \begin{align}
-\langle \text{cl}_W(x), \text{cl}_W(x) \rangle = Z(T^2 \times I)(\overline{\text{cl}_W(x)} \sqcup \text{cl}_W(x)) = Z((S^1 \times I)\times S^1_W)(\overline{\text{cl}_W(x)} \sqcup \text{cl}_W(x)).
+\langle \text{cl}_W(x), \text{cl}_W(x) \rangle = Z(T^2 \times I)(\overline{\text{cl}_W(x)} \cup \text{cl}_W(x)) = Z((S^1 \times I)\times S^1_W)(\overline{\text{cl}_W(x)} \cup \text{cl}_W(x)).
 \end{align}
-where in the third equality we have re-written the torus in a form where we can readily apply \eqref{bounding_trace} or \eqref{nonbounding_trace} depending on whether $W$ is bounding or non-bounding.
-In this scenerio $Y = S^1 \times I$ is an annulus with spin structure determined by $x$ and the the linear map we need to take a trace of is found by cutting open the cycle $S^1_W$. 
-The linear map is only non-trivial on $\End(x)$.
-As in \eqref{clxnorm}, the $W$ dependent matrix trace will be $\dim \End(x)$ (if $\text{cl}_W(x)$ is nonzero) and so 
+in the third equality we have re-written the torus in a form where we can readily apply equation \eqref{bounding_trace} or \eqref{nonbounding_trace}.
+The role of $Y$ is played by $S^1 \times I$, an annulus with spin structure determined by $x$.
+The the linear map we need to take the matrix (super) trace of is found by cutting open the cycle $S^1_W$. 
+The linear map has an action on $A(S^1 \times I)$ which has a complete basis given by $\End(x)$ treated as a vector space.
+%The linear map is only non-trivial on $\End(x)$.
+As in \eqref{clxnorm}, 
+the $W$ dependent matrix trace will be $\dim \End(x)$ (if $\text{cl}_W(x)$ is nonzero) and so 
 \begin{align}
 \langle \text{cl}_W(x), \text{cl}_W(x) \rangle = \dim \End(x)
 \end{align}
-A similar calculation for the non-bounding torus yields the same answer, however the q-type idempotents need to be closed with an odd endomorphism.
+A similar calculation for the non-bounding torus yields the same answer, 
+however the q-type idempotents need to be closed with an odd endomorphism.
+We can now justify the mysterious normalization factor introduced 
+in \eqref{closing_q_type_C2} when closing up q-type idempotents on the torus.
+A complete orthogonal basis for the torus is given by closing up a complete set of representatives of minimal idempotents.
+To find a unitary S-matrix we require each of the basis states to have unit norm,
+hence we divide closed up q-type idempotents by $\sqrt{2}$.
 
-
-
-
-\kw{Probably should also include a summary (glue, rotate 90 degrees, cut, take linear algebra (super) trace}
-\dave{Sounds good, will do this tomorrow.}
-\dave{Still in progress. Will clean up soon.}
-In summary, there is a natural trace defined on the tube category coming from the associated (2+1)-dimensional TQFT.
-Namely, if $t \in \tube^W(\scat)$ is an endomorphism then $\tr(t) = Z(S^1_W \times S^1_B)(\text{cl}_B(t)$. 
+%\kw{Probably should also include a summary (glue, rotate 90 degrees, cut, take linear algebra (super) trace}
+%\dave{Sounds good, will do this tomorrow.}
+%\dave{Still in progress. Will clean up soon.}
+In summary, there is a natural trace defined on the tube category 
+coming from the associated (2+1)-dimensional TQFT.
+Namely, if $t \in \tube^W(\scat)$ is an endomorphism then $\tr(t) = Z(S^1_W \times S^1_B)(\text{cl}_B(t))$. 
 Cutting open the cycle $S^1_W$ results in a string net diagram on the annulus $S^1_B \times I$.
-Denoting the string net on the annuls by $g \in A( S^1_B \times I) $, the TQFT trace $\tr(t)$
- is then given by a matrix (super) trace of the annulus of $g \in \End(\partial A( S^1_B \times I))$ if $W$ is (non-bounding) bounding. 
+Denoting the string net on the annuls by $g \in A( S^1_B \times I) $, the TQFT trace $\tr(t)$ 
+is given by a matrix trace of $g$ viewed as an endomorphism of the disk.
+If $W$ is bounding the trace is the standard matrix trace, while if $W$ is non-bounding we use the super trace.
+%the annulus of $g$ if $W$ is (non-bounding) bounding. 
 
 
 
-Let us summarize the trace descibed in this section. 
-The tube category
+%Let us summarize the trace descibed in this section. 
+%The tube category
 
-\dave{commented out things here that we may want to clean up/include, but is not crucial.
-i.e., we could relate inner product of parent theory to condensed theory.}
+%\dave{commented out things here that we may want to clean up/include, but is not crucial.
+%i.e., we could relate inner product of parent theory to condensed theory.}
 \begin{comment} 
-
+\dave{Note to self: don't delete this, add to scrap notes.}
 If the super pivotal category is derived from a pivotal category $\mcc$ by condensing a fermion,
 then we can write the matrix trace in a particularly simple form. \eqref{trace_formula} can be written as
 \begin{align}
@@ -833,6 +872,7 @@ as we do in proving Theorem \ref{minimal_idempotents_modular_C/psi}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Quantum dimensions}
+\label{Quantum_dimensions}
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -850,7 +890,7 @@ The normalized quantum dimension $d_{e_j}$ is then given by $\tilde d_{e_j}/\til
 For example, in the $C_2$ theory, we can use this approach to obtain $\tilde d_{m_{\unit / \psi}} = 1/2, \tilde d_{m_\sigma^+} = \tilde d_{q_{\unit/\psi}} = 1/\sqrt{2}, \tilde d_{q_\sigma} = 1$. 
 Normalizing so that $d_{m_\unit} = 1$, we obtain the normalized quantum dimensions listed in Table \ref{C2Data}. 
 
-\dave{Could add paragraph about q-type particles having norm $2$?}
+%\dave{Could add paragraph about q-type particles having norm $2$?}
 
 
 We will also need to know how to calculate the total quantum dimension of the theory $\mcd_{\mcc/\psi} = \dim(\mcc/\psi)$.
