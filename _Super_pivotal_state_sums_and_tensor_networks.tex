@@ -25,6 +25,7 @@ Lastly we use the state sum to write down an explicit wave function for the grou
 %so that the fermionic version of the state sum can be written in essentially the same way.
 
 We view the state sum as a composition of linear maps from finite dimensional tensor product spaces, starting with with the ``vacuum" $\cc$. 
+\kw{Still not convinced that this is a valid way to look at it; maybe I will be convinced when I read further.}
 This composition of linear maps can be interpreted as a tensor network, 
 which we investigate in the subsequent sections.
 Those interested in the details of the original construction are referred to \cite{Turaev1992,Barrett1996}, 
@@ -44,7 +45,7 @@ To define these linear maps, we will follow a `cut-and-glue' approach.
 Schematically, this proceeds by cutting up the manifold on which we want to evaluate the state sum into many parts. 
 We assign vector spaces to each of the cut-up pieces and then 
 construct the state sum by gluing these pieces back together with linear maps that are given by performing tensor contractions.
-In order for our formalism to be most amenable to fermionic modifications, we will need to carry out a 
+In order for our formalism to be amenable to fermionic modifications, we will need to carry out a 
 standardization procedure of the cell decomposition of $\mcm$, in much the same way that we 
 performed the standardization procedure to define the lattice Hamiltonian. 
 This is the issue to which we first turn. 
@@ -59,20 +60,34 @@ and continue with the next subsection.
 \subsection{Notation, standardization, and Hilbert spaces}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\kw{Do we need to make it clearer that we are reviewing the bosonic case as a warm-up here?
+I was confused on this point.}
+
 We start with two pieces of data: 
 \begin{itemize}
 \item a spherical fusion category $\mcc$, 
-\item and an oriented 3-manifold $\mcm$ possessing a cell decomposition with transversally oriented 2-cells and oriented 1-cells. 
+\item and an oriented 3-manifold $\mcm$ 
+\kw{I think we should consider changing the to $M$.  We usually use the mathcal letters for categories and plan letters for manifolds.}
+possessing a cell decomposition with transversally oriented 2-cells 
+\kw{We should think about whether a plain (non-transverse) orientation would be more convenient}
+and oriented 1-cells. 
 \end{itemize}
 In what follows, we will assume that $\mcm$ is closed for simplicity. We will drop this 
-assumption when we discuss wavefunctions and the shadow world construction. 
+assumption when we discuss wave functions and the shadow world construction. 
 
-Our first order of business is to fatten the cell decomposition into a handle decomposition, as was done in Section \ref{standardized_handles} (recall that a handle decomposition for an $n+1$-manifold $\mcm$ is built from a series of k-handles, with $k=0,1,\dots,n$, each of which are homeomorphic to $D^{n+1}$). 
+Our first order of business is to fatten the cell decomposition into a handle decomposition, 
+as was done in Section \ref{standardized_handles}.
+Recall that a handle decomposition for a 
+3-manifold $\mcm$ is built from a series of $k$-handles, with $k=0,1,2,3$, each of which is identified with $D^k\times D^{3-k}$). 
 We will often refer to a $k$-cell and its associated $k$-handle with the same letter. 
-The topology of $\mcm$ is built into the attaching regions where different handles are connected, each of which is homeomorphic to $S^k \times D^{n-k}$.
-We are interested in 3-manifolds,
-and hence the attaching regions between between the $(k+1)-$ and $k$-handles are given by
-$S^2 \times D^0$ (3-handles to 2-handles), $S^1 \times D^1$ (2-handles to 1-handles), and $S^{0} \times D^2$ (1-handles to 0-handles).
+The attaching region of a $k$-handle is $S^{k-1} \times D^{3-k}$,
+and the attaching map of a $k$-handle is a homeomorphism from the attaching region to a submanifold of the boundary of the lower-dimensional handles.
+The topology of $\mcm$ is encoded by the various attaching maps.
+%is built into the attaching regions where different handles are connected, each of which is homeomorphic to $S^k \times D^{n-k}$.
+%We are interested in 3-manifolds,
+%and hence the attaching regions between between the $(k+1)-$ and $k$-handles are given by
+%$S^2 \times D^0$ (3-handles to 2-handles), $S^1 \times D^1$ (2-handles to 1-handles), and $S^{0} \times D^2$ (1-handles to 0-handles).
+%%KW k-handles attach to the boundary of the 0, 1, ... k-1 handles, not just the k-1-handles
 Although not necessary, we assume the cell decomposition of $\mcm$ is dual to a triangulation for ease of notation.
 The standardization procedure is similar to the pitchforkization procedure defined in \eqref{pitchfork_basis} and surrounding text.
 
@@ -863,7 +878,7 @@ And standard ordering of the 1-cells is chronological with respect to incoming (
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{The shadow world and ground state wavefunctions}
+\subsection{The shadow world and ground state wave functions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{itemize} 
@@ -871,7 +886,7 @@ And standard ordering of the 1-cells is chronological with respect to incoming (
 \item connection to MPO's/mention tube category/excitations
 \end{itemize} 
 
-In this subsection we define a tensor network that produces the ground state wavefunction of the Hamiltonian defined in \eqref{ham}.
+In this subsection we define a tensor network that produces the ground state wave function of the Hamiltonian defined in \eqref{ham}.
 To do so, we evaluate $Z(\mcm)$ on manifolds of the form $\mcm =\Sigma \times [0,1]$ using the 
 state-sum technology developed in the previous sections\footnote{Historically, this version of the state sum 
 pre-dates TVBW and was first found by Kirillov and Reshetikhin~\cite{Kirillow1989} who coined the term 
@@ -894,7 +909,7 @@ The partition function provides a linear map between the Hilbert spaces at $\Sig
 Z(\Sigma_{0\ra1} ): \; \mch(\Sigma_0) \ra \mch(\Sigma_1).
 \end{align}
 The image of this map is the space of ground states of \eqref{ham}.
-Explicitly, we can prepare wavefunctions out of a fixed input state $v_0\in \mch(\Sigma_0)$ by
+Explicitly, we can prepare wave functions out of a fixed input state $v_0\in \mch(\Sigma_0)$ by
 %\begin{align}
 %
 %\ket{\Psi} = \sum_{ v_1 \in \mch(\Sigma_1)} \ket{v_1} v_1^* \cdot Z(\Sigma_{0\ra1} ) %\cdot v_0.
@@ -906,7 +921,7 @@ where $Z(\Sigma_{0\ra1}; v_0, v_1)$ is the evaluation of the partition function 
 boundary conditions fixed by $v_0$ and $v_1$. 
 Depending on the topology of $\Sigma$ and the input super tensor category, the ground state of the theory 
 will generically be degenerate, with the choice of $v_0$ and $\Sigma_0$ determining which ground state
-the wavefunction is built upon. 
+the wave function is built upon. 
 
 \begin{figure}
 \begin{center}
