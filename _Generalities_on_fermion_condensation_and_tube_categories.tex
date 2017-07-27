@@ -532,8 +532,10 @@ We now recall two facts about TQFTs.
 The first is that we can define a nondegenerate pairing on the predual Hilbert
 space $A(Y; a_1,\ldots,a_k)$, where $Y$ is a spin surface with $k$ disjoint boundary components 
 and the $a_i$ are reflection-invariant labels specifying boundary conditions on each boundary component
-\dave{Can you explain to me what a relection-invariant label is next time we Skype.
-E.g., how come $a_i$ isn't taken to $\bar{a}_i$.}. 
+%\dave{Can you explain to me what a relection-invariant label is next time we Skype.
+%E.g., how come $a_i$ isn't taken to $\bar{a}_i$.}
+%\dave{Thanks!}
+.
 The nondegenerate pairing is defined via
 \be
 	\langle u, v\rangle = Z(Y\times I) (u\cup \bar v) ,
@@ -625,7 +627,8 @@ A \left( \PinchedDisk \scriptstyle{x} \right)  =
 \cc^{0|1} & \text{if $x \cong \psi$ } \\ 
 0 & \text{otherwise} \\
 \end{cases}.
-\end{align} }
+\end{align} 
+Indeed every net configuration on the annulus is isomorphic to one of this form.}
 \kw{shouldn't we remark that this vectos space is zero unless $x \cong \unit$? (assuming $x$ is simple)}
 \dave{I added a note. 
 Also, when I wrote this I was allowing for $x \cong a_1 \tp a_2 \tp \cdots$, and hence the $\mor(\unit \to x)$ can be non-trivial.
@@ -680,28 +683,80 @@ $|v|=0$ and $\langle v,v\rangle/i > 0$ if $|v|=1$. \ethan{this is the usual conv
 \dave{Maybe we should move this to where we talk about reflection structure?}
 \kw{I agree we should say something along these lines.  Probably should be moved above; I'll take care of that later.}
 
-
+\dave{The following is still in progress.}
 \kw{We should include some sample trace calculations.}
-\dave{Yes. Will do the norm of q-type = 2 here. Roughly:}
-We now compute some examples.
-\dave{Confused. I thought $\langle cl(x),cl(x) \rangle$ was the norm of $\text{id}_x$ but that doesn't seem right.
-Will ask next time we Skype.}
+\dave{Examples: }
+We now compute some illustrative examples.
 Denote $\text{cl}_B(x)$ the closure of $x$ on an annulus with bounding spin structure:
 \begin{align}
 \text{cl}_B(x) \; = \; \underset{B}{\clx}
 \end{align}
-Then the norm of 
+Then the norm of $\text{cl}_B(x)$ is
 \begin{align}
-\langle \text{cl}_B(x), \text{cl}_B(x) \rangle = \tr_B \{ \id: \; \mor(\unit \to x \tp x) \ra \mor(\unit \to x \tp x)  \} = 
+\label{clxnorm}
+\langle \text{cl}_B(x), \text{cl}_B(x) \rangle = \tr_B \{ \id: \; \mor(\unit \to x \tp x^{*}) \ra \mor(\unit \to x \tp x^*)  \} = 
 \begin{cases} 
 1 & \text{if $x$ is m-type} \\
 2 & \text{if $x$ is q-type} 
 \end{cases}
 \end{align}
-\dave{Do this for $\text{cl}_N(x)$ to show m-types have to be closed evenly, and q-types oddly.}
+or more more suggestively, $\langle \text{cl}_B(x), \text{cl}_B(x) \rangle = \dim \End(x)$.
+Indeed this calculation is responsible for the denominator in \eqref{XXXX}.
+
+In \eqref{boundingNullVector} we pointed out that $\text{cl}_N(\beta)$ is identically zero. 
+This is true for any q-type idempotent closed up on an annulus. 
+Let $x \in \sob(\scat)$, then 
+\begin{align}
+\langle \text{cl}_N(x),\text{cl}_N(x) \rangle  = \tr_N\{ \id: \; \mor(\unit \to x \tp x^*) \ra  \mor(\unit \to x \tp x^*)  \}
+= \begin{cases} 
+1 & \text{if $x$ is m-type} \\
+0 & \text{if $x$ is q-type} 
+\end{cases}
+\end{align} 
+The last equality follows from $\mor(\unit \to x \tp x^*)  \cong \End(x)$, 
+and that $\tr_N$ is the super trace of the identity map. 
+Thus m-type simple objects will contribute a factor of $1$, while q-types have non-zero odd vectors and the even and odd part contribute with equal weight but opposite sign (due to the super trace) resulting in $1+(-1) = 0$.
+Hence a closed up q-type idempotent on a non-bounding spin structure has norm zero. 
+This provides a nice crosscheck of \eqref{boundingNullVector}.
+Similarly, one can show that $\langle \text{cl}_N(x\cdot \gamma), \text{cl}_N(x\cdot \gamma) \rangle$ 
+is nonzero when $x$ is q-type and gamma is an odd endomorphism.
+
+\dave{Lets also do normalization for closed up idempotents onto the torus.}
+\dave{I am guessing there are many ways to do this calculation, if one of those is simpler and sits in the scope of this section, lets go with that. 
+Otherwise we have the following:}
+A fact that we make use of quite often is that a q-type idempotent of the tube category closed up into a torus has norm $\sqrt{2}$.
+See \eqref{XXXX} for an instance of this.
+Let $x$ be a minimal idempotent of $\tube(\scat)$, and $\text{cl}_W(x)$ be the string net found by closing $x$ onto a torus with spin structure $W$ along the newly closed cycle. 
+For the moment, assume the newly formed torus is bounding.
+The norm squared of $\text{cl}_W(x)$ is
+\begin{align}
+\langle \text{cl}_W(x), \text{cl}_W(x) \rangle = Z(T^2 \times I)(\overline{\text{cl}_W(x)} \sqcup \text{cl}_W(x)) = Z((S^1 \times I)\times S^1_W)(\overline{\text{cl}_W(x)} \sqcup \text{cl}_W(x)).
+\end{align}
+where in the third equality we have re-written the torus in a form where we can readily apply \eqref{bounding_trace} or \eqref{nonbounding_trace} depending on whether $W$ is bounding or non-bounding.
+In this scenerio $Y = S^1 \times I$ is an annulus with spin structure determined by $x$ and the the linear map we need to take a trace of is found by cutting open the cycle $S^1_W$. 
+The linear map is only non-trivial on $\End(x)$.
+As in \eqref{clxnorm}, the $W$ dependent matrix trace will be $\dim \End(x)$ (if $\text{cl}_W(x)$ is nonzero) and so 
+\begin{align}
+\langle \text{cl}_W(x), \text{cl}_W(x) \rangle = \dim \End(x)
+\end{align}
+A similar calculation for the non-bounding torus yields the same answer, however the q-type idempotents need to be closed with an odd endomorphism.
+
+
+
 
 \kw{Probably should also include a summary (glue, rotate 90 degrees, cut, take linear algebra (super) trace}
 \dave{Sounds good, will do this tomorrow.}
+\dave{Still in progress. Will clean up soon.}
+In summary, there is a natural trace defined on the tube category coming from the associated (2+1)-dimensional TQFT.
+Namely, if $t \in \tube^W(\scat)$ is an endomorphism then $\tr(t) = Z(S^1_W \times S^1_B)(\text{cl}_B(t)$. 
+Cutting open the cycle $S^1_W$ results in a string net diagram on the annulus $S^1_B \times I$.
+Denoting the string net on the annuls by $g \in A( S^1_B \times I) $, the TQFT trace $\tr(t)$
+ is then given by a matrix (super) trace of the annulus of $g \in \End(\partial A( S^1_B \times I))$ if $W$ is (non-bounding) bounding. 
+
+
+
+Let us summarize the trace descibed in this section. 
+The tube category
 
 \dave{commented out things here that we may want to clean up/include, but is not crucial.
 i.e., we could relate inner product of parent theory to condensed theory.}
