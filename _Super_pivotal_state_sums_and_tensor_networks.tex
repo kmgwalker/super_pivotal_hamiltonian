@@ -358,13 +358,14 @@ In the next section we present a standardization procedure that allows one to ev
 
 \subsection{Constructing the state sum}
 
-We now define the indicator function $\chi$, 
+We now define the indicator \kw{??} function $\chi$, 
 which pairs the vectors in neighboring dual vector spaces and allows us to compute the state sum. 
 We define
 \begin{align}
 \chi: &\mch^* \tp \mch \ra \cc\\
 & \mu^* \tp \nu \mapsto \delta_{\mu\nu}.
 \end{align}
+\kw{Is this the canonical paring?  If yes, say so; if not, why not?}
 This is essentially the same as the bilinear pairing defined in \eqref{reflection_pairing_defn}, just with a different normalization and Koszul ordering on tensor factors. 
 It is defined on every pair of tensor factors $\mch(\bar{c}_{xy}) \tp \mch( c_{xy})$
 that are assigned 
@@ -400,6 +401,8 @@ weights determined by tensors that we will write down shortly.
 In the case where $\partial \mcm \neq \emptyset$, $\mch(\mcm)$ admits a decomposition as $\mch^*_{bulk} \tp \mch_{bulk} \tp \mch(\partial \mcm)$, where 
 the Hilbert spaces of the degrees of freedom on $\partial \mcm$ lack dual tensor factors appearing in $\mch(\mcm)$. 
 The partition function is still performed with the help of $\chi$, which contracts out the tensor factors in $\mch^*_{bulk} \tp \mch_{bulk}$ but leaves those in $\mch(\partial \mcm)$ uncontracted, producing a wavefucntion supported on $\mch(\partial \mcm)$.
+\kw{We need to distinguish between $A(Y)$ and $Z(Y)$ here and throughout.
+I would say the output is a function from $A(\partial \mcm)$ to $\cc$.}
 
 %\ethan{what follows is commented-out cut-and-glue stuff. Might come back and borrow stuff if we decide to expound on things in that direction}
 \begin{comment}
@@ -512,6 +515,7 @@ Z(\mcm) = \sum_{ \mcl } \prod_{f \in \mcf} T_f(w_f)
 \end{align} 
 where the sum over labelings $\mcl$ is restricted to run only over all admissible labelings $\mcl$. 
 This is the familiar form of the partition function given in \cite{Turaev1992,Barrett1996}.
+\kw{Do we really need to introduce admissible labelings?}
 
 Now we need to define the tensor weights appearing in our expression for the partition function.
 For a 2-cell $f$ with $r$ edges, the 2-cell tensor $T_f(w_f)$ is given by
@@ -540,7 +544,7 @@ basis vectors in $\mch(c_{ev})$ and $\mch(c_{ev'})$, respectively. We then have
 T_e(w_e) = T_e(v_{a_1} \tp v_{a_2} \tp v_{a_3} \tp \mu \tp \nu^*) = \frac{\mcb(\mu \tp P_e(\nu_j^*))}{\mcb(\mu \tp \mu^*) \mcb(\nu \tp \nu^*)},
 \end{align}
 where $\mcb$ is the pairing defined in \eqref{b_pairing_defn} (which differs from $\chi$ only in its normalization). 
-As before, $P_e$ encodes the pivot of the 1-handle $e$ (i.e. to what degree the pitchforks at either 
+As before, $P_e$ encodes the pivot of the 1-handle $e$ (i.e.\ to what degree the pitchforks at either 
 end of $e$ differ by $2\pi/3$ rotations).%, and $P_e(\nu_j)$ is zero unless $\text{id}_{a_{1^* }\tp a_{2^*} \tp a_{3^*}} \circ \nu_j = \nu_j$.
 Since each 1-handle has three edges, there are $2^3 = 8$ possible orientations that the edges of a given 1-handle can have, 
 and hence there are technically $8$ different 1-cell tensors to specify, differing by the presence of either vectors or their duals in the expression for $T_e$ above. 
@@ -623,6 +627,7 @@ which each acquire extra adjectives in the fermionic setting:
 \begin{itemize}
 \item a super pivotal fusion category $\mcc$,
 \item an oriented spin 3-manifold $\mcm$ possessing a given cell decomposition.
+\kw{and orientations of 1- and 2-cells?}
 \end{itemize}
 We will employ the same notation used in the previous section. 
 The vector spaces $E$ and $W$ which are assigned to the attaching regions are again defined in the same way. 
@@ -630,6 +635,9 @@ Note however, that $W$ is a super vector space, while $E$ remains bosonic
 \footnote{A natural choice for the edge vector space is $E'=\oplus_x\End(x)$, which is generically a 
 super vector space, with odd vectors corresponding to q-type edges which host fermionic dots. However, one 
 can always use odd endomorphisms and the fact that each 2-cell inherits a bounding spin structure to displace these odd degrees of freedom to the vertex Hilbert spaces. This procedure results in a simpler (purely bosonic) edge Hilbert space $E$. 
+\kw{I disagree that $E'$ is a natural choice.
+I think there is some misunderstanding here about how the TQFT gluing rules are being used.
+This is problem elsewhere in this section too -- not just this footnote.}
 %\dave{What's the benefit? Or are you just saying that there is none?
 %Also these vector spaces don't have vertices associated with them.}
 %\ethan{I'm saying that I think the natural edge Hilbert space is $E'$, which is super, as opposed to $E$, which isn't. We can still use $E$, but I wanted to explain why.}
