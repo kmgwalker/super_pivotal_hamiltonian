@@ -554,44 +554,59 @@ Physically it is responsible for the dynamics of net configurations which reside
 It is designed so that the amplitude of a net configuration is given by the evaluation of that net in the fusion category.
 Using the definition of the $\omega$ loop, we can write $B_p$ as 
 \begin{align} \label{plaquette_term_defn}
-B_p =\frac{1}{\mcd} \sum_{a \in \mcc} \frac{d_a}{\text{dim} \; \text{End}(a)} B^a_p, 
+B_p =\frac{1}{\mcd^2} \sum_{a \in \mcc} \frac{d_a}{\text{dim} \; \text{End}(a)} B^a_p, 
 \end{align}
-where the operator $B_p^a$ fuses in a loop labeled by $a$ into the plaquette $p$ (note that 
+where the operator $B_p^a$ fuses a loop labeled $a$ into the edges and vertices neighboring the plaquette $p$ (note that 
 as discussed earlier, the operator $B_p^a$ is only defined when all vertices and edges neighboring the plaquette $p$ satisfy the corresponding vertex and edge terms).
 
 The matrix elements of $B_p^a$ depend on the choice of cell decomposition and pitchforkization procedure. 
-For a generic cell decomposition it is somewhat tedious to write down these matrix elements, although the procedure is straightforward. 
+For a generic cell decomposition it is somewhat tedious to write down these matrix elements, 
+although the procedure is straightforward. 
 To expedite this process we apply yet another standardization procedure.
-Suppose we are given a plaquette $p$ with $n$ neighboring labeled from $1, \cdots, n$ in a counterclockwise fashion with respect to the orientation of $\Sigma$ (see Figure \ref{XXXX}).
-The Hilbert space associated to $p$  is the subspace of
+Suppose we are given a plaquette $p$ with $n$ neighboring vertices labeled from $1, \cdots, n$ in a counterclockwise fashion with respect to the orientation of $\Sigma$, see Figure \ref{HexagonCell}.
+\begin{figure}
+\begin{center}
+\begin{align}
+\nonumber 
+{\HexPlaquette} \quad \quad \quad
+{\HexPlaquetteStretched}
+\end{align}
+\caption{\label{HexagonCell}
+On the left we have single 2-cell along with its neighboring edges and vertices.
+Tiling the this 2-cell results in a honeycomb latter.
+Each vertex has been standardized in to a pitchfork.
+On the right we have stretched out the 2-cell in preparation for applying the plaquette operator.
+}
+\end{center}
+\end{figure}
+The Hilbert space associated to the plaquette $p$ is the subspace of
 \begin{align}
 \mch_p = \mch_{v_1} \tp \mch_{v_2} \tp \cdots \tp \mch_{v_n}
 \end{align}
 which satisfies the vertex and edge terms. 
 Diagrammatically, 
-states in this space take the form
-\begin{align}
-\text{insert digram corresponding to figure stretched into a line}.
-\end{align}
+states in this space take the form of the figure on the right hand side of \ref{HexagonCell}.
 It is useful to apply a number of pivots to vectors in $\mch_p$ so that the vector space takes on a standard form which will facilitate the application of $B_p^a$.
 Define the operator $R_p$ by
 \begin{align}
-R_p: \; \mch_p \ra \bigoplus_{\{ x_i, z_i \} } V^{x_n^* x_1 z_1} \tp V^{x_1^* x_2 z_2} \tp \cdots \tp V^{x_{n-1}^* x_n z_n}
+R_p: \; \mch_p \ra \bigoplus_{\{ x_i, z_i \} } V^{x_n^* x_1^* z_1^*} \tp V^{x_1 x_2 z_2} \tp \cdots \tp V^{x_{n-1} x_n z_n}
 \end{align} 
 which can be explicitly written as 
 \begin{align}
 R_p = P_1 \tp P_2 \tp \cdots \tp P_n
 \end{align}
-with each $P_j = \bigoplus_{abc} (P^{abc} )^{l_j}$ defined in \eqref{Pitchfork_pivot} and with $l_j = 0,1,2$ controlling the angle by which the $j$th vertex is pivoted.
-Diagrammatically, a vector in the image of $R_p$ takes the form
+with each $P_j = \bigoplus_{abc} (P^{abc} )^{l_j}$ defined in \eqref{Pitchfork_pivot} and with $l_j = 0,1,2$ controlling the angle by which the $j$th vertex is pivoted (if the edges aren't all oriented out of the vertex then the appropriate object in $P^{abc}$ needs to be replaced by its dual).
+We choose the pivots so that a vector in the image of $R_p$ takes the form
 \begin{align} 
 \label{plaquett_std_basis}
 \Plaquettea
 \end{align}
-We will write down the matrix elements of $B_p^a$ in this basis, which we call the {\em standardized} basis for the plaquette $p$.
+We now write down the matrix elements of $B_p^a$ in this basis, 
+which we call the {\em standardized} basis for the plaquette $p$.
 We choose a ordering which increases from left to right. 
+As with \eqref{pitchfork_basis} if some of the edges have a different orientation then the object is replaced by its dual.
 
-\dave{I need to double check all these.}
+The following is identical to the standard Levin-Wen plaquette term written in the notation of Section \ref{def_sect}.
 To find the action of $B_p^a$ in the standardized basis of \eqref{plaquett_std_basis}
 we first insert a closed strand labeled $a$ into the interior of $p$:
 \begin{align}
@@ -599,7 +614,6 @@ we first insert a closed strand labeled $a$ into the interior of $p$:
 \end{align}
 Next we apply the associator 
 Next, we begin fusing the strand into the plaquette using the resolution of the identity \eqref{idpitchfork}, which gives the picture
-\dave{Change $\sigma$ to $\sigma_0$}
 \begin{align}
 \label{plaquette_first_F_move}
 \sum_{y_6, \sigma_0} \frac{d_{y_6}}{B(\sigma_0^* \tp \sigma_0)}\Plaquettec
@@ -611,29 +625,33 @@ Next we use the associator \eqref{PitchforkFMove} to pull the $a$ string over $x
 \end{align} 
 It will be helpful to use the short hand $(F)_{(\sigma_0 \mu_1) ( \sigma_1 \nu_1)}$ for $(F^{y_6^*a x_1^*z_1^*} )_{(x_6; \sigma \mu_1); (y_1; \sigma_1 \nu_1)}$, which is well defined so long as $\sigma_0,\mu_1, \sigma_1, \nu_1$ are defined, 
 which will be clear from context.
-We repeat this procedure until we are left with,
+We keep applying F-moves until we are left with,
 \begin{align}
- &\sum_{....}(-1)^{|\sigma_0| |\mu_1|}F_{(\sigma_0 \mu_1)(\sigma_1 \nu_1)} 
+ &\sum_{\substack{\nu_1 \cdots \nu_6 \\ \sigma_1 \cdots \sigma_6}}(-1)^{|\sigma_0| |\mu_1|}F_{(\sigma_0 \mu_1)(\sigma_1 \nu_1)} 
  (-1)^{|\sigma_1| |\mu_2|}F_{(\sigma_1 \mu_2)(\sigma_2 \nu_2)} \cdots 
  (-1)^{|\sigma_5| |\mu_6|}F_{(\sigma_5 \mu_6)(\sigma_6 \nu_6)} 
   \times \\
  &\times \Plaquettee
 \end{align} 
-\dave{Maybe change definition of pitchfork $F$ to get rid of all the Koszul signs here.}
 We note that the sign ordering is increasing from left to right.
 We now perform one last isotopy and remove the ``bubble": 
+\dave{Need to double check this, but should be OK.}
 \begin{align}
 &\Plaquettee =\\ 
+&\nonumber \\
 &=\Plaquettef \\ 
+&\nonumber \\
 & = (-1)^{|\sigma_6|} (-1)^{|\sigma_6| ( |\sigma_0|+|\nu_1| + \cdots+ |\nu_6|)}\frac{B(\sigma_6 \tp \sigma_0^*)}{d_{y_6}} \times \\
 &\times \Plaquetteg
 \end{align}
 The pairing guarenties that $\sigma_6$ is dual to $\sigma_0^*$ and the fraction cancells the intial one introduced in \eqref{plaquette_first_F_move}.
-Noting that $|\sigma_6| = |\sigma_0|$ and $|\nu_1| + \cdots |\nu_6| = 0 \text{ mod } 2$ we have,
+Noting that $|\sigma_6| = |\sigma_0|$ we have,
 \begin{align}
-[B_p^a]_{(\mu_1 \cdots \mu_6)(\nu_1 \cdots \nu_6)} =  \frac{1}{\mcd^2} \frac{d_a}{\dim \End(a)} \sum_{\sigma_1 \cdots \sigma_6} 
+\nonumber
+[B_p^a]_{(\mu_1 \cdots \mu_6)(\nu_1 \cdots \nu_6)} =  \frac{1}{\mcd^2} \frac{d_a}{\dim \End(a)} \sum_{\sigma_1 \cdots \sigma_6} &
 (-1)^{|\sigma_6| |\mu_1|}F_{(\sigma_6^* \mu_1)(\sigma_1 \nu_1)}  \cdots 
-(-1)^{|\sigma_5| |\mu_6|}F_{(\sigma_5 \mu_6)(\sigma_6 \nu_6)} 
+(-1)^{|\sigma_5| |\mu_6|}F_{(\sigma_5 \mu_6)(\sigma_6 \nu_6)} \times \\
+& \times (-1)^{|\sigma_6| (|\nu_1| + \cdots+ |\nu_6|)}
 \end{align} 
 %\dave{Could refer to Kitaev chain section here.
 %Fun fact (though probably not for this paper): 
@@ -654,11 +672,13 @@ and so the order in which we do this is inesssential.
 %With the ``pitchfork'' conventions adopted in this section, the graphical presentation of the $F$ moves is
 %slightly different than the standard way they are presented in the literature.
 
+\dave{Made it to here. 
+Taking a short break, will come back to this paragraph.}
 
 Before moving on, we briefly mention a
 more general and high-level way of describing the plaquette term in terms of the tube category.
 From \eqref{plaquette_term_defn}, we see that the plaquette operator acts to insert a 
-weighted superposition of all closed loops labeled by simple objects in the input super fusion 
+weighted superposition of all closed loops labeled by simple objects in the input super pivotal 
 category $\mcc$.
 This corresponds exactly to the trivial idempotent in the tube algebra for the theory, 
 which is a weighted superposition of all tubes that have zero charge (so that their 
@@ -667,7 +687,8 @@ This means that $B_p$ implements the action of the trivial idempotent in the tub
 \begin{align}
 B_{p} = e_{\unit\unit}(p),
 \end{align}
-\dave{I'm confused by the RHS.}
+\dave{I'm confused by the RHS.
+Maybe we should call it $e_0$.}
 where $e_{\unit\unit,p}\in\tube(\mcc)$ denotes the trivial idempotent in the tube algebra applied
 to the plaquette $p$ (see \eqref{Bosonic_twostrand_idempotent} for the definition of $e_{\unit\unit}$). %\ethan{technically the \eqref is for the bosonic case, but I think it's the clearest equation to reference since the presentation in the condensed theory is similar. There might be a better \eqref though}
 From this presentation, we see that $B_p$ projects onto plaquettes that host no quasiparticle excitations\footnote{Recall that in 
