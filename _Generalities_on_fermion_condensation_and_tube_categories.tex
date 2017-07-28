@@ -462,7 +462,7 @@ which follows can be understood without using terms like ``excitation'' and ``Ha
 
 \kw{Some rewrites below; D and E should review.}
 
-Recall that a trace on a super linear category $C$
+Recall that a trace on a super linear category $\scat$
 \dave{Was the $C$ on purpose or should we use $\mcc$ instead?} 
 \kw{I have no strong feelings about the letter we use.
 Maybe $\mct$ instead of $\mcc$ since we have the tube category in mind.}
@@ -479,6 +479,7 @@ For this reason, I lean against using $\mcc$.
 Are there any objections to $\mct$?}
 \dave{No objections on my end.
 }
+\ethan{Works for me as well}
 is an even linear function from endomorphisms to $\cc$, satisfying
 \be  \label{trace_cycle_rel}
 %	\tr(fg) = (-1)^{|f||g|} \tr(gf) ,
@@ -574,7 +575,7 @@ any choice of cutting curves and any choice of $c'$ will yield the same answer o
 \medskip
 We now apply the above to the case where $Y$ is an annulus to obtain a nondegenerate trace on the tube category.
 %\kw{Take it from here, Dave.}
-Letting $t \in \tube^W(\mcc)$ and writing $\tr(t)$ for the trace of $t$, we can use \eqref{trace_to_innerproduct} to write
+Letting $t \in \tube^W(\scat)$ and writing $\tr(t)$ for the trace of $t$, we can use \eqref{trace_to_innerproduct} to write
 %\dave{I was thinking we could save $\tr_W(....)$ for traces of matrices i.e., $\tr$ and $\str$ of a matrix for $W = B$ or $W= N$. 
 %Then reserve plain old $\tr$ for \eqref{trace_to_innerproduct}. 
 %So that the LHS of \eqref{trace_formula} is just $\tr(t)$.}
@@ -690,23 +691,27 @@ Denote $\text{cl}_B(x)$ the closure of $x \in \sob(\scat)$ on an annulus with bo
 \end{align}
 The the norm squared of $\text{cl}_B(x)$ is
 \begin{align}
-\label{clxnorm}
-\langle \text{cl}_B(x), \text{cl}_B(x) \rangle = \tr_B \{ \id: \; \mor(\unit \to x \tp x^{*}) \ra \mor(\unit \to x \tp x^*)  \} = 
+\langle \text{cl}_B(x), \text{cl}_B(x) \rangle = \tr_B \{ \id: \; \mor(\unit \to x \tp x^{*}) \ra \mor(\unit \to x \tp x^*)  \} .
+\end{align}
+Since $\mor(\unit\ra x\tp x^*) \cong \mor(x\ra x) \cong \End(x)$, we get
+ \begin{align}
+ \label{clxnorm}
+ \langle \text{cl}_B(x), \text{cl}_B(x) \rangle = \dim \End(x) = 
 \begin{cases} 
 1 & \text{if $x$ is m-type} \\
 2 & \text{if $x$ is q-type} 
 \end{cases}
 \end{align}
-or in a more more suggestive notation: $\langle \text{cl}_B(x), \text{cl}_B(x) \rangle = \dim \End(x)$.
-The total dimension $\mcd^2$ is given by $ \langle S^2_\phi, S^2_\phi \rangle$, the inner product of the 2-sphere (empty boundary conditions) with itself.
+The total squared dimension $\mcd^2$ of the theory is given by $ \langle S^2_\phi, S^2_\phi \rangle$, the inner product of the 2-sphere with (empty boundary conditions) with itself.
 The axioms of TQFT imply
 \begin{align}
-\langle S^2_\phi, S^2_\phi \rangle = Z(S^2 \times I)(S^2_\phi \cup \overline{S^2_\phi}) = \sum_{x \in \sob(\scat)} \frac{Z(D^3, \text{cl}(x)) Z(D^3, \overline{\text{cl}(x)}) }{\langle  \text{cl}_B(x), \text{cl}_B(x) \rangle}.
+\langle S^2_\phi, S^2_\phi \rangle = Z(S^2 \times I)(S^2_\phi \cup \overline{S^2_\phi}) = \sum_{x \in \sob(\scat)} \frac{Z(D^3, \text{cl}(x)) Z(D^3, \overline{\text{cl}(x)}) }{\langle  \text{cl}_B(x), \text{cl}_B(x) \rangle},
 \end{align}
-The 3-ball with a single closed up $x$ strand has partition function $Z(D^3, \overline{\text{cl}(x)}) = d_x$. 
-Hence the total dimension is given by,
+where $D^3$ is the 3-ball. 
+A 3-ball containing a single closed up $x$ strand has partition function $Z(D^3, \overline{\text{cl}(x)}) = d_x$ by definition of the quantum dimension. 
+Hence the total squared dimension is given by
 \begin{align}
-\mcd^2 = \sum_x \frac{d_x^2}{\dim \End(x)}
+\mcd^2 = \sum_x \frac{d_x^2}{\dim \End(x)}.
 \end{align} 
 An alternative derivation inspired by fermion condensation is given in Section \ref{Quantum_dimensions}.
 %Indeed this calculation is responsible for the denominator in \eqref{XXXX}.
