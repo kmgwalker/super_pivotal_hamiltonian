@@ -12,13 +12,14 @@
 
 In this section we will write down a commuting projector Hamiltonian 
 for a generic fermionic topological phase. 
-Since our goal in this section is to be rather general, we will put a fair amount of effort into making our construction mathematically precise---readers who are only interested in the final result may skip to \ref{terms_in_Hamiltonian}. 
+Since our goal in this section is to be rather general, we will put a fair amount of effort into making our construction 
+mathematically precise -- readers who are only interested in the final result may skip to \ref{terms_in_Hamiltonian}. 
 
  \begin{figure}
 \begin{center}
   \includegraphics{sample_lattice.pdf}
  \caption{A cartoon of the support of the operators appearing in a super pivotal Hamiltonian on a section of a generic graph. 
-The motivation for the bizarre-looking vertices is explained in Section \ref{standardized_handles}.
+The motivation for the strange-looking vertices is explained in Section \ref{standardized_handles}.
 Dashed ellipses indicate the support of various terms in the Hamiltonian, on edges $e,e'$ and a plaquette $p$.
 The vertex terms $A_e$ act on edges and project onto states with edge colorings that are consistent between adjacent vertices. 
 The edge terms $D_e$ are responsible for sliding fermions along q-type edges. 
@@ -41,7 +42,7 @@ that host q-type strings.
 To begin the construction of the lattice model, we will thus need the following data:
 \begin{enumerate}
 \item a super pivotal fusion category ${\cal C}$,
-\item an oriented spin surface $\Sigma$ 
+\item a spin surface $\Sigma$,
 \item and a graph $\mcg$ embedded in $\Sigma$ (more precisely, a cell decomposition of $\Sigma$) which inherits information about the spin structure.
 \end{enumerate}
 In the following subsections we define the Hamiltonian explicitly in terms of the above data.
@@ -58,12 +59,15 @@ In the following subsections we define the Hamiltonian explicitly in terms of th
 We will write a frustration-free Hamiltonian as a sum of local projectors, which fall into
 three classes.
 Two of these classes of projector are the fermionic analogues of the plaquette and vertex terms from the usual string-net Hamiltonian, 
+\kw{should we cal it the Levin-Wen Hamiltonian, at least initially?  your call.}
 while the third is an edge term which allows fermions to fluctuate across edges hosting q-type strings.
 The Hamiltonian takes the form
 \begin{align} \label{ham}
 H = \lambda_p \sum_{p \in \mcf} (1-B_p) + \lambda_e \sum_{e \in E} (1-D_e) + \lambda_v \sum_{v \in V} (1-A_v),
 \end{align}
-where the sums are over the plaquettes (faces) $\mcf$, edges $\mce$, and vertices $\mcv$ of the graph, %\ethan{we used mathcal stuff in the state-sum section, so I mathcalized the things to be consistent}
+\kw{I think there is some inconsistency about vertex terms; see nearby figure}
+where the sums are over the plaquettes (faces) $\mcf$, edges $\mce$, and vertices $\mcv$ of the graph, 
+%\ethan{we used mathcal stuff in the state-sum section, so I mathcalized the things to be consistent}
 respectively, and the $\lambda_p,\lambda_e,\lambda_v$ are positive constants.
 %We require a hierarchy in the couplings, $\lambda_p \ll \lambda_e \ll \lambda_v$,
 %which ensures that the low energy spectrum can be characterized by simple objects in $\mcz(\mathcal{C})$.
@@ -82,7 +86,7 @@ plaquette that host the charge degrees of freedom, as in \cite{hu2015}.}.
 %Ethan are you familiar with that paper? Or do you know if there are other appropriate references.}
 %\kw{We should add a remark along the lines of Dave's suggestion.}
 This is because the operators appearing in the plaquette terms are not well-defined unless the edge term energies are minimized, and in turn the terms appearing in the edge operators are not well-defined unless the vertex term energies are minimized.
-Thus, the projectors associated with $k$-handles are only defined on the ground states of the projectors associated with $l$-handles, for all $l<k$.  
+Thus, the projectors associated with $k$-cells are only defined on the ground states of the projectors associated with $l$-cells, for all $l<k$.  
 %\kw{maybe insert a caveat about later projectors only being defined on the ground state of earlier projectors}
 %\ethan{I had a comment along these lines at a later point; moved it here instead}
 %\dave{I changed ``commuting projector" to ``frustration free" above. 
@@ -103,7 +107,10 @@ the big Hilbert space on which the Hamiltonian is defined is
 \begin{align}	\label{GraphHilbertSpace}
  \mch_\mcg =\bigotimes_{v \in \mcv} \mch_v  = \mch_{v_1} \tp \mch_{v_{2}} \tp \dots \tp \mch_{v_n} .
 \end{align}
-The tensor products above are supercommutative, in the sense that for $\psi\in \mch_{v_i},\eta\in \mch_{v_{i+1}}$, $\psi \tp \eta = (-1)^{|\psi||\eta|}\eta\tp\psi \in \mch_{v_{i+1}} \tp \mch_{v_i}$. 
+The tensor products above are supercommutative, 
+\kw{supercommutative is not the right adjective here; we need to find all other places in the paper where ``supercommutative" is used this way.
+Probably we should use the unordered tensor product (which incorporates Koszul signs).}
+in the sense that for $\psi\in \mch_{v_i},\eta\in \mch_{v_{i+1}}$, $\psi \tp \eta = (-1)^{|\psi||\eta|}\eta\tp\psi \in \mch_{v_{i+1}} \tp \mch_{v_i}$. 
 
 The vertex Hilbert spaces $\mch_{v_n}$ will depend on three sets of choices.
 First, we must choose an orientation of each edge of $\mcg$.
@@ -111,6 +118,7 @@ This is because of the possibility of non-trivial Frobenius-Schur indicators; se
 Second, we must choose an ordering of the edges incident to each vertex, consistent with with the intrinsic cyclic ordering of those edges
 coming from the embedding of $\mcg$ in the oriented surface
 (so if the vertex is $r$-valent, there are $r$ possible orderings).
+Finally, we must choose a spin framing at each vertex.
 
 In order to make the choice of cyclic ordering manifest in diagrams, and in order to simplify spin-structure-related
 aspects of our construction, we will choose to draw our graphs in a way such that all of the outgoing 
@@ -120,10 +128,11 @@ and in the earlier sections of this paper, where vertices are drawn with one ``i
 We will choose a convention in which all three edges at each trivalent vertex are outgoing: with this
 choice, each vertex resembles a pitchfork. 
 The cyclic ordering of the edges at a given vertex is determined by the left-to-right ordering of the pitchfork legs. 
+\kw{We need to somehow make it clear that incoming/outgoing is independent of the orientation of the edges incident to the vertex.}
 
-Finally, we must choose a spin framing at each vertex, consistent with the ``pitchforkization'' convention.
+We must also choose a spin framing at each vertex, consistent with the ``pitchforkization'' convention.
 The pitchforkization and spin framing are needed in order to define an unambiguous
-isomorphism between string nets near $v$ is standard vector spaces $V^{abc}$.
+isomorphism between local degrees of freedom at $v$ is standard vector spaces $V^{abc}$.
 Without this standardization, the local Hilbert spaces would be ambiguous up to automorphisms. 
 The standardization procedure is nothing more than fixing a convenient choice of gauge in the way we present our fusion diagrams. 
 
@@ -132,7 +141,8 @@ If all the edges incident to a vertex $v$ point out of the vertex, we define the
 	\mch_v = \bigoplus_{a,b,c} V^{abc}  \quad\quad\quad\quad\quad\quad \PitchFork{a}{b}{c}{},
 	\label{pitchfork_basis}
 \ee
-where the sum is over the simple objects of $\mcc$\footnote{We choose our favorite complete set of representatives of isomorphism classes of simple objects $\sob(\mcc)$ at the outset and keep it fixed throughout, abusing notation slightly by writing $\mcc$ for $\sob(\mcc)$.}.
+where the sum is over the simple objects of $\mcc$\footnote{We choose our favorite complete set of representatives of isomorphism classes of simple objects $\sob(\mcc)$ at the outset and keep it fixed throughout, abusing notation slightly by writing $\mcc$ for $\sob(\mcc)$.
+\kw{I don't see where we are abusing notation like this}}.
 If the first edge points in and the other two point out, then we define
 \be
 	\mch_v = \bigoplus_{a,b,c} V^{a^*bc}  \quad\quad\quad\quad\quad\quad \PitchForkas{a}{b}{c}{} =  \PitchFork{a^*}{b}{c}{},
@@ -180,7 +190,8 @@ Keeping track of these odd vector spaces would entail even more bookkeeping.
 
 Overall, we think the least annoying solution to the above problems is to orient each edge of the graph.
 This allows us to treat $a$ and $a^*$ as distinct objects, even when they happen to be isomorphic.
-Now, instead of $V_{aa}$, we have $V_{aa^*} \cong \End(a)$, which has a canonical element $id: a\to a$.
+Now, instead of $V_{aa}$, we have $V_{aa^*} \cong \End(a)$, which has a canonical element $id: a\to a$,
+even when Frobenius-Schur indicators are nontrivial.
 
 Why the pitchforks? As alluded to earlier, rotations by $2\pi/3$ can act non-trivially on $V^{aaa}$, and so it is helpful to choose a vertex configuration where every outgoing edge is placed on the same footing. 
 This is true even in the bosonic case.
@@ -222,7 +233,9 @@ A handle decomposition is essentially a fattened version of a graph; see Fig.~\r
 \begin{figure}
   \includegraphics{HandleDecomposition.pdf}
   \caption{A handle decomposition obtained from the graph on the far left.
-  The $0$ handles (green disks) are neighborhoods of the vertices, the $1$-handles (purple strips) are neighborhoods of the edges, and the $2$ handles (orange polygons) which are the compliment of the union of the $0$- and $1$-handles.}
+  The $0$ handles (green disks) are neighborhoods of the vertices, the $1$-handles (purple strips) are neighborhoods of the edges, 
+  \kw{purple 1-handles should not intersect the 0-handles except at their boundary; need to shrink them a bit.}
+  and the $2$ handles (orange polygons) which are the compliment of the union of the $0$- and $1$-handles.}
   \label{HandleDecomposition}
 \end{figure}
 The handle decomposition can be obtained by expanding each vertex of the graph into a disk ($0$-handle) and each edge into
@@ -235,7 +248,8 @@ These choices are analogous to choosing a gauge -- different choices lead to iso
 
 
 The choices of pitchforkization and spin framing are equivalent to choosing a spin diffeomorphism from a 0-handle to a standard model for a 0-handle.
-We define a spin diffeomorphism $\varphi_v$ from a generic 0-handle $v$ to a disk in $\rr^2$ with its standard spin structure, so that the attaching regions for the 1-handles terminating on $v$ are all located on the top part of the disk\footnote{Note that there is a large degree of gauge freedom in this construction, realized by performing $2\pi$ rotations of the fermion framing (spin flips) on the spin diffeomorphisms $\varphi_v$.}. 
+We define a spin diffeomorphism $\varphi_v$ from a generic 0-handle $v$ to a disk in $\rr^2$ with its standard spin structure, so that the attaching regions for the 1-handles terminating on $v$ are all located on the top part of the disk. 
+%\footnote{Note that there is a large degree of gauge freedom in this construction, realized by performing $2\pi$ rotations of the fermion framing (spin flips) on the spin diffeomorphisms $\varphi_v$.}
 That is, we use the spin diffeomorphisms to turn each 0-handle into a ``standardized 0-handle'', where the configuration of the 1-handles terminating on each 0-handle means that that each 0-handle looks like a pitchfork.
 The spin diffeomorphism $\varphi_v$ that maps a generic 0-cell $v$ to a standardized 0-cell (thereby implementing the pitchforkization procedure) is defined pictorially by
 \dave{Will add `directions' to each edge.}
@@ -281,7 +295,7 @@ The blue arrows at the ends of the edge indicate the fixed framing at each 0-han
 
 Once we have chosen coordinates at each vertex, we can associate a spin rotation of $+\pi$ or
 $-\pi$ to each 1-handle.
-First, we choose a standard spin framing at the incoming side (remember that each edge is directed) of the 1-handle.
+First, we choose a standard spin framing at the incoming side (recall that each edge is directed) of the 1-handle.
 A standard choice exists because we have chosen a standard spin framing for the 0-handle at the incoming end of the 1-handle. 
 We then parallel transport the spin framing along the 1-handle, keeping the first basis vector of the spin framing tangent to 
 the core of
@@ -362,12 +376,17 @@ $\Gamma_2$ and $\Gamma_3$ are defined similarly,
 %\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma2def.pdf}}}},
 %\quad
 %\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma3def.pdf}}}},\quad
-	\ee
+\ee
+\kw{We could move this to the definition section, and if we do that then we could keep it here too or delete it here.}
 Since only q-type particles can host fermionic dots, we set $\Gamma_i=0$ unless the $i$th leg is colored by a q-type object. 
-The $\Gamma_i$ are all odd matrices, meaning that they act as $\sigma^x$ on the fermion parity grading in a representation where $(-1)^F$ acts as $\sigma_z$.
-For more complicated theories, they will also act nontrivially on the multiplicity degrees of freedom by the action of 
-some unitary matrix (e.g.\ equation \eqref{esixdotslide} for the $\halfesix$ theory). 
+\kw{Would it be better to say that $\Gamma_i$ is only defined with the $i$-th slot is q-type?}
+The $\Gamma_i$ are all odd matrices, reversing fermion parity.
+%%KW the remark about sigma^x seems confusing and unnecessary to me.
+%The $\Gamma_i$ are all odd matrices, meaning that they act as $\sigma^x$ on the fermion parity grading in a representation where $(-1)^F$ acts as $\sigma_z$.
+%For more complicated theories, they will also act nontrivially on the multiplicity degrees of freedom by the action of 
+%some unitary matrix (e.g.\ equation \eqref{esixdotslide} for the $\halfesix$ theory). 
 
+\kw{I think we should drop this paragraph.}
 The matrix elements of the $\Gamma_i$ matrices for a fixed coloring $a,b,c$
 of the legs of a given vertex can be written in terms of evaluated diagrams 
 by using the inner product \eqref{reflection_pairing_defn} on pitchforks, which allows us to evaluate 
@@ -380,6 +399,7 @@ $\mcb(\eta\tp\psi^*)\propto\delta_{\eta,\psi}$, we can write
 %\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{gamma1_matrix_elements.pdf}}}}, \ee
 and similarly for $\Gamma_2$ and $\Gamma_3$. 
 
+\kw{Is this observation necessary?}
 It is easy to check that when they are non-zero (i.e.\ when they act on q-type edges), the $\Gamma_i$ operators obey the anti-commutation relations 
 \be \{ \Gamma_i , \Gamma_j \} = 2\lambda \delta_{ij},\ee
 which are the defining relations for the representations of complex Clifford algebras, and where as before, $\lambda=\pm i$ is the phase picked up when removing a pair of dots from a q-type object worldline. 
