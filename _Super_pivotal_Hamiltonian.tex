@@ -58,14 +58,23 @@ In the following subsections we define the Hamiltonian explicitly in terms of th
 
 We will write a frustration-free Hamiltonian as a sum of local projectors, which fall into
 three classes.
-Two of these classes of projector are the fermionic analogues of the plaquette and vertex terms from the usual string-net Hamiltonian, 
+Two of these classes of projector are the fermionic analogues of the plaquette and vertex terms from the usual Levin-Wen Hamiltonian, 
 \kw{should we cal it the Levin-Wen Hamiltonian, at least initially?  your call.}
+\dave{Lets call it the Levin-Wen Hamiltonian.
+I changed it.}
 while the third is an edge term which allows fermions to fluctuate across edges hosting q-type strings.
 The Hamiltonian takes the form
 \begin{align} \label{ham}
 H = \lambda_p \sum_{p \in \mcf} (1-B_p) + \lambda_e \sum_{e \in E} (1-D_e) + \lambda_v \sum_{v \in V} (1-A_v),
 \end{align}
 \kw{I think there is some inconsistency about vertex terms; see nearby figure}
+\dave{Yes, definitely. 
+A very annoying issue. 
+One option is to keep it as $\sum_v A_v$ but have it supported on $v$ and all neighbouring vertices. 
+This has the benefiet of the vertex term being labeled by the vertices.
+Alternatively we could write it as $\sum_e A_e$, but this is somewhat displeasing. 
+Lets think if there is a comprimise between the two situations where we can (honestly) label the vertex term $A_v$.
+}
 where the sums are over the plaquettes (faces) $\mcf$, edges $\mce$, and vertices $\mcv$ of the graph, 
 %\ethan{we used mathcal stuff in the state-sum section, so I mathcalized the things to be consistent}
 respectively, and the $\lambda_p,\lambda_e,\lambda_v$ are positive constants.
@@ -105,12 +114,19 @@ Such cell decompositions are Poincar\'e dual to triangulations.}.
 We will locate all all degrees of freedom (spins) at the vertices of the graph $\mcg$, so
 the big Hilbert space on which the Hamiltonian is defined is
 \begin{align}	\label{GraphHilbertSpace}
- \mch_\mcg =\bigotimes_{v \in \mcv} \mch_v  = \mch_{v_1} \tp \mch_{v_{2}} \tp \dots \tp \mch_{v_n} .
+ \mch_\mcg =\bigotimes_{v \in \mcv} \mch_v.  %= \mch_{v_1} \tp \mch_{v_{2}} \tp \dots \tp \mch_{v_n} .
 \end{align}
-The tensor products above are supercommutative, 
+We are making use of the unordered tensor product defined in Section \ref{koszul_signs}.
+%The tensor products above are supercommutative, 
 \kw{supercommutative is not the right adjective here; we need to find all other places in the paper where ``supercommutative" is used this way.
-Probably we should use the unordered tensor product (which incorporates Koszul signs).}
-in the sense that for $\psi\in \mch_{v_i},\eta\in \mch_{v_{i+1}}$, $\psi \tp \eta = (-1)^{|\psi||\eta|}\eta\tp\psi \in \mch_{v_{i+1}} \tp \mch_{v_i}$. 
+Probably we should use the unordered tensor product (which incorporates Koszul signs).\dave{Agreed, modified.}}
+\dave{
+The other places we use supercommute are the introduction, 
+and the appendix on basic facts about super algebras.
+The context is `tensor product of morphisms supercommute' (maybe should be changed to `super interchange law') and 
+`elements of an algebra can super commute' (I think this is the correct context).
+}
+%in the sense that for $\psi\in \mch_{v_i},\eta\in \mch_{v_{i+1}}$, $\psi \tp \eta = (-1)^{|\psi||\eta|}\eta\tp\psi \in \mch_{v_{i+1}} \tp \mch_{v_i}$. 
 
 The vertex Hilbert spaces $\mch_{v_n}$ will depend on three sets of choices.
 First, we must choose an orientation of each edge of $\mcg$.
@@ -123,7 +139,7 @@ Finally, we must choose a spin framing at each vertex.
 In order to make the choice of cyclic ordering manifest in diagrams, and in order to simplify spin-structure-related
 aspects of our construction, we will choose to draw our graphs in a way such that all of the outgoing 
 edges at each trivalent vertex are ``on the same footing''. This is in contrast to the conventions in the physics literature
-and in the earlier sections of this paper, where vertices are drawn with one ``incoming'' edges and two 
+and in the earlier sections of this paper, where vertices are drawn with one ``incoming'' edge and two 
 ``outgoing'' edges, since in this convention the incoming edge is distinguished from the two outgoing edges.
 We will choose a convention in which all three edges at each trivalent vertex are outgoing: with this
 choice, each vertex resembles a pitchfork. 
@@ -142,7 +158,9 @@ If all the edges incident to a vertex $v$ point out of the vertex, we define the
 	\label{pitchfork_basis}
 \ee
 where the sum is over the simple objects of $\mcc$\footnote{We choose our favorite complete set of representatives of isomorphism classes of simple objects $\sob(\mcc)$ at the outset and keep it fixed throughout, abusing notation slightly by writing $\mcc$ for $\sob(\mcc)$.
-\kw{I don't see where we are abusing notation like this}}.
+\kw{I don't see where we are abusing notation like this}
+\dave{This section probably predates the $\sob(...)$ notation.
+Lets remove the footnote and make sure we don't have any $\sum_{x \in \mcc/\psi}$ etc. left over.}}.
 If the first edge points in and the other two point out, then we define
 \be
 	\mch_v = \bigoplus_{a,b,c} V^{a^*bc}  \quad\quad\quad\quad\quad\quad \PitchForkas{a}{b}{c}{} =  \PitchFork{a^*}{b}{c}{},
@@ -252,7 +270,7 @@ We define a spin diffeomorphism $\varphi_v$ from a generic 0-handle $v$ to a dis
 %\footnote{Note that there is a large degree of gauge freedom in this construction, realized by performing $2\pi$ rotations of the fermion framing (spin flips) on the spin diffeomorphisms $\varphi_v$.}
 That is, we use the spin diffeomorphisms to turn each 0-handle into a ``standardized 0-handle'', where the configuration of the 1-handles terminating on each 0-handle means that that each 0-handle looks like a pitchfork.
 The spin diffeomorphism $\varphi_v$ that maps a generic 0-cell $v$ to a standardized 0-cell (thereby implementing the pitchforkization procedure) is defined pictorially by
-\dave{Will add `directions' to each edge.}
+%\dave{Will add `directions' to each edge.}
 \begin{align} \label{std0handle}
 \xymatrix @!0 @M=1mm @R=14mm @C=35mm{
  \varphi_v: \; \; D_v\ar[r]            & D(n) \\
@@ -378,8 +396,13 @@ $\Gamma_2$ and $\Gamma_3$ are defined similarly,
 %\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma3def.pdf}}}},\quad
 \ee
 \kw{We could move this to the definition section, and if we do that then we could keep it here too or delete it here.}
-Since only q-type particles can host fermionic dots, we set $\Gamma_i=0$ unless the $i$th leg is colored by a q-type object. 
+\dave{It probably makes sense to put it in the definition section, but I have no strong preference.
+In the definition section we already have the non pitchfork version of it defined.}
+Since only q-type objects have odd endomorphisms, 
+$\Gamma_i$ is only defined when the i-{th} label of the pitchfork is q-type.
+%Since only q-type particles can host fermionic dots, we set $\Gamma_i=0$ unless the $i$th leg is colored by a q-type object. 
 \kw{Would it be better to say that $\Gamma_i$ is only defined with the $i$-th slot is q-type?}
+\dave{I would prefer that. I made the change.}
 The $\Gamma_i$ are all odd matrices, reversing fermion parity.
 %%KW the remark about sigma^x seems confusing and unnecessary to me.
 %The $\Gamma_i$ are all odd matrices, meaning that they act as $\sigma^x$ on the fermion parity grading in a representation where $(-1)^F$ acts as $\sigma_z$.
@@ -387,6 +410,10 @@ The $\Gamma_i$ are all odd matrices, reversing fermion parity.
 %some unitary matrix (e.g.\ equation \eqref{esixdotslide} for the $\halfesix$ theory). 
 
 \kw{I think we should drop this paragraph.}
+\dave{
+We could reduce it to a footnote, 
+something like: \footnote{The matrix elements of $\Gamma_1$ can be written as $[\Gamma_1]_{\psi \eta}  ={\BananaDot} \left(  \Bananaeta \right)^{-1} $.
+Similarly for $\Gamma_2$ and $\Gamma_3$. }}
 The matrix elements of the $\Gamma_i$ matrices for a fixed coloring $a,b,c$
 of the legs of a given vertex can be written in terms of evaluated diagrams 
 by using the inner product \eqref{reflection_pairing_defn} on pitchforks, which allows us to evaluate 
@@ -400,6 +427,12 @@ $\mcb(\eta\tp\psi^*)\propto\delta_{\eta,\psi}$, we can write
 and similarly for $\Gamma_2$ and $\Gamma_3$. 
 
 \kw{Is this observation necessary?}
+\dave{Necessary, no.
+But probably useful for physical reasons. 
+It provides insight on why nets with q-type labels can be (heuristically) thought of as Kitaev wires.
+I'll modify it in the near future and try to give it some context, 
+then lets decide on whether we should keep it.
+}
 It is easy to check that when they are non-zero (i.e.\ when they act on q-type edges), the $\Gamma_i$ operators obey the anti-commutation relations 
 \be \{ \Gamma_i , \Gamma_j \} = 2\lambda \delta_{ij},\ee
 which are the defining relations for the representations of complex Clifford algebras, and where as before, $\lambda=\pm i$ is the phase picked up when removing a pair of dots from a q-type object worldline. 
@@ -536,14 +569,36 @@ where we have defined tensor products of $\Gamma$ operators to act so that opera
 Note that although the diagrams in the first and last steps in the above sequence look the same, they are not: the fermion parity of the vectors in the two vertex Hilbert spaces $V^{abx^*}$ and 
 $V^{xcd}$ has been switched. 
 
+%%%%
+\dave{proposed re-write:}
+In general, if $e$ is oriented from $v_1$ to $v_2$ colored by a fixed object $x$ and $|\psi_1\rangle \tp |\psi_2\rangle$ is a vector in $\mch_{v_1}\tp \mch_{v_2}$, the edge term
+can be written as the projector
+\begin{align}
+D_e = \frac{1}{2}(1+J_e)
+\end{align}
+with $J_e$ implementing the local relations coming from $\End(x)$:
+\be J_e(|\psi_1\rangle\tp |\psi_2\rangle) = 
+\begin{cases}
+  -\lambda^{-1}\alpha(e,x)\sum_{\eta_1,\eta_2}[\Gamma_i]_{\psi_1\eta_1} |\eta_1\rangle \tp [\Gamma_j]_{\psi_2\eta_2}|\eta_2\rangle \quad &\text{if $x$ is q-type}\\ 
+ |\psi_1\rangle\tp |\psi_2\rangle \quad &\text{if $x$ is m-type} \end{cases}
+\ee
+\dave{I found $-\lambda^{-1}$. 
+I will double check this.}
+where $e$ is the $i$th leg of the pitchfork at $v_1$ and the $j$th leg at $v_2$, and $|\eta_1\rangle \tp |\eta_2\rangle \in \mch_{v_1} \tp \mch_{v_2}$.
+Since $D_e$ acts as the identity on edges colored by m-type objects, edges with m-type edges will automatically lie in the ground state of the edge term. 
+%%%%
+
+\dave{Old paragraph:
 In general, if $e$ is oriented from $v_1$ to $v_2$ colored by a fixed object $x$ and $|\psi_1\rangle \tp |\psi_2\rangle$ is a vector in $\mch_{v_1}\tp \mch_{v_2}$, the edge term $D_e$ acts as 
 \be D_e(|\psi_1\rangle\tp |\psi_2\rangle) = \begin{cases}
   -\lambda\alpha(e,x)\sum_{\eta_1,\eta_2}[\Gamma_i]_{\psi_1\eta_1} |\eta_1\rangle \tp [\Gamma_j]_{\psi_2\eta_2}|\eta_2\rangle \quad &\text{if $x$ is q-type}\\ 
  |\psi_1\rangle\tp |\psi_2\rangle \quad &\text{if $x$ is m-type} \end{cases}
 \ee
 \kw{q-type line should be replaced by id - J, where J is the current RHS.  Probably define J (or whatever we call it) on a separate line.}
+\dave{Yeap.}
 where $e$ is the $i$th leg of the pitchfork at $v_1$ and the $j$th leg at $v_2$, and $|\eta_1\rangle \tp |\eta_2\rangle \in \mch_{v_1} \tp \mch_{v_2}$.
 Since $D_e$ acts as the identity on edges colored by m-type objects, edges with m-type edges will automatically lie in the ground state of the edge term. 
+}
 
 In summary, including $D_e$ in the Hamiltonian provides a way of energetically enforcing the conditions that the ground states of theories containing q-type particles are realized by superpositions of string-net configurations possessing all possible ways of arranging fermions on the q-type strings. 
 Ensuring that ground states are superpositions of different fermion configurations is tantamount to projecting from the Hilbert space $\mch_\mcg$ to the physical Hilbert space $\mch_{\rm phys}$, in which redundant degrees of freedom created by different fermion configurations are modded out.
