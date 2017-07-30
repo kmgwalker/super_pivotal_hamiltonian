@@ -141,8 +141,10 @@ If all the edges incident to a vertex $v$ point out of the vertex, we define the
 	\mch_v = \bigoplus_{a,b,c} V^{abc}  \quad\quad\quad\quad\quad\quad \PitchFork{a}{b}{c}{},
 	\label{pitchfork_basis}
 \ee
-where the sum is over the simple objects of $\mcc$\footnote{We choose our favorite complete set of representatives of isomorphism classes of simple objects $\sob(\mcc)$ at the outset and keep it fixed throughout, abusing notation slightly by writing $\mcc$ for $\sob(\mcc)$.
-\kw{I don't see where we are abusing notation like this}}.
+where the sum is over the simple objects of $\mcc$.
+%\footnote{We choose our favorite complete set of representatives of isomorphism classes of simple objects $\sob(\mcc)$ at the outset and keep it fixed throughout, abusing notation slightly by writing $\mcc$ for $\sob(\mcc)$.
+%\kw{I don't see where we are abusing notation like this}
+%\ethan{right. This footnote was written when we were, but then we changed our ways and started using $\sob(\mcc)$ for everything. Commented out the offending footnote.}}.
 If the first edge points in and the other two point out, then we define
 \be
 	\mch_v = \bigoplus_{a,b,c} V^{a^*bc}  \quad\quad\quad\quad\quad\quad \PitchForkas{a}{b}{c}{} =  \PitchFork{a^*}{b}{c}{},
@@ -360,7 +362,7 @@ This is illustrated in Figure \ref{alphae_defn}.
 %\ethan{we already kinda do with our discussion of displacing dots onto edges. maybe I can try to just expand that discussion}
 Fermionic dots can also be ``absorbed'' into vertices using the action of $\cl_1$ on 
 fusion spaces involving q-type objects, as discussed in Section \eqref{fusion_spaces}. 
-We can do this in analogy with \eqref{Gamma_y_def} by constructing operators $\Gamma_i$, $i\in \{1,2,3\}$, which map a pitchfork with a standard dot 
+We can do this in analogy with \eqref{Gamma_y_def} by constructing odd operators $\Gamma_i$, $i\in \{1,2,3\}$, which map a pitchfork with a standard dot 
 on the $i$-th outgoing pitchfork edge to a pitchfork without a fermion dot on the $i$-th leg. 
 Graphically, $\Gamma_1$ is defined by 
 \be \label{gamma1_defn}
@@ -378,9 +380,9 @@ $\Gamma_2$ and $\Gamma_3$ are defined similarly,
 %\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma3def.pdf}}}},\quad
 \ee
 \kw{We could move this to the definition section, and if we do that then we could keep it here too or delete it here.}
-Since only q-type particles can host fermionic dots, we set $\Gamma_i=0$ unless the $i$th leg is colored by a q-type object. 
-\kw{Would it be better to say that $\Gamma_i$ is only defined with the $i$-th slot is q-type?}
-The $\Gamma_i$ are all odd matrices, reversing fermion parity.
+Since only q-type objects can host fermionic dots, $\Gamma_i$ is only defined when the $i$-th 
+leg of the vertex is labeled by a q-type object. 
+%The $\Gamma_i$ are all odd matrices, reversing fermion parity.
 %%KW the remark about sigma^x seems confusing and unnecessary to me.
 %The $\Gamma_i$ are all odd matrices, meaning that they act as $\sigma^x$ on the fermion parity grading in a representation where $(-1)^F$ acts as $\sigma_z$.
 %For more complicated theories, they will also act nontrivially on the multiplicity degrees of freedom by the action of 
@@ -446,11 +448,11 @@ class of $H_1(\Sigma)$.
 In this section we will finally write down the Hamiltonian, and then explain the terms appearing in it in detail. 
 As mentioned earlier, the Hamiltonian consists of three kinds of mutually commuting projections:
 \begin{align}
-H = \lambda_p \sum_{p \in \mcf} (1-B_p)  + \lambda_e \sum_{e \in \mce} (1-D_e) + \lambda_v \sum_{v \in \mcv} (1-A_v)
+H = \lambda_p \sum_{p \in \mcf} (1-B_p)  + \lambda_e \sum_{e \in \mce} (1-D_e) + \lambda_v \sum_{e\in \mce} (1-A_e)
 \end{align}
-\kw{probably need to index the ``vertex" terms by edges}
-We'll start with the familiar vertex term and then address the new edge term, 
-and end with the modifications needed for the plaquette term.
+%\kw{probably need to index the ``vertex" terms by edges}
+We'll start with a discussion of the ``vertex'' term $A_e$ and then address the new edge term $D_e$, 
+finally ending by describing the plaquette term $B_p$.
 
 
 
@@ -485,7 +487,7 @@ If $K$ is the ground state of the vertex term, we have maps
 	K \to \mch(\Sigma \setminus \mbox{2-cells}) \to \mch(\Sigma) .
 	\label{ground_state_projection}
 \ee
-where $\mch(\Sigma \setminus \mbox{2-cells})$ and $\mch(\Sigma)$ are the ground-state Hilbert spaces of $\Sigma \setminus \mbox{2-cells}$ and $\Sigma$, respecitvely.
+where $\mch(\Sigma \setminus \mbox{2-cells})$ and $\mch(\Sigma)$ are the ground-state Hilbert spaces of $\Sigma \setminus \mbox{2-cells}$ and $\Sigma$, respectively.
 The job of the edge term (below) will be to pick out a subspace of $K$ on which the first map is an isomorphism. 
 The job of the plaquette term will be to further reduce to a subspace such that the composite map to $H(\Sigma)$ is an isomorphism.
 
@@ -573,7 +575,7 @@ Physically it is responsible for the dynamics of net configurations which reside
 It is designed so that the amplitude of a net configuration is given by the evaluation of that net in the fusion category.
 Using the definition of the $\omega$ loop, we can write $B_p$ as 
 \begin{align} \label{plaquette_term_defn}
-B_p =\frac{1}{\mcd^2} \sum_{a \in \mcc} \frac{d_a}{\text{dim} \; \text{End}(a)} B^a_p, 
+B_p =\frac{1}{\mcd^2} \sum_{a \in \sob(\mcc)} \frac{d_a}{\text{dim} \; \text{End}(a)} B^a_p, 
 \end{align}
 where the operator $B_p^a$ fuses a loop labeled $a$ into the edges and vertices neighboring the plaquette $p$ (note that 
 as discussed earlier, the operator $B_p^a$ is only defined when all vertices and edges neighboring the plaquette $p$ satisfy the corresponding vertex and edge terms).
@@ -614,7 +616,8 @@ which can be explicitly written as
 \begin{align}
 R_p = P_1 \tp P_2 \tp \cdots \tp P_n
 \end{align}
-with each $P_j = \bigoplus_{abc} (P^{abc} )^{l_j}$ defined in \eqref{Pitchfork_pivot} and with $l_j = 0,1,2$ controlling the angle by which the $j$th vertex is pivoted (if the edges aren't all oriented out of the vertex then the appropriate object in $P^{abc}$ needs to be replaced by its dual).
+with each $P_j = \bigoplus_{abc} (P^{abc} )^{l_j}$ defined in \eqref{Pitchfork_pivot} and with $l_j = 0,1,2$ controlling the angle by which the $j$th vertex is pivoted (if the edges aren't all oriented out of the vertex then the appropriate object in $P^{abc}$ needs to be replaced by its dual). 
+\ethan{why not $l_j =-2,-1,0,1,2$ since $P^3=(-1)^F$?}
 We choose the pivots so that a vector in the image of $R_p$ takes the form
 \begin{align} 
 \label{plaquett_std_basis}
@@ -631,7 +634,6 @@ we first insert a closed strand labeled $a$ into the interior of $p$:
 \begin{align}
 \Plaquetteb
 \end{align}
-Next we apply the associator 
 Next, we begin fusing the strand into the plaquette using the resolution of the identity \eqref{idpitchfork}, which gives the picture
 \begin{align}
 \label{plaquette_first_F_move}
