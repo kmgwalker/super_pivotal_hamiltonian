@@ -422,12 +422,14 @@ A complete basis of morphisms for $\tube(\mcc/\psi)$ is given by
  \TubeBasisaF_J, 
  \end{align}
 %where the normalization $\mcd^2$ has been introduced for convenience. 
-with $t$ an even morphism of $\tube(\mcc/\psi)$ and $\alpha \cong \unit$ or $\psi$ denotes whether the morphism of $\tube(\mcc/\psi)$ has even fermion parity or odd fermion parity.
+with $t$ an even morphism of $\tube(\mcc/\psi)$ and $\alpha = \unit$ or $\psi$ denotes whether the 
+morphism of $\tube(\mcc/\psi)$ has even fermion parity or odd fermion parity.
 %\kw{I don't see where we used this convenient normalization.
 %\dave{It was convenient in \eqref{idempotent_complete}. 
 %But you're right, doesn't make much sense here. Lets remove it from the above equation and put it on the denominator of the RHS of the equation below 
 %(since that uses \eqref{idempotent_complete} which has this normalization).}}
-An even parity tube ($\alpha \cong \unit$) has $ t \in \bigoplus_x V^{x b x^*}_{a} $ while and odd parity tube ($\alpha \cong \psi$) has $ t \in \bigoplus_x V^{x b x^*}_{a\tp \psi} $.
+An even parity tube ($\alpha = \unit$) has $ t \in \bigoplus_x V^{x b x^*}_{a} $ 
+while and odd parity tube ($\alpha = \psi$) has $ t \in \bigoplus_x V^{x b x^*}_{a\tp \psi} $.
 %If the tube has even fermion parity then 
 %the label $\alpha$ is $\unit$ and $ t \in \bigoplus_x V^{x b x^*}_{a} $.
 %If the tube has odd parity then 
@@ -515,10 +517,11 @@ See section \ref{traces_and_innerproducts} for more details on the trace.
 Hence $\tr \left ( E(e_i,f_j) \right)$ is non-zero so long as $s(J) = (-1)^{\nu_{f_j}}$, 
 which is true by definition of the $E$ idempotents (recall \eqref{FunctorCxCtoTubeC}).
 
-Now we show that the $\{ E(e_i, f_j) \}$ are minimal. 
-We do this by showing that $E(x,y) \cdot \tube(\mcc/\psi) \cdot E(x',y')$ is either one dimensional, in which case $E(x,y)$ is an m-type idempotent, 
-or is isomorphic to $\cc^{1|1} $, in which case $E(x,y)$ a q-type idempotent.
-\dave{Should we explain why this means that $E(e_i,f_j)$ is minimal?}
+Now we show that the $\{ E(e_i, f_j) \}$ are minimal and orthogonal. 
+We do this by computing the dimension of $E(x,y) \cdot \tube(\mcc/\psi) \cdot E(x',y')$.
+%We do this by showing that $E(x,y) \cdot \tube(\mcc/\psi) \cdot E(x',y')$ is either one dimensional, in which case $E(x,y)$ is an m-type idempotent, 
+%or is isomorphic to $\cc^{1|1} $, in which case $E(x,y)$ a q-type idempotent.
+%\dave{Should we explain why this means that $E(e_i,f_j)$ is minimal?}
 % is a simple algebra, i.e. 
 %that it contains no nontrivial subalgebras. 
 %\dave{I'm confused since we show that it can be isomorphic to $\cc^{0|1}$.
@@ -527,42 +530,49 @@ or is isomorphic to $\cc^{1|1} $, in which case $E(x,y)$ a q-type idempotent.
 %}
 %\ethan{note to self: if you fix representatives in each class, you always get a simple algebra}
 By the spine lemma, 
-a generic element of $E(x,y) \cdot \tube(\mcc/\psi) \cdot E(x',y')$ can be written as
+a generic element of $E(x,y) \cdot \tube(\mcc/\psi) \cdot E(x',y')$ can be written as the LHS of
 \begin{align}
 \fTubefOdd \; = \;  \ftubefOddRHS,
 \label{MinimalProof}
 \end{align}
-with $\delta \in V^{x}_{xc}, \; \rho \in V^{y\tp \alpha}_{c' y}, \; \sigma \in V^{cc'}_r, \; \kappa \in V^{pr}_p$ and we have suppressed the spin structure index (the spin structure is determined by $y$; 
-recall \eqref{FunctorCxCtoTubeC}), 
-with all vector spaces appearing being written in terms of the 
+with $\delta \in V^{x}_{xc}, \; \rho \in V^{y'\tp \alpha}_{c y}, \; \sigma \in V^{c'c}_r, \; \kappa \in V^{pr}_p$.
+\kw{I changed indices here; Dave should double-check}
+We have suppressed the spin structure index (the spin structure is determined by $y$; recall \eqref{FunctorCxCtoTubeC}).
+All vector spaces appearing are written in terms of the 
 parent theory, $\mcc$, 
 and $\alpha$ is either $\unit$ or $\psi$ denoting whether the tube is 
 even or odd in $\tube^J(\mcc/\psi)$.
-The no tadpole theorem guarenties that $r \cong \unit$ and consequently that $c \cong c'$, 
-and that the loop traversing the annulus parallel to $\omega$ labeled $p$ can be removed at 
-the expense of multiplying by its quantum dimension $d_p$.
-Lastly, we can use property (c) of Table \ref{omega_loop_properties} to slide the lower $\omega$ 
-loop around the line connecting $x$ and $y$ labeled by $c$ (which is isomorphic to $c'$ by the above).
-Using property (a) of \ref{omega_loop_properties} we see that both $c \cong c' \cong \unit$.
-If $\alpha \cong \psi$ then we require $y \tp \psi \cong y'$.
-Using this and the orthogonality of the idempotents, we have
+
+The LHS is equal to the RHS by sliding the $p$ strand over the lower $\omega$ loop 
+then sliding the lower $\omega$ loop over the upper $\omega$ loop.
+On the RHS,
+the no tadpole axiom guaranties that $r \cong \unit$ and consequently that $c^* \cong c'$.
+The remaining loop labeled $p$ can be removed at the expense of multiplying by its quantum dimension $d_p$.
+Using property (a) of \ref{omega_loop_properties} we see that $c \cong \unit \cong c'$.
+%If $\alpha = \psi$ then we require $y \tp \psi \cong y'$.
+Using the orthogonality of the idempotents in the parent theory, we have
 \begin{align}
 \label{minimal_table}
 E(x,y) \cdot \tube(\mcc/\psi) \cdot E(x',y') \cong
 \begin{cases}
-\cc^{1|0}& \text{if}\; x \cong x' \; \text{and}\; y \cong y' \\
-\cc^{0|1}& \text{if}\; x \cong x' \; \text{and}\; y \cong \psi \tp y'  \\
-\cc^{1|1}& \text{if}\; x\cong x' \; \text{and}\; y \cong y',\; y \cong y \tp \psi \\
+\cc^{1|0}& \text{if}\; x \cong x' \; \text{and}\; y \cong y' \; \text{and}\; y \not\cong y'\tp \psi \\
+\cc^{0|1}& \text{if}\; x \cong x' \; \text{and}\; y \cong \psi \tp y' \; \text{and}\; y \not \cong y' \\
+\cc^{1|1}& \text{if}\; x\cong x' \; \text{and}\; y \cong y'\; \text{and} \; y \cong y \tp \psi \\
 0 & \text{otherwise}
 \end{cases}
 \end{align}
-Hence, the $E(x,y)$ are minimal. 
-This also confirms that $E(x,y)$ and $E(x,y \tp \psi)$ are oddly isomorphic, and
-if $y \cong y\tp \psi$ then $E(x,y)$ has an odd endomorphism.
+Taking $x' = x$ and $y' = y$, it follow that $E(x,y)$ is a minimal m-type idempotent if $y\not\cong y\tp\psi$
+and is a minimal q-type idempotent if $y \cong y\tp\psi$. 
+This also confirms that $E(x,y)$ and $E(x,y \tp \psi)$ are oddly isomorphic.
+The orthogonality of the idempotents follows from the fourth line of \eqref{minimal_table}.
+This completes the proof that $\{ E(e_i, f_j) \}$ is a complete set of minimal idempotents.
+
+\medskip
 
 The tensor structure on $\tube(\mcc/\psi)$ is initially defined on $\text{Rep}(\tube(\mcc/\psi))$ and 
-then transferred to $\tube(\mcc/\psi)$ using semisimplicity ($\tube(\mcc) \cong \text{Rep}(\tube(\mcc))$). 
-Consequently, we only need to show that $E$ is a tensor functor on $\text{Rep}(\tube(\mcc/\psi))$.
+then transferred to $\tube(\mcc/\psi)$ using semisimplicity ($\tube(\mcc) \cong \text{Rep}(\tube(\mcc)) in the semisimple case$). 
+Consequently, we only need to show that $E$ induces a tensor functor from 
+$\text{Rep}(\mcc \times \overline{\mcc/\psi})$ to $\text{Rep}(\tube(\mcc/\psi))$.
 To establish this, we show that
 \begin{align} \label{fusion_isomorphism}
 V^{E(a,x),E(b,y)}_{E(c,z)} \cong V^{ab}_c(\mcc) \tp V^{xy}_z(\mcc/\psi),
@@ -578,25 +588,28 @@ This isomorphism is established by the following figure:
 %\begin{align}
 %\FusionIsomorphism\FusionIsomorphism\FusionIsomorphism\FusionIsomorphism
 %\end{align}
+\kw{Maybe make the boundary circles of $P$ a different color so that they are not confused with ribbons.}
+\kw{Also, I think you forgot to drop the outer omega on the RHS.}
 with $\alpha = \unit$ for the even fusion space and $\alpha = \psi$ for the odd fusion space.
 By the spine lemma, the internal lines, labeled $k,h,r,s,t,u,v,p,q$ (multiplicity indices suppressed) span the entire space of 
 net configurations for $V(P)$ with marked points, $(a,x)$, $(b,y)$, 
 and $(c,z)$ living at the boundary circles (as before, $P$ is the pair of pants). 
 Near each boundary circle we have applied the corresponding minimal idempotent to each boundary condition. 
-Using the exact same arguments following \eqref{MinimalProof} we can simplify the diagram 
+Using the arguments similar to those following \eqref{MinimalProof} we can simplify the diagram 
 using the relations of Table ~\ref{omega_loop_properties} to find the diagram on the right. 
 One finds that $r \cong s \cong t \cong u \cong v \cong \unit$, $k\cong x$, $h\cong b$, 
 and the left over $p$ and $q$ loops can be removed by multiplying the picture with their quantum dimensions. 
-The left over picture is isomorphic to $V^{ab}_c(\mcc) \tp V^{xy}_z(\mcc/\psi)$.
+The span of the resulting simplified pictures is isomorphic to $V^{ab}_c(\mcc) \tp V^{xy}_z(\mcc/\psi)$.
+Using semisimplicity, this implies that $E$ is a tensor functor.
 
-Since $E$ acts as a tensor functor on the elementary fusion spaces as in \eqref{fusion_isomorphism}, 
-it acts as a tensor functor on arbitrary morphism spaces, 
-establishing that $E$ is a tensor functor on $\text{Rep}(\tube(\mcc/\psi))$, 
-and by semisimplicity also on $\tube(\mcc/\psi)$.
-
-\dave{Is that sufficient to complete the proof? 
-Do we need to say anything else? 
-e.g., what the natural transformations are.}
+%Since $E$ acts as a tensor functor on the elementary fusion spaces as in \eqref{fusion_isomorphism}, 
+%it acts as a tensor functor on arbitrary morphism spaces, 
+%establishing that $E$ is a tensor functor on $\text{Rep}(\tube(\mcc/\psi))$, 
+%and by semisimplicity also on $\tube(\mcc/\psi)$.
+%
+%\dave{Is that sufficient to complete the proof? 
+%Do we need to say anything else? 
+%e.g., what the natural transformations are.}
 
 
 %\dave{Old guess at natural transformation.}
@@ -624,7 +637,7 @@ The explicit representation of the minimal idempotents allows us to compute the
 modular transformations for the condensed theory. 
 
 %We again assume that $\mcc$ is a MTC. 
-We first examine the $S$ transformation on bounding spin tori (i.e, the three spin 
+We first examine the $S$ transformation on bounding spin tori (i.e.\ the three spin 
 tori that have at least one bounding cycle). 
 %We first examine the $S$ transformation on a torus with a spin structure such that at least 
 %one of the two cycles bears a bounding spin structure. 
@@ -690,7 +703,8 @@ In the last summation we need to replace $\sum_{y \in \sob(\mcc)}$ with $\sum_{y
 \end{align}
 The factor of $s(J)$ appeared due to $\text{cl}_J(\psi \tp y) = s(J) \text{cl}_J (y)$, where the subscript $J$ means we close up $y$ around a cycle with spin structure $J$.
 %\dave{Note to self: check if we use this notation earlier.}
-The normalization factor $2^{-n_y} = 1/\dim \End(y)$ is inserted so that we don't over-weight the q-type simple objects from $\sob(\mcc)$ (recall for example, \eqref{dimCtoDimCpsi}). 
+The normalization factor $2^{-n_y} = 1/\dim \End(y)$ is inserted so that we don't overcount 
+the q-type simple objects from $\sob(\mcc)$ (recall for example, \eqref{dimCtoDimCpsi}). 
 Using that $S_{b^* (y\tp \psi)} = (-1)^{\nu_b} S_{b^* y}$, and that $(-1)^{\nu_b} s(J) = 1$ by assumption, 
 the right hand side of \eqref{interim_S_calc} can be simplified so that \eqref{ScalcBack} becomes
 %\kw{this sentence is a bit garbled}
@@ -781,8 +795,8 @@ The first half of the calculation remains the same as in \eqref{Scalc_above}.
 The second half of the calculation changes only if $b$ is q-type, in which case the idempotent 
 $E(a,b)$ is q-type, and has to be closed up on the torus with an odd endomorphism. 
 As discussed in the caption of Figure \ref{C2Change_of_Basis}, closing an idempotent with an odd endomorphism always results in a sign ambiguity for the closed up idempotent.
-In such a case we have
-\footnote{We have used $(S^z)_{xy} = \frac{1}{\mcd} \Szmatrix$.}:
+In such a case we have:\footnote{
+We have used $(S^z)_{xy} = \frac{1}{\mcd} \Szmatrix$.}
 %\dave{Need to double check this, may have a mistake in the last step.}
 %\ethan{why no $1/\mcd^2$ from the $\omega$ instead of $1/\mcd$ and why only the sum over stuff in $Q$?}
 %\dave{Check the notes I sent and let me know if that clears it up, also if you agree with the calculation.}
@@ -811,8 +825,13 @@ The phases $\theta_a$ and $\theta_b$ are the twists of the lifts of $a$ and $b$ 
 Note that if $J = B$ then replacing $b$ with $b\tp \psi$ changes the sign of the twist.
 This sign ambiguity is expected, since only $T^2$ has well-defined eigenvalues 
 on idempotents (see the discussion near the beginning of Section \ref{C2_modular_mats}). 
-\ethan{are we okay with this?}
-\dave{I am.}
+
+
+
+\kw{Have we carefully compared the formulas of this section to the C2 S and T matrices?
+If not, I think we should do so.}
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
