@@ -109,7 +109,7 @@ As usual, the notation $H^\dagger H$ graphically corresponds to stacking $H^\dag
 Since $\lambda^2 = -1$ as we prove in Appendix \ref{fib_appendix}, we verify that $H^\dagger H = \unit$.  
 
 For our $N$-legged chain we thus have the basis of states $\bigotimes_{i=1}^{N/2} v_i$, where 
-$v_i \in \{v_e,v_o\}$. 
+$v_i \in \{v_e,v_o\}$ are $\pm1$ eigenstates of $(-1)^F$. 
 Graphically, these states look like
 \begin{align}
 &\CupSigma \; \CupSigma \; \CupSigma \cdots \CupSigma,\\
@@ -122,15 +122,15 @@ Graphically, these states look like
 and so on. In the above picture, there are $n=N/2$ cups appearing, and the fermion dots are ordered 
 implicitly with increasing Koszul ordering from left to right. 
 
-The Hamiltonian, built out of the bilinears $i\gamma_1\gamma_2$, has two types of terms. 
+The Hamiltonian, built out of the identity and the bilinears $i\gamma_1\gamma_2$, has two types of terms. 
 One term mixes the states within a single physical site by acting on $a_{2j}\tp a_{2j+1}$, while the other acts between neighboring physical sites by acting on 
 $a_{2j+1}\tp a_{2j+2}$.
 We will denote the former terms by $H_{2j}$ and the latter terms by $H_{2j+1}$.
 Then the Hamiltonian takes on the form
 \begin{align}
-H = - \sum_{j=1}^{N-1}\; t_j \; \;  \TwoLinedotdot_{\text{site $j$}},
+H = - \sum_{j=1}^{N-1}\;  \frac{t_j}{2} \left( \Id_{\text{site $j$}} \;\; + \;\; \TwoLinedotdot_{\text{site $j$}} \right),
 \end{align}
-where the left line is applied to site $j$ and the right line is applied to site $j+1$.
+where the left lines are applied to site $j$ and the right line is applied to site $j+1$.
 \ethan{I am in favor of writing the Hamiltonian like this, with the understanding that when we draw pictures and stuff, we are modding out by fermion slides and that the spin framing is fixed so that we have the usual $C_2$ diagrammatic manipulations. We can talk about $\alpha(e)$ stuff and edge terms to implement endos etc, but I think we probably shouldn't}
 
 To study the Kitaev wire in its topological phase, we will work in the completely staggered limit, where
@@ -138,9 +138,11 @@ the inter-site terms $H_{2j+1}$ dominate and the intra-site terms $H_{2j}$ are a
 magnitude of the superconducting gap to the hopping amplitude.}, 
 so that the Hamiltonian is 
 \begin{align} \label{staggered_H}
-H_{\rm staggered} = - \sum_{j=1}^{n-1}\; t_j \; \;  \TwoLinedotdot_{\text{site $2j$}},
+H_{\rm staggered} = - \sum_{j=1}^{n-1}\; \frac{1}{2} \left( \Id_{\text{site $2j$}} \;\; + \;\; \TwoLinedotdot_{\text{site $2j$}} \right),
 \end{align}
-In this limit the wire is in the topological phase and there are two ground states, differing by their fermion parity:
+where we have set the hopping strength to $1$ for simplicity. Note that in this form, the Hamiltonian 
+is a projector. 
+In this limit the wire is in the topological phase and there are two zero-energy ground states, differing by their fermion parity:
 %\dave{Maybe we should also change basis so that we see that the wave function is a coherent sum over all parity even (odd) states.}
 \begin{align} \label{kitaev_wire_ground_states}
 \Psi_e = \;\StaggaredGSEven \; \cdots \; \StaggaredGSEvenR\;, 
