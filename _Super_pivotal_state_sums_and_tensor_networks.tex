@@ -119,7 +119,8 @@ to the boundary of the disk (which $k$ is the number of 2-handles which cross th
 For each labeling $b$ of these edges by simple objects in $\sob(\mcc)$, we have an associated vector space $V(b)$.
 For example, in the case of fig xxxx the vector space is isomorphic to $V^{ab^*c^*d}$.
 Let $B(b)$ be some chosen basis of this vector space.
-For each 1-handle $e$ define $B(e)$ to be the union over all labelings $b$ of $B(b)$.
+For each 1-handle $e$ define $B(e)$ to be the union over all labelings $b$ of $B(b)$,
+and also define $V(e)$ to be the direct sum of all the vector spaces $V(b)$.
 
 We define the set of all labelings $\mcl(\mch)$ to by the product over all 1-handles $e$ of the basis sets $B(e)$.
 In other words, we choose (independently, without any compatibility constraints) a labeling of the edges of each initial
@@ -130,6 +131,7 @@ If the example, this is isomorphic to $V^{d^*cba^*}$.
 There is a (banana) pairing between $V(b)$ and $V^*(b)$.
 We choose a dual basis of $V^*(b)$ such that the pairing matrix is diagonal.
 (It is sometimes convenient to not insist that the diagonal entries be $\delta_{ij}$.)
+We also define $V^*(e)$ to be the direct sum (over all labelings $b$) of $V^*(b)$.
 
 Let $\beta\in\mcl(\mch)$ and let $f$ be a 2-handle.
 The labeling $\beta$ associates a simple object to each intersection of $f$ with a 1-handle.
@@ -147,7 +149,7 @@ The labeling $\beta$ determines a labeling of the graph $\text{Link}(v)$ as foll
 Near each vertex of $\text{Link}(v)$ we place the basis element $\mu$ (or $\mu^*$) assigned by $\beta$ to the 
 corresponding 1-handle if it is on the initial (terminal) end of the 1-handle.
 If these vertex labels are incompatible along edges, we define $\text{Link}(v, \beta) = 0$.
-If they are all compatible then we define $\text{Link}(v, \beta)$ to be the evaluation of the labeled graph.
+If they are all compatible then we define $\text{Link}(v, \beta)$ to be the evaluation of the resulting labeled graph (string net).
 
 This completes the definition of the state sum.
 
@@ -157,6 +159,40 @@ If follows from xxx of \cite{Walker2006} that the state sum computes $Z(M)$ inde
 or choice of orientations of 1- and 2-cells.
 
 If $M$ has non-empty boundary,
+\nn{...}
+
+\bigskip \kw{new subsection} \bigskip
+
+Our goal in this subsection is to reinterpret \eqref{bos_tv_sum} as a tensor network and discuss various regularization options.
+
+\medskip
+
+If we (temporarily) ignore the factors of $d(f, \beta)$ and $D^{-2}$ in \eqref{bos_tv_sum}, it is easy to see that it computes a tensor network.
+The underlying graph of the tensor network is the union of 0- and 1-cells of the cell decomposition.
+The vector space associated to each edge $e$ is $V(e)$ as defined above.
+The matrix elements of the tensor associated to a 0-cell $v$ are the numbers $\text{Link}(v, \beta)$ defined above.
+\kw{remark about dual spaces here??}
+
+To incorporate the factors of $d(f, \beta)$ and $D^{-2}$, we make some ad hoc choices.
+For each 2-handle $f$ we choose an adjacent vertex $v_f$.
+For each vertex $v$ we modify the associated tensor by added factors of $d_a$ for each $f$ such that $v = v_f$.
+Similarly, for each 3-cell we choose an adjacent vertex and multiply the tensor for that vertex by $D^{-2}$.
+It is easy to see that the resulting tensor network computes \eqref{bos_tv_sum}.
+
+\kw{discuss tensor network non-empty boundary case here}
+
+\medskip
+
+The above tensor network is irregular in the sense that (potentially) every edge vector space is different and every vertex tensor is different.
+One way to reduce this irregularity is to start with a generic cell decomposition (one that is dual to a triangulation).
+This ensures that there are exactly three 2-handles meeting each edge, and that the graphs $\text{Link}(v)$ are all tetrahedral.
+Depending on the choice of 1- and 2-cell orientations, there will still be eight possible vector spaces associated to 1-handles,
+corresponding to $V^{abc}$, $V^{ab^*c}$, $V^{a^*b^*c^*}$ etc.
+(Note that if all Frobenius-Schur indicators are 1, then we can ignore these differences.)
+Similarly, there will be different tetrahedral vertex tensors, depending on the orientations of the edges of the tetrahedron.
+
+
+\nn{...}
 
 
 
