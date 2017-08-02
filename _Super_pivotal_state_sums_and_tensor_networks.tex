@@ -165,7 +165,7 @@ for each 1-handle along $\bd M$, and a labeled vertex for each 0-handle along $\
 We modify the label set $\mcl(\mch)$ to be fixed for strands on $\bd M$ and varying for interior labels.
 The modified state sum assigns a number to each fixed boundary string net.
 This can be interpreted as a linear function $A(\bd M)\to\cc$.
-
+\kw{This might need some tweaking, or at least more details.}
 
 
 
@@ -191,6 +191,7 @@ It is easy to see that the resulting tensor network computes \eqref{bos_tv_sum}.
 
 \kw{discuss tensor network non-empty boundary case here}
 
+
 \medskip
 
 The above tensor network is irregular in the sense that (potentially) every edge vector space is different and every vertex tensor is different.
@@ -201,6 +202,28 @@ corresponding to $V^{abc}$, $V^{ab^*c}$, $V^{a^*b^*c^*}$ etc.
 (Note that if all Frobenius-Schur indicators are 1, then we can ignore these differences.)
 Similarly, there will be different tetrahedral vertex tensors, depending on the orientations of the edges of the tetrahedron.
 
+We can further regularize the network by choosing a global ordering of the 3-cells of the handle decomposition.
+(This is equivalent to a global ordering of the vertices of the dual triangulation.)
+We then choose 2-cell orientations so that the the orientation of a 2-cell together with a normal vector pointing toward the higher-ordered of the two
+adjacent 3-cells agrees with the orientation of $M$.
+We can now choose 1-cell orientations so that the graph on the initial disk of each 1-handle has a trivalent vertex with two
+outgoing and one incoming edge (Figure xxxx).
+With these orientation choices, we have, for every 1-handle $e$,
+\be
+	V(e) = \bigoplus_{a,b,c\in\sob(\mcc)} V^{abc^*} .
+\ee
+Furthermore, all of the tetrahedral graphs have the same pattern of edge orientations (as in Figure xxxx), so all of the vertex tensors
+in the tensor network can be identified.
+
+However, it is not always convenient to choose a global ordering.
+For example, our main application is a tensor network associated to $Y\times I$.
+If $Y$ is a torus, we might hope that the network has translational symmetry.
+This is not compatible with the global ordering trick.
+For this reason, we will assume a generic cell decomposition, but we will not employ the global ordering trick.
+
+\kw{still need to discuss pitchforks and pivots ($V^{abc}$ vs $V^{bca}$)}
+
+\kw{also still to do: fermionic state sum, fermionic tensor network, k-signs, spin pivots}
 
 \nn{...}
 
