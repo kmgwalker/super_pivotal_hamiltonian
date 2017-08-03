@@ -15,21 +15,22 @@ In this section we write down a Turaev-Viro-Barrett-Westbury (TVBW) state sum fo
 and a tensor network for the ground state wave function of the Hamiltonian constructed in \eqref{ham}.
 Very closely related work was presented in~\cite{bhardwaj2016}, 
 see also \cite{Bultinck2017, upcoming-paper?}.
-We first breifly review the TVBW construction for spherical fusion categories. 
-We do so in a way that naturally extends to the super-pivotal case with only minor modifications.
+We first briefly review the TVBW construction for spherical fusion categories. 
+We then show how to write the state-sum as a tensor contraction on a tensor 
+network, which allows us to extend the state-sum to the super-pivotal case with only minor modifications.
 Lastly we use the state sum to write down an explicit wave function for the ground ground state of \eqref{ham}.
+Those interested in the details of the original construction are referred to \cite{Turaev1992,Barrett1996}.
+%and the one followed here in \cite{Walker2006}. 
 
 %We first give a lightning review of the TVBW state sum construction, via the cut-and-glue formalism.
 %Since much is known about TVBW state sums, 
 %we present the state sum from a slightly different perspective than usual,
 %so that the fermionic version of the state sum can be written in essentially the same way.
 
-We view the state sum as a composition of linear maps from finite dimensional tensor product spaces, starting with with the ``vacuum" $\cc$. 
-\kw{Still not convinced that this is a valid way to look at it; maybe I will be convinced when I read further.}
-This composition of linear maps can be interpreted as a tensor network, 
-which we investigate in the subsequent sections.
-Those interested in the details of the original construction are referred to \cite{Turaev1992,Barrett1996}, 
-and the one followed here in \cite{Walker2006}. 
+%We view the state sum as a composition of linear maps from finite dimensional tensor product spaces, starting with with the ``vacuum" $\cc$. 
+%\kw{Still not convinced that this is a valid way to look at it; maybe I will be convinced when I read further.}
+%This composition of linear maps can be interpreted as a tensor network, 
+%which we investigate in the subsequent sections.
 
 %The starting point is a list of data:
 %\dave{Is pivotal and spherical the same thing?
@@ -41,18 +42,18 @@ and the one followed here in \cite{Walker2006}.
 %\end{itemize} 
 %from which one defines a partition function $Z(M)$. 
 
-To define these linear maps, we will follow a `cut-and-glue' approach.
-Schematically, this proceeds by cutting up the manifold on which we want to evaluate the state sum into many parts. 
-We assign vector spaces to each of the cut-up pieces and then 
-construct the state sum by gluing these pieces back together with linear maps that are given by performing tensor contractions.
-In order for our formalism to be amenable to fermionic modifications, we will need to carry out a 
-standardization procedure of the cell decomposition of $M$, in much the same way that we 
-performed the standardization procedure to define the lattice Hamiltonian. 
-This is the issue to which we first turn. 
-Much of the following section is notational; 
-readers are invited to familiarize themselves with Figure~\ref{NotationStateSum}
-and \eqref{attaching_region}-\eqref{tensor_space}, 
-and continue with the next subsection. 
+%To define these linear maps, we will follow a `cut-and-glue' approach.
+%Schematically, this proceeds by cutting up the manifold on which we want to evaluate the state sum into many parts. 
+%We assign vector spaces to each of the cut-up pieces and then 
+%construct the state sum by gluing these pieces back together with linear maps that are given by performing tensor contractions.
+%In order for our formalism to be amenable to fermionic modifications, we will need to carry out a 
+%standardization procedure of the cell decomposition of $M$, in much the same way that we 
+%performed the standardization procedure to define the lattice Hamiltonian. 
+%This is the issue to which we first turn. 
+%Much of the following section is notational; 
+%readers are invited to familiarize themselves with Figure~\ref{NotationStateSum}
+%and \eqref{attaching_region}-\eqref{tensor_space}, 
+%and continue with the next subsection. 
 
 
 
@@ -82,7 +83,7 @@ a handle decomposition and also the corresponding cell decomposition.}
 Our first task is to describe the TVBW (bosonic) state sum.
 We will use the form for a general cell/handle decomposition, as described in \cite{Walker2006}.
 
-Let $M$ be a closed 3-manifold equipped with a handle decomposition $\mch$.
+Let $M$ be a closed oriented 3-manifold equipped with a handle decomposition $\mch$.
 Choose auxiliary orientations of the 1- and 2-cells of the cell decomposition corresponding to $\mch$.
 Let $\mch_i$ denote the set of $i$-handles ($i = 0,1,2,3$).
 The state sum has the form
@@ -95,54 +96,112 @@ The state sum has the form
 \ee
 The next few paragraphs define the notation used in \eqref{bos_tv_sum}.
 
+
+
+\begin{figure}
+\begin{center}
+\includegraphics{NotationStateSum.pdf}
+\caption{\label{NotationStateSum}
+Notation used in this section. 
+%The cells can be used to label the weights that determine the partition function.
+In the figure we have labeled a 2-cell (face) by $f$, a 1-cell (edge) by $e$, and a 0-cell (vertex) by $v$. 
+We assume a cell decomposition that is dual to a triangulation, so that each 1-cell is adjacent to three 2-cells and two 0-cells, 
+and each 0-cell is adjacent to four 1-cells. 
+The boundary of each 2-cell $f$ possesses an orientation (left). 
+The 1-cells are also oriented, with the orientation of the edge $e$ in the figure indicted by the double arrow (center). 
+The oriented boundary edge of the face $f$ that neighbors the edge $e$ is labeled $c_{fe}$ (left), 
+and the opposing edge that is glued to $c_{fe}$ is labelled by $\bar{c}_{fe}$. 
+The trivalent junctions occurring at either end of the edge are denoted $c_{ev}$ and 
+$c_{ev'}$ (center).
+A small $S^2$ surrounding a 0-cell $v'$ intersects six 2-cells in six oriented lines, which 
+meet at four trivalent junctions $\bar{c}_{ev'}$ (right). 
+}
+\end{center}
+\end{figure}
+
+
+
+\begin{figure}
+\begin{center}
+\includegraphics{Onehandle_smaller.pdf}
+\caption{\label{One_handle}
+Various pictures relating to our presentation of the 1-handles. In the top left picture, we show
+three 2-cells which terminate on a given 1-cell, with the orientations of the 2-cells shown as curly arrows. 
+In the top right picture we show a 1-handle with its three marked edges and their orientations shown. 
+In the bottom left we have the same picture as in the top right, but with the intersection of the 2-cells 
+with the 1-handle shaded in color. In the bottom right picture, we show the same picture as in the bottom left, but this time with the vertices standardized via our pitchforkization procedure. 
+\ethan{may need to update the bottom right guy, although I'm in favor of keeping the pitchforkization standardization procedure}
+}
+\end{center}
+\end{figure}
+
+
 We use the 2-cell orientations to define an oriented graph (unlabeled string net) on the boundary of each 0-, 1- and 2-handle,
-as shown in Figure xxxx.
+as shown in Figure \ref{NotationStateSum}.
+String-net graphs are assigned to the $k$-handles as follows:
 \begin{itemize}
 \item On 2-handles, the graph is a single loop along the core of the attaching annulus of a 2-handle.
-The orientation of the loop is determined by the orientation of the 2-cell.
+The orientation of the loop is determined by the orientation of the 2-cell. For a 2-cell 
+$f$, this is shown in the top left of Figure \ref{NotationStateSum}. \ethan{may wan to remove the $c_{fe}$ stuff from the figure}
 \item On 1-handles, the graph is a generalized $\Theta$ graph, which we will call a $\tilde\Theta$ graph.
 The graph has one edge for each 2-handle adjacent to the 1-handle.
-The middle part of each edge of the graph corresponds to where the cores of the 2-handles meet the boundary of the 1-handle.
-The two vertices of the graph are on the two attaching disks of the 1-handle.
-The edges are oriented opposite to the orientations used in the 2-handle loops above.
-\item On each 0-handle, the graph is determined by the pattern of 2- and 1-handles adjacent to the 0-handle.
-The graph has one edge for each adjacent 2-handle and one vertex for each adjacent 1-handle.
-The orientations of the edges are opposite to the orientations of the 2-handle loops.
+Each edge of the graph corresponds to the lines where the 2-handles meet the boundary of the 1-handle, which is shown in the bottom-left picture of Figure \ref{One_handle}. 
+The graph associated to the 1-handle has two vertices, which are located on the two attaching disks of the 1-handle (which are the disks where the 1-handle is attached the the 0-handles it connects).  
+The edges on the 1-handle are oriented oppositely to the orientations of the respective 2-handle loops.
+For example, we can use the 2-handle orientations shown in the top left picture of Figure \ref{One_handle}
+to determine the orientations of the edges marked $a,b,c$ in the remaining pictures. 
+\item On each 0-handle, the graph is a string-net on a sphere determined by the pattern of 2- and 1-handles adjacent to the 0-handle.
+The graph has one edge for the lines where each 2-handle adjacent to the 0-handle intersect it;
+these lines intersect at vertices at the location where each adjacent 1-handle meets the 0-handle. 
+The orientations of the edges in this graph are drawn opposite to the orientations of the 2-handle loops.
 We denote this graph $\text{Link}(v)$.
+For a 0-handle with four adjacent 1-handles, an example of a graph determined by such 
+a procedure is shown as the rightmost picture in Figure \ref{NotationStateSum}. 
+\ethan{I might be in favor of Tet (even though we are now not working with something dual to a triangulation)}
 \end{itemize}
 
 Recall that we have an orientation of each 1-cell.
 This allows us to distinguish an ``initial" and ``terminal" attaching disk for each 1-handle.
-\kw{maybe include fig}
+For example, for the 1-handle drawn in Figure \ref{One_handle}, the left end of the 1-handle would 
+host the initial attaching disk, while the right end of the 1-handle would host the terminal 
+attaching disk. 
 On the initial disk we see a graph with a single vertex in the interior of the disk and $k$ edges connecting the central vertex
 to the boundary of the disk (which $k$ is the number of 2-handles which cross the 1-handle).
-For each labeling $b$ of these edges by simple objects in $\sob(\mcc)$, we have an associated vector space $V(b)$.
-For example, in the case of fig xxxx the vector space is isomorphic to $V^{ab^*c^*d}$.
-Let $B(b)$ be some chosen basis of this vector space.
-For each 1-handle $e$ define $B(e)$ to be the union over all labelings $b$ of $B(b)$,
-and also define $V(e)$ to be the direct sum of all the vector spaces $V(b)$.
+For each labeling $\ell$ \ethan{changed $b$ to $\ell$ since we use $b$ for simple objects all the time} of these edges by simple objects in $\sob(\mcc)$, we have an associated vector space $V(\ell)$.
+For example, in the case of Figure \ref{One_handle} the vector space is isomorphic to $V^{a^*bc^*}$.
+Let $B(\ell)$ be some chosen basis of this vector space.
+For each 1-handle $e$ define $B(e)$ to be the union over all labelings $b$ of $B(\ell)$,
+and also define $V(e)$ to be the direct sum of all the vector spaces $V(\ell)$.
 
 We define the set of all labelings $\mcl(\mch)$ to by the product over all 1-handles $e$ of the basis sets $B(e)$.
 In other words, we choose (independently, without any compatibility constraints) a labeling of the edges of each initial
 disk graph by simple objects, then choose a basis vector for each associated vector space.
 
-We also associate a vector space $V^*(b)$ to the terminal disk of each labeled 1-handle.
-In the example, this is isomorphic to $V^{d^*cba^*}$.
-There is a (banana) pairing between $V(b)$ and $V^*(b)$.
-We choose a dual basis of $V^*(b)$ such that the pairing matrix is diagonal.
-(It is sometimes convenient to not insist that the diagonal entries be $\delta_{ij}$.)
-We also define $V^*(e)$ to be the direct sum (over all labelings $b$) of $V^*(b)$.
+We also associate a vector space $V^*(\ell)$ to the terminal disk of each labeled 1-handle.
+In the example, this is isomorphic to $(V^{a^*bc^*})^*$.
+We also define $V^*(e)$ to be the direct sum (over all labelings $b$) of $V^*(\ell)$.
+There is a bilinear pairing between $V(\ell)$ and $V^*(\ell)$, which 
+is computed as in \eqref{reflection_pairing_defn} and 
+graphically looks like a banana. % :--)
+\ethan{we should probably change $\mcb$ to $\Theta$ or the other way around to make notation consistent}
+We choose a dual basis of $V^*(\ell)$ such that the pairing matrix is diagonal.
+As with $\mcb$, it is sometimes convenient to not insist that the diagonal entries be $\delta_{ij}$.
 
+We are finally ready to define the weights appearing the in the state-sum $Z(M)$. 
 Let $\beta\in\mcl(\mch)$ and let $f$ be a 2-handle.
 The labeling $\beta$ associates a simple object to each intersection of $f$ with a 1-handle.
 If these simple objects are not all the same, we define $d(f, \beta) = 0$.
-If they are all equal to $a$, we define $d(f, \beta) = d_a$.
+If they are all equal to the same simple object $a$, we define the weight $d(f, \beta)$
+appearing in $Z(M)$ by $d(f,\beta) = d_a$.
 
 Let $e$ be a 1-handle.
 The labeling $\beta$ associates a basis vector $\mu$ to the initial disk of $e$.
-Define $\tilde\Theta(e, \beta)$ to be the value of the pairing evaluated on $\mu$ and $\mu^*$.
-Diagrammatically, $\tilde\Theta(e, \beta)$ is the evaluation of a banana diagram with vertices labeled
-by $\mu$ and $\mu^*$.
+Define $\tilde\Theta(e, \beta)$ to be the value of the bilinear pairing evaluated on $\mu^*$ and $\mu$.
+Diagrammatically, $\tilde\Theta(e, \beta)$ is the evaluation of a banana-shaped diagram with vertices labeled
+by $\mu^*$ and $\mu$.
+For example, if $e$ has three adjacent 2-handles colored by $a,b,c$ so that $\mu \in V^{abc}$, then we have 
+\be \tilde \Theta (e, \beta) =  \Bananaeta.\ee
+\ethan{need to change $\eta_i$ in the fig to $\mu^*$ and $\mu$}
 
 Let $v$ be a 2-handle.
 The labeling $\beta$ determines a labeling of the graph $\text{Link}(v)$ as follows.
@@ -150,6 +209,8 @@ Near each vertex of $\text{Link}(v)$ we place the basis element $\mu$ (or $\mu^*
 corresponding 1-handle if it is on the initial (terminal) end of the 1-handle.
 If these vertex labels are incompatible along edges, we define $\text{Link}(v, \beta) = 0$.
 If they are all compatible then we define $\text{Link}(v, \beta)$ to be the evaluation of the resulting labeled graph (string net).
+For a handle decomposition dual to a triangulation, these string nets take the form 
+of tetrahedral symbols. 
 
 This completes the definition of the state sum.
 
@@ -163,46 +224,57 @@ we choose the handle decomposition to have the form show in Figure xxx near the 
 We also choose a string net on $\bd M$ compatible with the handle decomposition (a labeled edge
 for each 1-handle along $\bd M$, and a labeled vertex for each 0-handle along $\bd M$).
 We modify the label set $\mcl(\mch)$ to be fixed for strands on $\bd M$ and varying for interior labels.
-The modified state sum assigns a number to each fixed boundary string net.
-This can be interpreted as a linear function $A(\bd M)\to\cc$.
-\kw{This might need some tweaking, or at least more details.}
+The modified state sum assigns a number to each fixed boundary string net,
+which gives us a wavefunction, i.e. linear function $A(\bd M)\to\cc$.
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The state sum as a tensor network}
+%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\bigskip \kw{new subsection} \bigskip
-
-Our goal in this subsection is to reinterpret \eqref{bos_tv_sum} as a tensor network and discuss various regularization options.
+Our goal in this subsection is to reinterpret \eqref{bos_tv_sum} as a tensor network and discuss various standardization options.
+\ethan{replaced ``regularization'' with ``standardization'' since regularization has a different physics meaning}
 
 \medskip
 
-If we (temporarily) ignore the factors of $d(f, \beta)$ and $D^{-2}$ in \eqref{bos_tv_sum}, it is easy to see that it computes a tensor network.
+If we (temporarily) ignore the factors of $d(f, \beta)$ and $D^{-2}$ in \eqref{bos_tv_sum}, it is easy to see that it computes the tensor contraction of a tensor network.
 The underlying graph of the tensor network is the union of 0- and 1-cells of the cell decomposition.
 The vector space associated to each edge $e$ is $V(e)$ as defined above.
 The matrix elements of the tensor associated to a 0-cell $v$ are the numbers $\text{Link}(v, \beta)$ defined above.
-\kw{remark about dual spaces here??}
+To obtain the partition function, we form the tensor product of all the 0-cell tensors constructed in this way.
+Because the vector spaces associated to the ends of each 1-handle are dual to one another, 
+there are precisely as many dual vectors as vectors in the tensor product, and 
+contracting each vector with its associated dual vector computes a complex number 
+which we identify with $Z(M)$. 
+\ethan{need to improve the wording of that last bit}
 
 To incorporate the factors of $d(f, \beta)$ and $D^{-2}$, we make some ad hoc choices.
 For each 2-handle $f$ we choose an adjacent vertex $v_f$.
 For each vertex $v$ we modify the associated tensor by added factors of $d_a$ for each 2-handle $f$ such that $v = v_f$.
 Similarly, for each 3-cell we choose an adjacent vertex and multiply the tensor for that vertex by $D^{-2}$.
-It is easy to see that the resulting tensor network computes \eqref{bos_tv_sum}.
+It is easy to see that the resulting tensor network computes \eqref{bos_tv_sum} and 
+is independent of the way we make such choices.
 
-\kw{discuss tensor network non-empty boundary case here}
+In the case where $\partial M \neq \emptyset$, the Hilbert space associated 
+with the tensor product of the 0-cell tensors admits a decomposition $\mch^*_{bulk} \tp \mch_{bulk} \tp \mch(\partial M)$, where 
+the Hilbert spaces of the degrees of freedom on $\partial M$ lack dual tensor factors appearing in the tensor product. 
+The partition function is still performed by contracting, which contracts out the tensor factors in $\mch^*_{bulk} \tp \mch_{bulk}$ but leaves those in $\mch(\partial M)$ uncontracted, producing a wavefucntion supported on $\mch(\partial M)$ (that is, a map $A(\partial M) \ra \cc$).
+\ethan{need to improve working on the above bit}
 
 
 \medskip
 
-The above tensor network is irregular in the sense that (potentially) every edge vector space is different and every vertex tensor is different.
-One way to reduce this irregularity is to start with a generic cell decomposition (one that is dual to a triangulation).
+The above tensor network construction is irregular, in the sense that (potentially) every edge vector space is different and every vertex tensor is different.
+One way to reduce this irregularity is to start with cell decomposition that is dual to a triangulation.
 This ensures that there are exactly three 2-handles meeting each edge, and that the vertex graphs $\text{Link}(v)$ are all tetrahedral.
-Depending on the choice of 1- and 2-cell orientations, there will still be eight possible vector spaces associated to 1-handles,
-corresponding to $V^{abc}$, $V^{ab^*c}$, $V^{a^*b^*c^*}$ etc.
-(Note that if all Frobenius-Schur indicators are 1, then we can ignore these differences.)
-Similarly, there will be different tetrahedral vertex tensors, depending on the orientations of the edges of the tetrahedron.
+However, this still leaves us with many different types of $k$-cell string nets:
+depending on the choice of 1- and 2-cell orientations, there will still be eight possible vector spaces associated to 1-handles,
+corresponding to $V^{abc}$, $V^{ab^*c}$, $V^{a^*b^*c^*}$, etc.
+(note that if all Frobenius-Schur indicators are 1, then we can ignore these differences).
+Similarly, there will be many different tetrahedral vertex tensors, depending on the orientations of the edges of the tetrahedron.
 
-We can further regularize the network by choosing a global ordering of the 3-cells of the handle decomposition.
+We can further standardize the tensor network by choosing a global ordering of the 3-cells of the handle decomposition.
 (This is equivalent to a global ordering of the vertices of the dual triangulation.)
 We then choose 2-cell orientations so that the the orientation of a 2-cell together with a normal vector pointing toward the higher-ordered of the two
 adjacent 3-cells agrees with the orientation of $M$.
@@ -350,26 +422,7 @@ The standardization procedure is similar to the pitchforkization procedure defin
 %Technically, the partition function is built on a handle decomposition, 
 %but its useful to label the data associated to each handle by the corresponding cell. 
 
-\begin{figure}
-\begin{center}
-\includegraphics{NotationStateSum.pdf}
-\caption{\label{NotationStateSum}
-Notation used in this section. 
-%The cells can be used to label the weights that determine the partition function.
-In the figure we have labeled a 2-cell (face) by $f$, a 1-cell (edge) by $e$, and a 0-cell (vertex) by $v$. 
-We assume a cell decomposition that is dual to a triangulation, so that each 1-cell is adjacent to three 2-cells and two 0-cells, 
-and each 0-cell is adjacent to four 1-cells. 
-The boundary of each 2-cell $f$ possesses an orientation (left). 
-The 1-cells are also oriented, with the orientation of the edge $e$ in the figure indicted by the double arrow (center). 
-The oriented boundary edge of the face $f$ that neighbors the edge $e$ is labeled $c_{fe}$ (left), 
-and the opposing edge that is glued to $c_{fe}$ is labelled by $\bar{c}_{fe}$. 
-The trivalent junctions occurring at either end of the edge are denoted $c_{ev}$ and 
-$c_{ev'}$ (center).
-A small $S^2$ surrounding a 0-cell $v'$ intersects six 2-cells in six oriented lines, which 
-meet at four trivalent junctions $\bar{c}_{ev'}$ (right). 
-}
-\end{center}
-\end{figure}
+
 
 %\ethan{tried (valiantly) to make this more comprehensible, but may have not fully succeeded} 
 %\dave{A valiant effort indeed.}
@@ -508,19 +561,7 @@ For example, for each $\mch(c_{ev})$ tensor factor in $\mch(e)$, there is a dual
 %section we aren't pitchforking too hard}%
 %\dave{I agree.}
 
-\begin{figure}
-\begin{center}
-\includegraphics{Onehandle_smaller.pdf}
-\caption{\label{One_handle}
-Various pictures relating to our presentation of the 1-handles. In the top left picture, we show
-three 2-cells which terminate on a given 1-cell, with the orientations of the 2-cells shown. 
-In the top right picture we show a 1-handle with its three marked edges and their orientations shown. 
-In the bottom left we have the same picture as in the top right, but with the intersection of the 2-cells 
-with the 1-handle shaded in color. In the bottom right picture, we show the same picture as in the bottom left, but this time with the vertices standardized via our pitchforkization procedure. 
-\dave{Should modify this picture to match text.} \ethan{looks good to me?}
-}
-\end{center}
-\end{figure}
+
 
 
 
