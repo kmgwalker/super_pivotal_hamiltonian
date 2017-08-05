@@ -82,6 +82,9 @@ The topology of $M$ is encoded by the various attaching maps.
 %The standardization procedure is similar to the pitchforkization procedure defined in \eqref{pitchfork_basis} and surrounding text.
 
 
+
+\begin{comment}
+\ethan{this is Kevin's second outline, commented it out since it was cluttering up things}
 \subsection{Outline of proposed reorganization (KW)}	%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \kw{My hope was that the notation and order of presentation below would be in close-to-final form, but currently
@@ -100,7 +103,12 @@ some disadvantages in our intended application)
 \end{itemize}
 
 \kwsep
+\end{comment}
 
+
+%%%%%%%%%%%%%%%%%%%%
+\subsection{Bosonic TVBW state sum}
+%%%%%%%%%%%%%%%%%%%%
 
 Our first task is to describe the TVBW (bosonic) state sum.
 We will use the form for a general cell/handle decomposition, as described in \cite{Walker2006}.
@@ -111,7 +119,7 @@ Let $\mch_i$ denote the set of $i$-handles ($i = 0,1,2,3$).
 The state sum has the form
 \be \label{bos_tv_sum}
 	Z(M) = \sum_{\beta\in\mcl(\mch)}
-		\prod_{c\in\mch_3} D^{-2}
+		\prod_{c\in\mch_3} \mcd^{-2}
 		\prod_{f\in\mch_2} d(f, \beta)
 		\prod_{e\in\mch_1} \widetilde\Theta(e, \beta)^{-1}
 		\prod_{v\in\mch_0} \text{Link}(v, \beta) .
@@ -336,49 +344,56 @@ Our goal in this subsection is to reinterpret \eqref{bos_tv_sum} as a tensor net
 
 \medskip
 
-If we (temporarily) ignore the factors of $d(f, \beta)$ and $D^{-2}$ in \eqref{bos_tv_sum}, it is easy to see that it computes the tensor contraction of a tensor network.
+If we (temporarily) ignore the factors of $d(f, \beta)$ and $\mcd^{-2}$ in \eqref{bos_tv_sum}, it is easy to see that it computes the tensor contraction of a tensor network.
 The underlying graph of the tensor network is the union of 0- and 1-cells of the cell decomposition.
 The vector space associated to each edge $e$ is $V(e)$ as defined above.
 The matrix elements of the tensor associated to a 0-cell $v$ are the numbers $\text{Link}(v, \beta)$ defined above.
 \kw{remark about dual spaces here??}
 \dave{What did you have in mind?}
 
-\dave{Is this necessary?}
-\ethan{It was intended to be my guess to what Kevin's dual spaces comment meant. Might have missed the mark though.}
-To obtain the partition function, we form the tensor product of all the 0-cell tensors constructed in this way.
-Because the vector spaces associated to the ends of each 1-handle are dual to one another, 
-there are precisely as many dual vectors as vectors in the tensor product, and 
-contracting each vector with its associated dual vector computes a complex number 
-which we identify with $Z(M)$. 
-\ethan{need to improve the wording of that last bit}
-\dave{I was confused by it.}
-
-To incorporate the factors of $d(f, \beta)$ and $D^{-2}$, we make some ad hoc choices.
-We consider ``dressed" 0-handle tensors that tack on the factors of $d(f,\beta)$ and $D^{-2}$.
+To incorporate the factors of $d(f, \beta)$ and $\mcd^{-2}$, we make some ad hoc choices.
+We consider ``dressed" 0-handle weights that tack on the factors of $d(f,\beta)$ and $\mcd^{-2}$.
 For each 2-handle $f$ we choose an adjacent vertex $v_f$.
 For a 0-handle $v$ we modify the associated tensor by added factors of $d(f,\beta)$ for each 2-handle $f$ such that $v = v_f$.
-Similarly, for each 3-cell we choose an adjacent 0-handle and multiply the associated tensor by $D^{-2}$.
-It is easy to see that the resulting tensor network computes \eqref{bos_tv_sum} and 
-is independent of the way we make such choices.
+Similarly, for each 3-cell we choose an adjacent 0-handle and multiply the associated tensor by $\mcd^{-2}$.
+We then construct the vertex tensor 
+\be T_v = \sum_{w_v \in \mch(v)} \widetilde{\text{Link}}(v,w_v) w_v,\ee
+where the sum runs over orthogonal basis vectors for the vertex Hilbert space $\mch(v)$. 
+%\dave{Is this necessary?}
+%\ethan{It was intended to be my guess to what Kevin's dual spaces comment meant. Might have missed the mark though, and it might still be confusing.}
+To obtain the partition function, we form the tensor product of all the 0-cell tensors constructed in this way.
+Because the vector space associated to the region on a $0$-handle attached to the 
+terminal end of an edge $e$ is dual to the vector space associated to the corresponding region on the 
+0-handle attached to the initial end of $e$, there are precisely as many dual vectors as vectors in the tensor product, and 
+contracting each vector with its associated dual vector computes a complex number 
+which we identify with $Z(M)$. That is, we have 
+\ethan{I think we need something like this. If you guys don't like tTr then we can use an appropriately normalized $\Theta$ instead}
+\be Z(M) = \text{tTr}\left(\sum_{\beta\in \mcl(\mch)}\bigotimes_{v\in \mch_0} T_v,\ee
+where the tensor trace tTr denotes tensor contraction. 
+It is easy to see that this tensor network gives the same state sum as \eqref{bos_tv_sum} and 
+is independent of the way we assign factors of $d(f,\beta)$ and $\mcd^{-2}$ to the 
+vertex tensors. 
 
-\dave{Are we still going to write the partition function as a tensor product over un-contracted tensors, 
-and then contract?}
 In the case where $\partial M \neq \emptyset$, the Hilbert space associated 
 with the tensor product of the 0-cell tensors admits a decomposition $\mch^*_{bulk} \tp \mch_{bulk} \tp \mch(\bd M)$, where 
 the Hilbert spaces of the degrees of freedom on $\partial M$ lack dual tensor factors appearing in the tensor product. 
 The partition function is still performed by contracting, which contracts out the tensor factors in $\mch^*_{bulk} \tp \mch_{bulk}$ but leaves those in $\mch(\partial M)$ uncontracted, producing a wavefucntion supported on $\mch(\partial M)$ (that is, a map $A(\partial M) \ra \cc$).
-\ethan{need to improve working on the above bit}
 
 
-\medskip
+
+%%%%%%%%%%%%%%%%%
+\subsubsection{Standardization procedures}
+%%%%%%%%%%%%%%%%%
 
 The above tensor network construction is irregular, in the sense that (potentially) every edge vector space is different and every vertex tensor is different.
-One way to reduce this irregularity is to start with a cell decomposition that is dual to a triangulation.
-This ensures that there are exactly three 2-handles meeting each edge, and that the vertex graphs $\text{Link}(v)$ are all tetrahedral.
-However, this still leaves us with many different types of $k$-cell string nets:
-depending on the choice of 1- and 2-cell orientations, there will still be eight possible vector spaces associated to 1-handles,
+There are several standardization procedures that reduce this irregularity. 
+
+One standardization procedure is to start with a cell decomposition that is dual to a triangulation.
+This ensures that there are exactly three 2-handles meeting each edge, and that the vertex graphs $\text{Link}(v,\beta)$ are all tetrahedral.
+However, this still leaves us with many different types of $k$-cell string nets.
+For example, depending on the choice of 1- and 2-cell orientations, there will still be eight possible vector spaces associated to 1-handles,
 corresponding to $V^{abc}$, $V^{ab^*c}$, $V^{a^*b^*c^*}$, etc.
-(note that if all Frobenius-Schur indicators are 1, then we can ignore these differences).
+(note that if all Frobenius-Schur indicators are equal to 1, then we can ignore these differences).
 Similarly, there will be many different tetrahedral vertex tensors, depending on the orientations of the edges of the tetrahedron.
 
 We can further standardize the tensor network by choosing a global ordering of the 3-cells of the handle decomposition.
@@ -393,13 +408,13 @@ With these orientation choices, we have, for every 1-handle $e$,
 	V(e) = \bigoplus_{a,b,c\in\sob(\mcc)} V^{abc^*} .
 \ee
 Furthermore, all of the tetrahedral graphs have the same pattern of edge orientations (as in Figure xxxx), so all of the 0-handle tensors
-in the tensor network can be identified.
+in the tensor network are of the same form. 
 
 However, it is not always convenient to choose a global ordering.
 For example, our main application is a tensor network associated to $Y\times I$.
-If $Y$ is a torus, we might hope that the network has translational symmetry.
-This is not compatible with the global ordering trick.
-For this reason, we will assume a generic cell decomposition, but we will not employ the global ordering trick.
+If $Y$ is a torus, we might hope that the network has translational symmetry, but
+this is not compatible with the global ordering trick.
+For this reason, in what follows we will work with a cell decomposition dual to a triangulation, but we will not employ the global ordering trick.
 
 \kw{still need to discuss pitchforks and pivots ($V^{abc}$ vs $V^{bca}$);
 should probably mention that standardizing the tetrahedra necessitates pivot relations between initial and terminal ends of 1-handles}
@@ -408,16 +423,30 @@ I got confused when reading.
 Were we implicitly assuming that the 1-handles were of the form $S^1 \times I$ above, and that the pivots have been pushed into the 0-handles?
 (which is the same as cutting the 1-handles in the middle rather than at the attaching regions.)}
 
-\kw{also still to do: fermionic state sum, fermionic tensor network, k-signs, spin pivots,
-point out that spin-pivots encode the spin structure of the 3-manifold}
 
-\nn{...}
+\ethan{obviously still in progress}
+
+When generalizing to the fermionic case, we will find it useful to employ a standardization 
+procedure in which all trivalent vertices assume the ``pitchfork'' form introduced 
+in our treatment of the Hamiltonian. 
+\dots 
+In this convention, the $T_v$ tensors are 
+\begin{align}
+T_v = \Tetrahedron \; \cdot \alpha \tp \beta \tp \gamma \tp \delta, 
+\end{align}
+where have defined the tensor weight by its evaluation of the picture on the right with 
+$\alpha \in \bigoplus_{abc} V^{abc}$, $\beta \in \bigoplus_{a^* bc} V^{a^* bc}$, $\gamma \in \bigoplus_{a^* b c^*} V^{a^* b c^*}$, and $ \delta \in \bigoplus_{a^* b^* c^*} V^{a^* b^* c^*}$.
+
+After performing this standardization procedure, the forms of the 1-handles are modified 
+to incorporate extra pivoting data. 
+\begin{align} \label{horshoe_resln} 
+\HorshoeIdentity,
+\end{align}
+where $P_e$ is either the identity, $P$, or $P^2$, where $P$ is the pivot defined in \eqref{Pitchfork_pivot}.
 
 
-
-
-\kwsep
-
+%%%old outline was making the pdf hard to read, so it's been commented out
+\begin{comment}
 \kw{older outline below}
 
 Most of this is already in the current draft.
@@ -485,7 +514,16 @@ The tensor networks we associate to $Y\times I$ will not have any 3-cells.
 \item \kw{I just realized a possible disadvantage of the global ordering trick:
 The tensor network associated to $Y\times I$ might have less translation invariance than expected.}
 \end{itemize}
+\end{comment}
 
+
+%%%%%%%%%%%%%%%%%%%%%
+\subsection{The fermionic state sum}
+%%%%%%%%%%%%%%%%%%%%%
+
+
+\kw{also still to do: fermionic state sum, fermionic tensor network, k-signs, spin pivots,
+point out that spin-pivots encode the spin structure of the 3-manifold}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
