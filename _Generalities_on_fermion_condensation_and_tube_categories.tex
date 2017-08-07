@@ -754,6 +754,31 @@ $|v|=0$ and $\langle v,v\rangle/i > 0$ if $|v|=1$. \ethan{this is the usual conv
 
 \medskip
 
+%\kw{Probably should also include a summary (glue, rotate 90 degrees, cut, take linear algebra (super) trace}
+%\dave{Sounds good, will do this tomorrow.}
+%\dave{Still in progress. Will clean up soon.}
+%In summary, there is a natural trace defined on the tube category 
+%coming from the associated (2+1)-dimensional TQFT.
+%Namely, if $t \in \tube^W(\spc)$ is an endomorphism then $\tr(t) = Z(S^1_W \times S^1_B)(\cl_B(t))$. 
+%Cutting open the cycle $S^1_W$ results in a string net diagram on the annulus $S^1_B \times I$.
+%Denoting the string net on the annuls by $g \in A( S^1_B \times I) $, the TQFT trace $\tr(t)$ 
+%is given by a matrix trace of $g$ viewed as an endomorphism of the disk.
+%If $W$ is bounding the trace is the standard matrix trace, while if $W$ is non-bounding we use the super trace.
+%the annulus of $g$ if $W$ is (non-bounding) bounding. 
+
+%%KW this is the summary I had in mind
+In summary, the trace on the tube category is obtained as follows.
+Start with a string net $t$ on the annulus $S^1_W\times I$.
+Cut $t$ along an interval to obtain a string net on a square.
+Rotate this square $\pi/2$ and then reglue (with bounding spin structure) to obtain a new annular string net $\text{rot}(t)$ on $S^1_B\times I$.
+Gluing $\text{rot}(t)$ to the boundary of a disk induces a linear map $r_t$ on disk string nets.
+If $W = B$ then $\tr(t) = \tr(r_t)$, where the $\tr$ on the RHS is the usual linear algebra trace.
+If $W = N$ then $\tr(t) = \str(r_t)$, where the $\str$ on the RHS is the usual linear algebra super trace.
+Note that $\text{rot}(t)$ and $r_t$ depend on the choice of initial cut, but $\tr(r_t)$ and $\str(r_t)$ are independent of this choice.
+
+
+\medskip
+
 %\kw{We should include some sample trace calculations.}
 %\dave{Should we do any other examples?}
 \dave{Do you guys think we should join these with the following subsubsection, 
@@ -824,8 +849,6 @@ Hence a closed up q-type idempotent with a non-bounding spin structure has norm 
 Similarly, one can show that $\langle \cl_N(\gamma), \cl_N(\gamma) \rangle = 2$ 
 when $x$ is q-type and gamma is an odd endomorphism such that $\gamma^2 = \id$.
 
-\kw{resume here}
-
 %\dave{Lets also do normalization for closed up idempotents onto the torus.}
 %\dave{I am guessing there are many ways to do this calculation, if one of those is simpler and sits in the scope of this section, lets go with that. 
 %Otherwise we have the following:}
@@ -836,24 +859,26 @@ when $x$ is q-type and gamma is an odd endomorphism such that $\gamma^2 = \id$.
 %See \eqref{XXXX} for an instance of this.
 
 \dave{KW and EL should double check this with skepticism.}
-We now show that closing up a q-type idempotent onto a torus results in a state with norm $\sqrt{2}$.
+We now show that closing up a q-type idempotent of $\tube(\spc)$ onto a torus results in a state with norm $\sqrt{2}$.
 Let $x$ be a minimal idempotent of $\tube(\spc)$, 
 and $\cl_W(x) \in A(T^2)$ be the string net found by closing $x$ onto a torus with spin structure $W$ 
 along the newly closed cycle. 
-For the moment, assume the newly formed torus is bounding.
-The norm squared of $\cl_W(x)$ is
+%For the moment, assume the newly formed torus is bounding.
+First consider the case where $W = B$.
+The norm squared of $\cl_B(x)$ is
 \begin{align}
-\langle \cl_W(x), \cl_W(x) \rangle = Z(T^2 \times I)(\overline{\cl_W(x)} \cup \cl_W(x)) = Z((S^1 \times I)\times S^1_W)(\overline{\cl_W(x)} \cup \cl_W(x)).
+\langle \cl_B(x), \cl_B(x) \rangle = Z(T^2 \times I)(\overline{\cl_B(x)} \cup \cl_B(x)) = Z((S^1 \times I)\times S^1_B)(\overline{\cl_B(x)} \cup \cl_B(x)).
 \end{align}
+\kw{I think we probably want to assume that $\overline x = x$ and hence $\overline{\cl_B(x)} = \cl_B(x)$}
 in the third equality we have re-written the torus in a form where we can readily apply equation \eqref{bounding_trace} or \eqref{nonbounding_trace}.
 The role of $Y$ is played by $S^1 \times I$, an annulus with spin structure determined by $x$.
-The the linear map we need to take the matrix (super) trace of is found by cutting open the cycle $S^1_W$. 
+The the linear map we need to take the matrix (super) trace of is found by cutting open the cycle $S^1_B$. 
 The linear map has an action on $A(S^1 \times I)$ which has a complete basis given by $\End(x)$ treated as a vector space.
 %The linear map is only non-trivial on $\End(x)$.
 As in \eqref{clxnorm}, 
-the $W$ dependent matrix trace will be $\dim \End(x)$ (if $\cl_W(x)$ is nonzero) and so 
+the $W$ dependent matrix trace will be $\dim \End(x)$ (if $\cl_B(x)$ is nonzero) and so 
 \begin{align}
-\langle \cl_W(x), \cl_W(x) \rangle = \dim \End(x)
+\langle \cl_B(x), \cl_B(x) \rangle = \dim \End(x)
 \end{align}
 A similar calculation for the non-bounding torus yields the same answer, 
 however the q-type idempotents need to be closed with an odd endomorphism.
@@ -862,19 +887,6 @@ in \eqref{closing_q_type_C2} when closing up q-type idempotents on the torus.
 A complete orthogonal basis for the torus is given by closing up a complete set of representatives of minimal idempotents.
 To find a unitary S-matrix we require each of the basis states to have unit norm,
 hence we divide closed up q-type idempotents by $\sqrt{2}$.
-
-%\kw{Probably should also include a summary (glue, rotate 90 degrees, cut, take linear algebra (super) trace}
-%\dave{Sounds good, will do this tomorrow.}
-%\dave{Still in progress. Will clean up soon.}
-In summary, there is a natural trace defined on the tube category 
-coming from the associated (2+1)-dimensional TQFT.
-Namely, if $t \in \tube^W(\spc)$ is an endomorphism then $\tr(t) = Z(S^1_W \times S^1_B)(\cl_B(t))$. 
-Cutting open the cycle $S^1_W$ results in a string net diagram on the annulus $S^1_B \times I$.
-Denoting the string net on the annuls by $g \in A( S^1_B \times I) $, the TQFT trace $\tr(t)$ 
-is given by a matrix trace of $g$ viewed as an endomorphism of the disk.
-If $W$ is bounding the trace is the standard matrix trace, while if $W$ is non-bounding we use the super trace.
-%the annulus of $g$ if $W$ is (non-bounding) bounding. 
-
 
 
 %Let us summarize the trace descibed in this section. 
