@@ -268,16 +268,23 @@ In other words, we choose (independently, without any compatibility constraints)
 disk graph by simple objects, then choose a basis vector for each associated vector space.
 
 We also associate a vector space $V^*(\ell)$ to the terminal disk of each labeled 1-handle.
+\dave{Should we use a different star here? 
+Since it is somewhat different than the two stars we defined in the definition section.
+Or maybe we should just use $V^i(e)$ and $V^t(e)$ for initial and terminal vector spaces. 
+Then use $(V^i(e))^*$ and $(V^t(e))^*$ for their respective duals as defined by the `standard' reflection pairing (input vector spaces to $\text{Link}(v)$.)
+}
 In the example, this is isomorphic to $V^{d^*cba^*}$.
 %In the example, this is isomorphic to $(V^{a^*bc^*})^*$.
 %We also define $V^*(e)$ to be the direct sum (over all labelings $b$) of $V^*(\ell)$.
-There is a bilinear pairing between $V(\ell)$ and $V^*(\ell)$,  %\eqref{reflection_pairing_defn} and 
+There is a bilinear pairing between $V(\ell)$ and $V^*(\ell)$,
+given by the 1-handle.
+%\eqref{reflection_pairing_defn} and 
 %graphically looks like a banana. % :--)
 %\ethan{we should probably change $\mcb$ to $\Theta$ or the other way around to make notation consistent}
 %\dave{Or should we change $\mcb$ to $\widetilde{\Theta}$ and save $\Theta$ for trivalent junctions?}
-\dave{Need to consider whether we put the pivots on the 1-handles or the 0-handles.}
-\ethan{whether we want a back reference to $\mcb$ is tbd}
-and we will choose a dual basis of $V^*(\ell)$ such that the pairing matrix is diagonal.
+%\dave{Need to consider whether we put the pivots on the 1-handles or the 0-handles.}
+%\ethan{whether we want a back reference to $\mcb$ is tbd}
+We will choose a basis of $V^*(\ell)$ such that the pairing matrix is diagonal.
 (It is sometimes convenient to not insist that the diagonal entries be $\delta_{ij}$.)
 %As with $\mcb$, it is sometimes convenient to not insist that the diagonal entries be $\delta_{ij}$.
 We also define $V^*(e)$ to be the direct sum (over all labelings $\ell$) of $V^*(\ell)$.
@@ -292,26 +299,25 @@ appearing in $Z(M)$ by $d(f,\beta) = d_a$.
 Let $e$ be a 1-handle.
 The labeling $\beta$ associates a basis vector $\mu$ to the initial disk of $e$.
 Define $\widetilde\Theta(e, \beta)$ to be the value of the bilinear pairing evaluated on $\mu^*$ and $\mu$.
-\dave{I'm guessing with this convention we have cut the 1-handle between the two 0-handles. 
-Otherwise if we cut at the ends near the 0-handles we need $\widetilde{\Theta}  \ra \frac{\widetilde{\Theta}\widetilde{\Theta}  }{ \widetilde{\Theta} } $ in $\widetilde\theta$ in $Z(M)$.
-Two standard ones coming from the attaching disks of the 1-handle, and one non-standard one that depends on the 1-handle itself (e.g., could have a pivot).
-Is that correct? Should we mention this?
-}
+%\dave{I'm guessing with this convention we have cut the 1-handle between the two 0-handles. 
+%Otherwise if we cut at the ends near the 0-handles we need $\widetilde{\Theta}  \ra \frac{\widetilde{\Theta}\widetilde{\Theta}  }{ \widetilde{\Theta} } $ in $\widetilde\theta$ in $Z(M)$.
+%Two standard ones coming from the attaching disks of the 1-handle, and one non-standard one that depends on the 1-handle itself (e.g., could have a pivot).
+%Is that correct? Should we mention this?
+%}
 Diagrammatically, $\widetilde\Theta(e, \beta)$ is found by connecting the open strings in $V(\ell)$ to their dual counterparts in $V^*(\ell)$ and evaluating 
 the resulting diagram.
 Continuing with our example in Figure \ref{OneHandlePrime}, if $e$ has four adjacent 2-handles labeled by $a,b,c,d$ with the orientations of Figure \ref{OneHandlePrime} so that $\mu \in V^{ab^*c^*d}$, then we have 
-\be \widetilde \Theta (e, \beta) =  \Bananafourmu.\ee
+\be \widetilde \Theta (e, \beta) =  \Bananafourmu.
+\ee
 %\ethan{need to change $\eta_i$ in the fig to $\mu^*$ and $\mu$}
 %\dave{done}
 
 Let $v$ be a 0-handle.
 The labeling $\beta$ determines a labeling of the graph $\text{Link}(v)$ as follows.
-Near each vertex of $\text{Link}(v)$ we place the basis element $\mu^*$ (or $\mu$) assigned by $\beta$ to the 
-corresponding 1-handle if it is on the initial (terminal) end of the 1-handle.
-\dave{Should these be interchanged?
-i.e., I thought $\mu^*$ is assigned to vertices of $\text{Link}(v)$ which sit at the initial end of a 1-handle.
-}
-\ethan{to make it consistent with our earlier writing of the section, I think yes. I interchanged them.}
+Near each vertex of $\text{Link}(v)$ we place the basis element $\mu^* \in V(e)^*$ (or $\mu \in (V^*(e))^*$) assigned by $\beta$ to the 
+corresponding 1-handle if it is on the initial (terminal) end of the 1-handle.\footnote{The dual spaces here are determined by the bilinear pairing of \eqref{reflection_pairing_defn}.}
+%\dave{I think it should be $\mu^* \in V(e)^*$ and $\mu \in (V^*(e))^*$.}
+%\ethan{to make it consistent with our earlier writing of the section, I think yes. I interchanged them.}
 If these vertex labels are incompatible along edges of $\text{Link}(v)$, we define $\text{Link}(v, \beta) = 0$.
 If they are all compatible then we define $\text{Link}(v, \beta)$ to be the evaluation of the resulting labeled graph (string net).
 \dave{Maybe we should add a picture.}
@@ -370,6 +376,7 @@ terminal end of an edge $e$ is dual to the vector space associated to the corres
 contracting each vector with its associated dual vector computes a complex number 
 which we identify with $Z(M)$. That is, we have 
 \ethan{I think we need something like this. If you guys don't like tTr then we can use an appropriately normalized $\Theta$ instead}
+\dave{I like ${\rm tTr}$ for now.}
 \be Z(M) = {\rm tTr}\left(\bigotimes_{v\in \mch_0} T_v\right),\ee
 where the tensor trace tTr denotes tensor contraction. 
 It is easy to see that this tensor network gives the same state sum as \eqref{bos_tv_sum} and 
