@@ -535,20 +535,23 @@ The tensor network associated to $Y\times I$ might have less translation invaria
 %%%%%%%%%%%%%%%%%%%%%
 \subsection{The fermionic state sum}
 %%%%%%%%%%%%%%%%%%%%%
-List of modifications to incorporate: 
+
+We now turn to the generalization of the state sum construction to the fermionic case. 
+We start with two pieces of data: a super pivotal fusion category $\mcc$, and an oriented spin 
+3-manifold $M$ possessing a cell decomposition with orientations of 1- and 2-cells.
+The fermionic version of the state sum can be computed using similar techniques as in the 
+bosonic case, with several important modifications:
 \begin{itemize} 
-\item 3-manifold $M$ is replaced by spin 3-manifold
-\item The state sum is given by 
-\begin{align}
-\label{fermionic_tv_sum}
-	Z(M) = \sum_{\beta\in\mcl(\mch)}(-1)^{\kappa_\beta}
-		\prod_{c\in\mch_3} \mcd^{-2}
-		\prod_{f\in\mch_2} \frac{d(f, \beta)}{n(f,\beta)}
-		\prod_{e\in\mch_1} \widetilde\Theta(e, \beta)^{-1}
-		\prod_{v\in\mch_0} \text{Link}(v, \beta) .
-\end{align}
-The main modifications are given by the Koszul sign $(-1)^{\kappa_\beta}$, the normalization on the 2-handle term, and the sign ordering that is introduced on $\widetilde{\Theta}$ and $\text{Link}(v, \beta) $.
-\item $d(f,\beta)$ is as before
+\item Koszul signs enter into the partition function when computing it as a tensor contraction. In order to compute these Koszul signs, we need to assign an ordering to each of the vector spaces 
+appearing in the Hilbert space of the problem. 
+%\dave{Need to say ordering on what.
+%I would be inclined to say that we need an ordering for every tensor. 
+%And then give a prescription to contract over tensors and find a possibly large tensor, with another ordering.}
+\item Since simple objects in $\mcc$ can have non-trivial endomorphism algebras, some additional care must be taken to ensure the proper normalization of the partition function. 
+\item Because of the relation $P^3 = (-1)^F$ in the fermionic case, care must be taken when implementing pivots during 
+standardization procedures. 
+
+\begin{itemize}
 \item $n(f,\beta) = \dim \End(a)$ if $a$ is the simple object labeling the attaching region core of the attaching annulus for the 2-handle by $\beta$.
 \item pairing on initial and terminal disks as determined by the 1-handle is sign ordered.
 Lets choose the initial disk to have a lower sign ordering than terminal disk.
@@ -562,6 +565,28 @@ This determines a global ordering of the fermions on the attaching regions of th
 $\kappa_\beta = $  the number of Koszul isomorphisms needed in order to have the global ordering of the attachment regions in the 0- and 1-handles match.
 \end{itemize} 
 
+
+
+The state sum is then
+\begin{align}
+\label{fermionic_tv_sum}
+	Z(M) = \sum_{\beta\in\mcl(\mch)}(-1)^{\kappa_\beta}
+		\prod_{c\in\mch_3} \mcd^{-2}
+		\prod_{f\in\mch_2} \frac{d(f, \beta)}{n(f,\beta)}
+		\prod_{e\in\mch_1} \widetilde\Theta(e, \beta)^{-1}
+		\prod_{v\in\mch_0} \text{Link}(v, \beta) .
+\end{align}
+In what follows, we will explain and motivate the factors appearing in the above formula. 
+
+
+\ethan{write it as a tensor network...}
+
+Although we have largely been using unordered tensor products throughout our discussion of fermionic theories, to actually compute
+the partition function through a tensor contraction, a particular choice of ordering for the tensors involved in the partition function must be made (with different orderings related by the usual Koszul signs).
+
+%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Fermionic standardization procedures}
+%%%%%%%%%%%%%%%%%%%%
 
 \kw{also still to do: fermionic state sum, fermionic tensor network, k-signs, spin pivots,
 point out that spin-pivots encode the spin structure of the 3-manifold}
