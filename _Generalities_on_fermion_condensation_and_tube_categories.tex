@@ -781,8 +781,9 @@ Note that $\text{rot}(t)$ and $r_t$ depend on the choice of initial cut, but $\t
 
 %\kw{We should include some sample trace calculations.}
 %\dave{Should we do any other examples?}
-\dave{Do you guys think we should join these with the following subsubsection, 
-or leave it as is?}
+%\dave{Do you guys think we should join these with the following subsubsection, 
+%or leave it as is?}
+%\dave{Joined them into this section.}
 We now compute some traces that illustrate the techniques 
 described in this section, and which will also be of use to us later.
 
@@ -806,6 +807,19 @@ Since $\mor(\unit\ra x\tp x^*) \cong \mor(x\ra x) \cong \End(x)$, we get
 \end{cases}.
 \end{align}
 
+\dave{This paragraph is newly added.}
+We can also compute the quantum dimensions $d_{e_j}$ of the minimal idempotents in $\tube(\spc)$.
+The un-normalized quantum dimension $\tilde d_{e_j}$ is defined by the trace of the idempotent: 
+% tracing out the idempotent:
+%defined by the trace of the associated idempotent $\Pi_x$: 
+\begin{align}
+\tilde d_{e_j} = \tr (e_j),
+\end{align}
+%where $W$ is bounding if $e_j \in \tube^{B}(\mcc/\psi)$ and non-bounding if $e_j \in \tube^N( \mcc/\psi)$.
+The normalized quantum dimension $d_{e_j}$ is then given by $\tilde d_{e_j}/\tilde d_{e_0}$, where $e_0$ is the trivial idempotent.
+For example, in the $C_2$ theory, we can use this approach to obtain $\tilde d_{m_{\unit / \psi}} = 1/2, \tilde d_{m_\sigma^+} = \tilde d_{q_{\unit/\psi}} = 1/\sqrt{2}, \tilde d_{q_\sigma} = 1$. 
+Normalizing so that $d_{m_\unit} = 1$, we obtain the normalized quantum dimensions listed in Table \ref{C2Data}. 
+
 The total squared dimension $\mcd^2$ of the theory is defined to be 
 $ \langle S^2_\phi, S^2_\phi \rangle$, the inner product of the empty diagram on the 2-sphere with itself.
 We can then compute
@@ -819,9 +833,10 @@ as a union of two manifolds homeomorphic to $B^3$ glued along a bounding annulus
 have made use of the gluing axioms of TQFT. 
 We can compute $Z(B^3, {\cl(x)}) = Z(B^3, \overline{\cl(x)}) = d_x$ by definition of the quantum dimension, and hence the total squared dimension is given by
 \begin{align}
-\mcd^2 = \sum_x \frac{d_x^2}{\dim \End(x)}.
+\mcd^2 = \sum_{x\in \sob(\scat)} \frac{d_x^2}{\dim \End(x)}.
 \end{align} 
-An alternative derivation inspired by fermion condensation is given in Section \ref{Quantum_dimensions}.
+Note that letting $ \scat = \tube(\spc)$ gives the total dimension of tube category.
+%An alternative derivation inspired by fermion condensation is given in Section \ref{Quantum_dimensions}.
 %Indeed this calculation is responsible for the denominator in \eqref{XXXX}.
 
 A similar derivation recovers \eqref{non-boundingNullVector}, 
@@ -888,9 +903,50 @@ A complete orthogonal basis for the torus is given by closing up a complete set 
 To find a unitary S-matrix we require each of the basis states to have unit norm,
 hence we divide closed up q-type idempotents by $\sqrt{2}$.
 
-
+\dave{This paragraph is newly added.}
+Lastly we point out a useful relation between the total dimension of a pivotal fusion category $\mcc$ and its fermionic quotient $\mcc/\psi$.
+Let $\mcc$ be a pivotal fusion category, $\psi \in \mcz(\mcc)$ a fermion with $\psi \tp \psi \cong \unit$,  and $\mcc/\psi$ the fermionic quotient of $\mcc$,
+then
+\begin{align}
+\label{DC_and_DCpsi}
+\mcd_\mcc^2 = 2 \mcd^2_{\mcc/\psi}
+\end{align}
+if in addition we assume that $\mcc$ is a modular tensor category we also have,
+\begin{align}
+\label{TubeDim_and_dimCCpsi}
+\mcd_{\tube(\mcc/\psi)}^2 = \mcd_\mcc^2 \mcd_{\mcc/\psi}^2
+\end{align}
+To show \eqref{DC_and_DCpsi}, we simply note 
+\be
+\mcd_\mcc^2 = \tr \left(\bigoplus_{x\in \sob(\mcc)} d_x x\right) = \tr \left( \bigoplus_{x \in \sobm(\mcc/\psi)} d_x (\mathds{1} \oplus \psi) \tp x \right ) + \tr \left(\bigoplus_{x  \in \sobq(\mcc/\psi )} {d_x} x \right),\ee
+%where $Q$ is the set of all q-type objects in $\mcc$ (those that are invariant under fusion with $\psi$), 
+%and $M$ is a collection of representatives of the orbits of m-type objects under fusion with $\psi$, so that 
+%the collection of all m-type simple objects is $M\cup M\tp \psi$.   
+Since $x\tp \psi \cong x$ if $x\in \sobq(\mcc/\psi)$, we can write
+\begin{align}
+\label{dimCtoDimCpsi}
+\mcd_\mcc^2 & = \tr \left( \bigoplus_{x \in \sobm(\mcc/\psi)} d_x (\mathds{1} \oplus \psi) \tp x \right ) + 
+\tr  \left(\bigoplus_{x  \in \sobq(\mcc/\psi)}\frac{d_x}{2}(\unit \oplus \psi) x \right) \\ & =\tr(\unit \oplus \psi) 
+\cdot \tr \left( \bigoplus_{x \in \mcc/\psi} \frac{d_x}{\dim\End(x)} x \right) = \mcd^2_{\rm sVec} 
+\mcd_{\mcc/\psi}^2 = 2 \mcd_{\mcc/\psi}^2,
+\end{align}
+hence, \eqref{DC_and_DCpsi}. 
+This result can also be motivated by making use of the theory of modular extensions, see for example \cite{lan2016}\dave{Ethan can you explain this to me.}.
+For the $C_2$ theory, this works out as 
+$\mcd_{C_2} = \sqrt{2} = \mcd_{\rm Ising} / \sqrt{2}$.
 %Let us summarize the trace descibed in this section. 
 %The tube category
+Using \eqref{DC_and_DCpsi} again and specializing to the case where $\mcc$ is a modular tensor category then $\tube(\mcc/\psi) \cong \mcc \times (\mcc/\psi) $ 
+(a result that we prove in Section \ref{double_fermionic_quotient}), and we have 
+\be \mcd_{\tube(\mcc/\psi)} = \mcd_{\mcc} \mcd_{\mcc/\psi}.\ee
+For example, in the $C_2$ theory this is verified by $\mcd_{\tube(C_2)} = \sqrt{8} = \sqrt{2} (\sqrt{2})^2 = \sqrt{2} \mcd^2_{C_2}.$
+\dave{I suspect that the more general version of this formula holds (i.e., not assuming $\mcc$ to be modular).
+But showing that is somewhat low on my priority list (in the scheme of this paper). 
+Would either of you be embarassed if there was a simple way to show it, 
+and we didn't include the calculation here?
+I would be happy to spend time on it, but there are probably other things to focus on in the paper.
+}
+
 
 %\dave{commented out things here that we may want to clean up/include, but is not crucial.
 %i.e., we could relate inner product of parent theory to condensed theory.}
@@ -971,7 +1027,7 @@ as we do in proving Theorem \ref{minimal_idempotents_modular_C/psi}.
 \end{comment} 
 
 
-
+\begin{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Quantum dimensions}
 \label{Quantum_dimensions}
@@ -1045,6 +1101,9 @@ For example, in the $C_2$ theory this is verified by $\mcd_{\tube(C_2)} = \sqrt{
 
 \dave{Below is old stuff (commented out). 
 Should decide if we want to keep anything else from it, I think most of it has been copied over.}
+
+\end{comment}
+
 \begin{comment} 
 In what follows we will need to compute the trace of a generic operator (or in other words, an endomorphism) $\mco$ in the tube category. 
 \kw{I think we should say endomorphism rather than operator, and use lower case notation for this operator.}
