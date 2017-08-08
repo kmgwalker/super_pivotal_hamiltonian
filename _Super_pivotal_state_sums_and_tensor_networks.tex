@@ -636,18 +636,16 @@ We now turn to the task of reinterpreting \eqref{fermionic_tv_sum} as a tensor n
 
 We incorporate the factors of $d(f, \beta)/n(f,\beta)$ and $\mcd^{-2}$ into the 0-cell 
 weights 
-in the same way as before. Denoting the modified 0-handle weights by $\widetilde{\rm Link}(v,\beta)$, we construct the vertex tensor 
+in the same way as in the bosonic case. Denoting the modified 0-handle weights by $\widetilde{\rm Link}(v,\beta)$, we construct the vertex tensor 
 \be T_v = \sum_{w_v \in \mch(v)} \widetilde{\text{Link}}(v,w_v) w_v,\ee
 where the sum runs over orthogonal basis vectors for the vertex Hilbert space $\mch(v)$. 
+For a 0-handle on which $n$ 1-handles terminate, the vectors $w_v$ admit a 
+decomposition $w_v = \bigotimes_{i=1}^n w_{v,i}$. 
+These vectors are assigned Koszul ordering in the standard implicit left-to-right way. 
 %\dave{Is this necessary?}
 %\ethan{It was intended to be my guess to what Kevin's dual spaces comment meant. Might have missed the mark though, and it might still be confusing.}
-To obtain the partition function, we form the tensor product of all the 0-cell tensors constructed in this way.
-Because the vector space associated to the region on a $0$-handle attached to the 
-terminal end of an edge $e$ is dual to the vector space associated to the corresponding region on the 
-0-handle attached to the initial end of $e$, there are precisely as many dual vectors as vectors in the tensor product, and 
-contracting each vector with its associated dual vector computes a complex number 
-which we identify with $Z(M)$. 
 
+To obtain the partition function, we again form the tensor product of all the 0-cell tensors constructed in this way.
 Formally, the partition function 
 is the same as in the bosonic case, being computed as a tensor trace of the $T_v$ tensors:
 \be Z(M) = {\rm tTr}\left(\bigotimes_{v\in \mch_0} T_v\right).\ee
@@ -655,13 +653,58 @@ Again, $Z(M)$
 is independent of the way we assign factors of $d(f,\beta)$ and $\mcd^{-2}$ to the 
 vertex tensors. 
 
-In the case where $\partial M \neq \emptyset$, the Hilbert space associated 
-with the tensor product of the 0-cell tensors admits a decomposition $\mch^*_{bulk} \tp \mch_{bulk} \tp \mch(\bd M)$, where 
-the Hilbert spaces of the degrees of freedom on $\partial M$ lack dual tensor factors appearing in the tensor product. 
-The partition function is still performed by contracting, which contracts out the tensor factors in $\mch^*_{bulk} \tp \mch_{bulk}$ but leaves those in $\mch(\partial M)$ uncontracted, producing a wavefucntion supported on $\mch(\partial M)$ (that is, a map $A(\partial M) \ra \cc$).
+However, 
+one has to be careful about Koszul sign issues when evaluating the tensor contraction performed by the tensor trace. 
+In the above equation, the Koszul ordering of each tensor factor is determined in the usual implicit way, 
+so that it increases from left to right on the page (the ordering of the $T_v$ 
+tensors is determined by an arbitrary global ordering on the 0-cells). However, this left-to-right ordering will almost always not be 
+the ordering required in order to perform the tensor contraction (namely one where 
+vectors and their associated dual vectors are adjacent to one another in the tensor product). 
+Re-arranging the Koszul ordering given by the left-to-right convention produces a Koszul sign not
+present in the bosonic partition function (which appears as $(-1)^{\kappa_\beta}$ in \eqref{fermionic_tv_sum}).
 
-Although we have largely been using unordered tensor products throughout our discussion of fermionic theories, to actually compute
-the partition function through a tensor contraction, a particular choice of ordering for the tensors involved in the partition function must be made (with different orderings related by the usual Koszul signs).
+We will now elaborate on the above comments. 
+When we contract out two tensor indices of a tensor in $\mch^*\tp\mch$, we must be careful to only perform 
+the contraction on two tensor factors that have adjacent Koszul ordering in the tensor product\footnote{This is why we are careful to only define $\widetilde\Theta$ in \eqref{fermionic_tv_sum} (which secretly performs tensor contractions) on 1-handles 
+whose initial terminal disks possess adjacent Koszul order.}. 
+For example, suppose we have two tensors $Q \in V_Q$ and $T\in V_T$,
+defined by
+\begin{align}
+Q &= \sum_{q_L \tp q \tp q_r } Q(q_L \tp q \tp q_R)q_L \tp q \tp q_R,\\
+T &= \sum_{t_L \tp t \tp t_R} T(t_L \tp t \tp t_R  )t_L \tp t \tp t_R,
+\end{align}
+where we have split the vector spaces $V_Q$ and $V_T$ into tensor factors on 
+the left and right of the two indices that we would like to contract, namely $t \in V$ and $q \in V^*$.
+We define the contracted tensor by $K$, which is given by
+\begin{align}
+K = \sum_{ q_L \tp q_R \tp t_L \tp t_R}K(q_L \tp q_R \tp t_L \tp t_R) q_L \tp q_R \tp t_L \tp t_R,
+\end{align} 
+with 
+\begin{align}
+\label{contraction_example}
+K(q_L \tp q_R \tp t_L \tp t_R) &= \sum_{q,t} Q(q_L \tp q \tp q_R)R(t_L \tp t \tp t_R  ) (-1)^{|q| |q_r|}(-1)^{|t_L| | t|} \delta_{q^*,t}\\
+&= \sum_{t} Q(q_L \tp t^* \tp q_R)R(t_L \tp t \tp t_R  ) (-1)^{|t|( |q_R| +|t_L|)}.
+\end{align}
+In the above, we have used the fact that $\delta_{q^*,t}$ is only non-zero
+if $|q|=|t|$. 
+The Koszul sign $(-1)^{|t|( |q_R| +|t_L|)}$ is picked up from commuting the tensor factors $q$ and $t$ next to one another, so that they have the correct Koszul ordering for being input into the contraction map. 
+
+In the above examples, we have used the implicit left-to-right Koszul ordering convention.
+In practice, we will more often be performing a contraction on a series of tensors whose Koszul
+orderings are indicated explicitly by numerical subscripts, since this notation is better suited to 
+our diagrammatic formalism. For example, we have 
+\be Q\tp T = \sum_{q_L \tp q \tp q_r } Q(q_L \tp q \tp q_R)T(t_L \tp t \tp t_R  ) q_{L1} \tp q_2 \tp q_{R3} \tp t_{L4} \tp t_5 \tp t_{R6}.\ee
+We would like to contract out the indices $t\in V,q\in V^*$, but in order to do this they must have adjacent Koszul ordering. 
+To obtain such an 
+order, we use the following manipulations:
+\begin{align} q_2 \tp q_{R3} \tp t_{L4} \tp t_5 & = (-1)^{|q||q_R|}q_3 \tp q_{R2} \tp t_{L4} \tp t_5 \\ & = (-1)^{|q||q_R|+|t||t_L|} q_3 \tp q_{R2} \tp t_{L5} \tp t_4.
+\end{align}
+We are now ready to contract out the $q$ and $t$ indicies. The Koszul sign we pick up, namely 
+$(-1)^{|q||q_R|+|t||t_L|}$, is of course the same as the one obtained with the implicit left-to-right Koszul ordering convention. 
+
+In summary, the Koszul sign that appears when performing the tensor contraction in the evaluation of $Z(M)$ can be found 
+by ensuring that tensor factors 
+being contracted always have adjacent Koszul-ordering and by using \eqref{contraction_example} repeatedly.
 
 
 
@@ -682,6 +725,9 @@ However, in the fermionic case we now have $P_e^3=(-1)^F$, so $l_e$ is now
 valued in $\zz_6$ as opposed to $\zz_3$. 
 With the spin framing at the 0-handles fixed by virtue of the pitchforkization procedure, 
 the spin structure of the underlying 3-manifold is encoded in the edge pivots $P_e$.
+
+
+
 
 
 OLD STUFF BELOW:
