@@ -10,6 +10,8 @@
 \section{Super pivotal categories}  \label{def_sect}
 %%%%%%%%%%%%%%%%%%%%%%
 
+\kw{I think we should change $\mcc$ and $\scat$ to $\spc$ throughout this section}
+
 In this section we give a more formal (though not completely formal) definition of super pivotal categories.
 Since the usual bosonic case is well covered in the literature, we will concentrate on
 the differences between the bosonic case and the fermionic/super case.
@@ -591,11 +593,12 @@ their ordered representatives.
 %E.g., use $\mcc$ for bosonic, $\mcc/\psi$ for the fermionic quotient, and $\mcf$ for super pivotal, other possibilities $\mathcal{G} \mathcal{H}\mathcal{K}\mathcal{Q}\mathcal{R}$ }
 %\dave{Also the change of $\mcx \ra \sob(\mcf)$ should be $\mcx \ra \sob(\mcc/\psi)$ or $\sob(\mcf)$ depending on context.}
 %\ethan{Yeah, agreed. was hoping just $\sob(\mcf)$ would let us get away with being a little ambiguous, but probably $\sob(\mcf)$ is better---changed it to that.}
-\dave{I think $\mcf$ probably isn't the best charector to use since we already use it for the set of `faces' in the tensor network section. 
-Lets make it a macro and then we can define it to whatever we like later.
-}
-\ethan{done. macro is backslash scat (for supercategory)}
+%\dave{I think $\mcf$ probably isn't the best charector to use since we already use it for the set of `faces' in the tensor network section. 
+%Lets make it a macro and then we can define it to whatever we like later.
+%}
+%\ethan{done. macro is backslash scat (for supercategory)}
 
+\kw{I think we should change $\scat$ to $\spc$ here}
 
 Let $\sob(\scat)$ be a complete collection of simple objects (minimal idempotents) in some 
 input super fusion category $\scat$, one from each equivalence class.
@@ -609,14 +612,14 @@ Recall that the relative tensor product $\tp_{\End(a)}$ on the RHS above is defi
 of the form $\alpha \cdot f \tp \beta - \alpha\tp f \cdot \beta$ with $\alpha \in \mor(x \to a)$, $\beta \in \mor(a \to y)$ and $f\in \End(a)$.
 %\dave{Could also use: ``...modulo elements
 %of the form $m_{xa} \cdot f_a \tp m_{by} - m_{xa}\tp f_a\cdot m_{ay}$ with $m_{xa} \in \mor(x \to a)$, $m_{ay} \in \mor(a \to y)$ and $f_a\in \End(a)$"}.
-Clearly such elements are in the kernel of the composition map $\mor(x\to a) \tp \mor(a\to y) \to \mor(x\to y)$ 
-\footnote{Composition is given by $\alpha \tp \beta \mapsto \alpha \cdot \beta$ (equivalently $\alpha \tp \beta \mapsto \beta \circ \alpha$) with $\alpha \in \mor(x \to a)$ and $\beta \in \mor(a \to y )$.
-}.
+Clearly such elements are in the kernel of the composition map $\mor(x\to a) \tp \mor(a\to y) \to \mor(x\to y)$.
+%\footnote{Composition is given by $\alpha \tp \beta \mapsto \alpha \cdot \beta$ (equivalently $\alpha \tp \beta \mapsto \beta \circ \alpha$) with $\alpha \in \mor(x \to a)$ and $\beta \in \mor(a \to y )$.
+%}		%%KW footnote seems unnecessary to me
 Our semisimplicity assumption implies that the composition map (summing over all $a\in \sob(\scat)$) is surjective and that such
 elements generate all of the kernel.
 
-Diagrammatically, the relative tensor product is responsible for allowing fermionic dots to move across edges labeled by q-type simple objects.
-Loosely, taking a tensor product over $\End(a)$ when $a$ is q-type prevents us from distinguishing diagrams that 
+In terms of diagrams, the relative tensor product is responsible for allowing fermionic dots to move across edges labeled by q-type simple objects.
+Loosely, taking a tensor product over $\End(a)$ when $a$ is q-type allows us to identify diagrams that 
 differ only by the position of a fermionic dot on an $a$ strand. 
 
 
@@ -634,7 +637,8 @@ Diagrammatically these read,
 \end{align} 
 %\kw{Let's add in the middle a diagram with a 4-valent vertex, prepresenting $V^{abc}_d$}
 %\dave{Sure. Done.}
-where the unlabeled trivalent vertices denote the fusion spaces $V^{ab}_x$, $V^{xc}_d$, $V^{ay}_d$, $V^{bc}_y$, and the unlabled quadvalent vertex in the middle diagram denotes the fusion space $V^{abc}_d$.
+where the unlabeled trivalent vertices denote the fusion spaces $V^{ab}_x$, $V^{xc}_d$, $V^{ay}_d$, $V^{bc}_y$, 
+and the unlabeled tetravalent vertex in the middle diagram denotes the fusion space $V^{abc}_d$.
 The tensor product over endomorphisms is implicit in the diagram.
 Similarly, 
 \be
@@ -659,9 +663,9 @@ Diagrammatically we have,
 %\dave{Note to self: make figures match up.}
 \begin{align}
 \vcenter{\xymatrix @!0 @M=4mm @R=14mm @C=20mm{
- \bigoplus_x \TensorProductbprime &\quad \cong& \TensorProducteprime  &\cong\quad&\bigoplus_x \TensorProductcprime   \\
+ \bigoplus_x \TensorProductaprime &\quad \cong& \TensorProducteprime  &\cong\quad&\bigoplus_x \TensorProductcprime   \\
 \quad \quad \rotatebox[origin=c]{90}{$\cong$}   &          &                                      &         &\quad\quad\rotatebox[origin=c]{90}{$\cong$}\\
- \bigoplus_x \TensorProductaprime &          &                                      &         &\bigoplus_x \TensorProductdprime  
+ \bigoplus_x \TensorProductbprime  &          &                                      &         &\bigoplus_x \TensorProductdprime  
 	}}
 \end{align}
 %\begin{align}
@@ -681,12 +685,6 @@ Diagrammatically we have,
 %where the unlabeled trivalent junctions represent the fusion space of the three oriented lines which terminate there.
 
 
-
-\bigskip
-
-
-\kw{What else needs to be said here?}
-\ethan{nice figures. I think that's probably good}
 
 
 
@@ -742,11 +740,18 @@ Which written as a matrix equation is
 \PitchforkFLeftprime = \sum_{y} \sum_{\rho \sigma} \left( F^{abcd} \right)_{(x; \mu \nu)(y; \rho \sigma)} \PitchforkFRightprime .
 \end{align}
 
+\kw{$V^{y^*bc}$ here, but $V^{bcy^*}$ in the previous subsection; we should make this consistent (and also consistent with hamiltonian section}
+
 We will also find the following identity helpful:
 \begin{align}
 \label{idpitchfork}
 \Idabba = \sum_{x} \frac{d_x}{B(\mu \tp \mu^* )} \IdPitchfork
 \end{align}
+(The pairing $B$ is defined in \eqref{reflection_pairing_defn}.)
+\kw{The K ordering used here has to be coordinated wsith the K ordering used in the definition of $B$.
+I think currently it is wrong, but the proposed change in the defn of $B$ will fix it.}
+
+
 
 %%%%%%%%%%%%%%%%%%
 \subsection{Coherence relations} \label{coherence_ss}
@@ -754,8 +759,7 @@ We will also find the following identity helpful:
 
 We will not list all coherence relations here.
 Instead we will give a few examples, in order to highlight how the bosonic case
-must be changed to take account of Koszul signs.
-\kw{and other stuff}
+must be changed to take account of Koszul signs and relative tensor products.
 
 \medskip
 
@@ -801,8 +805,8 @@ that the following diagram commutes:
 \end{align}
 \end{comment}
 where all the sums are over a representative set of simple objects and we have used the notation $\tp_x \equiv \tp_{\text{End}(x)}$.
-Technically, the modified tensor products $\tp_x$ also appear in the conventional bosonic pentagon equation, although in that 
-case we can set $\tp_x = \tp_\cc$ without loss of generality. 
+%Technically, the modified tensor products $\tp_x$ also appear in the conventional bosonic pentagon equation, although in that 
+%case we can set $\tp_x = \tp_\cc$ without loss of generality. 
 
 However, if we peer under the hood and look at {\it ordered representatives} (as we would need to do if, for example,
 we were checking the pentagon equation on a computer), then we
@@ -852,10 +856,11 @@ see that a Koszul sign appears:
 	}} 
 	\label{endoPentagonDiagram}
 \end{align}
-\kw{I propose we switch to this diagram}
-\dave{That's fine with me.}
+%\kw{I propose we switch to this diagram}
+%\dave{That's fine with me.}
 \dave{Do the brackets at serve any purpose?}
- --- equivalently --- 
+\kw{The relative tensor products seem a little weird without the parentheses}
+-- equivalently -- 
 \begin{align}
 \newcommand{\A}{\bigoplus_{p,q}V^{qw}_{u}\tp_q V^{pz}_{q}  \tp_p V^{xy}_{p}}
 \newcommand{\AB}{\ar[rru]^{F^{pzw}_u} \ar[rrd]^{F^{xyz}_q}}
@@ -894,6 +899,7 @@ In terms of the matrix elements of the $F$-symbols, this reads
  [F^{xyt}_u]_{(p;\mu\beta)(s;\delta \gamma)}, 
 \end{aligned} 
 \ee
+\kw{someone should double-check above eqn; I have not}
 where $\mu\in V^{xy}_p,\nu\in V^{pz}_q,\lambda\in V^{qw}_u,\gamma\in V^{xs}_u,\delta\in V^{yt}_s,$ and $\alpha\in V^{zw}_t$. 
 The Koszul sign $P_{23}$ appearing in \eqref{endoPentagon} appears in the above formula as $(-1)^{|\mu||\alpha|}$. 
 %\dave{I found:
@@ -937,6 +943,7 @@ For coherence conditions like the following I think the first is simpler.
 	}} 
 	\label{pivotconsistent}
 \end{align} 
+\kw{I think $P^{ayd}$ above should be $(P^{ayd})^{-1}$; the rest looks OK to me}
 
 \begin{comment} %non-diagrammatic notation
 \begin{align}
@@ -972,7 +979,7 @@ about other coherence relations}
 \kw{TO DO: discuss reflection structures, pin, etc.
 probably just give basic defs}
 \ethan{Are we wanting to talk about inner products and stuff? I think we can largely just refer to stuff in the line bundle appendix}
-\dave{Should probably say atleast enough so that we know the Hamiltonian is hermitian.}
+\dave{Should probably say at least enough so that we know the Hamiltonian is hermitian.}
 
 
 
