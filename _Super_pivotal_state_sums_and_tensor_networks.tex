@@ -552,6 +552,9 @@ appearing in the Hilbert space of the problem.
 standardization procedures. 
 \end{itemize}
 
+
+\begin{comment}
+things Dave wrote that essentially all appear in the section
 \begin{itemize}
 \item $n(f,\beta) = \dim \End(a)$ if $a$ is the simple object labeling the attaching region core of the attaching annulus for the 2-handle by $\beta$.
 \item pairing on initial and terminal disks as determined by the 1-handle is sign ordered.
@@ -565,10 +568,10 @@ We choose an arbitrary global ordering the 0- and 1-handles.
 This determines a global ordering of the fermions on the attaching regions of the 0- and 1-handles. 
 $\kappa_\beta = $  the number of Koszul isomorphisms needed in order to have the global ordering of the attachment regions in the 0- and 1-handles match.
 \end{itemize} 
+\end{comment}
 
 
-
-The state sum is then
+After accounting for these modifications, the state sum can be written as
 \begin{align}
 \label{fermionic_tv_sum}
 	Z(M) = \sum_{\beta\in\mcl(\mch)}(-1)^{\kappa_\beta}
@@ -581,6 +584,10 @@ In the manner of the discussion in the previous section, we will now explain and
 
 As before, we use the 2-cell orientations to define an oriented graph (unlabeled string net) on the boundary of each 0-, 1- and 2-handle.
 String-net graphs are assigned to the $k$-handles in the same way as in the bosonic case. 
+The set of all labelings $\mcl(\mch)$ is defined as the product over all 1-handles $e$ of the basis sets $B(e)$ together
+with a choice of Koszul ordering for the ends of every 1-handle. Note that since each 
+1-handle end is identified with a trivalent vertex on a 0-handle string net, such a Koszul 
+ordering also determines a Koszul ordering on the 0-handle string nets. 
 
 The 2-handle weight $d(f, \beta)$ is defined in the same way as before. However, 
 in order to ensure the proper normalization of the partition function, we need to divide
@@ -596,18 +603,26 @@ $e$. In the fermionic case, each vector comes with a Koszul ordering, and
 we define $\widetilde\Theta$ to only act on edges such that the Koszul ordering
 of the vector $\mu^*$ labeling the initial end of $e$ is exactly one less than that of the vector $\mu$
 labeling the terminal end of $e$. 
-For example, if $e$ has four adjacent 2-handles labeled by $a,b,c,d$ with the orientations of Figure \ref{OneHandlePrime} so that $\mu \in V^{ab^*c^*d}$, then we have 
-\be \widetilde \Theta (e, \beta) =  \Bananafourmu.
+For example, if $e$ has four adjacent 2-handles labeled by $a,b,c,d$ with the orientations of Figure \ref{OneHandlePrime} so that $\mu \in V^{ab^*c^*d}$, then we have \ethan{Dave, would you mind adding a koszul ordering of $k$ to $\mu^*$ (the initial disk vector) and an ordering of $k+1$ to $\mu$ (the terminal disk vector)?}
+\be \widetilde \Theta (e, \beta) =  \Bananafourmu,
 \ee
 where the Koszul ordering is indicated explicitly by the numbers located next to the vertices. 
-For a given labeling $\beta$, the assigned Koszul ordering will not generically be 
-compatible with the condition needed to evaluate $\widetilde\Theta$. 
-We define the Koszul factor $(-1)^{\kappa_\beta}$ to be the sign picked up when 
-permuting the given order into one for which the $\widetilde\Theta$ can be evaluated.
 
-Finally, for each 0-handle $v$, $\text{Link}(v)$ is defined in the same way as in the bosonic case, although 
-now each vertex in the graph must be assigned a Koszul ordering, with the 
-sign of the evaluation of the graph depending on the choice of Koszul ordering.
+For a given labeling $\beta\in\mcl(\mch)$, the Koszul ordering assigned by $\beta$ will not generically be 
+compatible with the condition needed to evaluate $\widetilde\Theta$. 
+We define the Koszul factor $(-1)^{\kappa_\beta}$ appearing in $Z(M)$ to be the sign picked up when 
+permuting the given Koszul order into one for which the $\widetilde\Theta$ can be evaluated.
+That is, $(-1)^{\kappa_\beta}$ is equal to $(-1)^{{\rm sgn}(\sigma)}$, where $\sigma$ is the 
+permutation sending the input Koszul ordering determined by $\beta$ to one in which 
+for every 1-handle whose initial disk has Koszul order $k$, the terminal 1-handle has Koszul 
+order $k+1$. 
+\ethan{Dave, the above is what you were doing except without 2 copies of the label set, one copy of which which is redundant since we biject one onto the other. Feel free to edit though or ask if it doesn't make sense}
+
+Finally, for each 0-handle $v$, $\text{Link}(v,\beta)$ is defined in the same way as in the bosonic case, although 
+now each vertex in the graph carries a Koszul ordering determined by the label set $\beta$.  
+Of course, the 
+sign of the evaluation of the graph depends on the choice of Koszul ordering.
+
 
 
 %%%%%%%%%%%%%%%%%%
@@ -619,19 +634,9 @@ We now turn to the task of reinterpreting \eqref{fermionic_tv_sum} as a tensor n
 
 \medskip
 
-If we (temporarily) ignore the factors of $d(f, \beta)$ and $\mcd^{-2}$ in \eqref{bos_tv_sum}, it is easy to see that it computes the tensor contraction of a tensor network.
-The underlying graph of the tensor network is the union of 0- and 1-cells of the cell decomposition.
-The vector space associated to each edge $e$ is $V(e)$ as defined above.
-The matrix elements of the tensor associated to a 0-cell $v$ are the numbers $\text{Link}(v, \beta)$ defined above.
-\kw{remark about dual spaces here??}
-\dave{What did you have in mind?}
-
-To incorporate the factors of $d(f, \beta)$ and $\mcd^{-2}$, we make some ad hoc choices.
-We consider ``dressed" 0-handle weights that tack on the factors of $d(f,\beta)$ and $\mcd^{-2}$.
-For each 2-handle $f$ we choose an adjacent vertex $v_f$.
-For a 0-handle $v$ we modify the associated weight ${\text{Link}}(v,\beta)$by added factors of $d(f,\beta)$ for each 2-handle $f$ such that $v = v_f$.
-Similarly, for each 3-cell we choose an adjacent 0-handle and multiply the associated weight by $\mcd^{-2}$.
-Denoting the modified 0-handle weights by $\widetilde{\rm Link}(v,\beta)$, we construct the vertex tensor 
+We incorporate the factors of $d(f, \beta)/n(f,\beta)$ and $\mcd^{-2}$ into the 0-cell 
+weights 
+in the same way as before. Denoting the modified 0-handle weights by $\widetilde{\rm Link}(v,\beta)$, we construct the vertex tensor 
 \be T_v = \sum_{w_v \in \mch(v)} \widetilde{\text{Link}}(v,w_v) w_v,\ee
 where the sum runs over orthogonal basis vectors for the vertex Hilbert space $\mch(v)$. 
 %\dave{Is this necessary?}
@@ -641,12 +646,12 @@ Because the vector space associated to the region on a $0$-handle attached to th
 terminal end of an edge $e$ is dual to the vector space associated to the corresponding region on the 
 0-handle attached to the initial end of $e$, there are precisely as many dual vectors as vectors in the tensor product, and 
 contracting each vector with its associated dual vector computes a complex number 
-which we identify with $Z(M)$. That is, we have 
-\ethan{I think we need something like this. If you guys don't like tTr then we can use an appropriately normalized $\Theta$ instead}
-\dave{I like ${\rm tTr}$ for now.}
-\be Z(M) = {\rm tTr}\left(\bigotimes_{v\in \mch_0} T_v\right),\ee
-where the tensor trace tTr denotes tensor contraction. 
-It is easy to see that this tensor network gives the same state sum as \eqref{bos_tv_sum} and 
+which we identify with $Z(M)$. 
+
+Formally, the partition function 
+is the same as in the bosonic case, being computed as a tensor trace of the $T_v$ tensors:
+\be Z(M) = {\rm tTr}\left(\bigotimes_{v\in \mch_0} T_v\right).\ee
+Again, $Z(M)$
 is independent of the way we assign factors of $d(f,\beta)$ and $\mcd^{-2}$ to the 
 vertex tensors. 
 
