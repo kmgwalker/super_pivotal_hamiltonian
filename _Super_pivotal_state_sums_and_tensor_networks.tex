@@ -343,10 +343,10 @@ This can be interpreted as a linear function $A(\bd M)\to\cc$ (i.e., a wavefunct
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{The state sum as a tensor network}
+\subsubsection{The state sum as a tensor network}
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
-Our goal in this subsection is to reinterpret \eqref{bos_tv_sum} as a tensor network and discuss various standardization options.
+Our goal in this subsection is to reinterpret \eqref{bos_tv_sum} as a tensor network.
 %\ethan{replaced ``regularization'' with ``standardization'' since regularization has a different physics meaning}
 %\dave{Definitely a good idea.}
 
@@ -535,20 +535,24 @@ The tensor network associated to $Y\times I$ might have less translation invaria
 %%%%%%%%%%%%%%%%%%%%%
 \subsection{The fermionic state sum}
 %%%%%%%%%%%%%%%%%%%%%
-List of modifications to incorporate: 
+
+We now turn to the generalization of the state sum construction to the fermionic case. 
+We start with two pieces of data: a super pivotal fusion category $\mcc$, and an oriented spin 
+3-manifold $M$ possessing a cell decomposition with orientations of 1- and 2-cells.
+The fermionic version of the state sum can be computed using similar techniques as in the 
+bosonic case, with several important modifications:
 \begin{itemize} 
-\item 3-manifold $M$ is replaced by spin 3-manifold
-\item The state sum is given by 
-\begin{align}
-\label{fermionic_tv_sum}
-	Z(M) = \sum_{\beta\in\mcl(\mch)}(-1)^{\kappa_\beta}
-		\prod_{c\in\mch_3} \mcd^{-2}
-		\prod_{f\in\mch_2} \frac{d(f, \beta)}{n(f,\beta)}
-		\prod_{e\in\mch_1} \widetilde\Theta(e, \beta)^{-1}
-		\prod_{v\in\mch_0} \text{Link}(v, \beta) .
-\end{align}
-The main modifications are given by the Koszul sign $(-1)^{\kappa_\beta}$, the normalization on the 2-handle term, and the sign ordering that is introduced on $\widetilde{\Theta}$ and $\text{Link}(v, \beta) $.
-\item $d(f,\beta)$ is as before
+\item Koszul signs enter into the partition function when computing it as a tensor contraction. In order to compute these Koszul signs, we need to assign an ordering to each of the vector spaces 
+appearing in the Hilbert space of the problem. 
+%\dave{Need to say ordering on what.
+%I would be inclined to say that we need an ordering for every tensor. 
+%And then give a prescription to contract over tensors and find a possibly large tensor, with another ordering.}
+\item Since simple objects in $\mcc$ can have non-trivial endomorphism algebras, some additional care must be taken to ensure the proper normalization of the partition function. 
+\item Because of the relation $P^3 = (-1)^F$ in the fermionic case, care must be taken when implementing pivots during 
+standardization procedures. 
+\end{itemize}
+
+\begin{itemize}
 \item $n(f,\beta) = \dim \End(a)$ if $a$ is the simple object labeling the attaching region core of the attaching annulus for the 2-handle by $\beta$.
 \item pairing on initial and terminal disks as determined by the 1-handle is sign ordered.
 Lets choose the initial disk to have a lower sign ordering than terminal disk.
@@ -563,8 +567,116 @@ $\kappa_\beta = $  the number of Koszul isomorphisms needed in order to have the
 \end{itemize} 
 
 
-\kw{also still to do: fermionic state sum, fermionic tensor network, k-signs, spin pivots,
-point out that spin-pivots encode the spin structure of the 3-manifold}
+
+The state sum is then
+\begin{align}
+\label{fermionic_tv_sum}
+	Z(M) = \sum_{\beta\in\mcl(\mch)}(-1)^{\kappa_\beta}
+		\prod_{c\in\mch_3} \mcd^{-2}
+		\prod_{f\in\mch_2} \frac{d(f, \beta)}{n(f,\beta)}
+		\prod_{e\in\mch_1} \widetilde\Theta(e, \beta)^{-1}
+		\prod_{v\in\mch_0} \text{Link}(v, \beta) .
+\end{align}
+In the manner of the discussion in the previous section, we will now explain and motivate the factors appearing in the above formula. 
+
+As before, we use the 2-cell orientations to define an oriented graph (unlabeled string net) on the boundary of each 0-, 1- and 2-handle.
+String-net graphs are assigned to the $k$-handles in the same way as in the bosonic case. 
+
+The 2-handle weight $d(f, \beta)$ is defined in the same way as before. However, 
+in order to ensure the proper normalization of the partition function, we need to divide
+this weight by the dimension 
+of the endomorphism algebra of the object that labels the loop of string appearing in the 
+2-handle. This consideration is responsible for the factor of $n(f,\beta)$ appearing 
+in the 2-handle weight, which is defined by $n(f,\beta)=\dim \End(a)$ for $f$ and $\beta$
+such that $d(f,\beta)=d_a$. 
+
+As in the bosonic case, $\widetilde\Theta(e, \beta)$ is defined by the value of the bilinear pairing evaluated on $\mu^*$ and $\mu$, where $\mu^*$ $(\mu)$ 
+is a basis vector in the Hilbert space of the initial (final) attaching end of the 1-handle 
+$e$. In the fermionic case, each vector comes with a Koszul ordering, and 
+we define $\widetilde\Theta$ to only act on edges such that the Koszul ordering
+of the vector $\mu^*$ labeling the initial end of $e$ is exactly one less than that of the vector $\mu$
+labeling the terminal end of $e$. 
+For example, if $e$ has four adjacent 2-handles labeled by $a,b,c,d$ with the orientations of Figure \ref{OneHandlePrime} so that $\mu \in V^{ab^*c^*d}$, then we have 
+\be \widetilde \Theta (e, \beta) =  \Bananafourmu.
+\ee
+where the Koszul ordering is indicated explicitly by the numbers located next to the vertices. 
+For a given labeling $\beta$, the assigned Koszul ordering will not generically be 
+compatible with the condition needed to evaluate $\widetilde\Theta$. 
+We define the Koszul factor $(-1)^{\kappa_\beta}$ to be the sign picked up when 
+permuting the given order into one for which the $\widetilde\Theta$ can be evaluated.
+
+Finally, for each 0-handle $v$, $\text{Link}(v)$ is defined in the same way as in the bosonic case, although 
+now each vertex in the graph must be assigned a Koszul ordering, with the 
+sign of the evaluation of the graph depending on the choice of Koszul ordering.
+
+
+%%%%%%%%%%%%%%%%%%
+\subsubsection{The fermionic state sum as a tensor network}
+%%%%%%%%%%%%%%%%%%
+
+We now turn to the task of reinterpreting \eqref{fermionic_tv_sum} as a tensor network. %\ethan{replaced ``regularization'' with ``standardization'' since regularization has a different physics meaning}
+%\dave{Definitely a good idea.}
+
+\medskip
+
+If we (temporarily) ignore the factors of $d(f, \beta)$ and $\mcd^{-2}$ in \eqref{bos_tv_sum}, it is easy to see that it computes the tensor contraction of a tensor network.
+The underlying graph of the tensor network is the union of 0- and 1-cells of the cell decomposition.
+The vector space associated to each edge $e$ is $V(e)$ as defined above.
+The matrix elements of the tensor associated to a 0-cell $v$ are the numbers $\text{Link}(v, \beta)$ defined above.
+\kw{remark about dual spaces here??}
+\dave{What did you have in mind?}
+
+To incorporate the factors of $d(f, \beta)$ and $\mcd^{-2}$, we make some ad hoc choices.
+We consider ``dressed" 0-handle weights that tack on the factors of $d(f,\beta)$ and $\mcd^{-2}$.
+For each 2-handle $f$ we choose an adjacent vertex $v_f$.
+For a 0-handle $v$ we modify the associated weight ${\text{Link}}(v,\beta)$by added factors of $d(f,\beta)$ for each 2-handle $f$ such that $v = v_f$.
+Similarly, for each 3-cell we choose an adjacent 0-handle and multiply the associated weight by $\mcd^{-2}$.
+Denoting the modified 0-handle weights by $\widetilde{\rm Link}(v,\beta)$, we construct the vertex tensor 
+\be T_v = \sum_{w_v \in \mch(v)} \widetilde{\text{Link}}(v,w_v) w_v,\ee
+where the sum runs over orthogonal basis vectors for the vertex Hilbert space $\mch(v)$. 
+%\dave{Is this necessary?}
+%\ethan{It was intended to be my guess to what Kevin's dual spaces comment meant. Might have missed the mark though, and it might still be confusing.}
+To obtain the partition function, we form the tensor product of all the 0-cell tensors constructed in this way.
+Because the vector space associated to the region on a $0$-handle attached to the 
+terminal end of an edge $e$ is dual to the vector space associated to the corresponding region on the 
+0-handle attached to the initial end of $e$, there are precisely as many dual vectors as vectors in the tensor product, and 
+contracting each vector with its associated dual vector computes a complex number 
+which we identify with $Z(M)$. That is, we have 
+\ethan{I think we need something like this. If you guys don't like tTr then we can use an appropriately normalized $\Theta$ instead}
+\dave{I like ${\rm tTr}$ for now.}
+\be Z(M) = {\rm tTr}\left(\bigotimes_{v\in \mch_0} T_v\right),\ee
+where the tensor trace tTr denotes tensor contraction. 
+It is easy to see that this tensor network gives the same state sum as \eqref{bos_tv_sum} and 
+is independent of the way we assign factors of $d(f,\beta)$ and $\mcd^{-2}$ to the 
+vertex tensors. 
+
+In the case where $\partial M \neq \emptyset$, the Hilbert space associated 
+with the tensor product of the 0-cell tensors admits a decomposition $\mch^*_{bulk} \tp \mch_{bulk} \tp \mch(\bd M)$, where 
+the Hilbert spaces of the degrees of freedom on $\partial M$ lack dual tensor factors appearing in the tensor product. 
+The partition function is still performed by contracting, which contracts out the tensor factors in $\mch^*_{bulk} \tp \mch_{bulk}$ but leaves those in $\mch(\partial M)$ uncontracted, producing a wavefucntion supported on $\mch(\partial M)$ (that is, a map $A(\partial M) \ra \cc$).
+
+Although we have largely been using unordered tensor products throughout our discussion of fermionic theories, to actually compute
+the partition function through a tensor contraction, a particular choice of ordering for the tensors involved in the partition function must be made (with different orderings related by the usual Koszul signs).
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Fermionic standardization procedures}
+%%%%%%%%%%%%%%%%%%%%
+
+As in the bosonic case, we may employ a standardization 
+procedure in which all vertices in the string nets assigned to the 0-handles 
+assume the ``pitchfork'' form. 
+As in the bosonic case, this standardization procedure results in nets on 0-handles which are all standardized independently 
+of one another: the form of a given trivalent vertex at the initial edge of a 1-handle $e$
+and the form of the associated vertex on the terminal edge of the 1-handle may be related by a pivot operation.
+Properly accounting for this requires inserting pivot operators $P_e=P^{l_e}$ into the 
+1-handles, as in \eqref{horshoe_resln}. 
+However, in the fermionic case we now have $P_e^3=(-1)^F$, so $l_e$ is now 
+valued in $\zz_6$ as opposed to $\zz_3$. 
+With the spin framing at the 0-handles fixed by virtue of the pitchforkization procedure, 
+the spin structure of the underlying 3-manifold is encoded in the edge pivots $P_e$.
 
 
 OLD STUFF BELOW:
