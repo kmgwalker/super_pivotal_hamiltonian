@@ -13,14 +13,17 @@
 
 In this section we write down a Turaev-Viro-Barrett-Westbury (TVBW) state sum for the super pivotal fusion categories\cite{Turaev1992,Barrett1996}, 
 and a tensor network for the ground state wave function of the Hamiltonian constructed in \eqref{ham}.
-Very closely related work was presented in~\cite{bhardwaj2016}, 
+Very closely related 
+\kw{very closely related, or just related?
+I could not tell after a quick look at the paper.}
+work was presented in~\cite{bhardwaj2016}, 
 see also \cite{Bultinck2017, upcoming-paper?}.
-We first briefly review the TVBW construction for spherical fusion categories. 
+We first review the TVBW construction for bosonic spherical fusion categories. 
 We then show how to write the state-sum as a tensor contraction on a tensor 
-network, which allows us to extend the state-sum to the super-pivotal case with only minor modifications.
+network.
+Next we detail the modifications needed for the fermionic versions of the state sum and tensor network.
+%which allows us to extend the state-sum to the super-pivotal case with only minor modifications.
 Lastly we use the state sum to write down an explicit wave function for the ground ground state of \eqref{ham}.
-Those interested in the details of the original construction are referred to \cite{Turaev1992,Barrett1996}.
-%and the one followed here in \cite{Walker2006}. 
 
 %We first give a lightning review of the TVBW state sum construction, via the cut-and-glue formalism.
 %Since much is known about TVBW state sums, 
@@ -61,9 +64,12 @@ Those interested in the details of the original construction are referred to \ci
 %It will be convenient for us to be able to describe things in terms of both 
 %a handle decomposition and also the corresponding cell decomposition.}
 
-Before we begin, we need to recall some terminology regarding cell and handle decompositions. 
+\medskip
+
+Before we begin, we need to establish some terminology regarding cell and handle decompositions. 
 Recall that a handle decomposition for a 
 3-manifold $M$ is built from a series of $k$-handles, with $k=0,1,2,3$, each of which is identified with $D^k\times D^{3-k}$. 
+\kw{We need to say how to get a handle decomposition from a cell decomposition}
 We will often refer to a $k$-cell and its associated $k$-handle with the same letter, since
 it will be convenient for us to be able to describe things in terms of both handle decompositions 
 and their corresponding cell decompositions. 
@@ -111,6 +117,7 @@ some disadvantages in our intended application)
 %%%%%%%%%%%%%%%%%%%%
 
 Our first task is to describe the TVBW (bosonic) state sum.
+The original references are \cite{Turaev1992,Barrett1996}.
 We will use the form for a general cell/handle decomposition, as described in \cite{Walker2006}.
 
 Let $M$ be a closed oriented 3-manifold equipped with a handle decomposition $\mch$.
@@ -270,12 +277,12 @@ In other words, we choose (independently, without any compatibility constraints)
 disk graph by simple objects, then choose a basis vector for each associated vector space.
 
 We also associate a vector space $V^*(\ell)$ to the terminal disk of each labeled 1-handle.
-\dave{Should we use a different star here? 
-Since it is somewhat different than the two stars we defined in the definition section.
-Or maybe we should just use $V^i(e)$ and $V^t(e)$ for initial and terminal vector spaces. 
-Then use $(V^i(e))^*$ and $(V^t(e))^*$ for their respective duals as defined by the `standard' reflection pairing (input vector spaces to $\text{Link}(v)$.)
-}
-\dave{I retract this comment.}
+%\dave{Should we use a different star here? 
+%Since it is somewhat different than the two stars we defined in the definition section.
+%Or maybe we should just use $V^i(e)$ and $V^t(e)$ for initial and terminal vector spaces. 
+%Then use $(V^i(e))^*$ and $(V^t(e))^*$ for their respective duals as defined by the `standard' reflection pairing (input vector spaces to $\text{Link}(v)$.)
+%}
+%\dave{I retract this comment.}
 In the example, this is isomorphic to $V^{d^*cba^*}$.
 %In the example, this is isomorphic to $(V^{a^*bc^*})^*$.
 %We also define $V^*(e)$ to be the direct sum (over all labelings $b$) of $V^*(\ell)$.
@@ -324,14 +331,14 @@ corresponding 1-handle if it is on the initial (terminal) end of the 1-handle.\f
 If these vertex labels are incompatible along edges of $\text{Link}(v)$, we define $\text{Link}(v, \beta) = 0$.
 If they are all compatible then we define $\text{Link}(v, \beta)$ to be the evaluation of the resulting labeled graph (string net).
 \dave{Maybe we should add a picture.}
-For a cell decomposition dual to a triangulation, these string nets take the form 
+For a cell decompositions dual to a triangulation, these string nets take the form 
 of tetrahedral symbols. 
 
 This completes the definition of the state sum.
 
 \medskip
 
-If follows from xxx\dave{Section 8.2?} of \cite{Walker2006} that the state sum computes $Z(M)$, independently of the choice of handle decomposition
+If follows from Section 8.2 of \cite{Walker2006} that the state sum computes $Z(M)$, independently of the choice of handle decomposition
 and choice of orientations of 1- and 2-cells.
 
 If $M$ has non-empty boundary,
@@ -363,13 +370,17 @@ The matrix elements of the tensor associated to a 0-cell $v$ are the numbers $\t
 \dave{What did you have in mind?}
 
 To incorporate the factors of $d(f, \beta)$ and $\mcd^{-2}$, we make some ad hoc choices.
-We consider ``dressed" 0-handle weights that tack on the factors of $d(f,\beta)$ and $\mcd^{-2}$.
+We consider ``dressed" 
+\kw{Is this the usual meaning of ``dressed"?  If so, great.}
+0-handle weights that tack on the factors of $d(f,\beta)$ and $\mcd^{-2}$.
 For each 2-handle $f$ we choose an adjacent vertex $v_f$.
-For a 0-handle $v$ we modify the associated weight ${\text{Link}}(v,\beta)$by added factors of $d(f,\beta)$ for each 2-handle $f$ such that $v = v_f$.
+For a 0-handle $v$ we modify the associated weight ${\text{Link}}(v,\beta)$ by adding factors of $d(f,\beta)$ for each 2-handle $f$ such that $v = v_f$.
 Similarly, for each 3-cell we choose an adjacent 0-handle and multiply the associated weight by $\mcd^{-2}$.
 Denoting the modified 0-handle weights by $\widetilde{\rm Link}(v,\beta)$, we construct the vertex tensor 
 \be T_v = \sum_{w_v \in \mch(v)} \widetilde{\text{Link}}(v,w_v) w_v,\ee
 where the sum runs over orthogonal basis vectors for the vertex Hilbert space $\mch(v)$. 
+\kw{I think we need to say this a little differently; we don't have any inner products defined,
+so we need to carefully distinguish between spaces and dual spaces.}
 %\dave{Is this necessary?}
 %\ethan{It was intended to be my guess to what Kevin's dual spaces comment meant. Might have missed the mark though, and it might still be confusing.}
 To obtain the partition function, we form the tensor product of all the 0-cell tensors constructed in this way.
@@ -390,6 +401,7 @@ In the case where $\partial M \neq \emptyset$, the Hilbert space associated
 with the tensor product of the 0-cell tensors admits a decomposition $\mch^*_{bulk} \tp \mch_{bulk} \tp \mch(\bd M)$, where 
 the Hilbert spaces of the degrees of freedom on $\partial M$ lack dual tensor factors appearing in the tensor product. 
 The partition function is still performed by contracting, which contracts out the tensor factors in $\mch^*_{bulk} \tp \mch_{bulk}$ but leaves those in $\mch(\partial M)$ uncontracted, producing a wavefucntion supported on $\mch(\partial M)$ (that is, a map $A(\partial M) \ra \cc$).
+\kw{This is basically correct, but let's work on the phrasing.}
 
 
 
@@ -405,7 +417,7 @@ This ensures that there are exactly three 2-handles meeting each edge, and that 
 However, this still leaves us with many different types of $k$-cell string nets.
 For example, depending on the choice of 1- and 2-cell orientations, there will still be eight possible vector spaces associated to 1-handles,
 corresponding to $V^{abc}$, $V^{ab^*c}$, $V^{a^*b^*c^*}$, etc.
-(note that if all Frobenius-Schur indicators are equal to 1, then we can ignore these differences).
+(Note that if all Frobenius-Schur indicators are equal to 1, then we can ignore these differences.)
 Similarly, there will be many different tetrahedral vertex tensors, depending on the orientations of the edges of the tetrahedron.
 
 We can further standardize the tensor network by choosing a global ordering of the 3-cells of the handle decomposition.
@@ -432,8 +444,9 @@ For this reason, in what follows we will work with a cell decomposition dual to 
 In what follows, we will find it useful to employ a standardization 
 procedure in which all vertices in the string nets assigned to the 0-handles 
 assume the ``pitchfork'' form introduced 
-in our treatment of the Hamiltonian (these vertices are all trivalent since we are now 
-assuming a cell decomposition dual to a triangulation). 
+in our treatment of the Hamiltonian. 
+(These vertices are all trivalent since we are now 
+assuming a cell decomposition dual to a triangulation.)
 In this convention, the $T_v$ tensors all take the form \ethan{I guess we don't really need the numbers}
 \begin{align} 
 T_v = \Tetrahedron \; \cdot \alpha \tp \beta \tp \gamma \tp \delta, 
@@ -444,9 +457,9 @@ The pitchforkization procedure does not entirely fix the form of the $T_v$ tenso
 since the tetrahedral nets associated with each 0-handle will in general have different 
 edge orientations.  
 Since there are $2^6 = 64$ possible choices of edge orientations, there will be 64 
-different types of $T_v$ tensors, given by the appropriate diagram evaluation with $\alpha,\beta,\gamma,\delta$ chosen from the appropriate fusion spaces 
+different types of $T_v$ tensors, given by the appropriate diagram evaluation with $\alpha,\beta,\gamma,\delta$ chosen from the appropriate fusion spaces.%
 \footnote{Not all these $64$ tetrahedra are independent however, as 
-some of them can be transformed into one another by using the pivotal and spherical structure of the input category.}. 
+some of them can be transformed into one another by using the pivotal and spherical structure of the input category.}
 
 This procedure results in nets on 0-handles which are all standardized independently 
 of one another. 
