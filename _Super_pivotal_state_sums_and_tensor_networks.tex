@@ -301,8 +301,7 @@ We also associate a vector space $V^*(\ell)$ to the terminal disk of each labele
 In the example, this is isomorphic to $V^{d^*cba^*}$.
 %In the example, this is isomorphic to $(V^{a^*bc^*})^*$.
 %We also define $V^*(e)$ to be the direct sum (over all labelings $b$) of $V^*(\ell)$.
-There is a bilinear pairing between $V(\ell)$ and $V^*(\ell)$,
-given by the 1-handle.
+There is a bilinear pairing between $V(\ell)$ and $V^*(\ell)$, found by applying the standard bilinear pairing \eqref{reflection_pairing_defn} after a rigid translation through the 1-handle.
 %\eqref{reflection_pairing_defn} and 
 %graphically looks like a banana. % :--)
 %\ethan{we should probably change $\mcb$ to $\Theta$ or the other way around to make notation consistent}
@@ -337,17 +336,21 @@ Continuing with our example in Figure \ref{OneHandlePrime}, if $e$ has four adja
 %\ethan{need to change $\eta_i$ in the fig to $\mu^*$ and $\mu$}
 %\dave{done}
 
+
 Let $v$ be a 0-handle.
 The labeling $\beta$ determines a labeling of the graph $\text{Link}(v)$ as follows.
-Near each vertex of $\text{Link}(v)$ we place the basis element $\mu^* \in V(e)^*$ (or $\mu \in (V^*(e))^*$) assigned by $\beta$ to the 
+Near each vertex of $\text{Link}(v)$ we place the basis element $\mu^* \in V^*(e)$ (or $\mu \in V(e)$) assigned by $\beta$ to the 
 corresponding 1-handle if it is on the initial (terminal) end of the 1-handle.\footnote{The dual spaces here are determined by the bilinear pairing of \eqref{reflection_pairing_defn}.}
 %\dave{I think it should be $\mu^* \in V(e)^*$ and $\mu \in (V^*(e))^*$.}
 %\ethan{to make it consistent with our earlier writing of the section, I think yes. I interchanged them.}
 If these vertex labels are incompatible along edges of $\text{Link}(v)$, we define $\text{Link}(v, \beta) = 0$.
 If they are all compatible then we define $\text{Link}(v, \beta)$ to be the evaluation of the resulting labeled graph (string net).
 \dave{Maybe we should add a picture.}
-For a cell decompositions dual to a triangulation, these string nets take the form 
-of tetrahedral symbols. 
+For cell decompositions dual to a triangulation, 
+the labeled graph is a tetrahedral string net on a sphere.
+%these string nets take the form 
+%of tetrahedral symbols. 
+%\dave{I think tetrahedral symbol is a bit of a loaded term, so I re-worded.}
 
 This completes the definition of the state sum.
 
@@ -377,25 +380,35 @@ Our goal in this subsection is to reinterpret \eqref{bos_tv_sum} as a tensor net
 
 \medskip
 
-If we (temporarily) ignore the factors of $d(f, \beta)$ and $\mcd^{-2}$ in \eqref{bos_tv_sum}, it is easy to see that it computes the tensor contraction of a tensor network.
+If we (temporarily) ignore the factors of $d(f, \beta)$ and $\mcd^{-2}$ in \eqref{bos_tv_sum}, 
+it is easily seen as a contraction of a tensor network.
+%it is easy to see that it computes the tensor contraction of a tensor network.
 The underlying graph of the tensor network is the union of 0- and 1-cells of the cell decomposition.
 The vector space associated to each edge $e$ is $V(e)$ as defined above.
 The matrix elements of the tensor associated to a 0-cell $v$ are the numbers $\text{Link}(v, \beta)$ defined above.
-\kw{remark about dual spaces here??}
-\dave{What did you have in mind?}
+%\kw{remark about dual spaces here??}
+%\dave{What did you have in mind?}
 
 To incorporate the factors of $d(f, \beta)$ and $\mcd^{-2}$, we make some ad hoc choices.
 We consider ``dressed" 
 \kw{Is this the usual meaning of ``dressed"?  If so, great.}
+\dave{If you are happy with thinking of $d(f, \beta)$ and $\mcd^{-2}$ as being clothes for $\text{Link}(v,\beta)$ then, yes. 
+But more seriously. I don't think it has a super established meaning, and don't think it would raise eyebrows. 
+I think in a lot of the physics literature it appears as ``dressing'' domain walls.
+It's sometimes used to avoid writing down an explicit Hamiltonian and only talking about the physics of a hypothetical Hamiltonian. 
+}
 0-handle weights that tack on the factors of $d(f,\beta)$ and $\mcd^{-2}$.
 For each 2-handle $f$ we choose an adjacent vertex $v_f$.
-For a 0-handle $v$ we modify the associated weight ${\text{Link}}(v,\beta)$ by adding factors of $d(f,\beta)$ for each 2-handle $f$ such that $v = v_f$.
-Similarly, for each 3-cell we choose an adjacent 0-handle and multiply the associated weight by $\mcd^{-2}$.
+For a 0-handle $v$ we modify the associated weight ${\text{Link}}(v,\beta)$ by multiplying factors of $d(f,\beta)$ for each 2-handle $f$ such that $v = v_f$.
+Similarly, for each 3-handle we choose an adjacent 0-handle and multiply the associated weight by $\mcd^{-2}$.
 Denoting the modified 0-handle weights by $\widetilde{\rm Link}(v,\beta)$, we construct the vertex tensor 
-\be T_v = \sum_{w_v \in \mch(v)} \widetilde{\text{Link}}(v,w_v) w_v,\ee
-where the sum runs over orthogonal basis vectors for the vertex Hilbert space $\mch(v)$. 
+\be T_v = \sum_{w_v } \widetilde{\text{Link}}(v,w_v) w_v,\ee
+where the sum runs over orthogonal basis vectors for the vector space associated to the attaching disks of $\text{Link}(v)$ (the vector space for each attaching disk on $\text{Link}(v)$ is dual to the vector space associated to the initial/terminal attaching disks of the adjacent 1-handles).
+%for the vertex Hilbert space $\mch(v)$. 
 \kw{I think we need to say this a little differently; we don't have any inner products defined,
 so we need to carefully distinguish between spaces and dual spaces.}
+\dave{Changed it to the above.
+}
 %\dave{Is this necessary?}
 %\ethan{It was intended to be my guess to what Kevin's dual spaces comment meant. Might have missed the mark though, and it might still be confusing.}
 To obtain the partition function, we form the tensor product of all the 0-cell tensors constructed in this way.
@@ -403,11 +416,14 @@ Because the vector space associated to the region on a $0$-handle attached to th
 terminal end of an edge $e$ is dual to the vector space associated to the corresponding region on the 
 0-handle attached to the initial end of $e$, there are precisely as many dual vectors as vectors in the tensor product, and 
 contracting each vector with its associated dual vector computes a complex number 
-which we identify with $Z(M)$. That is, we have 
+which we identify with $Z(M)$. 
+That is, we have 
 \ethan{I think we need something like this. If you guys don't like tTr then we can use an appropriately normalized $\Theta$ instead}
-\dave{I like ${\rm tTr}$ for now.}
+\dave{I like ${\rm tTr}$ for now.
+We do need to define it though.}
 \be Z(M) = {\rm tTr}\left(\bigotimes_{v\in \mch_0} T_v\right),\ee
-where the tensor trace tTr denotes tensor contraction. 
+where the tensor trace tTr denotes the tensor contraction.
+The tensor contraction introduces a factor of $\widetilde{\Theta}^{-1}$ if the labels on each side of the 1-cell are dual to one another and is zero otherwise.
 It is easy to see that this tensor network gives the same state sum as \eqref{bos_tv_sum} and 
 is independent of the way we assign factors of $d(f,\beta)$ and $\mcd^{-2}$ to the 
 vertex tensors. 
