@@ -252,6 +252,23 @@ Finally, we end with a conclusion and discussion in Section \ref{discussion}.
 Several appendices contain miscellaneous results and background information. 
 
 
+\bigskip
+
+\kw{to do: mention fermionic 2+1 d TQFT; talk citations}
+
+
+\kw{Probably should mention Steve Sawin's work on spin TQFTs somewhere}
+\dave{Is this the paper you were thinking of \cite{Sawin2002}. Looks like he has a couple of interesting papers. 
+It reminded me of the Kirby-Melvin paper, should we also cite them somewhere?}
+
+\kw{I have been putting footnotes before the period at the end of a sentence (because doing the reverse looked weird and wrong to me),
+but a small amount of googling suggests that the usual convention is to put the footnote after the period.}
+
+
+
+
+
+
 \subsection{Table of notation}
 
 In partial compensation for the unwieldy length of this paper, we give a table summarizing some of the 
@@ -259,10 +276,13 @@ most frequently used and/or least standard notation found herein.
 
 \ethan{I think we should explicitly say that $\mcc$ is free to be a generic (super or non-super) tensor category.}
 
+\dave{Do we have a name for a generic net configuration, 
+not necessarily modulo local relations?}
+
 \medskip
 
 \tabulinesep = 2mm
-\begin{longtabu}{|X[1,$c]|X[3,l]|}
+\begin{longtabu}{|X[1,$c]|X[4,l]|}
 	\hline
     \mcc 	& tensor category \\ \hline
     \mcc/\psi 	& fermionic quotient of $\mcc$ \\ \hline
@@ -279,48 +299,50 @@ most frequently used and/or least standard notation found herein.
 	f\cdot g	& the composition of two morphisms $x \xrightarrow{f} y \xrightarrow{g} z$ (arrow order) \\ \hline
 	g \circ f	& the composition of two morphisms $x \xrightarrow{f} y \xrightarrow{g} z$ (function order) \\ \hline
 	A(Y)	& string nets modulo local relations on a 2-manifold $Y$; predual Hilbert space \\ \hline
+	\mch(Y)	& same as $A(Y)$ \\ \hline
 	Z(Y)	& functions on string nets invariant under local relations on a 2-manifold $Y$; dual space $A(Y)^*$; Hilbert space \\ \hline
 	Z(M)	& path integral of a 3-manifold $M$ \\ \hline
+	Z(M)(c)	& path integral of a 3-manifold $M$, evaluated on a boundary condition $c\in A(\bd M)$ \\ \hline
     \tube(\mcc)	& tube category of $\mcc$ \\ \hline
     \tube^B(\mcc)	& bounding tube category \\ \hline
     \tube^N(\mcc)	& non-bounding tube category \\ \hline
 	\tube_{x \to y}	& morphisms from $x$ to $y$ in the tube category \\ \hline
+	B, N	& bounding, nonbounding spin structures on the circle \\ \hline
+	S^1_B	& spin circle with bounding spin structure \\ \hline
+	S^1_N	& spin circle with nonbounding spin structure \\ \hline
+	\unit	& tensor unit in a tensor category; trivial object \\ \hline
+	d_a		& quantum dimension of the object $a$; loop value of $a$ \\ \hline
+	\mcd^2	& $\sum_{a\in \sob(\mcc)} d_a^2$ in bosonic case; $\sum_{a\in \sob(\mcc)} d_a^2/n_a$ in fermionic case \\ \hline
 \end{longtabu}
 
 
-\begin{align}
-%\scat &= \text{super linear category}\\
-%\mcc &= \text{tensor category}\\
-%\mcc/\psi & = \text{fermionic quotient of $\mcc$}\\
-%\spc & = \text{super pivotal tensor category, e.g.~$\mcc/\psi$}\\
-%\sob(\mcc) & = 
-%\begin{cases} 
-%&\text{complete set of representatives of simple objects for $\mcc$} \\
-%& \text{or a complete set of simple objects for $\mcc$ (depends on context)}\\ 
-%\end{cases}\\
-%n_x = \dim \End(x)
+%\begin{align}
+%%\scat &= \text{super linear category}\\
+%%\mcc &= \text{tensor category}\\
+%%\mcc/\psi & = \text{fermionic quotient of $\mcc$}\\
+%%\spc & = \text{super pivotal tensor category, e.g.~$\mcc/\psi$}\\
+%%\sob(\mcc) & = 
+%%\begin{cases} 
+%%&\text{complete set of representatives of simple objects for $\mcc$} \\
+%%& \text{or a complete set of simple objects for $\mcc$ (depends on context)}\\ 
+%%\end{cases}\\
+%%n_x = \dim \End(x)
+%%\\
+%& = \text{\dave{Do we have a name for a generic net configuration, 
+%not necessarily modulo local relations?}}\\
+%A(Y),\mch(Y) &= \text{string nets modulo local relations on a manifold $Y$}\\
+%Z(Y) & = \text{Partition function on $Y$; the linear dual of $A(Y)$}\\
 %\\
-& = \text{\dave{Do we have a name for a generic net configuration, 
-not necessarily modulo local relations?}}\\
-A(Y),\mch(Y) &= \text{string nets modulo local relations on a manifold $Y$}\\
-Z(Y) & = \text{Partition function on $Y$; the linear dual of $A(Y)$}\\
-\\
-x \xrightarrow{f} y \xrightarrow{g} z &\text{ is equivalent to } x \xrightarrow{f \cdot g} z  \text{ is equivalent to } x \xrightarrow{g \circ f} z 
-\\
-\nonumber\\
-%\tube(\mcc) &= \text{tube category of $\mcc$}\\ 
-%\tube^B(\mcc) & = \text{Bounding tube category}\\
-%\tube^N(\mcc) & = \text{Non-bounding tube category} \\
-%\tube_{x \to x} & = \text{a subcategory of $\tube(\mcc)$ with boundary condition $x$}\\
+%x \xrightarrow{f} y \xrightarrow{g} z &\text{ is equivalent to } x \xrightarrow{f \cdot g} z  \text{ is equivalent to } x \xrightarrow{g \circ f} z 
+%\\
 %\nonumber\\
-%\mor^B (x\to y)&= \text{morphisms of $\tube^B(\mcc)$ with boundary conditions}\\
-%\mor^N (x\to y)&=\text{morphisms of $\tube^N(\mcc)$ with boundary conditions}\\
-%\mor(x \to y)&=\text{morphisms of $\tube(\mcc)$ or $\mcc$ (depends on context)}
-\end{align}
+%%\tube(\mcc) &= \text{tube category of $\mcc$}\\ 
+%%\tube^B(\mcc) & = \text{Bounding tube category}\\
+%%\tube^N(\mcc) & = \text{Non-bounding tube category} \\
+%%\tube_{x \to x} & = \text{a subcategory of $\tube(\mcc)$ with boundary condition $x$}\\
+%%\nonumber\\
+%%\mor^B (x\to y)&= \text{morphisms of $\tube^B(\mcc)$ with boundary conditions}\\
+%%\mor^N (x\to y)&=\text{morphisms of $\tube^N(\mcc)$ with boundary conditions}\\
+%%\mor(x \to y)&=\text{morphisms of $\tube(\mcc)$ or $\mcc$ (depends on context)}
+%\end{align}
 
-\kw{Probably should mention Steve Sawin's work on spin TQFTs somewhere}
-\dave{Is this the paper you were thinking of \cite{Sawin2002}. Looks like he has a couple of interesting papers. 
-It reminded me of the Kirby-Melvin paper, should we also cite them somewhere?}
-
-\kw{I have been putting footnotes before the period at the end of a sentence (because doing the reverse looked weird and wrong to me),
-but a small amount of googling suggests that the usual convention is to put the footnote after the period.}
