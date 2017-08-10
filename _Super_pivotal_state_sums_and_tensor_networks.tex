@@ -794,22 +794,31 @@ We now turn to the task of reinterpreting \eqref{fermionic_tv_sum} as a tensor n
 We incorporate the factors of $d(f, \beta)/n(f,\beta)$ and $\mcd^{-2}$ into the 0-cell 
 weights 
 in the same way as in the bosonic case. Denoting the modified 0-handle weights by $\widetilde{\rm Link}(v,\beta)$, we construct the vertex tensor 
-\be T_v = \sum_{w_v \in \mch(v)} \widetilde{\text{Link}}(v,w_v) w_v,\ee
-where the sum runs over orthogonal basis vectors for the vertex Hilbert space $\mch(v)$. 
+\be T_v = \sum_{w_v} \widetilde{\text{Link}}(v,w_v) w_v,\ee
+where the sum runs over a complete orthogonal basis of the attaching regions associated associated with the 0-handle $v$.
+%where the sum runs over orthogonal basis vectors for the vertex Hilbert space $\mch(v)$. 
 For a 0-handle on which $n$ 1-handles terminate, the vectors $w_v$ admit a 
 decomposition $w_v = \bigotimes_{i=1}^n w_{v,i}$. 
-These vectors are assigned Koszul ordering in the standard implicit left-to-right way. 
+These vectors are assigned the same Koszul ordering as the ordering of the vertices on the $\text{Link}(v)$ graphs.
+%These vectors are assigned Koszul ordering in the standard implicit left-to-right way. 
 %\dave{Is this necessary?}
 %\ethan{It was intended to be my guess to what Kevin's dual spaces comment meant. Might have missed the mark though, and it might still be confusing.}
 
 To obtain the partition function, we again form the tensor product of all the 0-cell tensors constructed in this way.
-Formally, the partition function 
+The partition function 
 is the same as in the bosonic case, being computed as a tensor trace of the $T_v$ tensors:
 \be Z(M) = {\rm tTr}\left(\bigotimes_{v\in \mch_0} T_v\right).\ee
+The tensor trace is defined so that we insert a parity matrix $(-1)^{F(e, \sigma)}$ on every 1-cell, and a $\widetilde{\Theta}$ symbol normalization in the contraction. 
+In order to perform the contraction, the we require the pair of vectors to be contracted to be in adjacent Koszul ordering (with respect to the pairing).
+\dave{Need to word previous sentence better.}
+To get the pair of vectors in adjacent Koszul ordering we need to apply a number of Koszul isomorphisms. 
+After contracting all vectors we pick up a factor of $(-1)^{\kappa_\beta}$. 
+\dave{Probably need to re-word those sentences a bit.}
 Again, $Z(M)$
 is independent of the way we assign factors of $d(f,\beta)$ and $\mcd^{-2}$ to the 
 vertex tensors. 
 
+\dave{I think the following can be condensed into a few sentences (I have made a first attempt at) above.}
 However, 
 one has to be careful about Koszul sign issues when evaluating the tensor contraction performed by the tensor trace. 
 In the above equation, the Koszul ordering of each tensor factor is determined in the usual implicit way, 
@@ -879,12 +888,16 @@ and the form of the associated vertex on the terminal edge of the 1-handle may b
 Properly accounting for this requires inserting pivot operators $P_e=P^{l_e}$ into the 
 1-handles, as in \eqref{horshoe_resln}. 
 However, in the fermionic case we now have $P_e^3=(-1)^F$, so that $l_e$ is now 
-valued in $\zz_6$ as opposed to $\zz_3$. 
-With the spin framing at the 0-handles fixed by virtue of the pitchforkization procedure, 
+valued in $\zz_6$ as opposed to $\zz_3$ (alternatively, we could keep them $\zz_3$ valued but insert a $(-1)^{F(e,\sigma)}\circ P_e^{l_e}$ on every 1-handle).
+With the spin framing at the 0-handles fixed by virtue of the pitchforkization procedure (and every 1-handle related by a translation), 
 the spin structure of the underlying 3-manifold is encoded in the edge pivots $P_e$.
 This means that the $\{P_e\}$ are constrained by the spin structure---for example, 
 the product of all $P_e$ along a closed path must equal $(-1)^F$ ($1$) if the 
-path is bounding (non-bounding). 
+path is bounding (non-bounding).
+\dave{Is it that simple?
+I thought we would have to say something about transporting the fermions through the 0-handles 
+(e.g., a sloppy (possibly incorrect) argument is to introduce a trivial branch sheet on every 0-handle and slide it over one of the attaching disks. 
+This means each 1-handle picks up an extra factor of $(-1)^F$, and so if there are an odd number of 1-handles on the path they don't all cancel).} 
 
 
 
