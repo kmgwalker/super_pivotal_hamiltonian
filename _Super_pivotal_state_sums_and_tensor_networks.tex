@@ -410,6 +410,7 @@ The labelings and weights are defined as before, except that some of the labels 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
 Our goal in this subsection is to reinterpret \eqref{bos_tv_sum} as a tensor network.
+We will first discuss that case when $M$ is closed, then consider the case when $\bd M$ is non-empty.
 %\ethan{replaced ``regularization'' with ``standardization'' since regularization has a different physics meaning}
 %\dave{Definitely a good idea.}
 
@@ -421,17 +422,19 @@ it is easily seen as a contraction of a tensor network.
 The underlying graph of the tensor network is the union of 0- and 1-cells of the cell decomposition.
 The vector space associated to each edge $e$ is $V(e)$ as defined above.
 The matrix elements of the tensor associated to a 0-cell $v$ are the numbers $\text{Link}(v, \beta)$ defined above.
+The factors of $\widetilde\Theta(e, \beta)^{-1}$ arise from the pairing of dual tensor indices.
+\kw{Say more about this?}
 %\kw{remark about dual spaces here??}
 %\dave{What did you have in mind?}
 
 To incorporate the factors of $d(f, \beta)$ and $\mcd^{-2}$, we make some ad hoc choices.
 We consider ``dressed" 
-\kw{Is this the usual meaning of ``dressed"?  If so, great.}
-\dave{If you are happy with thinking of $d(f, \beta)$ and $\mcd^{-2}$ as being clothes for $\text{Link}(v,\beta)$ then, yes. 
-But more seriously. I don't think it has a super established meaning, and don't think it would raise eyebrows. 
-I think in a lot of the physics literature it appears as ``dressing'' domain walls.
-It's sometimes used to avoid writing down an explicit Hamiltonian and only talking about the physics of a hypothetical Hamiltonian. 
-}
+%\kw{Is this the usual meaning of ``dressed"?  If so, great.}
+%\dave{If you are happy with thinking of $d(f, \beta)$ and $\mcd^{-2}$ as being clothes for $\text{Link}(v,\beta)$ then, yes. 
+%But more seriously. I don't think it has a super established meaning, and don't think it would raise eyebrows. 
+%I think in a lot of the physics literature it appears as ``dressing'' domain walls.
+%It's sometimes used to avoid writing down an explicit Hamiltonian and only talking about the physics of a hypothetical Hamiltonian. 
+%}
 0-handle weights that tack on the factors of $d(f,\beta)$ and $\mcd^{-2}$.
 For each 2-handle $f$ we choose an adjacent vertex $v_f$.
 For a 0-handle $v$ we modify the associated weight ${\text{Link}}(v,\beta)$ by multiplying factors of $d(f,\beta)$ for each 2-handle $f$ such that $v = v_f$.
@@ -444,6 +447,7 @@ where the sum runs over orthogonal basis vectors for the vector space associated
 so we need to carefully distinguish between spaces and dual spaces.}
 \dave{Changed it to the above.
 }
+\kw{One of the $w_v$ needs to be in a dual space; otherwise it scales incorrectly.  Maybe I'll edit it more later.}
 %\dave{Is this necessary?}
 %\ethan{It was intended to be my guess to what Kevin's dual spaces comment meant. Might have missed the mark though, and it might still be confusing.}
 To obtain the partition function, we form the tensor product of all the 0-cell tensors constructed in this way.
@@ -456,18 +460,24 @@ That is, we have
 \ethan{I think we need something like this. If you guys don't like tTr then we can use an appropriately normalized $\Theta$ instead}
 \dave{I like ${\rm tTr}$ for now.
 We do need to define it though.}
+\kw{Maybe $\text{tc}$ for tensor contraction?}
 \be Z(M) = {\rm tTr}\left(\bigotimes_{v\in \mch_0} T_v\right),\ee
 where the tensor trace tTr denotes the tensor contraction.
 The tensor contraction introduces a factor of $\widetilde{\Theta}^{-1}$ if the labels on each side of the 1-cell are dual to one another (with respect to the bilinear pairing) and is zero otherwise.
 \dave{May want to be more explicit.}
+\kw{This may have already been discussed above}
 It is easy to see that this tensor network gives the same state sum as \eqref{bos_tv_sum} and 
 is independent of the way we assign factors of $d(f,\beta)$ and $\mcd^{-2}$ to the 
 vertex tensors. 
 
+\kw{resume here}
+
+\medskip
+
 In the case where $\partial M \neq \emptyset$, the Hilbert space associated 
 with the tensor product of the 0-cell tensors admits a decomposition $\mch^*_{bulk} \tp \mch_{bulk} \tp \mch(\bd M)$, where 
 the Hilbert spaces of the degrees of freedom on $\partial M$ lack dual tensor factors appearing in the tensor product. 
-The partition function is still performed by contracting, which contracts out the tensor factors in $\mch^*_{bulk} \tp \mch_{bulk}$ but leaves those in $\mch(\partial M)$ uncontracted, producing a wavefucntion supported on $\mch(\partial M)$ (that is, a map $A(\partial M) \ra \cc$).
+The partition function is still performed by contracting, which contracts out the tensor factors in $\mch^*_{bulk} \tp \mch_{bulk}$ but leaves those in $\mch(\partial M)$ uncontracted, producing a wavefunction supported on $\mch(\partial M)$ (that is, a map $A(\partial M) \ra \cc$).
 \kw{This is basically correct, but let's work on the phrasing.}
 
 
