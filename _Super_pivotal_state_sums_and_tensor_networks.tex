@@ -538,8 +538,9 @@ There are several standardization procedures that reduce this irregularity.
 
 One standardization procedure is to start with a cell decomposition that is dual to a triangulation.
 This ensures that there are exactly three 2-handles meeting each edge, and that the vertex graphs $\text{Link}(v,\beta)$ are all tetrahedral.
-However, this still leaves us with many different types of $k$-cell string nets.
-For example, depending on the choice of 1- and 2-cell orientations, there will still be eight possible vector spaces associated to 1-handles,
+%However, this still leaves us with many different types of $k$-cell string nets.
+However, this still leaves us with several diferent types of edge vector spaces and vertex tensors.
+For example, depending on the choice of 1- and 2-cell orientations, there will be eight possible vector spaces associated to 1-handles,
 corresponding to $V^{abc}$, $V^{ab^*c}$, $V^{a^*b^*c^*}$, etc.
 (Note that if all Frobenius-Schur indicators are equal to 1, then we can ignore these differences.)
 Similarly, there will be many different tetrahedral vertex tensors, depending on the orientations of the edges of the tetrahedral graph.
@@ -550,7 +551,9 @@ We can further standardize the tensor network by choosing a global ordering of t
 %\dave{I agree.}
 (This is equivalent to a global ordering of the vertices of the dual triangulation.)
 We then choose 2-cell orientations so that the the orientation of a 2-cell together with a normal vector pointing toward the higher-ordered of the two
-adjacent 3-cells agrees with the orientation of $M$\dave{I'm confused, how can the 2-cells have an orientation that agrees with $M$? (the 2-handles can but then the sentence isn't making a lot of sense.)}.
+adjacent 3-cells agrees with the orientation of $M$.
+\dave{I'm confused, how can the 2-cells have an orientation that agrees with $M$? (the 2-handles can but then the sentence isn't making a lot of sense.)}
+\kw{2-cell orientation plue normal direction orientation; these two combine to give a 3d orientation}
 We can now choose 1-cell orientations so that the graph on the initial disk of each 1-handle has a trivalent vertex with two
 outgoing and one incoming edge.
 With these orientation choices, we have, for every 1-handle $e$,
@@ -562,7 +565,7 @@ in the tensor network are of the same form.
 
 However, it is not always convenient to choose a global ordering.
 For example, our main application is a tensor network associated to $Y\times I$.
-If $Y$ is a torus, we might hope that the network has translational symmetry, but generically this is not compatible with the global ordering trick.
+If $Y$ is a torus, we might hope that the network has translational symmetry, but this is not compatible with the global ordering trick.
 For this reason, in what follows we will work with a cell decomposition dual to a triangulation, but we will not employ the global ordering trick.
 
 In what follows, we will find it useful to employ a standardization 
@@ -573,22 +576,25 @@ in our treatment of the Hamiltonian.
 assuming a cell decomposition dual to a triangulation.)
 In this convention, the $T_v$ tensors all take the form \ethan{I guess we don't really need the numbers}
 \begin{align} 
-T_v = \TetrahedronPrime \; \cdot \alpha \tp \beta \tp \gamma \tp \delta, 
+	%T_v = \TetrahedronPrime \; \cdot \alpha \tp \beta \tp \gamma \tp \delta, 
+	T_v(\alpha \tp \beta \tp \gamma \tp \delta) = \TetrahedronPrime , 
 \end{align}
 where have defined the tensor weight by its evaluation of the picture on the right with 
 $\alpha \in \bigoplus_{abc} V^{abc}$, $\beta \in \bigoplus_{a^* bc} V^{a^* bc}$, $\gamma \in \bigoplus_{a^* b c^*} V^{a^* b c^*}$, and $ \delta \in \bigoplus_{a^* b^* c^*} V^{a^* b^* c^*}$.
 The pitchforkization procedure does not entirely fix the form of the $T_v$ tensors above, 
 since the tetrahedral nets associated with each 0-handle will in general have different 
 edge orientations.  
-Since there are $2^6 = 64$ possible choices of edge orientations, there will be 64 
+Since there are $2^6 = 64$ possible choices of edge orientations near a 0-handle, there will be 64 
 different types of $T_v$ tensors, given by the appropriate diagram evaluation with $\alpha,\beta,\gamma,\delta$ chosen from the appropriate fusion spaces.%
 \footnote{Not all these $64$ tetrahedra are independent however, as 
 some of them can be transformed into one another by using the pivotal and spherical structure of the input category.}
 
+\kw{resume here}
+
 This procedure results in nets on 0-handles which are all standardized independently 
 of one another. 
 This means that the form of a given trivalent vertex at the initial edge of a 1-handle $e$
-will not generically be the same as the form of the associated vertex on the terminal edge of the 1-handle:
+will not in general be the same as the form of the associated vertex on the terminal edge of the 1-handle:
 the two may be related by a pivot operation $P_e=P^{l_e}$ for $l_e = 0,1,2$, where $P$ is the pivot defined in \eqref{Pitchfork_pivot}.
 We define $P_e$ to rotate diagrams counterclockwise relative to the orientation of $e$. 
 If $l_e \neq 0$, then the initial and terminal vertices of $e$ are twisted by $2\pi l_e / 3$ relative to 
@@ -683,7 +689,7 @@ The tensor network associated to $Y\times I$ might have less translation invaria
 
 
 We now extend the bosonic state sum to the fermionic case. 
-We start with two pieces of data: a super pivotal fusion category $\spc$, and an oriented spin 
+We start with two pieces of data: a super pivotal fusion category $\spc$, and a spin % spin implies oriented
 3-manifold $M$ possessing a cell decomposition with orientations of 1- and 2-cells.
 The fermionic version of the state sum can be computed using similar techniques as in the bosonic case,
 and takes the form
