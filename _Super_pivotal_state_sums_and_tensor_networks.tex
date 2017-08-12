@@ -590,13 +590,14 @@ different types of $T_v$ tensors, given by the appropriate diagram evaluation wi
 \footnote{Not all these $64$ tetrahedra are independent however, as 
 some of them can be transformed into one another by using the pivotal and spherical structure of the input category.}
 
-\kw{resume here}
-
-This procedure results in nets on 0-handles which are all standardized independently 
-of one another. 
-This means that the form of a given trivalent vertex at the initial edge of a 1-handle $e$
-will not in general be the same as the form of the associated vertex on the terminal edge of the 1-handle:
-the two may be related by a pivot operation $P_e=P^{l_e}$ for $l_e = 0,1,2$, where $P$ is the pivot defined in \eqref{Pitchfork_pivot}.
+In this procedure, we choose standardizations (pitchforkizations) at each 0-handle independently.
+This means that the two ends of each 1-handle are standardized independently 
+of each other, and the pairing induced from the $\widetilde\Theta$ graph on the 1-handle (Figure xxxx above)
+will not necessarily agree with the standard pairing \eqref{reflection_pairing_defn}.
+%This means that the form of a given trivalent vertex at the initial edge of a 1-handle $e$
+%will not in general be the same as the form of the associated vertex on the terminal edge of the 1-handle:
+Instead, the 1-handle pairing and the standard pairing will be 
+related by a pivot operation $P_e=P^{l_e}$ for $l_e = 0,1,2$, where $P$ is the pivot defined in \eqref{Pitchfork_pivot}.
 We define $P_e$ to rotate diagrams counterclockwise relative to the orientation of $e$. 
 If $l_e \neq 0$, then the initial and terminal vertices of $e$ are twisted by $2\pi l_e / 3$ relative to 
 one another, and this twisting data needs to be incorporated into the 1-handles. 
@@ -606,81 +607,19 @@ The 1-handles now look like
 \end{align}
 where the double arrows designate the orientation of $e$. 
 
-In summary, by standardizing the 0-handles, we have been forced to put extra data on each 1-handle, namely the pivots. 
-The 1-handle terms in the partition function (and corresponding tensor trace) also need to be modified.
-For a given labeling $\beta \in \mcl(\mch)$ we have two $\widetilde{\Theta}$ symbols associated with the initial and terminal disks of each 1-handle, and a matrix element of $P_e$.
-The matrix element of $P_e$ appears on the numerator, while the two $\widetilde{\Theta}$ symbols appear on the denominator.
+%In summary, by standardizing the 0-handles, we have been forced to put extra data on each 1-handle, namely the pivots. 
+%The 1-handle terms in the partition function (and corresponding tensor trace) also need to be modified.
+%For a given labeling $\beta \in \mcl(\mch)$ we have two $\widetilde{\Theta}$ symbols associated with the initial and terminal disks of each 1-handle, and a matrix element of $P_e$.
+%The matrix element of $P_e$ appears on the numerator, while the two $\widetilde{\Theta}$ symbols appear on the denominator.
 
-%%%old outline was making the pdf hard to read, so it's been commented out
-\begin{comment}
-\kw{older outline below}
+In summary, by standardizing each 0-handle independently, we have managed to make each
+0-handle tensor isomorphic to a standard (up to edge orientations) tetrahedral tensor.
+The price we pay for this is that we have to keep track of the pivots which relate the two ends of each 1-handle.
+In terms of the tensor network, this means that we either need to insert two-legged pivot/1-handle tensors between each pair
+or adjacent 0-handle tensors, or we need to further ``dress" the 0-handle tensors by merging each such pivot tensor
+into one of the two adjacent 0-handle tensors.
+\kw{Figure for this?  Say that we will go with the first option?}
 
-Most of this is already in the current draft.
-
-Somewhere in intro to section:  
-\begin{itemize}
-\item We first review the bosonic TVBW state sum and how to convert it into a tensor network.
-We then detail the modifications necessary for the fermionic case.
-\item
-\end{itemize}
-
-TVBW review subsection:
-\begin{itemize}
-\item Explain the cell decomp assumptions.
-We will work with generic (dual to triangulation) for simplicity, but it's easy to generalize to arbitrary cell decompositions.
-\item We will choose auxiliary orientations of the 1- and 2-cells.
-The final answer does not depend on these choices.
-(Remark somewhere that this version of the state sum is described in Walker2006.)
-\item We remark that non-trivial FS indicators makes all of this more complicated.
-If all FS indicators were 1, then we could arrange that if $a\in\sob(\mcc)$, then $a^*$ is also in $\sob(\mcc)$.
-With non-trivial FS indicators, all we can assume that that $a^*$ is non-canonically isomorphic to some simple object in $\sob(\mcc)$.
-\item Explain handle decomposition associated to cell decomp.
-\item For each $a,b,c$, we choose a basis $\mcb(a,b,c)$ of $V^{abc}$.
-($\mcb(a,b,c)$ is empty if $V^{abc}$ is zero-dimensional.)
-Also choose a basis $\mcb^*(c^*, b^*, a^*)$ of $V^{c^*b^*a^*}$ such that the xxx pairing is orthogonal.
-(It is sometimes convenient to have the pairing matrix merely diagonal instead of $\delta_{ij}$.)
-Define the set $\mcb = \bigcup_{a,b,c} \mcb(a,b,c)$.
-For each $\beta\in\mcb$ we denote the dual element of $\mcb^*$ as $\beta^*$.
-We define $\Theta(\beta)$ to be the value of the pairing on $\beta$ and $\beta^*$.
-\item And, alas, we have to define seven more versions of $\mcb$, corresponding to $V^a_{bc}$, $V_{abc}$, etc.
-\item \kw{I now lean toward using the BW(?) trick of choosing a global ordering of the 3-cells, which allows us to choose
-1- and 2-cell orientations so that we only need the $V^a_{bc}$ (or $V^{ab}_c$) version of $\mcb$.
-Another option is to do it first without the global ordering, then note that we can use the global ordering trick.}
-\item We define a labeling of the cell decomposition to be (1) a choice, for each 2-cell $f$, of $a_f\in\sob(\mcc)$, and
-(2) a choice, for each 1-cell $e$, of $\beta_e\in\mcb$.
-\item Given a labeling of the cell decomposition, we associate a number to each 0-, 1- and 2-cells as follows.
-\item To a 2-cell labeled by $a$, we associate $d_a$.
-\item To a 1-cell labeled by $\beta\in\mcb(a,b,c)$, and adjacent to 2-cells labeled by $a'$, $b'$ and $c'$,
-we associate $\delta_{aa'}\delta_{bb'}\delta_{cc'}\Theta(\beta)^{-1}$.
-\item To each 0-cell, evaluation of labeled tetrahedral string net.
-(This is zero for incompatible labelings.)
-\kw{I think with global ordering trickwe only have one type of tetrahedron}
-\item Final define
-\be
-	\sum_{\text{labelings}} \prod_{\text{3-cells}} D^{-1} \prod_{\text{2-cells}} d_a 
-			\prod_{\text{1-cells}} \Theta^{-1} \prod_{\text{0-cells}} \text{Tet} 
-\ee
-\item \kw{I now lean toward first writing a very general form of the sum (for arbitrary cell decompositions and arbitrary
-1- and 2-cell orientations), then regularizing by (1) generic cell decomposition, and (2) 1- and 2-cell orientations
-chosen compatible with a global ordering.}
-\end{itemize}
-
-Bosonic tensor network section:
-\begin{itemize}
-\item Goal: rewrite state sum as a tensor network.
-\item First observation: the parts coming from 0- and 1-handles are already a tensor network.
-A (standard) tetrahedral tensor for each 0-cell, and the vector space $\oplus V^{ab}_c$ at each edge.
-\item For the 2-cell factors ($d_a$), we have two options.
-Our preferred option is to choose, for each 2-cell, an adjacent 0-cell and then modify the tetrahedral tensor by the 
-$d_a$ factor.
-(Each 0-cell tensor will have between 0 and 6 such factors, depending on the above choices.)
-\item The other option is to make the tensor network larger ...
-\item The factors of $D^{-1}$ associated to 3-cells can be handled similarly.
-The tensor networks we associate to $Y\times I$ will not have any 3-cells.
-\item \kw{I just realized a possible disadvantage of the global ordering trick:
-The tensor network associated to $Y\times I$ might have less translation invariance than expected.}
-\end{itemize}
-\end{comment}
 
 
 %%%%%%%%%%%%%%%%%%%%%
