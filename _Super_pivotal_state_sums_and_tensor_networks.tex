@@ -440,7 +440,9 @@ For each 2-handle $f$ we choose an adjacent vertex $v_f$.
 For a 0-handle $v$ we modify the associated weight ${\text{Link}}(v,\beta)$ by multiplying factors of $d(f,\beta)$ for each 2-handle $f$ such that $v = v_f$.
 Similarly, for each 3-handle we choose an adjacent 0-handle and multiply the associated weight by $\mcd^{-2}$.
 Denoting the modified 0-handle weights by $\widetilde{\rm Link}(v,\beta)$, we construct the vertex tensor 
-\be T_v = \sum_{w_v } \widetilde{\text{Link}}(v,w_v) w_v,\ee
+\be 
+	T_v = \sum_{w_v } \widetilde{\text{Link}}(v,w_v) w_v,
+\ee
 where the sum runs over orthogonal basis vectors for the vector space associated to the attaching disks of $\text{Link}(v)$ (the vector space for each attaching disk on $\text{Link}(v)$ is dual to the vector space associated to the initial/terminal attaching disks of the adjacent 1-handles).
 %for the vertex Hilbert space $\mch(v)$. 
 \kw{I think we need to say this a little differently; we don't have any inner products defined,
@@ -449,9 +451,26 @@ so we need to carefully distinguish between spaces and dual spaces.}
 }
 \kw{One of the $w_v$ needs to be in a dual space; otherwise it scales incorrectly.  Maybe I'll edit it more later.}
 \dave{I can't argue with that. 
-I think my vote would be to let $w_v$ be the tensor product of the vector spaces associated with the ends of the 1-handles (i.e., if a 1-handle $e$ is emanating from $v$ then one of the tensor factors would be living in $V(e)$).
+I think my vote would be to let $w_v$ be the tensor product of the vector spaces associated with the ends of the 1-handles 
+(i.e., if a 1-handle $e$ is emanating from $v$ then one of the tensor factors would be living in $V(e)$).
 Then write $\widetilde{\text{Link}}(v,w_v^*) w_v$.
 }
+\kw{Why not just define $T_v$ as follows? ...}
+We now define the 0-handle tensors $T_v$ as follow.
+Let $e_1, \ldots, e_k$ be the 1-handles adjacent to the 0-handle $v$.
+Let $V_i$ be either $V(e_i)$ (if $v$ is adjacent to the terminal end of $e_i$)
+or $V^*(e_i)$ (if $v$ is adjacent to the initial end of $e_i$).
+We define
+\be
+	T_v \in V^*_1\tp\cdots\tp V^*_k
+\ee
+by
+\be
+	T_v(w_i\tp\cdots\tp w_k) = \widetilde{\text{Link}}(v, w_i\tp\cdots\tp w_k),
+\ee
+where $w_i\in V_i$.
+In other words, $T_v$ evaluates the link graph with labels $w_1,\ldots,w_k$.
+\kw{... end ``as follows"}
 %\dave{Is this necessary?}
 %\ethan{It was intended to be my guess to what Kevin's dual spaces comment meant. Might have missed the mark though, and it might still be confusing.}
 To obtain the partition function, we form the tensor product of all the 0-cell tensors constructed in this way.
@@ -473,6 +492,8 @@ $tc$ for tensor contract is nice, my only reservation is that there is probably 
 }
 \dave{It's kind of like $\text{eval}^{-1}$. 
 Is there a standard tensor category name for that?}
+\kw{If tTr is well established, then fine.  Otherwise maybe a simple tr would do.
+I think tr is often used in this generalized sense in math papers.}
 \be Z(M) = {\rm tTr}\left(\bigotimes_{v\in \mch_0} T_v\right),\ee
 where the tensor trace tTr denotes the tensor contraction.
 The tensor contraction introduces a factor of $\widetilde{\Theta}^{-1}$ if the labels on each side of the 1-cell are dual to one another (with respect to the bilinear pairing) and is zero otherwise.
@@ -483,8 +504,6 @@ It is easy to see that this tensor network gives the same state sum as \eqref{bo
 is independent of the way we assign factors of $d(f,\beta)$ and $\mcd^{-2}$ to the 
 vertex tensors. 
 
-\kw{resume here}
-
 \medskip
 
 In the case where $\partial M \neq \emptyset$, the Hilbert space associated 
@@ -492,6 +511,21 @@ with the tensor product of the 0-cell tensors admits a decomposition $\mch^*_{bu
 the Hilbert spaces of the degrees of freedom on $\partial M$ lack dual tensor factors appearing in the tensor product. 
 The partition function is still performed by contracting, which contracts out the tensor factors in $\mch^*_{bulk} \tp \mch_{bulk}$ but leaves those in $\mch(\partial M)$ uncontracted, producing a wavefunction supported on $\mch(\partial M)$ (that is, a map $A(\partial M) \ra \cc$).
 \kw{This is basically correct, but let's work on the phrasing.}
+
+\kw{alternate version of previous paragraph:}
+
+In the case where $\partial M \neq \emptyset$, we define the 0-handle tensors $T_v$ as before,
+but in this case some of the legs of the tensors are unpaired (not contracted).
+Specifically, there is one unpaired leg for each 0-cell on $\bd M$.
+\kw{maybe fig for this}
+If $W_1, \ldots, W_n$ are the vector spaces associated to the boundary 0-cells, we have
+\be
+	\tr(\bigotimes_v T_v) \in W_1^*\tp\cdots\tp W_n^* .
+\ee
+Each string net on $\bd M$ \kw{labelings of 0- and 1-cells, as described above}
+determines an element of $W_1\tp\cdots\tp W_n$ (the vertex labels), and the above tensor contraction
+produces the wave function on this space.
+\kw{or something like that}
 
 
 
