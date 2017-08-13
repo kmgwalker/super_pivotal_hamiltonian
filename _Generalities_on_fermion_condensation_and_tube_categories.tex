@@ -227,7 +227,8 @@ See Figure \ref{ZCPsiCondensed_fig}.
 %\dave{Ok, I'll change the color, and we can discuss on Skype sometime which perspective is our favourite. 
 %}
 %\dave{How's the contrast now?}
-\ethan{Dave, you continue to outdo yourself with the figures. So amazing!}
+%\ethan{Dave, you continue to outdo yourself with the figures. So amazing!}
+\dave{need to fix braiding between $\psi$s in left box}
 On the left we have a 3d box. 
 The front of the box is a 2d boundary on which $\mcc$ string nets are drawn (viewed as a module for $\mcz(\mcc)$). 
 The bulk of the box contains braided nets from $\mcz(\mcc)$, which we restrict to $\psi$.
@@ -398,9 +399,6 @@ in the more general fermionic setting considered here.
 %where $A$ is a spin annulus with $\p A = S^1 \du S^1$. 
 
 %The tube category $\tube(\mcc)$ for a string-net TQFT derived from the category $\mcc$ is defined as follows. 
-\kw{need to change $\mcc$ to $\mcs$ (macro) here;
-need to think about where to first introduce $\spc$}
-\ethan{Actually I think right here is a suitable place. Maybe something like the following few sentences could work:}
 We will now define two categories $\tube^B(\spc)$ and $\tube^N(\spc)$ for a string-net TQFT derived from a given super pivotal category $\spc$. 
 We will postpone the most general definition of a super pivotal category until Section \ref{def_sect}. 
 However, categories
@@ -408,19 +406,19 @@ obtained from fermion condensation $\spc \cong \mcc / \psi$ all constitute examp
 and so the reader may substitute $\mcc/\psi$ for $\spc$ in what follows before reading the more 
 general definitions in Section \ref{def_sect}. 
 
-The objects of the two spin tube categories $\tube^B(\mcc)$ and $\tube^N(\mcc)$ are defined as isomorphism classes of 
+The objects of the two spin tube categories $\tube^B(\spc)$ and $\tube^N(\spc)$ are defined as isomorphism classes of 
 string-net boundary conditions on spin circles with bounding 
 and non-bounding spin structures, respectively. 
 %%KW this remark seems out of place here.  I'm open to moving it elsewhere, but I'm  not sure where.
 %Later (see the end of Section \ref{ground_states_on_torus}), we will show that every simple object 
-%in $\tube^B(\mcc)$ must be m-type. 
+%in $\tube^B(\spc)$ must be m-type. 
 For each spin tube category, we will fix a representative spin circle with which to define its
 objects. 
 Other possible choices of spin circles are related to the chosen representative
 by spin diffeomorphisms, and the exact specification of the particular representative will 
 be unimportant in our analysis. 
 %Because specifying the boundary conditions on a spin annulus involve specifying a choice of spin structure, 
-%each object in $\tube(\mcc)$ carries a $\zt$ spin structure label according to whether it is associated with the bounding or 
+%each object in $\tube(\spc)$ carries a $\zt$ spin structure label according to whether it is associated with the bounding or 
 %non-bounding spin structure. 
 %This means are two types of objects in the tube category: objects with bounding spin structure
 %and ``vortices'', which are objects with non-bounding spin structure.
@@ -455,7 +453,7 @@ of morphisms in the tube category.
 \end{align}
 \caption{\label{ExampleMorphismsTubeC}
 Some examples of morphisms in $\tube(\spc)$,
-with $\spc$ a super pivotal category obtained through a fermionic quotient ($\mcc/\psi$) or more 
+with $\spc$ a super pivotal category obtained through a fermionic quotient ($\spc/\psi$) or more 
 generally a category satisfying the assumptions laid out in Section \ref{def_sect}.
 We have written the annulus as a square with (unmarked) left and right sides identified. 
 At the bottom left of each annulus we have denoted the spin structure of the annulus by B (or N) for bounding (or non-bounding). 
@@ -473,24 +471,24 @@ And indeed we will usually do so without comment.
 
 In the one-endpoint subcategory, morphism spaces can be presented as
 \begin{align}
-{\rm mor}(\tube^X({\cal C}))\; =\; \mathbb{C} \left[\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{} \right] 
+{\rm mor}(\tube^X(\spc))\; =\; \mathbb{C} \left[\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{} \right] 
 \end{align}
-where $a,b,c,d$ are simple objects in $\cal{C}$ and $X\in\{B,N\}$ denotes the spin structure of the annulus. 
+where $a,b,c,d$ are simple objects in $\spc$ and $X\in\{B,N\}$ denotes the spin structure of the annulus. 
 The multiplicity indices $\mu$, and $\nu$ are 
 collective indices that denote the vector in the fusion space $V^{db}_a$ and $V^{c \bar{d}}_b$, 
 as well as the ordering of the tensor product ($V^{d b}_a \tp V^{c d^*}_b$ or $V^{c d^*}_b\tp V^{d b}_a$) which forms the Hilbert 
 space of the tube.% (keeping track of this ordering is important because of the Koszul signs incurred 
 %when interchanging two odd vectors in a tensor product). 
 
-We define the {\it full} tube category $\tube(\mcc)$ to be the direct sum
-\be \label{tube_spin_decomp} \tube(\mcc) \cong \tube^B(\mcc) \oplus \tube^N(\mcc).\ee
-In what follows we will mostly think of $\tube(\mcc)$ as the fundamental category of interest. 
-This is because in what follows we will be led to consider a $\tp$ structure on $\tube(\mcc)$, which mixes the two spin components (we defer a discussion of this to 
+We define the {\it full} tube category $\tube(\spc)$ to be the direct sum
+\be \label{tube_spin_decomp} \tube(\spc) \cong \tube^B(\spc) \oplus \tube^N(\spc).\ee
+In what follows we will mostly think of $\tube(\spc)$ as the fundamental category of interest. 
+This is because in what follows we will be led to consider a $\tp$ structure on $\tube(\spc)$, which mixes the two spin components (we defer a discussion of this to 
 Section \ref{fusion_rules}). 
 
-Composition of morphisms in $\tube(\mcc)$ is defined by stacking tubes together.
+Composition of morphisms in $\tube(\spc)$ is defined by stacking tubes together.
 %The stacking operation plays the role of multiplication 
-%in $\tube(\mcc)$ when $\tube(\mcc)$ is viewed as an algebra. 
+%in $\tube(\spc)$ when $\tube(\spc)$ is viewed as an algebra. 
 Graphically,
 \begin{align}
 \AnnularTubex{\AnnularTubeNoIndex}{a}{b}{\eta}{X}{} \cdot
@@ -502,24 +500,24 @@ The $\delta$ functions ensure that if the string labels of the two tubes don't a
 boundary on which they are being glued (i.e. if $b\neq c$), or if the spin structures of the 
 two tubes disagree, the two tubes compose (or multiply) to zero. 
 
-%In addition to composing morphisms, we can define a tensor product $\tp$ on $\tube(\mcc)$ 
+%In addition to composing morphisms, we can define a tensor product $\tp$ on $\tube(\spc)$ 
 %(from a physical perspective, $\tp$ implements quasiparticle fusion). 
 %The definition of $\tp$ is best phrased in terms of vector spaces on the pair of pants, and we defer a 
 %discussion of this construction until . 
 
 %%KW I think we discuss the correspondence between (simple) modules and (minimal) idempotents elsewhere
-%To actually determine the objects in $\tube(\mcc)$, 
-%it is helpful to think about the simple objects in $\tube(\mcc)$ in terms of vector spaces which are preserved 
-%under the action of the morphisms in $\tube(\mcc)$\footnote{That vector spaces on circular punctures 
-%reproduce $\mcz(\mcc)$ makes sense from a formal perspective, as the category $\mcz(\mcc)$ is what a 
+%To actually determine the objects in $\tube(\spc)$, 
+%it is helpful to think about the simple objects in $\tube(\spc)$ in terms of vector spaces which are preserved 
+%under the action of the morphisms in $\tube(\spc)$\footnote{That vector spaces on circular punctures 
+%reproduce $\mcz(\spc)$ makes sense from a formal perspective, as the category $\mcz(\spc)$ is what a 
 %(fully-extended) TQFT assigns to an $S^1$.}. 
-%If we view $\tube(\mcc)$ as an algebra, then these invariant vector spaces correspond precisely to the 
-%simple modules $\{M_a\}$ of $\tube(\mcc)$.
+%If we view $\tube(\spc)$ as an algebra, then these invariant vector spaces correspond precisely to the 
+%simple modules $\{M_a\}$ of $\tube(\spc)$.
 %This allows us to equivalently classify 
 %%Since every simple module $M_a$ of an algebra algebra can be dually represented by a primitive idempotent 
-%%$\Pi_a : \tube(\mcc) \ra M_a$ that projects onto the vector space $M_a$, we can classify 
+%%$\Pi_a : \tube(\spc) \ra M_a$ that projects onto the vector space $M_a$, we can classify 
 %the
-%simple objects in $\tube(\mcc)$ by the primitive idempotents (projectors whose images are simple modules) $\Pi_a : \tube(\mcc) \ra M_a$ of the tube category.%, each of which project onto a different simple module $M_a$ of $\tube(\mcc)$.
+%simple objects in $\tube(\spc)$ by the primitive idempotents (projectors whose images are simple modules) $\Pi_a : \tube(\spc) \ra M_a$ of the tube category.%, each of which project onto a different simple module $M_a$ of $\tube(\spc)$.
 
 
 \medskip
@@ -528,8 +526,8 @@ Before moving on, we briefly remark on the physical interpretation of the tube c
 The setting for examining a collection of $n$ excitations in a given topological phase is a 
 manifold decorated with string-nets that possesses $n$ circular punctures (boundary components), with an excitation localized at each puncture.
 The type of excitation at a given puncture determines the boundary conditions of the string-net TQFT at that puncture, 
-and thus the simple objects in $\tube(\mcc)$ are identified with the distinct types of quasiparticle excitations that the theory supports. 
-%Thus, enumerating the objects of $\tube(\mcc)$ amounts to constructing the quasiparticle excitation spectrum of the theory in question. 
+and thus the simple objects in $\tube(\spc)$ are identified with the distinct types of quasiparticle excitations that the theory supports. 
+%Thus, enumerating the objects of $\tube(\spc)$ amounts to constructing the quasiparticle excitation spectrum of the theory in question. 
 A potentially helpful physical picture is to think of the morphisms in the tube category as performing ``scale transformations'' 
 on quasiparticles \cite{Lan2014}. 
 \dave{I will do this. (make note for colabs to read it)
@@ -684,9 +682,6 @@ We now apply the above to the case where $Y$ is an annulus to obtain a nondegene
 In what follows we will continue to let $\spc$ be a super pivotal fusion category 
 satisfying the assumptions of Section \ref{def_sect}
 (e.g.~one coming from a fermionic quotient).
-\kw{Should probably move the introduction of $\spc$ further up}
-\ethan{we did, now it's introduced where we define the various tube categories}
-%\kw{Take it from here, Dave.}
 Letting $t \in \tube^W(\spc)$ and writing $\tr(t)$ for the trace of $t$, we can use \eqref{trace_to_innerproduct} to write
 %\dave{I was thinking we could save $\tr_W(....)$ for traces of matrices i.e., $\tr$ and $\str$ of a matrix for $W = B$ or $W= N$. 
 %Then reserve plain old $\tr$ for \eqref{trace_to_innerproduct}. 
@@ -869,20 +864,17 @@ The total squared dimension $\mcd^2$ of the theory is defined to be
 $ \langle S^2_\phi, S^2_\phi \rangle$, the inner product of the empty diagram on the 2-sphere with itself.
 We can then compute
 \begin{align}
-\langle S^2_\phi, S^2_\phi \rangle = Z(S^2 \times I)(\overline{S^2_\phi} \cup {S^2_\phi}) = \sum_{x \in \sob(\scat)} \frac{Z(B^3, \cl(x)) Z(B^3, \overline{\cl(x)}) }{\langle  \cl_B(x), \cl_B(x) \rangle},
+\langle S^2_\phi, S^2_\phi \rangle = Z(S^2 \times I)(\overline{S^2_\phi} \cup {S^2_\phi}) = \sum_{x \in \sob(\spc)} \frac{Z(B^3, \cl(x)) Z(B^3, \overline{\cl(x)}) }{\langle  \cl_B(x), \cl_B(x) \rangle},
 \end{align}
 where $B^3$ is the 3-ball and $Z(B^3,\cl(x))$ denotes the partition function 
-of a 3-ball with a closed $x$ loop on its surface (again, $\scat$ is an arbitrary super linear category). 
-\kw{I don't think $\scat$ is appropriate here; let's discuss.
-In general I think we should use $\scat$ only when there is no need for a tensor/monoidal structure anywhere in the story.}
+of a 3-ball with a closed $x$ loop on its surface.
 To obtain the second equality, we have written $S^2\times I$ 
 as a union of two manifolds homeomorphic to $B^3$ glued along a bounding annulus and 
 have made use of the gluing axioms of TQFT. 
 We can compute $Z(B^3, {\cl(x)}) = Z(B^3, \overline{\cl(x)}) = d_x$ by definition of the quantum dimension, and hence the total squared dimension is given by
 \begin{align}
-\mcd^2 = \sum_{x\in \sob(\scat)} \frac{d_x^2}{\dim \End(x)}.
+\mcd^2 = \sum_{x\in \sob(\spc)} \frac{d_x^2}{\dim \End(x)}.
 \end{align} 
-Note that letting $ \scat = \tube(\spc)$ gives the total dimension of tube category.
 %An alternative derivation inspired by fermion condensation is given in Section \ref{Quantum_dimensions}.
 %Indeed this calculation is responsible for the denominator in \eqref{XXXX}.
 
@@ -978,7 +970,8 @@ Since $x\tp \psi \cong x$ if $x\in \sobq(\mcc/\psi)$, we can write
 \mcd_{\mcc/\psi}^2 = 2 \mcd_{\mcc/\psi}^2,
 \end{align}
 hence, \eqref{DC_and_DCpsi}. 
-This result can also be motivated by making use of the theory of modular extensions, see for example \cite{lan2016}\dave{Ethan can you explain this to me.}.
+%This result can also be motivated by making use of the theory of modular extensions, see for example \cite{lan2016}\dave{Ethan can you explain this to me.}.
+%\ethan{its like de-transparentizing fermions by doing modular extensions. Then we can use results  about how dimensions of modular extensions are products of dimensions of the original category and the extending one}
 For the $C_2$ theory, this works out as 
 $\mcd_{C_2} = \sqrt{2} = \mcd_{\rm Ising} / \sqrt{2}$.
 %Let us summarize the trace descibed in this section. 
@@ -1485,6 +1478,9 @@ See Section \ref{he6mp-tube-cat} for an example of this.
 
 \kwsep
 
+\ethan{add some examples from here to above. Only restrict attention to endomorphism algebras, e.g. endos of trivial object is blah so splits as two idempotents, etc. Never write linear combinations 
+of tubes with different boundary conditions}
+
 In this section, we briefly present a fermionic version of the sum-of-squares formula, which is useful for relating the dimension
 of the tube category to the dimensions of its minimal idempotents (see e.g. \cite{Lan2014}). 
 In many cases, this allows us to obtain a large amount of information about the quasiparticle 
@@ -1519,8 +1515,8 @@ the sum-of-squares formula then reads
 
 In what follows, we will let $T_{XY}$ with $X,Y\in\{B,N\}$ denote the torus with spin structure $XY$
 (with spin structure $X$ along the meridional cycle and $Y$ along the longitudinal cycle),
-and $\mch(T_{XY})$ 
-\kw{might want to switch this to $A(T_{XY})$}
+and $A(T_{XY})$ 
+%\kw{might want to switch this to $A(T_{XY})$}
 the Hilbert space of ground-state string-net configurations on $T_{XY}$.  
 As before, we will also let $\tube^B$ denote the bounding tube category and $\tube^N$ denote the non-bounding tube category. 
 
@@ -1529,7 +1525,7 @@ the ground states on a torus from the tube category:
 
 \begin{theorem} \label{torus_basis_theorem}
 Let $X$ equal $B$ or $N$.
-The Hilbert space $\mch(T_{XB})$ is purely even, with an orthogonal basis given by closed-up idempotents $\{\cl(e_i)\}$,
+The Hilbert space $A(T_{XB})$ is purely even, with an orthogonal basis given by closed-up idempotents $\{\cl(e_i)\}$,
 where $e_i$ runs through a set of representatives of the minimal idempotents of $\tube^X$.
 The Hilbert space of $T_{XN}$ is isomorphic to $\cc^{p|q}$, where $p$ is the number of m-type idempotents of $\tube^X$
 and $q$ is the number of q-type idempotents of $\tube^X$.
@@ -1546,12 +1542,12 @@ The proof of the above claim consists of a sequence of fairly simple observation
 Recall that $f$ is a linear combination of string nets on the annulus (with spin structure $X$), with boundary conditions
 $c$ on both boundary components of the annulus.
 We can therefore glue up $f$ to obtain a new string net $\cl(f)$ (the closure of $f$) on either $T_{XB}$ or $T_{XN}$.
-This map is clearly linear, so we have a linear map $\cl_c : \End(c) \to \mch(T_{XY})$, where $Y$ is either $B$ or $N$.
+This map is clearly linear, so we have a linear map $\cl_c : \End(c) \to A(T_{XY})$, where $Y$ is either $B$ or $N$.
 (For future reference, we will call the image of the boundary of the annulus in the torus $K$.)
 
 \item Taking (finite) sums over different boundary conditions, we have a linear map
 \be
-	\cl : \bigoplus_c \End(c) \to \mch(T_{XY}) ,
+	\cl : \bigoplus_c \End(c) \to A(T_{XY}) ,
 \ee
 where $c$ ranges over all possible boundary conditions.
 (Note that even though $c$ ranges over an uncountable set, the direct sum consists only of finite linear combinations; 
@@ -1603,7 +1599,7 @@ are fixed near $K$, and therefore can be lifted to isotopies of the annulus, and
 as described above.
 In summary,
 \be \label{torus_thm}
-	\mch(T_{XY}) \cong \left( \bigoplus_x \End(x) \right) / \left\langle gh - (-1)^{|g| |h|} s(Y)^{|h|} hg \right\rangle .
+	A(T_{XY}) \cong \left( \bigoplus_x \End(x) \right) / \left\langle gh - (-1)^{|g| |h|} s(Y)^{|h|} hg \right\rangle .
 \ee
 
 \item In the semisimple case, the expression \eqref{torus_thm} can be greatly simplified.
@@ -1613,7 +1609,7 @@ Using \eqref{cl_ker}, we see that the subspace (of the big direct sum)
 \be
 	\bigoplus_i \End(e_i)
 \ee
-maps surjectively to $\mch(T_{XY})$.
+maps surjectively to $A(T_{XY})$.
 Furthermore, because the minimal idempotents are orthogonal (in the sense that $e_i f e_j$ is zero for any $f$ unless $i=j$),
 the only relations we have to consider are of the form
 \be \label{t2_idem_rels}
