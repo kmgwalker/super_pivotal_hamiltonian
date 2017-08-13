@@ -460,7 +460,7 @@ I think my vote would be to let $w_v$ be the tensor product of the vector spaces
 Then write $\widetilde{\text{Link}}(v,w_v^*) w_v$.
 }
 \kw{Why not just define $T_v$ as follows? ...}
-We now define the 0-handle tensors $T_v$ as follow.
+We now define the 0-handle tensors $T_v$ as follows.
 Let $e_1, \ldots, e_k$ be the 1-handles adjacent to the 0-handle $v$.
 Let $V_i$ be either $V(e_i)$ (if $v$ is adjacent to the terminal end of $e_i$)
 or $V^*(e_i)$ (if $v$ is adjacent to the initial end of $e_i$).
@@ -473,7 +473,7 @@ by
 	T_v(w_i\tp\cdots\tp w_k) = \widetilde{\text{Link}}(v, w_i\tp\cdots\tp w_k),
 \ee
 where $w_i\in V_i$.
-In other words, $T_v$ evaluates the link graph with labels $w_1,\ldots,w_k$.
+In other words, $T_v$ evaluates the link graph with labels determined by $w_1,\ldots,w_k$.
 \kw{... end ``as follows"}
 %\dave{Is this necessary?}
 %\ethan{It was intended to be my guess to what Kevin's dual spaces comment meant. Might have missed the mark though, and it might still be confusing.}
@@ -735,6 +735,7 @@ String-net graphs are assigned to the $k$-handles in the same way as in the boso
 The set of all labelings $\mcl(\mch)$ is defined as the product over all 1-handles $e$ of the basis sets $B(e)$.
 For a fixed labeling $\beta \in \mcl(\mch)$, the weights are determined as follows.
 \kw{maybe say here that we choose sign-orderings?}
+\ethan{I was thinking that in this case, $\beta$ contains both a string-net labelling and a sign-ordering labelling}
 %together
 %with a choice of Koszul ordering for the ends of every 1-handle. 
 %Note that since each 
@@ -820,9 +821,13 @@ We now ``connect'' the two planar graphs with $\psi$ lines, and evaluate the dia
 \end{align}
 \end{centering} 
 \caption{\label{sVecFig}
-The Koszul sign $(-1)^{\kappa_\beta}$ written as the evaluation of a diagram in $\text{sVec}$. 
-Solid lines are labeled by $\psi$ and dashed lines by the trivial object. 
-On the left we have written two 0-handles $\text{Link}(v)$ and $\text{Link}(v')$, as well as there associated 1-handles that connect them.
+An example of a Koszul sign $(-1)^{\kappa_\beta}$ written as the evaluation of a diagram in $\text{sVec}$ for a pair of two vertices $v,v'$. 
+The upper half of the left figure denotes the 1-handles, with $i$ ($t$) marking the initial (terminal)
+edge of the 1-handle.  
+The lower half of the left figure shows the two 0-handles, which each have four attached 1-handles.
+Solid lines are labeled by $\psi$ and connect two fermion dots with adjacent sign ordering, while dashed lines denote the trivial object. 
+The right figure shows the diagram in sVec obtained after connecting the strings on the 0-handles to 
+the respective strings on the 1-handles; the evaluation of this diagram determines $(-1)^{\kappa_\beta}$. \ethan{changed the caption a bit to hopefully be a bit clearer}
 }
 \end{figure}
 The evaluation of the diagram can be written as a TVBW state sum, but since we have written the evaluation on the plane, it doesn't sit naturally with the TVBW state sum \eqref{fermionic_tv_sum}.
@@ -1775,6 +1780,7 @@ END OF OLD STUFF
 \subsection{The shadow world and ground state wave functions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \dave{I haven't been through this section in recently (Aug 11)}
+\ethan{some notational things still need to be updated to reflect new state-sum notation}
 
 \ethan{still might need to mention connection to MPO's/mention tube category/excitations}
 
@@ -1923,9 +1929,8 @@ are fixed by the states $v_0$ and $v_1$.
 We can now compute $Z(\Sigma_{0\ra1}; v_0, v_1)$ 
 using the state sum: 
 \begin{align} 
-Z(\Sigma_{0\ra1}; v_0, v_1) = \sum_{ \mcl_{bulk} } (-1)^{k_{\mcl_{bulk}}} \prod_{f \in [\Sigma \times \{1/2\}]_2} T_f(w_f) 
-\prod_{e \in [\Sigma \times \{1/2\}]_1} T_e(w_e) \prod_{v \in [\Sigma \times \{1/2\}]_0} T_v(w_v),
+Z(\Sigma_{0\ra1}; v_0, v_1) = \sum_{ \beta\in\mcl(\mch^{1/2})}  (-1)^{k_\beta} \prod_{f \in \mch^{1/2}_2} T_f(w_f) 
+\prod_{e \in \mch^{1/2}_1} T_e(w_e) \prod_{v \in \mch^{1/2}_0} T_v(w_v),
 \end{align} 
-where we have used $[\Sigma \times \{1/2\}]_k$ to denote the collection of $k$-cells in $\Sigma \times \{1/2\}$ and $\mcl_{bulk}$ 
-to denote colorings of the bulk degrees of freedom in $\Sigma_{0\ra1}$ for which $\chi(\omega_{\mcl_{bulk}})\neq 0$. 
-
+where we have used $\mch^{1/2}_k$ to denote the collection of $k$-cells in $\Sigma \times \{1/2\}$ and $\mcl(\mch)_{bulk}$ 
+to denote colorings of the bulk degrees of freedom in $\Sigma_{0\ra1}$. 
