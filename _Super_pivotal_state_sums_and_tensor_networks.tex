@@ -1789,7 +1789,7 @@ To do so, we evaluate $Z(M)$ on manifolds of the form $M =\Sigma \times [0,1]$ u
 state-sum technology developed in the previous sections\footnote{Historically, this version of the state sum 
 pre-dates TVBW and was first found by Kirillov and Reshetikhin~\cite{Kirillow1989} who coined the term 
 `shadow world', which was later extended by Turaev~\cite{turaev1992shadow} and included shadows of links 
-which he coined `shlinks'.}. 
+which he coined `shlinks'. \ethan{the gratuitous reference to shlinks is fun but not strictly needed}.}. 
 We will take $\Sigma$ to be a two-dimensional spin surface in what follows, although 
 the approach we describe can easily be modified to work for one-dimensional spin manifolds as well. 
 
@@ -1857,9 +1857,9 @@ $v_1$, since they are the shadows of 1-cells in $\Sigma_0$ and $\Sigma_1$.
 The 2-cell labels living at $\Sigma \times \{ 1/2 \}$ are not fixed as input data however, and need to be 
 summed over.
 
-As described previously, to construct the tensors for a given 0-cell $v$ in $\Sigma \times \{1/2\}$, we insert a small $S^2$ around 
+As described previously, to construct the weights ${\rm Link}(v,\beta)$ for a given 0-cell $v$ in $\Sigma \times \{1/2\}$, we insert a small $S^2$ around 
 $v$ and examine the intersections of neighboring 2-cells with the $S^2$. These intersections 
-are marked on the $S^2$ as edges, and weights for the tensor $T_v$ are formed by evaluating 
+are marked on the $S^2$ as edges, and the ${\rm Link}(v,\beta)$ are formed by evaluating 
 the picture formed by these edges. 
 
 \begin{figure}
@@ -1882,7 +1882,7 @@ By looking at Figure~\ref{CellDecomposition}, we see that there are only three k
 $\Sigma \times \{1/2\}$: those that are formed at the x-shaped intersection of a 1-cell in the extension of $
 \Sigma_0$ with a 1-cell in the extension of $\Sigma_1$, those where a 0-cell in the extension of $\Sigma_0$ 
 meets the interior of a 2-cell in 
-the extension of $\Sigma_1$, and vice versa. These possibilities lead to three different types of 0-cell tensors that need to be evaluated. 
+the extension of $\Sigma_1$, and vice versa. These possibilities lead to three different types of 0-cell weights that need to be evaluated. 
 These three possibilities are illustrated in the top row $a)$ of Figure \ref{StandardizedSlabTensors}, where we have drawn a cube surrounding the 0-cell instead of an $S^2$.
 In the figure, the blue (orange) lines denote 
 the intersections of 2-cells in $\Sigma \times (1/2,1]$ (in $\Sigma \times [0,1/2)$) with the cube, 
@@ -1895,29 +1895,30 @@ To do the standardization, we first project the diagrams into the plane (shown i
 of Figure \ref{StandardizedSlabTensors}), and then deform each of the trivalent vertices 
 to pitchforks. The final standardized diagrams are displayed in the third row of Figure \ref{StandardizedSlabTensors}.
 
-The evaluation of these standardized diagrams gives the weight of the 0-cell tensor
-in the computation of the partition function. 
-Explicitly, for a 0-cell $v$ involving three neighboring 2-cells from the extension of $\Sigma_1$ (left column of row $a)$ in Figure \ref{StandardizedSlabTensors}, we assign the tensor $T_v$ as follows:
+The evaluation of these standardized diagrams gives the weight appearing in the partition function. 
+Explicitly, for a 0-cell $v$ involving three neighboring 2-cells from the extension of $\Sigma_1$ (left column of row $a)$ in Figure \ref{StandardizedSlabTensors}, we assign the weight ${\rm Link}(v,\beta)$ as follows:
 \begin{align}
-\Tensora \; \ra T_v&= \;  \Tensoraa \cdot \mu_0 \tp s_1 \tp s_2 \tp s_3.
+\Tensora \; \ra {\rm Link}(v,\beta) &= \;  \Tensoraa %\cdot \mu_0 \tp s_1 \tp s_2 \tp s_3.
 \end{align}
+where $\beta$ denotes the labels provided by the indices $\mu_0,s_1, s_2, s_3$.
+
 In the diagrams, the green letters $A,B,C$ denote the labels of the 2-cells in $\Sigma \times \{1/2\}$, which will 
 be summed over when computing the amplitude $Z(\Sigma_{0\ra1}; v_0, v_1)$. The labels of 
 the blue lines are fixed however, and determined by the labels of the 2-cells which are shadows of 1-cells 
 in $\Sigma_1$. 
 
-Tensors for the other types of 0-cells in $\Sigma \times \{1/2\}$ are determined similarly. For the type of 
-0-cell in the center column of row $a)$ in Figure \ref{StandardizedSlabTensors}, we assign the tensor
+Weights for the other types of 0-cells in $\Sigma \times \{1/2\}$ are determined similarly. For the type of 
+0-cell in the center column of row $a)$ in Figure \ref{StandardizedSlabTensors}, we assign the weight
 \begin{align}
-\Tensorc \;\ra T_v &= \; \Tensorcc  \cdot \nu_0 \tp s_1 \tp s_2 \tp s_3, \\
+\Tensorc \;\ra {\rm Link}(v,\beta) &= \; \Tensorcc % \cdot \nu_0 \tp s_1 \tp s_2 \tp s_3, \\
 \end{align}
-while for the type of 0-cell in the last column we assign the tensor
+while for the type of 0-cell in the last column we assign the weight
 \begin{align}
-\Tensorb \; \ra T_v &= \;  \Tensorbb  \cdot s_0 \tp s_1 \tp s_2 \tp s_3, \\
+\Tensorb \; \ra {\rm Link}(v,\beta) &= \;  \Tensorbb  %\cdot s_0 \tp s_1 \tp s_2 \tp s_3, \\
 \end{align}
 which corresponds to a string operator. 
-In all of these tensors, we are making use of the implicit left-to-right Koszul ordering convention for the 
-tensor factors. 
+%In all of these weig, we are making use of the implicit left-to-right Koszul ordering convention for the 
+%tensor factors. 
 
 
 In order to perform the contraction that will compute the partition function, all the 1-cells 
@@ -1929,8 +1930,8 @@ are fixed by the states $v_0$ and $v_1$.
 We can now compute $Z(\Sigma_{0\ra1}; v_0, v_1)$ 
 using the state sum: 
 \begin{align} 
-Z(\Sigma_{0\ra1}; v_0, v_1) = \sum_{ \beta\in\mcl(\mch^{1/2})}  (-1)^{k_\beta} \prod_{f \in \mch^{1/2}_2} T_f(w_f) 
-\prod_{e \in \mch^{1/2}_1} T_e(w_e) \prod_{v \in \mch^{1/2}_0} T_v(w_v),
+Z(\Sigma_{0\ra1}; v_0, v_1) = \sum_{ \beta\in\mcl(\mch^{1/2})_{bulk}}  (-1)^{\kappa_\beta} \prod_{f \in \mch^{1/2}_2} \frac{d(f,\beta)}{n(f,\beta)} 
+\prod_{e \in \mch^{1/2}_1} \widetilde{\Theta}(e,\beta)^{-1} \prod_{v \in \mch^{1/2}_0} {\rm Link}(v,\beta),
 \end{align} 
-where we have used $\mch^{1/2}_k$ to denote the collection of $k$-cells in $\Sigma \times \{1/2\}$ and $\mcl(\mch)_{bulk}$ 
+where we have used $\mch^{1/2}_k$ to denote the collection of $k$-cells in $\Sigma \times \{1/2\}$ and $\mcl(\mch^{1/2})_{bulk}$ 
 to denote colorings of the bulk degrees of freedom in $\Sigma_{0\ra1}$. 
