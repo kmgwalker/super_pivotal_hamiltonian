@@ -968,7 +968,7 @@ about other coherence relations}
 \subsection{Reflection structure} \label{reflection_ss}
 %%%%%%%%%%%%%%%%%%
 
-A {\it reflection structure} on $\spc$ is an anti-linear anti-automorphism $r$ from $\spc$ to itself which preserves (rather than reverses) 
+A {\it reflection structure} on $\spc$ is an antilinear anti-automorphism $r$ from $\spc$ to itself which preserves (rather than reverses) 
 the the tensor product:
 \begin{align}
 	a & \; \mapsto \; r(a) \\
@@ -995,17 +995,52 @@ For example, \kw{see pdf notes for examples}
 Outside of this section, we usually denote $r$ by a bar: $\bar a = r(a)$ and $\bar\alpha = r(\alpha)$.
 
 A pin+ reflection structure on $\spc$ allows us to define the action of pin+ diffeomorphisms on $\spc$ string nets.
+
+It follows from the ``back wall" line bundle construction of Appendix \ref{flb_appendix} that super pivotal categories $\mcc/\psi$
+obtained via fermion condensation will have pin+ reflection structures whenever the parent category has an
+ordinary bosonic reflection structure.
+\kw{should make sure we believe this; maybe add remark to appendix}
+
 Our main use for pin+ reflections is to define a sesquilinear inner product on the string net space $A(Y; c)$.
-\kw{still to do: explain how this works, explain why hamiltonian is hermetian}
+Let $Y$ be a spin surface and let $-Y$ denote the same underlying surface but with the reversed spin structure.
+The ``identity" map from $Y$ to $-Y$ is not a spin diffeomorphism (it reversed orientation), but it is a pin+ diffeomorphism.
+Using the reflection structure on $\spc$, we can use this pin+ diffeomorphism to map string nets in $A(Y; c)$ to 
+string nets in $A(-Y; r(c))$.
+If $r(c) = c^*$, then string nets in $A(Y;c)$ and $A(-Y;r(c))$ can be glued together to get a string net on the closed
+spin surface $Y\cup_{\bd Y} -Y = \bd(Y\times I)$.
+Using the path integral $Z(Y\times I) : A(Y\cup_{\bd Y} -Y) \to \cc$ now yields a sesquilinear inner product on $A(Y;c)$.
+Since $A(Y;c)$ is finite-dimensional, we also get an inner product on the dual space $Z(Y;c)$.
 
-\kw{still to do: say that $\mcc/\psi$ has a pin+ rs if xxxx}
+Let $M$ be a spin 3-manifold.
+Then the path integrals $Z(M): A(\bd M)\to \cc$ and $Z(-M): A(-\bd M)\to \cc$ are related by
+\be \label{3man-pi-orev}
+	Z(-M) = Z(M)\circ R ,
+\ee
+where $R:A(-\bd M) \to A(\bd M)$ is the antilinear map induced by the orientation-reversing identity map from $-\bd M$ to $\bd M$.
+Equivalently, $Z(M)\in Z(\bd M)$ and $Z(-M)\in Z(- \bd M)$ and
+\be \label{3man-pi-orevz}
+	Z(M) = R(Z(-M)) .
+\ee
 
-\bigskip
+Let $Y_1$ and $Y_2$ be spin surfaces and let $M$ be a cobordism from $Y_1$ to $Y_2$
+(i.e.\ $\bd M = Y_2\cup -Y_1$).
+Then $-M$ is a cobordism from $Y_2$ to $Y_1$.
+The path integrals can be viewed as maps $Z(M): Z(Y_1)\to Z(Y_2)$ and $Z(-M):Z(Y_2)\to Z(Y_1)$.
+It follows from \eqref{3man-pi-orevz} that $Z(-M)$ is the adjoint of $Z(M)$ with respect to the inner products on $Z(Y_1)$
+and $Z(Y_2)$ defined above.
+\kw{It will take more work to show that the hamiltonians of sec 9 are hermetian; if we do that work it should probably
+go in sec 9}
 
-\kw{TO DO: discuss reflection structures, pin, etc.
-probably just give basic defs}
-\ethan{Are we wanting to talk about inner products and stuff? I think we can largely just refer to stuff in the line bundle appendix}
-\dave{Should probably say at least enough so that we know the Hamiltonian is hermitian.}
+
+
+
+
+%\bigskip
+%
+%\kw{TO DO: discuss reflection structures, pin, etc.
+%probably just give basic defs}
+%\ethan{Are we wanting to talk about inner products and stuff? I think we can largely just refer to stuff in the line bundle appendix}
+%\dave{Should probably say at least enough so that we know the Hamiltonian is hermitian.}
 
 
 
