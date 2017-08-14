@@ -376,7 +376,7 @@ This completes the definition of the state sum.
 
 \medskip
 
-If follows from Section 8.2 of \cite{Walker2006} that the state sum computes $Z(M)$, independently of the choice of handle decomposition
+It follows from Section 8.2 of \cite{Walker2006} that the state sum computes $Z(M)$, independently of the choice of handle decomposition
 and choice of orientations of 1- and 2-cells.
 
 \medskip
@@ -443,24 +443,27 @@ We consider ``dressed"
 For each 2-handle $f$ we choose an adjacent vertex $v_f$.
 For a 0-handle $v$ we modify the associated weight ${\text{Link}}(v,\beta)$ by multiplying factors of $d(f,\beta)$ for each 2-handle $f$ such that $v = v_f$.
 Similarly, for each 3-handle we choose an adjacent 0-handle and multiply the associated weight by $\mcd^{-2}$.
-Denoting the modified 0-handle weights by $\widetilde{\rm Link}(v,\beta)$, we construct the vertex tensor 
-\be 
-	T_v = \sum_{w_v } \widetilde{\text{Link}}(v,w_v) w_v,
-\ee
-where the sum runs over orthogonal basis vectors for the vector space associated to the attaching disks of $\text{Link}(v)$ (the vector space for each attaching disk on $\text{Link}(v)$ is dual to the vector space associated to the initial/terminal attaching disks of the adjacent 1-handles).
+Denoting the modified 0-handle weights by $\widetilde{\rm Link}(v,\beta)$, 
+%we construct the vertex tensor 
+%Denoting the modified 0-handle weights by $\widetilde{\rm Link}(v,\beta)$, we construct the vertex tensor 
+%\be 
+%	T_v = \sum_{w_v } \widetilde{\text{Link}}(v,w_v) w_v,
+%\ee
+%where the sum runs over orthogonal basis vectors for the vector space associated to the attaching disks of $\text{Link}(v)$ (the vector space for each attaching disk on $\text{Link}(v)$ is dual to the vector space associated to the initial/terminal attaching disks of the adjacent 1-handles).
 %for the vertex Hilbert space $\mch(v)$. 
-\kw{I think we need to say this a little differently; we don't have any inner products defined,
-so we need to carefully distinguish between spaces and dual spaces.}
-\dave{Changed it to the above.
-}
-\kw{One of the $w_v$ needs to be in a dual space; otherwise it scales incorrectly.  Maybe I'll edit it more later.}
-\dave{I can't argue with that. 
-I think my vote would be to let $w_v$ be the tensor product of the vector spaces associated with the ends of the 1-handles 
-(i.e., if a 1-handle $e$ is emanating from $v$ then one of the tensor factors would be living in $V(e)$).
-Then write $\widetilde{\text{Link}}(v,w_v^*) w_v$.
-}
-\kw{Why not just define $T_v$ as follows? ...}
-We now define the 0-handle tensors $T_v$ as follows.
+%\kw{I think we need to say this a little differently; we don't have any inner products defined,
+%so we need to carefully distinguish between spaces and dual spaces.}
+%\dave{Changed it to the above.
+%}
+%\kw{One of the $w_v$ needs to be in a dual space; otherwise it scales incorrectly.  Maybe I'll edit it more later.}
+%\dave{I can't argue with that. 
+%I think my vote would be to let $w_v$ be the tensor product of the vector spaces associated with the ends of the 1-handles 
+%(i.e., if a 1-handle $e$ is emanating from $v$ then one of the tensor factors would be living in $V(e)$).
+%Then write $\widetilde{\text{Link}}(v,w_v^*) w_v$.
+%}
+%\kw{Why not just define $T_v$ as follows? ...}
+%\dave{Works for me.}
+we define the 0-handle tensors $T_v$ as follows.
 Let $e_1, \ldots, e_k$ be the 1-handles adjacent to the 0-handle $v$.
 Let $V_i$ be either $V(e_i)$ (if $v$ is adjacent to the terminal end of $e_i$)
 or $V^*(e_i)$ (if $v$ is adjacent to the initial end of $e_i$).
@@ -470,11 +473,11 @@ We define
 \ee
 by
 \be
-	T_v(w_i\tp\cdots\tp w_k) = \widetilde{\text{Link}}(v, w_i\tp\cdots\tp w_k),
+	T_v(w_1\tp\cdots\tp w_k) = \widetilde{\text{Link}}(v, w_1\tp\cdots\tp w_k),
 \ee
 where $w_i\in V_i$.
-In other words, $T_v$ evaluates the link graph with labels determined by $w_1,\ldots,w_k$.
-\kw{... end ``as follows"}
+In other words, $T_v$ evaluates the link graph with labels determined by $w_1,\ldots,w_k$ and multiplied by the factors of $d(f,\beta)$ and $\mcd^{-2}$ as described above.
+%\kw{... end ``as follows"}
 %\dave{Is this necessary?}
 %\ethan{It was intended to be my guess to what Kevin's dual spaces comment meant. Might have missed the mark though, and it might still be confusing.}
 To obtain the partition function, we form the tensor product of all the 0-cell tensors constructed in this way.
@@ -484,40 +487,42 @@ terminal end of an edge $e$ is dual to the vector space associated to the corres
 contracting each vector with its associated dual vector computes a complex number 
 which we identify with $Z(M)$. 
 That is, we have 
-\ethan{I think we need something like this. If you guys don't like tTr then we can use an appropriately normalized $\Theta$ instead}
-\dave{I like ${\rm tTr}$ for now.
-We do need to define it though.}
-\kw{Maybe $\text{tc}$ for tensor contraction?}
-\dave{I think Gu-Levin-Wen used ${\rm tTr}$ (in a similar context), which is one reason to stick with it. 
-Although would have to check if it's been used much since.
-Sometimes people use $C( ....) $ for contraction, or even $\mcc(...)$. 
-Both of those would probably be a nuisance in this paper though. 
-$tc$ for tensor contract is nice, my only reservation is that there is probably a few other notations that have been established. 
-}
-\dave{It's kind of like $\text{eval}^{-1}$. 
-Is there a standard tensor category name for that?}
-\kw{If tTr is well established, then fine.  Otherwise maybe a simple tr would do.
-I think tr is often used in this generalized sense in math papers.}
-\be Z(M) = {\rm tTr}\left(\bigotimes_{v\in \mch_0} T_v\right),\ee
-where the tensor trace tTr denotes the tensor contraction.
-The tensor contraction introduces a factor of $\widetilde{\Theta}^{-1}$ if the labels on each side of the 1-cell are dual to one another (with respect to the bilinear pairing) and is zero otherwise.
-\dave{May want to be more explicit.}
-\kw{This may have already been discussed above}
-\dave{I'll keep an eye out.}
+%\ethan{I think we need something like this. If you guys don't like tTr then we can use an appropriately normalized $\Theta$ instead}
+%\dave{I like ${\rm tTr}$ for now.
+%We do need to define it though.}
+%\kw{Maybe $\text{tc}$ for tensor contraction?}
+%\dave{I think Gu-Levin-Wen used ${\rm tTr}$ (in a similar context), which is one reason to stick with it. 
+%Although would have to check if it's been used much since.
+%Sometimes people use $C( ....) $ for contraction, or even $\mcc(...)$. 
+%Both of those would probably be a nuisance in this paper though. 
+%$tc$ for tensor contract is nice, my only reservation is that there is probably a few other notations that have been established. 
+%}
+%\dave{It's kind of like $\text{eval}^{-1}$. 
+%Is there a standard tensor category name for that?}
+%\kw{If tTr is well established, then fine.  Otherwise maybe a simple tr would do.
+%I think tr is often used in this generalized sense in math papers.}
+%\dave{I talked to one friend, he didn't think there was any well established notation for this. }
+\be Z(M) = \tr \left(\bigotimes_{v\in \mch_0} T_v\right),\ee
+where the trace $\tr$ denotes the tensor contraction.
+It is normalized so that a factor of $\widetilde{\Theta}^{-1}$ is introduced if the labels on each side of the 1-cell are dual to one another (with respect to the bilinear pairing) and is zero otherwise.\footnote{Alternatively we could use the standard pairing but then we would have to modify our vertex tensors by $T_v(w_1\tp\cdots\tp w_k) \ra T_v(w_1\tp\cdots\tp w_k) \widetilde{\Theta}(e_1,w_1)^{-1} \cdots \widetilde{\Theta}(e_k,w_k)^{-1}$  }
+%\dave{May want to be more explicit.}
+%\kw{This may have already been discussed above}
+%\dave{I'll keep an eye out.}
 It is easy to see that this tensor network gives the same state sum as \eqref{bos_tv_sum} and 
 is independent of the way we assign factors of $d(f,\beta)$ and $\mcd^{-2}$ to the 
 vertex tensors. 
 
 \medskip
 
-In the case where $\partial M \neq \emptyset$, the Hilbert space associated 
-with the tensor product of the 0-cell tensors admits a decomposition $\mch^*_{bulk} \tp \mch_{bulk} \tp \mch(\bd M)$, where 
-the Hilbert spaces of the degrees of freedom on $\partial M$ lack dual tensor factors appearing in the tensor product. 
-The partition function is still performed by contracting, which contracts out the tensor factors in $\mch^*_{bulk} \tp \mch_{bulk}$ but leaves those in $\mch(\partial M)$ uncontracted, producing a wavefunction supported on $\mch(\partial M)$ (that is, a map $A(\partial M) \ra \cc$).
-\kw{This is basically correct, but let's work on the phrasing.}
+%In the case where $\partial M \neq \emptyset$, the Hilbert space associated 
+%with the tensor product of the 0-cell tensors admits a decomposition $\mch^*_{bulk} \tp \mch_{bulk} \tp \mch(\bd M)$, where 
+%the Hilbert spaces of the degrees of freedom on $\partial M$ lack dual tensor factors appearing in the tensor product. 
+%The partition function is still performed by contracting, which contracts out the tensor factors in $\mch^*_{bulk} \tp \mch_{bulk}$ but leaves those in $\mch(\partial M)$ uncontracted, producing a wavefunction supported on $\mch(\partial M)$ (that is, a map $A(\partial M) \ra \cc$).
+%\kw{This is basically correct, but let's work on the phrasing.}
 
 \kw{alternate version of previous paragraph:}
-
+\dave{This version looks good to me.
+I'll come back to this}
 In the case where $\partial M \neq \emptyset$, we define the 0-handle tensors $T_v$ as before,
 but in this case some of the legs of the tensors are unpaired (not contracted).
 Specifically, there is one unpaired leg for each 0-cell on $\bd M$.
@@ -556,8 +561,9 @@ We can further standardize the tensor network by choosing a global ordering of t
 (This is equivalent to a global ordering of the vertices of the dual triangulation.)
 We then choose 2-cell orientations so that the the orientation of a 2-cell together with a normal vector pointing toward the higher-ordered of the two
 adjacent 3-cells agrees with the orientation of $M$.
-\dave{I'm confused, how can the 2-cells have an orientation that agrees with $M$? (the 2-handles can but then the sentence isn't making a lot of sense.)}
-\kw{2-cell orientation plue normal direction orientation; these two combine to give a 3d orientation}
+%\dave{I'm confused, how can the 2-cells have an orientation that agrees with $M$? (the 2-handles can but then the sentence isn't making a lot of sense.)}
+%\kw{2-cell orientation plue normal direction orientation; these two combine to give a 3d orientation}
+%\dave{Thanks.}
 We can now choose 1-cell orientations so that the graph on the initial disk of each 1-handle has a trivalent vertex with two
 outgoing and one incoming edge.
 With these orientation choices, we have, for every 1-handle $e$,
@@ -583,7 +589,7 @@ In this convention, the $T_v$ tensors all take the form
 	%T_v = \TetrahedronPrime \; \cdot \alpha \tp \beta \tp \gamma \tp \delta, 
 	T_v(\alpha \tp \beta \tp \gamma \tp \delta) = \TetrahedronPrime , 
 \end{align}
-where have defined the tensor weight by its evaluation of the picture on the right with 
+where we have defined the tensor weight by its evaluation of the picture on the right with 
 $\alpha \in \bigoplus_{abc} V^{abc}$, $\beta \in \bigoplus_{a^* bc} V^{a^* bc}$, $\gamma \in \bigoplus_{a^* b c^*} V^{a^* b c^*}$, and $ \delta \in \bigoplus_{a^* b^* c^*} V^{a^* b^* c^*}$.
 The pitchforkization procedure does not entirely fix the form of the $T_v$ tensors above, 
 since the tetrahedral nets associated with each 0-handle will in general have different 
@@ -621,7 +627,11 @@ The price we pay for this is that we have to keep track of the pivots which rela
 In terms of the tensor network, this means that we either need to insert two-legged pivot/1-handle tensors between each pair
 or adjacent 0-handle tensors, or we need to further ``dress" the 0-handle tensors by merging each such pivot tensor
 into one of the two adjacent 0-handle tensors.
-\kw{Figure for this?  Say that we will go with the first option?}
+\kw{Figure for this?}
+\dave{Were you thinking of a 2part figure. LHS has twisted 1-handle attaching two disks, and the other has an un-twisted 1-handle but a twist on one of the disks?}
+\kw{Say that we will go with the first option?}
+\dave{Probably. 
+We already have (effectively) put tensors on the 1-handles corresponding to the $\widetilde{\Theta}$ symbols.}
 
 \medskip
 
