@@ -595,7 +595,7 @@ Note also that there is no Koszul sign in \eqref{trace_cycle_rel}.)
 
 All of the categories we consider have a reflection structure\footnote{Usually called a $*$-structure,
 but we are already committed to denoting the pivotal structure in tensor categories by $*$.}
-(more specifically, a Pin+ reflection structure),
+(more specifically, a pin+ reflection structure),
 %\dave{I guess we use two $*$ structures, one for reflection and one for rotation by $\pi$.
 %Should we comment on this?} 
 which is an order 2 antilinear antiautomorphism
@@ -629,7 +629,8 @@ A trace is called nondegenerate if the corresponding inner product is nondegener
 We now recall two facts about TQFTs.
 The first is that we can define a nondegenerate pairing on the predual Hilbert
 space $A(Y; a_1,\ldots,a_k)$, where $Y$ is a spin surface with $k$ disjoint boundary components 
-and the $a_i$ are reflection-invariant labels specifying boundary conditions on each boundary component
+and the $a_i$ are tube category idempotents, satisfying
+$\bar a_i = a^*_i$, which specify boundary conditions at each boundary component
 %\dave{Can you explain to me what a relection-invariant label is next time we Skype.
 %E.g., how come $a_i$ isn't taken to $\bar{a}_i$.}
 %\dave{Thanks!}
@@ -666,7 +667,7 @@ and
 \label{nonbounding_trace}
 	Z(Y\times S^1_N)(c) = \str(g(c')),
 \ee
-where $\str$ denotes the supertrace, which is the trace weighted by the fermion parity operator, i.e. $\str(A) = \tr((-1)^F A)$.
+where $\str$ denotes the supertrace, which is the trace weighted by the fermion parity operator, i.e. $\str(f) = \tr((-1)^F f)$.
 The association of the trace (supertrace) with the $B$ ($N$) spin structure was 
 also noticed in \cite{turzillo2016}. 
 Note that the partition functions above are independent of the details of the cutting procedure;
@@ -708,7 +709,7 @@ The solid cylinder in the third equality provides a linear map from the disk at 
 possessing a single marked point on its boundary labeled  $x$.
 The subscript $W$ denotes that the solid cylinder was found by cutting open a cycle with spin structure $W$. 
 From \eqref{bounding_trace} and \eqref{nonbounding_trace}, we see that $\tr_W$ will be a trace if $W$ is bounding, and a super trace if $W$ is non-bounding.
-The source and target of this linear map is thus $\text{mor}(\unit \ra x)$, which we write as
+The source and target of this linear map is $\text{mor}(\unit \ra x)$, which we write as
 the vector space assigned to a disc with one marked point labeled  $x$:
 \begin{align}
 A\left( \PinchedDisk  \scriptstyle{x\;} \right)  \cong \text{mor}(\unit \ra x) = \bigoplus_i \moronex,
@@ -722,8 +723,8 @@ with $\mu_i$ denoting a complete basis of morphisms for $\mor(\unit \to x)$
 We allow for $x \cong a_1 \tp a_2 \tp \cdots \tp a_k$ so that a basis of $\mor(\unit \to x)$ could be relatively large.
 Often $x$ will denote a simple object 
 %(every net configuration on the annulus is isomorphic to one of this form) %%KW sum of things of this form, but I don't think the remark is necessary here
-and so $\mor(\unit \to x)$ will be one dimensional: 
-\dave{I think this is OK now.}
+and so $\mor(\unit \to x)$ will be zero or one dimensional: 
+%\dave{I think this is OK now.}
 \begin{align}
 \label{Disk_Hilb}
 A \left( \PinchedDisk \scriptstyle{x} \right)  = 
@@ -779,11 +780,11 @@ if $W$ is non-bounding then $s(W)  = -1$, and \eqref{matrix_trace} is the super 
 %If $x$ is not a simple object then the super vector space assigned to the disk is $\text{mor}(\unit \ra x)$.
 %As usual the trace is invariant under a change of basis, and so any basis will yield the same answer.
 
-This trace is defined for any super pivotal category satisfying the assumptions of Section~\ref{def_sect}.
+This trace is defined for the tube category of any super pivotal category satisfying the assumptions of Section~\ref{def_sect}.
 %If $x$ is not simple
 %then it is isomorphic to an ordered direct sum of simple objects (assuming semisimplicity) 
 %and \eqref{Disk_Hilb} is modified in the obvious way.
-\ethan{added the following}
+%\ethan{added the following}
 The inner product obtained from the trace is even, in the sense that $\langle v,w\rangle = 0$ if $|v|\neq|w|$. 
 Furthermore, it is super positive-definite, 
 \kw{how do we know it's super positive definite in the general case?  this seems like something we would want to verify
@@ -881,7 +882,7 @@ We can compute $Z(B^3, {\cl(x)}) = Z(B^3, \overline{\cl(x)}) = d_x$ by definitio
 %Indeed this calculation is responsible for the denominator in \eqref{XXXX}.
 
 A similar derivation recovers \eqref{non-boundingNullVector}, 
-where we pointed out that $\cl_N(\beta)$ is identically zero.
+where we pointed out that $\cl_N(\beta)$ is zero.
 Let us see how this works out in the tube category $\tube(\spc)$.
 Let $x \in \sob(\spc)$, it follows that
 \begin{align}
@@ -900,7 +901,7 @@ On the other hand, if $x$ is q-type then as a vector space $\End(x) \cong \cc^{1
 \str \{\id: \; \cc^{1|1} \ra \cc^{1|1} \} = \tr \{(-1)^F: \;  \cc^{1|1} \ra \cc^{1|1} \} =  1-1 = 0
 \end{align}
 %have non-zero odd vectors and the even and odd part contribute with equal weight but opposite sign (due to the super trace) resulting in $1+(-1) = 0$.
-Hence a closed up q-type idempotent with a non-bounding spin structure has norm zero. 
+Hence q-type idempotent closed up to an annulus with non-bounding spin structure has norm zero. 
 %This provides a nice crosscheck of \eqref{non-boundingNullVector}.
 Similarly, one can show that $\langle \cl_N(\gamma), \cl_N(\gamma) \rangle = 2$ 
 when $x$ is q-type and gamma is an odd endomorphism such that $\gamma^2 = \id$.
@@ -915,6 +916,7 @@ when $x$ is q-type and gamma is an odd endomorphism such that $\gamma^2 = \id$.
 %See \eqref{XXXX} for an instance of this.
 
 \dave{KW and EL should double check this with skepticism.}
+\kw{Looks mostly OK to me (after some edits)}
 We now show that closing up a q-type idempotent of $\tube(\spc)$ onto a torus results in a state with norm $\sqrt{2}$.
 Let $x$ be a minimal idempotent of $\tube(\spc)$, 
 and $\cl_W(x) \in A(T^2)$ be the string net found by closing $x$ onto a torus with spin structure $W$ 
@@ -925,14 +927,18 @@ The norm squared of $\cl_B(x)$ is
 \begin{align}
 \langle \cl_B(x), \cl_B(x) \rangle = Z(T^2 \times I)(\overline{\cl_B(x)} \cup \cl_B(x)) = Z((S^1 \times I)\times S^1_B)(\overline{\cl_B(x)} \cup \cl_B(x)).
 \end{align}
-\kw{I think we probably want to assume that $\overline x = x$ and hence $\overline{\cl_B(x)} = \cl_B(x)$}
-in the third equality we have re-written the torus in a form where we can readily apply equation \eqref{bounding_trace} or \eqref{nonbounding_trace}.
+%\kw{I think we probably want to assume that $\overline x = x$ and hence $\overline{\cl_B(x)} = \cl_B(x)$}
+In the third equality we have rewritten the torus in a form where we can readily apply equation \eqref{bounding_trace} or \eqref{nonbounding_trace}.
 The role of $Y$ is played by $S^1 \times I$, an annulus with spin structure determined by $x$.
-The the linear map we need to take the matrix (super) trace of is found by cutting open the cycle $S^1_B$. 
-The linear map has an action on $A(S^1 \times I)$ which has a complete basis given by $\End(x)$ treated as a vector space.
+Further, we can assume a boundary condition given by the idempotent $x$ on each boundary component of the annulus.
+We will also assume that $\bar x = x$.
+The linear map we need to take the matrix (super) trace of is 
+just the identity map, so
+%found by cutting open the cycle $S^1_B$. 
+%The linear map has an action on $A(S^1 \times I)$ which has a complete basis given by $\End(x)$ treated as a vector space.
 %The linear map is only non-trivial on $\End(x)$.
-As in \eqref{clxnorm}, 
-the $W$ dependent matrix trace will be $\dim \End(x)$ (if $\cl_B(x)$ is nonzero) and so 
+%As in \eqref{clxnorm}, 
+%the $W$ dependent matrix trace will be $\dim \End(x)$ (if $\cl_B(x)$ is nonzero) and so 
 \begin{align}
 \langle \cl_B(x), \cl_B(x) \rangle = \dim \End(x)
 \end{align}
@@ -945,6 +951,7 @@ To find a unitary S-matrix we require each of the basis states to have unit norm
 hence we divide closed up q-type idempotents by $\sqrt{2}$.
 
 \dave{This paragraph is newly added.}
+\kw{I think we should rewrite to get rid of any tr that is not related to the tr's above}
 Lastly we point out a useful relation between the total dimension of a pivotal fusion category $\mcc$ and its fermionic quotient $\mcc/\psi$.
 Let $\mcc$ be a pivotal fusion category, $\psi \in \mcz(\mcc)$ a fermion with $\psi \tp \psi \cong \unit$,  and $\mcc/\psi$ the fermionic quotient of $\mcc$,
 then
@@ -1492,7 +1499,7 @@ $\dim\End(W_{\alpha})=1$ (although the latter is ruled out if $X=B$ since $\tube
 host no q-type idempotents).
 Thus, one can learn a good deal about the number of primitive idempotents in the tube category 
 simply from a list of the non-zero linearly independent tubes. 
-See Section \ref{he6mp-tube-cat} for a further example of this type of thinking.
+See Section \ref{he6mp-tube-cat} for a further example of these tecchniques.
 
 
 %%%%%%%%%%%%%%%%
