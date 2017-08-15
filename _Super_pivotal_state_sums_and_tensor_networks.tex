@@ -529,22 +529,20 @@ vertex tensors.
 %The partition function is still performed by contracting, which contracts out the tensor factors in $\mch^*_{bulk} \tp \mch_{bulk}$ but leaves those in $\mch(\partial M)$ uncontracted, producing a wavefunction supported on $\mch(\partial M)$ (that is, a map $A(\partial M) \ra \cc$).
 %\kw{This is basically correct, but let's work on the phrasing.}
 
-\kw{alternate version of previous paragraph:}
 \dave{This version looks good to me.
 I'll come back to this}
 In the case where $\partial M \neq \emptyset$, we define the 0-handle tensors $T_v$ as before,
 but in this case some of the legs of the tensors are unpaired (not contracted).
 Specifically, there is one unpaired leg for each 0-cell on $\bd M$.
-\kw{maybe fig for this}
 If $W_1, \ldots, W_n$ are the vector spaces associated to the boundary 0-cells, we have
-\be
-	\tr \left( \bigotimes_v T_v \right) \in W_1^*\tp\cdots\tp W_n^* .
+\be \label{trace_pM_nonempty}
+	Z(M) = \tr \left( \bigotimes_{v\in \mch_0} T_v \right) \in W_1^*\tp\cdots\tp W_n^* .
 \ee
-Each string net on $\bd M$ \kw{labelings of 0- and 1-cells, as described above}
-determines an element of $W_1\tp\cdots\tp W_n$ (the vertex labels), and the above tensor contraction
+Each string net on $\bd M$ (i.e. each labeling of 0- and 1-cells as described above)
+determines an element of $W_1\tp\cdots\tp W_n$ (the vertex labels).
+The above tensor contraction provides a way to associate these string nets 
+with complex numbers, and
 produces the wave function on this space.
-\kw{or something like that}
-\ethan{This is also fine.}
 
 
 %%%%%%%%%%%%%%%%%
@@ -593,14 +591,12 @@ assume the ``pitchfork'' form introduced
 in our treatment of the Hamiltonian. 
 (These vertices are all trivalent since we are now 
 assuming a cell decomposition dual to a triangulation.)
-In this convention, the $T_v$ tensors all take the form 
-\dave{Should we call this $\text{Tet}$ to match below?}
-\ethan{actually looks like we don't use Tet in any equations, though i'd be in favor of calling the $T_v$s Tets instead.}
-\ethan{yes, we agreed to go and replace $T_v$ by Tet.}
+In this convention, the $T_v$ tensor weights are all computed by the evaluation of tetrahedral diagrams:
+\ethan{Actually, now I think the Tet notation isn't necessary.}
 \begin{align} 
 \label{Bosonic_tet}
 	%T_v = \TetrahedronPrime \; \cdot \alpha \tp \beta \tp \gamma \tp \delta, 
-	T_v(\alpha \tp \beta \tp \gamma \tp \delta) = \TetrahedronPrime , 
+	T_v(\alpha \tp \beta \tp \gamma \tp \delta) = {\rm Tet}(v,\alpha \tp \beta \tp \gamma \tp \delta) = \TetrahedronPrime , 
 \end{align}
 where we have defined the tensor weight by its evaluation of the picture on the right with 
 $\alpha \in \bigoplus_{abc} V^{abc}$, $\beta \in \bigoplus_{a^* bc} V^{a^* bc}$, $\gamma \in \bigoplus_{a^* b c^*} V^{a^* b c^*}$, and $ \delta \in \bigoplus_{a^* b^* c^*} V^{a^* b^* c^*}$.
@@ -757,12 +753,12 @@ As before, we use the 2-cell orientations to define an oriented graph (unlabeled
 String-net graphs are assigned to the $k$-handles in the same way as in the bosonic case. 
 The set of all labelings $\mcl(\mch)$ is defined as the product over all 1-handles $e$ of the basis sets $B(e)$.
 For a fixed labeling $\beta \in \mcl(\mch)$, the weights are determined as follows.
-\kw{maybe say here that we choose sign-orderings?}
-\ethan{I was thinking that in this case, $\beta$ contains both a string-net labelling and a sign-ordering labelling}
-\dave{Do you mean sign orderings for each 0- and 1- handle? 
-We could do that. 
-I would like to avoid giving $\beta$ a sign ordering and keep it the way we have it, i.e., give a global ordering to the 1-handles and 0-handles.}
-\ethan{Right, I was essentially advocating for a notation where the choice of global ordering is contained in $\beta$}
+%\kw{maybe say here that we choose sign-orderings?}
+%\ethan{I was thinking that in this case, $\beta$ contains both a string-net labelling and a sign-ordering labelling}
+%\dave{Do you mean sign orderings for each 0- and 1- handle? 
+%We could do that. 
+%I would like to avoid giving $\beta$ a sign ordering and keep it the way we have it, i.e., give a global ordering to the 1-handles and 0-handles.}
+%\ethan{Right, I was essentially advocating for a notation where the choice of global ordering is contained in $\beta$}
 %together
 %with a choice of Koszul ordering for the ends of every 1-handle. 
 %Note that since each 
@@ -795,7 +791,6 @@ There are two subtleties here.
 First, when transferring a vertex label $\mu$ from the initial (terminal) end of a 1-handle to the opposing 0-handle adjacent to the terminal (initial) end of the 1-handle, 
 we must employ the attaching map which connects the terminal (initial) end of the 1-handle to the 0-handle.
 \dave{Should we draw a picture for this?}
-\ethan{Maybe. Should maybe also make reference to the $\alpha(e)$ things in the Hamiltonian section}
 This attaching map is a spin diffeomorphism.
 The action of the spin diffeomorphism is either trivial or the spin flip functor $(-1)^F$.
 If it is $(-1)^F$, the string net vertex label on the 0-handle needs an additional factor of $(-1)^{|\mu|}$.
@@ -974,13 +969,6 @@ If the Manifold has Boundary then $\cdots$}
 %The total Koszul sign appearing in the partition function $Z(M)$ is then obtained 
 %as $(-1)^{\kappa_\beta} = (-1)^{\kappa_0+\kappa_1}$.
 
-\ethan{Dave, the above is what you were doing except without 2 copies of the label set, one copy of which which is redundant since we biject one onto the other. Feel free to edit though or ask if it doesn't make sense}
-\dave{Ok lets Skype. 
-It's not clear to me how the sign ordering on the 0-handles has been accounted for.
-e.g., in the program you layout the 1-handles do determine an ordering on all the vertices of the 0-handles, but I don't think they will be in an ordering that is readily evaluated (without applying permutations). }
-\ethan{Ah I see what you are getting at---I wasn't doing a good job of mentioning these 0-cell koszul signs explicitly. How's the new version? I tried to separate the 1-handle koszul signs from the 0-handle koszul signs more explicitly. Feel free to edit it if it's not more like what you had in mind}
-\dave{I just reverted to the other way since it's equivalent and seems more 'local'.}
-
 
 
 %%%%%%%%%%%%%%%%%%
@@ -1010,9 +998,6 @@ T_v(w_1 \tp \cdots w_k) = \widetilde{\text{Link}}(v, w_1 \tp \cdots \tp w_k)
 \end{align} 
 where $w_i \in V_i$.
 In words, $T_v$ evaluates the string-net graph determined by $\text{Link}(v)$ with the ordered vertices labeled by $w_1, \cdots, w_k$ (in the same order), and multiplied by the appropriate factors of $d(f,\beta)$ and $\mcd^{-2}$.
-%\be T_v = \sum_{w_v} \widetilde{\text{Link}}(v,w_v) w_v,\ee
-\kw{should modify this as in the bosonic case above}
-\dave{done.} 
 %where the sum runs over a complete orthogonal basis of the attaching regions associated associated with the 0-handle $v$.
 %where the sum runs over orthogonal basis vectors for the vertex Hilbert space $\mch(v)$. 
 %For a 0-handle on which $n$ 1-handles terminate, the vectors $w_v$ admit a 
@@ -1025,7 +1010,7 @@ In words, $T_v$ evaluates the string-net graph determined by $\text{Link}(v)$ wi
 %To obtain the partition function, we again form the tensor product of all the 0-cell tensors and contract over all indices.
 The partition function 
 is the same as in the bosonic case, being computed as a trace of the $T_v$ tensors:
-\be Z(M) = \tr \left(\bigotimes_{v\in \mch_0} T_v\right).\ee
+\be \label{fermion_Z_as_tr} Z(M) = \tr \left(\bigotimes_{v\in \mch_0} T_v\right).\ee
 where the trace is denotes denotes the sum over all contracted 1-cell labelings normalized by $\widetilde{\Theta}^{-1}$.
 %The tensor trace is defined so that we insert a parity matrix $(-1)^{F(e, \sigma)}$ on every 1-cell, and a $\widetilde{\Theta}$ symbol normalization in the contraction. 
 In practice, to perform the trace, we require that the sign ordering on the pair of vectors to be contracted over have adjacent sign orders (with terminal lower than initial). 
@@ -1035,34 +1020,27 @@ After contracting all vectors we pick up the appropriate factor of $(-1)^{\kappa
 Again, $Z(M)$
 is independent of the way we assign factors of $d(f,\beta)$ and $\mcd^{-2}$ to the 
 vertex tensors. 
+If $\bd M$ is non-empty, we again follow the bosonic prescription in \eqref{trace_pM_nonempty} 
+to obtain $Z(M) = \tr \left( \bigotimes_{v\in \mch_0} T_v \right) \in W_1^*\tp\cdots\tp W_n^*$, where 
+$W_1, \ldots, W_n$ are the vector spaces associated to the boundary 0-cells and we 
+are implicitly making use of the undordered tensor product. When using $Z(M)$ to compute 
+amplitudes of different string-net boundary conditions, care must be taken when performing the 
+tensor contraction on ordered representatives because of Koszul sign issues. 
 
-\dave{If $\bd M$ is non-trivial, we could follow the bosonic discussion.
-}
+\ethan{un-commented the following since I still think we should include a contraction example, either here 
+or possibly in defn section}
 
-\begin{comment}
-\dave{I think the following is old and probably not necessary given the above discussion.
-Likely to be removed.}
-\ethan{I think the next paragraph is now redundant, but I think it would be good to include the 
-contraction example somewhere. If not here, then maybe in the definition section when we talk about tensor products and koszul signs?}
-\dave{
-Do you guys think we should show an example of how to contract over in index?
-E.g., we could compose 1-handles.
-We could also show a contraction between two 0-handles via a 1-handle.}
+%In the above equation, the Koszul ordering of each tensor factor is determined in the usual implicit way, 
+%so that it increases from left to right on the page (the ordering of the $T_v$ 
+%tensors is determined by an arbitrary global ordering on the 0-cells). However, this left-to-right ordering will almost always not be 
+%the ordering required in order to perform the tensor contraction (namely one where 
+%vectors and their associated dual vectors are adjacent to one another in the tensor product). 
+%Re-arranging the Koszul ordering given by the left-to-right convention produces a Koszul sign not
+%present in the bosonic partition function (which appears as $(-1)^{\kappa_\beta}$ in \eqref{fermionic_tv_sum}).
 
-However, 
-one has to be careful about Koszul sign issues when evaluating the tensor contraction performed by the tensor trace. 
-In the above equation, the Koszul ordering of each tensor factor is determined in the usual implicit way, 
-so that it increases from left to right on the page (the ordering of the $T_v$ 
-tensors is determined by an arbitrary global ordering on the 0-cells). However, this left-to-right ordering will almost always not be 
-the ordering required in order to perform the tensor contraction (namely one where 
-vectors and their associated dual vectors are adjacent to one another in the tensor product). 
-Re-arranging the Koszul ordering given by the left-to-right convention produces a Koszul sign not
-present in the bosonic partition function (which appears as $(-1)^{\kappa_\beta}$ in \eqref{fermionic_tv_sum}).
-
-We will now elaborate on the above comments. 
+We will now elaborate on how to perform tensor contractions in the fermionic setting. 
 When we contract out two tensor indices of a tensor in $\mch^*\tp\mch$, we must be careful to only perform 
-the contraction on two tensor factors that have adjacent Koszul ordering in the tensor product\footnote{This is why we are careful to only define $\widetilde\Theta$ in \eqref{fermionic_tv_sum} (which secretly performs tensor contractions) on 1-handles 
-whose initial terminal disks possess adjacent Koszul order.}. 
+the contraction on two tensor factors that have adjacent Koszul ordering in the tensor product.
 For example, suppose we have two tensors $Q \in V_Q$ and $T\in V_T$,
 defined by
 \begin{align}
@@ -1103,7 +1081,6 @@ by ensuring that tensor factors
 being contracted always have adjacent Koszul-ordering and by using \eqref{contraction_example} repeatedly.
 
 
-\end{comment}
 
 %%%%%%%%%%%%%%%%%%%%
 \subsubsection{Fermionic standardization procedures}
@@ -1137,12 +1114,12 @@ path is bounding and $+1$ if the path is non-bounding.
 Lastly, we note that if we further require the cell decomposition to be dual to a triangulation, 
 then we can choose the 0-cell weights to that a take a similar form to\eqref{Bosonic_tet}.
 The modification is that the vertices of $\text{Link}(v)$ must be ordered, 
-so that \ethan{replace with Tet}
+so that 
 \begin{align} 
 	%T_v = \TetrahedronPrime \; \cdot \alpha \tp \beta \tp \gamma \tp \delta, 
-	T_v(\alpha \tp \beta \tp \gamma \tp \delta) = \Tetrahedron.
+	T_v(\alpha \tp \beta \tp \gamma \tp \delta) = {\rm Tet}(v,\alpha \tp \beta \tp \gamma \tp \delta) = \Tetrahedron.
 \end{align}
-We denote this standard weight by $\text{Tet}(v,\beta)$ (note that there are still multiple versions of it depending on the edge orientations).
+Note that there are still multiple versions of the standardized tetrahedral weights ${\rm Tet}$ differing by choices of the edge orientations.
 The fermionic analogue of \eqref{bos_tv_sum_std} can now be written:
 \begin{align}
 \label{ferm_tv_sum_std}
@@ -1151,7 +1128,7 @@ The fermionic analogue of \eqref{bos_tv_sum_std} can now be written:
 		\prod_{f\in\mch_2} \frac{d(f, \beta)}{n(f,\beta)}
 		%\prod_{e\in\mch_1} \frac{ (-1)^{F(e,\sigma, \beta)}}{ \widetilde \Theta(e, \beta)}
 		\prod_{e\in\mch_1}  \widetilde \Theta(P_e, \beta)^{-1}
-		\prod_{v\in\mch_0} \text{Link}(v, \beta) .
+		\prod_{v\in\mch_0} \text{Tet}(v, \beta) .
 \end{align}
 Again, $\Theta(P_e, \beta)$ is a standard pairing as in \eqref{reflection_pairing_defn} but modified by the pivot isomorphism $P_e = P^{l_e}$.
 
