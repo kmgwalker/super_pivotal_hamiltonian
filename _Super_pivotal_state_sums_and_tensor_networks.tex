@@ -439,7 +439,7 @@ We will first discuss that case when $M$ is closed, then consider the case when 
 \medskip
 
 If we (temporarily) ignore the factors of $d(f, \beta)$ and $\mcd^{-2}$ in \eqref{bos_tv_sum}, 
-it is easily seen as a contraction of a tensor network.
+it is easily seen to compute the contraction of a tensor network.
 %it is easy to see that it computes the tensor contraction of a tensor network.
 The underlying graph of the tensor network is the union of 0- and 1-cells of the cell decomposition.
 The vector space associated to each edge $e$ is $V(e)$ as defined above.
@@ -458,7 +458,7 @@ We consider ``dressed"
 %It's sometimes used to avoid writing down an explicit Hamiltonian and only talking about the physics of a hypothetical Hamiltonian. 
 %}
 0-handle weights that tack on the factors of $d(f,\beta)$ and $\mcd^{-2}$.
-For each 2-handle $f$ we choose an adjacent vertex $v_f$.
+For each 2-handle $f$ we choose an adjacent 0-handle $v_f$.
 For a 0-handle $v$ we modify the associated weight ${\text{Link}}(v,\beta)$ by multiplying factors of $d(f,\beta)$ for each 2-handle $f$ such that $v = v_f$.
 Similarly, for each 3-handle we choose an adjacent 0-handle and multiply the associated weight by $\mcd^{-2}$.
 Denoting the modified 0-handle weights by $\widetilde{\rm Link}(v,\beta)$, 
@@ -507,12 +507,11 @@ In other words, $T_v$ evaluates the link graph with labels determined by $w_1,\l
 %\kw{... end ``as follows"}
 %\dave{Is this necessary?}
 %\ethan{It was intended to be my guess to what Kevin's dual spaces comment meant. Might have missed the mark though, and it might still be confusing.}
-To obtain the partition function, we form the tensor product of all the 0-cell tensors constructed in this way.
+To obtain the partition function, we trace out the tensor product of all the 0-handle tensors constructed in this way.
 Because the vector space associated to the region on a $0$-handle attached to the 
-terminal end of an edge $e$ is dual to the vector space associated to the corresponding region on the 
+terminal end of a 1-handle $e$ is dual to the vector space associated to the corresponding region on the 
 0-handle attached to the initial end of $e$, there are precisely as many dual vectors as vectors in the tensor product, and 
-contracting each vector with its associated dual vector computes a complex number 
-which we identify with $Z(M)$. 
+contracting each vector with its associated dual vector computes the complex number $Z(M)$. 
 That is, we have 
 %\ethan{I think we need something like this. If you guys don't like tTr then we can use an appropriately normalized $\Theta$ instead}
 %\dave{I like ${\rm tTr}$ for now.
@@ -531,7 +530,8 @@ That is, we have
 %\dave{I talked to one friend, he didn't think there was any well established notation for this. }
 \be Z(M) = \tr \left(\bigotimes_{v\in \mch_0} T_v\right),\ee
 where the trace $\tr$ denotes the tensor contraction.
-It is normalized so that a factor of $\widetilde{\Theta}^{-1}$ is introduced if the labels on each side of the 1-cell are dual to one another (with respect to the bilinear pairing) and is zero otherwise.\footnote{Alternatively we could use the standard pairing but then we would have to modify our vertex tensors by $T_v(w_1\tp\cdots\tp w_k) \ra T_v(w_1\tp\cdots\tp w_k) \widetilde{\Theta}(e_1,w_1)^{-1} \cdots \widetilde{\Theta}(e_k,w_k)^{-1}$  }
+%%KW not sure why this remark is necessary; also ``normalized" doesn't seem like the right word.
+%It is normalized so that a factor of $\widetilde{\Theta}^{-1}$ is introduced if the labels on each side of the 1-cell are dual to one another (with respect to the bilinear pairing) and is zero otherwise.\footnote{Alternatively we could use the standard pairing but then we would have to modify our vertex tensors by $T_v(w_1\tp\cdots\tp w_k) \ra T_v(w_1\tp\cdots\tp w_k) \widetilde{\Theta}(e_1,w_1)^{-1} \cdots \widetilde{\Theta}(e_k,w_k)^{-1}$  }
 %\dave{May want to be more explicit.}
 %\kw{This may have already been discussed above}
 %\dave{I'll keep an eye out.}
@@ -547,8 +547,8 @@ vertex tensors.
 %The partition function is still performed by contracting, which contracts out the tensor factors in $\mch^*_{bulk} \tp \mch_{bulk}$ but leaves those in $\mch(\partial M)$ uncontracted, producing a wavefunction supported on $\mch(\partial M)$ (that is, a map $A(\partial M) \ra \cc$).
 %\kw{This is basically correct, but let's work on the phrasing.}
 
-\dave{This version looks good to me.
-I'll come back to this}
+%\dave{This version looks good to me.
+%I'll come back to this}
 In the case where $\partial M \neq \emptyset$, we define the 0-handle tensors $T_v$ as before,
 but in this case some of the legs of the tensors are unpaired (not contracted).
 Specifically, there is one unpaired leg for each 0-cell on $\bd M$.
@@ -558,16 +558,19 @@ If $W_1, \ldots, W_n$ are the vector spaces associated to the boundary 0-cells, 
 \ee
 Each string net on $\bd M$ (i.e. each labeling of 0- and 1-cells as described above)
 determines an element of $W_1\tp\cdots\tp W_n$ (the vertex labels).
-The above tensor contraction provides a way to associate these string nets 
-with complex numbers, and
-produces the wave function on this space.
+By evaluating \eqref{trace_pM_nonempty} on this element we obtain the value of the wave function for the string net.
+\kw{rephrased the end of this paragraph}
+%The above tensor contraction provides a way to associate these string nets 
+%with complex numbers, and
+%produces the wave function on this space.
 
 
 %%%%%%%%%%%%%%%%%
 \subsubsection{Standardization procedures}
 %%%%%%%%%%%%%%%%%
 
-The above tensor network construction is irregular, in the sense that (potentially) every edge vector space is different and every vertex tensor is different.
+The above tensor network construction is irregular, in the sense that (potentially) every edge vector space is different 
+and every 0-handle tensor is different.
 There are several standardization procedures that reduce this irregularity. 
 
 One standardization procedure is to start with a cell decomposition that is dual to a triangulation.
