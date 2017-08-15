@@ -165,15 +165,15 @@ If all the edges incident to a vertex $v$ point out of the vertex, we define the
 	\mch_v = \bigoplus_{a,b,c} V^{abc}  \quad\quad\quad\quad\quad\quad \PitchFork{a}{b}{c}{},
 	\label{pitchfork_basis}
 \ee
-where the sum is over the simple objects of $\mcc$.
-%\footnote{We choose our favorite complete set of representatives of isomorphism classes of simple objects $\sob(\mcc)$ at the outset and keep it fixed throughout, abusing notation slightly by writing $\mcc$ for $\sob(\mcc)$.
+where the sum is over the simple objects of $\spc$.
+%\footnote{We choose our favorite complete set of representatives of isomorphism classes of simple objects $\sob(\spc)$ at the outset and keep it fixed throughout, abusing notation slightly by writing $\spc$ for $\sob(\spc)$.
 %\kw{I don't see where we are abusing notation like this}
-%\ethan{right. This footnote was written when we were, but then we changed our ways and started using $\sob(\mcc)$ for everything. Commented out the offending footnote.}}.
-%where the sum is over the simple objects of $\mcc$\footnote{We choose our favorite complete set of representatives of isomorphism classes of simple objects $\sob(\mcc)$ at the outset and keep it fixed throughout, abusing notation slightly by writing $\mcc$ for $\sob(\mcc)$.
+%\ethan{right. This footnote was written when we were, but then we changed our ways and started using $\sob(\spc)$ for everything. Commented out the offending footnote.}}.
+%where the sum is over the simple objects of $\spc$\footnote{We choose our favorite complete set of representatives of isomorphism classes of simple objects $\sob(\spc)$ at the outset and keep it fixed throughout, abusing notation slightly by writing $\spc$ for $\sob(\spc)$.
 %\kw{I don't see where we are abusing notation like this}
 %\dave{This section probably predates the $\sob(...)$ notation.
-%Lets remove the footnote and make sure we don't have any $\sum_{x \in \mcc/\psi}$ etc. left over.}
-%\ethan{right. I wrote the footnote when we were, but then we changed our ways and started using $\sob(\mcc)$ for everything (which is better).}}.
+%Lets remove the footnote and make sure we don't have any $\sum_{x \in \spc/\psi}$ etc. left over.}
+%\ethan{right. I wrote the footnote when we were, but then we changed our ways and started using $\sob(\spc)$ for everything (which is better).}}.
 If the first edge points in and the other two point out, then we define
 \be
 	\mch_v = \bigoplus_{a,b,c} V^{a^*bc}  \quad\quad\quad\quad\quad\quad \PitchForkas{a}{b}{c}{} =  \PitchFork{a^*}{b}{c}{},
@@ -632,21 +632,23 @@ However, since generic theories (like the $\halfesix$ example considered earlier
 
 As with the vertex term, the plaquette term is essentially the same as the plaquette term in the usual string-net Hamiltonian: 
 it inserts an $\omega$ loop 
-%loops labeled by different objects in $\mcc$ 
+%loops labeled by different objects in $\spc$ 
 into each plaquette, and uses local relations to fuse these $\omega$ loops into the boundaries of the plaquettes. 
-Physically it is responsible for the dynamics of net configurations which reside in the ground space of the vertex and edge terms. 
+Physically it is responsible for the dynamics of net configurations which reside in the ground space of the vertex and edge terms, 
+and it is designed so that two string nets that correspond to the same state vector receive the same amplitude. \ethan{or something like that}
 %It is responsible for the dynamics in the string-net phase, and allows us to perform time evolution on string-net states.  
-It is designed so that the amplitude of a net configuration is given by the evaluation of that net in the fusion category.
-\kw{What does that mean, exactly?  ``Evaluating a net" must mean the value the net represents in the surface Hilbert space.
-(I can't think of any other meaning.)}
-\dave{That's right.
-We can be more precise if you like, or we can specify the surfaces topology to be a sphere.
-(Or we can remove the sentence, it's not like we don't have enough of those.)
-}
-\dave{String nets that have amplitude of two string nets that evaluate to the same $ v \in A(Y)$ revieve the same amplitude.}
+%It is designed so that the amplitude of a net configuration is given by the evaluation of that net in the fusion category.
+%\kw{What does that mean, exactly?  ``Evaluating a net" must mean the value the net represents in the surface Hilbert space.
+%(I can't think of any other meaning.)}
+%\dave{That's right.
+%We can be more precise if you like, or we can specify the surfaces topology to be a sphere.
+%(Or we can remove the sentence, it's not like we don't have enough of those.)
+%}
+%\dave{String nets that have amplitude of two string nets that evaluate to the same $ v \in A(Y)$ revieve the same amplitude.}
+
 Using the definition of the $\omega$ loop, we can write $B_p$ as 
 \begin{align} \label{plaquette_term_defn}
-B_p =\frac{1}{\mcd^2} \sum_{a \in \sob(\mcc)} \frac{d_a}{\text{dim} \; \text{End}(a)} B^a_p, 
+B_p =\frac{1}{\mcd^2} \sum_{a \in \sob(\spc)} \frac{d_a}{\text{dim} \; \text{End}(a)} B^a_p, 
 \end{align}
 where the operator $B_p^a$ fuses a loop labeled $a$ into the edges and vertices neighboring the plaquette $p$ (note that 
 as discussed earlier, the operator $B_p^a$ is only defined when all vertices and edges neighboring the plaquette $p$ satisfy the corresponding vertex and edge terms).
@@ -722,8 +724,9 @@ Next, we begin fusing the strand into the plaquette. We start with the strand la
 \label{plaquette_first_F_move}
 \sum_{y_6, \sigma_0} \frac{d_{y_6}}{\mcb(\sigma_0^* \tp \sigma_0)}\Plaquettec
 \end{align}
-Next we use the associator \eqref{PitchforkFMove} to pull the $a$ string over $x_6$ in the diagram on the right to find, \ethan{Not sure about Koszul sign here, since definition of $F$ might need to be fixed}
+Next we use the associator \eqref{PitchforkFMove} to pull the $a$ string over $x_6$ in the diagram on the right to obtain \ethan{Not sure about Koszul sign here, since definition of $F$ might need to be fixed}
 \dave{I changed the definition of F as discussed now fixing Koszul signs here.}
+\ethan{looks good}
 \begin{align}
 \sum_{y_1, \sigma_1} &(F^{y_6^*a x_1^*z_1^*} )_{(x_6; \sigma_0^* \mu_1) (y_1^*; \nu_1 \sigma_1 )} \times \\ 
 &\times  \Plaquetted.
@@ -750,9 +753,10 @@ We now perform one last isotopy and remove the ``bubble":
 &=\Plaquettef \\ 
 &\nonumber \\
 & = (-1)^{|\sigma_6|} (-1)^{|\sigma_6| ( |\sigma_0|+|\nu_1| + \cdots+ |\nu_6|)}\frac{\mcb(\sigma_6 \tp \sigma_0)}{d_{y_6}} \times \\
-&\times \Plaquetteg
+&\times \Plaquetteg.
 \end{align}
-The pairing $\mcb$ is diagonal which allows which means $\mcb(\sigma_6 \tp \sigma_0)$ is zero, unless $\sigma_6$ is dual to $\sigma_0$
+In the last step, the factor of $(-1)^{|\sigma_6|}$ comes from applying 
+The pairing $\mcb(\sigma_6 \tp \sigma_0)$ is zero unless $\sigma_6$ is dual to $\sigma_0$,
 %us to set $\sigma_6$ dual to $\sigma_0^*$, 
 and thus the $\mcb(\sigma_6\tp \sigma_0)/d_{y_6}$ factor is cancelled by the factor of $d_{y_6}/\mcb(\sigma_0^*\tp\sigma_0)$ introduced in \eqref{plaquette_first_F_move}.
 Noting that $|\sigma_6| = |\sigma_0|$, we can write (recall \eqref{plaquett_std_basis}),
@@ -802,10 +806,10 @@ From the definition of the $\omega$ loop, we see that the plaquette operator \eq
 represents the action of inserting an $\omega$ loop into the center of the plaquette $p$ and fusing it into the neighboring edges and vertices.
 %acts to insert a 
 %weighted superposition of all closed loops labeled by simple objects in the input super pivotal 
-%category $\mcc$.
+%category $\spc$.
 %This corresponds exactly to the trivial idempotent in the tube algebra for the theory, 
 %which is a weighted superposition of all tubes that have zero charge (so that their 
-%boundaries have no marked points on them) and which have fluxes that run over the objects in $\mcc$.
+%boundaries have no marked points on them) and which have fluxes that run over the objects in $\spc$.
 From our construction of the idempotents in the tube category, we see that this is 
 equivalent to implementing the action of the trivial idempotent in the tube category applied to the plaquette $p$.
 That is, 
@@ -838,17 +842,17 @@ Before moving on, we briefly mention a
 more general and high-level way of describing the plaquette term in terms of the tube category.
 From \eqref{plaquette_term_defn}, we see that the plaquette operator acts to insert a 
 weighted superposition of all closed loops labeled by simple objects in the input super pivotal 
-category $\mcc$.
+category $\spc$.
 This corresponds exactly to the trivial idempotent in the tube algebra for the theory, 
 which is a weighted superposition of all tubes that have zero charge (so that their 
-boundaries have no marked points on them) and which have fluxes that run over the objects in $\mcc$.
+boundaries have no marked points on them) and which have fluxes that run over the objects in $\spc$.
 This means that $B_p$ implements the action of the trivial idempotent in the tube algebra applied to the plaquette $p$:
 \begin{align}
 B_{p} = e_{\unit\unit}(p),
 \end{align}
 \dave{I'm confused by the RHS.
 Maybe we should call it $e_0$.}
-where $e_{\unit\unit,p}\in\tube(\mcc)$ denotes the trivial idempotent in the tube algebra applied
+where $e_{\unit\unit,p}\in\tube(\spc)$ denotes the trivial idempotent in the tube algebra applied
 to the plaquette $p$ (see \eqref{Bosonic_twostrand_idempotent} for the definition of $e_{\unit\unit}$). %\ethan{technically the \eqref is for the bosonic case, but I think it's the clearest equation to reference since the presentation in the condensed theory is similar. There might be a better \eqref though}
 From this presentation, we see that $B_p$ projects onto plaquettes that host no quasiparticle excitations\footnote{Recall that in 
 string-net models, we think of each plaquette as containing a puncture. Excitations are localized at 
@@ -868,9 +872,9 @@ fluctuate freely across the interiors of plaquettes.
 %%%%%%%%%%%%%%%%%%%
 
 Finally, we briefly comment on the spectrum of the Hamiltonian \eqref{ham} and the types of excitations it model supports. 
-Each of the terms in the Hamiltonian enforces one of the local relations of the vector space assigned to $\Sigma$ by $\mcc$. 
-As such, the zero-energy ground space is just the vector space assigned to $\Sigma$ by $\mcc$.
-%As such, the zero-energy ground space is just a basis for the vector space assigned to $\Sigma$ by $\mcc$.
+Each of the terms in the Hamiltonian enforces one of the local relations of the vector space assigned to $\Sigma$ by $\spc$. 
+As such, the zero-energy ground space is just the vector space assigned to $\Sigma$ by $\spc$.
+%As such, the zero-energy ground space is just a basis for the vector space assigned to $\Sigma$ by $\spc$.
 %\kw{I thought the ground space is a vector space, not a basis of a vector space.}
 %\dave{Correct. I modified the sentence.}
 The deconfined anyonic excitations in the model correspond to violations of the plaquette and vertex terms.
