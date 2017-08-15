@@ -68,7 +68,7 @@ Two of these classes of projector are the fermionic analogues of the plaquette a
 while the third is an edge term which allows fermions to fluctuate across edges hosting q-type strings.
 The Hamiltonian takes the form
 \begin{align} \label{ham}
-H = \lambda_p \sum_{p \in \mcf} (1-B_p) + \lambda_e \sum_{e \in \mce} (1-D_e) + \lambda_v \sum_{v \in V} (1-A_v),
+H = \lambda_p \sum_{p \in \mcf} (1-B_p) + \lambda_e \sum_{e \in \mce} (1-D_e) + \lambda_v \sum_{e \in \mce} (1-A_e),
 \end{align}
 \kw{I think there is some inconsistency about vertex terms; see nearby figure}
 \dave{Yes, definitely. 
@@ -78,14 +78,14 @@ This has the benefiet of the vertex term being labeled by the vertices.
 Alternatively we could write it as $\sum_e A_e$, but this is somewhat displeasing. 
 Lets think if there is a comprimise between the two situations where we can (honestly) label the vertex term $A_v$.
 }
-where the sums are over the plaquettes (faces) $\mcf$, edges $\mce$, and vertices $\mcv$ of the graph, 
+where the sums are over the plaquettes (faces) $\mcf$ and edges $\mce$ of the graph, 
 %\ethan{we used mathcal stuff in the state-sum section, so I mathcalized the things to be consistent}
 respectively, and the $\lambda_p,\lambda_e,\lambda_v$ are positive constants.
 %We require a hierarchy in the couplings, $\lambda_p \ll \lambda_e \ll \lambda_v$,
 %which ensures that the low energy spectrum can be characterized by simple objects in $\mcz(\mathcal{C})$.
 %If we want the excitations to be in correspondence with the primitive idempotents of the tube algebra, then w
 As in the bosonic case, we require a hierarchy in the couplings of $\lambda_v \gg \lambda_e \gg \lambda_p$\footnote{This makes the low energy spectrum consist purely of ``flux" excitations: 
-the ``charged" idempotents always violate both the plaquette and vertex term, which with this hierarchy of coefficients costs a large amount of energy. 
+the ``charged" idempotents always violate both the plaquette and $A_e$ term, which with this hierarchy of coefficients costs a large amount of energy. 
 One way to put charge and flux excitations on an energetically more equal footing is to add ``tails'' to each 
 plaquette that host the charge degrees of freedom, as in \cite{Hu2015}.
 \dave{I vaguely remember Fiona Burnell also explaining this idea to me at one point, 
@@ -103,7 +103,7 @@ Alternatively, we could modify the Hamiltonian so that $B_p \rightarrow B_p \pro
 %It looks like they circumvent the problem by adding an extra leg to the vertices to accomadate the flux+charge excitations.
 %Ethan are you familiar with that paper? Or do you know if there are other appropriate references.}
 %\kw{We should add a remark along the lines of Dave's suggestion.}
-This is because the operators appearing in the plaquette terms are not well-defined unless the edge term energies are minimized, and in turn the terms appearing in the edge operators are not well-defined unless the vertex term energies are minimized.
+This is because the operators appearing in the plaquette terms are not well-defined unless the edge term energies are minimized, and in turn the terms appearing in the edge operators are not well-defined unless the terms involving $A_e$ are minimized.
 Thus, the projectors associated with $k$-cells are only defined on the ground states of the projectors associated with $l$-cells, for all $l<k$.  
 %\kw{maybe insert a caveat about later projectors only being defined on the ground state of earlier projectors}
 %\ethan{I had a comment along these lines at a later point; moved it here instead}
@@ -152,8 +152,7 @@ and in the earlier sections of this paper, where vertices are drawn with one edg
 edges extending above, since in this convention the edge extending below is distinguished from the two other edges.
 We will choose a convention in which all three edges at each trivalent vertex extend above the vertex: with this
 choice, each vertex resembles a pitchfork. 
-The cyclic ordering of the edges at a given vertex is determined by the left-to-right ordering of the pitchfork legs. 
-\ethan{Is it clearer now? Avoided saying incoming and outgoing.}
+%The cyclic ordering of the edges at a given vertex is determined by the left-to-right ordering of the pitchfork legs. 
 
 We must also choose a spin framing at each vertex, consistent with the ``pitchforkization'' convention.
 The pitchforkization and spin framing are needed in order to define an unambiguous
@@ -411,13 +410,13 @@ $\Gamma_2$ and $\Gamma_3$. }
 %\quad
 %\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Gamma3def.pdf}}}},\quad
 \ee
-\kw{We could move this to the definition section, and if we do that then we could keep it here too or delete it here.}
+%\kw{We could move this to the definition section, and if we do that then we could keep it here too or delete it here.}
 Since only q-type objects can host fermionic dots, $\Gamma_i$ is only defined when the $i$-th 
 leg of the vertex is labeled by a q-type object. 
 %The $\Gamma_i$ are all odd matrices, reversing fermion parity.
-\dave{It probably makes sense to put it in the definition section, but I have no strong preference.
-In the definition section we already have the non pitchfork version of it defined.}
-\ethan{It is slightly redundant to have it here, but I am in favor of keeping it---I think it's nicer to leave the few lines here and save the reader the trouble of flipping back to the definition section for stuff}
+%\dave{It probably makes sense to put it in the definition section, but I have no strong preference.
+%In the definition section we already have the non pitchfork version of it defined.}
+%\ethan{It is slightly redundant to have it here, but I am in favor of keeping it---I think it's nicer to leave the few lines here and save the reader the trouble of flipping back to the definition section for stuff}
 Since only q-type objects have odd endomorphisms, 
 $\Gamma_i$ is only defined when the i-{th} label of the pitchfork is q-type.
 %Since only q-type particles can host fermionic dots, we set $\Gamma_i=0$ unless the $i$th leg is colored by a q-type object. 
@@ -594,17 +593,12 @@ can be written as the projector
 D_e = \frac{1}{2}(1+J_e),
 \end{align}
 where $J_e$ acts on vectors $|\psi_1\rangle \tp |\psi_2\rangle \in \mch_{v_1}\tp \mch_{v_2}$ 
-by implimenting the local relations coming from $\End(x)$:
+by implementing the local relations coming from $\End(x)$:
 \be J_e(|\psi_1\rangle\tp |\psi_2\rangle) = 
 \begin{cases}
-  -\lambda^{-1}\alpha(e,x)\sum_{\eta_1,\eta_2}[\Gamma_i]_{\psi_1\eta_1} |\eta_1\rangle \tp [\Gamma_j]_{\psi_2\eta_2}|\eta_2\rangle \quad &\text{if $x$ is q-type}\\ 
+  \lambda^{-1}\alpha(e,x)\sum_{\eta_1,\eta_2}[\Gamma_i]_{\psi_1\eta_1} |\eta_1\rangle \tp [\Gamma_j]_{\psi_2\eta_2}|\eta_2\rangle \quad &\text{if $x$ is q-type}\\ 
  |\psi_1\rangle\tp |\psi_2\rangle \quad &\text{if $x$ is m-type} \end{cases}
 \ee
-\dave{I found $-\lambda^{-1}$. 
-I will double check this.}
-\ethan{need to finalize. Can just read off (no minus sign?) from the above figure}
-\dave{I agree. 
-There should be no minus sign.}
 Here, we have taken $e$ to be the $i$th leg of the pitchfork at $v_1$ and the $j$th leg at $v_2$, and $|\eta_1\rangle \tp |\eta_2\rangle \in \mch_{v_1} \tp \mch_{v_2}$.
 Since $D_e$ acts as the identity on edges colored by m-type objects, edges with m-type edges will automatically lie in the ground state of the edge term. 
 %%%%
