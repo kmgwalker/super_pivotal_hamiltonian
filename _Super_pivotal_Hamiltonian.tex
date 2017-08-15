@@ -711,6 +711,9 @@ As with \eqref{pitchfork_basis} if some of the edges have a different orientatio
 The following is identical to the standard Levin-Wen plaquette term written in the notation of Section \ref{def_sect}.
 To find the action of $B_p^a$ in the standardized basis of \eqref{plaquett_std_basis}
 we first insert a closed strand labeled $a$ into the interior of $p$:
+\dave{Ethan, can you double check this again? 
+(I changed the definition of the F-move as you suggested, and also noticed that the pairing I used to do this calculation wasn't the same as the current one. 
+I think it's correct now, but should be double checked.)}
 \begin{align}
 \Plaquetteb
 \end{align}
@@ -720,18 +723,19 @@ Next, we begin fusing the strand into the plaquette. We start with the strand la
 \sum_{y_6, \sigma_0} \frac{d_{y_6}}{\mcb(\sigma_0^* \tp \sigma_0)}\Plaquettec
 \end{align}
 Next we use the associator \eqref{PitchforkFMove} to pull the $a$ string over $x_6$ in the diagram on the right to find, \ethan{Not sure about Koszul sign here, since definition of $F$ might need to be fixed}
+\dave{I changed the definition of F as discussed now fixing Koszul signs here.}
 \begin{align}
-\sum_{y_1, \sigma_1} (-1)^{|\sigma_0| |\mu_1|}&(F^{y_6^*a x_1^*z_1^*} )_{(x_6; \sigma_0 \mu_1) (y_1^*; \sigma_1 \nu_1)} \times \\ 
+\sum_{y_1, \sigma_1} &(F^{y_6^*a x_1^*z_1^*} )_{(x_6; \sigma_0^* \mu_1) (y_1^*; \nu_1 \sigma_1 )} \times \\ 
 &\times  \Plaquetted.
 \end{align} 
-It will be helpful to use the short hand $(F)_{(\sigma_0 \mu_1) ( \sigma_1 \nu_1)}$ for $(F^{y_6^*a x_1^*z_1^*} )_{(x_6; \sigma \mu_1); (y_1; \sigma_1 \nu_1)}$, 
+It will be helpful to use the short hand $(F)_{(\sigma_0^* \mu_1) (  \nu_1\sigma_1 )}$ for $(F^{y_6^*a x_1^*z_1^*} )_{(x_6; \sigma_0^* \mu_1) (y_1^*; \nu_1 \sigma_1 )}$, 
 which is well-defined so long as $\sigma_0,\mu_1, \sigma_1, \nu_1$ are defined, 
 which will be clear from context.
 We keep applying F-moves until we are left with
 \begin{align}
- &\sum_{\substack{\nu_1 \cdots \nu_6 \\ \sigma_1 \cdots \sigma_6}}(-1)^{|\sigma_0| |\mu_1|}F_{(\sigma_0 \mu_1)(\sigma_1 \nu_1)} 
- (-1)^{|\sigma_1| |\mu_2|}F_{(\sigma_1 \mu_2)(\sigma_2 \nu_2)} \cdots 
- (-1)^{|\sigma_5| |\mu_6|}F_{(\sigma_5 \mu_6)(\sigma_6 \nu_6)} 
+ &\sum_{\substack{\nu_1 \cdots \nu_6 \\ \sigma_1 \cdots \sigma_6}}F_{(\sigma_0^* \mu_1)( \nu_1\sigma_1)} 
+F_{(\sigma_1 \mu_2)( \nu_2 \sigma_2)} \cdots 
+F_{(\sigma_5 \mu_6)( \nu_6 \sigma_6)} 
   \times \\
  &\times \Plaquettee
 \end{align} 
@@ -739,21 +743,25 @@ We note that the sign ordering is increasing from left to right.
 We now perform one last isotopy and remove the ``bubble": 
 \dave{Need to double check this, but should be OK.}
 \ethan{This shows why keeping track of the koszul ordering implicitly with left-to-right stuff is confusing. Seems like Koszul conventions of $\mcb$ are correct if we want to get the sign below}
+\dave{I think the new convention is nice.}
 \begin{align}
 &\Plaquettee =\\ 
 &\nonumber \\
 &=\Plaquettef \\ 
 &\nonumber \\
-& = (-1)^{|\sigma_6|} (-1)^{|\sigma_6| ( |\sigma_0|+|\nu_1| + \cdots+ |\nu_6|)}\frac{\mcb(\sigma_6 \tp \sigma_0^*)}{d_{y_6}} \times \\
+& = (-1)^{|\sigma_6|} (-1)^{|\sigma_6| ( |\sigma_0|+|\nu_1| + \cdots+ |\nu_6|)}\frac{\mcb(\sigma_6 \tp \sigma_0)}{d_{y_6}} \times \\
 &\times \Plaquetteg
 \end{align}
-The pairing $\mcb$ is diagonal which allows us to set $\sigma_6$ dual to $\sigma_0^*$, and thus the $\mcb(\sigma_6\tp \sigma_0^*)/d_{y_6}$ factor is cancelled by the factor of $d_{y_6}/\mcb(\sigma_0^*\tp\sigma_0)$ introduced in \eqref{plaquette_first_F_move}.
+The pairing $\mcb$ is diagonal which allows which means $\mcb(\sigma_6 \tp \sigma_0)$ is zero, unless $\sigma_6$ is dual to $\sigma_0$
+%us to set $\sigma_6$ dual to $\sigma_0^*$, 
+and thus the $\mcb(\sigma_6\tp \sigma_0)/d_{y_6}$ factor is cancelled by the factor of $d_{y_6}/\mcb(\sigma_0^*\tp\sigma_0)$ introduced in \eqref{plaquette_first_F_move}.
 Noting that $|\sigma_6| = |\sigma_0|$, we can write (recall \eqref{plaquett_std_basis}),
 \begin{align}
 \nonumber
-[B_p^a]_{(\mu_1 \cdots \mu_6)(\nu_1 \cdots \nu_6)} =  \frac{1}{\mcd^2} \frac{d_a}{\dim \End(a)} \sum_{\sigma_1 \cdots \sigma_6} &
-(-1)^{|\sigma_6| |\mu_1|}F_{(\sigma_6^* \mu_1)(\sigma_1 \nu_1)}  \cdots 
-(-1)^{|\sigma_5| |\mu_6|}F_{(\sigma_5 \mu_6)(\sigma_6 \nu_6)} \times \\
+[B_p^a]_{(\mu_1 \cdots \mu_6)(\nu_1 \cdots \nu_6)} =  \frac{1}{\mcd^2} \frac{d_a}{\dim \End(a)} \sum_{\sigma_1 \cdots \sigma_6} &F_{(\sigma_6 \mu_1)( \nu_1\sigma_1)} 
+F_{(\sigma_1 \mu_2)( \nu_2 \sigma_2)} \cdots 
+F_{(\sigma_5 \mu_6)( \nu_6 \sigma_6)} 
+\\
 & \times (-1)^{|\sigma_6| (|\nu_1| + \cdots+ |\nu_6|)}
 \label{plaquettematrix}
 \end{align} 

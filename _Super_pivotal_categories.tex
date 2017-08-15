@@ -636,7 +636,7 @@ Similarly,
 \ee
 and using the isomorphism $P_R: V^{ab}_x \to V^{abx^*}$ this becomes
 \be  \label{pfpfi1}
-	V^{abcd} \cong \bigoplus_{x\in \sob(\spc)} V^{abx^*} \tp_{\End(x)} V^{xcd} .
+	V^{abcd} \cong \bigoplus_{x\in \sob(\spc)} V^{abx} \tp_{\End(x)} V^{x^*cd} .
 \ee
 %\kw{need figs
 %\dave{Is the figure you want something like $\text{id}_{x^*} \tp_{\text{end}(x)} \text{id}_x = \text{id}_x \tp_{\cc} \text{id}_x / (\gamma^* \circ  x^* \tp x \sim x^* \tp \gamma \circ x )$}}
@@ -647,7 +647,7 @@ Alternatively,
 %\ee
 %\dave{Changed so that they only differ by a pivot like the above.}
 \be  \label{pfpfi2}
-	V^{abcd} \cong \bigoplus_{x\in \sob(\spc)} V^{bc}_x \tp_{\End(x)} V^{axd} \cong \bigoplus_{x\in \sob(\spc)} V^{bcx^*} \tp_{\End(x)} V^{axd} .
+	V^{abcd} \cong \bigoplus_{x\in \sob(\spc)} V^{bc}_x \tp_{\End(x)} V^{axd} \cong \bigoplus_{x\in \sob(\spc)} V^{axd}  \tp_{\End(x)} V^{x^*bc}.
 \ee
 Diagrammatically we have,
 %\dave{Note to self: make figures match up.}
@@ -723,6 +723,7 @@ We also stick with the left-to-right ordering convention for the $F^{abcd}$ move
 \ee
 Which written as a matrix equation is
 \ethan{The koszul order on the left diagram should be switched to match how we've written the $F$-move above}
+\dave{done.}
 \begin{align}
 \label{PitchforkFMove}
 \PitchforkFLeftprime = \sum_{y} \sum_{\rho \sigma} \left( F^{abcd} \right)_{(x; \mu \nu)(y; \rho \sigma)} \PitchforkFRightprime .
@@ -735,7 +736,7 @@ Which written as a matrix equation is
 We will also find the following identity helpful:
 \begin{align}
 \label{idpitchfork}
-\Idabba = \sum_{x} \frac{d_x}{\mcb(\mu \tp \mu^* )} \IdPitchfork, 
+\Idabba = \sum_{x} \frac{d_x}{\mcb(\mu^* \tp \mu )} \IdPitchfork, 
 \end{align}
 where the pairing $\mcb$ is defined in \eqref{reflection_pairing_defn}.
 
@@ -743,6 +744,7 @@ where the pairing $\mcb$ is defined in \eqref{reflection_pairing_defn}.
 I think currently it is wrong, but the proposed change in the defn of $B$ \ethan{which $B$? $\mcb$?} will fix it.}
 \dave{I will fix this, and leave comment for KW and EL to check. }
 \ethan{right, the $\mu^*$ should be on the left. Left-to-right koszul ordering is correct though, right?}
+\dave{I changed $\mcb(\mu \tp \mu^*)$ to $\mcb(\mu^* \tp \mu)$ (to match new definition of pairing).}
 
 
 
@@ -920,25 +922,21 @@ diagram must commute:
 %\dave{Should we re-define it in the definition section or just add a footnote here describing what we mean?} 
 %\ethan{I lean towards having it act on the same vector space everywhere in the paper. Kevin, do you have a preference?}
 %\ethan{Although after talking with Dave, I think we came to the conclusion that we should use both simultaneously} 
+\dave{Changed Koszul ordering in definition of $F^{abcd}$, and modified this equation correspondingly.}
 \begin{align}
 \newcommand{\A}{\bigoplus_x \PitchforkFLeftprimesmall}
-\newcommand{\B}{\bigoplus_z\;  \PivotCoherencec }
-\newcommand{\C}{\bigoplus_y  \PivotCoherenceb }
+\newcommand{\B}{\bigoplus_x  \PivotCoherenceb}
+\newcommand{\C}{\bigoplus_x\;  \PivotCoherencec  }
 \newcommand{\D}{\bigoplus_y   \PivotCoherencea }
 \newcommand{\E}{\bigoplus_y \PitchforkFRightprimesmall }
 \vcenter{\xymatrix @!0 @M=1.5mm @R=25mm @C=30mm{
-%<<<<<<< HEAD
-%&\A  \ar[rr]^{F^{abcd}} &&\E \ar[rd]^{P^{ayd}}&\\
-%=======
 &\A  \ar[rr]^{F^{abcd}} &&\E \ar[rd]^{(P^{ayd})^{-1}}&\\
-%>>>>>>> 2ca819f56d443747cfb8d550e9bdfc5684778be7
-\B\ar[ru]^{P^{dzc} \tp P^{z^*ab}} &&&&\D \ar[lld]^{K_{12}}   \\
-&&\C \ar[llu]^{F^{dabc} } &&
+\B\ar[ru]^{K_{12}} &&&&\D \ar[lld]^{F^{dabc}}   \\
+&&\C \ar[llu]^{P^{dxc} \tp P^{x^*ab} } &&
 	}} 
 	\label{pivotconsistent}
 \end{align} 
-%\kw{I think $P^{ayd}$ above should be $(P^{ayd})^{-1}$; the rest looks OK to me}
-%\dave{done.}
+
 
 \begin{comment} %non-diagrammatic notation
 \begin{align}
