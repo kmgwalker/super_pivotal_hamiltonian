@@ -400,7 +400,7 @@ and choice of orientations of 1- and 2-cells.
 \medskip
 
 If $M$ has non-empty boundary,
-we choose the handle decomposition to have the form shown in Figure xxx near the boundary.
+we choose the handle decomposition to have the form shown in Figure xxx \kw{fix ref} near the boundary.
 In terms of cell decompositions, we choose a cell decomposition such that $\bd M$ lies in the 2-skeleton, rather
 than a cell decomposition such $\bd M$ is transverse to the cells.
 
@@ -890,10 +890,16 @@ In the example of Figure \ref{KoszulFig} we have $n_c=7$, and so $(-1)^{\kappa_\
 
 \medskip
 
-\kw{we should probably say something about the case with boundary.
-at least discuss the Koszul ordering issues.}
-\dave{I agree, can attack this once re-visiting the bosonic case.}
-\ethan{discussion about boundaries and wavefunctions already kinda exists at the end of the fermionic tensor network part}
+The case of non-empty $\bd M$ presents one new issue not present in the bosonic version:
+we must pick a Koszul ordering of the labels corresponding to string net vertices on $\bd M$.
+Once this has been done, we can combine that ordering with the ordering coming from the 1-handles.
+The Koszul sign $(-1)^{\kappa_\beta}$ is now defined to be the sign arising from comparing 
+the 0-handle ordering with the combined $\bd M$ and 1-handles ordering.
+
+%\kw{we should probably say something about the case with boundary.
+%at least discuss the Koszul ordering issues.}
+%\dave{I agree, can attack this once re-visiting the bosonic case.}
+%\ethan{discussion about boundaries and wavefunctions already kinda exists at the end of the fermionic tensor network part}
 
 
 
@@ -1030,12 +1036,12 @@ We now turn to the task of reinterpreting \eqref{fermionic_tv_sum} as a tensor n
 
 \medskip
 
-We incorporate the factors of $d(f, \beta)/n(f,\beta)$ and $\mcd^{-2}$ into the 0-cell 
+We incorporate the factors of $d(f, \beta)/n(f,\beta)$ and $\mcd^{-2}$ into the 0-handle 
 weights 
 in the same way as in the bosonic case. 
 As in the bosonic case we denote the dressed 0-handle weights by $\widetilde{\rm Link}(v,\beta)$.
-Denoting the modified 0-handle weights by $\widetilde{\rm Link}(v,\beta)$, 
-we define the vertex tensor in a similar fashion to \eqref{vertex_tensor}. 
+%Denoting the modified 0-handle weights by $\widetilde{\rm Link}(v,\beta)$, 
+We define the vertex tensor in a similar fashion to \eqref{vertex_tensor}. 
 Let $e_1, \cdots, e_k$ be the 1-handles adjacent to the 0-handle $v$ with the same ordering as the vertices of the graph $\text{Link}(v)$.
 Let $V_i$ be defined in the same way as \eqref{0_handleVectorspaces} (with the modification that $V_i$ is a super vector space).
 We define 
@@ -1047,7 +1053,7 @@ by
 T_v(w_1 \tp \cdots w_k) = \widetilde{\text{Link}}(v, w_1 \tp \cdots \tp w_k)
 \end{align} 
 where $w_i \in V_i$.
-In words, $T_v$ evaluates the string-net graph determined by $\text{Link}(v)$ with the ordered vertices labeled by $w_1, \cdots, w_k$ (in the same order), and multiplied by the appropriate factors of $d(f,\beta)$ and $\mcd^{-2}$.
+In words, $T_v$ evaluates the string-net graph determined by $\text{Link}(v)$ with the ordered vertices labeled by $w_1, \cdots, w_k$ (in the same order), and multiplied by the appropriate factors of $d(f,\beta)/n(f,\beta)$ and $\mcd^{-2}$.
 %where the sum runs over a complete orthogonal basis of the attaching regions associated associated with the 0-handle $v$.
 %where the sum runs over orthogonal basis vectors for the vertex Hilbert space $\mch(v)$. 
 %For a 0-handle on which $n$ 1-handles terminate, the vectors $w_v$ admit a 
@@ -1057,25 +1063,35 @@ In words, $T_v$ evaluates the string-net graph determined by $\text{Link}(v)$ wi
 %\dave{Is this necessary?}
 %\ethan{It was intended to be my guess to what Kevin's dual spaces comment meant. Might have missed the mark though, and it might still be confusing.}
 
+\kw{I've using ``Koszul ordering" rather than ``sign ordering" most of the time.
+A sign ordering is an ordering modulo even permutations, so it doesn't really make sense to say that two things are adjacent
+in a sign ordering.}
+
 %To obtain the partition function, we again form the tensor product of all the 0-cell tensors and contract over all indices.
-The partition function 
-is the same as in the bosonic case, being computed as a trace of the $T_v$ tensors:
+As in the bosonic case, the partition function 
+is computed as a trace of the $T_v$ tensors:
 \be \label{fermion_Z_as_tr} Z(M) = \tr \left(\bigotimes_{v\in \mch_0} T_v\right).\ee
-where the trace is denotes denotes the sum over all contracted 1-cell labelings normalized by $\widetilde{\Theta}^{-1}$.
+where the $\tr$ denotes contracting dual indices.
+%where the trace is denotes denotes the sum over all contracted 1-cell labelings normalized by $\widetilde{\Theta}^{-1}$.
 %The tensor trace is defined so that we insert a parity matrix $(-1)^{F(e, \sigma)}$ on every 1-cell, and a $\widetilde{\Theta}$ symbol normalization in the contraction. 
-In practice, to perform the trace, we require that the sign ordering on the pair of vectors to be contracted over have adjacent sign orders (with terminal lower than initial). 
+In practice, to perform the trace, we require that the pair of vectors to be contracted be adjacent in the Koszul ordering (with terminal preceding initial). 
 %In practice, to perform the contraction, the we require the pair of vectors being contracted over to have adjacent Koszul ordering (i.e., initial to terminal).
-To get the pair of vectors in adjacent sign ordering we need to apply a number of Koszul isomorphisms. 
+To make the pair of vectors adjacent in the Koszul ordering we need to apply a number of Koszul isomorphisms. 
 After contracting all vectors we pick up the appropriate factor of $(-1)^{\kappa_\beta}$. 
 Again, $Z(M)$
-is independent of the way we assign factors of $d(f,\beta)$ and $\mcd^{-2}$ to the 
+is independent of the way we assign factors of $d(f,\beta)/n(f,\beta)$ and $\mcd^{-2}$ to the 
 vertex tensors. 
+
 If $\bd M$ is non-empty, we again follow the bosonic prescription in \eqref{trace_pM_nonempty} 
 to obtain $Z(M) = \tr \left( \bigotimes_{v\in \mch_0} T_v \right) \in W_1^*\tp\cdots\tp W_n^*$, where 
 $W_1, \ldots, W_n$ are the vector spaces associated to the boundary 0-cells and we 
 are implicitly making use of the undordered tensor product. When using $Z(M)$ to compute 
 amplitudes of different string-net boundary conditions, care must be taken when performing the 
 tensor contraction on ordered representatives because of Koszul sign issues. 
+
+\medskip
+
+\kw{Let's discuss following on skype}
 
 \ethan{un-commented the following since I still think we should include a contraction example, either here 
 or possibly in defn section}
@@ -1089,7 +1105,9 @@ or possibly in defn section}
 %present in the bosonic partition function (which appears as $(-1)^{\kappa_\beta}$ in \eqref{fermionic_tv_sum}).
 
 We will now elaborate on how to perform tensor contractions in the fermionic setting. 
-When we contract out two tensor indices of a tensor in $\mch^*\tp\mch$, we must be careful to only perform 
+When we contract
+%%KW I think "trace out" is idiomatic, but I've never heard "contract out".  I do hear plain "contract" (without the "out")
+two tensor indices of a tensor in $\mch^*\tp\mch$, we must be careful to only perform 
 the contraction on two tensor factors that have adjacent Koszul ordering in the tensor product.
 For example, suppose we have two tensors $Q \in V_Q$ and $T\in V_T$,
 defined by
