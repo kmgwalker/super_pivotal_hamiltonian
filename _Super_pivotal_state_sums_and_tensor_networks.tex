@@ -779,29 +779,28 @@ such that $d(f,\beta)=d_a$.
 \kw{some rewriting starting here; D and E should review}
 \dave{I like it. I got a little confused in the Koszul sign discussion, I thought a simple picture would help (see below). 
 But I do like the way it's presented.}
+\ethan{made some small edits}
 
 The 1-handle weights are determined by the bilinear pairings given by each 1-handle $e$. 
 When evaluating the graph on the boundary of $e$, we choose the Koszul ordering which puts the terminal vertex
 exactly one place before the initial vertex in the ordering (similar to the convention in \eqref{reflection_pairing_defn}).
 
-\dave{minor re-wording of some things}
 For each 0-handle $v$, $\text{Link}(v,\beta)$ is defined in the same way as in the bosonic case:
 we evaluate a string net determined by the 1- and 2-handles incident on $v$ and the labeling $\beta$.
 There are two subtleties here.
-First, when transferring a vertex label $\mu$ from the initial (terminal) end of a 1-handle to the opposing 0-handle adjacent to the terminal (initial) end of the 1-handle, 
+First, when comparing a vertex label $\mu$ from the initial (terminal) end of a 1-handle to the opposing 0-handle adjacent to the terminal (initial) end of the 1-handle, 
 we must employ the attaching map which connects the terminal (initial) end of the 1-handle to the 0-handle.
-\dave{Should we draw a picture for this?}
-This attaching map is a spin diffeomorphism.
-The action of the spin diffeomorphism is either trivial or the spin flip functor $(-1)^F$.
+This attaching map is a spin diffeomorphism, the action of which is either trivial or the spin flip functor $(-1)^F$.
 If it is $(-1)^F$, the string net vertex label on the 0-handle needs an additional factor of $(-1)^{|\mu|}$.
-It is here (and only here) that the state sum is sensitive to the spin structure on $M$.
+It is here (and only here) that the state sum is sensitive to the spin structure on $M$, which determines 
+the choice of $1$ or $(-1)^F$.
 The second subtlety concerns Koszul orderings.
 In order (pun noticed but not intended) \ethan{:)}
 to evaluate the string net on the boundary of the 0-handle, we must choose an (arbitrary) ordering
 of the string net vertices of the graph on the boundary of the 0-handle.
 Thus the evaluation $\text{Link}(v, \beta)$ is arbitrary up to a sign.
-However, any change of ordering which changes the sign of $\text{Link}(v, \beta)$ also produces a compensating
-change in $(-1)^{\kappa_\beta}$, so the overall state sum is well defined.
+However, we will see that a change of Koszul ordering which changes the sign of $\text{Link}(v, \beta)$ also produces a compensating
+change in the factor $(-1)^{\kappa_\beta}$, and so the overall state sum is well defined.
 
 \begin{comment} 
 %\dave{The following is the un-modified paragraph -- with my initial comments if KW or EL want to see why I made the above changes}
@@ -833,14 +832,16 @@ change in $(-1)^{\kappa_\beta}$, so the overall state sum is well defined.
 The Koszul sign $(-1)^{\kappa_\beta}$ is defined as follows.
 Consider, for fixed $\beta$, the tensor product of the all the super vector spaces
 associated to the attaching disks on all the 0-handles.
-(If there are $k$ 1-handles, then there are $2k$ tensor factors.)
-We define $(-1)^{\kappa_\beta}$ to be Koszul sign associated to two different orderings of the tensor factors.
+If there are $k$ 1-handles, then there are $2k$ tensor factors in this tensor product, one 
+for each 1-handle end. 
+We will examine two different orderings of the tensor factors.
 In the first ordering, we place each terminal disk immediately before each initial disk in the ordering.
-(This is well-defined up to even permutations.)
+Such an ordering is well-defined up to even permutations.
 In the second ordering, we use the above choices of local ordering for the factors associated to
-each 0-handle.
-(This is again well-defined up to even permutations, since each 0-handle graph evaluates to zero when the total
-parity at that 0-handle is odd.)
+each 0-handle
+(this is again well-defined up to even permutations, since each 0-handle graph evaluates to zero when the total
+parity at that 0-handle is odd).
+We then define $(-1)^{\kappa_\beta}$ to be Koszul sign relating these two orderings. 
 \dave{This took me a few reads before I understood it.
 Maybe a picture would help.
 We could draw a picture that has pairs of dots labeled labeled $i$ and $t$ with internal orderings (i.e., 1-handles), 
@@ -1063,6 +1064,7 @@ In the above, we have used the fact that $\delta_{q^*,t}$ is only non-zero
 if $|q|=|t|$. 
 The Koszul sign $(-1)^{|t|( |q_R| +|t_L|)}$ is picked up from commuting the tensor factors $q$ and $t$ next to one another, so that they have the correct Koszul ordering for being input into the contraction map. 
 
+\ethan{I found the following very useful for avoiding confusion, but it's likely not strictly needed}
 In the above examples, we have used the implicit left-to-right Koszul ordering convention.
 In practice, we will more often be performing a contraction on a series of tensors whose Koszul
 orderings are indicated explicitly by numerical subscripts, since this notation is better suited to 
@@ -2064,7 +2066,7 @@ We can now compute $Z(\Sigma_{0\ra1}; v_0, v_1)$
 using the state sum: 
 \begin{align} 
 Z(\Sigma_{0\ra1}; v_0, v_1) = \sum_{ \beta\in\mcl(\mch^{1/2})_{bulk}}  (-1)^{\kappa_\beta} \prod_{f \in \mch^{1/2}_2} \frac{d(f,\beta)}{n(f,\beta)} 
-\prod_{e \in \mch^{1/2}_1} \widetilde{\Theta}(e,\beta)^{-1} \prod_{v \in \mch^{1/2}_0} {\rm Link}(v,\beta),
+\prod_{e \in \mch^{1/2}_1} \widetilde{\Theta}(P_e,\beta)^{-1} \prod_{v \in \mch^{1/2}_0} {\rm Link}(v,\beta),
 \end{align} 
 where we have used $\mch^{1/2}_k$ to denote the collection of $k$-cells in $\Sigma \times \{1/2\}$ and $\mcl(\mch^{1/2})_{bulk}$ 
 to denote colorings of the bulk degrees of freedom in $\Sigma_{0\ra1}$. 
