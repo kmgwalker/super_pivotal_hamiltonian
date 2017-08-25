@@ -25,75 +25,96 @@ for the kitaev wire embedded in a 2-manifold is pretty ugly and not too illumina
 In this section, we show how the graphical formalism developed in previous sections
 can be used to succinctly capture the salient features of the `Kitaev wire', Kitaev's toy model 
 of a one-dimensional spinless $p$-wave superconductor \cite{kitaev2001}. 
-This elucidates the connection between Majorana zero modes and Ising anyons, serves 
-as a nice application of the graphical calculus of the $C_2$ theory, and provides 
-a simple (alas, perhaps too simple) illustration of the shadow world approach detailed in the previous section 
-(with appropriate modifications for the reduced dimensionality of the problem). 
+This elucidates the connection between Majorana zero modes and Ising anyons and serves 
+as a nice application of the graphical calculus of the $C_2$ theory.
+%, and provides 
+%a simple (alas, perhaps too simple) illustration of the shadow world approach detailed in the previous section 
+%(with appropriate modifications for the reduced dimensionality of the problem). 
 The Hamiltonian we write down and the associated wavefunctions we construct are 
 the same as those found in e.g. \cite{fidkowski2011}, but presented in a more graphical formalism and 
 discussed within the framework of the tools developed in this paper. 
 
-The Kitaev chain is defined on a one-dimensional manifold, which we can take to be 
+
+Recall that the $C_2$ theory has two simple objects $\unit,\beta$, with $\beta\tp \beta\cong \cc^{1|1}\unit$.
+We will see that the $\beta$ object plays the role of a Majorana fermion in the Kitaev wire. 
+
+\ethan{I still think that while the following is nice / cute, it's a bit out of place here, and may make it harder for physicists who only want to read this section to understand it. Maybe we can move it to where we discuss the relative tensor product in the definition section? Not sure}
+The basic idea behind constructing the Kitaev chain is to take a strand of $\beta$ string and to chop it into many pieces. 
+This is accomplished by writing \ethan{Dave might want to make the square look consistent} 
+
+\be \label{strand_decomp} A\left(\horizbeta \right) \cong A\left( \horizbeta\right) \tp_{\cliff_1} A\left( \horizbeta\right) \tp_{\cliff_1} \dots \tp_{\cliff_1} A\left( \horizbeta\right),\ee
+where as usual $A(Y)$ denotes string-nets modulo local relations on $Y$ \ethan{slightly misleading since we usually write $A(Y)$ but now we're specifying a string-net boundary condition}.
+Each block in the RHS of \eqref{strand_decomp} will form a physical site of the Kitaev chain. 
+In this equation, the relative tensor product $\tp_{\cliff_1}$ (a.k.a $\tp_{\End(\beta)}$) is needed to mod out by local relations involving the sliding of fermions along $\beta$ lines, as was discussed at length in Section \ref{modified_tensor_product}. 
+Graphically, utilizing $\tp_{\cliff_1}$ is equivalent to modding out by the equivalence relation 
+\be \horizbeta \tp_\cc \horizbetadot \sim \horizbetadot \tp_\cc \horizbeta.\ee 
+Modding out by this equivalence relation is needed to ensure that both sides of \eqref{strand_decomp} have the same super dimension, namely $1|1$ (if we had used the regular tensor product $\tp_\cc$ instead, the RHS would have super dimension $N|N$, where $N$ is the number of chopped segments appearing on the RHS). 
+
+Now for the actual construction of the Kitaev chain. 
+We define the Kitaev chain as a anyon chain on a one-dimensional manifold, which we can take to be 
 either $M = I$, $M= S^1_B$, or $M = S^1_N$, 
 where $I$ is an interval. 
-The shadow world prescription tells us to examine 
-partition functions on $M \times [0,1]$. 
-\kw{I'm confused by the dimensions here.  Are we working with a 1+1-dim'l TQFT?  Do you really mean ``partition function"?}
-\kw{I guess we can think of this as a dimensional reduction of the C2 theory over an interval $J$ (not to be confused with $M=I$.
-This can of course be done for any SPC.} \ethan{I think the philosophy we had (or at least, the one I had) when we wrote this was: ``we construct the Kitaev wire from a physical point of view, not really thinking about dimensional reduction. Then we realize that it's the dimensional reduction of $C_2$ (there's a paragraph on this towards the end of the section), which lets us understand $C_2$ as a bunch of fluctuating Kitaev wires. This connects what we've been doing to other physicist's work.}
-We will specify to $M= I$ in what follows, and examine 
+As in \eqref{strand_decomp} it can occasionally be helpful to embed $M$ in 
+an ambient 2-manifold (a perspective which will show its utility owards the end of the section), although for now we stick to the purely one-dimensional case. 
+%The shadow world prescription tells us to examine 
+%partition functions on $M \times [0,1]$. 
+%\kw{I'm confused by the dimensions here.  Are we working with a 1+1-dim'l TQFT?  Do you really mean ``partition function"?}
+%\kw{I guess we can think of this as a dimensional reduction of the C2 theory over an interval $J$ (not to be confused with $M=I$.
+%This can of course be done for any SPC.} 
+%\ethan{I think the philosophy we had (or at least, the one I had) when we wrote this was: ``we construct the Kitaev wire from a physical point of view, not really thinking about dimensional reduction. Then we realize that it's the dimensional reduction of $C_2$ (there's a paragraph on this towards the end of the section), which lets us understand $C_2$ as a bunch of fluctuating Kitaev wires. This connects what we've been doing to other physicist's work.}
+We will specify to $M= I$ for now, and examine 
 chains whose Hilbert spaces contain $N$ tensor factors, where $N=2n$ is an even integer. 
-Vectors in $\mch(I)$ can then be written as $a_1\tp\dots\tp a_N$, and graphically 
-they look like\footnote{We will be specializing to the case of the $C_2$ theory, and as such we can
+Vectors in $\mch(I)$ can then be written as $a_1\tp\dots\tp a_N$ where $a_i \in \{\unit,\beta\}$, and graphically 
+they can be presented as labeled string-net diagrams of the form \footnote{We will be specializing to the case of the $C_2$ theory, and as such we can
 refrain from drawing orientations on each edge.}
-\dave{Should probably include boundary condition.}
-\ethan{you mean tails sticking down, right? If we want to write it as a 1d MPS thing, usually I'd just set them all to the vacuum (which we do in what follows). Can modify the figure and talk about it if you want, though}
 \davex{I meant at the left and right side (not down).
 E.g. the chain should look like a horizontal reflection of TTTTTTTTT.
 So that we could set the boundary of the interval to have charge $b_0$ and $b_{N+1}$ for example. 
 }
-\ethan{moved discussion of MPS to the end}
+\ethan{but that's the same as what we have already, the $a_1$ and $a_N$ legs do that, right? They just point in a different direction.}
 \be  \label{graphical_MPS_state}
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{kitaev_wire_cell_decomp.pdf}}}}.
 \ee
-For analyzing the Kitaev wire, we will draw the labels $a_i$ from the simple objects of the $C_2$ theory (namely $\unit$ and $\beta$),
-and we will freely use 
-the graphical calculus of the $C_2$ theory throughout.  
-We will see that the $\beta$ object plays the role of a Majorana fermion in the Kitaev wire. 
+%For analyzing the Kitaev wire we will draw the labels $a_i$ from the simple objects of the $C_2$ theory (namely $\unit$ and $\beta$),
+%and we will freely use 
+%the graphical calculus of the $C_2$ theory throughout.  
+%We will see that the $\beta$ object plays the role of a Majorana fermion in the Kitaev wire. 
+Each tail $a_i$ corresponds to a marked boundary point in one of the squares appearing on the RHS of \eqref{strand_decomp}. 
 
-When performing the shadow world construction, we need to compute partition functions on the 2-manifold 
-$M\times [0,1]$. The cell decomposition we will use is:
-\dave{boundary condition.}
-\ethan{what do you mean?}
-\dave{At the ends of the spin chain, 
-I think we should add two legs that encode the boundary condition.}
-\ethan{Don't $a_1$ and $a_N$ do that? Or are you talking about spin structure things? The picture below is supposed to be on the interval.}
+For constructing ground-state wavefunctions, we need to compute partition functions on the 2-manifold 
+$I\times [0,1]$ (this is the familiar procedure of constructing states by path-integrating forward from $\tau=-\infty$ in Euclidean time). 
+The cell decomposition we will use for $I \times [0,1]$ is
+%\dave{boundary condition.}
+%\ethan{what do you mean?}
+%\dave{At the ends of the spin chain, 
+%I think we should add two legs that encode the boundary condition.}
+%\ethan{Don't $a_1$ and $a_N$ do that? Or are you talking about spin structure things? The picture below is supposed to be on the interval.}
 \be 
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{kitaev_wire_shadow_wrld_cell_decomp.pdf}}}}.
 \ee
-To construct ground-state wavefunctions, we need to fix the input vectors $v_0\in\mch(M\times\{0\})$ and $v_1\in\mch(M\times\{1\})$ to be used when computing 
-$Z(M\times[0,1];v_0,v_1)$. In the above pictures, $v_1$ is determined by the choice of $a_1\tp\dots\tp a_N$, while $v_0$ is determined by the $b_1\tp\dots\tp b_N$. In what follows, 
-we will choose $v_0 = \unit\tp\dots\tp\unit$ to be the vector with only vacuum lines, so that our wavefunctions are built
-over the vacuum.
+To construct wavefunctions, we need to fix the input vector $v_0=b_1\tp \dots \tp b_N v_0\in\mch(M\times\{0\})$ over which to build states. %and $v_1\in\mch(M\times\{1\})$ to be used when computing 
+%$Z(I\times[0,1];v_0,v_1)$. In the above pictures, $v_1$ is determined by the choice of $a_1\tp\dots\tp a_N$, while $v_0$ is determined by the $b_1\tp\dots\tp b_N$. In what follows, 
+We will choose $v_0 = \unit\tp\dots\tp\unit$ to be the vector with only vacuum lines, so that our wavefunctions are built
+by path-integrating forward in Euclidean time from the vacuum state. 
 % (if we had chosen $\Sigma = S^1_N$ or $S^1_B$, $v_0$ would also need to 
 %specify our choice of spin structure). 
 
 Physically, each pair of adjacent tensor factors $a_i\tp a_{i+1}$ forms the Hilbert space of a single 
 site in the physical superconductor, so that our $N$-legged chain maps to a superconductor 
-with $n=N/2$ physical sites. The degree of freedom living on the $n$th physical site is thus $a_{2n-1}\tp a_{2n}$.  
+with $n=N/2$ physical sites (each physical site constitutes one of the tensor factors on the RHS of \eqref{strand_decomp}). The degree of freedom living on the $n$th physical site is thus $a_{2n-1}\tp a_{2n}$.  
 This association is just the familiar re-writing of a single electronic degree 
 of freedom in terms of two Majorana degrees of freedom. 
-The local Hilbert space at a given physical site (e.g, at a pair of edges $a_i\tp a_{i+1}$) is $\cc^{1|1}$, and is spanned by the two basis vectors
+The local Hilbert space at a given physical site (e.g, at a pair of edges $a_i\tp a_{i+1}$) is $\cc^{1|1}$, and is spanned by the two basis vectors $v_e$ and $v_o$, where
 \begin{align} \label{kitaev_chain_basis_vects}
-   v_e = \; \CupSigma \qquad \text{and} \qquad v_o=\;\CupSigmadot.
+   v_e = \; \CupSigma\,, \qquad \text{and} \qquad v_o=\;\CupSigmadot.
 \end{align}
 
-\dave{Around here I would write out the explicit tensors for the MPS from shadow world.
-Then do the following analysis relating to the wave function. 
-And finally writing down \eqref{kitaev_wire_ground_states} and saying how it's equivalent to $\ket{\psi} = \sum_{...}\tr (A\cdots) \ket{a_1 \cdots } $. }
-\ethan{MPS stuff got moved to the end since I thought that's where it would flow best. Feel free to re-arrange} 
+%\dave{Around here I would write out the explicit tensors for the MPS from shadow world.
+%Then do the following analysis relating to the wave function. 
+%And finally writing down \eqref{kitaev_wire_ground_states} and saying how it's equivalent to $\ket{\psi} = \sum_{...}\tr (A\cdots) \ket{a_1 \cdots } $. }
+%\ethan{MPS stuff got moved to the end since I thought that's where it would flow best. Feel free to re-arrange} 
 
-The Hamiltonian implements time evolution by extending the uncontracted $a_i$ legs on the $M\times\{1\}$ boundary. 
+The Hamiltonian implements time evolution by extending the uncontracted $a_i$ legs on the $I\times\{1\}$ boundary. 
 The Hamiltonian must be local, and so it may only act on pairs of adjacent uncontracted legs on the boundary.
 The Hamiltonian must also preserve the overall fermion parity of the chain. 
 Thus, the only terms one can construct a Hamiltonian out of are
@@ -112,12 +133,10 @@ on single-site basis states as
 This is precisely the action of the Majorana bilinear $i\gamma_1\gamma_2 = (-1)^F$, 
 and we will build the Hamiltonian out of a summation of such terms. 
 
-\ethan{maybe move this to a reflection / inner product section if it gets written, although I think the 
-stuff in the line bundle appendix is sufficient if we're short on time}
 In order to show that this term is Hermitian, we need to define a graphical way of implementing 
 Hermitian conjugation. We define the Hermitian conjugate of a diagram to be its reflection about 
 the horizontal axis, with the action of reflection determined by the properties of the complex line 
-bundle constructed in Appendix \ref{flb_appendix}. One then verifies that $H^\dagger H = -\lambda^2 \unit$, where the 
+bundle constructed in Appendix \ref{fermion_line_bundle} (for more details on the reflection structure, see Section \ref{reflection_ss}). One then verifies that $H^\dagger H = -\lambda^2 \unit$, where the 
 minus sign is a Koszul sign, $\lambda$ is the phase picked up when removing a pair of fermions 
 as in \eqref{removing_fermions}, and $\unit$ denotes a sum of identity operators (the left picture in \eqref{hamiltonian_options}). 
 As usual, the notation $H^\dagger H$ graphically corresponds to stacking $H^\dagger$ on top of $H$.
@@ -127,15 +146,15 @@ For our $N$-legged chain we thus have the basis of states $\bigotimes_{i=1}^{N/2
 $v_i \in \{v_e,v_o\}$ are $\pm1$ eigenstates of $(-1)^F$. 
 Graphically, these states look like
 \begin{align}
-&\CupSigma \; \CupSigma \; \CupSigma \cdots \CupSigma,\\
-&\CupSigmadot \; \CupSigma \; \CupSigma \cdots \CupSigma,\\
-&\CupSigma \; \CupSigmadot \; \CupSigma \cdots \CupSigma,\\
-&\CupSigma \; \CupSigma \; \CupSigmadot \cdots \CupSigma,\\
-&\CupSigma \; \CupSigma \; \CupSigma \cdots \CupSigmadot,\\
-&\CupSigmadot \; \CupSigmadot \; \CupSigma \cdots \CupSigma,
+&\CupSigma \; \tp \; \CupSigma \; \tp \; \CupSigma \; \tp \;\cdots  \tp \;\CupSigma\;,\\
+&\CupSigmadot \; \tp \; \CupSigma \;  \tp \;\CupSigma\;  \tp \; \cdots  \tp \;\CupSigma\;,\\
+&\CupSigma \;  \tp \; \CupSigmadot  \;  \tp \; \CupSigma \;  \tp \; \cdots \; \tp \;\CupSigma\;,\\
+&\CupSigma \; \tp \; \CupSigma \;  \tp \;\CupSigmadot \; \tp \; \cdots \; \tp \;\CupSigma\;,\\
+&\CupSigma \;  \tp \;\CupSigma \;  \tp \;\CupSigma \;  \tp \;\cdots \; \tp \;\CupSigmadot\;,\\
+&\CupSigmadot \;  \tp \; \CupSigmadot \;  \tp \; \CupSigma \;  \tp \;\cdots \; \tp \; \CupSigma\;,
 \end{align}
 and so on. In the above picture, there are $n=N/2$ cups appearing, and the fermion dots are ordered 
-implicitly with increasing Koszul ordering from left to right. 
+implicitly with increasing Koszul ordering from left to right. Since each physical site has degrees of freedom corresponding to the vector space $\cliff_1$, the full space of states of the chain is $\cliff_1^{\tp n} \cong \cliff_n$, the $n$th complex Clifford algebra. 
 
 The Hamiltonian, built out of the identity and the bilinears $i\gamma_1\gamma_2$, has two types of terms. 
 One term mixes the states within a single physical site by acting on $a_{2j}\tp a_{2j+1}$, while the other acts between neighboring physical sites by acting on 
@@ -146,7 +165,7 @@ Then the Hamiltonian takes on the form
 H = - \sum_{j=1}^{N-1}\;  \frac{t_j}{2} \left( \Id_{\text{\; site $j$}} \;\; + \;\; \TwoLinedotdot_{\text{site $j$}} \right),
 \end{align}
 where the left lines are applied to site $j$ and the right line is applied to site $j+1$.
-\ethan{I am in favor of writing the Hamiltonian like this, with the understanding that when we draw pictures and stuff, we are modding out by fermion slides and that the spin framing is fixed so that we have the usual $C_2$ diagrammatic manipulations. We can talk about $\alpha(e)$ stuff and edge terms to implement endos etc, but I think we probably shouldn't}
+%\ethan{I am in favor of writing the Hamiltonian like this, with the understanding that when we draw pictures and stuff, we are modding out by fermion slides and that the spin framing is fixed so that we have the usual $C_2$ diagrammatic manipulations. We can talk about $\alpha(e)$ stuff and edge terms to implement endos etc, but I think we probably shouldn't}
 
 To study the Kitaev wire in its topological phase, we will work in the completely staggered limit, where
 the inter-site terms $H_{2j+1}$ dominate and the intra-site terms $H_{2j}$ are absent\footnote{Physically, this corresponds to tuning the chemical potential to zero and the 
@@ -158,13 +177,21 @@ H_{\rm staggered} = - \sum_{j=1}^{n-1}\; \frac{1}{2} \left( \Id_{\text{\; site $
 where we have set the hopping strength to $1$ for simplicity. Note that in this form, the Hamiltonian 
 is a projector. 
 In this limit the wire is in the topological phase and there are two zero-energy ground states, differing by their fermion parity:
-%\dave{Maybe we should also change basis so that we see that the wave function is a coherent sum over all parity even (odd) states.}
 \begin{align} \label{kitaev_wire_ground_states}
 \Psi_e = \;\StaggaredGSEven \; \cdots \; \StaggaredGSEvenR\;, 
 \qquad \text{and} \qquad 
-\Psi_o =\; \StaggaredGSOdd \; \cdots  \; \StaggaredGSEvenR.
+\Psi_o =\; \StaggaredGSOdd \; \cdots  \; \StaggaredGSEvenR\;.
 \end{align}
-To better understand these wavefunctions, we can perform a change of basis by applying $F$-moves to 
+
+A nice feature of this diagrammatic notation is that the ``delocalization" of the fermion number in the topological phase of the 
+Kitaev wire is made manifest.
+For example, the fermion in the odd-parity state $\Psi_o$ is not localized: it is free to slide along the bottom $\beta$ line
+from one end of the chain to the other (with the sliding being implemented through the odd elements in $\End(\beta)$, or in the context of \eqref{strand_decomp} by the use of the modified tensor product $\tp_{\cliff_1}$).
+
+%At first glance ... in terms of Hilbert spaces, since each physical site carries a Hilbert space of $\cc^{1|1}$, for a chain with $n$ physical sites we have the naive Hilbert space $\mch \cong \cliff_1^{\otimes n}$, which is far bigger than the total ground state space $\cc^{1|1}$ generated by the vectors $\Psi_e$ and $\Psi_o$. 
+%... we are actually using the tensor product $\tp_{\cliff_1}$, so that in fact the degrees of freedom are $\cliff_1 \tp_{\cliff_1}  \dots \tp_{\cliff_1} \cliff_1 \cong \cliff_1$. 
+
+To better understand the wavefunctions $\Psi_e,\Psi_o$, we can perform a change of basis by applying $F$-moves to 
 each cup-cap pair with the $F$-move \eqref{cupcap_fmove}. 
 On a Kitaev wire with $n$ physical sites, we have
 \be \Psi_e = \frac{1}{d^{n-1}} \bigotimes_{i=1}^n (-A^4)^{n_f/2} \sum_{\{v_i\}}  v_i,\ee
@@ -177,17 +204,13 @@ in the tensor product.
 From the expressions for $\Psi_e,\Psi_o$ in this basis, we see that they are given by configurations 
 that are coherent sums over all fermion parity even and fermion parity odd states, respectively.  
 
+%\ethan{talk about KW duality here?}
+
 Note that the fermion dot appearing in $\Psi_o$ has zero energy, while this is not true for fermion dots 
-on the interior intermediate cups.
+appearing on the interior intermediate cups.
 Physically, this implies the presence of two Majorana zero modes, which are identified with the $\beta$ 
 lines $a_1,a_N$ at the ends of the chain which are not acted on by the staggered Hamiltonian \eqref{staggered_H}. 
 Excited states are easily constructed by putting dots on the intermediate cups. 
-
-A nice feature of our diagrammatic notation is that the ``delocalization" of the fermion number in the topological phase of the 
-Kitaev wire is made manifest.
-For example, the fermion in the odd-parity state $\Psi_o$ is not localized: it is free to slide along the bottom $\beta$ line
-from one end of the chain to the other (with the sliding being implemented through the odd elements in $\End(\beta)$
-as usual).
 
 If we instead consider the Kitaev chain on a circle, the wavefunctions can be found in a similar manner, 
 namely by computing partition functions of the form $Z(S^1_X;v_0,v_1)$, where $X\in\{B,N\}$
@@ -199,7 +222,14 @@ forms a closed loop below the series of $\beta$ cups.
 In this case, the fermion parity of the wavefunction is uniquely determined by the spin structure, being 
 even for $S^1_B$ and odd for $S^1_N$, which can be verified using the graphical calculus for the 
 $C_2$ theory. For both spin structures, the ground state is unique. 
-The odd-parity $S^1_N$ wavefunction hosts a single fermion dot on the lower circular $\beta$ line, 
+We write the wavefunctions on the $B$ and $N$ sectors as \ethan{modify this so that the big legs on the ends are chopped off and an appropriate $(-1)^F$ operator is inserted to be the branch cut on the non-bounding wavefunction}
+\begin{align} \label{kitaev_wire_circle_ground_states}
+\Psi_B = \cdots\;\StaggaredGSEven \; \cdots \; \StaggaredGSEvenR\; \cdots, 
+\qquad \qquad 
+\Psi_N =\cdots\; \; \StaggaredGSOdd \; \cdots  \; \StaggaredGSEvenR \; \cdots,
+\end{align}
+where the ??? operator inserted in the $\Psi_N$ wavefunction is the branch cut needed to account for the non-bounding spin structure. 
+The odd-parity $\Psi_N$ wavefunction hosts a single fermion dot on the lower circular $\beta$ line, 
 and the delocalization of fermion parity is again manifest, as the exact location of the fermion dot 
 is arbitrary. 
 
@@ -210,7 +240,7 @@ indices (which are also drawn from the label set $\{\unit, \beta\}$).
 In the MPS formalism, a vertex on which the leg labeled $a_i$ is attached 
 to is associated with a matrix $A^{a_i}_{xy}$, where $x,y$ are virtual indices. 
 The $A^{a_i}$ matrices can be determined from the shadow world approach 
-discussed above, and in this case are given by the structure constants of $\cliff_1$ \cite{turzillo2016}. 
+discussed above, and in this case are given by the structure constants of $\cliffiff_1$ \cite{turzillo2016}. 
 Wavefunctions are then constructed by contracting the virtual indices following the 
 shadow world prescription. To construct a wavefunction $|\Psi\rangle$ we need to compute 
 partition functions of the form $Z(M;\emptyset,v_1)$, where $\emptyset$ denotes 
@@ -225,15 +255,22 @@ if the Kitaev wire is defined over an interval or on $S^1_B$, and
  \end{align}
 if the wire is defined on $S^1_N$. 
 This is the presentation of the wavefunctions used in the tensor network community, 
-and agrees with the results of \cite{turzillo2016,bultinck2017b}. \ethan{other references?}
+and agrees with the results of \cite{turzillo2016,bultinck2017b}. 
+The graphical depiction of these states is given by the $\Psi_B,\Psi_N$ appearing in \eqref{kitaev_wire_circle_ground_states}. 
 
-\ethan{for some reason I can't write this well---maybe Dave can do better}
+\begin{figure}
+\centering
+\includegraphics{box_beta_loop.pdf}
+\caption{ \label{box_beta_loop} A sketch of the setup used when considering a shadow world construction which hosts a closed $\beta$ loop on its surface. Restricting the theory to the submanifold defined by this loop produces a result equivalent to the Kitaev wire. \ethan{dave may want to redo}}
+\end{figure}
+
 This $(1+1)$-dimensional example sheds some light on the $(2+1)$-dimensional examples 
-considered in the majority of the paper. For example, in the simple case of the $C_2$ theory, 
+considered in the majority of the paper. 
+For example, in the simple case of the $C_2$ theory, it allows us to make the observation that
 $\beta$ strings are equivalent to fluctuating Kitaev chains in their topological phase. 
 We can see this by considering a state in the $C_2$ theory constructed 
-from the shadow world approach with $v_0 = \emptyset$ and $v_1$ a state 
-with a single $\beta$ loop which inherits spin structure $X$. 
+from the shadow world approach described in the previous section with $v_0 = \emptyset$ and $v_1$ a state 
+with a single closed $\beta$ loop which inherits spin structure $X$, see Figure \ref{box_beta_loop}.
 The degrees of freedom in this state are the same as 
 the degrees of freedom in the Kitaev chain constructed over $S^1_X$, 
 where we identify each vertex Hilbert space with a pair $a_{2j}\tp a_{2j+1}$ of Majoranna
@@ -260,7 +297,7 @@ However, we have seen examples of theories in which q-type strings do not behave
 In such theories (like the $SO(3)_6$ and $\halfesix$ examples considered earlier), two q-type
 strings can fuse to a q-type string, and two m-type strings can fuse to a q-type. 
 If all open q-type strings hosted Majorana zero modes at their ends, such fusion rules would 
-be disallowed, since the number of Majorana zero modes must be preserved modulo 2. \ethan{do we even want to mention the above paragraph? More importantly, is it correct? Dave probably knows this best}
+be disallowed, since the number of Majorana zero modes must be preserved modulo 2.
 
 %When transforming back to the original basis, one sees that the state is actually an even superposition of all possible placements of an even number of fermions, similarly for the odd state.
 
