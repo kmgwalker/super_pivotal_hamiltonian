@@ -2030,7 +2030,76 @@ END OF OLD STUFF
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The shadow world and ground state wave functions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\dave{This section may be distracting without actually flushing out some of the text/comments.}
+
+In this subsection we construct a tensor network that produces the ground state wave function of the 
+Hamiltonian defined in Section \ref{Super_pivotal_Hamiltonian}.
+\kw{Should we also mention the corresponding state sum in this first paragraph?}
+In a nutshell, the idea is to apply the general tensor network construction of the previous subsection to the spin 3-manifold
+$\Sigma\times I$, where $\Sigma$ is the spin surface which hosts the Hamiltonian.
+
+Recall that the big Hilbert space for the Hamiltonian is
+\begin{align}
+	\mch_\mcg =\bigotimes_{v \in \mcv} \mch_v.
+\end{align}
+where $\mch_v $ is defined to be $\bigoplus_{a,b,c} V^{abc}$ if all edges point away from the vertex, 
+with similar definitions in the case of other edge orientation arrangements.
+If a basis vector of $\mch_\mcg$ satisfies edge label compatibility for all adjacent pairs of vertices
+(equivalently, the basis vector lies in the ground state of the vertex term of the Hamiltonian),
+then it can be interpreted as defining a string net on $\Sigma$.
+A wave function (not ``the" wave function unless the ground state is 1-dimensional) $w$ assigns a weight $w(v)$ to each such basis vector $v$,
+in such a way that if $\sum_i c_i v_i$ is equal to zero in $A(\Sigma)$, then $\sum_i c_i w(v_i) = 0$.
+For basis vectors $v$ which violate edge label compatibility, we have $w(v) = 0$.
+
+Given a string net $g$ on $\Sigma$, we can define a wave function $w_g$ via
+\be  \label{wfg-def}
+	w_g(v) = Z(\Sigma\times I)(\bar g \cup v) .
+\ee
+In other words, we evaluate the path integral $Z(\Sigma\times I)$ with boundary condition $\bar g$ on $\Sigma\times\{0\} \cong -\Sigma$
+and boundary condition $v$ on $\Sigma\times\{1\} \cong \Sigma$.
+(Recall that $\bar g$ is the reflected version of the string net $g$ on the orientation-reversed surface $-\Sigma$.)
+Note that as $g$ runs through a basis of $A(\Sigma)$, $w_g$ runs through a basis of the wave functions for the ground state of the Hamiltonian.
+
+Our task now reduces to using the techniques of the previous subsection to construct a tensor network which evaluates the RHS of \eqref{wfg-def}.
+
+\medskip
+
+First we must specify a handle decomposition of $\Sigma\times I$.
+Let $G'$ be the cell decomposition of $\Sigma$ corresponding to $\mch_\mcg$, and let $G''$ be cell decomposition of $\Sigma$ underlying
+the input string net $g$.
+(In practice, $G'$ will be as fine a lattice as our computer can handle, while $G''$ will be as simple as possible
+subject to the constraint that $g$ can represent a basis of $A(\Sigma)$.)
+We stipulate that $G'$ and $G''$ are transverse.
+We define 1-skeleton of $G$ to be the union of the 1-skeletons of $G'$ and $G''$.
+The cell decomposition $G$ has three types of vertices: vertices of $G'$ (which we will assume are 3-valent),
+vertices of $G''$ (which we also assume are 3-valent), and vertices corresponding to the points of $G'\cap G''$, which
+are 4-valent.
+\kw{need figure for above}
+
+Our handle decomposition for $\Sigma\times I$ will be a thickened version of $G$.
+We have a 0-handle for each vertex of $G$, a 1-handle for each edge of $G$, and a 2-handle for each 2-cell of $G$.
+There are no 3-handles.
+Figure xxxx illustrates this handle decomposition, and also shows how the string nets
+$v$ and $\bar g$ are situated on its boundary.
+
+\kwsep
+
+Still to do:
+\begin{itemize}
+\item standardization or tetrahedra
+\item operator version?? (if no, need to incorporate weights for 2- and 3-handles which straddle boundary)
+\item if operator, explain why hermetian
+\item say that resulting state sum is basically the ``shadow world"
+\item what else?
+\end{itemize}
+
+
+
+
+
+
+\kwsep
+
+
 
 \dave{3-cell weights on the slab tensor network.}
 
