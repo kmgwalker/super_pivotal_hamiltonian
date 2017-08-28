@@ -43,50 +43,75 @@ pieces back together.
 %The Hamiltonian turns out to be a limiting case of the Kitaev wire, the zero correlation length limit.
 We first note that the vector space associated to a single interval $I$ of $\beta$ strand can be written graphically as 
 \be\label{VIbetabeta}
- V(I;\beta,\beta) = \cc \left[ \halfchain\;, \; \halfchaindot \right].\ee
-When we glue the end points of two $\beta$ strands into a single strand, 
-we must do the gluing with the proper choice 
-of tensor product to ensure that we don't produce any extra degrees of freedom. 
-This is accomplished using the relative tensor product discussed in Section \ref{modified_tensor_product}, 
-and ensures that
+ V(I;\beta,\beta) = \cc \left[ \halfchain\;, \; \halfchaindot \right] = \cc^{1|1}.\ee
+ 
+ Now we can consider splitting the interval $I$ into two smaller intervals $I_1,I_2$, such that $I_1\cup I_2 = I$.
+ We then can reconstruct the vector space $V(I;\beta,\beta)$ from the vector 
+ spaces $V(I_1;\beta,\beta),V(I_2;\beta,\beta)$ by gluing the two intervals $I_1,I_2$ together. 
+Algebraically, this gluing is implemented by the tensor product. However, 
+we must be sure to make the proper choice 
+of tensor product to ensure that we don't produce any extra degrees of freedom during the gluing. 
+The standard tensor product $\tp_\cc$ doesn't work, since then $V(I_1;\beta,\beta) \tp_\cc V(I_2;\beta,\beta) \cong \cliff_2 \not\cong V(I;\beta,\beta)$. 
+
+The correct tensor product to use is the relative tensor product $\tp_{\End(\beta)}$ (a.k.a $\tp_{\cliff_1}$) discussed at length in Section \ref{modified_tensor_product}. 
+With this tensor product, we (rather trivially) have 
 %We thus can write 
-\be V(I;\beta,\beta) \cong V(I;\beta,\beta) \tp_{\End(\beta)} V(I;\beta,\beta).\ee
-Recall the relative tensor product $\tp_{\End(\beta)}$ (a.k.a $\tp_{\cliff_1}$) is needed to mod out by local relations involving the sliding of fermions along $\beta$ lines, 
-as was discussed at length in Section \ref{modified_tensor_product}. 
+\be V(I;\beta,\beta) \cong V(I_1;\beta,\beta) \tp_{\End(\beta)} V(I_2;\beta,\beta),\ee
+which tells us how to split apart the $I$ interval correctly. 
+
+Graphically, the relative tensor product $\tp_{\End(\beta)}$  is needed to mod out by local relations involving the sliding of fermions along $\beta$ lines, 
+as was discussed Section \ref{modified_tensor_product}. 
 %where the relative tensor product $\tp_{\End(\beta)}$ (a.k.a $\tp_{\cliff_1}$) is needed to mod out by local relations involving the sliding of fermions along $\beta$ lines, 
 %as was discussed at length in Section \ref{modified_tensor_product}. 
-Graphically, utilizing $\tp_{\cliff_1}$ is equivalent to performing the regular tensor product $\tp_\cc$ and modding out by the equivalence relations
+Utilizing $\tp_{\cliff_1}$ is equivalent to performing the regular tensor product $\tp_\cc$ and modding out by the equivalence relations
 \be
 \label{graphical_equiv_reln} 
 \halfchain \tp_\cc \halfchaindot \; =\; \halfchaindot \tp_\cc \halfchain\; \quad \quad \text{and} \quad \quad 
-\halfchaindot \tp_{\cc} \halfchaindot \;  = -\lambda\; \halfchain \tp_{\cc}  \halfchain,
+\halfchaindot \tp_{\cc} \halfchaindot \;  = -A^4\; \halfchain \tp_{\cc}  \halfchain,
 \ee 
-where we have assumed a left-to-right Koszul ordering (in the notation of Table \ref{C2_data_table} we $\lambda = A^4$).
+where we have assumed a Koszul ordering for the fermions which increases from left to right (see Table \ref{C2_data_table} for the origin of the phase $A^4$).
 %\be
 % \horizbeta \tp_\cc \horizbetadot  \sim  \horizbeta \tp_\cc \horizbeta\;.
 %\ee
 
 As we did with the string-net Hamiltonian in Section \ref{Super_pivotal_Hamiltonian}, 
-we can impliment these equivalence relations via a Hamiltonian.
-The local Hilbert space is given by \eqref{VIbetabeta}, 
-which for convenience we write as, 
+we can implement these equivalence relations energetically, via an appropriately defined Hamiltonian.
+
+Consider an interval $I$ of $\beta$ string cut into $N$ segments: $I = I_1\cup I_2\cup\dots\cup I_N$.
+Each segment $I_i$ will end up mapping to a single physical site in the Kitaev chain. 
+The local Hilbert space at each $I_i$ segment is given by \eqref{VIbetabeta}, 
+which for convenience we draw slightly differently as
 \begin{align}
-V(I, \beta, \beta) = \cc \left[ \LocalHilba, \LocalHilbb \right].
+V(I_i; \beta, \beta) = \cc \left[ \LocalHilba, \LocalHilbb \right].
 \end{align}
-The total Hilbert space of the chain is given by,
+The upward-curved ends on each $\beta$ segment are drawn purely for aesthetic purposes, and exist solely to make drawing the Kitaev chain slightly easier. 
+
+The total Hilbert space of the chain is given by tensoring each local Hilbert space together:
 \begin{align} 
 \label{HilbInterval}
-\mch_I  = V(I, \beta, \beta)  \tp V(I, \beta, \beta)  \tp \cdots \tp V(I, \beta, \beta) 
+\mch_I  = V(I_1; \beta, \beta)  \tp_\cc V(I_2; \beta, \beta)  \tp_\cc \cdots \tp_\cc V(I_N; \beta, \beta).  
 \end{align} 
-The projector that mods out by the equivalence relations \eqref{graphical_equiv_reln}, 
-is given by 
+However, this Hilbert space is too large, since we have not yet modded out by the equivalence relations \eqref{graphical_equiv_reln}. 
+Instead of using the relative tensor product to do this, we can make use of the projectors
+%The projector that mods out by the equivalence relations \eqref{graphical_equiv_reln}, 
+%is given by 
 \begin{align} 
-H = \frac{1}{2} \left(  \KitHama -  \KitHamb \right).
+H_i = \frac{1}{2} \left(  \KitHama -  \KitHamb \right),
 \end{align}
-It couples together the nearest neighbour sites in $V(I, \beta, \beta)  \tp V(I, \beta, \beta)$ by straddling int he junction.
+which couple together the nearest neighbor endpoints of strings in $V(I_i; \beta, \beta)$ and $V(I_{i+1}; \beta, \beta)$.
+The image of this projector on a pair of adjacent string endpoints is 
+\begin{align} 
+\quarterpiper \tp_\cc \quarterpipel + \quarterpiperdot \tp_\cc \quarterpipeldot = \halfchain \tp_{\End(\beta)} \halfchain,
+\end{align}
+so that using $\tp_\cc$ and projecting with $H$ is equivalent to using $\tp_{\End(\beta)}$ (in Section \ref{Super_pivotal_Hamiltonian}, the $(1-D_e)$ term played the role of $H$). 
+
+Thus, $H$ is responsible for gluing together ends of $\beta$ strands. 
+As the notation suggests, $H$ is the Hamiltonian for the Kitaev wire. In what follows, we will see how this comes about from a slightly more concrete point of view. 
 
 
 
+\begin{comment}
+%some unused equations 
 %Modding out by these equivalence relations in Equation \eqref{graphical_equiv_reln} can also be done by taking the outer tensor product of $V(I, \beta, \beta)$ but require that the vectors are invaraint under a particular idempotent 
 
 %\dave{had to go, will come back to this later this afternoon.}
@@ -98,6 +123,7 @@ It couples together the nearest neighbour sites in $V(I, \beta, \beta)  \tp V(I,
 %%%%%%
 
 
+\begin{comment}
 \begin{align}
 \halfchain\halfchain = \halfchain \tp_{\End(\beta)} \halfchain
 \end{align}
@@ -146,8 +172,10 @@ One finds the local Hilbert space is generated by even and odd cups,
 %%%%%%
 %%%%%%
 %%%%%%
+\end{comment}
 
 
+\begin{comment}
 \subsection{\dave{Old section}}
 \dave{Going to re-organize some things.}
 
@@ -229,8 +257,13 @@ Modding out by this equivalence relation is needed to ensure that both sides of 
 \ethan{how about something like this, perhaps with equations:}
 The equivalence relation \eqref{graphical_equiv_reln} can be enforced energetically by adding an operator 
 to the Hamiltonian which maps the LHS of \eqref{graphical_equiv_reln} to the RHS and vice versa. 
-In what follows, we will see that the Hamiltonian constructed in this way is precisely the Hamiltonian of the Kitaev chain. 
+In what follows, we will see that the Hamiltonian constructed in this way is precisely the Hamiltonian of the Kitaev chain.
 
+%%%%%%%%%%%% 
+\end{comment}
+
+
+\ethan{I still think the following picture and the one after are helpful for deriving what the ground state wfs look like, and that they offer a complimentary perspective to the `cut and glue' approach above. }
 %Now for the actual construction of the Kitaev chain. 
 We define the Kitaev chain as a anyon chain on a one-dimensional manifold, which we can take to be 
 either $M = I$, $M= S^1_B$, or $M = S^1_N$, 
@@ -260,7 +293,8 @@ So that we could set the boundary of the interval to have charge $b_0$ and $b_{N
 %and we will freely use 
 %the graphical calculus of the $C_2$ theory throughout.  
 %We will see that the $\beta$ object plays the role of a Majorana fermion in the Kitaev wire. 
-Each tail $a_i$ corresponds to a marked boundary point in one of the squares appearing on the RHS of \eqref{strand_decomp}. 
+In the language of our earlier discussion, each tail $a_i$ corresponds to the end of a strand $I_i$ in the 
+decomposition \eqref{HilbInterval}. 
 
 For constructing ground-state wavefunctions, we need to compute partition functions on the 2-manifold 
 $I\times [0,1]$ (this is the familiar procedure of constructing states by path-integrating forward from $\tau=-\infty$ in Euclidean time). 
@@ -282,7 +316,7 @@ by path-integrating forward in Euclidean time from the vacuum state.
 
 Physically, each pair of adjacent tensor factors $a_i\tp a_{i+1}$ forms the Hilbert space of a single 
 site in the physical superconductor, so that our $N$-legged chain maps to a superconductor 
-with $n=N/2$ physical sites (each physical site constitutes one of the tensor factors on the RHS of \eqref{strand_decomp}). The degree of freedom living on the $n$th physical site is thus $a_{2n-1}\tp a_{2n}$.  
+with $n=N/2$ physical sites (each physical site constitutes one of the tensor factors on the RHS of \eqref{HilbInterval}). The degree of freedom living on the $n$th physical site is thus $a_{2n-1}\tp a_{2n}$.  
 This association is just the familiar re-writing of a single electronic degree 
 of freedom in terms of two Majorana degrees of freedom. 
 The local Hilbert space at a given physical site (e.g, at a pair of edges $a_i\tp a_{i+1}$) is $\cc^{1|1}$, and is spanned by the two basis vectors $v_e$ and $v_o$, where
@@ -367,7 +401,7 @@ In this limit the wire is in the topological phase and there are two zero-energy
 A nice feature of this diagrammatic notation is that the ``delocalization" of the fermion number in the topological phase of the 
 Kitaev wire is made manifest.
 For example, the fermion in the odd-parity state $\Psi_o$ is not localized: it is free to slide along the bottom $\beta$ line
-from one end of the chain to the other (with the sliding being implemented through the odd elements in $\End(\beta)$, or in the context of \eqref{strand_decomp} by the use of the modified tensor product $\tp_{\cliff_1}$).
+from one end of the chain to the other (with the sliding being implemented through the odd elements in $\End(\beta)$, or in the context of \eqref{graphical_equiv_reln} by the use of the modified tensor product $\tp_{\cliff_1}$).
 
 %At first glance ... in terms of Hilbert spaces, since each physical site carries a Hilbert space of $\cc^{1|1}$, for a chain with $n$ physical sites we have the naive Hilbert space $\mch \cong \cliff_1^{\otimes n}$, which is far bigger than the total ground state space $\cc^{1|1}$ generated by the vectors $\Psi_e$ and $\Psi_o$. 
 %... we are actually using the tensor product $\tp_{\cliff_1}$, so that in fact the degrees of freedom are $\cliff_1 \tp_{\cliff_1}  \dots \tp_{\cliff_1} \cliff_1 \cong \cliff_1$. 
