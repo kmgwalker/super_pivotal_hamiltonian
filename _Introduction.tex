@@ -49,7 +49,10 @@ non-trivial fermionic phase closely related to the Ising theory.
 There has also been some recent work in the math community \cite{usher2016,brundan2016,bruillard2017,bonderson2017} 
 devoted to studying the formal category-theoretic description of fermionic topological phases and spin-TQFTs. 
 
-Intimately related to the description of fermionic topological phases is the concept of fermion condensation, \ethan{what about this:}
+Intimately related to the description of fermionic topological phases is the concept of fermion condensation, 
+\ethan{what about this:}
+\kw{I googled for ``local particle" and did not come across that term being used in this sense (though perhaps I missed something).
+I think we should avoid coining new terminology for old concepts.}
 whereby one passes to a phase in which the emergent (anyonic) fermions have become 
 local particles (meaning that they can be created and destroyed locally). 
 \davex{I think the locality part is confusing. 
@@ -116,14 +119,14 @@ on which $\psi$ worldlines are allowed to end.
 %I would lean toward continuing with this terminology and not referring to simple objects of $\mcc$ as quasiparticles (the only `physical' particles we talk about in this paper are those of the string-net models, which all live in $\tube(...)$).
 %}
 %\ethan{are these comments still relevant? There are very few uses of `quasiparticle' and `anyon' left, and I think they are all used in the context of heuristicy physical statements} 
-\kwx{to do: make sure ``anyon" etc is used consistently in intro (perhaps this has already been addressed}
+%\kwx{to do: make sure ``anyon" etc is used consistently in intro (perhaps this has already been addressed}
 
 An important difference between fermionic topological phases and their bosonic counterparts is that 
 the former possesses two distinct classes of simple objects (or anyons). 
 One class of simple objects, which we refer to as ``m-type'' objects, are identical in character
 to the simple objects found in bosonic theories. 
-The other class of objects, dubbed ``q-type'' objects, have no bosonic analogues. 
-From a formal perspective, they are distinguished by their nontrivial endomorphism algebras---if 
+The other class of objects, which we call ``q-type'' objects, have no bosonic analogues. 
+From a formal perspective, they are distinguished by their nontrivial endomorphism algebras -- if 
 $a$ is a q-type simple object, then $\End(a) \cong \cliff_1$, the first complex Clifford algebra. 
 From a physical point of view, these can be thought of as ``Majorana objects'', which have the ability 
 to ``absorb'' fermions. 
@@ -151,8 +154,9 @@ the pivotal structure of the theory is changed to account for the presence of fe
 We should stress that all of the constructions we employ in this paper are mathematically well-defined and 
 self-contained, independent of their physical interpretations. 
 Most of the paper uses techniques from category theory, TQFTs and string nets to construct what one
-might call fermionic Turaev-Viro theory, and this paper is mostly about fermionic TQFTs from this perspective, 
-rather than studying the ground states of Hamiltonians. 
+might call fermionic Turaev-Viro theory.
+This paper is mostly about fermionic TQFTs from this perspective, 
+rather than ground states of Hamiltonians. 
 Indeed, not until near the end of the paper do we define a fermionic Levin-Wen style Hamiltonian whose ground states coincide with 
 the Hilbert spaces of this TQFT.
 Foreshadowing the introduction of this Hamiltonian, we will, throughout the paper, talk about physical notions like ``excitations", ``ground state degeneracies", 
@@ -162,12 +166,15 @@ We emphasize that the Hamiltonian point of view is optional; most of the paper c
 in the self-contained world of (fermionic) string-net TQFTs.
 
 In order to examine the quasiparticle excitation spectrum of fermionic phases, 
-we use the tube category construction \cite{ocneanu1994}\footnote{Again, it is technically imprecise to call the objects 
-of the tube category ``excitations'' until after we have carefully defined a Hamiltonian.}.
-The construction of the tube category is modified for fermionic theories, and produces a theory
-equivalent to a fermionic version of Drinfeld center of the input category.
-\davex{Should we mention Drinfeld center here? I thought there was some things to flesh out (also we only mention bosonic Drinfeld centers in the paper)
-We could replace Drinfeld Center with Turaev Viro TQFT, or something akin to that.}
+we use the tube category construction \cite{ocneanu1994},\footnote{
+Again, it is technically imprecise to call the objects of the tube category ``excitations'' until after we have carefully defined a Hamiltonian.}
+which is closely related to the Drinfeld center.
+\kw{new material near here}
+In the fermionic context, we must modify the tube category construction to take into account different spin structures on the circle.
+%The construction of the tube category is modified for fermionic theories, and produces a theory
+%equivalent to a fermionic version of Drinfeld center of the input category.
+%\davex{Should we mention Drinfeld center here? I thought there was some things to flesh out (also we only mention bosonic Drinfeld centers in the paper)
+%We could replace Drinfeld Center with Turaev Viro TQFT, or something akin to that.}
 For bosonic theories we have the isomorphism $\tube(\mcc)\cong\mcc\times\overline{\mcc}$ \cite{muger2003b} if $\mcc$ is modular, where $\overline{\mcc}$ denotes the opposite category of $\mcc$.
 We prove a fermionic version of this isomorphism, namely that 
 if $\mcc$ is modular then 
@@ -177,17 +184,18 @@ if $\mcc$ is modular then
 In terms of Drinfeld centers, this can be read as $\mcz(\mcc / \psi)\cong \mcz(\mcc)/\psi$, where on the right-hand side, 
 $\psi$ represents an embedding of $\psi$ into $\mcz(\mcc)$.
 \ethanx{may want to avoid reference to Drinfeld centers}
+\kw{I agree: drop last sentence}
 
-
-Because quasiparticle excitations are supported on circular boundary components of the ambient 
-manifold on which the theory is defined, there are two distinct classes of quasiparticles (a.k.a.\ objects in the tube category) in 
+Because quasiparticle excitations are associated to circular boundary components of the ambient 
+manifold on which the theory is defined, there are two distinct classes of quasiparticles (a.k.a.\ representations of the tube category) in 
 fermionic theories: those with anti-periodic fermion boundary conditions around the circle, and 
 those with periodic boundary conditions. 
-Thus, the tubes in the tube category come equipped with spin structures, which gives the tube category a $\zt$ grading
+The tubes in the tube category come equipped with spin structures, which gives the tube category a $\zt$ grading
 and separates the quasiparticle spectrum in to vortex quasiparticles (those which bind spin structure defects) 
 and non-vortex quasiparticles (which are similar in character to the quasiparticles present in bosonic theories). 
 
-The analysis of things related to the tube category like modular transformations, braiding statistics, and the computation of ground state degeneracies on various spin surfaces
+The analysis of things related to the tube category, 
+like modular transformations, braiding statistics, and the computation of ground state degeneracies on various spin surfaces,
 is also modified in the fermionic setting.  
 The behavior of the $S$ and $T$ modular transformations on the torus depends on the spin structure of the torus in question, and 
 certain relations like $(ST)^3 = \id$ are modified in the fermionic setting, becoming 
@@ -207,11 +215,11 @@ are realized as violations of this edge term, and are linearly confined.
 Finally, we show how to construct a tensor network which produces the ground state 
 wavefunction of our lattice Hamiltonian. We do this using a cut-and-glue approach to 
 the construction of the Turaev-Viro-Barrett-Westbury state sum, which allows us to write the bosonic partition function
-as a tensor contraction. We then show how to modify the tensors 
-and the way we contract them in order to obtain a fermionic version of the TVBW state sum.  
+as a tensor contraction. 
+We then show how to modify this construction in order to obtain a fermionic version of the TVBW state sum
+and a corresponding fermionic tensor network.  
 
-A series of several in-depth examples occupy a large portion 
-of this paper.
+A series of in-depth examples occupies a large portion of this paper.
 Our presentation is characterized by an emphasis on examples, 
 and we often save formal definitions and more general statements 
 for later sections after relevant examples have been presented.  
@@ -220,16 +228,19 @@ and we stress that the more general sections are intended as a supplement
 to the example sections; they are not stand-alone.
 %We also note that a more mathematical presentation of this work will appear in \cite{Kevin and scott's paper?}. 
 
-\kw{Proposed addition; not essential}
-\ethan{I like it}
-\davex{Me as well.}
+%\kw{Proposed addition; not essential}
+%\ethan{I like it}
+%\davex{Me as well.}
 In several places in the paper we make use of a fermionic version of a Turaev-Viro type 2+1-dimensional TQFT.
 Constructing this TQFT using the techniques of \cite{Walker2006} is straightforward -- one simply replaces oriented manifolds with
 spin manifolds and allows for the possibility of non-trivial endomorphism algebras of minimal idempotents.
 In the interest of not further increasing the length of this paper, we have not repeated details found in
 \cite{Walker2006} here.
 
-Due to the length of this paper, we will quickly give a summary of its contents.
+\medskip
+
+%Due to the length of this paper, we will quickly give a summary of its contents.
+We now give a quick section-by-section summary of the paper.
 Much of the content of Section \ref{C2_condense_sect} was presented at \cite{Walker2013} in July 2013,
 and many of the ideas contained in Sections \ref{C2excitations}, \ref{C2_fusion_rules}, and \ref{Super_pivotal_Hamiltonian} were presented at \cite{Walker2014} and again
 at \cite{Walker2015}.
@@ -241,15 +252,16 @@ here we examine it in greater detail.
 In Section \ref{C2_condense_sect} we review the Ising TQFT, describe how to perform the 
 fermion condensation, and write down the local string-net rules in the condensed theory, 
 which we call the $C_2$ theory. 
-In Section \ref{C2_quasiparticles} we use a fermionic generalization of the tube category 
-construction to study the excitation spectrum of this model, compute its ground state 
-degeneracy on the torus, and study the modular transformations %and braiding data 
+In Section \ref{C2_quasiparticles} we compute the simple objects of the tube category of the $C_2$ theory,
+determine their fusion rules,
+compute the ground state degeneracy on the torus, 
+and study the modular transformations %and braiding data 
 of the theory. 
 
 In Section \ref{generalities}, we present a collection of more general results
 on the machinery of fermionic theories. 
 We show how to perform fermion condensation in more general settings
-and discuss our fermionic generalization 
+and discuss the fermionic version 
 of the tube category construction in more generality.
 We also discuss how to compute quantum dimensions and fusion rules,
 and we prove some general
@@ -274,16 +286,18 @@ and $SU(2)_6$ theories, while Section \ref{halfesix} discusses fermion condensat
 Both of these examples are more involved than the $C_2$ theory, 
 and illustrate some of the more interesting features of general fermionic topological phases. 
 
-In Section \ref{def_sect} we define and discuss super pivotal categories from a more formal point of view. 
+In Section \ref{def_sect} we discuss super pivotal categories from a more formal point of view. 
 We show how fermionic fusion spaces are constructed and tensored together, how 
 coherence relations like the pentagon identity are modified in the fermionic case, 
 and how the fermionic nature of the vector spaces used in the construction of super 
 pivotal categories affects their construction. 
+\kw{last sentence sounds odd to me.  can we be more specific?}
 
 Section \ref{Super_pivotal_Hamiltonian} is devoted to a discussion of a lattice Hamiltonian for fermionic theories, which is an extension of the Levin-Wen Hamiltonian. 
 It differs most significantly from the Levin-Wen Hamiltonian due to the presence of an edge term, which 
-is responsible for allowing fermions to fluctuate across q-type strings and the violation 
-of which produces linearly confined defects. 
+is responsible for allowing fermions to fluctuate across q-type strings.
+%and the violation of which produces linearly confined defects. 
+\kw{deleted a reference to spin defects here, since we already mentioned it earlier in the intro}
 
 We show how to construct a tensor network realizing the ground state of our lattice Hamiltonian 
 in Section \ref{state_sums}. We first review how to write the partition function of a bosonic theory 
@@ -298,7 +312,7 @@ discuss connections between the Kitaev chain and the $C_2$ theory.
 This section also provides a connection between our work 
 and recent work on fermionic topological phases in the physics community \cite{ware2016,tarantino2016,turzillo2016}. 
 \ethan{added the following:}
-The only pre-requisite for this section is a brief reading of Section \ref{C2_condense_sect}, and physically-inclined readers less interested in more general mathematical frameworks
+The only prerequisite for this section is a brief reading of Section \ref{C2_condense_sect}, and physically-inclined readers less interested in more general mathematical frameworks
 are invited to read this section after reading \ref{C2_condense_sect}. 
 
 We end with a conclusion and discussion in Section \ref{discussion}. 
@@ -342,9 +356,9 @@ most frequently used and/or least standard notation found herein.
     \scat 	& super linear category \\ \hline
     \sob(\mcc) 	& complete set of representatives of simple objects for $\mcc$ \\ \hline
 	\mor(x \to y)	& morphisms from $x$ to $y$ \\ \hline
-    \End(x)	& endomorphism algebra of the object $x$ \\ \hline
+    \End(x)	& endomorphism algebra of the object $x$; same as $\mor(x\to x)$ \\ \hline
     \cliff_1	& first complex Clifford algebra \\ \hline
-    \cc^{r|s} & Super vector space with $r$ $(s)$ even (odd) generators \\ \hline
+    \cc^{r|s} & Super vector space with even dimension $r$ and odd dimension $s$ \\ \hline
     \text{m-type}	& simple object with $\End(x)\cong \cc$ \\ \hline
     \text{q-type}	& simple object with $\End(x)\cong \cliff_1$ \\ \hline
     n_x		& $\dim\End(x)$, 1 if $x$ is m-type and 2 if $x$ is q-type \\ \hline
@@ -361,8 +375,8 @@ most frequently used and/or least standard notation found herein.
     \tube^N(\mcc)	& non-bounding tube category \\ \hline
 	\tube_{x \to y}	& morphisms from $x$ to $y$ in the tube category \\ \hline
 	B, N	& bounding, nonbounding spin structures on the circle \\ \hline
-	S^1_B	& spin circle with bounding spin structure \\ \hline
-	S^1_N	& spin circle with nonbounding spin structure \\ \hline
+	S^1_B	& spin circle with bounding (antiperiodic) spin structure \\ \hline
+	S^1_N	& spin circle with nonbounding (periodic) spin structure \\ \hline
 	\unit	& tensor unit in a tensor category; trivial object \\ \hline
 	d_a		& quantum dimension of the object $a$; loop value of $a$ \\ \hline
 	\theta_a		& twist eigenvalue of the simple object $a$ \\ \hline
