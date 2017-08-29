@@ -42,6 +42,7 @@ pieces back together.
 %physically we can impliment this constraint by taking a free tensor product and project into the ground space of a Hamiltonian implimenting that constraint. 
 %The Hamiltonian turns out to be a limiting case of the Kitaev wire, the zero correlation length limit.
 We first note that the vector space associated to a single interval $I$ of $\beta$ strand can be written graphically as 
+\dave{Did we use $V$ for any particular reason, or should it be $\mca$.}
 \be\label{VIbetabeta}
  V(I;\beta,\beta) = \cc \left[ \halfchain\;, \; \halfchaindot \right] = \cc^{1|1}.\ee
  
@@ -104,10 +105,15 @@ The image of this projector on a pair of adjacent string endpoints is
 \quarterpiper \tp_\cc \quarterpipel + \quarterpiperdot \tp_\cc \quarterpipeldot = \halfchain \tp_{\End(\beta)} \halfchain,
 \end{align}
 so that using $\tp_\cc$ and projecting with $H$ is equivalent to using $\tp_{\End(\beta)}$ (in Section \ref{Super_pivotal_Hamiltonian}, the $(1-D_e)$ term played the role of $H$). 
-
 Thus, $H$ is responsible for gluing together ends of $\beta$ strands. 
-As the notation suggests, $H$ is the Hamiltonian for the Kitaev wire. In what follows, we will see how this comes about from a slightly more concrete point of view. 
-
+In terms of electronic operators, $H_i$ is hopping and pairing electrons between nearest neighbour sites $i$ and $i+1$.
+The full Hamiltonian is,
+\begin{align}
+H = \sum_{i = 1}^{N-1} H_i
+\end{align}
+and describes the zero correlation length limit of the Kitaev chain.
+%As the notation suggests, $H$ is the Hamiltonian for the Kitaev wire. 
+In what follows, we will see how this comes about from a slightly more concrete point of view. 
 
 
 \begin{comment}
@@ -264,6 +270,10 @@ In what follows, we will see that the Hamiltonian constructed in this way is pre
 
 
 \ethan{I still think the following picture and the one after are helpful for deriving what the ground state wfs look like, and that they offer a complimentary perspective to the `cut and glue' approach above. }
+\dave{I find the starting point a little confusing. Are we talking about anyon spin chains or 1+1TQFT's?
+Can you explain to me what the point punch line is?
+I think some of the content should be kept, e.g., talking about $M = S^1_B , S^1_N$, but the stuff about writing the wavefunction using the TQFT should either be cleaned up or removed. 
+}
 %Now for the actual construction of the Kitaev chain. 
 We define the Kitaev chain as a anyon chain on a one-dimensional manifold, which we can take to be 
 either $M = I$, $M= S^1_B$, or $M = S^1_N$, 
@@ -278,7 +288,9 @@ an ambient 2-manifold (a perspective which will show its utility owards the end 
 %\ethan{I think the philosophy we had (or at least, the one I had) when we wrote this was: ``we construct the Kitaev wire from a physical point of view, not really thinking about dimensional reduction. Then we realize that it's the dimensional reduction of $C_2$ (there's a paragraph on this towards the end of the section), which lets us understand $C_2$ as a bunch of fluctuating Kitaev wires. This connects what we've been doing to other physicist's work.}
 We will specify to $M= I$ for now, and examine 
 chains whose Hilbert spaces contain $N$ tensor factors, where $N=2n$ is an even integer. 
-Vectors in $\mch(I)$ can then be written as $a_1\tp\dots\tp a_N$ where $a_i \in \{\unit,\beta\}$, and graphically 
+Vectors in $\mch(I)$ can then be written as $a_1\tp\dots\tp a_N$ where $a_i \in \{\unit,\beta\}$\dave{I don't see how this is a vector in $\mch(I)$.
+Maybe in $\mca(D^2,a_1 \tp \cdots \tp a_n)$ or something like that. 
+But then it doesn't define the vector uniquely.}, and graphically 
 they can be presented as labeled string-net diagrams of the form \footnote{We will be specializing to the case of the $C_2$ theory, and as such we can
 refrain from drawing orientations on each edge.}
 \davex{I meant at the left and right side (not down).
@@ -286,6 +298,10 @@ E.g. the chain should look like a horizontal reflection of TTTTTTTTT.
 So that we could set the boundary of the interval to have charge $b_0$ and $b_{N+1}$ for example. 
 }
 \ethan{but that's the same as what we have already, the $a_1$ and $a_N$ legs do that, right? They just point in a different direction.}
+\dave{I'm a little confused what you're going for here. 
+But if it's an interval living at the boundary of a string net then it would be natural to have strings that come off of it into the bulk of the string net, and also a boundary condition at the ends of the interval.
+If it's an anyon spin chain on an interval, it's also natural to have the boundary conditions (and distinguish them from $a_1$ and $a_N$ which look like ``physical" dof.). 
+}
 \be  \label{graphical_MPS_state}
 \mathord{\vcenter{\hbox{\includegraphics[scale=1]{kitaev_wire_cell_decomp.pdf}}}}.
 \ee
@@ -313,6 +329,7 @@ We will choose $v_0 = \unit\tp\dots\tp\unit$ to be the vector with only vacuum l
 by path-integrating forward in Euclidean time from the vacuum state. 
 % (if we had chosen $\Sigma = S^1_N$ or $S^1_B$, $v_0$ would also need to 
 %specify our choice of spin structure). 
+\dave{I don't follow the previous two paragraphs.}
 
 Physically, each pair of adjacent tensor factors $a_i\tp a_{i+1}$ forms the Hilbert space of a single 
 site in the physical superconductor, so that our $N$-legged chain maps to a superconductor 
