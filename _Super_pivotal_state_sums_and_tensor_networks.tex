@@ -2031,18 +2031,18 @@ END OF OLD STUFF
 \subsection{The shadow world and ground state wave functions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this subsection we construct a tensor network that produces the ground state wave function of the 
+In this subsection we construct a state sum and corresponding tensor network that produces the ground state wave function of the 
 Hamiltonian defined in Section \ref{Super_pivotal_Hamiltonian}.
-\kw{Should we also mention the corresponding state sum in this first paragraph?}
+%\kw{Should we also mention the corresponding state sum in this first paragraph?}
 In a nutshell, the idea is to apply the general tensor network construction of the previous subsection to the spin 3-manifold
 $\Sigma\times I$, where $\Sigma$ is the spin surface which hosts the Hamiltonian.
 
 Recall that the big Hilbert space for the Hamiltonian is
-\begin{align}
+\begin{align} \label{bhs_redef}
 	\mch_\mcg =\bigotimes_{v \in \mcv} \mch_v.
 \end{align}
 where $\mch_v $ is defined to be $\bigoplus_{a,b,c} V^{abc}$ if all edges point away from the vertex, 
-with similar definitions in the case of other edge orientation arrangements.
+with similar definitions of $\mch_v$ in the case of other edge orientation arrangements.
 If a basis vector of $\mch_\mcg$ satisfies edge label compatibility for all adjacent pairs of vertices
 (equivalently, the basis vector lies in the ground state of the vertex term of the Hamiltonian),
 then it can be interpreted as defining a string net on $\Sigma$.
@@ -2064,44 +2064,74 @@ Our task now reduces to using the techniques of the previous subsection to const
 \medskip
 
 First we must specify a handle decomposition of $\Sigma\times I$.
-Let $G'$ be the cell decomposition of $\Sigma$ corresponding to $\mch_\mcg$, and let $G''$ be cell decomposition of $\Sigma$ underlying
-the input string net $g$.
+Let $G'$ be the 1-skeleton of the cell decomposition of $\Sigma$ corresponding to $\mch_\mcg$, and let $G''$ be 1-skeleton of the
+cell decomposition of $\Sigma$ underlying the input string net $g$.
 (In practice, $G'$ will be as fine a lattice as our computer can handle, while $G''$ will be as simple as possible
 subject to the constraint that $g$ can represent a basis of $A(\Sigma)$.)
 We stipulate that $G'$ and $G''$ are transverse.
-We define 1-skeleton of $G$ to be the union of the 1-skeletons of $G'$ and $G''$.
-The cell decomposition $G$ has three types of vertices: vertices of $G'$ (which we will assume are 3-valent),
+We define $G$ to be the union of $G'$ and $G''$.
+The graph $G$ has three types of vertices: vertices of $G'$ (which we will assume are 3-valent),
 vertices of $G''$ (which we also assume are 3-valent), and vertices corresponding to the points of $G'\cap G''$, which
 are 4-valent.
 \kw{need figure for above}
 
 Our handle decomposition for $\Sigma\times I$ will be a thickened version of $G$.
-We have a 0-handle for each vertex of $G$, a 1-handle for each edge of $G$, and a 2-handle for each 2-cell of $G$.
+% (or rather, of the cell decomposition determined by $G$).
+We have a 0-handle for each vertex of $G$, a 1-handle for each edge of $G$, and a 2-handle for each 2-cell of the complement of $G$.
 There are no 3-handles.
 Figure xxxx illustrates this handle decomposition, and also shows how the string nets
 $v$ and $\bar g$ are situated on its boundary.
 
+The next step is to standardize the string nets on the boundary of each 0-handle.
+This is illustrated in Figure xxxx, for the three different types of 0-handle in our handle decomposition.
+Note that we have arranged that all three 0-handle string nets are tetrahedral.
+
+\medskip
+
+We are now in a position to apply the state sum and tensor network constructions of the previous subsection.
+The state sum turns out to be a version of the ``shadow world" state sum of \kw{[Kirillov and Reshetikhin; Turaev]}.
+In other words, the shadow world state sum is a special case of the Turaev-Viro state sum.
+\kw{perhaps write down something explicit for state sum}
+
+If we fix the (labeled) string net $\bar g$ at the outset, the tensor network has an output corresponding to \eqref{bhs_redef}.
+\kw{perhaps write down something explicit for tensor network}
+\kw{say something about PEPS?}
+
+\medskip
+
+\kw{The following is optional}
+Instead of fixing a particular input string net $g$, we could put $g$ and $v$ on more equal footings and construct
+a tensor network which computes an operator from a version of \eqref{bhs_redef} corresponding to the vertices of $g$
+to the version of \eqref{bhs_redef} corresponding to the vertices of $v$.
+In particular, we can take $G''$ to be isotopic\footnote{
+We can't take $G'' = G'$ because we require that $G'$ and $G''$ be transverse.}
+to $G'$ and compute a projection from the big Hilbert space to itself.
+This projection is, of course, the Hamiltonian of Section \ref{Super_pivotal_Hamiltonian}.
+
+There is one small technical hurdle to overcome before constructing this operator.
+Previously we adopted the convention that boundaries of 3-manifolds are contained in the 2-skeletons of cell decompositions 
+corresponding to handle decompositions.
+This is convenient for many purposes, but if we want to glue 3-manifolds along their boundaries (and perform analogous operations with
+tensor networks), then it would have been more convenient to take the boundaries to be transverse to the cell decompositions.
+In practice, this means that we must assign some additional factors of $\mcd^{-2}$ and $d_a/n_a$ to our 0-handle tensors, corresponding to
+3- and 2-cells which straddle the surface along which we are gluing 3-manifolds.
+Specifically, for each 2-cell of $G''$ we choose an adjacent 0-cell and assign a factor of $\mcd^{-2}$ to the corresponding 0-handle tensor,
+and to each 1-cell of $G''$ we choose an adjacent 0-cell and assign a factor of $d_a/n_a$ to the corresponding 0-handle tensor.
+(These 2- and 1-cells in $\Sigma$ correspond to the 3- and 2-cells which straddle the gluing surface when we glue two copies
+of $\Sigma\times I$ together.)
+
+Let $H$ denote the resulting tensor network operator.
+The fact that $(\Sigma\times I) \cup (\Sigma\times I) \cong \Sigma\times I$ implies that
+$H\circ H = H$.
+The fact that $\Sigma\times I \cong -(\Sigma\times I)$ 
+(via a homeomorphism which is the identity on the $\Sigma$ factor and reverses the $I$ factor)
+implies that $H$ is self-adjoint
+(see the end of Section \ref{reflection_ss}).
 \kwsep
 
-Still to do:
-\begin{itemize}
-\item standardization or tetrahedra
-\item operator version?? (if no, need to incorporate weights for 2- and 3-handles which straddle boundary)
-\item if operator, explain why hermetian
-\item say that resulting state sum is basically the ``shadow world"
-\item what else?
-\end{itemize}
 
 
-
-
-
-
-\kwsep
-
-
-
-\dave{3-cell weights on the slab tensor network.}
+%\dave{3-cell weights on the slab tensor network.}
 
 \ethan{some notational things still need to be updated to reflect new state-sum notation}
 
@@ -2173,7 +2203,8 @@ In order to evaluate $Z(\Sigma_{0\ra1}; v_0, v_1)$, we need to specify a cell de
 We can take the cell decomposition in the bulk of $\Sigma_{0\ra1}$ to be any cell decomposition that agrees with the cell decomposition of $\Sigma_0$ and $\Sigma_1$ when restricted to $\partial \Sigma_{0\ra1}$.
 However, there is a particularly convenient choice, which corresponds to extending the cell decomposition of $\Sigma_0$ into $\Sigma \times [0, 1/2]$, and that of $\Sigma_1$ into $\Sigma \times [1/2, 1]$, see Figure~\ref{CellDecomposition}. 
 When we do this extension, every $k$-cell in $\Sigma_0$ and $\Sigma_1$ is extended into a $(k+1)$-cell in the bulk 
-of $\Sigma_{0\ra1}$ (the $(k+1)$-cells are the `shadows' of the $k$-cells, and hence the bulk constitutes the `shadow world'\dave{never made that connection before, is that why they called it the shadow world?}). 
+of $\Sigma_{0\ra1}$ (the $(k+1)$-cells are the `shadows' of the $k$-cells, and hence the bulk constitutes the `shadow world'\dave{never made that connection before, is that why they called it the shadow world?}
+\kw{No, I don't think that's a correct etymology for ``shadow world".}). 
 It is convenient to take the two cell decompositions on $\Sigma_0$ and $\Sigma_1$ to be in `normal' position,
 meaning that the extension of $\Sigma_0$ into the bulk only intersects the extension of $\Sigma_1$ transversely along edges, again see Figure~\ref{CellDecomposition}.
 
