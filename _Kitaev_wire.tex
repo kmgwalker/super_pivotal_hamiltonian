@@ -26,50 +26,58 @@ and $\End(\beta) \cong \cliff_1$.
 %We will see that the $\beta$ object plays the role of a Majorana fermion in the Kitaev wire, with a strand 
 %of $\beta$ string being described by the physics of the Kitaev wire. 
 We will focus on the $\beta$ object in the $C_2$ 
-theory for concreteness, but our analysis works equally well on q-type objects $q$ in any theory.
+theory for concreteness, but our the analysis can be applied q-type objects $q$ in any theory.
 % that satisfy $q\tp q \cong \cc^{1|1} \unit \oplus \dots$.
 %\dave{ Probably don't need the last bit, but could say: $q\tp q^* \cong \cc^{1|1} \unit \oplus \dots$}
 
-In what follows, we will show that a single strand of $\beta$ string is a diagrammatic description for the zero correlation length limit of the Kitaev chain.
+In what follows, 
+we will show that a single strand of $\beta$ string is a diagrammatic description for the zero correlation length limit of the Kitaev chain\dave{I think Kapustin/Thorngren have a paper that mention something along these lines should probably cite them.}.
 This means that the string-net Hamiltonian in Section \ref{Super_pivotal_Hamiltonian} 
 based on the $C_2$ theory describes a phase of fluctuating Kitaev wires, 
 an idea previously investigated in \cite{tarantino2016,ware2016}.
 
-The basic idea is to cut a single $\beta$ strand into pieces and examine what must be done to glue the 
-pieces back together.
+The basic strategy is to cut a single $\beta$ strand into pieces and analyze how to glue those pieces back together to recover the uncut strand.
+Physically, we will implement the gluing by requiring the vectors to be in the ground space of a particular Hamiltonian -- similar to what we did in Section \ref{Super_pivotal_Hamiltonian}. 
+%the Hamiltonian which glues those pieces back together.
+% and examine what must be done to glue the 
+%pieces back together.
 %Versions of these sentences have been constructed elsewhere
 %Algebraically, this contraint is just $\tp_{\End(\beta)}$, 
 %physically we can impliment this constraint by taking a free tensor product and project into the ground space of a Hamiltonian implimenting that constraint. 
 %The Hamiltonian turns out to be a limiting case of the Kitaev wire, the zero correlation length limit.
-We first note that the vector space associated to a single interval $I$ of $\beta$ strand can be written graphically as 
-\dave{Did we use $V$ for any particular reason, or should it be $\mca$.} \ethan{I don't know if it ``should'' be anything, it's just a choice}
+We first note that the vector space associated to a single interval $I$ with boundary conditions labeled by $\beta$ can be written graphically as 
+\dave{Did we use $V$ for any particular reason, or should it be $\mca$.} 
+\ethan{I don't know if it ``should'' be anything, it's just a choice}
+\dave{$\mca$ seems more natural to me so lets go with that,
+ we can always change back to $V$.}
 \be\label{VIbetabeta}
- V(I;\beta,\beta) = \cc \left[ \halfchain\;, \; \halfchaindot \right] = \cc^{1|1}.\ee
+ \mca(I;\beta,\beta) = \cc \left[ \halfchain\;, \; \halfchaindot \right] = \cc^{1|1}.\ee
  
  Now we can consider splitting the interval $I$ into two smaller intervals $I_1,I_2$, such that $I_1\cup I_2 = I$.
- We then can reconstruct the vector space $V(I;\beta,\beta)$ from the vector 
- spaces $V(I_1;\beta,\beta),V(I_2;\beta,\beta)$ by gluing the two intervals $I_1,I_2$ together. 
+ We then can reconstruct the vector space $\mca(I;\beta,\beta)$ from the vector 
+ spaces $\mca(I_1;\beta,\beta),\mca(I_2;\beta,\beta)$ by gluing the two intervals $I_1,I_2$ together. 
 Algebraically, this gluing is implemented by the tensor product. However, 
 we must be sure to make the proper choice 
 of tensor product to ensure that we don't produce any extra degrees of freedom during the gluing. 
-The standard tensor product $\tp_\cc$ doesn't work, since then $V(I_1;\beta,\beta) \tp_\cc V(I_2;\beta,\beta) \cong \cliff_2 \not\cong V(I;\beta,\beta)$. 
+The standard tensor product $\tp_\cc$ doesn't work, since then $\mca(I_1;\beta,\beta) \tp_\cc \mca(I_2;\beta,\beta) \cong \cliff_2 \not\cong \mca(I;\beta,\beta)$. 
 
-The correct tensor product to use is the relative tensor product $\tp_{\End(\beta)}$ (a.k.a $\tp_{\cliff_1}$) discussed at length in Section \ref{modified_tensor_product}. 
+The correct tensor product to use is the relative tensor product $\tp_{\End(\beta)}$ (a.k.a $\tp_{\cliff_1}$) discussed in Section \ref{modified_tensor_product}. 
 With this tensor product, we (rather trivially) have 
 %We thus can write 
-\be V(I;\beta,\beta) \cong V(I_1;\beta,\beta) \tp_{\End(\beta)} V(I_2;\beta,\beta),\ee
+\be \mca(I;\beta,\beta) \cong \mca(I_1;\beta,\beta) \tp_{\End(\beta)} \mca(I_2;\beta,\beta),\ee
 which tells us how to split apart the $I$ interval correctly. 
 
 Graphically, the relative tensor product $\tp_{\End(\beta)}$  is needed to mod out by local relations involving the sliding of fermions along $\beta$ lines, 
 as was discussed Section \ref{modified_tensor_product}. 
 %where the relative tensor product $\tp_{\End(\beta)}$ (a.k.a $\tp_{\cliff_1}$) is needed to mod out by local relations involving the sliding of fermions along $\beta$ lines, 
 %as was discussed at length in Section \ref{modified_tensor_product}. 
-Utilizing $\tp_{\cliff_1}$ is equivalent to performing the regular tensor product $\tp_\cc$ and modding out by the equivalence relations
-\be
+Utilizing $\tp_{\End(\beta)}$ is equivalent to performing the regular tensor product $\tp_\cc$ and modding out by the equivalence relations
+\begin{align}
 \label{graphical_equiv_reln} 
-\halfchain \tp_\cc \halfchaindot \; =\; \halfchaindot \tp_\cc \halfchain\; \quad \quad \text{and} \quad \quad 
-\halfchaindot \tp_{\cc} \halfchaindot \;  = -A^4\; \halfchain \tp_{\cc}  \halfchain,
-\ee 
+\halfchain \tp_\cc \halfchaindot \; &=\; \halfchaindot \tp_\cc \halfchain\; \quad \quad \text{and,}\\
+\nonumber
+\halfchaindot \tp_{\cc} \halfchaindot \;  &= -A^4\; \halfchain \tp_{\cc}  \halfchain.
+\end{align}
 where we have assumed a Koszul ordering for the fermions which increases from left to right (see Table \ref{C2_data_table} for the origin of the phase $A^4$).
 %\be
 % \horizbeta \tp_\cc \horizbetadot  \sim  \horizbeta \tp_\cc \horizbeta\;.
@@ -87,22 +95,35 @@ v_e \; = \;\LocalHilba\,,\qquad v_o \; = \; \LocalHilbb\;.
 \end{align}
 The upward-curved ends on each $\beta$ segment are drawn purely for aesthetic purposes, and exist solely to make drawing the Kitaev chain slightly easier. 
 The local Hilbert space is then
+%\dave{I don't think we use the notation $\langle v_e,v_o\rangle $ anywhere else in the paper.}
 \begin{align}
-V(I_i; \beta, \beta) = \langle v_e,v_o\rangle = \cc \left[ \LocalHilba, \LocalHilbb \right].
+\mca(I_i; \beta, \beta) = \cc \left[ \LocalHilba, \LocalHilbb \right].
 \end{align}
 
 
 The total Hilbert space of the chain is given by tensoring each local Hilbert space together:
 \begin{align} 
 \label{HilbInterval}
-\mch_I  = V(I_1; \beta, \beta)  \tp_\cc V(I_2; \beta, \beta)  \tp_\cc \cdots \tp_\cc V(I_N; \beta, \beta).  
+\mch_I  = \mca(I_1; \beta, \beta)  \tp_\cc \mca(I_2; \beta, \beta)  \tp_\cc \cdots \tp_\cc \mca(I_N; \beta, \beta).  
 \end{align} 
-However, this Hilbert space is too large, since we have not yet modded out by the equivalence relations \eqref{graphical_equiv_reln}. 
+States in this Hilbert space can be denoted graphically as, 
+\begin{align}
+\quarterpiperprime \tp  \LocalHilba \tp  \LocalHilba \tp  &\cdots \tp  \LocalHilba \tp  \quarterpipelprime, \\
+\quarterpiperdotprime \tp  \LocalHilbb \tp  \LocalHilba \tp  &\cdots \tp  \LocalHilba \tp  \quarterpipelprime, \\
+\quarterpiperdotprime \tp  \LocalHilba \tp  \LocalHilbb \tp  &\cdots \tp  \LocalHilba \tp  \quarterpipelprime, \\
+&\;\; \vdots
+\end{align}
+Since we used $\tp_\cc$, we have too many states; we have not yet modded out by the equivalence relations \eqref{graphical_equiv_reln}
+%However, this Hilbert space is too large, since we have not yet modded out by the equivalence relations \eqref{graphical_equiv_reln}. 
 Instead of using the relative tensor product to do this, we can make use of the projectors
 \begin{align} \label{kitaev_chain_ham_sitei}
-H_i =  \frac{1}{2} \left( \Id_{\text{\; site $i$}} \;\; - \;\; \TwoLinedotdot_{\text{site $i$}} \right),
+H_i =  \frac{1}{2} \left( \Id \;\; + \;\; \TwoLinedotdot \right),
 \end{align}
-where the left lines are applied to right end of the $i$th strand and the right lines are applied to the left end of the $(i+1)$-th strand\footnote{Note that there are no terms that act on both the right and left ends of a single strand---the absence of such terms is because we are working in topological phase of the Kitaev chain in the completely staggered limit. Physically, this corresponds to tuning the chemical potential to zero and the 
+which are non-trivial only on the adjacent Hilbert spaces associated to the intervals $I_i$ and $I_{i+1}$.
+%where the left lines are applied to right end of the $i$th strand and the right lines are applied to the left end of the $(i+1)$-th strand
+\footnote{Note that there are no terms that act on both the right and left ends of a single strand/interval, such a term would perturb us away from the zero correlation length limit.
+%---the absence of such terms is because we are working in topological phase of the Kitaev chain in the completely staggered limit. 
+In the language of the Kitaev chain, this corresponds to tuning the chemical potential to zero and the 
 magnitude of the superconducting gap to the hopping amplitude.}.
 %\ethan{I am in favor of writing the Hamiltonian like this, with the understanding that when we draw pictures and stuff, we are modding out by fermion slides and that the spin framing is fixed so that we have the usual $C_2$ diagrammatic manipulations. We can talk about $\alpha(e)$ stuff and edge terms to implement endos etc, but I think we probably shouldn't}
 
@@ -117,25 +138,39 @@ In terms of electronic operators, $H_i$ implements hopping and pairing between e
 
 We form our Hamiltonian from a sum of $H_i$ projectors acting between each pair of strands:
 \begin{align}
-H = \sum_{i = 1}^{N-1} H_i.
+\label{KWHam}
+H = t \sum_{i = 1}^{N-1} (1- H_i).
 \end{align}
-This Hamiltonian describes the zero correlation length limit of the Kitaev chain.
+This Hamiltonian describes the zero correlation length limit of the Kitaev chain, albeit in a slightly obscurred language.
+To merger this gap, we now investigate the ground state wave functions.
+%Note that if we replace $C_2$ by an arbitrary super pivotal fusion category $\spc$, 
+%and $\beta$ by another q-type object in $\spc$, the Hamiltonian would look the same as above. 
+%It would also still have a similar interpretation as a Kitaev chain, where the local Hamiltonian terms induce pairing and hopping on the fermions, but the
+
 
 \ethan{I think we should keep the following so that people believe that the hamiltonian really is the kitaev chain hamiltonian} 
-Each $H_i$ contains two terms: the first is the identity operator, while the second is nontrivial and is identified with $i \gamma_1 \gamma_2$, 
-a Majorana bilinear which acts as the fermion parity operator $(-1)^F$ on the on-site Hilbert space.
-To see this, we can simply check the action of the second term on the basis vectors of the single (physical) site Hilbert space. 
-Graphically, the  
-second term acts by stacking diagrams onto input states, and so it acts
-on single-site basis states as
+\dave{Agreed. I re-phrased a little, let me know if it's to your liking.}
+%Each $H_i$ contains two terms: the first is the identity operator, while the second is nontrivial and is identified with $i \gamma_1 \gamma_2$, 
+%a Majorana bilinear which acts as the fermion parity operator $(-1)^F$ on the on-site Hilbert space.
+It is useful to define a fermion parity operator $(-1)^F$ for each interval.
+Indeed, the nontrivial term in the Hamiltonian is proportional to the fermion parity measured between adjacent physical sites. 
+Acting with that term on-site, we find
+%To see this, we can simply check the action of the second term on the basis vectors of the single (physical) site Hilbert space. 
+%Graphically, the  
+%second term acts by stacking diagrams onto input states, and so it acts
+%on single-site basis states as
 %\begin{align}
 %\TwoLinedotdot\; \circ \; \CupSigma \; =\;  \CupSigma \quad \text{and} \quad \TwoLinedotdot\; \circ\; %\CupSigmadot \; =\;   - \; \CupSigmadot.
 %\end{align}
 \begin{align}
 \TwoLinedotdot\; \circ \; v_e =\; v_e \quad \text{and} \quad \TwoLinedotdot\; \circ\; v_o \; =\;   - \; v_o.
 \end{align}
-This is precisely the action of the Majorana bilinear $i\gamma_1\gamma_2 = (-1)^F$.
+which is precisely the action of $(-1)^F$, and can be identified with $i\gamma_1\gamma_2$ in the conventional language.
+\dave{Should check this. It's not immediately obvious that $(-1)^F$ can be identified with $i \gamma_1 \gamma_2$.
+Could also re-word to circumvent that.}
+%This is precisely the action of the Majorana bilinear $i\gamma_1\gamma_2 = (-1)^F$.
 
+\dave{Note to self: still need to check this.}
 In order to show that the Hamiltonian is Hermitian, we need to define a graphical way of implementing 
 Hermitian conjugation. We define the Hermitian conjugate of a diagram to be its reflection about 
 the horizontal axis, with the action of reflection determined by the properties of the complex line 
@@ -145,7 +180,11 @@ as in \eqref{removing_fermions}.
 As usual, the notation $H^\dagger H$ graphically corresponds to stacking $H^\dagger$ on top of $H$.
 Since $\lambda^2 = -1$ as we prove in Appendix \ref{fib_appendix}, we verify that $H^\dagger H = \unit$.  
 
-It is straightforward to find the ground states of this Hamiltonian: there are two zero-energy ground states, differing by their fermion parity:
+It is straightforward to find the ground states of \ref{KWHam}.
+Noting that the non-trivial term in the Hamiltonian is just measuring the parity shared between adjacent ``physical" sites, 
+we can do a change of basis using an F-move so that the Hamiltonian is diagonal and annhiliates the ground state.
+%find the ground states of this Hamiltonian: there are two zero-energy ground states, differing by their fermion parity:
+One finds two ground states
 \begin{align} \label{kitaev_wire_ground_states}
 \Psi_e = \;\StaggaredGSEven \; \cdots \; \StaggaredGSEvenR\;, 
 \qquad \text{and} \qquad 
