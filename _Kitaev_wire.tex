@@ -34,7 +34,7 @@ In what follows,
 we will show that a single strand of $\beta$ string is a diagrammatic description for the zero correlation length limit of the Kitaev chain\dave{I think Kapustin/Thorngren have a paper that mention something along these lines should probably cite them.} \ethan{yes, they did. I had the reference somewhere... added it back}.
 This means that the string-net Hamiltonian in Section \ref{Super_pivotal_Hamiltonian} 
 based on the $C_2$ theory describes a phase of fluctuating Kitaev wires, 
-an idea previously investigated in \cite{tarantino2016,ware2016}.
+an idea previously investigated in \cite{tarantino2016,ware2016,kapustin2017}.
 
 The basic strategy is to cut a single $\beta$ strand into pieces and analyze how to glue those pieces back together to recover the uncut strand.
 Physically, we will implement the gluing by requiring the vectors to be in the ground space of a particular Hamiltonian -- similar to what we did in Section \ref{Super_pivotal_Hamiltonian}. 
@@ -46,12 +46,6 @@ Physically, we will implement the gluing by requiring the vectors to be in the g
 %physically we can impliment this constraint by taking a free tensor product and project into the ground space of a Hamiltonian implimenting that constraint. 
 %The Hamiltonian turns out to be a limiting case of the Kitaev wire, the zero correlation length limit.
 We first note that the vector space associated to a single interval $I$ with boundary conditions labeled by $\beta$ can be written graphically as 
-\dave{Did we use $V$ for any particular reason, or should it be $\mca$.} 
-\ethan{I don't know if it ``should'' be anything, it's just a choice}
-\dave{$\mca$ seems more natural to me so lets go with that,
- we can always change back to $V$.}
- \dave{Ugh. Should have been $A$ rather than $\mca$.
- Will fix now.}
 \be\label{VIbetabeta}
  A(I;\beta,\beta) = \cc \left[ \halfchain\;, \; \halfchaindot \right] = \cc^{1|1}.\ee
  
@@ -133,7 +127,7 @@ magnitude of the superconducting gap to the hopping amplitude.}.
 %\ethan{I am in favor of writing the Hamiltonian like this, with the understanding that when we draw pictures and stuff, we are modding out by fermion slides and that the spin framing is fixed so that we have the usual $C_2$ diagrammatic manipulations. We can talk about $\alpha(e)$ stuff and edge terms to implement endos etc, but I think we probably shouldn't}
 
 The image of this projector on a pair of adjacent string endpoints is 
-\begin{align} 
+\begin{align}  \ethan{may want to fix dotted quarterpipes in this equation as well}
 \quarterpiper \tp_\cc \quarterpipel + \quarterpiperdot \tp_\cc \quarterpipeldot = \halfchain \tp_{\End(\beta)} \halfchain,
 \end{align}
 so that using $\tp_\cc$ and projecting with $H$ is equivalent to using $\tp_{\End(\beta)}$ (in Section \ref{Super_pivotal_Hamiltonian}, the $(1-D_e)$ term played the role of $H$). 
@@ -152,9 +146,6 @@ To understand this, we proceed to investigate the ground state wave functions.
 %It would also still have a similar interpretation as a Kitaev chain, where the local Hamiltonian terms induce pairing and hopping on the fermions, but the
 
 
-\ethan{I think we should keep the following so that people believe that the hamiltonian really is the kitaev chain hamiltonian} 
-\dave{Agreed. I re-phrased a little, let me know if it's to your liking.}
-\ethan{re-phrased again slightly}
 %Each $H_i$ contains two terms: the first is the identity operator, while the second is nontrivial and is identified with $i \gamma_1 \gamma_2$, 
 %a Majorana bilinear which acts as the fermion parity operator $(-1)^F$ on the on-site Hilbert space.
 %It is useful to define a fermion parity operator $(-1)^F$ for each interval.
@@ -171,20 +162,19 @@ Indeed, acting with that term on the vectors $v_e,v_o$ defined in \eqref{vevodef
 \TwoLinedotdot\; \circ \; v_e =\; v_e \quad \text{and} \quad \TwoLinedotdot\; \circ\; v_o \; =\;   - \; v_o.
 \end{align}
 which is precisely the action of $(-1)^F$ (which can be identified with $i\gamma_1\gamma_2$ in the conventional Clifford algebra language).
-\dave{Should check this. It's not immediately obvious that $(-1)^F$ can be identified with $i \gamma_1 \gamma_2$.
-Could also re-word to circumvent that.}
 %This is precisely the action of the Majorana bilinear $i\gamma_1\gamma_2 = (-1)^F$.
 
-\dave{Note to self: still need to check this.}
-\ethan{note to self: this is nonsense!}
-In order to show that the Hamiltonian is Hermitian, we need to define a graphical way of implementing 
-Hermitian conjugation. We define the Hermitian conjugate of a diagram to be its reflection about 
-the horizontal axis, with the action of reflection determined by the properties of the complex line 
-bundle constructed in Appendix \ref{fermion_line_bundle} (for more details on the reflection structure, see Section \ref{reflection_ss}). One then verifies that $H^\dagger H = -\lambda^2 \unit$, where the 
-minus sign is a Koszul sign, $\lambda$ is the phase picked up when removing a pair of fermions 
-as in \eqref{removing_fermions}. 
-As usual, the notation $H^\dagger H$ graphically corresponds to stacking $H^\dagger$ on top of $H$.
-Since $\lambda^2 = -1$ as we prove in Appendix \ref{fib_appendix}, we verify that $H^\dagger H = \unit$.  
+%\ethan{commented out part about Hermitian-ness since it's obvious. What the hell was I thinking with this paragraph? We'll never know.}
+%\dave{Note to self: still need to check this.}
+%\ethan{note to self: this is nonsense!}
+%In order to show that the Hamiltonian is Hermitian, we need to define a graphical way of implementing 
+%Hermitian conjugation. We define the Hermitian conjugate of a diagram to be its reflection about 
+%the horizontal axis, with the action of reflection determined by the properties of the complex line 
+%bundle constructed in Appendix \ref{fermion_line_bundle} (for more details on the reflection structure, see Section \ref{reflection_ss}). One then verifies that $H^\dagger H = -\lambda^2 \unit$, where the 
+%minus sign is a Koszul sign, $\lambda$ is the phase picked up when removing a pair of fermions 
+%as in \eqref{removing_fermions}. 
+%As usual, the notation $H^\dagger H$ graphically corresponds to stacking $H^\dagger$ on top of $H$.
+%Since $\lambda^2 = -1$ as we prove in Appendix \ref{fib_appendix}, we verify that $H^\dagger H = \unit$.  
 
 It is straightforward to find the ground states of \ref{KWHam}.
 Noting that the non-trivial term in the Hamiltonian is just measuring the parity shared between adjacent ``physical" sites, 
@@ -230,18 +220,16 @@ whereas the wavefunctions $\Psi_e,\Psi_o$ are expressed in a basis that's ``shar
 %each cup-cap pair.% with the $F$-move \eqref{cupcap_fmove}. 
 In a Kitaev chain with $n$ physical sites (i.e., $n$ intervals), 
 we recover the well known result
-\dave{Ethan, I found no minus sign in front of $A^4$ -- probably since the local basis for $v_e$, $v_0$ has a squiggle in it now, 
-so that the fermion is effectively on the oppisote side of the cups. 
-Can you double check that I got this correct? (I also found $n_f-1$ in the exponent of the odd wavefunction.}
 %\be \Psi_e = \frac{1}{d^{n-1}} \bigotimes_{i=1}^n (-A^4)^{n_f/2} \sum_{\{v_i\}}  v_i,\ee
 %\be \Psi_e = \frac{1}{d^{n-1}} \bigotimes_{i=1}^n (A^4)^{n_f/2} \sum_{v_i = v_e,v_o}  v_i,\ee
 %\dave{Maybe we should write it as:}
+\ethan{this one's correct with the new convention}
 \begin{align}
 \Psi_e = \frac{1}{d^{n-1}} \sum_{\substack{ \{ v_i\} \\  n_f = \text{even} }} (A^4)^{n_f/2} \; v_1 \tp v_2 \tp \cdots \tp v_n
 \end{align}
 where the sum is over all configurations of $v_i =v_o,v_e$ such that only an even number $n_f$ of odd vectors $v_o$ appear 
 in the tensor product, and where $v_e,v_o$ are defined as in \eqref{vevodefn}.
-For the odd wavefunction $\Psi_o$, we find 
+For the odd wavefunction $\Psi_o$, we find \ethan{this one is also correct in the new convention!}
 %\be \Psi_e = \frac{1}{d^{n-1}} \bigotimes_{i=1}^n(-A^4)^{(n_f+1)/2} \sum_{\{v_i\}}  v_i,\ee
 %\be \Psi_e = \frac{1}{d^{n-1}} \bigotimes_{i=1}^n(A^4)^{(n_f-1)/2} \sum_{v_i = v_e,v_0}  v_i,\ee
 \begin{align}
@@ -258,8 +246,8 @@ that are coherent sums over all fermion parity even and fermion parity odd state
 
 \dave{added some text here, feel free to edit. I'll need to take another pass at it to polish it up.}
 Note that the fermion dot appearing in $\Psi_o$ of \eqref{kitaev_wire_ground_states} has zero energy (since the Hamiltonian does not act on either the beginning of the first strand in the chain or the end of the last strand), while this is not true for fermion dots 
-appearing on the interior intermediate cups. 
-\dave{interior intermediate sounds awkward.}
+appearing on the interior cups. 
+%\dave{interior intermediate sounds awkward.}
 Physically, this implies the presence of two Majorana zero modes at the ends of the chain. 
 One can explicitly construct the zero modes by considering the odd operators acting on either end of the chain; 
 they commute with the Hamiltonian, anti-commute with one another, anti-commute with $(-1)^{F_\text{tot}}$ (the total fermion parity), and up to a pre-factor each square to the identity.
@@ -346,7 +334,7 @@ This is exactly the same process implemented by the Kitaev wire Hamiltonian: bot
 To summarize, states in the $C_2$ theory are formed from superpositions of fluctuating Kitaev chains, which in our case are exactly equivalent to $\beta$ strings. 
 With these remarks in mind, it 
 is natural to view q-type strings in more general $(2+1)$-dimensional super fusion categories 
-as different types of fluctuating Kitaev chains, which is a point of view adopted in\cite{tarantino2016,ware2016,kapustin2017}. 
+as different types of fluctuating Kitaev chains, which is a point of view adopted in \cite{tarantino2016,ware2016,kapustin2017}. 
 There are several pieces of evidence for this: the fermion parity of a closed q-type string 
 depends only on the string's homology class and is determined by the spin structure it inherits, 
 and in the simplest case of the $C_2$ theory, q-type strings literally are Kitaev chains, as shown 
