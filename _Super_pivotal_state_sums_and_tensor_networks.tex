@@ -2066,32 +2066,45 @@ Our task now reduces to using the techniques of the previous subsection to const
 \medskip
 
 First we must specify a handle decomposition of $\Sigma\times I$.
-Let $G'$ be the 1-skeleton of the cell decomposition of $\Sigma$ corresponding to $\mch_\mcg$, and let $G''$ be 1-skeleton of the
+Let $G'$ be the 1-skeleton of the cell decomposition of $\Sigma$ corresponding to $\mch_\mcg$, and let $G''$ be the 1-skeleton of the
 cell decomposition of $\Sigma$ underlying the input string net $g$.
 (In practice, $G'$ will be as fine a lattice as our computer can handle, while $G''$ will be as simple as possible
 subject to the constraint that $g$ can represent a basis of $A(\Sigma)$.)
-We stipulate that $G'$ and $G''$ are transverse.
+We stipulate that $G'$ and $G''$ are transverse.\dave{I think, it's clear but could add if we like, not sure: (i.e., only their edges have non-zero intersection)}
 We define $G$ to be the union of $G'$ and $G''$.
 The graph $G$ has three types of vertices: vertices of $G'$ (which we will assume are 3-valent),
 vertices of $G''$ (which we also assume are 3-valent), and vertices corresponding to the points of $G'\cap G''$, which
-are 4-valent.
+are 4-valent; see Figure~\ref{slab_decomp}.
 \kw{need figure for above}
+\dave{Yes. Done (up to details).}
+\begin{figure}
+\begin{align}
+\nonumber
+\vcenter{
+\xymatrix @!0 @M=2mm @R=20mm @C=50mm{
+G'' & G' & G = G' \cup G'' \\
+\GraphGprimeprime&\GraphGprime& \GraphG
+	}}
+\end{align}
+\caption{\label{slab_decomp}\dave{Should orient the edges and probably use different colors for $G'$ and $G''$ so it's easier to see how $G$ is made.} }
+\end{figure}
 
 Our handle decomposition for $\Sigma\times I$ will be a thickened version of $G$.
 % (or rather, of the cell decomposition determined by $G$).
 We have a 0-handle for each vertex of $G$, a 1-handle for each edge of $G$, and a 2-handle for each 2-cell of the complement of $G$.
+\dave{Seems like this may have extra two handles; will come back.}
 There are no 3-handles.
-Figure xxxx illustrates this handle decomposition, and also shows how the string nets
+Figure xxxx\dave{aka, figure from your notes that we discussed?} illustrates this handle decomposition, and also shows how the string nets
 $v$ and $\bar g$ are situated on its boundary.
 
 The next step is to standardize the string nets on the boundary of each 0-handle.
-This is illustrated in Figure xxxx, for the three different types of 0-handle in our handle decomposition.
+This is illustrated in Figure xxxx\dave{Could do this as a companion figure to the one above}, for the three different types of 0-handle in our handle decomposition.
 Note that we have arranged that all three 0-handle string nets are tetrahedral.
 
 \medskip
 
 We are now in a position to apply the state sum and tensor network constructions of the previous subsection.
-The state sum turns out to be a version of the ``shadow world" state sum of \kw{[Kirillov and Reshetikhin; Turaev]}.
+The state sum turns out to be a version of the ``shadow world" state sum of \kw{[Kirillov and Reshetikhin; Turaev]}\dave{Looks like the KR citation may need to be fixed: \cite{kirillow1989,turaev1992shadow}, maybe \cite{turaev1990} (need to look at that again)}.
 In other words, the shadow world state sum is a special case of the Turaev-Viro state sum.
 \kw{perhaps write down something explicit for state sum}
 
@@ -2108,6 +2121,8 @@ to the version of \eqref{bhs_redef} corresponding to the vertices of $v$.
 In particular, we can take $G''$ to be isotopic\footnote{
 We can't take $G'' = G'$ because we require that $G'$ and $G''$ be transverse.}
 to $G'$ and compute a projection from the big Hilbert space to itself.
+\dave{Could also do something like $G \to \widehat G \to G$, where $\widehat{G}$ is the dual graph of $G$.
+But would also require more work. }
 This projection is, of course, the Hamiltonian of Section \ref{Super_pivotal_Hamiltonian}.
 
 There is one small technical hurdle to overcome before constructing this operator.
