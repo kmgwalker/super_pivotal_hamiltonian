@@ -587,7 +587,7 @@ By evaluating \eqref{trace_pM_nonempty} on this element we obtain the amplitude 
 
 
 %%%%%%%%%%%%%%%%%
-\subsubsection{Standardization procedures}
+\subsubsection{Standardization procedures} \label{bosonic_standardization} 
 %%%%%%%%%%%%%%%%%
 
 The above tensor network construction is irregular, in the sense that (potentially) every edge vector space is different 
@@ -1189,8 +1189,8 @@ being contracted always have adjacent Koszul-ordering and by using \eqref{contra
 
 
 
-%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Fermionic standardization procedures}
+%%%%%%%%%%%%%%%%%%%% 
+\subsubsection{Fermionic standardization procedures} \label{fermionic_standardization}
 %%%%%%%%%%%%%%%%%%%%
 
 \kw{some new material here}
@@ -2046,9 +2046,9 @@ Recall that the big Hilbert space for the Hamiltonian is
 where $\mch_v $ is defined to be $\bigoplus_{a,b,c} V^{abc}$ if all edges point away from the vertex, 
 with similar definitions of $\mch_v$ in the case of other edge orientation arrangements.
 If a basis vector of $\mch_\mcg$ satisfies edge label compatibility for all adjacent pairs of vertices
-(equivalently, the basis vector lies in the ground state of the vertex term of the Hamiltonian),
+(equivalently, if the basis vector lies in the ground state of the vertex term of the Hamiltonian),
 then it can be interpreted as defining a string net on $\Sigma$.
-A wave function (not ``the" wave function unless the ground state is 1-dimensional) $w$ assigns a weight $w(v)$ to each such basis vector $v$,
+A wave function (not ``the" wave function unless the ground state is 1-dimensional) $w$ assigns a weight $w(v)$ to each such basis vector $v$, \ethan{can we use $\Psi$ or $\psi$ instead of $w$, or am I being too picky?}
 in such a way that if $\sum_i c_i v_i$ is equal to zero in $A(\Sigma)$, then $\sum_i c_i w(v_i) = 0$.
 For basis vectors $v$ which violate edge label compatibility, we have $w(v) = 0$.
 
@@ -2066,17 +2066,17 @@ Our task now reduces to using the techniques of the previous subsection to const
 \medskip
 
 First we must specify a handle decomposition of $\Sigma\times I$.
-Let $G'$ be the 1-skeleton of the cell decomposition of $\Sigma$ corresponding to $\mch_\mcg$, and let $G''$ be the 1-skeleton of the
+Let $G'$ be the 1-skeleton of the cell decomposition of $\Sigma$ associated with $\mch_\mcg$, and let $G''$ be the 1-skeleton of the
 cell decomposition of $\Sigma$ underlying the input string net $g$.
 (In practice, $G'$ will be as fine a lattice as our computer can handle, while $G''$ will be as simple as possible
 subject to the constraint that $g$ can represent a basis of $A(\Sigma)$.)
-We stipulate that $G'$ and $G''$ are transverse.\dave{I think, it's clear but could add if we like, not sure: (i.e., only their edges have non-zero intersection)}
+We stipulate that $G'$ and $G''$ are transverse \ethan{added the following:} (i.e., only their 1-handles intersect, and all the intersections are transverse), and are each dual to a triangulation, so that their vertices are all 3-valent.
+%\dave{I think, it's clear but could add if we like, not sure: (i.e., only their edges have non-zero intersection)} \ethan{agreed}
 We define $G$ to be the union of $G'$ and $G''$.
-The graph $G$ has three types of vertices: vertices of $G'$ (which we will assume are 3-valent),
-vertices of $G''$ (which we also assume are 3-valent), and vertices corresponding to the points of $G'\cap G''$, which
+The graph $G$ has three types of vertices: vertices of $G'$,
+vertices of $G''$, and vertices corresponding to the points of $G'\cap G''$ which
 are 4-valent; see Figure~\ref{slab_decomp}.
-\kw{need figure for above}
-\dave{Yes. Done (up to details).}
+
 \begin{figure}
 \begin{align}
 \nonumber
@@ -2086,7 +2086,12 @@ G'' & G' & G = G' \cup G'' \\
 \GraphGprimeprime&\GraphGprime& \GraphG
 	}}
 \end{align}
-\caption{\label{slab_decomp}\dave{Should orient the edges and probably use different colors for $G'$ and $G''$ so it's easier to see how $G$ is made.} }
+\caption{\label{slab_decomp}\dave{Should orient the edges and probably use different colors for $G'$ 
+and $G''$ so it's easier to see how $G$ is made.} \ethan{I support the edge-coloring idea. maybe blue for $G'$ and orange for $G''$ to gel with previous figures?} 
+\ethan{possible caption:} The handle decompositions described in the text. $G''$ (left) is the handle 
+decomposition on which the input string-net state is defined, and $G'$ (center) is the decomposition on 
+which the Hamiltonian acts. The union $G=G'\cup G''$ (right) is the cell decomposition we use to 
+construct the ground state wavefunctions. }
 \end{figure}
 
 Our handle decomposition for $\Sigma\times I$ will be a thickened version of $G$.
@@ -2094,12 +2099,27 @@ Our handle decomposition for $\Sigma\times I$ will be a thickened version of $G$
 We have a 0-handle for each vertex of $G$, a 1-handle for each edge of $G$, and a 2-handle for each 2-cell of the complement of $G$.
 \dave{Seems like this may have extra two handles; will come back.}
 There are no 3-handles.
-Figure xxxx\dave{aka, figure from your notes that we discussed?} illustrates this handle decomposition, and also shows how the string nets
+Figure xxxx\dave{aka, figure from your notes that we discussed?} \ethan{3d box with relevant net boundary conditions?} illustrates this handle decomposition, and also shows how the string nets
 $v$ and $\bar g$ are situated on its boundary.
 
-The next step is to standardize the string nets on the boundary of each 0-handle.
-This is illustrated in Figure xxxx\dave{Could do this as a companion figure to the one above}, for the three different types of 0-handle in our handle decomposition.
-Note that we have arranged that all three 0-handle string nets are tetrahedral.
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.6]{StandardizedSlabTensors.pdf}
+\caption{\label{StandardizedSlabTensors}
+Top row: different types of 0-cells that can appear in $G$. The cubes are drawn so that the 0-cells are  located in their centers. 
+Blue (orange) lines represent 1-handles in $G''$ ($G'$), and 
+green lines represent intersections of 2-cells in $G$ with the cube. 
+In row b) we show the first step for one possible standardization procedure, where the diagrams 
+have been drawn projected into two dimensions. 
+In row c) we finish the standardization of the diagrams by making each trivalent vertex a pitchfork. The appropriate 0-cell 
+tensors are found by evaluation of these diagrams. 
+}
+\end{center}
+\end{figure}
+
+The next step is to standardize the string nets on the boundary of each 0-handle, by following the procedures outlined in Sections \ref{bosonic_standardization} and \ref{fermionic_standardization}.
+This is illustrated in Figure \ref{StandardizedSlabTensors} \ethan{placeholder fig for now} \dave{Could do this as a companion figure to the one above}, for the three different types of 0-handle in our handle decomposition $G$.
+Note that our conditions on the handle decompositions $G',G''$ ensure that all three types of 0-handle string nets are tetrahedral (in that they each possess four trivalent vertices).
 
 \medskip
 
@@ -2107,10 +2127,40 @@ We are now in a position to apply the state sum and tensor network constructions
 The state sum turns out to be a version of the ``shadow world" state sum of \kw{[Kirillov and Reshetikhin; Turaev]}\dave{Looks like the KR citation may need to be fixed: \cite{kirillow1989,turaev1992shadow}, maybe \cite{turaev1990} (need to look at that again)}.
 In other words, the shadow world state sum is a special case of the Turaev-Viro state sum.
 \kw{perhaps write down something explicit for state sum}
-
 If we fix the (labeled) string net $\bar g$ at the outset, the tensor network has an output corresponding to \eqref{bhs_redef}.
 \kw{perhaps write down something explicit for tensor network}
 \kw{say something about PEPS?}
+
+To compute the tensor network, we just need to know how to assign tensors to the 0-handles in $G$. 
+This is done by computing evaluations of tetrahedral string-net diagrams, as in previous sections. 
+Explicitly, for a 0-cell $v$ of $G$ consisting of three 1-handles of $G'$ (left column of row $a)$ in Figure \ref{StandardizedSlabTensors}, we assign the tensor $T_v$ as follows:
+\begin{align}
+\Tensora \; \ra T_v &= \;  \Tensoraa \cdot \mu_0 \tp s_1 \tp s_2 \tp s_3.
+\end{align}
+In the diagrams, the green letters $A,B,C$ denote the labels of the 2-cells in $G$, which will 
+be summed over when computing the amplitude $Z(\Sigma\times I)(\bar g \cup v)$. The labels of 
+the blue lines are fixed however, and are determined by the labels of the 1-cells 
+in the string-net graph $v$. 
+
+Tensors for the other types of 0-cells in $G$ are determined similarly. For the type of 
+0-cell in the center column of row $a)$ in Figure \ref{StandardizedSlabTensors} involving three 1-handles from $G''$, we assign the tensor
+\begin{align}
+\Tensorc \;\ra  T_v &= \; \Tensorcc  \cdot \nu_0 \tp s_1 \tp s_2 \tp s_3, \\
+\end{align}
+where the labels of the orange lines are fixed by the input string-net state $\bar g$.
+Similarly, for the type of 0-cell in the last column (involving the intersection of 1-handles in $G'$ and $G''$) we assign the tensor
+\begin{align}
+\Tensorb \; \ra T_v &= \;  \Tensorbb  \cdot s_0 \tp s_1 \tp s_2 \tp s_3, \\
+\end{align}
+which corresponds to a string operator. 
+In all of these tensors, we are making use of the implicit left-to-right Koszul ordering convention for the 
+tensor factors. 
+
+Now that we know how to assign tensors to each 0-handle, we can construct the partition function $Z(\Sigma \times I)(\bar g \cup v)$ in the same way as in previous sections, namely by performing a tensor contraction over $\bigotimes_{v\in \mch_0}T_v$, 
+where the tensor product runs over all 0-handles of $G$. 
+\ethan{talk about 1-cell and 2-cell things? write down it as state-sum rather than tensor network?}
+
+
 
 \medskip
 
@@ -2144,9 +2194,11 @@ The fact that $\Sigma\times I \cong -(\Sigma\times I)$
 (via a homeomorphism which is the identity on the $\Sigma$ factor and reverses the $I$ factor)
 implies that $H$ is self-adjoint
 (see the end of Section \ref{reflection_ss}).
+
+
+%%%%%% older shadow world section:
+\begin{comment}
 \kwsep
-
-
 
 %\dave{3-cell weights on the slab tensor network.}
 
@@ -2314,5 +2366,8 @@ Z(\Sigma_{0\ra1}; v_0, v_1) = \sum_{ \beta\in\mcl(\mch^{1/2})_{bulk}}  (-1)^{\ka
 \end{align} 
 where we have used $\mch^{1/2}_k$ to denote the collection of $k$-cells in $\Sigma \times \{1/2\}$ and $\mcl(\mch^{1/2})_{bulk}$ 
 to denote colorings of the bulk degrees of freedom in $\Sigma_{0\ra1}$. 
+
+
+\end{comment}
 
 
