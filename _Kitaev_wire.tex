@@ -245,6 +245,7 @@ that are coherent sums over all fermion parity even and fermion parity odd state
 %\ethan{yay :--)}
 
 \dave{added some text here, feel free to edit. I'll need to take another pass at it to polish it up.}
+\ethan{made some stylistic edits}
 Note that the fermion dot appearing in $\Psi_o$ of \eqref{kitaev_wire_ground_states} has zero energy (since the Hamiltonian does not act on either the beginning of the first strand in the chain or the end of the last strand), while this is not true for fermion dots 
 appearing on the interior cups. 
 %\dave{interior intermediate sounds awkward.}
@@ -260,23 +261,26 @@ In the zero correlation length limit, excited states are easily constructed by p
 \dave{Changed things a bit here, not totally sold on it, but it may speak more to people who are used to thinking about boundary conditions rather than spin structures.}
 \dave{Also need to double check this.}
 We now turn our attention to the Kitaev chain defined on a circle. 
-The bulk of the Hamiltonian is constructed from a sum of projectors defined in \eqref{kitaev_chain_ham_sitei}.%, and the %wavefunctions can be found in a similar manner.
+The bulk of the Hamiltonian is constructed from a sum of projectors defined in \eqref{kitaev_chain_ham_sitei}. %, and the %wavefunctions can be found in a similar manner.
 %ground-state wavefunctions 
 %have a similar form to those in \eqref{kitaev_wire_ground_states}, except the bottom $\beta$ string 
 %forms a closed loop below the series of $\beta$ cups. 
 To ``glue" the end points of the interval into a circle, we need to add an additional term across the boundary.
-There are two spin structures on the circle $S^1_B$ and $S^1_N$ corresponding to anti-periodic and periodic boundary conditions on the fermions respectively.
-To define periodic boundary conditions we define $H_{n+1}$, the Hamiltonian term gluing the interval into a circle by a translation of $H_n$ by one physical site, yielding, 
+There are two ways to do the gluing, differing from one another by a $2\pi$ rotation of the spin framing
+(i.e. a spin flip). 
+These choices correspond to the two spin structures on the circle: $S^1_B$ and $S^1_N$, corresponding to anti-periodic and periodic fermionic boundary conditions, respectively.
+To define periodic boundary conditions we define $H_{n+1}$, the Hamiltonian term which glues the 
+two endpoints of the interval together, by
 \begin{align}
 H_{n+1}^N =  \frac{1}{2} \left( \Id \;\; + \;\; \TwoLinedotdot \right),
 \end{align}
-which acts on the right side $I_n$ and the left side of $I_1$.
+where the left string acts on the left side of $I_1$ and the right string on the right side of $I_n$.
 %Periodic boundary conditions is found by simply translating the  adding the same term defined in \eqref{kitaev_chain_ham_sitei}, but now straddling the strands at either end of the interval. 
-When closing the interval with bounding spin structure --- or anti-periodic boundary conditions --- we need to apply a twisted translation to $H_n$, resulting in an additional minus sign appended to the nontrivial term in the projector, thus establishing
+When closing the interval with anti-periodic boundary conditions (to form the bounding spin structure) we need to apply a $2\pi$ fermion twist to $H_n$, resulting in an additional minus sign multiplying the nontrivial term in the projector:
 \begin{align}
 H_{n+1}^B =  \frac{1}{2} \left( \Id \;\; - \;\; \TwoLinedotdot \right),
 \end{align}
-We note that these give us explicit matrices for the even linear maps $\cl_B: A(I, \beta, \beta) \to A(S^1_B, \beta)$ and $\cl_N: A(I,\beta, \beta) \to A(S^1_N,\beta)$.
+We note that these give us explicit matrices for the even linear maps $\cl_B: A(I; \beta, \beta) \to A(S^1_B, \beta)$ and $\cl_N: A(I;\beta, \beta) \to A(S^1_N,\beta)$.
 In this case we identify $\cl_B$ with $H_{n+1}^B$ and $\cl_N$ with $H_{n+1}^N$.
 To substantiate these identifications we can explicitly compute the ground state wavefunctions.
 
@@ -293,8 +297,8 @@ To substantiate these identifications we can explicitly compute the ground state
 %This choice of gluing is exactly the same as the choice between giving fermions anti-periodic or periodic boundary conditions 
 %around the circle, and this choice determines the spin structure of the circle: $S^1_B$ for anti-periodic (no framing rotation at the gluing point) and $S^1_N$ for periodic ($2\pi$ framing rotation at the gluing point). 
 %We represent this diagrammatically by drawing a branch cut at gluing points where the framing rotates by $2\pi$.
-In Section\ref{...} we noted that closing a q-type object along a bounding(non-bounding) spin structure results in an even(odd) parity vector, if the identifications made above are correct, then the ground state of the bounding Hamiltonian should have even parity, and the ground state of the non-bounding Hamiltonian should have odd parity. 
-We caution the reader that when acting with the non-trivial term in $H^{B(N)}_{n+1}$ 
+In Section \ref{C2excitations} we noted that closing a q-type object along a bounding(non-bounding) spin structure results in an even (odd) parity vector, if the identifications made above are correct, then the ground state of the bounding Hamiltonian should have even parity, and the ground state of the non-bounding Hamiltonian should have odd parity. 
+We caution the reader that when acting with the non-trivial term in $H^{X}_{n+1}$ for $X\in \{B,N\}$
 on the the subspace spanned by \eqref{kitaev_wire_ground_states} (with the outer legs now turned up), 
 we need to shift one of the fermions along the full $S^1_{B(N)}$.
 \dave{Maybe give more detail about this, maybe not.}
@@ -311,7 +315,11 @@ Using the fact that the structure of the Hamiltonian is the same as in \eqref{ki
 \end{align}
 %\dave{We can leave the spin structure implicit}
 %where the branch cut drawn in the $\Psi_N$ wavefunction marks the location of the $2\pi$ framing twist  needed to account for the non-bounding spin structure. 
-where the subscripts denote the spin structure \dave{Readers may be confused why the above is a circle, should probably clarify.}.
+where the subscripts denote the spin structure. 
+Although our graphical presentation may give the impression that these pictures are drawn on an interval, they are not: the presence of the $H_{n+1}$ terms, which act on the left-most and right-most strands
+in the graphical presentation of $\Psi_e$ and $\Psi_o$ are responsible for gluing the interval into a circle. %\dave{Readers may be confused why the above is a circle, should probably clarify.}.
+%\ethan{gave it a try}
+
 The delocalization of the fermion in the odd-parity wavefunction $\Psi_N$ is again manifest, as the exact location of the fermion dot 
 is arbitrary. 
 Note that the other possible candidates for ground-state wavefunctions (an odd-parity version of $\Psi_B$ or an even-parity version of $\Psi_N$) are identically zero, which can be seen by using the graphical 
@@ -319,9 +327,10 @@ calculus of the $C_2$ theory (see the discussion around \eqref{BoundingNullVecto
 
 \dave{This was written quickly. 
 Needs to be double checked, and also cleaned up a bit.}
+\ethan{will come back to this in the morning} 
 Lastly, we use the Hamiltonian to construct a matrix product state (MPS) for the ground state wavefunction of \eqref{KWHam}, explicitly written in \eqref{kitaev_wire_ground_states}.
-This is a well known result, see e.g., \cite{people}, and only write it here as in some sense it gives a gentler version of the tensor network discussed in Sections \ref{....}, and at presents the result in the notation discussed in this paper.
-We only need to write an MPS that lies in the image of the projectors $H_i$ defined in \eqref{...}. 
+This is a well known result, see e.g., \cite{people}, and only write it here as in some sense it gives a gentler version of the tensor network discussed in Section \ref{state_sums}, and at presents the result in the notation discussed in this paper.
+We only need to write an MPS that lies in the image of the projectors $H_i$ defined in \eqref{kitaev_chain_ham_site}. 
 For convenience define $H_i =\frac{1}{2}( e_{i+1/2} + f_{i+1/2})$, with $e$ proportional to the identity across junction between intervals $I_i$ and $I_{i+1}$ and $f$ proportional to the fermion parity $(-1)^F$ operator across the junction.
 For the moment we ignore the boundary conditions and simple act with $\prod_i H_i$ on any input vector, 
 say $V_e = \cdots v_{e} \tp v_{e} \tp \cdots $.
@@ -330,7 +339,7 @@ where the sum is over all possible configurations of $a_{i+1/2} = e_{i+1/2}, f_{
 We now just need to simplify the wave function, by modding out with the local relations of the $C_2$ theory. 
 Each physical site can be acted on by two terms in the Hamiltonian, from the left side, or the right, hence when we simplify the resulting physical site will depend on a pair of indices $(e,e)$,$(e,f)$,$(f,e)$, and $(f,f)$. 
 We can succinctly write those as a matrix $(A^{v_e \to v_i})_{xy}$ with $x,y \in \{ e, f \}$.
-These are forward to compute and are given by,
+These matrices are straightforward to compute using the $C_2$ graphical calculus and are given by
 \begin{align}
 A^{v_e \to v_e} = 
 \frac{1}{2}\left( \begin{matrix} 
@@ -341,9 +350,10 @@ A^{v_e \to v_o} =
 \frac{1}{2}\left( \begin{matrix} 
 0& A^4\\
 1 & 0 \\
-\end{matrix} \right)
+\end{matrix} \right),
 \end{align}
-We don't need to start with all $v_i$ in the initial vector to be $v_e$, we could also allow some to be $v_o$, in which case we use, 
+%We don't need to start with all $v_i$ in the initial vector to be $v_e$, we could also allow some to be $v_o$, in which case we use, 
+which if the initial vector is $v_o$, 
 \begin{align}
 A^{v_o \to v_e} = 
 \frac{1}{2}\left( \begin{matrix} 
@@ -354,7 +364,7 @@ A^{v_o \to v_o} =
 \frac{1}{2}\left( \begin{matrix} 
 1& 0\\
 0 & A^4 \\
-\end{matrix} \right)
+\end{matrix} \right). 
 \end{align}
 \dave{Perhaps say it's actually an MPO, need to talk about gluing interval into circle. 
 Anything else?}
@@ -363,6 +373,7 @@ MPO is:
 A = \sum_{\{ v_{i} \} , \{v_i'\}} \cdots A^{v_i \to v_i' } A^{v_{i+1} \to v_{i+1}'} \cdots
 \end{align}
 is a linear map from $\mch_I \to \mch_I$.
+\ethan{kinda want to draw the mpo picture}
 
 %\ethan{Dave might have to change notation to find something he's happy with}
 %\dave{I think we need to specify the matrices $A^{v_i}$ if we want to keep this paragraph (and I do think it's a good idea to keep).
