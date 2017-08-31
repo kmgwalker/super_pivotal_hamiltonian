@@ -344,7 +344,8 @@ where the sum is over all possible configurations of $a_{i+1/2} = e_{i+1/2}, f_{
 
 We now just need to simplify the resulting state $|\Psi\rangle$ using the local relations of the $C_2$ theory. 
 Each physical site $v_i$ can be acted on by two terms in the Hamiltonian: $H_i$ (acting on the right strand of $v_i$) and $H_{i-1}$ (acting on the left strand). 
-Hence, when we simplify $\ket{\Psi}$ the phase factor associated with a given physical site $v_i$ will depend on a pair of indices $(e,e)$,$(e,f)$,$(f,e)$, and $(f,f)$, where the left index denotes the action by a term in $H_i$ and the right the action by a term in $H_{i-1}$. 
+Hence, when we simplify $\ket{\Psi}$ the phase factor associated with a given physical site $v_i$ will depend on a pair of indices $(e,e)$,$(e,f)$,$(f,e)$, and $(f,f)$, where the left index denotes the action by a term in $H_{i-1}$ and the right the action by a term in $H_{i}$. 
+%\dave{I think $H_i$ and $H_{i-1}$ were previously in the wrong order in this sentence}
 
 Focusing on a single site with input vector $v_i$, 
 we can succinctly write the action of the Hamiltonian as a matrix $(A^{v_i \to v_i'})_{xy}$ where $v_i'$ denotes the output vector obtained after acting with the Hamiltonian and where $x,y \in \{ e, f \}$.
@@ -373,11 +374,12 @@ A^4 & 0\\
 A^{v_o \to v_o} = 
 \frac{1}{2}\left( \begin{matrix} 
 1& 0\\
-0 & A^4 \\
+0 & -1 \\
 \end{matrix} \right)
 \end{align}
 if the initial input vector is $v_o$.
 \ethan{should the bottom-right entry in the last matrix be $-1$?}
+\dave{Yeap! Good catch. Made the change}
 We thus obtain the MPO
 \be
 A = \sum_{\{ v_{i} \} , \{v_i'\}} \cdots A^{v_i \to v_i' } A^{v_{i+1} \to v_{i+1}'} \cdots,
@@ -386,7 +388,8 @@ which is a linear map from $\mch_I \to \mch_I$.
 
 
 To obtain an MPS, we simply need to choose an input vector $V = v_1\tp \dots \tp v_N$.
-The simplest choice is to build the MPS over the vacuum, by setting $V = v_e^{\tp N}$. 
+The simplest choice is to fix the labels of one side of the MPO to be $V_e = v_e ^{\tp n}$ for the even parity state, and $V_o = v_o \tp v_e^{\tp (n-1)}$ for the odd parity state.
+%The simplest choice is to build the MPS over the vacuum, by setting $V = v_e^{\tp N}$. 
 With this, we can write the MPS on an interval as 
 \be |\Psi_I\rangle = \sum_{v'_i = v_e,v_o}\langle b_L | A^{v_e\ra v'_1} \cdots A^{v_e\ra v'_N} | b_R\rangle |v'_1\tp \dots \tp v'_N\rangle,\ee
 where $|b_L\rangle$ and $|b_R\rangle$ denote a choice of boundary conditions on the left and right ends of the interval, respecitvely. 
@@ -401,7 +404,8 @@ if we are working on the bounding spin circle $S^1_B$, and
  \end{align}
 if we are working on the non-bounding circle $S^1_N$. 
 
-\ethan{is the following paragraph needed anymore?}
+%\ethan{is the following paragraph needed anymore?}
+%\dave{Don't think so.}
 %\dave{Perhaps say it's actually an MPO, need to talk about gluing interval into circle. 
 %Anything else?}
 %MPO is:
@@ -412,40 +416,40 @@ if we are working on the non-bounding circle $S^1_N$.
 %\ethan{Dave might have to change notation to find something he's happy with}
 %\dave{I think we need to specify the matrices $A^{v_i}$ if we want to keep this paragraph (and I do think it's a good idea to keep).
 %Also need to change to the notation we used in the rest of this section, i.e., no partition function discussion, $a_i$ no longer around, etc.}
-\dave{Anything we want to shuffle from this paragraph to the one above?}
-\dave{
-I can do this paragraph, probably this afternoon.
-Will say something like: If Hamiltonain $H_i= e_{i+1/2} + z_{i+1/2}$ then we can write the GSWF as $\psi = \sum_{\{ v_i \}}\tr (A^{v_1} \cdots A^{v_n}) $. 
-Where $A^{v_i}$ is a 2 by 2 matrix with elements 
-$(A^{v_i})_{e_{i-1/2} e_{i+1/2}}$, 
-$(A^{v_i})_{e_{i-1/2} z_{i+1/2}}$, 
-$(A^{v_i})_{z_{i-1/2} e_{i+1/2}}$, 
-$(A^{v_i})_{z_{i-1/2} z_{i+1/2}}$.
-The matrix elements are determined by the linear relations of the $C_2$ theory. }
-Note that the way we draw vectors in the Hilbert space of the Kitaev wire is essentially a graphical presentation of a matrix product state (MPS)
-\dave{I don't think I agree.
-But also not sure what you meant, see the re-write above and let me know if it makes sense.}. 
-In the MPS formalism, a site $i$ labeled by the basis vector $a_i$ is attached 
-to is associated with a matrix $A^{a_i}_{xy}$, where $x,y$ are virtual indices. 
-The $A^{a_i}$ matrices can be determined from the shadow world approach, and in this case are given by the structure constants of $\cliff_1$ \cite{turzillo2016}. 
-Wavefunctions are then constructed by contracting the virtual indices following the 
-shadow world prescription. To construct a wavefunction $|\Psi\rangle$ we need to compute 
-partition functions of the form $Z(M;\emptyset,v_1)$, where $\emptyset$ denotes 
-the input vacuum state. 
-By using our earlier results \eqref{bounding_trace} and \eqref{nonbounding_trace} on 
-partition functions, we see that 
-\dave{I don't understand how this is compatible with \eqref{graphical_MPS_state} and \eqref{kitaev_wire_circle_ground_states}. 
-It seems like \eqref{kitaev_wire_circle_ground_states} requires all $a_i = \beta$. }
-\be |\Psi\rangle = \sum_{\{ a_i \} }\tr(A^{a_1} \cdots A^{a_N}) \ket{a_1 \cdots a_n} \ee
-if the Kitaev wire is defined over an interval or on $S^1_B$, and 
-\begin{align}
- |\Psi\rangle & = \sum_{\{ a_i \} }\tr((-1)^FA^{a_1} \cdots A^{a_N}) \ket{a_1 \cdots a_n} \\ 
- & =\sum_{\{ a_i \} }\str(A^{a_1} \cdots A^{a_N}) \ket{a_1 \cdots a_n} 
- \end{align}
-if the wire is defined on $S^1_N$. 
-This is the presentation of the wavefunctions used in the tensor network community, 
-and agrees with the results of \cite{turzillo2016,bultinck2017b}. 
-The graphical depiction of these states is given by the $\Psi_B,\Psi_N$ appearing in \eqref{kitaev_wire_circle_ground_states}. 
+%\dave{Anything we want to shuffle from this paragraph to the one above?}
+%\dave{
+%I can do this paragraph, probably this afternoon.
+%Will say something like: If Hamiltonain $H_i= e_{i+1/2} + z_{i+1/2}$ then we can write the GSWF as $\psi = \sum_{\{ v_i \}}\tr (A^{v_1} \cdots A^{v_n}) $. 
+%Where $A^{v_i}$ is a 2 by 2 matrix with elements 
+%$(A^{v_i})_{e_{i-1/2} e_{i+1/2}}$, 
+%$(A^{v_i})_{e_{i-1/2} z_{i+1/2}}$, 
+%$(A^{v_i})_{z_{i-1/2} e_{i+1/2}}$, 
+%$(A^{v_i})_{z_{i-1/2} z_{i+1/2}}$.
+%The matrix elements are determined by the linear relations of the $C_2$ theory. }
+%Note that the way we draw vectors in the Hilbert space of the Kitaev wire is essentially a graphical presentation of a matrix product state (MPS)
+%\dave{I don't think I agree.
+%But also not sure what you meant, see the re-write above and let me know if it makes sense.}. 
+%In the MPS formalism, a site $i$ labeled by the basis vector $a_i$ is attached 
+%to is associated with a matrix $A^{a_i}_{xy}$, where $x,y$ are virtual indices. 
+%The $A^{a_i}$ matrices can be determined from the shadow world approach, and in this case are given by the structure constants of $\cliff_1$ \cite{turzillo2016}. 
+%Wavefunctions are then constructed by contracting the virtual indices following the 
+%shadow world prescription. To construct a wavefunction $|\Psi\rangle$ we need to compute 
+%partition functions of the form $Z(M;\emptyset,v_1)$, where $\emptyset$ denotes 
+%the input vacuum state. 
+%By using our earlier results \eqref{bounding_trace} and \eqref{nonbounding_trace} on 
+%partition functions, we see that 
+%\dave{I don't understand how this is compatible with \eqref{graphical_MPS_state} and \eqref{kitaev_wire_circle_ground_states}. 
+%It seems like \eqref{kitaev_wire_circle_ground_states} requires all $a_i = \beta$. }
+%\be |\Psi\rangle = \sum_{\{ a_i \} }\tr(A^{a_1} \cdots A^{a_N}) \ket{a_1 \cdots a_n} \ee
+%if the Kitaev wire is defined over an interval or on $S^1_B$, and 
+%\begin{align}
+ %|\Psi\rangle & = \sum_{\{ a_i \} }\tr((-1)^FA^{a_1} \cdots A^{a_N}) \ket{a_1 \cdots a_n} \\ 
+% & =\sum_{\{ a_i \} }\str(A^{a_1} \cdots A^{a_N}) \ket{a_1 \cdots a_n} 
+% \end{align}
+%if the wire is defined on $S^1_N$. 
+%This is the presentation of the wavefunctions used in the tensor network community, 
+%and agrees with the results of \cite{turzillo2016,bultinck2017b}. 
+%The graphical depiction of these states is given by the $\Psi_B,\Psi_N$ appearing in \eqref{kitaev_wire_circle_ground_states}. 
 
 \begin{comment}
 \begin{figure}
