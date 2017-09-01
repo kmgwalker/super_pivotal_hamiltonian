@@ -376,10 +376,11 @@ This is a well known result, see e.g. \cite{fidkowski2011,turzillo2016,bultinck2
 We write it here as it in some sense gives a ``gentler'' version of the tensor network discussed in Section \ref{state_sums}, and provides a nice application of the graphical calculus developed in the body of the paper.
 
 \ethan{tried to make this slightly easier to understand; only partially succeeded (from my POV)} 
+\dave{I think we can change the notation a bit.}
 We need to write an MPO that lies in the image of the projectors $H_i$ defined in \eqref{kitaev_chain_ham_sitei}. 
-For convenience, we write $H_i =\frac{1}{2}( e_{i+1/2} + f_{i+1/2})$, with $e_{i+1/2}$ proportional to the identity operator on the junction between the intervals $I_i$ and $I_{i+1}$, and $f_{i+1/2}$ proportional to the fermion parity $(-1)^F$ operator across the junction.
+For convenience, we write $H_i =\frac{1}{2}( e_{i} + f_{i})$, with $e_{i}$ proportional to the identity operator on the junction between the intervals $I_i$ and $I_{i+1}$, and $f_{i}$ proportional to the fermion parity operator $(-1)^F$ across the junction.
 Temporarily putting aside the issue of boundary conditions, we simply act with $\prod_i H_i$ on 
-a given input vector $V = v_1\tp \cdots \tp v_n$, where $v_i=v_e,v_o$ (graphically, these input vectors look like those appearing in \eqref{example_hilb_vectors}).
+a given initial vector $V = v_1\tp \cdots \tp v_n$, where $v_i=v_e,v_o$ (graphically, these input vectors look like those appearing in \eqref{example_hilb_vectors}).
 This produces a state $\Psi = \sum_{\{ a_{i+1/2} \} } \prod_i a_{i+1/2} V$, 
 where the sum is over all possible configurations of $a_{i+1/2} = e_{i+1/2}, f_{i+1/2}$.  
 \dave{any reason we use $\ket{\text{ket}}$ notation here and not elsewhere?}
@@ -390,6 +391,7 @@ Each physical site $v_i$ can be acted on by two terms in the Hamiltonian: $H_i$ 
 Hence, when we simplify $\Psi$ the phase factor associated with a given physical site $v_i$ will depend on a pair of indices $(e,e)$,$(e,f)$,$(f,e)$, and $(f,f)$, where the left index denotes the action by a term in $H_{i-1}$ and the right the action by a term in $H_{i}$. 
 %\dave{I think $H_i$ and $H_{i-1}$ were previously in the wrong order in this sentence}
 
+\dave{Should rename the $A$ tensors here since it is already reserved in the $C_2$ theory.}
 Focusing on a single site with input vector $v_i$, 
 we can succinctly write the action of the Hamiltonian as a matrix $(A^{v_i \to v_i'})_{xy}$ where $v_i'$ denotes the output vector obtained after acting with the Hamiltonian and where $x,y \in \{ e, f \}$.
 These matrices are straightforward to compute using the rules of the $C_2$ graphical calculus.
@@ -424,6 +426,50 @@ if the initial input vector is $v_o$.
 %\ethan{should the bottom-right entry in the last matrix be $-1$?}
 %\dave{Yeap! Good catch. Made the change}
 \dave{Need to think of better notation for this.}
+\dave{Some alternative notation.}
+We thus obtain an MPO,
+\begin{align}
+A_{b_l b_r}: \; \mch_I &\to \mch_I\\
+v_1 \tp \cdots \tp v_n& \mapsto  \sum_{\{v_i' \}} \left( A^{v_1 \ra v_1'} A^{v_2 \ra v_2'} \cdots A^{v_n \ra v_n'} \right)_{b_l b_r} \; v_1' \tp \cdots \tp v_n' 
+\end{align}
+where $b_l$ and $b_r$ are boundary conditions taking labels in $\{ e, ,f \}$.
+They denote whether an additional fermionic dot has been added to the leftside of the first interval or the rightside of the last interval. 
+For example, the diagrammatics allow one to check that $A_{ef}$ is an odd operator and by construction satisfies $A_{ef} = A^4 A_{fe} (-1)^F$.\dave{Need to re-label all the A-tensors.}
+This is a consequence of $\beta$ having an odd endomorphism.
+The additional $(-1)^F$ accounts for sliding a fermion past an odd operator.
+
+To obtain an MPS for the ground states we simply fix an initial vector and boundary conditinos for the MPO. 
+On the interval we can construct the even parity ground state by
+\begin{align}
+\Psi_{I,e} = \sum_{\{v_i' \}} \left( A^{v_e \ra v_1'} A^{v_e \ra v_2'} \cdots A^{v_e \ra v_n'} \right)_{ee} \; v_1' \tp \cdots \tp v_n' 
+\end{align} 
+and the odd parity ground state with
+\begin{align}
+\Psi_{I,o} = \sum_{\{v_i' \}} \left( A^{v_o \ra v_1'} A^{v_e \ra v_2'} \cdots A^{v_e \ra v_n'} \right)_{ee} \; v_1' \tp \cdots \tp v_n'.
+\end{align} 
+Using $A_{ff}$ in both cases would provide the same wavefunction up to an overall phase.
+Similarly using \eqref{bounding_trace}, one can find the MPS on a bounding spin circle by,
+\begin{align} 
+\Psi_B = \sum_{\{ v_i ' \} } \tr \left( A^{v_e \ra v_1'} A^{v_e \ra v_2'} \cdots A^{v_e \ra v_n'} \right) v_1' \tp \cdots \tp v_n' 
+\end{align}
+and using \eqref{nonbounding_trace} we find the MPS on the non-bounding circle,
+\dave{need to double check these.}
+\begin{align} 
+\Psi_N = \sum_{\{ v_i ' \} } \str \left( A^{v_o \ra v_1'} A^{v_e \ra v_2'} \cdots A^{v_e \ra v_n'} \right) v_1' \tp \cdots \tp v_n'.
+\end{align}
+In order to have a non-zero wavefunctions we needed to choose a parity even initial vector for the bounding spin structure, 
+and an odd parity initial vector for the non-bounding spin structure. 
+
+\begin{comment}
+
+\dave{I think the next two paragraphs can be removed now.}
+%Explicilty, in terms of basis vectors we have,
+%\begin{align}
+%v_1 \tp \cdots \tp v_n \xrightarrow{\quad A_{b_l b_r} \quad }
+ %\sum_{\{v_i' \}} \left( A^{v_1 \ra v_1'} A^{v_2 \ra v_2'} \cdots A^{v_n \ra v_n'} \right)_{b_l b_r} \; v_1' \tp \cdots \tp v_n' 
+%\end{align}
+
+
 We thus obtain the MPO
 \be
 A = \sum_{\{ v_{i} \} , \{v_i'\}} \cdots A^{v_i \to v_i' } A^{v_{i+1} \to v_{i+1}'} \cdots,
@@ -451,6 +497,8 @@ if we are working on the bounding spin circle $S^1_B$, and
 \dave{Needs an odd endomorphism.}
 \ethan{?}
 \ethan{ah, I think I see what you mean. How is it now?}
+\dave{Mhmm. I think so but need to double check. 
+I re-did some notation and copied these paragraphs above.}
 \begin{align}
  \Psi_N & = \sum_{v'_i =v_e,v_o  }\tr((-1)^FA^{v_o\ra v'_1}A^{v_e\ra v'_2} \cdots A^{v_e\ra v'_N}) v'_1 \tp \cdots \tp v'_n \\ 
  & =\sum_{v'_i =v_e,v_o }\str(A^{v_o\ra v'_1} A^{v_e\ra v'_2}\cdots A^{v_e\ra v'_N}) v'_1 \tp \cdots \tp v'_n
@@ -503,6 +551,8 @@ if we are working on the non-bounding circle $S^1_N$.
 %This is the presentation of the wavefunctions used in the tensor network community, 
 %and agrees with the results of \cite{turzillo2016,bultinck2017b}. 
 %The graphical depiction of these states is given by the $\Psi_B,\Psi_N$ appearing in \eqref{kitaev_wire_circle_ground_states}. 
+
+\end{comment}
 
 \begin{comment}
 \begin{figure}
