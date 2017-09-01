@@ -369,40 +369,44 @@ calculus of the $C_2$ theory (see the discussion around \eqref{BoundingNullVecto
 %\dave{This was written quickly. 
 %Needs to be double checked, and also cleaned up a bit.}
 %\ethan{will come back to this in the morning} 
-We now show how one can use the Hamiltonian to construct matrix product operators (MPOs) and their related matrix product states (MPSs) for the ground state wavefunctions \eqref{kitaev_wire_ground_states} of \eqref{KWHam}.
+We now use the Hamiltonian to construct matrix product operators (MPOs) and their related matrix product states (MPSs) for the ground state wavefunctions \eqref{kitaev_wire_ground_states} of \eqref{KWHam}.
 This is a well known result, see e.g. \cite{fidkowski2011,turzillo2016,bultinck2017b}.
 %\dave{Should we also cite Fidkowski-Kitaev? I think they were the first to write this down but we also cite them in the intro to the section anyway.}. 
 %\ethan{sure, why not}
 We write it here as it in some sense gives a ``gentler'' version of the tensor network discussed in Section \ref{state_sums}, and provides a nice application of the graphical calculus developed in the body of the paper.
 
 \ethan{tried to make this slightly easier to understand; only partially succeeded (from my POV)} 
-\dave{I think we can change the notation a bit.}
-We need to write an MPO that lies in the image of the projectors $H_i$ defined in \eqref{kitaev_chain_ham_sitei}. 
+\dave{I tried to continue this trend.}
+We seek an MPO that projects a given wavefunction into the image of the projectors $H_i$ defined in \eqref{kitaev_chain_ham_sitei}. 
 For convenience, we write $H_i =\frac{1}{2}( e_{i} + f_{i})$, with $e_{i}$ proportional to the identity operator on the junction between the intervals $I_i$ and $I_{i+1}$, and $f_{i}$ proportional to the fermion parity operator $(-1)^F$ across the junction.
 Temporarily putting aside the issue of boundary conditions, we simply act with $\prod_i H_i$ on 
 a given initial vector $V = v_1\tp \cdots \tp v_n$, where $v_i=v_e,v_o$ (graphically, these input vectors look like those appearing in \eqref{example_hilb_vectors}).
-This produces a state $\Psi = \sum_{\{ a_{i+1/2} \} } \prod_i a_{i+1/2} V$, 
-where the sum is over all possible configurations of $a_{i+1/2} = e_{i+1/2}, f_{i+1/2}$.  
-\dave{any reason we use $\ket{\text{ket}}$ notation here and not elsewhere?}
-\ethan{was trying to decide whether we wanted it or not; I got rid of the kets}
+Once expanding the product $\prod_i H_i$ we find a sum overall all possible configurations of the operators $e_i$ or $f_i$ straddling the junctions between intervals $I_i$ and $I_{i+1}$. 
+Denote the resulting wavefunction $\Psi$.
+%This produces a state $\Psi = \sum_{\{ a_{i+1/2} \} } \prod_i a_{i+1/2} V$, 
+%where the sum is over all possible configurations of $a_{i+1/2} = e_{i+1/2}, f_{i+1/2}$.  
+%\dave{any reason we use $\ket{\text{ket}}$ notation here and not elsewhere?}
+%\ethan{was trying to decide whether we wanted it or not; I got rid of the kets}
 
 We now just need to simplify the resulting state $\Psi$ using the local relations of the $C_2$ theory. 
 Each physical site $v_i$ can be acted on by two terms in the Hamiltonian: $H_i$ (acting on the right strand of $v_i$) and $H_{i-1}$ (acting on the left strand). 
-Hence, when we simplify $\Psi$ the phase factor associated with a given physical site $v_i$ will depend on a pair of indices $(e,e)$,$(e,f)$,$(f,e)$, and $(f,f)$, where the left index denotes the action by a term in $H_{i-1}$ and the right the action by a term in $H_{i}$. 
+Hence, when we simplify $\Psi$ the phase factor associated with a given physical site $v_i$ will depend on a pair of indices $(e,e)$,$(e,f)$,$(f,e)$, and $(f,f)$.
+The left(right) index denotes which term in $H_{i-1}(H_i)$ contributed to the phase.
+%to this phase and the right the action by a term in $H_{i}$. 
 %\dave{I think $H_i$ and $H_{i-1}$ were previously in the wrong order in this sentence}
 
-\dave{Should rename the $A$ tensors here since it is already reserved in the $C_2$ theory.}
+\dave{changed $A$ to $W$ in the following.}
 Focusing on a single site with input vector $v_i$, 
-we can succinctly write the action of the Hamiltonian as a matrix $(A^{v_i \to v_i'})_{xy}$ where $v_i'$ denotes the output vector obtained after acting with the Hamiltonian and where $x,y \in \{ e, f \}$.
+we can succinctly write the action of the Hamiltonian as a matrix $(W^{v_i \to v_i'})_{xy}$ where $v_i'$ denotes the output vector obtained after acting with the Hamiltonian and where $x,y \in \{ e, f \}$.
 These matrices are straightforward to compute using the rules of the $C_2$ graphical calculus.
 If the input vector is $v_e$, we find
 \begin{align}
-A^{v_e \to v_e} = 
+W^{v_e \to v_e} = 
 \frac{1}{2}\left( \begin{matrix} 
 1 & 0\\
 0 & 1 \\
 \end{matrix} \right) \quad \quad \quad \quad 
-A^{v_e \to v_o} = 
+W^{v_e \to v_o} = 
 \frac{1}{2}\left( \begin{matrix} 
 0& A^4\\
 1 & 0 \\
@@ -411,12 +415,12 @@ A^{v_e \to v_o} =
 while we get
 %We don't need to start with all $v_i$ in the initial vector to be $v_e$, we could also allow some to be $v_o$, in which case we use, 
 \begin{align}
-A^{v_o \to v_e} = 
+W^{v_o \to v_e} = 
 \frac{1}{2}\left( \begin{matrix} 
 0 & 1\\
 A^4 & 0\\
 \end{matrix} \right) \quad \quad \quad \quad 
-A^{v_o \to v_o} = 
+W^{v_o \to v_o} = 
 \frac{1}{2}\left( \begin{matrix} 
 1& 0\\
 0 & -1 \\
@@ -425,37 +429,37 @@ A^{v_o \to v_o} =
 if the initial input vector is $v_o$.
 %\ethan{should the bottom-right entry in the last matrix be $-1$?}
 %\dave{Yeap! Good catch. Made the change}
-\dave{Need to think of better notation for this.}
-\dave{Some alternative notation.}
+%\dave{Need to think of better notation for this.}
+%\dave{Some alternative notation.}
 We thus obtain an MPO,
 \begin{align}
-A_{b_l b_r}: \; \mch_I &\to \mch_I\\
-v_1 \tp \cdots \tp v_n& \mapsto  \sum_{\{v_i' \}} \left( A^{v_1 \ra v_1'} A^{v_2 \ra v_2'} \cdots A^{v_n \ra v_n'} \right)_{b_l b_r} \; v_1' \tp \cdots \tp v_n' 
+W_{b_l b_r}: \; \mch_I &\to \mch_I\\
+v_1 \tp \cdots \tp v_n& \mapsto  \sum_{\{v_i' \}} \left( W^{v_1 \ra v_1'} W^{v_2 \ra v_2'} \cdots W^{v_n \ra v_n'} \right)_{b_l b_r} \; v_1' \tp \cdots \tp v_n' 
 \end{align}
 where $b_l$ and $b_r$ are boundary conditions taking labels in $\{ e, ,f \}$.
 They denote whether an additional fermionic dot has been added to the leftside of the first interval or the rightside of the last interval. 
-For example, the diagrammatics allow one to check that $A_{ef}$ is an odd operator and by construction satisfies $A_{ef} = A^4 A_{fe} (-1)^F$.\dave{Need to re-label all the A-tensors.}
+For example, the diagrammatics allow one to check that $W_{ef}$ is an odd operator and by construction satisfies $W_{ef} = A^4 W_{fe} \circ (-1)^F$.\dave{Need to double check this.}
 This is a consequence of $\beta$ having an odd endomorphism.
 The additional $(-1)^F$ accounts for sliding a fermion past an odd operator.
 
-To obtain an MPS for the ground states we simply fix an initial vector and boundary conditinos for the MPO. 
+To obtain an MPS for the ground states we simply fix an initial vector and boundary conditions for the MPO. 
 On the interval we can construct the even parity ground state by
 \begin{align}
-\Psi_{I,e} = \sum_{\{v_i' \}} \left( A^{v_e \ra v_1'} A^{v_e \ra v_2'} \cdots A^{v_e \ra v_n'} \right)_{ee} \; v_1' \tp \cdots \tp v_n' 
+\Psi_{I,e} = \sum_{\{v_i' \}} \left( W^{v_e \ra v_1'} W^{v_e \ra v_2'} \cdots W^{v_e \ra v_n'} \right)_{ee} \; v_1' \tp \cdots \tp v_n' 
 \end{align} 
 and the odd parity ground state with
 \begin{align}
-\Psi_{I,o} = \sum_{\{v_i' \}} \left( A^{v_o \ra v_1'} A^{v_e \ra v_2'} \cdots A^{v_e \ra v_n'} \right)_{ee} \; v_1' \tp \cdots \tp v_n'.
+\Psi_{I,o} = \sum_{\{v_i' \}} \left( W^{v_o \ra v_1'} W^{v_e \ra v_2'} \cdots W^{v_e \ra v_n'} \right)_{ee} \; v_1' \tp \cdots \tp v_n'.
 \end{align} 
-Using $A_{ff}$ in both cases would provide the same wavefunction up to an overall phase.
+Using $W_{ff}$ in both cases would provide the same wavefunction up to an overall phase.
 Similarly using \eqref{bounding_trace}, one can find the MPS on a bounding spin circle by,
 \begin{align} 
-\Psi_B = \sum_{\{ v_i ' \} } \tr \left( A^{v_e \ra v_1'} A^{v_e \ra v_2'} \cdots A^{v_e \ra v_n'} \right) v_1' \tp \cdots \tp v_n' 
+\Psi_B = \sum_{\{ v_i ' \} } \tr \left( W^{v_e \ra v_1'} W^{v_e \ra v_2'} \cdots W^{v_e \ra v_n'} \right) v_1' \tp \cdots \tp v_n' 
 \end{align}
 and using \eqref{nonbounding_trace} we find the MPS on the non-bounding circle,
 \dave{need to double check these.}
 \begin{align} 
-\Psi_N = \sum_{\{ v_i ' \} } \str \left( A^{v_o \ra v_1'} A^{v_e \ra v_2'} \cdots A^{v_e \ra v_n'} \right) v_1' \tp \cdots \tp v_n'.
+\Psi_N = \sum_{\{ v_i ' \} } \str \left( W^{v_o \ra v_1'} W^{v_e \ra v_2'} \cdots W^{v_e \ra v_n'} \right) v_1' \tp \cdots \tp v_n'.
 \end{align}
 In order to have a non-zero wavefunctions we needed to choose a parity even initial vector for the bounding spin structure, 
 and an odd parity initial vector for the non-bounding spin structure. 
