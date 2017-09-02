@@ -39,8 +39,6 @@ we will show that a single strand of $\beta$ string is a diagrammatic descriptio
 This means that the string-net Hamiltonian in Section \ref{Super_pivotal_Hamiltonian} 
 based on the $C_2$ theory describes a phase of fluctuating Kitaev wires, 
 an idea previously investigated in \cite{tarantino2016,ware2016,kapustin2017}.
-\dave{According to\cite{turzillo2016}(last paragraph of 2.1) some of this is also in \cite{gaiotto2016}.
-Should check.}
 
 The basic strategy is to cut a single $\beta$ strand into pieces and analyze how to glue those pieces back together to recover the uncut strand.
 Physically, we will implement the gluing by requiring the vectors to be in the ground space of a particular Hamiltonian -- similar to what we did in Section \ref{Super_pivotal_Hamiltonian}. 
@@ -193,10 +191,10 @@ which is precisely the action of $(-1)^F$ (which can be identified with $i\gamma
 
 It is straightforward to find the ground states of \ref{KWHam}.
 Noting that the non-trivial term in the Hamiltonian is just measuring the parity shared between adjacent ``physical" sites, 
-we can do a change of basis using an F-move so that the Hamiltonian is diagonal and annhiliates the ground state.
+we can do a change of basis using an F-move so that the Hamiltonian is diagonal and annihilates the ground state.
 %find the ground states of this Hamiltonian: there are two zero-energy ground states, differing by their fermion parity:
 %One finds two ground states
-In this basis the ground state wavefunctions take the form,
+In this basis the (un-normalized) ground state wavefunctions take the form
 %\begin{align} \label{kitaev_wire_ground_states}
 %\Psi_e = \;\StaggaredGSEven \; \cdots \; \StaggaredGSEvenR\;, 
 %\qquad \text{and} \qquad 
@@ -376,9 +374,7 @@ This is a well known result, see e.g. \cite{fidkowski2011,turzillo2016,bultinck2
 %\ethan{sure, why not}
 We write it here as it in some sense gives a ``gentler'' version of the tensor network discussed in Section \ref{state_sums}, and provides a nice application of the graphical calculus developed in the body of the paper.
 
-\ethan{tried to make this slightly easier to understand; only partially succeeded (from my POV)} 
-\dave{I tried to continue this trend.}
-We seek an MPO that projects a given wavefunction \ethan{wavefunction or state? Maybe I'm being too picky\dave{either is fine with me.}} into the image of the projectors $H_i$ defined in \eqref{kitaev_chain_ham_sitei}. 
+We seek an MPO that projects a given state into the image of the projectors $H_i$ defined in \eqref{kitaev_chain_ham_sitei}. 
 For convenience, we write $H_i =\frac{1}{2}( e_{i} + f_{i})$, with $e_{i}$ proportional to the identity operator on the junction between the intervals $I_i$ and $I_{i+1}$, and $f_{i}$ proportional to the fermion parity operator $(-1)^F$ across the junction.
 Temporarily putting aside the issue of boundary conditions, to find the MPO we simply act with $\prod_i H_i$ on 
 a given initial vector $V = v_1\tp \cdots \tp v_n$, where $v_i=v_e,v_o$ (graphically, these input vectors look like those appearing in \eqref{example_hilb_vectors}).
@@ -571,18 +567,18 @@ if we are working on the non-bounding circle $S^1_N$.
 
 
 To summarize, we showed that strands of q-type objects are intimately related to the Kitaev chain. 
-One can think of the string net Hamiltonian (defined in Section~\ref{def_sect}) for the $C_2$ theory as describing a phase of fluctuating Kitaev wires, a point of view adopted in \cite{tarantino2016,ware2016,kapustin2017}\dave{Need to double check the Kapstin ref, didn't realize he also did this. \ethan{I think it was more ragnar's point of view}}.
-We also noted that fermion condensation is closely tied with the Jordan-Wigner transformation, as one can readily check by looking at looking at the anyon spin chains based on $A_3$ and $A_3/\psi = C_2$, which was also noted in \cite{Kapustin again?} \ethan{dunno?}
+One can think of the string net Hamiltonian (defined in Section~\ref{def_sect}) for the $C_2$ theory as describing a phase of fluctuating Kitaev wires, a point of view adopted in \cite{tarantino2016,ware2016,kapustin2017}.
+We also noted that fermion condensation is closely tied with the Jordan-Wigner transformation, as one can readily check by looking at looking at the anyon spin chains based on $A_3$ and $A_3/\psi = C_2$.
 %\dave{I'm very tempted at making that bit a little more precise since it is very cool, and as far as I know not fully explained anywhere.}.
 %\dave{Less tempted today.}
-With the one-dimensional Hamiltonian at hand, we showed how to explicitly construct the MPS for the ground state wavefunctions in this graphical language, recovering the same MPS as \cite{fidkowski2011,turzillo2016,bultinck2017b}.\dave{will double check this.} 
+With the one-dimensional Hamiltonian at hand, we showed how to explicitly construct the MPS for the ground state wavefunctions in this graphical language, recovering the same MPS as \cite{fidkowski2011,turzillo2016,bultinck2017b}.
 %\ethan{I still don't see how these are the same MPS. %Our matrices are different (we have $A^4$s), and our hilbert space is also different %(their physical index runs over $\unit,\beta$, while we treat the odd and even parts %of $\beta$ separately).}
 %\dave{Can you refer to an exact equation? 
 %I think I found one of the references was using the same matrices up to a gauge transformation, but I forget which ref and where (you can always send $A_i \tp U_i^{\dagger} A_i U_{i+1}$).
 %}
 %\ethan{actually, I think this is just me being a bit thick and just not understanding the point of this approach to MPS, but I see it now. I retract my earlier objection} 
-We also note that the same MPS can be found by taking a disk with two marked points labeled by a q-type strand %and $n-2 marked points labeled by the identity 
-and employing the shadow world construction outlined in Section~\ref{shadowworld}\dave{Will check that we all agree on this. \ethan{I do}}.
+We also note that the same MPS can be found by taking a disk with two marked points labeled by a q-type strand and $n-2$ marked points labeled by the identity 
+and employing the shadow world construction outlined in Section~\ref{shadowworld}.
 %\dave{Anything else we need in the summary paragraph? I'm also happy to remove some of the stuff.}
 
 
