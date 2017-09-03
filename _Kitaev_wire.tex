@@ -7,21 +7,26 @@
 \section{Kitaev chain} \label{kitaev_wire}
 %%%%%%%%%%%%%%%%
 \dave{Should remark somwhere in this section (or in the apprpriate places) that we haven't put any effort into normalizing our wavefunctions in this section.}
+\dave{After reading through once again it looks like none of our wavefunctions are normalized.}
 
 In this section, we show how the graphical formalism developed in previous sections
 can be used to capture the salient features of the `Kitaev wire', 
 Kitaev's toy model of a one-dimensional spinless $p$-wave superconductor \cite{kitaev2001}. 
 This highlights the connection between Majorana zero modes and Ising anyons and serves 
 as a nice application of the graphical calculus of the $C_2$ theory.
-Most of what we say applies beyond the $C_2$ theory and can be carried out for any theory containing at least one $q$-type object
+Most of what we say applies beyond the $C_2$ theory and can be carried out for any theory containing at least one $q$-type object.
 %  although the procedure we work 
 %out can be carried out for any theory containing at least one $q$-type object.
 %, and provides 
 %a simple (alas, perhaps too simple) illustration of the shadow world approach detailed in the previous section 
 %(with appropriate modifications for the reduced dimensionality of the problem). 
-The Hamiltonian we write down and the associated wavefunctions we construct are 
-the same as those found in e.g. \cite{fidkowski2011}, but presented in a more graphical formalism and 
-discussed within the framework of the tools developed in this paper. 
+The Hamiltonian we write down is the same as the one constructed in \ref{Super_pivotal_Hamiltonian}, with a cell decomposition of a disk (annulus) with fixed boundary conditions\dave{Maybe draw picture?}.
+Correspondingly, the associated wavefunctions we construct
+%and the associated wavefunctions we construct are 
+are the same as those found in e.g. \cite{fidkowski2011}, but presented in a more graphical formalism 
+and serve as a simple example of the techniques discussed in Section \ref{state_sums}.
+%and 
+%discussed within the framework of the tools developed in this paper. 
 
 Recall that the $C_2$ theory has two simple objects $\unit,\beta$,
 with $\beta\tp \beta\cong \cc^{1|1}\unit$,
@@ -51,7 +56,7 @@ Physically, we will implement the gluing by requiring the vectors to be in the g
 %The Hamiltonian turns out to be a limiting case of the Kitaev wire, the zero correlation length limit.
 We first note that the vector space associated to a single interval $I$ with boundary conditions labeled by $\beta$ can be written graphically as 
 \be\label{VIbetabeta}
- A(I;\beta,\beta) = \cc \left[ \halfchain\;, \; \halfchaindot \right] = \cc^{1|1}.\ee
+ A(I;\beta,\beta) = \cc \left[ \halfchain\;, \; \halfchaindot \right] \cong \cc^{1|1}.\ee
  
  Now we can consider splitting the interval $I$ into two smaller intervals $I_1,I_2$, such that $I_1\cup I_2 = I$.
  We then can reconstruct the vector space $A(I;\beta,\beta)$ from the vector 
@@ -99,7 +104,7 @@ The upward-curved ends on each $\beta$ segment are drawn purely for aesthetic pu
 The local Hilbert space is then
 %\dave{I don't think we use the notation $\langle v_e,v_o\rangle $ anywhere else in the paper.}
 \begin{align}
-A(I_i; \beta, \beta) = \cc \left[ \LocalHilba, \LocalHilbb \right].
+A(I_i; \beta, \beta) = \cc \left[ \LocalHilba, \LocalHilbb \right] \cong \cc^{1|1}.
 \end{align}
 
 
@@ -108,7 +113,7 @@ The total Hilbert space of the chain is given by tensoring each local Hilbert sp
 \label{HilbInterval}
 \mch_I  = A(I_1; \beta, \beta)  \tp_\cc A(I_2; \beta, \beta)  \tp_\cc \cdots \tp_\cc A(I_n; \beta, \beta).  
 \end{align} 
-States in this Hilbert space can be denoted graphically as
+States in this Hilbert space are expressed graphically as
 %\dave{Fix LHS.}
 \begin{align} \label{example_hilb_vectors}
 \quarterpiperprime \tp  \LocalHilba \tp  \LocalHilba \tp  &\cdots \tp  \LocalHilba \tp  \quarterpipelprime, \\
@@ -147,7 +152,7 @@ so that using $\tp_\cc$ and projecting with $H$ is equivalent to using $\tp_{\En
 Thus, $H_i$ is responsible for gluing together ends of $\beta$ strands. 
 In terms of electronic operators, $H_i$ implements hopping and pairing between electrons in nearest neighbor sites $i$ and $i+1$.
 
-We form our Hamiltonian from a sum of $H_i$ projectors acting between each pair of strands:
+We form our Hamiltonian from a sum of projectors, $H_i$, acting between each pair of strands:
 \begin{align}
 \label{KWHam}
 H = t \sum_{i = 1}^{n-1} (1- H_i).
@@ -207,14 +212,16 @@ In this basis the (un-normalized) ground state wavefunctions take the form
 \end{align}
 In this basis the Hamiltonian acts as $(1-(-1)^F)$ on each pair of vertical strands, which is clearly zero.
 
-\dave{Note to self: re-visit this paragraph. 
-Probably want to say something like total fermion number isn't conserved, rather than local. \ethan{I think we want to say the fermion is delocalized, fermion number is still conserved mod 2}
-But need to find a nice way to connect that with shuffling fermions around.}
-\dave{I guess de-localized isn't so-good either since that's the case for usual non-topological band insulators as well.
-We could also just remove the remark -- or make the following comment more accurate: `A nice feature of our diagrammatic notation is that it demonstrates single electron tunneling through the wire at zero energy cost, as one expects for a pair of Majorana zero modes de-localized across a Kitaev chain.'
-}
+%\dave{Note to self: re-visit this paragraph. 
+%Probably want to say something like total fermion number isn't conserved, rather than local. \ethan{I think we want to say the fermion is delocalized, fermion number is still conserved mod 2}
+%But need to find a nice way to connect that with shuffling fermions around.}
+%\dave{I guess de-localized isn't so-good either since that's the case for usual non-topological band insulators as well.
+%We could also just remove the remark -- or make the following comment more accurate: `A nice feature of our diagrammatic notation is that it demonstrates single electron tunneling through the wire at zero energy cost, as one expects for a pair of Majorana zero modes de-localized across a Kitaev chain.'
+%}
+\dave{Still can't think of a nice way to say this.}
 %One of the hallmarks of a Kitaev chain is that it can seamlessly `teleport' electrons through a gapped medium\cite{Fu?}.
 A nice feature of our diagrammatic notation is that it makes the fact that the local fermion number is not a good quantum number completely manifest.
+%\dave{Want to say that fermion parity of the ground state is de-localized across the zero modes appearing at the termination of the wire. (fermion parity is usually no local.)}
 %One feature of the Kitaev chain that the diagrammatic notation nicely captures is that the local fermion number is not a good quantum number. 
 Indeed, the fermion in the odd-parity state $\Psi_o$ is not localized: it is free to slide along the bottom $\beta$ line
 from one end of the chain to the other; any given position represents the same quantum state.
@@ -237,6 +244,7 @@ whereas the wavefunctions $\Psi_e,\Psi_o$ are expressed in a basis that's ``shar
 In a Kitaev chain with $n$ physical sites (i.e., $n$ intervals), 
 we recover the well known result
 \dave{double check normalization.}
+\dave{I think this wavefunction is just as un-normalized as the one above.}
 %\be \Psi_e = \frac{1}{d^{n-1}} \bigotimes_{i=1}^n (-A^4)^{n_f/2} \sum_{\{v_i\}}  v_i,\ee
 %\be \Psi_e = \frac{1}{d^{n-1}} \bigotimes_{i=1}^n (A^4)^{n_f/2} \sum_{v_i = v_e,v_o}  v_i,\ee
 %\dave{Maybe we should write it as:}
@@ -252,6 +260,7 @@ For the odd wavefunction $\Psi_o$, we find
 %\dave{Great. }
 %\be \Psi_e = \frac{1}{d^{n-1}} \bigotimes_{i=1}^n(-A^4)^{(n_f+1)/2} \sum_{\{v_i\}}  v_i,\ee
 %\be \Psi_e = \frac{1}{d^{n-1}} \bigotimes_{i=1}^n(A^4)^{(n_f-1)/2} \sum_{v_i = v_e,v_0}  v_i,\ee
+\dave{Same with this one.}
 \begin{align}
 \Psi_o = \frac{1}{d^{n-1}}\sum_{\substack{ \{ v_i\} \\  n_f = \text{odd} }}  (A^4)^{(n_f-1)/2}\; v_1 \tp v_2 \tp \cdots \tp v_n
 \end{align}
@@ -264,8 +273,8 @@ that are coherent sums over all fermion parity even and fermion parity odd state
 %\dave{Naw, too much writing.}
 %\ethan{yay :--)}
 
-\dave{added some text here, feel free to edit. I'll need to take another pass at it to polish it up.}
-\ethan{made some stylistic edits}
+%\dave{added some text here, feel free to edit. I'll need to take another pass at it to polish it up.}
+%\ethan{made some stylistic edits}
 Note that the fermion dot appearing in $\Psi_o$ of \eqref{kitaev_wire_ground_states} has zero energy (since the Hamiltonian does not act on either the beginning of the first strand in the chain or the end of the last strand), while this is not true for fermion dots 
 appearing on the interior cups. 
 %\dave{interior intermediate sounds awkward.}
@@ -274,12 +283,14 @@ appearing on the interior cups.
 Physically, this is due to the presence of a pair of Majorana zero modes localized at the ends of the chain. 
 One can explicitly construct the zero mode operators by considering the odd operators acting on either end of the chain; 
 they commute with the Hamiltonian, anti-commute with one another, anti-commute with $(-1)^{F_\text{tot}}$ (the total fermion parity), and up to a pre-factor each square to the identity.
-These are exactly the properties of a Majorana zero mode.%, and in this case a Majorana zero mode.
+These are exactly the properties of a Majorana zero mode. %, and in this case a Majorana zero mode.
+\dave{Maybe move what ever we want to say about fermion parity delocalized across the zero modes to here, rather than above.}
+
 By considering the same spin chain but using the regular Ising fusion category $A_3$ (rather than the condensed $A_3/\psi$ theory), one finds exactly the transverse field Ising model. 
-Fermion condensation provides a map a map between these two models in the same way the Jordan-Wigner transformation does.
+Fermion condensation provides a map between these two models in the same way the Jordan-Wigner transformation does.
 %\dave{could add: `; also noted by \cite{turzillo2016,kapustin2017}', not sure if we need to cite people for this. }.
 % from this spin model to the Majorana chain in just the way the Jordan-Wigner transformation takes the transverse field Ising model to the Kitaev chain. 
-Of course, we have only discussed the zero correlation length limit, but on-site terms can be added as well, and the analysis caries through, except with the zero being exponentially localized to the boundary for a small perturbation.
+Of course, we have only discussed the zero correlation length limit, but on-site terms can be added as well, and the analysis caries through, except the zero modes are exponentially localized to the boundary (for a small perturbation).
 % and one finds similar results, with the zero modes de-localized, etc.  
 In the zero correlation length limit, excited states are easily constructed by putting dots on the intermediate cups. 
 
@@ -342,7 +353,7 @@ we need to slide one of the fermions around the full $S^1_{X}$.
 %\dave{Maybe give more detail about this, maybe not.}
 %The fermion parity of the ground-state wavefunctions is uniquely determined by the choice of spin structure, being 
 %even for $S^1_B$ and odd for $S^1_N$; for both spin structures the ground state is unique. 
-Using this, the fact that the structure of the Hamiltonian is the same as in \eqref{kitaev_chain_ham_sitei}, and using our earlier results \eqref{kitaev_wire_ground_states}, we can write the wavefunctions on the $B$ and $N$ sectors as 
+Using this, the fact that the structure of the Hamiltonian is the same as in \eqref{kitaev_chain_ham_sitei}, and using our earlier results \eqref{kitaev_wire_ground_states}, we can write the (unnormalized) wavefunctions on the $B$ and $N$ sectors as 
 %\ethan{modify this so that the big legs on the ends are chopped off and an appropriate $(-1)^F$ operator is inserted to be the branch cut on the non-bounding wavefunction}
 %\dave{Not sure what that meant. 
 %I changed the figures, not totally sure I understood wha what you meant.}
