@@ -2050,20 +2050,21 @@ with similar definitions of $\mch_v$ in the case of other edge orientation arran
 If a basis vector of $\mch_\mcg$ satisfies edge label compatibility for all adjacent pairs of vertices
 (equivalently, if the basis vector lies in the ground state of the vertex term of the Hamiltonian),
 then it can be interpreted as defining a string net on $\Sigma$.
-A wave function (not ``the" wave function unless the ground state is 1-dimensional) $w$ assigns a weight $w(v)$ to each such basis vector $v$, \ethan{can we use $\Psi$ or $\psi$ instead of $w$, or am I being too picky? \dave{That's not a bad idea.}}
-in such a way that if $\sum_i c_i v_i$ is equal to zero in $A(\Sigma)$, then $\sum_i c_i w(v_i) = 0$.
-For basis vectors $v$ which violate edge label compatibility, we have $w(v) = 0$.
+A wave function (not ``the" wave function unless the ground state is 1-dimensional) $\Psi$ assigns a weight $\Psi(v)$ to each such basis vector $v$, \ethan{can we use $\Psi$ or $\psi$ instead of $w$, or am I being too picky? \dave{That's not a bad idea.} cool, I made the change. Kevin, if you strenuously object we can change it back}
+in such a way that if $\sum_i c_i v_i$ is equal to zero in $A(\Sigma)$, then $\sum_i c_i \Psi(v_i) = 0$.
+For basis vectors $v$ which violate edge label compatibility, we have $\Psi(v) = 0$.
 
-Given a string net $g$ on $\Sigma$, we can define a wave function $w_g$ via
+Given a string net $g$ on $\Sigma$, we can define a wave function $\Psi_g$ via
 \be  \label{wfg-def}
-	w_g(v) = Z(\Sigma\times I)(\bar g \cup v) .
+	\Psi_g(v) = Z(\Sigma\times I)(\bar g \cup v) .
 \ee
 In other words, we evaluate the path integral $Z(\Sigma\times I)$ with boundary condition $\bar g$ on $\Sigma\times\{0\} \cong -\Sigma$
 and boundary condition $v$ on $\Sigma\times\{1\} \cong \Sigma$.
 (Recall that $\bar g$ is the reflected version of the string net $g$ on the orientation-reversed surface $-\Sigma$.)
-Note that as $g$ runs through a basis of $A(\Sigma)$, $w_g$ runs through a basis of the wave functions for the ground state of the Hamiltonian.
-\dave{We should probably write the ground space wavefunctions explicitly somewhere e.g.,: 
-`...ground state the Hamiltonian, i.e., $\ket{\omega_g}  = \sum_{v \in \mch_\mcg}  \omega_g(v) \ket{v}$ span the ground space.'}
+Note that as $g$ runs through a basis of $A(\Sigma)$, $\Psi_g$ runs through a basis of the wave functions for the ground state of the Hamiltonian, namely $\Psi_g  = \sum_{v \in \mch_\mcg}  \Psi_g(v) v$.
+\ethan{maybe?}
+%\dave{We should probably write the ground space wavefunctions explicitly somewhere e.g.,: 
+%`...ground state the Hamiltonian, i.e., $\ket{\omega_g}  = \sum_{v \in \mch_\mcg}  \omega_g(v) \ket{v}$ span the ground space.'}
 
 Our task now reduces to using the techniques of the previous subsection to construct a tensor network which evaluates the RHS of \eqref{wfg-def}.
 
@@ -2091,7 +2092,8 @@ G'' & G' & G = G' \cup G'' \\
 	}}
 \end{align}
 \caption{\label{slab_decomp}
-\dave{Changed `handle decomposition to cell decomposition'}
+%\dave{Changed `handle decomposition to cell decomposition'}
+%\ethan{cool}
 The cell decompositions described in the text. $G''$ (left) is the cell 
 decomposition on which the input string-net state is defined, and $G'$ (center) is the decomposition on 
 which the Hamiltonian acts. The union $G=G'\cup G''$ (right) is the cell decomposition we use to 
