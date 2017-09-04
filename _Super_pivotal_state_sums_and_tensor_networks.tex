@@ -71,11 +71,13 @@ Lastly we use the state sum to write down an explicit wave function for the grou
 \medskip
 
 \begin{figure}
-\begin{align}
+%\begin{align}    %%KW trying to figure out why this is 10.0.2 instead of 10.0.1
 %\text{a figure} 
-\nonumber
+%\nonumber
+\begin{center}
 \includegraphics[scale = 0.1]{CellDecompFig.pdf}
-\end{align}
+%\end{align}
+\end{center}
 \caption{
 \label{cell_and_handle_decomp}
 \davex{Figure done quickly, had to leave during making.
@@ -109,6 +111,16 @@ The topology of $M$ is encoded by the various attaching maps.
 The different types of $k$-handles are illustrated in Figure 
 \ref{cell_and_handle_decomp}.
 
+\kw{Caption for alternative version of this figure:
+The handles corresponding to a standard cubic cell decomposition (a).
+The 0-, 1- and 2-handles are shown in (b), (c) and (d), with colors green, blue and red.
+The blue disks on the 0-handle indicate where the 1-handles attach to the 0-handle, and the red rectangles
+indicate where the 2-handles attach to the 0-handle.
+A similar color scheme indicates where the 1- and 2-handles in (c) and (d) meet adjacent handles.
+We have omitted the 3-handles from the figure.
+}
+
+
 
 %is built into the attaching regions where different handles are connected, each of which is homeomorphic to $S^k \times D^{n-k}$.
 %We are interested in 3-manifolds,
@@ -118,32 +130,6 @@ The different types of $k$-handles are illustrated in Figure
 %Although not necessary, we assume the cell decomposition of $M$ is dual to a triangulation for ease of notation.
 %The standardization procedure is similar to the pitchforkization procedure defined in \eqref{pitchfork_basis} and surrounding text.
 
-
-%\kw{to do: restore description on relation of cell decomps to handle decomps; also establish conventions for manifolds
-%with boundary}
-
-
-\begin{comment}
-\ethan{this is Kevin's second outline, commented it out since it was cluttering up things}
-\subsection{Outline of proposed reorganization (KW)}	%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\kw{My hope was that the notation and order of presentation below would be in close-to-final form, but currently
-I'm falling short of that goal.}
-
-\kw{Still in progress.}
-
-\medskip
-
-Outline:
-\begin{itemize}
-\item Review bosonic state sum, on general cell decomp
-\item How to turn this into a tensor network
-\item Discuss ways to standardize (generic cell decomp (dual to triangulation), global ordering (which has
-some disadvantages in our intended application)
-\end{itemize}
-
-\kwsep
-\end{comment}
 
 
 %%%%%%%%%%%%%%%%%%%%
@@ -252,7 +238,10 @@ as shown in Figure \ref{TwoHandleToGraph}.
 %I think we need a figure that shows how each 2-cell orients a part of the 2-, 1- and 0-cells.
 %I'll try to think of a reasonable figure to draw.}
 String-net graphs are assigned to the $k$-handles as follows:
-\kw{KW to-do: maybe draw another fig for this}
+\kw{Caption for alternative version of this figure:
+Graphs on the boundaries of 0-, 1- and 2-handles, in the case of a cubic cell decomposition.
+Compare Figure 10.0.2.
+}
 \begin{itemize}
 \item On 2-handles, the graph is a single loop along the core of the attaching annulus of a 2-handle.
 The orientation of the loop is determined by the orientation of the 2-cell. 
@@ -422,17 +411,22 @@ and choice of orientations of 1- and 2-cells.
 
 \medskip
 
+%If $M$ has non-empty boundary,
+%we choose the handle decomposition to have the form shown in Figure xxx \kw{fix ref} near the boundary.
+%%KW fig too difficult to draw
+%In terms of cell decompositions, we choose a cell decomposition such that $\bd M$ lies in the 2-skeleton, rather
+%than a cell decomposition such $\bd M$ is transverse to the cells.
 If $M$ has non-empty boundary,
-we choose the handle decomposition to have the form shown in Figure xxx \kw{fix ref} near the boundary.
-In terms of cell decompositions, we choose a cell decomposition such that $\bd M$ lies in the 2-skeleton, rather
-than a cell decomposition such $\bd M$ is transverse to the cells.
+then we choose the cell decomposition so that $\bd M$ lies in the union of the 2-skeleton (union of 0-1, 1- and 2-cells).
+(An alternative choice would be to require that $\bd M$ is transverse to the 2-skeleton.
+The two conventions each have strengths and weaknesses.)
 
 The 0- and 1-cells on $\bd M$ will do double duty as the underlying graph of a string net on $\bd M$.
 Choose an orientation of each 1-cell on $\bd M$.
 (This is analogous to choosing an orientation of the boundary of a 2-cell in the interior of $M$.)
 Choose a labeling of these oriented edges by simple objects in $\sob(\mcc)$.
-For each vertex (0-cell) on $\bd M$, choose an element of the appropriate disk vector space
-(e.g.\ $V^{ab}_c$ in Figure xxxx \kw{I need to sketch this figure}).
+For each vertex (0-cell) on $\bd M$, choose an element of the appropriate disk vector space.
+%(e.g.\ $V^{ab}_c$ in Figure xxxx) \kw{I need to sketch this figure}).
 
 We now have a labeled string net $g$ on $\bd M$.
 The state sum will evaluate the path integral $Z(M)(g)$ 
