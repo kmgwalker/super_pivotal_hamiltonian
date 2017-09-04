@@ -1200,9 +1200,9 @@ being contracted always have adjacent Koszul-ordering and by using \eqref{contra
 \subsubsection{Fermionic standardization procedures} \label{fermionic_standardization}
 %%%%%%%%%%%%%%%%%%%%
 
-\kw{some new material here}
-\davex{Looks good to me, added `we' to the first sntence.}
-\ethan{looks good to me}
+%\kw{some new material here}
+%\davex{Looks good to me, added `we' to the first sntence.}
+%\ethan{looks good to me}
 As in the bosonic case, we can standardize the tensor network by
 choosing a generic cell decomposition (dual to a triangulation)
 and ``pitchforkizing" all trivalent vertices which appear on the boundaries of 0-handles.
@@ -1221,7 +1221,8 @@ Rather than tacking the spin-structure signs onto the 0-handle weights
 %(as we did in the state sum described above) 
 we incorporate them into the pivots.
 Indeed, we now have $P_e^3=(-1)^F$, so that $l_e$ is 
-valued in $\zz_6$ as opposed to $\zz_3$ (alternatively, we could keep $l_e \in \zz_3$  but insert $(-1)^{F} \cdot P^{l_e}$ where appropriate).
+valued in $\zz_6$ as opposed to $\zz_3$.
+(Alternatively, we could keep $l_e \in \zz_3$  but insert $(-1)^{F} \cdot P^{l_e}$ where appropriate.)
 %We keep the spin framing at the 0-handles fixed by virtue of the pitchforkization procedure (and require that every 0-handle is related by a translation), 
 
 Note that the spin structure of the underlying 3-manifold is encoded in the edge pivots $P_e$ (and the standardized 0-handles).
@@ -2047,6 +2048,7 @@ Hamiltonian defined in Section \ref{Super_pivotal_Hamiltonian}.
 In a nutshell, the idea is to apply the general tensor network construction of the previous subsection to the spin 3-manifold
 $\Sigma\times I$, where $\Sigma$ is the spin surface which hosts the Hamiltonian.
 
+\kw{Some notational changes in next two paragraphs}
 Recall that the big Hilbert space for the Hamiltonian defined on a cell decomposition $\mcg$ is
 \begin{align} \label{bhs_redef}
 	\mch_\mcg =\bigotimes_{v \in \mcv} \mch_v,
@@ -2056,19 +2058,25 @@ with similar definitions of $\mch_v$ in the case of other edge orientation arran
 If a basis vector of $\mch_\mcg$ satisfies edge label compatibility for all adjacent pairs of vertices
 (equivalently, if the basis vector lies in the ground state of the vertex term of the Hamiltonian),
 then it can be interpreted as defining a string net on $\Sigma$.
-A wave function (not ``the" wave function unless the ground state is 1-dimensional) $\Psi$ assigns a weight $\Psi(v)$ to each such basis vector $v$, \ethan{can we use $\Psi$ or $\psi$ instead of $w$, or am I being too picky? \dave{That's not a bad idea.} cool, I made the change. Kevin, if you strenuously object we can change it back}
-in such a way that if $\sum_i c_i v_i$ is equal to zero in $A(\Sigma)$, then $\sum_i c_i \Psi(v_i) = 0$.
-For basis vectors $v$ which violate edge label compatibility, we have $\Psi(v) = 0$.
+A wave function (not ``the" wave function unless the ground state is 1-dimensional) $\Psi$ assigns a weight $\Psi(w)$ to each such basis vector $w$, 
+%\ethan{can we use $\Psi$ or $\psi$ instead of $w$, or am I being too picky? 
+%\dave{That's not a bad idea.} cool, I made the change. Kevin, if you strenuously object we can change it back}
+%%KW I'm not attached to the notation I used in the original version
+in such a way that if $\sum_i c_i w_i$ is equal to zero in $A(\Sigma)$, then $\sum_i c_i \Psi(w_i) = 0$.
+For basis vectors $w$ which violate edge label compatibility, we have $\Psi(w) = 0$.
 
 Given a string net $g$ on $\Sigma$, we can define a wave function $\Psi_g$ via
 \be  \label{wfg-def}
-	\Psi_g(v) = Z(\Sigma\times I)(\bar g \cup v) .
+	\Psi_g(w) = Z(\Sigma\times I)(\bar g \cup w) .
 \ee
 In other words, we evaluate the path integral $Z(\Sigma\times I)$ with boundary condition $\bar g$ on $\Sigma\times\{0\} \cong -\Sigma$
-and boundary condition $v$ on $\Sigma\times\{1\} \cong \Sigma$.
+and boundary condition $w$ on $\Sigma\times\{1\} \cong \Sigma$.
 (Recall that $\bar g$ is the reflected version of the string net $g$ on the orientation-reversed surface $-\Sigma$.)
-Note that as $g$ runs through a basis of $A(\Sigma)$, $\Psi_g$ runs through a basis of the wave functions for the ground state of the Hamiltonian, namely $\Psi_g  = \sum_{v \in \mch_\mcg}  \Psi_g(v) v$.
-\ethan{maybe?\dave{I like it.}}
+Note that as $g$ runs through a basis of $A(\Sigma)$, $\Psi_g$ runs through a basis of the wave functions for the ground state of the Hamiltonian.
+%, namely $\Psi_g  = \sum_{v \in \mch_\mcg}  \Psi_g(v) v$.
+%\ethan{maybe?\dave{I like it.}}
+%%KW  The deleted ``namely..." above does not make sense to me.  Let's discuss on skype if it makes sense to you.
+%%KW Maybe there is some confusion because I accidentally used $v$ for two different things.  I will change one of the $v$s to something else
 %\dave{We should probably write the ground space wavefunctions explicitly somewhere e.g.,: 
 %`...ground state the Hamiltonian, i.e., $\ket{\omega_g}  = \sum_{v \in \mch_\mcg}  \omega_g(v) \ket{v}$ span the ground space.'}
 
@@ -2081,7 +2089,7 @@ Let $G'$ be the 1-skeleton of the cell decomposition of $\Sigma$ associated with
 cell decomposition of $\Sigma$ underlying the input string net $g$.
 (In practice, $G'$ will be as fine a lattice as our computer can handle, while $G''$ will be as simple as possible
 subject to the constraint that $g$ can represent a basis of $A(\Sigma)$.)
-We stipulate that $G'$ and $G''$ are transverse (i.e., only their 1-handles intersect, and all the intersections are transverse), and are each dual to a triangulation, so that their vertices are all 3-valent.
+We stipulate that $G'$ and $G''$ are transverse (i.e., only their 1-cells intersect, and all the intersections are transverse), and are each dual to a triangulation, so that their vertices are all 3-valent.
 %\dave{I think, it's clear but could add if we like, not sure: (i.e., only their edges have non-zero intersection)} \ethan{agreed}
 We define the cell decomposition $G$ to be the union of $G'$ and $G''$.
 The graph $G$ has three types of vertices: vertices of $G'$,
@@ -2123,8 +2131,9 @@ In the left figure, we show the cell decomposition $G$ for a given simple choice
 In the central figure, we include the ``time direction'' in the picture, which thickens it into a box with boundary conditions 
 set by $\bar g$ on the initial boundary $\Sigma \times \{0\}$ and boundary conditions set by $v$ on the terminal boundary $\Sigma \times \{1\}$. 
 The right figure shows the full handle decomposition for this setup. Each box shows a 0-handle in the composite cell decomposition $G$, 
-while each tube shows a 1-handle. The green lines denote string nets in the interior of $\Sigma \times I$, which are not fixed 
+while each cylinder shows a 1-handle. The green lines denote string nets in the interior of $\Sigma \times I$, which are not fixed 
 by either of the boundary conditions $\bar g, v$.
+\kw{Maybe move the fancy right part to the bottom center, so that it can be larger}
 }
 \end{figure}
 
@@ -2151,7 +2160,8 @@ tensors are found by evaluation of these diagrams.
 
 The next step is to standardize the string nets on the boundary of each 0-handle, by following the procedures outlined in Sections \ref{bosonic_standardization} and \ref{fermionic_standardization}.
 This is illustrated in Figure \ref{StandardizedSlabTensorsprime} for the three different types of 0-handle in our handle decomposition $G$ (one of each type of 0-handle is shown in the rightmost picture of Figure \ref{VertexTypes}).
-Note that our conditions on the handle decompositions $G',G''$ ensure that all three types of 0-handle string nets are tetrahedral (in that they each possess four trivalent vertices).
+Note that our conditions on the handle decompositions $G',G''$ ensure that all three types of 0-handle string nets are tetrahedral.
+%(in that they each possess four trivalent vertices).
 
 \medskip
 
