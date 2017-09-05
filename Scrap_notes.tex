@@ -6117,6 +6117,79 @@ the sum-of-squares formula then reads
 %%%%%%
 %%%%%%
 
+
+\begin{comment}
+\kw{We define $V^{ab}_c$ elsewhere, so probably no need to to it again here.}
+
+\kw{This paragraph needs work.
+Should probably use idempotents instead of representations.
+I will do more editing later.}
+For fixed representations $\rho_a,\rho_b,\rho_c$ of $T_a,T_b,T_c$ on the three boundary components of $P$,
+we will define the fusion space $V^{ab}_{c}$ to be the vector space of string-nets on $P$ modulo local relations.
+\kw{Need to mention boundary conditions (idempotents) for $P$.}
+$V^{ab}_{c}$ is thus given by the collection of maps from the two boundaries of $P$ with $\rho_a,\rho_b$ 
+boundary conditions to the boundary of $P$ with $\rho_c$ boundary conditions, and so we can also write $V^{ab}_{c}$ as
+\begin{align}
+\label{morpants}
+V^{ab}_{c} \cong \text{mor}( \underset{a}{\TubeBCx{Q}} \tp \underset{b}{\TubeBCx{R}}  \rightarrow \underset{\;\; \;\; \quad c \in a\tp b}{\TubeBCx{Q+R}} ), 
+\end{align}
+where $Q, R \in \{ B,N \}$ denote the spin structures of the two punctures being fused. 
+This means that $V^{ab}_c$ is the vector space of string-nets modulo local relations on the following pair of pants:
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{fusion_space_pants.pdf}}}}.\ee
+
+Finally, we comment on the expression $Q+R$ for the spin structure of $T_c$. 
+Since contractible loops are assigned anti-periodic boundary conditions, $B$ acts as $0$ and $N$ 
+acts as $1$ when calculating $Q+R$ (where addition is carried out in $\zt$), and 
+so the addition rule is 
+\begin{align}
+B+B = B \quad \quad B+N = N \quad \quad N+N  = B.
+\end{align}
+
+\end{comment}
+
+
+\begin{comment}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The double braid in terms of the topological twists}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\dave{Also punt this subsection to future work that includes braiding?}
+
+
+
+In this brief section, we comment on an alternate way of calculating the matrix $\mcb^2$ of double braids (mutual statistics). 
+Instead of tracing out the $R$ matrices as we did in our analysis of the $C_2$ theory, we can appeal to a formula relating the $\mcb^2$ matrix to the topological twists. 
+In bosonic theories, we have the relation
+\be 
+[{\mcb^2_{bos}}]_{ab} = \frac{1}{\mcd} \sum_c d_c N^{ab}_c \frac{\theta_c}{\theta_a\theta_b}.
+\label{stwist_bosonic} 
+\ee
+This relation does {\it not} hold in the superfusion case, and needs to be modified. 
+The derivation of the correct version of \eqref{stwist_bosonic} relies on the fact that
+\be \label{stwist_fermionic} \theta_c = (-1)^{|v|(s(c)+1)} \theta_a\theta_b [R^{ab}_c]_{vv} [R^{ba}_c]_{vv},\ee
+where $v\in V^{ab}_c$ is any vector in the fusion space $V^{ab}_c$ and $|v| \in \{0,1\}$ is 
+the parity of $v$, and where the sum runs over the minimal idempotents of $\tube(\mcc)$.  
+Additionally, we have defined the function $s$ by $s(c) = 0$ if $c\in\tube^B(\mcc)$ and $s(c)=1$ if $c\in\tube^N(\mcc)$. 
+
+To derive \eqref{stwist_fermionic}, we use the following manipulations:
+\be\label{stwist_proof} \includegraphics{stwist_proof.pdf}, \ee
+where $a$ and $b$ are such that $N^{ab}_c\neq0$, $v$ is any vector in the fusion space $V^{ab}_c$, 
+and for clarity we have used the orange lines to represent collections of tubes hosting the quasiparticles $a,b,c$. 
+These steps relate something proportional to $\theta_c$ (the leftmost diagram) to something 
+proportional to $\theta_a\theta_b [R^{ab}_c]_{vv}[R^{ba}_c]_{vv}$. 
+In the bosonic case this relation is an exact equality, but this is not true in the fermionic setting. 
+Firstly, we see that the first step in \eqref{stwist_proof} involves passing the vertex $v$ under a $c$ tube. 
+When the braiding process is embedded in $S^3$, the branch cuts associated with vortex-type 
+quasiparticles become branch sheets, which we will define to always be pointing out of the page. 
+This means that passing an odd vector in $V^{ab}_c$ over a vortex-type quasiparticle gives a phase factor of $-1$.
+ Additionally, we notice that vectors in $V^{ab}_c$ are transported in a loop during steps 1 and 2, 
+ which contributes a sign of $-1$ if the vector $v$ is odd. 
+ These two effects are responsible for the factor of $(-1)^{|v|(s(c)+1)}$ in \eqref{stwist_fermionic}, 
+ meaning that the correct expression for $\mcb^2$ in the fermionic setting is 
+\be [\mcb^2]_{ab} = \frac{1}{\mcd} \sum_c \sum_{v \in V^{ab}_c} d_c (-1)^{|v| (s(c)+1)}   \frac{\theta_c}{\theta_a\theta_b}.\ee 
+
+\end{comment}
+
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{comment}
@@ -6141,6 +6214,112 @@ We demonstrate and elaborate on this in Section \ref{fusion_rules_and_fusion_spa
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+\subsection{Minimal idempotents of $\tube(\mcc)$, when $\mcc$ is a super modular tensor category}
+\dave{Agreed, lets punt this for now.}
+
+\ethan{This was the part with the difficulty with transparent fermions and multiplicity stuff, 
+right? Were we going to postpone this section until after v1? I think that might be smart}
+\dave{Work in progress.}
+
+\dave{I think it's easiest to assume a super-modular category and a minimal modular extension. 
+Then $S_C = \tilde{s} \tp s_{sVec}$ with $\text{det} \tilde{s} \neq 0$. 
+I think we could do something slightly more general but would require some work 
+(i.e., understanding some known results, and checking the following intuition).
+The idea is to use Lemma 3.3 of \cite{bruillard2017} (Arxiv version) and start with any pre-modular category $\mcb$.
+Its Muger center is the representation category of $(G,z)$ for some $G$, 
+and $z$ a central element of $G$ of order less than or equal to $2$.
+We then ``de-equivariantize" $\mcb$ to find $\mcb_G$, which is a G-graded modular or 
+super-modular tensor category (is this equivalent to a modular extension of $\mcb$?).
+The intuition is that if $\mcb_G$ is modular, then $\tube(\mcb)\cong \cup_{g \in G} \mca_g\times \mca_{g^{-1}}$, 
+where $\mca_g$ is the set of simple objects of $\mcb_G$ carrying label $g$ and the functor is given by the 1-stand idempotents.
+If $\mcb_G$ is super-modular, then let $G_0$ be an index $2$ subgroup and $G_1 = G / G_0$. 
+Then $\tube(\mcb) \cong (\cup_{g \in G_0} \mca_g \times \mca_{g^{-1}})  \cup (\cup_{g \in G_1} \mcv_g \times \mcv_{g^{-1}})$.
+}
+
+Here we extend the theorem~\ref{minimal_idempotents_modular_C/psi} to the case of super modular categories.
+We use definition 3.1 of~\cite{bruillard2017},
+A braided fusion category $\mcp$ is super modular if the Muger center $\mcz_2(\mcp) \cong \text{sVec}$.
+Equivalently, the set of transparent sub-objects has one non-trivial object which is a fermion as defined in \ref{gntf_condense}.
+Then we have the following theorem,
+\begin{theorem}
+Let ${\mcp}$ be a super modular tensor category and let $\psi$ be a fermion in ${\mcp}$ as in \ref{gntf_condense}.
+Let $\mcc$ be a minimal modular extension of $\mcp$\dave{refer to somewhere.}.
+Let $\mcc/\psi$ be the super pivotal category resulting from the fermionic quotient of the extension.
+Let $\mca/\psi \subset \mcc/\psi$ be the set of simple objects that are transparent with respect to $\psi$, 
+and $\mcv/\psi  \subset \mcc/\psi$ the set which are not transparent with respect to $\psi$.
+Let
+$
+\tube(\mcp/\psi) = \tube^B(\mcp/\psi) \cup \tube^N(\mcp/\psi)
+$
+be the annular category of $\mcp/\psi$. 
+Then as tensor categories,
+\begin{align}
+\tube(\mcp/\psi) \cong (\mca/\psi \times \overline{\mca/\psi}) \cup( \mcv/\psi \times \overline{\mcv/\psi}).
+\end{align}
+In particular, $\sob(\tube(\mcc/\psi)) \cong \sob({\mca/\psi}) \times \sob(\overline{\mca/\psi}) \cup  \sob({\mcv/\psi}) \times \sob(\overline{\mcv/\psi}) $. 
+Let $a, \tilde{a} \in \sob(\mca/\psi)$, then $(a,\tilde{a})$ is in the 
+bounding sector and if $a, \tilde{a} \in \mcv/\psi$ then $(a, \tilde{a})$ is in the non-bounding sector.
+\label{minimal_idempotents_super_modular/psi}
+\end{theorem}
+
+Let $\mcc$ be a minimal modular extension of $\mcp$ as defined in \dave{Find appropriate references.}.
+The objects of $\mcc$ are $\zt$ graded by how they braid with $\psi$. 
+Denote $\mca = \mcp$ the objects of $\mcc$ which braid trivially with $\psi$, 
+and $\mcv$ the objects of $\mcc$ that braid non-trivially with $\psi$.
+Define the the $\omega$-loop of $\mca$ to be $\omega = \frac{1}{\mcd^2} \sum_{x \in \mca} d_x \cl(x)$, with $\mcd^2 = \sum_{a \in \mca} d_a^2$. 
+
+\dave{Stopping here for now.  
+Need to re-evaluate how to write down these idempotents when $x,y \in \mcv$ are q-type. 
+In this scenario, the $f_a^a(x,y,j,j)$ are not necessarily idempotent.
+There is extra data coming from how a $\psi$ line is pulled past the fusion vertices $\mu_i$ and $\mu_j$. }
+
+Consider the following set of morphisms for $\tube(\mcp/\psi)$,
+\begin{align}
+{f}_a^b(x,y,j,i) = \TubeBasisdprime_{J}, \quad \quad \text{with} \quad \quad \nu_x = \nu_y = J.
+\end{align}
+With $x,y \in \mca/\psi$ or $x,y \in \mcv/\psi$
+and we used $\nu = 0(1)$ to denote $J= \text{bounding(non-bounding)}$ spin structures, 
+and $\nu_j$, $\mu_i$ are normalized so that $\nu_j \circ \mu_i = \delta_{ij}\lambda^{F_{xy}^b F_a^{xy}} \frac{d_x d_y}{d_a} \text{id}_a$.
+Where $F_{xy}^b$ and $F_a^{xy}$ are $0$, or $1$ denote the parity of the fusion vertices $\nu_j$ and $\mu_i$.
+By fusing all strands into the annulus, we notice that ${f}_a^b(x,y,j,i)$ is not just a morphism of $\mcc/\psi$ but one of $\tube(\mcp/\psi)$ as well.
+
+\begin{itemize}
+\item If $x,y \in \mca$, then we have a complete set of matrix units for $\tube_B(\mcp/\psi)$. 
+Proof is same as before. 
+\item if $x,y \in \mcv$, and atleast one of them is not q-type, then we have a complete set of matrix units, proof is the same as before. 
+Some of them are oddly isomorphic. 
+\item if $x,y \in \mcv$ are both q-type, then the minimal idempotents we used before are no longer minimal, or orthogonal. 
+Will work this out soon.
+\end{itemize}
+
+The $q$-type simple objects which may appear in $\mcc/\psi$ lead to linear relations on the $f_a^b(x,y,j,i)$ viewed as morphisms of $\tube(\mcp/\psi)$. 
+In order to not over count these idempotents, we need to quotient by these linear relations.
+If either $x$ or $y$ is a q-type simple object, then $\lambda f_a^b(x,y,j,i) = f_a^b(x,y,\tilde{j},\tilde{i})$,
+where $\tilde{j}$ is found from $\nu_j$ by acting with an odd endomorphism from below, 
+and $\tilde{i}$ is found from $\mu_i$ by acting with an odd endomorphism from above.
+\dave{Will add pictures if we go this route.}
+
+
+\dave{do this after proof.}
+It was shown in \cite{bruillard2017}\dave{need to check this} that if there is one modular extension of $\mcp$, then there are 16 of them. 
+Roughly speaking, the 16 different extensions are given by stacking with the Ising TQFT, 
+and condensing the fermion coming from Ising paired with the fermion already present in the extension. 
+A non-trivial check of the proof, is that the minimal idempotents are independant of the particular extension....
+
+
+need to show:
+\begin{itemize}
+\item we have a minimal orthogonal and complete set of idempotents of $\tube(\mcp/\psi)$.
+\item we have a tensor functor from $\mca/\psi \times \mca/\psi \cup \mcv / \psi \times \mcv /\psi \ra \tube(\mcc/\psi)$
+\end{itemize}
+
+
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%
 
 
  
