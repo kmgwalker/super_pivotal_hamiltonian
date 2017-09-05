@@ -9,87 +9,19 @@
 \section{Super pivotal state sums and tensor networks} \label{state_sums}
 %%%%%%%%%%%%%%%%%%%%%%%
 
-%\dave{Note to self: look at \cite{beliakova1998}.}
-
 In this section we describe a version of the Turaev-Viro-Barrett-Westbury (TVBW) state sum \cite{Turaev1992,Barrett1996}
 for super pivotal fusion categories 
 and a tensor network for the ground state wave function of the Hamiltonian constructed in Section \ref{Super_pivotal_Hamiltonian}.
-%\eqref{ham}.
-%Very closely related 
 Related 
-%\kw{very closely related, or just related?
-%I could not tell after a quick look at the paper.}
 work was presented in~\cite{bhardwaj2016}, 
 see also \cite{Bultinck2017}.
-%\kw{fix citation}
 We first review the TVBW construction for bosonic spherical fusion categories. 
 We then show how to write the state-sum as a tensor contraction on a tensor 
 network.
 Next we detail the modifications needed for the fermionic versions of the state sum and tensor network.
-%which allows us to extend the state-sum to the super-pivotal case with only minor modifications.
 Lastly we use the state sum to write down an explicit wave function for the ground ground state of \eqref{ham}.
 
-%We first give a lightning review of the TVBW state sum construction, via the cut-and-glue formalism.
-%Since much is known about TVBW state sums, 
-%we present the state sum from a slightly different perspective than usual,
-%so that the fermionic version of the state sum can be written in essentially the same way.
-
-%We view the state sum as a composition of linear maps from finite dimensional tensor product spaces, starting with with the ``vacuum" $\cc$. 
-%\kw{Still not convinced that this is a valid way to look at it; maybe I will be convinced when I read further.}
-%This composition of linear maps can be interpreted as a tensor network, 
-%which we investigate in the subsequent sections.
-
-%The starting point is a list of data:
-%\dave{Is pivotal and spherical the same thing?
-%I remember getting quite confused about this in a Muger paper.} %\ethan{I think yes}
-%\begin{itemize}
-%\item a spherical fusion category $\mcc$,
-%\item an oriented 3-manifold $M$,
-%\item and a cell decomposition with oriented 1-cells and transversally orientated 2-cells (equivalently, the boundary of the 2-cells has an orientation)
-%\end{itemize} 
-%from which one defines a partition function $Z(M)$. 
-
-%To define these linear maps, we will follow a `cut-and-glue' approach.
-%Schematically, this proceeds by cutting up the manifold on which we want to evaluate the state sum into many parts. 
-%We assign vector spaces to each of the cut-up pieces and then 
-%construct the state sum by gluing these pieces back together with linear maps that are given by performing tensor contractions.
-%In order for our formalism to be amenable to fermionic modifications, we will need to carry out a 
-%standardization procedure of the cell decomposition of $M$, in much the same way that we 
-%performed the standardization procedure to define the lattice Hamiltonian. 
-%This is the issue to which we first turn. 
-%Much of the following section is notational; 
-%readers are invited to familiarize themselves with Figure~\ref{NotationStateSum}
-%and \eqref{attaching_region}-\eqref{tensor_space}, 
-%and continue with the next subsection. 
-
-%\subsection{Cell and a Handle decomposition}
-%\ethan{since this is just a paragraph, I don't think it needs its own subsection}
-%\kw{Perhaps discussion relating handle decompositions to cell decompositions should go first.
-%It will be convenient for us to be able to describe things in terms of both 
-%a handle decomposition and also the corresponding cell decomposition.}
-
 \medskip
-
-%\begin{figure}
-%\begin{align}    %%KW trying to figure out why this is 10.0.2 instead of 10.0.1
-%\text{a figure} 
-%\nonumber
-%\begin{center}
-%\includegraphics[scale = 0.1]{CellDecompFig.pdf}
-%\end{align}
-%\end{center}
-%\caption{
-%\label{cell_and_handle_decomp}
-%\davex{Figure done quickly, had to leave during making.
-%Should add something about handle decompositions.}
-%Here we show part of a cell decomposition and its associated handle decomposition. 
-%An example of each k-cell.
-%On the left we have a 3-cell given by the volume inside the adjacent 0-, 1-, and 2-cells. 
-%Second from the left we have a 2-cell and its adjacent 0- and 1-cells. 
-%Second from the right have a 1-cell and its adjacent 0-cells.
-%On the right we have a 0-cell.
-%}
-%\end{figure}
 
 Before we begin, we need to establish some terminology regarding cell and handle decompositions. 
 Recall that a handle decomposition for a 
@@ -97,14 +29,11 @@ Recall that a handle decomposition for a
 Handle decompositions can be obtained from cell decompositions by thickening each $k$-cell into a $k$-handle.
 Conversely, each handle decomposition determines a cell decomposition by taking the cores of the handles.
 (See Section \ref{standardized_handles} for more details.)
-%Each $k$-handle is obtained from a $k$-cell by ``fattening'' the $k$-cell in the manner described 
-%in Section \ref{standardized_handles}.
 We will often refer to a $k$-cell and its associated $k$-handle with the same letter, since
 it will be convenient for us to be able to describe things in terms of both handle decompositions 
 and their corresponding cell decompositions. 
 We call $S^{k-1} \times D^{3-k}$ the attaching region (or attaching boundary) of the $k$-handle,
 and $D^k\times S^{3-k-1}$ the non-attaching boundary.
-%The attaching region of a $k$-handle is $S^{k-1} \times D^{3-k}$,
 The attaching map of a $k$-handle is a homeomorphism from the attaching region to 
 a submanifold of the boundary of the union of the lower-dimensional handles.
 The topology of $M$ is encoded by the various attaching maps.
@@ -124,25 +53,6 @@ In (c) the green disks indicate where the 0-handles attach to the 1-handle and t
 Similarly, in (d) the blue and green rectangles indicate where the 2-handles attach to the 0- and 1-handles.
 We have omitted the 3-handles from the figure.}
 \end{figure} 
-%\kw{Caption for alternative version of this figure:
-%The handles corresponding to a standard cubic cell decomposition (a).
-%The 0-, 1- and 2-handles are shown in (b), (c) and (d), with colors green, blue and red.
-%The blue disks on the 0-handle indicate where the 1-handles attach to the 0-handle, and the red rectangles
-%indicate where the 2-handles attach to the 0-handle.
-%A similar color scheme indicates where the 1- and 2-handles in (c) and (d) meet adjacent handles.
-%We have omitted the 3-handles from the figure.
-%}
-
-
-
-%is built into the attaching regions where different handles are connected, each of which is homeomorphic to $S^k \times D^{n-k}$.
-%We are interested in 3-manifolds,
-%and hence the attaching regions between between the $(k+1)-$ and $k$-handles are given by
-%$S^2 \times D^0$ (3-handles to 2-handles), $S^1 \times D^1$ (2-handles to 1-handles), and $S^{0} \times D^2$ (1-handles to 0-handles).
-%%KW k-handles attach to the boundary of the 0, 1, ... k-1 handles, not just the k-1-handles
-%Although not necessary, we assume the cell decomposition of $M$ is dual to a triangulation for ease of notation.
-%The standardization procedure is similar to the pitchforkization procedure defined in \eqref{pitchfork_basis} and surrounding text.
-
 
 
 %%%%%%%%%%%%%%%%%%%%
