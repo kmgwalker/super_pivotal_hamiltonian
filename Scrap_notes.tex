@@ -4211,6 +4211,30 @@ Similar arguments like this go through for the $Q_1,M_3$, and $M_6$ particles in
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+\begin{comment}		%%%%%%%%%% no longer needed
+To facilitate the calculation we observe that the $m_\sigma$ idempotent can be slipped down the pair of pants at the 
+expense of introducing a $\beta$ line around the other leg,
+\kw{I'm confused about what this means.  Does someone want to try to make it clearer?}
+\dave{It's explaining a `trick' that we used relatively frequently in calculations. 
+Just that dragging a $\beta$ strand over a disk labeled by the $m_\psi$ idempotent results in a minus sign.
+I think it's easier to just tell the reader to plug in the two possibilities and realize one of them is zero dimensional. 
+How about the re-write I propose above.
+}
+\begin{align}
+\PantsAstAAsA  = \frac{1}{\sqrt{2}} \;  \PantsAsAshAsvtA
+\end{align}
+One can check that $m_\psi$ is an eigenstate of the closed sigma loop with eigenvalue $-\sqrt{2}$ and $m_1$ 
+is an eigenstate with eigenvalue $+\sqrt{2}$. Hence one finds $m_\sigma^{+} \tp m_\psi  \cong m_\sigma^{-}$. 
+However, since we would like to fix a representative of the $m_\sigma^\pm$ isomorphism class to work with, 
+we need to express the fusion product in terms of $m_\sigma^+$. 
+Since $m^{-}_\sigma$ is oddly isomorphic to $m_\sigma^+$, $m_\sigma^{+} \tp m_\psi$ is oddly isomorphic to $m_\sigma^+$, we find  $V^{m_\sigma^+ m_\psi}_{m_\sigma^+} \cong \cc^{0|1}$.
+This generator of this vector space can be obtained simply by using the explicit expressions for the $m_\sigma^+$ and $m_\psi$ idempotents. We find
+\begin{align}
+V^{m_\sigma^+ m_\psi}_{m_\sigma^+} = \left\langle \PantssvXsvdA -\frac{A^3}{\sqrt{2}}\PantssvtshsvdA + A^3\PantssvtXsvdA  - \frac{1}{\sqrt{2}} \PantssvshsvdA   \right \rangle.
+\end{align}
+\end{comment}   %%%%%%%%%
+
+
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{comment}
@@ -5280,6 +5304,274 @@ When we compute this partition function, we thicken the two tori so that their b
  
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{comment} %I guess we decided to postpone this
+%%%%%%%%%%%%%%%%%%%%%%% 
+\subsection{Braiding data} \label{C2_braiding}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\kw{I think that there are (interesting and useful) subtleties when talking about braiding.
+We must not only keep track of a spin structure on the pair of pants, but also keep track of 
+the $\End(a)\times\End(b)\times\End(c)$ action on $V^{ab}_c$.
+The latter amounts to keeping track of three independent spin framings on the three boundary
+components, or in other words a relative spin structure.
+I don't understand all of this as well as I would like, but I think that one
+implication will be that we should treat braidings in a more sophisticated way than we do below.
+If that's right, then we might want to move this section to a future paper that goes into more detail
+about the subtleties.
+}
+\dave{That works for me.
+Ethan, what do you think?}
+
+In this section we compute the braiding data of the quasiparticles in the $C_2$ theory.
+This in turn allows us to compute the mutual- and self-statistics of the quasiparticles in the theory.
+In conventional (bosonic) topological phases, the matrix of double-braids (mutual statistics) 
+is identical to the modular $S$-matrix and the matrix of topological twists (self-statistics) is identical to the 
+modular $T$-matrix, which together form a representation of the modular group.  
+
+The presence of spin structure considerations means that this correspondence does {\it not} 
+hold in fermionic theories (indeed it cannot possibly hold in the $C_2$ theory because there are 6 quasiparticle excitations but 12 total ground states across all spin structures, meaning that the braiding matrices and the modular matrices must be of different dimension). 
+However, the modular $S$ and $T$ matrices are still intimately related to the braiding data of the theory, and
+can in fact be completely recovered from a complete knowledge of the braiding data.
+
+
+%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{$R$-matrices}
+%%%%%%%%%%%%%%%%%%%%%
+To begin, we will construct a table of the $R$ symbols in the theory. 
+First, we need to set some conventions on our fusion spaces in this section, this is akin to picking a gauge for each fusion space. 
+We will work on the pair of pants as described in Section \ref{C2_fusion_rules}.
+
+We will write a generic even fusion space, which is an even vector in the fusion space $V^{ab}_c$, as 
+\begin{align} \label{pants_braiding_basis}
+\CTwoFusion
+\end{align}
+where $a,b,c$ are idempotents (see Figure \ref{CTwoParticles}) and $u,v,w \in \{ \unit, \beta \}$ are variables indicating whether or not a $\beta$ line is present. 
+The idempotent label at the crosses represent a collection of pictures, one for each tube in their definition, for example, 
+\begin{align}
+\overset{m_\sigma^+}{\IdempEnd} =  \frac{1}{2} \left( \tcca \; +   \; A^3 \tccb \right) \quad \text{and} \quad 
+\underset{m_\sigma^+}{\text{\reflectbox{\rotatebox[origin=c]{180}{$\IdempEnd$}}}} = \frac{1}{2} \left(  \tccc + A^3 \tccd \right).
+\end{align}
+\ethan{are these lines curling the right way? should their handedness be reversed?}
+The termination of a $\beta$ line at the bottom of a line corresponds to a puncture surrounding the entire system.
+
+We will calculate the braiding in the fusion space $V^{ab}_c$ by moving the $a$ and $b$ punctures around one 
+other and re-expressing the result in terms of the basis vectors in $V^{ba}_c$. 
+When braiding q-type particles, we enforce their periodic boundary conditions graphically by introducing branch 
+cuts ending on each q-type puncture, with the rule that dots sliding past a branch cut pick up a phase of $-1$. 
+The branch cut records the difference between the spin structure inherited from the plane of the figure (the ``blackboard") and the
+spin structure we want to depict.
+For concreteness, we will draw our branch cuts to always extend from the puncture vertically to the point at $\infty$.
+For example, to calculate $R^{q_\psi q_{1/\psi}}_{m_{\psi/1}}$, we write
+\kw{I don't understand subscript $\psi/1$.  Does it mean $\psi$-or-1?  If so, maybe it would be clearer to just pick 1 or $\psi$.}
+\begin{align}
+\qqmbraida \xrightarrow{\; \; R\;\; }\qqmbraidb \;=  \; \theta_{q_\psi}^* \qqmbraidc
+\end{align}
+where the dashed blue lines are the branch cuts, and we have taken advantage of our knowledge 
+of the eigenvalue of $q_\psi$ under the twisted tube (i.e.\ the twist of $q_\psi$). 
+
+We define odd vectors in $V^{a,b}_c$ by placing dots on the top left leg of the pants, on the 
+leg marked $u$ in \eqref{pants_braiding_basis}. 
+If this is impossible (e.g.\ if the top left leg is an $m_\psi$ idempotent), we put the dot on the top 
+right leg of the pants, marked $v$ in \eqref{pants_braiding_basis}. 
+For example, we can calculate the $R$-symbol $R^{m_\psi m_\sigma^+}_{m_\sigma^+} = -1$ by
+\begin{align}
+\mmmbraida \xrightarrow{\;\; R \; \;} \mmmbraidb \; = \; (-1)\mmmbraidc
+\end{align}
+A slightly more complicated example is the odd fusion channel in $R^{q_\psi q_{1/\psi}}_{m_{\psi/1}}$:
+\begin{align}
+\qqmbraidaOdd \xrightarrow{\;\; R \;\; } \qqmbraidbOdd \; = \; A^{4}\theta_{q_\psi}^* \qqmbraidcOdd
+\end{align}
+Note that we have assumed we can ``pivot'' branch cuts around the punctures on which they are located, 
+provided that we pick up a factor of $-1$ each time the branch cut crosses a fermion. 
+
+In accordance with the gauge choice we specified above, we have to remember to always move the dots 
+back to the left side of the pants after the braid takes place, if possible. 
+As an example, we can calculate the braiding of the odd fusion channel in $R^{q_\sigma q_{1/\psi}}_{m_\sigma^+}$:
+\begin{align}
+\qqmbraidOdda\xrightarrow{\;\; R \; \;}  \qqmbraidOddb \; =\;
+\frac{1}{d}\qqmbraidOddc\;=\;
+\frac{1}{d}
+\qqmbraidOddd
+\end{align}
+
+
+Manipulations like these can be used to work out the full table of $R$-symbols, which we present in Table \ref{Rtable}. 
+The $\bullet$ symbol is used to denote odd fusion channels, i.e.\ the action of 
+the braiding operation on an odd vector in the fusion space $V^{ab}_c$.  
+
+
+
+\begin{table}
+\resizebox{\linewidth}{!}{
+\begin{tabular}{c||c|c|c||c|c|c}
+$     R^{ab}_{c \in a\otimes b} $&$m_\unit $&$m_\sigma^+$&$m_\psi$&$q_\unit$&$q_\sigma$&$q_\psi $\\
+     \hline
+     \hline     
+$m_\unit $&$m_\unit$&$ m_\sigma^+$&$m_\psi$&    $(1+1\bullet)q_\unit$&$(1+1\bullet)q_\sigma$&$(1+1\bullet)q_\psi$ \\ 
+     \hline
+$m_\sigma^+ $&$m_\sigma^+$&$A^{-3}(m_\unit-A^4\bullet m_\psi) $&$ \bullet m_\sigma^+ $&$      A^{-3}(1-A^4\bullet)q_\sigma $&$ (1+A^6/d\bullet)q_\unit$&$ A^{-3}(1-A^4\bullet)q_\sigma$ \\
+
+ $$&$$&$$&$$&$$&$(1-A^6/d\bullet)q_\psi$&$$\\
+     \hline
+     
+$m_\psi $&$m_\psi$&$(-1\bullet) m_\sigma^+$&$m_\unit$&      $-(1+ 1\bullet)q_\psi$&$(1+1\bullet )q_\sigma$&$-(1+1\bullet)q_\unit $\\
+
+     \hline
+     \hline
+     
+$q_\unit $&$(1+1\bullet)q_\unit$&$-A^3(1+A^4 \bullet)q_\sigma $&$(1+1\bullet)q_\psi$&$-A^3(1+A^4 \bullet)m_\unit$&$(1+ A^{2}/d \bullet )m_\sigma^+$&$-A^3(1+A^4 \bullet)m_\psi$\\
+\hline
+$q_\sigma $&$(1+1\bullet)q_\sigma$&$(A^{2}-dA^4\bullet)q_\unit$&$(1+1\bullet)q_\sigma$&$(A^{-2}+ d \bullet )m_\sigma^+$&$(1-A^4\bullet)m_\unit$&$(-A^{-2}+d \bullet)m_\sigma^+$ \\
+
+$                $&$$&$(-A^{2}-dA^4\bullet)q_\psi$&$$&$$&$(1+A^4\bullet)m_\psi$&$$ \\
+\hline
+$q_\psi $&$(1+1\bullet)q_\psi$&$A^3(1+A^4\bullet)q_\sigma$&$(1+1 \bullet)q_\unit$&$A^3(1+A^4\bullet)m_\psi$&$(1-A^{2}/d \bullet )m_\sigma^+$&$A^3(1+A^4 \bullet)m_\unit$
+\end{tabular}
+}
+\caption{\label{Rtable} The R-symbols for the $C_2$ theory. 
+The particle labels in each entry denote fusion channels, with the bullets 
+signifying which fusion channels are odd. 
+For the entry $R^{ab}_c$, $a$ denotes the row of the entry and $b$ the column. 
+For example, the bottom right entry 
+tells us that $R^{q_\psi q_\psi}_{m_\unit} = A^3$ when acting on the even 
+vector in $V^{q_\psi q_\psi}_{m_\unit}$ and $R^{q_\psi q_\psi}_{m_\unit} = A^7$ when 
+acting on the odd vector.}
+\end{table}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Twists and self-statistics}
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+There are three ways to compute the topological twist $\theta_a$ (self-statistics) of a quasiparticle $a$: by statistics (braiding two identical $a$ quasiparticles around one another), by twisting (applying Dehn twists on the tubes associated with $a$), and by modular transformations (by acting with the modular $T$-matrix on the ground states on the tori associated with $a$). 
+We'll examine the first two methods below, and will comment on the relation between these and the third method at the end of the section. 
+
+We'll start by computing the twists $\{\theta_a\}$ by statistics, namely by braiding two identical quasiparticles once around one another. 
+This corresponds to tracing out the $R$ symbols \cite{barkeshli2014}:
+\be \label{Tmattr} \theta_a = \frac{1}{d_a}\sum_b d_b \text{Tr}[R^{aa}_b],\ee
+where the precise meaning of the trace is discussed in Section \ref{traces_and_innerproducts}.
+Using Table \ref{Rtable}, we obtain
+\be \theta_{m_\unit} = 1,\ \theta_{m_\psi} = 1,\ \theta_{m^\pm_\sigma} = \pm A^3\ee
+for the non-vortex particles, and 
+\be \theta_{q_\unit} = A^5,\ \theta_{q_\psi} = -A^5,\ \theta_{q_\sigma} = 1\ee
+for the vortex particles. 
+
+The twists can also be obtained by computing their twists, which is done by directly Dehn-twisting the tubes in question. 
+This amounts to computing the eigenvalue of each quasiparticle under $t$, where $t$ is the twisted tube defined in \eqref{tube_shorthands}.
+We can then use the tube algebra multiplication tables to read off the eigenvalues, and in the basis $(m_\unit,m^\pm_\sigma,m_\psi,q_\unit,q_\sigma,q_\psi)^T$ we find the matrix of self-statistics (which we will write as $\Tr\ R$ to distinguish it from the modular $T$-matrix, which is a $12\times 12$ non-diagonal matrix) to be
+\be \Tr\ R = {\rm diag}[1,\pm A^3,1,A^{5},1,-A^{5}].\ee
+This yields the same result as we obtained by tracing out the $R$-symbols (hence the notation), confirming that the spin-statistics relation holds in this theory.
+
+Making an explicit choice for $A$ can help to shed some light on these results. For the choice $A = ie^{\pm i \pi/8}$ (giving $d=+\sqrt{2}$ and $A^4 = \pm i$), the $\Tr\ R$-matrix in the vortex sector (the $3\times3$ matrix of the twists of non-bounding idempotents) decomposes as the tensor product
+\be \Tr\ R = T_{p\pm ip} \tp T_{\text{Ising}_{\nu =\mp1}},\ee
+where $T_{p\pm ip} = e^{\pm i\pi/8}$ is the modular $T$-matrix of a $p\pm ip$ superconductor. 
+This decomposition was noted in \cite{ware2016}, where the background physical fermions used to perform the condensation 
+were identified with a $p\pm ip$ topological superconductor. 
+This $p\pm ip$ superconductor has a chiral central charge of $c_-=1/2$, which precisely cancels 
+out the chiral central charge of the Ising component in the tensor product, leaving a non-chiral theory---something
+that is required since we have obtained the phase in question from a string-net lattice model. 
+
+
+More generally, if we believe that the chiral central charge of these theories can be computed in the same 
+way as in bosonic theories (as in \cite{cano2014}), then we must have $c_- =0$ independently 
+for each spin structure sector, which is a nontrivial consistency check. We do not have $c_-=0$ in the 
+non-vortex sector if we use the twists as written, but we have to keep in mind that the 
+non-vortex twists possess a $\pm$ phase ambiguity. We then expect that in the 
+expression for $c_-$ in the non-vortex sector, the sum over twists ``averages out'' and becomes zero, 
+giving a non-chiral theory as required. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Double braids and mutual statistics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Having obtained the $R$ symbols, we can also calculate the braiding data of the quasiparticles by calculating 
+the double braids (mutual statistics) of the quasiparticles. 
+As already mentioned, the matrix of double braids that contains information about the mutual statistics of quasiparticles is {\it distinct} from the modular $S$-matrix governing how the ground states on the torus transform under the $S$ modular transformation (indeed, they are not even of the same dimension!). 
+To distinguish these two matrices, we will write the matrix of double braids between the 
+quasiparticles in the theory as $\mcb^2$ (for the square of the braiding operator). 
+
+\begin{figure}
+\begin{center}
+\includegraphics{both_braided_tubes.pdf}
+\caption{\label{braided_tubes} 
+(a): How the tracing out of the $R$-symbols is performed when calculating the elements $[\mcb^2]_{ab}$ of the double braid matrix. 
+Here, the $a$ and $b$ label tori hosting different quasiparticles, and are contained within a larger torus marked $c$. 
+The entire network of tubes is embedded with the three-sphere, where it can then be evaluated to give a number (the partition function). 
+(b): The setup for calculating the matrix $[\mcb^2_\psi]_{ab}$, which encapsulates odd braiding processes during which a fermion is exchanged (represented by the two connected blue dots) between the two particles being braided. }
+\end{center}
+\end{figure}
+
+There are 
+several ways to calculate $\mcb^2$. 
+First, we will calculate $\mcb^2$ by tracing out the square of the $R$-symbols, using the formula \cite{Bonderson2007}
+\be \label{Smattr} [\mcb^2]_{ab} = \frac{1}{\mcd}\sum_{c}d_c{\rm Tr}[R^{ab}_cR^{ba}_c],\ee
+which continues to hold in the fermionic setting. 
+Computing the trace with the aid of Table \ref{Rtable}, we find
+\be \label{statistical_S}
+ \mcb^2= \frac{1}{\mcd} \begin{pmatrix} 
+1&\sqrt{2}&1&2\sqrt{2}&4&2\sqrt{2} \\
+ \sqrt{2}&0&-\sqrt{2}&4&0&-4 \\ 
+ 1&-\sqrt{2}&1&-2\sqrt{2}&4&-2\sqrt{2} \\ 
+ 2\sqrt{2}&4& -2\sqrt{2}&0&0&0 \\ 
+ 4&0&4&0&0&0 \\ 
+  2\sqrt{2}&-4&- 2\sqrt{2}&0 & 0 & 0 \end{pmatrix}. \ee
+  
+Let us now take a closer look at $\mcb^2$. 
+The block of zeros in the bottom right warrants special attention, and means that braiding any two of the q-type particles around one another yields a state orthogonal to one in which they started. 
+This is physically reasonable, since braiding a q-type particle through a q-type loop changes the q-loop's fermion parity, preventing it from fusing back to the vacuum. 
+\dave{Should draw picture}
+Indeed, this is the same reason why the matrix element $S_{\sigma\sigma}$ vanishes in the regular Ising theory. 
+
+A more precise understanding for why the braiding between two q-type quasiparticles vanishes comes from considering the precise meaning of the trace in \eqref{Smattr}.
+As described during our discussion of the ground states on the torus, the trace of an operator that acts on a collection of tubes (like the $\mcb^2$ matrix) is computed by identifying the top and bottom of the operator by ``closing up'' the tubes it contains along the time direction (see \eqref{TrO_def}).
+The braiding of two quasiparticles $a$ and $b$ is then found by computing the partition function for the picture given in Figure \ref{braided_tubes} (a). 
+In the figure, the two quasiparticles we are interested in braiding are hosted on the surface of the tori marked $a$ and $b$, which are contained inside a larger torus $c$, all of which are then embedded in $S^3$. 
+
+In order for the diagram in the Figure \ref{braided_tubes} (a) to possess a self-consistent spin structure, we must place constraints on the spin structures of the tori $a,b,$ and $c$.
+Let $t_m\in\zz_2$ and $t_l\in\zz_2$ denote the boundary conditions along tube $t$'s meridional (shorter, spacelike) and longitudinal (larger, timelike) cycles respectively, with $t_m,t_l=0$ corresponding to anti-periodic boundary conditions and $t_m,t_l=1$ corresponding to periodic boundary conditions.  
+Then the existence of a consistent spin structure that may be extended into the ambient $S^3$ requires that 
+\be a_m+b_m=c_m,\quad b_l+c_l=a_m,\quad a_l+c_l=b_m\ee
+where all relations are understood to hold mod 2. 
+Furthermore, if Figure \ref{TrO_def} defining the trace of an operator is to represent the trace (and not the supertrace), the torus $c$ must possess antiperiodic boundary conditions along it's longitudinal cycle. 
+In particular, fixing $c_l=0$ (anti-periodic) forces 
+\be a_m = b_l,\quad a_l=b_m.\ee
+Therefore, if $a_m = b_m = 1$, which is the case if both $a$ and $b$ host q-type particles, then we must have $a_l = b_l = 1$. 
+This explains why $[\mcb^2]_{ab}=0$ if both $a$ and $b$ are q-type: to trace out the $R$-symbols we need the $a$ and $b$ tori in Figure \ref{braided_tubes} (a) to each have $(N,N)$ spin structures. 
+However, as we saw in the previous section on the modular $S$-matrix, non-zero string-net configurations on tori with $(N,N)$ spin structures must have {\it odd} fermion parity.
+In calculating the $\mcb^2$-matrix we have assumed that each torus in Figure \ref{braided_tubes} has {\it even} fermion parity, and so $[\mcb^2]_{ab}$ must vanish if both $a$ and $b$ are q-type. 
+
+The $\mcb^2$ matrix in \eqref{statistical_S} carries almost the same amount of information as the modular $S$-matrix worked out previously: we can identify each of its four $3\times3$ blocks with a $3\times3$ block in the modular $S$-matrix \eqref{modularS}. 
+However, the bottom-right block in \eqref{modularS} proportional to $A^{-2}$ is missing. Does this mean that the braiding statistics capture less information than the modular transformations? 
+In fact it does not, because there is an additional braiding process between q-type particles that we need to consider, one in which the quasiparticles being braided exchange a fermion (more generally, an odd number of fermions) during braiding. 
+We will write the statistical matrix governing this braiding process as $\mcb^2_\psi$, and it is computed using the setup in Figure \ref{braided_tubes} (b), where the fermion exchanged between the two quasiparticles is indicated by the blue lines. 
+
+We can account for the fermion exchange by adding additional dots to the tubes representing the quasiparticles being braided.
+Mathematically, this means that $\mcb^2_\psi$ can be computed by tracing out the $R$-symbols composed with the operator $f_1\tp f_2$, which inserts fermions ordered in the appropriate way onto the $a$ and $b$ tubes as in Figure \ref{braided_tubes} (b). 
+Thus, we have
+\be [\mcb^2_\psi]_{ab} = \frac{1}{\mcd_{q}}\sum_cd_c{\rm Tr}[(f_1\tp f_2)R^{ab}_cR^{ba}_c], \ee
+where 
+\be \mcd^2_q = \sum_{a \text{\ q-type}}\frac{d_a^2}{\dim\End(a)}\ee
+is the total quantum dimension of the q-type particles in the theory (this choice ensures that $\mcb^2_\psi$ is unitary). 
+For the present case of the $C_2$ theory, $\mcd_q = 2$. 
+
+We can compute the above formula by drawing the diagrams with the fermions $f_1$ and $f_2$ in place and then immediately using local relations to annihilate them into the vacuum.
+For each fusion channel $c$ this leaves us with a diagram proportional to ${\rm Tr}(R^{ab}_cR^{ba}_c)$, which can be computed in the same way as the regular $\mcb^2$-matrix. 
+Proceeding in this way, we obtain 
+\be \mcb^2_\psi = \frac{A^{-2}}{2}\begin{pmatrix} -1 & d & 1 \\ d & 0 & d \\ 1 & d & -1\end{pmatrix},\ee
+which matches the action of the modular $S$-matrix on tori with $(N,N)$ spin structures and satisfies $(\mcb^2_\psi)^4=(-1)^F\unit_{3\times3}=-\unit_{3\times3}$. 
+Thus, the {\it full} statistical braiding information---both the $\mcb^2$ and $\mcb^2_\psi$ matrices---provide the same amount of information as the modular transformations on the collection of tori with each spin structure. 
+
+\end{comment}
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{comment}
 \kwsep
