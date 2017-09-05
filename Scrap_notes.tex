@@ -5622,6 +5622,455 @@ evaluated using the local data (e.g. the $F$-moves, quantum dimensions, and pivo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+
+\begin{comment} 
+\dave{Note to self: don't delete this, add to scrap notes.}
+If the super pivotal category is derived from a pivotal category $\mcc$ by condensing a fermion,
+then we can write the matrix trace in a particularly simple form. \eqref{trace_formula} can be written as
+\begin{align}
+\label{trace_simple_objects}
+\left \langle\;\Tuberrprimenolabel_W,\text{id} \; \right \rangle =  \TuberrTraceCe + s(W) \TuberrTraceCo 
+\end{align}
+Where the diagram on the right is evaluated in the plane (equivalently, on $S^2$). 
+Since the diagram appearing on the right has a trivial lift to the parent category $\mcc$, 
+the evaluation is the same whether we use $\mcc$ or $\mcc/\psi$.
+
+
+Equation \eqref{trace_simple_objects} is useful in its own right. 
+It provides a relation between the trace of a tube in $\tube(\mcc)$ and $\tube(\mcc/\psi)$.
+Let $\mcc$ be a pivotal fusion category and $\mcc/\psi$ the super pivotal category resulting from condensing a fermion as discussed in Section \ref{General_comments_on_fermion_condensation}.
+Then we have have two functors
+\be
+	\varphi_B : \tube(\mcc) \rightarrow \tube^B(\mcc/\psi)
+\ee
+and
+\be
+	\varphi_N : \tube(\mcc) \rightarrow \tube^N(\mcc/\psi) .
+\ee
+which are inclusions of $\tube(\mcc)$ into $\tube(\mcc/\psi)$.
+
+Recall that the endomorphisms of the trivial object in $\tube(\mcc)$ form a commutative algebra
+isomorphic to the fusion ring of $\mcc$, 
+and that the $\omega$ loops are the minimal idempotents of this algebra.
+We define two non-minimal idempotents in this algebra,
+\begin{align}  \label{aJloop}
+	a_B = \frac{1}{2}(\cl(\unit) + \cl(\psi)), \;\;\;\;   a_N = \frac{1}{2}(\cl(\unit) - \cl(\psi)),
+\end{align}
+where as before $\cl(x)$ denotes a closed up $x$ strand embedded in a solid torus.
+These two idempotents are orthogonal (i.e.\ $a_I\cdot a_J = \delta_{IJ}a_I$), and $a_B + a_N = \id$.
+
+Placing $a_J$ behind a tube diagram yields a functor $\hat{a}_J : \tube(\mcc) \to \tube(\mcc)$
+\begin{align}  \label{aJ_projector}
+	\hat{a}_J \left( \TubeBasisa \right) = \TubeProject .
+\end{align}
+We have a decomposition of $\tube(\mcc)$ into two summands, $\hat{a}_B(\tube(\mcc))$ and $\hat{a}_N(\tube(\mcc))$.
+%Thus we have a decomposition of $\tube(\mcc)$ into two summands, $\tube(\mcc)\bullet a_B$ and $\tube(\mcc)\bullet a_N$.
+%In pictures, tensoring with $a_J$ looks like
+%\begin{align}  \label{aJ_projector}
+%	\TubeBasisa \bullet a_J = \TubeProject.
+%\end{align}
+We also have
+\be
+	\varphi_I(a_J) = \delta_{IJ} \id ,
+\ee
+which implies that $\varphi_B\circ\hat a_N$ and $\varphi_N\circ\hat a_B$ are both the zero functor.
+It follows that for $t \in a_W(\tube(\mcc))$ we have,
+\begin{align}
+\label{trace_of_image}
+\tr_{\mcc}(t) = \frac{1}{2} \tr_{\mcc/\psi ; W} (t) 
+\end{align}
+where the subscript in the trace denotes with respect to which category and which spin structure. 
+%Said another way, 
+%a non-zero tube $t \in \tube(\mcc)$ in the image of $a_W$ has a trivial inclusion into $\tube_W(\mcc/\psi)$, and the traces differ by a the factor of $\frac{1}{2}$ given in \eqref{trace_of_image}.
+Indeed, one can show that the functors $\varphi_B\circ\hat a_B$ and $\varphi_N\circ\hat a_N$ are both faithful (i.e.\ injective on morphism spaces).
+This is useful when computing the minimal idempotents of 
+$\tube(\mcc/\psi)$ given the minimal idempotents of $\tube(\mcc)$, 
+as we do in proving Theorem \ref{minimal_idempotents_modular_C/psi}.
+
+
+
+%On the other hand, we have:
+%$\varphi_B\circ\hat a_B$ and $\varphi_N\circ\hat a_N$ are both faithful:
+%It follows that the summand $\tube(\mcc)\bullet a_B$ maps to zero when included in $\tube^N(\mcc/\psi)$,
+%and the summand $\tube(\mcc)\bullet a_N$ maps to zero when included in $\tube^B(\mcc/\psi)$.
+%With a little more work, we can show that $\tube(\mcc)\bullet a_J$ maps faithfully (injectively) into
+%$\tube^J(\mcc/\psi)$ under the functor $\varphi_J$.
+
+%\kw{not satisfied with above; will rewrite soon}
+\end{comment} 
+
+
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Quantum dimensions}
+\label{Quantum_dimensions}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%\dave{Should we call $\tr(e_j)$ the normalized quantum dimension of $\tr(e_j)/\tr(e_0)$ the normalized quantum dimension?}
+%\ethan{the latter}
+As an application of the trace technology developed in the previous section, we can compute the quantum dimensions $d_{e_j}$ of the minimal idempotents in $\tube(\mcc)$.
+The un-normalized quantum dimension $\tilde d_{e_j}$ is defined by the trace of the idempotent: 
+% tracing out the idempotent:
+%defined by the trace of the associated idempotent $\Pi_x$: 
+\begin{align}
+\tilde d_{e_j} = \tr (e_j),
+\end{align}
+%where $W$ is bounding if $e_j \in \tube^{B}(\mcc/\psi)$ and non-bounding if $e_j \in \tube^N( \mcc/\psi)$.
+The normalized quantum dimension $d_{e_j}$ is then given by $\tilde d_{e_j}/\tilde d_{e_0}$, where $e_0$ is the trivial idempotent.
+For example, in the $C_2$ theory, we can use this approach to obtain $\tilde d_{m_{\unit / \psi}} = 1/2, \tilde d_{m_\sigma^+} = \tilde d_{q_{\unit/\psi}} = 1/\sqrt{2}, \tilde d_{q_\sigma} = 1$. 
+Normalizing so that $d_{m_\unit} = 1$, we obtain the normalized quantum dimensions listed in Table \ref{C2Data}. 
+
+%\dave{Could add paragraph about q-type particles having norm $2$?}
+
+
+We will also need to know how to calculate the total quantum dimension of the theory $\mcd_{\mcc/\psi} = \dim(\mcc/\psi)$.
+In bosonic theories we have $\mcd_\mcc^2 = \sum_{x\in \mcc} d_x^2$, where the sum runs over all simple objects $x\in\mcc$. 
+This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
+The correct formula is
+\be \label{total_qdim_defn} 
+\mcd_{\mcc/\psi}^2 = \sum_{x\in \mcc/\psi} \frac{d_x^2}{\dim \End(x)}.\ee
+This ensures that $\dim(\mcc)$ is related to $\dim(\mcc / \psi)$ by 
+\be \label{DC_and_DCpsi} \mcd_{\mcc / \psi} = \frac{\mcd_\mcc}{\mcd_{\rm sVec}} = \frac{1}{\sqrt{2}} \mcd_\mcc,\ee
+where we have viewed the category of supervector spaces, sVec, as consisting of two objects 
+${\rm sVec} = \{\unit,\psi\}$ with $d_\unit=d_\psi=1$, so that $\mcd_{\rm sVec} = \sqrt{2}$. 
+This result was also obtained in \cite{wan2016}. 
+
+To prove \eqref{DC_and_DCpsi}, we write 
+\be
+\mcd_\mcc^2 = \tr \left(\bigoplus_{x\in \mcc/\psi} d_x x\right) = \tr \left( \bigoplus_{x \in \sobm(\mcc/\psi)} d_x (\mathds{1} \oplus \psi) \tp x \right ) + \tr \left(\bigoplus_{x  \in \sobq(\mcc/\psi )} {d_x} x \right),\ee
+%where $Q$ is the set of all q-type objects in $\mcc$ (those that are invariant under fusion with $\psi$), 
+%and $M$ is a collection of representatives of the orbits of m-type objects under fusion with $\psi$, so that 
+%the collection of all m-type simple objects is $M\cup M\tp \psi$.   
+Since $x\tp \psi \cong x$ if $x\in \sobq(\mcc/\psi)$, we can write
+\begin{align}
+\label{dimCtoDimCpsi}
+\mcd_\mcc^2 & = \tr \left( \bigoplus_{x \in \sobm(\mcc/\psi)} d_x (\mathds{1} \oplus \psi) \tp x \right ) + 
+\tr  \left(\bigoplus_{x  \in \sobq(\mcc/\psi)}\frac{d_x}{2}(\unit \oplus \psi) x \right) \\ & =\tr(\unit \oplus \psi) 
+\cdot \tr \left( \bigoplus_{x \in \mcc/\psi} \frac{d_x}{\dim\End(x)} x \right) = \mcd^2_{\rm sVec} 
+\mcd_{\mcc/\psi}^2 = 2 \mcd_{\mcc/\psi}^2,
+\end{align}
+proving \eqref{DC_and_DCpsi}. 
+This result can also be motivated by making use of the theory of modular extensions, see for example \cite{lan2016}. 
+For the $C_2$ theory, this works out as 
+\be \mcd_{C_2} = \sqrt{2} = \mcd_{\rm Ising} / \sqrt{2},\ee
+and is easily checked to hold for the other examples in the $A_{4n+2} / \psi$ series.  
+
+It is a result of Muger \cite{muger2003b} that for any unitary fusion category $\mcc$, 
+the dimension of the center is related to $\mcd_\mcc$ by 
+\be \mcd_{\tube(\mcc)} =\mcd^2_\mcc.\ee
+One can ask for the analogous formula in the super pivotal case.
+We can then use \eqref{DC_and_DCpsi} to obtain 
+\be \mcd_{\tube(\mcc)} = 2\mcd^2_{\mcc/\psi}.\ee
+Using \eqref{DC_and_DCpsi} again and specializing to the case where $\mcc$ is a modular tensor category then $\mcc \times (\mcc/\psi) \cong \tube(\mcc/\psi)$ 
+(a result that we prove in Section \ref{double_fermionic_quotient}), we have 
+\be \mcd_{\tube(\mcc/\psi)} = \mcd_{\mcc} \mcd_{\mcc/\psi}.\ee
+For example, in the $C_2$ theory this is verified by $\mcd_{\tube(C_2)} = \sqrt{8} = \sqrt{2} (\sqrt{2})^2 = \sqrt{2} \mcd^2_{C_2}.$
+
+
+
+\medskip
+
+\dave{Below is old stuff (commented out). 
+Should decide if we want to keep anything else from it, I think most of it has been copied over.}
+
+\end{comment}
+
+\begin{comment} 
+In what follows we will need to compute the trace of a generic operator (or in other words, an endomorphism) $\mco$ in the tube category. 
+\kw{I think we should say endomorphism rather than operator, and use lower case notation for this operator.}
+We will do the computations following the procedure outlined in \cite{Walker2006}; for more details see \cite{ghosh2016,das2014}.
+\dave{I think at one point I thought those two references might be useful, but not so sure anymore.}
+\kw{If you think the other two refs are useful and relevant, include them; otherwise not.}
+
+To compute the trace of a endomorphsism in $\mcc$ (which can be thought of
+as string nets on a disk), we identify the incoming and outgoing
+boundaries of the disk to get a string net on $S^2$.
+We then use the standard evaluation for $S^2$ string nets to get a number.
+For an endomorphism $\mco$ in $\tube(\mcc)$, we follow the same procedure by identifying the incoming and outgoing
+boundaries of the annulus, yielding a string net on the torus.
+There is no standard evaluation for string nets on the torus (it is not 1-dimensional vector space in general),
+but TQFT considerations pick out a preferred map from torus string nets to $\cc$, as we describe below.
+
+
+\kw{I will rewrite below}
+
+\kw{Note to self: be sure to introduce inner product (more general than trace)}
+
+\kw{should probably make some observations needed for proof of lemma in MTC/psi section}
+
+
+
+\dave{Do the two agree at the level of the tube category?
+(i.e., I thought $\langle X, Y \rangle  = \langle \unit ,X^*Y\rangle = \text{tr} X^*Y$.
+I used this fact later in \ref{image_aJ} but can also do the same calculation without it.)}
+
+Recall that the path integral on a manifold $X$ is a linear function
+\be Z(X) : V(\p X) \ra \cc,\ee
+where $V(\p X)$ is the set of all string-net configurations on $\p X$ modulo local relations.
+The trace of an operator supported on a manifold $Y$ is equal to the partition function on a manifold $X$ 
+such that $\p X = Y$ evaluated on the string-net configuration specified by that operator. 
+For our application to the tube category, we thus have 
+\be {\rm Tr}\ \mco = Z(S^1 \times D^2)(\mco),\ee
+where $S^1\times D^2$ is the solid torus. 
+
+To compute this partition function, we make use of a cutting trick. 
+We use the relation 
+\be {\rm Tr}_Y\ (Z(X_{cut})) = Z(X_{glue}).\ee
+In the above formula, $X_{cut}$ is a manifold which becomes $X_{glue}$ after gluing $X_{cut}$ by pasting in 
+$Y$ along the boundary components of $X_{cut}$, and the ${\rm Tr}_Y$ instructs us to sum over all such $Y$.
+This is illustrated in Figure \ref{cutting_trick}. The leftmost figure is a solid torus, on which an operator $\mco$ is supported. 
+We then cut the torus as shown in the second step, and glue it together again as shown in the last step. 
+We see that at the end of these steps, we have rotated the string-net configuration of the operator $\mco$ by $\pi/2$.
+Therefore, we find
+\begin{align}
+\text{Tr} \; \mco &= {\rm Tr}\ (R_{\pi/2}(\mco)),
+\end{align}
+where $R_{\pi/2}(\mco)$ is the operator $\mco$ after having its string-net configurations have been rotated counterclockwise by $\pi/2$.
+Schematically, this can be written as
+\begin{align}
+\text{Tr}\ \AnnulusGeneric = \text{Tr}\;  \left( \RotatedTube : \Disc \ra \Disc \right)
+\end{align}
+Despite the abstract nature of this discussion, the calculation of traces is easy in practice: to compute 
+the trace of a tube, we rotate the string-net configuration on the tube by $\pi/2$ counterclockwise, 
+identify the top and bottom of the tube, and simplify the resulting diagram. The trace is then found by 
+taking the coefficient of the final diagram. 
+\begin{figure}
+\begin{center}
+\begin{align}
+\xymatrix @!0 @M=1mm @R=7mm @C=30mm {
+\AnnulusGeneric \ar[r]^{\text{cut}}& \AnnulusCut \ar[r]^{\text{id}} & \AnnulusFlat \ar[r]^{\text{glue}}& \RotatedTube}
+\end{align}
+\caption{ \label{cutting_trick} Defining the trace of the tube by taking the inner product with the identity tube.
+The first step is to cut open the annulus along the azimuthal cycle. 
+then glue the inner and outer intervals together to get a rotated tube, shown at the far right.
+We then view this rotated tube as a linear map from $D^2$ to $D^2$, and the trace of this map is the trace of the tube.
+}
+\end{center}
+\end{figure}
+
+
+
+Now that we know how to take traces and map string-nets on the torus to $\cc$, we are equipped with a way 
+of taking inner products between morphisms in the tube category. To form the inner product $\langle u,v\rangle$, 
+we take the annuli corresponding to $u$ and $v$, identify their boundaries together to form a torus, 
+and use our tracing procedure to map this string-net torus to a complex number, which we identify with $\langle u,v\rangle$. 
+
+The quantum dimension $d_x$ of an excitation $x$ in $\tube(\mcc)$ is defined by the trace of the associated idempotent $\Pi_x$: 
+\begin{align}
+d_x \equiv \text{Tr} (\Pi_x).
+\end{align}
+For example, in the $C_2$ theory, we can use this approach to obtain $d_{m_{\unit / \psi}} = 1/2, d_{m_\sigma^+} = q_{\unit/\psi} = d/2, q_\sigma = 1$. 
+Normalizing so that $d_{m_\unit} = 1$, we obtain the quantum dimensions listed in Table \ref{C2Data}. 
+
+We will also need to know how to calculate the total quantum dimension $\mcd_\mcc = \dim(\mcc)$.
+In bosonic theories we have $\mcd_\mcc^2 = \sum_{x\in \mcc} d_x^2$, where the sum runs over all simple objects $a\in\mcc$. 
+This formula is generalized in the fermionic setting, because of the nontrivial endomorphism algebras that simple objects can possess.  
+The correct formula is
+\be \label{total_qdim_defn} \mcd_{\mcc/\psi}^2 = \sum_{x\in \mcc/\psi} \frac{d_x^2}{\dim \End(x)}.\ee
+This ensures that $\dim(\mcc)$ is related to $\dim(\mcc / \psi)$ by 
+\be \label{DC_and_DCpsi} \mcd_{\mcc / \psi} = \frac{\mcd_\mcc}{\mcd_{\rm sVec}} = \frac{1}{\sqrt{2}} \mcd_\mcc,\ee
+where we have viewed the category of supervector spaces, sVec, as consisting of two objects 
+${\rm sVec} = \{\unit,\psi\}$ with $d_\unit=d_\psi=1$, so that $\mcd_{\rm sVec} = \sqrt{2}$. 
+This result was also obtained in \cite{wan2016}. 
+
+
+
+To prove \eqref{DC_and_DCpsi}, we write 
+\be
+\mcd_\mcc^2 = \text{Tr} \left(\bigoplus_{x\in \mcc/\psi} d_x x\right) = \text{Tr} \left( \bigoplus_{x \in M} d_x (\mathds{1} \oplus \psi) \tp x \right ) + \text{Tr} \left(\bigoplus_{x  \in Q} {d_x} x \right),\ee
+where $Q$ is the set of all q-type objects in $\mcc$ (those that are invariant under fusion with $\psi$), 
+and $M$ is a collection of representatives of the orbits of m-type objects under fusion with $\psi$, so that 
+the collection of all m-type simple objects is $M\cup M\tp \psi$.   
+Since $x\tp \psi \cong x$ if $x\in Q$, we can write
+\begin{align}
+\label{dimCtoDimCpsi}
+\mcd_\mcc^2 & = \text{Tr} \left( \bigoplus_{x \in M} d_x (\mathds{1} \oplus \psi) \tp x \right ) + 
+\text{Tr}  \left(\bigoplus_{x  \in Q}\frac{d_x}{2}(\unit \oplus \psi) x \right) \\ & =\text{Tr}(\unit \oplus \psi) 
+\cdot \text{Tr} \left( \bigoplus_{x \in \mcc/\psi} \frac{d_x}{\dim\End(x)} x \right) = \mcd^2_{\rm sVec} 
+\mcd_{\mcc/\psi}^2 = 2 \mcd_{\mcc/\psi}^2,
+\end{align}
+proving \eqref{DC_and_DCpsi}. 
+This result can also be motivated by making use of the theory of modular extensions, see for example \cite{lan2016}. 
+For the $C_2$ theory, this works out as 
+\be \mcd_{C_2} = \sqrt{2} = \mcd_{\rm Ising} / \sqrt{2},\ee
+and is easily checked to hold for the other examples in the $A_n / \psi$ series.  
+
+It is a result of Muger \cite{muger2003a,2003b} that for any unitary fusion category $\mcc$, 
+the dimension of the center is related to $\mcd_\mcc$ by 
+\be \mcd_{\tube(\mcc)} =\mcd^2_\mcc.\ee
+We can then use \eqref{DC_and_DCpsi} to obtain 
+\be \mcd_{\tube(\mcc)} = 2\mcd^2_{\mcc/\psi}.\ee
+Using \eqref{DC_and_DCpsi} again and using $\mcc \times (\mcc/\psi) \cong \tube(\mcc/\psi)$ (a result 
+that we prove in Section \ref{double_fermionic_quotient}), we have 
+\be \mcd_{\tube(\mcc/\psi)} = \sqrt{2}\mcd^2_{\mcc/\psi}.\ee
+For example, in the $C_2$ theory this is verified by $\mcd_{\tube(C_2)} = \sqrt{8} = \sqrt{2} (\sqrt{2})^2 = \sqrt{2} \mcd^2_{C_2}.$
+
+
+
+
+
+\subsubsection{\dave{May salvage some material from this, but otherwise may be removed.}}
+
+
+%First, any string net configuration of the parent theory descends to a string net configuration of the condensed theory.
+
+%giving us a functor $\tube(\mcc) \rightarrow \tube(\mcc/\psi)$.
+%Conversely, we can always take an even morphism in $\mcc/\psi$ and lift it to $\mcc$, giving 
+%us a way from lifting tubes in $\tube(\mcc/\psi)$ to those in $\tube(\mcc)$.
+%These two facts allow us to find the minimal idempotents of the quotient theory, 
+%using the minimal idempotents of the parent theory.
+
+
+
+%\dave{I haven't checked the above, will come back to it.}
+%\kw{Looks OK to me.}
+
+%The proof of the theorem splits into two parts. 
+%We first compute the images of the minimal idempotents in $\tube(\mcc/\psi)$ under condensation
+%and show that these images provide us with a complete set of minimal idempotents in the condensed theory.
+%Next we define a tensor functor from $\mcc \times \overline{\mcc/\psi} $ to $\tube(\mcc/\psi)$ and
+%show that it is an isomorphism of tensor categories.
+%thus showing that $\tube(\mcc/\psi) \cong \mcc \times \overline{\mcc/\psi}$ as tensor categories.
+\end{comment} 
+
+\begin{comment} %%%%%%%%%%%%%%%%
+
+The image of the idempotents in $\tube(\mcc)$ under condensation can be found with the help of 
+two projectors $a_B,a_N$ which sum to the identity, and are defined to act on morphisms in $\tube(\mcc/\psi)$. 
+They are defined as
+\begin{align}
+a_B = \frac{1}{2}(\cl(\unit) + \cl(\psi)), \;\;\;\;   a_N = \frac{1}{2}(\cl(\unit) - \cl(\psi)),
+\label{aJloop}
+\end{align}
+where as before, $\cl(x)$ denotes a closed up $x$ strand embedded in a solid torus.
+Importantly, they satisfy $a_J \tp a_W = \delta_{JW} a_J$ and $a_B + a_N = \cl(\unit)$\footnote{
+By ${\rm cl}(a)\tp{\rm cl}(b)$, we mean ${\rm cl}(a\tp b)$.}.
+Also, from the definition of the $\omega$ loop we note that $\omega\tp a_J = \delta_{J,B}\omega$. 
+Notice that an $a_J$ loop encircling a tube with spin structure $J$ is the identity, while an $a_J$ loop 
+on a tube with spin structure $W \neq J$ projects the tube to zero.
+That is, 
+\begin{align}
+\SpinStructureProjector = \delta_{JW}\; \EmptyTubeW \in \tube^W(\mcc/\psi),
+\end{align}
+where $W$ on the interior of the gray disc denotes the spin structure for the disc it bounds.
+
+The projectors can also be defined to act on morphisms in $\tube(\mcc)$. In this setting we will denote 
+them as $\hat{a}_B$ and $\hat{a}_N$. 
+On general morphisms in $\tube(\mcc)$, they act as 
+\begin{align}
+\hat{a}_J \cdot \TubeBasisa = \TubeProject.
+\label{aJ_projector}
+\end{align}
+
+
+The $\hat{a}_J$ projectors allow us to determine which idempotents in $\tube(\mcc)$ survive the projection 
+to $\tube(\mcc/\psi)$:
+a non-zero tube in $\tube(\mcc)$ in the image of $\hat{a}_J$ remains non-zero under condensation as a tube in $\tube^J(\mcc/\psi)$. 
+We make this precise in the following lemma:
+
+\end{comment} %%%%%%%%%%%%%%%%
+
+
+\begin{comment}
+
+\begin{lemma}  \label{image_aJ}
+The functors $\varphi_B\circ\hat a_B$ and $\varphi_N\circ\hat a_N$ are both faithful (i.e.\ injective on morphism spaces).
+\end{lemma}
+
+%\begin{lemma}
+%\label{image_aJ}
+%Let $\mcc$ be a modular tensor category and $\psi$ a fermion in $\mcz(\mcc)$ as defined in \ref{lift_and_condense}.
+%Let $\hat{a}_J$ be as defined in \eqref{aJ_projector}.
+%Then there exists a functor 
+%\[\begin{tikzcd}        
+%   I: \hat{a}_J \cdot \tube(\mcc) \rightarrow \tube^J(\mcc/\psi)
+%\end{tikzcd}\]
+%which is faithful, meaning that morphisms in $\hat{a}_J\cdot\tube(\mcc)$ are mapped injectively to morphisms in $\tube^J(\mcc/\psi)$. 
+%\ethan{may still need to be rephrased}
+%In particular, a tube of $\tube(\mcc)$ that is not mapped to zero by $\hat{a}_J$ is nonzero in the image of $I$. 
+%\end{lemma}
+
+\kw{I'm skipping the proof of the lemma; will come back later}
+
+\begin{proof}
+The proof follows from a simple observation.
+Let $t \in \tube(\mcc)$ be in the image of $\hat{a}_J$ so that, 
+\begin{align}
+\left \langle\; \Tubeidr,\Tuberr \; \right \rangle_{\tube(\mcc)} &=\left \langle\; \Tubeidr,\TuberraJ \; \right \rangle_{\tube(\mcc)}  \\
+&= \frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^{s(J)} \TuberrTraceCo  \right \rangle_{\mcc}
+\end{align}
+The first step follows from $t$ being in the image of the projector $\hat{a}_J$, 
+while the second step follows from the definition of the inner product in the tube category 
+(written as $\langle,\rangle_{\tube(\mcc)}$, which is discussed in Section \ref{traces_and_innerproducts}). 
+The angle brackets with subscript $\mcc$ in the second line means that we evaluate the picture on 
+the two-sphere using local relations in $\mcc$.
+As before, we have defined $s(J)= 0$ if $J$ is bounding and $s(J)=1$ otherwise.
+
+Since any net configuration in $\mcc$ evaluated on $S^2$ agrees with the evaluation in $\mcc/\psi$ we have,
+\begin{align}
+\frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^{s(J)} \TuberrTraceCo  \right \rangle_{\mcc} &=\frac{1}{2} \left \langle  \TuberrTraceCe + (-1)^{s(J)} \TuberrTraceCo  \right \rangle_{\mcc/\psi} \\
+&= \frac{1}{2} \left \langle\; \Tubeidr,\Tuberr \; \right \rangle_{\tube^J(\mcc/\psi)},
+\end{align}
+where we have again used the definition of the trace. 
+Hence, if $X,Y \in \tube(\mcc)$ are in the image of $\hat{a}_J$, then $\langle X, Y \rangle = \langle \unit, X^* Y\rangle$. 
+Using that $\tube(\mcc)$ is semi-simple, and that the $t \in \tube(\mcc)$ above span all 
+morphisms of $\tube(\mcc)$, we can always find an isomorphism such that $t \cong X^*Y$.
+\ethan{I'm confused by the last two sentences and why we need them}
+\dave{If a tube $X$ is non-zero in $\tube(\mcc)$, then $\langle X, X\rangle$ is non-zero (I'm assuming the 
+inner product is non-degenerate for both $\tube(\mcc)$ and $\tube(\mcc/\psi)$. 
+Not all tubes in $\tube(\mcc)$ look like $t$ above, so we need to say that they are all isomorphic 
+to one that looks like $t$. 
+I think that in order for that to be true $\tube(\mcc)$ should be semi-simple, 
+but this I'm not certain of.
+}
+From the previous equation we have that $\langle X, Y \rangle_{\tube(\mcc)} = \frac{1}{2} \langle X, Y \rangle_{\tube^J(\mcc/\psi)}$.
+Since the the inner product is non-degenerate \ethan{did we prove this?}
+\dave{No, not yet.
+I assumed in the next re-write of the inner product section we would either mention it's non-degenerate with a reference, or prove it.
+Otherwise we could re-word the above.}, the inclusion of $\hat{a}_J\cdot\tube(\mcc)$ into $\tube^J(\mcc/\psi)$ is injective on morphisms.
+\end{proof}
+
+
+
+Let's now apply the $\hat a_J$ functors to the idempotents in the parent theory $\tube(\mcc)$. 
+%Define the image of $e_{xy}$ under condensation to be $f^J_{xy}$. 
+Define
+\be
+	f^J_{xy} = \varphi_J(e_{xy}) .
+\ee
+Using that $\omega \cdot a_J = \delta_{JB} \omega$, we can replace the $\omega$ appearing in $e_{xy}$ with $a_B \cdot \omega$. 
+We can next pass the $a_B$ through the $y$ strand sitting between the $\omega$ loop and the back wall. 
+Doing so permutes $a_B$ and $a_N$ if $y$ has nontrivial braiding with $\psi$.
+Otherwise $a_B$ remains unchanged (if $y$ braids trivially with $\psi$). 
+Diagrammatically, 
+\begin{align}
+e_{xy} =  \TubeIdempotentTwoStrand= \exyomegaa = \begin{cases}
+\exyomegac& \text{if}\; \nu_y = 0 \\
+\\
+\exyomegab& \text{if}\; \nu_y =1
+\end{cases},
+\end{align}
+\kw{We can also see the above more directly, since we are free to insert $a_J$ in an annular diagram with spin structure $J$.}
+where the indicator $\nu_y$ is defined as before by $\nu_y=0$ if $y$ braids trivially with $\psi$, and $\nu_y=1$ otherwise. 
+This means that each $e_{xy}$ has an image in $\tube(\mcc/\psi)$ given by
+\begin{align}
+e_{xy} \xrightarrow{\text{condense $\psi$}}f_{xy}^{J(y)} \quad \quad \text{with $J(y) = B$ if $\nu_y = 0$ and $J(y) = N$ otherwise}
+\label{image_of_exy}
+\end{align}
+\kw{Is previous statement redundant?}
+In the following we will sometimes write just $J$ instead of $J(y)$. 
+Since the $e_{xy}$ are complete, orthogonal and non-zero then by using the Lemma \ref{image_aJ}
+we also have that the $f^J_{xy}$ are complete, orthogonal and non-zero\footnote{they are complete since all the non-zero even 
+tubes in the condensed theory lift to non-zero tubes in the parent theory, meaning that we are not ``missing'' any 
+idempotents after projecting the idempotents in the parent theory to the condensed theory.}.
+Note that the inclusion of the image of $\hat{a}_J$ in $\tube^J(\mcc/\psi)$ is not surjective: 
+indeed, tubes that have $\psi$ lines terminating on the interior of the tube do not appear in $\tube(\mcc)$.
+For example a tube with a q-type strand could always have a $\psi$ line extending from it and terminating on the back wall.
+Hence, we also need to show that the resulting idempotents are minimal.
+\end{comment}
+
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{comment}
@@ -5637,6 +6086,36 @@ However, since $\tube^B$ is non-abelian the former possibility is ruled out, and
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{comment}
+\kwsep
+
+In this section, we briefly present a fermionic version of the sum-of-squares formula, which is useful for relating the dimension
+of the tube category to the dimensions of its minimal idempotents (see e.g. \cite{Lan2014}). 
+In many cases, this allows us to obtain a large amount of information about the quasiparticle 
+content of the theory without actually finding the explicit representations of the primitive 
+idempotents of the tube category.
+
+If $\{e_a\}$ is a list of isomorphism classes of minimal idempotents of $\tube(\mcc/\psi)$, 
+then 
+the sum-of-squares formula reads
+\be \label{sumofsqs} \dim \tube(\mcc/\psi) = \sum_{e_a \text{ m-type}} (\dim e_a)^2 + 2\sum_{e_a \text{ q-type}} (\dim e_a)^2,\ee
+where the factor of 2 in front of the second sum comes from the fact that if $a$ is q-type, 
+the even and odd parts of the image of $e_a$ have equal dimensions (as they are oddly isomorphic). 
+The left hand side of the above formula is simply the number of non-zero linearly independent tubes in $\tube(\mcc/\psi)$, which 
+is typically very easy to compute. 
+If there are no q-type particles in $\tube$ then there are no terms in the second sum on the right hand side, 
+and we reproduce the bosonic sum-of-squares formula.  
+
+As an example, we can consider the $C_2$ theory. 
+There are three q-type minimal idempotents (all in the $\tube^N$ sector) and three m-types (all in the $\tube^B$ sector). 
+All of the minimal idempotents are one-dimensional with the exception of $m_\sigma$, 
+which is the two-dimensional isomorphism class of $m_\sigma^+$ and $m_\sigma^-$. 
+Since there are 12 linearly independent tubes in $\tube(C_2)$ (see \eqref{atubes} and \eqref{ptubes}), 
+the sum-of-squares formula then reads
+\be 12 = 1^2+2^2+1^2+2(1^2+1^2+1^2).\ee
+\end{comment}
+%%%%%%
+%%%%%%
 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
