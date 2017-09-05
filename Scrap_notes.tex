@@ -9494,8 +9494,296 @@ be disallowed, since the number of Majorana zero modes must be preserved modulo 
 \end{comment}
 
 
+\section{comment} %%%%%%%%%
+Requiring that the Hilbert space at a given vertex admit a 
+representation of $\End(a)\tp \End(b)\tp \End(c)$ places constraints on the types 
+of fermionic theories one can write down. 
+For example, we can use this to show that a ``q-type Fibonacci'' theory 
+which contains a single q-type particle $\tau$ with the fusion space $V^{\tau\tau}_{\tau}\cong \cc^{1|1}$, cannot exist. 
+Indeed, if $V^{\tau\tau}_{\tau}$ is nontrivial and $\tau$ is q-type, 
+then we must be able to find a representation of $\End(\tau)^{\tp 3} = \cliff_1^{\tp 3} \cong \cliff_3$ on $V^{\tau\tau}_{\tau}$.
+This is impossible if $V^{\tau\tau}_{\tau}\cong \cc^{1|1}$, since $\cc^{1|1}$ is not large enough to represent $\cliff_3$. 
+This means that theories which contain a q-type particle $\tau$ with $V^{\tau\tau}_{\tau}\neq0$ must contain nontrivial 
+fusion multiplicities, which provide us with fusion spaces that are large enough to admit a representation of $\cliff_3$.
+Indeed such a q-type particle exists in the $\halfesix$ theory considered earlier (see Section \ref{halfesix}), 
+which possesses nontrivial fusion multiplicities that allow the relevant fusion spaces in the theory to be large enough to represent $\cliff_3$. 
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%
+\begin{comment}
+
+%what follows until the next triple-line of %'s is old stuff, which is essentially a more verbose version of what we've kept above
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Modified tensor product (old version)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\kw{I think this section can be shortened; I think some of the material already appears far above.}
+
+There is an important subtlety involved when we tensor together fusion spaces which involve q-type particles, which stems from the non-triviality of the fusion space $V^{x\unit}_x$ if $x$ is q-type.
+To see where this comes from, suppose $x$ is a q-type particle, and consider the resolution of the identity 
+\begin{align} \label{resid}
+\Hom(x,x) \cong \bigoplus_y \Hom(x,y) \tp_\cc \Hom(y,x),
+\end{align}
+where $x$ is any object and the sum runs over simple objects $y$. 
+The above relation is actually {\it incorrect} when q-type particles are involved. 
+Indeed, if $x$ is simple then \eqref{resid} reads $\Hom(x,x) = \Hom(x,x) \tp_\cc \Hom(x,x).$ 
+If $x$ is q-type then $\End(x) = \cliff_1$ implies $\cliff_1 \cong \cliff_1\tp_\cc \cliff_1 \cong \cliff_2$, which is a contradiction. 
+Furthermore, if $x$ is q-type then by iterating we see that the supervector space associated with a vertical $x$ worldline is $\End(x)^{\tp_{\cc} n} \cong \cliff_n$ for arbitrarily large $n$, the dimension of which can be made arbitrarily large by increasing $n$. 
+Alternatively, we can also observe that the product $V_{\unit,1}^{xx} \tp_\cc V^\unit_{xx,2} \tp_\cc \dots \tp_\cc V_{\unit,n-1}^{xx} \tp_\cc V^\unit_{xx,n}$ is both isotopy-equivalent to $V^{x\unit}_x \cong \cliff_1$ and isomorphic to $\cliff_n$, which is also a contradiction. 
+These results mean that in the present formulation, the sizes of the Hilbert spaces assigned to fusion diagrams are not even well-defined! 
+
+In order to fix these inconsistencies, we need to mod out by ``internal'' degrees of freedom carried by q-type particles when taking tensor products. 
+These internal degrees of freedom are encapsulated in the fusion spaces $V^{x\unit}_x, V^{\unit x}_x,$ and $V^{xx}_\unit$, each of which is $\cliff_1$ if $x$ is q-type.
+Graphically, modding out by these internal degrees of freedom is equivalent to modding out by local relations involving fermions and q-type particles.  
+These relations are given by locally sliding fermions along a q-type edge from one fusion vertex to another.
+A tensor product between fusion spaces taken over a q-type particle must be quotiented by ``sliding isomorphisms'' like this. 
+
+To perform the modding out procedure described above, we examine the 
+equivalence relation 
+\begin{align} \label{equivreln}
+(V^{ab}_{x,1} f_3) \tp_{\mathbb{C}}V^{xc}_{d,2} \sim V^{ab}_{x,1} \tp_{\mathbb{C}} (f_3 V^{xc}_{d,2})
+\end{align}
+where $f_3$ is an odd endomorphism of $x$ (as before, the numerical subscripts keep track of the Koszul ordering).
+This equivalence relation establishes an equivalence between states that differ by the placement of {\it odd} elements between factors in a tensor product involving q-type particles. 
+Since $\cliff_1 = \langle1,f\rangle$ and $\End(x) = \cliff_1$ if $x$ is q-type, this can be accomplished by using $\End(x)$ as the tensor unit, {\it instead} of $\cc$. 
+This means that in order to achieve a self-consistent fermionic theory, we need to replace the tensor product of two fusion spaces linked by the simple object $x$ with a tensor product over $\End(x)$. 
+ Explicitly, to construct a fermionic theory, we must make the following replacements:
+\be \ba
+ &V^{ab}_{x,2} \tp_{\mathbb{C}} V^{xc}_{d,1}\quad  \text{is replaced by} \quad V^{ab}_{x,2} \tp_{\text{End}(x)} V^{xc}_{d,1},\ \  {\rm and} \\ 
+  &V^{ax}_{d,1} \tp_{\mathbb{C}} V^{bc}_{x,2}\quad  \text{is replaced by} \quad V^{ax}_{d,1} \tp_{\End(x)} V^{bc}_{x,2},
+\ea 
+\ee
+where $\tp_{\End(x)}$ means that $\End(x)$ is taken to be the tensor unit. Explicitly, 
+\begin{align}
+V^{ab}_{x,1} \tp_{\text{End}(x)} V^{xc}_{d,2} = V^{ab}_{x,1} \tp_{\mathbb{C}}V^{xc}_{d,2}/ \sim,
+\label{qtensor}
+\end{align}
+where $\sim$ is the equivalence relation \eqref{equivreln}. 
+Analogous relations hold for fusion spaces connected in different ways. 
+
+Using the modified tensor product allows us to easily write down the correct version of \eqref{resid}, which is 
+\begin{align}
+\Hom(x,x) \cong \bigoplus_y \Hom(x,y) \tp_{\End(y)} \Hom(y,x).
+\end{align}
+In particular, if $x$ is a simple q-type object, then we (correctly) have \be
+\cliff_1 \cong \Hom(x,x) \cong \Hom(x,x)\tp_{\End(x)} \Hom(x,x) \cong \cliff_1\tp_{\cliff_1}\cliff_1 \cong \cliff_1.\ee  
+
+To take the modified tensor product $\End(x)$ when doing calculations or solving consistency equations numerically, we find it easiest to directly impose the condition that physical vectors in the space $V^{ab}_x \tp_{\mathbb{C}} V^{xc}_d$ be left invariant under the action of $\text{End}(x)$. 
+There are two types of fusion diagrams we need to consider, depending how the fusion vertices that they are formed from are connected. This leads to two isomorphisms of fusion diagrams:
+\begin{align}
+&\vcenter{\xymatrix @!0 @M=1mm @C=42mm{
+ &L_f: \; \;V^{ab}_{x,2} \tp_{\mathbb{C}} V^{xc}_{d,1} \ar[r]            & V^{ab}_{x,2} \tp_{\mathbb{C}} V^{xc}_{d,1}  \\
+		  &\;\;\;\;\;\;\; \ket{\psi}\tp_\mathbb{C} \ket{\eta}  \ar@{|->}[r] & (f\ket{\psi}) \tp_{\mathbb{C}} (f^{-1} \ket{\eta})  
+		  }} \quad \quad f \in \text{End}(x)\\
+		  \\		  
+&		  \vcenter{\xymatrix @!0 @M=1mm @C=42mm{
+		  &R_f: \; \;V^{ay}_{d,1} \tp_{\mathbb{C}} V^{bc}_{y,2} \ar[r]            & V^{ay}_{d,1} \tp_{\mathbb{C}} V^{bc}_{y,2} \\
+		  &\;\;\;\;\;\;\; \ket{\psi}\tp_\mathbb{C} \ket{\eta}  \ar@{|->}[r] & (f\ket{\psi}) \tp_{\mathbb{C}} (f^{-1} \ket{\eta})
+	}}	\quad \quad f \in \text{End}(y)
+	\label{DotSlide}
+	\end{align}
+We note that both $L_f$ and $R_f$ are always {\it even} maps, regardless of the parity of $f$. 
+
+Tensoring over endomorphisms in a fusion space is equivalent to requiring the fusion space to be invariant under the action of $L_f$ and $R_f$. 
+Said another way, any vectors related by application of $L_f$ or $R_f$ are considered equivalent, which makes it natural to think of $L_f$ and $R_f$ as gauge transformations, since they encode redundancy in physical vector spaces.
+
+It is often useful to do calculations 
+by working with explicit choices of representatives of vectors in each isomorphism class, imposing the requirement that any diagrammatic manipulation commutes with all endomorphisms generated by $L_f$ and $R_f$. 
+After doing calculations, we can project back onto the physical subspace by modding out by the equivalence relation \eqref{equivreln}. 
+This can be done provided that $L_f$ and $R_f$ commute on any fusion diagram. For example, for a fusion diagram built from three fusion vertices, we require that
+\begin{align}
+L_{f, 32}L_{g,21} V^{ab}_{x,3} \tp_{\mathbb{C}} V^{xc}_{y,2} \tp_{\mathbb{C}} V^{yd}_{w,1} = L_{g,21} L_{f, 32} V^{ab}_{x,3} \tp_{\mathbb{C}} V^{xc}_{y,2} \tp_{\mathbb{C}} V^{yd}_{w,1} 
+\end{align}
+for all $f \in \text{End}(x)$ and $g \in \text{End}(y)$. 
+From now, when we write $\tp$ we will always mean $\tp_\cc$, unless specified otherwise.
+
+
+
+
+As alluded to earlier, quotienting by the local relations like \eqref{equivreln} is reminiscent of the 
+condensation of electron pairs in superconductors: these relations say that pairs of fermions can be freely 
+added or removed from the condensate, and that fermions lines terminating on q-type objects (which are 
+the Majorana spin structure defects in this analogy) are able to move around freely. 
+Indeed, a fermionic phase of matter will generate such terms at second order in perturbation theory when 
+proximity coupled to a superconductor.
+Thus, heuristically, we can think of q-type particles as the result of proximity induced superconductivity on 
+a fusion category with only m-type particles.
+
+
+%%%%%%%%%%%%%%%%%%
+\subsection{F-symbols (old version)}
+%%%%%%%%%%%%%%%%%%
+
+The $F$-symbols are defined as basis transformations between different fusion spaces. 
+There are two additional considerations when defining the $F$-symbols in the fermionic setting: they must account for the normal-ordering of the fusion spaces that are transformed during the $F$-move, and they must incorporate the modified tensor product introduced in Section \ref{modified_tensor_product}. 
+
+There is some arbitrariness involved in our definition of the $F$-moves. They must be linear 
+transformations between two different fusion graphs with four outgoing anyon worldlines, although the 
+details of the structure of the graphs they provide a relation between (e.g.\ how many of their outgoing legs 
+point up or down) is arbitrary, with the different choices being related by pivotal matrices $P^{ab}_c$ which 
+will be defined in the following section. 
+Additionally, we must choose how they act on the relative sign-ordering of the fusion spaces involved in 
+the $F$-move. We will choose the following convention (standard in the physics literature), in which the $F$-symbols are basis 
+transformations between two fusion spaces of the form $V^{ab}_c$.
+We will also choose a convention in which the vertical Koszul
+of the fusion spaces in any diagram is preserved under $F$-moves: 
+\begin{align} \label{Fdef}
+F^{abc}_d: \; \; \bigoplus_x V^{ab}_{x,2} \tp_{\text{End}(x)} V^{xc}_{d,1} \rightarrow \bigoplus_y V^{ay}_{d,1} \tp_{\text{End}(y)} V^{bc}_{y,2}
+\end{align}
+Graphically, this is written in terms of the matrix elements of $F$ as
+\be \label{graphical_Fmove} \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{Fsymbol_defn.pdf}}}},\ee
+where the greek indices label particular fusion space basis vectors, with $\mu\in V^{ab}_x,\nu\in V^{xc}_d,\alpha\in V^{bc}_y,$ and $\beta\in V^{ay}_d$.
+When we take tensor products of fusion spaces, the fusion spaces appear in the tensor product in the 
+same left-to-right order that they appear in the fusion diagram, while the Koszul ordering of the fusion 
+spaces to increase as we go ``up'' the diagram. 
+This means that the $F$-move permutes the normal ordering of the fusion spaces appearing in the fusion 
+diagram, which we will see leads to Koszul-sign modifications of the pentagon relation. 
+
+We stress that the multiplicity indices $\mu,\nu,$ etc. appearing in \eqref{graphical_Fmove} account 
+for both regular degeneracies in fusion spaces (as is present in bosonic theories), as well as for 
+the parity of the fusion spaces. This means that in fermionic theories, the $\mu$ indices will generically 
+run over both even and odd vectors. For example, if one of $a,b,c$ is q-type, then $V^{ab}_c$ is acted 
+on naturally by $\cliff_1$, and so is of the form $V^{ab}_c\cong \cc^{n|n}$, meaning that a sum over $\mu\in V^{ab}_c$
+contains $2n$ different summands.  
+
+To implement the modified tensor products $\tp_{\End(x)}$ and $\tp_{\End(y)}$ in \eqref{Fdef}, we impose 
+the condition that the F-symbols commute with the gauge transformations $L,R$ that implement the 
+modified tensor product. 
+Imposing this condition means that the following diagram must commute:
+\begin{align}
+	\vcenter{\xymatrix @!0 @M=1mm @R=30mm @C=42mm{
+		 \bigoplus_x V^{ab}_{x,2} \otimes V^{xc}_{d,1} \ar[d]^{L_{f}}\ar[r]^{F^{abc}_d}& \bigoplus_y V^{ay}_{d,1} \otimes V^{bc}_{y,2} \ar[d]^{R_{g}} \\
+		\bigoplus_x V^{ab}_{x,2} \otimes V^{xc}_{d,1}  \ar[r]^{F^{abc}_d}  & \bigoplus_y V^{ay}_{d,1} \otimes V^{bc}_{y,2}	
+	}} 
+	{ \quad\quad \forall f \in \oplus_x \text{End}(x), \; \; g \in \oplus_y \text{End}(y)}
+	\label{Fcommute}
+\end{align}
+In matrix form, this is simply $F^{abc}_d  L_f=   R_g F^{abc}_d$.
+
+The pentagon relation in the superfusion case is defined as an equivalence between the same two diagrammatic manipulations as in the bosonic case, and is the statement that the following diagram commutes:
+\begin{align}
+\newcommand{\A}{\bigoplus_{p,q}V^{xy}_{p,3}\tp_p V^{pz}_{q,2}  \tp_q V^{qw}_{u,1}}
+\newcommand{\AB}{\ar[rru]^{F^{pzw}_u} \ar[rrd]^{F^{xyz}_q}}
+\newcommand{\B}{\bigoplus_{p,t} V^{xy}_{p,3} \tp_p V^{pt}_{u,1} \tp_t V^{zw}_{t,2}}
+\newcommand{\BC}{\ar[rrr]^{F^{xyt}_u}}
+\newcommand{\C}{\bigoplus_{t,s} V^{xs}_{u,1} \tp_s V^{yt}_{s,3} \tp_t V^{zw}_{t,2}}
+\newcommand{\CF}{\ar[rrd]^{P_{23}}}
+\newcommand{\D}{\bigoplus_{r,q}V^{xr}_{q,2}\tp_r V^{yz}_{r,3}  \tp_q V^{qw}_{u,1}}
+\newcommand{\DE}{\ar[rrr]^{F^{xrw}_u} }
+\newcommand{\E}{\bigoplus_{s,r}V^{xs}_{u,1}\tp_s V^{yz}_{r,3}  \tp_r V^{rw}_{s,2}}
+\newcommand{\EF}{\ar[rru]^{F^{yzw}_s}} 
+\newcommand{\F}{\bigoplus_{t,s} V^{xs}_{u,1} \tp_s V^{yt}_{s,2} \tp_t V^{zw}_{t,3}}
+\vcenter{\xymatrix @!0 @M=2mm @R=22mm @C=19mm{
+&&\B \BC &&&\C \CF &&\\
+\A \AB &&&&&&&\F \\
+&&\D \DE&&&\E \EF&&
+	}} 
+	\label{endoPentagon}
+\end{align}
+where we have used the notation $\tp_x \equiv \tp_{\text{End}(x)}$. Note that this is actually a hexagon, 
+not a pentagon: the extra arrow is the one marked $P_{23}$, which is the Koszul sign originating from 
+switching the Koszul ordering of the $V^{yt}_s$ and $V^{zw}_t$ fusion spaces. 
+
+The use of the modified tensor products $\tp_x$ is how (\ref{endoPentagon}) differs from the ``super-
+pentagon" equation which has already appeared in the literature \cite{Gu2015, gaiotto2016, usher2016} 
+and which is only applicable to theories that possess no q-type objects 
+(note that if our theory has no q-type objects we can set $\tp_x = \tp_\cc$ for all $x$, and so 
+\eqref{endoPentagon} reduces to the super-pentagon equation in the case with no q-type particles).
+In practice, it is often easiest to first solve the pentagon equation in the ``extended space'' by replacing all 
+$\tp_x$ tensor products with $\tp_\cc$ (yielding the super pentagon equation), and then requiring the 
+resulting $F$-symbols to satisfy the constraint (\ref{Fcommute}), which is tantamount to implementing the 
+modified tensor products.
+
+As a matrix equation, the pentagon relation \eqref{endoPentagon} reads 
+\be  \begin{aligned} \sum_{r\in {\rm sObj}(\mcc)}\sum_{\sigma\in V^{xr}_q}\sum_{\omega \in V^{yz}_r}\sum_{\eta\in V^{rw}_s}& [F^{xyz}_q]_{(p;\mu\nu)(r;\omega\sigma)}[F^{xrw}_u]_{(q;\sigma\lambda)(s;\eta\gamma)}[F^{yzw}_s]_{(r;\beta\eta)(t;\alpha\delta)} \\ & = \sum_{\beta \in V^{pt}_u}(-1)^{|\delta||\alpha|}[F^{pzw}_u]_{(p;\nu\lambda)(t;\alpha\beta)}[F^{xyt}_u]_{(P;\mu\beta)(s;\delta\gamma)}, \end{aligned} \ee
+where $\mu\in V^{xy}_p,\nu\in V^{pz}_q,\lambda\in V^{qw}_u,\gamma\in V^{xs}_u,\delta\in V^{yt}_s,$ and $\alpha\in V^{zw}_t$. 
+The Koszul sign $P_{23}$ appearing in \eqref{endoPentagon} appears in the above formula as $(-1)^{|\delta||\alpha|}$, where as usual $|\delta|$ denotes the parity 
+of the vector $\delta$. 
+
+
+%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Pivotal structure (old version)}
+%%%%%%%%%%%%%%%%%%%%
+
+Finally, we remark on the pivotal structure of fusion spaces in superfusion categories. First, we have the Frobenius-Schur indicator, which is given by
+\begin{align}
+&\kappa_a: \;\; V^{a a^*} \tp_{\text{End}(a^*)} V_{a^*a} \rightarrow V^a_a
+\end{align}
+Diagrammatically, 
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{FS_defn.pdf}}}}
+ \ee
+The Frobenius-Schur move is a special case of the pivot: 
+\begin{align}
+&P^{ab}_c: \; \; V^{c^* c} \tp_{\End(c)} V^{ab}_c \tp_{\End(b)} V_{b b^*} \rightarrow V^{c^* a}_{b^*} 
+\end{align}
+Diagrammatically, this looks like 
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1.1]{pivot_defn.pdf}}}}
+\ee
+In terms of the pivot, we see that $\kappa_a = [P^{0a^*}_{a^*}]_{00}$. From the diagrammatics, we see that the pivot implements a $2\pi/3$ rotation of the fusion space. 
+Acting with $P$ three times thus performs a $2\pi$ rotation of a fusion vertex:
+\be \mathord{\vcenter{\hbox{\includegraphics[scale=1]{pivot_cubed.pdf}}}}\ee
+In bosonic theories, we must always have $P^3=\unit$: rotating a fusion vertex by $2\pi$ is equivalent to doing nothing.
+In the superfusion setting there is a more interesting posibility, because acting with $P^3$ on some vector $v\in V^{ab}_c$ performs a $2\pi$ rotation on the fermion framing of $v$.
+Rotating the fermion framing is equivalent to multiplication by $-1$ if $v$ has odd fermion parity. 
+
+Therefore, in superfusion categories, the pivotal structure relation $P^3=\unit$ is realized {\it projectively}, in the sense that 
+\be P^3 = (-1)^F \unit,\ee
+where $(-1)^F$ is the fermion parity operator, which acts on any $v\in V^{abc}$ as $(-1)^F v = (-1)^{|v|}v$.
+
+We now discuss the relationship between the $F$-symbols and the pivotal structure. 
+The pivots can be obtained from the quantum dimensions and the $F$-symbols through 
+\be [P^{ab}_c]_{\mu\nu} = \sum_\lambda d_b [F^{abb^*}_a]_{(c;\mu\lambda)(0;00)} [F^{c^* c b^*}_{b^*}]_{(0;00)(a;\lambda\nu)}.\ee
+Additionally, consistency between the pivotal structure and $F$-moves requires that the following diagram commute: 
+\begin{align}
+\newcommand{\A}{\bigoplus_x V^{ab}_{x,2} \tp_x V^{xc}_{d,1}}
+\newcommand{\B}{\bigoplus_y V^{ay}_{d,1} \tp_y V^{bc}_{y,2} }
+\newcommand{\C}{\bigoplus_y V^{dd^*} \tp_{d^*} V^{d^* a}_{y,1} \tp_y V^{yb}_{c^*,2}  \tp_{c^*} V_{c^*c}  }
+\newcommand{\D}{\bigoplus_x V^{dd^*} \tp_{d^*} V^{d^*x}_{c^*,2} \tp_x V^{ab}_{x,1}  \tp_{c^*} V_{c^*c} }
+\newcommand{\E}{\bigoplus_x V^{ab}_{x,1} \tp_x V^{xc}_{d,2}}
+\vcenter{\xymatrix @!0 @M=4mm @R=25mm @C=30mm{
+&\A \ar[ld]^{F^{abc}_d}\ar[rr]^{P_{12}} &&\E&\\
+\B \ar[rd]^{P^{ay}_{d,1} \tp P^{bc}_{y,2} \circ (\kappa_d  \kappa_y \kappa_c)^{-1}}&&&&\D \ar[ul]^{\kappa_d \kappa_c \circ (P^{d^*x}_{c^*,2})^{-1}} \\
+&&\C &\ar[ru]^{F^{d^*ab}_{c^*}}&
+	}} 
+	\label{pivotconsistent}
+\end{align} 
+
+The final pivotal data we will need to employ concerns sliding fermions along q-type strings. 
+Define 
+\begin{align}
+\TwodotCap =  \lambda_{\text{cap}} \; \Qcap \quad \quad
+\TwodotCup =  \lambda_{\text{cup}}\; \Qcup \quad \quad
+\Qdotdot =  \lambda \; \QIdentity,
+\end{align}
+where the black lines denote arbitrary string-net configurations on which the q-type strings terminate.
+With these definitions one can show that
+\begin{align}
+\QCapDotL =(-\lambda_{\text{cap}}^{-1} \lambda )\; \QCapDotR \qquad \qquad \QCapDotR  = (\lambda_{\text{cap}}^{-1} \lambda ) \; \QCapDotL\\ 
+\\
+\QCupDotR= (-\lambda_{\text{cup}}^{-1} \lambda )\; \QCupDotL \qquad \qquad \QCupDotL  = (\lambda_{\text{cup}}^{-1} \lambda) \; \QCupDotR
+\end{align}
+Sliding a fermion counterclockwise under a cup and then sliding it back must be equivalent to doing nothing, so that we have $\lambda^2 = -\lambda_{\text{cap}}^2$ and $\lambda^2 = -\lambda_{\text{cup}}^2$.
+Additionally, when a fermion travels around a closed loop of q-type string which bounds a disk it must pick up a minus sign (from the bounding spin structure the loop inherits). 
+Therefore we also have $\lambda^2 = -\lambda_{\text{cap}} \lambda_{\text{cup}}$.
+Together, these relations imply that $\lambda_{\text{cup}} = \lambda_{\text{cap}}$, and $(-\lambda_{\text{cap}} \lambda)^2 = -1$, allowing us to  
+conclude that the phase produced by a dot slide must be purely imaginary (recall that 
+$\lambda$ is fixed to be purely imaginary by the discussion in Appendix \ref{fermion_line_bundle}). 
+For example, in the $C_2$ theory considered earlier, we have $\lambda = A^4 = \pm i$ and $\lambda_{\rm cap}=A^8=-1$. 
+
+%end old stuff
+\end{comment}
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+
+
+
+
+
+
 \phantomsection
 \addcontentsline{toc}{section}{References}
 
