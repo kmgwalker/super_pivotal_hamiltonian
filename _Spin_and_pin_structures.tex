@@ -12,8 +12,6 @@
 %Also, we should try to use standard, well-established terminology for spin structure stuff where possible.
 %}
 %
-%\kw{Here's a possible rewrite:}
-
 In this appendix we review basic definitions and properties of spin and pin structures.
 
 \medskip
@@ -66,89 +64,4 @@ None of the examples in this paper have a pin$-$ reflection structure; we only w
 
 Specifying pin+ structures in in terms of framings (as we did above for spin structures) is a little awkward.
 It is usually more convenient to use lifts of classifying maps or, when $n=2$, quadratic refinements of intersection pairings.
-
-
-%%%%%%%%%%%%%
-\begin{comment}
-What follows is Ethan's old spin structure appendix:
-\kwsep
-
-In this section we review the basic definitions and properties of spin structures, which are needed for performing our ``fermion condensation'' procedure.   
-
-
-In brief, a spin structure is a way of describing how spin-$1/2$ particles behave under rotations. 
-To make this more precise, we define the group $Spin(n)$ though the short exact sequence
-\be \label{spin_gp_seq} 1 \ra \zt \ra Spin(n) \ra SO(n) \ra 1,\ee
-meaning that $Spin(n)$ is a central extension of $SO(n)$ by $\zt$ (and for $n>1$, $Spin(n)$ is the connected double-cover of $SO(n)$).  
-In terms of representation theory, this means that the representations of $Spin(n)$ are {\it projective} representations of $SO(n)$: relations between $SO(n)$ representations only hold modulo elements of $\zt$ in $Spin(n)$. Most importantly, this means that in $Spin(n)$ a $4\pi$ rotation is trivial while a $2\pi$ rotation picks up a minus sign: in $Spin(n)$, $R_\pi^2 = -1$.  
-
-To define a spin structure on a manifold, we first examine the oriented frame bundle $FSO(M)$ on a base manifold $M$, whose fibers consist of all choices of oriented framings on $M$ with structure group $SO(n)$ with $n=\dim M$.\footnote{Here we are assuming that 
-$M$ is oriented so that we can choose a structure group of $SO(n)$ rather than $O(n)$.} 
-To turn this into a spin bundle, we replace the structure group $SO(n)$ with $Spin(n)$, meaning that $2\pi$ rotations of framings are associated with $-1$ signs. 
-This can in turn be encapsulated by the short exact sequence 
-\be \label{spinbundleseq} 1 \ra \zt \ra FSp(M) \ra FSO(M) \ra 1.\ee
-A given section of $FSp(M)$ is a fermion field. Our choice of a global framing for the $\psi$ ribbons in Section \ref{condensing_psi} is equivalent to fixing a particular fermion field configuration, i.e.\ choosing a particular section of $FSp(M)$. 
-
-Not all exact sequences \eqref{spinbundleseq} provide consistent spin structures. To obtain a spin structure, we require that $FSp(M)$ be ``untwisted'', i.e.\ 
-that the second Stiefel-Whitney class $\omega_2 \in H^2(M,\zt)$ be trivial\footnote{More precisely, $\omega_2$ is the cohomology class of the 2-cocycle associated with $M$'s tangent bundle}. For the low-dimensional examples we're interested this can shown to always be the case, as we will always have $H^2(M,\zt) = 0$. This then implies that any 2-cochain $\omega_2$ on $M$ can be written as $\omega_2 = \delta \eta$ for some 1-cochain $\eta \in H^1(M,\zt)$, meaning that different spin structures are parametrized by the group $H^1(M,\zt)$\footnote{On general manifolds (though not the ones we encounter in the text) the assignment of spin-structures to elements in $H^1(M,\zt)$ is non-canonical, and the set of spin-structures is merely an $H^1(M,\zt)$-torsor.}, which is usually easy to calculate. Physically, this assignment corresponds to a choice of fermionic boundary conditions around the noncontrabile loops in $M$. 
-
-To elaborate on this, a spin structure $\sigma$ allows us to define a function $\eta_\sigma \in H^1(\Sigma, \mathbb{Z}_2)$ that takes homotopy classes of framed closed curves 
-$\gamma_1, \gamma_2, \cdots, \gamma_n \subset \Sigma$ to elements in $\zt$.
-The image of a framed loop $\gamma$ under $\eta_\sigma$ specifies whether $\gamma$ is bounding (anti-periodic boundary conditions) or non-bounding (periodic boundary conditions).
-Since contractible loops have anti-periodic boundary conditions, we can define
-\be \label{etadefn} \eta_\sigma(\gamma) = \begin{cases} 0 \text{\ if $\gamma$ is bounding,}\\
-1 \text{\ if $\gamma$ is non-bounding.}\end{cases} \ee
-Thus, the phase picked up by transporting a fermion along a path $\gamma$ is $-(-1)^{\eta_{\sigma}(\gamma)}$.
-The failure of $\eta_\sigma$ to factor over the concatenation of two paths $\gamma,\gamma'$ is controlled by whether or not the paths intersect:
-\begin{align}
-\eta_{\sigma} (\gamma + \gamma') = \eta_{\sigma}(\gamma) + \eta_{\sigma}(\gamma') + \gamma \cap \gamma'
-\end{align}
-where $\gamma+\gamma'$ is the concatenation of $\gamma$ and $\gamma'$. 
-This means that spin structures can be described as a quadratic refinement of the intersection pairing. 
-
-This perspective allows us to easily calculate the number of spin structures that a given manifold admits. 
-For example, there are two spin structures on the cylinder: one with periodic boundary conditions (vortex 
-spin structure) and one with anti-periodic boundary conditions (non-vortex spin structure). Similarly for the 
-torus there are four, one for each combination of boundary conditions around the two non-contractible 
-cycles of the torus. There are also four spin structures on the pair of pants: determining boundary 
-conditions around two of the punctures uniquely determines the boundary condition around the third 
-puncture. Since fermions traveling around {\it contractible} loops have anti-periodic boundary conditions, 
-anti-periodic boundary conditions serve as the ``identity'' in the group $H^1(M,\zt)$ of spin structures. This 
-means that if two of the punctures on a pair of pants have $P$ boundary conditions, the third must have 
-$A$ boundary conditions. This is relevant for determining the fusion rules of quasiparticles in our theory: 
-their fusion rules are $\zt$-graded by their spin structures, with vortex spin structures being associated 
-with the nontrivial element of $\zt$. If we think of periodic boundary conditions as being implemented by 
-branch cuts, this just means that the branch cuts obey $\zt$ fusion rules, and are only allowed to terminate 
-on punctures which host a vortex-type quasiparticle. 
-
-
-To think about inner products of diagrams, we need to have the ability to reflect them in a given spacetime plane. Incorporating reflections into our arsenal means replacing $SO(n)$ with $O(n)$ in \eqref{spin_gp_seq}. This allows us to define the groups $pin_\pm(n)$, which are the ``reflection-enhanced'' versions of $Spin(n)$ defined by the exact sequence 
- The $\pm$ sign in $pin_\pm(n)$ distingiishes between the two different allowed extensions in \eqref{pin_gp_seq}. Physically, they differ by the way in which reflection symmetry is ``fractionalized'': reflection squares to $-1$ on fermions in $pin_-(n)$, and to $+1$ in $\pin_+(n)$. 
-
-
-In what follows we will need to deal with the action of orientation-reversing reflections, which means that we will actually need the more general construction of a $pin_\pm(n)$ structure. Colloquially, a pin structure is to a spin structure what $O(n)$ is to $SO(n)$. They are therefore defined by replacing $SO(n)$ with $O(n)$ in \eqref{spin_gp_seq}:
-\be \label{pin_gp_seq} 1 \ra \zt \ra pin_\pm(n) \ra O(n) \ra 1,\ee
-where the $-1$ in the kernel of second-to-last map is identified with a $2\pi$ rotation.
-Alternatively, they can be described as $\zt$ central extensions of $Spin(n)$:
-\be \label{pinseq} 1\ra Spin(n) \ra pin_\pm(n) \ra \zt \ra 1,\ee 
-where second-to-last map $p : pin_\pm(n) \ra \zt$ sends orientation-reversing (orientation-preserving) elements to $-1$ ($+1$). Geometrically, a pin structure is a $\zt$ extension of the unoriented frame bundle on $M$ (the frame bundle on $M$ with structure group $O(n)$), defined in an analogous way to \eqref{spinbundleseq}.
-
-The difference between $\pin_+(n)$ and $pin_-(n)$ is the way in which reflection acts: 
-reflection squares to $1$ in $\pin_+(n)$ (i.e.\ carries a trivial reflection quantum number) 
-and to $-1$ in $pin_-(n)$ (i.e.\ carries a nontrivial reflection quantum number). 
-This in turn corresponds to whether \eqref{pinseq} splits: if it splits we have a $\pin_+(n)$ structure, 
-with $\pin_+(n) \cong Spin(n) \rtimes \zt$. If it does not split we have a $pin_-(n)$ structure, 
-with $pin_-(n) \cong (Spin(n) \rtimes \zz_4)/\zt$. In what follows, we will fix a $\pin_+(n)$ 
-structure for concreteness (which is always possible as long as $M$ is orientable). 
-The relation $\pin_+(n) \cong Spin(n) \rtimes \zt$ gives an automorphism of $Spin(n)$ by 
-conjugation, $\phi \mapsto \gamma \phi \gamma$, for $\phi \in Spin(n)$ and $\gamma \in \pin_+(n)$. 
-This is exactly the isomorphism that establishes the equivalence between $m_\sigma^+$ 
-and $m_\sigma^-$ in the main text. 
-
-%\ethan{(the following paragraph might not be needed)}
-%So far we have discussed (s)pin structures from a rather geometric point of view, but there is a more algebraic approach that is also useful for us. Consider the real clifford algebra $C\ell_n$, generated by $n$ odd generators $\gamma_1,\dots,\gamma_n$ subject to the anticommutation relations $\{\gamma_i,\gamma_j\} = 2\delta_{ij}$\footnote{Unlike in the complex case, we cannot set the quadratic form $Q_{ij}$ in the more general $\{\gamma_i,\gamma_j\} = 2Q_{ij}$ to be $\delta_{ij}$ without loss of generality, since the signature of the quadratic form is physically meaningful in the real case. Our choice of $Q_{ij} = \delta_{ij}$ is because we are working in Euclidean signature.}. Geometrically, each $\gamma_i$ can be realized as a reflection about the plane normal to $v_i$, where $v_i$ is a basis vector of $\mathbb{R}^n$. Taking all the invertible elements of unit norm in $C\ell_n$ gives us $\pin_+(n)$\footnote{Not $pin_-(n)$, since we have taken the quadratic form $Q_{ij} = \delta_{ij}$ to be positive-definite.}. Taking the even-parity elements (those containing an even number of different $\gamma_i$s) gives us the spin groups:
-%\be Spin(n) = \pin_+(n) \cap [C\ell_n]^0.\ee
-
-
-\end{comment}
 
