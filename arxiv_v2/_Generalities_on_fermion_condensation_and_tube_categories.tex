@@ -47,6 +47,19 @@ We can more generally condense any fermionic commutative algebra object $\varphi
 In the quotient category $\mcc/\varphi$, any simple summand of $\varphi$ becomes isomorphic to $\unit$,
 or perhaps isomorphic to a direct sum of copies of $\unit$.
 
+Objects in the condensed theory are inherited from the parent theory.
+Similarly, morphisms of the condensed theory are defined via morphisms in the parent theory.
+As a vector space, they are given by
+\begin{align}
+\mor_{\mcc/\varphi}(a \to b) \cong \mor_\mcc(a \to b \tp \varphi).
+\end{align}
+The morphisms are graded by the fermion parity in an obvious way.
+\dave{Should we comment on morphism composition? Something like:
+Composition of morphisms is taken modulo $\varphi$, i.e., given $f \in \mor_{\mcc/\varphi}(a\to b) $ and $g \in \mor_{\mcc/\varphi}(b \to c)$ the composition $f \cdot g \in \mor_{\mcc/\varphi}(a \to c)$ is given by,
+\begin{align}
+f \tp_{\End_{\mcc/\varphi}(b)} g.
+\end{align}
+For more details on the relative tensor product see Section~\ref{modified_tensor_product}.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -387,7 +400,7 @@ And indeed we will usually do so without comment.
 
 In the one-endpoint subcategory, morphism spaces can be presented as
 \begin{align}
-{\rm mor}(\tube^X(\spc))\; =\; \mathbb{C} \left[\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{} \right] 
+\text{mor}(\underset{a}{\TubeBCx{}} {\scriptstyle{X}} \rightarrow \underset{c}{\TubeBCx{}} {\scriptstyle{X}} )\; =\; \mathbb{C} \left[\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{} \right] 
 \end{align}
 where $a,b,c,d$ are simple objects in $\spc$ and $X\in\{B,N\}$ denotes the spin structure of the annulus. 
 The multiplicity indices $\mu$, and $\nu$ are 
@@ -1263,19 +1276,19 @@ then we can use the dimension formula to compute the fusion rules of the tube ca
 For example, the fusion rules of Table \ref{TubehalfesixFusionRules} were computed using
 the dimension formula.
 Explicitly, we have
-\be
+\begin{samepage}
+\begin{align}
 	\dim_{\text{even}}(V^{abc}) = \frac{\sqrt{n_a n_b n_c}}{2}\left(
 			\sum_{x\in B_m} \frac{S_{ax}S_{bx}S_{cx}}{S_{1x}} +
 			\sum_{x\in N_m \cup N_q} \frac{S_{ax}S_{bx}S_{cx}}{S_{1x}}
-	\right)
-\ee
-and
-\be
+	\right)\\
+\intertext{and}
 	\dim_{\text{odd}}(V^{abc}) = \frac{\sqrt{n_a n_b n_c}}{2}\left(
 			\sum_{x\in B_m} \frac{S_{ax}S_{bx}S_{cx}}{S_{1x}} -
 			\sum_{x\in N_m \cup N_q} \frac{S_{ax}S_{bx}S_{cx}}{S_{1x}}
 	\right) .
-\ee
+\end{align}
+\end{samepage}
 Recall that $n_a$ is defined to be $\dim(\End(a))$, i.e.\ 1 if $a$ is m-type and 2 if $a$ is q-type.
 
 We remark that the dimension formula is a useful check on $S$-matrix accuracy.
