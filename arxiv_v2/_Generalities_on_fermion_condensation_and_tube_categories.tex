@@ -41,6 +41,8 @@ Note that there is some redundancy in this list.
 For example, 
 in unitary theories we have the spin-statistics relation, and $d_\psi=1$ can be inferred from $\psi\tp\psi \cong \unit$.
 
+\medskip
+
 We remark that the above assumptions allow us to endow the object $\unit\oplus\psi$ 
 with the structure of a {\it fermionic commutative algebra object} in $\mcc$.
 We can more generally condense any fermionic commutative algebra object $\varphi$.
@@ -67,7 +69,33 @@ must utilize both spin structures and the back wall construction in the condensa
 procedure. 
 
 The objects of $\mcc/\psi$ are the same as the objects of $\mcc$.
-The morphism space assigned to a disk with a boundary condition is the space of all back wall diagrams
+Similarly, morphisms of the condensed theory are defined via morphisms in the parent theory:
+the even and odd parts of the morphism super vector space are given (up to isomorphism) by
+\begin{align}
+\mor_{\mcc/\varphi}(a \to b)^0 & \cong \mor_\mcc(a \to b) \\
+\mor_{\mcc/\varphi}(a \to b)^1 & \cong \mor_\mcc(a \to b \tp \psi).
+\end{align}
+%\kw{At first I mistook $\varphi$ for $\psi$ and thought that what you wrote was wrong.
+%Regardless, I think it's clearer to say it terms of the fermion rather than in terms of the algebra object,
+%since we don't really use the algebra object POV in the paper.\dave{That's a good point. It seemed natural with the paragraph that was leading into it, but I agree it's clearer to just write the even and odd parts of the morphism space explicitly.}}
+%\kw{Also, I relocated this to where we already define morphism spaces.}
+%\dave{Glad you noticed that! 
+%We could also consider moving all the morphism stuff to the beginning of this section since it applies to all the versions of condensation. 
+%But I am also happy with it here.}
+
+%The morphisms are graded by the fermion parity in an obvious way.
+%\dave{Should we comment on morphism composition? Something like:
+%Composition of morphisms is taken modulo $\varphi$, i.e., given $f \in \mor_{\mcc/\varphi}(a\to b) $ and $g \in \mor_{\mcc/\varphi}(b \to c)$ the composition $f \cdot g \in \mor_{\mcc/\varphi}(a \to c)$ is given by,
+%\begin{align}
+%f \tp_{\End_{\mcc/\varphi}(b)} g.
+%\end{align}
+%For more details on the relative tensor product see Section~\ref{modified_tensor_product}.}
+%\kw{I don't think this is correct, and I don't think we need to say more about composition.}
+%\dave{True, we do talk about it in the next paragraph anyway.
+%I would like to understand what's incorrect about it at some point.
+%}
+
+To be more precise, the morphism space assigned to a disk with a boundary condition is the space of all back wall diagrams
 modulo local relations.
 (More concretely, the even part of this morphism space is the corresponding morphism space in the parent category $\mcc$,
 and the odd part of this morphism space is (up to isomorphism) the morphism space of $\mcc$ 
@@ -80,16 +108,14 @@ of the two morphism spaces we are combining.
 When doing computations it is necessary to choose an ordering and to take Koszul signs into account.
 
 
-
-
 \medskip
 
 \begin{figure}
 \begin{center}
-\includegraphics{mvsqtype.pdf}
+%\includegraphics{mvsqtype.pdf}
+\includegraphics{mvsqtypeprime.pdf}
 \caption{ \label{mvsqtype} (a) An m-type particle $\alpha$. The fermion $\psi$ (blue dot) is 
-an odd map from $\alpha$ to $\alpha\tp \psi$, with $\alpha\not\cong\alpha\tp\psi$. (b) A q-
-type particle $\alpha$ with $\alpha\cong\alpha\tp\psi$, where $\psi$ now acts as an odd 
+an odd map from $\alpha$ to $\alpha\tp \psi$, with $\alpha\not\cong\alpha\tp\psi$. (b) A q-type particle $\alpha$ with $\alpha\cong\alpha\tp\psi$, where $\psi$ now acts as an odd 
 endomorphism.
 }
 \end{center}
@@ -387,7 +413,7 @@ And indeed we will usually do so without comment.
 
 In the one-endpoint subcategory, morphism spaces can be presented as
 \begin{align}
-{\rm mor}(\tube^X(\spc))\; =\; \mathbb{C} \left[\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{} \right] 
+\text{mor}(\underset{a}{\TubeBCx{}} {\scriptstyle{X}} \rightarrow \underset{c}{\TubeBCx{}} {\scriptstyle{X}} )\; =\; \mathbb{C} \left[\AnnularTubexp{\AnnularTubeNoIndex}{a}{b}{c}{d}{\mu}{\nu}{X}{} \right] 
 \end{align}
 where $a,b,c,d$ are simple objects in $\spc$ and $X\in\{B,N\}$ denotes the spin structure of the annulus. 
 The multiplicity indices $\mu$, and $\nu$ are 
@@ -1263,19 +1289,19 @@ then we can use the dimension formula to compute the fusion rules of the tube ca
 For example, the fusion rules of Table \ref{TubehalfesixFusionRules} were computed using
 the dimension formula.
 Explicitly, we have
-\be
+\begin{samepage}
+\begin{align}
 	\dim_{\text{even}}(V^{abc}) = \frac{\sqrt{n_a n_b n_c}}{2}\left(
 			\sum_{x\in B_m} \frac{S_{ax}S_{bx}S_{cx}}{S_{1x}} +
 			\sum_{x\in N_m \cup N_q} \frac{S_{ax}S_{bx}S_{cx}}{S_{1x}}
-	\right)
-\ee
-and
-\be
+	\right)\\
+\intertext{and}
 	\dim_{\text{odd}}(V^{abc}) = \frac{\sqrt{n_a n_b n_c}}{2}\left(
 			\sum_{x\in B_m} \frac{S_{ax}S_{bx}S_{cx}}{S_{1x}} -
 			\sum_{x\in N_m \cup N_q} \frac{S_{ax}S_{bx}S_{cx}}{S_{1x}}
 	\right) .
-\ee
+\end{align}
+\end{samepage}
 Recall that $n_a$ is defined to be $\dim(\End(a))$, i.e.\ 1 if $a$ is m-type and 2 if $a$ is q-type.
 
 We remark that the dimension formula is a useful check on $S$-matrix accuracy.
