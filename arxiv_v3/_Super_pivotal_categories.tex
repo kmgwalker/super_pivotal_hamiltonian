@@ -1,0 +1,805 @@
+%auto-ignore
+%      this ensures the arxiv doesn't try to start TeXing here.
+%!TEX root = super_lattice_models_draft.tex
+%      prev line helps TeXShop do the right thing
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Super pivotal categories}  \label{def_sect}
+%%%%%%%%%%%%%%%%%%%%%%
+
+In this section we give a more formal (though not completely formal) definition of super pivotal categories.
+Since the usual bosonic case is well covered in the literature, we will concentrate on
+the differences between the bosonic case and the fermionic/super case.
+We will also fix some notation and conventions used elsewhere in the paper.
+
+
+There are various ways of axiomatizing string nets, including Kuperberg spiders \cite{kup_spider}, 
+planar algebras \cite{jones_pa},
+disk-like 2-categories \cite{blob_paper}, and pivotal tensor categories \cite{Joyal1991}.
+
+The first three are better suited to our applications, but the last one is likely the most familiar to a majority or our readers,
+so we will describe a fermionic/super version of pivotal tensor categories.
+
+So far as we know, the earliest definition of a super pivotal tensor category was given in \cite{blob_paper}.
+In the higher category definition given in that paper, one of the parameters was the type of balls used to 
+specify morphism spaces.
+If we take those balls to be 2-dimensional and equipped with spin structures, then one has a definition of a super pivotal 2-category.
+We can then take a super pivotal tensor category to be a super pivotal 2-category with only one 0-morphism.
+The more traditional-style definition given below is reverse-engineered to be
+equivalent with the definition already contained in \cite{blob_paper}.
+
+\medskip
+
+Recall from 
+\cite{Joyal1991}
+that the data of a pivotal category includes:
+\begin{itemize}
+\item A set of objects $\spc^1$.
+\item A set of morphisms $\spc^2$.
+\item A binary operation $\otimes$ (horizontal composition) on objects and morphisms.
+\item A binary operation $\circ$ on morphisms.
+\item A pivotal structure $*$ defined on both objects and morphisms.
+\end{itemize}
+
+
+The definition of a super pivotal category differs from the usual bosonic case in the following ways:
+
+\begin{enumerate}
+	\item The space of morphisms between two objects has the structure of 
+	a super vector space.
+	Morphisms also satisfy the {\em super interchange law} \cite{brundan2016}:
+	\begin{align}
+	(f_1\tp f_2) \circ (g_1\tp g_2) = (-1)^{|f_2| |g_1|} (f_1\circ g_1)\tp (f_2\circ g_2)
+	\end{align}
+	where $|f|$ is the parity of the morphism $f$. 
+	\item There are two distinct types of simple object, ``m-type" and ``q-type".
+	m-type simple objects have trivial endomorphism algebras $\cc$, as is the case in bosonic theories.  
+	q-type simple objects have endomorphism algebras isomorphic to $\cliff_1$, 
+	and so their endomorphism algebras contain odd elements in addition to scalars. (See Section \ref{def_sob_ss}.)
+	\item In order to keep track of Koszul signs arising from exchanging fermions, 
+	we must keep track of a sign-ordering of individual fusion spaces (See \ref{koszul_signs}).
+	\item Fusion spaces $V^{abc}$, $V^{ab}_c$, $V_{abcd}$, etc.\ are not merely supervector spaces; they come equipped with an action of the
+	endomorphism algebras of the objects being fused. 
+	For example, $V^{abc}$ possess an action of $\End(a)\tp \End(b)\tp \End(c)$.
+	(See \ref{fusion_spaces}.)
+	\item When combining basic 3-valent fusion spaces $V^{ab}_c$ to form fusion spaces of higher valence, we must take
+	tensor products over the endomorphism algebras of the simple objects which connect two fusion spaces. 
+	For example, we form the fusion space $V^{ab}_{cd}$ as $V^{ab}_{cd} \cong \bigoplus_e V^{ab}_e \tp_{\End(e)} V^e_{cd}$.
+	If $e$ is m-type, this is just the usual tensor product over $\cc$, as in the bosonic case.
+	But if $e$ is q-type, then we must take a non-trivial tensor product over $\cliff_1$.
+	(See \ref{modified_tensor_product}.)
+	\item The square of the pivotal anti-automorphism is 
+	the fermion parity functor $(-1)^F$, rather than the identity functor (see \ref{pivotal_structure}). 
+	If $*$ is the pivotal anti-automorphism, then 
+	\be f^{**} = (-1)^{|f|}f.\ee
+	In order to keep track of minus signs that result from rotating fermions by $2\pi$, we must keep track of a spin-framing at each fusion space. 
+	\item The coherence equations for the basic data of the theory (e.g.\ the pentagon relations) are modified to incorporate  
+	 Koszul signs resulting from reordering various fusion spaces. 
+	 They are also modified to incorporate the tensor products over endomorphism algebras mentioned above. (see \ref{Fsymbols})
+	\item In order to define an inner product, we need to equip the manifold on which our string-nets are 
+	defined with a $pin_\pm$ structure, which is discussed in Appendix \ref{fermion_line_bundle}.
+\end{enumerate}
+
+
+
+
+
+%%%%%%%%%%%%%%%
+\subsection{Simple objects}  \label{def_sob_ss}
+%%%%%%%%%%%%%%%
+
+We will assume that our category $\spc$ is {\it idempotent complete} -- 
+every idempotent is the identity morphism of an associated object.
+We also assume that $\spc$ is {\it additive} -- we can take direct sums of objects.
+
+An object $a$ of $\spc$ is called {\it simple} if any homogeneous non-zero endomorphism of $a$ is an isomorphism.
+Equivalently, $a$ is simple if it has no quotient objects.
+(We also stipulate that the zero object is not a simple object.)
+
+In the usual bosonic, non-super case, the only possible endomorphism algebra for a simple object
+is the trivial algebra $\cc$ (scalars).
+In the fermionic/super case, there is a second possibility: the complex Clifford algebra $\cliff_1$, 
+which is the only nontrivial $\zt$-graded division algebra other than $\cc$.
+$\cliff_1$ is generated over $\cc$ by the identity (which is even) and an odd element $f$ such that $f^2 = \lambda \cdot \id$
+(or $f^2 = \lambda$ for short) for some non-zero complex number $\lambda$. 
+Note that by rescaling the odd generator $f$ we can make $\lambda$ in the definition of $\cliff_1$ any nonzero complex number. 
+
+It follows that simple objects in a super pivotal category fall into two classes, according to whether their endomorphism algebras are $\cc$ or $\cliff_1$. 
+These are the m-type and q-type objects discussed earlier. 
+A simple object is {m-type} if its endomorphism algebra
+is $\cc$, and {q-type} if its endomorphism algebra is $\cliff_1$:
+\begin{align}
+\vcenter{\xymatrix @!0 @M=1mm @C=25mm{
+& \text{End}(x) = \mathbb{C} \ar@{<->}[rr] &   &\text{$x$ is a simple m-type object}&  \\
+&\text{End}(x) = \mathbb{C} \ell_1 \ar@{<->}[rr]  &  &\text{$x$ is a simple q-type object}&
+	}}
+\end{align}
+This terminology comes from the notation of \cite{jozefiak1988}, which classifies simple super algebras over $\cc$ as either
+$M(p|q) = \End(\cc^{p|q})$ or $Q(n)$ (see appendix \ref{superstuff}).
+Note that we are using ``simple" here in two different (and well-established) senses: 
+any $M(p|q)$ or $Q(n)$ is a simple super algebra
+(because it has no non-trivial ideals), but the endomorphism algebra of a simple object must be either
+$M(1|0) \cong M(0|1) \cong \cc$ or $Q(1) \cong \cliff_1$,
+because all of the larger $M(p|q)$ or $Q(n)$ contain non-invertible elements.
+
+The existence of q-type particles is responsible for much of the novel physics present after performing fermion condensation. 
+q-type objects were also discussed in \cite{usher2016,gaiotto2016}, where they were referred to as ``Majorana objects''. 
+(We prefer the m-type/q-type terminology, since it makes clearer the relationship to the Morita classification of 
+simple super algebras.)
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Fusion spaces} \label{fusion_spaces}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Arbitrary morphism spaces in a super pivotal category can be built out of basic fusion spaces
+$V^{ab}_c = \mor(c\to a\tp b)$,
+where $a$, $b$ and $c$ are simple objects (equivalently, minimal idempotents).
+This is a super vector space of dimension
+$N^{ab}_c = \dim V^{ab}_c = p|q$, where $p$ is the dimension of the even part
+of $V^{ab}_c$ and $q$ is the dimension of the odd part of $V^{ab}_c$.
+
+Alternatively, we can treat $a$, $b$ and $c$ more symmetrically and define
+$V^{abc} = \mor(\unit\to a\tp b\tp c)$, a super vector space of dimension $N^{abc}$.
+In most of this paper we use $V^{ab}_c$, but in Sections \ref{Super_pivotal_Hamiltonian} and \ref{state_sums} we find it more convenient
+to use $V^{abc}$.
+Elements of the morphism spaces $V^{abc}$ and $V^{ab}_c$ are depicted by
+\begin{align}
+\PitchFork{a}{b}{c}{\mu} \quad \quad \quad \text{and} \quad \quad \quad \Nonpitchfork{a}{b}{c}{\mu}.
+\end{align}
+We call the fusion spaces $V^{abc}$ ``pitchforks" because of their graphical depiction.
+Of course we have $V^{ab}_c \cong V^{abc^*}$ (see \ref{pivotal_ss} below).
+
+More generally, we define $V^{ab}_{cd} = \mor(c\tp d\to a\tp b)$, $V^{ab}_{cde} = \mor(c\tp d\tp e\to a\tp b)$,
+$V_{abcd} = \mor(a\tp b\tp c\tp d\to \unit)$, and so on.
+In general, we do not require that the objects $a$, $b$ etc. be simple.
+
+\medskip
+
+It is very important to note that $V^{ab}_c$ is not merely a super vector space -- it also comes equipped with an action
+of (i.e.\ module structure for) the endomorphism algebras of $a$, $b$ and $c$, and hence admits an action of $\End(a)\tp \End(b)\tp \End(c)$. 
+It is impossible to construct the full super pivotal category without knowing this module structure (see \ref{modified_tensor_product} below), 
+so the module
+structure is part of the input data.
+Note that the module structure implies that $N^{ab}_c = n|n$ if any of $a$, $b$ or $c$ is q-type.
+This is because any representation of $\cliff_1$ has equal even and odd dimensions.
+Acting with the odd (and invertible) element of $\cliff_1$ gives an isomorphism between the even and odd parts of $V^{ab}_c$, 
+and hence they must have the same dimension.
+
+The explicit matrix elements of these isomorphisms can be defined in the following way. 
+Let $\psi \in V^{ab}_c$ and suppose that $b$ is a q-type simple object, and let $\Gamma_b \in \End(b)$ be an odd endomorphism.
+Then 
+\begin{align}
+\Gamma_b \left( \Vertexa \right) = \sum_{\eta \in V^{ab}_c} \left[ \Gamma_b \right]_{\psi \eta }\Vertexe, 
+\end{align}
+where the matrix elements are obtained from 
+\begin{align}
+\label{Gamma_y_def}
+\Gamma_b \left( \Vertexa \right) \; = \; \Vertexb \; =\; \sum_{\eta \in V^{ab}_c} \; \Vertexe \; \left( 
+{\Vertexc}\middle/ {\Vertexd} \right), 
+\end{align}
+where the $\eta^*$ provide a complete orthogonal basis (with respect to the pairing \eqref{reflection_pairing_defn}) for $V^{b^*a^*}_{c^*}$.
+If either $a$ or $c$ are q-type, then $\Gamma_a$ and $\Gamma_c$ matrices can be defined in a similar way. 
+
+
+
+
+\medskip
+
+If at least one of $a,b,c$ is q-type, we can simplify the description of $V^{ab}_c$ slightly, 
+which we have done when working out the examples considered earlier.
+Suppose $c$ is q-type, and that $\{|\psi_i\rangle\} \in [V^{ab}_c]^0, i =1,\dots, r$ are the even basis vectors in $V^{ab}_c$. 
+Then we can define a complete set of odd basis vectors $\{ |\eta_i\rangle \}$ for $[V^{ab}_c]^1$ by $|\eta_i\rangle = f|\psi_i\rangle$, where $f$ is the odd element of $\End(c) \cong \cc^{1|1}$.
+When we write $|\eta_i\rangle$ graphically, we will write it as $f |\psi \rangle$, which allows us to  ``shift the oddness out of the vertex onto the edge'' by transferring the fermion residing on the fusion space to the q-type particle $c$. 
+Graphically, this means that we are allowed to ``displace'' dots from trivalent vertices onto q-type worldlines:
+\begin{align} \label{dot_displacement} 
+\NonPitchforkDot{a}{b}{c}{\eta_i} \;\; = \;\; \NonPitchforkDotDisplaced{a}{b}{c}{\psi_i}
+\end{align}
+where the picture on the left is $|\eta_i\rangle$ and the one on the right is $f|\psi_i\rangle$, and $c$ is assumed to be q-type. 
+Although this is not a deep fact, it proves to be helpful when doing graphical manipulations, 
+and operators implementing transformations like \eqref{dot_displacement} will be crucial for writing down the lattice 
+Hamiltonian which realizes the
+super pivotal version 
+of the Levin-Wen Hamiltonian. 
+
+\medskip
+
+Lastly, we will define a non-degenerate bilinear pairing between vectors in the vector space assigned to a disk with $n$ marked points. 
+We will focus on fusion spaces of the form $V^{x_1\dots x_n}$, but the construction
+for different types of fusion spaces is analogous. 
+The pairing is defined by 
+\begin{align} \label{reflection_pairing_defn}	
+\mcb:\;  &V^{x_n^* \cdots x_2^* x_1^*} \tp V^{x_1 x_2 \cdots x_n}  \ra \cc \\
+\nonumber &\Bilineara \tp \Bilinearb \mapsto \Bilinearc
+\end{align} 
+where $\mu\in V^{x_n^* \cdots x_2^* x_1^*}$ and $\nu  \in V^{x_1 x_2 \cdots x_n}$. 
+We are working with the convention that the Koszul ordering of the tensor product increases 
+in a left-to-right fashion (indicated by the numbers $1,2$ in the bottom right of \eqref{reflection_pairing_defn}); we will elaborate on this convention in Section \ref{koszul_signs}. 
+This bilinear pairing is just the evaluation map, and is $\cc$-linear in both its arguments. 
+It is non-degenerate, meaning that if $\nu_j$ is a complete basis for the fusion space $V^{x_1 x_2 \cdots x_n}$ and $\mu_i$ is a complete basis for the dual fusion space $V^{x_n^* \cdots x_2^* x_1^*} $, then the matrix $\mcb_{ij} = \mcb(\mu_i \tp \nu_j)$ is invertible. 
+Hence we can define a set of vectors $\mu_j^* = \sum_i  (\mcb^{-1} )_{ji}\nu_i $ so that
+$\mcb( \mu_j^* \tp \mu_i)=\delta_{ij}$.
+Alternatively, we will can choose the normalization convention
+\begin{align}  \label{b_pairing_defn}
+\mcb( \mu_j^* \tp \mu_i )  = \sqrt{d_a d_b d_c} \, \delta_{ij},
+\end{align} 
+with $\mu_i \in V^{abc}$ and $\mu_j^* \in V^{c^* b^* a^*}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Pivotal structure}  \label{pivotal_ss}   \label{pivotal_structure} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The pivotal structure assigns to each object $a$ a dual object $a^*$.
+It also provides linear isomorphisms
+\be
+	P_L : \mor(a \to b\tp c) \to \mor(b^*\tp a \to c)
+\ee
+and
+\be
+	P_R : \mor(a\tp b \to c) \to \mor(a \to c\tp b^*)
+\ee
+for any objects $a$, $b$ and $c$.
+These isomorphisms are required to be functorial with respect to $a$ and $c$.
+In addition, they are required to be twisted-functorial with respect to $b/b^*$, where we use the 
+$*$ functor (defined below) to relate morphisms with domain $b$ to morphisms with range $b^*$.
+
+For objects $a$, we require that $a^{**} = a$ on the nose (strict pivotal).
+For morphisms $f : a\to b$, we define $f^* : b^* \to a^*$ by $f^* = P_L(P_R(f))$, diagrammatically by,
+\begin{align}
+\fstar \; = \; \fPLPR
+\end{align}
+(We have implicitly added and then removed some tensor units (trivial objects) here appearing 
+in fusion spaces like $V^{aa^*}_\unit$.)
+We think of $f^*$ as a $+\pi$ rotation of the morphism $f$.
+We have
+\be
+	(f\cdot g)^* = (-1)^{|f||g|} g^* \cdot f^* .
+\ee
+In other words, $*$ is a contravariant functor if one takes Koszul signs into account.
+
+For (strict) pivotal bosonic categories, one requires that $**$ is the identity functor, but
+in the fermionic case one requires that $**$ is the spin-flip functor $(-1)^F$.
+More specifically, we require
+\be
+\label{spin_flip_functor}
+	f^{**} = (-1)^{|f|} f ,
+\ee
+since $f^{**}$ is a $2\pi$ rotation of $f$.
+
+The part of the pivotal structure most used in calculations is the $+2\pi/3$ rotation on the 
+basic trivalent fusion spaces.
+We define the ``pivot" $P^{ab}_c : V^{ab}_c \to V^{bc^*}_{a^*}$
+as $P_R\circ P_L$.
+In terms of diagrams and matrices, this looks like
+\begin{align}
+P^{ab}_c \left( \;  \PivotYa \; \right) = \PivotYb
+\end{align} 
+
+The Frobenius-Schur indicator $\kappa_a$ can be computed in terms of pivot maps.
+If $a\cong a^*$, then $\kappa_a$ is the eigenvalue of the composite map
+\be
+	V^{a}_{a^*} \stackrel{U_r}\longrightarrow V^{a1}_{a^*} \stackrel{P}\longrightarrow V^{1a}_{a^*} \stackrel{U_l^{-1}}\longrightarrow V^{a}_{a^*} ,
+\ee
+where $U_r$ and $U_l^{-1}$ are given by post-composition with the canonical isomorphisms (a.k.a.\ unitors)
+$a \stackrel{\sim}{\to} a\tp \unit$ and $a \stackrel{\sim}{\to} \unit\tp a$.
+(If $a$ is q-type then we take the eigenvalue for the even part of $V^{a}_{a^*}$.)
+
+We also note that the modular $S$ matrix gives the square of the Frobenius-Schur indicator.
+If $a \cong a^*$ we have $\kappa_a^2 = (S^2)_{aa}$.
+For a bosonic theory the Frobenius-Schur indicators are $\pm1$, and this provides no new information. 
+But in fermionic theories the oddly self-dual simple objects have Frobenius-Schur indicators of $\pm i$,
+and this is detected by the diagonal entries of $S^2$.
+The $m_4$ particle in the $\halfesix/y$ theory is an example of this; see \eqref{hE6_S_NN}.
+
+We can similarly define $P^{abc} : V^{abc}\to V^{bca}$. 
+In terms of diagrams, 
+\begin{align}
+\label{Pitchfork_pivot}
+P^{abc} \left(  \Pitchforkabc \right ) \;=\;  \Pitchforkabcrot.
+\end{align}
+We will usually write simply $P$, since the $a$, $b$ and $c$ are typically clear from context.
+
+Since $P^3$ acts as a $2\pi$ rotation, we have $P^3 = (-1)^F$. Diagrammatically, when acting on $V^{abc}$ this is written 
+\begin{align}
+P^3 \left(  \Pitchforkabc \right )\; = \; \PivotThreeTimes \; = \;(-1)^F \Pitchforkabc.
+\end{align}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Fusion rules and fusion spaces} \label{fusion_rules_and_fusion_spaces}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this section we elaborate on the differences arising in fermionic theories between fusion spaces and the super vector spaces appearing in the fusion rules. 
+
+We assume that our categories are additively complete, which means that it makes sense to
+multiply objects by super vector spaces. 
+(This is a categorified version of multiplying vectors by scalars.
+Vectors are promoted to objects and scalars are promoted to vector spaces.)
+For any collection of super vector spaces $\{W_a\}$ indexed by 
+a finite set of objects $\{a\}$ in our category, 
+we therefore have an object of the form
+\be 
+	\bigoplus_a W_a \cdot a .
+\ee
+
+Morphisms between these more general objects are calculated as  
+\be  \label{amordef}
+	\mor(\bigoplus_a W_a\cdot a \to \bigoplus_b W'_b\cdot b) = \bigoplus_{a,b} \Hom(W_a \to W'_b)\otimes_\cc \mor(a\to b) .
+\ee
+
+Because our category is semisimple, there exists a finite collection $\sob(\spc)$ of mutually non-isomorphic simple objects $x$ such
+that any object $a$ is isomorphic to one of the form
+\be \label{asumx}
+	a \cong \bigoplus_{x\in \sob(\spc)} W_x\cdot x .
+\ee
+If we want the isomorphism to be canonical, we can take $W_x = \mor(x\to a)$ if $x$ is m-type, or $W_x$ to be the even morphisms in $\mor(x\to a)$
+if $x$ is q-type.
+
+Combining \eqref{asumx} and \eqref{amordef}, we can compute endomorphisms of objects by
+\be
+	\End(a) \cong \bigoplus_{x\in \sob(\spc)} \End(W_x) \otimes_\cc \End(x).
+\ee
+
+We are now ready to discuss fusion rules. 
+For any $a$ and $b$, define the vector spaces $\Delta^{ab}_c$ by
+\be
+	a \otimes b \cong \bigoplus_{c\in \sob(\spc)} \Delta^{ab}_c \cdot c .
+\ee
+The $\Delta^{ab}_c$ are the fusion rule coefficients. 
+
+The fusion spaces $V^{ab}_c$ are defined as the vector space of morphisms from $c$ to $a\tp b$:
+\be \label{defn_of_V_by_Delta}
+	V^{ab}_c = \mor(c \to a\tp b),
+\ee
+where $a,b,c$ are simple objects. 
+Decomposing the tensor product and using the simplicity of $c$, we see that 
+\be V^{ab}_c \cong \Delta^{ab}_c \tp \rm{mor}(c \ra c) \cong \Delta^{ab}_c \otimes \End(c).\ee
+Thus, the fusion spaces can be larger than the vector spaces appearing in the fusion rules 
+(in contrast to bosonic theories, where the fusion spaces and fusion rule coefficients are always equal).
+As examples, in the $C_2$ theory studied earlier, we have 
+\be \Delta^{q_\sigma q_\sigma}_{m_\psi} \cong \cc^{1|1},\quad\Delta^{q_\sigma m_\unit}_{q_\sigma} \cong \cc,\ee
+while 
+\be V^{q_\sigma q_\sigma}_{m_\psi} \cong V^{q_\sigma m_\unit}_{q_\sigma} \cong \cc^{1|1}.\ee
+
+$V^{ab}_x$ is cyclically symmetric (up to isomorphism) in $a,b,x$ (if $a$ and $b$ are simple).
+Explicitly, this is because 
+\be \mor(c \ra a\tp b) \cong \mor(\unit \ra a\tp b \tp c^*) \cong \mor(a^* \ra b\tp c^*),\ee 
+which allows us to cyclicly permute the indices of $V$, so long as we take the duals of any objects that move from subscripts to superscripts, and vice versa. 
+For example, we have $V^{ab}_c \cong V^{bc^*}_{a^*} \cong V^{c^*a}_{b^*}$. 
+
+On the other hand, $\Delta^{ab}_c$ is {\it not} cyclically symmetric in $a,b,c$, as the $C_2$ theory example shows. 
+Additionally, while $V^{ab}_c$ has an action of $\End(a)\otimes\End(b)\otimes\End(c)$ (as mentioned earlier), $\Delta^{ab}_c$
+only has an action of $\End(a)\otimes\End(b)$.
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Koszul sign rule and unordered tensor products} \label{koszul_signs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We will treat Koszul signs as in \cite[Section 1.2]{deligne1999}.
+This approach doesn't really do away with Koszul signs.
+Rather, it pushes them to the background, where they don't need to be mentioned as frequently.
+For explicit calculations, they must again be brought to the foreground.
+
+Let $I$ be a finite (and unordered) index set.
+For each $i\in I$, let $W_i$ be a super vector space.
+We define the unordered tensor product,
+\be
+	\bigotimes_{i\in I} W_i ,
+\ee
+as follows.
+For each bijection $f: \{1, \ldots,m\} \to I$ (i.e.\ for each ordering of $I$),
+we have the ordered tensor product
+\be
+	T_f = W_{f(1)}\otimes\cdots\otimes W_{f(m)} ,
+\ee
+generated by elements
+\be
+	w_{f(1)}\otimes\cdots\otimes w_{f(m)}.
+\ee
+For any two orderings $f$ and $g$, there is a Koszul isomorphism
+\be
+	K_{fg} : T_f \to T_g ,
+\ee
+characterized by\footnote{
+We should stress that in this section, 
+the left-to-right ordering of tensor factors appearing in equations is tied to their Koszul ordering only, and
+is independent of the order in which they appear when written down in diagrams. 
+This is in contrast to several other points in the 
+paper, where $a\tp b$ translates graphically into placing $a$ horizontally next to $b$ on the page.
+} 
+\begin{multline}
+	K_{fg} : w_{f(1)}\otimes\cdots\otimes w_{f(k)} \otimes w_{f(k+1)} \otimes \cdots \otimes w_{f(m)} \mapsto \\
+				(-1)^{|w_{f(k)}||w_{f(k+1)}|} w_{f(1)}\otimes\cdots\otimes w_{f(k+1)} \otimes w_{f(k)} \otimes \cdots \otimes w_{f(m)}
+\end{multline}
+when $g$ differs from $f$ by a simple transposition at $k$, and
+\be
+	K_{gh} \circ K_{fg} = K_{fh} .
+\ee
+An element of the unordered tensor product is then defined as an assignment to each ordering $f$ of an element $t_f\in T_f$
+such that
+\be
+	K_{fg}(t_f) = t_g
+\ee
+for all orderings $f$ and $g$.
+In other words, an element of the unordered tensor product is a collection of elements in all 
+possible ordered tensor products which are related by the usual Koszul sign rules.
+
+
+Note that to specify an element of the unordered tensor product, it suffices to give an element $t_f$ of one
+particular ordered tensor product $T_f$.
+All of the other $t_g$ are uniquely determined by $t_f$.
+
+When writing equations involving particular ordered tensor products of fusion spaces, we will adopt the 
+convention that the Koszul ordering is left-to-right on the page, unless explicitly 
+indicated otherwise. If we want to indicate an ordering which departs from this left-to-right convention, 
+we will indicate the ordering explicitly with numerical subscripts, 
+e.g. $V^{ab}_{c,1} \tp V^{cd}_{e,2}$.
+This explicit notation is often better suited to our diagrammatic calculus, where 
+we frequently label the Koszul ordering of fermion dots in a way that is not tied to the 
+left-to-right order in which we write down tensor products (this was done throughout Sections
+\ref{C2_condense_sect} and \ref{C2_quasiparticles}, for example). 
+
+When drawing diagrams with a particular ordering in mind, we always indicate the ordering explicitly by numbers near each fusion space (i.e.\ near
+each vertex in the string net).
+Another possible convention would be to use the ordering corresponding to (say) bottom-to-top on the page,
+but this creates opportunities for error when changing diagrams by isotopies,
+and is not really workable for diagrams drawn on higher genus surfaces.
+
+A map between unordered tensor products
+\be
+	\bigotimes_i W_i \; \to \; \bigotimes_j V_j
+\ee
+is defined to be a collection of maps between
+all possible pairs of ordered tensor products.
+We will call such a collection an ``unordered map".
+These maps are required to commute with the Koszul isomorphisms on either side.
+To specify such a map, it suffices to give a single map between one particular pair of ordered tensor products.
+All other maps in the collection are uniquely determined by this choice and the commutativity requirement.
+This map will be called an ``ordered representative" of the unordered map.
+See \ref{coherence_ss} for a further discussion of the distinction between unordered maps and
+their ordered representatives.
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Modified tensor product} \label{modified_tensor_product}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+Let $\sob(\spc)$ be a complete collection of simple objects (minimal idempotents) in some 
+input super fusion category $\spc$, one from each equivalence class.
+(In this subsection, as in most of the paper, we are assuming that our category $\spc$ is semisimple with finitely many equivalence
+classes of simple objects.)
+For arbitrary objects $x$ and $y$, we have
+\be \label{sobdecomp}
+	\mor(x\to y) \: \cong \: \bigoplus_{a\in\sob(\spc)} \mor(x\to a) \tp_{\End(a)} \mor(a\to y) .
+\ee
+Recall that the relative tensor product $\tp_{\End(a)}$ on the RHS above is defined as the usual tensor product over scalars, modulo elements
+of the form $\alpha \cdot f \tp \beta - \alpha\tp f \cdot \beta$ with $\alpha \in \mor(x \to a)$, $\beta \in \mor(a \to y)$ and $f\in \End(a)$.
+Clearly such elements are in the kernel of the composition map $\mor(x\to a) \tp \mor(a\to y) \to \mor(x\to y)$.
+Our semisimplicity assumption implies that the composition map (summing over all $a\in \sob(\spc)$) is surjective and that such
+elements generate all of the kernel.
+
+In terms of diagrams, the relative tensor product is responsible for allowing fermionic dots to move across edges labeled by q-type simple objects.
+Loosely, taking a tensor product over $\End(a)$ when $a$ is q-type allows us to identify diagrams that 
+differ only by the position of a fermionic dot on an $a$ strand. 
+
+
+It follows (though not quite directly) from \eqref{sobdecomp} that we have isomorphisms
+\be \label{pfi1}
+	V^{abc}_d \cong \bigoplus_{x\in \sob(\spc)} V^{ab}_x \tp_{\End(x)} V^{xc}_d
+\ee
+and also
+\be \label{pfi2}
+	V^{abc}_d \cong \bigoplus_{y\in \sob(\spc)} V^{ay}_d \tp_{\End(y)} V^{bc}_y .
+\ee
+Diagrammatically these read,
+\begin{align} 
+\bigoplus_{x}  \Fusionspaceb \cong \Fusionspacea \cong  \bigoplus_{y}  \Fusionspacec
+\end{align} 
+where the unlabeled trivalent vertices denote the fusion spaces $V^{ab}_x$, $V^{xc}_d$, $V^{ay}_d$, $V^{bc}_y$, 
+and the unlabeled tetravalent vertex in the middle diagram denotes the fusion space $V^{abc}_d$.
+The tensor product over endomorphisms is implicit in the diagram.
+Similarly, 
+\be
+	V^{abcd} \cong \bigoplus_{x\in \sob(\spc)} V^{ab}_x \tp_{\End(x)} V^{xcd} ,
+\ee
+and using the isomorphism $P_R: V^{ab}_x \to V^{abx^*}$ this becomes
+\be  \label{pfpfi1}
+	V^{abcd} \cong \bigoplus_{x\in \sob(\spc)} V^{abx} \tp_{\End(x)} V^{x^*cd} .
+\ee
+(We are implicitly using the $*$ functor to convert an $\End(x)$ action into an $\End(x^*)$ action.)
+Alternatively,
+\be  \label{pfpfi2}
+	V^{abcd} \cong \bigoplus_{x\in \sob(\spc)} V^{bc}_x \tp_{\End(x)} V^{axd} \cong \bigoplus_{x\in \sob(\spc)} V^{axd}  \tp_{\End(x)} V^{x^*bc}.
+\ee
+Diagrammatically we have,
+\begin{align}
+\vcenter{\xymatrix @!0 @M=4mm @R=14mm @C=20mm{
+ \bigoplus_x \TensorProductaprime &\quad \cong& \TensorProducteprime  &\cong\quad&\bigoplus_x \TensorProductcprime   \\
+\quad \quad \rotatebox[origin=c]{90}{$\cong$}   &          &                                      &         &\quad\quad\rotatebox[origin=c]{90}{$\cong$}\\
+ \bigoplus_x \TensorProductbprime  &          &                                      &         &\bigoplus_x \TensorProductdprime  
+	}}
+\end{align}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+\subsection{F-symbols} \label{Fsymbols}
+%%%%%%%%%%%%%%%%%%
+
+
+It follows from \eqref{pfi1} and \eqref{pfi2} that there is an isomorphism
+\be  \label{fdef21}
+	F^{abc}_d : \bigoplus_{x\in \sob(\spc)} V^{ab}_x \tp_{\End(x)} V^{xc}_d \;\to\; \bigoplus_{y\in \sob(\spc)} V^{ay}_d \tp_{\End(y)} V^{bc}_y .
+\ee
+For the pitchfork version, we instead use \eqref{pfpfi1} and \eqref{pfpfi2} to obtain
+\be  \label{fdef30}
+	F^{abcd} : \bigoplus_{x\in \sob(\spc)} V^{abx^*} \tp_{\End(x)} V^{xcd}   \;\to\;   \bigoplus_{x\in \sob(\spc)} V^{bcx^*} \tp_{\End(x)} V^{axd} .
+\ee
+The tensor products appearing in the above isomorphisms are unordered tensor products. 
+For numerical applications, particular ordered representatives of the tensor products need to be chosen. 
+For the ordered $F^{abc}_d$ isomorphism, 
+we will adopt the convention
+\be \label{Fmove_ordering_conventions}
+	F^{abc}_d : \bigoplus_{x\in \sob(\spc)} V^{xc}_{d} \tp_{\End(x)} V^{ab}_{x} \;\to\; \bigoplus_{y\in \sob(\spc)} V^{ay}_{d} \tp_{\End(y)} V^{bc}_{y} ,
+\ee
+with implicit sign ordering which increases from left to right on the page.
+Graphically, and written as a matrix equation, we thus have
+\begin{align}
+ \label{graphical_Fmove} 
+\FusionSpaceLeftOrdered =\sum_y \sum_{\sigma \rho}\left( F^{abc}_d \right)_{(x; \mu \nu)(y;\sigma \rho)}   \FusionSpaceRightOrdered
+\end{align}
+where the greek indices label particular fusion space basis vectors, with $\mu\in V^{ab}_x,\nu\in V^{xc}_d,\alpha\in V^{bc}_y,$ and $\beta\in V^{ay}_d$, 
+and where the first sum is over $y\in \sob(\spc)$. 
+We also stick with the left-to-right ordering convention for the $F^{abcd}$ move:
+\be  
+	F^{abcd} : \bigoplus_{x\in \sob(\spc)} V^{abx} \tp_{\End(x)} V^{x^*cd}   \;\to\;   \bigoplus_{y\in \sob(\spc)} V^{ayd} \tp_{\End(x)} V^{y^*bc} .
+\ee
+Which written as a matrix equation is
+\begin{align}
+\label{PitchforkFMove}
+\PitchforkFLeftprime = \sum_{y} \sum_{\rho \sigma} \left( F^{abcd} \right)_{(x; \mu \nu)(y; \rho \sigma)} \PitchforkFRightprime .
+\end{align}
+
+We will also find the following identity helpful:
+\begin{align}
+\label{idpitchfork}
+\Idabba = \sum_{x} \frac{d_x}{\mcb(\mu^* \tp \mu )} \IdPitchfork, 
+\end{align}
+where the pairing $\mcb$ is defined in \eqref{reflection_pairing_defn}.
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+\subsection{Coherence relations} \label{coherence_ss}
+%%%%%%%%%%%%%%%%%%
+
+We will not list all coherence relations here.
+Instead we will give a few examples, in order to highlight how the bosonic case
+must be changed to take account of Koszul signs and relative tensor products.
+
+\medskip
+
+We will start with the well-known pentagon equation, in the version that uses the basic fusion spaces $V^{ab}_c$.
+If we work in terms of {\it unordered maps}, with \eqref{fdef21} interpreted as an unordered map between direct sums of
+unordered tensor products, then the fermionic pentagon equation looks just like the bosonic case, namely
+that the following diagram commutes:
+\begin{align}
+\newcommand{\A}{\bigoplus_{p,q}V^{xy}_{p}\tp_p V^{pz}_{q}  \tp_q V^{qw}_{u}}
+\newcommand{\AB}{\ar[rrrru]^{F^{pzw}_u} \ar[rrd]^{F^{xyz}_q}}
+\newcommand{\B}{\bigoplus_{p,t} V^{xy}_{p} \tp_p V^{pt}_{u} \tp_t V^{zw}_{t}}
+\newcommand{\BC}{\ar[rrrrd]^{F^{xyt}_u}}
+\newcommand{\D}{\bigoplus_{r,q}V^{xr}_{q}\tp_r V^{yz}_{r}  \tp_q V^{qw}_{u}}
+\newcommand{\DE}{\ar[rrrr]^{F^{xrw}_u} }
+\newcommand{\E}{\bigoplus_{s,r}V^{xs}_{u}\tp_s V^{yz}_{r}  \tp_r V^{rw}_{s}}
+\newcommand{\EF}{\ar[rru]^{F^{yzw}_s}} 
+\newcommand{\F}{\bigoplus_{t,s} V^{xs}_{u} \tp_s V^{yt}_{s} \tp_t V^{zw}_{t}}
+\vcenter{\xymatrix @!0 @M=5mm @R=28mm @C=16mm{
+&&&&\B\BC&&&&\\
+\A\AB&&&&&&&&\F\\
+&&\D\DE&&&&\E\EF&&
+	}} 
+		\label{bosonPentagon}
+\end{align}
+where all the sums are over a representative set of simple objects and we have used the notation $\tp_x \equiv \tp_{\text{End}(x)}$.
+
+However, if we peer under the hood and look at {\it ordered representatives} (as we would need to do if, for example,
+we were checking the pentagon equation on a computer), then we
+see that a Koszul sign appears:
+
+
+
+\begin{align}
+\newcommand{\A}{\bigoplus_{p,q}\Penta}
+\newcommand{\AB}{\ar[rru]^{F^{pzw}_u} \ar[rrd]^{F^{xyz}_q}}
+\newcommand{\B}{\bigoplus_{p,t} \Pentb}
+\newcommand{\BC}{\ar[rrr]^{K_{23}}}
+\newcommand{\C}{\bigoplus_{p,t} \Pentc}
+\newcommand{\CF}{\ar[rrd]^{F^{xyt}_u}}
+\newcommand{\D}{\bigoplus_{r,q}\Pentf}
+\newcommand{\DE}{\ar[rrr]^{F^{xrw}_u} }
+\newcommand{\E}{\bigoplus_{s,r}\Pente}
+\newcommand{\EF}{\ar[rru]^{F^{yzw}_s}} 
+\newcommand{\F}{\bigoplus_{t,s} \Pentd}
+\vcenter{\xymatrix @!0 @M=2mm @R=28mm @C=19mm{
+&&\B \BC &&&\C \CF &&\\
+\A \AB &&&&&&&\F \\
+&&\D \DE&&&\E \EF&&
+	}} 
+	\label{endoPentagonDiagram}
+\end{align}
+or equivalently, 
+\begin{align}
+\newcommand{\A}{\bigoplus_{p,q}V^{qw}_{u}\tp_q V^{pz}_{q}  \tp_p V^{xy}_{p}}
+\newcommand{\AB}{\ar[rru]^{F^{pzw}_u} \ar[rrd]^{F^{xyz}_q}}
+\newcommand{\B}{\bigoplus_{p,t} (V^{pt}_{u} \tp_t V^{zw}_{t}) \tp_p V^{xy}_{p}}
+\newcommand{\BC}{\ar[rrr]^{K_{23}}}
+\newcommand{\C}{\bigoplus_{p,t} (V^{pt}_{u} \tp_p V^{xy}_{p}) \tp_t V^{zw}_{t}}
+\newcommand{\CF}{\ar[rrd]^{F^{xyt}_u}}
+\newcommand{\D}{\bigoplus_{r,q}V^{qw}_{u}\tp_q V^{xr}_{q}  \tp_r V^{yz}_{r}}
+\newcommand{\DE}{\ar[rrr]^{F^{xrw}_u} }
+\newcommand{\E}{\bigoplus_{s,r}V^{xs}_{u}\tp_s V^{rw}_{s}  \tp_r V^{yz}_{r}}
+\newcommand{\EF}{\ar[rru]^{F^{yzw}_s}} 
+\newcommand{\F}{\bigoplus_{t,s} V^{xs}_{u} \tp_s V^{yt}_{s} \tp_t V^{zw}_{t}}
+\vcenter{\xymatrix @!0 @M=2mm @R=22mm @C=19mm{
+&&\B \BC &&&\C \CF &&\\
+\A \AB &&&&&&&\F \\
+&&\D \DE&&&\E \EF&&
+	}} 
+	\label{endoPentagon}
+\end{align}
+Here, $K_{23}$ denotes the Koszul isomorphism associated to transposing the second and third tensor factors.
+Again, we are using the implicit left-to-right Koszul ordering of each tensor product.
+In terms of the matrix elements of the $F$-symbols, this reads 
+\be  
+\begin{aligned}
+ \sum_{r\in \sob(\spc)}
+ \sum_{\sigma\in V^{xr}_q}
+ \sum_{\omega \in V^{yz}_r}
+ \sum_{\eta\in V^{rw}_s}
+ & 
+ [F^{xyz}_q]_{(p;\mu\nu)(r;\omega\sigma)}
+ [F^{xrw}_u]_{(q;\sigma\lambda)(s;\eta\gamma)}
+ [F^{yzw}_s]_{(r;\omega \eta)(t;\alpha\delta)} \\ 
+ & = \sum_{\beta \in V^{pt}_u}
+ [F^{pzw}_u]_{(q;\nu\lambda)(t;\alpha\beta)}
+ (-1)^{|\mu||\alpha|}
+ [F^{xyt}_u]_{(p;\mu\beta)(s;\delta \gamma)}, 
+\end{aligned} 
+\ee
+where $\mu\in V^{xy}_p,\nu\in V^{pz}_q,\lambda\in V^{qw}_u,\gamma\in V^{xs}_u,\delta\in V^{yt}_s,$ and $\alpha\in V^{zw}_t$. 
+The Koszul sign $K_{23}$ appearing in \eqref{endoPentagon} appears in the above formula as $(-1)^{|\mu||\alpha|}$. 
+
+
+
+Other coherence relations are modified to take into account Koszul 
+signs.
+For example, requiring consistency between $F$-moves and the pivot means that the following 
+diagram must commute:
+\begin{align}
+\newcommand{\A}{\bigoplus_x \PitchforkFLeftprimesmall}
+\newcommand{\B}{\bigoplus_x  \PivotCoherenceb}
+\newcommand{\C}{\bigoplus_x\;  \PivotCoherencec  }
+\newcommand{\D}{\bigoplus_y   \PivotCoherencea }
+\newcommand{\E}{\bigoplus_y \PitchforkFRightprimesmall }
+\vcenter{\xymatrix @!0 @M=1.5mm @R=25mm @C=30mm{
+&\A  \ar[rr]^{F^{abcd}} &&\E \ar[rd]^{(P^{ayd})^{-1}}&\\
+\B\ar[ru]^{K_{12}} &&&&\D \ar[lld]^{F^{dabc}}   \\
+&&\C \ar[llu]^{P^{dxc} \tp P^{x^*ab} } &&
+	}} 
+	\label{pivotconsistent}
+\end{align} 
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+\subsection{Reflection structure} \label{reflection_ss}
+%%%%%%%%%%%%%%%%%%
+
+A {\it reflection structure} on $\spc$ is an antilinear anti-automorphism $r$ from $\spc$ to itself which preserves (rather than reverses) 
+the tensor product:
+\begin{align}
+	a & \; \mapsto \; r(a) \\
+	\alpha: a\to b & \; \mapsto \; r(\alpha): r(b) \to r(a) \\
+	r(\lambda \alpha) & \;=\;  \bar\lambda r(\alpha) \\
+	r(\alpha\beta) & \;=\; r(\beta)r(\alpha) \\
+	r(a\tp b) & \;=\;  r(a) \tp r(b) \\
+	r(\alpha\tp \beta) & \;=\;  r(\alpha) \tp r(\beta)
+\end{align}
+for objects $a,b$ and morphisms $\alpha,\beta$. Diagrammatically, the action of  $r$ 
+reflects diagrams about the horizontal axis (while acting as complex conjugation on $\cc$). 
+Outside of this section, we usually denote $r$ by a bar: $\bar a = r(a)$ and $\bar\alpha = r(\alpha)$.
+
+For objects, we require that $r(r(a)) = a$.\footnote{
+We also frequently restrict our attention to reflection-invariant objects which satisfy
+$r(a) = a$, but this is not a requirement for all objects.}
+For morphisms, we have two choices.
+In a pin+ reflection structure, we require $r^2$ to be the identity functor:
+\be
+	r^2 = \id .
+\ee
+In a pin$-$ reflection structure, we require $r^2$ to be the spin flip functor,
+\be
+	r^2 = (-1)^F .
+\ee
+The main examples of this paper all have pin+ reflection structures.
+
+We require $r$ to be compatible with the other structure maps of $\spc$ (pivots, $F$, etc.).
+For example, 
+we require the following diagrams to be commutative:
+\begin{align}
+\vcenter{
+\xymatrix @!0 @M=2mm @R=34mm @C=19mm{
+\refa \ar[rr]^r \ar[d]_P&& \refb\\
+\refd \ar[rr]^r&&\refc \ar[u]^P\\
+	}}
+\end{align}
+and
+\begin{align}
+\vcenter{
+\xymatrix @!0 @M=2mm @R=34mm @C=19mm{
+\refcoha\ar[rr]^{F^{abc}_d} \ar[d]_r &&\refcohb \ar[rr]^r && \refcohc \ar[d]^{P_L^{-1} \tp P_R} \\
+\refcohh\ar[rr]^{P_R \tp P_L^{-1}} &&\refcohg \ar[d]_{K_{12}} && \refcohd \ar[d]^{K_{12}} \\
+    &&\refcohf && \refcohe \ar[ll]^{F^{\bar{a}^* \bar{d} \bar{c}^*}_{\bar{b}}} \\
+	}}
+\end{align}
+
+A pin+ reflection structure on $\spc$ allows us to define the action of pin+ diffeomorphisms on $\spc$ string nets.
+
+It follows from the ``back wall" line bundle construction of Appendix \ref{flb_appendix} that super pivotal categories $\mcc/\psi$
+obtained via fermion condensation will have pin+ reflection structures whenever the parent category has an
+ordinary bosonic reflection structure.
+
+Our main use for pin+ reflections is to define a sesquilinear inner product on the string net space $A(Y; c)$.
+Let $Y$ be a spin surface and let $-Y$ denote the same underlying surface but with the reversed spin structure.
+The ``identity" map from $Y$ to $-Y$ is not a spin diffeomorphism (as it reverses orientation), but it is a pin+ diffeomorphism.
+Using the reflection structure on $\spc$, we can use this pin+ diffeomorphism to map string nets in $A(Y; c)$ to 
+string nets in $A(-Y; r(c))$.
+If $r(c) = c^*$, then string nets in $A(Y;c)$ and $A(-Y;r(c))$ can be glued together to get a string net on the closed
+spin surface $Y\cup_{\bd Y} -Y = \bd(Y\times I)$.
+Using the path integral $Z(Y\times I) : A(Y\cup_{\bd Y} -Y) \to \cc$ now yields a sesquilinear inner product on $A(Y;c)$.
+Since $A(Y;c)$ is finite-dimensional, we also get an inner product on the dual space $Z(Y;c)$.
+
+Let $M$ be a spin 3-manifold.
+Then the path integrals $Z(M): A(\bd M)\to \cc$ and $Z(-M): A(-\bd M)\to \cc$ are related by
+\be \label{3man-pi-orev}
+	Z(-M) = Z(M)\circ R ,
+\ee
+where $R:A(-\bd M) \to A(\bd M)$ is the antilinear map induced by the orientation-reversing identity map from $-\bd M$ to $\bd M$.
+Equivalently, $Z(M)\in Z(\bd M)$ and $Z(-M)\in Z(- \bd M)$ and
+\be \label{3man-pi-orevz}
+	Z(M) = R(Z(-M)) .
+\ee
+
+Let $Y_1$ and $Y_2$ be spin surfaces and let $M$ be a cobordism from $Y_1$ to $Y_2$
+(i.e.\ $\bd M = Y_2\cup -Y_1$).
+Then $-M$ is a cobordism from $Y_2$ to $Y_1$.
+The path integrals can be viewed as maps $Z(M): Z(Y_1)\to Z(Y_2)$ and $Z(-M):Z(Y_2)\to Z(Y_1)$.
+It follows from \eqref{3man-pi-orevz} that $Z(-M)$ is the adjoint of $Z(M)$ with respect to the inner products on $Z(Y_1)$
+and $Z(Y_2)$ defined above.
+
+
+
+
+
+
+
+

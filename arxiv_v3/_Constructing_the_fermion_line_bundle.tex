@@ -1,0 +1,215 @@
+%auto-ignore
+%      this ensures the arxiv doesn't try to start TeXing here.
+%!TEX root = super_lattice_models_draft.tex
+%      prev line helps TeXShop do the right thing
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{Constructing the fermion line bundle}
+\label{fermion_line_bundle} \label{flb_appendix}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+Recall our set-up from the end of Section \ref{condensing_psi}: 
+We have a back wall $B$, which is a spin (and therefore oriented) 2-manifold.
+Associated to $B$ is the configuration space of $\psi$-ribbon endpoints, $\mcr(B)$.
+This configuration space is a disjoint union of pieces $\mcr(B)_k$, where $k$ is number of ribbon endpoints
+in a configuration.
+
+Our goal in this subsection is to construct a complex line-bundle-with-flat-connection $F(B)$ over $\mcr(B)$,
+satisfying the following six conditions alluded to in Section \ref{condensing_psi}:
+\begin{enumerate}
+\item $F$ is functorial with respect to spin diffeomorphisms. That is,
+if $f: B \to B'$ is spin diffeomorphism, then there is a corresponding bundle isomorphism $F(B) \to F(B')$ which
+preserves the flat connections and complex structure.
+\item $F$ is functorial with respect to orientation-reversing $\mbox{pin}_+$ diffeomorphisms. That is, 
+if $f: B \to B'$ is an orientation-reversing $\mbox{pin}_+$ diffeomorphism, then there is a corresponding map
+$F(B) \to F(B')$ which preserves the flat connections and is complex antilinear on the fibers.
+(Recall that any spin manifold has an associated $\mbox{pin}_+$ structure.
+By ``orientation-reversing $\mbox{pin}_+$ diffeomorphism", we mean a $\mbox{pin}_+$ diffeomorphism
+of the associated $\mbox{pin}_+$ manifolds which reverses the orientations of the underlying oriented manifolds.)
+This condition is needed in order to define Hermitian/unitary structures.
+\item The holonomy around a loop in $\mcr(B)$ corresponding to a $2\pi$ rotation of a ribbon endpoint is $-1$.
+This condition is needed to compensate for fermionic twist of $\psi$.
+\item The holonomy around a loop in $\mcr(B)$ corresponding to an exchange of two ribbon endpoints 
+(inside a fixed disk) is $-1$.
+This condition is needed to compensate for the fermionic statistics of $\psi$.
+\item $F$ is local in the following sense.
+Given a decomposition $B = B'\cup B''$, there is an obvious map $u: \mcr(B')\times\mcr(B'')\to\mcr(B)$, 
+and a corresponding pull-back bundle $u^*(F(B))$ over $\mcr(B')\times\mcr(B'')$.
+We require an isomorphism $u^*(F(B)) \cong F(B')\otimes F(B'')$ which is natural with respect to spin diffeomorphisms.
+\item $F$ satisfies a cancellation property.
+Given a configuration $r \in \mcr(B)_k$ and a point $x\in B$ distinct from the ribbon endpoints of $c$,
+we can create a new configuration $c_+ \in \mcr(B)_{k+2}$ by inserting a pair of endpoints in a standard configuration
+near $x$.
+We require an isomorphism of fibers $F(B)_c \cong F(B)_{c_+}$ which is compatible with the flat connection as explained below.
+This condition is needed to allow for well-defined creation and annihilation of pairs of $\psi$ 
+endpoints in line with the fusion rule $\psi \tp \psi \cong \unit$.
+\end{enumerate}
+
+\medskip
+
+To represent an element of $F(B)$, we will choose spin framings at each ribbon endpoint and also assign
+an ordering to the ribbon endpoints.
+The main idea is fairly simple, but making this construction compatible with orientation reversal
+and ribbon endpoint cancellations requires a bit of fussiness with the details.
+
+\medskip
+
+Recall the group $\pin_+(1) \cong \zz/2 \times \zz/2$.
+We will call the non-identity elements of $\pin_+(1)$ the ``spin flip" 
+(the non-trivial element of the kernel of the covering map $\pin_+(1) \to O(1)$), 
+the ``reflection", and the ``other reflection"
+(the latter two reflections map to the single reflection in $O(1)$).
+
+To construct $F(B)$, we will first construct a principal $\pin_+(1)$ bundle $P(B)$ over $\mcr(B)$.
+The construction of $P(B)$ will be independent of reversing the orientation of $B$.
+We define the action of $\pin_+(1)$ on $\cc$ as follows:
+the spin flip sends $z\in \cc$ to $-z$;
+the reflection sends $z$ to the complex conjugate $\bar z$;
+and the other reflection sends $z$ to $-\bar z$.
+Using this action, we can now define $F(B)$ to be
+\be \label{fermbundef}
+	F(B) = P(B) \times_{\pin_+(1)} \cc ,
+\ee
+the associated $\cc$ bundle over $\mcr(B)$.
+(Recall that this means that elements of $F(B)$ are represented by pairs $(f, z) \in P(B) \times \cc$,
+and that for each element $a \in \pin_+(1)$, we identify $(f\cdot a, z)$ with $(f, a \cdot z)$.)
+Since $P(B)$ is a bundle with discrete fibers, it has a canonical flat connection.
+This induces a flat connection on $F(B)$.
+
+Note that $F(B)$, as defined above, has two different complex-linear structures, one the conjugate of the other.
+We will see below that the orientation of $B$ picks out one of the two possible complex structures.
+
+\medskip
+
+We are now ready, finally, to construct $P(B)$.
+Let $r \in \mcr(B)_k$ be a configuration of $k$ ribbon endpoints.
+At each endpoint of $r$, there is a distinguished unit tangent vector $v \in TB$
+pointing in the direction of the front of the ribbon.
+There are two unit tangent vectors $w_1$ and $w_2$ in $TB$ orthogonal to the distinguished vector.
+The orientation of $B$ allows us to designate one of these two orthogonal vectors as ``positive"
+and the other as ``negative".
+(We call $w_i$ positive if $(v, w_i)$ is a positively oriented frame with respect to the orientation of $B$.)
+We will call a collection of framings $(v, w_i)$ at each endpoint ``consistent" if they are all positive
+or all negative.
+Note that there are exactly two possible consistent collections of framings for each fixed configuration $r$.
+We will denote this set of two elements by $cf(r)$.
+Note that reversing the orientation of $B$ does not change $cf(r)$.\footnote{It is tempting 
+to say that $cf(r)$ depends only on the underlying unoriented manifold of $B$, but this
+is not true if $B$ has more than one path component.
+Reversing the orientation of some but not all of the path components of $B$ would change $cf(r)$.}
+
+\newcommand{\tcf}{\widetilde{cf}}
+
+Now define $\tcf(r)$ to be the set of all collections of $\pin_+(2)$-framings (one at each endpoint)
+which cover an element of $cf(r)$.
+At each endpoint, there are two possible lifts of an $O(2)$ framing, 
+so $\tcf(r)$ is a set with $2^{k+1}$ elements.
+Again, $\tcf(r)$ does not change if we reverse the spin structure on $B$.\footnote{
+Reversing a spin structure is analogous to reversing the orientation of an oriented manifold.
+One way to define it is to extend the Spin bundle $E$ to a Pin+ bundle $E_+$;
+the reversed Spin bundle is $E_+ \setminus E$.
+}
+
+Let $S(r)$ denote the set of all orderings of the endpoints of $r$.
+It is a set with $k!$ elements.
+Now consider $\tcf(r) \times S(r)$, yet another set associated to a ribbon endpoint configuration $r$.
+This set has a group of symmetries $G$ which is generated by (a) spin flips acting on any single endpoint, 
+and (b) the symmetric group $S_k$, acting on the $S(r)$ component.
+Let $G_e \subset G$ is the subgroup with even total parity, where 
+parity in this context is defined by the homomorphism from $G$ to $\zz/2$
+characterized by the condition that is odd for single spin flips and transpositions.
+Now, finally, define
+\be
+	P(B)_r = (\tcf(r) \times S(r))/G_e .
+\ee
+
+We claim that $P(B)_r$ is naturally a torsor for $\pin_+(1)$.
+First, let's check the cardinality:
+$\tcf(r) \times S(r)$ has $2^{k+1} k!$ elements,
+$G_e$ has $2^{k-1} k!$ elements, and $G$ acts freely on $\tcf(r) \times S(r)$.
+Therefore $P(B)_r$ has four elements.
+
+Now we define the action of $\pin_+(1)$ on $P(B)_r$.
+The spin flip acts by changing (any) one of the spin framings of $\tcf(r)$ by a spin flip.
+The reflection acts diagonally on all of the spin framings of $\tcf(r)$
+(i.e.\ each spin framing is reflected).
+These two actions are well-defined and commute, so we have
+an action of $\pin_+(1) \cong \zz/2\times\zz/2$.
+(If $k = 0$ and $r \in \mcr(B)_0$ is the unique configuration of zero ribbon endpoints,
+we define $P(B)_r = \pin_+(1)$ and let $\pin_+(1)$ act in the obvious way.)
+
+\medskip
+
+In summary, an element of $F(B)_r$ is represented by a triple $(f, o, z) \in \tcf(r) \times S(r) \times \cc$.
+Spin flips, permutations of ribbon endpoints, and reflections act as
+\begin{itemize}
+\item If $f$ and $f'$ differ by a spin flip at a single ribbon endpoint, then $(f, o, z) = (f', o, -z)$.
+\item If $o$ and $o'$ differ by an odd permutation, then $(f, o, z) = (f, o', -z)$.
+\item If $f$ and $f'$ differ by reflecting all of the spin framings, then $(f, o, z) = (f', o, \bar z)$.
+\end{itemize}
+
+To define complex multiplication by $a\in\cc$ on $F(B)_r$, we choose a collection of framings $f$ which is positive
+with respect to the orientation of $B$ and then define $a\cdot (f, o, z) = (f, o, az)$.
+If we were to reverse the orientation of $B$, then we would get the conjugate complex structure on $F(B)$.
+In other words, $F(B)_r = F(-B)_r$ as sets (and even as vector spaces over $\rr$), but the identity map from
+$F(B)_r$ to $F(-B)_r$ is complex antilinear.
+
+\medskip
+
+We began this subsection with a list of several desiderata for $F(B)$.
+It is more or less obvious that $F(B)$ has the right sort of functoriality for both orientation-preserving
+and orientation-reversing spin/pin maps.
+It should also be clear that $F(B)$ has the desired holonomies for rotations and exchanges.
+So all that's left to discuss is locality (gluing) and ribbon endpoint cancellation.
+
+\medskip
+
+We consider locality first.
+Let $B = B_1 \cup B_2$.
+Let $r_i \in \mcr(B_i)$ and let $(f_i, o_i, z_i)$ represent an element of $F(B_i)_{r_i}$.
+If the spin framing collections $f_1$ and $f_2$ are either both positive or both negative, then
+$f_1 \cup f_2$ is a consistent spin framing in $\tcf(r_1 \cup r_2)$, and the triple
+$(f_1 \cup f_2, o_1\cup o_2, z_1 z_2)$ represents an element of $F(B)_{r_1\cup r_2}$.
+It is easy to check that this map gives a well-defined  isomorphism between $u^*(F(B_1)$ 
+and $F(B')\otimes F(B_2)$, both thought of as line bundles over $\mcr(B_1)\times\mcr(B_2)$.
+
+\medskip
+
+Now for cancelations.
+We want a relation of the type 
+\be \label{eval_psi_semicirc}
+\PsiEnd  = \lambda \times \text{(vaccuum)},
+ \ee
+for some $\lambda \in \cc$. 
+On the left hand side we have two ribbon endpoints in a disk $D \subset B$ connected by a ribbon in $D\times I$.
+We have chosen coordinates so that the front of the ribbon always points in the same direction.
+The spin framings at the two endpoints are chosen to be related by a translation in these coordinates
+and to both be positive.
+We have chosen the ordering so that the second vector at endpoint 1 points toward endpoint 2;
+we will call this a ``standard configuration".
+As indicated, we want this standard picture to be equal to $\lambda$ times the empty picture.
+
+We will show that in order for this relation to be compatible with reflections, 
+we must have that $\lambda = -\bar\lambda$, i.e.\ $\lambda$ must be pure imaginary.
+Note that in order to define the action of a reflection on string-nets, it is essential that we have defined an 
+action of $\pin_+(1)$ on $P(B)_r$ (rather than merely an action of $\spin(1)$). 
+(A $\pin_-(1)$ structure would also work, but our examples happen to have $\pin_+$ rather than $\pin_-$ structures.)
+The existence of a reflection structure also allows us to define inner products of diagrams. 
+
+
+Consider first the RHS of \eqref{eval_psi_semicirc}. 
+Reflections take the empty picture to the empty picture, and so, since reflections act antilinearly on $F(B)$,
+the RHS of \eqref{eval_psi_semicirc} maps under reflection to $\bar\lambda$ times the empty picture.
+
+Now for the LHS of \eqref{eval_psi_semicirc}.
+After a reflection (by which we mean an orientation-reversing map), 
+the framings are no longer positive, and so we must reflect them in order to compare to a standard configuration
+in the target manifold.
+After the framings are reflected, the second vector at endpoint 1 points away from endpoint 2,
+so we must swap the ordering in order for it to be a standard configuration.
+This change of orderings means that under a reflection, a standard configuration map to $-1$ times a standard
+configuration.
+It follows that we must have $\lambda = -\bar\lambda$, and so $\lambda$ must be purely imaginary.
+
+One can show that this cancellation relation satisfies the necessary coherence relations.
+
