@@ -1,0 +1,1579 @@
+\documentclass[aip, jmp, preprint, nofootinbib]{revtex4-1}
+%\documentclass[prb,11pt,preprint]{revtex4-1}
+%\documentclass[12pt,a4paper]{article}
+%\usepackage{lmodern}
+%\usepackage{CJK}
+
+\usepackage[margin=1in]{geometry}  
+\usepackage{amsmath,amsfonts,amssymb,latexsym,dsfont}
+\usepackage{hhline}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{lemma}[theorem]{Lemma}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\definecolor{hanpurple}{rgb}{0.32, 0.09, 0.98}
+\setcounter{MaxMatrixCols}{12}
+\usepackage{tabu}
+%\usepackage{authblk}
+\usepackage{longtable}
+\usepackage{array}
+
+%problematic for revtex:
+%\usepackage[numbers]{natbib}
+%\usepackage[colorlinks]{hyperref}
+%\hypersetup{linkcolor={hanpurple}}
+%\hypersetup{citecolor={kwcolor},linkcolor={hanpurple},urlcolor=hanpurple}
+\usepackage[pdftex,colorlinks=true,linkcolor=hanpurple,citecolor=kwcolor,urlcolor=hanpurple]{hyperref}
+
+%\usepackage{accents}
+
+% number tables and figures within subsections
+%%%%%KW: should we also number eqns within subsections?
+\usepackage{chngcntr}
+\counterwithin{table}{subsection}
+\counterwithin{figure}{subsection}
+
+\usetikzlibrary{positioning,arrows}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.markings}
+
+\usetikzlibrary{decorations.pathreplacing,calc}
+
+\newcommand{\tikzmark}[2][-3pt]{\tikz[remember picture, overlay, baseline=-0.5ex]\node[#1](#2){};}
+
+\tikzset{brace/.style={decorate, decoration={brace}},
+ brace mirrored/.style={decorate, decoration={brace,mirror}},
+}
+
+\newcounter{brace}
+\setcounter{brace}{0}
+\newcommand{\drawbrace}[3][brace]{%
+ \refstepcounter{brace}
+ \tikz[remember picture, overlay]\draw[#1] (#2.center)--(#3.center)node[pos=0.5, name=brace-\thebrace]{};
+}
+
+\newcounter{arrow}
+\setcounter{arrow}{0}
+\newcommand{\drawcurvedarrow}[3][]{%
+ \refstepcounter{arrow}
+ \tikz[remember picture, overlay]\draw (#2.center)edge[#1]node[coordinate,pos=0.5, name=arrow-\thearrow]{}(#3.center);
+}
+
+\newcommand{\annote}[3][]{%
+ \tikz[remember picture, overlay]\node[#1] at (#2) {#3};
+}
+
+\newcommand{\tp}{\otimes}
+\newcommand{\tpc}{\tilde{\otimes}}
+\newcommand{\bigtp}{\bigotimes}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\unit}{\mathds{1}}
+\newcommand{\zz}{\mathbb{Z}}
+\newcommand{\mce}{\mathcal{E}}
+\newcommand{\mcb}{\mathcal{B}}
+\newcommand{\cc}{\mathbb{C}}
+\newcommand{\rr}{\mathbb{R}}
+\newcommand{\mcr}{\mathcal{R}}
+\newcommand{\mcz}{\mathcal{Z}}
+\newcommand{\mca}{\mathcal{A}}
+\newcommand{\mcd}{\mathcal{D}}
+\newcommand{\mcg}{\mathcal{G}}
+\newcommand{\mct}{\mathcal{T}}
+\newcommand{\mcs}{\mathcal{S}}
+\newcommand{\mch}{\mathcal{H}}
+\newcommand{\mcl}{\mathcal{L}}
+\newcommand{\mcc}{\mathcal{C}}
+\newcommand{\mck}{\mathcal{K}}
+\newcommand{\mco}{\mathcal{O}}
+\newcommand{\mcm}{\mathcal{M}}
+\newcommand{\mcp}{\mathcal{P}}
+\newcommand{\mcq}{\mathcal{Q}}
+\newcommand{\mcv}{\mathcal{V}}
+\newcommand{\mcx}{\mathcal{X}}
+\newcommand{\ul}{\underline}
+\newcommand{\Mod}{\text{Mod}}
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\ulmcc}{\underline{\mathcal{C}}}
+\newcommand{\zt}{\mathbb{Z}_2}
+\newcommand{\oeo}{\text{others = 1}}
+\newcommand\be            {\begin{equation}}
+\newcommand\ee            {\end{equation}}
+\newcommand\ba            {\begin{aligned}}
+\newcommand\ea            {\end{aligned}}
+\newcommand{\mcf}{\mathcal{F}}
+\newcommand{\spinz}{\text{\sffamily{Z}}}
+\newcommand{\spinx}{\text{\sffamily{X}}}
+\newcommand{\zc}{\mathcal{Z}(\mathcal{C})}
+\newcommand{\id}{\text{id}}
+\newcommand{\Hom}{\text{Hom}}
+\newcommand{\mor}{\text{mor}}
+\newcommand{\obj}{\text{obj}}
+\newcommand{\End}{\text{End}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\str}{\text{str}}
+\newcommand{\p}{\partial}
+\newcommand{\wt}{\widetilde}
+\usepackage{verbatim}
+\newcommand{\cliff}{\mathbb{C}\ell}
+\newcommand{\cl}{\text{cl}}
+\newcommand{\vect}{\text{Vec}}
+\newcommand{\svect}{\text{sVec}}
+\newcommand{\spin}{\text{Spin}}
+\newcommand{\pin}{\text{Pin}}	% name of group, should be capitalized (like \spin = Spin)
+\newcommand{\tube}{\textbf{Tube}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\du}{\sqcup}
+
+%%
+\newcommand{\sob}{\text{sob}_r}
+\newcommand{\sobm}{\text{sob}_r^m}
+\newcommand{\sobq}{\text{sob}_r^q}
+
+% KW
+\newcommand{\ot}{\otimes}
+\newcommand{\bd}{\partial}
+\DeclareMathOperator{\Arf}{Arf}
+\definecolor{kwcolor}{rgb}{0.2, 0.5, 0.85}
+\definecolor{kwcolorx}{rgb}{0.5, 0.75, 0.95}
+\newcommand{\kw}[1]{{\color{kwcolor}\footnotesize{(KW) #1}}}
+%\newcommand{\kwx}[1]{{\color{kwcolorx}\footnotesize{(KW) #1}}}
+\newcommand{\kwx}[1]{{\color{kwcolor}\footnotesize{(KW) #1}}}
+\newcommand{\kwsep}{\bigskip\hrule\medskip\hrule\medskip\hrule\bigskip}
+% \nn is for compatibility with stuff copied from my other papers; can be deleted eventually
+\newcommand{\nn}[1]{{\color{kwcolor}[#1]}}
+
+\newcommand{\bra}[1]{\ensuremath{\left\langle#1\right|}}
+\newcommand{\ket}[1]{\ensuremath{\left|#1\right\rangle}}
+
+\definecolor{ao(english)}{rgb}{0.0, 0.5, 0.0}
+\definecolor{orange}{HTML}{FFA500}
+\definecolor{americanrose}{rgb}{1.0, 0.01, 0.24}
+\definecolor{amber(sae/ece)}{rgb}{1.0, 0.49, 0.0}
+
+\newcommand{\dave}[1]{{\color{ao(english)}\footnotesize{(DA) #1}}}
+%\newcommand{\davex}[1]{{\color{orange}\footnotesize{(DAx) #1}}}
+\newcommand{\davex}[1]{{\color{ao(english)}\footnotesize{(DAx) #1}}}
+%\newcommand{\davex}[1]{\ignorespaces}
+\newcommand{\questionable}[1]{{\color{amber(sae/ece)}\footnotesize{(??) #1}}} 
+%use this to flag questionable stuff
+
+%a purple that looks different from red.
+ 
+%\newcommand{\ethanx}[1]{{\color{green}\footnotesize{(EL) #1}}}
+\newcommand{\ethanx}[1]{{\color{amethyst}\footnotesize{(EL) #1}}}
+%\newcommand{\ethanx}[1]{\ignorespaces}
+\newcommand{\abullet}{{\color{amethyst} \bullet}}
+
+
+\newcommand{\CapDotLeft}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{CapDotLeft.pdf}}}}}
+\newcommand{\CapDotRight}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{CapDotRight.pdf}}}}}
+\newcommand{\CupDotLeft}{\mathord{\vcenter{\hbox{\includegraphics[scale=1,angle=180,origin=c]{CapDotRight.pdf}}}}}
+\newcommand{\CupDotRight}{\mathord{\vcenter{\hbox{\includegraphics[scale=1,angle=180,origin=c]{CapDotLeft.pdf}}}}}
+
+
+
+\newcommand{\CupCapPsi}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{cupcappsi.pdf}}}}}
+
+\newcommand{\Qcap}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Qcap.pdf}}}}}
+\newcommand{\Qcup}{\mathord{\vcenter{\hbox{\includegraphics[scale=1,angle=180,origin=c]{Qcap.pdf}}}}}
+\newcommand{\Qdotdot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Qdotdot.pdf}}}}}
+\newcommand{\QIdentity}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{QIdentity.pdf}}}}}
+
+\newcommand{\CupCap}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{CupCap.pdf}}}}}
+\newcommand{\CupCapDots}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{CupCapDots.pdf}}}}}
+
+\newcommand{\dbeta}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{dbeta.pdf}}}}}
+\newcommand{\dpsi}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{dpsi.pdf}}}}}
+\newcommand{\dblank}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{dblank.pdf}}}}}
+
+
+
+
+
+\newcommand{\SigmaDotDot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{SigmaDotDot.pdf}}}}}
+\newcommand{\SigmaDotDotExchange}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{SigmaDotDotExchange.pdf}}}}}
+\newcommand{\TwoLine}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TwoLine.pdf}}}}}
+\newcommand{\TwoLineDots}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TwoLineDots.pdf}}}}}
+
+
+\newcommand{\RDotTwo}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{RDotTwo.pdf}}}}}
+\newcommand{\RDotTwoa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{RDotTwoa.pdf}}}}}
+\newcommand{\RDotTwob}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{RDotTwob.pdf}}}}}
+\newcommand{\RDotTwoc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{RDotTwoc.pdf}}}}}
+
+\newcommand{\FubeXXX}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EmptyTube.pdf}}}}}
+\newcommand{\FubeXss}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OneLine.pdf}}}}}
+\newcommand{\FubeXsds}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OneLineDot.pdf}}}}}
+
+
+
+\newcommand{\AnnulusCut}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{AnnulusCut.pdf}}}}}
+\newcommand{\AnnulusFlat}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{AnnulusFlat.pdf}}}}}
+\newcommand{\Disc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Disc.pdf}}}}}
+\newcommand{\RotatedTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{RotatedTube.pdf}}}}}
+\newcommand{\AnnulusGeneric}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{AnnulusGeneric.pdf}}}}}
+
+\newcommand{\DiskLarge}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DiskLarge.pdf}}}}}
+\newcommand{\TubeIdempotentBasistrace}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeIdempotentBasistrace.pdf}}}}}
+
+
+\newcommand{\FubeXXXA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EmptyTubeA.pdf}}}}}
+\newcommand{\FubeXssA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OneLineA.pdf}}}}}
+\newcommand{\FubeXsdsA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OneLineDotA.pdf}}}}}
+
+\newcommand{\horizbeta}{\mathord{\vcenter{\hbox{\includegraphics[scale=.5]{horiz_betabox.pdf}}}}}
+\newcommand{\horizbetadot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesdXs.pdf}}}}}
+
+
+
+
+\newcommand{\FubesddXsA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesddXsA.pdf}}}}}
+
+\newcommand{\RDotTwobA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{RDotTwobA.pdf}}}}}\newcommand{\RDotTwocA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{RDotTwocA.pdf}}}}}
+
+
+ 
+\newcommand{\Fubex}[2]{{\mathord{\ooalign{ \vphantom{$\Big|^2$}\cr\hidewidth\ensuremath{\scriptstyle{#2}}\hidewidth\cr$\vcenter{\hbox{$#1$}}$\cr
+  \hidewidth\raise0ex\hbox{$\scale{1.2}{\VerticalSpace}$}\cr
+  }}}}	
+
+
+
+
+\newcommand{\TubeBC}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeBC.pdf}}}}}
+
+\newcommand{\TubeBCx}[1]{{\mathord{\ooalign{ \vphantom{$\Big|^2$}\cr\hidewidth\ensuremath{\scriptstyle{#1}}\hidewidth\cr$\vcenter{\hbox{$\scale{1}{\TubeBC}$}}$\cr
+  \hidewidth\raise0ex\hbox{$\scale{.25}{\VerticalSpace}$}\cr
+  }}}}	
+
+\newcommand{\AnnulusBare}{\mathord{\vcenter{\hbox{\includegraphics[scale=.6]{AnnulusBare.pdf}}}}}
+\newcommand{\AnnularTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{AnnularTube.pdf}}}}}
+\newcommand{\AnnularTubeNoIndex}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{AnnularTubeNoIndex.pdf}}}}}
+\newcommand{\AnnulusTubeTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{AnnulusTubeTube.pdf}}}}}
+
+\newcommand{\SAnnulusNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{SAnnulusNoLabel.pdf}}}}}
+\newcommand{\TAnnulusNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TAnnulusNoLabel.pdf}}}}}
+
+
+\newcommand{\EdgeTensor}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EdgeTensor.pdf}}}}}
+
+\newcommand{\OneHandleTheta}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{OneHandleTheta.pdf}}}}}
+\newcommand{\OneHandlemud}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{OneHandlemud.pdf}}}}}
+\newcommand{\OneHandlemu}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{OneHandlemu.pdf}}}}}
+\newcommand{\OneHandlea}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{OneHandlea.pdf}}}}}
+
+\newcommand{\OneHandlePrime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OneHandlePrime.pdf}}}}}
+\newcommand{\CellDecompNearOneHandle}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{CellDecompNearOneHandle.pdf}}}}}
+
+
+
+
+\newcommand{\Bilineara}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.85]{Bilineara.pdf}}}}}
+\newcommand{\Bilinearb}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.85]{Bilinearb.pdf}}}}}
+\newcommand{\Bilinearc}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.85]{Bilinearc.pdf}}}}}
+
+
+
+\newcommand{\TetrahedronPrime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TetrahedronPrime.pdf}}}}}
+\newcommand{\Tetrahedron}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tetrahedron.pdf}}}}}
+\newcommand{\StandardZeroCell}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{StandardZeroCell.pdf}}}}}
+\newcommand{\HorshoeIdentity}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{HorshoeIdentity.pdf}}}}}
+
+\newcommand{\PitchforkIdempotent}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{PitchforkIdempotent.pdf}}}}}
+
+\newcommand{\Pitchforkabc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Pitchforkabc.pdf}}}}}
+\newcommand{\Pitchforkabcrot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Pitchforkabcrot.pdf}}}}}
+\newcommand{\PivotThreeTimes}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PivotThreeTimes.pdf}}}}}
+
+\newcommand{\PitchforkLarge}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkLarge.pdf}}}}}
+\newcommand{\Pitchforkdotthree}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Pitchforkdotthree.pdf}}}}}
+\newcommand{\Pitchforkdottwo}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Pitchforkdottwo.pdf}}}}}
+\newcommand{\Pitchforkdotone}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Pitchforkdotone.pdf}}}}}
+
+
+
+
+
+
+\newcommand{\FaceWeight}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FaceWeight.pdf}}}}}
+\newcommand{\EdgeTensorprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EdgeTensorprime.pdf}}}}}
+
+
+
+
+
+
+
+
+\newcommand{\AnnulsLabel}[5]{\mathord{ 
+\mkern2mu\overset{#3}{{\Annulusxprime{#1}{#2}}}\mkern2mu\raisebox{0ex}{$\scriptstyle{#4}$} }}
+
+\newcommand*{\Annulus}[2]{{ #1 }
+\kern-3.5em\raisebox{1ex}{ $\scriptstyle{#2}$} \kern2.6em} %Could change 0 to 1.2 to raise the B.
+
+\newcommand*{\AnnulusP}[3]{{{\Annulus{#1}{#2}} }
+\kern-.5em\raisebox{3.5ex}{ $\scriptstyle{#3}$} \kern.3em} %Could change 0 to 1.2 to raise the B.
+
+\newcommand*{\AnnulusPx}[4]{\AnnulusP{#1}{#2}{#3}
+\kern-3.6em\raisebox{-4.5ex}{ $\scriptstyle{#4}$} \kern2.6em} %Could change 0 to 1.2 to raise the B.
+
+\newcommand*{\AnularTubex}[6]{\AnnulusPx{#1}{#2}{#3}{#4}
+\kern-4em\raisebox{-4.5ex}{ $\overset{#6}{\underset{#5}{\vphantom{\Big|^2}}}$} \kern3em} %Could change 0 to 1.2 to raise the B.
+
+\newcommand*{\TorusTubex}[6]{\AnnulusPx{#1}{#2}{#3}{#4}
+\kern-4em\raisebox{-4.5ex}{ $\overset{#6}{\underset{#5}{\vphantom{\Big|^2}}}$} \kern3em} %Could change 0 to 1.2 to raise the B.
+
+
+
+\newcommand{\SAnnulusx}[3]{\mathrel{\ooalign{$\SAnnulusNoLabel$\cr
+  \hidewidth\raise5ex\hbox{$\scriptstyle{#3}\mkern1mu$}\cr
+  \hidewidth\raise.8ex\hbox{$\scriptstyle{#2}\mkern63mu$}\cr
+    \hidewidth\raise-3.8ex\hbox{$\scriptstyle{#1}\mkern39mu$}\cr
+  }}}
+  
+  \newcommand{\TAnnulusx}[3]{\mathrel{\ooalign{$\TAnnulusNoLabel$\cr
+  \hidewidth\raise5ex\hbox{$\scriptstyle{#3}\mkern1mu$}\cr
+  \hidewidth\raise.8ex\hbox{$\scriptstyle{#2}\mkern63mu$}\cr
+    \hidewidth\raise-4.9ex\hbox{$\scriptstyle{#1}\mkern51mu$}\cr
+  }}}
+
+\newcommand{\AnnularTubex}[6]{\mathrel{\ooalign{$#1$\cr
+  \hidewidth\raise5ex\hbox{$\scriptstyle{#6}\mkern1mu$}\cr
+  \hidewidth\raise.8ex\hbox{$\scriptstyle{#5}\mkern63mu$}\cr
+  \hidewidth\raise-.9ex\hbox{$\scriptstyle{#3}\mkern68mu$}\cr
+    \hidewidth\raise-4.5ex\hbox{$\scriptstyle{#4} \mkern50mu$}\cr
+  \hidewidth\raise-7ex\hbox{$\scriptstyle{#2}\mkern68mu$}\cr
+  }}}
+  
+
+
+
+
+\newcommand{\AnnularTubexp}[9]{\mathrel{\ooalign{$#1$\cr
+  \hidewidth\raise5ex\hbox{$\scriptstyle{#9}\mkern1mu$}\cr
+ \hidewidth\raise.8ex\hbox{$\scriptstyle{#8}\mkern63mu$}\cr
+  \hidewidth\raise-3.7ex\hbox{$\scriptstyle{#7}\mkern50mu$}\cr
+    \hidewidth\raise-5.1ex\hbox{$\scriptstyle{#6}\mkern57mu$}\cr
+  \hidewidth\raise-2.2ex\hbox{$\scriptstyle{#5}\mkern90mu$}\cr
+  \hidewidth\raise-.9ex\hbox{$\scriptstyle{#4}\mkern68mu$}\cr
+    \hidewidth\raise-3.8ex\hbox{$\scriptstyle{#3} \mkern69mu$}\cr
+  \hidewidth\raise-7ex\hbox{$\scriptstyle{#2}\mkern68mu$}\cr
+  }}}
+
+
+\newcommand{\SmallTorus}[3]{\mathrel{\ooalign{$#1$\cr
+  \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern36mu$}\cr
+    \hidewidth\raise-1.5ex\hbox{$\scriptstyle{#3}\mkern10mu$}\cr
+  }}}
+  
+  
+  \newcommand{\AnnulusTubeTubex}[6]{\mathrel{\ooalign{$#1$\cr
+  \hidewidth\raise.8ex\hbox{$\scriptstyle{#6}\mkern65mu$}\cr
+  \hidewidth\raise-.5ex\hbox{$\scriptstyle{#3}\mkern68mu$}\cr
+    \hidewidth\raise-4.9ex\hbox{$\scriptstyle{#4} \mkern50mu$}\cr
+     \hidewidth\raise-2.7ex\hbox{$\scriptstyle{#5} \mkern54mu$}\cr
+  \hidewidth\raise-7.3ex\hbox{$\scriptstyle{#2}\mkern68mu$}\cr
+  }}}
+  
+
+  \newcommand{\Cellup}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Cellup.pdf}}}}}
+    \newcommand{\Celldown}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Celldown.pdf}}}}}
+        \newcommand{\Cellmid}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Cellmid.pdf}}}}}
+        \newcommand{\TwoCell}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TwoCell.pdf}}}}}
+                \newcommand{\Onecell}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Onecell.pdf}}}}}      
+        
+        
+
+ 
+
+
+\newcommand{\TorusLocalRelationc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusLocalRelationc.pdf}}}}}
+\newcommand{\TorusLocalRelationb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusLocalRelationb.pdf}}}}}
+\newcommand{\TorusLocalRelationa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusLocalRelationa.pdf}}}}}
+
+
+\newcommand{\Dv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Dv.pdf}}}}}
+\newcommand{\Dfv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Dfv.pdf}}}}}
+
+
+\newcommand{\Horseshoe}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Horseshoe.pdf}}}}}
+\newcommand{\HorseshoeTwist}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{HorseshoeTwist.pdf}}}}}
+\newcommand{\euv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{euv.pdf}}}}}
+\newcommand{\chieuv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{chieuv.pdf}}}}}
+
+
+\newcommand{\TubeElement}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeElement.pdf}}}}}
+
+
+\newcommand{\LoopOverId}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{LoopOverId.pdf}}}}}
+\newcommand{\Ida}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Ida.pdf}}}}}
+\newcommand{\OmegaSLoop}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OmegaSLoop.pdf}}}}}
+
+\newcommand{\IdxOmegaLoopa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{IdxOmegaLoopa.pdf}}}}}
+\newcommand{\IdxOmegaLoopb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{IdxOmegaLoopb.pdf}}}}}
+
+
+\newcommand{\HandleSlidea}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{HandleSlidea.pdf}}}}}
+\newcommand{\HandleSlideb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{HandleSlideb.pdf}}}}}
+
+
+\newcommand{\TubeBasisa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeBasisa.pdf}}}}}
+\newcommand{\TubeBasisb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeBasisb.pdf}}}}}
+\newcommand{\TubeBasisc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeBasisc.pdf}}}}}
+\newcommand{\TubeBasisd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeBasisd.pdf}}}}}
+\newcommand{\TubeBasisdprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeBasisdprime.pdf}}}}}
+
+
+\newcommand{\TubeBasisaF}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubebasisaF.pdf}}}}}
+\newcommand{\TubeBasisbF}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubebasisbF.pdf}}}}}
+\newcommand{\TubeBasiscF}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubebasiscF.pdf}}}}}
+\newcommand{\TubeBasisdF}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubebasisdF.pdf}}}}}
+
+\newcommand{\TubeFiga}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeFiga.pdf}}}}}
+\newcommand{\TubeFigb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeFigb.pdf}}}}}
+\newcommand{\TubeFigc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeFigc.pdf}}}}}
+
+
+ 
+\newcommand{\gxyajf}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{gxyajf.pdf}}}}}
+\newcommand{\hxyaif}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{hxyaif.pdf}}}}}
+
+
+
+\newcommand{\OneStrandIdempotentMTCpsi}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OneStrandIdempotentMTC.pdf}}}}}
+\newcommand{\gxyaj}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{gxyaj.pdf}}}}}
+\newcommand{\hxyai}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{hxyai.pdf}}}}}
+
+\newcommand{\VxyaoVxya}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{VxyaoVxya.pdf}}}}}
+\newcommand{\idaprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{idaprime.pdf}}}}}
+
+\newcommand{\Vxyxy}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Vxyxy.pdf}}}}}
+\newcommand{\idxy}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{idxy.pdf}}}}}
+\newcommand{\Vxyxyomega}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Vxyxyomega.pdf}}}}}
+
+
+
+\newcommand{\SpinStructureProjector}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{SpinStructureProjector.pdf}}}}}
+
+
+\newcommand{\EmptyTubeW}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EmptyTubeW.pdf}}}}}
+
+\newcommand{\TubeProject}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeProject.pdf}}}}}
+
+
+\newcommand{\TuberraJ}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TuberraJ.pdf}}}}}
+\newcommand{\Tubeidr}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tubeidr.pdf}}}}}
+\newcommand{\Tuberr}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tuberr.pdf}}}}}
+
+
+\newcommand{\TuberrTraceCe}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TuberrTraceCe.pdf}}}}}
+\newcommand{\TuberrTraceCo}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TuberrTraceCo.pdf}}}}}
+
+\newcommand{\Tuberrprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tuberrprime.pdf}}}}}
+\newcommand{\Tuberrprimecut}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tuberrprimecut.pdf}}}}}
+\newcommand{\PinchedDisk}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{PinchedDisk.pdf}}}}}
+
+\newcommand{\clx}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{clx.pdf}}}}}
+
+
+\newcommand{\Tuberrprimenolabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tuberrprimenolabel.pdf}}}}}
+
+\newcommand{\moronex}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{moronex.pdf}}}}}
+\newcommand{\moronexj}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{moronexj.pdf}}}}}
+
+
+
+\newcommand{\moronexcollar}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{moronexcollar.pdf}}}}}
+
+
+
+
+\newcommand{\exyomegaa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{exyomegaa.pdf}}}}}
+\newcommand{\exyomegab}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{exyomegab.pdf}}}}}
+\newcommand{\exyomegac}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{exyomegac.pdf}}}}}
+
+\newcommand{\EFunctora}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EFunctora.pdf}}}}}
+\newcommand{\EFunctorb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EFunctorb.pdf}}}}}
+\newcommand{\EFunctorc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EFunctorc.pdf}}}}}
+
+
+\newcommand{\IdempotentBasis}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{IdempotentBasis.pdf}}}}}
+
+\newcommand{\TubeIdempotentTwoStrand}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeIdempotentTwoStrand.pdf}}}}}
+\newcommand{\fTubeCf}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{fTubeCf.pdf}}}}}
+\newcommand{\fTubefOdd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{fTubefOdd.pdf}}}}}
+\newcommand{\minimalBosonic}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{minimalBosonic.pdf}}}}}
+
+\newcommand{\TubeIdempotentTwoStrandab}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeIdempotentTwoStrandab.pdf}}}}}
+\newcommand{\BasisForIdempotents}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{BasisForIdempotents.pdf}}}}}
+
+\newcommand{\minimalBosonicRHS}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{minimalBosonicRHS.pdf}}}}}
+\newcommand{\ftubefOddRHS}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{ftubefOddRHS.pdf}}}}}
+
+
+
+
+\newcommand{\FusionIsomorphism}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FusionIsomorphism.pdf}}}}}
+
+\newcommand{\FusionIsomorphismprimereduced}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FusionIsomorphismprimereduced.pdf}}}}}
+\newcommand{\FusionIsomorphismprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FusionIsomorphismprime.pdf}}}}}
+
+
+
+\newcommand{\TubeCompletea}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeCompletea.pdf}}}}}
+\newcommand{\TubeCompleteb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeCompleteb.pdf}}}}}
+\newcommand{\TubeCompletec}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeCompletec.pdf}}}}}
+\newcommand{\TubeCompletecprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeCompletecprime.pdf}}}}}
+
+
+
+\newcommand{\Ufghk}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Ufghk.pdf}}}}}
+
+
+\newcommand{\fxyaJ}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{fxyaJ.pdf}}}}}
+
+
+\newcommand{\TubeTwotoOneStrand}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeTwotoOneStrand.pdf}}}}}
+\newcommand{\TubeOnetoTwoStrand}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeOnetoTwoStrand.pdf}}}}}
+ 
+
+\newcommand{\SMatrix}[2]{\mathrel{\ooalign{$\OmegaSLoop$\cr
+  \hidewidth\raise0ex\hbox{$\scriptstyle{#1}\mkern18mu$}\cr
+    \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern-10mu$}\cr
+  }}}
+  
+  
+  \newcommand{\SMatrixx}[2]{\mathrel{\ooalign{$\OmegaSLoop$\cr
+  \hidewidth\raise0ex\hbox{$\scriptstyle{#1}\mkern12mu$}\cr
+    \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern-10mu$}\cr
+  }}}
+  
+  
+  \newcommand{\SMatrixxx}[2]{\mathrel{\ooalign{$\OmegaSLoop$\cr
+  \hidewidth\raise0ex\hbox{$\scriptstyle{#1}\mkern12mu$}\cr
+    \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern-38mu$}\cr
+  }}}
+
+  
+  
+  \newcommand{\OmegaLoopDefectx}[2]{\mathrel{\ooalign{$\OmegaLoopDefect$\cr
+  \hidewidth\raise0ex\hbox{$\scriptstyle{#1}\mkern8mu$}\cr
+    \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern-22mu$}\cr
+  }}}
+  
+  \newcommand{\OmegaLoopDefect}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OmegaLoopDefect.pdf}}}}}
+    \newcommand{\DiscGray}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DiscGray.pdf}}}}}
+    
+    
+    
+\newcommand{\DCSmatrixf}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DCSmatrixf.pdf}}}}}
+\newcommand{\DCSmatrixa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DCSmatrixa.pdf}}}}}
+\newcommand{\DCSmatrixb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DCSmatrixb.pdf}}}}}\newcommand{\DCSmatrixc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DCSmatrixc.pdf}}}}}
+\newcommand{\DCSmatrixd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DCSmatrixd.pdf}}}}}
+\newcommand{\DCSmatrixe}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DCSmatrixe.pdf}}}}}
+
+\newcommand{\DCSmatrixg}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DCSmatrixg.pdf}}}}}
+\newcommand{\DCSmatrixh}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DCSmatrixh.pdf}}}}}
+
+
+\newcommand{\STorusBasisa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{STorusBasisa.pdf}}}}}
+
+
+\newcommand{\Scalcae}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcae.pdf}}}}}  
+\newcommand{\Scalcad}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcad.pdf}}}}}  
+\newcommand{\Scalcac}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcac.pdf}}}}}  
+\newcommand{\Scalcab}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcab.pdf}}}}}
+\newcommand{\Scalcaa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcaa.pdf}}}}}  
+
+
+\newcommand{\Scalcbe}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcbe.pdf}}}}}  
+\newcommand{\Scalcbd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcbd.pdf}}}}}  
+\newcommand{\Scalcbc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcbc.pdf}}}}}  
+\newcommand{\Scalcbb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcbb.pdf}}}}}
+\newcommand{\Scalcba}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcba.pdf}}}}}  
+
+
+\newcommand{\Scalcbedot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcbedot.pdf}}}}}  
+\newcommand{\Scalcbddot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcbddot.pdf}}}}}  
+\newcommand{\Scalcbadot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcbadot.pdf}}}}}    
+
+\newcommand{\Scalcbddotprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcbddotprime.pdf}}}}}
+\newcommand{\Scalcbadotprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Scalcbadotprime.pdf}}}}}
+
+\newcommand{\Szmatrix}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Szmatrix.pdf}}}}}
+
+ 
+
+  
+\newcommand{\LoopArrow}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{LoopArrow.pdf}}}}}  
+\newcommand{\LoopArrowx}[1]{\mathrel{\ooalign{$\LoopArrow_{\mathrel{\raisebox{4pt}{$\scriptstyle{#1}$}}}$
+  }}}
+  
+  
+\newcommand{\OmegaLoop}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{OmegaLoop.pdf}}}}}  
+\newcommand{\OmegaLoopx}[1]{\mathrel{\ooalign{$\OmegaLoop_{\mathrel{\raisebox{4pt}{$\scriptstyle{#1}$}}}$
+  }}}
+
+
+
+\newcommand{\TubeElementx}[3]{\mathrel{\ooalign{$\TubeElement$\cr
+  \hidewidth\raise-3.55ex\hbox{$\scriptstyle{#1}\mkern62mu$}\cr
+        \hidewidth\raise-6.3ex\hbox{$\scriptstyle{#2}\mkern61mu$}\cr
+                \hidewidth\raise-0.3ex\hbox{$\scriptstyle{#3}\mkern60mu$}\cr
+          \hidewidth\raise0ex\hbox{$\scale{1.5}{\VerticalSpace}$}\cr
+  }}}
+
+\newcommand{\IdempotentMTCNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{IdempotentMTC.pdf}}}}}
+\newcommand{\IdempBraid}[5]{\mathrel{\ooalign{$\IdempotentMTCNoLabel$\cr
+  \hidewidth\raise-4.3ex\hbox{$\scriptstyle{#1}\mkern78mu$}\cr
+    \hidewidth\raise-4.3ex\hbox{$\scriptstyle{#2}\mkern43mu$}\cr
+        \hidewidth\raise-6.3ex\hbox{$\scriptstyle{#3}\mkern61mu$}\cr
+        \hidewidth\raise4.1ex\hbox{$\scriptstyle{#4}\mkern25mu$}\cr
+                \hidewidth\raise0ex\hbox{$\scriptstyle{#5}\mkern60mu$}\cr
+          \hidewidth\raise0ex\hbox{$\scale{1.5}{\VerticalSpace}$}\cr
+  }}}
+  
+\newcommand{\TorusBasisMTCNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusBasisMTC.pdf}}}}}
+\newcommand{\TorusBraidBasis}[6]{\mathrel{\ooalign{$\TorusBasisMTCNoLabel$\cr
+  \hidewidth\raise-4.3ex\hbox{$\scriptstyle{#1}\mkern78mu$}\cr
+    \hidewidth\raise-4.3ex\hbox{$\scriptstyle{#2}\mkern40mu$}\cr
+        \hidewidth\raise-6.3ex\hbox{$\scriptstyle{#3}\mkern61mu$}\cr
+        \hidewidth\raise4.1ex\hbox{$\scriptstyle{#4}\mkern25mu$}\cr
+                \hidewidth\raise0ex\hbox{$\scriptstyle{#5}\mkern58mu$}\cr
+                                \hidewidth\raise4.7ex\hbox{$\scriptstyle{#6}\mkern0mu$}\cr
+          \hidewidth\raise0ex\hbox{$\scale{1.5}{\VerticalSpace}$}\cr
+  }}}
+  
+  \newcommand{\tcca}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{tcca.pdf}}}}}
+    \newcommand{\tccb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{tccb.pdf}}}}}
+     \newcommand{\tccc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{tccc.pdf}}}}}
+      \newcommand{\tccd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{tccd.pdf}}}}}
+   
+  
+ 
+
+
+\newcommand{\TorusBasisMTCdl}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusBasisMTCdl.pdf}}}}}
+\newcommand{\TorusBasisMTCdr}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusBasisMTCdr.pdf}}}}}
+\newcommand{\TorusBasisMTCdd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusBasisMTCdd.pdf}}}}}
+ 
+ \newcommand{\TorusBraidBasisd}[7]{\mathrel{\ooalign{$#7$\cr
+  \hidewidth\raise-4.3ex\hbox{$\scriptstyle{#1}\mkern78mu$}\cr
+    \hidewidth\raise-4.3ex\hbox{$\scriptstyle{#2}\mkern40mu$}\cr
+        \hidewidth\raise-6.3ex\hbox{$\scriptstyle{#3}\mkern61mu$}\cr
+        \hidewidth\raise4.1ex\hbox{$\scriptstyle{#4}\mkern25mu$}\cr
+                \hidewidth\raise0ex\hbox{$\scriptstyle{#5}\mkern58mu$}\cr
+                                \hidewidth\raise4.7ex\hbox{$\scriptstyle{#6}\mkern0mu$}\cr
+          \hidewidth\raise0ex\hbox{$\scale{1.5}{\VerticalSpace}$}\cr
+  }}}
+
+
+
+\newcommand{\TaddownTubeNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TaddownTube.pdf}}}}}
+\newcommand{\TadupTubeNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TadupTube.pdf}}}}}
+\newcommand{\hTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{hTube.pdf}}}}}
+\newcommand{\tTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{tTube.pdf}}}}}
+\newcommand{\eTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{eTube.pdf}}}}}
+\newcommand{\vTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{vTube.pdf}}}}}
+
+
+\newcommand{\dota}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{dota.pdf}}}}}
+\newcommand{\dotb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{dotb.pdf}}}}}
+\newcommand{\dotc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{dotc.pdf}}}}}
+
+\newcommand{\XTubeNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{XTube.pdf}}}}}
+\newcommand{\XTube}[2]{\mathrel{\ooalign{$\XTubeNoLabel$\cr
+  \hidewidth\raise-2.5ex\hbox{$\scriptstyle{#2}\mkern28mu$}\cr
+    \hidewidth\raise-2.9ex\hbox{$\scriptstyle{#1}\mkern50mu$}\cr
+  }}}
+
+
+\newcommand{\TaddownTube}[1]{\mathrel{\ooalign{$\TaddownTubeNoLabel$\cr
+    \hidewidth\raise-2.8ex\hbox{$\scriptstyle{#1}\mkern30mu$}\cr
+  }}}
+  
+  
+  
+  \newcommand{\TaddownTubeprime}[1]{\mathrel{\ooalign{$\TaddownTubeNoLabel$\cr
+    \hidewidth\raise-3.0ex\hbox{$\scriptstyle{#1}\mkern32mu$}\cr
+  }}}
+  
+  \newcommand{\TadupTube}[1]{\mathrel{\ooalign{$\TadupTubeNoLabel$\cr
+    \hidewidth\raise-2.8ex\hbox{$\scriptstyle{#1}\mkern30mu$}\cr
+  }}}
+  
+  \newcommand{\TorusNoLabels}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusNoLabels.pdf}}}}}
+\newcommand{\TorusNoLabelsx}[1]{\mathrel{\ooalign{$\TorusNoLabels$\cr
+    \hidewidth\raise-2.8ex\hbox{$\scriptstyle{#1}\mkern30mu$}\cr
+  }}}
+
+\newcommand{\VerticalSpace}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{VerticalSpace.pdf}}}}}
+
+\newcommand{\AddDat}[3]{\mathrel{\ooalign{  $#1$\cr
+  \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern38mu$}\cr
+  \hidewidth\raise0ex\hbox{${#3}\mkern0mu$}\cr
+  \hidewidth\raise0ex\hbox{$\VerticalSpace$}\cr
+  }}}
+  
+  \newcommand{\AddDatTorus}[3]{\mathrel{\ooalign{  $#1$\cr
+  \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern38mu$}\cr
+  \hidewidth\raise3.8ex\hbox{$\scriptstyle{#3}\mkern0mu$}\cr
+  \hidewidth\raise0ex\hbox{$\VerticalSpace$}\cr
+  }}}
+  
+    \newcommand{\AddDatTorusDot}[4]{\mathrel{\ooalign{  $#1$\cr
+  \hidewidth\raise0ex\hbox{$\scriptstyle{#2}\mkern38mu$}\cr
+  \hidewidth\raise3.8ex\hbox{$\scriptstyle{#3}\mkern0mu$}\cr
+  \hidewidth\raise0ex\hbox{${#4}\mkern0mu$}\cr
+  \hidewidth\raise0ex\hbox{$\VerticalSpace$}\cr
+  }}}
+  
+  
+  
+ 
+  
+   
+  \newcommand{\TubeProductCoefficienta}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeProductCoefficienta.pdf}}}}}
+  \newcommand{\TubeProductCoefficientb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeProductCoefficientb.pdf}}}}}
+  
+    \newcommand{\ThetaSymbol}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Theta.pdf}}}}}
+ 
+   \newcommand{\ThetaSymbolx}[1]{\mathrel{\ooalign{$\ThetaSymbol$\cr
+      \hidewidth\raise-1.3ex\hbox{$\scriptstyle{#1} \mkern0mu$}\cr
+  }}}
+  
+  
+    
+  \newcommand{\TubeProductCoefficientbx}[2]{\mathrel{\ooalign{$\TubeProductCoefficientb \;\;\; $\cr
+      \hidewidth\raise-.8ex\hbox{$\scriptstyle{#1} \mkern54mu$}\cr
+      \hidewidth\raise-.8ex\hbox{$\scriptstyle{#2} \mkern6mu$}\cr
+  }}}
+  
+  \newcommand{\TubeProductCoefficientax}[5]{\mathrel{\ooalign{$\TubeProductCoefficienta$\cr
+      \hidewidth\raise-4.2ex\hbox{$\scriptstyle{#1} \mkern30mu$}\cr
+      \hidewidth\raise-1.8ex\hbox{$\scriptstyle{#2} \mkern30mu$}\cr
+  \hidewidth\raise6.1ex\hbox{$\scriptstyle{#3}\mkern44mu$}\cr
+  \hidewidth\raise2.05ex\hbox{$\scriptstyle{#4}\mkern82mu$}\cr
+    \hidewidth\raise3.2ex\hbox{$\scriptstyle{#5}\mkern3mu$}\cr
+  }}}
+
+  
+
+  
+    
+\newcommand{\tubex}[8]{#1 \left(\substack{#8\\ \\ #5\\ } \; \substack{#4\\ #3\\ #2\\ }\; \substack{ #7 \\ #6} \right)}
+
+
+\newcommand{\FubesXs}{\mathord{\vcenter{\hbox{\includegraphics[scale=1,angle=90,origin=c]{OneLine.pdf}}}}}
+\newcommand{\FubesdXs}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesdXs.pdf}}}}}
+
+\newcommand{\FubessX}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubessX.pdf}}}}}
+\newcommand{\FubessdX}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubessdX.pdf}}}}}
+
+\newcommand{\FubesdXsA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesdXsA.pdf}}}}}
+\newcommand{\FubessXA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubessXA.pdf}}}}}
+\newcommand{\FubessdXA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubessdXA.pdf}}}}}
+
+
+\newcommand{\FubesXsA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesXshA.pdf}}}}}
+\newcommand{\FubesXsa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesXsa.pdf}}}}}
+\newcommand{\FubesXsb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesXsb.pdf}}}}}
+\newcommand{\FubesXsc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubesXsc.pdf}}}}}
+
+
+\newcommand{\FubesXscA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubeXscA.pdf}}}}}
+\newcommand{\FubesXsbA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubeXsbA.pdf}}}}}
+\newcommand{\FubesXsaA}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{FubeXsaA.pdf}}}}}
+
+
+
+
+
+
+\newcommand{\qqo}{\mathord{\vcenter{\hbox{\includegraphics[scale=.4]{qq1.pdf}}}}}
+\newcommand{\qtqo}{\mathord{\vcenter{\hbox{\includegraphics[scale=.4]{qtq1.pdf}}}}}
+\newcommand{\qqto}{\mathord{\vcenter{\hbox{\includegraphics[scale=.4]{qqt1.pdf}}}}}
+\newcommand{\qtqto}{\mathord{\vcenter{\hbox{\includegraphics[scale=.4]{qtqt1.pdf}}}}}
+\newcommand{\qqm}{\mathord{\vcenter{\hbox{\includegraphics[scale=.4]{qqm.pdf}}}}}
+\newcommand{\qtqm}{\mathord{\vcenter{\hbox{\includegraphics[scale=.4]{qtqm.pdf}}}}}
+\newcommand{\qqtm}{\mathord{\vcenter{\hbox{\includegraphics[scale=.4]{qqtm.pdf}}}}}
+\newcommand{\qtqtm}{\mathord{\vcenter{\hbox{\includegraphics[scale=.4]{qtqtm.pdf}}}}}
+
+\newcommand{\PantsPAP}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{PantsPAP.pdf}}}}}
+\newcommand{\PantsPAsP}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{PantsPAsP.pdf}}}}}
+
+\newcommand{\PantsPsdAP}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{PantsPsdAP.pdf}}}}}
+\newcommand{\PantsPsdAsP}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{PantsPsdAsP.pdf}}}}}
+
+
+
+\newcommand{\PantsPPA}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{PantsPPA.pdf}}}}}
+\newcommand{\PantsPPAs}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{PantsPPAs.pdf}}}}}
+
+\newcommand{\PantsAsAshAsvt}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{PantsAsAshAsvt.pdf}}}}}
+\newcommand{\PantsAstAAs}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{PantsAstAAs.pdf}}}}}
+
+\newcommand{\PantsAstAshAs}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{PantsAstAshAs.pdf}}}}}
+\newcommand{\PantsAsAshAs}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{PantsAsAshAs.pdf}}}}}
+\newcommand{\PantsAsAAs}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{PantsAsAAs.pdf}}}}}
+
+\newcommand{\Pantssvtsvtsh}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7,origin=c]{Pantssvtsvtsh.pdf}}}}}
+\newcommand{\Pantssvtsvsh}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7,angle=0,origin=c]{Pantssvtsvsh.pdf}}}}}
+\newcommand{\Pantssvsvtsh}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7,angle=0,origin=c]{Pantssvsvtsh.pdf}}}}}
+\newcommand{\Pantssvsvsh}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7,angle=0,origin=c]{Pantssvsvsh.pdf}}}}}
+\newcommand{\PantssvtsvtX}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7,angle=0,origin=c]{PantssvtsvtX.pdf}}}}}
+\newcommand{\PantssvtsvX}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7,angle=0,origin=c]{PantssvtsvX.pdf}}}}}
+
+\newcommand{\PantssvsvtX}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7,angle=0,origin=c]{PantssvsvtX.pdf}}}}}
+\newcommand{\PantssvsvX}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7,angle=0,origin=c]{PantssvsvX.pdf}}}}}
+
+\newcommand{\PantssvtXsvd}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7,angle=0,origin=c]{PantssvtXsvd.pdf}}}}}
+\newcommand{\Pantssvtshsvd}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7,angle=0,origin=c]{Pantssvtshsvd.pdf}}}}}
+\newcommand{\Pantssvshsvd}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7,angle=0,origin=c]{Pantssvshsvd.pdf}}}}}
+\newcommand{\PantssvXsvd}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7,angle=0,origin=c]{PantssvXsvd.pdf}}}}}
+
+\newcommand{\PantssvtXsvt}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7,angle=0,origin=c]{PantssvtXsvt.pdf}}}}}
+\newcommand{\PantssvXsvt}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7,angle=0,origin=c]{PantssvXsvt.pdf}}}}}
+
+\newcommand{\PantssvtXsv}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7,angle=0,origin=c]{PantssvtXsv.pdf}}}}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\PantssvXsvdA}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{PantssvXsvdA.pdf}}}}}
+\newcommand{\PantssvtXsvdA}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{PantssvtXsvdA.pdf}}}}}
+\newcommand{\PantssvtshsvdA}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{PantssvtshsvdA.pdf}}}}}
+\newcommand{\PantssvshsvdA}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{PantssvshsvdA.pdf}}}}}
+\newcommand{\PantsPsdAsPA}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{PantsPsdAsPA.pdf}}}}}
+\newcommand{\PantsPsdAPA}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{PantsPsdAPA.pdf}}}}}
+\newcommand{\PantsPPAsA}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{PantsPPAsA.pdf}}}}}
+\newcommand{\PantsPPAA}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{PantsPPAA.pdf}}}}}
+\newcommand{\PantsPAsPA}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{PantsPAsPA.pdf}}}}}
+\newcommand{\PantsPAPA}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{PantsPAPA.pdf}}}}}
+\newcommand{\PantsAstAAsA}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{PantsAstAAsA.pdf}}}}}
+\newcommand{\PantsAsAshAsvtA}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{PantsAsAshAsvtA.pdf}}}}}
+\newcommand{\PantsNNda}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{PantsNNda.pdf}}}}}
+\newcommand{\PantsNNd}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{PantsNNd.pdf}}}}}
+
+\newcommand{\Pantsmsixa}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{Pantsmsixa.pdf}}}}}
+\newcommand{\Pantsmsixb}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{Pantsmsixb.pdf}}}}}
+\newcommand{\Pantsmsixc}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{Pantsmsixc.pdf}}}}}
+\newcommand{\Pantsmsixd}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{Pantsmsixd.pdf}}}}}
+
+\newcommand{\Pantsmsixe}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{Pantsmsixe.pdf}}}}}
+\newcommand{\Pantsmsixf}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{Pantsmsixf.pdf}}}}}
+\newcommand{\Pantsmsixg}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{Pantsmsixg.pdf}}}}}
+\newcommand{\Pantsmsixh}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{Pantsmsixh.pdf}}}}}
+
+\newcommand{\Vmsixa}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{Vmsixa.pdf}}}}}
+\newcommand{\Vmsixb}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{Vmsixb.pdf}}}}}
+\newcommand{\Vmsixc}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{Vmsixc.pdf}}}}}
+\newcommand{\Vmsixd}{\mathord{\vcenter{\hbox{\includegraphics[scale=.8,angle=0,origin=c]{Vmsixd.pdf}}}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\TwoLinedotdot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5,angle=0,origin=c]{TwoLinedotdot.pdf}}}}}
+
+\newcommand{\Id}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5,angle=0,origin=c]{Id.pdf}}}}}
+
+\newcommand{\CupSigmadot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5,angle=0,origin=c]{Cupdot.pdf}}}}}
+
+\newcommand{\CupSigma}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5,angle=0,origin=c]{Cup.pdf}}}}}
+
+\newcommand{\StaggaredGSOdd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5,angle=0,origin=c]{StaggaredGSOdd.pdf}}}}}
+\newcommand{\StaggaredGSEven}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5,angle=0,origin=c]{StaggeredGSEven.pdf}}}}}
+
+\newcommand{\StaggaredGSEvenR}{\mathord{\vcenter{\hbox{\reflectbox{\includegraphics[scale=1.5,angle=0,origin=c]{StaggeredGSEven.pdf}}}}}}
+
+
+\newcommand{\HambdRdot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5,angle=0,origin=c]{HambdRdot.pdf}}}}}
+\newcommand{\HambdR}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5,angle=0,origin=c]{HambdR.pdf}}}}}
+\newcommand{\HambdLdot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5,angle=0,origin=c]{HambdLdot.pdf}}}}}
+\newcommand{\HambdL}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5,angle=0,origin=c]{HambdL.pdf}}}}}
+   
+
+\newcommand{\VxsdsY}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.3,angle=0,origin=c]{Vxsds.pdf}}}}}
+\newcommand{\VsdxsY}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.3,angle=0,origin=c]{Vsdxs.pdf}}}}}
+\newcommand{\VtssdxY}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.3,angle=0,origin=c]{Vtssdx.pdf}}}}}
+
+\newcommand{\Vssdx}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.3,angle=0,origin=c]{Vssdx.pdf}}}}}
+\newcommand{\Vxsds}{\mathord{\vcenter{\hbox{\reflectbox{\includegraphics[scale=0.3,angle=0,origin=c]{Vssdx.pdf}}}}}}
+
+\newcommand{\Vssx}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.3,angle=0,origin=c]{Vssx.pdf}}}}}
+\newcommand{\Vxss}{\mathord{\vcenter{\hbox{\reflectbox{\includegraphics[scale=0.3,angle=0,origin=c]{Vssx.pdf}}}}}}
+
+\newcommand{\Vsxs}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.3,angle=0,origin=c]{Vsxs.pdf}}}}}
+\newcommand{\Vsxsd}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.3,angle=0,origin=c]{Vsxsd.pdf}}}}}
+
+\newcommand{\VsxsY}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.3,angle=180,origin=c]{Vsxs.pdf}}}}}
+\newcommand{\VssxY}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.3,angle=180,origin=c]{Vssx.pdf}}}}}
+\newcommand{\VxssY}{\mathord{\vcenter{\hbox{\reflectbox{\includegraphics[scale=0.3,angle=180,origin=c]{Vssx.pdf}}}}}}
+
+\newcommand{\PsiFermion}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{PsiFermion.pdf}}}}}
+\newcommand{\PsiFermionTwist}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{PsiFermionTwist.pdf}}}}}
+\newcommand{\halfbentfermionline}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{halfbentfermionline.pdf}}}}}
+\newcommand{\kinkedfermionline}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{kinkedfermionline.pdf}}}}}
+
+\newcommand{\alphaboxbetabraidinga}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{alphaboxbetabraidinga.pdf}}}}}
+\newcommand{\alphaboxbetabraidingb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{alphaboxbetabraidingb.pdf}}}}}
+\newcommand{\alphaboxbetabraidingc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{alphaboxbetabraidingc.pdf}}}}}
+
+
+\newcommand{\TwoFermion}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermion.pdf}}}}}
+\newcommand{\TwoFermionExchange}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermionExchange.pdf}}}}}
+\newcommand{\TwoFermionNoLabels}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermion_nolabels.pdf}}}}}
+\newcommand{\TwoFermionExchangeNoLabels}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoFermionExchange_nolabels.pdf}}}}}
+
+
+\newcommand{\Spin}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{Spin.pdf}}}}}
+\newcommand{\PsiIdentity}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{PsiIdentity.pdf}}}}}
+
+\newcommand{\TwoPsiExchange}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoPsiExchange.pdf}}}}}
+\newcommand{\TwoPsiIdentity}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TwoPsiIdentity.pdf}}}}}
+
+
+\newcommand{\PsiEnd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{PsiEnd.pdf}}}}}
+\newcommand{\PsiEndExchange}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{PsiEndExchange.pdf}}}}}
+
+\newcommand{\DotSlidea}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DotSlidea.pdf}}}}}
+\newcommand{\DotSlideb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DotSlideb.pdf}}}}}
+\newcommand{\DotSlidec}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DotSlidec.pdf}}}}}
+\newcommand{\DotSlided}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{DotSlided.pdf}}}}}
+
+\newcommand{\QCapDotL}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{QDotslide.pdf}}}}}
+\newcommand{\QCupDotR}{\mathord{\vcenter{\hbox{\includegraphics[scale=1,angle=180,origin=c]{QDotslide.pdf}}}}}
+\newcommand{\QCapDotR}{\mathord{\vcenter{\hbox{\reflectbox{\includegraphics[scale=1]{QDotslide.pdf}}}}}}
+\newcommand{\QCupDotL}{\mathord{\vcenter{\hbox{\reflectbox{\includegraphics[scale=1,angle=180,origin=c]{QDotslide.pdf}}}}}}
+
+\newcommand{\TwodotCap}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TwodotCap.pdf}}}}}
+\newcommand{\TwodotCup}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TwodotCup.pdf}}}}}
+
+
+\newcommand{\Bpa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Bpa.pdf}}}}}
+\newcommand{\Bpb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Bpb.pdf}}}}}
+\newcommand{\Bpc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Bpc.pdf}}}}}
+\newcommand{\Bpd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Bpd.pdf}}}}}
+\newcommand{\Bpe}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Bpe.pdf}}}}}
+\newcommand{\Bpf}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Bpf.pdf}}}}}
+\newcommand{\Bpg}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Bpg.pdf}}}}}
+\newcommand{\Bph}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Bph.pdf}}}}}
+\newcommand{\Bpi}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Bpi.pdf}}}}}
+
+\newcommand{\LocalRelationLeft}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{LocalRelationLeft.pdf}}}}}
+\newcommand{\LocalRelationRight}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{LocalRelationRight.pdf}}}}}
+\newcommand{\LocalRelationUp}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{LocalRelationUp.pdf}}}}}
+\newcommand{\LocalRelationDown}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{LocalRelationDown.pdf}}}}}
+
+\newcommand{\PlaquettePrime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{PlaquettePrime.pdf}}}}}
+
+\newcommand{\ebox}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{ycenterNoLabel.pdf}}}}}
+\newcommand{\ex}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{exNoLabel.pdf}}}}}
+\newcommand{\ey}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{eyNoLabel.pdf}}}}}
+\newcommand{\eone}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{eoneNoLabel.pdf}}}}}
+\newcommand{\egeneral}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{egeneral.pdf}}}}}
+
+\newcommand{\CTwoFusion}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{CTwoFusion.pdf}}}}}
+\newcommand{\IdempEnd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{IdempEnd.pdf}}}}}
+
+\newcommand{\qqmbraida}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{qqmbraida.pdf}}}}}
+\newcommand{\qqmbraidb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{qqmbraidb.pdf}}}}}
+\newcommand{\qqmbraidc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{qqmbraidc.pdf}}}}}
+
+\newcommand{\mmmbraida}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{mmmbraida.pdf}}}}}
+\newcommand{\mmmbraidb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{mmmbraidb.pdf}}}}}
+\newcommand{\mmmbraidc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{mmmbraidc.pdf}}}}}
+
+
+\newcommand{\qqmbraidaOdd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{qqmbraidaOdd.pdf}}}}}
+\newcommand{\qqmbraidbOdd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{qqmbraidbOdd.pdf}}}}}
+\newcommand{\qqmbraidcOdd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{qqmbraidcOdd.pdf}}}}}
+
+\newcommand{\qqmbraidOdda}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{qqmbraidOdda.pdf}}}}}
+\newcommand{\qqmbraidOddb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{qqmbraidOddb.pdf}}}}}
+\newcommand{\qqmbraidOddc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{qqmbraidOddc.pdf}}}}}
+\newcommand{\qqmbraidOddd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{qqmbraidOddd.pdf}}}}}
+
+
+%%
+%%
+\usepackage{leftidx}
+\newcommand{\overunderset}[3]{\overset{#3}{\underset{#2}{#1}}}
+
+  \newcommand{\halfbraid}[4]{\mathrel{\ooalign{
+  \vphantom{$\Big|^2$}  
+  $\leftidx{_{#2}}{\overunderset{#1}{#3}{#3}}{^{#2}}$\cr
+   \hidewidth \hbox{$\scriptstyle{#4}\mkern32mu$}\cr
+     \hidewidth\raise0ex\hbox{$\scale{1.5}{\VerticalSpace}$}\cr
+ }}}
+
+ 
+  \newcommand{\halfbraidHex}[5]{\mathrel{\ooalign{
+  \vphantom{$\Big|^2$}  
+  $\leftidx{_{#2}}{\overunderset{#1}{#3}{#4 \quad \; \; \; #5}}{^{#2}}$\cr
+     \hidewidth\raise0ex\hbox{$\scale{2.5}{\VerticalSpace}$}\cr
+ }}}
+%%
+%%
+
+
+
+\newcommand{\HalfBraidHexa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{HalfBraidHexa.pdf}}}}}
+\newcommand{\HalfBraidHexb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{HalfBraidHexb.pdf}}}}}
+ 
+
+
+
+\newcommand{\TubeXb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeXb.pdf}}}}}
+\newcommand{\TubeXa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeXa.pdf}}}}}
+\newcommand{\TubeXtwist}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeXtwist.pdf}}}}}
+\newcommand{\Tubeidx}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tubeidx.pdf}}}}}
+\newcommand{\Tubexloop}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tubexloop.pdf}}}}}
+\newcommand{\TubeEmpty}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeEmpty.pdf}}}}}
+
+\newcommand{\xOdd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{xOdd.pdf}}}}}
+\newcommand{\tOdd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{tOdd.pdf}}}}}
+\newcommand{\vOdd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{vOdd.pdf}}}}}
+\newcommand{\hOdd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{hOdd.pdf}}}}}
+
+\newcommand{\TorusBasisa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusBasisa.pdf}}}}}
+\newcommand{\TorusBasisb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusBasisb.pdf}}}}}
+
+
+\newcommand{\scale}[2]{\scalebox{#1}{$#2$}}
+
+
+
+\newcommand{\TubeXbv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeXbv.pdf}}}}}
+\newcommand{\TubeXav}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeXav.pdf}}}}}
+\newcommand{\TubeXtwistv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeXtwistv.pdf}}}}}
+\newcommand{\Tubeidxv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Tubeidxv.pdf}}}}}
+\newcommand{\TubeEmptyv}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TubeEmptyv.pdf}}}}}
+
+
+
+\newcommand{\TorusQQQa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusQQQa.pdf}}}}}
+\newcommand{\TorusQQQb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusQQQb.pdf}}}}}
+\newcommand{\TorusQQQc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusQQQc.pdf}}}}}
+\newcommand{\TorusQQQd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TorusQQQd.pdf}}}}}
+
+\newcommand{\VSa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VSa.pdf}}}}}
+\newcommand{\VSb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VSb.pdf}}}}}
+\newcommand{\VSc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VSc.pdf}}}}}
+\newcommand{\VSd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VSd.pdf}}}}}
+
+
+\newcommand{\VNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VNoLabel.pdf}}}}}
+\newcommand{\VVNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VVNolabel.pdf}}}}}
+
+\newcommand{\DotX}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{DotX.pdf}}}}}
+\newcommand{\DotY}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{DotY.pdf}}}}}
+\newcommand{\DotZ}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{DotZ.pdf}}}}} 
+
+\newcommand{\VVDotX}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VVDotX.pdf}}}}}
+\newcommand{\VVDotY}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VVDotY.pdf}}}}}
+\newcommand{\VVDotZ}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VVDotZ.pdf}}}}} 
+
+\newcommand{\VertexInnerProduct}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VertexInnerProduct.pdf}}}}}
+
+
+\newcommand{\EdgeVecNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{EdgeVec.pdf}}}}}
+\newcommand{\EdgeVec}[2]{\leftidx{_{#1\; }}{\EdgeVecNoLabel}{_{\; #2}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\PitchForkNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchForkNoLabel.pdf}}}}}
+\newcommand{\PitchForkNoLabelas}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchForkNoLabeladual.pdf}}}}}
+
+\newcommand{\PitchForkWithEdge}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchForkWithEdge.pdf}}}}}
+
+\newcommand{\NonpitchforkNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Nonpitchfork.pdf}}}}}
+%\newcommand{\Nonpitchfork}[4]{\leftidx{_{}^{#1}}{\underset{#3}{\NonpitchforkNoLabel}}{^{#2}}}
+\newcommand{\NonpitchforkNoVertex}[3]{\overset{#1 \quad \quad  \;\; #2}{\underset{#3}{\NonpitchforkNoLabel}}}
+
+  \newcommand{\Nonpitchfork}[4]{\mathrel{\ooalign{$\NonpitchforkNoVertex{#1}{#2}{#3}$\cr
+      \hidewidth\raise0ex\hbox{$\scriptstyle{#4} \mkern18mu$}\cr
+  }}}
+
+
+\newcommand{\PitchFork}[4]{\overset{#2}{\leftidx{_{}^{#1}}{\underset{#4}{\PitchForkNoLabel}}{^{#3}}}}
+\newcommand{\PitchForkas}[4]{\underset{#4}{\overset{#2}{\leftidx{_{}^{#1}}{\PitchForkNoLabelas}{^{#3}}}}}
+
+
+\newcommand{\NonPitchforkDotDisplacedNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{NonPitchforkDotDisplaced.pdf}}}}}
+%\newcommand{\Nonpitchfork}[4]{\leftidx{_{}^{#1}}{\underset{#3}{\NonpitchforkNoLabel}}{^{#2}}}
+\newcommand{\NonPitchforkDotDisplacedNoVertex}[3]{\overset{#1 \quad \quad  \;\; #2}{\underset{#3}{\NonPitchforkDotDisplacedNoLabel}}}
+
+  \newcommand{\NonPitchforkDotDisplaced}[4]{\mathrel{\ooalign{$\NonPitchforkDotDisplacedNoVertex{#1}{#2}{#3}$\cr
+      \hidewidth\raise0ex\hbox{$\scriptstyle{#4} \mkern13mu$}\cr
+      \hidewidth\raise0ex\hbox{$\scale{1.5}{\VerticalSpace}$}\cr
+  }}}
+
+\newcommand{\NonPitchforkDotNoLabel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{NonPitchforkDot.pdf}}}}}
+%\newcommand{\Nonpitchfork}[4]{\leftidx{_{}^{#1}}{\underset{#3}{\NonpitchforkNoLabel}}{^{#2}}}
+\newcommand{\NonPitchforkDotNoVertex}[3]{\overset{#1 \quad \quad  \;\; #2}{\underset{#3}{\NonPitchforkDotNoLabel}}}
+
+  \newcommand{\NonPitchforkDot}[4]{\mathrel{\ooalign{$\NonPitchforkDotNoVertex{#1}{#2}{#3}$\cr
+      \hidewidth\raise0ex\hbox{$\scriptstyle{#4} \mkern13mu$}\cr
+            \hidewidth\raise0ex\hbox{$\scale{1.5}{\VerticalSpace}$}\cr
+  }}}
+
+\newcommand{\fPLPR}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{fPLPR.pdf}}}}}
+\newcommand{\fstar}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{fstar.pdf}}}}}
+
+\newcommand{\Tensora}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{Tensora.pdf}}}}}
+\newcommand{\Tensorb}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{Tensorb.pdf}}}}}
+\newcommand{\Tensorc}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{Tensorc.pdf}}}}}
+
+
+\newcommand{\Tensoraa}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{Tensoraa.pdf}}}}}
+\newcommand{\Tensorbb}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{Tensorbb.pdf}}}}}
+\newcommand{\Tensorcc}{\mathord{\vcenter{\hbox{\includegraphics[scale=.7]{Tensorcc.pdf}}}}}
+
+
+
+
+
+\newcommand{\PivotYa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PivotYa.pdf}}}}}
+\newcommand{\PivotYb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PivotYb.pdf}}}}}
+
+
+\newcommand{\Fusionspacea}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Fusionspacea.pdf}}}}}
+\newcommand{\Fusionspaceb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Fusionspaceb.pdf}}}}}
+\newcommand{\Fusionspacec}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Fusionspacec.pdf}}}}}
+
+
+\newcommand{\TensorProducta}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TensorProducta.pdf}}}}}
+\newcommand{\TensorProductb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TensorProductb.pdf}}}}}
+\newcommand{\TensorProductc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TensorProductc.pdf}}}}}
+\newcommand{\TensorProductd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TensorProductd.pdf}}}}}
+
+\newcommand{\TensorProductaprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TensorProductaprime.pdf}}}}}
+\newcommand{\TensorProductbprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TensorProductbprime.pdf}}}}}
+\newcommand{\TensorProductcprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TensorProductcprime.pdf}}}}}
+\newcommand{\TensorProductdprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TensorProductdprime.pdf}}}}}
+\newcommand{\TensorProducteprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TensorProducteprime.pdf}}}}}
+
+\newcommand{\Idabba}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Idabba.pdf}}}}}
+\newcommand{\IdPitchfork}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{IdPitchfork.pdf}}}}}
+
+ 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ 
+     \newcommand{\VNoLabelDot}[1]{\mathrel{\ooalign{  $\VNoLabel$\cr
+  \hidewidth\raise0ex\hbox{${#1}\mkern0mu$}\cr 
+  }}}
+  
+       \newcommand{\VVNoLabelDot}[1]{\mathrel{\ooalign{  $\VVNoLabel$\cr
+  \hidewidth\raise0ex\hbox{${#1}\mkern0mu$}\cr 
+  }}}
+ 
+    \newcommand{\Vx}[4]{\mathrel{\ooalign{  $\overset{#1\kern2.8em #2}{\underset{#3}{\VNoLabel}}$\cr
+  \hidewidth\raise0ex\hbox{${#4}\mkern12mu$}\cr 
+  }}}
+
+    \newcommand{\VDotx}[5]{\mathrel{\ooalign{  $\overset{#1\kern2.8em #2}{\underset{#3}{\VNoLabelDot{#5}}}$\cr
+  \hidewidth\raise0ex\hbox{${#4}\mkern12mu$}\cr 
+       \hidewidth\raise0ex\hbox{$\scale{1.1}{\VerticalSpace}$}\cr
+  }}}
+  
+      \newcommand{\VVDotx}[3]{\mathrel{\ooalign{  $\VVNoLabelDot{#3}$\cr
+  \hidewidth\raise-.7ex\hbox{${#2}\mkern-8mu$}\cr 
+    \hidewidth\raise-.7ex\hbox{${#1}\mkern65mu$}\cr 
+       \hidewidth\raise0ex\hbox{$\scale{1.1}{\VerticalSpace}$}\cr
+  }}}
+  
+
+
+
+\newcommand{\Vxyxxa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vxyxxa.pdf}}}}}
+\newcommand{\Vxyxxb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vxyxxb.pdf}}}}}
+\newcommand{\Vyxxxa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vyxxxa.pdf}}}}}
+\newcommand{\Vyxxxb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vyxxxb.pdf}}}}}
+\newcommand{\Vxxyxa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vxxyxa.pdf}}}}}
+\newcommand{\Vxxyxb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vxxyxb.pdf}}}}}
+
+\newcommand{\Vxxxa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vxxxa.pdf}}}}}
+
+
+\newcommand{\Vxxxya}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vxxxya.pdf}}}}}
+\newcommand{\Vxxxyb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vxxxyb.pdf}}}}}
+
+\newcommand{\Vxxxva}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vxxxva.pdf}}}}}
+\newcommand{\Vxxxvb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vxxxvb.pdf}}}}}
+
+\newcommand{\VSeven}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VSeven.pdf}}}}}
+
+\newcommand{\Vrhorhorhoodd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vrhorhorhoodd.pdf}}}}}
+\newcommand{\Vrhorhorho}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vrhorhorho.pdf}}}}}
+\newcommand{\PivotEsixOdd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PivotE6Odd.pdf}}}}}
+\newcommand{\PivotEsixEven}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PivotE6even.pdf}}}}}
+ 
+ \newcommand{\EsixDynkin}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EsixDynkin.pdf}}}}}
+ \newcommand{\EsixCondensePsi}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{EsixCondensePsi.pdf}}}}}
+ 
+ \newcommand{\HalfEsixDynkin}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{HalfEsixDynkin.pdf}}}}}
+ \newcommand{\HalfEsixDynkinCondensed}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{HalfEsixDynkinCondensed.pdf}}}}}
+
+
+ \newcommand{\AThreeDynkin}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{AThreeDynkin.pdf}}}}}
+  \newcommand{\CTwoDynkin}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{CTwoDynkin.pdf}}}}} 
+ 
+ 
+ \newcommand{\halfesix}{\frac{1}{2}\text{E}_6}
+ \newcommand{\SphereTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{SphereTube.pdf}}}}}
+  \newcommand{\SphereTubeTube}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{SphereTubeTube.pdf}}}}}
+    \newcommand{\TubeMultiplyTopCoefficent}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TubeMultiplyTopCoefficent.pdf}}}}}
+        \newcommand{\TubeMultiplyBottomCoefficient}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.5]{TubeMultiplyBottomCoefficient.pdf}}}}}
+  
+ \newcommand{\TTorus}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TTorus.pdf}}}}}
+ 
+
+\newcommand{\Idx}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Idx.pdf}}}}}
+\newcommand{\Idy}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Idy.pdf}}}}}
+\newcommand{\Kappay}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Kappay.pdf}}}}}
+\newcommand{\Kappax}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Kappax.pdf}}}}}
+
+\newcommand{\Vxxy}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vxxy.pdf}}}}}
+\newcommand{\Vxxydual}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vxxydual.pdf}}}}}
+
+\newcommand{\xxypivota}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{xxypivota.pdf}}}}}
+\newcommand{\xxypivotb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{xxypivotb.pdf}}}}}
+\newcommand{\xxypivotadual}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{xxypivotadual.pdf}}}}}
+\newcommand{\xxypivotbdual}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{xxypivotbdual.pdf}}}}}
+
+
+\newcommand{\Vyxxdual}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vyxxdual.pdf}}}}}
+\newcommand{\yxxpivotbdual}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{yxxpivotbdual.pdf}}}}}
+\newcommand{\yxxpivotadual}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{yxxpivotadual.pdf}}}}}
+\newcommand{\Vxyxdual}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vxyxdual.pdf}}}}}
+\newcommand{\xyxpivotbdual}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{xyxpivotbdual.pdf}}}}}
+\newcommand{\xyxpivotadual}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{xyxpivotadual.pdf}}}}}
+\newcommand{\Vyxx}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vyxx.pdf}}}}}
+\newcommand{\yxxpivotb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{yxxpivotb.pdf}}}}}
+\newcommand{\yxxpivota}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{yxxpivota.pdf}}}}}
+\newcommand{\Vxyx}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vxyx.pdf}}}}}
+\newcommand{\xyxpivotb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{xyxpivotb.pdf}}}}}
+\newcommand{\xyxpivota}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{xyxpivota.pdf}}}}}
+
+\newcommand{\cupleftdot}{\mathord{\vcenter{\hbox{\includegraphics{cup_left_dot.pdf}}}}}
+\newcommand{\cuprightdot}{\mathord{\vcenter{\hbox{\includegraphics{cup_right_dot.pdf}}}}}
+\newcommand{\capleftdot}{\mathord{\vcenter{\hbox{\includegraphics{cap_left_dot.pdf}}}}}
+\newcommand{\caprightdot}{\mathord{\vcenter{\hbox{\includegraphics{cap_right_dot.pdf}}}}}
+
+\newcommand{\doublebeta}{\mathord{\vcenter{\hbox{\includegraphics{double_straight_beta.pdf}}}}}
+\newcommand{\doublebetadots}{\mathord{\vcenter{\hbox{\includegraphics{double_straight_beta_dots.pdf}}}}}
+\newcommand{\doublecups}{\mathord{\vcenter{\hbox{\includegraphics{double_cup.pdf}}}}}
+\newcommand{\doublecupdots}{\mathord{\vcenter{\hbox{\includegraphics{double_cup_dots.pdf}}}}}
+\newcommand{\doublecuppsi}{\mathord{\vcenter{\hbox{\includegraphics{double_cup_psi_line.pdf}}}}}
+
+\newcommand{\Vertexa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Vertexa.pdf}}}}}
+\newcommand{\Vertexb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Vertexb.pdf}}}}}
+\newcommand{\Vertexc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Vertexc.pdf}}}}}
+\newcommand{\Vertexd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Vertexd.pdf}}}}}
+\newcommand{\Vertexe}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Vertexe.pdf}}}}}
+
+\newcommand{\HedgeZa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{HedgeZa.pdf}}}}}
+\newcommand{\HedgeZb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{HedgeZb.pdf}}}}}
+\newcommand{\HedgeZc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{HedgeZc.pdf}}}}}
+\newcommand{\HedgeZd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{HedgeZd.pdf}}}}}
+
+
+\newcommand{\IsingDat}[5]{\underset{{\scriptstyle{#4} \quad\; \; \; \; \scriptstyle{#5}}}{\overset{\scriptstyle{#2}  \quad\; \; \; \; \scriptstyle{#3}}{#1}}}
+
+\newcommand{\ScriptOverSymbol}[2]{{\mathord{\ooalign{ \vphantom{$\idpsishort$}\cr\hidewidth\ensuremath{\scriptstyle{#2}}\hidewidth\cr$\vcenter{\hbox{$\scale{1}{#1}$}}$\cr
+  }}}}	
+
+
+
+
+\newcommand{\idorange}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{idorange.pdf}}}}}
+\newcommand{\idblue}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{idblue.pdf}}}}}
+\newcommand{\idblack}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{idblack.pdf}}}}}
+\newcommand{\Bubblessp}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Bubblessp.pdf}}}}}
+\newcommand{\Bubblesps}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Bubblesps.pdf}}}}}
+\newcommand{\Bubbleabc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Bubbleabc.pdf}}}}}
+
+\newcommand{\Vssp}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vssp.pdf}}}}}
+\newcommand{\VppI}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VppI.pdf}}}}}
+\newcommand{\Vsps}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vsps.pdf}}}}}
+\newcommand{\VssI}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{VssI.pdf}}}}}
+\newcommand{\Hssp}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Hssp.pdf}}}}}
+\newcommand{\HssI}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{HssI.pdf}}}}}
+\newcommand{\HspI}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{HspI.pdf}}}}}
+\newcommand{\HppI}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{HppI.pdf}}}}}
+
+
+\newcommand{\Braidpsconj}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Braidpsconj.pdf}}}}}
+\newcommand{\Braidsp}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Braidsp.pdf}}}}}
+\newcommand{\Braidpp}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Braidpp.pdf}}}}}
+\newcommand{\Braidss}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Braidss.pdf}}}}}
+
+
+
+\newcommand{\Twistp}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Twistp.pdf}}}}}
+\newcommand{\Twists}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Twists.pdf}}}}}
+
+\newcommand{\idsigmashort}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{idsigmashort.pdf}}}}}
+\newcommand{\idsigmashortdot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{idsigmashortdot.pdf}}}}}
+\newcommand{\idsigmashortbox}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{idsigmashortbox.pdf}}}}}
+\newcommand{\idpsishort}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{idpsishort.pdf}}}}}
+
+\newcommand{\Rpss}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Rpss.pdf}}}}}
+\newcommand{\Vsigmapsisigma}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Vsigmapsisigma.pdf}}}}}
+
+
+\newcommand{\FusionSpaceRightOrdered}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{FusionSpaceRightOrdered.pdf}}}}}
+\newcommand{\FusionSpaceLeftOrdered}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{FusionSpaceLeftOrdered.pdf}}}}}
+
+
+\newcommand{\PitchforkFLeft}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFLeft.pdf}}}}}
+\newcommand{\PitchforkFRight}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFRight.pdf}}}}} 
+
+\newcommand{\PitchforkFLeftprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFLeftprime.pdf}}}}}
+\newcommand{\PitchforkFRightprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{PitchforkFRightprime.pdf}}}}} 
+
+
+\newcommand{\PitchforkFLeftprimesmall}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.8]{PivotCoherenceaa.pdf}}}}}
+\newcommand{\PitchforkFRightprimesmall}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.8]{PivotCoherencebb.pdf}}}}} 
+
+
+\newcommand{\Edgea}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Edgea.pdf}}}}}
+\newcommand{\Edgeb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Edgeb.pdf}}}}}
+\newcommand{\Edgec}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Edgec.pdf}}}}}
+
+
+
+\newcommand{\PivotCoherencea}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.8]{PivotCoherencea.pdf}}}}}
+\newcommand{\PivotCoherenceb}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.8]{PivotCoherenceb.pdf}}}}}
+\newcommand{\PivotCoherencec}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.8]{PivotCoherencec.pdf}}}}}
+
+\newcommand{\Penta}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{Penta.pdf}}}}}
+\newcommand{\Pentb}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{Pentb.pdf}}}}}
+\newcommand{\Pentc}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{Pentc.pdf}}}}}
+\newcommand{\Pentd}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{Pentd.pdf}}}}}
+\newcommand{\Pente}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{Pente.pdf}}}}}
+\newcommand{\Pentf}{\mathord{\vcenter{\hbox{\includegraphics[scale=0.7]{Pentf.pdf}}}}}
+
+
+
+\newcommand{\Banana}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Banana.pdf}}}}}
+\newcommand{\BananaDot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{BananaDot.pdf}}}}} 
+\newcommand{\Bananaeta}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Bananaeta.pdf}}}}} 
+\newcommand{\Bananafourmu}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Bananafourmu.pdf}}}}} 
+
+
+
+
+\newcommand{\Plaquettea}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Plaquettea.pdf}}}}}
+\newcommand{\Plaquetteb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Plaquetteb.pdf}}}}}
+\newcommand{\Plaquettec}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Plaquettec.pdf}}}}}
+\newcommand{\Plaquetted}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Plaquetted.pdf}}}}}
+\newcommand{\Plaquettee}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Plaquettee.pdf}}}}}
+\newcommand{\Plaquettef}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Plaquettef.pdf}}}}}
+\newcommand{\Plaquetteg}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{Plaquetteg.pdf}}}}}
+
+\newcommand{\HexPlaquette}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{HexPlaquette.pdf}}}}}
+\newcommand{\HexPlaquetteStretched}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{HexPlaquetteStretched.pdf}}}}}
+\newcommand{\HexPlaquetteStretchedPrime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{HexPlaquetteStretchedPrime.pdf}}}}}
+
+\newcommand{\TwoHandleToGraph}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TwoHandleToGraph.pdf}}}}}
+
+\newcommand{\ZCPsiParent}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{ZCPsiParent.pdf}}}}}
+
+\newcommand{\ZCPsiCondensed}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{ZCPsiCondensed.pdf}}}}}
+
+\newcommand{\BackwallFigureprimeb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{BackwallFigureprimeb.pdf}}}}}
+\newcommand{\BackwallFigureprimea}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{BackwallFigureprimea.pdf}}}}}
+
+\newcommand{\refcoha}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{refcoha.pdf}}}}}
+\newcommand{\refcohb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{refcohb.pdf}}}}}
+\newcommand{\refcohc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{refcohc.pdf}}}}}
+\newcommand{\refcohd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{refcohd.pdf}}}}}
+\newcommand{\refcohe}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{refcohe.pdf}}}}}
+\newcommand{\refcohf}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{refcohf.pdf}}}}}
+\newcommand{\refcohg}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{refcohg.pdf}}}}}
+\newcommand{\refcohh}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{refcohh.pdf}}}}}
+
+\newcommand{\refa}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{refa.pdf}}}}}
+\newcommand{\refb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{refb.pdf}}}}}
+\newcommand{\refc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{refc.pdf}}}}}
+\newcommand{\refd}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{refd.pdf}}}}}
+
+\newcommand{\TetSphereColored}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{TetSphereColored.pdf}}}}}
+
+
+\newcommand{\GraphG}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{GraphG.pdf}}}}}
+\newcommand{\GraphGprimeprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{GraphGprimeprime.pdf}}}}}
+\newcommand{\GraphGprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1]{GragGprime.pdf}}}}}
+
+
+\newcommand{\chaincuta}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{Chaincuta.pdf}}}}}
+\newcommand{\chaincutb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{chaincutb.pdf}}}}}
+\newcommand{\chaincutc}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{chaincutc.pdf}}}}}
+
+\newcommand{\KitHama}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{KitHama.pdf}}}}}
+\newcommand{\KitHamb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{KitHamb.pdf}}}}}
+
+
+\newcommand{\LocalHilba}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{LocalHilba.pdf}}}}}
+\newcommand{\LocalHilbb}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{LocalHilbb.pdf}}}}}
+
+\newcommand{\halfchain}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{halfchain.pdf}}}}}
+\newcommand{\halfchaindot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{halfchaindot.pdf}}}}}
+
+
+\newcommand{\quarterpiper}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{quarterpiper.pdf}}}}}
+\newcommand{\quarterpiperdot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{quarterpiperdot.pdf}}}}}
+
+\newcommand{\quarterpipel}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{quarterpipel.pdf}}}}}
+\newcommand{\quarterpipeldot}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{quarterpipeldot.pdf}}}}}
+
+\newcommand{\quarterpiperprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{quarterpiperprime.pdf}}}}}
+\newcommand{\quarterpiperdotprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{quarterpiperdotprime.pdf}}}}}
+
+\newcommand{\quarterpipelprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{quarterpipelprime.pdf}}}}}
+\newcommand{\quarterpipeldotprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3]{quarterpipeldotprime.pdf}}}}}
+
+\newcommand{\StaggaredGSOddprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3,angle=0,origin=c]{StaggaredGSOddprime.pdf}}}}}
+\newcommand{\StaggaredGSEvenprime}{\mathord{\vcenter{\hbox{\includegraphics[scale=1.3,angle=0,origin=c]{StaggeredGSEvenprime.pdf}}}}}
+
+
+
+\newcommand{\StaggaredGSEvenRprime}{\mathord{\vcenter{\hbox{\reflectbox{\includegraphics[scale=1.3,angle=0,origin=c]{StaggeredGSEvenprime.pdf}}}}}}
+
+
+
+%\newcommand{\Koszul}[2]{\smash[t]{\overset{{\color{kwcolor}{#1}}}{#2}}}
+%\newcommand{\Koszul}[3]{\mathbin{\ooalign{
+%$\overset{\scriptstyle{\color{kwcolor}{#1}}}{#2}$\cr$#3$\cr
+%}}}
+\newcommand{\Koszul}[3]{\mathbin{\ooalign{
+$\overset{\scriptstyle{\color{kwcolor}{#1}}}{ \mathop{\phantom{#2}}}$\cr$#3$\cr
+}}}
+
+
+\newcommand{\scat}{\mathcal{T}}
+\newcommand{\spc}{\mathcal{S}}
+
+
+
+
+
+
+
+
+\begin{document}
+
+%\begin{CJK*}{GB}{}
+
+\title{Fermion condensation and super pivotal categories}
+
+%\author{David Aasen$^1$$^2$, Ethan Lake$^{3}$, and Kevin Walker$^4$}
+%\affil{
+%$^1$ Department of Physics and Institute for Quantum Information and Matter, California Institute of Technology, Pasadena, CA 91125, USA}
+%\affil{$^2$Kavli Institute for Theoretical Physics, University of California, Santa Barbara, CA 93106, USA}
+%\affil{
+%$^3$ Department of Physics and Astronomy, University of Utah, Salt Lake City, UT 84112, USA}
+%\affil{
+%$^4$ Station Q, Microsoft Research, Santa Barbara, California 93106-6105, USA}
+
+
+%revtex style
+\author{David Aasen} 
+\affiliation{
+Department of Physics and Institute for Quantum Information and Matter, California Institute of Technology, Pasadena, CA 91125, USA}
+\affiliation{
+Kavli Institute for Theoretical Physics, University of California, Santa Barbara, CA 93106, USA}
+\author{Ethan Lake}
+\affiliation{
+Department of Physics and Astronomy, University of Utah, Salt Lake City, UT 84112, USA}
+\author{Kevin Walker}
+\affiliation{
+Station Q, Microsoft Research, Santa Barbara, California 93106-6105, USA}
+
+
+
+\date{\today}
+
+
+
+%\end{CJK*}
+
+\begin{abstract}
+We study fermionic topological phases using the technique of fermion condensation. 
+We give a prescription for performing fermion condensation in 
+bosonic topological phases which contain a fermion.
+Our approach to fermion condensation can roughly be understood 
+as coupling the parent bosonic topological phase to a phase of physical fermions, and condensing 
+pairs of physical and emergent fermions. 
+There are two distinct types of objects in the resulting fermionic fusion categories, which we call ``m-type'' and ``q-type'' objects. 
+The endomorphism algebras of q-type objects are complex Clifford algebras, and they
+have no analogues in bosonic theories. 
+We construct a fermionic generalization of the tube category, which allows us to compute
+the quasiparticle excitations arising from the condensed theories.
+We prove a series of results relating data in fermionic theories to data in their parent bosonic theories;
+for example, if $\mathcal{C}$ is a modular tensor category containing a fermion, then the tube category 
+constructed from the condensed theory satisfies 
+$\textbf{Tube}(\mathcal{C}/\psi) \cong \mathcal{C} \times (\mathcal{C}/\psi)$.  
+We also study how modular transformations, fusion rules, and coherence relations 
+are modified in the fermionic setting, 
+prove a fermionic version of the Verlinde dimension formula,
+construct a commuting projector lattice Hamiltonian for fermionic theories, and 
+write down a fermionic version of the Turaev-Viro-Barrett-Westbury state sum.  
+A large portion of this work is devoted to three detailed examples of performing fermion condensation to 
+produce fermionic topological phases: we condense fermions 
+in the Ising theory, the $SO(3)_6$ theory, and the $\frac{1}{2}\text{E}_6$ theory, and compute the 
+quasiparticle excitation spectrum in each of the condensed theories. 
+\end{abstract}
+
+\maketitle
+
+\tableofcontents
+
+
+\input{_Introduction.tex}
+\input{_Fermion_condensation_in_the_Ising_TQFT.tex}
+\input{_Quasiparticle_excitations_and_the_tube_category_of_C_2.tex}
+\input{_Generalities_on_fermion_condensation_and_tube_categories.tex}
+\input{_More_on_fermion_condensation_in_modular_tensor_categories_and_the_tube_category.tex}
+\input{_Fermion_condensation_in_SO3_6.tex}
+\input{_Fermion_condensation_in_halfesix.tex}
+\input{_Super_pivotal_categories.tex}
+\input{_Super_pivotal_Hamiltonian.tex}
+\input{_Super_pivotal_state_sums_and_tensor_networks.tex}
+\input{_Kitaev_wire.tex}
+\input{_Discussion.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\appendix
+
+\input{_Spin_and_pin_structures.tex}
+\input{_Constructing_the_fermion_line_bundle.tex}
+\input{_Basic_facts_about_superalgebras.tex}
+\input{_halfe6_data.tex}
+
+\phantomsection
+\addcontentsline{toc}{section}{References}
+
+\bibliographystyle{utphys}
+%\bibliographystyle{aipnum4-1}
+\bibliography{references}
+
+\end{document}
